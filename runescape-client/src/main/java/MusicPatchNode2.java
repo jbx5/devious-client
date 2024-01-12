@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
@@ -7,200 +6,141 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("mx")
 @Implements("MusicPatchNode2")
 public class MusicPatchNode2 {
-	@ObfuscatedName("da")
-	static boolean field3427;
-	@ObfuscatedName("ac")
-	byte[] field3420;
-	@ObfuscatedName("al")
-	byte[] field3418;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("am")
+	byte[] field3446;
+	@ObfuscatedName("ap")
+	byte[] field3445;
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -618668773
+		intValue = 2073587451
 	)
-	int field3419;
-	@ObfuscatedName("ax")
+	int field3453;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1136181051
+		intValue = 1357198507
 	)
-	int field3425;
-	@ObfuscatedName("ao")
+	int field3448;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1078343365
+		intValue = 1563895247
 	)
-	int field3417;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = -15797553
-	)
-	int field3421;
+	int field3447;
 	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -438322831
+		intValue = 1696962409
 	)
-	int field3423;
-	@ObfuscatedName("ab")
+	int field3450;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -526087587
+		intValue = -1478653309
 	)
-	int field3424;
-	@ObfuscatedName("am")
+	int field3451;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1354169945
+		intValue = -233143541
 	)
-	int field3426;
+	int field3452;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 290476327
+	)
+	int field3449;
 
 	MusicPatchNode2() {
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "15"
+		descriptor = "(Low;IB)Lmc;",
+		garbageValue = "-46"
 	)
-	static void method5929(boolean var0) {
-		byte var1 = 0;
-		boolean var2 = class91.clientPreferences.method2562() >= Client.field717;
-		if (!var2) {
-			var1 = 12;
-		} else if (class159.client.containsAccessAndRefreshToken() || class159.client.method1249() || class159.client.containsSessionAndCharacterId()) {
-			var1 = 10;
-		}
-
-		GameEngine.method647(var1);
-		if (var0) {
-			Login.Login_username = "";
-			Login.Login_password = "";
-			ClientPreferences.field1295 = 0;
-			class186.otp = "";
-		}
-
-		class188.method3619();
-		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-			Login.currentLoginField = 1;
-		} else {
-			Login.currentLoginField = 0;
-		}
-
+	static MusicPatch method6039(AbstractArchive var0, int var1) {
+		byte[] var2 = var0.takeFileFlat(var1);
+		return var2 == null ? null : new MusicPatch(var2);
 	}
 
-	@ObfuscatedName("hz")
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Low;B)V",
+		garbageValue = "-76"
+	)
+	public static void method6040(AbstractArchive var0) {
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-123"
+	)
+	static final int method6036() {
+		return ViewportMouse.ViewportMouse_y;
+	}
+
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "1"
+		garbageValue = "53"
 	)
-	static void method5928() {
-		Client.mouseLastLastPressedTimeMillis = 1L;
-		class233.mouseRecorder.index = 0;
-		KeyHandler.hasFocus = true;
-		Client.hadFocus = true;
-		Client.field760 = -1L;
-		class36.reflectionChecks = new IterableNodeDeque();
-		Client.packetWriter.clearBuffer();
-		Client.packetWriter.packetBuffer.offset = 0;
-		Client.packetWriter.serverPacket = null;
-		Client.packetWriter.field1431 = null;
-		Client.packetWriter.field1420 = null;
-		Client.packetWriter.field1433 = null;
-		Client.packetWriter.serverPacketLength = 0;
-		Client.packetWriter.field1429 = 0;
-		Client.rebootTimer = 0;
-		Client.logoutTimer = 0;
-		Client.hintArrowType = 0;
-		class91.method2347();
-		class138.method3081(0);
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
-		Client.isItemSelected = 0;
-		Client.isSpellSelected = false;
-		Client.soundEffectCount = 0;
-		Client.camAngleY = 0;
-		Client.oculusOrbState = 0;
-		WallDecoration.field2871 = null;
-		Client.minimapState = 0;
-		Client.field763 = -1;
-		Client.destinationX = 0;
-		Client.destinationY = 0;
-		Client.playerAttackOption = AttackOption.AttackOption_hidden;
-		Client.npcAttackOption = AttackOption.AttackOption_hidden;
-		Client.npcCount = 0;
-		class11.method112();
-
-		int var0;
-		for (var0 = 0; var0 < 2048; ++var0) {
-			Client.players[var0] = null;
-		}
-
-		for (var0 = 0; var0 < 65536; ++var0) {
-			Client.npcs[var0] = null;
-		}
-
-		Client.combatTargetPlayerIndex = -1;
-		Client.projectiles.clear();
-		Client.graphicsObjects.clear();
-
-		for (var0 = 0; var0 < 4; ++var0) {
-			for (int var4 = 0; var4 < 104; ++var4) {
-				for (int var2 = 0; var2 < 104; ++var2) {
-					Client.groundItems[var0][var4][var2] = null;
-				}
+	static void method6037() {
+		Login.Login_username = Login.Login_username.trim();
+		if (Login.Login_username.length() == 0) {
+			class142.setLoginResponseString("Please enter your username.", "If you created your account after November", "2010, this will be the creation email address.");
+		} else {
+			long var1 = class185.method3710();
+			int var0;
+			if (0L == var1) {
+				var0 = 5;
+			} else {
+				var0 = class11.method101(var1, Login.Login_username);
 			}
-		}
 
-		Client.pendingSpawns = new NodeDeque();
-		InvDefinition.friendSystem.clear();
-		if (VarpDefinition.field1924 > 5000) {
-		}
-
-		for (var0 = 0; var0 < VarpDefinition.field1924; ++var0) {
-			VarpDefinition var1 = class150.VarpDefinition_get(var0);
-			if (var1 != null) {
-				Varps.Varps_temp[var0] = 0;
-				Varps.Varps_main[var0] = 0;
+			switch(var0) {
+			case 2:
+				class142.setLoginResponseString(Strings.field4239, Strings.field4065, Strings.field4241);
+				Actor.method2489(6);
+				break;
+			case 3:
+				class142.setLoginResponseString("", "Error connecting to server.", "");
+				break;
+			case 4:
+				class142.setLoginResponseString("The part of the website you are trying", "to connect to is offline at the moment.", "Please try again later.");
+				break;
+			case 5:
+				class142.setLoginResponseString("Sorry, there was an error trying to", "log you in to this part of the website.", "Please try again later.");
+				break;
+			case 6:
+				class142.setLoginResponseString("", "Error connecting to server.", "");
+				break;
+			case 7:
+				class142.setLoginResponseString("You must enter a valid login to proceed. For accounts", "created after 24th November 2010, please use your", "email address. Otherwise please use your username.");
 			}
+
 		}
+	}
 
-		class33.varcs.clearTransient();
-		Client.followerIndex = -1;
-		if (Client.rootInterface != -1) {
-			class33.widgetDefinition.method6243(Client.rootInterface);
+	@ObfuscatedName("mb")
+	@ObfuscatedSignature(
+		descriptor = "(III)Ljava/lang/String;",
+		garbageValue = "-933399972"
+	)
+	static final String method6038(int var0, int var1) {
+		int var2 = var1 - var0;
+		if (var2 < -9) {
+			return class208.colorStartTag(16711680);
+		} else if (var2 < -6) {
+			return class208.colorStartTag(16723968);
+		} else if (var2 < -3) {
+			return class208.colorStartTag(16740352);
+		} else if (var2 < 0) {
+			return class208.colorStartTag(16756736);
+		} else if (var2 > 9) {
+			return class208.colorStartTag(65280);
+		} else if (var2 > 6) {
+			return class208.colorStartTag(4259584);
+		} else if (var2 > 3) {
+			return class208.colorStartTag(8453888);
+		} else {
+			return var2 > 0 ? class208.colorStartTag(12648192) : class208.colorStartTag(16776960);
 		}
-
-		for (InterfaceParent var3 = (InterfaceParent)Client.interfaceParents.first(); var3 != null; var3 = (InterfaceParent)Client.interfaceParents.next()) {
-			ArchiveDisk.closeInterface(var3, true);
-		}
-
-		Client.rootInterface = -1;
-		Client.interfaceParents = new NodeHashTable(8);
-		Client.meslayerContinueWidget = null;
-		class91.method2347();
-		Client.playerAppearance.method6267((int[])null, (int[])null, new int[]{0, 0, 0, 0, 0}, 0, -1);
-
-		for (var0 = 0; var0 < 8; ++var0) {
-			Client.playerMenuActions[var0] = null;
-			Client.playerOptionsPriorities[var0] = false;
-		}
-
-		Tile.method4515();
-		Client.isLoading = true;
-
-		for (var0 = 0; var0 < 100; ++var0) {
-			Client.validRootWidgets[var0] = true;
-		}
-
-		class517.method9051();
-		class358.friendsChat = null;
-		VerticalAlignment.guestClanSettings = null;
-		Arrays.fill(Client.currentClanSettings, (Object)null);
-		ClanChannelMember.guestClanChannel = null;
-		Arrays.fill(Client.currentClanChannels, (Object)null);
-
-		for (var0 = 0; var0 < 8; ++var0) {
-			Client.grandExchangeOffers[var0] = new GrandExchangeOffer();
-		}
-
-		Varps.grandExchangeEvents = null;
-		Client.field615 = false;
 	}
 }

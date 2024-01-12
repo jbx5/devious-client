@@ -23,4 +23,14 @@ public class Vars
 	{
 		return Static.getClient().getVarcStrValue(varClientStr);
 	}
+
+	public static void setVarcInt(int varClientInt, int value)
+	{
+		GameThread.invoke(() -> Static.getClient().setVarcIntValue(varClientInt, value));
+	}
+
+	public static void setVarcStr(int varClientStr, String value)
+	{
+		GameThread.invoke(() -> Static.getClient().setVarcStrValue(varClientStr, value));
+	}
 }

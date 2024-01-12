@@ -1,58 +1,52 @@
-import java.util.concurrent.ThreadPoolExecutor;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bl")
+@ObfuscatedName("bi")
 @Implements("SoundCache")
 public class SoundCache {
-	@ObfuscatedName("ab")
-	public static ThreadPoolExecutor field333;
-	@ObfuscatedName("jo")
+	@ObfuscatedName("eu")
+	@Export("mouseCam")
+	static boolean mouseCam;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lpu;"
-	)
-	@Export("fontBold12")
-	static Font fontBold12;
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
 	@Export("soundEffectIndex")
 	AbstractArchive soundEffectIndex;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
-	AbstractArchive field327;
-	@ObfuscatedName("ak")
+	AbstractArchive field316;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ltf;"
+		descriptor = "Lts;"
 	)
-	NodeHashTable field328;
+	NodeHashTable field318;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;Lom;)V"
+		descriptor = "(Low;Low;)V"
 	)
 	public SoundCache(AbstractArchive var1, AbstractArchive var2) {
 		new NodeHashTable(256);
-		this.field328 = new NodeHashTable(256);
+		this.field318 = new NodeHashTable(256);
 		this.soundEffectIndex = var1;
-		this.field327 = var2;
+		this.field316 = var2;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II[II)Lbs;",
-		garbageValue = "804068595"
+		descriptor = "(II[II)Lbm;",
+		garbageValue = "-2077776795"
 	)
 	@Export("getSoundEffect0")
 	RawSound getSoundEffect0(int var1, int var2, int[] var3) {
-		long var4 = this.method862(var1, var2, false);
-		class53 var6 = (class53)this.field328.get(var4);
+		long var4 = this.method885(var1, var2, false);
+		class53 var6 = (class53)this.field318.get(var4);
 		if (var6 != null) {
-			return var6.method1078();
+			return var6.method1099();
 		} else if (var3 != null && var3[0] <= 0) {
 			return null;
 		} else {
@@ -61,7 +55,7 @@ public class SoundCache {
 				return null;
 			} else {
 				RawSound var8 = var7.toRawSound();
-				this.field328.put(new class53(var8), var4);
+				this.field318.put(new class53(var8), var4);
 				if (var3 != null) {
 					var3[0] -= var8.samples.length;
 				}
@@ -71,32 +65,32 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lcu;",
-		garbageValue = "941566921"
+		descriptor = "(IIS)Lcb;",
+		garbageValue = "3208"
 	)
-	class53 method849(int var1, int var2) {
-		long var3 = this.method862(var1, var2, true);
-		class53 var5 = (class53)this.field328.get(var3);
+	class53 method882(int var1, int var2) {
+		long var3 = this.method885(var1, var2, true);
+		class53 var5 = (class53)this.field318.get(var3);
 		if (var5 != null) {
 			return var5;
 		} else {
-			VorbisSample var6 = VorbisSample.readMusicSample(this.field327, var1, var2);
+			VorbisSample var6 = VorbisSample.readMusicSample(this.field316, var1, var2);
 			if (var6 == null) {
 				return new class53();
 			} else {
 				class53 var7 = new class53(var6);
-				this.field328.put(var7, var3);
+				this.field318.put(var7, var3);
 				return var7;
 			}
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I[IB)Lbs;",
-		garbageValue = "-23"
+		descriptor = "(I[II)Lbm;",
+		garbageValue = "1281898806"
 	)
 	@Export("getSoundEffect")
 	RawSound getSoundEffect(int var1, int[] var2) {
@@ -109,86 +103,38 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lcu;",
-		garbageValue = "0"
+		descriptor = "(II)Lcb;",
+		garbageValue = "255418893"
 	)
-	public class53 method851(int var1) {
-		if (this.field327.getGroupCount() == 1) {
-			return this.method849(0, var1);
-		} else if (this.field327.getGroupFileCount(var1) == 1) {
-			return this.method849(var1, 0);
+	public class53 method883(int var1) {
+		if (this.field316.getGroupCount() == 1) {
+			return this.method882(0, var1);
+		} else if (this.field316.getGroupFileCount(var1) == 1) {
+			return this.method882(var1, 0);
 		} else {
 			throw new RuntimeException();
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Lbs;",
-		garbageValue = "11636"
+		descriptor = "(II)Lbm;",
+		garbageValue = "-1627468116"
 	)
-	public RawSound method852(int var1) {
+	public RawSound method881(int var1) {
 		return this.getSoundEffect(var1, (int[])null);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(IIZI)J",
-		garbageValue = "1435261523"
+		garbageValue = "1944510305"
 	)
-	long method862(int var1, int var2, boolean var3) {
+	long method885(int var1, int var2, boolean var3) {
 		int var4 = var2 ^ (var1 << 4 & 65535 | var1 >> 12);
 		var4 |= var1 << 16;
 		return var3 ? (long)var4 ^ 4294967296L : (long)var4;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "74"
-	)
-	static void method866() {
-		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-			if (var0.stream1 != null) {
-				class140.pcmStreamMixer.removeSubStream(var0.stream1);
-				var0.stream1 = null;
-			}
-
-			if (var0.stream2 != null) {
-				class140.pcmStreamMixer.removeSubStream(var0.stream2);
-				var0.stream2 = null;
-			}
-		}
-
-		ObjectSound.objectSounds.clear();
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(III)Lcr;",
-		garbageValue = "1668135160"
-	)
-	@Export("Messages_getByChannelAndID")
-	static Message Messages_getByChannelAndID(int var0, int var1) {
-		ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
-		return var2.getMessage(var1);
-	}
-
-	@ObfuscatedName("og")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Luq;",
-		garbageValue = "-5"
-	)
-	@Export("getDbTable")
-	static DbTable getDbTable(int var0) {
-		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
-		if (var1 == null) {
-			var1 = new DbTable(class313.field3396, AbstractArchive.method6972(var0), VarbitComposition.method3896(var0));
-			Client.DBTableIndex_cache.put(var1, (long)var0);
-		}
-
-		return var1;
 	}
 }

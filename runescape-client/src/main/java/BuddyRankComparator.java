@@ -3,10 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eu")
+@ObfuscatedName("es")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +14,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;I)I",
-		garbageValue = "383953435"
+		descriptor = "(Lrj;Lrj;I)I",
+		garbageValue = "1898768769"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,32 +32,58 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1321294301"
-	)
-	static void method2933() {
-		World.Tiles_underlays = null;
-		VertexNormal.Tiles_overlays = null;
-		SecureRandomFuture.Tiles_shapes = null;
-		class199.field2004 = null;
-		UserComparator6.field1486 = null;
-		Tiles.Tiles_underlays2 = null;
-		class158.field1739 = null;
-		SecureRandomFuture.Tiles_hue = null;
-		class135.Tiles_saturation = null;
-		Tiles.Tiles_lightness = null;
-		WorldMapSection2.Tiles_hueMultiplier = null;
-		Script.field1008 = null;
+	@ObfuscatedName("am")
+	public static final void method2992(long var0) {
+		if (var0 > 0L) {
+			if (0L == var0 % 10L) {
+				GameBuild.method6934(var0 - 1L);
+				GameBuild.method6934(1L);
+			} else {
+				GameBuild.method6934(var0);
+			}
+
+		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "0"
+		descriptor = "(I)[Lff;",
+		garbageValue = "-1880947968"
 	)
-	protected static final int method2936() {
-		return GameEngine.keyHandler.method345();
+	static class132[] method2996() {
+		return new class132[]{class132.field1555, class132.field1553, class132.field1554, class132.field1560, class132.field1556, class132.field1561};
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lnn;I)I",
+		garbageValue = "116060212"
+	)
+	static int method2997(Widget var0) {
+		if (var0.type != 11) {
+			Interpreter.Interpreter_stringStack[class211.Interpreter_stringStackSize - 1] = "";
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--class211.Interpreter_stringStackSize];
+			Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var0.method6806(var1);
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("ll")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "3"
+	)
+	static final void method2990() {
+		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0.hitpoints == -1) {
+				var0.delay = 0;
+				class1.method12(var0);
+			} else {
+				var0.remove();
+			}
+		}
+
 	}
 }

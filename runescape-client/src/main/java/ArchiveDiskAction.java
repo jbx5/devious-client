@@ -4,32 +4,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oe")
+@ObfuscatedName("oq")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
-	@ObfuscatedName("fu")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	static Archive field4291;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1423175445
+		intValue = -1539402633
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@Export("data")
 	byte[] data;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lrw;"
+		descriptor = "Lrl;"
 	)
 	@Export("archiveDisk")
 	ArchiveDisk archiveDisk;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Loz;"
 	)
 	@Export("archive")
 	Archive archive;

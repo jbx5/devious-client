@@ -26,13 +26,23 @@ package net.runelite.deob.updater;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
+import java.util.stream.Collectors;
+import net.runelite.asm.Annotation;
+import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
+import net.runelite.asm.Type;
 import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
 import net.runelite.deob.deobfuscators.mapping.Mapper;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.deob.deobfuscators.transformers.BufferRenameTransformer;
+import net.runelite.deob.deobfuscators.transformers.ClassToPackageTransformer;
 import net.runelite.deob.deobfuscators.transformers.GraphicsObjectTransformer;
+import net.runelite.deob.deobfuscators.transformers.JSONSyntheticTransformer;
+import net.runelite.deob.deobfuscators.mapping.MissingMappingChecker;
 import net.runelite.deob.deobfuscators.transformers.ScriptOpcodesTransformer;
+import net.runelite.deob.deobfuscators.transformers.BadEnumConstructorTransformer;
 import net.runelite.deob.util.JarUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +64,9 @@ public class UpdateMappings
 		Mapper mapper = new Mapper(group1, group2);
 		mapper.run();
 		ParallelExecutorMapping mapping = mapper.getMapping();
+
+		new BufferRenameTransformer(mapping).transform(group2);
+		new MissingMappingChecker(mapping, group1, group2).run();
 
 		AnnotationMapper amapper = new AnnotationMapper(group1, group2, mapping);
 		amapper.run();
@@ -80,6 +93,20 @@ public class UpdateMappings
 
 		new ScriptOpcodesTransformer().transform(group2);
 		new GraphicsObjectTransformer().transform(group2);
+
+		new ClassToPackageTransformer().transform(group2);
+		new JSONSyntheticTransformer().transform(group2);
+		new BadEnumConstructorTransformer().transform(group2);
+
+		for (ClassFile cf : group2)
+		{
+			Map<Type, Annotation> annotations = cf.getAnnotations();
+			annotations.keySet()
+				.stream()
+				.filter(k -> !k.toString().startsWith("Lnet/runelite/"))
+				.collect(Collectors.toList())
+				.forEach(annotations::remove);
+		}
 	}
 
 	public void save(File out) throws IOException

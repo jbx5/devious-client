@@ -3,62 +3,139 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("vf")
+@ObfuscatedName("vs")
 @Implements("Username")
 public class Username implements Comparable {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@Export("name")
 	String name;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@Export("cleanName")
 	String cleanName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lte;)V"
+		descriptor = "(Ljava/lang/String;Lth;)V"
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
-		this.cleanName = class432.method7856(var1, var2);
+		String var4;
+		if (var1 == null) {
+			var4 = null;
+		} else {
+			int var5 = 0;
+
+			int var6;
+			for (var6 = var1.length(); var5 < var6 && MilliClock.method4262(var1.charAt(var5)); ++var5) {
+			}
+
+			while (var6 > var5 && MilliClock.method4262(var1.charAt(var6 - 1))) {
+				--var6;
+			}
+
+			int var7 = var6 - var5;
+			if (var7 >= 1 && var7 <= class332.method6308(var2)) {
+				StringBuilder var8 = new StringBuilder(var7);
+
+				for (int var9 = var5; var9 < var6; ++var9) {
+					char var10 = var1.charAt(var9);
+					if (Messages.method2837(var10)) {
+						char var11 = class385.method7273(var10);
+						if (var11 != 0) {
+							var8.append(var11);
+						}
+					}
+				}
+
+				if (var8.length() == 0) {
+					var4 = null;
+				} else {
+					var4 = var8.toString();
+				}
+			} else {
+				var4 = null;
+			}
+		}
+
+		this.cleanName = var4;
 	}
 
 	public Username(String var1) {
 		this.name = var1;
-		this.cleanName = class432.method7856(var1, LoginType.oldscape);
+		LoginType var4 = LoginType.oldscape;
+		String var3;
+		if (var1 == null) {
+			var3 = null;
+		} else {
+			int var5 = 0;
+
+			int var6;
+			for (var6 = var1.length(); var5 < var6 && MilliClock.method4262(var1.charAt(var5)); ++var5) {
+			}
+
+			while (var6 > var5 && MilliClock.method4262(var1.charAt(var6 - 1))) {
+				--var6;
+			}
+
+			int var7 = var6 - var5;
+			if (var7 >= 1 && var7 <= class332.method6308(var4)) {
+				StringBuilder var8 = new StringBuilder(var7);
+
+				for (int var9 = var5; var9 < var6; ++var9) {
+					char var10 = var1.charAt(var9);
+					if (Messages.method2837(var10)) {
+						char var11 = class385.method7273(var10);
+						if (var11 != 0) {
+							var8.append(var11);
+						}
+					}
+				}
+
+				if (var8.length() == 0) {
+					var3 = null;
+				} else {
+					var3 = var8.toString();
+				}
+			} else {
+				var3 = null;
+			}
+		}
+
+		this.cleanName = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1870950849"
+		garbageValue = "1794179494"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "641761865"
+		garbageValue = "-1874735961"
 	)
-	public String method9844() {
+	public String method10004() {
 		return this.cleanName;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-46"
+		garbageValue = "63"
 	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
 		return this.cleanName != null;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)I",
-		garbageValue = "585813874"
+		descriptor = "(Lvs;I)I",
+		garbageValue = "162874778"
 	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {
@@ -94,42 +171,5 @@ public class Username implements Comparable {
 
 	public int compareTo(Object var1) {
 		return this.compareToTyped((Username)var1);
-	}
-
-	@ObfuscatedName("mi")
-	@ObfuscatedSignature(
-		descriptor = "(Lnm;III)V",
-		garbageValue = "-2147237579"
-	)
-	@Export("alignWidgetPosition")
-	static void alignWidgetPosition(Widget var0, int var1, int var2) {
-		if (var0.xAlignment == 0) {
-			var0.x = var0.rawX;
-		} else if (var0.xAlignment == 1) {
-			var0.x = var0.rawX + (var1 - var0.width) / 2;
-		} else if (var0.xAlignment == 2) {
-			var0.x = var1 - var0.width - var0.rawX;
-		} else if (var0.xAlignment == 3) {
-			var0.x = var0.rawX * var1 >> 14;
-		} else if (var0.xAlignment == 4) {
-			var0.x = (var1 - var0.width) / 2 + (var0.rawX * var1 >> 14);
-		} else {
-			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
-		}
-
-		if (var0.yAlignment == 0) {
-			var0.y = var0.rawY;
-		} else if (var0.yAlignment == 1) {
-			var0.y = (var2 - var0.height) / 2 + var0.rawY;
-		} else if (var0.yAlignment == 2) {
-			var0.y = var2 - var0.height - var0.rawY;
-		} else if (var0.yAlignment == 3) {
-			var0.y = var2 * var0.rawY >> 14;
-		} else if (var0.yAlignment == 4) {
-			var0.y = (var2 - var0.height) / 2 + (var2 * var0.rawY >> 14);
-		} else {
-			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
-		}
-
 	}
 }

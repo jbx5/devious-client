@@ -10,48 +10,48 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("uq")
 @Implements("DbTable")
 public class DbTable extends DualNode {
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "[Ltr;"
+		descriptor = "[Ltq;"
 	)
-	class517[] field5085;
-	@ObfuscatedName("ao")
+	class518[] field5122;
+	@ObfuscatedName("aq")
 	@Export("columns")
 	List columns;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;I)V"
+		descriptor = "(Low;I)V"
 	)
 	public DbTable(AbstractArchive var1, int var2) {
 		byte[] var3 = var1.takeFile(var2, 0);
-		this.method9088(new Buffer(var3));
+		this.method9279(new Buffer(var3));
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;II)V"
+		descriptor = "(Low;II)V"
 	)
 	public DbTable(AbstractArchive var1, int var2, int var3) {
 		byte[] var4 = var1.takeFile(var2, var3 + 1);
-		this.method9088(new Buffer(var4));
+		this.method9279(new Buffer(var4));
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "677675313"
+		descriptor = "(Luk;B)V",
+		garbageValue = "5"
 	)
-	void method9088(Buffer var1) {
+	void method9279(Buffer var1) {
 		int var2 = var1.packBytesToInt();
-		this.field5085 = new class517[var2];
+		this.field5122 = new class518[var2];
 		this.columns = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
-			this.field5085[var3] = (class517)SequenceDefinition.findEnumerated(class517.method9047(), var1.readUnsignedByte());
+			this.field5122[var3] = (class518)GrandExchangeEvents.findEnumerated(class518.method9256(), var1.readUnsignedByte());
 			int var4 = var1.packBytesToInt();
 			HashMap var5 = new HashMap(var4);
 
 			while (var4-- > 0) {
-				Object var6 = this.field5085[var3].method9032(var1);
+				Object var6 = this.field5122[var3].method9243(var1);
 				int var7 = var1.packBytesToInt();
 				ArrayList var8 = new ArrayList();
 
@@ -68,12 +68,12 @@ public class DbTable extends DualNode {
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
-		garbageValue = "17353223"
+		garbageValue = "1390547755"
 	)
-	public List method9089(Object var1, int var2) {
+	public List method9281(Object var1, int var2) {
 		if (var2 < 0) {
 			var2 = 0;
 		}

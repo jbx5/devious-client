@@ -1,22 +1,25 @@
+import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pq")
-public class class404 extends RuntimeException {
-	@ObfuscatedName("kl")
-	@ObfuscatedSignature(
-		descriptor = "Lud;"
-	)
-	@Export("compass")
-	static SpritePixels compass;
+@ObfuscatedName("pl")
+public final class class404 {
+	@ObfuscatedName("am")
+	@Export("base37Table")
+	public static final char[] base37Table;
+	@ObfuscatedName("ap")
+	static long[] field4504;
+	@ObfuscatedName("aq")
+	@Export("cacheDir")
+	static File cacheDir;
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Llq;",
-		garbageValue = "1413170050"
-	)
-	public static class309[] method7414() {
-		return new class309[]{class309.field3235, class309.field3239, class309.field3240, class309.field3237, class309.field3238, class309.field3246, class309.field3234, class309.field3241, class309.field3242, class309.field3243, class309.field3244, class309.field3245, class309.field3236};
+	static {
+		base37Table = new char[]{'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+		field4504 = new long[12];
+
+		for (int var0 = 0; var0 < field4504.length; ++var0) {
+			field4504[var0] = (long)Math.pow(37.0D, (double)var0);
+		}
+
 	}
 }

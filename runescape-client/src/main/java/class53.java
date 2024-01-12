@@ -1,62 +1,66 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cu")
+@ObfuscatedName("cb")
 public class class53 extends Node {
-	@ObfuscatedName("ry")
-	@ObfuscatedSignature(
-		descriptor = "Ltx;"
+	@ObfuscatedName("gh")
+	@ObfuscatedGetter(
+		intValue = 1442469611
 	)
-	@Export("Widget_cachedFonts")
-	static class512 Widget_cachedFonts;
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lbj;"
+	static int field369;
+	@ObfuscatedName("vn")
+	@ObfuscatedGetter(
+		intValue = 1264313619
 	)
-	class47 field382;
+	static int field367;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lbe;"
+	)
+	class47 field368;
 
 	public class53() {
-		this.field382 = null;
+		this.field368 = null;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lcw;)V"
+		descriptor = "(Lci;)V"
 	)
 	class53(VorbisSample var1) {
 		if (var1 != null) {
-			this.field382 = new class47(var1, (RawSound)null);
+			this.field368 = new class47(var1, (RawSound)null);
 		}
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lbs;)V"
+		descriptor = "(Lbm;)V"
 	)
 	public class53(RawSound var1) {
-		this.field382 = new class47((VorbisSample)null, var1);
+		this.field368 = new class47((VorbisSample)null, var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1320640993"
+		garbageValue = "1790507973"
 	)
-	public boolean method1080() {
-		return this.field382 == null;
+	public boolean method1108() {
+		return this.field368 == null;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lbs;",
-		garbageValue = "248890116"
+		descriptor = "(I)Lbm;",
+		garbageValue = "358490048"
 	)
-	public RawSound method1081() {
-		if (this.field382 != null && this.field382.field348.tryLock()) {
+	public RawSound method1098() {
+		if (this.field368 != null && this.field368.field334.tryLock()) {
 			RawSound var1;
 			try {
-				var1 = this.method1087();
+				var1 = this.method1100();
 			} finally {
-				this.field382.field348.unlock();
+				this.field368.field334.unlock();
 			}
 
 			return var1;
@@ -65,20 +69,20 @@ public class class53 extends Node {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lbs;",
-		garbageValue = "-262816062"
+		descriptor = "(I)Lbm;",
+		garbageValue = "-1734459633"
 	)
-	public RawSound method1078() {
-		if (this.field382 != null) {
-			this.field382.field348.lock();
+	public RawSound method1099() {
+		if (this.field368 != null) {
+			this.field368.field334.lock();
 
 			RawSound var1;
 			try {
-				var1 = this.method1087();
+				var1 = this.method1100();
 			} finally {
-				this.field382.field348.unlock();
+				this.field368.field334.unlock();
 			}
 
 			return var1;
@@ -87,120 +91,32 @@ public class class53 extends Node {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lbs;",
-		garbageValue = "1547022770"
+		descriptor = "(B)Lbm;",
+		garbageValue = "-127"
 	)
-	RawSound method1087() {
-		if (this.field382.field344 == null) {
-			this.field382.field344 = this.field382.field345.toRawSound((int[])null);
-			this.field382.field345 = null;
+	RawSound method1100() {
+		if (this.field368.field337 == null) {
+			this.field368.field337 = this.field368.field336.toRawSound((int[])null);
+			this.field368.field336 = null;
 		}
 
-		return this.field382.field344;
+		return this.field368.field337;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lcv;",
-		garbageValue = "-111"
+		descriptor = "(II)Lfv;",
+		garbageValue = "380915246"
 	)
-	@Export("worldListStart")
-	static World worldListStart() {
-		World.World_listCount = 0;
-		return DevicePcmPlayerProvider.getNextWorldListWorld();
-	}
-
-	@ObfuscatedName("jd")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIZI)V",
-		garbageValue = "1325251796"
-	)
-	@Export("setViewportShape")
-	static final void setViewportShape(int var0, int var1, int var2, int var3, boolean var4) {
-		if (var2 < 1) {
-			var2 = 1;
+	static class133 method1096(int var0) {
+		class133[] var1 = new class133[]{class133.field1580, class133.field1569, class133.field1579, class133.field1568, class133.field1573, class133.field1570, class133.field1566, class133.field1572, class133.field1574, class133.field1567, class133.field1575, class133.field1576, class133.field1577, class133.field1578, class133.field1571, class133.field1565, class133.field1581};
+		class133 var2 = (class133)GrandExchangeEvents.findEnumerated(var1, var0);
+		if (var2 == null) {
+			var2 = class133.field1580;
 		}
 
-		if (var3 < 1) {
-			var3 = 1;
-		}
-
-		int var5 = var3 - 334;
-		int var6;
-		if (var5 < 0) {
-			var6 = Client.field791;
-		} else if (var5 >= 100) {
-			var6 = Client.field792;
-		} else {
-			var6 = (Client.field792 - Client.field791) * var5 / 100 + Client.field791;
-		}
-
-		int var7 = var3 * var6 * 512 / (var2 * 334);
-		int var8;
-		int var9;
-		short var18;
-		if (var7 < Client.field594) {
-			var18 = Client.field594;
-			var6 = var18 * var2 * 334 / (var3 * 512);
-			if (var6 > Client.field662) {
-				var6 = Client.field662;
-				var8 = var3 * var6 * 512 / (var18 * 334);
-				var9 = (var2 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var9, var3, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0 + var2 - var9, var1, var9, var3, -16777216);
-				}
-
-				var0 += var9;
-				var2 -= var9 * 2;
-			}
-		} else if (var7 > Client.field798) {
-			var18 = Client.field798;
-			var6 = var18 * var2 * 334 / (var3 * 512);
-			if (var6 < Client.field795) {
-				var6 = Client.field795;
-				var8 = var18 * var2 * 334 / (var6 * 512);
-				var9 = (var3 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
-				}
-
-				var1 += var9;
-				var3 -= var9 * 2;
-			}
-		}
-
-		Client.viewportZoom = var3 * var6 / 334;
-		if (var2 != Client.viewportWidth || var3 != Client.viewportHeight) {
-			int[] var17 = new int[9];
-
-			for (var9 = 0; var9 < var17.length; ++var9) {
-				int var10 = var9 * 32 + 15 + 128;
-				int var11 = var10 * 3 + 600;
-				int var13 = Rasterizer3D.Rasterizer3D_sine[var10];
-				int var15 = var3 - 334;
-				if (var15 < 0) {
-					var15 = 0;
-				} else if (var15 > 100) {
-					var15 = 100;
-				}
-
-				int var16 = (Client.zoomWidth - Client.zoomHeight) * var15 / 100 + Client.zoomHeight;
-				int var14 = var16 * var11 / 256;
-				var17[var9] = var13 * var14 >> 16;
-			}
-
-			Scene.Scene_buildVisiblityMap(var17, 500, 800, var2 * 334 / var3, 334);
-		}
-
-		Client.viewportOffsetX = var0;
-		Client.viewportOffsetY = var1;
-		Client.viewportWidth = var2;
-		Client.viewportHeight = var3;
+		return var2;
 	}
 }

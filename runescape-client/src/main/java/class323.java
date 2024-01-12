@@ -2,24 +2,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mu")
+@ObfuscatedName("mj")
 public class class323 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1798224737
+		intValue = -2060436195
 	)
-	int field3494;
-	@ObfuscatedName("al")
+	int field3520;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lcb;"
 	)
-	class53 field3493;
+	class53 field3518;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILcu;)V"
+		descriptor = "(ILcb;)V"
 	)
 	class323(int var1, class53 var2) {
-		this.field3494 = var1;
-		this.field3493 = var2;
+		this.field3520 = var1;
+		this.field3518 = var2;
 	}
 }

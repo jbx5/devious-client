@@ -1,5 +1,6 @@
 package net.runelite.mixins;
 
+import net.runelite.api.events.PostAnimation;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -296,16 +297,15 @@ public abstract class RSSequenceDefinitionMixin implements RSSequenceDefinition
 	@Replace("SequenceDefinition_get")
 	public static RSSequenceDefinition copy$sequenceDefinitionGet(int var0)
 	{
-		RSSequenceDefinition sequenceDefinition = copy$sequenceDefinitionGet(var0);
-
-		if (sequenceDefinition.getFrameIDs() == null && !sequenceDefinition.isCachedModelIdSet())
+		synchronized (client.getSequenceDefinitionCache())
 		{
-			return null;
-		}
-		else
-		{
-			sequenceDefinition.setId(var0);
-			return sequenceDefinition;
+			RSSequenceDefinition rsSequenceDefinition = copy$sequenceDefinitionGet(var0);
+			if (rsSequenceDefinition.getId() == -1)
+			{
+				rsSequenceDefinition.setId(var0);
+				client.getCallbacks().post(new PostAnimation(rsSequenceDefinition));
+			}
+			return rsSequenceDefinition;
 		}
 	}
 

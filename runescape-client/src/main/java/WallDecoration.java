@@ -1,88 +1,81 @@
-import java.io.File;
-import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kq")
+@ObfuscatedName("lu")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("wv")
+	@ObfuscatedName("ku")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
+		descriptor = "Luc;"
 	)
-	public static class384 field2871;
-	@ObfuscatedName("ly")
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1634319151
-	)
-	@Export("cameraYaw")
-	static int cameraYaw;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -933242443
+		intValue = 1617612513
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1471615239
+		intValue = 1266112317
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 210123715
+		intValue = 1208845479
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1132126571
+		intValue = 352052341
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1334490223
+		intValue = -2047175573
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1942701153
+		intValue = -1149054363
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 737404035
+		intValue = -1740811189
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ljy;"
+		descriptor = "Lkp;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Ljy;"
+		descriptor = "Lkp;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		longValue = -1188891399884727635L
+		longValue = 3453845455137359487L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1031863247
+		intValue = -138305535
 	)
 	@Export("flags")
 	int flags;
@@ -90,69 +83,5 @@ public final class WallDecoration {
 	WallDecoration() {
 		this.tag = 0L;
 		this.flags = 0;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)Ljava/io/File;",
-		garbageValue = "97"
-	)
-	@Export("getFile")
-	static File getFile(String var0) {
-		if (!FileSystem.FileSystem_hasPermissions) {
-			throw new RuntimeException("");
-		} else {
-			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
-			if (var1 != null) {
-				return var1;
-			} else {
-				File var2 = new File(FileSystem.FileSystem_cacheDir, var0);
-				RandomAccessFile var3 = null;
-
-				try {
-					File var4 = new File(var2.getParent());
-					if (!var4.exists()) {
-						throw new RuntimeException("");
-					} else {
-						var3 = new RandomAccessFile(var2, "rw");
-						int var5 = var3.read();
-						var3.seek(0L);
-						var3.write(var5);
-						var3.seek(0L);
-						var3.close();
-						FileSystem.FileSystem_cacheFiles.put(var0, var2);
-						return var2;
-					}
-				} catch (Exception var8) {
-					try {
-						if (var3 != null) {
-							var3.close();
-							var3 = null;
-						}
-					} catch (Exception var7) {
-					}
-
-					throw new RuntimeException();
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("ki")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "16"
-	)
-	static final boolean method5194(int var0) {
-		if (var0 < 0) {
-			return false;
-		} else {
-			int var1 = Client.menuOpcodes[var0];
-			if (var1 >= 2000) {
-				var1 -= 2000;
-			}
-
-			return var1 == 1007;
-		}
 	}
 }

@@ -4,24 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kt")
+@ObfuscatedName("jn")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("fy")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static Archive field2627;
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 209603829
+		intValue = 394542689
 	)
 	@Export("objectDefinitionId")
 	final int objectDefinitionId;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1642289935
+		intValue = -2000261319
 	)
 	@Export("decoration")
 	final int decoration;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1346002845
+		intValue = 1201614091
 	)
 	@Export("rotation")
 	final int rotation;
@@ -32,20 +37,12 @@ public class WorldMapDecoration {
 		this.rotation = var3;
 	}
 
-	@ObfuscatedName("ka")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1531578947"
+		descriptor = "(B)V",
+		garbageValue = "-90"
 	)
-	static final void method5650() {
-		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
-			if (var0.hitpoints == -1) {
-				var0.delay = 0;
-				GrandExchangeOfferOwnWorldComparator.method1237(var0);
-			} else {
-				var0.remove();
-			}
-		}
-
+	public static void method5021() {
+		WorldMapElement.HitSplatDefinition_cached.clear();
 	}
 }

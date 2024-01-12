@@ -1,20 +1,17 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("km")
+@ObfuscatedName("ln")
 @Implements("ModelData0")
 public class ModelData0 {
-	@ObfuscatedName("ao")
-	@Export("SpriteBuffer_yOffsets")
-	public static int[] SpriteBuffer_yOffsets;
-	@ObfuscatedName("dn")
-	@ObfuscatedSignature(
-		descriptor = "[Lun;"
+	@ObfuscatedName("pa")
+	@ObfuscatedGetter(
+		intValue = -698799135
 	)
-	@Export("worldSelectArrows")
-	static IndexedSprite[] worldSelectArrows;
+	@Export("selectedSpellWidget")
+	static int selectedSpellWidget;
 
 	ModelData0() {
 	}

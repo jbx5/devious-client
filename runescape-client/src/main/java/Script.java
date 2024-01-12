@@ -4,55 +4,53 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ds")
+@ObfuscatedName("dd")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llq;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("ay")
-	static int[] field1008;
-	@ObfuscatedName("al")
-	String field1004;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ap")
+	String field979;
+	@ObfuscatedName("af")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1799598971
+		intValue = -165630961
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1300060503
+		intValue = 1498866603
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1220003295
+		intValue = 634248277
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1530472731
+		intValue = -1186762681
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "[Ltp;"
+		descriptor = "[Ltb;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -64,45 +62,80 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Ltp;",
-		garbageValue = "-902364502"
+		descriptor = "(II)[Ltb;",
+		garbageValue = "-1812104264"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lhi;",
+		garbageValue = "0"
+	)
+	@Export("StructDefinition_getStructDefinition")
+	public static StructComposition StructDefinition_getStructDefinition(int var0) {
+		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = StructComposition.StructDefinition_archive.takeFile(34, var0);
+			var1 = new StructComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			var1.postDecode();
+			StructComposition.StructDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lho;",
+		garbageValue = "538407903"
+	)
+	@Export("getNpcDefinition")
+	public static NPCComposition getNpcDefinition(int var0) {
+		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
+			var1 = new NPCComposition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			var1.postDecode();
+			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-1816632175"
+		descriptor = "(CLol;I)I",
+		garbageValue = "-885374361"
 	)
-	static void method2215(boolean var0) {
-		if (var0) {
-			class74.method2113();
-		} else {
-			for (int var1 = 0; var1 < class319.musicSongs.size(); ++var1) {
-				MusicSong var2 = (MusicSong)class319.musicSongs.get(var1);
-				if (var2 == null) {
-					class319.musicSongs.remove(var1);
-					--var1;
-				} else if (var2.field3550) {
-					if (var2.midiPcmStream.field3450 > 0) {
-						--var2.midiPcmStream.field3450;
-					}
-
-					var2.midiPcmStream.clear();
-					var2.midiPcmStream.method6044();
-					var2.midiPcmStream.setPcmStreamVolume(0);
-					class319.musicSongs.remove(var1);
-					--var1;
-				} else {
-					var2.field3550 = true;
-				}
-			}
+	@Export("lowercaseChar")
+	static int lowercaseChar(char var0, Language var1) {
+		int var2 = var0 << 4;
+		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+			var0 = Character.toLowerCase(var0);
+			var2 = (var0 << 4) + 1;
 		}
 
+		if (var0 == 241 && var1 == Language.Language_ES) {
+			var2 = 1762;
+		}
+
+		return var2;
 	}
 }

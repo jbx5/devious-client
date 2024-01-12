@@ -4,43 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hb")
+@ObfuscatedName("hn")
 @Implements("HorizontalAlignment")
-public enum HorizontalAlignment implements MouseWheel {
-	@ObfuscatedName("ac")
+public enum HorizontalAlignment implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lhb;"
+		descriptor = "Lhn;"
 	)
-	field2032(1, 0),
-	@ObfuscatedName("al")
+	field1937(0, 0),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lhb;"
+		descriptor = "Lhn;"
 	)
 	@Export("HorizontalAlignment_centered")
-	HorizontalAlignment_centered(0, 1),
-	@ObfuscatedName("ak")
+	HorizontalAlignment_centered(2, 1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lhb;"
+		descriptor = "Lhn;"
 	)
-	field2027(2, 2);
+	field1935(1, 2);
 
-	@ObfuscatedName("gj")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	static Archive field2028;
-	@ObfuscatedName("jf")
-	@Export("regionMapArchiveIds")
-	static int[] regionMapArchiveIds;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -328609999
+		intValue = -965677749
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -507682681
+		intValue = -1995200501
 	)
 	@Export("id")
 	final int id;
@@ -50,13 +42,25 @@ public enum HorizontalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "-5089"
+	)
+	static void method3713() {
+		Messages.Messages_channels.clear();
+		Messages.Messages_hashTable.clear();
+		Messages.Messages_queue.clear();
+		Messages.Messages_count = 0;
 	}
 }

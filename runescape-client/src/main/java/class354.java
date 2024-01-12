@@ -3,67 +3,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ny")
-public enum class354 implements MouseWheel {
-	@ObfuscatedName("ac")
+@ObfuscatedName("ng")
+public enum class354 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lng;"
 	)
-	field3852(0),
-	@ObfuscatedName("al")
+	field3880(0),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lng;"
 	)
-	field3855(1),
-	@ObfuscatedName("ak")
+	field3877(1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lng;"
 	)
-	field3849(2),
-	@ObfuscatedName("ax")
+	field3878(2),
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lng;"
 	)
-	field3851(3),
-	@ObfuscatedName("ao")
+	field3879(3),
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lng;"
 	)
-	field3848(4);
+	field3876(4);
 
-	@ObfuscatedName("kg")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -958946113
+		intValue = -366924757
 	)
-	static int field3856;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 1156880785
-	)
-	final int field3853;
+	final int field3883;
 
 	class354(int var3) {
-		this.field3853 = var3;
+		this.field3883 = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field3853;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lud;IIII)V",
-		garbageValue = "902612467"
-	)
-	static void method6777(SpritePixels var0, int var1, int var2, int var3) {
-		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
-		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
-		var4.put(var0, var6, var0.pixels.length * 4);
+		return this.field3883;
 	}
 }

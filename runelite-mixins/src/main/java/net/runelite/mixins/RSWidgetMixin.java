@@ -24,6 +24,10 @@
  */
 package net.runelite.mixins;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import net.runelite.api.HashTable;
 import net.runelite.api.Node;
 import net.runelite.api.Point;
@@ -39,6 +43,7 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetPositionMode;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFont;
 import net.runelite.rs.api.RSModel;
@@ -50,14 +55,6 @@ import net.runelite.rs.api.RSNodeHashTable;
 import net.runelite.rs.api.RSPlayerComposition;
 import net.runelite.rs.api.RSSequenceDefinition;
 import net.runelite.rs.api.RSWidget;
-
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static net.runelite.api.widgets.WidgetInfo.TO_CHILD;
-import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
 
 @Mixin(RSWidget.class)
 public abstract class RSWidgetMixin implements RSWidget
@@ -157,12 +154,7 @@ public abstract class RSWidgetMixin implements RSWidget
 	public Widget getParent()
 	{
 		int id = getParentId();
-		if (id == -1)
-		{
-			return null;
-		}
-
-		return client.getWidget(TO_GROUP(id), TO_CHILD(id));
+		return id == -1 ? null : client.getWidget(id);
 	}
 
 	@Inject
@@ -178,7 +170,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		}
 
 		final int id = getId();
-		if (TO_GROUP(id) == client.getTopLevelInterfaceId())
+		if (WidgetUtil.componentToInterface(id) == client.getTopLevelInterfaceId())
 		{
 			// this is a root widget
 			return -1;
@@ -195,7 +187,7 @@ public abstract class RSWidgetMixin implements RSWidget
 			// check the parent in the component table
 			@SuppressWarnings("unchecked") HashTable<WidgetNode> componentTable = client.getComponentTable();
 			WidgetNode widgetNode = componentTable.get(parentId);
-			if (widgetNode == null || widgetNode.getId() != TO_GROUP(id))
+			if (widgetNode == null || widgetNode.getId() != WidgetUtil.componentToInterface(id))
 			{
 				// invalidate parent
 				rl$parentId = -1;
@@ -207,7 +199,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		}
 
 		// also the widget may not have been drawn, yet
-		int groupId = TO_GROUP(getId());
+		int groupId = WidgetUtil.componentToInterface(getId());
 		RSNodeHashTable componentTable = client.getComponentTable();
 		RSNode[] buckets = componentTable.getBuckets();
 		for (RSNode node : buckets)
@@ -277,7 +269,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		// If the parent is hidden, this widget is also hidden.
 		// Widget has no parent and is not the root widget (which is always visible),
 		// so it's not visible.
-		return parent == null ? TO_GROUP(getId()) != client.getTopLevelInterfaceId() : parent.isHidden();
+		return parent == null ? WidgetUtil.componentToInterface(getId()) != client.getTopLevelInterfaceId() : parent.isHidden();
 	}
 
 	@Inject
@@ -378,19 +370,8 @@ public abstract class RSWidgetMixin implements RSWidget
 	@Override
 	public Widget getChild(int index)
 	{
-		if (index == -1)
-		{
-			return this;
-		}
-
 		RSWidget[] widgets = getChildren();
-
-		if (widgets == null || widgets[index] == null)
-		{
-			return null;
-		}
-
-		return widgets[index];
+		return widgets != null && index >= 0 && index < widgets.length ? widgets[index] : null;
 	}
 
 	@Inject
@@ -426,7 +407,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		}
 
 		List<Widget> widgets = new ArrayList<Widget>();
-		RSWidget[] group = client.getGroup(TO_GROUP(getId()));
+		RSWidget[] group = client.getGroup(WidgetUtil.componentToInterface(getId()));
 		if (group == null)
 		{
 			return new Widget[0];
@@ -552,15 +533,36 @@ public abstract class RSWidgetMixin implements RSWidget
 
 	@Inject
 	@Override
+	public Widget createStaticChild(int type)
+	{
+		assert client.isClientThread() : "createStaticChild must be called on client thread";
+
+		int id = this.getId();
+		int groupId = id >> 16;
+		RSWidget[] widgets = client.getWidgetDefinition().getWidgets()[groupId];
+		widgets = Arrays.copyOf(widgets, widgets.length + 1);
+		int packedId = groupId << 16 | widgets.length - 1;
+		RSWidget widget = client.createWidget();
+		widget.setIsIf3(true);
+		widget.setType(type);
+		widget.setParentId(id);
+		widget.setId(packedId);
+		widgets[widgets.length - 1] = widget;
+		client.getWidgetDefinition().getWidgets()[groupId] = widgets;
+		return widget;
+	}
+
+	@Inject
+	@Override
 	public Widget createChild(int index, int type)
 	{
 		assert client.isClientThread() : "createChild must be called on client thread";
 
 		RSWidget w = client.createWidget();
+		w.setIsIf3(true);
 		w.setType(type);
 		w.setParentId(getId());
 		w.setId(getId());
-		w.setIsIf3(true);
 
 		RSWidget[] siblings = getChildren();
 
@@ -619,7 +621,7 @@ public abstract class RSWidgetMixin implements RSWidget
 		assert client.isClientThread() : "revalidateScroll must be called on client thread";
 
 		client.revalidateWidget(this);
-		client.revalidateWidgetScroll(client.getWidgetDefinition().getWidgets()[TO_GROUP(this.getId())], this, false);
+		client.revalidateWidgetScroll(client.getWidgetDefinition().getWidgets()[WidgetUtil.componentToInterface(this.getId())], this, false);
 	}
 
 	@Inject

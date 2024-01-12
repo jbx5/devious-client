@@ -6,27 +6,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("er")
+@ObfuscatedName("ew")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Ltp;"
+		descriptor = "Ltb;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lpt;"
+		descriptor = "Lpm;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -2066815957
+		intValue = 1483704105
 	)
 	@Export("Messages_count")
 	static int Messages_count;
@@ -38,24 +38,64 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lis;",
-		garbageValue = "517783557"
+		descriptor = "(CI)Z",
+		garbageValue = "1347462958"
 	)
-	public static VarbitComposition method2802(int var0) {
-		VarbitComposition var1 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	public static final boolean method2837(char var0) {
+		if (Character.isISOControl(var0)) {
+			return false;
+		} else if (WorldMapIcon_0.isAlphaNumeric(var0)) {
+			return true;
 		} else {
-			byte[] var2 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
-			var1 = new VarbitComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			char[] var1 = class509.field5074;
+
+			int var2;
+			char var3;
+			for (var2 = 0; var2 < var1.length; ++var2) {
+				var3 = var1[var2];
+				if (var0 == var3) {
+					return true;
+				}
 			}
 
-			VarbitComposition.VarbitDefinition_cached.put(var1, (long)var0);
-			return var1;
+			var1 = class509.field5076;
+
+			for (var2 = 0; var2 < var1.length; ++var2) {
+				var3 = var1[var2];
+				if (var0 == var3) {
+					return true;
+				}
+			}
+
+			return false;
 		}
+	}
+
+	@ObfuscatedName("ik")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1250012045"
+	)
+	static final void method2849() {
+		if (Client.logoutTimer > 0) {
+			class189.logOut();
+		} else {
+			Client.timer.method8040();
+			class131.updateGameState(40);
+			PlayerType.field4298 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
+		}
+	}
+
+	@ObfuscatedName("on")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "76"
+	)
+	static final void method2850() {
+		Client.field706 = Client.cycleCntr;
+		VarpDefinition.field1832 = true;
 	}
 }

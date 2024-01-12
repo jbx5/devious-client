@@ -1,46 +1,34 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hu")
+@ObfuscatedName("it")
 @Implements("Clock")
 public abstract class Clock {
-	@ObfuscatedName("kr")
-	@ObfuscatedGetter(
-		intValue = -2121802467
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "[Lut;"
 	)
-	static int field1891;
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
 
 	Clock() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "436321701"
+		garbageValue = "65280"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "712947185"
+		garbageValue = "-2123373080"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);
-
-	@ObfuscatedName("jl")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1548584577"
-	)
-	static void method3596() {
-		for (class225 var0 = (class225)Client.field534.last(); var0 != null; var0 = (class225)Client.field534.previous()) {
-			var0.remove();
-		}
-
-	}
 }

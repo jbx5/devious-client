@@ -1,471 +1,366 @@
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fs")
-public class class133 implements MouseWheel {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fv")
+public class class133 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfv;"
 	)
-	static final class133 field1571;
-	@ObfuscatedName("al")
+	static final class133 field1580;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfv;"
 	)
 	static final class133 field1569;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfv;"
 	)
-	static final class133 field1563;
-	@ObfuscatedName("ax")
+	static final class133 field1579;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfv;"
 	)
-	static final class133 field1564;
-	@ObfuscatedName("ao")
+	static final class133 field1568;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfv;"
 	)
-	static final class133 field1565;
-	@ObfuscatedName("ah")
+	static final class133 field1573;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lfs;"
+		descriptor = "Lfv;"
+	)
+	static final class133 field1570;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
 	)
 	static final class133 field1566;
-	@ObfuscatedName("oj")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lcf;"
+		descriptor = "Lfv;"
 	)
-	@Export("tempMenuAction")
-	static MenuAction tempMenuAction;
-	@ObfuscatedName("ar")
+	static final class133 field1572;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1574;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1567;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1575;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1576;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1577;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1578;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1571;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1565;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	static final class133 field1581;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1289801539
+		intValue = -1182447887
 	)
-	final int field1567;
-	@ObfuscatedName("ab")
+	final int field1582;
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 570543627
+		intValue = 147537431
 	)
-	final int field1562;
-	@ObfuscatedName("am")
+	final int field1583;
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1920225209
+		intValue = 467810155
 	)
-	final int field1561;
+	final int field1584;
 
 	static {
-		field1571 = new class133(0, 0, (String)null, 0);
-		field1569 = new class133(1, 1, (String)null, 9);
-		field1563 = new class133(2, 2, (String)null, 3);
-		field1564 = new class133(3, 3, (String)null, 6);
-		field1565 = new class133(4, 4, (String)null, 1);
-		field1566 = new class133(5, 5, (String)null, 3);
+		field1580 = new class133(0, 0, (String)null, -1, -1);
+		field1569 = new class133(1, 1, (String)null, 0, 2);
+		field1579 = new class133(2, 2, (String)null, 1, 2);
+		field1568 = new class133(3, 3, (String)null, 2, 2);
+		field1573 = new class133(4, 4, (String)null, 3, 1);
+		field1570 = new class133(5, 5, (String)null, 4, 1);
+		field1566 = new class133(6, 6, (String)null, 5, 1);
+		field1572 = new class133(7, 7, (String)null, 6, 3);
+		field1574 = new class133(8, 8, (String)null, 7, 3);
+		field1567 = new class133(9, 9, (String)null, 8, 3);
+		field1575 = new class133(10, 10, (String)null, 0, 7);
+		field1576 = new class133(11, 11, (String)null, 1, 7);
+		field1577 = new class133(12, 12, (String)null, 2, 7);
+		field1578 = new class133(13, 13, (String)null, 3, 7);
+		field1571 = new class133(14, 14, (String)null, 4, 7);
+		field1565 = new class133(15, 15, (String)null, 5, 7);
+		field1581 = new class133(16, 16, (String)null, 0, 5);
 	}
 
-	class133(int var1, int var2, String var3, int var4) {
-		this.field1567 = var1;
-		this.field1562 = var2;
-		this.field1561 = var4;
+	@ObfuscatedSignature(
+		descriptor = "(IILjava/lang/String;II)V",
+		garbageValue = "-1"
+	)
+	class133(int var1, int var2, String var3, int var4, int var5) {
+		this.field1582 = var1;
+		this.field1583 = var2;
+		this.field1584 = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "121"
+	)
+	int method3131() {
+		return this.field1584;
+	}
+
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1562;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2025897930"
-	)
-	int method3048() {
-		return this.field1561;
+		return this.field1583;
 	}
 
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)Z",
-		garbageValue = "-1116623065"
+		descriptor = "(II)[B",
+		garbageValue = "-1598969675"
 	)
-	static final boolean method3059(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		int var7 = ViewportMouse.ViewportMouse_y + var6;
-		if (var7 < var0 && var7 < var1 && var7 < var2) {
-			return false;
-		} else {
-			var7 = ViewportMouse.ViewportMouse_y - var6;
-			if (var7 > var0 && var7 > var1 && var7 > var2) {
-				return false;
-			} else {
-				var7 = ViewportMouse.ViewportMouse_x + var6;
-				if (var7 < var3 && var7 < var4 && var7 < var5) {
-					return false;
-				} else {
-					var7 = ViewportMouse.ViewportMouse_x - var6;
-					return var7 <= var3 || var7 <= var4 || var7 <= var5;
+	@Export("ByteArrayPool_getArray")
+	public static byte[] ByteArrayPool_getArray(int var0) {
+		return WorldMapEvent.ByteArrayPool_getArrayBool(var0, false);
+	}
+
+	@ObfuscatedName("lj")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "949600783"
+	)
+	@Export("addPendingSpawnToScene")
+	static final void addPendingSpawnToScene(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
+			if (Client.isLowDetail && var0 != SecureUrlRequester.Client_plane) {
+				return;
+			}
+
+			long var8 = 0L;
+			boolean var10 = true;
+			boolean var11 = false;
+			boolean var12 = false;
+			if (var1 == 0) {
+				var8 = GrandExchangeOfferOwnWorldComparator.scene.getBoundaryObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 1) {
+				var8 = GrandExchangeOfferOwnWorldComparator.scene.getWallDecorationTag(var0, var2, var3);
+			}
+
+			if (var1 == 2) {
+				var8 = GrandExchangeOfferOwnWorldComparator.scene.getGameObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 3) {
+				var8 = GrandExchangeOfferOwnWorldComparator.scene.getFloorDecorationTag(var0, var2, var3);
+			}
+
+			int var13;
+			ObjectComposition var14;
+			if (0L != var8) {
+				var13 = GrandExchangeOfferOwnWorldComparator.scene.getObjectFlags(var0, var2, var3, var8);
+				int var15 = class167.Entity_unpackID(var8);
+				int var16 = var13 & 31;
+				int var17 = var13 >> 6 & 3;
+				var14 = class137.getObjectDefinition(var15);
+				class351.method6891(var0, var2, var3, var14, var17);
+				if (var1 == 0) {
+					GrandExchangeOfferOwnWorldComparator.scene.removeBoundaryObject(var0, var2, var3);
+					if (var14.interactType != 0) {
+						Client.collisionMaps[var0].method4464(var2, var3, var16, var17, var14.boolean1);
+					}
+				}
+
+				if (var1 == 1) {
+					GrandExchangeOfferOwnWorldComparator.scene.removeWallDecoration(var0, var2, var3);
+				}
+
+				if (var1 == 2) {
+					GrandExchangeOfferOwnWorldComparator.scene.removeGameObject(var0, var2, var3);
+					if (var2 + var14.sizeX > 103 || var3 + var14.sizeX > 103 || var2 + var14.sizeY > 103 || var3 + var14.sizeY > 103) {
+						return;
+					}
+
+					if (var14.interactType != 0) {
+						Client.collisionMaps[var0].setFlagOffNonSquare(var2, var3, var14.sizeX, var14.sizeY, var17, var14.boolean1);
+					}
+				}
+
+				if (var1 == 3) {
+					GrandExchangeOfferOwnWorldComparator.scene.removeFloorDecoration(var0, var2, var3);
+					if (var14.interactType == 1) {
+						Client.collisionMaps[var0].method4473(var2, var3);
+					}
+				}
+			}
+
+			if (var4 >= 0) {
+				var13 = var0;
+				if (var0 < 3 && (Tiles.Tiles_renderFlags[1][var2][var3] & 2) == 2) {
+					var13 = var0 + 1;
+				}
+
+				Canvas.method332(var0, var13, var2, var3, var4, var5, var6, var7, GrandExchangeOfferOwnWorldComparator.scene, Client.collisionMaps[var0]);
+				var14 = class137.getObjectDefinition(var4);
+				if (var14 != null && var14.hasSound()) {
+					class7.createObjectSound(var13, var2, var3, var14, var5);
 				}
 			}
 		}
+
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("mj")
 	@ObfuscatedSignature(
-		descriptor = "(IZII)V",
-		garbageValue = "-605983244"
+		descriptor = "(Lds;IIII)V",
+		garbageValue = "-1073338737"
 	)
-	public static final void method3060(int var0, boolean var1, int var2) {
-		if (var0 >= 8000 && var0 <= 48000) {
-			PcmPlayer.field306 = var0;
-			class306.PcmPlayer_stereo = var1;
-			class225.field2372 = var2;
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
+	@Export("addNpcToMenu")
+	static final void addNpcToMenu(NPC var0, int var1, int var2, int var3) {
+		NPCComposition var4 = var0.definition;
+		if (Client.menuOptionsCount < 400) {
+			if (var4.transforms != null) {
+				var4 = var4.transform();
+			}
 
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "941581685"
-	)
-	static int method3058(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.SOUND_SYNTH) {
-			Interpreter.Interpreter_intStackSize -= 3;
-			GraphicsDefaults.queueSoundEffect(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize], Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2]);
-			return 1;
-		} else {
-			int var3;
-			int var4;
-			int var5;
-			int var6;
-			int var7;
-			if (var0 == ScriptOpcodes.SOUND_SONG) {
-				Interpreter.Interpreter_intStackSize -= 5;
-				var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-				var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
-				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 4];
-				ArrayList var15 = new ArrayList();
-				var15.add(var3);
-				class202.method3764(var15, var4, var5, var6, var7);
-				return 1;
-			} else if (var0 == ScriptOpcodes.SOUND_JINGLE) {
-				Interpreter.Interpreter_intStackSize -= 2;
-				class437.method7924(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize], Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
-				return 1;
-			} else {
-				class92 var10;
-				class91 var11;
-				String var14;
-				if (var0 != 3212 && var0 != 3213 && var0 != 3209 && var0 != 3181 && var0 != 3203 && var0 != 3205 && var0 != 3207) {
-					boolean var16;
-					if (var0 != 3214 && var0 != 3215 && var0 != 3210 && var0 != 3182 && var0 != 3204 && var0 != 3206 && var0 != 3208) {
-						if (var0 == 3211) {
-							return 1;
-						} else if (var0 == 3216) {
-							var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-							var4 = 0;
-							class92 var19 = (class92)SequenceDefinition.findEnumerated(class141.method3128(), var3);
-							if (var19 != null) {
-								var4 = var19 != class92.field1111 ? 1 : 0;
-							}
+			if (var4 != null) {
+				if (var4.isInteractable) {
+					if (!var4.isFollower || Client.followerIndex == var1) {
+						String var5 = var0.method2688();
+						int var6;
+						if (var4.combatLevel != 0 && var0.field1192 != 0) {
+							var6 = var0.field1192 != -1 ? var0.field1192 : var4.combatLevel;
+							var5 = var5 + MusicPatchNode2.method6038(var6, KeyHandler.localPlayer.combatLevel) + " " + " (" + "level-" + var6 + ")";
+						}
 
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4;
-							return 1;
-						} else if (var0 == 3218) {
-							var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-							var4 = 0;
-							class91 var13 = (class91)SequenceDefinition.findEnumerated(class95.method2412(), var3);
-							if (var13 != null) {
-								var4 = var13 != class91.field1106 ? 1 : 0;
-							}
+						if (var4.isFollower && Client.followerOpsLowPriority) {
+							class385.insertMenuItemNoShift("Examine", class208.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
+						}
 
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4;
-							return 1;
-						} else if (var0 != 3217 && var0 != 3219) {
-							if (var0 == 3220) {
-								Interpreter.Interpreter_intStackSize -= 2;
-								var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-								var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-								ItemComposition.method4136(var3, var4);
-								return 1;
-							} else if (var0 == 3221) {
-								Interpreter.Interpreter_intStackSize -= 6;
-								var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-								var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-								var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-								var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
-								var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 4];
-								int var8 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 5];
-								ArrayList var9 = new ArrayList();
-								var9.add(var3);
-								var9.add(var4);
-								class202.method3764(var9, var5, var6, var7, var8);
-								return 1;
-							} else if (var0 == 3222) {
-								Interpreter.Interpreter_intStackSize -= 4;
-								var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-								var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-								var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-								var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
-								class206.method3837(var3, var4, var5, var6);
-								return 1;
-							} else {
-								return 2;
+						if (Client.isItemSelected == 1) {
+							class385.insertMenuItemNoShift("Use", Client.field664 + " " + "->" + " " + class208.colorStartTag(16776960) + var5, 7, var1, var2, var3);
+						} else if (Client.isSpellSelected) {
+							if ((class60.selectedSpellFlags & 2) == 2) {
+								class385.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class208.colorStartTag(16776960) + var5, 8, var1, var2, var3);
 							}
 						} else {
-							var10 = class92.field1111;
-							var11 = class91.field1106;
-							var16 = true;
-							boolean var17 = true;
-							if (var0 == 3217) {
-								var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-								var10 = (class92)SequenceDefinition.findEnumerated(class141.method3128(), var7);
-								if (var10 == null) {
-									throw new RuntimeException(String.format("Unrecognized device option %d", var7));
+							var6 = var4.isFollower && Client.followerOpsLowPriority ? 2000 : 0;
+							String[] var7 = var4.actions;
+							int var8;
+							int var9;
+							if (var7 != null) {
+								for (var8 = 4; var8 >= 0; --var8) {
+									if (var0.method2659(var8) && var7[var8] != null && !var7[var8].equalsIgnoreCase("Attack")) {
+										var9 = 0;
+										if (var8 == 0) {
+											var9 = var6 + 9;
+										}
+
+										if (var8 == 1) {
+											var9 = var6 + 10;
+										}
+
+										if (var8 == 2) {
+											var9 = var6 + 11;
+										}
+
+										if (var8 == 3) {
+											var9 = var6 + 12;
+										}
+
+										if (var8 == 4) {
+											var9 = var6 + 13;
+										}
+
+										class385.insertMenuItemNoShift(var7[var8], class208.colorStartTag(16776960) + var5, var9, var1, var2, var3);
+									}
 								}
 							}
 
-							if (var0 == 3219) {
-								var7 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-								var11 = (class91)SequenceDefinition.findEnumerated(class95.method2412(), var7);
-								if (var11 == null) {
-									throw new RuntimeException(String.format("Unrecognized game option %d", var7));
+							if (var7 != null) {
+								for (var8 = 4; var8 >= 0; --var8) {
+									if (var0.method2659(var8) && var7[var8] != null && var7[var8].equalsIgnoreCase("Attack")) {
+										short var10 = 0;
+										if (Client.npcAttackOption != AttackOption.AttackOption_hidden) {
+											if (Client.npcAttackOption == AttackOption.AttackOption_alwaysRightClick || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var4.combatLevel > KeyHandler.localPlayer.combatLevel) {
+												var10 = 2000;
+											}
+
+											var9 = 0;
+											if (var8 == 0) {
+												var9 = var10 + 9;
+											}
+
+											if (var8 == 1) {
+												var9 = var10 + 10;
+											}
+
+											if (var8 == 2) {
+												var9 = var10 + 11;
+											}
+
+											if (var8 == 3) {
+												var9 = var10 + 12;
+											}
+
+											if (var8 == 4) {
+												var9 = var10 + 13;
+											}
+
+											class385.insertMenuItemNoShift(var7[var8], class208.colorStartTag(16776960) + var5, var9, var1, var2, var3);
+										}
+									}
 								}
 							}
 
-							String var12;
-							byte var18;
-							if (var11 == class91.field1106) {
-								switch(var10.field1114) {
-								case 1:
-								case 2:
-								case 3:
-									var18 = 0;
-									var6 = 1;
-									break;
-								case 4:
-									var18 = 0;
-									var6 = Integer.MAX_VALUE;
-									break;
-								case 5:
-									var18 = 0;
-									var6 = 100;
-									break;
-								default:
-									var12 = String.format("Unkown device option: %s.", var10.toString());
-									throw new RuntimeException(var12);
-								}
-							} else {
-								switch(var11.field1101) {
-								case 1:
-									var18 = 0;
-									var6 = 1;
-									break;
-								case 2:
-								case 3:
-								case 4:
-									var18 = 0;
-									var6 = 100;
-									break;
-								default:
-									var12 = String.format("Unkown game option: %s.", var11.toString());
-									throw new RuntimeException(var12);
-								}
-							}
-
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var18;
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var6;
-							return 1;
-						}
-					} else {
-						var10 = class92.field1111;
-						var11 = class91.field1106;
-						var16 = false;
-						if (var0 == 3214) {
-							var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-							var10 = (class92)SequenceDefinition.findEnumerated(class141.method3128(), var6);
-							if (var10 == null) {
-								throw new RuntimeException(String.format("Unrecognized device option %d", var6));
+							if (!var4.isFollower || !Client.followerOpsLowPriority) {
+								class385.insertMenuItemNoShift("Examine", class208.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
 							}
 						}
 
-						if (var0 == 3215) {
-							var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-							var11 = (class91)SequenceDefinition.findEnumerated(class95.method2412(), var6);
-							if (var11 == null) {
-								throw new RuntimeException(String.format("Unrecognized game option %d", var6));
-							}
-						}
-
-						if (var0 == 3210) {
-							var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-							var10 = (class92)SequenceDefinition.findEnumerated(class141.method3128(), var6);
-							if (var10 == null) {
-								var11 = (class91)SequenceDefinition.findEnumerated(class95.method2412(), var6);
-								if (var11 == null) {
-									throw new RuntimeException(String.format("Unrecognized client option %d", var6));
-								}
-							}
-						} else if (var0 == 3182) {
-							var10 = class92.field1113;
-						} else if (var0 == 3204) {
-							var11 = class91.field1100;
-						} else if (var0 == 3206) {
-							var11 = class91.field1102;
-						} else if (var0 == 3208) {
-							var11 = class91.field1107;
-						}
-
-						if (var11 == class91.field1106) {
-							switch(var10.field1114) {
-							case 1:
-								var5 = class91.clientPreferences.method2504() ? 1 : 0;
-								break;
-							case 2:
-								var5 = class91.clientPreferences.method2503() ? 1 : 0;
-								break;
-							case 3:
-								var5 = class91.clientPreferences.method2523() ? 1 : 0;
-								break;
-							case 4:
-								var5 = class91.clientPreferences.method2564();
-								break;
-							case 5:
-								var5 = FaceNormal.method4845();
-								break;
-							default:
-								var14 = String.format("Unkown device option: %s.", var10.toString());
-								throw new RuntimeException(var14);
-							}
-						} else {
-							switch(var11.field1101) {
-							case 1:
-								var5 = class91.clientPreferences.method2502() ? 1 : 0;
-								break;
-							case 2:
-								var6 = class91.clientPreferences.method2515();
-								var5 = Math.round((float)(var6 * 100) / 255.0F);
-								break;
-							case 3:
-								var6 = class91.clientPreferences.method2517();
-								var5 = Math.round((float)(var6 * 100) / 127.0F);
-								break;
-							case 4:
-								var6 = class91.clientPreferences.method2589();
-								var5 = Math.round((float)(var6 * 100) / 127.0F);
-								break;
-							default:
-								var14 = String.format("Unkown game option: %s.", var11.toString());
-								throw new RuntimeException(var14);
-							}
-						}
-
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var5;
-						return 1;
 					}
-				} else {
-					var10 = class92.field1111;
-					var11 = class91.field1106;
-					var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-					if (var0 == 3212) {
-						var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var10 = (class92)SequenceDefinition.findEnumerated(class141.method3128(), var6);
-						if (var10 == null) {
-							throw new RuntimeException(String.format("Unrecognized device option %d", var6));
-						}
-					}
-
-					if (var0 == 3213) {
-						var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var11 = (class91)SequenceDefinition.findEnumerated(class95.method2412(), var6);
-						if (var11 == null) {
-							throw new RuntimeException(String.format("Unrecognized game option %d", var6));
-						}
-					}
-
-					if (var0 == 3209) {
-						var6 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var10 = (class92)SequenceDefinition.findEnumerated(class141.method3128(), var6);
-						if (var10 == null) {
-							var11 = (class91)SequenceDefinition.findEnumerated(class95.method2412(), var6);
-							if (var11 == null) {
-								throw new RuntimeException(String.format("Unrecognized client option %d", var6));
-							}
-						}
-					} else if (var0 == 3181) {
-						var10 = class92.field1113;
-					} else if (var0 == 3203) {
-						var11 = class91.field1100;
-					} else if (var0 == 3205) {
-						var11 = class91.field1102;
-					} else if (var0 == 3207) {
-						var11 = class91.field1107;
-					}
-
-					if (var11 == class91.field1106) {
-						switch(var10.field1114) {
-						case 1:
-							class91.clientPreferences.method2531(var5 == 1);
-							break;
-						case 2:
-							class91.clientPreferences.method2505(var5 == 1);
-							break;
-						case 3:
-							class91.clientPreferences.method2573(var5 == 1);
-							break;
-						case 4:
-							if (var5 < 0) {
-								var5 = 0;
-							}
-
-							class91.clientPreferences.method2516(var5);
-							break;
-						case 5:
-							FontName.method8851(var5);
-							break;
-						default:
-							var14 = String.format("Unkown device option: %s.", var10.toString());
-							throw new RuntimeException(var14);
-						}
-					} else {
-						switch(var11.field1101) {
-						case 1:
-							class91.clientPreferences.method2558(var5 == 1);
-							break;
-						case 2:
-							var5 = Math.min(Math.max(var5, 0), 100);
-							var6 = Math.round((float)(var5 * 255) / 100.0F);
-							JagexCache.setMusicVolume(var6);
-							break;
-						case 3:
-							var5 = Math.min(Math.max(var5, 0), 100);
-							var6 = Math.round((float)(var5 * 127) / 100.0F);
-							FloorOverlayDefinition.method4148(var6);
-							break;
-						case 4:
-							var5 = Math.min(Math.max(var5, 0), 100);
-							var6 = Math.round((float)(var5 * 127) / 100.0F);
-							class198.method3736(var6);
-							break;
-						default:
-							var14 = String.format("Unkown game option: %s.", var11.toString());
-							throw new RuntimeException(var14);
-						}
-					}
-
-					return 1;
 				}
 			}
 		}

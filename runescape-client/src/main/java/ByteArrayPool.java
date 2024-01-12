@@ -1,141 +1,126 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qo")
+@ObfuscatedName("qh")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
+	static final Object field4614;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -544674551
+		intValue = 908982729
 	)
 	@Export("ByteArrayPool_smallCount")
 	static int ByteArrayPool_smallCount;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1347345197
+		intValue = -1385844103
 	)
 	@Export("ByteArrayPool_mediumCount")
 	static int ByteArrayPool_mediumCount;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -268575627
+		intValue = -553275423
 	)
 	@Export("ByteArrayPool_largeCount")
 	static int ByteArrayPool_largeCount;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1770796283
+		intValue = 1422472291
 	)
-	static int field4595;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 2101074183
-	)
-	static int field4606;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = -1137775327
-	)
-	static int field4599;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 97865893
-	)
-	static int field4600;
+	static int field4618;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -374552823
+		intValue = 779633507
 	)
-	static int field4603;
-	@ObfuscatedName("ap")
+	static int field4611;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = -893269233
+	)
+	static int field4620;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -1646640921
+	)
+	static int field4621;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 750906493
+	)
+	static int field4622;
+	@ObfuscatedName("ax")
 	@Export("ByteArrayPool_small")
 	static byte[][] ByteArrayPool_small;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@Export("ByteArrayPool_medium")
 	static byte[][] ByteArrayPool_medium;
-	@ObfuscatedName("as")
+	@ObfuscatedName("az")
 	@Export("ByteArrayPool_large")
 	static byte[][] ByteArrayPool_large;
-	@ObfuscatedName("aj")
-	static byte[][] field4605;
-	@ObfuscatedName("an")
-	@Export("ByteArrayPool_alternativeSizes")
-	public static int[] ByteArrayPool_alternativeSizes;
-	@ObfuscatedName("ae")
-	public static ArrayList field4591;
+	@ObfuscatedName("av")
+	static byte[][] field4626;
+	@ObfuscatedName("ab")
+	static ArrayList field4627;
 
 	static {
+		field4614 = new Object();
 		ByteArrayPool_smallCount = 0;
 		ByteArrayPool_mediumCount = 0;
 		ByteArrayPool_largeCount = 0;
-		field4595 = 0;
-		field4606 = 1000;
-		field4599 = 250;
-		field4600 = 100;
-		field4603 = 50;
+		field4618 = 0;
+		field4611 = 1000;
+		field4620 = 250;
+		field4621 = 100;
+		field4622 = 50;
 		ByteArrayPool_small = new byte[1000][];
 		ByteArrayPool_medium = new byte[250][];
 		ByteArrayPool_large = new byte[100][];
-		field4605 = new byte[50][];
-		field4591 = new ArrayList();
-		field4591.clear();
-		field4591.add(100);
-		field4591.add(5000);
-		field4591.add(10000);
-		field4591.add(30000);
+		field4626 = new byte[50][];
+		field4627 = new ArrayList();
+		class326.method6257();
 		new HashMap();
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(IZI)[B",
-		garbageValue = "664601398"
-	)
-	@Export("ByteArrayPool_getArrayBool")
-	public static synchronized byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
-		byte[] var4;
-		if ((var0 == 100 || var0 < 100 && var1) && ByteArrayPool_smallCount > 0) {
-			var4 = ByteArrayPool_small[--ByteArrayPool_smallCount];
-			ByteArrayPool_small[ByteArrayPool_smallCount] = null;
-			return var4;
-		} else if ((var0 == 5000 || var0 < 5000 && var1) && ByteArrayPool_mediumCount > 0) {
-			var4 = ByteArrayPool_medium[--ByteArrayPool_mediumCount];
-			ByteArrayPool_medium[ByteArrayPool_mediumCount] = null;
-			return var4;
-		} else if ((var0 == 10000 || var0 < 10000 && var1) && ByteArrayPool_largeCount > 0) {
-			var4 = ByteArrayPool_large[--ByteArrayPool_largeCount];
-			ByteArrayPool_large[ByteArrayPool_largeCount] = null;
-			return var4;
-		} else if ((var0 == 30000 || var0 < 30000 && var1) && field4595 > 0) {
-			var4 = field4605[--field4595];
-			field4605[field4595] = null;
-			return var4;
-		} else {
-			int var2;
-			if (class28.ByteArrayPool_arrays != null) {
-				for (var2 = 0; var2 < ByteArrayPool_alternativeSizes.length; ++var2) {
-					if ((ByteArrayPool_alternativeSizes[var2] == var0 || var0 < ByteArrayPool_alternativeSizes[var2] && var1) && class425.ByteArrayPool_altSizeArrayCounts[var2] > 0) {
-						byte[] var3 = class28.ByteArrayPool_arrays[var2][--class425.ByteArrayPool_altSizeArrayCounts[var2]];
-						class28.ByteArrayPool_arrays[var2][class425.ByteArrayPool_altSizeArrayCounts[var2]] = null;
-						return var3;
-					}
-				}
-			}
-
-			if (var1 && ByteArrayPool_alternativeSizes != null) {
-				for (var2 = 0; var2 < ByteArrayPool_alternativeSizes.length; ++var2) {
-					if (var0 <= ByteArrayPool_alternativeSizes[var2] && class425.ByteArrayPool_altSizeArrayCounts[var2] < class28.ByteArrayPool_arrays[var2].length) {
-						return new byte[ByteArrayPool_alternativeSizes[var2]];
-					}
-				}
-			}
-
-			return new byte[var0];
+	@ObfuscatedName("ap")
+	public static boolean method8033(long var0) {
+		boolean var2 = 0L != var0;
+		if (var2) {
+			boolean var3 = (int)(var0 >>> 16 & 1L) == 1;
+			var2 = !var3;
 		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/ArrayList;ZI)V",
+		garbageValue = "-919555443"
+	)
+	static void method8035(ArrayList var0, boolean var1) {
+		if (!var1) {
+			class319.field3466.clear();
+		}
+
+		Iterator var2 = var0.iterator();
+
+		while (var2.hasNext()) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+				if (!var1) {
+					class319.field3466.add(var3);
+				}
+
+				class319.field3461.add(var3);
+			}
+		}
+
 	}
 }

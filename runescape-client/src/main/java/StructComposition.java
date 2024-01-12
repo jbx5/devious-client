@@ -1,26 +1,27 @@
+import java.awt.Component;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ii")
+@ObfuscatedName("hi")
 @Implements("StructComposition")
 public class StructComposition extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
 	@Export("StructDefinition_archive")
-	static AbstractArchive StructDefinition_archive;
-	@ObfuscatedName("al")
+	public static AbstractArchive StructDefinition_archive;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llq;"
 	)
 	@Export("StructDefinition_cached")
 	static EvictingDualNodeHashTable StructDefinition_cached;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ltp;"
+		descriptor = "Ltb;"
 	)
 	@Export("params")
 	IterableNodeHashTable params;
@@ -32,19 +33,19 @@ public class StructComposition extends DualNode {
 	StructComposition() {
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-2078749719"
+		garbageValue = "-1428543877"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-1812478277"
+		descriptor = "(Luk;I)V",
+		garbageValue = "154237221"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -58,52 +59,97 @@ public class StructComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;II)V",
-		garbageValue = "586234796"
+		descriptor = "(Luk;IB)V",
+		garbageValue = "-14"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 249) {
-			this.params = class167.readStringIntParameters(var1, this.params);
+			this.params = WorldMapSection2.readStringIntParameters(var1, this.params);
 		}
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "-32631"
+		descriptor = "(III)I",
+		garbageValue = "1990579490"
 	)
 	@Export("getIntParam")
 	public int getIntParam(int var1, int var2) {
-		return AttackOption.method2721(this.params, var1, var2);
+		return class295.method5902(this.params, var1, var2);
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1837160520"
+		garbageValue = "890701279"
 	)
 	@Export("getStringParam")
 	public String getStringParam(int var1, String var2) {
-		return class30.method448(this.params, var1, var2);
+		IterableNodeHashTable var4 = this.params;
+		String var3;
+		if (var4 == null) {
+			var3 = var2;
+		} else {
+			ObjectNode var5 = (ObjectNode)var4.get((long)var1);
+			if (var5 == null) {
+				var3 = var2;
+			} else {
+				var3 = (String)var5.obj;
+			}
+		}
+
+		return var3;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "1128755492"
+		descriptor = "(Ljava/awt/Component;B)V",
+		garbageValue = "-44"
 	)
-	@Export("isCharPrintable")
-	public static boolean isCharPrintable(char var0) {
-		if (var0 >= ' ' && var0 <= '~') {
-			return true;
-		} else if (var0 >= 160 && var0 <= 255) {
-			return true;
-		} else {
-			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
+	static void method3879(Component var0) {
+		var0.removeMouseListener(MouseHandler.MouseHandler_instance);
+		var0.removeMouseMotionListener(MouseHandler.MouseHandler_instance);
+		var0.removeFocusListener(MouseHandler.MouseHandler_instance);
+		MouseHandler.MouseHandler_currentButtonVolatile = 0;
+	}
+
+	@ObfuscatedName("jn")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZB)V",
+		garbageValue = "-70"
+	)
+	@Export("drawLoadingMessage")
+	static final void drawLoadingMessage(String var0, boolean var1) {
+		if (Client.showLoadingMessages) {
+			byte var2 = 4;
+			int var3 = var2 + 6;
+			int var4 = var2 + 6;
+			int var5 = class339.fontPlain12.lineWidth(var0, 250);
+			int var6 = class339.fontPlain12.lineCount(var0, 250) * 13;
+			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 0);
+			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var2 + var6, 16777215);
+			class339.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
+			int var7 = var3 - var2;
+			int var8 = var4 - var2;
+			int var9 = var2 + var2 + var5;
+			int var10 = var2 + var6 + var2;
+
+			for (int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
+				if (Client.rootWidgetXs[var11] + Client.rootWidgetWidths[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetHeights[var11] + Client.rootWidgetYs[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
+					Client.validRootWidgets[var11] = true;
+				}
+			}
+
+			if (var1) {
+				WorldMapData_1.rasterProvider.drawFull(0, 0);
+			} else {
+				AbstractWorldMapIcon.method5085(var3, var4, var5, var6);
+			}
+
 		}
 	}
 }

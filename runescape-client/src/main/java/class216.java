@@ -1,45 +1,49 @@
-import java.util.concurrent.ThreadFactory;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iu")
-final class class216 implements ThreadFactory {
-	public Thread newThread(Runnable var1) {
-		return new Thread(var1, "OSRS Maya Anim Load");
+@ObfuscatedName("ie")
+public class class216 extends class222 {
+	@ObfuscatedName("am")
+	String field2325;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lih;"
+	)
+	final class219 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lih;Ljava/lang/String;Ljava/lang/String;)V"
+	)
+	class216(class219 var1, String var2, String var3) {
+		super(var1, var2);
+		this.this$0 = var1;
+		this.field2325 = var3;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(CB)C",
-		garbageValue = "-128"
+		descriptor = "(I)I",
+		garbageValue = "945435280"
 	)
-	static char method3940(char var0) {
-		if (var0 == 198) {
-			return 'E';
-		} else if (var0 == 230) {
-			return 'e';
-		} else if (var0 == 223) {
-			return 's';
-		} else if (var0 == 338) {
-			return 'E';
-		} else {
-			return (char)(var0 == 339 ? 'e' : '\u0000');
-		}
+	public int vmethod4368() {
+		return 1;
 	}
 
-	@ObfuscatedName("nu")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-541702419"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1875884586"
 	)
-	@Export("Clan_joinChat")
-	static final void Clan_joinChat(String var0) {
-		if (!var0.equals("")) {
-			PacketBufferNode var1 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3233, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class478.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
-		}
+	public String vmethod4369() {
+		return this.field2325;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "880024876"
+	)
+	static void method4273() {
+		WorldMapRegion.WorldMapRegion_cachedSprites.clear();
 	}
 }

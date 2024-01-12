@@ -4,39 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("db")
+@ObfuscatedName("dq")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("uj")
 	@ObfuscatedGetter(
-		intValue = 782417661
+		intValue = -1778066565
 	)
-	static int field1312;
-	@ObfuscatedName("ak")
+	static int field1296;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lhj;"
+		descriptor = "Lgd;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lpy;"
+		descriptor = "Lph;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhj;)V"
+		descriptor = "(Lgd;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-495031119"
+		garbageValue = "-600017305"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +69,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ldt;",
-		garbageValue = "-24"
+		descriptor = "(II)Ldo;",
+		garbageValue = "1806626844"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +83,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,77 +94,188 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1212431293"
+		garbageValue = "-1638250969"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7247();
+		return this.updates.method7364();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "-21237"
+		descriptor = "(CB)C",
+		garbageValue = "-51"
 	)
-	public static int method2618(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
+	static char method2654(char var0) {
+		if (var0 == 198) {
+			return 'E';
+		} else if (var0 == 230) {
+			return 'e';
+		} else if (var0 == 223) {
+			return 's';
+		} else if (var0 == 338) {
+			return 'E';
+		} else {
+			return (char)(var0 == 339 ? 'e' : '\u0000');
+		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1762849549"
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "-835116985"
 	)
-	public static int method2616(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 0 & 127L);
-		return var1;
+	public static int method2644(CharSequence var0) {
+		return KitDefinition.method3666(var0, 10, true);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("io")
 	@ObfuscatedSignature(
-		descriptor = "(IS)I",
-		garbageValue = "28917"
+		descriptor = "(II)V",
+		garbageValue = "559859122"
 	)
-	public static int method2619(int var0) {
-		return (var0 & class523.field5093) - 1;
-	}
+	@Export("getLoginError")
+	static void getLoginError(int var0) {
+		int var1 = Login.loginIndex;
+		if (var0 == -3) {
+			class142.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
+		} else if (var0 == -2) {
+			class142.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
+		} else if (var0 == -1) {
+			class142.setLoginResponseString("No response from server.", "Please try using a different world.", "");
+		} else if (var0 == 3) {
+			Actor.method2489(3);
+			Login.field916 = 1;
+		} else if (var0 == 4) {
+			Actor.method2489(14);
+			Login.Login_banType = 0;
+		} else if (var0 == 5) {
+			Login.field916 = 2;
+			class142.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
+		} else if (var0 == 68) {
+			if (!Client.field544) {
+				Client.field544 = true;
+				class281.reinitializeClient();
+				return;
+			}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;IB)V",
-		garbageValue = "1"
-	)
-	public static void method2617(Buffer var0, int var1) {
-		if (JagexCache.JagexCache_randomDat != null) {
-			try {
-				JagexCache.JagexCache_randomDat.seek(0L);
-				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
-			} catch (Exception var3) {
+			class142.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
+		} else if (!Client.onMobile && var0 == 6) {
+			class142.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
+		} else if (var0 == 7) {
+			class142.setLoginResponseString("This world is full.", "Please use a different world.", "");
+		} else if (var0 == 8) {
+			class142.setLoginResponseString("Unable to connect.", "Login server offline.", "");
+		} else if (var0 == 9) {
+			class142.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
+		} else if (var0 == 10) {
+			class142.setLoginResponseString("Unable to connect.", "Bad session id.", "");
+		} else if (var0 == 11) {
+			class142.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
+		} else if (var0 == 12) {
+			class142.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
+		} else if (var0 == 13) {
+			class142.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
+		} else if (var0 == 14) {
+			class142.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
+		} else if (var0 == 16) {
+			class142.setLoginResponseString("Too many login attempts.", "You can use the Jagex Launcher to continue playing.", "Press the button below to download it now.");
+			Actor.method2489(33);
+		} else if (var0 == 17) {
+			class142.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
+		} else if (var0 == 18) {
+			Actor.method2489(14);
+			Login.Login_banType = 1;
+		} else if (var0 == 19) {
+			class142.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
+		} else if (var0 == 20) {
+			class142.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
+		} else if (var0 == 22) {
+			class142.setLoginResponseString("Malformed login packet.", "Please try again.", "");
+		} else if (var0 == 23) {
+			class142.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
+		} else if (var0 == 24) {
+			class142.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
+		} else if (var0 == 25) {
+			class142.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
+		} else if (var0 == 26) {
+			class142.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
+		} else if (var0 == 27) {
+			class142.setLoginResponseString("", "Service unavailable.", "");
+		} else if (var0 == 31) {
+			class142.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
+		} else if (var0 == 32) {
+			Actor.method2489(14);
+			Login.Login_banType = 2;
+		} else if (var0 == 37) {
+			class142.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
+		} else if (var0 == 38) {
+			class142.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
+		} else if (var0 == 55) {
+			Actor.method2489(8);
+		} else {
+			if (var0 == 56) {
+				class142.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
+				class131.updateGameState(11);
+				return;
+			}
+
+			if (var0 == 57) {
+				class142.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
+				class131.updateGameState(11);
+				return;
+			}
+
+			if (var0 == 61) {
+				class142.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
+				Actor.method2489(7);
+			} else {
+				if (var0 == 62) {
+					class131.updateGameState(10);
+					Actor.method2489(9);
+					class142.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
+					return;
+				}
+
+				if (var0 == 63) {
+					class131.updateGameState(10);
+					Actor.method2489(9);
+					class142.setLoginResponseString("You were signed out.", "Please sign in again.", "");
+					return;
+				}
+
+				if (var0 == 65 || var0 == 67) {
+					class131.updateGameState(10);
+					Actor.method2489(9);
+					class142.setLoginResponseString("Failed to login.", "Please try again.", "");
+					return;
+				}
+
+				if (var0 == 71) {
+					class131.updateGameState(10);
+					Actor.method2489(7);
+					class142.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
+				} else if (var0 == 73) {
+					class131.updateGameState(10);
+					Actor.method2489(6);
+					class142.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
+				} else if (var0 == 72) {
+					class131.updateGameState(10);
+					Actor.method2489(32);
+				} else {
+					class142.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+				}
 			}
 		}
 
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "516067263"
-	)
-	public static void method2615() {
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (int var0 = 0; var0 < UrlRequester.field1438; ++var0) {
-				UserComparator8.JagexCache_idxFiles[var0].close();
-			}
-
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var2) {
+		class131.updateGameState(10);
+		int var4 = Login.loginIndex;
+		boolean var5 = var1 != var4;
+		if (!var5 && Client.field626.method9672()) {
+			Actor.method2489(9);
 		}
 
 	}

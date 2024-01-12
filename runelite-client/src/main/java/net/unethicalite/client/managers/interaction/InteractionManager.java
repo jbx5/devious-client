@@ -57,7 +57,29 @@ public class InteractionManager
 
 		try
 		{
-			SceneEntity entity;
+			SceneEntity entity = event.getEntity();
+
+			if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
+			{
+				net.runelite.api.Point entityClickPoint = entity.getClickPoint();
+				if (entityClickPoint != null)
+				{
+					clickPoint = entityClickPoint.getAwtPoint();
+				}
+			}
+
+			if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
+			{
+				net.runelite.api.Point newPoint = CoordUtils.localToMinimap(client,
+						LocalPoint.fromScene(event.getParam0(), event.getParam1()), 6400);
+				if (newPoint != null)
+				{
+					clickPoint = newPoint.getAwtPoint();
+				}
+			}
+
+			Point finalClickPoint = clickPoint;
+
 			switch (config.interactMethod())
 			{
 				case MOUSE_FORWARDING:
@@ -65,28 +87,11 @@ public class InteractionManager
 					break;
 
 				case MOUSE_EVENTS:
-					entity = event.getEntity();
-					if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
-					{
-						clickPoint = entity.getClickPoint().getAwtPoint();
-					}
-
-					if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
-					{
-						net.runelite.api.Point newPoint = CoordUtils.localToMinimap(client,
-								LocalPoint.fromScene(event.getParam0(), event.getParam1()), 6400);
-						if (newPoint != null)
-						{
-							clickPoint = newPoint.getAwtPoint();
-						}
-					}
-
 					if (config.naturalMouse())
 					{
 						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
 					}
 
-					Point finalClickPoint = clickPoint;
 					GameThread.invoke(() ->
 					{
 						if (!config.naturalMouse())
@@ -116,7 +121,7 @@ public class InteractionManager
 						{
 							if (config.sendClickPacket())
 							{
-								MousePackets.queueClickPacket();
+								MousePackets.queueClickPacket(finalClickPoint.x, finalClickPoint.y);
 							}
 
 							if (event.getOpcode() == MenuAction.CC_OP || event.getOpcode() == MenuAction.CC_OP_LOW_PRIORITY)
@@ -188,7 +193,7 @@ public class InteractionManager
 				{
 					if (config.sendClickPacket())
 					{
-						MousePackets.queueClickPacket();
+						MousePackets.queueClickPacket(x, y);
 					}
 					client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
 							entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y);

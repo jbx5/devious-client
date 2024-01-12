@@ -4,25 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cn")
+@ObfuscatedName("cu")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lds;"
+		descriptor = "Ldd;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1126556493
+		intValue = 1219042639
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -30,27 +30,31 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1603981165"
+		descriptor = "(CS)Z",
+		garbageValue = "232"
 	)
-	public static boolean method1194() {
-		return !class319.field3440.isEmpty();
+	@Export("isDigit")
+	public static boolean isDigit(char var0) {
+		return var0 >= '0' && var0 <= '9';
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("kk")
 	@ObfuscatedSignature(
-		descriptor = "(Lnm;IIII)V",
-		garbageValue = "1957450993"
+		descriptor = "(IIIIIB)V",
+		garbageValue = "-51"
 	)
-	@Export("Widget_setKeyRate")
-	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
-		if (var0.field3770 == null) {
-			throw new RuntimeException();
-		} else {
-			var0.field3770[var1] = var2;
-			var0.field3800[var1] = var3;
+	static void method1204(int var0, int var1, int var2, int var3, int var4) {
+		NodeDeque var5 = Client.groundItems[var0][var1][var2];
+		if (var5 != null) {
+			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
+				if ((var3 & 32767) == var6.id) {
+					var6.method2750(var4);
+					break;
+				}
+			}
 		}
+
 	}
 }

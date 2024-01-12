@@ -1,89 +1,39 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("po")
+@ObfuscatedName("pd")
 public class class400 {
-	@ObfuscatedName("ac")
-	static char[] field4477;
-	@ObfuscatedName("al")
-	static char[] field4476;
-	@ObfuscatedName("ak")
-	static char[] field4478;
-	@ObfuscatedName("ax")
-	static int[] field4479;
+	@ObfuscatedName("am")
+	@Export("cp1252AsciiExtension")
+	public static final char[] cp1252AsciiExtension;
 
 	static {
-		field4477 = new char[64];
+		cp1252AsciiExtension = new char[]{'€', '\u0000', '‚', 'ƒ', '„', '…', '†', '‡', 'ˆ', '‰', 'Š', '‹', 'Œ', '\u0000', 'Ž', '\u0000', '\u0000', '‘', '’', '“', '”', '•', '–', '—', '˜', '™', 'š', '›', 'œ', '\u0000', 'ž', 'Ÿ'};
+	}
 
-		int var0;
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4477[var0] = (char)(var0 + 65);
+	@ObfuscatedName("bu")
+	@ObfuscatedSignature(
+		descriptor = "(ILdd;ZB)I",
+		garbageValue = "-22"
+	)
+	static int method7497(int var0, Script var1, boolean var2) {
+		if (var0 == 6809) {
+			int var3 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize];
+			ObjectComposition var4 = class137.getObjectDefinition(var3);
+			Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+			return 1;
+		} else {
+			return 2;
 		}
+	}
 
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4477[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4477[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4477[62] = '+';
-		field4477[63] = '/';
-		field4476 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4476[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4476[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4476[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4476[62] = '*';
-		field4476[63] = '-';
-		field4478 = new char[64];
-
-		for (var0 = 0; var0 < 26; ++var0) {
-			field4478[var0] = (char)(var0 + 65);
-		}
-
-		for (var0 = 26; var0 < 52; ++var0) {
-			field4478[var0] = (char)(var0 + 97 - 26);
-		}
-
-		for (var0 = 52; var0 < 62; ++var0) {
-			field4478[var0] = (char)(var0 + 48 - 52);
-		}
-
-		field4478[62] = '-';
-		field4478[63] = '_';
-		field4479 = new int[128];
-
-		for (var0 = 0; var0 < field4479.length; ++var0) {
-			field4479[var0] = -1;
-		}
-
-		for (var0 = 65; var0 <= 90; ++var0) {
-			field4479[var0] = var0 - 65;
-		}
-
-		for (var0 = 97; var0 <= 122; ++var0) {
-			field4479[var0] = var0 - 97 + 26;
-		}
-
-		for (var0 = 48; var0 <= 57; ++var0) {
-			field4479[var0] = var0 - 48 + 52;
-		}
-
-		int[] var2 = field4479;
-		field4479[43] = 62;
-		var2[42] = 62;
-		int[] var1 = field4479;
-		field4479[47] = 63;
-		var1[45] = 63;
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "(ILdd;ZS)I",
+		garbageValue = "3159"
+	)
+	static int method7498(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 }

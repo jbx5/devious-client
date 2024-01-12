@@ -88,5 +88,38 @@ public enum HeadIcon
 	/**
 	 * Deflect magic curse
 	 */
-	DEFLECT_MAGE;
+	DEFLECT_MAGE,
+	/**
+	 * Dampen melee curse
+	 */
+	DAMPEN_MELEE,
+	/**
+	 * Dampen range curse
+	 */
+	DAMPEN_RANGED,
+	/**
+	 * Dampen magic curse
+	 */
+	DAMPEN_MAGIC,
+	/**
+	 * Intensify (Gambit) curse
+	 */
+	INTENSIFY,
+	/**
+	 * Rebuke curse
+	 */
+	REBUKE,
+	/**
+	 * Purge curse
+	 */
+	PURGE,
+	/**
+	 * Vindication curse
+	 */
+	VINDICATION,
+	/**
+	 * Unknown curse
+	 */
+	UNKNOWN_1,
+	UNKNOWN_2;
 }

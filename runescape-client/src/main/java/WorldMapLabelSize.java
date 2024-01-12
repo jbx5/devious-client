@@ -4,82 +4,87 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ka")
+@ObfuscatedName("jm")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lka;"
+		descriptor = "Ljm;"
 	)
 	@Export("WorldMapLabelSize_small")
 	public static final WorldMapLabelSize WorldMapLabelSize_small;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lka;"
+		descriptor = "Ljm;"
 	)
 	@Export("WorldMapLabelSize_medium")
 	public static final WorldMapLabelSize WorldMapLabelSize_medium;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lka;"
+		descriptor = "Ljm;"
 	)
 	@Export("WorldMapLabelSize_large")
 	public static final WorldMapLabelSize WorldMapLabelSize_large;
-	@ObfuscatedName("cy")
+	@ObfuscatedName("kg")
 	@ObfuscatedSignature(
-		descriptor = "Loa;"
+		descriptor = "[Lut;"
 	)
-	@Export("clientLanguage")
-	static Language clientLanguage;
-	@ObfuscatedName("ax")
+	@Export("mapSceneSprites")
+	static IndexedSprite[] mapSceneSprites;
+	@ObfuscatedName("vy")
 	@ObfuscatedGetter(
-		intValue = -1083194051
+		intValue = -732756041
 	)
-	final int field2902;
-	@ObfuscatedName("ao")
+	static int field2487;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 494520973
+		intValue = 1903807447
 	)
-	final int field2903;
-	@ObfuscatedName("ah")
+	final int field2484;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -2063403365
+		intValue = 174702113
 	)
-	final int field2904;
+	final int field2480;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 478381797
+	)
+	final int field2485;
 
 	static {
-		WorldMapLabelSize_small = new WorldMapLabelSize(1, 0, 4);
-		WorldMapLabelSize_medium = new WorldMapLabelSize(0, 1, 2);
-		WorldMapLabelSize_large = new WorldMapLabelSize(2, 2, 0);
+		WorldMapLabelSize_small = new WorldMapLabelSize(2, 0, 4);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(1, 1, 2);
+		WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
 	}
 
 	WorldMapLabelSize(int var1, int var2, int var3) {
-		this.field2902 = var1;
-		this.field2903 = var2;
-		this.field2904 = var3;
+		this.field2484 = var1;
+		this.field2480 = var2;
+		this.field2485 = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(FI)Z",
-		garbageValue = "-198292177"
+		descriptor = "(FS)Z",
+		garbageValue = "12895"
 	)
-	boolean method5218(float var1) {
-		return var1 >= (float)this.field2904;
+	boolean method4606(float var1) {
+		return var1 >= (float)this.field2485;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lka;",
-		garbageValue = "108"
+		descriptor = "(II)Ljm;",
+		garbageValue = "-1666064874"
 	)
-	static WorldMapLabelSize method5212(int var0) {
-		WorldMapLabelSize[] var1 = new WorldMapLabelSize[]{WorldMapLabelSize_medium, WorldMapLabelSize_large, WorldMapLabelSize_small};
+	static WorldMapLabelSize method4607(int var0) {
+		WorldMapLabelSize[] var1 = new WorldMapLabelSize[]{WorldMapLabelSize_large, WorldMapLabelSize_medium, WorldMapLabelSize_small};
 		WorldMapLabelSize[] var2 = var1;
 
 		for (int var3 = 0; var3 < var2.length; ++var3) {
 			WorldMapLabelSize var4 = var2[var3];
-			if (var0 == var4.field2903) {
+			if (var0 == var4.field2480) {
 				return var4;
 			}
 		}
@@ -87,30 +92,23 @@ public class WorldMapLabelSize {
 		return null;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1105487530"
+		descriptor = "(I)V",
+		garbageValue = "1888960513"
 	)
-	public static int method5221(int var0) {
-		return class479.field4825[var0 & 16383];
-	}
+	protected static final void method4610() {
+		class344.clock.mark();
 
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1216862596"
-	)
-	static final int method5220() {
-		return ViewportMouse.ViewportMouse_y;
-	}
+		int var0;
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.graphicsTickTimes[var0] = 0L;
+		}
 
-	@ObfuscatedName("je")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-13"
-	)
-	static boolean method5219() {
-		return (Client.drawPlayerNames & 8) != 0;
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.clientTickTimes[var0] = 0L;
+		}
+
+		class195.gameCyclesToDo = 0;
 	}
 }

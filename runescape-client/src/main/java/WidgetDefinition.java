@@ -5,110 +5,109 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nt")
+@ObfuscatedName("np")
 @Implements("WidgetDefinition")
-public class WidgetDefinition
-{
-	@ObfuscatedName("ac")
+public class WidgetDefinition {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
 	@Export("widgetArchive")
 	AbstractArchive widgetArchive;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
-	AbstractArchive field3579;
-	@ObfuscatedName("ak")
+	AbstractArchive field3617;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
-	AbstractArchive field3580;
-	@ObfuscatedName("ax")
+	AbstractArchive field3607;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
-	AbstractArchive field3581;
-	@ObfuscatedName("ao")
+	AbstractArchive field3608;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Low;"
 	)
-	AbstractArchive field3582;
-	@ObfuscatedName("ah")
+	AbstractArchive field3613;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "[[Lnm;"
+		descriptor = "[[Lnn;"
 	)
 	@Export("Widget_interfaceComponents")
 	public Widget[][] Widget_interfaceComponents;
-	@ObfuscatedName("ab")
-	Map field3588;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ao")
+	Map field3611;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llq;"
 	)
 	@Export("Widget_cachedSprites")
 	EvictingDualNodeHashTable Widget_cachedSprites;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llq;"
 	)
 	@Export("Widget_cachedModels")
 	EvictingDualNodeHashTable Widget_cachedModels;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llq;"
 	)
 	@Export("Widget_cachedFonts")
 	EvictingDualNodeHashTable Widget_cachedFonts;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Llq;"
 	)
 	@Export("Widget_cachedSpriteMasks")
 	EvictingDualNodeHashTable Widget_cachedSpriteMasks;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
+		descriptor = "Lqj;"
 	)
-	class438 field3578;
-	@ObfuscatedName("ay")
+	class439 field3615;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
+		descriptor = "Lqj;"
 	)
-	class438 field3590;
+	class439 field3605;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;Lom;Lom;Lom;Lom;)V"
+		descriptor = "(Low;Low;Low;Low;Low;)V"
 	)
 	public WidgetDefinition(AbstractArchive var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4, AbstractArchive var5) {
-		this.field3588 = new HashMap();
+		this.field3611 = new HashMap();
 		this.Widget_cachedSprites = new EvictingDualNodeHashTable(200);
 		this.Widget_cachedModels = new EvictingDualNodeHashTable(50);
 		this.Widget_cachedFonts = new EvictingDualNodeHashTable(20);
 		this.Widget_cachedSpriteMasks = new EvictingDualNodeHashTable(8);
-		this.field3578 = new class438(10, class436.field4651);
-		this.field3590 = new class438(10, class436.field4651);
+		this.field3615 = new class439(10, class437.field4677);
+		this.field3605 = new class439(10, class437.field4677);
 		int var6 = 0;
 		if (var1 != null) {
 			this.widgetArchive = var1;
-			this.field3580 = var2;
-			this.field3581 = var3;
-			this.field3582 = var4;
-			this.field3579 = var5;
+			this.field3607 = var2;
+			this.field3608 = var3;
+			this.field3613 = var4;
+			this.field3617 = var5;
 			var6 = this.widgetArchive.getGroupCount();
 		}
 
 		this.Widget_interfaceComponents = new Widget[var6][];
-		AbstractUserComparator.field4699 = new boolean[var6];
+		Skills.field3912 = new boolean[var6];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lnm;",
-		garbageValue = "-836235004"
+		descriptor = "(IB)Lnn;",
+		garbageValue = "108"
 	)
-	public Widget method6240(int var1) {
+	public Widget method6348(int var1) {
 		int var2 = var1 >> 16;
 		int var3 = var1 & 65535;
 		if (this.Widget_interfaceComponents[var2] == null || this.Widget_interfaceComponents[var2][var3] == null) {
@@ -121,14 +120,14 @@ public class WidgetDefinition
 		return this.Widget_interfaceComponents[var2][var3];
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lnm;",
-		garbageValue = "-356739593"
+		descriptor = "(III)Lnn;",
+		garbageValue = "-477809652"
 	)
 	@Export("getWidgetChild")
 	public Widget getWidgetChild(int var1, int var2) {
-		Widget var3 = this.method6240(var1);
+		Widget var3 = this.method6348(var1);
 		if (var2 == -1) {
 			return var3;
 		} else {
@@ -136,21 +135,21 @@ public class WidgetDefinition
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Z",
-		garbageValue = "-8971"
+		descriptor = "(II)Z",
+		garbageValue = "356565951"
 	)
 	@Export("loadInterface")
 	public boolean loadInterface(int var1) {
-		if (AbstractUserComparator.field4699[var1]) {
+		if (Skills.field3912[var1]) {
 			return true;
 		} else if (!this.widgetArchive.tryLoadGroup(var1)) {
 			return false;
 		} else {
 			int var2 = this.widgetArchive.getGroupFileCount(var1);
 			if (var2 == 0) {
-				AbstractUserComparator.field4699[var1] = true;
+				Skills.field3912[var1] = true;
 				return true;
 			} else {
 				if (this.Widget_interfaceComponents[var1] == null) {
@@ -169,31 +168,31 @@ public class WidgetDefinition
 								this.Widget_interfaceComponents[var1][var3].decodeLegacy(new Buffer(var4));
 							}
 
-							if (this.field3579 != null) {
-								byte[] var5 = this.field3579.takeFile(var1, var3);
+							if (this.field3617 != null) {
+								byte[] var5 = this.field3617.takeFile(var1, var3);
 								if (var5 != null && var5.length > 0) {
-									this.Widget_interfaceComponents[var1][var3].method6651(new Buffer(var5));
-									this.field3588.put(this.Widget_interfaceComponents[var1][var3].field3677, var1);
+									this.Widget_interfaceComponents[var1][var3].method6690(new Buffer(var5));
+									this.field3611.put(this.Widget_interfaceComponents[var1][var3].field3702, var1);
 								}
 							}
 						}
 					}
 				}
 
-				AbstractUserComparator.field4699[var1] = true;
+				Skills.field3912[var1] = true;
 				return true;
 			}
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1200843852"
+		descriptor = "(IB)V",
+		garbageValue = "-6"
 	)
-	public void method6243(int var1) {
+	public void method6346(int var1) {
 		if (var1 != -1) {
-			if (AbstractUserComparator.field4699[var1]) {
+			if (Skills.field3912[var1]) {
 				this.widgetArchive.clearFilesGroup(var1);
 				if (this.Widget_interfaceComponents[var1] != null) {
 					for (int var2 = 0; var2 < this.Widget_interfaceComponents[var1].length; ++var2) {
@@ -203,47 +202,21 @@ public class WidgetDefinition
 					}
 
 					this.Widget_interfaceComponents[var1] = null;
-					AbstractUserComparator.field4699[var1] = false;
+					Skills.field3912[var1] = false;
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-17"
+		descriptor = "(I)V",
+		garbageValue = "323588621"
 	)
-	public void method6252() {
+	public void method6349() {
 		this.Widget_cachedSprites.clear();
 		this.Widget_cachedModels.clear();
 		this.Widget_cachedFonts.clear();
 		this.Widget_cachedSpriteMasks.clear();
-	}
-
-	@ObfuscatedName("lr")
-	@ObfuscatedSignature(
-		descriptor = "(III)Ljava/lang/String;",
-		garbageValue = "-1362915838"
-	)
-	static final String method6257(int var0, int var1) {
-		int var2 = var1 - var0;
-		if (var2 < -9) {
-			return Client.colorStartTag(16711680);
-		} else if (var2 < -6) {
-			return Client.colorStartTag(16723968);
-		} else if (var2 < -3) {
-			return Client.colorStartTag(16740352);
-		} else if (var2 < 0) {
-			return Client.colorStartTag(16756736);
-		} else if (var2 > 9) {
-			return Client.colorStartTag(65280);
-		} else if (var2 > 6) {
-			return Client.colorStartTag(4259584);
-		} else if (var2 > 3) {
-			return Client.colorStartTag(8453888);
-		} else {
-			return var2 > 0 ? Client.colorStartTag(12648192) : Client.colorStartTag(16776960);
-		}
 	}
 }

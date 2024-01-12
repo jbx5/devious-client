@@ -1,63 +1,60 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ef")
 public class class127 {
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -1679119383
-	)
-	int field1492;
-	@ObfuscatedName("al")
-	float field1490;
-	@ObfuscatedName("ak")
-	float field1491;
-	@ObfuscatedName("ax")
-	float field1495;
-	@ObfuscatedName("ao")
-	float field1489;
-	@ObfuscatedName("ah")
-	float field1494;
+	@ObfuscatedName("aj")
+	public static final float field1487;
+	@ObfuscatedName("aq")
+	public static final float field1490;
 	@ObfuscatedName("ar")
+	static float[] field1491;
+	@ObfuscatedName("ag")
+	static float[] field1492;
+	@ObfuscatedName("fq")
 	@ObfuscatedSignature(
-		descriptor = "Lef;"
+		descriptor = "Loz;"
 	)
-	class127 field1493;
+	static Archive field1489;
 
-	class127() {
-		this.field1491 = Float.MAX_VALUE;
-		this.field1495 = Float.MAX_VALUE;
-		this.field1489 = Float.MAX_VALUE;
-		this.field1494 = Float.MAX_VALUE;
+	static {
+		field1487 = Math.ulp(1.0F);
+		field1490 = field1487 * 2.0F;
+		field1491 = new float[4];
+		field1492 = new float[5];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;II)V",
-		garbageValue = "1810575829"
+		descriptor = "(II)V",
+		garbageValue = "1765448394"
 	)
-	void method2943(Buffer var1, int var2) {
-		this.field1492 = var1.readShort();
-		this.field1490 = var1.method9211();
-		this.field1491 = var1.method9211();
-		this.field1495 = var1.method9211();
-		this.field1489 = var1.method9211();
-		this.field1494 = var1.method9211();
+	static void method3028(int var0) {
 	}
 
-	@ObfuscatedName("ns")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lnm;IIIB)V",
-		garbageValue = "-59"
+		descriptor = "(Low;Low;I)V",
+		garbageValue = "1712425930"
 	)
-	static final void method2946(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.method6594(class33.widgetDefinition, false);
-		if (var4 != null) {
-			if (Client.minimapState < 3) {
-				class404.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
-			} else {
-				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
+	public static void method3027(AbstractArchive var0, AbstractArchive var1) {
+		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
+		class105.SpotAnimationDefinition_modelArchive = var1;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "963760202"
+	)
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
+				var1.ids[var2] = -1;
+				var1.quantities[var2] = 0;
 			}
 
 		}

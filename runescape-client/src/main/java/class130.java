@@ -1,81 +1,69 @@
-import java.util.List;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fj")
-public enum class130 implements MouseWheel {
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1524(0, 0),
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1523(1, 1),
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1525(2, 2),
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1526(3, 3),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	field1522(4, 4);
-
-	@ObfuscatedName("wd")
-	static List field1529;
-	@ObfuscatedName("ah")
+@ObfuscatedName("fe")
+public class class130 implements Callable {
+	@ObfuscatedName("cw")
 	@ObfuscatedGetter(
-		intValue = -992322605
+		intValue = -237128359
 	)
-	final int field1527;
-	@ObfuscatedName("ar")
+	@Export("otpMedium")
+	static int otpMedium;
+	@ObfuscatedName("gn")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static Archive field1521;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lfx;"
+	)
+	final class131 field1526;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lff;"
+	)
+	final class132 field1524;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lfv;"
+	)
+	final class133 field1522;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1058172471
+		intValue = 1840918815
 	)
-	final int field1528;
+	final int field1523;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfu;"
+	)
+	final class138 this$0;
 
-	class130(int var3, int var4) {
-		this.field1527 = var3;
-		this.field1528 = var4;
+	@ObfuscatedSignature(
+		descriptor = "(Lfu;Lfx;Lff;Lfv;I)V"
+	)
+	class130(class138 var1, class131 var2, class132 var3, class133 var4, int var5) {
+		this.this$0 = var1;
+		this.field1526 = var2;
+		this.field1524 = var3;
+		this.field1522 = var4;
+		this.field1523 = var5;
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1243971674"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1528;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "861803654"
-	)
-	public static void method3012(int var0, int var1) {
-		VarbitComposition var2 = Messages.method2802(var0);
-		int var3 = var2.baseVar;
-		int var4 = var2.startBit;
-		int var5 = var2.endBit;
-		int var6 = Varps.Varps_masks[var5 - var4];
-		if (var1 < 0 || var1 > var6) {
-			var1 = 0;
+	public Object call() {
+		this.field1526.method3085();
+		class131[][] var1;
+		if (this.field1524 == class132.field1553) {
+			var1 = this.this$0.field1599;
+		} else {
+			var1 = this.this$0.field1598;
 		}
 
-		var6 <<= var4;
-		Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6;
+		var1[this.field1523][this.field1522.method3131()] = this.field1526;
+		return null;
 	}
 }

@@ -238,6 +238,6 @@ public abstract class RSNPCMixin implements RSNPC
 
 		int tileHeight = Perspective.getTileHeight(client, tileHeightPoint, client.getPlane());
 
-		return model.getConvexHull(getX(), getY(), getOrientation(), tileHeight);
+		return model.getConvexHull(getX(), getY(), getCurrentOrientation(), tileHeight);
 	}
 }

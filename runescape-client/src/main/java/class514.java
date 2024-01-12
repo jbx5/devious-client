@@ -1,32 +1,19 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tg")
-final class class514 implements class513 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("tr")
+public interface class514 {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lul;I)V",
-		garbageValue = "-397863290"
+		descriptor = "(Ljava/lang/Object;Luk;B)V",
+		garbageValue = "-38"
 	)
-	public void vmethod9055(Object var1, Buffer var2) {
-		this.method9014((Integer)var1, var2);
-	}
+	void vmethod9263(Object var1, Buffer var2);
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)Ljava/lang/Object;",
-		garbageValue = "-1456241929"
+		descriptor = "(Luk;I)Ljava/lang/Object;",
+		garbageValue = "183213382"
 	)
-	public Object vmethod9054(Buffer var1) {
-		return var1.readInt();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Integer;Lul;I)V",
-		garbageValue = "1661995876"
-	)
-	void method9014(Integer var1, Buffer var2) {
-		var2.writeInt(var1);
-	}
+	Object vmethod9259(Buffer var1);
 }

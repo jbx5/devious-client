@@ -44,6 +44,7 @@ import net.runelite.api.IndexedSprite;
 import net.runelite.api.IntegerNode;
 import net.runelite.api.InventoryID;
 import net.runelite.api.ItemComposition;
+import net.runelite.api.LoginState;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.MessageNode;
@@ -77,6 +78,7 @@ import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.AccountHashChanged;
+import net.runelite.api.events.AmbientSoundEffectCreated;
 import net.runelite.api.events.BeforeMenuRender;
 import net.runelite.api.events.CanvasSizeChanged;
 import net.runelite.api.events.ChatMessage;
@@ -122,6 +124,7 @@ import net.runelite.api.widgets.WidgetConfig;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.rs.api.RSAbstractArchive;
 import net.runelite.rs.api.RSArchive;
 import net.runelite.rs.api.RSBuffer;
@@ -148,6 +151,7 @@ import net.runelite.rs.api.RSNPC;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
 import net.runelite.rs.api.RSNodeHashTable;
+import net.runelite.rs.api.RSObjectSound;
 import net.runelite.rs.api.RSPacketBuffer;
 import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSProjectile;
@@ -728,15 +732,22 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public Widget getWidget(int id)
 	{
-		return getWidget(WidgetInfo.TO_GROUP(id), WidgetInfo.TO_CHILD(id));
+		return getWidget(WidgetUtil.componentToInterface(id), WidgetUtil.componentToId(id));
 	}
 
 	@Inject
 	@Override
 	public RSWidget[] getGroup(int groupId)
 	{
-		RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
-		return widgets != null && groupId >= 0 && groupId < widgets.length && widgets[groupId] != null ? widgets[groupId] : null;
+		if (client.getWidgetDefinition() == null)
+		{
+			return null;
+		}
+		else
+		{
+			RSWidget[][] widgets = client.getWidgetDefinition().getWidgets();
+			return widgets != null && groupId >= 0 && groupId < widgets.length && widgets[groupId] != null ? widgets[groupId] : null;
+		}
 	}
 
 	@Inject
@@ -2329,7 +2340,7 @@ public abstract class RSClientMixin implements RSClient
 			{
 				if (widget != null)
 				{
-					group = WidgetInfo.TO_GROUP(widget.getId());
+					group = WidgetUtil.componentToInterface(widget.getId());
 					break;
 				}
 			}
@@ -2344,7 +2355,7 @@ public abstract class RSClientMixin implements RSClient
 			for (int i = hiddenWidgets.size() - 1; i >= 0; i--)
 			{
 				Widget widget = hiddenWidgets.get(i);
-				if (WidgetInfo.TO_GROUP(widget.getId()) == group)
+				if (WidgetUtil.componentToInterface(widget.getId()) == group)
 				{
 					widget.setHidden(false);
 					hiddenWidgets.remove(i);
@@ -2904,10 +2915,31 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+	private static void unloadInterface(int id, RSNodeDeque nodeDeque)
+	{
+		for (RSScriptEvent scriptEvent = (RSScriptEvent) nodeDeque.last(); scriptEvent != null; scriptEvent = (RSScriptEvent) nodeDeque.previous())
+		{
+			RSWidget widget = (RSWidget) scriptEvent.getSource();
+			int group = WidgetUtil.componentToInterface(widget.getId());
+			if (id == group)
+			{
+				scriptEvent.unlink();
+			}
+		}
+	}
+
+	@Inject
 	@MethodHook("closeInterface")
 	public static void preCloseInterface(RSInterfaceParent iface, boolean willUnload)
 	{
 		client.getCallbacks().post(new WidgetClosed(iface.getId(), iface.getModalMode(), willUnload));
+		if (willUnload)
+		{
+			int id = iface.getId();
+			unloadInterface(id, client.getScriptEvents());
+			unloadInterface(id, client.getScriptEvents3());
+			unloadInterface(id, client.getScriptEvents2());
+		}
 	}
 
 	@Inject
@@ -3741,6 +3773,36 @@ public abstract class RSClientMixin implements RSClient
 	public int getExpandedMapLoading()
 	{
 		return expandedMapLoadingChunks;
+	}
+
+	@Inject
+	@Override
+	public LoginState getLoginState()
+	{
+		return LoginState.of(getRSLoginState());
+	}
+
+	@Inject
+	@MethodHook(value = "createObjectSound", end = true)
+	public static void onAmbientSoundEffect(int var0, int var1, int var2, ObjectComposition var3, int var4)
+	{
+		RSObjectSound ambientSoundEffect = (RSObjectSound) client.getAmbientSoundEffects().last();
+		AmbientSoundEffectCreated ambientSoundEffectCreated = new AmbientSoundEffectCreated(ambientSoundEffect);
+		client.getCallbacks().post(ambientSoundEffectCreated);
+	}
+
+	@Copy("openURL")
+	@Replace("openURL")
+	public static void copy$openURL(String url, boolean var1, boolean var2)
+	{
+		try
+		{
+			client.getCallbacks().openUrl(url);
+		}
+		catch (Exception e)
+		{
+			client.getLogger().error("unable to open url {}", url, e);
+		}
 	}
 }
 

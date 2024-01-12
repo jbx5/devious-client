@@ -4,47 +4,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jl")
+@ObfuscatedName("kb")
 @Implements("AABB")
 public class AABB {
-	@ObfuscatedName("gi")
+	@ObfuscatedName("fl")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Loz;"
 	)
-	static Archive field2658;
-	@ObfuscatedName("ac")
+	static Archive field2907;
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1398982731
+		intValue = -1926024547
 	)
 	@Export("xMid")
 	int xMid;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 583230925
+		intValue = -507873455
 	)
 	@Export("yMid")
 	int yMid;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1122805789
+		intValue = 1217721029
 	)
 	@Export("zMid")
 	int zMid;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1670821269
+		intValue = 2003252025
 	)
 	@Export("xMidOffset")
 	int xMidOffset;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1521768023
+		intValue = -2016643991
 	)
 	@Export("yMidOffset")
 	int yMidOffset;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1443189283
+		intValue = 119232111
 	)
 	@Export("zMidOffset")
 	int zMidOffset;

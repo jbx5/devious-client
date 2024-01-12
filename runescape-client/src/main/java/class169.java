@@ -1,77 +1,71 @@
+import java.util.concurrent.ThreadFactory;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gz")
-public class class169 extends class145 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("gs")
+final class class169 implements ThreadFactory {
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -541809465
+		longValue = -4207687721508692447L
 	)
-	int field1800;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		longValue = 7193403944356157085L
-	)
-	long field1799;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lff;"
-	)
-	final class148 this$0;
+	static long field1801;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
-	)
-	class169(class148 var1) {
-		this.this$0 = var1;
+	public Thread newThread(Runnable var1) {
+		return new Thread(var1, "OSRS Maya Anim Load");
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(B)[Lfs;",
+		garbageValue = "26"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1800 = var1.readInt();
-		this.field1799 = var1.readLong();
+	static class139[] method3551() {
+		return new class139[]{class139.field1611, class139.field1613, class139.field1609, class139.field1610, class139.field1607, class139.field1612, class139.field1608, class139.field1614, class139.field1615};
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(I)V",
+		garbageValue = "-1096809925"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3237(this.field1800, this.field1799);
-	}
+	static void method3549() {
+		synchronized(ArchiveDiskActionHandler.field4331) {
+			if (ArchiveDiskActionHandler.field4329 == 0) {
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setDaemon(true);
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.start();
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setPriority(5);
+			}
 
-	@ObfuscatedName("bg")
-	@ObfuscatedSignature(
-		descriptor = "(ILds;ZB)I",
-		garbageValue = "-23"
-	)
-	static int method3419(int var0, Script var1, boolean var2) {
-		if (var0 == 6809) {
-			int var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			ObjectComposition var4 = class91.getObjectDefinition(var3);
-			Interpreter.Interpreter_stringStack[++class180.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-			return 1;
-		} else {
-			return 2;
+			ArchiveDiskActionHandler.field4329 = 600;
+			ArchiveDiskActionHandler.field4332 = false;
 		}
 	}
 
-	@ObfuscatedName("lw")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "815194863"
+		descriptor = "(IIIS)I",
+		garbageValue = "18858"
 	)
-	static String method3418(int var0) {
-		if (var0 < 0) {
-			return "";
+	public static int method3550(int var0, int var1, int var2) {
+		int var3 = SpotAnimationDefinition.method3814(var2 - var1 + 1);
+		var3 <<= var1;
+		return var0 & ~var3;
+	}
+
+	@ObfuscatedName("bv")
+	@ObfuscatedSignature(
+		descriptor = "(ILdd;ZB)I",
+		garbageValue = "92"
+	)
+	static int method3544(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.LOGOUT) {
+			Client.logoutTimer = 250;
+			return 1;
 		} else {
-			return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
+			return 2;
 		}
 	}
 }

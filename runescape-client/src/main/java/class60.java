@@ -1,86 +1,93 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("cs")
 public class class60 {
-	@ObfuscatedName("ac")
-	byte[] field458;
-	@ObfuscatedName("al")
+	@ObfuscatedName("gg")
+	@Export("characterId")
+	static String characterId;
+	@ObfuscatedName("ok")
 	@ObfuscatedGetter(
-		intValue = 70742755
+		intValue = -2095567381
 	)
-	int field457;
-	@ObfuscatedName("ak")
+	@Export("menuHeight")
+	static int menuHeight;
+	@ObfuscatedName("pq")
 	@ObfuscatedGetter(
-		intValue = -1755072615
+		intValue = 931534025
 	)
-	int field456;
+	@Export("selectedSpellFlags")
+	static int selectedSpellFlags;
+	@ObfuscatedName("am")
+	byte[] field430;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 95763601
+	)
+	int field433;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = -1089651909
+	)
+	int field432;
 
 	class60() {
-		this.field458 = null;
-		this.field457 = 0;
-		this.field456 = 0;
+		this.field430 = null;
+		this.field433 = 0;
+		this.field432 = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "1668070165"
+		garbageValue = "-1595212669"
 	)
-	int method1171(int var1) {
+	int method1188(int var1) {
 		int var2 = 0;
 
 		int var3;
 		int var4;
-		for (var3 = 0; var1 >= 8 - this.field456; var1 -= var4) {
-			var4 = 8 - this.field456;
+		for (var3 = 0; var1 >= 8 - this.field432; var1 -= var4) {
+			var4 = 8 - this.field432;
 			int var5 = (1 << var4) - 1;
-			var2 += (this.field458[this.field457] >> this.field456 & var5) << var3;
-			this.field456 = 0;
-			++this.field457;
+			var2 += (this.field430[this.field433] >> this.field432 & var5) << var3;
+			this.field432 = 0;
+			++this.field433;
 			var3 += var4;
 		}
 
 		if (var1 > 0) {
 			var4 = (1 << var1) - 1;
-			var2 += (this.field458[this.field457] >> this.field456 & var4) << var3;
-			this.field456 += var1;
+			var2 += (this.field430[this.field433] >> this.field432 & var4) << var3;
+			this.field432 += var1;
 		}
 
 		return var2;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1671970145"
+		garbageValue = "705214862"
 	)
-	int method1172() {
-		int var1 = this.field458[this.field457] >> this.field456 & 1;
-		++this.field456;
-		this.field457 += this.field456 >> 3;
-		this.field456 &= 7;
+	int method1189() {
+		int var1 = this.field430[this.field433] >> this.field432 & 1;
+		++this.field432;
+		this.field433 += this.field432 >> 3;
+		this.field432 &= 7;
 		return var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "([BIS)V",
-		garbageValue = "-20687"
+		descriptor = "([BII)V",
+		garbageValue = "176102354"
 	)
-	void method1174(byte[] var1, int var2) {
-		this.field458 = var1;
-		this.field457 = var2;
-		this.field456 = 0;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "1"
-	)
-	public static boolean method1185(int var0) {
-		return var0 >= WorldMapDecorationType.field3876.id && var0 <= WorldMapDecorationType.field3860.id || var0 == WorldMapDecorationType.field3861.id;
+	void method1187(byte[] var1, int var2) {
+		this.field430 = var1;
+		this.field433 = var2;
+		this.field432 = 0;
 	}
 }

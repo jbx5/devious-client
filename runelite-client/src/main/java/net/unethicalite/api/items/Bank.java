@@ -1,5 +1,11 @@
 package net.unethicalite.api.items;
 
+import java.time.Instant;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.Varbits;
@@ -13,11 +19,6 @@ import net.unethicalite.api.query.items.ItemQuery;
 import net.unethicalite.api.widgets.Dialog;
 import net.unethicalite.api.widgets.Widgets;
 import net.unethicalite.client.Static;
-
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public class Bank extends Items
 {
@@ -33,8 +34,6 @@ public class Bank extends Items
 	private static final Bank BANK = new Bank();
 	private static final Inventory BANK_INVENTORY = new Inventory();
 
-	private static final int WITHDRAW_MODE_VARBIT = 3958;
-	private static final int QUANTITY_MODE_VARP = 6590;
 	private static final Supplier<Widget> TAB_CONTAINER = () -> Widgets.get(WidgetInfo.BANK_TAB_CONTAINER);
 	private static final Supplier<Widget> BANK_CAPACITY = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 9);
 	private static final Supplier<Widget> RELEASE_PLACEHOLDERS = () -> Widgets.get(WidgetID.BANK_GROUP_ID, 56);
@@ -321,7 +320,7 @@ public class Bank extends Items
 
 	public static boolean isNotedWithdrawMode()
 	{
-		return Vars.getBit(WITHDRAW_MODE_VARBIT) == 1;
+		return Vars.getBit(Varbits.BANK_WITHDRAW_MODE) == 1;
 	}
 
 	public static List<Item> getAll(Predicate<Item> filter)
@@ -471,6 +470,11 @@ public class Bank extends Items
 		}
 	}
 
+	public static @Nullable Instant getLastUpdated()
+	{
+		return BANK.lastUpdated();
+	}
+
 	public static class Inventory extends Items
 	{
 		public Inventory()
@@ -550,6 +554,16 @@ public class Bank extends Items
 		public static int getCount(String... names)
 		{
 			return BANK_INVENTORY.count(false, names);
+		}
+
+		public static int getFreeSlots()
+		{
+			return 28 - getAll().size();
+		}
+
+		public static @Nullable Instant getLastUpdated()
+		{
+			return BANK_INVENTORY.lastUpdated();
 		}
 	}
 
@@ -635,7 +649,7 @@ public class Bank extends Items
 
 		public static QuantityMode getCurrent()
 		{
-			switch (Vars.getBit(QUANTITY_MODE_VARP))
+			switch (Vars.getBit(Varbits.BANK_QUANTITY_MODE))
 			{
 				case 0:
 					return QuantityMode.ONE;

@@ -1,45 +1,41 @@
-import java.io.File;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("ic")
 @Implements("JagexCache")
 public class JagexCache {
-	@ObfuscatedName("ax")
-	static File field1837;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 1245026205
+	)
+	static int field2303;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Ltl;"
+		descriptor = "Lte;"
 	)
 	@Export("JagexCache_randomDat")
-	static BufferedFile JagexCache_randomDat;
-	@ObfuscatedName("ap")
+	public static BufferedFile JagexCache_randomDat;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Ltl;"
+		descriptor = "Lte;"
 	)
 	@Export("JagexCache_dat2File")
 	public static BufferedFile JagexCache_dat2File;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Ltl;"
+		descriptor = "Lte;"
 	)
 	@Export("JagexCache_idx255File")
 	public static BufferedFile JagexCache_idx255File;
-	@ObfuscatedName("pl")
-	@ObfuscatedGetter(
-		intValue = -2073836903
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "[Lte;"
 	)
-	@Export("selectedSpellWidget")
-	static int selectedSpellWidget;
-	@ObfuscatedName("vz")
-	@ObfuscatedGetter(
-		intValue = -304944963
-	)
-	static int field1844;
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
 
 	static {
 		JagexCache_randomDat = null;
@@ -47,125 +43,76 @@ public class JagexCache {
 		JagexCache_idx255File = null;
 	}
 
-	@ObfuscatedName("it")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Ldi;I)V",
-		garbageValue = "-1922065040"
+		descriptor = "(II)I",
+		garbageValue = "-831338467"
 	)
-	static final void method3537(Actor var0) {
-		boolean var1 = var0.field1243 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0;
-		if (!var1) {
-			SequenceDefinition var2 = class36.SequenceDefinition_get(var0.sequence);
-			if (var2 != null && !var2.isCachedModelIdSet()) {
-				var1 = var0.sequenceFrameCycle + 1 > var2.frameLengths[var0.sequenceFrame];
-			} else {
-				var1 = true;
-			}
-		}
-
-		if (var1) {
-			int var8 = var0.field1243 - var0.spotAnimation;
-			int var3 = Client.cycle - var0.spotAnimation;
-			int var4 = var0.field1238 * 128 + var0.field1189 * 64;
-			int var5 = var0.field1185 * 128 + var0.field1189 * 64;
-			int var6 = var0.field1239 * 128 + var0.field1189 * 64;
-			int var7 = var0.field1204 * 128 + var0.field1189 * 64;
-			var0.x = (var3 * var6 + var4 * (var8 - var3)) / var8;
-			var0.y = (var3 * var7 + var5 * (var8 - var3)) / var8;
-		}
-
-		var0.field1233 = 0;
-		var0.orientation = var0.field1254;
-		var0.rotation = var0.orientation;
+	public static int method4249(int var0) {
+		return var0 >>> 4 & class524.field5129;
 	}
 
-	@ObfuscatedName("lp")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIII)V",
-		garbageValue = "1000434204"
+		descriptor = "([BIILkn;[Lii;B)V",
+		garbageValue = "121"
 	)
-	static final void method3521(int var0, int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var2 - var0;
-		int var7 = var3 - var1;
-		int var8 = var6 >= 0 ? var6 : -var6;
-		int var9 = var7 >= 0 ? var7 : -var7;
-		int var10 = var8;
-		if (var8 < var9) {
-			var10 = var9;
-		}
+	static final void method4247(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
+		Buffer var5 = new Buffer(var0);
+		int var6 = -1;
 
-		if (var10 != 0) {
-			int var11 = (var6 << 16) / var10;
-			int var12 = (var7 << 16) / var10;
-			if (var12 <= var11) {
-				var11 = -var11;
-			} else {
-				var12 = -var12;
+		while (true) {
+			int var7 = var5.readIncrSmallSmart();
+			if (var7 == 0) {
+				return;
 			}
 
-			int var13 = var5 * var12 >> 17;
-			int var14 = var5 * var12 + 1 >> 17;
-			int var15 = var5 * var11 >> 17;
-			int var16 = var5 * var11 + 1 >> 17;
-			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
-			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
-			int var17 = var0 + var13;
-			int var18 = var0 - var14;
-			int var19 = var0 + var6 - var14;
-			int var20 = var0 + var6 + var13;
-			int var21 = var15 + var1;
-			int var22 = var1 - var16;
-			int var23 = var7 + var1 - var16;
-			int var24 = var7 + var15 + var1;
-			Rasterizer3D.method4558(var17, var18, var19);
-			Rasterizer3D.method4565(var21, var22, var23, var17, var18, var19, 0.0F, 0.0F, 0.0F, var4);
-			Rasterizer3D.method4558(var17, var19, var20);
-			Rasterizer3D.method4565(var21, var23, var24, var17, var19, var20, 0.0F, 0.0F, 0.0F, var4);
-		}
-	}
+			var6 += var7;
+			int var8 = 0;
 
-	@ObfuscatedName("mg")
-	static final void method3533(double var0) {
-		Rasterizer3D.method4517(var0);
-		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(var0);
-		ItemComposition.ItemDefinition_cachedSprites.clear();
-		class91.clientPreferences.method2506(var0);
-	}
+			while (true) {
+				int var9 = var5.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
 
-	@ObfuscatedName("nt")
-	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "-10864"
-	)
-	@Export("setMusicVolume")
-	static final void setMusicVolume(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 255);
-		if (var0 != class91.clientPreferences.method2515()) {
-			if (class91.clientPreferences.method2515() == 0 && ScriptFrame.method1194()) {
-				VarcInt.method3677(CollisionMap.archive6, var0);
-				Client.playingJingle = false;
-			} else if (var0 == 0) {
-				ItemComposition.method4136(0, 0);
-				Client.playingJingle = false;
-			} else if (!class319.musicSongs.isEmpty()) {
-				Iterator var1 = class319.musicSongs.iterator();
-
-				while (var1.hasNext()) {
-					MusicSong var2 = (MusicSong)var1.next();
-					if (var2 != null) {
-						var2.musicTrackVolume = var0;
+				var8 += var9 - 1;
+				int var10 = var8 & 63;
+				int var11 = var8 >> 6 & 63;
+				int var12 = var8 >> 12;
+				int var13 = var5.readUnsignedByte();
+				int var14 = var13 >> 2;
+				int var15 = var13 & 3;
+				int var16 = var11 + var1;
+				int var17 = var10 + var2;
+				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
+					int var18 = var12;
+					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
+						var18 = var12 - 1;
 					}
-				}
 
-				MusicSong var3 = (MusicSong)class319.musicSongs.get(0);
-				if (var3 != null && var3.midiPcmStream != null && var3.midiPcmStream.isReady() && !var3.field3546) {
-					var3.midiPcmStream.setPcmStreamVolume(var0);
-					var3.field3542 = (float)var0;
+					CollisionMap var19 = null;
+					if (var18 >= 0) {
+						var19 = var4[var18];
+					}
+
+					class59.addObjects(var12, var16, var17, var6, var15, var14, var3, var19);
 				}
 			}
+		}
+	}
 
-			class91.clientPreferences.method2514(var0);
+	@ObfuscatedName("pv")
+	@ObfuscatedSignature(
+		descriptor = "(II)Luq;",
+		garbageValue = "-2093769128"
+	)
+	static DbTable method4248(int var0) {
+		DbTable var1 = (DbTable)Client.archive11.get((long)var0);
+		if (var1 == null) {
+			var1 = new DbTable(AsyncHttpResponse.field80, var0);
 		}
 
+		return var1;
 	}
 }

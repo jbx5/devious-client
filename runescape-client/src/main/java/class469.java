@@ -1,39 +1,63 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sr")
-public class class469 implements class474 {
-	@ObfuscatedName("fa")
+@ObfuscatedName("su")
+public enum class469 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lsu;"
 	)
-	static Archive field4812;
-	@ObfuscatedName("ac")
+	field4829(2, 1),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lts;"
+		descriptor = "Lsu;"
 	)
-	public final class504 field4815;
+	field4830(0, 2),
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lsu;"
+	)
+	field4828(1, 3),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lsu;"
+	)
+	field4831(3, 10);
 
-	@ObfuscatedSignature(
-		descriptor = "(Lty;)V"
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = 2008628485
 	)
-	class469(class505 var1) {
-		this.field4815 = var1;
+	final int field4832;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -1216075445
+	)
+	final int field4833;
+
+	class469(int var3, int var4) {
+		this.field4832 = var3;
+		this.field4833 = var4;
 	}
 
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lsm;)V"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
-	public class469(class470 var1) {
-		this(new class505(var1));
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field4833;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "11"
+		descriptor = "(B)V",
+		garbageValue = "14"
 	)
-	public int method8445(int var1) {
-		return this.field4815.vmethod8917(var1);
+	public static void method8643() {
+		class36.reflectionChecks = new IterableNodeDeque();
 	}
 }

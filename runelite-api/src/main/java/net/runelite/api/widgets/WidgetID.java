@@ -36,137 +36,175 @@ package net.runelite.api.widgets;
  */
 public final class WidgetID
 {
-	public static final int FAIRY_RING_PANEL_GROUP_ID = 381;
-	public static final int FAIRY_RING_GROUP_ID = 398;
-	public static final int LOGOUT_PANEL_ID = 182;
-	public static final int BANK_GROUP_ID = 12;
-	public static final int BANK_INVENTORY_GROUP_ID = 15;
-	public static final int GRAND_EXCHANGE_INVENTORY_GROUP_ID = 467;
-	public static final int GRAND_EXCHANGE_GROUP_ID = 465;
-	public static final int DEPOSIT_BOX_GROUP_ID = 192;
-	public static final int INVENTORY_GROUP_ID = 149;
-	public static final int PLAYER_TRADE_SCREEN_GROUP_ID = 335;
-	public static final int PLAYER_TRADE_INVENTORY_GROUP_ID = 336;
-	public static final int FRIENDS_LIST_GROUP_ID = 429;
-	public static final int IGNORE_LIST_GROUP_ID = 432;
-	public static final int RAIDING_PARTY_GROUP_ID = 500;
-	public static final int EQUIPMENT_GROUP_ID = 387;
-	public static final int EQUIPMENT_INVENTORY_GROUP_ID = 85;
-	public static final int EMOTES_GROUP_ID = 216;
-	public static final int RUNE_POUCH_GROUP_ID = 190;
-	public static final int ACHIEVEMENT_DIARY_GROUP_ID = 259;
-	public static final int PEST_CONTROL_BOAT_GROUP_ID = 407;
-	public static final int PEST_CONTROL_GROUP_ID = 408;
-	public static final int FRIENDS_CHAT_GROUP_ID = 7;
-	public static final int MINIMAP_GROUP_ID = 160;
-	public static final int LOGIN_CLICK_TO_PLAY_GROUP_ID = 378;
-	public static final int CLUE_SCROLL_GROUP_ID = 203;
-	public static final int FIXED_VIEWPORT_GROUP_ID = 548;
-	public static final int RESIZABLE_VIEWPORT_OLD_SCHOOL_BOX_GROUP_ID = 161;
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_GROUP_ID = 164;
-	public static final int PRAYER_GROUP_ID = 541;
-	public static final int QUICK_PRAYERS_GROUP_ID = 77;
-	public static final int SHOP_GROUP_ID = 300;
-	public static final int SHOP_INVENTORY_GROUP_ID = 301;
-	public static final int SMITHING_GROUP_ID = 312;
-	public static final int GUIDE_PRICES_GROUP_ID = 464;
-	public static final int GUIDE_PRICES_INVENTORY_GROUP_ID = 238;
-	public static final int COMBAT_GROUP_ID = 593;
-	public static final int DIALOG_NPC_GROUP_ID = 231;
-	public static final int SLAYER_REWARDS_GROUP_ID = 426;
-	public static final int PRIVATE_CHAT = 163;
-	public static final int CHATBOX_GROUP_ID = 162;
-	public static final int VOLCANIC_MINE_GROUP_ID = 611;
-	public static final int BA_ATTACKER_GROUP_ID = 485;
-	public static final int BA_COLLECTOR_GROUP_ID = 486;
-	public static final int BA_DEFENDER_GROUP_ID = 487;
-	public static final int BA_HEALER_GROUP_ID = 488;
-	public static final int BA_REWARD_GROUP_ID = 497;
-	public static final int BA_TEAM_GROUP_ID = 256;
-	public static final int LEVEL_UP_GROUP_ID = 233;
-	public static final int DIALOG_SPRITE_GROUP_ID = 193;
-	public static final int DIALOG_DOUBLE_SPRITE_GROUP_ID = 11;
-	public static final int QUEST_COMPLETED_GROUP_ID = 153;
-	public static final int CLUE_SCROLL_REWARD_GROUP_ID = 73;
-	public static final int BARROWS_REWARD_GROUP_ID = 155;
-	public static final int RAIDS_GROUP_ID = 513;
-	public static final int TOB_GROUP_ID = 28;
-	public static final int MOTHERLODE_MINE_GROUP_ID = 382;
-	public static final int EXPERIENCE_DROP_GROUP_ID = 122;
-	public static final int PUZZLE_BOX_GROUP_ID = 306;
-	public static final int LIGHT_BOX_GROUP_ID = 322;
-	public static final int NIGHTMARE_ZONE_GROUP_ID = 202;
-	public static final int NIGHTMARE_PILLAR_HEALTH_GROUP_ID = 413;
-	public static final int BLAST_FURNACE_GROUP_ID = 474;
-	public static final int WORLD_MAP_GROUP_ID = 595;
-	public static final int PYRAMID_PLUNDER_GROUP_ID = 428;
-	public static final int CHAMBERS_OF_XERIC_REWARD_GROUP_ID = 539;
-	public static final int THEATRE_OF_BLOOD_REWARD_GROUP_ID = 23;
-	public static final int EXPERIENCE_TRACKER_GROUP_ID = 122;
-	public static final int TITHE_FARM_GROUP_ID = 241;
-	public static final int KINGDOM_GROUP_ID = 616;
-	public static final int BARROWS_GROUP_ID = 24;
-	public static final int BLAST_MINE_GROUP_ID = 598;
-	public static final int MTA_ALCHEMY_GROUP_ID = 194;
-	public static final int MTA_ENCHANT_GROUP_ID = 195;
-	public static final int MTA_GRAVEYARD_GROUP_ID = 196;
-	public static final int MTA_TELEKINETIC_GROUP_ID = 198;
-	public static final int CORP_DAMAGE = 13;
-	public static final int DESTROY_ITEM_GROUP_ID = 584;
-	public static final int VARROCK_MUSEUM_QUIZ_GROUP_ID = 533;
-	public static final int KILL_LOGS_GROUP_ID = 549;
-	public static final int DIARY_QUEST_GROUP_ID = 119;
-	public static final int THEATRE_OF_BLOOD_GROUP_ID = 23;
-	public static final int WORLD_SWITCHER_GROUP_ID = 69;
-	public static final int DIALOG_OPTION_GROUP_ID = 219;
-	public static final int DIALOG_PLAYER_GROUP_ID = 217;
-	public static final int DRIFT_NET_FISHING_REWARD_GROUP_ID = 607;
-	public static final int FOSSIL_ISLAND_OXYGENBAR_ID = 609;
-	public static final int MINIGAME_TAB_ID = 76;
-	public static final int SPELLBOOK_GROUP_ID = 218;
-	public static final int PVP_GROUP_ID = 90;
-	public static final int FISHING_TRAWLER_GROUP_ID = 366;
-	public static final int FISHING_TRAWLER_REWARD_GROUP_ID = 367;
-	public static final int ZEAH_MESS_HALL_GROUP_ID = 235;
-	public static final int KOUREND_FAVOUR_GROUP_ID = 246;
-	public static final int LOOTING_BAG_GROUP_ID = 81;
-	public static final int SKOTIZO_GROUP_ID = 308;
-	public static final int ENTERING_HOUSE_GROUP_ID = 71;
-	public static final int FULLSCREEN_CONTAINER_TLI = 165;
-	public static final int CHARACTER_SUMMARY_GROUP_ID = 712;
-	public static final int QUESTLIST_GROUP_ID = 399;
-	public static final int SKILLS_GROUP_ID = 320;
-	public static final int MUSIC_GROUP_ID = 239;
-	public static final int BARROWS_PUZZLE_GROUP_ID = 25;
-	public static final int KEPT_ON_DEATH_GROUP_ID = 4;
-	public static final int GUIDE_PRICE_GROUP_ID = 464;
-	public static final int SEED_VAULT_INVENTORY_GROUP_ID = 630;
-	public static final int BEGINNER_CLUE_MAP_CHAMPIONS_GUILD = 346;
-	public static final int BEGINNER_CLUE_MAP_VARROCK_EAST_MINE = 347;
-	public static final int BEGINNER_CLUE_MAP_DRAYNOR = 348;
-	public static final int BEGINNER_CLUE_MAP_NORTH_OF_FALADOR = 351;
-	public static final int BEGINNER_CLUE_MAP_WIZARDS_TOWER = 356;
-	public static final int SEED_BOX_GROUP_ID = 128;
-	public static final int SEED_VAULT_GROUP_ID = 631;
-	public static final int EXPLORERS_RING_ALCH_GROUP_ID = 483;
-	public static final int SETTINGS_SIDE_GROUP_ID = 116;
-	public static final int SETTINGS_GROUP_ID = 134;
-	public static final int GWD_KC_GROUP_ID = 406;
-	public static final int LMS_GROUP_ID = 333;
-	public static final int LMS_INGAME_GROUP_ID = 328;
-	public static final int ADVENTURE_LOG_ID = 187;
-	public static final int COLLECTION_LOG_ID = 621;
-	public static final int GENERIC_SCROLL_GROUP_ID = 625;
-	public static final int GAUNTLET_TIMER_GROUP_ID = 637;
-	public static final int HALLOWED_SEPULCHRE_TIMER_GROUP_ID = 668;
-	public static final int BANK_PIN_GROUP_ID = 213;
-	public static final int HEALTH_OVERLAY_BAR_GROUP_ID = 303;
-	public static final int CHAMBERS_OF_XERIC_STORAGE_UNIT_PRIVATE_GROUP_ID = 271;
-	public static final int CHAMBERS_OF_XERIC_STORAGE_UNIT_SHARED_GROUP_ID = 550;
-	public static final int CHAMBERS_OF_XERIC_STORAGE_UNIT_INVENTORY_GROUP_ID = 551;
-	public static final int DUEL_INVENTORY_GROUP_ID = 421;
-	public static final int DUEL_INVENTORY_OTHER_GROUP_ID = 481;
-	public static final int TRAILBLAZER_AREAS_GROUP_ID = 512;
+	public static final int FAIRY_RING_PANEL_GROUP_ID = InterfaceID.FAIRY_RING_PANEL;
+	public static final int FAIRY_RING_GROUP_ID = InterfaceID.FAIRY_RING;
+	public static final int LOGOUT_PANEL_ID = InterfaceID.LOGOUT_PANEL;
+	public static final int BANK_GROUP_ID = InterfaceID.BANK;
+	public static final int BANK_INVENTORY_GROUP_ID = InterfaceID.BANK_INVENTORY;
+	public static final int GRAND_EXCHANGE_INVENTORY_GROUP_ID = InterfaceID.GRAND_EXCHANGE_INVENTORY;
+	public static final int GRAND_EXCHANGE_GROUP_ID = InterfaceID.GRAND_EXCHANGE;
+	public static final int DEPOSIT_BOX_GROUP_ID = InterfaceID.DEPOSIT_BOX;
+	public static final int INVENTORY_GROUP_ID = InterfaceID.INVENTORY;
+	public static final int PLAYER_TRADE_SCREEN_GROUP_ID = InterfaceID.TRADE;
+	public static final int PLAYER_TRADE_INVENTORY_GROUP_ID = InterfaceID.TRADE_INVENTORY;
+	public static final int FRIENDS_LIST_GROUP_ID = InterfaceID.FRIEND_LIST;
+	public static final int IGNORE_LIST_GROUP_ID = InterfaceID.IGNORE_LIST;
+	public static final int RAIDING_PARTY_GROUP_ID = InterfaceID.RAIDING_PARTY;
+	public static final int EQUIPMENT_GROUP_ID = InterfaceID.EQUIPMENT;
+	public static final int EQUIPMENT_INVENTORY_GROUP_ID = InterfaceID.EQUIPMENT_INVENTORY;
+	public static final int EMOTES_GROUP_ID = InterfaceID.EMOTES;
+	public static final int RUNE_POUCH_GROUP_ID = InterfaceID.RUNE_POUCH;
+	public static final int ACHIEVEMENT_DIARY_GROUP_ID = InterfaceID.ACHIEVEMENT_DIARY;
+	public static final int PEST_CONTROL_BOAT_GROUP_ID = InterfaceID.PEST_CONTROL_BOAT;
+	public static final int PEST_CONTROL_GROUP_ID = InterfaceID.PEST_CONTROL;
+	public static final int FRIENDS_CHAT_GROUP_ID = InterfaceID.FRIENDS_CHAT;
+	public static final int MINIMAP_GROUP_ID = InterfaceID.MINIMAP;
+	public static final int LOGIN_CLICK_TO_PLAY_GROUP_ID = InterfaceID.LOGIN_CLICK_TO_PLAY_SCREEN;
+	public static final int CLUE_SCROLL_GROUP_ID = InterfaceID.CLUESCROLL;
+	public static final int FIXED_VIEWPORT_GROUP_ID = InterfaceID.FIXED_VIEWPORT;
+	public static final int RESIZABLE_VIEWPORT_OLD_SCHOOL_BOX_GROUP_ID = InterfaceID.RESIZABLE_VIEWPORT;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_GROUP_ID = InterfaceID.RESIZABLE_VIEWPORT_BOTTOM_LINE;
+	public static final int SHOP_GROUP_ID = InterfaceID.SHOP;
+	public static final int SHOP_INVENTORY_GROUP_ID = InterfaceID.SHOP_INVENTORY;
+	public static final int SMITHING_GROUP_ID = InterfaceID.SMITHING;
+	public static final int GUIDE_PRICES_GROUP_ID = InterfaceID.GUIDE_PRICES;
+	public static final int GUIDE_PRICES_INVENTORY_GROUP_ID = InterfaceID.GUIDE_PRICES_INVENTORY;
+	public static final int COMBAT_GROUP_ID = InterfaceID.COMBAT;
+	public static final int DIALOG_NPC_GROUP_ID = InterfaceID.DIALOG_NPC;
+	public static final int SLAYER_REWARDS_GROUP_ID = InterfaceID.SLAYER_REWARDS;
+	public static final int PRIVATE_CHAT = InterfaceID.PRIVATE_CHAT;
+	public static final int CHATBOX_GROUP_ID = InterfaceID.CHATBOX;
+	public static final int VOLCANIC_MINE_GROUP_ID = InterfaceID.VOLCANIC_MINE;
+	public static final int BA_ATTACKER_GROUP_ID = InterfaceID.BA_ATTACKER;
+	public static final int BA_COLLECTOR_GROUP_ID = InterfaceID.BA_COLLECTOR;
+	public static final int BA_DEFENDER_GROUP_ID = InterfaceID.BA_DEFENDER;
+	public static final int BA_HEALER_GROUP_ID = InterfaceID.BA_HEALER;
+	public static final int BA_REWARD_GROUP_ID = InterfaceID.BA_REWARD;
+	public static final int BA_TEAM_GROUP_ID = InterfaceID.BA_TEAM;
+	public static final int LEVEL_UP_GROUP_ID = InterfaceID.LEVEL_UP;
+	public static final int DIALOG_SPRITE_GROUP_ID = InterfaceID.DIALOG_SPRITE;
+	public static final int DIALOG_DOUBLE_SPRITE_GROUP_ID = InterfaceID.DIALOG_DOUBLE_SPRITE;
+	public static final int QUEST_COMPLETED_GROUP_ID = InterfaceID.QUEST_COMPLETED;
+	public static final int CLUE_SCROLL_REWARD_GROUP_ID = InterfaceID.CLUESCROLL_REWARD;
+	public static final int BARROWS_REWARD_GROUP_ID = InterfaceID.BARROWS_REWARD;
+	public static final int RAIDS_GROUP_ID = InterfaceID.RAIDS;
+	public static final int TOB_GROUP_ID = InterfaceID.TOB;
+	public static final int MOTHERLODE_MINE_GROUP_ID = InterfaceID.MLM;
+	public static final int EXPERIENCE_DROP_GROUP_ID = InterfaceID.EXPERIENCE_TRACKER;
+	public static final int PUZZLE_BOX_GROUP_ID = InterfaceID.PUZZLE_BOX;
+	public static final int LIGHT_BOX_GROUP_ID = InterfaceID.LIGHT_BOX;
+	public static final int NIGHTMARE_ZONE_GROUP_ID = InterfaceID.NMZ;
+	public static final int NIGHTMARE_PILLAR_HEALTH_GROUP_ID = InterfaceID.NIGHTMARE_PILLAR_HEALTH;
+	public static final int BLAST_FURNACE_GROUP_ID = InterfaceID.BLAST_FURNACE;
+	public static final int WORLD_MAP_GROUP_ID = InterfaceID.WORLD_MAP;
+	public static final int PYRAMID_PLUNDER_GROUP_ID = InterfaceID.PYRAMID_PLUNDER;
+	public static final int CHAMBERS_OF_XERIC_REWARD_GROUP_ID = InterfaceID.CHAMBERS_OF_XERIC_REWARD;
+	public static final int THEATRE_OF_BLOOD_REWARD_GROUP_ID = InterfaceID.TOB_REWARD;
+	public static final int EXPERIENCE_TRACKER_GROUP_ID = InterfaceID.EXPERIENCE_TRACKER;
+	public static final int TITHE_FARM_GROUP_ID = InterfaceID.TITHE_FARM;
+	public static final int KINGDOM_GROUP_ID = InterfaceID.KINGDOM;
+	public static final int BARROWS_GROUP_ID = InterfaceID.BARROWS;
+	public static final int BLAST_MINE_GROUP_ID = InterfaceID.BLAST_MINE;
+	public static final int MTA_ALCHEMY_GROUP_ID = InterfaceID.MTA_ALCHEMY;
+	public static final int MTA_ENCHANT_GROUP_ID = InterfaceID.MTA_ENCHANT;
+	public static final int MTA_GRAVEYARD_GROUP_ID = InterfaceID.MTA_GRAVEYARD;
+	public static final int MTA_TELEKINETIC_GROUP_ID = InterfaceID.MTA_TELEKINETIC;
+	public static final int CORP_DAMAGE = InterfaceID.CORP_DAMAGE;
+	public static final int DESTROY_ITEM_GROUP_ID = InterfaceID.DESTROY_ITEM;
+	public static final int VARROCK_MUSEUM_QUIZ_GROUP_ID = InterfaceID.VARROCK_MUSEUM;
+	public static final int KILL_LOGS_GROUP_ID = InterfaceID.KILL_LOG;
+	public static final int DIARY_QUEST_GROUP_ID = InterfaceID.DIARY;
+	public static final int THEATRE_OF_BLOOD_GROUP_ID = InterfaceID.TOB;
+	public static final int WORLD_SWITCHER_GROUP_ID = InterfaceID.WORLD_SWITCHER;
+	public static final int DIALOG_OPTION_GROUP_ID = InterfaceID.DIALOG_OPTION;
+	public static final int DIALOG_PLAYER_GROUP_ID = InterfaceID.DIALOG_PLAYER;
+	public static final int DRIFT_NET_FISHING_REWARD_GROUP_ID = InterfaceID.DRIFT_NET_FISHING_REWARD;
+	public static final int FOSSIL_ISLAND_OXYGENBAR_ID = InterfaceID.FOSSIL_ISLAND_OXYGEN_BAR;
+	public static final int MINIGAME_TAB_ID = InterfaceID.MINIGAMES;
+	public static final int SPELLBOOK_GROUP_ID = InterfaceID.SPELLBOOK;
+	public static final int PVP_GROUP_ID = InterfaceID.PVP;
+	public static final int FISHING_TRAWLER_GROUP_ID = InterfaceID.TRAWLER;
+	public static final int FISHING_TRAWLER_REWARD_GROUP_ID = InterfaceID.TRAWLER_REWARD;
+	public static final int ZEAH_MESS_HALL_GROUP_ID = InterfaceID.ZEAH_MESS_HALL;
+	public static final int LOOTING_BAG_GROUP_ID = InterfaceID.LOOTING_BAG;
+	public static final int SKOTIZO_GROUP_ID = InterfaceID.SKOTIZO;
+	public static final int FULLSCREEN_CONTAINER_TLI = InterfaceID.FULLSCREEN_CONTAINER_TLI;
+	public static final int CHARACTER_SUMMARY_GROUP_ID = InterfaceID.CHARACTER_SUMMARY;
+	public static final int QUESTLIST_GROUP_ID = InterfaceID.QUEST_LIST;
+	public static final int SKILLS_GROUP_ID = InterfaceID.SKILLS;
+	public static final int MUSIC_GROUP_ID = InterfaceID.MUSIC;
+	public static final int BARROWS_PUZZLE_GROUP_ID = InterfaceID.BARROWS_PUZZLE;
+	public static final int KEPT_ON_DEATH_GROUP_ID = InterfaceID.KEPT_ON_DEATH;
+	public static final int GUIDE_PRICE_GROUP_ID = InterfaceID.GUIDE_PRICES;
+	public static final int SEED_VAULT_INVENTORY_GROUP_ID = InterfaceID.SEED_VAULT_INVENTORY;
+	public static final int BEGINNER_CLUE_MAP_CHAMPIONS_GUILD = InterfaceID.CLUE_BEGINNER_MAP_CHAMPIONS_GUILD;
+	public static final int BEGINNER_CLUE_MAP_VARROCK_EAST_MINE = InterfaceID.CLUE_BEGINNER_MAP_VARROCK_EAST_MINE;
+	public static final int BEGINNER_CLUE_MAP_DRAYNOR = InterfaceID.CLUE_BEGINNER_MAP_DYANOR;
+	public static final int BEGINNER_CLUE_MAP_NORTH_OF_FALADOR = InterfaceID.CLUE_BEGINNER_MAP_NORTH_OF_FALADOR;
+	public static final int BEGINNER_CLUE_MAP_WIZARDS_TOWER = InterfaceID.CLUE_BEGINNER_MAP_WIZARDS_TOWER;
+	public static final int SEED_BOX_GROUP_ID = InterfaceID.SEED_BOX;
+	public static final int SEED_VAULT_GROUP_ID = InterfaceID.SEED_VAULT;
+	public static final int EXPLORERS_RING_ALCH_GROUP_ID = InterfaceID.EXPLORERS_RING;
+	public static final int SETTINGS_SIDE_GROUP_ID = InterfaceID.SETTINGS_SIDE;
+	public static final int SETTINGS_GROUP_ID = InterfaceID.SETTINGS;
+	public static final int GWD_KC_GROUP_ID = InterfaceID.GWD_KC;
+	public static final int LMS_GROUP_ID = InterfaceID.LMS;
+	public static final int LMS_INGAME_GROUP_ID = InterfaceID.LMS_INGAME;
+	public static final int ADVENTURE_LOG_ID = InterfaceID.ADVENTURE_LOG;
+	public static final int COLLECTION_LOG_ID = InterfaceID.COLLECTION_LOG;
+	public static final int GENERIC_SCROLL_GROUP_ID = InterfaceID.GENERIC_SCROLL;
+	public static final int GAUNTLET_TIMER_GROUP_ID = InterfaceID.GAUNTLET_TIMER;
+	public static final int HALLOWED_SEPULCHRE_TIMER_GROUP_ID = InterfaceID.HALLOWED_SEPULCHRE_TIMER;
+	public static final int BANK_PIN_GROUP_ID = InterfaceID.BANK_PIN;
+	public static final int HEALTH_OVERLAY_BAR_GROUP_ID = InterfaceID.HEALTH;
+	public static final int CHAMBERS_OF_XERIC_STORAGE_UNIT_PRIVATE_GROUP_ID = InterfaceID.CHAMBERS_OF_XERIC_STORAGE_UNIT_PRIVATE;
+	public static final int CHAMBERS_OF_XERIC_STORAGE_UNIT_SHARED_GROUP_ID = InterfaceID.CHAMBERS_OF_XERIC_STORAGE_UNIT_SHARED;
+	public static final int CHAMBERS_OF_XERIC_STORAGE_UNIT_INVENTORY_GROUP_ID = InterfaceID.CHAMBERS_OF_XERIC_INVENTORY;
+	public static final int DUEL_INVENTORY_GROUP_ID = InterfaceID.DUEL_INVENTORY;
+	public static final int DUEL_INVENTORY_OTHER_GROUP_ID = InterfaceID.DUEL_INVENTORY_OTHER;
+	public static final int TRAILBLAZER_AREAS_GROUP_ID = InterfaceID.TRAILBLAZER_AREAS;
+	public static final int TEMPOROSS_GROUP_ID = InterfaceID.TEMPOROSS;
+	public static final int TEMPOROSS_LOBBY_GROUP_ID = InterfaceID.TEMPOROSS_LOBBY;
+	public static final int CLAN_GROUP_ID = InterfaceID.CLAN;
+	public static final int CLAN_GUEST_GROUP_ID = InterfaceID.CLAN_GUEST;
+	public static final int GRAVESTONE_GROUP_ID = InterfaceID.GRAVESTONE;
+	public static final int POH_TREASURE_CHEST_INVENTORY_GROUP_ID = InterfaceID.POH_TREASURE_CHEST_INV;
+	public static final int GROUP_IRON_GROUP_ID = InterfaceID.GROUP_IRON;
+	public static final int GROUP_STORAGE_INVENTORY_GROUP_ID = InterfaceID.GROUP_STORAGE_INVENTORY;
+	public static final int GROUP_STORAGE_GROUP_ID = InterfaceID.GROUP_STORAGE;
+	public static final int WILDERNESS_LOOT_CHEST = InterfaceID.WILDERNESS_LOOT_CHEST;
+	public static final int TRADE_WINDOW_GROUP_ID = InterfaceID.TRADE;
+	public static final int TOA_REWARD_GROUP_ID = InterfaceID.TOA_REWARD;
+	/**
+	 * toa party interface in the raid lobby
+	 */
+	public static final int TOA_PARTY_GROUP_ID = InterfaceID.TOA_PARTY;
+	/**
+	 * toa raid interface in the raid
+	 */
+	public static final int TOA_RAID_GROUP_ID = InterfaceID.TOA_RAID;
+	public static final int ACHIEVEMENT_DIARY_SCROLL_GROUP_ID = InterfaceID.ACHIEVEMENT_DIARY_SCROLL;
+	public static final int PRAYER_GROUP_ID = InterfaceID.PRAYER;
+	public static final int QUICK_PRAYERS_GROUP_ID = InterfaceID.QUICK_PRAYER;
+	public static final int GOTR_GROUP_ID = InterfaceID.GOTR;
+	public static final int TROUBLE_BREWING_GROUP_ID = InterfaceID.TROUBLE_BREWING;
+	public static final int TROUBLE_BREWING_LOBBY_GROUP_ID = InterfaceID.TROUBLE_BREWING_LOBBY;
+	public static final int MORTTON_TEMPLE_GROUP_ID = InterfaceID.MORTTON_TEMPLE;
+	public static final int BGR_RANK_DRAUGHTS_GROUP_ID = InterfaceID.BGR_RANK_DRAUGHTS;
+	public static final int BGR_RANK_RUNELINK_GROUP_ID = InterfaceID.BGR_RANK_RUNELINK;
+	public static final int BGR_RANK_RUNESQUARES_GROUP_ID = InterfaceID.BGR_RANK_RUNESQUARES;
+	public static final int BGR_RANK_RUNEVERSI_GROUP_ID = InterfaceID.BGR_RANK_RUNEVERSI;
+	public static final int AGILITY_ARENA_HUD_GROUP_ID = InterfaceID.AGILITY_ARENA;
+	public static final int GNOMEBALL_SCORE_GROUP_ID = InterfaceID.GNOMEBALL;
+	public static final int CLANRANK_POPUP = InterfaceID.CLANRANK_POPUP;
+	public static final int SANITY_GROUP_ID = InterfaceID.SANITY;
+	public static final int THE_STRANGLER_INFECTION_GROUP_ID = InterfaceID.STRANGLER;
+
+	public static final int BANK_TUTORIAL_GROUP_ID = InterfaceID.BANK_TUTORIAL;
+
+	/**
+	 * OpenOSRS
+	 */
 	public static final int DIALOG_MINIGAME_GROUP_ID = 229;
 	public static final int PEST_CONTROL_EXCHANGE_WINDOW_GROUP_ID = 243;
 	public static final int GAUNTLET_MAP_GROUP_ID = 638;
@@ -181,40 +219,6 @@ public final class WidgetID
 	public static final int DIALOG_NOTIFICATION_GROUP_ID = 229;
 	public static final int DIALOG_SPRITE2_ID = 11;
 	public static final int MULTISKILL_MENU_GROUP_ID = 270;
-	public static final int TEMPOROSS_GROUP_ID = 437;
-	public static final int TEMPOROSS_LOBBY_GROUP_ID = 687;
-	public static final int CLAN_GROUP_ID = 701;
-	public static final int CLAN_GUEST_GROUP_ID = 702;
-	public static final int GRAVESTONE_GROUP_ID = 672;
-	public static final int POH_TREASURE_CHEST_INVENTORY_GROUP_ID = 674;
-	public static final int GROUP_IRON_GROUP_ID = 726;
-	public static final int GROUP_STORAGE_INVENTORY_GROUP_ID = 725;
-	public static final int GROUP_STORAGE_GROUP_ID = 724;
-	public static final int WILDERNESS_LOOT_CHEST = 742;
-	public static final int TRADE_WINDOW_GROUP_ID = 335;
-	public static final int TOA_REWARD_GROUP_ID = 771;
-	/**
-	 * toa party interface in the raid lobby
-	 */
-	public static final int TOA_PARTY_GROUP_ID = 773;
-	/**
-	 * toa raid interface in the raid
-	 */
-	public static final int TOA_RAID_GROUP_ID = 481;
-	public static final int ACHIEVEMENT_DIARY_SCROLL_GROUP_ID = 741;
-	public static final int GOTR_GROUP_ID = 746;
-	public static final int TROUBLE_BREWING_GROUP_ID = 415;
-	public static final int TROUBLE_BREWING_LOBBY_GROUP_ID = 418;
-	public static final int MORTTON_TEMPLE_GROUP_ID = 171;
-	public static final int BGR_RANK_DRAUGHTS_GROUP_ID = 34;
-	public static final int BGR_RANK_RUNELINK_GROUP_ID = 38;
-	public static final int BGR_RANK_RUNESQUARES_GROUP_ID = 42;
-	public static final int BGR_RANK_RUNEVERSI_GROUP_ID = 46;
-	public static final int AGILITY_ARENA_HUD_GROUP_ID = 5;
-	public static final int GNOMEBALL_SCORE_GROUP_ID = 139;
-	public static final int CLANRANK_POPUP = 289;
-	public static final int SANITY_GROUP_ID = 834;
-	public static final int THE_STRANGLER_INFECTION_GROUP_ID = 836;
 
 	/**
 	 * Tutorial Island player customization
@@ -342,6 +346,16 @@ public final class WidgetID
 		static final int SETTINGS_BUTTON = 113;
 		static final int EQUIPMENT_BUTTON = 114;
 		static final int POPUP = 116;
+	}
+
+	static class BankTutorial
+	{
+		static final int CONTAINER = 8;
+		static final int STEP_TEXT = 27;
+		static final int STEP_PROGRESS_TEXT = 28;
+		static final int CLOSE_BUTTON_CONTAINER = 29;
+		static final int PREVIOUS_BUTTON = 31;
+		static final int CONTINUE_BUTTON = 32;
 	}
 
 	static class GroupStorage
@@ -487,6 +501,9 @@ public final class WidgetID
 	static class LoginClickToPlayScreen
 	{
 		static final int MESSAGE_OF_THE_DAY = 6;
+		static final int OPEN_STORE_BUTTON = 62;
+		static final int VIEW_INBOX_BUTTON = 67;
+		static final int CLICK_HERE_TO_PLAY_BUTTON = 72;
 	}
 
 	static class FixedViewport

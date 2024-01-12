@@ -1,11 +1,14 @@
 package net.unethicalite.mixins;
 
+import java.awt.Shape;
 import net.unethicalite.api.events.MenuAutomated;
 import net.unethicalite.api.util.Randomizer;
 import net.unethicalite.api.util.Text;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
+import net.runelite.api.Perspective;
 import net.runelite.api.Point;
+import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -98,7 +101,16 @@ public abstract class HTileItemMixin implements RSTileItem
 	@Inject
 	public Point getClickPoint()
 	{
-		return Randomizer.getRandomPointIn(getCachedBounds());
+		LocalPoint localPoint = this.getLocalLocation();
+		if (localPoint == null)
+		{
+			return null;
+		}
+
+		Shape convexHull = this.getModel().getConvexHull(localPoint.getX(), localPoint.getY(), 0,
+			Perspective.getTileHeight(client, localPoint, this.getWorldLocation().getPlane()));
+
+		return convexHull != null ? Randomizer.getRandomPointIn(convexHull.getBounds()) : null;
 	}
 
 	@Inject

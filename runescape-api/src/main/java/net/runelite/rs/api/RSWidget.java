@@ -563,6 +563,10 @@ public interface RSWidget extends Widget
 	@Override
 	void setOnDragListener(Object[] o);
 
+	@Import("onScroll")
+	@Override
+	void setOnScrollWheelListener(Object[] o);
+
 	@Import("parent")
 	@Override
 	RSWidget getDragParent();

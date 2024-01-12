@@ -1,25 +1,22 @@
 import java.util.Comparator;
+import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
+@ObfuscatedName("er")
 @Implements("UserComparator4")
 public class UserComparator4 implements Comparator {
-	@ObfuscatedName("av")
+	@ObfuscatedName("wk")
+	static List field1444;
+	@ObfuscatedName("tg")
 	@ObfuscatedSignature(
-		descriptor = "Lbh;"
+		descriptor = "Lgt;"
 	)
-	@Export("soundSystem")
-	public static SoundSystem soundSystem;
-	@ObfuscatedName("ka")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	@Export("headIconPkSprites")
-	static SpritePixels[] headIconPkSprites;
-	@ObfuscatedName("ac")
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
+	@ObfuscatedName("am")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -27,10 +24,10 @@ public class UserComparator4 implements Comparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;B)I",
-		garbageValue = "2"
+		descriptor = "(Lrj;Lrj;I)I",
+		garbageValue = "1758449550"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(Buddy var1, Buddy var2) {

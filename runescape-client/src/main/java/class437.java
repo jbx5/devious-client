@@ -1,56 +1,31 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qp")
-class class437 implements Comparator {
-	// $FF: synthetic field
+@ObfuscatedName("qu")
+public class class437 {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
+		descriptor = "Lqu;"
 	)
-	final class438 this$0;
+	public static final class437 field4677;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
+	)
+	static final class437 field4678;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 1785336519
+	)
+	final int field4679;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lqe;)V"
-	)
-	class437(class438 var1) {
-		this.this$0 = var1;
+	static {
+		field4677 = new class437(1);
+		field4678 = new class437(0);
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lqd;Lqd;I)I",
-		garbageValue = "-199204638"
-	)
-	int method7918(class439 var1, class439 var2) {
-		if (var1.field4665 > var2.field4665) {
-			return 1;
-		} else {
-			return var1.field4665 < var2.field4665 ? -1 : 0;
-		}
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.method7918((class439)var1, (class439)var2);
-	}
-
-	@ObfuscatedName("im")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1139961954"
-	)
-	static void method7924(int var0, int var1) {
-		if (class91.clientPreferences.method2515() != 0 && var0 != -1) {
-			ArrayList var2 = new ArrayList();
-			var2.add(new MusicSong(Language.field4435, var0, 0, class91.clientPreferences.method2515(), false));
-			class148.method3166(var2, 0, 0, 0, 0, true);
-			Client.playingJingle = true;
-		}
-
+	class437(int var1) {
+		this.field4679 = var1;
 	}
 }

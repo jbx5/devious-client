@@ -2,41 +2,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("il")
+@ObfuscatedName("id")
 public class class225 extends Node {
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1134317675
+		intValue = -808397243
 	)
-	public static int field2372;
-	@ObfuscatedName("ak")
+	public int field2389;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -460144073
+		intValue = -948131763
 	)
-	public int field2370;
-	@ObfuscatedName("ax")
+	public int field2390;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1904868967
+		intValue = 913758287
 	)
-	public int field2367;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 499820097
-	)
-	public int field2368;
-	@ObfuscatedName("ah")
+	public int field2388;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lnm;"
+		descriptor = "Lnn;"
 	)
-	public Widget field2365;
+	public Widget field2391;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIILnm;)V"
+		descriptor = "(IIILnn;)V"
 	)
 	public class225(int var1, int var2, int var3, Widget var4) {
-		this.field2368 = var1;
-		this.field2370 = var2;
-		this.field2367 = var3;
-		this.field2365 = var4;
+		this.field2388 = var1;
+		this.field2389 = var2;
+		this.field2390 = var3;
+		this.field2391 = var4;
 	}
 }

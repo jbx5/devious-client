@@ -159,7 +159,7 @@ public enum MenuAction
 	 */
 	WIDGET_TYPE_5(29),
 	/**
-	 * Performs a Continue
+	 * Performs a continue
 	 */
 	WIDGET_CONTINUE(30),
 	/**

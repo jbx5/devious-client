@@ -3,104 +3,70 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fp")
-public class class153 extends class161 {
-	@ObfuscatedName("cy")
+@ObfuscatedName("fz")
+public class class153 extends class143 {
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -149781849
+		intValue = 1370249681
 	)
-	static int field1693;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 679928023
-	)
-	int field1692;
+	int field1689;
+	@ObfuscatedName("ap")
+	String field1688;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgf;"
+		descriptor = "Lfm;"
 	)
-	final class162 this$0;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgf;)V"
+		descriptor = "(Lfm;)V"
 	)
-	class153(class162 var1) {
+	class153(class146 var1) {
 		this.this$0 = var1;
-		this.field1692 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;B)V",
-		garbageValue = "0"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-411371469"
 	)
-	void vmethod3405(Buffer var1) {
-		this.field1692 = var1.readUnsignedShort();
-		var1.readUnsignedByte();
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
+	void vmethod3531(Buffer var1) {
+		this.field1689 = var1.readInt();
+		this.field1688 = var1.readStringCp1252NullTerminated();
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;I)V",
+		garbageValue = "1048713263"
+	)
+	void vmethod3529(ClanSettings var1) {
+		var1.method3355(this.field1689, this.field1688);
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "-116"
+	)
+	@Export("changeWorldSelectSorting")
+	static void changeWorldSelectSorting(int var0, int var1) {
+		int[] var2 = new int[4];
+		int[] var3 = new int[4];
+		var2[0] = var0;
+		var3[0] = var1;
+		int var4 = 1;
+
+		for (int var5 = 0; var5 < 4; ++var5) {
+			if (World.World_sortOption1[var5] != var0) {
+				var2[var4] = World.World_sortOption1[var5];
+				var3[var4] = World.World_sortOption2[var5];
+				++var4;
+			}
 		}
 
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgb;B)V",
-		garbageValue = "0"
-	)
-	void vmethod3411(ClanChannel var1) {
-		var1.removeMember(this.field1692);
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIB)I",
-		garbageValue = "125"
-	)
-	public static int method3220(int var0, int var1, int var2, int var3, int var4, int var5) {
-		if ((var5 & 1) == 1) {
-			int var6 = var3;
-			var3 = var4;
-			var4 = var6;
-		}
-
-		var2 &= 3;
-		if (var2 == 0) {
-			return var0;
-		} else if (var2 == 1) {
-			return var1;
-		} else {
-			return var2 == 2 ? 7 - var0 - (var3 - 1) : 7 - var1 - (var4 - 1);
-		}
-	}
-
-	@ObfuscatedName("gr")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ltu;",
-		garbageValue = "-496192767"
-	)
-	@Export("getWorldMap")
-	static WorldMap getWorldMap() {
-		return class434.worldMap;
-	}
-
-	@ObfuscatedName("iz")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "107"
-	)
-	static final int method3210(int var0) {
-		return Math.min(Math.max(var0, 128), 383);
-	}
-
-	@ObfuscatedName("lc")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-		garbageValue = "1948900436"
-	)
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		class208.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false);
+		World.World_sortOption1 = var2;
+		World.World_sortOption2 = var3;
+		ModeWhere.sortWorlds(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
 	}
 }

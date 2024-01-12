@@ -1,72 +1,79 @@
-import java.util.LinkedList;
-import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dx")
+@ObfuscatedName("dc")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -867396279
+		intValue = -2058281919
+	)
+	static int field998;
+	@ObfuscatedName("fp")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static Archive field994;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1230540715
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1462065423
+		intValue = -1584482637
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 121923965
+		intValue = -60332413
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1938885073
+		intValue = 1063921529
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -668170179
+		intValue = -110217485
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1601039867
+		intValue = -1921192251
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lif;"
+		descriptor = "Lhl;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 2038787913
+		intValue = 60061939
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1593490755
+		intValue = -543320113
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLjy;)V"
+		descriptor = "(IIIIIIIZLkp;)V"
 	)
 	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
 		this.id = var1;
@@ -76,12 +83,12 @@ public class DynamicObject extends Renderable {
 		this.x = var5;
 		this.y = var6;
 		if (var7 != -1) {
-			this.sequenceDefinition = class36.SequenceDefinition_get(var7);
+			this.sequenceDefinition = HttpMethod.SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2340 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.restartMode == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
-				if (this.sequenceDefinition == var10.sequenceDefinition) {
+				if (var10.sequenceDefinition == this.sequenceDefinition) {
 					this.frame = var10.frame;
 					this.cycleStart = var10.cycleStart;
 					return;
@@ -93,17 +100,17 @@ public class DynamicObject extends Renderable {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4177());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4106());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljn;",
-		garbageValue = "0"
+		descriptor = "(I)Lko;",
+		garbageValue = "-714420560"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -115,7 +122,7 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (this.sequenceDefinition.isCachedModelIdSet()) {
-				var2 = this.sequenceDefinition.method4177();
+				var2 = this.sequenceDefinition.method4106();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -146,7 +153,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = class91.getObjectDefinition(this.id);
+		ObjectComposition var12 = class137.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -168,211 +175,107 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = Tiles.Tiles_heights[this.plane];
-			int var9 = var8[var5][var7] + var8[var5][var6] + var8[var4][var6] + var8[var4][var7] >> 2;
+			int var9 = var8[var4][var7] + var8[var5][var6] + var8[var4][var6] + var8[var5][var7] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 
-	@ObfuscatedName("ce")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "-1342712165"
+		descriptor = "(Low;I)V",
+		garbageValue = "410657655"
 	)
-	static int method2218(int var0, Script var1, boolean var2) {
+	public static void method2255(AbstractArchive var0) {
+		VarpDefinition.VarpDefinition_archive = var0;
+		AbstractByteArrayCopier.field3856 = VarpDefinition.VarpDefinition_archive.getGroupFileCount(16);
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZIB)J",
+		garbageValue = "36"
+	)
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
+		if (var3) {
+			var5 |= 65536L;
+		}
+
+		return var5;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "([BB)V",
+		garbageValue = "2"
+	)
+	@Export("SpriteBuffer_decode")
+	static void SpriteBuffer_decode(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		var1.offset = var0.length - 2;
+		SpriteBufferProperties.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_xOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class388.SpriteBuffer_yOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		FriendsList.SpriteBuffer_spriteWidths = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		GrandExchangeOfferOwnWorldComparator.SpriteBuffer_spriteHeights = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class230.SpriteBuffer_pixels = new byte[SpriteBufferProperties.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8;
+		SpriteBufferProperties.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
+		int var2 = (var1.readUnsignedByte() & 255) + 1;
+
 		int var3;
-		Object var4;
-		int var5;
-		DbTable var6;
-		int var7;
-		if (var0 != ScriptOpcodes.DB_FIND_WITH_COUNT && var0 != ScriptOpcodes.DB_FIND) {
-			if (var0 != ScriptOpcodes.DB_FINDNEXT) {
-				int var19;
-				int var20;
-				if (var0 == ScriptOpcodes.DB_GETFIELD) {
-					Interpreter.Interpreter_intStackSize -= 3;
-					var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-					var19 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-					var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-					var20 = AbstractArchive.method6972(var19);
-					var7 = VarbitComposition.method3896(var19);
-					int var21 = HealthBar.method2619(var19);
-					DbRowType var26 = class180.getDbRowType(var3);
-					DbTableType var27 = class309.getDbTableType(var20);
-					int[] var28 = var27.types[var7];
-					int var12 = 0;
-					int var13 = var28.length;
-					if (var21 >= 0) {
-						if (var21 >= var13) {
-							throw new RuntimeException("Tuple index out-of-bounds. Requested: " + var21 + ", Max: " + var13);
-						}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+		}
 
-						var12 = var21;
-						var13 = var21 + 1;
-					}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			class388.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		}
 
-					Object[] var14 = var26.getColumnType(var7);
-					if (var14 == null && var27.defaultValues != null) {
-						var14 = var27.defaultValues[var7];
-					}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			FriendsList.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		}
 
-					int var15;
-					int var16;
-					if (var14 == null) {
-						for (var15 = var12; var15 < var13; ++var15) {
-							var16 = var28[var15];
-							class517 var22 = Tile.method4516(var16);
-							if (var22 == class517.field5065) {
-								Interpreter.Interpreter_stringStack[++class180.Interpreter_stringStackSize - 1] = "";
-							} else {
-								Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class360.method6801(var16);
-							}
-						}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			GrandExchangeOfferOwnWorldComparator.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+		}
 
-						return 1;
-					} else {
-						var15 = var14.length / var28.length;
-						if (var5 >= 0 && var5 < var15) {
-							for (var16 = var12; var16 < var13; ++var16) {
-								int var17 = var16 + var28.length * var5;
-								class517 var18 = Tile.method4516(var28[var16]);
-								if (var18 == class517.field5065) {
-									Interpreter.Interpreter_stringStack[++class180.Interpreter_stringStackSize - 1] = (String)var14[var17];
-								} else {
-									Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (Integer)var14[var17];
-								}
-							}
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		SecureUrlRequester.SpriteBuffer_spritePalette = new int[var2];
 
-							return 1;
-						} else {
-							throw new RuntimeException();
-						}
-					}
-				} else if (var0 == ScriptOpcodes.DB_GETFIELDCOUNT) {
-					Interpreter.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-					var19 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-					var5 = 0;
-					var20 = AbstractArchive.method6972(var19);
-					var7 = VarbitComposition.method3896(var19);
-					DbRowType var25 = class180.getDbRowType(var3);
-					DbTableType var9 = class309.getDbTableType(var20);
-					int[] var10 = var9.types[var7];
-					Object[] var11 = var25.getColumnType(var7);
-					if (var11 == null && var9.defaultValues != null) {
-						var11 = var9.defaultValues[var7];
-					}
-
-					if (var11 != null) {
-						var5 = var11.length / var10.length;
-					}
-
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var5;
-					return 1;
-				} else if (var0 != ScriptOpcodes.DB_FINDALL_WITH_COUNT && var0 != ScriptOpcodes.DB_FIND_FILTER) {
-					if (var0 == ScriptOpcodes.DB_GETROWTABLE) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						DbRowType var24 = class180.getDbRowType(var3);
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var24.tableId;
-						return 1;
-					} else if (var0 == ScriptOpcodes.DB_GETROW) {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var19 = -1;
-						if (class130.field1529 != null && var3 >= 0 && var3 < class130.field1529.size()) {
-							var19 = (Integer)class130.field1529.get(var3);
-						}
-
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var19;
-						return 1;
-					} else if (var0 != ScriptOpcodes.DB_FIND_FILTER_WITH_COUNT && var0 != ScriptOpcodes.DB_FINDALL) {
-						return 2;
-					} else {
-						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var4 = GrandExchangeOfferOwnWorldComparator.method1241(var3);
-						var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						var6 = SoundCache.getDbTable(var5);
-						if (var6 == null) {
-							throw new RuntimeException();
-						} else if (AbstractArchive.method6972(var5) != Client.field587) {
-							throw new RuntimeException();
-						} else if (class130.field1529 == null && class130.field1529.isEmpty()) {
-							throw new RuntimeException();
-						} else {
-							var7 = HealthBar.method2619(var5);
-							List var8 = var6.method9089(var4, var7);
-							class130.field1529 = new LinkedList(class130.field1529);
-							if (var8 != null) {
-								class130.field1529.retainAll(var8);
-							} else {
-								class130.field1529.clear();
-							}
-
-							class481.field4836 = class130.field1529.iterator();
-							if (var0 == ScriptOpcodes.DB_FIND_FILTER_WITH_COUNT) {
-								Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class130.field1529.size();
-							}
-
-							return 1;
-						}
-					}
-				} else {
-					--Interpreter.Interpreter_intStackSize;
-					var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-					DbTable var23 = class223.method4212(var3);
-					if (var23 == null) {
-						throw new RuntimeException();
-					} else {
-						class130.field1529 = var23.method9089(0, 0);
-						var5 = 0;
-						if (class130.field1529 != null) {
-							Client.field587 = var3;
-							class481.field4836 = class130.field1529.iterator();
-							var5 = class130.field1529.size();
-						}
-
-						if (var0 == ScriptOpcodes.DB_FINDALL_WITH_COUNT) {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var5;
-						}
-
-						return 1;
-					}
-				}
-			} else {
-				if (class481.field4836 != null && class481.field4836.hasNext()) {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = (Integer)class481.field4836.next();
-				} else {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = -1;
-				}
-
-				return 1;
-			}
-		} else {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			var4 = GrandExchangeOfferOwnWorldComparator.method1241(var3);
-			var5 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			var6 = SoundCache.getDbTable(var5);
-			if (var6 == null) {
-				throw new RuntimeException();
-			} else {
-				var7 = HealthBar.method2619(var5);
-				class130.field1529 = var6.method9089(var4, var7);
-				if (class130.field1529 != null) {
-					Client.field587 = AbstractArchive.method6972(var5);
-					class481.field4836 = class130.field1529.iterator();
-					if (var0 == ScriptOpcodes.DB_FIND_WITH_COUNT) {
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class130.field1529.size();
-					}
-				} else {
-					Client.field587 = -1;
-					class481.field4836 = null;
-					if (var0 == ScriptOpcodes.DB_FIND_WITH_COUNT) {
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-					}
-				}
-
-				return 1;
+		for (var3 = 1; var3 < var2; ++var3) {
+			SecureUrlRequester.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (SecureUrlRequester.SpriteBuffer_spritePalette[var3] == 0) {
+				SecureUrlRequester.SpriteBuffer_spritePalette[var3] = 1;
 			}
 		}
+
+		var1.offset = 0;
+
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = FriendsList.SpriteBuffer_spriteWidths[var3];
+			int var5 = GrandExchangeOfferOwnWorldComparator.SpriteBuffer_spriteHeights[var3];
+			int var6 = var5 * var4;
+			byte[] var7 = new byte[var6];
+			class230.SpriteBuffer_pixels[var3] = var7;
+			int var8 = var1.readUnsignedByte();
+			int var9;
+			if (var8 == 0) {
+				for (var9 = 0; var9 < var6; ++var9) {
+					var7[var9] = var1.readByte();
+				}
+			} else if (var8 == 1) {
+				for (var9 = 0; var9 < var4; ++var9) {
+					for (int var10 = 0; var10 < var5; ++var10) {
+						var7[var9 + var4 * var10] = var1.readByte();
+					}
+				}
+			}
+		}
+
 	}
 }

@@ -1,30 +1,40 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("th")
-public abstract class class494 extends class495 {
-	class494(int var1, int var2) {
-		super(var1, var2);
+@ObfuscatedName("tn")
+public class class494 extends class496 {
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -153303191
+	)
+	public static int field4948;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1828757051
+	)
+	int field4946;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -1050402841
+	)
+	int field4945;
+
+	public class494(int var1, int var2, int var3, int var4) {
+		super(var3, var4);
+		this.field4946 = 0;
+		this.field4945 = 0;
+		this.field4946 = var1;
+		this.field4945 = var2;
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-437522182"
-	)
-	public abstract int vmethod8614();
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1670157872"
-	)
-	public abstract int vmethod8622();
-
-	@ObfuscatedName("ak")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "54"
+		garbageValue = "18"
 	)
-	public abstract int vmethod8618();
+	public int method8812() {
+		double var1 = this.method8828();
+		return (int)Math.round(var1 * (double)(this.field4945 - this.field4946) + (double)this.field4946);
+	}
 }

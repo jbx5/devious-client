@@ -4,33 +4,33 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tm")
+@ObfuscatedName("tj")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Ltp;"
+		descriptor = "Ltb;"
 	)
 	@Export("hashTable")
 	IterableNodeHashTable hashTable;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lsj;"
+		descriptor = "Lse;"
 	)
 	@Export("head")
 	Node head;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@Export("index")
 	int index;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lsj;"
+		descriptor = "Lse;"
 	)
 	@Export("last")
 	Node last;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ltp;)V"
+		descriptor = "(Ltb;)V"
 	)
 	public IterableNodeHashTableIterator(IterableNodeHashTable var1) {
 		this.last = null;
@@ -38,7 +38,7 @@ public class IterableNodeHashTableIterator implements Iterator {
 		this.start();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@Export("start")
 	void start() {
 		this.head = this.hashTable.buckets[0].previous;
@@ -46,11 +46,11 @@ public class IterableNodeHashTableIterator implements Iterator {
 		this.last = null;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "()Lsj;"
+		descriptor = "()Lse;"
 	)
-	public Node method8861() {
+	public Node method9062() {
 		this.start();
 		return (Node)this.next();
 	}
@@ -77,6 +77,11 @@ public class IterableNodeHashTableIterator implements Iterator {
 		}
 	}
 
+	public void remove() {
+		this.last.remove();
+		this.last = null;
+	}
+
 	public boolean hasNext() {
 		if (this.hashTable.buckets[this.index - 1] != this.head) {
 			return true;
@@ -91,15 +96,6 @@ public class IterableNodeHashTableIterator implements Iterator {
 			}
 
 			return false;
-		}
-	}
-
-	public void remove() {
-		if (this.last == null) {
-			throw new IllegalStateException();
-		} else {
-			this.last.remove();
-			this.last = null;
 		}
 	}
 }

@@ -25,6 +25,8 @@
 package net.runelite.api;
 
 import com.jagex.oldscape.pub.OAuthApi;
+import net.runelite.api.annotations.Component;
+import net.runelite.api.annotations.Interface;
 import net.runelite.api.annotations.VarCInt;
 import net.runelite.api.annotations.VarCStr;
 import net.runelite.api.annotations.Varbit;
@@ -246,6 +248,13 @@ public interface Client extends OAuthApi, GameEngine
 	 * @param otp one time password
 	 */
 	void setOtp(String otp);
+
+	/**
+	 * Sets whether to use authenticator token or normal password scheme, login by setting game state to 20 {@link GameState#LOGGING_IN}
+	 *
+	 * @param otp
+	 */
+	void login(boolean otp);
 
 	/**
 	 * Gets currently selected login field. 0 is username, and 1 is password.
@@ -625,26 +634,21 @@ public interface Client extends OAuthApi, GameEngine
 
 	/**
 	 * Gets a widget by its raw group ID and child ID.
-	 * <p>
-	 * Note: Use {@link #getWidget(WidgetInfo)} for a more human-readable
-	 * version of this method.
 	 *
 	 * @param groupId the group ID
 	 * @param childId the child widget ID
 	 * @return the widget corresponding to the group and child pair
 	 */
 	@Nullable
-	Widget getWidget(int groupId, int childId);
+	Widget getWidget(@Interface int groupId, int childId);
 
 	/**
-	 * Gets a widget by it's packed ID.
+	 * Gets a widget by its component id.
 	 *
-	 * <p>
-	 * Note: Use {@link #getWidget(WidgetInfo)} or {@link #getWidget(int, int)} for
-	 * a more readable version of this method.
+	 * @param componentId the component id
 	 */
 	@Nullable
-	Widget getWidget(int packedID);
+	Widget getWidget(@Component int componentId);
 
 	/**
 	 * Gets an array containing the x-axis canvas positions
@@ -2113,6 +2117,11 @@ public interface Client extends OAuthApi, GameEngine
 	NodeCache getObjectCompositionCache();
 
 	/**
+	 * Returns the client {@link Animation} cache
+	 */
+	NodeCache getAnimationCache();
+
+	/**
 	 * Returns the array of cross sprites that appear and animate when left-clicking
 	 */
 	SpritePixels[] getCrossSprites();
@@ -2504,6 +2513,8 @@ public interface Client extends OAuthApi, GameEngine
 
 	void posToCameraAngle(int var0, int var1);
 
+	Rasterizer getRasterizer();
+
 	/*
 	 * Unethical
 	 */
@@ -2679,4 +2690,13 @@ public interface Client extends OAuthApi, GameEngine
 
 	void setWorldList(World[] worlds);
 
+	String getSessionId();
+
+	void setSessionId(String sessionId);
+
+	String getCharacterId();
+
+	void setCharacterId(String characterId);
+
+	LoginState getLoginState();
 }

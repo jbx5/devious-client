@@ -3,19 +3,25 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dk")
+@ObfuscatedName("da")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Ltf;"
+		descriptor = "Lts;"
 	)
 	@Export("itemContainers")
 	static NodeHashTable itemContainers;
-	@ObfuscatedName("al")
+	@ObfuscatedName("me")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	@Export("textureProvider")
+	static TextureProvider textureProvider;
+	@ObfuscatedName("ap")
 	@Export("ids")
 	int[] ids;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@Export("quantities")
 	int[] quantities;
 
@@ -28,23 +34,51 @@ public class ItemContainer extends Node {
 		this.quantities = new int[]{0};
 	}
 
-	@ObfuscatedName("cg")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Ltr;I)Ljava/lang/Object;",
-		garbageValue = "1234966456"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "-37"
 	)
-	static Object method2290(class517 var0) {
-		if (var0 == null) {
-			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
-		} else {
-			switch(var0.field5068) {
-			case 0:
-				return Interpreter.Interpreter_stringStack[--class180.Interpreter_stringStackSize];
-			case 2:
-				return Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			default:
-				throw new IllegalStateException("popValueOfType() failure - unsupported type");
-			}
+	@Export("addChatMessage")
+	static void addChatMessage(int var0, String var1, String var2, String var3) {
+		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
+		if (var4 == null) {
+			var4 = new ChatChannel();
+			Messages.Messages_channels.put(var0, var4);
 		}
+
+		Message var5 = var4.addMessage(var0, var1, var2, var3);
+		Messages.Messages_hashTable.put(var5, (long)var5.count);
+		Messages.Messages_queue.add(var5);
+		Client.chatCycle = Client.cycleCntr;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-23"
+	)
+	public static int method2347(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-335792914"
+	)
+	static void method2350() {
+		if (class281.loadWorlds()) {
+			Login.worldSelectOpen = true;
+			Login.worldSelectPage = 0;
+			Login.worldSelectPagesCount = 0;
+		}
+
 	}
 }

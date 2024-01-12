@@ -6,47 +6,52 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mq")
+@ObfuscatedName("mc")
 @Implements("MusicPatch")
 public class MusicPatch extends Node {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("gw")
 	@ObfuscatedGetter(
-		intValue = -534708063
+		intValue = 1400957831
 	)
-	int field3500;
-	@ObfuscatedName("ak")
+	static int field3532;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1817162027
+	)
+	int field3531;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "[Lcu;"
+		descriptor = "[Lcb;"
 	)
 	@Export("rawSounds")
 	class53[] rawSounds;
-	@ObfuscatedName("ax")
-	short[] field3498;
-	@ObfuscatedName("ao")
-	byte[] field3499;
-	@ObfuscatedName("ah")
-	byte[] field3502;
+	@ObfuscatedName("aj")
+	short[] field3522;
+	@ObfuscatedName("aq")
+	byte[] field3524;
 	@ObfuscatedName("ar")
+	byte[] field3525;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "[Lmx;"
 	)
-	MusicPatchNode2[] field3501;
-	@ObfuscatedName("ab")
-	byte[] field3495;
-	@ObfuscatedName("am")
-	ArrayList field3503;
-	@ObfuscatedName("av")
-	int[] field3504;
+	MusicPatchNode2[] field3526;
+	@ObfuscatedName("ao")
+	byte[] field3523;
+	@ObfuscatedName("ae")
+	ArrayList field3528;
+	@ObfuscatedName("aa")
+	int[] field3529;
 
 	MusicPatch(byte[] var1) {
-		this.field3503 = new ArrayList(8);
+		this.field3528 = new ArrayList(8);
 		this.rawSounds = new class53[128];
-		this.field3498 = new short[128];
-		this.field3499 = new byte[128];
-		this.field3502 = new byte[128];
-		this.field3501 = new MusicPatchNode2[128];
-		this.field3495 = new byte[128];
-		this.field3504 = new int[128];
+		this.field3522 = new short[128];
+		this.field3524 = new byte[128];
+		this.field3525 = new byte[128];
+		this.field3526 = new MusicPatchNode2[128];
+		this.field3523 = new byte[128];
+		this.field3529 = new int[128];
 		Buffer var2 = new Buffer(var1);
 
 		int var3;
@@ -126,13 +131,13 @@ public class MusicPatch extends Node {
 			var15 = var37[var14] = new MusicPatchNode2();
 			int var40 = var2.readUnsignedByte();
 			if (var40 > 0) {
-				var15.field3420 = new byte[var40 * 2];
+				var15.field3446 = new byte[var40 * 2];
 			}
 
 			var40 = var2.readUnsignedByte();
 			if (var40 > 0) {
-				var15.field3418 = new byte[var40 * 2 + 2];
-				var15.field3418[1] = 64;
+				var15.field3445 = new byte[var40 * 2 + 2];
+				var15.field3445[1] = 64;
 			}
 		}
 
@@ -159,7 +164,7 @@ public class MusicPatch extends Node {
 		int var20;
 		for (var20 = 0; var20 < 128; ++var20) {
 			var19 += var2.readUnsignedByte();
-			this.field3498[var20] = (short)var19;
+			this.field3522[var20] = (short)var19;
 		}
 
 		var19 = 0;
@@ -167,7 +172,7 @@ public class MusicPatch extends Node {
 		short[] var48;
 		for (var20 = 0; var20 < 128; ++var20) {
 			var19 += var2.readUnsignedByte();
-			var48 = this.field3498;
+			var48 = this.field3522;
 			var48[var20] = (short)(var48[var20] + (var19 << 8));
 		}
 
@@ -187,9 +192,9 @@ public class MusicPatch extends Node {
 				var22 = var2.readVarInt();
 			}
 
-			var48 = this.field3498;
+			var48 = this.field3522;
 			var48[var23] = (short)(var48[var23] + ((var22 - 1 & 2) << 14));
-			this.field3504[var23] = var22;
+			this.field3529[var23] = var22;
 			--var20;
 		}
 
@@ -199,7 +204,7 @@ public class MusicPatch extends Node {
 
 		int var24;
 		for (var24 = 0; var24 < 128; ++var24) {
-			if (this.field3504[var24] != 0) {
+			if (this.field3529[var24] != 0) {
 				if (var20 == 0) {
 					if (var21 < var4.length) {
 						var20 = var4[var21++];
@@ -210,7 +215,7 @@ public class MusicPatch extends Node {
 					var23 = var2.array[var5++] - 1;
 				}
 
-				this.field3495[var24] = (byte)var23;
+				this.field3523[var24] = (byte)var23;
 				--var20;
 			}
 		}
@@ -220,7 +225,7 @@ public class MusicPatch extends Node {
 		var24 = 0;
 
 		for (int var25 = 0; var25 < 128; ++var25) {
-			if (this.field3504[var25] != 0) {
+			if (this.field3529[var25] != 0) {
 				if (var20 == 0) {
 					if (var21 < var7.length) {
 						var20 = var7[var21++];
@@ -231,7 +236,7 @@ public class MusicPatch extends Node {
 					var24 = var2.array[var8++] + 16 << 2;
 				}
 
-				this.field3502[var25] = (byte)var24;
+				this.field3525[var25] = (byte)var24;
 				--var20;
 			}
 		}
@@ -242,7 +247,7 @@ public class MusicPatch extends Node {
 
 		int var26;
 		for (var26 = 0; var26 < 128; ++var26) {
-			if (this.field3504[var26] != 0) {
+			if (this.field3529[var26] != 0) {
 				if (var20 == 0) {
 					var38 = var37[var36[var21]];
 					if (var21 < var10.length) {
@@ -252,7 +257,7 @@ public class MusicPatch extends Node {
 					}
 				}
 
-				this.field3501[var26] = var38;
+				this.field3526[var26] = var38;
 				--var20;
 			}
 		}
@@ -270,30 +275,30 @@ public class MusicPatch extends Node {
 					var20 = -1;
 				}
 
-				if (this.field3504[var27] > 0) {
+				if (this.field3529[var27] > 0) {
 					var26 = var2.readUnsignedByte() + 1;
 				}
 			}
 
-			this.field3499[var27] = (byte)var26;
+			this.field3524[var27] = (byte)var26;
 			--var20;
 		}
 
-		this.field3500 = var2.readUnsignedByte() + 1;
+		this.field3531 = var2.readUnsignedByte() + 1;
 
 		int var29;
 		MusicPatchNode2 var39;
 		for (var27 = 0; var27 < var12; ++var27) {
 			var39 = var37[var27];
-			if (var39.field3420 != null) {
-				for (var29 = 1; var29 < var39.field3420.length; var29 += 2) {
-					var39.field3420[var29] = var2.readByte();
+			if (var39.field3446 != null) {
+				for (var29 = 1; var29 < var39.field3446.length; var29 += 2) {
+					var39.field3446[var29] = var2.readByte();
 				}
 			}
 
-			if (var39.field3418 != null) {
-				for (var29 = 3; var29 < var39.field3418.length - 2; var29 += 2) {
-					var39.field3418[var29] = var2.readByte();
+			if (var39.field3445 != null) {
+				for (var29 = 3; var29 < var39.field3445.length - 2; var29 += 2) {
+					var39.field3445[var29] = var2.readByte();
 				}
 			}
 		}
@@ -312,24 +317,24 @@ public class MusicPatch extends Node {
 
 		for (var27 = 0; var27 < var12; ++var27) {
 			var39 = var37[var27];
-			if (var39.field3418 != null) {
+			if (var39.field3445 != null) {
 				var19 = 0;
 
-				for (var29 = 2; var29 < var39.field3418.length; var29 += 2) {
-					var19 = var19 + 1 + var2.readUnsignedByte();
-					var39.field3418[var29] = (byte)var19;
+				for (var29 = 2; var29 < var39.field3445.length; var29 += 2) {
+					var19 = 1 + var19 + var2.readUnsignedByte();
+					var39.field3445[var29] = (byte)var19;
 				}
 			}
 		}
 
 		for (var27 = 0; var27 < var12; ++var27) {
 			var39 = var37[var27];
-			if (var39.field3420 != null) {
+			if (var39.field3446 != null) {
 				var19 = 0;
 
-				for (var29 = 2; var29 < var39.field3420.length; var29 += 2) {
+				for (var29 = 2; var29 < var39.field3446.length; var29 += 2) {
 					var19 = 1 + var19 + var2.readUnsignedByte();
-					var39.field3420[var29] = (byte)var19;
+					var39.field3446[var29] = (byte)var19;
 				}
 			}
 		}
@@ -353,7 +358,7 @@ public class MusicPatch extends Node {
 			byte var28 = var42[1];
 
 			for (var29 = 0; var29 < var47; ++var29) {
-				this.field3499[var29] = (byte)(var28 * this.field3499[var29] + 32 >> 6);
+				this.field3524[var29] = (byte)(var28 * this.field3524[var29] + 32 >> 6);
 			}
 
 			for (var29 = 2; var29 < var42.length; var29 += 2) {
@@ -362,8 +367,8 @@ public class MusicPatch extends Node {
 				var32 = var28 * (var30 - var47) + (var30 - var47) / 2;
 
 				for (var33 = var47; var33 < var30; ++var33) {
-					var34 = VarcInt.method3679(var32, var30 - var47);
-					this.field3499[var33] = (byte)(var34 * this.field3499[var33] + 32 >> 6);
+					var34 = class142.method3221(var32, var30 - var47);
+					this.field3524[var33] = (byte)(var34 * this.field3524[var33] + 32 >> 6);
 					var32 += var31 - var28;
 				}
 
@@ -372,7 +377,7 @@ public class MusicPatch extends Node {
 			}
 
 			for (var45 = var47; var45 < 128; ++var45) {
-				this.field3499[var45] = (byte)(var28 * this.field3499[var45] + 32 >> 6);
+				this.field3524[var45] = (byte)(var28 * this.field3524[var45] + 32 >> 6);
 			}
 
 			var15 = null;
@@ -383,7 +388,7 @@ public class MusicPatch extends Node {
 			var16[0] = (byte)var19;
 
 			for (var27 = 2; var27 < var16.length; var27 += 2) {
-				var19 = 1 + var19 + var2.readUnsignedByte();
+				var19 = var19 + 1 + var2.readUnsignedByte();
 				var16[var27] = (byte)var19;
 			}
 
@@ -391,7 +396,7 @@ public class MusicPatch extends Node {
 			int var44 = var16[1] << 1;
 
 			for (var29 = 0; var29 < var47; ++var29) {
-				var45 = var44 + (this.field3502[var29] & 255);
+				var45 = var44 + (this.field3525[var29] & 255);
 				if (var45 < 0) {
 					var45 = 0;
 				}
@@ -400,7 +405,7 @@ public class MusicPatch extends Node {
 					var45 = 128;
 				}
 
-				this.field3502[var29] = (byte)var45;
+				this.field3525[var29] = (byte)var45;
 			}
 
 			int var46;
@@ -410,8 +415,8 @@ public class MusicPatch extends Node {
 				var32 = var44 * (var30 - var47) + (var30 - var47) / 2;
 
 				for (var33 = var47; var33 < var30; ++var33) {
-					var34 = VarcInt.method3679(var32, var30 - var47);
-					int var35 = var34 + (this.field3502[var33] & 255);
+					var34 = class142.method3221(var32, var30 - var47);
+					int var35 = var34 + (this.field3525[var33] & 255);
 					if (var35 < 0) {
 						var35 = 0;
 					}
@@ -420,7 +425,7 @@ public class MusicPatch extends Node {
 						var35 = 128;
 					}
 
-					this.field3502[var33] = (byte)var35;
+					this.field3525[var33] = (byte)var35;
 					var32 += var46 - var44;
 				}
 
@@ -429,7 +434,7 @@ public class MusicPatch extends Node {
 			}
 
 			for (var45 = var47; var45 < 128; ++var45) {
-				var46 = var44 + (this.field3502[var45] & 255);
+				var46 = var44 + (this.field3525[var45] & 255);
 				if (var46 < 0) {
 					var46 = 0;
 				}
@@ -438,57 +443,57 @@ public class MusicPatch extends Node {
 					var46 = 128;
 				}
 
-				this.field3502[var45] = (byte)var46;
+				this.field3525[var45] = (byte)var46;
 			}
 
 			Object var43 = null;
 		}
 
 		for (var27 = 0; var27 < var12; ++var27) {
-			var37[var27].field3419 = var2.readUnsignedByte();
+			var37[var27].field3453 = var2.readUnsignedByte();
 		}
 
 		for (var27 = 0; var27 < var12; ++var27) {
 			var39 = var37[var27];
-			if (var39.field3420 != null) {
-				var39.field3425 = var2.readUnsignedByte();
+			if (var39.field3446 != null) {
+				var39.field3448 = var2.readUnsignedByte();
 			}
 
-			if (var39.field3418 != null) {
-				var39.field3417 = var2.readUnsignedByte();
+			if (var39.field3445 != null) {
+				var39.field3447 = var2.readUnsignedByte();
 			}
 
-			if (var39.field3419 > 0) {
-				var39.field3421 = var2.readUnsignedByte();
+			if (var39.field3453 > 0) {
+				var39.field3450 = var2.readUnsignedByte();
 			}
 		}
 
 		for (var27 = 0; var27 < var12; ++var27) {
-			var37[var27].field3424 = var2.readUnsignedByte();
-		}
-
-		for (var27 = 0; var27 < var12; ++var27) {
-			var39 = var37[var27];
-			if (var39.field3424 > 0) {
-				var39.field3423 = var2.readUnsignedByte();
-			}
+			var37[var27].field3452 = var2.readUnsignedByte();
 		}
 
 		for (var27 = 0; var27 < var12; ++var27) {
 			var39 = var37[var27];
-			if (var39.field3423 > 0) {
-				var39.field3426 = var2.readUnsignedByte();
+			if (var39.field3452 > 0) {
+				var39.field3451 = var2.readUnsignedByte();
+			}
+		}
+
+		for (var27 = 0; var27 < var12; ++var27) {
+			var39 = var37[var27];
+			if (var39.field3451 > 0) {
+				var39.field3449 = var2.readUnsignedByte();
 			}
 		}
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lbl;Ljava/util/BitSet;I)Z",
-		garbageValue = "-461548778"
+		descriptor = "(Lbi;Ljava/util/BitSet;I)Z",
+		garbageValue = "1193019095"
 	)
-	boolean method6157(SoundCache var1, BitSet var2) {
+	boolean method6243(SoundCache var1, BitSet var2) {
 		boolean var3 = true;
 		int var4 = 0;
 		class53 var5 = new class53();
@@ -499,26 +504,26 @@ public class MusicPatch extends Node {
 
 			for (int var8 = var6; var8 < var7; ++var8) {
 				if (var2.get(var8)) {
-					int var9 = this.field3504[var8];
+					int var9 = this.field3529[var8];
 					if (var9 != 0) {
-						if (var4 != var9) {
+						if (var9 != var4) {
 							var4 = var9--;
 							if ((var9 & 1) == 0) {
-								var5 = new class53(var1.method852(var9 >> 2));
+								var5 = new class53(var1.method881(var9 >> 2));
 							} else {
-								var5 = var1.method851(var9 >> 2);
+								var5 = var1.method883(var9 >> 2);
 							}
 
-							if (var5.method1080()) {
+							if (var5.method1108()) {
 								var3 = false;
 							} else {
-								this.field3503.add(this.field3503.size(), var5);
+								this.field3528.add(this.field3528.size(), var5);
 							}
 						}
 
-						if (!var5.method1080()) {
+						if (!var5.method1108()) {
 							this.rawSounds[var8] = var5;
-							this.field3504[var8] = 0;
+							this.field3529[var8] = 0;
 						}
 					}
 				}
@@ -528,43 +533,12 @@ public class MusicPatch extends Node {
 		return var3;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-14"
+		descriptor = "(I)V",
+		garbageValue = "-700526364"
 	)
-	void method6151() {
-		this.field3504 = null;
-	}
-
-	@ObfuscatedName("in")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1601039867"
-	)
-	@Export("playSong")
-	static void playSong(int var0) {
-		if (var0 == -1 && !Client.playingJingle) {
-			ItemComposition.method4136(0, 0);
-		} else if (var0 != -1) {
-			boolean var1;
-			if (class319.field3440.isEmpty()) {
-				var1 = false;
-			} else {
-				MusicSong var2 = (MusicSong)class319.field3440.get(0);
-				var1 = var2 != null && var0 == var2.musicTrackGroupId;
-			}
-
-			if (!var1 && class91.clientPreferences.method2515() != 0) {
-				ArrayList var3 = new ArrayList();
-				var3.add(new MusicSong(CollisionMap.archive6, var0, 0, class91.clientPreferences.method2515(), false));
-				if (Client.playingJingle) {
-					class275.method5562(var3, 0, 100, 100, 0);
-				} else {
-					class148.method3166(var3, 0, 100, 100, 0, false);
-				}
-			}
-		}
-
+	void method6246() {
+		this.field3529 = null;
 	}
 }

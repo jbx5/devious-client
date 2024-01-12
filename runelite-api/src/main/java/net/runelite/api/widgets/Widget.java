@@ -33,6 +33,7 @@ import net.unethicalite.api.Interactable;
 import net.runelite.api.FontTypeFace;
 import net.runelite.api.Point;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.annotations.Component;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.Range;
 
@@ -58,6 +59,7 @@ public interface Widget extends Interactable, Identifiable
 	 *
 	 * @see WidgetID
 	 */
+	@Component
 	int getId();
 
 	/**
@@ -115,9 +117,8 @@ public interface Widget extends Interactable, Identifiable
 
 	/**
 	 * Gets a dynamic child by index
-	 *
-	 * @throws IndexOutOfBoundsException if the index is outside of the child array
 	 */
+	@Nullable
 	Widget getChild(int index);
 
 	/**
@@ -648,6 +649,13 @@ public interface Widget extends Interactable, Identifiable
 	String[] getActions();
 
 	/**
+	 * Create a static widget child
+	 * @param type the {@link WidgetType} of the widget
+	 * @return
+	 */
+	Widget createStaticChild(@MagicConstant(valuesFromClass = WidgetType.class) int type);
+
+	/**
 	 * Creates a dynamic widget child
 	 *
 	 * @param index the index of the new widget in the children list or -1 to append to the back
@@ -1054,6 +1062,13 @@ public interface Widget extends Interactable, Identifiable
 	 * @param args A ScriptID, then the args for the script
 	 */
 	void setOnDragListener(Object ...args);
+
+	/**
+	 * Sets a script to be ran when the mouse is scrolled when on the widget
+	 *
+	 * @param args A ScriptID, then the args for the script
+	 */
+	void setOnScrollWheelListener(Object ...args);
 
 	/**
 	 * Container this can be dragged in

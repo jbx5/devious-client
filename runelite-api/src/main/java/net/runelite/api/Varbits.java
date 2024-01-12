@@ -109,10 +109,14 @@ public final class Varbits
 	public static final int RUNE_POUCH_RUNE2 = 1622;
 	public static final int RUNE_POUCH_RUNE3 = 1623;
 	public static final int RUNE_POUCH_RUNE4 = 14285;
+	public static final int RUNE_POUCH_RUNE5 = 15373;
+	public static final int RUNE_POUCH_RUNE6 = 15374;
 	public static final int RUNE_POUCH_AMOUNT1 = 1624;
 	public static final int RUNE_POUCH_AMOUNT2 = 1625;
 	public static final int RUNE_POUCH_AMOUNT3 = 1626;
 	public static final int RUNE_POUCH_AMOUNT4 = 14286;
+	public static final int RUNE_POUCH_AMOUNT5 = 15375;
+	public static final int RUNE_POUCH_AMOUNT6 = 15376;
 
 	/**
 	 * Prayers
@@ -151,6 +155,34 @@ public final class Varbits
 	public static final int RIGOUR_UNLOCKED = 5451;
 	public static final int AUGURY_UNLOCKED = 5452;
 	public static final int PRESERVE_UNLOCKED = 5453;
+
+	/**
+	 * Ruinous Powers
+	 */
+	public static final int PRAYER_RP_REJUVENATION = 14840;
+	public static final int PRAYER_RP_ANCIENT_STRENGTH = 14829;
+	public static final int PRAYER_RP_ANCIENT_SIGHT = 14830;
+	public static final int PRAYER_RP_ANCIENT_WILL = 14831;
+	public static final int PRAYER_RP_PROTECT_ITEM = 14966;
+	public static final int PRAYER_RP_RUINOUS_GRACE = 14841;
+	public static final int PRAYER_RP_DAMPEN_MAGIC = 14964;
+	public static final int PRAYER_RP_DAMPEN_RANGED = 14963;
+	public static final int PRAYER_RP_DAMPEN_MELEE = 14962;
+	public static final int PRAYER_RP_TRINITAS = 14832;
+	public static final int PRAYER_RP_BERSERKER = 14844;
+	public static final int PRAYER_RP_PURGE = 14839;
+	public static final int PRAYER_RP_METABOLISE = 14843;
+	public static final int PRAYER_RP_REBUKE = 14850;
+	public static final int PRAYER_RP_VINDICATION = 14851;
+	public static final int PRAYER_RP_DECIMATE = 14833;
+	public static final int PRAYER_RP_ANNIHILATE = 14834;
+	public static final int PRAYER_RP_VAPORISE = 14835;
+	public static final int PRAYER_RP_FUMUS_VOW = 14845;
+	public static final int PRAYER_RP_UMBRA_VOW = 14847;
+	public static final int PRAYER_RP_CRUORS_VOW = 14846;
+	public static final int PRAYER_RP_GLACIES_VOW = 14848;
+	public static final int PRAYER_RP_WRATH = 14842;
+	public static final int PRAYER_RP_INTENSIFY = 14965;
 
 	/**
 	 * Diary Entries
@@ -681,6 +713,8 @@ public final class Varbits
 	public static final int LEAGUE_RELIC_4 = 10052;
 	public static final int LEAGUE_RELIC_5 = 10053;
 	public static final int LEAGUE_RELIC_6 = 11696;
+	public static final int LEAGUE_RELIC_7 = 17301;
+	public static final int LEAGUE_RELIC_8 = 17302;
 
 	/**
 	 * Muted volume restore values
@@ -908,4 +942,107 @@ public final class Varbits
 	 * Local player gender? (Changes depending on gender selected within Tutorial island)
 	 */
 	public static final int LOCAL_PLAYER_GENDER = 14021;
+
+	// Quest: Below ice mountain
+	public static final int BELOW_ICE_MOUNTAIN_FLEX_LEARNED = 12062;
+	public static final int BELOW_ICE_MOUNTAIN_MARLEY_PROGRESS = 12064;
+	public static final int BELOW_ICE_MOUNTAIN_CHECKAL_PROGRESS = 12065;
+	public static final int BELOW_ICE_MOUNTAIN_BURNTOF_PROGRESS = 12066;
+
+	/**
+	 * Bank withdraw mode (Noted / Un-noted)
+	 */
+	public static final int BANK_WITHDRAW_MODE = 3958;
+
+	/**
+	 * Bank quantity mode (1, 5, 10, X, ALL)
+	 */
+	public static final int BANK_QUANTITY_MODE = 6590;
+
+	/**
+	 * Bank tutorial completed atleast once
+	 */
+	public static final int BANK_TUTORIAL_COMPLETED = 10161;
+
+	/**
+	 * Ingame settings - current page <br>
+	 * 0 - Activities <br>
+	 * 1 - Audio <br>
+	 * 2 - Chat <br>
+	 * 3 - Controls <br>
+	 * 4 - Display <br>
+	 * 5 - Gameplay <br>
+	 * 6 - Interfaces <br>
+	 * 7 - Warnings <br>
+	 * 8 - Popout <br>
+	 */
+	public static final int SETTINGS_CURRENT_PAGE = 9656;
+
+	/**
+	 * Ingame settings - show more/less information <br>
+	 * 0 - More <br>
+	 * 1 - Less <br>
+	 */
+	public static final int SETTINGS_SHOW_INFORMATION = 9665;
+
+
+	/**
+	 * Ingame settings
+	 */
+	public static final int SETTINGS_DISPLAY_HIDE_ROOFS = 12378;
+	public static final int SETTINGS_DISPLAY_SCROLL_WHEEL_CHANGE_ZOOM = 6357;
+
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_ACCEPT_AID = 4180;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_SUPPLY_PILES_ON_DEATH = 11893;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_DISABLE_PHANTOM_MUSPAH_MESSAGES = 14711;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_MAKE_X_DARTS = 14819;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_AMMO_PICKING_BEHAVIOUR = 5697;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_RUNE_PICKING_BEHAVIOUR = 5698;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_ALWAYS_EMPTY_RUNE_POUCHES_ON_DEATH = 15311;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_ALWAYS_EMPTY_BOLT_POUCHES_ON_DEATH = 15313;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_ALWAYS_EMPTY_HERB_SACKS_ON_DEATH = 15316;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_ALWAYS_EMPTY_SEED_BOXES_ON_DEATH = 15314;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_ALWAYS_EMPTY_TACKLE_BOXES_ON_DEATH = 15312;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_LOOTING_BAG_STORE_ALL = 6068;
+	public static final int SETTINGS_GAMEPLAY_OPTIONS_LOOTING_BAG_IGNORE_SUPPLIES = 15310;
+
+	public static final int SETTINGS_GAMEPLAY_CAMERA_EFFECTS_ORIENT_CAMERA_VERTICALLY = 15323;
+	public static final int SETTINGS_GAMEPLAY_CAMERA_EFFECTS_BABA_YAGA = 14197;
+	public static final int SETTINGS_GAMEPLAY_CAMERA_EFFECTS_FISHING_TRAWLER = 4814;
+	public static final int SETTINGS_GAMEPLAY_CAMERA_EFFECTS_BARROWS_CHEST = 14198;
+
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_CAST_TELEPORT_TO_TARGET = 236;
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_CAST_DAREEYAK_TELEPORT = 6284;
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_CAST_CARRALLANGER_TELEPORT = 6285;
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_CAST_ANNAKARL_TELEPORT = 6286;
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_CAST_GHORROCK_TELEPORT = 6287;
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_WILDERNESS_TELEPORT_LEVERS = 13985;
+	public static final int SETTINGS_WARNINGS_TELEPORTS_WARN_WILDERNESS_TELEPORT_LEVERS_HIGH_RISK = 13986;
+
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_DAREEYAK_TABLET_TELEPORT = 3930;
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_CARRALLANGER_TABLET_TELEPORT = 2325;
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_ANNAKARL_TABLET_TELEPORT = 2324;
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_GHORROCK_TABLET_TELEPORT = 3931;
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_CEMETARY_TABLET_TELEPORT = 2322;
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_WILDERNESS_CRABS_TABLET_TELEPORT = 3932;
+	public static final int SETTINGS_WARNINGS_TABLETS_WARN_ICE_PLATEAU_TABLET_TELEPORT = 2323;
+
+
+	public static final int SETTINGS_WARNINGS_ITEMS_DROP_ITEM_WARNING = 5411;
+	public static final int SETTINGS_WARNINGS_ITEMS_DROP_ITEM_WARNING_MINIMUM_VALUE = 5412;
+	public static final int SETTINGS_WARNINGS_ITEMS_HIGH_ALCHEMY_WARNING_UNTRADEABLE = 6092;
+	public static final int SETTINGS_WARNINGS_ITEMS_HIGH_ALCHEMY_WARNING_MINIMUM_VALUE = 6091;
+	public static final int SETTINGS_WARNINGS_ITEMS_WARNING_ON_LOGIN_ITEM_RETRIEVAL = 14194;
+	public static final int SETTINGS_WARNINGS_CONFIRMATIONS_CHARTER_SHIPS = 75;
+	public static final int SETTINGS_WARNINGS_CONFIRMATIONS_PAYING_FOR_ITEMS_GRAVESTONE = 13113;
+	public static final int SETTINGS_WARNINGS_CONFIRMATIONS_PAYING_FARMING_PROTECTION = 98;
+	public static final int SETTINGS_WARNINGS_CONFIRMATIONS_WORLD_SWITCHER_CONFIRMATION = 4100;
+
+	public static final int SETTINGS_WARNINGS_OTHER_WARNING_ON_FEROX_ENCLAVE_EXIT = 10532;
+	public static final int SETTINGS_WARNINGS_OTHER_WARNING_ON_FEROX_ENCLAVE_EXIT_HIGH_RISK = 14803;
+	public static final int SETTINGS_WARNINGS_OTHER_WARNING_ON_TAKING_CANOE = 13988;
+	public static final int SETTINGS_WARNINGS_OTHER_WARNING_ON_TAKING_CANOE_HIGH_RISK = 14804;
+	public static final int SETTINGS_WARNINGS_OTHER_WARNING_ON_BUY_OFFER_HIGH = 14700;
+	public static final int SETTINGS_WARNINGS_OTHER_WARNING_ON_SELL_OFFER_LOW = 14701;
+
 }

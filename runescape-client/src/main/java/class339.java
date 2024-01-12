@@ -1,35 +1,32 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nx")
+@ObfuscatedName("nr")
 public class class339 {
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -1501316877
+	@ObfuscatedName("jm")
+	@ObfuscatedSignature(
+		descriptor = "Lpv;"
 	)
-	public int field3591;
-	@ObfuscatedName("al")
+	@Export("fontPlain12")
+	static Font fontPlain12;
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1917639115
+		intValue = -558674067
 	)
-	public int field3592;
-	@ObfuscatedName("ak")
+	public int field3623;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 2044708723
+		intValue = -332893097
 	)
-	public int field3593;
+	public int field3619;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 618278415
+	)
+	public int field3620;
 
 	class339() {
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-250555554"
-	)
-	static void method6258() {
-		GameEngine.method647(24);
-		AbstractWorldMapIcon.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 }

@@ -4,53 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kb")
+@ObfuscatedName("ju")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
-	@ObfuscatedName("cb")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -424537003
-	)
-	static int field2916;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 272253257
+		intValue = 1750701703
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lke;"
+		descriptor = "Ljt;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1088150255
+		intValue = -139188615
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Ljz;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 78742619
+		intValue = 1071349723
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -338644775
+		intValue = -1671717469
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmo;Lmo;ILke;)V"
+		descriptor = "(Lmu;Lmu;ILjt;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -59,16 +54,16 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		this.init();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-19"
+		descriptor = "(I)V",
+		garbageValue = "45666633"
 	)
 	@Export("init")
 	void init() {
-		this.element = class91.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(class148.WorldMapElement_get(this.element));
-		WorldMapElement var1 = class148.WorldMapElement_get(this.getElement());
+		this.element = class137.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(ConcurrentMidiTask.WorldMapElement_get(this.element));
+		WorldMapElement var1 = ConcurrentMidiTask.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -80,55 +75,72 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1637535390"
+		garbageValue = "833304324"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lkd;",
-		garbageValue = "5"
+		descriptor = "(I)Ljz;",
+		garbageValue = "1205973162"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "65"
+		garbageValue = "-17"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1338001743"
+		garbageValue = "1939845303"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lmh;I)V",
-		garbageValue = "-866715691"
+		descriptor = "(III)I",
+		garbageValue = "1108761464"
 	)
-	public static void method5236(class325 var0) {
-		if (!class319.field3434.contains(var0)) {
-			class319.field3434.add(var0);
-		}
+	static int method4627(int var0, int var1) {
+		if (var0 == -2) {
+			return 12345678;
+		} else if (var0 == -1) {
+			if (var1 < 0) {
+				var1 = 0;
+			} else if (var1 > 127) {
+				var1 = 127;
+			}
 
+			var1 = 127 - var1;
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
+		}
 	}
 }

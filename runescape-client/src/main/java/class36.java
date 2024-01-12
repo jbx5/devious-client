@@ -2,90 +2,54 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bp")
+@ObfuscatedName("bx")
 public class class36 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lpy;"
+		descriptor = "Lph;"
 	)
 	@Export("reflectionChecks")
 	public static IterableNodeDeque reflectionChecks;
-	@ObfuscatedName("kh")
+	@ObfuscatedName("fo")
 	@ObfuscatedSignature(
-		descriptor = "[Lun;"
+		descriptor = "Loz;"
 	)
-	@Export("scrollBarSprites")
-	static IndexedSprite[] scrollBarSprites;
+	@Export("archive2")
+	static Archive archive2;
 
 	static {
 		reflectionChecks = new IterableNodeDeque();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "(ILmu;ZI)V",
+		garbageValue = "-1965967218"
+	)
+	static void method731(int var0, Coord var1, boolean var2) {
+		WorldMapArea var3 = class132.getWorldMap().getMapArea(var0);
+		int var4 = KeyHandler.localPlayer.plane;
+		int var5 = HealthBarDefinition.baseX * 64 + (KeyHandler.localPlayer.x >> 7);
+		int var6 = WorldMapScaleHandler.baseY * 64 + (KeyHandler.localPlayer.y >> 7);
+		Coord var7 = new Coord(var4, var5, var6);
+		class132.getWorldMap().method8867(var3, var7, var1, var2);
+	}
+
+	@ObfuscatedName("ju")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "1924526365"
+		garbageValue = "-1920272827"
 	)
-	@Export("getVarbit")
-	public static int getVarbit(int var0) {
-		VarbitComposition var1 = Messages.method2802(var0);
-		int var2 = var1.baseVar;
-		int var3 = var1.startBit;
-		int var4 = var1.endBit;
-		int var5 = Varps.Varps_masks[var4 - var3];
-		return Varps.Varps_main[var2] >> var3 & var5;
+	static final int method729(int var0) {
+		return Math.abs(var0 - HealthBarUpdate.cameraYaw) > 1024 ? var0 + 2048 * (var0 < HealthBarUpdate.cameraYaw ? 1 : -1) : var0;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("pj")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lif;",
-		garbageValue = "1398442265"
+		descriptor = "(B)Z",
+		garbageValue = "100"
 	)
-	@Export("SequenceDefinition_get")
-	public static SequenceDefinition SequenceDefinition_get(int var0) {
-		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class295.SequenceDefinition_archive.takeFile(12, var0);
-			var1 = new SequenceDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "1831211968"
-	)
-	public static int method686(CharSequence var0) {
-		return class230.method4347(var0, 10, true);
-	}
-
-	@ObfuscatedName("ne")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1735203823"
-	)
-	static final void method697(int var0, int var1) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3382()) {
-				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				if (var2.rank == -1) {
-					PacketBufferNode var3 = ClanChannelMember.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
-					var3.packetBuffer.writeByte(3 + class478.stringCp1252NullTerminatedByteSize(var2.username.getName()));
-					var3.packetBuffer.writeByte(var0);
-					var3.packetBuffer.writeShort(var1);
-					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName());
-					Client.packetWriter.addNode(var3);
-				}
-			}
-		}
+	public static boolean method733() {
+		return Client.staffModLevel >= 2;
 	}
 }

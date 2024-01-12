@@ -1,58 +1,102 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fq")
-public class class152 extends class145 {
-	@ObfuscatedName("jq")
-	@Export("regions")
-	static int[] regions;
-	@ObfuscatedName("ac")
-	boolean field1689;
-	@ObfuscatedName("al")
-	byte field1687;
-	@ObfuscatedName("ak")
-	byte field1684;
-	@ObfuscatedName("ax")
-	byte field1685;
-	@ObfuscatedName("ao")
-	byte field1686;
+@ObfuscatedName("fa")
+public class class152 extends class143 {
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = -31458575
+	)
+	@Export("WorldMapElement_count")
+	public static int WorldMapElement_count;
+	@ObfuscatedName("am")
+	String field1685;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lfm;"
 	)
-	final class148 this$0;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lfm;)V"
 	)
-	class152(class148 var1) {
+	class152(class146 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-411371469"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1689 = var1.readUnsignedByte() == 1;
-		this.field1687 = var1.readByte();
-		this.field1684 = var1.readByte();
-		this.field1685 = var1.readByte();
-		this.field1686 = var1.readByte();
+	void vmethod3531(Buffer var1) {
+		this.field1685 = var1.readStringCp1252NullTerminated();
+		var1.readInt();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(Lfn;I)V",
+		garbageValue = "1048713263"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.allowGuests = this.field1689;
-		var1.field1709 = this.field1687;
-		var1.field1723 = this.field1684;
-		var1.field1710 = this.field1685;
-		var1.field1700 = this.field1686;
+	void vmethod3529(ClanSettings var1) {
+		var1.name = this.field1685;
+	}
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "(Lhg;I)Z",
+		garbageValue = "-1055641095"
+	)
+	static boolean method3324(ObjectComposition var0) {
+		if (var0.transforms != null) {
+			int[] var1 = var0.transforms;
+
+			for (int var2 = 0; var2 < var1.length; ++var2) {
+				int var3 = var1[var2];
+				ObjectComposition var4 = class137.getObjectDefinition(var3);
+				if (var4.mapIconId != -1) {
+					return true;
+				}
+			}
+		} else if (var0.mapIconId != -1) {
+			return true;
+		}
+
+		return false;
+	}
+
+	@ObfuscatedName("ii")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZI)V",
+		garbageValue = "194226215"
+	)
+	static void method3320(int var0, int var1, int var2, boolean var3) {
+		if (var0 != 0) {
+			int var4 = var0 & 15;
+			int var5;
+			int var6;
+			if (var4 == 0) {
+				if (!var3) {
+					return;
+				}
+
+				Client.soundLocations[Client.soundEffectCount] = 0;
+			} else {
+				var5 = (var1 - 64) / 128;
+				var6 = (var2 - 64) / 128;
+				Client.soundLocations[Client.soundEffectCount] = var4 + (var6 << 8) + (var5 << 16);
+			}
+
+			var5 = var0 >> 8;
+			var6 = var0 >> 4 & 7;
+			Client.soundEffectIds[Client.soundEffectCount] = var5;
+			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var6;
+			Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
+			Client.soundEffects[Client.soundEffectCount] = null;
+			++Client.soundEffectCount;
+		}
 	}
 }

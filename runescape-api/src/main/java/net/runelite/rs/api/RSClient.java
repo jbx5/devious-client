@@ -24,9 +24,10 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.AmbientSoundEffect;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Map;
 import net.runelite.api.Client;
-import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.WidgetNode;
@@ -38,10 +39,6 @@ import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Map;
 
 public interface RSClient extends RSGameEngine, Client
 {
@@ -290,6 +287,12 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("otp")
 	@Override
 	void setOtp(String otp);
+
+	@Import("setAuthenticationScheme")
+	void setAuthenticationScheme(boolean otp);
+
+	@Import("setLoginResponseString")
+	void setLoginResponseString(String var0, String var1, String var2);
 
 	@Import("xPadding")
 	int getLoginScreenXPadding();
@@ -1258,7 +1261,7 @@ public interface RSClient extends RSGameEngine, Client
 	RSNodeDeque newNodeDeque();
 
 	@Import("updateItemPile")
-	void updateItemPile(int localX, int localY);
+	void updateItemPile(int plane, int localX, int localY);
 
 	@Import("showMouseCross")
 	@Override
@@ -1522,7 +1525,7 @@ public interface RSClient extends RSGameEngine, Client
 	void posToCameraAngle(int var0, int var1);
 
 	@Import("objectSounds")
-	Deque<AmbientSoundEffect> getAmbientSoundEffects();
+	RSNodeDeque getAmbientSoundEffects();
 
 	@Import("EnumDefinition_cached")
 	RSEvictingDualNodeHashTable getEnumDefinitionCache();
@@ -1587,6 +1590,10 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("PlayerAppearance_cachedModels")
 	RSEvictingDualNodeHashTable getPlayerAppearanceModelsCache();
+
+	@Import("SequenceDefinition_cached")
+	@Override
+	RSEvictingDualNodeHashTable getAnimationCache();
 
 	@Import("SequenceDefinition_cached")
 	RSEvictingDualNodeHashTable getSequenceDefinitionCache();
@@ -1696,6 +1703,15 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("validRootWidgets")
 	boolean[] getValidRootWidgets();
 
+	@Import("scriptEvents")
+	RSNodeDeque getScriptEvents();
+
+	@Import("scriptEvents2")
+	RSNodeDeque getScriptEvents2();
+
+	@Import("scriptEvents3")
+	RSNodeDeque getScriptEvents3();
+
 	/*
 	Unethical
 	 */
@@ -1769,6 +1785,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setLoginIndex(int index);
 
+	@Import("loginState")
+	int getRSLoginState();
+
 	@Construct
 	RSClientPacket createClientPacket(int opcode, int length);
 
@@ -1798,6 +1817,16 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("isMembersWorld")
 	@Override
 	boolean isMembersWorld();
+
+	/**
+	 * User id & hash
+	 */
+
+	@Import("userId")
+	long getUserId();
+
+	@Import("userHash")
+	long getUserHash();
 
 	/**
 	 * Jagex launcher credentials
@@ -1843,4 +1872,12 @@ public interface RSClient extends RSGameEngine, Client
 	java.util.Properties getCredentialsProperties();
 	boolean storeCredentials();
 	void writeCredentials();
+
+	/**
+	 * Cached random.dat
+	 */
+
+	byte[] getCachedRandomDatData(String username);
+	void writeCachedRandomDatData(String username, byte[] data);
+	boolean useCachedRandomDat();
 }

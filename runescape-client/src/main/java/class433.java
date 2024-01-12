@@ -1,42 +1,20 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qf")
+@ObfuscatedName("qq")
 public class class433 {
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lqf;"
-	)
-	static final class433 field4637;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lqf;"
-	)
-	static final class433 field4636;
-	@ObfuscatedName("lw")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 302131747
+		intValue = -1392851409
 	)
-	static int field4639;
-	@ObfuscatedName("ak")
-	final String field4635;
-
-	static {
-		field4637 = new class433("Basic");
-		field4636 = new class433("Bearer");
-	}
-
-	class433(String var1) {
-		this.field4635 = var1;
-	}
-
-	@ObfuscatedName("ac")
+	@Export("loginBoxCenter")
+	static int loginBoxCenter;
+	@ObfuscatedName("oh")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "36"
+		descriptor = "Lnn;"
 	)
-	String method7857() {
-		return this.field4635;
-	}
+	@Export("mousedOverWidgetIf1")
+	static Widget mousedOverWidgetIf1;
 }

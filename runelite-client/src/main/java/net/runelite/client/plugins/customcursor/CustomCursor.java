@@ -63,4 +63,3 @@ public enum CustomCursor
 		return name;
 	}
 }
-

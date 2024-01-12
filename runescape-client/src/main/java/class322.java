@@ -2,16 +2,21 @@ import java.util.concurrent.ThreadFactory;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mz")
+@ObfuscatedName("ms")
 class class322 implements ThreadFactory {
+	@ObfuscatedName("gt")
+	@ObfuscatedSignature(
+		descriptor = "Lrk;"
+	)
+	static GraphicsDefaults field3517;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lmt;"
+		descriptor = "Lmk;"
 	)
 	final MidiPcmStream this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmt;)V"
+		descriptor = "(Lmk;)V"
 	)
 	class322(MidiPcmStream var1) {
 		this.this$0 = var1;

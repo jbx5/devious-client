@@ -4,89 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("ll")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -600329691
+		intValue = -1406588919
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1188430355
+		intValue = 903979213
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 10846867
+		intValue = 1936995303
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -162734927
+		intValue = -1834904139
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ljy;"
+		descriptor = "Lkp;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1372655535
+		intValue = 2016007957
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 819475611
+		intValue = -873123859
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 364059813
+		intValue = -460248005
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1110951363
+		intValue = -857619617
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 612590109
+		intValue = -1093355515
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1226441067
+		intValue = 35503397
 	)
-	int field2887;
-	@ObfuscatedName("aa")
+	int field3134;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1962485651
+		intValue = -1238217845
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		longValue = -332762966360864525L
+		longValue = -1518418869526017207L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1579460977
+		intValue = -13334823
 	)
 	@Export("flags")
 	int flags;
@@ -96,21 +96,53 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("jc")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[SB)V",
-		garbageValue = "84"
+		descriptor = "(IIIB)V",
+		garbageValue = "-41"
 	)
-	public static void method5196(String[] var0, short[] var1) {
-		VarpDefinition.sortItemsByName(var0, var1, 0, var0.length - 1);
-	}
+	static final void method5901(int var0, int var1, int var2) {
+		if (GameEngine.cameraX < var0) {
+			GameEngine.cameraX = (var0 - GameEngine.cameraX) * class380.field4416 / 1000 + GameEngine.cameraX + HealthBarDefinition.field1890;
+			if (GameEngine.cameraX > var0) {
+				GameEngine.cameraX = var0;
+			}
+		}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "2128713491"
-	)
-	public static int method5195(int var0) {
-		return class479.field4823[var0 & 16383];
+		if (GameEngine.cameraX > var0) {
+			GameEngine.cameraX -= (GameEngine.cameraX - var0) * class380.field4416 / 1000 + HealthBarDefinition.field1890;
+			if (GameEngine.cameraX < var0) {
+				GameEngine.cameraX = var0;
+			}
+		}
+
+		if (class28.cameraY < var1) {
+			class28.cameraY = (var1 - class28.cameraY) * class380.field4416 / 1000 + class28.cameraY + HealthBarDefinition.field1890;
+			if (class28.cameraY > var1) {
+				class28.cameraY = var1;
+			}
+		}
+
+		if (class28.cameraY > var1) {
+			class28.cameraY -= (class28.cameraY - var1) * class380.field4416 / 1000 + HealthBarDefinition.field1890;
+			if (class28.cameraY < var1) {
+				class28.cameraY = var1;
+			}
+		}
+
+		if (GrandExchangeOfferTotalQuantityComparator.cameraZ < var2) {
+			GrandExchangeOfferTotalQuantityComparator.cameraZ = (var2 - GrandExchangeOfferTotalQuantityComparator.cameraZ) * class380.field4416 / 1000 + GrandExchangeOfferTotalQuantityComparator.cameraZ + HealthBarDefinition.field1890;
+			if (GrandExchangeOfferTotalQuantityComparator.cameraZ > var2) {
+				GrandExchangeOfferTotalQuantityComparator.cameraZ = var2;
+			}
+		}
+
+		if (GrandExchangeOfferTotalQuantityComparator.cameraZ > var2) {
+			GrandExchangeOfferTotalQuantityComparator.cameraZ -= (GrandExchangeOfferTotalQuantityComparator.cameraZ - var2) * class380.field4416 / 1000 + HealthBarDefinition.field1890;
+			if (GrandExchangeOfferTotalQuantityComparator.cameraZ < var2) {
+				GrandExchangeOfferTotalQuantityComparator.cameraZ = var2;
+			}
+		}
+
 	}
 }

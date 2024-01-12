@@ -42,7 +42,7 @@ public class MultipleOfItemRequirement implements ItemRequirement
 	@Override
 	public boolean fulfilledBy(int itemId)
 	{
-		return itemId == this.itemId && this.quantity == 1;
+		return itemId == this.itemId;
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class MultipleOfItemRequirement implements ItemRequirement
 	@Override
 	public String getCollectiveName(Client client)
 	{
-		ItemComposition definition = client.getItemComposition(itemId);
+		ItemComposition definition = client.getItemDefinition(itemId);
 
 		if (definition == null)
 		{

@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import java.awt.Shape;
 import net.unethicalite.api.util.Randomizer;
 import net.runelite.api.Point;
 import net.runelite.api.mixins.Inject;
@@ -18,6 +19,7 @@ public abstract class HActorMixin implements RSActor
 	@Inject
 	public Point getClickPoint()
 	{
-		return Randomizer.getRandomPointIn(getCachedBounds());
+		Shape convexHull = getConvexHull();
+		return convexHull != null ? Randomizer.getRandomPointIn(convexHull.getBounds()) : null;
 	}
 }
