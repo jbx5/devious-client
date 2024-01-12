@@ -4,24 +4,24 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kp")
+@ObfuscatedName("kl")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -622446617
+		intValue = -22124443
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -845648025
+		intValue = 140913233
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 830185709
+		intValue = 598024359
 	)
 	@Export("z")
 	int z;
@@ -29,12 +29,16 @@ public class FaceNormal {
 	FaceNormal() {
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("nc")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lld;",
-		garbageValue = "1253542503"
+		descriptor = "(Lnn;I)V",
+		garbageValue = "740324846"
 	)
-	static PacketBufferNode method5512() {
-		return PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0 ? new PacketBufferNode() : PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
+	@Export("invalidateWidget")
+	public static void invalidateWidget(Widget var0) {
+		if (var0 != null && var0.cycle == Client.field607) {
+			Client.validRootWidgets[var0.rootIndex] = true;
+		}
+
 	}
 }

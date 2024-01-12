@@ -1,66 +1,44 @@
-import java.util.Collections;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ab")
+@ObfuscatedName("aq")
 public final class class4 {
-	@ObfuscatedName("iy")
-	@ObfuscatedSignature(
-		descriptor = "Lro;"
-	)
-	static AbstractSocket field4;
+	@ObfuscatedName("ge")
+	@Export("refreshToken")
+	static String refreshToken;
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("kh")
 	@ObfuscatedSignature(
-		descriptor = "([I[II)V",
-		garbageValue = "1584240093"
+		descriptor = "(IIIIIII)V",
+		garbageValue = "-467280453"
 	)
-	public static void method20(int[] var0, int[] var1) {
-		if (var0 != null && var1 != null) {
-			Clock.ByteArrayPool_alternativeSizes = var0;
-			class267.ByteArrayPool_altSizeArrayCounts = new int[var0.length];
-			class1.ByteArrayPool_arrays = new byte[var0.length][][];
-
-			for (int var2 = 0; var2 < Clock.ByteArrayPool_alternativeSizes.length; ++var2) {
-				class1.ByteArrayPool_arrays[var2] = new byte[var1[var2]][];
-				ByteArrayPool.field4590.add(var0[var2]);
+	static void method16(int var0, int var1, int var2, int var3, int var4, int var5) {
+		NodeDeque var6 = Client.groundItems[var0][var1][var2];
+		if (var6 != null) {
+			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
+				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
+					var7.quantity = var5;
+					break;
+				}
 			}
 
-			Collections.sort(ByteArrayPool.field4590);
-		} else {
-			Clock.ByteArrayPool_alternativeSizes = null;
-			class267.ByteArrayPool_altSizeArrayCounts = null;
-			class1.ByteArrayPool_arrays = null;
-			Renderable.method5509();
+			class134.updateItemPile(var0, var1, var2);
 		}
+
 	}
 
-	@ObfuscatedName("nk")
+	@ObfuscatedName("ph")
 	@ObfuscatedSignature(
-		descriptor = "(IIZB)V",
-		garbageValue = "0"
+		descriptor = "(IIIZI)V",
+		garbageValue = "-1850141553"
 	)
-	static final void method19(int var0, int var1, boolean var2) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3479()) {
-				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.field3129, Client.packetWriter.isaacCipher);
-				var4.packetBuffer.writeByte(4 + ClanChannel.stringCp1252NullTerminatedByteSize(var3.username.getName()));
-				var4.packetBuffer.writeByte(var0);
-				var4.packetBuffer.writeShort(var1);
-				var4.packetBuffer.writeBoolean(var2);
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
-				Client.packetWriter.addNode(var4);
-			}
-		}
-	}
-
-	@ObfuscatedName("ov")
-	@ObfuscatedSignature(
-		descriptor = "(S)Z",
-		garbageValue = "2291"
-	)
-	static boolean method21() {
-		return WorldMapIcon_1.clientPreferences.method2562() >= Client.field488;
+	static void method17(int var0, int var1, int var2, boolean var3) {
+		PacketBufferNode var4 = class482.getPacketBufferNode(ClientPacket.field3213, Client.packetWriter.isaacCipher);
+		var4.packetBuffer.writeIntIME(var3 ? Client.revision : 0);
+		var4.packetBuffer.writeShortLE(var0);
+		var4.packetBuffer.writeByte(var2);
+		var4.packetBuffer.writeShort(var1);
+		Client.packetWriter.addNode(var4);
 	}
 }

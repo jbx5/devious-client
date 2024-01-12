@@ -1,77 +1,69 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nu")
-public enum class351 implements Enum
-{
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+@ObfuscatedName("nv")
+public class class351 {
+	@ObfuscatedName("gm")
+	@ObfuscatedGetter(
+		intValue = -1477583049
 	)
-	field3838(0),
-	@ObfuscatedName("ah")
+	static int field3864;
+
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "(IIIIB)I",
+		garbageValue = "10"
 	)
-	field3842(1),
+	static final int method6892(int var0, int var1, int var2, int var3) {
+		return var0 * var2 + var3 * var1 >> 16;
+	}
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lnu;"
+		descriptor = "(IIILhg;IB)V",
+		garbageValue = "12"
 	)
-	field3837(2),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lnu;"
-	)
-	field3835(3),
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lnu;"
-	)
-	field3836(4);
+	static void method6891(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+		if (var3 != null && var3.hasSound()) {
+			int var5 = var3.sizeX;
+			int var6 = var3.sizeY;
+			if (var4 == 1 || var4 == 3) {
+				var5 = var3.sizeY;
+				var6 = var3.sizeX;
+			}
 
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 653675519
-	)
-	final int field3840;
-
-	class351(int var3) {
-		this.field3840 = var3;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field3840;
-	}
-
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-		descriptor = "(Lhs;B)Z",
-		garbageValue = "113"
-	)
-	static boolean method6852(ObjectComposition var0) {
-		if (var0.transforms != null) {
-			int[] var1 = var0.transforms;
-
-			for (int var2 = 0; var2 < var1.length; ++var2) {
-				int var3 = var1[var2];
-				ObjectComposition var4 = WorldMapSection2.getObjectDefinition(var3);
-				if (var4.mapIconId != -1) {
-					return true;
+			int var7 = (var5 + var1) * 128;
+			int var8 = (var6 + var2) * 128;
+			var1 *= 128;
+			var2 *= 128;
+			int var9 = var3.ambientSoundId;
+			int var10 = var3.int7 * 16384;
+			if (var3.transforms != null) {
+				ObjectComposition var11 = var3.transform();
+				if (var11 != null) {
+					var9 = var11.ambientSoundId;
+					var10 = var11.int7 * 16384;
 				}
 			}
-		} else if (var0.mapIconId != -1) {
-			return true;
+
+			for (ObjectSound var12 = (ObjectSound)ObjectSound.objectSounds.last(); var12 != null; var12 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+				if (var0 == var12.plane && var12.x * 16384 == var1 && var2 == var12.y * 128 && var7 == var12.maxX * 16384 && var8 == var12.maxY * 16384 && var9 == var12.soundEffectId && var10 == var12.field844) {
+					if (var12.stream1 != null) {
+						ClanSettings.pcmStreamMixer.removeSubStream(var12.stream1);
+						var12.stream1 = null;
+					}
+
+					if (var12.stream2 != null) {
+						ClanSettings.pcmStreamMixer.removeSubStream(var12.stream2);
+						var12.stream2 = null;
+					}
+
+					var12.remove();
+					break;
+				}
+			}
 		}
 
-		return false;
 	}
 }

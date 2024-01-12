@@ -4,41 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hq")
+@ObfuscatedName("hn")
 @Implements("HorizontalAlignment")
-public enum HorizontalAlignment implements Enum
-{
-	@ObfuscatedName("at")
+public enum HorizontalAlignment implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lhq;"
+		descriptor = "Lhn;"
 	)
-	field1909(0, 0),
-	@ObfuscatedName("ah")
+	field1937(0, 0),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lhq;"
+		descriptor = "Lhn;"
 	)
 	@Export("HorizontalAlignment_centered")
 	HorizontalAlignment_centered(2, 1),
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lhq;"
+		descriptor = "Lhn;"
 	)
-	field1905(1, 2);
+	field1935(1, 2);
 
-	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "[Luz;"
-	)
-	static SpritePixels[] field1908;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1872109103
+		intValue = -965677749
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1196350151
+		intValue = -1995200501
 	)
 	@Export("id")
 	final int id;
@@ -48,10 +42,10 @@ public enum HorizontalAlignment implements Enum
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
@@ -60,54 +54,13 @@ public enum HorizontalAlignment implements Enum
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lld;",
-		garbageValue = "-863810784"
+		descriptor = "(S)V",
+		garbageValue = "-5089"
 	)
-	public static PacketBufferNode method3686() {
-		PacketBufferNode var0;
-		if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {
-			var0 = new PacketBufferNode();
-		} else {
-			var0 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
-		}
-
-		var0.clientPacket = null;
-		var0.clientPacketLength = 0;
-		var0.packetBuffer = new PacketBuffer(5000);
-		return var0;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1945756897"
-	)
-	public static int method3687(int var0, int var1) {
-		int var2 = var0 >>> 31;
-		return (var0 + var2) / var1 - var2;
-	}
-
-	@ObfuscatedName("mq")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;III)V",
-		garbageValue = "-79973183"
-	)
-	@Export("clickWidget")
-	static final void clickWidget(Widget var0, int var1, int var2) {
-		if (Client.clickedWidget == null && !Client.isMenuOpen) {
-			if (var0 != null && ArchiveDiskAction.method6885(var0) != null) {
-				Client.clickedWidget = var0;
-				Client.clickedWidgetParent = ArchiveDiskAction.method6885(var0);
-				Client.widgetClickX = var1;
-				Client.widgetClickY = var2;
-				class148.widgetDragDuration = 0;
-				Client.isDraggingWidget = false;
-				int var3 = Client.menuOptionsCount - 1;
-				if (var3 != -1) {
-					PcmPlayer.method846(var3);
-				}
-
-			}
-		}
+	static void method3713() {
+		Messages.Messages_channels.clear();
+		Messages.Messages_hashTable.clear();
+		Messages.Messages_queue.clear();
+		Messages.Messages_count = 0;
 	}
 }

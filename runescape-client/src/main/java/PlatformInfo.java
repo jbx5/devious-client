@@ -1,137 +1,140 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sb")
+@ObfuscatedName("sa")
 @Implements("PlatformInfo")
 public class PlatformInfo extends Node {
-	@ObfuscatedName("bg")
+	@ObfuscatedName("bk")
 	@ObfuscatedGetter(
-		intValue = 573770851
+		intValue = -237812389
 	)
 	@Export("os")
-	int os;
-	@ObfuscatedName("ba")
+	public int os;
+	@ObfuscatedName("bn")
 	@Export("arch64")
 	boolean arch64;
-	@ObfuscatedName("bm")
+	@ObfuscatedName("by")
 	@ObfuscatedGetter(
-		intValue = -1183795873
+		intValue = 174577155
 	)
 	@Export("osVersion")
 	int osVersion;
-	@ObfuscatedName("bp")
+	@ObfuscatedName("bc")
 	@ObfuscatedGetter(
-		intValue = 1769216281
+		intValue = 978944667
 	)
 	@Export("vendor")
 	int vendor;
-	@ObfuscatedName("bw")
+	@ObfuscatedName("bx")
 	@ObfuscatedGetter(
-		intValue = 22239183
+		intValue = 1533166283
 	)
 	@Export("javaMajor")
 	int javaMajor;
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bf")
 	@ObfuscatedGetter(
-		intValue = -1727264349
+		intValue = 2069770939
 	)
 	@Export("javaMinor")
 	int javaMinor;
-	@ObfuscatedName("bn")
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = 169278833
+		intValue = 1764080435
 	)
 	@Export("javaPatch")
 	int javaPatch;
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bv")
 	@Export("field4524")
 	boolean field4524;
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bm")
 	@ObfuscatedGetter(
-		intValue = -1737818385
+		intValue = 1703677853
 	)
 	@Export("maxMemory")
 	int maxMemory;
-	@ObfuscatedName("bu")
+	@ObfuscatedName("bq")
 	@ObfuscatedGetter(
-		intValue = -1827301789
+		intValue = 377173555
 	)
 	@Export("cpuCores")
 	int cpuCores;
 	@ObfuscatedName("bh")
 	@ObfuscatedGetter(
-		intValue = -944630579
+		intValue = 1057434447
 	)
 	@Export("field4527")
 	int field4527;
-	@ObfuscatedName("bz")
+	@ObfuscatedName("bw")
 	@ObfuscatedGetter(
-		intValue = -2071056303
+		intValue = 883555335
 	)
 	@Export("clockSpeed")
 	int clockSpeed;
-	@ObfuscatedName("bc")
+	@ObfuscatedName("bi")
 	@Export("field4536")
 	String field4536;
-	@ObfuscatedName("bs")
+	@ObfuscatedName("bu")
 	@Export("field4514")
 	String field4514;
-	@ObfuscatedName("bx")
+	@ObfuscatedName("be")
 	@Export("field4528")
 	String field4528;
-	@ObfuscatedName("bb")
+	@ObfuscatedName("bs")
 	@Export("field4532")
 	String field4532;
-	@ObfuscatedName("bk")
+	@ObfuscatedName("bl")
 	@ObfuscatedGetter(
-		intValue = 1248614073
+		intValue = 573776175
 	)
 	@Export("field4512")
 	int field4512;
-	@ObfuscatedName("br")
+	@ObfuscatedName("bz")
 	@ObfuscatedGetter(
-		intValue = -1619244905
+		intValue = -710207929
 	)
 	@Export("field4534")
 	int field4534;
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bo")
 	@ObfuscatedGetter(
-		intValue = -2095679823
+		intValue = -1040819083
 	)
 	@Export("field4535")
 	int field4535;
-	@ObfuscatedName("cf")
+	@ObfuscatedName("cg")
 	@ObfuscatedGetter(
-		intValue = -1054492559
+		intValue = 834107987
 	)
 	@Export("field4530")
 	int field4530;
-	@ObfuscatedName("cg")
+	@ObfuscatedName("cb")
 	@Export("field4537")
 	String field4537;
-	@ObfuscatedName("cv")
+	@ObfuscatedName("ci")
 	@Export("field4538")
 	String field4538;
-	@ObfuscatedName("cx")
+	@ObfuscatedName("cv")
 	@Export("field4539")
 	int[] field4539;
-	@ObfuscatedName("cp")
+	@ObfuscatedName("ct")
 	@ObfuscatedGetter(
-		intValue = -1805875485
+		intValue = 1353395511
 	)
 	@Export("field4540")
 	int field4540;
-	@ObfuscatedName("ce")
+	@ObfuscatedName("cp")
 	@Export("field4541")
 	String field4541;
-	@ObfuscatedName("ci")
+	@ObfuscatedName("cq")
 	@Export("field4542")
 	String field4542;
 
-	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25, String var26) {
+	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25, String var26, String var27) {
 		this.field4539 = new int[3];
 		this.os = var1;
 		this.arch64 = var2;
@@ -161,10 +164,10 @@ public class PlatformInfo extends Node {
 		this.field4542 = var26;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "1412255226"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-1357663767"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
@@ -201,38 +204,85 @@ public class PlatformInfo extends Node {
 		var1.writeStringCp1252NullCircumfixed(this.field4542);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "2077819620"
+		garbageValue = "-1952660625"
 	)
 	@Export("size")
 	public int size() {
 		byte var1 = 39;
-		String var4 = this.field4536;
-		int var3 = var4.length() + 2;
-		int var26 = var1 + var3;
-		String var7 = this.field4514;
-		int var6 = var7.length() + 2;
-		var26 += var6;
-		String var10 = this.field4528;
-		int var9 = var10.length() + 2;
-		var26 += var9;
-		String var13 = this.field4532;
-		int var12 = var13.length() + 2;
-		var26 += var12;
-		String var16 = this.field4537;
-		int var15 = var16.length() + 2;
-		var26 += var15;
-		String var19 = this.field4538;
-		int var18 = var19.length() + 2;
-		var26 += var18;
-		String var22 = this.field4541;
-		int var21 = var22.length() + 2;
-		var26 += var21;
-		String var25 = this.field4542;
-		int var24 = var25.length() + 2;
-		var26 += var24;
-		return var26;
+		int var2 = var1 + class244.method4942(this.field4536);
+		var2 += class244.method4942(this.field4514);
+		var2 += class244.method4942(this.field4528);
+		var2 += class244.method4942(this.field4532);
+		var2 += class244.method4942(this.field4537);
+		var2 += class244.method4942(this.field4538);
+		var2 += class244.method4942(this.field4541);
+		var2 += class244.method4942(this.field4542);
+		return var2;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "-412168738"
+	)
+	@Export("getDeviceId")
+	public String getDeviceId(int var1) {
+		String var2 = "";
+		String var3 = "";
+		switch(var1) {
+		case 1:
+			var2 = "wmic csproduct get UUID";
+			break;
+		case 2:
+			var2 = "system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }'";
+		}
+
+		try {
+			Process var4 = Runtime.getRuntime().exec(var2);
+			BufferedReader var5 = new BufferedReader(new InputStreamReader(var4.getInputStream()));
+			StringBuffer var6 = new StringBuffer();
+
+			String var7;
+			while ((var7 = var5.readLine()) != null) {
+				var6.append(var7 + "\n");
+			}
+
+			if (var1 == 1) {
+				var3 = var6.substring(var6.indexOf("\n"), var6.length()).trim();
+			} else if (var1 == 2) {
+				int var8 = var6.indexOf("UUID: ") + 36;
+				var3 = var6.substring(var6.indexOf("UUID: "), var8).replace("UUID: ", "");
+			}
+		} catch (IOException var9) {
+			var9.printStackTrace();
+		}
+
+		return var3;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(Low;Low;Ljava/lang/String;Ljava/lang/String;I)Lpv;",
+		garbageValue = "659683137"
+	)
+	@Export("getFont")
+	public static Font getFont(AbstractArchive var0, AbstractArchive var1, String var2, String var3) {
+		if (!var0.isValidFileName(var2, var3)) {
+			return null;
+		} else {
+			int var4 = var0.getGroupId(var2);
+			int var5 = var0.getFileId(var4, var3);
+			Font var6;
+			if (!Varcs.method2829(var0, var4, var5)) {
+				var6 = null;
+			} else {
+				var6 = class72.fontFromBytes(var1.takeFile(var4, var5));
+			}
+
+			return var6;
+		}
 	}
 }

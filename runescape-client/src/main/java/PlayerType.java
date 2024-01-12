@@ -4,118 +4,127 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oc")
+@ObfuscatedName("ok")
 @Implements("PlayerType")
-public enum PlayerType implements Enum
-{
-	@ObfuscatedName("at")
+public enum PlayerType implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
 	@Export("PlayerType_normal")
 	PlayerType_normal(0, -1, true, false, true),
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
 	@Export("PlayerType_playerModerator")
 	PlayerType_playerModerator(1, 0, true, true, true),
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
 	@Export("PlayerType_jagexModerator")
 	PlayerType_jagexModerator(2, 1, true, true, false),
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
 	@Export("PlayerType_ironman")
 	PlayerType_ironman(3, 2, false, false, true),
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
 	@Export("PlayerType_ultimateIronman")
 	PlayerType_ultimateIronman(4, 3, false, false, true),
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
 	@Export("PlayerType_hardcoreIronman")
 	PlayerType_hardcoreIronman(5, 10, false, false, true),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	field4319(6, 22, false, false, true),
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	field4305(7, 41, false, false, true),
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	field4303(8, 42, false, false, true),
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4247(6, 22, false, false, true),
-	@ObfuscatedName("ac")
+	field4304(9, 43, false, false, true),
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4243(7, 41, false, false, true),
-	@ObfuscatedName("al")
+	field4308(10, 44, false, false, true),
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4249(8, 42, false, false, true),
-	@ObfuscatedName("az")
+	field4309(11, 45, false, false, true),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4248(9, 43, false, false, true),
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Loc;"
-	)
-	field4250(10, 44, false, false, true),
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Loc;"
-	)
-	field4256(11, 45, false, false, true),
+	field4310(12, 46, false, false, true),
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4253(12, 46, false, false, true),
-	@ObfuscatedName("as")
+	field4311(13, 47, false, false, true),
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4254(13, 47, false, false, true),
-	@ObfuscatedName("ay")
+	field4312(14, 48, false, false, true),
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4255(14, 48, false, false, true),
-	@ObfuscatedName("ak")
+	field4318(15, 49, false, false, true),
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lok;"
 	)
-	field4241(15, 49, false, false, true),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Loc;"
-	)
-	field4257(16, 52, false, false, true);
+	field4299(16, 52, false, false, true);
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ig")
+	@ObfuscatedSignature(
+		descriptor = "Lri;"
+	)
+	static AbstractSocket field4298;
+	@ObfuscatedName("py")
 	@ObfuscatedGetter(
-		intValue = -142166065
+		intValue = -1193642785
+	)
+	static int field4320;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 126682447
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 587948549
+		intValue = 289132639
 	)
 	@Export("modIcon")
 	public final int modIcon;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("as")
 	@Export("isPrivileged")
 	public final boolean isPrivileged;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@Export("isUser")
 	public final boolean isUser;
 
@@ -126,98 +135,45 @@ public enum PlayerType implements Enum
 		this.isUser = var7;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)D",
-		garbageValue = "-2021333271"
+		descriptor = "(II)Lge;",
+		garbageValue = "-1400354417"
 	)
-	static double method6883(int var0, int var1, int var2) {
-		double var3 = var1 > 0 ? (double)Math.max(0.0F, Math.min(1.0F, (float)var0 / (float)var1)) : 1.0D;
-		if (var3 > 0.0D && var3 < 1.0D) {
-			double var5;
-			double var7;
-			switch(var2) {
-			case 0:
-				return var3;
-			case 1:
-				return 1.0D - Math.cos(3.141592653589793D * var3 / 2.0D);
-			case 2:
-				return Math.sin(var3 * 3.141592653589793D / 2.0D);
-			case 3:
-				return -(Math.cos(3.141592653589793D * var3) - 1.0D) / 2.0D;
-			case 4:
-				return var3 * var3;
-			case 5:
-				return 1.0D - (1.0D - var3) * (1.0D - var3);
-			case 6:
-				return var3 < 0.5D ? 2.0D * var3 * var3 : 1.0D - Math.pow(var3 * -2.0D + 2.0D, 2.0D) / 2.0D;
-			case 7:
-				return var3 * var3 * var3;
-			case 8:
-				return 1.0D - Math.pow(1.0D - var3, 3.0D);
-			case 9:
-				return var3 < 0.5D ? var3 * 4.0D * var3 * var3 : 1.0D - Math.pow(2.0D + -2.0D * var3, 3.0D) / 2.0D;
-			case 10:
-				return var3 * var3 * var3 * var3;
-			case 11:
-				return 1.0D - Math.pow(1.0D - var3, 4.0D);
-			case 12:
-				return var3 < 0.5D ? var3 * var3 * var3 * 8.0D * var3 : 1.0D - Math.pow(2.0D + -2.0D * var3, 4.0D) / 2.0D;
-			case 13:
-				return var3 * var3 * var3 * var3 * var3;
-			case 14:
-				return 1.0D - Math.pow(1.0D - var3, 5.0D);
-			case 15:
-				return var3 < 0.5D ? var3 * var3 * var3 * 8.0D * var3 * var3 : 1.0D - Math.pow(var3 * -2.0D + 2.0D, 5.0D) / 2.0D;
-			case 16:
-				return Math.pow(2.0D, 10.0D * var3 - 10.0D);
-			case 17:
-				return 1.0D - Math.pow(2.0D, -10.0D * var3);
-			case 18:
-				return var3 < 0.5D ? Math.pow(2.0D, 10.0D + var3 * 20.0D) / 2.0D : (2.0D - Math.pow(2.0D, var3 * -20.0D + 10.0D)) / 2.0D;
-			case 19:
-				return 1.0D - Math.sqrt(1.0D - Math.pow(var3, 2.0D));
-			case 20:
-				return Math.sqrt(1.0D - Math.pow(var3 - 1.0D, 2.0D));
-			case 21:
-				return var3 < 0.5D ? (1.0D - Math.sqrt(1.0D - Math.pow(var3 * 2.0D, 2.0D))) / 2.0D : (Math.sqrt(1.0D - Math.pow(-2.0D * var3 + 2.0D, 2.0D)) + 1.0D) / 2.0D;
-			case 22:
-				var5 = 1.70158D;
-				var7 = 2.70158D;
-				return var3 * var3 * 2.70158D * var3 - 1.70158D * var3 * var3;
-			case 23:
-				var5 = 1.70158D;
-				var7 = 2.70158D;
-				return 1.0D + 2.70158D * Math.pow(var3 - 1.0D, 3.0D) + 1.70158D * Math.pow(var3 - 1.0D, 2.0D);
-			case 24:
-				var5 = 1.70158D;
-				var7 = 2.5949095D;
-				return var3 < 0.5D ? Math.pow(var3 * 2.0D, 2.0D) * (7.189819D * var3 - 2.5949095D) / 2.0D : (Math.pow(var3 * 2.0D - 2.0D, 2.0D) * (3.5949095D * (2.0D * var3 - 2.0D) + 2.5949095D) + 2.0D) / 2.0D;
-			case 25:
-				var5 = 2.0943951023931953D;
-				return -Math.pow(2.0D, var3 * 10.0D - 10.0D) * Math.sin(2.0943951023931953D * (10.0D * var3 - 10.75D));
-			case 26:
-				var5 = 2.0943951023931953D;
-				return Math.pow(2.0D, -10.0D * var3) * Math.sin((var3 * 10.0D - 0.75D) * 2.0943951023931953D) + 1.0D;
-			case 27:
-				var5 = 1.3962634015954636D;
-				var7 = Math.sin((20.0D * var3 - 11.125D) * 1.3962634015954636D);
-				return var3 < 0.5D ? -(Math.pow(2.0D, var3 * 20.0D - 10.0D) * var7) / 2.0D : Math.pow(2.0D, 10.0D + -20.0D * var3) * var7 / 2.0D + 1.0D;
-			default:
-				return var3;
-			}
+	@Export("KitDefinition_get")
+	public static KitDefinition KitDefinition_get(int var0) {
+		KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
 		} else {
-			return var3 <= 0.0D ? 0.0D : 1.0D;
+			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
+			var1 = new KitDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			KitDefinition.KitDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "-1632314308"
+	)
+	@Export("isCharAlphabetic")
+	public static boolean isCharAlphabetic(char var0) {
+		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

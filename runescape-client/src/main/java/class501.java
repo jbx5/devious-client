@@ -1,19 +1,56 @@
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ty")
-public interface class501 extends Iterable {
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-17"
-	)
-	int vmethod8999(int var1);
+@ObfuscatedName("tg")
+public class class501 {
+	@ObfuscatedName("am")
+	public final Object field5041;
+	@ObfuscatedName("ap")
+	public final Object field5042;
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/Object;B)V",
-		garbageValue = "-122"
-	)
-	void vmethod9001(int var1, Object var2);
+	public class501(Object var1, Object var2) {
+		this.field5041 = var1;
+		this.field5042 = var2;
+	}
+
+	public String toString() {
+		return this.field5041 + ", " + this.field5042;
+	}
+
+	public boolean equals(Object var1) {
+		if (var1 != null && var1 instanceof class501) {
+			class501 var2 = (class501)var1;
+			if (this.field5041 == null) {
+				if (var2.field5041 != null) {
+					return false;
+				}
+			} else if (!this.field5041.equals(var2.field5041)) {
+				return false;
+			}
+
+			if (this.field5042 == null) {
+				if (var2.field5042 != null) {
+					return false;
+				}
+			} else if (!this.field5042.equals(var2.field5042)) {
+				return false;
+			}
+
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public int hashCode() {
+		int var1 = 0;
+		if (this.field5041 != null) {
+			var1 += this.field5041.hashCode();
+		}
+
+		if (this.field5042 != null) {
+			var1 += 31 * this.field5042.hashCode();
+		}
+
+		return var1;
+	}
 }

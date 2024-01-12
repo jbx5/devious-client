@@ -1,12 +1,28 @@
+import java.util.concurrent.ThreadFactory;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mf")
-public interface class322 {
-	@ObfuscatedName("im")
+@ObfuscatedName("ms")
+class class322 implements ThreadFactory {
+	@ObfuscatedName("gt")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1786579284"
+		descriptor = "Lrk;"
 	)
-	void vmethod6202(int var1, int var2);
+	static GraphicsDefaults field3517;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	final MidiPcmStream this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lmk;)V"
+	)
+	class322(MidiPcmStream var1) {
+		this.this$0 = var1;
+	}
+
+	public Thread newThread(Runnable var1) {
+		return new Thread(var1, "OSRS WAV Load");
+	}
 }

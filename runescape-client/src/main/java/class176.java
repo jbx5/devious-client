@@ -1,58 +1,71 @@
+import java.io.File;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gc")
+@ObfuscatedName("gk")
 public class class176 extends DualNode {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Llq;"
 	)
 	@Export("archive5")
-	static EvictingDualNodeHashTable archive5;
-	@ObfuscatedName("rw")
+	public static EvictingDualNodeHashTable archive5;
+	@ObfuscatedName("rb")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Ltx;"
 	)
-	@Export("varcs")
-	static Varcs varcs;
+	@Export("Widget_cachedFonts")
+	static class513 Widget_cachedFonts;
 
 	static {
 		archive5 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lnn;I[B[BI)V",
-		garbageValue = "1486108437"
+		descriptor = "(Ljava/lang/String;B)Ljava/io/File;",
+		garbageValue = "-99"
 	)
-	@Export("Widget_setKey")
-	static final void Widget_setKey(Widget var0, int var1, byte[] var2, byte[] var3) {
-		if (var0.field3735 == null) {
-			if (var2 == null) {
-				return;
-			}
-
-			var0.field3735 = new byte[11][];
-			var0.field3704 = new byte[11][];
-			var0.field3672 = new int[11];
-			var0.field3756 = new int[11];
-		}
-
-		var0.field3735[var1] = var2;
-		if (var2 != null) {
-			var0.field3734 = true;
+	@Export("getFile")
+	static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
 		} else {
-			var0.field3734 = false;
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(FileSystem.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
 
-			for (int var4 = 0; var4 < var0.field3735.length; ++var4) {
-				if (var0.field3735[var4] != null) {
-					var0.field3734 = true;
-					break;
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
+						}
+					} catch (Exception var7) {
+					}
+
+					throw new RuntimeException();
 				}
 			}
 		}
-
-		var0.field3704[var1] = var3;
 	}
 }

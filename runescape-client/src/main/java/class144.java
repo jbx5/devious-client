@@ -1,53 +1,46 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fl")
-public abstract class class144 extends Node {
-	class144() {
+@ObfuscatedName("ft")
+public class class144 extends class143 {
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 869632299
+	)
+	int field1639;
+	@ObfuscatedName("ap")
+	boolean field1638;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfm;"
+	)
+	final class146 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lfm;)V"
+	)
+	class144(class146 var1) {
+		this.this$0 = var1;
+		this.field1639 = -1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "-734756620"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-411371469"
 	)
-	abstract void vmethod3510(Buffer var1);
+	void vmethod3531(Buffer var1) {
+		this.field1639 = var1.readUnsignedShort();
+		this.field1638 = var1.readUnsignedByte() == 1;
+	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfc;I)V",
-		garbageValue = "-2111347169"
+		descriptor = "(Lfn;I)V",
+		garbageValue = "1048713263"
 	)
-	abstract void vmethod3506(ClanSettings var1);
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Luj;Ltz;I)Ltz;",
-		garbageValue = "-1693455974"
-	)
-	@Export("readStringIntParameters")
-	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
-		int var2 = var0.readUnsignedByte();
-		int var3;
-		if (var1 == null) {
-			var3 = class184.method3680(var2);
-			var1 = new IterableNodeHashTable(var3);
-		}
-
-		for (var3 = 0; var3 < var2; ++var3) {
-			boolean var4 = var0.readUnsignedByte() == 1;
-			int var5 = var0.readMedium();
-			Object var6;
-			if (var4) {
-				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
-			} else {
-				var6 = new IntegerNode(var0.readInt());
-			}
-
-			var1.put((Node)var6, (long)var5);
-		}
-
-		return var1;
+	void vmethod3529(ClanSettings var1) {
+		var1.method3351(this.field1639, this.field1638);
 	}
 }

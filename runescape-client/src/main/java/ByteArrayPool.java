@@ -1,162 +1,126 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qq")
+@ObfuscatedName("qh")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
-	@ObfuscatedName("ab")
-	static final Object field4577;
-	@ObfuscatedName("au")
+	@ObfuscatedName("aq")
+	static final Object field4614;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 467495095
+		intValue = 908982729
 	)
 	@Export("ByteArrayPool_smallCount")
 	static int ByteArrayPool_smallCount;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 563797191
+		intValue = -1385844103
 	)
 	@Export("ByteArrayPool_mediumCount")
 	static int ByteArrayPool_mediumCount;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1219240193
+		intValue = -553275423
 	)
 	@Export("ByteArrayPool_largeCount")
 	static int ByteArrayPool_largeCount;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1638723491
+		intValue = 1422472291
 	)
-	static int field4573;
-	@ObfuscatedName("az")
+	static int field4618;
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1728453825
+		intValue = 779633507
 	)
-	static int field4574;
-	@ObfuscatedName("ap")
+	static int field4611;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 791946105
+		intValue = -893269233
 	)
-	static int field4583;
-	@ObfuscatedName("av")
+	static int field4620;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 969672835
+		intValue = -1646640921
 	)
-	static int field4578;
+	static int field4621;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 750906493
+	)
+	static int field4622;
 	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -1622704261
-	)
-	static int field4585;
-	@ObfuscatedName("as")
 	@Export("ByteArrayPool_small")
 	static byte[][] ByteArrayPool_small;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@Export("ByteArrayPool_medium")
 	static byte[][] ByteArrayPool_medium;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("az")
 	@Export("ByteArrayPool_large")
 	static byte[][] ByteArrayPool_large;
-	@ObfuscatedName("aj")
-	static byte[][] field4589;
-	@ObfuscatedName("aw")
-	static ArrayList field4590;
+	@ObfuscatedName("av")
+	static byte[][] field4626;
+	@ObfuscatedName("ab")
+	static ArrayList field4627;
 
 	static {
-		field4577 = new Object();
+		field4614 = new Object();
 		ByteArrayPool_smallCount = 0;
 		ByteArrayPool_mediumCount = 0;
 		ByteArrayPool_largeCount = 0;
-		field4573 = 0;
-		field4574 = 1000;
-		field4583 = 250;
-		field4578 = 100;
-		field4585 = 50;
+		field4618 = 0;
+		field4611 = 1000;
+		field4620 = 250;
+		field4621 = 100;
+		field4622 = 50;
 		ByteArrayPool_small = new byte[1000][];
 		ByteArrayPool_medium = new byte[250][];
 		ByteArrayPool_large = new byte[100][];
-		field4589 = new byte[50][];
-		field4590 = new ArrayList();
-		Renderable.method5509();
+		field4626 = new byte[50][];
+		field4627 = new ArrayList();
+		class326.method6257();
 		new HashMap();
 	}
 
-	@ObfuscatedName("hb")
+	@ObfuscatedName("ap")
+	public static boolean method8033(long var0) {
+		boolean var2 = 0L != var0;
+		if (var2) {
+			boolean var3 = (int)(var0 >>> 16 & 1L) == 1;
+			var2 = !var3;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1234231525"
+		descriptor = "(Ljava/util/ArrayList;ZI)V",
+		garbageValue = "-919555443"
 	)
-	static void method7920() {
-		if (class176.varcs.hasUnwrittenChanges()) {
-			class176.varcs.write();
+	static void method8035(ArrayList var0, boolean var1) {
+		if (!var1) {
+			class319.field3466.clear();
 		}
 
-		class53.method1110();
-		if (Message.mouseRecorder != null) {
-			Message.mouseRecorder.isRunning = false;
-		}
+		Iterator var2 = var0.iterator();
 
-		Message.mouseRecorder = null;
-		Client.packetWriter.close();
-		if (GameEngine.taskHandler != null) {
-			try {
-				GameEngine.taskHandler.close();
-			} catch (Exception var3) {
+		while (var2.hasNext()) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+				if (!var1) {
+					class319.field3466.add(var3);
+				}
+
+				class319.field3461.add(var3);
 			}
 		}
 
-		GameEngine.taskHandler = null;
-		ObjectSound.method1980();
-		class182.method3664();
-		class36.scene.clear();
-
-		for (int var1 = 0; var1 < 4; ++var1) {
-			Client.collisionMaps[var1].clear();
-		}
-
-		NpcOverrides.worldMap = null;
-		WorldMapRenderer.method4769(0, 0);
-		HttpContentType.method8564();
-		Client.playingJingle = false;
-		WorldMapSectionType.method4888();
-		if (MusicPatchPcmStream.pcmPlayer1 != null) {
-			MusicPatchPcmStream.pcmPlayer1.shutdown();
-		}
-
-		WorldMapSectionType.field2556.method7049();
-		class227.method4406();
-		if (class60.urlRequester != null) {
-			class60.urlRequester.close();
-		}
-
-		HealthBarDefinition.method3654();
-		JagexCache.JagexCache_dat2File = null;
-		JagexCache.JagexCache_idx255File = null;
-		KeyHandler.JagexCache_idxFiles = null;
-		PlayerCompositionColorTextureOverride.method3518();
-		class302.masterDisk = null;
-		Client.archiveLoaders.clear();
-		Client.field645 = 0;
-		WorldMapSectionType.field2556 = new JagNetThread();
-		class60.urlRequester = new class113(SpriteMask.client.field532, 218);
-
-		try {
-			class339.method6310("oldschool", ItemLayer.field2655, class191.field1978.name, 0, 23);
-		} catch (IOException var2) {
-			throw new RuntimeException(var2);
-		}
-
-		class302.masterDisk = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
-		GameEngine.taskHandler = new TaskHandler();
-		SpriteMask.client.method517();
-		Client.field517 = class92.field1136;
-		WorldMapSection2.updateGameState(0);
 	}
 }

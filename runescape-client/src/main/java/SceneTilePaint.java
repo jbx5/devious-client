@@ -3,46 +3,49 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("ke")
+@ObfuscatedName("kh")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 867907833
+		intValue = -1107319853
 	)
 	@Export("swColor")
 	int swColor;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1090582325
+		intValue = 1339424929
 	)
 	@Export("seColor")
 	int seColor;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1484128325
+		intValue = -418227247
 	)
 	@Export("neColor")
 	int neColor;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -932651361
+		intValue = 1160273677
 	)
 	@Export("nwColor")
 	int nwColor;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -706966471
+		intValue = -78371499
 	)
 	@Export("texture")
 	int texture;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@Export("isFlat")
 	boolean isFlat;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1380493903
+		intValue = 1192930527
 	)
 	@Export("rgb")
 	int rgb;
@@ -58,13 +61,55 @@ public final class SceneTilePaint {
 		this.isFlat = var7;
 	}
 
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Loc;",
+		garbageValue = "1713026222"
+	)
+	public static class367[] method5788() {
+		return new class367[]{class367.field4286, class367.field4288, class367.field4287, class367.field4289};
+	}
+
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IZB)Ljava/lang/String;",
-		garbageValue = "12"
+		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;B)[F",
+		garbageValue = "-53"
 	)
-	@Export("intToString")
-	public static String intToString(int var0, boolean var1) {
-		return var1 && var0 >= 0 ? Players.method2793(var0, 10, var1) : Integer.toString(var0);
+	static float[] method5787(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
+
+		try {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("pz")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "191"
+	)
+	static void method5786() {
+		if (Varps.field3599 != null) {
+			Client.field758 = Client.cycle;
+			Varps.field3599.method7264();
+
+			for (int var0 = 0; var0 < Client.players.length; ++var0) {
+				if (Client.players[var0] != null) {
+					Varps.field3599.method7252(HealthBarDefinition.baseX * 64 + (Client.players[var0].x >> 7), WorldMapScaleHandler.baseY * 64 + (Client.players[var0].y >> 7));
+				}
+			}
+		}
+
 	}
 }

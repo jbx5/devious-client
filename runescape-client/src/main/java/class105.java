@@ -1,15 +1,21 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ew")
-final class class105 implements class334 {
-	@ObfuscatedName("dm")
+@ObfuscatedName("et")
+final class class105 implements class337 {
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lup;"
+		descriptor = "Low;"
 	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
+	@Export("SpotAnimationDefinition_modelArchive")
+	static AbstractArchive SpotAnimationDefinition_modelArchive;
+	@ObfuscatedName("cl")
+	@ObfuscatedGetter(
+		intValue = 685664599
+	)
+	static int field1340;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
 		descriptor = "Lnn;"
@@ -23,17 +29,17 @@ final class class105 implements class334 {
 		this.val$cc = var1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "5"
+		descriptor = "(I)V",
+		garbageValue = "-1083303950"
 	)
-	public void vmethod6278() {
-		if (this.val$cc != null && this.val$cc.method6767().field3588 != null) {
+	public void vmethod6342() {
+		if (this.val$cc != null && this.val$cc.method6716().field3634 != null) {
 			ScriptEvent var1 = new ScriptEvent();
-			var1.method2357(this.val$cc);
-			var1.setArgs(this.val$cc.method6767().field3588);
-			FileSystem.method4225().addFirst(var1);
+			var1.method2355(this.val$cc);
+			var1.setArgs(this.val$cc.method6716().field3634);
+			class27.method401().addFirst(var1);
 		}
 
 	}

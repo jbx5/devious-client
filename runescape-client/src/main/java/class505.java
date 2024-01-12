@@ -1,14 +1,19 @@
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tg")
-public class class505 {
-	@ObfuscatedName("ar")
-	public static final char[] field5030;
-	@ObfuscatedName("ao")
-	public static final char[] field5031;
+@ObfuscatedName("tk")
+public interface class505 extends Iterable {
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1228264639"
+	)
+	int vmethod9122(int var1);
 
-	static {
-		field5030 = new char[]{' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß'};
-		field5031 = new char[]{'[', ']', '#'};
-	}
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/Object;I)V",
+		garbageValue = "693198435"
+	)
+	void vmethod9116(int var1, Object var2);
 }

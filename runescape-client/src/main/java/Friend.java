@@ -3,24 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qk")
+@ObfuscatedName("rm")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("gz")
-	@Export("worldHost")
-	static String worldHost;
-	@ObfuscatedName("at")
-	boolean field4681;
-	@ObfuscatedName("ah")
-	boolean field4679;
+	@ObfuscatedName("am")
+	boolean field4718;
+	@ObfuscatedName("ap")
+	boolean field4717;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lqk;I)I",
-		garbageValue = "1155977086"
+		descriptor = "(Lrm;I)I",
+		garbageValue = "-900411691"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -32,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4681 && !var1.field4681) {
+		} else if (this.field4718 && !var1.field4718) {
 			return -1;
-		} else if (!this.field4681 && var1.field4681) {
+		} else if (!this.field4718 && var1.field4718) {
 			return 1;
-		} else if (this.field4679 && !var1.field4679) {
+		} else if (this.field4717 && !var1.field4717) {
 			return -1;
-		} else if (!this.field4679 && var1.field4679) {
+		} else if (!this.field4717 && var1.field4717) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lrf;B)I",
-		garbageValue = "-95"
+		descriptor = "(Lrq;B)I",
+		garbageValue = "111"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -57,5 +54,14 @@ public class Friend extends Buddy {
 
 	public int compareTo(Object var1) {
 		return this.compareToFriend((Friend)var1);
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1983288800"
+	)
+	public static void method8228() {
+		VarbitComposition.VarbitDefinition_cached.clear();
 	}
 }

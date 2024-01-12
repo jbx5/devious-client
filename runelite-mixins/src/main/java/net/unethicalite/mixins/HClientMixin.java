@@ -1,5 +1,6 @@
 package net.unethicalite.mixins;
 
+import net.runelite.api.GameState;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
@@ -315,10 +316,12 @@ public abstract class HClientMixin implements RSClient
 		return preparePacket(packet, client.getPacketWriter().getIsaacCipher());
 	}
 
-	@Copy("openURL")
-	@Replace("openURL")
-	public static void copy$openURL(String var0, boolean var1, boolean var2)
+	@Inject
+	@Override
+	public void login(boolean otp)
 	{
-
+		client.setLoginResponseString("", "Connecting to server...", "");
+		client.setAuthenticationScheme(otp);
+		client.setRSGameState(GameState.LOGGING_IN.getState());
 	}
 }

@@ -12,122 +12,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("af")
+@ObfuscatedName("at")
 @Implements("KeyHandler")
 public class KeyHandler implements KeyListener, FocusListener {
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "[Ltr;"
+	@ObfuscatedName("ix")
+	@ObfuscatedGetter(
+		intValue = -687650621
 	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("ah")
-	Collection field121;
-	@ObfuscatedName("ar")
-	Collection field122;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "[Lbi;"
+	static int field131;
+	@ObfuscatedName("jv")
+	@ObfuscatedGetter(
+		intValue = 2027274217
 	)
-	class29[] field123;
-	@ObfuscatedName("ab")
+	static int field134;
+	@ObfuscatedName("ns")
+	@ObfuscatedSignature(
+		descriptor = "Ldn;"
+	)
+	@Export("localPlayer")
+	static Player localPlayer;
+	@ObfuscatedName("ap")
+	Collection field130;
+	@ObfuscatedName("af")
+	Collection field127;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "[Lbt;"
+	)
+	class29[] field133;
+	@ObfuscatedName("aq")
 	@Export("KeyHandler_pressedKeys")
 	boolean[] KeyHandler_pressedKeys;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1911505513
+		intValue = 12807563
 	)
 	@Export("KeyHandler_idleCycles")
 	volatile int KeyHandler_idleCycles;
 
 	KeyHandler() {
-		this.field123 = new class29[3];
+		this.field133 = new class29[3];
 		this.KeyHandler_pressedKeys = new boolean[112];
 		this.KeyHandler_idleCycles = 0;
-		this.field121 = new ArrayList(100);
-		this.field122 = new ArrayList(100);
+		this.field130 = new ArrayList(100);
+		this.field127 = new ArrayList(100);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lbi;II)V",
-		garbageValue = "-22982573"
+		descriptor = "(Lbt;II)V",
+		garbageValue = "-1927926336"
 	)
-	void method379(class29 var1, int var2) {
-		this.field123[var2] = var1;
+	void method357(class29 var1, int var2) {
+		this.field133[var2] = var1;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "2119301753"
+		garbageValue = "288397361"
 	)
-	int method360() {
+	int method358() {
 		return this.KeyHandler_idleCycles;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;B)V",
-		garbageValue = "54"
+		descriptor = "(Ljava/awt/Component;S)V",
+		garbageValue = "28242"
 	)
-	void method361(Component var1) {
+	void method359(Component var1) {
 		var1.setFocusTraversalKeysEnabled(false);
 		var1.addKeyListener(this);
 		var1.addFocusListener(this);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;B)V",
-		garbageValue = "-62"
+		descriptor = "(Ljava/awt/Component;I)V",
+		garbageValue = "-1048369874"
 	)
-	synchronized void method362(Component var1) {
+	synchronized void method360(Component var1) {
 		var1.removeKeyListener(this);
 		var1.removeFocusListener(this);
 		synchronized(this) {
-			this.field121.add(new class33(4, 0));
+			this.field130.add(new class33(4, 0));
 		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1170925164"
+		garbageValue = "-88170892"
 	)
-	void method358() {
+	void method379() {
 		++this.KeyHandler_idleCycles;
-		this.method365();
-		Iterator var1 = this.field122.iterator();
+		this.method362();
+		Iterator var1 = this.field127.iterator();
 
 		while (var1.hasNext()) {
 			class33 var2 = (class33)var1.next();
 
-			for (int var3 = 0; var3 < this.field123.length && !var2.method491(this.field123[var3]); ++var3) {
+			for (int var3 = 0; var3 < this.field133.length && !var2.method490(this.field133[var3]); ++var3) {
 			}
 		}
 
-		this.field122.clear();
+		this.field127.clear();
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-5600"
+		descriptor = "(B)V",
+		garbageValue = "-100"
 	)
-	synchronized void method365() {
-		Collection var1 = this.field122;
-		this.field122 = this.field121;
-		this.field121 = var1;
+	synchronized void method362() {
+		Collection var1 = this.field127;
+		this.field127 = this.field130;
+		this.field130 = var1;
 	}
 
 	public final synchronized void keyPressed(KeyEvent var1) {
 		int var2 = var1.getKeyCode();
-		if (var2 >= 0 && var2 < WorldMapRectangle.method4927()) {
-			int var3 = class28.KeyHandler_keyCodes[var2];
-			var2 = var3;
-			boolean var4 = (var3 & 128) != 0;
-			if (var4) {
+		if (var2 >= 0 && var2 < TileItem.method2762()) {
+			var2 = SequenceDefinition.method4122(var2);
+			if (VarbitComposition.method3843(var2)) {
 				var2 = -1;
 			}
 		} else {
@@ -140,7 +148,23 @@ public class KeyHandler implements KeyListener, FocusListener {
 			}
 
 			this.KeyHandler_pressedKeys[var2] = true;
-			this.field121.add(new class33(1, var2));
+			this.field130.add(new class33(1, var2));
+		}
+
+		var1.consume();
+	}
+
+	public final synchronized void keyReleased(KeyEvent var1) {
+		int var2 = var1.getKeyCode();
+		if (var2 >= 0 && var2 < TileItem.method2762()) {
+			var2 = SequenceDefinition.method4122(var2) & -129;
+		} else {
+			var2 = -1;
+		}
+
+		if (var2 >= 0) {
+			this.KeyHandler_pressedKeys[var2] = false;
+			this.field130.add(new class33(2, var2));
 		}
 
 		var1.consume();
@@ -148,61 +172,43 @@ public class KeyHandler implements KeyListener, FocusListener {
 
 	public final synchronized void keyTyped(KeyEvent var1) {
 		char var2 = var1.getKeyChar();
-		if (var2 != 0 && var2 != '\uffff' && WorldMapArea.method4577(var2)) {
-			this.field121.add(new class33(3, var2));
+		if (var2 != 0 && var2 != '\uffff' && ApproximateRouteStrategy.method1233(var2)) {
+			this.field130.add(new class33(3, var2));
 		}
 
 		var1.consume();
 	}
 
 	public final synchronized void focusGained(FocusEvent var1) {
-		this.field121.add(new class33(4, 1));
+		this.field130.add(new class33(4, 1));
 	}
 
 	public final synchronized void focusLost(FocusEvent var1) {
 		for (int var2 = 0; var2 < 112; ++var2) {
 			if (this.KeyHandler_pressedKeys[var2]) {
 				this.KeyHandler_pressedKeys[var2] = false;
-				this.field121.add(new class33(2, var2));
+				this.field130.add(new class33(2, var2));
 			}
 		}
 
-		this.field121.add(new class33(4, 0));
+		this.field130.add(new class33(4, 0));
 	}
 
-	public final synchronized void keyReleased(KeyEvent var1) {
-		int var2 = var1.getKeyCode();
-		if (var2 >= 0 && var2 < WorldMapRectangle.method4927()) {
-			int var3 = class28.KeyHandler_keyCodes[var2];
-			var2 = var3 & -129;
-		} else {
-			var2 = -1;
-		}
-
-		if (var2 >= 0) {
-			this.KeyHandler_pressedKeys[var2] = false;
-			this.field121.add(new class33(2, var2));
-		}
-
-		var1.consume();
-	}
-
-	@ObfuscatedName("av")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "76"
+		descriptor = "(I)V",
+		garbageValue = "1160786456"
 	)
-	@Export("isAlphaNumeric")
-	public static boolean isAlphaNumeric(char var0) {
-		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	static final void method366() {
+		Canvas.method334("You can't add yourself to your own friend list");
 	}
 
-	@ObfuscatedName("le")
+	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIII)V",
-		garbageValue = "-2097696373"
+		descriptor = "(II)I",
+		garbageValue = "-138868805"
 	)
-	static final void method391(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-		GrandExchangeOfferTotalQuantityComparator.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false);
+	static int method386(int var0) {
+		return (int)((Math.log((double)var0) / Interpreter.field846 - 7.0D) * 256.0D);
 	}
 }

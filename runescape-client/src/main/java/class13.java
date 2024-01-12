@@ -8,19 +8,34 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 
-@ObfuscatedName("as")
+@ObfuscatedName("ax")
 class class13 extends DefaultTlsClient {
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lgt;"
+	)
+	static ClanChannel field54;
+	@ObfuscatedName("kf")
+	@ObfuscatedSignature(
+		descriptor = "[Luc;"
+	)
+	@Export("headIconPrayerSprites")
+	static SpritePixels[] headIconPrayerSprites;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lax;"
+		descriptor = "Lad;"
 	)
-	final class12 this$1;
+	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lax;)V"
+		descriptor = "(Lad;)V"
 	)
-	class13(class12 var1) {
+	class13(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
+	}
+
+	public TlsAuthentication getAuthentication() throws IOException {
+		return new class11(this);
 	}
 
 	public Hashtable getClientExtensions() throws IOException {
@@ -41,40 +56,22 @@ class class13 extends DefaultTlsClient {
 		return var1;
 	}
 
-	public TlsAuthentication getAuthentication() throws IOException {
-		return new class11(this);
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Low;Low;I)V",
+		garbageValue = "1347219538"
+	)
+	public static void method171(AbstractArchive var0, AbstractArchive var1) {
+		NPCComposition.NpcDefinition_archive = var0;
+		NPCComposition.field1947 = var1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("or")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lnv;",
-		garbageValue = "173861677"
+		descriptor = "(I)V",
+		garbageValue = "1839649993"
 	)
-	public static GameBuild[] method173() {
-		return new GameBuild[]{GameBuild.BUILDLIVE, GameBuild.LIVE, GameBuild.RC, GameBuild.WIP};
-	}
-
-	@ObfuscatedName("hy")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "20"
-	)
-	@Export("logOut")
-	static final void logOut() {
-		Client.packetWriter.close();
-		ObjectSound.method1980();
-		class36.scene.clear();
-
-		for (int var0 = 0; var0 < 4; ++var0) {
-			Client.collisionMaps[var0].clear();
-		}
-
-		Client.field725.method4281();
-		System.gc();
-		WorldMapRenderer.method4769(0, 0);
-		HttpContentType.method8564();
-		Client.playingJingle = false;
-		WorldMapSectionType.method4888();
-		WorldMapSection2.updateGameState(10);
+	static final void method176() {
+		Client.field704 = Client.cycleCntr;
 	}
 }

@@ -1,151 +1,125 @@
 import java.util.concurrent.locks.ReentrantLock;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bx")
+@ObfuscatedName("be")
 public class class47 {
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 346167861
-	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
-	@ObfuscatedName("fu")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Loh;"
+		descriptor = "Lci;"
 	)
-	@Export("archive12")
-	static Archive archive12;
-	@ObfuscatedName("at")
+	VorbisSample field336;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lcv;"
+		descriptor = "Lbm;"
 	)
-	VorbisSample field315;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lbt;"
-	)
-	RawSound field317;
-	@ObfuscatedName("ar")
-	ReentrantLock field316;
+	RawSound field337;
+	@ObfuscatedName("af")
+	ReentrantLock field334;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lcv;Lbt;)V"
+		descriptor = "(Lci;Lbm;)V"
 	)
 	class47(VorbisSample var1, RawSound var2) {
-		this.field315 = var1;
-		this.field317 = var2;
-		this.field316 = new ReentrantLock();
+		this.field336 = var1;
+		this.field337 = var2;
+		this.field334 = new ReentrantLock();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(ILdt;ZI)I",
-		garbageValue = "1747596015"
+		descriptor = "(B)V",
+		garbageValue = "-36"
 	)
-	static int method898(int var0, Script var1, boolean var2) {
-		int var4;
-		int var9;
-		if (var0 == ScriptOpcodes.CC_CREATE) {
-			DbTableType.Interpreter_intStackSize -= 3;
-			var9 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize];
-			var4 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 1];
-			int var11 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 2];
-			if (var4 == 0) {
-				throw new RuntimeException();
-			} else {
-				Widget var6 = HealthBarDefinition.widgetDefinition.method6285(var9);
-				if (var6.children == null) {
-					var6.children = new Widget[var11 + 1];
-				}
+	static void method913() {
+		if (Login.clearLoginScreen) {
+			Login.titleboxSprite = null;
+			class182.titlebuttonSprite = null;
+			Login.runesSprite = null;
+			Buddy.leftTitleSprite = null;
+			SecureRandomCallable.rightTitleSprite = null;
+			GrandExchangeEvents.logoSprite = null;
+			Clock.title_muteSprite = null;
+			class182.options_buttons_0Sprite = null;
+			class402.options_buttons_2Sprite = null;
+			class167.worldSelectBackSprites = null;
+			class131.worldSelectFlagSprites = null;
+			Client.worldSelectArrows = null;
+			class326.worldSelectStars = null;
+			class155.field1725 = null;
+			SpriteMask.loginScreenRunesAnimation.method2509();
+			Actor.method2488(0, 100);
+			class220.method4348().method7126(true);
+			Login.clearLoginScreen = false;
+		}
+	}
 
-				if (var6.children.length <= var11) {
-					Widget[] var7 = new Widget[var11 + 1];
-
-					for (int var8 = 0; var8 < var6.children.length; ++var8) {
-						var7[var8] = var6.children[var8];
+	@ObfuscatedName("mv")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lnn;S)Ljava/lang/String;",
+		garbageValue = "3107"
+	)
+	static String method912(String var0, Widget var1) {
+		if (var0.indexOf("%") != -1) {
+			for (int var2 = 1; var2 <= 5; ++var2) {
+				while (true) {
+					int var3 = var0.indexOf("%" + var2);
+					if (var3 == -1) {
+						break;
 					}
 
-					var6.children = var7;
-				}
-
-				if (var11 > 0 && var6.children[var11 - 1] == null) {
-					throw new RuntimeException("" + (var11 - 1));
-				} else {
-					Widget var12 = new Widget();
-					var12.type = var4;
-					var12.parentId = var12.id = var6.id;
-					var12.childIndex = var11;
-					var12.isIf3 = true;
-					if (var4 == 12) {
-						var12.method6687();
-						var12.method6688().method6441(new class105(var12));
-						var12.method6688().method6407(new class106(var12));
-					}
-
-					var6.children[var11] = var12;
-					if (var2) {
-						Interpreter.scriptDotWidget = var12;
+					String var4 = var0.substring(0, var3);
+					int var6 = SecureRandomCallable.method2318(var1, var2 - 1);
+					String var5;
+					if (var6 < 999999999) {
+						var5 = Integer.toString(var6);
 					} else {
-						HealthBar.scriptActiveWidget = var12;
+						var5 = "*";
 					}
 
-					class159.invalidateWidget(var6);
-					return 1;
+					var0 = var4 + var5 + var0.substring(var3 + 2);
 				}
-			}
-		} else {
-			Widget var3;
-			if (var0 == ScriptOpcodes.CC_DELETE) {
-				var3 = var2 ? Interpreter.scriptDotWidget : HealthBar.scriptActiveWidget;
-				Widget var10 = HealthBarDefinition.widgetDefinition.method6285(var3.id);
-				var10.children[var3.childIndex] = null;
-				class159.invalidateWidget(var10);
-				return 1;
-			} else if (var0 == ScriptOpcodes.CC_DELETEALL) {
-				var3 = HealthBarDefinition.widgetDefinition.method6285(Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize]);
-				var3.children = null;
-				class159.invalidateWidget(var3);
-				return 1;
-			} else if (var0 != ScriptOpcodes.CC_FIND) {
-				if (var0 == ScriptOpcodes.IF_FIND) {
-					var3 = HealthBarDefinition.widgetDefinition.method6285(Interpreter.Interpreter_intStack[--DbTableType.Interpreter_intStackSize]);
-					if (var3 != null) {
-						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = 1;
-						if (var2) {
-							Interpreter.scriptDotWidget = var3;
-						} else {
-							HealthBar.scriptActiveWidget = var3;
-						}
-					} else {
-						Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				DbTableType.Interpreter_intStackSize -= 2;
-				var9 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[DbTableType.Interpreter_intStackSize + 1];
-				Widget var5 = HealthBarDefinition.widgetDefinition.getWidgetChild(var9, var4);
-				if (var5 != null && var4 != -1) {
-					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = 1;
-					if (var2) {
-						Interpreter.scriptDotWidget = var5;
-					} else {
-						HealthBar.scriptActiveWidget = var5;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++DbTableType.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
 			}
 		}
+
+		return var0;
+	}
+
+	@ObfuscatedName("ox")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1508392285"
+	)
+	static final void method910() {
+		PacketBufferNode var0 = class482.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
+		Client.packetWriter.addNode(var0);
+		Interpreter.field858 = true;
+
+		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+			if (var1.type == 0 || var1.type == 3) {
+				class363.closeInterface(var1, true);
+			}
+		}
+
+		if (Client.meslayerContinueWidget != null) {
+			FaceNormal.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		Interpreter.field858 = false;
+	}
+
+	@ObfuscatedName("ob")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-1681464996"
+	)
+	static void method911(int var0) {
+		for (IntegerNode var1 = (IntegerNode)Client.widgetFlags.first(); var1 != null; var1 = (IntegerNode)Client.widgetFlags.next()) {
+			if ((var1.key >> 48 & 65535L) == (long)var0) {
+				var1.remove();
+			}
+		}
+
 	}
 }

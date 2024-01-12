@@ -1,132 +1,75 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ep")
-public enum class129 implements Enum
-{
-	@ObfuscatedName("at")
+@ObfuscatedName("ek")
+public enum class129 implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lep;"
+		descriptor = "Lek;"
 	)
 	field1513(0, 0),
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lep;"
+		descriptor = "Lek;"
 	)
-	field1514(1, 1),
-	@ObfuscatedName("ar")
+	field1510(1, 1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lep;"
+		descriptor = "Lek;"
 	)
 	field1512(2, 2),
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lep;"
+		descriptor = "Lek;"
 	)
-	field1518(3, 3),
-	@ObfuscatedName("ab")
+	field1515(3, 3),
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lep;"
+		descriptor = "Lek;"
 	)
-	field1510(4, 4);
+	field1514(4, 4);
 
-	@ObfuscatedName("ac")
-	@Export("ItemDefinition_inMembersWorld")
-	public static boolean ItemDefinition_inMembersWorld;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1830305403
+		intValue = 1227940229
 	)
-	final int field1515;
-	@ObfuscatedName("aa")
+	final int field1511;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1827207297
+		intValue = 738105409
 	)
 	final int field1516;
 
 	class129(int var3, int var4) {
-		this.field1515 = var3;
+		this.field1511 = var3;
 		this.field1516 = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field1516;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lru;",
-		garbageValue = "94"
+		descriptor = "(III)V",
+		garbageValue = "-696903355"
 	)
-	static class465[] method3090() {
-		return new class465[]{class465.field4789, class465.field4792, class465.field4788, class465.field4790};
-	}
+	public static void method3075(int var0, int var1) {
+		Iterator var2 = class319.field3463.iterator();
 
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(IIIZIZI)V",
-		garbageValue = "-1979044926"
-	)
-	@Export("doWorldSorting")
-	static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
-		if (var0 < var1) {
-			int var6 = (var0 + var1) / 2;
-			int var7 = var0;
-			World var8 = class361.World_worlds[var6];
-			class361.World_worlds[var6] = class361.World_worlds[var1];
-			class361.World_worlds[var1] = var8;
-
-			for (int var9 = var0; var9 < var1; ++var9) {
-				World var11 = class361.World_worlds[var9];
-				int var12 = class89.compareWorlds(var11, var8, var2, var3);
-				int var10;
-				if (var12 != 0) {
-					if (var3) {
-						var10 = -var12;
-					} else {
-						var10 = var12;
-					}
-				} else if (var4 == -1) {
-					var10 = 0;
-				} else {
-					int var13 = class89.compareWorlds(var11, var8, var4, var5);
-					if (var5) {
-						var10 = -var13;
-					} else {
-						var10 = var13;
-					}
-				}
-
-				if (var10 <= 0) {
-					World var14 = class361.World_worlds[var9];
-					class361.World_worlds[var9] = class361.World_worlds[var7];
-					class361.World_worlds[var7++] = var14;
-				}
-			}
-
-			class361.World_worlds[var1] = class361.World_worlds[var7];
-			class361.World_worlds[var7] = var8;
-			doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
-			doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
+		while (var2.hasNext()) {
+			class325 var3 = (class325)var2.next();
+			var3.vmethod6254(var0, var1);
 		}
 
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "394738351"
-	)
-	static void method3086(int var0) {
-		UserComparator7.method2966(14);
-		Login.Login_banType = var0;
 	}
 }

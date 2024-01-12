@@ -1,87 +1,60 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gw")
-public class class157 extends class160 {
-	@ObfuscatedName("an")
+@ObfuscatedName("gn")
+public class class157 extends class143 {
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1530451385
-	)
-	@Export("loginBoxCenter")
-	static int loginBoxCenter;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -104444073
-	)
-	int field1733;
-	@ObfuscatedName("ah")
-	byte field1731;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = -1205130575
+		intValue = 1726996979
 	)
 	int field1734;
-	@ObfuscatedName("ao")
-	String field1732;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgi;"
+		descriptor = "Lfm;"
 	)
-	final class161 this$0;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;)V"
+		descriptor = "(Lfm;)V"
 	)
-	class157(class161 var1) {
+	class157(class146 var1) {
 		this.this$0 = var1;
-		this.field1733 = -1;
+		this.field1734 = -1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "1810249387"
+		descriptor = "(Luk;I)V",
+		garbageValue = "-411371469"
 	)
-	void vmethod3497(Buffer var1) {
-		var1.readUnsignedByte();
-		this.field1733 = var1.readUnsignedShort();
-		this.field1731 = var1.readByte();
+	void vmethod3531(Buffer var1) {
 		this.field1734 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1732 = var1.readStringCp1252NullTerminated();
-		var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lgn;B)V",
-		garbageValue = "-75"
+		descriptor = "(Lfn;I)V",
+		garbageValue = "1048713263"
 	)
-	void vmethod3501(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1733);
-		var2.rank = this.field1731;
-		var2.world = this.field1734;
-		var2.username = new Username(this.field1732);
+	void vmethod3529(ClanSettings var1) {
+		var1.method3375(this.field1734);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("kn")
 	@ObfuscatedSignature(
-		descriptor = "(Ldo;B)V",
-		garbageValue = "-120"
+		descriptor = "(III)I",
+		garbageValue = "-1244416884"
 	)
-	@Export("runScriptEvent")
-	public static void runScriptEvent(ScriptEvent var0) {
-		class323.runScript(var0, 500000, 475000);
-	}
+	static int method3437(int var0, int var1) {
+		int var2 = var1 - 334;
+		if (var2 < 0) {
+			var2 = 0;
+		} else if (var2 > 100) {
+			var2 = 100;
+		}
 
-	@ObfuscatedName("ow")
-	@ObfuscatedSignature(
-		descriptor = "(B)Loz;",
-		garbageValue = "0"
-	)
-	static JagNetThread method3396() {
-		return WorldMapSectionType.field2556;
+		int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
+		return var0 * var3 / 256;
 	}
 }

@@ -4,32 +4,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
+@ObfuscatedName("kr")
 @Implements("Skeleton")
 public class Skeleton extends Node {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 334360487
+		intValue = 1201940895
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 521667617
+		intValue = 1582314451
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@Export("transformTypes")
 	int[] transformTypes;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ae")
 	@Export("labels")
 	int[][] labels;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Lkx;"
 	)
-	class267 field2795;
+	class270 field2830;
 
 	public Skeleton(int var1, byte[] var2) {
 		this.id = var1;
@@ -56,42 +56,78 @@ public class Skeleton extends Node {
 		if (var3.offset < var3.array.length) {
 			var4 = var3.readUnsignedShort();
 			if (var4 > 0) {
-				this.field2795 = new class267(var3, var4);
+				this.field2830 = new class270(var3, var4);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1055269733"
+		descriptor = "(S)I",
+		garbageValue = "-10508"
 	)
-	public int method5316() {
+	public int method5372() {
 		return this.count;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkz;",
-		garbageValue = "-155827584"
+		descriptor = "(B)Lkx;",
+		garbageValue = "88"
 	)
-	public class267 method5317() {
-		return this.field2795;
+	public class270 method5373() {
+		return this.field2830;
 	}
 
-	@ObfuscatedName("ha")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IZZZZI)Loh;",
-		garbageValue = "-1589546581"
+		descriptor = "(II)Ldd;",
+		garbageValue = "-260731599"
 	)
-	@Export("newArchive")
-	static Archive newArchive(int var0, boolean var1, boolean var2, boolean var3, boolean var4) {
-		ArchiveDisk var5 = null;
-		if (JagexCache.JagexCache_dat2File != null) {
-			var5 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, KeyHandler.JagexCache_idxFiles[var0], 1000000);
+	@Export("getScript")
+	static Script getScript(int var0) {
+		Script var1 = (Script)Script.Script_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = WorldMapDecorationType.archive12.takeFile(var0, 0);
+			if (var2 == null) {
+				return null;
+			} else {
+				var1 = class90.newScript(var2);
+				Script.Script_cached.put(var1, (long)var0);
+				return var1;
+			}
 		}
+	}
 
-		return new Archive(var5, class302.masterDisk, WorldMapSectionType.field2556, var0, var1, var2, var3, var4, false);
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1932368264"
+	)
+	public static void method5380() {
+		synchronized(ArchiveDiskActionHandler.field4331) {
+			if (ArchiveDiskActionHandler.field4329 != 0) {
+				ArchiveDiskActionHandler.field4329 = 1;
+				ArchiveDiskActionHandler.field4332 = true;
+
+				try {
+					ArchiveDiskActionHandler.field4331.wait();
+				} catch (InterruptedException var3) {
+				}
+			}
+
+		}
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1817162027"
+	)
+	public static boolean method5378(int var0) {
+		return (var0 >> 20 & 1) != 0;
 	}
 }

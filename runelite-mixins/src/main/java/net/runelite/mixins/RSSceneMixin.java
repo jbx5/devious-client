@@ -813,7 +813,7 @@ public abstract class RSSceneMixin implements RSScene
 
 		if (plane == client.getPlane())
 		{
-			client.updateItemPile(sceneX, sceneY);
+			client.updateItemPile(plane, sceneX, sceneY);
 		}
 	}
 
@@ -851,7 +851,7 @@ public abstract class RSSceneMixin implements RSScene
 			client.getGroundItemDeque()[plane][sceneX][sceneY] = null;
 		}
 
-		client.updateItemPile(sceneX, sceneY);
+		client.updateItemPile(plane, sceneX, sceneY);
 	}
 
 	@MethodHook(value = "addTile", end = true)

@@ -1,4 +1,4 @@
-import java.lang.management.GarbageCollectorMXBean;
+import java.util.Collections;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
@@ -7,15 +7,13 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("eu")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
-	@ObfuscatedName("bc")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
-	@ObfuscatedName("qw")
+	@ObfuscatedName("ct")
 	@ObfuscatedSignature(
-		descriptor = "[Lnn;"
+		descriptor = "Lth;"
 	)
-	static Widget[] field1453;
-	@ObfuscatedName("at")
+	@Export("loginType")
+	static LoginType loginType;
+	@ObfuscatedName("am")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -23,10 +21,10 @@ public class UserComparator10 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lrh;Lrh;I)I",
-		garbageValue = "-1398324092"
+		descriptor = "(Lrj;Lrj;B)I",
+		garbageValue = "1"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -41,18 +39,32 @@ public class UserComparator10 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("kt")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2060260259"
+		descriptor = "([I[II)V",
+		garbageValue = "1119204610"
 	)
-	@Export("addCancelMenuEntry")
-	static void addCancelMenuEntry() {
-		class160.method3434();
-		Client.menuActions[0] = "Cancel";
-		Client.menuTargets[0] = "";
-		Client.menuOpcodes[0] = 1006;
-		Client.menuShiftClick[0] = false;
-		Client.menuOptionsCount = 1;
+	public static void method2989(int[] var0, int[] var1) {
+		if (var0 != null && var1 != null) {
+			class208.ByteArrayPool_alternativeSizes = var0;
+			FileSystem.ByteArrayPool_altSizeArrayCounts = new int[var0.length];
+			class155.ByteArrayPool_arrays = new byte[var0.length][][];
+
+			for (int var2 = 0; var2 < class208.ByteArrayPool_alternativeSizes.length; ++var2) {
+				class155.ByteArrayPool_arrays[var2] = new byte[var1[var2]][];
+				ByteArrayPool.field4627.add(var0[var2]);
+			}
+
+			Collections.sort(ByteArrayPool.field4627);
+		} else {
+			class208.ByteArrayPool_alternativeSizes = null;
+			FileSystem.ByteArrayPool_altSizeArrayCounts = null;
+			class155.ByteArrayPool_arrays = null;
+			ByteArrayPool.field4627.clear();
+			ByteArrayPool.field4627.add(100);
+			ByteArrayPool.field4627.add(5000);
+			ByteArrayPool.field4627.add(10000);
+			ByteArrayPool.field4627.add(30000);
+		}
 	}
 }

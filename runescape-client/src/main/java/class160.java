@@ -2,60 +2,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gs")
-public abstract class class160 extends Node {
-	@ObfuscatedName("ct")
+@ObfuscatedName("gr")
+public class class160 {
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -104164111
+		longValue = 565344863230423851L
 	)
-	static int field1748;
+	long field1745;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		longValue = -1369878872476871757L
+	)
+	public long field1744;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lph;"
+	)
+	IterableNodeDeque field1746;
 
-	class160() {
+	@ObfuscatedSignature(
+		descriptor = "(Luk;)V"
+	)
+	public class160(Buffer var1) {
+		this.field1744 = -1L;
+		this.field1746 = new IterableNodeDeque();
+		this.method3464(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Luj;I)V",
-		garbageValue = "1810249387"
+		descriptor = "(Luk;I)V",
+		garbageValue = "1434557141"
 	)
-	abstract void vmethod3497(Buffer var1);
+	void method3464(Buffer var1) {
+		this.field1745 = var1.readLong();
+		this.field1744 = var1.readLong();
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lgn;B)V",
-		garbageValue = "-75"
-	)
-	abstract void vmethod3501(ClanChannel var1);
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 1) {
+				var3 = new class155(this);
+			} else if (var2 == 4) {
+				var3 = new class166(this);
+			} else if (var2 == 3) {
+				var3 = new class151(this);
+			} else if (var2 == 2) {
+				var3 = new class149(this);
+			} else {
+				if (var2 != 5) {
+					throw new RuntimeException("");
+				}
 
-	@ObfuscatedName("bv")
-	@ObfuscatedSignature(
-		descriptor = "(ILnn;IIIII[FI)Lnn;",
-		garbageValue = "-1576492439"
-	)
-	static Widget method3433(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
-		Widget var8 = new Widget();
-		var8.type = var0;
-		var8.parentId = var1.id;
-		var8.childIndex = var2;
-		var8.isIf3 = true;
-		var8.xAlignment = var3;
-		var8.yAlignment = var4;
-		var8.widthAlignment = var5;
-		var8.heightAlignment = var6;
-		var8.rawX = (int)((float)var1.width * var7[0]);
-		var8.rawY = (int)((float)var1.height * var7[1]);
-		var8.rawWidth = (int)((float)var1.width * var7[2]);
-		var8.rawHeight = (int)((float)var1.height * var7[3]);
-		return var8;
+				var3 = new class156(this);
+			}
+
+			((class159)var3).vmethod3518(var1);
+			this.field1746.addFirst((Node)var3);
+		}
+
 	}
 
-	@ObfuscatedName("ku")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1322800179"
+		descriptor = "(Lgt;I)V",
+		garbageValue = "-1792731556"
 	)
-	static void method3434() {
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
+	public void method3465(ClanChannel var1) {
+		if (var1.key == this.field1745 && this.field1744 == var1.field1764) {
+			for (class159 var2 = (class159)this.field1746.last(); var2 != null; var2 = (class159)this.field1746.previous()) {
+				var2.vmethod3519(var1);
+			}
+
+			++var1.field1764;
+		} else {
+			throw new RuntimeException("");
+		}
 	}
 }

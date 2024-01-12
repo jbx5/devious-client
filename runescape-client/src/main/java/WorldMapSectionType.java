@@ -4,47 +4,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jn")
+@ObfuscatedName("jx")
 @Implements("WorldMapSectionType")
-public enum WorldMapSectionType implements Enum
-{
-	@ObfuscatedName("at")
+public enum WorldMapSectionType implements Enum {
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Ljn;"
+		descriptor = "Ljx;"
 	)
 	@Export("WORLDMAPSECTIONTYPE0")
-	WORLDMAPSECTIONTYPE0(0, (byte)0),
-	@ObfuscatedName("ah")
+	WORLDMAPSECTIONTYPE0(3, (byte)0),
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Ljn;"
+		descriptor = "Ljx;"
 	)
 	@Export("WORLDMAPSECTIONTYPE1")
-	WORLDMAPSECTIONTYPE1(1, (byte)1),
-	@ObfuscatedName("ar")
+	WORLDMAPSECTIONTYPE1(0, (byte)1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ljn;"
+		descriptor = "Ljx;"
 	)
 	@Export("WORLDMAPSECTIONTYPE2")
-	WORLDMAPSECTIONTYPE2(3, (byte)2),
-	@ObfuscatedName("ao")
+	WORLDMAPSECTIONTYPE2(1, (byte)2),
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Ljn;"
+		descriptor = "Ljx;"
 	)
 	@Export("WORLDMAPSECTIONTYPE3")
 	WORLDMAPSECTIONTYPE3(2, (byte)3);
 
-	@ObfuscatedName("wp")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	static JagNetThread field2556;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 480024893
+		intValue = 1512232833
 	)
 	@Export("type")
 	final int type;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ar")
 	@Export("id")
 	final byte id;
 
@@ -53,84 +47,42 @@ public enum WorldMapSectionType implements Enum
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-11"
+		descriptor = "(I)I",
+		garbageValue = "-884190501"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Ljn;",
-		garbageValue = "-190919972"
+		descriptor = "(I)[Ljx;",
+		garbageValue = "-1156989021"
 	)
-	static WorldMapSectionType[] method4884() {
-		return new WorldMapSectionType[]{WORLDMAPSECTIONTYPE3, WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE0, WORLDMAPSECTIONTYPE2};
+	static WorldMapSectionType[] method4985() {
+		return new WorldMapSectionType[]{WORLDMAPSECTIONTYPE2, WORLDMAPSECTIONTYPE0, WORLDMAPSECTIONTYPE1, WORLDMAPSECTIONTYPE3};
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2050835652"
+		descriptor = "(Ldr;I)V",
+		garbageValue = "-1700644773"
 	)
-	static void method4888() {
-		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-			if (var0.stream1 != null) {
-				LoginScreenAnimation.pcmStreamMixer.removeSubStream(var0.stream1);
-				var0.stream1 = null;
-			}
-
-			if (var0.stream2 != null) {
-				LoginScreenAnimation.pcmStreamMixer.removeSubStream(var0.stream2);
-				var0.stream2 = null;
-			}
-		}
-
-		ObjectSound.objectSounds.clear();
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		ReflectionCheck.runScript(var0, 500000, 475000);
 	}
 
-	@ObfuscatedName("lj")
+	@ObfuscatedName("nm")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-		garbageValue = "57610498"
+		descriptor = "(ZI)V",
+		garbageValue = "-1883641263"
 	)
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		GrandExchangeOfferTotalQuantityComparator.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false);
-	}
-
-	@ObfuscatedName("nx")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1233384886"
-	)
-	@Export("Clan_leaveChat")
-	static final void Clan_leaveChat() {
-		PacketBufferNode var0 = class113.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
-		var0.packetBuffer.writeByte(0);
-		Client.packetWriter.addNode(var0);
-	}
-
-	@ObfuscatedName("oz")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-113"
-	)
-	static void method4889() {
-		if (MidiPcmStream.field3456 != null) {
-			Client.field783 = Client.cycle;
-			MidiPcmStream.field3456.method7163();
-
-			for (int var0 = 0; var0 < Client.players.length; ++var0) {
-				if (Client.players[var0] != null) {
-					MidiPcmStream.field3456.method7159(NpcOverrides.baseX * 64 + (Client.players[var0].x >> 7), class101.baseY * 64 + (Client.players[var0].y >> 7));
-				}
-			}
-		}
-
+	@Export("setTapToDrop")
+	static void setTapToDrop(boolean var0) {
+		Client.tapToDrop = var0;
 	}
 }

@@ -1,46 +1,80 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ix")
-public class class222 extends Node {
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 240215103
-	)
-	public int field2346;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 11877061
-	)
-	public int field2347;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -562661393
-	)
-	public int field2344;
-	@ObfuscatedName("au")
+@ObfuscatedName("iw")
+public abstract class class222 {
+	@ObfuscatedName("aj")
+	String field2376;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lnn;"
+		descriptor = "Lih;"
 	)
-	public Widget field2349;
+	final class219 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIILnn;)V"
+		descriptor = "(Lih;Ljava/lang/String;)V"
 	)
-	public class222(int var1, int var2, int var3, Widget var4) {
-		this.field2344 = var1;
-		this.field2346 = var2;
-		this.field2347 = var3;
-		this.field2349 = var4;
+	class222(class219 var1, String var2) {
+		this.this$0 = var1;
+		this.field2376 = var2;
 	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "945435280"
+	)
+	public abstract int vmethod4368();
 
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "0"
+		descriptor = "(I)I",
+		garbageValue = "1115253500"
 	)
-	static final void method4306(String var0) {
-		WorldMapArea.method4622(var0 + " is already on your friend list");
+	public int vmethod4370() {
+		return -1;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1875884586"
+	)
+	public String vmethod4369() {
+		return null;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1357718894"
+	)
+	public String method4376() {
+		return this.field2376;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(Lnn;IIIB)V",
+		garbageValue = "13"
+	)
+	@Export("Widget_setKeyRate")
+	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
+		if (var0.field3779 == null) {
+			throw new RuntimeException();
+		} else {
+			var0.field3779[var1] = var2;
+			var0.field3787[var1] = var3;
+		}
+	}
+
+	@ObfuscatedName("br")
+	@ObfuscatedSignature(
+		descriptor = "(ILdd;ZB)I",
+		garbageValue = "3"
+	)
+	static int method4381(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 }

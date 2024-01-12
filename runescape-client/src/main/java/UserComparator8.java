@@ -3,10 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eh")
+@ObfuscatedName("ej")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +14,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lrh;Lrh;B)I",
-		garbageValue = "118"
+		descriptor = "(Lrj;Lrj;B)I",
+		garbageValue = "4"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -36,50 +36,110 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(S)[Lfw;",
-		garbageValue = "226"
+		descriptor = "(Lfx;FZB)F",
+		garbageValue = "7"
 	)
-	static class140[] method2955() {
-		return new class140[]{class140.field1617, class140.field1608, class140.field1618, class140.field1610, class140.field1611, class140.field1613, class140.field1607, class140.field1614, class140.field1615};
+	static float method2944(class131 var0, float var1, boolean var2) {
+		float var3 = 0.0F;
+		if (var0 != null && var0.method3088() != 0) {
+			float var4 = (float)var0.field1545[0].field1483;
+			float var5 = (float)var0.field1545[var0.method3088() - 1].field1483;
+			float var6 = var5 - var4;
+			if (0.0D == (double)var6) {
+				return var0.field1545[0].field1480;
+			} else {
+				float var7 = 0.0F;
+				if (var1 > var5) {
+					var7 = (var1 - var5) / var6;
+				} else {
+					var7 = (var1 - var4) / var6;
+				}
+
+				double var8 = (double)((int)var7);
+				float var10 = Math.abs((float)((double)var7 - var8));
+				float var11 = var6 * var10;
+				var8 = Math.abs(1.0D + var8);
+				double var12 = var8 / 2.0D;
+				double var14 = (double)((int)var12);
+				var10 = (float)(var12 - var14);
+				float var16;
+				float var17;
+				if (var2) {
+					if (var0.field1539 == class129.field1514) {
+						if (0.0D != (double)var10) {
+							var11 += var4;
+						} else {
+							var11 = var5 - var11;
+						}
+					} else if (var0.field1539 != class129.field1512 && var0.field1539 != class129.field1515) {
+						if (var0.field1539 == class129.field1510) {
+							var11 = var4 - var1;
+							var16 = var0.field1545[0].field1482;
+							var17 = var0.field1545[0].field1479;
+							var3 = var0.field1545[0].field1480;
+							if (0.0D != (double)var16) {
+								var3 -= var17 * var11 / var16;
+							}
+
+							return var3;
+						}
+					} else {
+						var11 = var5 - var11;
+					}
+				} else if (var0.field1530 == class129.field1514) {
+					if ((double)var10 != 0.0D) {
+						var11 = var5 - var11;
+					} else {
+						var11 += var4;
+					}
+				} else if (var0.field1530 != class129.field1512 && var0.field1530 != class129.field1515) {
+					if (var0.field1530 == class129.field1510) {
+						var11 = var1 - var5;
+						var16 = var0.field1545[var0.method3088() - 1].field1481;
+						var17 = var0.field1545[var0.method3088() - 1].field1484;
+						var3 = var0.field1545[var0.method3088() - 1].field1480;
+						if ((double)var16 != 0.0D) {
+							var3 += var11 * var17 / var16;
+						}
+
+						return var3;
+					}
+				} else {
+					var11 += var4;
+				}
+
+				var3 = class155.method3423(var0, var11);
+				float var18;
+				if (var2 && var0.field1539 == class129.field1515) {
+					var18 = var0.field1545[var0.method3088() - 1].field1480 - var0.field1545[0].field1480;
+					var3 = (float)((double)var3 - (double)var18 * var8);
+				} else if (!var2 && var0.field1530 == class129.field1515) {
+					var18 = var0.field1545[var0.method3088() - 1].field1480 - var0.field1545[0].field1480;
+					var3 = (float)((double)var3 + (double)var18 * var8);
+				}
+
+				return var3;
+			}
+		} else {
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("id")
 	@ObfuscatedSignature(
-		descriptor = "(Lol;Lol;I)V",
-		garbageValue = "-1842959884"
+		descriptor = "(Lhl;IIILdf;I)V",
+		garbageValue = "146736324"
 	)
-	public static void method2948(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
-	}
-
-	@ObfuscatedName("nq")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)Ldc;",
-		garbageValue = "853776255"
-	)
-	@Export("openInterface")
-	static final InterfaceParent openInterface(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		class130.method3095(var1);
-		Widget var4 = HealthBarDefinition.widgetDefinition.method6285(var0);
-		class159.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			class159.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
+	static void method2938(SequenceDefinition var0, int var1, int var2, int var3, Actor var4) {
+		if (Client.soundEffectCount < 50) {
+			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
+				int var5 = var0.soundEffects[var1] & 15;
+				if ((var5 <= 0 || class93.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var5 != 0 || class93.clientPreferences.getSoundEffectsVolume() != 0)) {
+					class152.method3320(var0.soundEffects[var1], var2, var3, var4 == KeyHandler.localPlayer);
+				}
+			}
 		}
-
-		class132.revalidateWidgetScroll(HealthBarDefinition.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class106.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			class514.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
 	}
 }
