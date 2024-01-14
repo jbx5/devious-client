@@ -204,17 +204,6 @@ public class ContainableFrame extends JFrame
 		applyChange(getX(), getY(), size.width, size.height, getX(), getY(), this.containedInScreen != Mode.NEVER);
 	}
 
-	@Override
-	public void setExtendedState(int state)
-	{
-		if (OSType.getOSType() != OSType.MacOS)
-		{
-			super.setMaximizedBounds(getWindowAreaBounds());
-		}
-
-		super.setExtendedState(state);
-	}
-
 	/**
 	 * Force minimum size of frame to be it's layout manager's minimum size
 	 */
