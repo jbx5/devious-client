@@ -187,8 +187,7 @@ public class ClientUI
 		ConfigManager configManager,
 		Provider<ClientThread> clientThreadProvider,
 		EventBus eventBus,
-		@Named("safeMode") boolean safeMode,
-		@Named("runelite.title") String title
+		@Named("safeMode") boolean safeMode
 	)
 	{
 		this.config = config;
@@ -199,7 +198,7 @@ public class ClientUI
 		this.clientThreadProvider = clientThreadProvider;
 		this.eventBus = eventBus;
 		this.safeMode = safeMode;
-		this.title = title + (safeMode ? " (safe mode)" : "");
+		this.title = RuneLiteProperties.getTitle() + (safeMode ? " (safe mode)" : "");
 	}
 
 	@Subscribe

@@ -531,7 +531,6 @@ class PluginHubPanel extends PluginPanel
 		externalPluginWarning2.setOpaque(true);
 
 		JButton backButton = new JButton(ConfigPanel.BACK_ICON);
-		backButton.setRolloverIcon(ConfigPanel.BACK_ICON_HOVER);
 		SwingUtil.removeButtonDecorations(backButton);
 		backButton.setToolTipText("Back");
 		backButton.addActionListener(l -> pluginListPanel.getMuxer().popState());
