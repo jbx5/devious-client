@@ -8,11 +8,9 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Properties;
-import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 
@@ -144,7 +142,7 @@ public abstract class RSJagexLauncherMixin implements RSClient
 
 	//@Inject
 	//@MethodHook(value = "init", end = true)
-	@Copy("initCredentials")
+	/*@Copy("initCredentials")
 	@Replace("initCredentials")
 	public static void copy$initCredentials()
 	{
@@ -163,5 +161,5 @@ public abstract class RSJagexLauncherMixin implements RSClient
 			var1 = "";
 		}
 		client.setDisplayName(var1);
-	}
+	}*/
 }
