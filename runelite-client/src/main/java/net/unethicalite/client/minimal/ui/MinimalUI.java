@@ -532,17 +532,7 @@ public class MinimalUI
 			frame.setResizable(!config.lockWindowSize());
 		}
 
-		frame.setExpandResizeType(config.automaticResizeType());
-
-		ContainableFrame.Mode containMode = config.containInScreen();
-		if (containMode == ContainableFrame.Mode.ALWAYS)
-		{
-			// When native window decorations are enabled we don't have a way to receive window move events
-			// so we can't contain to screen always.
-			containMode = ContainableFrame.Mode.RESIZING;
-		}
-
-		frame.setContainedInScreen(containMode);
+		frame.setContainedInScreen(config.containInScreen());
 
 		if (!config.rememberScreenBounds())
 		{
