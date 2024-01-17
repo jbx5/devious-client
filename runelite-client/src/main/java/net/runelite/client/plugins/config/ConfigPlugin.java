@@ -126,10 +126,7 @@ public class ConfigPlugin extends Plugin
 			// Expand config panel for plugin
 			SwingUtilities.invokeLater(() ->
 			{
-				if (!navButton.isSelected())
-				{
-					navButton.getOnSelect().run();
-				}
+				clientToolbar.openPanel(navButton);
 				pluginListPanel.openConfigurationPanel(plugin.getName());
 			});
 		}

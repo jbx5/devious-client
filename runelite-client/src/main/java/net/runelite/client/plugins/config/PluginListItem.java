@@ -61,9 +61,7 @@ import net.runelite.client.util.SwingUtil;
 class PluginListItem extends JPanel implements SearchablePlugin
 {
 	private static final ImageIcon CONFIG_ICON;
-	private static final ImageIcon CONFIG_ICON_HOVER;
 	private static final ImageIcon REFRESH_ICON;
-	private static final ImageIcon REFRESH_ICON_HOVER;
 	private static final ImageIcon ON_STAR;
 	private static final ImageIcon OFF_STAR;
 
@@ -86,8 +84,6 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		CONFIG_ICON = new ImageIcon(configIcon);
 		REFRESH_ICON = new ImageIcon(refreshIcon);
 		ON_STAR = new ImageIcon(ImageUtil.recolorImage(onStar, ColorScheme.BRAND_BLUE));
-		CONFIG_ICON_HOVER = new ImageIcon(ImageUtil.luminanceOffset(configIcon, -100));
-		REFRESH_ICON_HOVER = new ImageIcon(ImageUtil.luminanceOffset(refreshIcon, -100));
 
 		BufferedImage offStar = ImageUtil.luminanceScale(
 			ImageUtil.grayscaleImage(onStar),
@@ -148,7 +144,6 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		if ((OPRSExternalPluginManager.isDevelopmentMode() || RuneLiteProperties.getLauncherVersion() == null) && pluginConfig.getPlugin() != null && pluginsInfoMap.containsKey(pluginConfig.getPlugin().getClass().getSimpleName()))
 		{
 			JButton hotSwapButton = new JButton(REFRESH_ICON);
-			hotSwapButton.setRolloverIcon(REFRESH_ICON_HOVER);
 			SwingUtil.removeButtonDecorations(hotSwapButton);
 			hotSwapButton.setPreferredSize(new Dimension(25, 0));
 			hotSwapButton.setVisible(false);
@@ -207,7 +202,6 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		if (pluginConfig.hasConfigurables())
 		{
 			JButton configButton = new JButton(CONFIG_ICON);
-			configButton.setRolloverIcon(CONFIG_ICON_HOVER);
 			SwingUtil.removeButtonDecorations(configButton);
 			configButton.setPreferredSize(new Dimension(25, 0));
 			configButton.setVisible(false);

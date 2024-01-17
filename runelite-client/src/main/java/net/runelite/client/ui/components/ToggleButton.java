@@ -25,19 +25,19 @@
 
 package net.runelite.client.ui.components;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
+import javax.swing.JToggleButton;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.SwingUtil;
 import net.runelite.client.util.Text;
 
-public class ToggleButton extends JCheckBox
+public class ToggleButton extends JToggleButton
 {
 	private static final ImageIcon ON_SWITCHER;
 	private static final ImageIcon OFF_SWITCHER;
-	private static final ImageIcon DISABLED_SWITCHER;
 
 	private final Object object;
 
@@ -53,14 +53,6 @@ public class ToggleButton extends JCheckBox
 			true,
 			false
 		));
-		DISABLED_SWITCHER = new ImageIcon(ImageUtil.flipImage(
-			ImageUtil.luminanceScale(
-				ImageUtil.grayscaleImage(onSwitcher),
-				0.4f
-			),
-			true,
-			false
-		));
 	}
 
 	public ToggleButton()
@@ -69,8 +61,10 @@ public class ToggleButton extends JCheckBox
 		this.object = null;
 
 		setSelectedIcon(ON_SWITCHER);
-		setDisabledIcon(DISABLED_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
+		setPreferredSize(new Dimension(25, 0));
+		addItemListener(l -> updateTooltip());
+		updateTooltip();
 	}
 
 	public ToggleButton(String text)
@@ -79,8 +73,10 @@ public class ToggleButton extends JCheckBox
 		this.object = null;
 
 		setSelectedIcon(ON_SWITCHER);
-		setDisabledIcon(DISABLED_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
+		setPreferredSize(new Dimension(25, 0));
+		addItemListener(l -> updateTooltip());
+		updateTooltip();
 	}
 
 	public ToggleButton(Object object)
@@ -89,8 +85,17 @@ public class ToggleButton extends JCheckBox
 		this.object = object;
 
 		setSelectedIcon(ON_SWITCHER);
-		setDisabledIcon(DISABLED_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
+		setPreferredSize(new Dimension(25, 0));
+		addItemListener(l -> updateTooltip());
+		updateTooltip();
+	}
+
+	private String conflictString = "";
+
+	private void updateTooltip()
+	{
+		setToolTipText(isSelected() ? "Disable" :  "<html>Enable" + conflictString);
 	}
 
 	public Object getObject()

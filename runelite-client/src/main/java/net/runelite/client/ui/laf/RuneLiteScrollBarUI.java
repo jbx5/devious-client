@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2022 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,41 +22,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.devtools;
+package net.runelite.client.ui.laf;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.Keybind;
+import com.formdev.flatlaf.ui.FlatScrollBarUI;
+import javax.swing.JComponent;
+import javax.swing.JScrollBar;
+import javax.swing.plaf.ComponentUI;
 
-@ConfigGroup("devtools")
-public interface DevToolsConfig extends Config
+public class RuneLiteScrollBarUI extends FlatScrollBarUI
 {
-	@ConfigItem(
-		keyName = "inspectorAlwaysOnTop",
-		name = "",
-		description = "",
-		hidden = true
-	)
-	default boolean inspectorAlwaysOnTop()
+	public static ComponentUI createUI(JComponent c)
 	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "inspectorAlwaysOnTop",
-		name = "",
-		description = ""
-	)
-	void inspectorAlwaysOnTop(boolean value);
-
-	@ConfigItem(
-		keyName = "swingInspectorHotkey",
-		name = "Swing Inspector",
-		description = "Hotkey to open the Swing inspector, if available"
-	)
-	default Keybind swingInspectorHotkey()
-	{
-		return Keybind.NOT_SET;
+		JScrollBar bar = (JScrollBar) c;
+		// by default 1 click = 1 px, which is unusably slow
+		bar.setUnitIncrement(16);
+		return new RuneLiteScrollBarUI();
 	}
 }

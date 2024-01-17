@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2023 Abex
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,41 +22,55 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.devtools;
+package net.runelite.client.ui.laf;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.Keybind;
+import com.formdev.flatlaf.ui.FlatStylingSupport;
+import com.formdev.flatlaf.ui.FlatToggleButtonUI;
+import com.formdev.flatlaf.ui.FlatUIUtils;
+import java.awt.AlphaComposite;
+import java.awt.Composite;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import javax.swing.JComponent;
+import javax.swing.plaf.ComponentUI;
 
-@ConfigGroup("devtools")
-public interface DevToolsConfig extends Config
+public class RuneLiteToggleButtonUI extends FlatToggleButtonUI
 {
-	@ConfigItem(
-		keyName = "inspectorAlwaysOnTop",
-		name = "",
-		description = "",
-		hidden = true
-	)
-	default boolean inspectorAlwaysOnTop()
+	@FlatStylingSupport.Styleable
+	protected float rolloverIconAlpha = 1.0f;
+
+	public static ComponentUI createUI(JComponent c)
 	{
-		return false;
+		return FlatUIUtils.canUseSharedUI(c)
+			? FlatUIUtils.createSharedUI(RuneLiteToggleButtonUI.class, () -> new RuneLiteToggleButtonUI(true))
+			: new RuneLiteToggleButtonUI(false);
 	}
 
-	@ConfigItem(
-		keyName = "inspectorAlwaysOnTop",
-		name = "",
-		description = ""
-	)
-	void inspectorAlwaysOnTop(boolean value);
-
-	@ConfigItem(
-		keyName = "swingInspectorHotkey",
-		name = "Swing Inspector",
-		description = "Hotkey to open the Swing inspector, if available"
-	)
-	default Keybind swingInspectorHotkey()
+	protected RuneLiteToggleButtonUI(boolean shared)
 	{
-		return Keybind.NOT_SET;
+		super(shared);
+	}
+
+	@Override
+	protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect)
+	{
+		if (rolloverIconAlpha != 1.0f && RuneLiteButtonUI.useRolloverEffect(c))
+		{
+			Graphics2D g2d = (Graphics2D) g;
+			Composite composite = g2d.getComposite();
+			try
+			{
+				g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, rolloverIconAlpha));
+				super.paintIcon(g, c, iconRect);
+			}
+			finally
+			{
+				g2d.setComposite(composite);
+			}
+			return;
+		}
+
+		super.paintIcon(g, c, iconRect);
 	}
 }

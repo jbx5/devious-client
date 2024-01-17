@@ -32,10 +32,10 @@ import java.awt.Color;
 public class ColorScheme
 {
 	/* The blue color used for the branding's accents */
-	public static final Color BRAND_BLUE = new Color(50, 160, 250);
+	public static final Color BRAND_BLUE = new Color(255, 84, 157, 247);
 
 	/* The blue color used for the branding's accents, with lowered opacity */
-	public static final Color BRAND_BLUE_TRANSPARENT = new Color(50, 160, 250, 120);
+	public static final Color BRAND_BLUE_TRANSPARENT = new Color(243, 114, 158, 206);
 
 	/* The orange color used for the branding's accents */
 	public static final Color BRAND_ORANGE = BRAND_BLUE;
@@ -47,6 +47,10 @@ public class ColorScheme
 	public static final Color DARK_GRAY_COLOR = new Color(40, 40, 40);
 	public static final Color MEDIUM_GRAY_COLOR = new Color(77, 77, 77);
 	public static final Color LIGHT_GRAY_COLOR = new Color(165, 165, 165);
+
+	public static final Color TEXT_COLOR = new Color(198, 198, 198);
+	public static final Color CONTROL_COLOR = new Color(30, 30, 30);
+	public static final Color BORDER_COLOR = new Color(23, 23, 23);
 
 	public static final Color DARKER_GRAY_HOVER_COLOR = new Color(60, 60, 60);
 	public static final Color DARK_GRAY_HOVER_COLOR = new Color(35, 35, 35);
