@@ -62,7 +62,7 @@ public class ToggleButton extends JToggleButton
 
 		setSelectedIcon(ON_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
-		setPreferredSize(new Dimension(25, 0));
+		setPreferredSize(new Dimension(25, 2));
 		addItemListener(l -> updateTooltip());
 		updateTooltip();
 	}
@@ -74,7 +74,7 @@ public class ToggleButton extends JToggleButton
 
 		setSelectedIcon(ON_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
-		setPreferredSize(new Dimension(25, 0));
+		setPreferredSize(new Dimension(25, 2));
 		addItemListener(l -> updateTooltip());
 		updateTooltip();
 	}
@@ -86,7 +86,7 @@ public class ToggleButton extends JToggleButton
 
 		setSelectedIcon(ON_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
-		setPreferredSize(new Dimension(25, 0));
+		setPreferredSize(new Dimension(25, 2));
 		addItemListener(l -> updateTooltip());
 		updateTooltip();
 	}
