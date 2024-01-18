@@ -162,9 +162,8 @@ open class BootstrapTask @Inject constructor(@Input val type: String) : DefaultT
                 }
                 path += ".jar"
             } else if (
-                    it.file.name.contains("trident") ||
+                    it.file.name.contains("flatlaf") ||
                     it.file.name.contains("discord") ||
-                    it.file.name.contains("substance") ||
                     it.file.name.contains("gluegen") ||
                     it.file.name.contains("jogl") ||
                     it.file.name.contains("jocl") ||
