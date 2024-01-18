@@ -36,7 +36,7 @@ buildscript {
     dependencies {
         classpath("org.ajoberstar.grgit:grgit-core:4.1.0")
         classpath("com.openosrs:script-assembler-plugin:1.0.2")
-        classpath("com.openosrs:injector-plugin:2.0.19")
+        classpath("com.openosrs:injector-plugin:2.0.20")
         classpath("com.openosrs:interface-parser-plugin:1.0.0")
     }
 }
