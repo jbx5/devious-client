@@ -71,6 +71,7 @@ public class ToggleButton extends JToggleButton
 	{
 		super(text, OFF_SWITCHER, false);
 		this.object = null;
+		this.conflictString = text;
 
 		setSelectedIcon(ON_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
@@ -83,6 +84,7 @@ public class ToggleButton extends JToggleButton
 	{
 		super(Text.titleCase((Enum<?>) object), OFF_SWITCHER, false);
 		this.object = object;
+		this.conflictString = Text.titleCase((Enum<?>) object);
 
 		setSelectedIcon(ON_SWITCHER);
 		SwingUtil.removeButtonDecorations(this);
@@ -95,7 +97,7 @@ public class ToggleButton extends JToggleButton
 
 	private void updateTooltip()
 	{
-		setToolTipText(isSelected() ? "Disable" :  "<html>Enable" + conflictString);
+		setToolTipText(isSelected() ? "Disable " + conflictString :  "<html>Enable " + conflictString);
 	}
 
 	public Object getObject()

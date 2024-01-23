@@ -47,6 +47,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.LayoutManager2;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.SystemTray;
 import java.awt.Taskbar;
@@ -71,6 +72,7 @@ import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -93,7 +95,6 @@ import net.runelite.api.Client;
 import net.runelite.api.Constants;
 import net.runelite.api.GameState;
 import net.runelite.api.Player;
-import net.runelite.api.Point;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
@@ -527,11 +528,19 @@ public class ClientUI
 				}
 				else
 				{
+					if (OSType.getOSType() == OSType.Linux)
+					{
+						// FlatLaf explicitly checks this property when checking for custom window decorations on Linux
+						JDialog.setDefaultLookAndFeelDecorated(true);
+						JFrame.setDefaultLookAndFeelDecorated(true);
+					}
+
 					frame.setUndecorated(true);
 					rp.setWindowDecorationStyle(JRootPane.FRAME);
 				}
 
-				content.setBorder(new MatteBorder(0, 4, 4, 4, ColorScheme.DARKER_GRAY_COLOR));
+				frame.addWindowStateListener(_ev -> applyCustomChromeBorder());
+				applyCustomChromeBorder();
 
 				sidebarNavBtn = toolbarPanel.add(NavigationButton
 					.builder()
@@ -557,6 +566,13 @@ public class ClientUI
 				toggleSidebar(false, true);
 			}
 		});
+	}
+
+	private void applyCustomChromeBorder()
+	{
+		content.setBorder((frame.getExtendedState() & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH
+			? null
+			: new MatteBorder(0, 4, 4, 4, ColorScheme.DARKER_GRAY_COLOR));
 	}
 
 	public void show()
@@ -864,7 +880,7 @@ public class ClientUI
 			return;
 		}
 
-		final java.awt.Point hotspot = new java.awt.Point(0, 0);
+		final Point hotspot = new Point(0, 0);
 		final Cursor cursorAwt = Toolkit.getDefaultToolkit().createCustomCursor(image, hotspot, name);
 		defaultCursor = cursorAwt;
 		setCursor(cursorAwt);
@@ -908,12 +924,16 @@ public class ClientUI
 			final Canvas canvas = ((Client) client).getCanvas();
 			if (canvas != null)
 			{
-				final java.awt.Point point = SwingUtilities.convertPoint(canvas, 0, 0, frame);
-				return new Point(point.x, point.y);
+				return SwingUtilities.convertPoint(canvas, 0, 0, frame);
 			}
 		}
 
 		return new Point(0, 0);
+	}
+
+	public Insets getInsets()
+	{
+		return frame.getInsets();
 	}
 
 	/**
@@ -1089,14 +1109,6 @@ public class ClientUI
 		if (frame == null)
 		{
 			return;
-		}
-
-		// Update window opacity if the frame is undecorated, translucency capable and not fullscreen
-		if (frame.isUndecorated() &&
-			frame.getGraphicsConfiguration().isTranslucencyCapable() &&
-			frame.getGraphicsConfiguration().getDevice().getFullScreenWindow() == null)
-		{
-			frame.setOpacity(((float) config.windowOpacity()) / 100.0f);
 		}
 
 		if (config.usernameInTitle() && (client instanceof Client))
@@ -1291,7 +1303,8 @@ public class ClientUI
 			Component client = content.getComponent(0);
 			client.setSize(width, height);
 			// must adjust content height since the client height is derived from the content height
-			content.setSize(content.getWidth(), height);
+			Insets insets = content.getInsets();
+			content.setSize(content.getWidth(), height + insets.top + insets.bottom);
 			layout(content, true);
 		}
 
@@ -1366,7 +1379,7 @@ public class ClientUI
 			if ((OSType.getOSType() != OSType.Windows || (changed & Frame.MAXIMIZED_BOTH) == 0)
 				&& !frame.getPreferredSize().equals(oldSize))
 			{
-				frame.containedSetSize(frame.getPreferredSize());
+				frame.containedSetSize(frame.getPreferredSize(), oldSize);
 			}
 
 			log.trace("finishing layout - content={} client={} sidebar={} frame={}", content.getWidth(), client.getWidth(), sidebar.getWidth(), frame.getWidth());
