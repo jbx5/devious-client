@@ -78,7 +78,6 @@ import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerModel;
@@ -488,7 +487,22 @@ class ConfigPanel extends PluginPanel
 			}
 			else if (cid.getType() == String.class)
 			{
-				item.add(createTextField(cd, cid), BorderLayout.SOUTH);
+				JTextComponent textField = createTextField(cd, cid);
+
+				if (cid.getItem().parse())
+				{
+					JLabel parsingLabel = createParseLabel(cid, textField);
+
+					item.add(configEntryName, BorderLayout.NORTH);
+					item.add(textField, BorderLayout.CENTER);
+
+					parseLabel(cid.getItem(), parsingLabel, textField.getText());
+					item.add(parsingLabel, BorderLayout.SOUTH);
+				}
+				else
+				{
+					item.add(textField, BorderLayout.SOUTH);
+				}
 			}
 			else if (cid.getType() == Color.class)
 			{
@@ -668,14 +682,6 @@ class ConfigPanel extends PluginPanel
 		{
 			textField = new JPasswordField();
 			textField.setFont(FontManager.getDefaultFont());
-		}
-		else if (cid.getItem().parse())
-		{
-			textField = new JTextField();
-			textField.setFont(FontManager.getDefaultFont());
-			JLabel parsingLabel = createParseLabel(cid, textField);
-
-			parseLabel(cid.getItem(), parsingLabel, textField.getText());
 		}
 		else
 		{
@@ -1293,29 +1299,29 @@ class ConfigPanel extends PluginPanel
 
 		ConfigDescriptor cd = pluginConfig.getConfigDescriptor();
 
-		 if (component instanceof JToggleButton)
-		 {
-			 JToggleButton toggleButton = (JToggleButton) component;
+		if (component instanceof JToggleButton)
+		{
+			JToggleButton toggleButton = (JToggleButton) component;
 
-			 for (ConfigItemDescriptor cid2 : cd.getItems())
-			 {
-				 if (toggleButton.isSelected())
-				 {
-					 if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
-					 {
-						 skipRebuild = true;
-						 configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "true");
-						 rebuild = true;
-					 }
-					 else if (cid2.getItem().disabledBy().contains(cid.getItem().keyName()))
-					 {
-						 skipRebuild = true;
-						 configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "false");
-						 rebuild = true;
-					 }
-				 }
-			 }
-		 }
+			for (ConfigItemDescriptor cid2 : cd.getItems())
+			{
+				if (toggleButton.isSelected())
+				{
+					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
+					{
+						skipRebuild = true;
+						configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "true");
+						rebuild = true;
+					}
+					else if (cid2.getItem().disabledBy().contains(cid.getItem().keyName()))
+					{
+						skipRebuild = true;
+						configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "false");
+						rebuild = true;
+					}
+				}
+			}
+		}
 		else if (component instanceof JComboBox)
 		{
 			JComboBox jComboBox = (JComboBox) component;
