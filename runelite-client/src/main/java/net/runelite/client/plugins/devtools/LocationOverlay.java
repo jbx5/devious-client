@@ -135,6 +135,17 @@ public class LocationOverlay extends OverlayPanel
 				.build());
 		}
 
+		for (int i = 0; i < client.getMapRegions().length; i++)
+		{
+			int region = client.getMapRegions()[i];
+
+			panelComponent.getChildren().add(LineComponent.builder()
+				.left((i == 0) ? "Map region ids" : " ")
+				.right(String.valueOf(region))
+				.rightColor((region == worldPoint.getRegionID()) ? Color.GREEN : Color.WHITE)
+				.build());
+		}
+
 		return super.render(graphics);
 	}
 }
