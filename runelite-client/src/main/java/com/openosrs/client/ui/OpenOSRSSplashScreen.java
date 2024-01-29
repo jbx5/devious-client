@@ -26,6 +26,7 @@ package com.openosrs.client.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -53,7 +54,7 @@ public class OpenOSRSSplashScreen extends JFrame
 		this.setSize(FRAME_SIZE);
 		this.setLayout(new BorderLayout());
 		this.setUndecorated(true);
-		this.setIconImage(ClientUI.ICON);
+		this.setIconImages(Arrays.asList(ClientUI.ICON_128, ClientUI.ICON_16));
 
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());

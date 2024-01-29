@@ -91,7 +91,7 @@ import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 @Singleton
 public class MinimalUI
 {
-	public static final BufferedImage ICON = ImageUtil.loadImageResource(ClientUI.class, "/openosrs.png");
+	public static final BufferedImage ICON = ImageUtil.loadImageResource(ClientUI.class, "openosrs_128.png");
 	private static final String CONFIG_GROUP = "runelite";
 	private static final String PLUS_CONFIG_GROUP = "runelite";
 	private static final String CONFIG_CLIENT_BOUNDS = "clientBounds";
