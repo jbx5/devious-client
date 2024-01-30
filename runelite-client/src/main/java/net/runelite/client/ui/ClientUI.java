@@ -413,6 +413,11 @@ public class ClientUI
 					{
 						SwingUtil.activate(newSelectedTab.getPanel());
 					}
+
+					if (newSelectedTab == null)
+					{
+						giveClientFocus();
+					}
 				}
 			});
 			sidebar.addMouseListener(new java.awt.event.MouseAdapter()
@@ -1075,6 +1080,11 @@ public class ClientUI
 			{
 				SwingUtil.deactivate(selectedTab.getPanel());
 			}
+		}
+
+		if (!open)
+		{
+			giveClientFocus();
 		}
 
 		if (sidebarNavBtn != null)
