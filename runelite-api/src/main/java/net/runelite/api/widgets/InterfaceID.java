@@ -170,8 +170,6 @@ public final class InterfaceID
 
 	public static final int KINGDOM = 616;
 
-	public static final int KOUREND_FAVOUR = 246;
-
 	public static final int LEVEL_UP = 233;
 
 	public static final int LIGHT_BOX = 322;
