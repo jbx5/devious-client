@@ -1880,4 +1880,10 @@ public interface RSClient extends RSGameEngine, Client
 	byte[] getCachedRandomDatData(String username);
 	void writeCachedRandomDatData(String username, byte[] data);
 	boolean useCachedRandomDat();
+
+	/**
+	 * Cached UUID
+	 */
+
+	boolean useCachedUUID();
 }
