@@ -32,6 +32,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -44,9 +45,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.client.ui.skin.SubstanceRuneLiteLookAndFeel;
+import net.runelite.client.ui.laf.RuneLiteLAF;
 import net.runelite.client.util.ImageUtil;
-import org.pushingpixels.substance.internal.SubstanceSynapse;
 
 @Slf4j
 public class SplashScreen extends JFrame implements ActionListener
@@ -68,19 +68,18 @@ public class SplashScreen extends JFrame implements ActionListener
 
 	private SplashScreen()
 	{
-		BufferedImage logo = ImageUtil.loadImageResource(SplashScreen.class, "openosrs_transparent.png");
-
 		setTitle("OpenOSRS Launcher");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setUndecorated(true);
-		setIconImage(logo);
+		setIconImages(Arrays.asList(ClientUI.ICON_128, ClientUI.ICON_16));
 		setLayout(null);
 		Container pane = getContentPane();
 		pane.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 
 		Font font = new Font(Font.DIALOG, Font.PLAIN, 12);
 
+		BufferedImage logo = ImageUtil.loadImageResource(SplashScreen.class, "openosrs_splash.png");
 		JLabel logoLabel = new JLabel(new ImageIcon(logo));
 		pane.add(logoLabel);
 		logoLabel.setBounds(0, 0, WIDTH, WIDTH);
@@ -171,16 +170,12 @@ public class SplashScreen extends JFrame implements ActionListener
 
 				try
 				{
-					boolean hasLAF = UIManager.getLookAndFeel() instanceof SubstanceRuneLiteLookAndFeel;
+					boolean hasLAF = UIManager.getLookAndFeel() instanceof RuneLiteLAF;
 					if (!hasLAF)
 					{
 						UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 					}
 					INSTANCE = new SplashScreen();
-					if (hasLAF)
-					{
-						INSTANCE.getRootPane().putClientProperty(SubstanceSynapse.COLORIZATION_FACTOR, 1.0);
-					}
 				}
 				catch (Exception e)
 				{

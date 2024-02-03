@@ -723,159 +723,159 @@ public final class ComponentID
 	public static final int FIXED_VIEWPORT_MULTICOMBAT_INDICATOR = 35913764;
 
 	/**
-	 * 548:46
-	 */
-	public static final int FIXED_VIEWPORT_FRIENDS_CHAT_TAB = 35913774;
-
-	/**
 	 * 548:47
 	 */
-	public static final int FIXED_VIEWPORT_IGNORES_TAB = 35913775;
+	public static final int FIXED_VIEWPORT_FRIENDS_CHAT_TAB = 35913775;
 
 	/**
 	 * 548:48
 	 */
-	public static final int FIXED_VIEWPORT_FRIENDS_TAB = 35913776;
+	public static final int FIXED_VIEWPORT_IGNORES_TAB = 35913776;
 
 	/**
 	 * 548:49
 	 */
-	public static final int FIXED_VIEWPORT_LOGOUT_TAB = 35913777;
+	public static final int FIXED_VIEWPORT_FRIENDS_TAB = 35913777;
 
 	/**
 	 * 548:50
 	 */
-	public static final int FIXED_VIEWPORT_OPTIONS_TAB = 35913778;
+	public static final int FIXED_VIEWPORT_LOGOUT_TAB = 35913778;
 
 	/**
 	 * 548:51
 	 */
-	public static final int FIXED_VIEWPORT_EMOTES_TAB = 35913779;
+	public static final int FIXED_VIEWPORT_OPTIONS_TAB = 35913779;
 
 	/**
 	 * 548:52
 	 */
-	public static final int FIXED_VIEWPORT_MUSIC_TAB = 35913780;
+	public static final int FIXED_VIEWPORT_EMOTES_TAB = 35913780;
 
 	/**
 	 * 548:53
 	 */
-	public static final int FIXED_VIEWPORT_FRIENDS_CHAT_ICON = 35913781;
+	public static final int FIXED_VIEWPORT_MUSIC_TAB = 35913781;
 
 	/**
 	 * 548:54
 	 */
-	public static final int FIXED_VIEWPORT_IGNORES_ICON = 35913782;
+	public static final int FIXED_VIEWPORT_FRIENDS_CHAT_ICON = 35913782;
 
 	/**
 	 * 548:55
 	 */
-	public static final int FIXED_VIEWPORT_FRIENDS_ICON = 35913783;
+	public static final int FIXED_VIEWPORT_IGNORES_ICON = 35913783;
 
 	/**
 	 * 548:56
 	 */
-	public static final int FIXED_VIEWPORT_LOGOUT_ICON = 35913784;
+	public static final int FIXED_VIEWPORT_FRIENDS_ICON = 35913784;
 
 	/**
 	 * 548:57
 	 */
-	public static final int FIXED_VIEWPORT_OPTIONS_ICON = 35913785;
+	public static final int FIXED_VIEWPORT_LOGOUT_ICON = 35913785;
 
 	/**
 	 * 548:58
 	 */
-	public static final int FIXED_VIEWPORT_EMOTES_ICON = 35913786;
+	public static final int FIXED_VIEWPORT_OPTIONS_ICON = 35913786;
 
 	/**
 	 * 548:59
 	 */
-	public static final int FIXED_VIEWPORT_MUSIC_ICON = 35913787;
+	public static final int FIXED_VIEWPORT_EMOTES_ICON = 35913787;
 
 	/**
-	 * 548:62
+	 * 548:60
 	 */
-	public static final int FIXED_VIEWPORT_COMBAT_TAB = 35913790;
+	public static final int FIXED_VIEWPORT_MUSIC_ICON = 35913788;
 
 	/**
 	 * 548:63
 	 */
-	public static final int FIXED_VIEWPORT_STATS_TAB = 35913791;
+	public static final int FIXED_VIEWPORT_COMBAT_TAB = 35913791;
 
 	/**
 	 * 548:64
 	 */
-	public static final int FIXED_VIEWPORT_QUESTS_TAB = 35913792;
+	public static final int FIXED_VIEWPORT_STATS_TAB = 35913792;
 
 	/**
 	 * 548:65
 	 */
-	public static final int FIXED_VIEWPORT_INVENTORY_TAB = 35913793;
+	public static final int FIXED_VIEWPORT_QUESTS_TAB = 35913793;
 
 	/**
 	 * 548:66
 	 */
-	public static final int FIXED_VIEWPORT_EQUIPMENT_TAB = 35913794;
+	public static final int FIXED_VIEWPORT_INVENTORY_TAB = 35913794;
 
 	/**
 	 * 548:67
 	 */
-	public static final int FIXED_VIEWPORT_PRAYER_TAB = 35913795;
+	public static final int FIXED_VIEWPORT_EQUIPMENT_TAB = 35913795;
 
 	/**
 	 * 548:68
 	 */
-	public static final int FIXED_VIEWPORT_MAGIC_TAB = 35913796;
+	public static final int FIXED_VIEWPORT_PRAYER_TAB = 35913796;
 
 	/**
 	 * 548:69
 	 */
-	public static final int FIXED_VIEWPORT_COMBAT_ICON = 35913797;
+	public static final int FIXED_VIEWPORT_MAGIC_TAB = 35913797;
 
 	/**
 	 * 548:70
 	 */
-	public static final int FIXED_VIEWPORT_STATS_ICON = 35913798;
+	public static final int FIXED_VIEWPORT_COMBAT_ICON = 35913798;
 
 	/**
 	 * 548:71
 	 */
-	public static final int FIXED_VIEWPORT_QUESTS_ICON = 35913799;
+	public static final int FIXED_VIEWPORT_STATS_ICON = 35913799;
 
 	/**
 	 * 548:72
 	 */
-	public static final int FIXED_VIEWPORT_INVENTORY_ICON = 35913800;
+	public static final int FIXED_VIEWPORT_QUESTS_ICON = 35913800;
 
 	/**
 	 * 548:73
 	 */
-	public static final int FIXED_VIEWPORT_EQUIPMENT_ICON = 35913801;
+	public static final int FIXED_VIEWPORT_INVENTORY_ICON = 35913801;
 
 	/**
 	 * 548:74
 	 */
-	public static final int FIXED_VIEWPORT_PRAYER_ICON = 35913802;
+	public static final int FIXED_VIEWPORT_EQUIPMENT_ICON = 35913802;
 
 	/**
 	 * 548:75
 	 */
-	public static final int FIXED_VIEWPORT_MAGIC_ICON = 35913803;
+	public static final int FIXED_VIEWPORT_PRAYER_ICON = 35913803;
 
 	/**
-	 * 548:77
+	 * 548:76
 	 */
-	public static final int FIXED_VIEWPORT_BANK_CONTAINER = 35913805;
+	public static final int FIXED_VIEWPORT_MAGIC_ICON = 35913804;
 
 	/**
 	 * 548:78
 	 */
-	public static final int FIXED_VIEWPORT_INTERFACE_CONTAINER = 35913806;
+	public static final int FIXED_VIEWPORT_BANK_CONTAINER = 35913806;
 
 	/**
-	 * 548:82
+	 * 548:79
 	 */
-	public static final int FIXED_VIEWPORT_INVENTORY_CONTAINER = 35913810;
+	public static final int FIXED_VIEWPORT_INTERFACE_CONTAINER = 35913807;
+
+	/**
+	 * 548:83
+	 */
+	public static final int FIXED_VIEWPORT_INVENTORY_CONTAINER = 35913811;
 
 	/**
 	 * 609:1
@@ -1096,11 +1096,6 @@ public final class ComponentID
 	 * 549:15
 	 */
 	public static final int KILL_LOG_STREAK = 35979279;
-
-	/**
-	 * 246:1
-	 */
-	public static final int KOUREND_FAVOUR_OVERLAY = 16121857;
 
 	/**
 	 * 233:1
@@ -1508,184 +1503,184 @@ public final class ComponentID
 	public static final int RESIZABLE_VIEWPORT_RESIZABLE_VIEWPORT_OLD_SCHOOL_BOX = 10551311;
 
 	/**
-	 * 161:19
+	 * 161:20
 	 */
-	public static final int RESIZABLE_VIEWPORT_MULTICOMBAT_INDICATOR = 10551315;
+	public static final int RESIZABLE_VIEWPORT_MULTICOMBAT_INDICATOR = 10551316;
 
 	/**
-	 * 161:29
+	 * 161:30
 	 */
-	public static final int RESIZABLE_VIEWPORT_MINIMAP_DRAW_AREA = 10551325;
+	public static final int RESIZABLE_VIEWPORT_MINIMAP_DRAW_AREA = 10551326;
 
 	/**
-	 * 161:32
+	 * 161:33
 	 */
-	public static final int RESIZABLE_VIEWPORT_MINIMAP_ORB_HOLDER = 10551328;
-
-	/**
-	 * 161:42
-	 */
-	public static final int RESIZABLE_VIEWPORT_FRIENDS_CHAT_TAB = 10551338;
+	public static final int RESIZABLE_VIEWPORT_MINIMAP_ORB_HOLDER = 10551329;
 
 	/**
 	 * 161:43
 	 */
-	public static final int RESIZABLE_VIEWPORT_IGNORES_TAB = 10551339;
+	public static final int RESIZABLE_VIEWPORT_FRIENDS_CHAT_TAB = 10551339;
 
 	/**
 	 * 161:44
 	 */
-	public static final int RESIZABLE_VIEWPORT_FRIENDS_TAB = 10551340;
+	public static final int RESIZABLE_VIEWPORT_IGNORES_TAB = 10551340;
 
 	/**
 	 * 161:45
 	 */
-	public static final int RESIZABLE_VIEWPORT_LOGOUT_TAB = 10551341;
+	public static final int RESIZABLE_VIEWPORT_FRIENDS_TAB = 10551341;
 
 	/**
 	 * 161:46
 	 */
-	public static final int RESIZABLE_VIEWPORT_OPTIONS_TAB = 10551342;
+	public static final int RESIZABLE_VIEWPORT_LOGOUT_TAB = 10551342;
 
 	/**
 	 * 161:47
 	 */
-	public static final int RESIZABLE_VIEWPORT_EMOTES_TAB = 10551343;
+	public static final int RESIZABLE_VIEWPORT_OPTIONS_TAB = 10551343;
 
 	/**
 	 * 161:48
 	 */
-	public static final int RESIZABLE_VIEWPORT_MUSIC_TAB = 10551344;
+	public static final int RESIZABLE_VIEWPORT_EMOTES_TAB = 10551344;
 
 	/**
 	 * 161:49
 	 */
-	public static final int RESIZABLE_VIEWPORT_FRIENDS_CHAT_ICON = 10551345;
+	public static final int RESIZABLE_VIEWPORT_MUSIC_TAB = 10551345;
 
 	/**
 	 * 161:50
 	 */
-	public static final int RESIZABLE_VIEWPORT_IGNORES_ICON = 10551346;
+	public static final int RESIZABLE_VIEWPORT_FRIENDS_CHAT_ICON = 10551346;
 
 	/**
 	 * 161:51
 	 */
-	public static final int RESIZABLE_VIEWPORT_FRIENDS_ICON = 10551347;
+	public static final int RESIZABLE_VIEWPORT_IGNORES_ICON = 10551347;
 
 	/**
 	 * 161:52
 	 */
-	public static final int RESIZABLE_VIEWPORT_LOGOUT_ICON = 10551348;
+	public static final int RESIZABLE_VIEWPORT_FRIENDS_ICON = 10551348;
 
 	/**
 	 * 161:53
 	 */
-	public static final int RESIZABLE_VIEWPORT_OPTIONS_ICON = 10551349;
+	public static final int RESIZABLE_VIEWPORT_LOGOUT_ICON = 10551349;
 
 	/**
 	 * 161:54
 	 */
-	public static final int RESIZABLE_VIEWPORT_EMOTES_ICON = 10551350;
+	public static final int RESIZABLE_VIEWPORT_OPTIONS_ICON = 10551350;
 
 	/**
 	 * 161:55
 	 */
-	public static final int RESIZABLE_VIEWPORT_MUSIC_ICON = 10551351;
+	public static final int RESIZABLE_VIEWPORT_EMOTES_ICON = 10551351;
 
 	/**
-	 * 161:58
+	 * 161:56
 	 */
-	public static final int RESIZABLE_VIEWPORT_COMBAT_TAB = 10551354;
+	public static final int RESIZABLE_VIEWPORT_MUSIC_ICON = 10551352;
 
 	/**
 	 * 161:59
 	 */
-	public static final int RESIZABLE_VIEWPORT_STATS_TAB = 10551355;
+	public static final int RESIZABLE_VIEWPORT_COMBAT_TAB = 10551355;
 
 	/**
 	 * 161:60
 	 */
-	public static final int RESIZABLE_VIEWPORT_QUESTS_TAB = 10551356;
+	public static final int RESIZABLE_VIEWPORT_STATS_TAB = 10551356;
 
 	/**
 	 * 161:61
 	 */
-	public static final int RESIZABLE_VIEWPORT_INVENTORY_TAB = 10551357;
+	public static final int RESIZABLE_VIEWPORT_QUESTS_TAB = 10551357;
 
 	/**
 	 * 161:62
 	 */
-	public static final int RESIZABLE_VIEWPORT_EQUIPMENT_TAB = 10551358;
+	public static final int RESIZABLE_VIEWPORT_INVENTORY_TAB = 10551358;
 
 	/**
 	 * 161:63
 	 */
-	public static final int RESIZABLE_VIEWPORT_PRAYER_TAB = 10551359;
+	public static final int RESIZABLE_VIEWPORT_EQUIPMENT_TAB = 10551359;
 
 	/**
 	 * 161:64
 	 */
-	public static final int RESIZABLE_VIEWPORT_MAGIC_TAB = 10551360;
+	public static final int RESIZABLE_VIEWPORT_PRAYER_TAB = 10551360;
 
 	/**
 	 * 161:65
 	 */
-	public static final int RESIZABLE_VIEWPORT_COMBAT_ICON = 10551361;
+	public static final int RESIZABLE_VIEWPORT_MAGIC_TAB = 10551361;
 
 	/**
 	 * 161:66
 	 */
-	public static final int RESIZABLE_VIEWPORT_STATS_ICON = 10551362;
+	public static final int RESIZABLE_VIEWPORT_COMBAT_ICON = 10551362;
 
 	/**
 	 * 161:67
 	 */
-	public static final int RESIZABLE_VIEWPORT_QUESTS_ICON = 10551363;
+	public static final int RESIZABLE_VIEWPORT_STATS_ICON = 10551363;
 
 	/**
 	 * 161:68
 	 */
-	public static final int RESIZABLE_VIEWPORT_INVENTORY_ICON = 10551364;
+	public static final int RESIZABLE_VIEWPORT_QUESTS_ICON = 10551364;
 
 	/**
 	 * 161:69
 	 */
-	public static final int RESIZABLE_VIEWPORT_EQUIPMENT_ICON = 10551365;
+	public static final int RESIZABLE_VIEWPORT_INVENTORY_ICON = 10551365;
 
 	/**
 	 * 161:70
 	 */
-	public static final int RESIZABLE_VIEWPORT_PRAYER_ICON = 10551366;
+	public static final int RESIZABLE_VIEWPORT_EQUIPMENT_ICON = 10551366;
 
 	/**
 	 * 161:71
 	 */
-	public static final int RESIZABLE_VIEWPORT_MAGIC_ICON = 10551367;
+	public static final int RESIZABLE_VIEWPORT_PRAYER_ICON = 10551367;
 
 	/**
 	 * 161:72
 	 */
-	public static final int RESIZABLE_VIEWPORT_INTERFACE_CONTAINER = 10551368;
+	public static final int RESIZABLE_VIEWPORT_MAGIC_ICON = 10551368;
 
 	/**
-	 * 161:78
+	 * 161:73
 	 */
-	public static final int RESIZABLE_VIEWPORT_INVENTORY_CONTAINER = 10551374;
+	public static final int RESIZABLE_VIEWPORT_INTERFACE_CONTAINER = 10551369;
 
 	/**
-	 * 161:93
+	 * 161:79
 	 */
-	public static final int RESIZABLE_VIEWPORT_MINIMAP = 10551389;
-
-	/**
-	 * 161:94
-	 */
-	public static final int RESIZABLE_VIEWPORT_CHATBOX_PARENT = 10551390;
+	public static final int RESIZABLE_VIEWPORT_INVENTORY_CONTAINER = 10551375;
 
 	/**
 	 * 161:95
 	 */
-	public static final int RESIZABLE_VIEWPORT_INVENTORY_PARENT = 10551391;
+	public static final int RESIZABLE_VIEWPORT_MINIMAP = 10551391;
+
+	/**
+	 * 161:96
+	 */
+	public static final int RESIZABLE_VIEWPORT_CHATBOX_PARENT = 10551392;
+
+	/**
+	 * 161:97
+	 */
+	public static final int RESIZABLE_VIEWPORT_INVENTORY_PARENT = 10551393;
 
 	/**
 	 * 164:15
@@ -1693,134 +1688,134 @@ public final class ComponentID
 	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_RESIZABLE_VIEWPORT_BOTTOM_LINE = 10747919;
 
 	/**
-	 * 164:19
+	 * 164:20
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MULTICOMBAT_INDICATOR = 10747923;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MULTICOMBAT_INDICATOR = 10747924;
 
 	/**
-	 * 164:29
+	 * 164:30
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_DRAW_AREA = 10747933;
-
-	/**
-	 * 164:32
-	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_ORB_HOLDER = 10747936;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_DRAW_AREA = 10747934;
 
 	/**
 	 * 164:33
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY = 10747937;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_ORB_HOLDER = 10747937;
 
 	/**
 	 * 164:34
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_LOGOUT_BUTTON = 10747938;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY = 10747938;
 
 	/**
-	 * 164:43
+	 * 164:35
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_FC_ICON = 10747947;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_LOGOUT_BUTTON = 10747939;
 
 	/**
-	 * 164:45
+	 * 164:44
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_FRIEND_ICON = 10747949;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_FC_ICON = 10747948;
 
 	/**
 	 * 164:46
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_SETTINGS_ICON = 10747950;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_FRIEND_ICON = 10747950;
 
 	/**
 	 * 164:47
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_EMOTE_ICON = 10747951;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_SETTINGS_ICON = 10747951;
 
 	/**
 	 * 164:48
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MUSIC_ICON = 10747952;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_EMOTE_ICON = 10747952;
 
 	/**
-	 * 164:54
+	 * 164:49
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_TAB = 10747958;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MUSIC_ICON = 10747953;
 
 	/**
-	 * 164:56
+	 * 164:55
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_TAB = 10747960;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_TAB = 10747959;
 
 	/**
-	 * 164:58
+	 * 164:57
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_CMB_ICON = 10747962;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_TAB = 10747961;
 
 	/**
 	 * 164:59
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_SKILLS_ICON = 10747963;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_CMB_ICON = 10747963;
 
 	/**
 	 * 164:60
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_QUESTS_ICON = 10747964;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_SKILLS_ICON = 10747964;
 
 	/**
 	 * 164:61
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_ICON = 10747965;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_QUESTS_ICON = 10747965;
 
 	/**
 	 * 164:62
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_EQUIP_ICON = 10747966;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_ICON = 10747966;
 
 	/**
 	 * 164:63
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_ICON = 10747967;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_EQUIP_ICON = 10747967;
 
 	/**
 	 * 164:64
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MAGIC_ICON = 10747968;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_ICON = 10747968;
 
 	/**
-	 * 164:69
+	 * 164:65
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INTERFACE_CONTAINER = 10747973;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MAGIC_ICON = 10747969;
 
 	/**
-	 * 164:75
+	 * 164:70
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_CONTAINER = 10747979;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INTERFACE_CONTAINER = 10747974;
 
 	/**
-	 * 164:90
+	 * 164:76
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP = 10747994;
-
-	/**
-	 * 164:91
-	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_CHATBOX_PARENT = 10747995;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_CONTAINER = 10747980;
 
 	/**
 	 * 164:92
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_TABS1 = 10747996;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP = 10747996;
 
 	/**
 	 * 164:93
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_TABS2 = 10747997;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_CHATBOX_PARENT = 10747997;
 
 	/**
 	 * 164:94
 	 */
-	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_PARENT = 10747998;
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_TABS1 = 10747998;
+
+	/**
+	 * 164:95
+	 */
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_TABS2 = 10747999;
+
+	/**
+	 * 164:96
+	 */
+	public static final int RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_PARENT = 10748000;
 
 	/**
 	 * 834:3

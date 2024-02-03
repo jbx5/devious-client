@@ -24,6 +24,7 @@
  */
 package net.runelite.client.plugins.config;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.ComparisonChain;
@@ -64,9 +65,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -79,8 +78,7 @@ import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.ListCellRenderer;
+import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -90,7 +88,6 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ChangeListener;
-import javax.swing.plaf.basic.BasicSpinnerUI;
 import javax.swing.text.JTextComponent;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.events.ConfigButtonClicked;
@@ -123,7 +120,7 @@ import net.runelite.client.ui.DynamicGridLayout;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.ColorJButton;
-import net.runelite.client.ui.components.ComboBoxListRenderer;
+import net.runelite.client.ui.components.TitleCaseListCellRenderer;
 import net.runelite.client.ui.components.ToggleButton;
 import net.runelite.client.ui.components.colorpicker.ColorPickerManager;
 import net.runelite.client.ui.components.colorpicker.RuneliteColorPicker;
@@ -139,11 +136,8 @@ class ConfigPanel extends PluginPanel
 {
 	private static final int SPINNER_FIELD_WIDTH = 6;
 	private static final ImageIcon SECTION_EXPAND_ICON;
-	private static final ImageIcon SECTION_EXPAND_ICON_HOVER;
 	private static final ImageIcon SECTION_RETRACT_ICON;
-	private static final ImageIcon SECTION_RETRACT_ICON_HOVER;
 	static final ImageIcon BACK_ICON;
-	static final ImageIcon BACK_ICON_HOVER;
 
 	private static final Map<ConfigSectionDescriptor, Boolean> sectionExpandStates = new HashMap<>();
 
@@ -151,15 +145,12 @@ class ConfigPanel extends PluginPanel
 	{
 		final BufferedImage backIcon = ImageUtil.loadImageResource(ConfigPanel.class, "config_back_icon.png");
 		BACK_ICON = new ImageIcon(backIcon);
-		BACK_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(backIcon, -100));
 
 		BufferedImage sectionRetractIcon = ImageUtil.loadImageResource(ConfigPanel.class, "/util/arrow_right.png");
 		sectionRetractIcon = ImageUtil.luminanceOffset(sectionRetractIcon, -121);
 		SECTION_EXPAND_ICON = new ImageIcon(sectionRetractIcon);
-		SECTION_EXPAND_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(sectionRetractIcon, -100));
 		final BufferedImage sectionExpandIcon = ImageUtil.rotateImage(sectionRetractIcon, Math.PI / 2);
 		SECTION_RETRACT_ICON = new ImageIcon(sectionExpandIcon);
-		SECTION_RETRACT_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(sectionExpandIcon, -100));
 	}
 
 	private final PluginListPanel pluginList;
@@ -170,7 +161,7 @@ class ConfigPanel extends PluginPanel
 	private final OPRSExternalPluginManager oprsExternalPluginManager;
 	private final EventBus eventBus;
 
-	private final ListCellRenderer<Enum<?>> listCellRenderer = new ComboBoxListRenderer<>();
+	private final TitleCaseListCellRenderer listCellRenderer = new TitleCaseListCellRenderer();
 
 	private final JScrollPane scrollPane;
 	private final FixedWidthPanel mainPanel;
@@ -180,11 +171,10 @@ class ConfigPanel extends PluginPanel
 	private PluginConfigurationDescriptor pluginConfig = null;
 	private boolean skipRebuild;
 
-
 	@Inject
 	private ConfigPanel(PluginListPanel pluginList, ConfigManager configManager, PluginManager pluginManager,
-						ExternalPluginManager externalPluginManager, ColorPickerManager colorPickerManager,
-						OPRSExternalPluginManager oprsExternalPluginManager, EventBus eventBus)
+		ExternalPluginManager externalPluginManager, ColorPickerManager colorPickerManager,
+		OPRSExternalPluginManager oprsExternalPluginManager, EventBus eventBus)
 	{
 		super(false);
 
@@ -218,7 +208,6 @@ class ConfigPanel extends PluginPanel
 		add(scrollPane, BorderLayout.CENTER);
 
 		JButton topPanelBackButton = new JButton(BACK_ICON);
-		topPanelBackButton.setRolloverIcon(BACK_ICON_HOVER);
 		SwingUtil.removeButtonDecorations(topPanelBackButton);
 		topPanelBackButton.setPreferredSize(new Dimension(22, 0));
 		topPanelBackButton.setBorder(new EmptyBorder(0, 0, 0, 5));
@@ -238,8 +227,6 @@ class ConfigPanel extends PluginPanel
 	{
 		assert this.pluginConfig == null;
 		this.pluginConfig = pluginConfig;
-
-		scrollPane.getVerticalScrollBar().setValue(0);
 
 		String name = pluginConfig.getName();
 		title.setText(name);
@@ -285,7 +272,6 @@ class ConfigPanel extends PluginPanel
 		boolean newState = !contents.isVisible();
 		contents.setVisible(newState);
 		button.setIcon(newState ? SECTION_RETRACT_ICON : SECTION_EXPAND_ICON);
-		button.setRolloverIcon(newState ? SECTION_RETRACT_ICON_HOVER : SECTION_EXPAND_ICON_HOVER);
 		button.setToolTipText(newState ? "Retract" : "Expand");
 		sectionExpandStates.put(csd, newState);
 		SwingUtilities.invokeLater(contents::revalidate);
@@ -374,7 +360,6 @@ class ConfigPanel extends PluginPanel
 			section.add(sectionHeader, BorderLayout.NORTH);
 
 			final JButton sectionToggle = new JButton(isOpen ? SECTION_RETRACT_ICON : SECTION_EXPAND_ICON);
-			sectionToggle.setRolloverIcon(isOpen ? SECTION_RETRACT_ICON_HOVER : SECTION_EXPAND_ICON_HOVER);
 			sectionToggle.setPreferredSize(new Dimension(18, 0));
 			sectionToggle.setBorder(new EmptyBorder(0, 0, 0, 5));
 			sectionToggle.setToolTipText(isOpen ? "Retract" : "Expand");
@@ -490,7 +475,7 @@ class ConfigPanel extends PluginPanel
 			}
 			else if (cid.getType() == boolean.class)
 			{
-				item.add(createCheckbox(cd, cid), BorderLayout.EAST);
+				item.add(createToggleButton(cd, cid), BorderLayout.EAST);
 			}
 			else if (cid.getType() == int.class)
 			{
@@ -637,20 +622,18 @@ class ConfigPanel extends PluginPanel
 		return button;
 	}
 
-	private JCheckBox createCheckbox(ConfigDescriptor cd, ConfigItemDescriptor cid)
+	private ToggleButton createToggleButton(ConfigDescriptor cd, ConfigItemDescriptor cid)
 	{
-		JCheckBox checkbox = new ToggleButton();
-		checkbox.setPreferredSize(new Dimension(26, 25));
-		checkbox.setSelected(Boolean.parseBoolean(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName())));
-		checkbox.addActionListener(ae -> changeConfiguration(checkbox, cd, cid));
-		return checkbox;
+		ToggleButton toggleButton = new ToggleButton();
+		toggleButton.setSelected(Boolean.parseBoolean(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName())));
+		toggleButton.addActionListener(ae -> changeConfiguration(toggleButton, cd, cid));
+		return toggleButton;
 	}
 
-	private JComponent createIntSpinner(ConfigDescriptor cd, ConfigItemDescriptor cid)
+	private JSpinner createIntSpinner(ConfigDescriptor cd, ConfigItemDescriptor cid)
 	{
-		int value = Integer.parseInt(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName()));
+		int value = MoreObjects.firstNonNull(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), int.class), 0);
 
-		Units units = cid.getUnits();
 		Range range = cid.getRange();
 		int min = 0, max = Integer.MAX_VALUE;
 		if (range != null)
@@ -662,127 +645,25 @@ class ConfigPanel extends PluginPanel
 		// Config may previously have been out of range
 		value = Ints.constrainToRange(value, min, max);
 
-		if (max < Integer.MAX_VALUE)
+		SpinnerModel model = new SpinnerNumberModel(value, min, max, 1);
+		JSpinner spinner = new JSpinner(model);
+		Component editor = spinner.getEditor();
+		JFormattedTextField spinnerTextField = ((JSpinner.DefaultEditor) editor).getTextField();
+		spinnerTextField.setColumns(SPINNER_FIELD_WIDTH);
+		spinner.addChangeListener(ce -> changeConfiguration(spinner, cd, cid));
+
+		Units units = cid.getUnits();
+		if (units != null)
 		{
-			JLabel sliderValueLabel = new JLabel();
-			JSlider slider = new JSlider(min, max, value);
-			slider.setBackground(ColorScheme.DARK_GRAY_COLOR);
-			if (units != null)
-			{
-				sliderValueLabel.setText(slider.getValue() + units.value());
-			}
-			else
-			{
-				sliderValueLabel.setText(String.valueOf(slider.getValue()));
-			}
-			slider.setPreferredSize(new Dimension(80, 25));
-			slider.addChangeListener((l) ->
-				{
-					if (units != null)
-					{
-						sliderValueLabel.setText(slider.getValue() + units.value());
-					}
-					else
-					{
-						sliderValueLabel.setText(String.valueOf(slider.getValue()));
-					}
-
-					if (!slider.getValueIsAdjusting())
-					{
-						changeConfiguration(slider, cd, cid);
-					}
-				}
-			);
-
-			SpinnerModel model = new SpinnerNumberModel(value, min, max, 1);
-			JSpinner spinner = new JSpinner(model);
-			Component editor = spinner.getEditor();
-			JFormattedTextField spinnerTextField = ((JSpinner.DefaultEditor) editor).getTextField();
-			spinnerTextField.setColumns(SPINNER_FIELD_WIDTH);
-			spinner.setUI(new BasicSpinnerUI()
-			{
-				protected Component createNextButton()
-				{
-					return null;
-				}
-
-				protected Component createPreviousButton()
-				{
-					return null;
-				}
-			});
-
-			JPanel subPanel = new JPanel();
-			subPanel.setPreferredSize(new Dimension(110, 25));
-			subPanel.setLayout(new BorderLayout());
-
-			spinner.addChangeListener((ce) ->
-			{
-				changeConfiguration(spinner, cd, cid);
-
-				if (units != null)
-				{
-					sliderValueLabel.setText(spinner.getValue() + units.value());
-				}
-				else
-				{
-					sliderValueLabel.setText(String.valueOf(spinner.getValue()));
-				}
-				slider.setValue((Integer) spinner.getValue());
-
-				subPanel.add(sliderValueLabel, BorderLayout.WEST);
-				subPanel.add(slider, BorderLayout.EAST);
-				subPanel.remove(spinner);
-
-				validate();
-				repaint();
-			});
-
-			sliderValueLabel.addMouseListener(new MouseAdapter()
-			{
-				public void mouseClicked(MouseEvent e)
-				{
-					spinner.setValue(slider.getValue());
-
-					subPanel.remove(sliderValueLabel);
-					subPanel.remove(slider);
-					subPanel.add(spinner, BorderLayout.EAST);
-
-					validate();
-					repaint();
-
-					final JTextField tf = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
-					tf.requestFocusInWindow();
-					SwingUtilities.invokeLater(tf::selectAll);
-				}
-			});
-
-			subPanel.add(sliderValueLabel, BorderLayout.WEST);
-			subPanel.add(slider, BorderLayout.EAST);
-
-			return subPanel;
+			spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units));
 		}
-		else
-		{
-			SpinnerModel model = new SpinnerNumberModel(value, min, max, 1);
-			JSpinner spinner = new JSpinner(model);
-			Component editor = spinner.getEditor();
-			JFormattedTextField spinnerTextField = ((JSpinner.DefaultEditor) editor).getTextField();
-			spinnerTextField.setColumns(SPINNER_FIELD_WIDTH);
-			spinner.addChangeListener(ce -> changeConfiguration(spinner, cd, cid));
 
-			if (units != null)
-			{
-				spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units));
-			}
-
-			return spinner;
-		}
+		return spinner;
 	}
 
 	private JSpinner createDoubleSpinner(ConfigDescriptor cd, ConfigItemDescriptor cid)
 	{
-		double value = configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), double.class);
+		double value = MoreObjects.firstNonNull(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), double.class), 0d);
 
 		SpinnerModel model = new SpinnerNumberModel(value, 0, Double.MAX_VALUE, 0.1);
 		JSpinner spinner = new JSpinner(model);
@@ -790,7 +671,6 @@ class ConfigPanel extends PluginPanel
 		JFormattedTextField spinnerTextField = ((JSpinner.DefaultEditor) editor).getTextField();
 		spinnerTextField.setColumns(SPINNER_FIELD_WIDTH);
 		spinner.addChangeListener(ce -> changeConfiguration(spinner, cd, cid));
-
 		return spinner;
 	}
 
@@ -801,6 +681,7 @@ class ConfigPanel extends PluginPanel
 		if (cid.getItem().secret())
 		{
 			textField = new JPasswordField();
+			textField.setFont(FontManager.getDefaultFont());
 		}
 		else
 		{
@@ -892,10 +773,9 @@ class ConfigPanel extends PluginPanel
 		JPanel dimensionPanel = new JPanel();
 		dimensionPanel.setLayout(new BorderLayout());
 
-		String str = configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName());
-		String[] splitStr = str.split("x");
-		int width = Integer.parseInt(splitStr[0]);
-		int height = Integer.parseInt(splitStr[1]);
+		Dimension dimension = MoreObjects.firstNonNull(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), Dimension.class), new Dimension());
+		int width = dimension.width;
+		int height = dimension.height;
 
 		SpinnerModel widthModel = new SpinnerNumberModel(width, 0, Integer.MAX_VALUE, 1);
 		JSpinner widthSpinner = new JSpinner(widthModel);
@@ -931,9 +811,7 @@ class ConfigPanel extends PluginPanel
 		// to build components for each combobox element in order to compute the display size of the
 		// combobox
 		box.setRenderer(listCellRenderer);
-		box.setPreferredSize(new Dimension(box.getPreferredSize().width, 25));
-		box.setForeground(Color.WHITE);
-		box.setFocusable(false);
+		box.setPreferredSize(new Dimension(box.getPreferredSize().width, 22));
 
 		try
 		{
@@ -985,21 +863,24 @@ class ConfigPanel extends PluginPanel
 			cid.getItem().keyName(), parameterizedType);
 
 		JPanel enumsetLayout = new JPanel(new GridLayout(0, 2));
-		List<ToggleButton> jcheckboxes = new ArrayList<>();
+		enumsetLayout.setPreferredSize(new Dimension(PANEL_WIDTH, type.getEnumConstants().length * 10));
+
+		List<ToggleButton> toggleButtons = new ArrayList<>();
 
 		Set<?> selectedItems = new HashSet(Objects.requireNonNullElse(set, Collections.emptySet()));
 
 		for (Object obj : type.getEnumConstants())
 		{
-			ToggleButton checkbox = new ToggleButton(obj);
-			checkbox.setBackground(ColorScheme.DARK_GRAY_COLOR);
-			checkbox.setSelected(selectedItems.contains(obj));
-			jcheckboxes.add(checkbox);
+			ToggleButton toggleButton = new ToggleButton(obj);
+			toggleButton.setHorizontalAlignment(SwingConstants.LEFT);
+			toggleButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+			toggleButton.setSelected(selectedItems.contains(obj));
+			toggleButtons.add(toggleButton);
 
-			enumsetLayout.add(checkbox);
+			enumsetLayout.add(toggleButton);
 		}
 
-		jcheckboxes.forEach(checkbox -> checkbox.addActionListener(ae -> changeConfiguration(jcheckboxes, cd, cid)));
+		toggleButtons.forEach(toggleButton -> toggleButton.addActionListener(ae -> changeConfiguration(toggleButtons, cd, cid)));
 
 		return enumsetLayout;
 	}
@@ -1016,21 +897,24 @@ class ConfigPanel extends PluginPanel
 		}
 
 		JPanel enumsetLayout = new JPanel(new GridLayout(0, 2));
-		List<ToggleButton> jcheckboxes = new ArrayList<>();
+		enumsetLayout.setPreferredSize(new Dimension(PANEL_WIDTH, enumType.getEnumConstants().length * 10));
+
+		List<ToggleButton> toggleButtons = new ArrayList<>();
 
 		for (Object obj : enumType.getEnumConstants())
 		{
 			String option = Text.titleCase((Enum<?>) obj);
 
-			ToggleButton checkbox = new ToggleButton(option);
-			checkbox.setBackground(ColorScheme.DARK_GRAY_COLOR);
-			checkbox.setSelected(enumSet.contains(obj));
-			jcheckboxes.add(checkbox);
+			ToggleButton toggleButton = new ToggleButton(option);
+			toggleButton.setHorizontalAlignment(SwingConstants.LEFT);
+			toggleButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+			toggleButton.setSelected(enumSet.contains(obj));
+			toggleButtons.add(toggleButton);
 
-			enumsetLayout.add(checkbox);
+			enumsetLayout.add(toggleButton);
 		}
 
-		jcheckboxes.forEach(checkbox -> checkbox.addActionListener(ae -> changeConfiguration(jcheckboxes, cd, cid)));
+		toggleButtons.forEach(toggleButton -> toggleButton.addActionListener(ae -> changeConfiguration(toggleButton, cd, cid)));
 
 		return enumsetLayout;
 	}
@@ -1119,10 +1003,10 @@ class ConfigPanel extends PluginPanel
 
 		skipRebuild = true;
 
-		if (component instanceof JCheckBox)
+		if (component instanceof JToggleButton)
 		{
-			JCheckBox checkbox = (JCheckBox) component;
-			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), "" + checkbox.isSelected());
+			JToggleButton toggleButton = (JToggleButton) component;
+			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), "" + toggleButton.isSelected());
 		}
 		else if (component instanceof JSpinner)
 		{
@@ -1162,7 +1046,7 @@ class ConfigPanel extends PluginPanel
 			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), Sets.newHashSet(selectedValues));
 		}
 
-		if (enableDisable(component, cid)  || hideUnhide(component, cd, cid))
+		if (enableDisable(component, cid) || hideUnhide(component, cd, cid))
 		{
 			rebuild(true);
 		}
@@ -1180,9 +1064,7 @@ class ConfigPanel extends PluginPanel
 		if (event.getPlugin() == this.pluginConfig.getPlugin())
 		{
 			SwingUtilities.invokeLater(() ->
-			{
-				pluginToggle.setSelected(event.isLoaded());
-			});
+				pluginToggle.setSelected(event.isLoaded()));
 		}
 	}
 
@@ -1235,9 +1117,9 @@ class ConfigPanel extends PluginPanel
 	{
 		boolean rebuild = false;
 
-		if (component instanceof JCheckBox)
+		if (component instanceof JToggleButton)
 		{
-			JCheckBox checkbox = (JCheckBox) component;
+			JToggleButton toggleButton = (JToggleButton) component;
 
 			for (ConfigItemDescriptor cid2 : cd.getItems())
 			{
@@ -1255,7 +1137,7 @@ class ConfigPanel extends PluginPanel
 					}
 				}
 
-				if (checkbox.isSelected())
+				if (toggleButton.isSelected())
 				{
 					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
 					{
@@ -1417,13 +1299,13 @@ class ConfigPanel extends PluginPanel
 
 		ConfigDescriptor cd = pluginConfig.getConfigDescriptor();
 
-		if (component instanceof JCheckBox)
+		if (component instanceof JToggleButton)
 		{
-			JCheckBox checkbox = (JCheckBox) component;
+			JToggleButton toggleButton = (JToggleButton) component;
 
 			for (ConfigItemDescriptor cid2 : cd.getItems())
 			{
-				if (checkbox.isSelected())
+				if (toggleButton.isSelected())
 				{
 					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
 					{

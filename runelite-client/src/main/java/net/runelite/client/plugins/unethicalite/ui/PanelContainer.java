@@ -3,7 +3,7 @@ package net.runelite.client.plugins.unethicalite.ui;
 import lombok.Getter;
 import net.miginfocom.swing.MigLayout;
 import net.runelite.client.config.ConfigManager;
-import net.runelite.client.ui.components.ComboBoxListRenderer;
+import net.runelite.client.ui.components.TitleCaseListCellRenderer;
 import net.runelite.client.util.Text;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
@@ -57,7 +57,7 @@ public abstract class PanelContainer extends JPanel
 		JPanel section = new JPanel();
 		section.add(new JLabel(text));
 		JComboBox<Enum<?>> box = new JComboBox<>(type.getEnumConstants());
-		box.setRenderer(new ComboBoxListRenderer<>());
+		box.setRenderer(new TitleCaseListCellRenderer());
 		box.setForeground(Color.WHITE);
 		box.setFocusable(false);
 

@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.function.Predicate;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-//import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -127,7 +126,14 @@ public class OverlayManager
 	@Subscribe
 	public void onPluginChanged(final PluginChanged event)
 	{
-		overlays.forEach(this::loadOverlay);
+		synchronized (this)
+		{
+			overlays.forEach((o) ->
+			{
+				loadOverlay(o);
+				o.revalidate();
+			});
+		}
 		rebuildOverlayLayers();
 	}
 
