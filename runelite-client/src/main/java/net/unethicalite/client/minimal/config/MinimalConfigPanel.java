@@ -36,7 +36,7 @@ import net.runelite.client.ui.DynamicGridLayout;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.ColorJButton;
-import net.runelite.client.ui.components.ComboBoxListRenderer;
+import net.runelite.client.ui.components.TitleCaseListCellRenderer;
 import net.runelite.client.ui.components.ToggleButton;
 import net.runelite.client.ui.components.colorpicker.ColorPickerManager;
 import net.runelite.client.ui.components.colorpicker.RuneliteColorPicker;
@@ -66,6 +66,7 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.ListCellRenderer;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SpinnerModel;
@@ -132,7 +133,7 @@ public class MinimalConfigPanel extends PluginPanel
 	private final ColorPickerManager colorPickerManager;
 	private final EventBus eventBus;
 
-	private final ListCellRenderer<Enum<?>> listCellRenderer = new ComboBoxListRenderer<>();
+	private final ListCellRenderer listCellRenderer = new TitleCaseListCellRenderer();
 
 	private final JScrollPane scrollPane;
 	private final FixedWidthPanel mainPanel;
@@ -395,7 +396,7 @@ public class MinimalConfigPanel extends PluginPanel
 			}
 			else if (cid.getType() == boolean.class)
 			{
-				item.add(createCheckbox(cd, cid), BorderLayout.EAST);
+				item.add(createToggleButton(cd, cid), BorderLayout.EAST);
 			}
 			else if (cid.getType() == int.class)
 			{
@@ -541,13 +542,13 @@ public class MinimalConfigPanel extends PluginPanel
 		return button;
 	}
 
-	private JCheckBox createCheckbox(ConfigDescriptor cd, ConfigItemDescriptor cid)
+	private ToggleButton createToggleButton(ConfigDescriptor cd, ConfigItemDescriptor cid)
 	{
-		JCheckBox checkbox = new ToggleButton();
-		checkbox.setPreferredSize(new Dimension(26, 25));
-		checkbox.setSelected(Boolean.parseBoolean(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName())));
-		checkbox.addActionListener(ae -> changeConfiguration(checkbox, cd, cid));
-		return checkbox;
+		ToggleButton toggleButton = new ToggleButton();
+		toggleButton.setPreferredSize(new Dimension(26, 25));
+		toggleButton.setSelected(Boolean.parseBoolean(configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName())));
+		toggleButton.addActionListener(ae -> changeConfiguration(toggleButton, cd, cid));
+		return toggleButton;
 	}
 
 	private JComponent createIntSpinner(ConfigDescriptor cd, ConfigItemDescriptor cid)
@@ -891,25 +892,24 @@ public class MinimalConfigPanel extends PluginPanel
 		ParameterizedType parameterizedType = (ParameterizedType) cid.getType();
 		Class<? extends Enum> type = (Class<? extends Enum>) parameterizedType.getActualTypeArguments()[0];
 		Set<? extends Enum> set = configManager.getConfiguration(cd.getGroup().value(), null,
-				cid.getItem().keyName(), parameterizedType);
+			cid.getItem().keyName(), parameterizedType);
 
 		JPanel enumsetLayout = new JPanel(new GridLayout(0, 2));
-		enumsetLayout.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		List<ToggleButton> jcheckboxes = new ArrayList<>();
+		List<ToggleButton> toggleButtons = new ArrayList<>();
 
 		Set<?> selectedItems = new HashSet(Objects.requireNonNullElse(set, Collections.emptySet()));
 
 		for (Object obj : type.getEnumConstants())
 		{
-			ToggleButton checkbox = new ToggleButton(obj);
-			checkbox.setBackground(ColorScheme.DARK_GRAY_COLOR);
-			checkbox.setSelected(selectedItems.contains(obj));
-			jcheckboxes.add(checkbox);
+			ToggleButton toggleButton = new ToggleButton(obj);
+			toggleButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+			toggleButton.setSelected(selectedItems.contains(obj));
+			toggleButtons.add(toggleButton);
 
-			enumsetLayout.add(checkbox);
+			enumsetLayout.add(toggleButton);
 		}
 
-		jcheckboxes.forEach(checkbox -> checkbox.addActionListener(ae -> changeConfiguration(jcheckboxes, cd, cid)));
+		toggleButtons.forEach(checkbox -> checkbox.addActionListener(ae -> changeConfiguration(toggleButtons, cd, cid)));
 
 		return enumsetLayout;
 	}
@@ -919,29 +919,28 @@ public class MinimalConfigPanel extends PluginPanel
 		Class enumType = cid.getItem().enumClass();
 
 		EnumSet enumSet = configManager.getConfiguration(cd.getGroup().value(),
-				cid.getItem().keyName(), EnumSet.class);
+			cid.getItem().keyName(), EnumSet.class);
 		if (enumSet == null || enumSet.contains(null))
 		{
 			enumSet = EnumSet.noneOf(enumType);
 		}
 
 		JPanel enumsetLayout = new JPanel(new GridLayout(0, 2));
-		enumsetLayout.setBackground(ColorScheme.DARK_GRAY_COLOR);
-		List<ToggleButton> jcheckboxes = new ArrayList<>();
+		List<ToggleButton> toggleButtons = new ArrayList<>();
 
 		for (Object obj : enumType.getEnumConstants())
 		{
 			String option = Text.titleCase((Enum<?>) obj);
 
-			ToggleButton checkbox = new ToggleButton(option);
-			checkbox.setBackground(ColorScheme.DARK_GRAY_COLOR);
-			checkbox.setSelected(enumSet.contains(obj));
-			jcheckboxes.add(checkbox);
+			ToggleButton toggleButton = new ToggleButton(option);
+			toggleButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+			toggleButton.setSelected(enumSet.contains(obj));
+			toggleButtons.add(toggleButton);
 
-			enumsetLayout.add(checkbox);
+			enumsetLayout.add(toggleButton);
 		}
 
-		jcheckboxes.forEach(checkbox -> checkbox.addActionListener(ae -> changeConfiguration(jcheckboxes, cd, cid)));
+		toggleButtons.forEach(toggleButton -> toggleButton.addActionListener(ae -> changeConfiguration(toggleButton, cd, cid)));
 
 		return enumsetLayout;
 	}
@@ -1035,6 +1034,11 @@ public class MinimalConfigPanel extends PluginPanel
 			JCheckBox checkbox = (JCheckBox) component;
 			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), "" + checkbox.isSelected());
 		}
+		else if (component instanceof JToggleButton)
+		{
+			JToggleButton toggleButton = (JToggleButton) component;
+			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), "" + toggleButton.isSelected());
+		}
 		else if (component instanceof JSpinner)
 		{
 			JSpinner spinner = (JSpinner) component;
@@ -1114,10 +1118,10 @@ public class MinimalConfigPanel extends PluginPanel
 				if (cid2.getItem().hidden() || !cid2.getItem().hide().isEmpty())
 				{
 					List<String> itemHide = Splitter
-							.onPattern("\\|\\|")
-							.trimResults()
-							.omitEmptyStrings()
-							.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
+						.onPattern("\\|\\|")
+						.trimResults()
+						.omitEmptyStrings()
+						.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
 
 					if (itemHide.contains(cid.getItem().keyName()))
 					{
@@ -1126,6 +1130,43 @@ public class MinimalConfigPanel extends PluginPanel
 				}
 
 				if (checkbox.isSelected())
+				{
+					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
+					{
+						skipRebuild = true;
+						configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "true");
+						rebuild = true;
+					}
+					else if (cid2.getItem().disabledBy().contains(cid.getItem().keyName()))
+					{
+						skipRebuild = true;
+						configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "false");
+						rebuild = true;
+					}
+				}
+			}
+		}
+		else if (component instanceof JToggleButton)
+		{
+			JToggleButton toggleButton = (JToggleButton) component;
+
+			for (ConfigItemDescriptor cid2 : cd.getItems())
+			{
+				if (cid2.getItem().hidden() || !cid2.getItem().hide().isEmpty())
+				{
+					List<String> itemHide = Splitter
+						.onPattern("\\|\\|")
+						.trimResults()
+						.omitEmptyStrings()
+						.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
+
+					if (itemHide.contains(cid.getItem().keyName()))
+					{
+						rebuild = true;
+					}
+				}
+
+				if (toggleButton.isSelected())
 				{
 					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
 					{
@@ -1151,10 +1192,10 @@ public class MinimalConfigPanel extends PluginPanel
 				if (cid2.getItem().hidden() || !cid2.getItem().hide().isEmpty())
 				{
 					List<String> itemHide = Splitter
-							.onPattern("\\|\\|")
-							.trimResults()
-							.omitEmptyStrings()
-							.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
+						.onPattern("\\|\\|")
+						.trimResults()
+						.omitEmptyStrings()
+						.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
 
 					String changedVal = ((Enum) jComboBox.getSelectedItem()).name();
 
@@ -1186,10 +1227,10 @@ public class MinimalConfigPanel extends PluginPanel
 				if (cid2.getItem().hidden() || !cid2.getItem().hide().isEmpty())
 				{
 					List<String> itemHide = Splitter
-							.onPattern("\\|\\|")
-							.trimResults()
-							.omitEmptyStrings()
-							.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
+						.onPattern("\\|\\|")
+						.trimResults()
+						.omitEmptyStrings()
+						.splitToList(String.format("%s || %s", cid2.getItem().unhide(), cid2.getItem().hide()));
 
 					String changedVal = String.valueOf((jList.getSelectedValues()));
 
@@ -1294,6 +1335,29 @@ public class MinimalConfigPanel extends PluginPanel
 			for (ConfigItemDescriptor cid2 : cd.getItems())
 			{
 				if (checkbox.isSelected())
+				{
+					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
+					{
+						skipRebuild = true;
+						configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "true");
+						rebuild = true;
+					}
+					else if (cid2.getItem().disabledBy().contains(cid.getItem().keyName()))
+					{
+						skipRebuild = true;
+						configManager.setConfiguration(cd.getGroup().value(), cid2.getItem().keyName(), "false");
+						rebuild = true;
+					}
+				}
+			}
+		}
+		else if (component instanceof JToggleButton)
+		{
+			JToggleButton toggleButton = (JToggleButton) component;
+
+			for (ConfigItemDescriptor cid2 : cd.getItems())
+			{
+				if (toggleButton.isSelected())
 				{
 					if (cid2.getItem().enabledBy().contains(cid.getItem().keyName()))
 					{

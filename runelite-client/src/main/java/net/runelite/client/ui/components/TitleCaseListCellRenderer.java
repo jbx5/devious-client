@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2020, Adam <Adam@sigterm.info>
+ * Copyright (c) 2017, Psikoi <https://github.com/psikoi>
+ * Copyright (c) 2023, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,32 +23,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.ui;
+package net.runelite.client.ui.components;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import org.junit.Test;
+import java.awt.Component;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import net.runelite.client.util.Text;
 
-public class ContainableFrameTest
+public final class TitleCaseListCellRenderer extends DefaultListCellRenderer
 {
-	@Test
-	public void testJdk8231564()
+	@Override
+	public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus)
 	{
-		assertTrue(ContainableFrame.jdk8231564("11.0.8"));
-		assertFalse(ContainableFrame.jdk8231564("11.0.7"));
-		assertFalse(ContainableFrame.jdk8231564("1.8.0_261"));
-		assertFalse(ContainableFrame.jdk8231564("12.0.0"));
-		assertFalse(ContainableFrame.jdk8231564("13.0.0"));
-		assertFalse(ContainableFrame.jdk8231564("14.0.0"));
-		assertTrue(ContainableFrame.jdk8231564("15"));
-		assertTrue(ContainableFrame.jdk8231564("11.0.16.1"));
-	}
-
-	@Test
-	public void testJdk8243925()
-	{
-		assertTrue(ContainableFrame.jdk8243925("11.0.16.1"));
-		assertFalse(ContainableFrame.jdk8243925("11.0.8"));
-		assertFalse(ContainableFrame.jdk8243925("11.0.4"));
+		String text;
+		if (value instanceof Enum<?>)
+		{
+			text = Text.titleCase((Enum<?>) value);
+		}
+		else
+		{
+			text = value.toString();
+		}
+		return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
 	}
 }

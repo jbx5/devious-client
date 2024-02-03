@@ -1,6 +1,5 @@
 /*
- * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
- * Copyright (c) 2018, Psikoi <https://github.com/psikoi>
+ * Copyright (c) 2020 Jordan Atwood <nightfirecat@protonmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,14 +22,43 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.ui.skin;
+package net.runelite.client.plugins.kourendlibrary;
 
-import org.pushingpixels.substance.api.SubstanceLookAndFeel;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.testing.fieldbinder.BoundFieldModule;
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
-public class SubstanceRuneLiteLookAndFeel extends SubstanceLookAndFeel
+public class LibraryTest
 {
-	public SubstanceRuneLiteLookAndFeel()
+	@Inject
+	private Library library;
+
+	@Before
+	public void before()
 	{
-		super(new ObsidianSkin());
+		Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
+	}
+
+	@Test
+	public void testVarlamoreEnvoyFindingProcess()
+	{
+		assertEquals(SolvedState.NO_DATA, library.getState());
+		library.mark(0, Book.RADAS_JOURNEY);
+		assertEquals(SolvedState.INCOMPLETE, library.getState());
+		library.mark(library.step, Book.KILLING_OF_A_KING);
+		assertEquals(SolvedState.COMPLETE, library.getState());
+
+		// The Varlamore Envoy book can be found in this bookcase, but should not cause a state reset if not found
+		library.mark(library.step * 2, null);
+		assertEquals(SolvedState.COMPLETE, library.getState());
+		library.mark(library.step * 2, Book.VARLAMORE_ENVOY);
+		assertEquals(SolvedState.COMPLETE, library.getState());
+
+		// not valid, should reset
+		library.mark(library.step * 2, Book.TRANSPORTATION_INCANTATIONS);
+		assertEquals(SolvedState.INCOMPLETE, library.getState());
 	}
 }

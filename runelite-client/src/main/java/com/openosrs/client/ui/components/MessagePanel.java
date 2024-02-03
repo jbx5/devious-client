@@ -41,8 +41,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
+import net.runelite.client.ui.laf.RuneLiteScrollBarUI;
 import com.openosrs.client.ui.OpenOSRSSplashScreen;
-import net.runelite.client.ui.components.CustomScrollBarUI;
 
 @Getter
 public class MessagePanel extends JPanel
@@ -97,7 +97,7 @@ public class MessagePanel extends JPanel
 
 		scrollPane = new JScrollPane(messageArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		scrollPane.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+		scrollPane.getVerticalScrollBar().setUI(new RuneLiteScrollBarUI());
 		final JViewport viewport = scrollPane.getViewport();
 		viewport.setForeground(Color.WHITE);
 		viewport.setBackground(ColorScheme.DARKER_GRAY_COLOR);

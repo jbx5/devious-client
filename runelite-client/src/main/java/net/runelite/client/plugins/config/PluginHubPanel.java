@@ -100,9 +100,7 @@ class PluginHubPanel extends PluginPanel
 {
 	private static final ImageIcon MISSING_ICON;
 	private static final ImageIcon HELP_ICON;
-	private static final ImageIcon HELP_ICON_HOVER;
 	private static final ImageIcon CONFIGURE_ICON;
-	private static final ImageIcon CONFIGURE_ICON_HOVER;
 	private static final ImageIcon PLUGIN_UNAVAILABLE_ICON;
 	private static final Pattern SPACES = Pattern.compile(" +");
 
@@ -113,11 +111,9 @@ class PluginHubPanel extends PluginPanel
 
 		BufferedImage helpIcon = ImageUtil.loadImageResource(PluginHubPanel.class, "pluginhub_help.png");
 		HELP_ICON = new ImageIcon(helpIcon);
-		HELP_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(helpIcon, -100));
 
 		BufferedImage configureIcon = ImageUtil.loadImageResource(PluginHubPanel.class, "pluginhub_configure.png");
 		CONFIGURE_ICON = new ImageIcon(configureIcon);
-		CONFIGURE_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(configureIcon, -100));
 
 		PLUGIN_UNAVAILABLE_ICON = new ImageIcon(ImageUtil.loadImageResource(PluginHubPanel.class, "mdi_alert.png"));
 	}
@@ -298,14 +294,12 @@ class PluginHubPanel extends PluginPanel
 			}
 
 			JButton help = new JButton(HELP_ICON);
-			help.setRolloverIcon(HELP_ICON_HOVER);
 			SwingUtil.removeButtonDecorations(help);
 			help.setBorder(null);
 			help.setToolTipText("Open help");
 			help.addActionListener(ev -> LinkBrowser.browse("https://runelite.net/plugin-hub/show/" + manifest.getInternalName()));
 
 			JButton configure = new JButton(CONFIGURE_ICON);
-			configure.setRolloverIcon(CONFIGURE_ICON_HOVER);
 			SwingUtil.removeButtonDecorations(configure);
 			configure.setToolTipText("Configure");
 			configure.setBorder(null);
@@ -537,7 +531,6 @@ class PluginHubPanel extends PluginPanel
 		externalPluginWarning2.setOpaque(true);
 
 		JButton backButton = new JButton(ConfigPanel.BACK_ICON);
-		backButton.setRolloverIcon(ConfigPanel.BACK_ICON_HOVER);
 		SwingUtil.removeButtonDecorations(backButton);
 		backButton.setToolTipText("Back");
 		backButton.addActionListener(l -> pluginListPanel.getMuxer().popState());

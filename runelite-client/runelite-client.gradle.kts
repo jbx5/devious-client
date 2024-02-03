@@ -75,7 +75,8 @@ dependencies {
     implementation(group = "net.java.dev.jna", name = "jna-platform", version = "5.9.0")
     implementation(group = "net.runelite", name = "discord", version = "1.4")
     implementation(group = "net.runelite", name = "rlawt", version = "1.4")
-    implementation(group = "net.runelite.pushingpixels", name = "substance", version = "8.0.02")
+    implementation(group = "net.runelite", name = "flatlaf", version = ProjectVersions.flatLafVersion)
+    implementation(group = "net.runelite", name = "flatlaf-extras", version = ProjectVersions.flatLafVersion)
     implementation(group = "net.sf.jopt-simple", name = "jopt-simple", version = "5.0.4")
     implementation(group = "org.madlonkay", name = "desktopsupport", version = "0.6.0")
     implementation(group = "org.apache.commons", name = "commons-text", version = "1.9")
@@ -98,7 +99,6 @@ dependencies {
     implementation(group = "org.lwjgl", name = "lwjgl-opencl")
 
     runtimeOnly(project(":runescape-api"))
-    runtimeOnly(group = "net.runelite.pushingpixels", name = "trident", version = "1.5.00")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-x64")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-arm64")
 

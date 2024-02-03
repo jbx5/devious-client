@@ -61,9 +61,7 @@ import net.runelite.client.util.SwingUtil;
 class PluginListItem extends JPanel implements SearchablePlugin
 {
 	private static final ImageIcon CONFIG_ICON;
-	private static final ImageIcon CONFIG_ICON_HOVER;
 	private static final ImageIcon REFRESH_ICON;
-	private static final ImageIcon REFRESH_ICON_HOVER;
 	private static final ImageIcon ON_STAR;
 	private static final ImageIcon OFF_STAR;
 
@@ -78,6 +76,8 @@ class PluginListItem extends JPanel implements SearchablePlugin
 	private final JToggleButton pinButton;
 	private final PluginToggleButton onOffToggle;
 
+	private JLabel nameLabel;
+
 	static
 	{
 		BufferedImage configIcon = ImageUtil.loadImageResource(ConfigPanel.class, "config_edit_icon.png");
@@ -86,8 +86,6 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		CONFIG_ICON = new ImageIcon(configIcon);
 		REFRESH_ICON = new ImageIcon(refreshIcon);
 		ON_STAR = new ImageIcon(ImageUtil.recolorImage(onStar, ColorScheme.BRAND_BLUE));
-		CONFIG_ICON_HOVER = new ImageIcon(ImageUtil.luminanceOffset(configIcon, -100));
-		REFRESH_ICON_HOVER = new ImageIcon(ImageUtil.luminanceOffset(refreshIcon, -100));
 
 		BufferedImage offStar = ImageUtil.luminanceScale(
 			ImageUtil.grayscaleImage(onStar),
@@ -118,7 +116,7 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		setLayout(new BorderLayout(3, 0));
 		setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH, 20));
 
-		JLabel nameLabel = new JLabel(pluginConfig.getName());
+		nameLabel = new JLabel(pluginConfig.getName());
 		nameLabel.setForeground(Color.WHITE);
 
 		if (!pluginConfig.getDescription().isEmpty())
@@ -135,6 +133,14 @@ class PluginListItem extends JPanel implements SearchablePlugin
 
 		pinButton.addActionListener(e ->
 		{
+			if (isPinned())
+			{
+				nameLabel.setForeground(ColorScheme.BRAND_BLUE_TRANSPARENT);
+			}
+			else
+			{
+				nameLabel.setForeground(Color.WHITE);
+			}
 			pluginListPanel.savePinnedPlugins();
 			pluginListPanel.refresh();
 		});
@@ -148,7 +154,6 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		if ((OPRSExternalPluginManager.isDevelopmentMode() || RuneLiteProperties.getLauncherVersion() == null) && pluginConfig.getPlugin() != null && pluginsInfoMap.containsKey(pluginConfig.getPlugin().getClass().getSimpleName()))
 		{
 			JButton hotSwapButton = new JButton(REFRESH_ICON);
-			hotSwapButton.setRolloverIcon(REFRESH_ICON_HOVER);
 			SwingUtil.removeButtonDecorations(hotSwapButton);
 			hotSwapButton.setPreferredSize(new Dimension(25, 0));
 			hotSwapButton.setVisible(false);
@@ -207,7 +212,6 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		if (pluginConfig.hasConfigurables())
 		{
 			JButton configButton = new JButton(CONFIG_ICON);
-			configButton.setRolloverIcon(CONFIG_ICON_HOVER);
 			SwingUtil.removeButtonDecorations(configButton);
 			configButton.setPreferredSize(new Dimension(25, 0));
 			configButton.setVisible(false);
@@ -274,6 +278,14 @@ class PluginListItem extends JPanel implements SearchablePlugin
 	void setPinned(boolean pinned)
 	{
 		pinButton.setSelected(pinned);
+		if (pinned)
+		{
+			nameLabel.setForeground(ColorScheme.BRAND_BLUE_TRANSPARENT);
+		}
+		else
+		{
+			nameLabel.setForeground(Color.WHITE);
+		}
 	}
 
 	void setPluginEnabled(boolean enabled)
