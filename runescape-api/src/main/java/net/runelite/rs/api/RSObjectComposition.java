@@ -65,12 +65,14 @@ public interface RSObjectComposition extends ObjectComposition
 	boolean getObjectDefinitionIsLowDetail();
 
 	@Import("sizeX")
+	@Override
 	int getSizeX();
 
 	@Import("sizeX")
 	void setSizeX(int sizeX);
 
 	@Import("sizeY")
+	@Override
 	int getSizeY();
 
 	@Import("sizeY")
