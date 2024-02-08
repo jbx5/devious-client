@@ -49,6 +49,9 @@ public interface RSScriptEvent extends ScriptEvent, RSNode
 	@Import("opIndex")
 	int getOp();
 
+	@Import("opIndex")
+	RSScriptEvent setOp(int op);
+
 	@Import("targetName")
 	String getOpbase();
 

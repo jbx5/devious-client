@@ -1003,6 +1003,11 @@ public final class ComponentID
 	public static final int GROUP_STORAGE_ITEM_CONTAINER = 47448074;
 
 	/**
+	 * 724:16
+	 */
+	public static final int GROUP_STORAGE_SEARCH_BUTTON = 47448080;
+
+	/**
 	 * 464:0
 	 */
 	public static final int GUIDE_PRICES_INVENTORY_ITEM_CONTAINER = 30408704;
