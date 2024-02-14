@@ -240,7 +240,7 @@ public abstract class class161 extends Node {
 		var0.packetBuffer.writeIntLE(PlayerCompositionColorTextureOverride.field1832.hash);
 		var0.packetBuffer.writeIntME(class362.field3958.hash);
 		var0.packetBuffer.writeIntIME(WorldMapSectionType.archive12.hash);
-		var0.packetBuffer.writeIntLE(ScriptFrame.field464.hash);
+		var0.packetBuffer.writeIntLE(ScriptFrame.archive4.hash);
 		var0.packetBuffer.writeInt(0);
 		var0.packetBuffer.writeIntLE(WorldMapSectionType.field2612.hash);
 		var0.packetBuffer.writeInt(Varcs.field1417.hash);

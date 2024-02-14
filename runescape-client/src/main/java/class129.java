@@ -413,7 +413,7 @@ public class class129 {
 							}
 
 							if (var10.contentType == 1400) {
-								Tiles.worldMap.method8900(var12, var13, var10.width, var10.height, Client.cycle, class30.clientPreferences.getBrightness());
+								Tiles.worldMap.draw(var12, var13, var10.width, var10.height, Client.cycle, class30.clientPreferences.getBrightness());
 							}
 
 							if (var10.contentType == 1401) {

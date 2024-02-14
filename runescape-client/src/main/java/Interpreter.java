@@ -156,7 +156,7 @@ public class Interpreter {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class407.method7638(class67.field519);
+				class407.updateLoginState(LoginState.field519);
 				Client.field559 = 0;
 				Client.field560 = 0;
 				Client.timer.method8108(var0);

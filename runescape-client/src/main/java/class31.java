@@ -27,7 +27,7 @@ public class class31 {
 		garbageValue = "-511691401"
 	)
 	public static void method430() {
-		class190.field2011.clear();
+		class190.field2100.clear();
 	}
 
 	@ObfuscatedName("at")

@@ -53,7 +53,8 @@ public enum class371 implements Enum {
 		descriptor = "([BI)Ljava/lang/String;",
 		garbageValue = "1597878920"
 	)
-	public static String method7022(byte[] var0) {
+	@Export("base64Encode")
+	public static String base64Encode(byte[] var0) {
 		int var2 = var0.length;
 		StringBuilder var3 = new StringBuilder();
 
@@ -294,7 +295,7 @@ public enum class371 implements Enum {
 		}
 
 		GameEngine.taskHandler = null;
-		class133.method3119();
+		class133.clear();
 		LoginPacket.method3200();
 		if (Actor.scene != null) {
 			Actor.scene.clear();

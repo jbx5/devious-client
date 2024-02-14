@@ -302,7 +302,7 @@ public class FriendSystem {
 	)
 	@Export("changeGameOptions")
 	static final void changeGameOptions(int var0) {
-		class67.method1206();
+		LoginState.method1206();
 
 		for (ObjectSound var1 = (ObjectSound)ObjectSound.objectSounds.last(); var1 != null; var1 = (ObjectSound)ObjectSound.objectSounds.previous()) {
 			if (var1.obj != null) {

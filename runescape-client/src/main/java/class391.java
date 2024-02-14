@@ -14,7 +14,8 @@ public class class391 {
 	)
 	static Archive field4483;
 	@ObfuscatedName("gp")
-	static String field4484;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 
 	static {
 		new HashMap();

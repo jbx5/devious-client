@@ -277,15 +277,15 @@ public class Login {
 			}
 
 			if (class162.worldSelectFlagSprites == null) {
-				class162.worldSelectFlagSprites = FloorOverlayDefinition.method4031(class311.archive8, "sl_flags", "");
+				class162.worldSelectFlagSprites = FloorOverlayDefinition.getFont(class311.archive8, "sl_flags", "");
 			}
 
 			if (World.worldSelectArrows == null) {
-				World.worldSelectArrows = FloorOverlayDefinition.method4031(class311.archive8, "sl_arrows", "");
+				World.worldSelectArrows = FloorOverlayDefinition.getFont(class311.archive8, "sl_arrows", "");
 			}
 
 			if (Frames.worldSelectStars == null) {
-				Frames.worldSelectStars = FloorOverlayDefinition.method4031(class311.archive8, "sl_stars", "");
+				Frames.worldSelectStars = FloorOverlayDefinition.getFont(class311.archive8, "sl_stars", "");
 			}
 
 			if (WorldMapSectionType.worldSelectLeftSprite == null) {
@@ -1072,7 +1072,7 @@ public class Login {
 		PacketBufferNode var4 = ViewportMouse.getPacketBufferNode(ClientPacket.field3257, Client.packetWriter.isaacCipher);
 		var4.packetBuffer.writeShort(var1);
 		var4.packetBuffer.writeShort(var0);
-		var4.packetBuffer.writeIntLE(var3 ? Client.field624 : 0);
+		var4.packetBuffer.writeIntLE(var3 ? Client.revision : 0);
 		var4.packetBuffer.writeByte(var2);
 		Client.packetWriter.addNode(var4);
 	}

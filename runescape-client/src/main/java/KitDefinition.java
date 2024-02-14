@@ -12,7 +12,8 @@ public class KitDefinition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Lof;"
 	)
-	static AbstractArchive field1905;
+	@Export("KitDefinition_archive")
+	static AbstractArchive KitDefinition_archive;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
 		intValue = -1089558421
@@ -252,7 +253,8 @@ public class KitDefinition extends DualNode {
 		descriptor = "(Luq;B)V",
 		garbageValue = "101"
 	)
-	static void method3636(Buffer var0) {
+	@Export("randomDatData2")
+	static void randomDatData2(Buffer var0) {
 		if (Client.randomDatData != null) {
 			var0.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
 		} else {

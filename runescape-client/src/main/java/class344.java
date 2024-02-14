@@ -105,8 +105,8 @@ public class class344 {
 			Login.field944 = class173.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
 			class90.field1121 = class173.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
 			class173.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
-			Login.runesSprite = FloorOverlayDefinition.method4031(var1, "runes", "");
-			class169.title_muteSprite = FloorOverlayDefinition.method4031(var1, "title_mute", "");
+			Login.runesSprite = FloorOverlayDefinition.getFont(var1, "runes", "");
+			class169.title_muteSprite = FloorOverlayDefinition.getFont(var1, "title_mute", "");
 			class128.options_buttons_0Sprite = class173.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
 			UserComparator2.field5265 = class173.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
 			class472.options_buttons_2Sprite = class173.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");

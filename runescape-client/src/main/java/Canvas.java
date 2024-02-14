@@ -110,7 +110,7 @@ public final class Canvas extends java.awt.Canvas {
 		} else if (var0 < 5400) {
 			return TextureProvider.method5671(var0, var1, var2);
 		} else if (var0 < 5600) {
-			return class67.method1207(var0, var1, var2);
+			return LoginState.method1207(var0, var1, var2);
 		} else if (var0 < 5700) {
 			return HttpRequest.method98(var0, var1, var2);
 		} else if (var0 < 6300) {

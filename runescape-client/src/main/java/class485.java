@@ -270,7 +270,7 @@ public class class485 {
 	@Export("logOut")
 	static final void logOut() {
 		Client.packetWriter.close();
-		class133.method3119();
+		class133.clear();
 		Actor.scene.clear();
 
 		for (int var0 = 0; var0 < 4; ++var0) {

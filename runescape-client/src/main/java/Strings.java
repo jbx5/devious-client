@@ -29,7 +29,7 @@ public class Strings {
 	static void method7013(int var0, int var1) {
 		MenuAction var2 = class363.tempMenuAction;
 		if (var2 != null) {
-			ReflectionCheck.menuAction(var2.param0, var2.param1, var2.opcode, var2.identifier, var2.itemId, var2.action, var2.field930, var0, var1);
+			ReflectionCheck.menuAction(var2.param0, var2.param1, var2.opcode, var2.identifier, var2.itemId, var2.action, var2.target, var0, var1);
 		}
 
 		class363.tempMenuAction = null;

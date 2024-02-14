@@ -122,7 +122,8 @@ public class class133 implements Enum {
 		descriptor = "(B)V",
 		garbageValue = "48"
 	)
-	static final void method3119() {
+	@Export("clear")
+	static final void clear() {
 		class183.field2007.clear();
 		class185.field2023.clear();
 		class160.method3424();
@@ -161,9 +162,9 @@ public class class133 implements Enum {
 		class177.field1864.clear();
 		class172.field1842.clear();
 		class175.field1851.clear();
-		class198.field2067.clear();
+		class198.field1909.clear();
 		HorizontalAlignment.method3694();
-		class196.field2058.clear();
+		class196.field2136.clear();
 		Client.DBTableIndex_cache.clear();
 		Client.archive11.clear();
 		PlayerComposition.PlayerAppearance_cachedModels.clear();
@@ -211,8 +212,8 @@ public class class133 implements Enum {
 			KeyHandler.archive13.clearFiles();
 		}
 
-		if (ScriptFrame.field464 != null) {
-			ScriptFrame.field464.clearFiles();
+		if (ScriptFrame.archive4 != null) {
+			ScriptFrame.archive4.clearFiles();
 		}
 
 		if (MouseHandler.field239 != null) {

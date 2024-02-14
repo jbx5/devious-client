@@ -23,7 +23,7 @@ class class328 implements Callable {
 	}
 
 	public Object call() {
-		PriorityQueue var1 = this.this$0.field3515;
+		PriorityQueue var1 = this.this$0.priorityQueue;
 
 		while (true) {
 			class325 var2 = null;

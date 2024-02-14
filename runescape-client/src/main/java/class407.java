@@ -50,9 +50,10 @@ public final class class407 {
 		descriptor = "(Lcv;I)V",
 		garbageValue = "582658753"
 	)
-	static void method7638(class67 var0) {
-		if (Client.field558 != var0) {
-			Client.field558 = var0;
+	@Export("updateLoginState")
+	static void updateLoginState(LoginState var0) {
+		if (Client.loginState != var0) {
+			Client.loginState = var0;
 		}
 	}
 }

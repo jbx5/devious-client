@@ -255,8 +255,8 @@ public class PacketWriter {
 		int var10 = 0;
 		boolean var29 = false;
 
-		label937: {
-			label938: {
+		label936: {
+			label937: {
 				try {
 					int var13;
 					try {
@@ -340,7 +340,7 @@ public class PacketWriter {
 								switch(var14) {
 								case 0:
 									var29 = false;
-									break label937;
+									break label936;
 								case 1:
 								default:
 									break;
@@ -383,7 +383,7 @@ public class PacketWriter {
 							} else if (var32 == 21) {
 								if (Interpreter.Interpreter_frameDepth == 0) {
 									var29 = false;
-									break label938;
+									break;
 								}
 
 								ScriptFrame var39 = Interpreter.Interpreter_frames[--Interpreter.Interpreter_frameDepth];
@@ -547,19 +547,15 @@ public class PacketWriter {
 						var9 = true;
 						StringBuilder var26 = new StringBuilder(30);
 						var26.append("").append(var1.key).append(" ");
-						var13 = Interpreter.Interpreter_frameDepth - 1;
 
-						while (true) {
-							if (var13 < 0) {
-								var26.append("").append(var8);
-								class315.RunException_sendStackTrace(var26.toString(), var30);
-								var29 = false;
-								break;
-							}
-
+						for (var13 = Interpreter.Interpreter_frameDepth - 1; var13 >= 0; --var13) {
 							var26.append("").append(Interpreter.Interpreter_frames[var13].script.key).append(" ");
-							--var13;
 						}
+
+						var26.append("").append(var8);
+						class315.RunException_sendStackTrace(var26.toString(), var30);
+						var29 = false;
+						break label937;
 					}
 				} finally {
 					if (var29) {
@@ -581,8 +577,8 @@ public class PacketWriter {
 				}
 
 				while (Interpreter.field895.size() > 0) {
-					class103 var25 = (class103)Interpreter.field895.remove(0);
-					class185.widgetDefaultMenuAction(var25.method2733(), var25.method2748(), var25.method2734(), var25.method2735(), "");
+					class103 var40 = (class103)Interpreter.field895.remove(0);
+					class185.widgetDefaultMenuAction(var40.method2733(), var40.method2748(), var40.method2734(), var40.method2735(), "");
 				}
 
 				if (Interpreter.field893) {
@@ -598,8 +594,8 @@ public class PacketWriter {
 			}
 
 			while (Interpreter.field895.size() > 0) {
-				class103 var40 = (class103)Interpreter.field895.remove(0);
-				class185.widgetDefaultMenuAction(var40.method2733(), var40.method2748(), var40.method2734(), var40.method2735(), "");
+				class103 var25 = (class103)Interpreter.field895.remove(0);
+				class185.widgetDefaultMenuAction(var25.method2733(), var25.method2748(), var25.method2734(), var25.method2735(), "");
 			}
 
 			if (Interpreter.field893) {

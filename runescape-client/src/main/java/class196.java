@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -13,10 +14,11 @@ public class class196 extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Lll;"
 	)
-	public static EvictingDualNodeHashTable field2058;
+	@Export("field2136")
+	public static EvictingDualNodeHashTable field2136;
 
 	static {
-		field2058 = new EvictingDualNodeHashTable(64);
+		field2136 = new EvictingDualNodeHashTable(64);
 	}
 
 	@ObfuscatedName("aq")
@@ -54,7 +56,7 @@ public class class196 extends DualNode {
 
 		var5.writeLong(var3.nextLong());
 		var5.writeLongMedium(var3.nextLong());
-		KitDefinition.method3636(var5);
+		KitDefinition.randomDatData2(var5);
 		var5.writeLong(var3.nextLong());
 		var5.encryptRsa(class73.field912, class73.field916);
 		var7 = class145.stringCp1252NullTerminatedByteSize(var2);
@@ -74,7 +76,7 @@ public class class196 extends DualNode {
 		var9.writeBytes(var5.array, 0, var5.offset);
 		var9.writeShort(var8.offset);
 		var9.writeBytes(var8.array, 0, var8.offset);
-		String var10 = class371.method7022(var9.array);
+		String var10 = class371.base64Encode(var9.array);
 
 		try {
 			URL var11 = new URL(class317.method6073("services", false) + "m=accountappeal/login.ws");

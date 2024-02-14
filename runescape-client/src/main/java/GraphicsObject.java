@@ -138,10 +138,10 @@ public class GraphicsObject extends Renderable {
 	)
 	static void method2116(SequenceDefinition var0, int var1, int var2, int var3, Actor var4) {
 		if (Client.soundEffectCount < 50) {
-			if (var0.field2257 != null && var1 < var0.field2257.length && var0.field2257[var1] != null) {
-				int var5 = var0.field2257[var1].field2109 & 31;
+			if (var0.soundEffects != null && var1 < var0.soundEffects.length && var0.soundEffects[var1] != null) {
+				int var5 = var0.soundEffects[var1].field2109 & 31;
 				if ((var5 <= 0 || class30.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var5 != 0 || class30.clientPreferences.getSoundEffectsVolume() != 0)) {
-					class94.method2453(var0.field2257[var1], var2, var3, var4 == VarpDefinition.localPlayer);
+					class94.method2453(var0.soundEffects[var1], var2, var3, var4 == VarpDefinition.localPlayer);
 				}
 			}
 		}

@@ -91,7 +91,8 @@ public class class134 implements Enum {
 	)
 	static final class134 field1610;
 	@ObfuscatedName("gf")
-	static String field1597;
+	@Export("gameSessionServiceBaseUrl")
+	static String gameSessionServiceBaseUrl;
 	@ObfuscatedName("on")
 	@ObfuscatedSignature(
 		descriptor = "Lng;"

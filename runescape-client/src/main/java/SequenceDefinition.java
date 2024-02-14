@@ -65,7 +65,8 @@ public class SequenceDefinition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "[Lhy;"
 	)
-	public class202[] field2257;
+	@Export("soundEffects")
+	public class202[] soundEffects;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = 537916267
@@ -234,13 +235,13 @@ public class SequenceDefinition extends DualNode {
 			int var19;
 			if (var2 == 13) {
 				var3 = var1.readUnsignedByte();
-				this.field2257 = new class202[var3];
+				this.soundEffects = new class202[var3];
 
 				for (var4 = 0; var4 < var3; ++var4) {
 					class202 var13;
 					class202[] var14;
 					label163: {
-						var14 = this.field2257;
+						var14 = this.soundEffects;
 						if (var1 != null) {
 							var8 = false;
 							var9 = false;

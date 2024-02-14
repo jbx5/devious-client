@@ -363,7 +363,7 @@ public class class366 {
 		Actor.scene.clearTempGameObjects();
 		class317.method6071(var0, var1, var2, var3);
 		if (Client.hintArrowType == 2) {
-			ClanChannelMember.worldToScreen(Client.field548 * 64 + (Client.hintArrowX - Projectile.baseX * 64 << 7), Client.field549 * 64 + (Client.hintArrowY - GameEngine.baseY * 64 << 7), Client.field547 * 4);
+			ClanChannelMember.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - Projectile.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - GameEngine.baseY * 64 << 7), Client.hintArrowHeight * 4);
 			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
 				ChatChannel.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
 			}

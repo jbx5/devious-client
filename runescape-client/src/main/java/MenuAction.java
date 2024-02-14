@@ -43,7 +43,8 @@ public class MenuAction {
 	@Export("action")
 	String action;
 	@ObfuscatedName("aa")
-	String field930;
+	@Export("target")
+	String target;
 
 	MenuAction() {
 	}

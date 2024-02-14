@@ -232,7 +232,7 @@ public class Varcs {
 	void read() {
 		AccessFile var1 = this.getPreferencesFile(false);
 
-		label232: {
+		label244: {
 			try {
 				byte[] var2 = new byte[(int)var1.length()];
 
@@ -245,12 +245,12 @@ public class Varcs {
 				}
 
 				Buffer var14 = new Buffer(var2);
-				if (var14.array.length - var14.offset >= 1) {
-					int var15 = var14.readUnsignedByte();
-					if (var15 < 0 || var15 > 2) {
-						return;
-					}
+				if (var14.array.length - var14.offset < 1) {
+					return;
+				}
 
+				int var15 = var14.readUnsignedByte();
+				if (var15 >= 0 && var15 <= 2) {
 					int var7;
 					int var8;
 					int var9;
@@ -261,7 +261,7 @@ public class Varcs {
 
 						while (true) {
 							if (var7 >= var16) {
-								break label232;
+								break label244;
 							}
 
 							var8 = var14.readUnsignedShort();
@@ -290,7 +290,7 @@ public class Varcs {
 
 						while (true) {
 							if (var8 >= var7) {
-								break label232;
+								break label244;
 							}
 
 							var14.readUnsignedShort();
@@ -300,7 +300,7 @@ public class Varcs {
 					}
 				}
 			} catch (Exception var25) {
-				break label232;
+				break label244;
 			} finally {
 				try {
 					var1.close();

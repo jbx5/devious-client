@@ -48,10 +48,10 @@ final class GrandExchangeOfferWorldComparator implements Comparator {
 		KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
-		} else if (KitDefinition.field1905 == null) {
+		} else if (KitDefinition.KitDefinition_archive == null) {
 			return null;
 		} else {
-			byte[] var2 = KitDefinition.field1905.takeFile(3, var0);
+			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
 			var1 = new KitDefinition();
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));

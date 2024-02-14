@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -7,7 +8,8 @@ public class class198 extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Lll;"
 	)
-	public static EvictingDualNodeHashTable field2067;
+	@Export("field1909")
+	public static EvictingDualNodeHashTable field1909;
 	@ObfuscatedName("eo")
 	@ObfuscatedSignature(
 		descriptor = "Lom;"
@@ -15,7 +17,7 @@ public class class198 extends DualNode {
 	static Archive field2070;
 
 	static {
-		field2067 = new EvictingDualNodeHashTable(64);
+		field1909 = new EvictingDualNodeHashTable(64);
 	}
 
 	@ObfuscatedName("al")

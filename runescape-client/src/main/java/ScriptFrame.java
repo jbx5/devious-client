@@ -11,7 +11,8 @@ public class ScriptFrame {
 	@ObfuscatedSignature(
 		descriptor = "Lom;"
 	)
-	static Archive field464;
+	@Export("archive4")
+	static Archive archive4;
 	@ObfuscatedName("fh")
 	@ObfuscatedSignature(
 		descriptor = "Lom;"

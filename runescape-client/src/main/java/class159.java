@@ -9,7 +9,8 @@ public class class159 extends class145 {
 	@ObfuscatedSignature(
 		descriptor = "Lkd;"
 	)
-	static TextureProvider field1773;
+	@Export("textureProvider")
+	static TextureProvider textureProvider;
 	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
 		intValue = 1150472867

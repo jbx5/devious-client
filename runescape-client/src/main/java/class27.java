@@ -230,7 +230,7 @@ public class class27 {
 						class363.tempMenuAction.identifier = Client.menuIdentifiers[var11];
 						class363.tempMenuAction.itemId = Client.menuItemIds[var11];
 						class363.tempMenuAction.action = Client.menuActions[var11];
-						class363.tempMenuAction.field930 = Client.menuTargets[var11];
+						class363.tempMenuAction.target = Client.menuTargets[var11];
 					}
 
 					return;

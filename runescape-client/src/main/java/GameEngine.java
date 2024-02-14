@@ -811,7 +811,8 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 		descriptor = "(ILjava/lang/String;ZZI)V",
 		garbageValue = "1742357288"
 	)
-	protected final void method479(int var1, String var2, boolean var3, boolean var4) {
+	@Export("drawInitial")
+	protected final void drawInitial(int var1, String var2, boolean var3, boolean var4) {
 		try {
 			Graphics var5 = this.canvas.getGraphics();
 			if (class391.fontHelvetica13 == null) {
@@ -988,9 +989,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	public final void windowOpened(WindowEvent var1) {
 	}
 
-	@ObfuscatedName("init")
-	@Export("kill0")
-	public abstract void kill0();
+	public abstract void init();
 
 	public final void windowDeiconified(WindowEvent var1) {
 	}

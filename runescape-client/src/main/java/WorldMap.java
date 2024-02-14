@@ -734,7 +734,8 @@ public class WorldMap {
 	}
 
 	@ObfuscatedName("at")
-	public void method8900(int var1, int var2, int var3, int var4, int var5, double var6) {
+	@Export("draw")
+	public void draw(int var1, int var2, int var3, int var4, int var5, double var6) {
 		int[] var8 = new int[4];
 		Rasterizer2D.Rasterizer2D_getClipArray(var8);
 		Rasterizer2D.Rasterizer2D_setClip(var1, var2, var3 + var1, var2 + var4);

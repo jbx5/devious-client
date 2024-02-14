@@ -113,9 +113,11 @@ public class MidiPcmStream extends PcmStream {
 	@ObfuscatedSignature(
 		descriptor = "Lbf;"
 	)
-	PcmPlayer field3489;
+	@Export("player")
+	PcmPlayer player;
 	@ObfuscatedName("bw")
-	PriorityQueue field3515;
+	@Export("priorityQueue")
+	PriorityQueue priorityQueue;
 	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
 		intValue = 1588859775
@@ -152,10 +154,10 @@ public class MidiPcmStream extends PcmStream {
 		this.field3506 = new MusicPatchNode[16][128];
 		this.midiFile = new MidiFileReader();
 		this.patchStream = new MusicPatchPcmStream(this);
-		this.field3489 = null;
-		this.field3515 = new PriorityQueue(5, new class332());
+		this.player = null;
+		this.priorityQueue = new PriorityQueue(5, new class332());
 		this.field3518 = 0;
-		this.field3489 = var1;
+		this.player = var1;
 		this.musicPatches = new NodeHashTable(128);
 		this.method6171();
 	}
@@ -167,7 +169,7 @@ public class MidiPcmStream extends PcmStream {
 	)
 	@Export("setPcmStreamVolume")
 	public void setPcmStreamVolume(int var1) {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			this.field3488 = var1;
 		}
 	}
@@ -187,10 +189,10 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "1123969906"
 	)
 	public boolean method6151(MusicTrack var1, AbstractArchive var2, SoundCache var3) {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			boolean var5 = true;
-			synchronized(this.field3515) {
-				this.field3515.clear();
+			synchronized(this.priorityQueue) {
+				this.priorityQueue.clear();
 			}
 
 			for (class334 var6 = (class334)var1.field3563.first(); var6 != null; var6 = (class334)var1.field3563.next()) {
@@ -216,13 +218,13 @@ public class MidiPcmStream extends PcmStream {
 
 				if (!var8.method6328(var3, var6.field3606)) {
 					var5 = false;
-				} else if (this.field3515 != null) {
-					synchronized(this.field3515) {
+				} else if (this.priorityQueue != null) {
+					synchronized(this.priorityQueue) {
 						Iterator var18 = var8.field3545.iterator();
 
 						while (var18.hasNext()) {
 							class53 var11 = (class53)var18.next();
-							this.field3515.add(new class325(var6.field3604, var11));
+							this.priorityQueue.add(new class325(var6.field3604, var11));
 						}
 					}
 				}
@@ -238,7 +240,7 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "15"
 	)
 	public void method6152() {
-		if (this.field3515 != null) {
+		if (this.priorityQueue != null) {
 			if (field3511 != null) {
 				field3511.set(true);
 			}
@@ -260,7 +262,7 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "-77"
 	)
 	public void method6153() {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			for (MusicPatch var2 = (MusicPatch)this.musicPatches.first(); var2 != null; var2 = (MusicPatch)this.musicPatches.next()) {
 				var2.method6327();
 			}
@@ -322,7 +324,7 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "-73"
 	)
 	public void method6202() {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			for (MusicPatch var2 = (MusicPatch)this.musicPatches.first(); var2 != null; var2 = (MusicPatch)this.musicPatches.next()) {
 				var2.remove();
 			}
@@ -361,7 +363,7 @@ public class MidiPcmStream extends PcmStream {
 	)
 	@Export("setMusicTrack")
 	public void setMusicTrack(MusicTrack var1, boolean var2) {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			this.clear();
 			this.midiFile.parse(var1.midi);
 			this.field3508 = var2;
@@ -387,7 +389,7 @@ public class MidiPcmStream extends PcmStream {
 	)
 	@Export("clear")
 	public void clear() {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			this.midiFile.clear();
 			this.method6171();
 		}
@@ -400,7 +402,7 @@ public class MidiPcmStream extends PcmStream {
 	)
 	@Export("isReady")
 	public boolean isReady() {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			return this.midiFile.isReady();
 		}
 	}
@@ -411,7 +413,7 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "102"
 	)
 	public boolean method6229() {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			return this.musicPatches.method9165() > 0;
 		}
 	}
@@ -422,7 +424,7 @@ public class MidiPcmStream extends PcmStream {
 		garbageValue = "5"
 	)
 	public void method6230(int var1, int var2) {
-		synchronized(this.field3489) {
+		synchronized(this.player) {
 			this.method6160(var1, var2);
 		}
 	}

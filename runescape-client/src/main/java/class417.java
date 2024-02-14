@@ -147,8 +147,8 @@ public class class417 {
 		garbageValue = "-2012193885"
 	)
 	public static void method7969(AbstractArchive var0, AbstractArchive var1) {
-		KitDefinition.field1905 = var0;
+		KitDefinition.KitDefinition_archive = var0;
 		class4.KitDefinition_modelsArchive = var1;
-		KitDefinition.KitDefinition_fileCount = KitDefinition.field1905.getGroupFileCount(3);
+		KitDefinition.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
 	}
 }

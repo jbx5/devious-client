@@ -214,7 +214,8 @@ public class FloorOverlayDefinition extends DualNode {
 		descriptor = "(Lof;Ljava/lang/String;Ljava/lang/String;I)[Lvg;",
 		garbageValue = "-859391204"
 	)
-	public static IndexedSprite[] method4031(AbstractArchive var0, String var1, String var2) {
+	@Export("getFont")
+	public static IndexedSprite[] getFont(AbstractArchive var0, String var1, String var2) {
 		if (!var0.isValidFileName(var1, var2)) {
 			return null;
 		} else {

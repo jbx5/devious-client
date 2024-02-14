@@ -399,7 +399,7 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "633994299"
 	)
-	public int method9456() {
+	public int method9478() {
 		this.offset += 3;
 		int var1 = ((this.array[this.offset - 3] & 255) << 16) + (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8);
 		if (var1 > 8388607) {
@@ -1066,7 +1066,7 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "2013654924"
 	)
-	public int method9310() {
+	public int method9521() {
 		this.offset += 3;
 		return (this.array[this.offset - 3] & 255) + ((this.array[this.offset - 2] & 255) << 8) + ((this.array[this.offset - 1] & 255) << 16);
 	}

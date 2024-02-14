@@ -220,7 +220,7 @@ public class BufferedNetSocket extends AbstractSocket {
 						class154.field1724 = ScriptFrame.newArchive(0, false, true, true, false);
 						Client.field556 = ScriptFrame.newArchive(1, false, true, true, false);
 						HttpRequestTask.archive2 = ScriptFrame.newArchive(2, true, false, true, false);
-						ScriptFrame.field464 = ScriptFrame.newArchive(3, false, true, true, false);
+						ScriptFrame.archive4 = ScriptFrame.newArchive(3, false, true, true, false);
 						JagexCache.archive9 = ScriptFrame.newArchive(5, true, true, true, false);
 						class198.field2070 = ScriptFrame.newArchive(7, false, true, true, false);
 						Varcs.field1417 = ScriptFrame.newArchive(9, false, true, true, false);
@@ -239,7 +239,7 @@ public class BufferedNetSocket extends AbstractSocket {
 						var28 = var44 + class154.field1724.percentage() * 5 / 100;
 						var28 += Client.field556.percentage() * 2 / 100;
 						var28 += HttpRequestTask.archive2.percentage() / 100;
-						var28 += ScriptFrame.field464.percentage() / 100;
+						var28 += ScriptFrame.archive4.percentage() / 100;
 						var28 += JagexCache.archive9.percentage() * 10 / 100;
 						var28 += class198.field2070.percentage() * 65 / 100;
 						var28 += Varcs.field1417.percentage() / 100;
@@ -327,7 +327,7 @@ public class BufferedNetSocket extends AbstractSocket {
 							SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var17;
 							WorldMapSection2.method4667(HttpRequestTask.archive2);
 							Login.method2192(HttpRequestTask.archive2);
-							ArchiveLoader.widgetDefinition = new WidgetDefinition(ScriptFrame.field464, class198.field2070, class311.archive8, KeyHandler.archive13, MouseHandler.field239);
+							ArchiveLoader.widgetDefinition = new WidgetDefinition(ScriptFrame.archive4, class198.field2070, class311.archive8, KeyHandler.archive13, MouseHandler.field239);
 							FontName.method9114(HttpRequestTask.archive2);
 							DefaultsGroup.method8542(HttpRequestTask.archive2);
 							PacketWriter.method2892(HttpRequestTask.archive2);
@@ -542,13 +542,13 @@ public class BufferedNetSocket extends AbstractSocket {
 						if (!Varcs.field1417.isFullyLoaded()) {
 							class128.method3018(70, "Loading textures - " + "0%");
 						} else {
-							class159.field1773 = new TextureProvider(Varcs.field1417, class311.archive8, 20, class30.clientPreferences.getBrightness(), Client.isLowDetail ? 64 : 128);
-							Rasterizer3D.method5344(class159.field1773);
+							class159.textureProvider = new TextureProvider(Varcs.field1417, class311.archive8, 20, class30.clientPreferences.getBrightness(), Client.isLowDetail ? 64 : 128);
+							Rasterizer3D.method5344(class159.textureProvider);
 							Rasterizer3D.method5280(class30.clientPreferences.getBrightness());
 							WorldMapDecoration.method5033(class93.field1164);
 						}
 					} else if (Client.field553 == class93.field1164) {
-						var28 = class159.field1773.getLoadedPercentage();
+						var28 = class159.textureProvider.getLoadedPercentage();
 						if (var28 < 100) {
 							class128.method3018(80, "Loading textures - " + var28 + "%");
 						} else {
@@ -570,8 +570,8 @@ public class BufferedNetSocket extends AbstractSocket {
 							WorldMapDecoration.method5033(class93.field1180);
 						}
 					} else if (class93.field1180 == Client.field553) {
-						if (!ScriptFrame.field464.isFullyLoaded()) {
-							class128.method3018(96, "Loading interfaces - " + ScriptFrame.field464.loadPercent() * 4 / 5 + "%");
+						if (!ScriptFrame.archive4.isFullyLoaded()) {
+							class128.method3018(96, "Loading interfaces - " + ScriptFrame.archive4.loadPercent() * 4 / 5 + "%");
 						} else if (!MouseHandler.field239.isFullyLoaded()) {
 							class128.method3018(96, "Loading interfaces - " + MouseHandler.field239.loadPercent() * 4 / 5 + "%");
 						} else if (!WorldMapSectionType.archive12.isFullyLoaded()) {
@@ -609,7 +609,7 @@ public class BufferedNetSocket extends AbstractSocket {
 						if (class93.field1181 == Client.field553) {
 							VarbitComposition.field2061 = false;
 							Interpreter.updateGameState(20);
-							class407.method7638(class67.field514);
+							class407.updateLoginState(LoginState.field514);
 						}
 
 					}

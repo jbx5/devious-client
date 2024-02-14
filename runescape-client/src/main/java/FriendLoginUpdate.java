@@ -46,7 +46,7 @@ public class FriendLoginUpdate extends Link {
 		garbageValue = "-2060638001"
 	)
 	public static void method8302() {
-		KitDefinition.field1905 = null;
+		KitDefinition.KitDefinition_archive = null;
 		class4.KitDefinition_modelsArchive = null;
 		KitDefinition.KitDefinition_fileCount = 0;
 	}
