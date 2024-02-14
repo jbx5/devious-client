@@ -75,7 +75,7 @@ public class class192 extends DualNode {
 	static void resumePauseWidget(int var0, int var1) {
 		PacketBufferNode var2 = ViewportMouse.getPacketBufferNode(ClientPacket.field3251, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeShortAddLE(var1);
-		var2.packetBuffer.writeIntIME(var0);
+		var2.packetBuffer.writeIntLE(var0);
 		Client.packetWriter.addNode(var2);
 	}
 }

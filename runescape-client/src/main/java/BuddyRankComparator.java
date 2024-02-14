@@ -63,9 +63,9 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		int var6;
 		int var7;
 		if (!Client.isInInstance) {
-			var3 = var1.readUnsignedByteSub();
+			var3 = var1.readUnsignedShortAddLE();
 			var1.readShort();
-			int var2 = var1.readUnsignedShortAddLE();
+			int var2 = var1.readUnsignedShortLE();
 			var4 = var1.readUnsignedShort();
 			FriendLoginUpdate.xteaKeys = new int[var4][4];
 
@@ -94,8 +94,8 @@ public class BuddyRankComparator extends AbstractUserComparator {
 
 			class103.method2750(var2, var3, true);
 		} else {
-			boolean var15 = var1.readUnsignedShortAdd() == 1;
-			var3 = var1.readUnsignedByteNeg();
+			boolean var15 = var1.readUnsignedByteAdd() == 1;
+			var3 = var1.readUnsignedShortAdd();
 			var4 = var1.readUnsignedShort();
 			var5 = var1.readUnsignedShort();
 			var1.importIndex();

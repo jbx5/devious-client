@@ -202,7 +202,7 @@ public class HttpRequest {
 		PacketBufferNode var2 = ViewportMouse.getPacketBufferNode(ClientPacket.field3240, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0) + 1);
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		var2.packetBuffer.writeShortAdd(var1);
+		var2.packetBuffer.writeByteSub(var1);
 		Client.packetWriter.addNode(var2);
 	}
 

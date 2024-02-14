@@ -1072,7 +1072,7 @@ public class Login {
 		PacketBufferNode var4 = ViewportMouse.getPacketBufferNode(ClientPacket.field3257, Client.packetWriter.isaacCipher);
 		var4.packetBuffer.writeShort(var1);
 		var4.packetBuffer.writeShort(var0);
-		var4.packetBuffer.writeIntIME(var3 ? Client.field624 : 0);
+		var4.packetBuffer.writeIntLE(var3 ? Client.field624 : 0);
 		var4.packetBuffer.writeByte(var2);
 		Client.packetWriter.addNode(var4);
 	}

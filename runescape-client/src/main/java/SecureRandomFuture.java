@@ -239,9 +239,9 @@ public class SecureRandomFuture {
 					var14.field1259 = var1.readByteNeg();
 					var14.field1258 = var1.readByte();
 					var14.field1248 = var1.readByte();
-					var14.spotAnimation = var1.readUnsignedByteSub() + Client.cycle;
-					var14.field1271 = var1.readUnsignedByteSub() + Client.cycle;
-					var14.field1223 = var1.readUnsignedByteNeg();
+					var14.spotAnimation = var1.readUnsignedShortAddLE() + Client.cycle;
+					var14.field1271 = var1.readUnsignedShortAddLE() + Client.cycle;
+					var14.field1223 = var1.readUnsignedShortAdd();
 					var14.pathLength = 1;
 					var14.field1280 = 0;
 					var14.field1257 += var14.pathX[0];
@@ -252,21 +252,21 @@ public class SecureRandomFuture {
 
 				if ((var23 & 131072) != 0) {
 					var6 = var1.readUnsignedIntME();
-					var14.turnLeftSequence = (var6 & 1) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.turnLeftSequence;
-					var14.turnRightSequence = (var6 & 2) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.turnRightSequence;
-					var14.walkSequence = (var6 & 4) != 0 ? var1.readUnsignedByteNeg() : var14.definition.walkSequence;
-					var14.walkBackSequence = (var6 & 8) != 0 ? var1.readUnsignedByteSub() : var14.definition.walkBackSequence;
+					var14.turnLeftSequence = (var6 & 1) != 0 ? var1.readUnsignedShortLE() : var14.definition.turnLeftSequence;
+					var14.turnRightSequence = (var6 & 2) != 0 ? var1.readUnsignedShortLE() : var14.definition.turnRightSequence;
+					var14.walkSequence = (var6 & 4) != 0 ? var1.readUnsignedShortAdd() : var14.definition.walkSequence;
+					var14.walkBackSequence = (var6 & 8) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.walkBackSequence;
 					var14.walkLeftSequence = (var6 & 16) != 0 ? var1.readUnsignedShort() : var14.definition.walkLeftSequence;
-					var14.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedByteNeg() : var14.definition.walkRightSequence;
-					var14.runSequence = (var6 & 64) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field1979;
-					var14.field1219 = (var6 & 128) != 0 ? var1.readUnsignedByteNeg() : var14.definition.field1980;
-					var14.field1220 = (var6 & 256) != 0 ? var1.readUnsignedByteSub() : var14.definition.field1987;
+					var14.walkRightSequence = (var6 & 32) != 0 ? var1.readUnsignedShortAdd() : var14.definition.walkRightSequence;
+					var14.runSequence = (var6 & 64) != 0 ? var1.readUnsignedShortLE() : var14.definition.field1979;
+					var14.field1219 = (var6 & 128) != 0 ? var1.readUnsignedShortAdd() : var14.definition.field1980;
+					var14.field1220 = (var6 & 256) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field1987;
 					var14.field1221 = (var6 & 512) != 0 ? var1.readUnsignedShort() : var14.definition.field1982;
-					var14.field1222 = (var6 & 1024) != 0 ? var1.readUnsignedByteSub() : var14.definition.field1983;
+					var14.field1222 = (var6 & 1024) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field1983;
 					var14.field1216 = (var6 & 2048) != 0 ? var1.readUnsignedShort() : var14.definition.field1966;
-					var14.field1224 = (var6 & 4096) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.field1984;
+					var14.field1224 = (var6 & 4096) != 0 ? var1.readUnsignedShortLE() : var14.definition.field1984;
 					var14.field1225 = (var6 & 8192) != 0 ? var1.readUnsignedShort() : var14.definition.field1986;
-					var14.idleSequence = (var6 & 16384) != 0 ? var1.readUnsignedShortAddLE() : var14.definition.idleSequence;
+					var14.idleSequence = (var6 & 16384) != 0 ? var1.readUnsignedShortLE() : var14.definition.idleSequence;
 				}
 
 				int[] var7;
@@ -282,11 +282,11 @@ public class SecureRandomFuture {
 					} else {
 						var7 = null;
 						if ((var6 & 2) == 2) {
-							var8 = var1.readUnsignedShortLE();
+							var8 = var1.readUnsignedByteNeg();
 							var7 = new int[var8];
 
 							for (var9 = 0; var9 < var8; ++var9) {
-								var10 = var1.readUnsignedByteSub();
+								var10 = var1.readUnsignedShortAddLE();
 								var10 = var10 == 65535 ? -1 : var10;
 								var7[var9] = var10;
 							}
@@ -302,7 +302,7 @@ public class SecureRandomFuture {
 							var15 = new short[var9];
 
 							for (var10 = 0; var10 < var9; ++var10) {
-								var15[var10] = (short)var1.readUnsignedByteNeg();
+								var15[var10] = (short)var1.readUnsignedShortAdd();
 							}
 						}
 
@@ -316,13 +316,13 @@ public class SecureRandomFuture {
 							var16 = new short[var10];
 
 							for (var24 = 0; var24 < var10; ++var24) {
-								var16[var24] = (short)var1.readUnsignedShortAddLE();
+								var16[var24] = (short)var1.readUnsignedShortLE();
 							}
 						}
 
 						var25 = false;
 						if ((var6 & 16) != 0) {
-							var25 = var1.readUnsignedShortAdd() == 1;
+							var25 = var1.readUnsignedByteAdd() == 1;
 						}
 
 						var17 = (long)(++NPC.field1336 - 1);
@@ -331,12 +331,12 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 128) != 0) {
-					var6 = var1.readUnsignedByteSub();
+					var6 = var1.readUnsignedShortAddLE();
 					if (var6 == 65535) {
 						var6 = -1;
 					}
 
-					var19 = var1.readUnsignedByteAdd();
+					var19 = var1.readUnsignedByteSub();
 					if (var6 == var14.sequence && var6 != -1) {
 						var8 = MilliClock.SequenceDefinition_get(var6).restartMode;
 						if (var8 == 1) {
@@ -360,16 +360,16 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 16) != 0) {
-					var6 = var1.readUnsignedByteNeg();
+					var6 = var1.readUnsignedShortAdd();
 					var19 = var1.readUnsignedShort();
-					var14.field1245 = var1.readUnsignedShortLE() == 1;
+					var14.field1245 = var1.readUnsignedByteNeg() == 1;
 					var14.field1243 = var6;
 					var14.field1244 = var19;
 				}
 
 				if ((var23 & 2) != 0) {
-					var14.targetIndex = var1.readUnsignedShortAddLE();
-					var14.targetIndex += var1.readUnsignedByteAdd() << 16;
+					var14.targetIndex = var1.readUnsignedShortLE();
+					var14.targetIndex += var1.readUnsignedByteSub() << 16;
 					var6 = 16777215;
 					if (var6 == var14.targetIndex) {
 						var14.targetIndex = -1;
@@ -385,7 +385,7 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 64) != 0) {
-					var6 = var1.readUnsignedShortAdd();
+					var6 = var1.readUnsignedByteAdd();
 					if (var6 > 0) {
 						for (var19 = 0; var19 < var6; ++var19) {
 							var9 = -1;
@@ -408,7 +408,7 @@ public class SecureRandomFuture {
 						}
 					}
 
-					var19 = var1.readUnsignedByteAdd();
+					var19 = var1.readUnsignedByteSub();
 					if (var19 > 0) {
 						for (var8 = 0; var8 < var19; ++var8) {
 							var9 = var1.readUShortSmart();
@@ -416,7 +416,7 @@ public class SecureRandomFuture {
 							if (var10 != 32767) {
 								var24 = var1.readUShortSmart();
 								var12 = var1.readUnsignedByte();
-								int var13 = var10 > 0 ? var1.readUnsignedShortAdd() : var12;
+								int var13 = var10 > 0 ? var1.readUnsignedByteAdd() : var12;
 								var14.addHealthBar(var9, Client.cycle, var10, var24, var12, var13);
 							} else {
 								var14.removeHealthBar(var9);
@@ -426,18 +426,18 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 65536) != 0) {
-					var6 = var1.readUnsignedShortLE();
+					var6 = var1.readUnsignedByteNeg();
 
 					for (var19 = 0; var19 < var6; ++var19) {
 						var8 = var1.readUnsignedByte();
-						var9 = var1.readUnsignedShortAddLE();
-						var10 = var1.method9529();
+						var9 = var1.readUnsignedShortLE();
+						var10 = var1.readUnsignedIntIME();
 						var14.updateSpotAnimation(var8, var9, var10 >> 16, var10 & 65535);
 					}
 				}
 
 				if ((var23 & 262144) != 0) {
-					var6 = var1.readUnsignedShortAdd();
+					var6 = var1.readUnsignedByteAdd();
 					var7 = new int[8];
 					var15 = new short[8];
 
@@ -455,13 +455,13 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 512) != 0) {
-					var6 = var1.readUnsignedShortLE();
+					var6 = var1.readUnsignedByteNeg();
 					if ((var6 & 1) == 1) {
 						var14.method2671();
 					} else {
 						var7 = null;
 						if ((var6 & 2) == 2) {
-							var8 = var1.readUnsignedShortAdd();
+							var8 = var1.readUnsignedByteAdd();
 							var7 = new int[var8];
 
 							for (var9 = 0; var9 < var8; ++var9) {
@@ -495,13 +495,13 @@ public class SecureRandomFuture {
 							var16 = new short[var10];
 
 							for (var24 = 0; var24 < var10; ++var24) {
-								var16[var24] = (short)var1.readUnsignedByteNeg();
+								var16[var24] = (short)var1.readUnsignedShortAdd();
 							}
 						}
 
 						var25 = false;
 						if ((var6 & 16) != 0) {
-							var25 = var1.readUnsignedShortAdd() == 1;
+							var25 = var1.readUnsignedByteAdd() == 1;
 						}
 
 						var17 = (long)(++NPC.field1338 - 1);
@@ -510,7 +510,7 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 8192) != 0) {
-					var14.method2656(var1.readUnsignedByteAdd());
+					var14.method2656(var1.readUnsignedByteSub());
 				}
 
 				if ((var23 & 4) != 0) {
@@ -520,16 +520,16 @@ public class SecureRandomFuture {
 				}
 
 				if ((var23 & 2048) != 0) {
-					var14.field1262 = Client.cycle + var1.readUnsignedByteSub();
-					var14.field1278 = Client.cycle + var1.readUnsignedByteNeg();
+					var14.field1262 = Client.cycle + var1.readUnsignedShortAddLE();
+					var14.field1278 = Client.cycle + var1.readUnsignedShortAdd();
 					var14.field1268 = var1.readByte();
 					var14.field1269 = var1.readByteSub();
 					var14.field1276 = var1.readByteNeg();
-					var14.field1255 = (byte)var1.readUnsignedByteAdd();
+					var14.field1255 = (byte)var1.readUnsignedByteSub();
 				}
 
 				if ((var23 & 1) != 0) {
-					var1.readUnsignedByteNeg();
+					var1.readUnsignedShortAdd();
 					var1.readInt();
 				}
 			}

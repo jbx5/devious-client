@@ -100,9 +100,9 @@ public class GrandExchangeEvent {
 					int var12 = VarpDefinition.localPlayer.y - var10 >> 7;
 					PacketBufferNode var13 = ViewportMouse.getPacketBufferNode(ClientPacket.field3176, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeShortAdd(Client.field792.method4466(82) ? (Client.field792.method4466(81) ? 2 : 1) : 0);
-					var13.packetBuffer.writeMediumLE(Projectile.baseX * 64 + var11);
-					var13.packetBuffer.writeMediumLE(GameEngine.baseY * 64 + var12);
+					var13.packetBuffer.writeByteSub(Client.field792.method4466(82) ? (Client.field792.method4466(81) ? 2 : 1) : 0);
+					var13.packetBuffer.writeShortAdd(Projectile.baseX * 64 + var11);
+					var13.packetBuffer.writeShortAdd(GameEngine.baseY * 64 + var12);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);

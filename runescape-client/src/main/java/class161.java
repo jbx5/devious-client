@@ -234,20 +234,20 @@ public abstract class class161 extends Node {
 		garbageValue = "-42"
 	)
 	static void method3436(PacketBufferNode var0) {
-		var0.packetBuffer.writeShortLE(Client.field556.hash);
-		var0.packetBuffer.writeShortLE(HttpRequestTask.archive2.hash);
-		var0.packetBuffer.writeIntIME(class154.field1724.hash);
-		var0.packetBuffer.writeIntIME(PlayerCompositionColorTextureOverride.field1832.hash);
-		var0.packetBuffer.writeShortLE(class362.field3958.hash);
-		var0.packetBuffer.writeIntME(WorldMapSectionType.archive12.hash);
-		var0.packetBuffer.writeIntIME(ScriptFrame.field464.hash);
+		var0.packetBuffer.writeIntME(Client.field556.hash);
+		var0.packetBuffer.writeIntME(HttpRequestTask.archive2.hash);
+		var0.packetBuffer.writeIntLE(class154.field1724.hash);
+		var0.packetBuffer.writeIntLE(PlayerCompositionColorTextureOverride.field1832.hash);
+		var0.packetBuffer.writeIntME(class362.field3958.hash);
+		var0.packetBuffer.writeIntIME(WorldMapSectionType.archive12.hash);
+		var0.packetBuffer.writeIntLE(ScriptFrame.field464.hash);
 		var0.packetBuffer.writeInt(0);
-		var0.packetBuffer.writeIntIME(WorldMapSectionType.field2612.hash);
+		var0.packetBuffer.writeIntLE(WorldMapSectionType.field2612.hash);
 		var0.packetBuffer.writeInt(Varcs.field1417.hash);
-		var0.packetBuffer.writeIntME(SpotAnimationDefinition.field2045.hash);
-		var0.packetBuffer.writeIntME(SecureRandomSSLSocket.field52.hash);
+		var0.packetBuffer.writeIntIME(SpotAnimationDefinition.field2045.hash);
+		var0.packetBuffer.writeIntIME(SecureRandomSSLSocket.field52.hash);
 		var0.packetBuffer.writeInt(class198.field2070.hash);
-		var0.packetBuffer.writeIntME(JagexCache.archive9.hash);
+		var0.packetBuffer.writeIntIME(JagexCache.archive9.hash);
 	}
 
 	@ObfuscatedName("mh")

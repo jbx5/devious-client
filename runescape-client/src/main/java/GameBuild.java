@@ -71,8 +71,8 @@ public class GameBuild {
 			var2.field1258 = var0.readByteSub();
 			var2.field1248 = var0.readByteNeg();
 			var2.spotAnimation = var0.readUnsignedShort() + Client.cycle;
-			var2.field1271 = var0.readUnsignedByteSub() + Client.cycle;
-			var2.field1223 = var0.readUnsignedByteNeg();
+			var2.field1271 = var0.readUnsignedShortAddLE() + Client.cycle;
+			var2.field1223 = var0.readUnsignedShortAdd();
 			if (var2.field1147) {
 				var2.field1257 += var2.tileX;
 				var2.field1259 += var2.tileY;
@@ -91,18 +91,18 @@ public class GameBuild {
 		}
 
 		if ((var3 & 16384) != 0) {
-			var2.field1262 = Client.cycle + var0.readUnsignedByteNeg();
-			var2.field1278 = Client.cycle + var0.readUnsignedByteSub();
+			var2.field1262 = Client.cycle + var0.readUnsignedShortAdd();
+			var2.field1278 = Client.cycle + var0.readUnsignedShortAddLE();
 			var2.field1268 = var0.readByteAdd();
 			var2.field1269 = var0.readByteAdd();
 			var2.field1276 = var0.readByte();
-			var2.field1255 = (byte)var0.readUnsignedByteAdd();
+			var2.field1255 = (byte)var0.readUnsignedByteSub();
 		}
 
 		int var5;
 		if ((var3 & 8) != 0) {
-			var2.targetIndex = var0.readUnsignedShortAddLE();
-			var2.targetIndex += var0.readUnsignedByteAdd() << 16;
+			var2.targetIndex = var0.readUnsignedShortLE();
+			var2.targetIndex += var0.readUnsignedByteSub() << 16;
 			var5 = 16777215;
 			if (var2.targetIndex == var5) {
 				var2.targetIndex = -1;
@@ -111,7 +111,7 @@ public class GameBuild {
 
 		int var6;
 		if ((var3 & 128) != 0) {
-			var5 = var0.readUnsignedShortAddLE();
+			var5 = var0.readUnsignedShortLE();
 			if (var5 == 65535) {
 				var5 = -1;
 			}
@@ -121,7 +121,7 @@ public class GameBuild {
 		}
 
 		if ((var3 & 32) != 0) {
-			var5 = var0.readUnsignedShortAdd();
+			var5 = var0.readUnsignedByteAdd();
 			byte[] var16 = new byte[var5];
 			Buffer var7 = new Buffer(var16);
 			var0.method9562(var16, 0, var5);
@@ -187,8 +187,8 @@ public class GameBuild {
 					var9 = var0.readUShortSmart();
 					if (var9 != 32767) {
 						var10 = var0.readUShortSmart();
-						var20 = var0.readUnsignedShortAdd();
-						var12 = var9 > 0 ? var0.readUnsignedShortLE() : var20;
+						var20 = var0.readUnsignedByteAdd();
+						var12 = var9 > 0 ? var0.readUnsignedByteNeg() : var20;
 						var2.addHealthBar(var8, Client.cycle, var9, var10, var20, var12);
 					} else {
 						var2.removeHealthBar(var8);
@@ -198,7 +198,7 @@ public class GameBuild {
 		}
 
 		if ((var3 & 64) != 0) {
-			var5 = var0.readUnsignedByteNeg();
+			var5 = var0.readUnsignedShortAdd();
 			PlayerType var25 = (PlayerType)class356.findEnumerated(FontName.PlayerType_values(), var0.readUnsignedByte());
 			boolean var28 = var0.readUnsignedByte() == 1;
 			var8 = var0.readUnsignedByte();
@@ -242,9 +242,9 @@ public class GameBuild {
 			var5 = var0.readUnsignedShort();
 			var6 = var5 >> 8;
 			var18 = var6 >= 13 && var6 <= 20 ? var6 - 12 : 0;
-			PlayerType var19 = (PlayerType)class356.findEnumerated(FontName.PlayerType_values(), var0.readUnsignedByteAdd());
+			PlayerType var19 = (PlayerType)class356.findEnumerated(FontName.PlayerType_values(), var0.readUnsignedByteSub());
 			boolean var22 = var0.readUnsignedByte() == 1;
-			var10 = var0.readUnsignedShortAdd();
+			var10 = var0.readUnsignedByteAdd();
 			var20 = var0.offset;
 			if (var2.username != null && var2.appearance != null) {
 				boolean var24 = false;
@@ -298,12 +298,12 @@ public class GameBuild {
 		}
 
 		if ((var3 & 65536) != 0) {
-			var5 = var0.readUnsignedByteAdd();
+			var5 = var0.readUnsignedByteSub();
 
 			for (var6 = 0; var6 < var5; ++var6) {
-				var18 = var0.readUnsignedShortAdd();
+				var18 = var0.readUnsignedByteAdd();
 				var8 = var0.readUnsignedShort();
-				var9 = var0.method9585();
+				var9 = var0.readUnsignedIntLE();
 				var2.updateSpotAnimation(var18, var8, var9 >> 16, var9 & 65535);
 			}
 		}
@@ -313,7 +313,7 @@ public class GameBuild {
 		}
 
 		if ((var3 & 1) != 0) {
-			var2.field1242 = var0.readUnsignedByteSub();
+			var2.field1242 = var0.readUnsignedShortAddLE();
 			if (var2.pathLength == 0) {
 				var2.orientation = var2.field1242;
 				var2.method2470();

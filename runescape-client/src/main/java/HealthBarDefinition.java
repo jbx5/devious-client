@@ -365,19 +365,19 @@ public class HealthBarDefinition extends DualNode {
 		int var13;
 		int var14;
 		if (class311.field3285 == var0) {
-			var2 = var1.readUnsignedByteNeg();
+			var2 = var1.readUnsignedShortAdd();
 			byte var3 = var1.readByte();
-			var4 = var1.readUnsignedShortAddLE();
+			var4 = var1.readUnsignedShortLE();
 			var5 = var1.readUnsignedShort();
 			byte var6 = var1.readByteAdd();
-			var7 = var1.readUnsignedByteAdd();
+			var7 = var1.readUnsignedByteSub();
 			var8 = var7 >> 2;
 			var9 = var7 & 3;
 			var10 = Client.field602[var8];
-			var11 = var1.readUnsignedShortAdd();
+			var11 = var1.readUnsignedByteAdd();
 			var12 = (var11 >> 4 & 7) + JagexCache.field2329;
 			var13 = (var11 & 7) + class4.field3;
-			var14 = var1.readUnsignedShortAddLE();
+			var14 = var1.readUnsignedShortLE();
 			byte var15 = var1.readByteNeg();
 			byte var16 = var1.readByteNeg();
 			Player var17;
@@ -396,11 +396,11 @@ public class HealthBarDefinition extends DualNode {
 		int var20;
 		int var21;
 		if (class311.field3275 == var0) {
-			var2 = var1.readUnsignedShortAdd();
+			var2 = var1.readUnsignedByteAdd();
 			var20 = (var2 >> 4 & 7) + JagexCache.field2329;
 			var4 = (var2 & 7) + class4.field3;
-			var5 = var1.readUnsignedShortAdd();
-			var21 = var1.readUnsignedShortAddLE();
+			var5 = var1.readUnsignedByteAdd();
+			var21 = var1.readUnsignedShortLE();
 			if (var20 >= 0 && var4 >= 0 && var20 < 104 && var4 < 104) {
 				var7 = Client.field831 == -1 ? class473.Client_plane : Client.field831;
 				ApproximateRouteStrategy.method1185(var7, var20, var4, var21, var5);
@@ -412,7 +412,7 @@ public class HealthBarDefinition extends DualNode {
 			var4 = (var2 & 7) + class4.field3;
 			var5 = var1.readUnsignedShort();
 			var21 = var1.readUnsignedByte();
-			var7 = var1.readUnsignedShortAdd();
+			var7 = var1.readUnsignedByteAdd();
 			var8 = var7 >> 4 & 15;
 			var9 = var7 & 7;
 			if (var20 >= 0 && var4 >= 0 && var20 < 104 && var4 < 104) {
@@ -430,13 +430,13 @@ public class HealthBarDefinition extends DualNode {
 
 		} else if (class311.field3277 == var0) {
 			var2 = var1.readUnsignedByte();
-			var20 = var1.readUnsignedByteSub();
+			var20 = var1.readUnsignedShortAddLE();
 			var4 = var1.readUnsignedByte();
 			var5 = var1.readUnsignedByte();
-			var21 = var1.readUnsignedByteAdd();
+			var21 = var1.readUnsignedByteSub();
 			var7 = (var21 >> 4 & 7) + JagexCache.field2329;
 			var8 = (var21 & 7) + class4.field3;
-			var9 = var1.readUnsignedByteAdd() & 31;
+			var9 = var1.readUnsignedByteSub() & 31;
 			if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
 				var10 = var9 + 1;
 				if (VarpDefinition.localPlayer.pathX[0] >= var7 - var10 && VarpDefinition.localPlayer.pathX[0] <= var7 + var10 && VarpDefinition.localPlayer.pathY[0] >= var8 - var10 && VarpDefinition.localPlayer.pathY[0] <= var10 + var8 && class30.clientPreferences.getAreaSoundEffectsVolume() != 0 && var4 > 0 && Client.soundEffectCount < 50) {
@@ -451,23 +451,23 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3279 == var0) {
-			var2 = var1.method9585();
-			var20 = var1.readUnsignedShortLE();
+			var2 = var1.readUnsignedIntLE();
+			var20 = var1.readUnsignedByteNeg();
 			var4 = (var20 >> 4 & 7) + JagexCache.field2329;
 			var5 = (var20 & 7) + class4.field3;
 			var21 = var1.readUnsignedIntME();
-			var7 = var1.readUnsignedByteNeg();
+			var7 = var1.readUnsignedShortAdd();
 			if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 				var8 = Client.field831 == -1 ? class473.Client_plane : Client.field831;
 				GraphicsObject.method2114(var8, var4, var5, var7, var21, var2);
 			}
 
 		} else if (class311.field3278 == var0) {
-			var2 = var1.readUnsignedShortLE();
+			var2 = var1.readUnsignedByteNeg();
 			var20 = var2 >> 2;
 			var4 = var2 & 3;
 			var5 = Client.field602[var20];
-			var21 = var1.readUnsignedShortLE();
+			var21 = var1.readUnsignedByteNeg();
 			var7 = (var21 >> 4 & 7) + JagexCache.field2329;
 			var8 = (var21 & 7) + class4.field3;
 			if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
@@ -476,9 +476,9 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3276 == var0) {
-			var2 = var1.readUnsignedShortAdd();
+			var2 = var1.readUnsignedByteAdd();
 			var20 = var1.readUnsignedShort();
-			var4 = var1.readUnsignedShortAdd();
+			var4 = var1.readUnsignedByteAdd();
 			var5 = (var4 >> 4 & 7) + JagexCache.field2329;
 			var21 = (var4 & 7) + class4.field3;
 			var7 = var1.readUnsignedShort();
@@ -491,20 +491,20 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3282 == var0) {
-			var2 = var1.readUnsignedByteAdd();
+			var2 = var1.readUnsignedByteSub();
 			var20 = (var2 >> 4 & 7) + JagexCache.field2329;
 			var4 = (var2 & 7) + class4.field3;
-			var5 = var1.readUnsignedByteNeg();
-			var21 = var1.readUnsignedByteSub();
-			var7 = var1.readUnsignedShortLE();
+			var5 = var1.readUnsignedShortAdd();
+			var21 = var1.readUnsignedShortAddLE();
+			var7 = var1.readUnsignedByteNeg();
 			var8 = var1.method9524();
 			var9 = var1.readUnsignedByte() * 4;
 			byte var23 = var1.readByte();
 			var11 = var1.method9524();
 			var12 = var1.readUnsignedByte() * 4;
 			byte var25 = var1.readByteAdd();
-			var14 = var1.readUnsignedByteNeg();
-			int var26 = var1.readUnsignedByteSub();
+			var14 = var1.readUnsignedShortAdd();
+			int var26 = var1.readUnsignedShortAddLE();
 			var13 = var25 + var20;
 			var10 = var23 + var4;
 			if (var20 >= 0 && var4 >= 0 && var20 < 104 && var4 < 104 && var13 >= 0 && var10 >= 0 && var13 < 104 && var10 < 104 && var26 != 65535) {
@@ -513,7 +513,7 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3287 == var0) {
-			var2 = var1.readUnsignedByteAdd();
+			var2 = var1.readUnsignedByteSub();
 			var20 = (var2 >> 4 & 7) + JagexCache.field2329;
 			var4 = (var2 & 7) + class4.field3;
 			var5 = var1.readUnsignedShort();
@@ -524,13 +524,13 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3286 == var0) {
-			var2 = var1.readUnsignedByteAdd();
-			var20 = var1.readUnsignedByteNeg();
-			var4 = var1.readUnsignedShortAdd();
+			var2 = var1.readUnsignedByteSub();
+			var20 = var1.readUnsignedShortAdd();
+			var4 = var1.readUnsignedByteAdd();
 			var5 = var4 >> 2;
 			var21 = var4 & 3;
 			var7 = Client.field602[var5];
-			var8 = var1.readUnsignedByteAdd();
+			var8 = var1.readUnsignedByteSub();
 			var9 = (var8 >> 4 & 7) + JagexCache.field2329;
 			var10 = (var8 & 7) + class4.field3;
 			if (var9 >= 0 && var10 >= 0 && var9 < 104 && var10 < 104) {
@@ -539,14 +539,14 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3281 == var0) {
-			var2 = var1.readUnsignedShortLE();
-			var20 = var1.readUnsignedByteNeg();
-			var4 = var1.readUnsignedByteAdd();
+			var2 = var1.readUnsignedByteNeg();
+			var20 = var1.readUnsignedShortAdd();
+			var4 = var1.readUnsignedByteSub();
 			var5 = (var4 >> 4 & 7) + JagexCache.field2329;
 			var21 = (var4 & 7) + class4.field3;
-			var7 = var1.readUnsignedShortLE();
+			var7 = var1.readUnsignedByteNeg();
 			var8 = var1.readUnsignedShort();
-			boolean var22 = var1.readUnsignedByteAdd() == 1;
+			boolean var22 = var1.readUnsignedByteSub() == 1;
 			var10 = var1.readUnsignedShort();
 			var11 = var1.readInt();
 			if (var5 >= 0 && var21 >= 0 && var5 < 104 && var21 < 104) {
@@ -555,12 +555,12 @@ public class HealthBarDefinition extends DualNode {
 			}
 
 		} else if (class311.field3284 == var0) {
-			var2 = var1.readUnsignedShortAddLE();
+			var2 = var1.readUnsignedShortLE();
 			var20 = var1.readUnsignedByte();
 			var4 = var20 >> 2;
 			var5 = var20 & 3;
 			var21 = Client.field602[var4];
-			var7 = var1.readUnsignedByteAdd();
+			var7 = var1.readUnsignedByteSub();
 			var8 = (var7 >> 4 & 7) + JagexCache.field2329;
 			var9 = (var7 & 7) + class4.field3;
 			if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {

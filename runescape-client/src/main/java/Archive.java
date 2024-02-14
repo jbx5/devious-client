@@ -541,7 +541,7 @@ public class Archive extends AbstractArchive {
 						} else {
 							PacketBufferNode var6 = ViewportMouse.getPacketBufferNode(ClientPacket.field3215, Client.packetWriter.isaacCipher);
 							var6.packetBuffer.writeShort(1 + class145.stringCp1252NullTerminatedByteSize(var4) + class145.stringCp1252NullTerminatedByteSize(var5));
-							var6.packetBuffer.writeShortAdd(var3);
+							var6.packetBuffer.writeByteSub(var3);
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4);
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5);
 							Client.packetWriter.addNode(var6);
