@@ -3,10 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
+@ObfuscatedName("ef")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("am")
+	@ObfuscatedName("ao")
+	static int[] field1457;
+	@ObfuscatedName("bb")
+	@ObfuscatedSignature(
+		descriptor = "Lua;"
+	)
+	@Export("rasterProvider")
+	public static AbstractRasterProvider rasterProvider;
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +22,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lrj;Lrj;B)I",
-		garbageValue = "4"
+		descriptor = "(Lry;Lry;I)I",
+		garbageValue = "-1579115164"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -36,110 +44,46 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lfx;FZB)F",
-		garbageValue = "7"
+		descriptor = "(I)Z",
+		garbageValue = "-2029946391"
 	)
-	static float method2944(class131 var0, float var1, boolean var2) {
-		float var3 = 0.0F;
-		if (var0 != null && var0.method3088() != 0) {
-			float var4 = (float)var0.field1545[0].field1483;
-			float var5 = (float)var0.field1545[var0.method3088() - 1].field1483;
-			float var6 = var5 - var4;
-			if (0.0D == (double)var6) {
-				return var0.field1545[0].field1480;
-			} else {
-				float var7 = 0.0F;
-				if (var1 > var5) {
-					var7 = (var1 - var5) / var6;
-				} else {
-					var7 = (var1 - var4) / var6;
-				}
-
-				double var8 = (double)((int)var7);
-				float var10 = Math.abs((float)((double)var7 - var8));
-				float var11 = var6 * var10;
-				var8 = Math.abs(1.0D + var8);
-				double var12 = var8 / 2.0D;
-				double var14 = (double)((int)var12);
-				var10 = (float)(var12 - var14);
-				float var16;
-				float var17;
-				if (var2) {
-					if (var0.field1539 == class129.field1514) {
-						if (0.0D != (double)var10) {
-							var11 += var4;
-						} else {
-							var11 = var5 - var11;
-						}
-					} else if (var0.field1539 != class129.field1512 && var0.field1539 != class129.field1515) {
-						if (var0.field1539 == class129.field1510) {
-							var11 = var4 - var1;
-							var16 = var0.field1545[0].field1482;
-							var17 = var0.field1545[0].field1479;
-							var3 = var0.field1545[0].field1480;
-							if (0.0D != (double)var16) {
-								var3 -= var17 * var11 / var16;
-							}
-
-							return var3;
-						}
-					} else {
-						var11 = var5 - var11;
-					}
-				} else if (var0.field1530 == class129.field1514) {
-					if ((double)var10 != 0.0D) {
-						var11 = var5 - var11;
-					} else {
-						var11 += var4;
-					}
-				} else if (var0.field1530 != class129.field1512 && var0.field1530 != class129.field1515) {
-					if (var0.field1530 == class129.field1510) {
-						var11 = var1 - var5;
-						var16 = var0.field1545[var0.method3088() - 1].field1481;
-						var17 = var0.field1545[var0.method3088() - 1].field1484;
-						var3 = var0.field1545[var0.method3088() - 1].field1480;
-						if ((double)var16 != 0.0D) {
-							var3 += var11 * var17 / var16;
-						}
-
-						return var3;
-					}
-				} else {
-					var11 += var4;
-				}
-
-				var3 = class155.method3423(var0, var11);
-				float var18;
-				if (var2 && var0.field1539 == class129.field1515) {
-					var18 = var0.field1545[var0.method3088() - 1].field1480 - var0.field1545[0].field1480;
-					var3 = (float)((double)var3 - (double)var18 * var8);
-				} else if (!var2 && var0.field1530 == class129.field1515) {
-					var18 = var0.field1545[var0.method3088() - 1].field1480 - var0.field1545[0].field1480;
-					var3 = (float)((double)var3 + (double)var18 * var8);
-				}
-
-				return var3;
-			}
-		} else {
-			return var3;
-		}
+	static final boolean method2944() {
+		return ViewportMouse.ViewportMouse_isInViewport;
 	}
 
-	@ObfuscatedName("id")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Lhl;IIILdf;I)V",
-		garbageValue = "146736324"
+		descriptor = "(Lng;II)V",
+		garbageValue = "-1245873869"
 	)
-	static void method2938(SequenceDefinition var0, int var1, int var2, int var3, Actor var4) {
-		if (Client.soundEffectCount < 50) {
-			if (var0.soundEffects != null && var1 < var0.soundEffects.length) {
-				int var5 = var0.soundEffects[var1] & 15;
-				if ((var5 <= 0 || class93.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var5 != 0 || class93.clientPreferences.getSoundEffectsVolume() != 0)) {
-					class152.method3320(var0.soundEffects[var1], var2, var3, var4 == KeyHandler.localPlayer);
-				}
-			}
+	public static void method2942(Widget var0, int var1) {
+		ItemComposition var2 = ArchiveDiskActionHandler.ItemDefinition_get(var1);
+		var0.field3774.equipment[var2.maleModel] = var1 + 512;
+		if (var2.maleModel1 != -1) {
+			var0.field3774.equipment[var2.maleModel1] = 0;
+		}
+
+		if (var2.maleModel2 != -1) {
+			var0.field3774.equipment[var2.maleModel2] = 0;
+		}
+
+		var0.field3774.method6477();
+	}
+
+	@ObfuscatedName("nc")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "-30"
+	)
+	@Export("clanKickUser")
+	static final void clanKickUser(String var0) {
+		if (Projectile.friendsChat != null) {
+			PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.field3259, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
 		}
 	}
 }

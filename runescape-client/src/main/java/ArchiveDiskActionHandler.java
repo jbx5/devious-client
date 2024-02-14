@@ -4,45 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ot")
+@ObfuscatedName("or")
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lpu;"
+		descriptor = "Lpr;"
 	)
 	@Export("ArchiveDiskActionHandler_requestQueue")
 	static final NodeDeque ArchiveDiskActionHandler_requestQueue;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lpu;"
+		descriptor = "Lpr;"
 	)
 	@Export("ArchiveDiskActionHandler_responseQueue")
 	static NodeDeque ArchiveDiskActionHandler_responseQueue;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1601517815
+		intValue = -407533941
 	)
-	static int field4329;
-	@ObfuscatedName("aj")
-	static boolean field4332;
-	@ObfuscatedName("aq")
-	static Object field4331;
+	static int field4362;
+	@ObfuscatedName("ai")
+	static boolean field4363;
 	@ObfuscatedName("ar")
+	static Object field4365;
+	@ObfuscatedName("as")
 	@Export("ArchiveDiskActionHandler_thread")
 	static Thread ArchiveDiskActionHandler_thread;
-	@ObfuscatedName("ue")
-	@ObfuscatedGetter(
-		intValue = -1258700800
-	)
-	static int field4334;
 
 	static {
 		ArchiveDiskActionHandler_requestQueue = new NodeDeque();
 		ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-		field4329 = 0;
-		field4332 = false;
-		field4331 = new Object();
+		field4362 = 0;
+		field4363 = false;
+		field4365 = new Object();
 	}
 
 	ArchiveDiskActionHandler() {
@@ -69,51 +64,104 @@ public class ArchiveDiskActionHandler implements Runnable {
 						}
 					}
 
-					synchronized(field4331) {
-						if ((field4332 || field4329 <= 1) && ArchiveDiskActionHandler_requestQueue.method7336()) {
-							field4329 = 0;
-							field4331.notifyAll();
+					synchronized(field4365) {
+						if ((field4363 || field4362 <= 1) && ArchiveDiskActionHandler_requestQueue.method7425()) {
+							field4362 = 0;
+							field4365.notifyAll();
 							return;
 						}
 
-						field4329 = 600;
+						field4362 = 600;
 					}
 				} else {
-					BuddyRankComparator.method2992(100L);
-					synchronized(field4331) {
-						if ((field4332 || field4329 <= 1) && ArchiveDiskActionHandler_requestQueue.method7336()) {
-							field4329 = 0;
-							field4331.notifyAll();
+					LoginPacket.method3209(100L);
+					synchronized(field4365) {
+						if ((field4363 || field4362 <= 1) && ArchiveDiskActionHandler_requestQueue.method7425()) {
+							field4362 = 0;
+							field4365.notifyAll();
 							return;
 						}
 
-						--field4329;
+						--field4362;
 					}
 				}
 			}
 		} catch (Exception var13) {
-			class368.RunException_sendStackTrace((String)null, var13);
+			class315.RunException_sendStackTrace((String)null, var13);
 		}
 	}
 
-	@ObfuscatedName("md")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "231374914"
+		descriptor = "(IB)Lhb;",
+		garbageValue = "-21"
 	)
-	static void method6981() {
-		if (Client.isSpellSelected) {
-			Widget var0 = class380.widgetDefinition.getWidgetChild(ModelData0.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				WorldMapSectionType.runScriptEvent(var1);
+	@Export("ItemDefinition_get")
+	public static ItemComposition ItemDefinition_get(int var0) {
+		ItemComposition var1 = (ItemComposition)ItemComposition.ItemDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = ItemComposition.ItemDefinition_archive.takeFile(10, var0);
+			var1 = new ItemComposition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
 
-			Client.selectedSpellItemId = -1;
-			Client.isSpellSelected = false;
-			FaceNormal.invalidateWidget(var0);
+			var1.post();
+			if (var1.noteTemplate != -1) {
+				var1.genCert(ItemDefinition_get(var1.noteTemplate), ItemDefinition_get(var1.note));
+			}
+
+			if (var1.notedId != -1) {
+				var1.genBought(ItemDefinition_get(var1.notedId), ItemDefinition_get(var1.unnotedId));
+			}
+
+			if (var1.placeholderTemplate != -1) {
+				var1.genPlaceholder(ItemDefinition_get(var1.placeholderTemplate), ItemDefinition_get(var1.placeholder));
+			}
+
+			if (!HealthBarUpdate.ItemDefinition_inMembersWorld && var1.isMembersOnly) {
+				if (var1.noteTemplate == -1 && var1.notedId == -1 && var1.placeholderTemplate == -1) {
+					var1.name = var1.name + " (Members)";
+				}
+
+				var1.isTradable = false;
+
+				int var3;
+				for (var3 = 0; var3 < var1.groundActions.length; ++var3) {
+					var1.groundActions[var3] = null;
+				}
+
+				for (var3 = 0; var3 < var1.inventoryActions.length; ++var3) {
+					if (var3 != 4) {
+						var1.inventoryActions[var3] = null;
+					}
+				}
+
+				var1.shiftClickIndex = -2;
+				var1.team = 0;
+				if (var1.params != null) {
+					boolean var6 = false;
+
+					for (Node var4 = var1.params.first(); var4 != null; var4 = var1.params.next()) {
+						ParamComposition var5 = UserComparator4.getParamDefinition((int)var4.key);
+						if (var5.autoDisable) {
+							var4.remove();
+						} else {
+							var6 = true;
+						}
+					}
+
+					if (!var6) {
+						var1.params = null;
+					}
+				}
+			}
+
+			ItemComposition.ItemDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 }

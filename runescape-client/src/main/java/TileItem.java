@@ -4,111 +4,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("el")
+@ObfuscatedName("ej")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1587968895
+		intValue = 418956957
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1767030957
+		intValue = 1152551687
 	)
 	@Export("quantity")
 	int quantity;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1704232705
+		intValue = -63855207
 	)
-	int field1335;
+	int field1368;
 
 	TileItem() {
-		this.field1335 = 31;
+		this.field1368 = 31;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "46"
+		descriptor = "(II)V",
+		garbageValue = "255610960"
 	)
-	void method2750(int var1) {
-		this.field1335 = var1;
+	void method2758(int var1) {
+		this.field1368 = var1;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lko;",
-		garbageValue = "-714420560"
+		descriptor = "(I)Lkz;",
+		garbageValue = "1036754463"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return class341.ItemDefinition_get(this.id).getModel(this.quantity);
+		return ArchiveDiskActionHandler.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Z",
-		garbageValue = "1"
+		garbageValue = "-20"
 	)
-	boolean method2751(int var1) {
+	boolean method2760(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
-			return (this.field1335 & 1 << var1) != 0;
+			return (this.field1368 & 1 << var1) != 0;
 		} else {
 			return true;
-		}
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1453512088"
-	)
-	static int method2762() {
-		return class28.KeyHandler_keyCodes.length;
-	}
-
-	@ObfuscatedName("aa")
-	static final void method2757(long var0) {
-		ViewportMouse.ViewportMouse_entityTags[++ViewportMouse.ViewportMouse_entityCount - 1] = var0;
-	}
-
-	@ObfuscatedName("jb")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-117"
-	)
-	static void method2764() {
-		if (KeyHandler.localPlayer.x >> 7 == Client.destinationX && KeyHandler.localPlayer.y >> 7 == Client.destinationY) {
-			Client.destinationX = 0;
-		}
-
-	}
-
-	@ObfuscatedName("oz")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILuc;Lmq;B)V",
-		garbageValue = "20"
-	)
-	@Export("drawSpriteOnMinimap")
-	static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-		if (var4 != null) {
-			int var6 = Client.camAngleY & 2047;
-			int var7 = var3 * var3 + var2 * var2;
-			if (var7 <= 6400) {
-				int var8 = Rasterizer3D.Rasterizer3D_sine[var6];
-				int var9 = Rasterizer3D.Rasterizer3D_cosine[var6];
-				int var10 = var9 * var2 + var3 * var8 >> 16;
-				int var11 = var3 * var9 - var8 * var2 >> 16;
-				if (var7 > 2500) {
-					var4.method9911(var10 + var5.width / 2 - var4.width / 2, var5.height / 2 - var11 - var4.height / 2, var0, var1, var5.width, var5.height, var5.xStarts, var5.xWidths);
-				} else {
-					var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
-				}
-
-			}
 		}
 	}
 }

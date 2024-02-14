@@ -4,98 +4,103 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("js")
+@ObfuscatedName("jc")
 @Implements("WorldMapID")
 public class WorldMapID {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ljs;"
+		descriptor = "Ljc;"
 	)
-	static final WorldMapID field2653;
-	@ObfuscatedName("ap")
+	static final WorldMapID field2659;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Ljs;"
+		descriptor = "Ljc;"
 	)
-	static final WorldMapID field2649;
-	@ObfuscatedName("af")
+	static final WorldMapID field2658;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "[Lcj;"
+	)
+	@Export("World_worlds")
+	static World[] World_worlds;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1939518077
+		intValue = 1317539837
 	)
 	@Export("value")
 	final int value;
 
 	static {
-		field2653 = new WorldMapID(0);
-		field2649 = new WorldMapID(1);
+		field2659 = new WorldMapID(0);
+		field2658 = new WorldMapID(1);
 	}
 
 	WorldMapID(int var1) {
 		this.value = var1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1734459633"
+		descriptor = "(Ljava/lang/CharSequence;IB)I",
+		garbageValue = "101"
 	)
-	static void method5029() {
-		TaskHandler.field2295 = new int[2000];
-		int var0 = 0;
-		int var1 = 240;
+	public static int method5045(CharSequence var0, int var1) {
+		return Script.method2242(var0, var1, true);
+	}
 
-		int var3;
-		for (byte var2 = 12; var0 < 16; var1 -= var2) {
-			var3 = MilliClock.method4269((double)((float)var1 / 360.0F), 0.9998999834060669D, (double)((float)var0 * 0.425F / 16.0F + 0.075F));
-			TaskHandler.field2295[var0] = var3;
-			++var0;
-		}
+	@ObfuscatedName("bs")
+	@ObfuscatedSignature(
+		descriptor = "(ILdc;ZI)I",
+		garbageValue = "1075667756"
+	)
+	static int method5043(int var0, Script var1, boolean var2) {
+		return 2;
+	}
 
-		var1 = 48;
+	@ObfuscatedName("nx")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZI)V",
+		garbageValue = "-61769157"
+	)
+	@Export("findItemDefinitions")
+	static void findItemDefinitions(String var0, boolean var1) {
+		var0 = var0.toLowerCase();
+		short[] var2 = new short[16];
+		int var3 = 0;
 
-		for (int var5 = var1 / 6; var0 < TaskHandler.field2295.length; var1 -= var5) {
-			var3 = var0 * 2;
+		for (int var4 = 0; var4 < ItemComposition.ItemDefinition_fileCount; ++var4) {
+			ItemComposition var9 = ArchiveDiskActionHandler.ItemDefinition_get(var4);
+			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
+				if (var3 >= 250) {
+					class207.foundItemIdCount = -1;
+					class73.foundItemIds = null;
+					return;
+				}
 
-			for (int var4 = MilliClock.method4269((double)((float)var1 / 360.0F), 0.9998999834060669D, 0.5D); var0 < var3 && var0 < TaskHandler.field2295.length; ++var0) {
-				TaskHandler.field2295[var0] = var4;
+				if (var3 >= var2.length) {
+					short[] var6 = new short[var2.length * 2];
+
+					for (int var7 = 0; var7 < var3; ++var7) {
+						var6[var7] = var2[var7];
+					}
+
+					var2 = var6;
+				}
+
+				var2[var3++] = (short)var4;
 			}
 		}
 
-	}
+		class73.foundItemIds = var2;
+		GameObject.foundItemIndex = 0;
+		class207.foundItemIdCount = var3;
+		String[] var8 = new String[class207.foundItemIdCount];
 
-	@ObfuscatedName("mu")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;III)V",
-		garbageValue = "-425673760"
-	)
-	@Export("alignWidgetPosition")
-	static void alignWidgetPosition(Widget var0, int var1, int var2) {
-		if (var0.xAlignment == 0) {
-			var0.x = var0.rawX;
-		} else if (var0.xAlignment == 1) {
-			var0.x = var0.rawX + (var1 - var0.width) / 2;
-		} else if (var0.xAlignment == 2) {
-			var0.x = var1 - var0.width - var0.rawX;
-		} else if (var0.xAlignment == 3) {
-			var0.x = var0.rawX * var1 >> 14;
-		} else if (var0.xAlignment == 4) {
-			var0.x = (var1 - var0.width) / 2 + (var0.rawX * var1 >> 14);
-		} else {
-			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
+		for (int var5 = 0; var5 < class207.foundItemIdCount; ++var5) {
+			var8[var5] = ArchiveDiskActionHandler.ItemDefinition_get(var2[var5]).name;
 		}
 
-		if (var0.yAlignment == 0) {
-			var0.y = var0.rawY;
-		} else if (var0.yAlignment == 1) {
-			var0.y = (var2 - var0.height) / 2 + var0.rawY;
-		} else if (var0.yAlignment == 2) {
-			var0.y = var2 - var0.height - var0.rawY;
-		} else if (var0.yAlignment == 3) {
-			var0.y = var2 * var0.rawY >> 14;
-		} else if (var0.yAlignment == 4) {
-			var0.y = (var2 - var0.height) / 2 + (var2 * var0.rawY >> 14);
-		} else {
-			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
-		}
-
+		short[] var10 = class73.foundItemIds;
+		Script.sortItemsByName(var8, var10, 0, var8.length - 1);
 	}
 }

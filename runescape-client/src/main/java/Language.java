@@ -5,84 +5,78 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ol")
+@ObfuscatedName("pe")
 @Implements("Language")
 public class Language implements Enum {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_EN")
 	public static final Language Language_EN;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_DE")
 	static final Language Language_DE;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_FR")
 	public static final Language Language_FR;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_PT")
 	static final Language Language_PT;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_NL")
 	static final Language Language_NL;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_ES")
 	public static final Language Language_ES;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lol;"
+		descriptor = "Lpe;"
 	)
 	@Export("Language_ES_MX")
 	static final Language Language_ES_MX;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "[Lol;"
+		descriptor = "[Lpe;"
 	)
 	@Export("Language_valuesOrdered")
 	public static final Language[] Language_valuesOrdered;
-	@ObfuscatedName("rj")
-	@ObfuscatedSignature(
-		descriptor = "Ltx;"
-	)
-	@Export("Widget_cachedModels")
-	static class513 Widget_cachedModels;
+	@ObfuscatedName("az")
+	final String field4490;
 	@ObfuscatedName("ao")
-	final String field4452;
-	@ObfuscatedName("ae")
 	@Export("language")
 	final String language;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1390111945
+		intValue = 786804823
 	)
 	@Export("id")
 	final int id;
 
 	static {
-		Language_EN = new Language("EN", "en", "English", ModeWhere.field4471, 0, "GB");
-		Language_DE = new Language("DE", "de", "German", ModeWhere.field4471, 1, "DE");
-		Language_FR = new Language("FR", "fr", "French", ModeWhere.field4471, 2, "FR");
-		Language_PT = new Language("PT", "pt", "Portuguese", ModeWhere.field4471, 3, "BR");
-		Language_NL = new Language("NL", "nl", "Dutch", ModeWhere.field4461, 4, "NL");
-		Language_ES = new Language("ES", "es", "Spanish", ModeWhere.field4461, 5, "ES");
-		Language_ES_MX = new Language("ES_MX", "es-mx", "Spanish (Latin American)", ModeWhere.field4471, 6, "MX");
-		Language[] var0 = new Language[]{Language_PT, Language_ES_MX, Language_DE, Language_FR, Language_ES, Language_NL, Language_EN};
+		Language_EN = new Language("EN", "en", "English", ModeWhere.field4505, 0, "GB");
+		Language_DE = new Language("DE", "de", "German", ModeWhere.field4505, 1, "DE");
+		Language_FR = new Language("FR", "fr", "French", ModeWhere.field4505, 2, "FR");
+		Language_PT = new Language("PT", "pt", "Portuguese", ModeWhere.field4505, 3, "BR");
+		Language_NL = new Language("NL", "nl", "Dutch", ModeWhere.field4498, 4, "NL");
+		Language_ES = new Language("ES", "es", "Spanish", ModeWhere.field4498, 5, "ES");
+		Language_ES_MX = new Language("ES_MX", "es-mx", "Spanish (Latin American)", ModeWhere.field4505, 6, "MX");
+		Language[] var0 = new Language[]{Language_ES_MX, Language_ES, Language_PT, Language_FR, Language_EN, Language_NL, Language_DE};
 		Language_valuesOrdered = new Language[var0.length];
 		Language[] var2 = var0;
 
@@ -98,10 +92,10 @@ public class Language implements Enum {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lpr;ILjava/lang/String;)V"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lpl;ILjava/lang/String;)V"
 	)
 	Language(String var1, String var2, String var3, ModeWhere var4, int var5, String var6) {
-		this.field4452 = var1;
+		this.field4490 = var1;
 		this.language = var2;
 		this.id = var5;
 		if (var6 != null) {
@@ -112,27 +106,62 @@ public class Language implements Enum {
 
 	}
 
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-289659104"
-	)
-	@Export("getLanguage")
-	String getLanguage() {
-		return this.language;
-	}
-
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-884190501"
+		garbageValue = "691209479"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1728027513"
+	)
+	@Export("getLanguage")
+	String getLanguage() {
+		return this.language;
+	}
+
 	public String toString() {
 		return this.getLanguage().toLowerCase(Locale.ENGLISH);
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lhi;",
+		garbageValue = "15658734"
+	)
+	public static HitSplatDefinition method7357(int var0) {
+		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0);
+			var1 = new HitSplatDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("kx")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIB)V",
+		garbageValue = "33"
+	)
+	static final void method7364(int var0, int var1, int var2, int var3) {
+		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
+			if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
+				Client.validRootWidgets[var4] = true;
+			}
+		}
+
 	}
 }

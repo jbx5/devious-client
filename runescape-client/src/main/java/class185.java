@@ -1,63 +1,131 @@
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hr")
+@ObfuscatedName("hq")
 public class class185 extends DualNode {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lll;"
 	)
-	@Export("field2026")
-	public static EvictingDualNodeHashTable field2026;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lnn;"
-	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
+	@Export("field2023")
+	public static EvictingDualNodeHashTable field2023;
 
 	static {
-		field2026 = new EvictingDualNodeHashTable(64);
+		field2023 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("lm")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "292894640"
+		descriptor = "(IIIILjava/lang/String;B)V",
+		garbageValue = "0"
 	)
-	static long method3710() {
-		try {
-			URL var0 = new URL(MouseRecorder.method2371("services", false) + "m=accountappeal/login.ws");
-			URLConnection var1 = var0.openConnection();
-			var1.setRequestProperty("connection", "close");
-			var1.setDoInput(true);
-			var1.setDoOutput(true);
-			var1.setConnectTimeout(5000);
-			OutputStreamWriter var2 = new OutputStreamWriter(var1.getOutputStream());
-			var2.write("data1=req");
-			var2.flush();
-			InputStream var3 = var1.getInputStream();
-			Buffer var4 = new Buffer(new byte[1000]);
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = ArchiveLoader.widgetDefinition.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				class177.runScriptEvent(var6);
+			}
 
-			do {
-				int var5 = var3.read(var4.array, var4.offset, 1000 - var4.offset);
-				if (var5 == -1) {
-					var4.offset = 0;
-					long var7 = var4.readLong();
-					return var7;
+			boolean var11 = true;
+			if (var5.contentType > 0) {
+				var11 = SoundSystem.method807(var5);
+			}
+
+			if (var11) {
+				int var8 = class429.getWidgetFlags(var5);
+				int var9 = var0 - 1;
+				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
+				if (var7) {
+					PacketBufferNode var10;
+					if (var0 == 1) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3197, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 2) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3181, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 3) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3254, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 4) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3268, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 5) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3200, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 6) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3208, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 7) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3196, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 8) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 9) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3232, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
+					if (var0 == 10) {
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);
+						var10.packetBuffer.writeInt(var1);
+						var10.packetBuffer.writeShort(var2);
+						var10.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var10);
+					}
+
 				}
-
-				var4.offset += var5;
-			} while(var4.offset < 1000);
-
-			return 0L;
-		} catch (Exception var9) {
-			return 0L;
+			}
 		}
 	}
 }

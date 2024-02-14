@@ -7,27 +7,27 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("pq")
 @Implements("IterableDualNodeQueueIterator")
 public class IterableDualNodeQueueIterator implements Iterator {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lpm;"
+		descriptor = "Lph;"
 	)
 	@Export("queue")
 	IterableDualNodeQueue queue;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lsc;"
+		descriptor = "Lsm;"
 	)
 	@Export("head")
 	DualNode head;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lsc;"
+		descriptor = "Lsm;"
 	)
 	@Export("last")
 	DualNode last;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpm;)V"
+		descriptor = "(Lph;)V"
 	)
 	IterableDualNodeQueueIterator(IterableDualNodeQueue var1) {
 		this.last = null;
@@ -49,12 +49,12 @@ public class IterableDualNodeQueueIterator implements Iterator {
 		return var1;
 	}
 
+	public boolean hasNext() {
+		return this.queue.sentinel != this.head;
+	}
+
 	public void remove() {
 		this.last.removeDual();
 		this.last = null;
-	}
-
-	public boolean hasNext() {
-		return this.queue.sentinel != this.head;
 	}
 }

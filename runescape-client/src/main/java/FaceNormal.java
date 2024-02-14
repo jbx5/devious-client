@@ -2,43 +2,29 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("kx")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -22124443
+		intValue = 586224973
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 140913233
+		intValue = 644707845
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 598024359
+		intValue = 1302107757
 	)
 	@Export("z")
 	int z;
 
 	FaceNormal() {
-	}
-
-	@ObfuscatedName("nc")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;I)V",
-		garbageValue = "740324846"
-	)
-	@Export("invalidateWidget")
-	public static void invalidateWidget(Widget var0) {
-		if (var0 != null && var0.cycle == Client.field607) {
-			Client.validRootWidgets[var0.rootIndex] = true;
-		}
-
 	}
 }

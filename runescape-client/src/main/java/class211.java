@@ -3,35 +3,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iq")
+@ObfuscatedName("iy")
 public class class211 {
-	@ObfuscatedName("au")
+	@ObfuscatedName("fo")
 	@ObfuscatedGetter(
-		intValue = -1696727415
+		intValue = -1846023185
 	)
-	@Export("Interpreter_stringStackSize")
-	static int Interpreter_stringStackSize;
-
-	@ObfuscatedName("am")
+	@Export("worldPort")
+	static int worldPort;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lnc;I)V",
-		garbageValue = "-816241909"
+		descriptor = "Leb;"
 	)
-	public static void method4228(Huffman var0) {
-		class353.huffman = var0;
-	}
-
-	@ObfuscatedName("ae")
+	public UrlRequest field2311;
+	@ObfuscatedName("aw")
+	public float[] field2309;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1178349206"
+		descriptor = "Lit;"
 	)
-	static int method4229(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
-		} else {
-			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
-		}
+	final class221 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lit;)V"
+	)
+	class211(class221 var1) {
+		this.this$0 = var1;
+		this.field2309 = new float[4];
 	}
 }

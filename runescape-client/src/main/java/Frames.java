@@ -3,18 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ky")
+@ObfuscatedName("ks")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("am")
+	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
-		descriptor = "[Lkg;"
+		descriptor = "[Lvg;"
+	)
+	@Export("worldSelectStars")
+	static IndexedSprite[] worldSelectStars;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "[Lkb;"
 	)
 	@Export("frames")
 	Animation[] frames;
 
 	@ObfuscatedSignature(
-		descriptor = "(Low;Low;IZ)V"
+		descriptor = "(Lof;Lof;IZ)V"
 	)
 	Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
 		NodeDeque var5 = new NodeDeque();
@@ -51,13 +57,23 @@ public class Frames extends DualNode {
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Z",
-		garbageValue = "0"
+		garbageValue = "-79"
 	)
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
 		return this.frames[var1].hasAlphaTransform;
+	}
+
+	@ObfuscatedName("my")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "549876396"
+	)
+	static final int method5635() {
+		float var0 = 200.0F * ((float)class30.clientPreferences.getBrightness() - 0.5F);
+		return 100 - Math.round(var0);
 	}
 }

@@ -1,45 +1,66 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cy")
+@ObfuscatedName("cu")
 @Implements("ApproximateRouteStrategy")
 public class ApproximateRouteStrategy extends RouteStrategy {
+	@ObfuscatedName("ah")
+	@Export("Tiles_lightness")
+	static int[] Tiles_lightness;
+	@ObfuscatedName("hm")
+	static SecureRandom field489;
+	@ObfuscatedName("qs")
+	@ObfuscatedSignature(
+		descriptor = "Ltx;"
+	)
+	static class516 field488;
+
 	ApproximateRouteStrategy() {
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IIILii;I)Z",
-		garbageValue = "-1725376681"
+		descriptor = "(IIILiz;I)Z",
+		garbageValue = "-101996106"
 	)
 	@Export("hasArrived")
 	protected boolean hasArrived(int var1, int var2, int var3, CollisionMap var4) {
 		return var2 == super.approxDestinationX && var3 == super.approxDestinationY;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("jp")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-86"
+		descriptor = "(IIIIIB)V",
+		garbageValue = "64"
 	)
-	public static boolean method1233(char var0) {
-		if ((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
-			if (var0 != 0) {
-				char[] var1 = class400.cp1252AsciiExtension;
-
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					char var3 = var1[var2];
-					if (var0 == var3) {
-						return true;
-					}
+	static void method1185(int var0, int var1, int var2, int var3, int var4) {
+		NodeDeque var5 = Client.groundItems[var0][var1][var2];
+		if (var5 != null) {
+			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
+				if ((var3 & 32767) == var6.id) {
+					var6.method2758(var4);
+					break;
 				}
 			}
+		}
 
-			return false;
-		} else {
-			return true;
+	}
+
+	@ObfuscatedName("no")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;S)V",
+		garbageValue = "233"
+	)
+	@Export("Clan_joinChat")
+	static final void Clan_joinChat(String var0) {
+		if (!var0.equals("")) {
+			PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.field3233, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
 		}
 	}
 }

@@ -3,31 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("it")
+@ObfuscatedName("in")
 @Implements("Clock")
 public abstract class Clock {
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "[Lut;"
-	)
-	@Export("title_muteSprite")
-	static IndexedSprite[] title_muteSprite;
-
 	Clock() {
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "65280"
+		garbageValue = "481365769"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-2123373080"
+		descriptor = "(IIB)I",
+		garbageValue = "-29"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);

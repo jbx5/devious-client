@@ -4,47 +4,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kb")
+@ObfuscatedName("kt")
 @Implements("AABB")
 public class AABB {
-	@ObfuscatedName("fl")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	static Archive field2907;
-	@ObfuscatedName("am")
+	@ObfuscatedName("un")
 	@ObfuscatedGetter(
-		intValue = -1926024547
+		intValue = 1841441359
+	)
+	static int field2914;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = 897834757
 	)
 	@Export("xMid")
 	int xMid;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -507873455
+		intValue = -349138361
 	)
 	@Export("yMid")
 	int yMid;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1217721029
+		intValue = 1677072599
 	)
 	@Export("zMid")
 	int zMid;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 2003252025
+		intValue = -889850773
 	)
 	@Export("xMidOffset")
 	int xMidOffset;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -2016643991
+		intValue = -1136839583
 	)
 	@Export("yMidOffset")
 	int yMidOffset;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 119232111
+		intValue = -1992420421
 	)
 	@Export("zMidOffset")
 	int zMidOffset;
@@ -56,5 +56,40 @@ public class AABB {
 		this.xMidOffset = var4;
 		this.yMidOffset = var5;
 		this.zMidOffset = var6;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(CI)C",
+		garbageValue = "-1158457597"
+	)
+	static char method5618(char var0) {
+		if (var0 == 198) {
+			return 'E';
+		} else if (var0 == 230) {
+			return 'e';
+		} else if (var0 == 223) {
+			return 's';
+		} else if (var0 == 338) {
+			return 'E';
+		} else {
+			return (char)(var0 == 339 ? 'e' : '\u0000');
+		}
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(ILdc;ZI)I",
+		garbageValue = "-1387447217"
+	)
+	static int method5619(int var0, Script var1, boolean var2) {
+		if (var0 == 6809) {
+			int var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			ObjectComposition var4 = class127.getObjectDefinition(var3);
+			Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

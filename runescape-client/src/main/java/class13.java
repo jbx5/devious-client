@@ -8,34 +8,28 @@ import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 
-@ObfuscatedName("ax")
+@ObfuscatedName("af")
 class class13 extends DefaultTlsClient {
-	@ObfuscatedName("av")
+	@ObfuscatedName("ih")
+	@Export("regions")
+	static int[] regions;
+	@ObfuscatedName("jf")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "[Lvd;"
 	)
-	static ClanChannel field54;
-	@ObfuscatedName("kf")
-	@ObfuscatedSignature(
-		descriptor = "[Luc;"
-	)
-	@Export("headIconPrayerSprites")
-	static SpritePixels[] headIconPrayerSprites;
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lad;"
+		descriptor = "Laj;"
 	)
 	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lad;)V"
+		descriptor = "(Laj;)V"
 	)
 	class13(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
-	}
-
-	public TlsAuthentication getAuthentication() throws IOException {
-		return new class11(this);
 	}
 
 	public Hashtable getClientExtensions() throws IOException {
@@ -56,22 +50,38 @@ class class13 extends DefaultTlsClient {
 		return var1;
 	}
 
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(Low;Low;I)V",
-		garbageValue = "1347219538"
-	)
-	public static void method171(AbstractArchive var0, AbstractArchive var1) {
-		NPCComposition.NpcDefinition_archive = var0;
-		NPCComposition.field1947 = var1;
+	public TlsAuthentication getAuthentication() throws IOException {
+		return new class11(this);
 	}
 
-	@ObfuscatedName("or")
+	@ObfuscatedName("ll")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1839649993"
+		descriptor = "(Ljava/lang/String;Lng;B)Ljava/lang/String;",
+		garbageValue = "52"
 	)
-	static final void method176() {
-		Client.field704 = Client.cycleCntr;
+	static String method155(String var0, Widget var1) {
+		if (var0.indexOf("%") != -1) {
+			for (int var2 = 1; var2 <= 5; ++var2) {
+				while (true) {
+					int var3 = var0.indexOf("%" + var2);
+					if (var3 == -1) {
+						break;
+					}
+
+					String var4 = var0.substring(0, var3);
+					int var6 = Client.method1763(var1, var2 - 1);
+					String var5;
+					if (var6 < 999999999) {
+						var5 = Integer.toString(var6);
+					} else {
+						var5 = "*";
+					}
+
+					var0 = var4 + var5 + var0.substring(var3 + 2);
+				}
+			}
+		}
+
+		return var0;
 	}
 }
