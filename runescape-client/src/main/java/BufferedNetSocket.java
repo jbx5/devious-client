@@ -297,7 +297,7 @@ public class BufferedNetSocket extends AbstractSocket {
 							ObjectComposition.ObjectDefinition_archive = var37;
 							ObjectComposition.ObjectDefinition_modelsArchive = var2;
 							ObjectComposition.ObjectDefinition_isLowDetail = var39;
-							ObjectComposition.field2118 = var42;
+							ObjectComposition.ObjectDefinition_isRev220SoundData = var42;
 							Archive var40 = HttpRequestTask.archive2;
 							Archive var32 = class198.field2070;
 							NPCComposition.NpcDefinition_archive = var40;

@@ -681,7 +681,7 @@ public class WorldMapScaleHandler {
 		var5.maxY = (var7 + var2) * 128;
 		var5.soundEffectId = var3.ambientSoundId;
 		var5.field872 = var3.int7 * 128;
-		var5.field864 = Math.max(var3.field2130 * 128 - 128, 0);
+		var5.field864 = Math.max(var3.int8 * 128 - 128, 0);
 		var5.field875 = var3.int5;
 		var5.field877 = var3.int6;
 		var5.soundEffectIds = var3.soundEffectIds;

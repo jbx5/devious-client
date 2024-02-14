@@ -115,7 +115,7 @@ public final class ObjectSound extends Node {
 		if (var2 != null) {
 			this.soundEffectId = var2.ambientSoundId;
 			this.field872 = var2.int7 * 128;
-			this.field864 = var2.field2130 * 128;
+			this.field864 = var2.int8 * 128;
 			this.field875 = var2.int5;
 			this.field877 = var2.int6;
 			this.soundEffectIds = var2.soundEffectIds;

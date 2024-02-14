@@ -210,6 +210,12 @@ public interface RSObjectComposition extends ObjectComposition
 	@Import("int7")
 	void setInt7(int int7);
 
+	@Import("int8")
+	void setInt8(int int8);
+
+	@Import("ObjectDefinition_isRev220SoundData")
+	boolean getObjectDefinitionIsRev220SoundData();
+
 	@Import("boolean2")
 	void setBoolean2(boolean boolean2);
 

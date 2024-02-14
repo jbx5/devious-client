@@ -263,13 +263,13 @@ class class439 implements Comparator {
 					int var16 = var3 * 128;
 					int var21 = var14.ambientSoundId;
 					int var22 = var14.int7 * 128;
-					int var23 = var14.field2130 * 128;
+					int var23 = var14.int8 * 128;
 					if (var14.transforms != null) {
 						ObjectComposition var24 = var14.transform();
 						if (var24 != null) {
 							var21 = var24.ambientSoundId;
 							var22 = var24.int7 * 128;
-							var23 = var24.field2130 * 128;
+							var23 = var24.int8 * 128;
 						}
 					}
 

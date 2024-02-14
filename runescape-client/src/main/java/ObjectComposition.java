@@ -23,7 +23,8 @@ public class ObjectComposition extends DualNode {
 	@Export("ObjectDefinition_modelsArchive")
 	public static AbstractArchive ObjectDefinition_modelsArchive;
 	@ObfuscatedName("ai")
-	public static boolean field2118;
+	@Export("ObjectDefinition_isRev220SoundData")
+	public static boolean ObjectDefinition_isRev220SoundData;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Lll;"
@@ -244,7 +245,8 @@ public class ObjectComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = 467288064
 	)
-	public int field2130;
+	@Export("int8")
+	public int int8;
 	@ObfuscatedName("bj")
 	@ObfuscatedGetter(
 		intValue = -826106219
@@ -272,7 +274,7 @@ public class ObjectComposition extends DualNode {
 
 	static {
 		ObjectDefinition_isLowDetail = false;
-		field2118 = false;
+		ObjectDefinition_isRev220SoundData = false;
 		ObjectDefinition_cached = new EvictingDualNodeHashTable(4096);
 		ObjectDefinition_cachedModelData = new EvictingDualNodeHashTable(500);
 		ObjectDefinition_cachedEntities = new EvictingDualNodeHashTable(30);
@@ -312,7 +314,7 @@ public class ObjectComposition extends DualNode {
 		this.transformVarp = -1;
 		this.ambientSoundId = -1;
 		this.int7 = 0;
-		this.field2130 = 0;
+		this.int8 = 0;
 		this.int5 = 0;
 		this.int6 = 0;
 		this.boolean3 = true;
@@ -486,12 +488,12 @@ public class ObjectComposition extends DualNode {
 			if (var2 == 78) {
 				this.ambientSoundId = var1.readUnsignedShort();
 				this.int7 = var1.readUnsignedByte() * 16384;
-				this.field2130 = (field2118 ? var1.readUnsignedByte() : 0) * 16384;
+				this.int8 = (ObjectDefinition_isRev220SoundData ? var1.readUnsignedByte() : 0) * 16384;
 			} else if (var2 == 79) {
 				this.int5 = var1.readUnsignedShort();
 				this.int6 = var1.readUnsignedShort();
 				this.int7 = var1.readUnsignedByte() * 16384;
-				this.field2130 = (field2118 ? var1.readUnsignedByte() : 0) * 16384;
+				this.int8 = (ObjectDefinition_isRev220SoundData ? var1.readUnsignedByte() : 0) * 16384;
 				var3 = var1.readUnsignedByte();
 				this.soundEffectIds = new int[var3];
 
