@@ -329,7 +329,7 @@ public class Message extends DualNode {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var5 = ViewportMouse.getPacketBufferNode(ClientPacket.field3177, Client.packetWriter.isaacCipher);
+			PacketBufferNode var5 = ViewportMouse.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var5.packetBuffer.writeByte(AbstractUserComparator.getWindowedMode());
 			var5.packetBuffer.writeShort(GameEngine.canvasWidth);
 			var5.packetBuffer.writeShort(WorldMapArea.canvasHeight);

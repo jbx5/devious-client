@@ -96,7 +96,7 @@ public class IgnoreList extends UserList {
 		garbageValue = "-5"
 	)
 	static final void method8240(String var0) {
-		PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.field3191, Client.packetWriter.isaacCipher);
+		PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 		var1.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0));
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var1);

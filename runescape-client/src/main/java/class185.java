@@ -45,7 +45,7 @@ public class class185 extends DualNode {
 				if (var7) {
 					PacketBufferNode var10;
 					if (var0 == 1) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3197, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -53,7 +53,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 2) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3181, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -61,7 +61,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 3) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3254, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -69,7 +69,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 4) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3268, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -77,7 +77,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 5) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3200, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -85,7 +85,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 6) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3208, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -93,7 +93,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 7) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3196, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -101,7 +101,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 8) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3186, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -109,7 +109,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 9) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3232, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -117,7 +117,7 @@ public class class185 extends DualNode {
 					}
 
 					if (var0 == 10) {
-						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.field3210, Client.packetWriter.isaacCipher);
+						var10 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);

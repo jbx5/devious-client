@@ -80,7 +80,7 @@ public class UserComparator8 extends AbstractUserComparator {
 	@Export("clanKickUser")
 	static final void clanKickUser(String var0) {
 		if (Projectile.friendsChat != null) {
-			PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.field3259, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 			Client.packetWriter.addNode(var1);

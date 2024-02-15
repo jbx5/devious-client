@@ -57,22 +57,22 @@ public class SecureRandomCallable implements Callable {
 			if (var7 != null && var7 != VarpDefinition.localPlayer && var7.username != null && var7.username.equals(var5)) {
 				PacketBufferNode var8;
 				if (var0 == 1) {
-					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.field3211, Client.packetWriter.isaacCipher);
+					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByte(0);
 					var8.packetBuffer.writeShortLE(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
-					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.field3265, Client.packetWriter.isaacCipher);
+					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShort(var3[var6]);
 					var8.packetBuffer.writeByteSub(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
-					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.field3247, Client.packetWriter.isaacCipher);
+					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByteSub(0);
 					var8.packetBuffer.writeShortLE(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
-					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.field3207, Client.packetWriter.isaacCipher);
+					var8 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByteSub(0);
 					var8.packetBuffer.writeShortAdd(var3[var6]);
 					Client.packetWriter.addNode(var8);

@@ -151,7 +151,7 @@ public class StructComposition extends DualNode {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = ViewportMouse.getPacketBufferNode(ClientPacket.field3203, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = ViewportMouse.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(class133.privateChatMode.field5342);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -167,7 +167,7 @@ public class StructComposition extends DualNode {
 				Interpreter.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				var6 = ViewportMouse.getPacketBufferNode(ClientPacket.field3189, Client.packetWriter.isaacCipher);
+				var6 = ViewportMouse.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -241,7 +241,7 @@ public class StructComposition extends DualNode {
 							class60.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class60.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class60.Interpreter_stringStackSize + 1];
-							var12 = ViewportMouse.getPacketBufferNode(ClientPacket.field3242, Client.packetWriter.isaacCipher);
+							var12 = ViewportMouse.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

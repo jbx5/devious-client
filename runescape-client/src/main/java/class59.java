@@ -396,7 +396,7 @@ public class class59 {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (class193.client.hasFrame()) {
-					var19 = ViewportMouse.getPacketBufferNode(ClientPacket.field3199, Client.packetWriter.isaacCipher);
+					var19 = ViewportMouse.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

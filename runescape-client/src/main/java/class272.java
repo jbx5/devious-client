@@ -162,7 +162,7 @@ public class class272 {
 		garbageValue = "1341670447"
 	)
 	static final void method5372() {
-		PacketBufferNode var0 = ViewportMouse.getPacketBufferNode(ClientPacket.field3243, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = ViewportMouse.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field894 = true;
 

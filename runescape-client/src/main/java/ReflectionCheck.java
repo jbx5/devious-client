@@ -62,7 +62,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3221, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(Projectile.baseX * 64 + var0);
 			var9.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
@@ -84,7 +84,7 @@ public class ReflectionCheck extends Node {
 					class177.runScriptEvent(var10);
 				}
 
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3230, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeIntME(class160.selectedSpellWidget);
 				var15.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 				var15.packetBuffer.writeShortAddLE(var0);
@@ -102,7 +102,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3185, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeByteNeg(Client.field792.method4466(82) ? 1 : 0);
 			var9.packetBuffer.writeShort(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeShortLE(var3);
@@ -117,7 +117,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3241, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortLE(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(var3);
 			var9.packetBuffer.writeShortAddLE(Projectile.baseX * 64 + var0);
@@ -140,7 +140,7 @@ public class ReflectionCheck extends Node {
 				}
 
 				if (var17 != null) {
-					var11 = ViewportMouse.getPacketBufferNode(ClientPacket.field3179, Client.packetWriter.isaacCipher);
+					var11 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeShort(var17.id);
 					Client.packetWriter.addNode(var11);
 				}
@@ -154,7 +154,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3184, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShort(var3);
 			var9.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 			var9.packetBuffer.writeShortLE(GameEngine.baseY * 64 + var1);
@@ -187,7 +187,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3206, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortLE(var3);
 			var9.packetBuffer.writeShort(Projectile.baseX * 64 + var0);
 			var9.packetBuffer.writeByte(Client.field792.method4466(82) ? 1 : 0);
@@ -208,7 +208,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3216, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 			var9.packetBuffer.writeShortAdd(Projectile.baseX * 64 + var0);
 			var9.packetBuffer.writeShortAdd(GameEngine.baseY * 64 + var1);
@@ -223,7 +223,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3253, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(var3);
 			var9.packetBuffer.writeShortAdd(Projectile.baseX * 64 + var0);
 			var9.packetBuffer.writeShortLE(Client.selectedSpellItemId);
@@ -244,7 +244,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3219, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeIntIME(class160.selectedSpellWidget);
 				var15.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAddLE(Client.selectedSpellItemId);
@@ -263,7 +263,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3214, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAddLE(var3);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -277,7 +277,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3266, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAdd(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
 			var9.packetBuffer.writeShort(var3);
@@ -294,7 +294,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3247, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var15);
@@ -310,7 +310,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3231, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var15);
@@ -322,7 +322,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3188, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(var3);
 			Client.packetWriter.addNode(var9);
 		}
@@ -332,7 +332,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3270, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(var3);
 			var9.packetBuffer.writeShortAdd(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeShort(Projectile.baseX * 64 + var0);
@@ -356,7 +356,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3246, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortLE(var3);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -372,7 +372,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3218, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAddLE(var3);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -424,7 +424,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3264, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(Projectile.baseX * 64 + var0);
 			var9.packetBuffer.writeShortAddLE(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
@@ -441,7 +441,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3237, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByte(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var15);
@@ -457,7 +457,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3265, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShort(var3);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -498,7 +498,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3207, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteSub(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var15);
@@ -514,7 +514,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3222, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortLE(var3);
 				var15.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -528,7 +528,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3220, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeShortAddLE(Projectile.baseX * 64 + var0);
 			var9.packetBuffer.writeShortAdd(GameEngine.baseY * 64 + var1);
 			var9.packetBuffer.writeByteNeg(Client.field792.method4466(82) ? 1 : 0);
@@ -539,7 +539,7 @@ public class ReflectionCheck extends Node {
 		int var12;
 		Widget var19;
 		if (var2 == 28) {
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3227, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var9);
 			var19 = ArchiveLoader.widgetDefinition.method6431(var1);
@@ -559,7 +559,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3202, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAdd(var3);
 				var15.packetBuffer.writeByte(Client.field792.method4466(82) ? 1 : 0);
 				Client.packetWriter.addNode(var15);
@@ -577,7 +577,7 @@ public class ReflectionCheck extends Node {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3250, Client.packetWriter.isaacCipher);
+			var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 			var9.packetBuffer.writeByte(Client.field792.method4466(82) ? 1 : 0);
 			var9.packetBuffer.writeShortLE(var3);
 			var9.packetBuffer.writeShortLE(GameEngine.baseY * 64 + var1);
@@ -594,7 +594,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var15);
@@ -610,7 +610,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
+				var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteAdd(Client.field792.method4466(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var15);
@@ -649,7 +649,7 @@ public class ReflectionCheck extends Node {
 					}
 
 					if (var13) {
-						var11 = ViewportMouse.getPacketBufferNode(ClientPacket.field3227, Client.packetWriter.isaacCipher);
+						var11 = ViewportMouse.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeInt(var1);
 						Client.packetWriter.addNode(var11);
 					}
@@ -657,7 +657,7 @@ public class ReflectionCheck extends Node {
 			}
 
 			if (var2 == 29) {
-				var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3227, Client.packetWriter.isaacCipher);
+				var9 = ViewportMouse.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var9.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var9);
 				var19 = ArchiveLoader.widgetDefinition.method6431(var1);
@@ -679,7 +679,7 @@ public class ReflectionCheck extends Node {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3211, Client.packetWriter.isaacCipher);
+					var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var15.packetBuffer.writeByte(Client.field792.method4466(82) ? 1 : 0);
 					var15.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var15);
@@ -693,7 +693,7 @@ public class ReflectionCheck extends Node {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var9 = ViewportMouse.getPacketBufferNode(ClientPacket.field3262, Client.packetWriter.isaacCipher);
+				var9 = ViewportMouse.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 				var9.packetBuffer.writeIntME(class160.selectedSpellWidget);
 				var9.packetBuffer.writeShortAddLE(var3);
 				var9.packetBuffer.writeShort(Client.selectedSpellItemId);
@@ -713,7 +713,7 @@ public class ReflectionCheck extends Node {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var15 = ViewportMouse.getPacketBufferNode(ClientPacket.field3238, Client.packetWriter.isaacCipher);
+					var15 = ViewportMouse.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 					var15.packetBuffer.writeInt(class160.selectedSpellWidget);
 					var15.packetBuffer.writeByteNeg(Client.field792.method4466(82) ? 1 : 0);
 					var15.packetBuffer.writeShortAddLE(var3);
