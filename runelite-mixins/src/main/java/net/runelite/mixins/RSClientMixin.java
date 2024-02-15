@@ -3256,14 +3256,15 @@ public abstract class RSClientMixin implements RSClient
 		check("field1909", client.getField1909());
 		check("field1913", client.getField1913());
 		check("field1915", client.getField1915());
-		check("archive7", client.getArchive7());
-		check("archive5", client.getArchive5());
+		check("field2022", client.getfield2022());
+		check("field1842", client.getField1842());
 		check("field2007", client.getField2007());
 		check("field2023", client.getField2023());
 		check("field2026", client.getField2026());
 		check("field2100", client.getField2100());
 		check("field2136", client.getField2136());
-		check("archive4", client.getArchive4());
+		check("field1864", client.getField1864());
+		check("field1851", client.getField1851());
 		check("archive11", client.getArchive11());
 
 		check("HealthBarDefinition_cached", client.getHealthBarCache());
@@ -3273,7 +3274,7 @@ public abstract class RSClientMixin implements RSClient
 		check("HitSplatDefinition_cachedSprites", client.getHitSplatDefinitionSpritesCache());
 		check("HitSplatDefinition_cachedFonts", client.getHitSplatDefinitionFontsCache());
 
-		check("Widget_cachedSpriteMasks", client.getSpriteMasksCache());
+		//check("Widget_cachedSpriteMasks", client.getWidgetDefinition().getSpriteMasksCache());
 
 		check("KitDefinition_cached", client.getKitDefinitionCache());
 
@@ -3779,7 +3780,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public LoginState getLoginState()
 	{
-		return LoginState.of(getRSLoginState());
+		return getRSLoginState();
 	}
 
 	@Inject

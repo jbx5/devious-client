@@ -3,139 +3,62 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("vs")
+@ObfuscatedName("vn")
 @Implements("Username")
 public class Username implements Comparable {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@Export("name")
 	String name;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("cleanName")
 	String cleanName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lth;)V"
+		descriptor = "(Ljava/lang/String;Lte;)V"
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
-		String var4;
-		if (var1 == null) {
-			var4 = null;
-		} else {
-			int var5 = 0;
-
-			int var6;
-			for (var6 = var1.length(); var5 < var6 && MilliClock.method4262(var1.charAt(var5)); ++var5) {
-			}
-
-			while (var6 > var5 && MilliClock.method4262(var1.charAt(var6 - 1))) {
-				--var6;
-			}
-
-			int var7 = var6 - var5;
-			if (var7 >= 1 && var7 <= class332.method6308(var2)) {
-				StringBuilder var8 = new StringBuilder(var7);
-
-				for (int var9 = var5; var9 < var6; ++var9) {
-					char var10 = var1.charAt(var9);
-					if (Messages.method2837(var10)) {
-						char var11 = class385.method7273(var10);
-						if (var11 != 0) {
-							var8.append(var11);
-						}
-					}
-				}
-
-				if (var8.length() == 0) {
-					var4 = null;
-				} else {
-					var4 = var8.toString();
-				}
-			} else {
-				var4 = null;
-			}
-		}
-
-		this.cleanName = var4;
+		this.cleanName = HealthBarDefinition.method3645(var1, var2);
 	}
 
 	public Username(String var1) {
 		this.name = var1;
-		LoginType var4 = LoginType.oldscape;
-		String var3;
-		if (var1 == null) {
-			var3 = null;
-		} else {
-			int var5 = 0;
-
-			int var6;
-			for (var6 = var1.length(); var5 < var6 && MilliClock.method4262(var1.charAt(var5)); ++var5) {
-			}
-
-			while (var6 > var5 && MilliClock.method4262(var1.charAt(var6 - 1))) {
-				--var6;
-			}
-
-			int var7 = var6 - var5;
-			if (var7 >= 1 && var7 <= class332.method6308(var4)) {
-				StringBuilder var8 = new StringBuilder(var7);
-
-				for (int var9 = var5; var9 < var6; ++var9) {
-					char var10 = var1.charAt(var9);
-					if (Messages.method2837(var10)) {
-						char var11 = class385.method7273(var10);
-						if (var11 != 0) {
-							var8.append(var11);
-						}
-					}
-				}
-
-				if (var8.length() == 0) {
-					var3 = null;
-				} else {
-					var3 = var8.toString();
-				}
-			} else {
-				var3 = null;
-			}
-		}
-
-		this.cleanName = var3;
+		this.cleanName = HealthBarDefinition.method3645(var1, LoginType.oldscape);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1794179494"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "2"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1874735961"
+		garbageValue = "-519587625"
 	)
-	public String method10004() {
+	public String method10078() {
 		return this.cleanName;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "63"
+		descriptor = "(I)Z",
+		garbageValue = "-600620911"
 	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
 		return this.cleanName != null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Lvs;I)I",
-		garbageValue = "162874778"
+		descriptor = "(Lvn;I)I",
+		garbageValue = "928383405"
 	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {

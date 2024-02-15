@@ -1,3 +1,5 @@
+import java.lang.management.GarbageCollectorMXBean;
+import java.util.Arrays;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -8,28 +10,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aw")
+@ObfuscatedName("ax")
 @Implements("AsyncRestClient")
 public class AsyncRestClient {
-	@ObfuscatedName("gc")
+	@ObfuscatedName("bc")
+	@Export("garbageCollector")
+	static GarbageCollectorMXBean garbageCollector;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 721426513
-	)
-	@Export("js5Port")
-	static int js5Port;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 2075666285
+		intValue = 1265131985
 	)
 	@Export("workQueueCapacity")
 	final int workQueueCapacity;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("threadNamePrefix")
 	final String threadNamePrefix;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("threadFactory")
 	final ThreadFactory threadFactory;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("threadPoolExecutor")
 	final ThreadPoolExecutor threadPoolExecutor;
 
@@ -40,20 +39,20 @@ public class AsyncRestClient {
 		this.threadPoolExecutor = this.createThreadPoolExecutor(var3);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Ljava/util/concurrent/ThreadPoolExecutor;",
-		garbageValue = "6509"
+		descriptor = "(IB)Ljava/util/concurrent/ThreadPoolExecutor;",
+		garbageValue = "48"
 	)
 	@Export("createThreadPoolExecutor")
 	final ThreadPoolExecutor createThreadPoolExecutor(int var1) {
 		return new ThreadPoolExecutor(var1, var1, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(this.workQueueCapacity), this.threadFactory);
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lau;B)Lay;",
-		garbageValue = "-79"
+		descriptor = "(Lak;B)Lad;",
+		garbageValue = "-86"
 	)
 	@Export("submitRequest")
 	public AsyncHttpResponse submitRequest(HttpRequest var1) {
@@ -66,10 +65,10 @@ public class AsyncRestClient {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "6524"
+		descriptor = "(I)V",
+		garbageValue = "-1870631406"
 	)
 	@Export("shutdown")
 	public final void shutdown() {
@@ -81,12 +80,27 @@ public class AsyncRestClient {
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "([BI)Ljo;",
-		garbageValue = "567576594"
+		descriptor = "(S)V",
+		garbageValue = "26903"
 	)
-	static WorldMapSprite method182(byte[] var0) {
-		return var0 == null ? new WorldMapSprite() : new WorldMapSprite(class181.method3691(var0).pixels);
+	public static void method165() {
+		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
+	}
+
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "(Lng;Lnt;ZI)V",
+		garbageValue = "-550444644"
+	)
+	public static void method161(Widget var0, PlayerComposition var1, boolean var2) {
+		var0.modelType = 7;
+		var0.field3774 = new PlayerComposition(var1);
+		if (!var2) {
+			var0.field3774.equipment = Arrays.copyOf(var0.field3774.field3666, var0.field3774.field3666.length);
+			var0.field3774.method6477();
+		}
+
 	}
 }

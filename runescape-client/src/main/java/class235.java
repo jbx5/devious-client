@@ -1,36 +1,37 @@
+import java.util.Comparator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jl")
-public class class235 {
-	@ObfuscatedName("kq")
+@ObfuscatedName("jz")
+public class class235 implements Comparator {
+	@ObfuscatedName("as")
+	@Export("SpriteBuffer_spriteWidths")
+	public static int[] SpriteBuffer_spriteWidths;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 1345393189
+		intValue = -969439669
 	)
 	static int field2478;
 
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1253949569"
-	)
-	public static void method4603() {
-		FileSystem.FileSystem_cacheFiles.clear();
+	class235() {
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(ILdd;ZI)I",
-		garbageValue = "492007439"
+		descriptor = "(Lic;Lic;B)I",
+		garbageValue = "31"
 	)
-	static int method4604(int var0, Script var1, boolean var2) {
-		if (var0 == 7463) {
-			boolean var3 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize] == 1;
-			AddRequestTask.method7922(var3);
-			return 1;
-		} else {
-			return 2;
-		}
+	int method4595(class230 var1, class230 var2) {
+		return var1.method4505() - var2.method4505();
+	}
+
+	public int compare(Object var1, Object var2) {
+		return this.method4595((class230)var1, (class230)var2);
+	}
+
+	public boolean equals(Object var1) {
+		return super.equals(var1);
 	}
 }

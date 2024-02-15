@@ -56,9 +56,19 @@ dependencies {
 
             input.set(file(inp))
             output.set(file(out))
+
+            sourceSets["main"].java.srcDir(file(out))
+            finalizedBy("compileJava")
         }
 
         processResources {
             dependsOn("createInterfaceComponents")
+        }
+
+        withType<Checkstyle> {
+            group = "verification"
+
+            exclude("net/runelite/api/widgets/ComponentID.java")
+            exclude("net/runelite/api/widgets/InterfaceID.java")
         }
     }

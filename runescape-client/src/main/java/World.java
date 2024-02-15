@@ -1,75 +1,74 @@
-import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ch")
+@ObfuscatedName("cj")
 @Implements("World")
 public class World {
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "[Lch;"
-	)
-	@Export("World_worlds")
-	static World[] World_worlds;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1400134735
+		intValue = -176509577
 	)
 	@Export("World_count")
 	static int World_count;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1226484089
+		intValue = -2063683187
 	)
 	@Export("World_listCount")
 	static int World_listCount;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@Export("World_sortOption2")
 	static int[] World_sortOption2;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@Export("World_sortOption1")
 	static int[] World_sortOption1;
-	@ObfuscatedName("au")
+	@ObfuscatedName("du")
+	@ObfuscatedSignature(
+		descriptor = "[Lvg;"
+	)
+	@Export("worldSelectArrows")
+	static IndexedSprite[] worldSelectArrows;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 949505101
+		intValue = 386127255
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -857776505
+		intValue = -1193821769
 	)
 	@Export("properties")
 	int properties;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1854816577
+		intValue = 273964793
 	)
 	@Export("population")
 	int population;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("af")
 	@Export("host")
 	String host;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ax")
 	@Export("activity")
 	String activity;
-	@ObfuscatedName("az")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 2046997537
+		intValue = -567876533
 	)
 	@Export("location")
 	int location;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -337156259
+		intValue = -1858071637
 	)
 	@Export("index")
 	int index;
-	@ObfuscatedName("ak")
-	String field821;
+	@ObfuscatedName("am")
+	String field850;
 
 	static {
 		World_count = 0;
@@ -81,228 +80,325 @@ public class World {
 	World() {
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1879877142"
+		descriptor = "(B)Z",
+		garbageValue = "-103"
 	)
 	@Export("isMembersOnly")
 	boolean isMembersOnly() {
-		return (class526.field5149.rsOrdinal() & this.properties) != 0;
+		return (class529.field5186.rsOrdinal() & this.properties) != 0;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1551707870"
+		descriptor = "(B)Z",
+		garbageValue = "-92"
 	)
 	@Export("isDeadman")
 	boolean isDeadman() {
-		return (class526.field5160.rsOrdinal() & this.properties) != 0;
+		return (class529.field5174.rsOrdinal() & this.properties) != 0;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-1"
+	)
+	boolean method1814() {
+		return (class529.field5177.rsOrdinal() & this.properties) != 0;
+	}
+
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-35176563"
+		garbageValue = "1754226121"
 	)
-	boolean method1841() {
-		return (class526.field5150.rsOrdinal() & this.properties) != 0;
+	@Export("isPvp")
+	boolean isPvp() {
+		return (class529.field5160.rsOrdinal() & this.properties) != 0;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1235435531"
+	)
+	boolean method1816() {
+		return (class529.field5188.rsOrdinal() & this.properties) != 0;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1039182462"
+	)
+	boolean method1829() {
+		return (class529.field5187.rsOrdinal() & this.properties) != 0;
 	}
 
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "662458741"
+		garbageValue = "-239511272"
 	)
-	@Export("isPvp")
-	boolean isPvp() {
-		return (class526.field5136.rsOrdinal() & this.properties) != 0;
+	@Export("isBeta")
+	boolean isBeta() {
+		return (class529.field5183.rsOrdinal() & this.properties) != 0;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "54"
+	)
+	boolean method1819() {
+		return (class529.field5158.rsOrdinal() & this.properties) != 0;
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-325415547"
+	)
+	boolean method1820() {
+		return (class529.field5169.rsOrdinal() & this.properties) != 0;
 	}
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "197916706"
+		descriptor = "(S)Z",
+		garbageValue = "29712"
 	)
-	boolean method1845() {
-		return (class526.field5137.rsOrdinal() & this.properties) != 0;
+	boolean method1838() {
+		return (class529.field5185.rsOrdinal() & this.properties) != 0;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "97"
+		descriptor = "(IIIIIIIILkq;Liz;I)V",
+		garbageValue = "-2055164667"
 	)
-	boolean method1842() {
-		return (class526.field5163.rsOrdinal() & this.properties) != 0;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-989897710"
-	)
-	@Export("isBeta")
-	boolean isBeta() {
-		return (class526.field5151.rsOrdinal() & this.properties) != 0;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-2019572946"
-	)
-	boolean method1844() {
-		return (class526.field5164.rsOrdinal() & this.properties) != 0;
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1167071721"
-	)
-	boolean method1893() {
-		return (class526.field5142.rsOrdinal() & this.properties) != 0;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1549455343"
-	)
-	boolean method1858() {
-		return (class526.field5161.rsOrdinal() & this.properties) != 0;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(FFFFLfx;I)V",
-		garbageValue = "-222950832"
-	)
-	static void method1863(float var0, float var1, float var2, float var3, class131 var4) {
-		float var5 = var1 - var0;
-		float var6 = var2 - var1;
-		float var7 = var3 - var2;
-		float var8 = var6 - var5;
-		var4.field1542 = var7 - var6 - var8;
-		var4.field1529 = var8 + var8 + var8;
-		var4.field1531 = var5 + var5 + var5;
-		var4.field1537 = var0;
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(Lch;Lch;IZI)I",
-		garbageValue = "-84905403"
-	)
-	@Export("compareWorlds")
-	static int compareWorlds(World var0, World var1, int var2, boolean var3) {
-		if (var2 == 1) {
-			int var4 = var0.population;
-			int var5 = var1.population;
-			if (!var3) {
-				if (var4 == -1) {
-					var4 = 2001;
-				}
-
-				if (var5 == -1) {
-					var5 = 2001;
-				}
-			}
-
-			return var4 - var5;
-		} else if (var2 == 2) {
-			return var0.location - var1.location;
-		} else if (var2 == 3) {
-			if (var0.activity.equals("-")) {
-				if (var1.activity.equals("-")) {
-					return 0;
-				} else {
-					return var3 ? -1 : 1;
-				}
-			} else if (var1.activity.equals("-")) {
-				return var3 ? 1 : -1;
-			} else {
-				return var0.activity.compareTo(var1.activity);
-			}
-		} else if (var2 == 4) {
-			return var0.method1845() ? (var1.method1845() ? 0 : 1) : (var1.method1845() ? -1 : 0);
-		} else if (var2 == 5) {
-			return var0.method1841() ? (var1.method1841() ? 0 : 1) : (var1.method1841() ? -1 : 0);
-		} else if (var2 == 6) {
-			return var0.isPvp() ? (var1.isPvp() ? 0 : 1) : (var1.isPvp() ? -1 : 0);
-		} else if (var2 == 7) {
-			return var0.isMembersOnly() ? (var1.isMembersOnly() ? 0 : 1) : (var1.isMembersOnly() ? -1 : 0);
+	static final void method1821(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap var9) {
+		ObjectComposition var10 = class127.getObjectDefinition(var4);
+		int var11 = var7 >= 0 ? var7 : var10.animationId;
+		int var12;
+		int var13;
+		if (var5 != 1 && var5 != 3) {
+			var12 = var10.sizeX;
+			var13 = var10.sizeY;
 		} else {
-			return var0.id - var1.id;
-		}
-	}
-
-	@ObfuscatedName("ie")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1793102624"
-	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		class189.logOut();
-		switch(var0) {
-		case 1:
-			class255.method5036();
-			break;
-		case 2:
-			class28.SpriteBuffer_reset();
+			var12 = var10.sizeY;
+			var13 = var10.sizeX;
 		}
 
-	}
+		int var14;
+		int var15;
+		if (var12 + var2 <= 104) {
+			var14 = (var12 >> 1) + var2;
+			var15 = var2 + (var12 + 1 >> 1);
+		} else {
+			var14 = var2;
+			var15 = var2 + 1;
+		}
 
-	@ObfuscatedName("kl")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "1688710746"
-	)
-	static final void method1896(boolean var0) {
-		WorldMapRectangle.method5020();
-		++Client.packetWriter.pendingWrites;
-		if (Client.packetWriter.pendingWrites >= 50 || var0) {
-			Client.packetWriter.pendingWrites = 0;
-			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
-				PacketBufferNode var1 = class482.getPacketBufferNode(ClientPacket.NO_TIMEOUT, Client.packetWriter.isaacCipher);
-				Client.packetWriter.addNode(var1);
+		int var16;
+		int var17;
+		if (var3 + var13 <= 104) {
+			var16 = var3 + (var13 >> 1);
+			var17 = var3 + (var13 + 1 >> 1);
+		} else {
+			var16 = var3;
+			var17 = var3 + 1;
+		}
 
-				try {
-					Client.packetWriter.flush();
-				} catch (IOException var3) {
-					Client.hadNetworkError = true;
+		int[][] var18 = Tiles.Tiles_heights[var1];
+		int var19 = var18[var15][var16] + var18[var14][var16] + var18[var14][var17] + var18[var15][var17] >> 2;
+		int var20 = (var2 << 7) + (var12 << 6);
+		int var21 = (var3 << 7) + (var13 << 6);
+		long var22 = AsyncHttpResponse.calculateTag(var2, var3, 2, var10.int1 == 0, var4);
+		int var24 = (var5 << 6) + var6;
+		if (var10.int3 == 1) {
+			var24 += 256;
+		}
+
+		Object var32;
+		if (var6 == 22) {
+			if (var11 == -1 && var10.transforms == null) {
+				var32 = var10.getModel(22, var5, var18, var20, var19, var21);
+			} else {
+				var32 = new DynamicObject(var4, 22, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+			}
+
+			var8.newFloorDecoration(var0, var2, var3, var19, (Renderable)var32, var22, var24);
+			if (var10.interactType == 1) {
+				var9.setBlockedByFloorDec(var2, var3);
+			}
+
+		} else if (var6 != 10 && var6 != 11) {
+			if (var6 >= 12) {
+				if (var11 == -1 && var10.transforms == null) {
+					var32 = var10.getModel(var6, var5, var18, var20, var19, var21);
+				} else {
+					var32 = new DynamicObject(var4, var6, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+				}
+
+				var8.method5430(var0, var2, var3, var19, 1, 1, (Renderable)var32, 0, var22, var24);
+				if (var10.interactType != 0) {
+					var9.addGameObject(var2, var3, var12, var13, var10.boolean1);
+				}
+
+			} else if (var6 == 0) {
+				if (var11 == -1 && var10.transforms == null) {
+					var32 = var10.getModel(0, var5, var18, var20, var19, var21);
+				} else {
+					var32 = new DynamicObject(var4, 0, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+				}
+
+				var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1060[var5], 0, var22, var24);
+				if (var10.interactType != 0) {
+					var9.method4504(var2, var3, var6, var5, var10.boolean1);
+				}
+
+			} else if (var6 == 1) {
+				if (var11 == -1 && var10.transforms == null) {
+					var32 = var10.getModel(1, var5, var18, var20, var19, var21);
+				} else {
+					var32 = new DynamicObject(var4, 1, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+				}
+
+				var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1056[var5], 0, var22, var24);
+				if (var10.interactType != 0) {
+					var9.method4504(var2, var3, var6, var5, var10.boolean1);
+				}
+
+			} else {
+				int var25;
+				if (var6 == 2) {
+					var25 = var5 + 1 & 3;
+					Object var27;
+					Object var33;
+					if (var11 == -1 && var10.transforms == null) {
+						var33 = var10.getModel(2, var5 + 4, var18, var20, var19, var21);
+						var27 = var10.getModel(2, var25, var18, var20, var19, var21);
+					} else {
+						var33 = new DynamicObject(var4, 2, var5 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						var27 = new DynamicObject(var4, 2, var25, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var33, (Renderable)var27, Tiles.field1060[var5], Tiles.field1060[var25], var22, var24);
+					if (var10.interactType != 0) {
+						var9.method4504(var2, var3, var6, var5, var10.boolean1);
+					}
+
+				} else if (var6 == 3) {
+					if (var11 == -1 && var10.transforms == null) {
+						var32 = var10.getModel(3, var5, var18, var20, var19, var21);
+					} else {
+						var32 = new DynamicObject(var4, 3, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.newBoundaryObject(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1056[var5], 0, var22, var24);
+					if (var10.interactType != 0) {
+						var9.method4504(var2, var3, var6, var5, var10.boolean1);
+					}
+
+				} else if (var6 == 9) {
+					if (var11 == -1 && var10.transforms == null) {
+						var32 = var10.getModel(var6, var5, var18, var20, var19, var21);
+					} else {
+						var32 = new DynamicObject(var4, var6, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.method5430(var0, var2, var3, var19, 1, 1, (Renderable)var32, 0, var22, var24);
+					if (var10.interactType != 0) {
+						var9.addGameObject(var2, var3, var12, var13, var10.boolean1);
+					}
+
+				} else if (var6 == 4) {
+					if (var11 == -1 && var10.transforms == null) {
+						var32 = var10.getModel(4, var5, var18, var20, var19, var21);
+					} else {
+						var32 = new DynamicObject(var4, 4, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+					}
+
+					var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, Tiles.field1060[var5], 0, 0, 0, var22, var24);
+				} else {
+					long var26;
+					Object var28;
+					if (var6 == 5) {
+						var25 = 16;
+						var26 = var8.getBoundaryObjectTag(var0, var2, var3);
+						if (0L != var26) {
+							var25 = class127.getObjectDefinition(Message.Entity_unpackID(var26)).int2;
+						}
+
+						if (var11 == -1 && var10.transforms == null) {
+							var28 = var10.getModel(4, var5, var18, var20, var19, var21);
+						} else {
+							var28 = new DynamicObject(var4, 4, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var28, (Renderable)null, Tiles.field1060[var5], 0, var25 * Tiles.field1053[var5], var25 * Tiles.field1054[var5], var22, var24);
+					} else if (var6 == 6) {
+						var25 = 8;
+						var26 = var8.getBoundaryObjectTag(var0, var2, var3);
+						if (0L != var26) {
+							var25 = class127.getObjectDefinition(Message.Entity_unpackID(var26)).int2 / 2;
+						}
+
+						if (var11 == -1 && var10.transforms == null) {
+							var28 = var10.getModel(4, var5 + 4, var18, var20, var19, var21);
+						} else {
+							var28 = new DynamicObject(var4, 4, var5 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var28, (Renderable)null, 256, var5, var25 * Tiles.field1055[var5], var25 * Tiles.field1046[var5], var22, var24);
+					} else if (var6 == 7) {
+						int var31 = var5 + 2 & 3;
+						if (var11 == -1 && var10.transforms == null) {
+							var32 = var10.getModel(4, var31 + 4, var18, var20, var19, var21);
+						} else {
+							var32 = new DynamicObject(var4, 4, var31 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var32, (Renderable)null, 256, var31, 0, 0, var22, var24);
+					} else if (var6 == 8) {
+						var25 = 8;
+						var26 = var8.getBoundaryObjectTag(var0, var2, var3);
+						if (0L != var26) {
+							var25 = class127.getObjectDefinition(Message.Entity_unpackID(var26)).int2 / 2;
+						}
+
+						int var30 = var5 + 2 & 3;
+						Object var29;
+						if (var11 == -1 && var10.transforms == null) {
+							var28 = var10.getModel(4, var5 + 4, var18, var20, var19, var21);
+							var29 = var10.getModel(4, var30 + 4, var18, var20, var19, var21);
+						} else {
+							var28 = new DynamicObject(var4, 4, var5 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+							var29 = new DynamicObject(var4, 4, var30 + 4, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
+						}
+
+						var8.newWallDecoration(var0, var2, var3, var19, (Renderable)var28, (Renderable)var29, 256, var5, var25 * Tiles.field1055[var5], var25 * Tiles.field1046[var5], var22, var24);
+					}
 				}
 			}
-
-		}
-	}
-
-	@ObfuscatedName("pd")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "30"
-	)
-	static void method1898() {
-		if (Client.field597 && KeyHandler.localPlayer != null) {
-			int var0 = KeyHandler.localPlayer.pathX[0];
-			int var1 = KeyHandler.localPlayer.pathY[0];
-			if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
-				return;
+		} else {
+			if (var11 == -1 && var10.transforms == null) {
+				var32 = var10.getModel(10, var5, var18, var20, var19, var21);
+			} else {
+				var32 = new DynamicObject(var4, 10, var5, var1, var2, var3, var11, var10.boolean3, (Renderable)null);
 			}
 
-			class367.oculusOrbFocalPointX = KeyHandler.localPlayer.x;
-			int var2 = HttpRequestTask.getTileHeight(KeyHandler.localPlayer.x, KeyHandler.localPlayer.y, SecureUrlRequester.Client_plane) - Client.camFollowHeight;
-			if (var2 < WorldMapArea.field2516) {
-				WorldMapArea.field2516 = var2;
+			if (var32 != null) {
+				var8.method5430(var0, var2, var3, var19, var12, var13, (Renderable)var32, var6 == 11 ? 256 : 0, var22, var24);
 			}
 
-			WorldMapCacheName.oculusOrbFocalPointY = KeyHandler.localPlayer.y;
-			Client.field597 = false;
-		}
+			if (var10.interactType != 0) {
+				var9.addGameObject(var2, var3, var12, var13, var10.boolean1);
+			}
 
+		}
 	}
 }

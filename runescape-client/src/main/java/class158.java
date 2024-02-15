@@ -2,57 +2,70 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ga")
-public class class158 extends class143 {
-	@ObfuscatedName("am")
+@ObfuscatedName("gb")
+public class class158 extends class161 {
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		longValue = 2245788515684681757L
+		intValue = -533538717
 	)
-	long field1740;
-	@ObfuscatedName("ap")
-	String field1738;
-	@ObfuscatedName("af")
+	int field1769;
+	@ObfuscatedName("aw")
+	byte field1764;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 2050490777
+		intValue = -1906278015
 	)
-	int field1739;
+	int field1766;
+	@ObfuscatedName("ai")
+	String field1767;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfm;"
+		descriptor = "Lga;"
 	)
-	final class146 this$0;
+	final class162 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfm;)V"
+		descriptor = "(Lga;)V"
 	)
-	class158(class146 var1) {
+	class158(class162 var1) {
 		this.this$0 = var1;
-		this.field1740 = -1L;
-		this.field1738 = null;
-		this.field1739 = 0;
+		this.field1769 = -1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;I)V",
-		garbageValue = "-411371469"
+		descriptor = "(Luq;I)V",
+		garbageValue = "1174207862"
 	)
-	void vmethod3531(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1740 = var1.readLong();
-		}
-
-		this.field1738 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1739 = var1.readUnsignedShort();
+	void vmethod3504(Buffer var1) {
+		var1.readUnsignedByte();
+		this.field1769 = var1.readUnsignedShort();
+		this.field1764 = var1.readByte();
+		this.field1766 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1767 = var1.readStringCp1252NullTerminated();
+		var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;I)V",
-		garbageValue = "1048713263"
+		descriptor = "(Lgg;I)V",
+		garbageValue = "378355771"
 	)
-	void vmethod3529(ClanSettings var1) {
-		var1.method3344(this.field1740, this.field1738, this.field1739);
+	void vmethod3509(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1769);
+		var2.rank = this.field1764;
+		var2.world = this.field1766;
+		var2.username = new Username(this.field1767);
+	}
+
+	@ObfuscatedName("bg")
+	@ObfuscatedSignature(
+		descriptor = "(Lng;III)V",
+		garbageValue = "512140024"
+	)
+	public static void method3402(Widget var0, int var1, int var2) {
+		var0.field3774.bodyColors[var1] = var2;
+		var0.field3774.method6477();
 	}
 }

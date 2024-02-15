@@ -1,85 +1,85 @@
-import java.util.Date;
-import java.util.HashMap;
-import java.util.TimeZone;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("md")
-public final class class314 {
-	@ObfuscatedName("af")
-	static final HashMap field3427;
-	@ObfuscatedName("fn")
+@ObfuscatedName("mf")
+public class class314 implements class309 {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lmf;"
 	)
-	static Archive field3428;
+	public static final class314 field3435;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	public static final class314 field3425;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	public static final class314 field3424;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	public static final class314 field3426;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	public static final class314 field3433;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	public static final class314 field3429;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	public static final class314 field3430;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lmf;"
+	)
+	static final class314 field3427;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "[Lmf;"
+	)
+	static final class314[] field3434;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = 858522627
+	)
+	public final int field3432;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 1221085013
+	)
+	public final int field3431;
 
 	static {
-		field3427 = new HashMap();
-		java.util.Calendar.getInstance(method6000("Europe/London"));
-	}
+		field3435 = new class314(14, 0);
+		field3425 = new class314(15, 4);
+		field3424 = new class314(16, -2);
+		field3426 = new class314(18, -2);
+		field3433 = new class314(19, -2);
+		field3429 = new class314(20, 58);
+		field3430 = new class314(21, 37);
+		field3427 = new class314(27, 0);
+		field3434 = new class314[32];
+		class314[] var0 = class172.method3542();
 
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/util/TimeZone;",
-		garbageValue = "-127615188"
-	)
-	static TimeZone method6000(String var0) {
-		synchronized(field3427) {
-			TimeZone var2 = (TimeZone)field3427.get(var0);
-			if (var2 == null) {
-				var2 = TimeZone.getTimeZone(var0);
-				field3427.put(var0, var2);
-			}
-
-			return var2;
+		for (int var1 = 0; var1 < var0.length; ++var1) {
+			field3434[var0[var1].field3432] = var0[var1];
 		}
+
 	}
 
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Date;B)Z",
-		garbageValue = "-75"
-	)
-	static boolean method6005(Date var0) {
-		java.util.Calendar var1 = java.util.Calendar.getInstance();
-		var1.set(1, var1.get(1) - 13);
-		var1.set(5, var1.get(5) + 1);
-		var1.set(11, 0);
-		var1.set(12, 0);
-		var1.set(13, 0);
-		var1.set(14, 0);
-		Date var2 = var1.getTime();
-		return var0.before(var2);
-	}
-
-	@ObfuscatedName("bi")
-	@ObfuscatedSignature(
-		descriptor = "(ILdd;ZI)I",
-		garbageValue = "2047821445"
-	)
-	static int method6006(int var0, Script var1, boolean var2) {
-		if (var0 == 6754) {
-			int var5 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize];
-			NPCComposition var6 = Script.getNpcDefinition(var5);
-			Interpreter.Interpreter_stringStack[++class211.Interpreter_stringStackSize - 1] = var6 != null ? var6.name : "";
-			return 1;
-		} else {
-			NPCComposition var3;
-			if (var0 == 6764) {
-				UserComparator6.Interpreter_intStackSize -= 2;
-				var3 = Script.getNpcDefinition(Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize]);
-				int var4 = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 1];
-				Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3.method3738(var4);
-				Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3.method3729(var4);
-				return 1;
-			} else if (var0 == 6765) {
-				var3 = Script.getNpcDefinition(Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize]);
-				Interpreter.Interpreter_intStack[++UserComparator6.Interpreter_intStackSize - 1] = var3 != null ? var3.combatLevel : 0;
-				return 1;
-			} else {
-				return 2;
-			}
-		}
+	class314(int var1, int var2) {
+		this.field3432 = var1;
+		this.field3431 = var2;
 	}
 }

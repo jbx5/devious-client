@@ -1,64 +1,154 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("qz")
-public class class417 extends SongTask {
-	@ObfuscatedName("am")
-	ArrayList field4581;
+public class class417 {
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lpv;"
+	)
+	class413 field4610;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = -1776506823
+	)
+	int field4612;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 400331547
+	)
+	int field4611;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqd;Ljava/util/ArrayList;)V"
+		descriptor = "(Lpv;II)V"
 	)
-	public class417(SongTask var1, ArrayList var2) {
-		super(var1);
-		super.field4597 = "ClearRequestTask";
-		this.field4581 = var2;
+	class417(class413 var1, int var2, int var3) {
+		this.field4612 = 0;
+		this.field4611 = 0;
+		this.field4610 = var1;
+		this.field4612 = var2;
+		this.field4611 = var3;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "2012801823"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-418333105"
 	)
-	public boolean vmethod7975() {
-		if (this.field4581.isEmpty()) {
-			return true;
+	public String method7960() {
+		if (this.method7956()) {
+			return "";
 		} else {
-			Iterator var1 = this.field4581.iterator();
+			StringBuilder var1 = new StringBuilder(this.method7957());
 
-			while (var1.hasNext()) {
-				MusicSong var2 = (MusicSong)var1.next();
-
-				try {
-					if (class319.musicSongs.contains(var2)) {
-						if (var2 == null) {
-							class319.musicSongs.remove(var2);
-						} else {
-							if (var2.midiPcmStream.field3499 > 0) {
-								--var2.midiPcmStream.field3499;
-							}
-
-							if (var2.midiPcmStream.field3499 == 0) {
-								var2.midiPcmStream.clear();
-								var2.midiPcmStream.method6075();
-								var2.midiPcmStream.setPcmStreamVolume(0);
-							}
-
-							class129.method3075(var2.musicTrackGroupId, var2.musicTrackFileId);
-							class319.musicSongs.remove(var2);
-						}
-					}
-				} catch (Exception var4) {
-					class368.RunException_sendStackTrace((String)null, var4);
-					this.method7954(var4.getMessage());
-					class319.musicSongs.clear();
-					return true;
-				}
+			for (int var2 = this.field4612; var2 < this.field4611; ++var2) {
+				class415 var3 = this.field4610.method7775(var2);
+				var1.append(var3.field4583);
 			}
 
-			return true;
+			return var1.toString();
 		}
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "15"
+	)
+	boolean method7955(int var1) {
+		return this.field4610.method7765() == 2 || this.field4610.method7765() == 1 && (!this.field4610.field4576 || this.field4611 - 1 != var1);
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "277524048"
+	)
+	public boolean method7956() {
+		return this.field4611 == this.field4612;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-76"
+	)
+	public int method7957() {
+		return this.field4611 - this.field4612;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(Lpu;I)Z",
+		garbageValue = "718811765"
+	)
+	boolean method7958(class415 var1) {
+		if (this.field4610.field4580 == 2) {
+			return true;
+		} else if (this.field4610.field4580 == 0) {
+			return false;
+		} else {
+			return this.field4610.method7828() != var1;
+		}
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "51"
+	)
+	int method7959() {
+		if (this.method7956()) {
+			return 0;
+		} else {
+			class415 var1 = this.field4610.method7775(this.field4611 - 1);
+			if (var1.field4583 == '\n') {
+				return 0;
+			} else if (this.method7958(var1)) {
+				return this.field4610.field4577.advances[42];
+			} else {
+				int var2 = this.field4610.field4577.advances[var1.field4583];
+				if (var2 == 0) {
+					return var1.field4583 == '\t' ? this.field4610.field4577.advances[32] * 3 : this.field4610.field4577.advances[32];
+				} else {
+					return var2;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lth;",
+		garbageValue = "-1055719771"
+	)
+	public class504 method7963() {
+		if (this.method7956()) {
+			return new class504(0, 0);
+		} else {
+			class415 var1 = this.field4610.method7775(this.field4611 - 1);
+			return new class504(var1.field4584 + this.method7959(), var1.field4585);
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lpu;",
+		garbageValue = "-113"
+	)
+	public class415 method7971(int var1) {
+		return var1 >= 0 && var1 < this.method7957() ? this.field4610.method7775(this.field4612 + var1) : null;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Lof;Lof;I)V",
+		garbageValue = "-2012193885"
+	)
+	public static void method7969(AbstractArchive var0, AbstractArchive var1) {
+		KitDefinition.KitDefinition_archive = var0;
+		class4.KitDefinition_modelsArchive = var1;
+		KitDefinition.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
 	}
 }

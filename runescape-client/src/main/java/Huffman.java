@@ -1,26 +1,25 @@
-import java.io.File;
-import java.io.IOException;
+import java.awt.FontMetrics;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nc")
+@ObfuscatedName("ny")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("ve")
-	@ObfuscatedGetter(
-		intValue = 1973672625
-	)
-	static int field3870;
-	@ObfuscatedName("am")
+	@ObfuscatedName("au")
+	@Export("Tiles_hue")
+	static int[] Tiles_hue;
+	@ObfuscatedName("bd")
+	@Export("loginScreenFontMetrics")
+	static FontMetrics loginScreenFontMetrics;
+	@ObfuscatedName("aq")
 	@Export("masks")
 	int[] masks;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("bits")
 	byte[] bits;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("keys")
 	int[] keys;
 
@@ -107,10 +106,10 @@ public class Huffman {
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "([BII[BIB)I",
-		garbageValue = "-81"
+		descriptor = "([BII[BIS)I",
+		garbageValue = "271"
 	)
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -158,10 +157,10 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "([BI[BIIB)I",
-		garbageValue = "1"
+		garbageValue = "5"
 	)
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -302,125 +301,28 @@ public class Huffman {
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "2797468"
+		descriptor = "(Lof;III)Lvg;",
+		garbageValue = "1477494345"
 	)
-	@Export("isWorldMapEvent")
-	public static boolean isWorldMapEvent(int var0) {
-		return var0 == 10 || var0 == 11 || var0 == 12 || var0 == 13 || var0 == 14 || var0 == 15 || var0 == 16 || var0 == 17;
+	static IndexedSprite method6973(AbstractArchive var0, int var1, int var2) {
+		return !class130.method3074(var0, var1, var2) ? null : Interpreter.method2107();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ha")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;I)Ljava/lang/String;",
-		garbageValue = "1834780919"
+		descriptor = "(B)V",
+		garbageValue = "33"
 	)
-	public static String method6899(Buffer var0) {
-		String var1;
-		try {
-			int var2 = var0.readUShortSmart();
-			if (var2 > 32767) {
-				var2 = 32767;
-			}
-
-			byte[] var3 = new byte[var2];
-			var0.offset += class353.huffman.decompress(var0.array, var0.offset, var3, 0, var2);
-			String var4 = UrlRequest.decodeStringCp1252(var3, 0, var2);
-			var1 = var4;
-		} catch (Exception var6) {
-			var1 = "Cabbage";
+	static final void method6966() {
+		if (Client.logoutTimer > 0) {
+			class485.logOut();
+		} else {
+			Client.timer.method8102();
+			Interpreter.updateGameState(40);
+			class324.field3539 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
 		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZB)Ltt;",
-		garbageValue = "4"
-	)
-	@Export("getPreferencesFile")
-	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
-		File var3 = new File(class404.cacheDir, "preferences" + var0 + ".dat");
-		if (var3.exists()) {
-			try {
-				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
-				return var10;
-			} catch (IOException var9) {
-			}
-		}
-
-		String var4 = "";
-		if (class189.cacheGamebuild == 33) {
-			var4 = "_rc";
-		} else if (class189.cacheGamebuild == 34) {
-			var4 = "_wip";
-		}
-
-		File var5 = new File(RouteStrategy.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
-		AccessFile var6;
-		if (!var2 && var5.exists()) {
-			try {
-				var6 = new AccessFile(var5, "rw", 10000L);
-				return var6;
-			} catch (IOException var8) {
-			}
-		}
-
-		try {
-			var6 = new AccessFile(var3, "rw", 10000L);
-			return var6;
-		} catch (IOException var7) {
-			throw new RuntimeException();
-		}
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1869012713"
-	)
-	static final int method6900(int var0, int var1) {
-		int var2 = var1 * 57 + var0;
-		var2 ^= var2 << 13;
-		int var3 = var2 * (var2 * var2 * 15731 + 789221) + 1376312589 & Integer.MAX_VALUE;
-		return var3 >> 19 & 255;
-	}
-
-	@ObfuscatedName("mk")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZI)V",
-		garbageValue = "-1915394593"
-	)
-	@Export("insertMenuItem")
-	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
-		if (!Client.isMenuOpen) {
-			if (Client.menuOptionsCount < 500) {
-				Client.menuActions[Client.menuOptionsCount] = var0;
-				Client.menuTargets[Client.menuOptionsCount] = var1;
-				Client.menuOpcodes[Client.menuOptionsCount] = var2;
-				Client.menuIdentifiers[Client.menuOptionsCount] = var3;
-				Client.menuArguments1[Client.menuOptionsCount] = var4;
-				Client.menuArguments2[Client.menuOptionsCount] = var5;
-				Client.menuItemIds[Client.menuOptionsCount] = var6;
-				Client.menuShiftClick[Client.menuOptionsCount] = var7;
-				++Client.menuOptionsCount;
-			}
-
-		}
-	}
-
-	@ObfuscatedName("ni")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "753364985"
-	)
-	static final void method6901(int var0) {
-		var0 = Math.max(Math.min(var0, 100), 0);
-		var0 = 100 - var0;
-		float var1 = (float)var0 / 200.0F + 0.5F;
-		MidiPcmStream.method6190((double)var1);
 	}
 }

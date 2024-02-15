@@ -1,130 +1,84 @@
-import java.io.IOException;
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fr")
+@ObfuscatedName("fa")
 class class135 implements Callable {
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lof;"
+	)
+	@Export("SequenceDefinition_animationsArchive")
+	public static AbstractArchive SequenceDefinition_animationsArchive;
+	@ObfuscatedName("uc")
+	@ObfuscatedGetter(
+		intValue = 87944983
+	)
+	static int field1618;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfu;"
+		descriptor = "Lfc;"
 	)
-	final class138 this$0;
+	final class140 this$0;
+	// $FF: synthetic field
+	final int val$workStart;
+	// $FF: synthetic field
+	final int val$workEnd;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Luk;"
+		descriptor = "[Lfi;"
 	)
-	final Buffer val$p;
-	// $FF: synthetic field
-	final int val$version;
+	final class131[] val$curveLoadJobs;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfu;Luk;I)V"
+		descriptor = "(Lfc;II[Lfi;)V"
 	)
-	class135(class138 var1, Buffer var2, int var3) {
+	class135(class140 var1, int var2, int var3, class131[] var4) {
 		this.this$0 = var1;
-		this.val$p = var2;
-		this.val$version = var3;
+		this.val$workStart = var2;
+		this.val$workEnd = var3;
+		this.val$curveLoadJobs = var4;
 	}
 
 	public Object call() {
-		this.this$0.method3158(this.val$p, this.val$version);
+		for (int var1 = this.val$workStart; var1 < this.val$workEnd; ++var1) {
+			this.val$curveLoadJobs[var1].call();
+		}
+
 		return null;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Low;III)Luc;",
-		garbageValue = "945955054"
-	)
-	@Export("SpriteBuffer_getSprite")
-	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-		if (!Varcs.method2829(var0, var1, var2)) {
-			return null;
-		} else {
-			SpritePixels var4 = new SpritePixels();
-			var4.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
-			var4.height = SpriteBufferProperties.SpriteBuffer_spriteHeight;
-			var4.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[0];
-			var4.yOffset = class388.SpriteBuffer_yOffsets[0];
-			var4.subWidth = FriendsList.SpriteBuffer_spriteWidths[0];
-			var4.subHeight = GrandExchangeOfferOwnWorldComparator.SpriteBuffer_spriteHeights[0];
-			int var5 = var4.subHeight * var4.subWidth;
-			byte[] var6 = class230.SpriteBuffer_pixels[0];
-			var4.pixels = new int[var5];
-
-			for (int var7 = 0; var7 < var5; ++var7) {
-				var4.pixels[var7] = SecureUrlRequester.SpriteBuffer_spritePalette[var6[var7] & 255];
-			}
-
-			SpriteBufferProperties.SpriteBuffer_xOffsets = null;
-			class388.SpriteBuffer_yOffsets = null;
-			FriendsList.SpriteBuffer_spriteWidths = null;
-			GrandExchangeOfferOwnWorldComparator.SpriteBuffer_spriteHeights = null;
-			SecureUrlRequester.SpriteBuffer_spritePalette = null;
-			class230.SpriteBuffer_pixels = null;
-			return var4;
-		}
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "([FS)V",
-		garbageValue = "-28166"
-	)
-	static void method3146(float[] var0) {
-		if (var0[0] + class127.field1487 < 1.3333334F) {
-			float var1 = var0[0] - 2.0F;
-			float var2 = var0[0] - 1.0F;
-			float var3 = (float)Math.sqrt((double)(var1 * var1 - 4.0F * var2 * var2));
-			float var4 = 0.5F * (var3 + -var1);
-			if (var0[1] + class127.field1487 > var4) {
-				var0[1] = var4 - class127.field1487;
-			} else {
-				var4 = 0.5F * (-var1 - var3);
-				if (var0[1] < class127.field1487 + var4) {
-					var0[1] = class127.field1487 + var4;
-				}
-			}
-		} else {
-			var0[0] = 1.3333334F - class127.field1487;
-			var0[1] = 0.33333334F - class127.field1487;
-		}
-
-	}
-
-	@ObfuscatedName("aj")
-	public static int method3149(long var0) {
-		return (int)(var0 >>> 7 & 127L);
 	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)[B",
-		garbageValue = "39"
+		descriptor = "(Ljava/lang/CharSequence;I)J",
+		garbageValue = "-739194429"
 	)
-	@Export("randomDatData2")
-	public static byte[] randomDatData2() {
-		byte[] var0 = new byte[24];
+	public static long method3138(CharSequence var0) {
+		long var1 = 0L;
+		int var3 = var0.length();
 
-		try {
-			JagexCache.JagexCache_randomDat.seek(0L);
-			JagexCache.JagexCache_randomDat.readFully(var0);
-
-			int var1;
-			for (var1 = 0; var1 < 24 && var0[var1] == 0; ++var1) {
+		for (int var4 = 0; var4 < var3; ++var4) {
+			var1 *= 37L;
+			char var5 = var0.charAt(var4);
+			if (var5 >= 'A' && var5 <= 'Z') {
+				var1 += (long)(var5 + 1 - 65);
+			} else if (var5 >= 'a' && var5 <= 'z') {
+				var1 += (long)(var5 + 1 - 97);
+			} else if (var5 >= '0' && var5 <= '9') {
+				var1 += (long)(var5 + 27 - 48);
 			}
 
-			if (var1 >= 24) {
-				throw new IOException();
-			}
-		} catch (Exception var4) {
-			for (int var2 = 0; var2 < 24; ++var2) {
-				var0[var2] = -1;
+			if (var1 >= 177917621779460413L) {
+				break;
 			}
 		}
 
-		return var0;
+		while (var1 % 37L == 0L && var1 != 0L) {
+			var1 /= 37L;
+		}
+
+		return var1;
 	}
 }

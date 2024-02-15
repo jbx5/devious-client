@@ -113,4 +113,16 @@ public interface ObjectComposition extends ParamHolder
 	 * @see #getImpostorIds()
 	 */
 	int getVarPlayerId();
+
+	/**
+	 * Get the size of the object on the X-axis in tiles
+	 * @return
+	 */
+	int getSizeX();
+
+	/**
+	 * Get the size of the object on the Y-axis in tiles
+	 * @return
+	 */
+	int getSizeY();
 }

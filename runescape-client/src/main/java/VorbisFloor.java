@@ -3,29 +3,29 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bq")
+@ObfuscatedName("bp")
 @Implements("VorbisFloor")
 public class VorbisFloor {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	static final int[] field276;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("VorbisFloor_decibelStatics")
 	static final float[] VorbisFloor_decibelStatics;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	int[] field274;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("multiplier")
 	int multiplier;
-	@ObfuscatedName("aq")
-	int[] field278;
 	@ObfuscatedName("ar")
-	int[] field277;
-	@ObfuscatedName("ag")
 	int[] field272;
+	@ObfuscatedName("as")
+	int[] field275;
+	@ObfuscatedName("aa")
+	int[] field277;
+	@ObfuscatedName("az")
+	int[] field270;
 	@ObfuscatedName("ao")
-	int[] field279;
-	@ObfuscatedName("ae")
-	int[][] field280;
+	int[][] field278;
 
 	static {
 		field276 = new int[]{256, 128, 86, 64};
@@ -33,54 +33,54 @@ public class VorbisFloor {
 	}
 
 	VorbisFloor() {
-		class60 var1 = VorbisSample.field376;
-		int var2 = var1.method1188(16);
+		class60 var1 = VorbisSample.field392;
+		int var2 = var1.method1138(16);
 		if (var2 != 1) {
 			throw new RuntimeException();
 		} else {
-			int var3 = var1.method1188(5);
+			int var3 = var1.method1138(5);
 			int var4 = 0;
-			this.field278 = new int[var3];
+			this.field272 = new int[var3];
 
 			int var5;
 			int var6;
 			for (var5 = 0; var5 < var3; ++var5) {
-				var6 = var1.method1188(4);
-				this.field278[var5] = var6;
+				var6 = var1.method1138(4);
+				this.field272[var5] = var6;
 				if (var6 >= var4) {
 					var4 = var6 + 1;
 				}
 			}
 
+			this.field275 = new int[var4];
 			this.field277 = new int[var4];
-			this.field272 = new int[var4];
-			this.field279 = new int[var4];
-			this.field280 = new int[var4][];
+			this.field270 = new int[var4];
+			this.field278 = new int[var4][];
 
 			int var8;
 			for (var5 = 0; var5 < var4; ++var5) {
-				this.field277[var5] = var1.method1188(3) + 1;
-				var6 = this.field272[var5] = var1.method1188(2);
+				this.field275[var5] = var1.method1138(3) + 1;
+				var6 = this.field277[var5] = var1.method1138(2);
 				if (var6 != 0) {
-					this.field279[var5] = var1.method1188(8);
+					this.field270[var5] = var1.method1138(8);
 				}
 
 				var6 = 1 << var6;
 				int[] var10 = new int[var6];
-				this.field280[var5] = var10;
+				this.field278[var5] = var10;
 
 				for (var8 = 0; var8 < var6; ++var8) {
-					var10[var8] = var1.method1188(8) - 1;
+					var10[var8] = var1.method1138(8) - 1;
 				}
 			}
 
-			this.multiplier = var1.method1188(2) + 1;
-			var5 = var1.method1188(4);
+			this.multiplier = var1.method1138(2) + 1;
+			var5 = var1.method1138(4);
 			var6 = 2;
 
 			int var7;
 			for (var7 = 0; var7 < var3; ++var7) {
-				var6 += this.field277[this.field278[var7]];
+				var6 += this.field275[this.field272[var7]];
 			}
 
 			this.field274 = new int[var6];
@@ -89,18 +89,18 @@ public class VorbisFloor {
 			var6 = 2;
 
 			for (var7 = 0; var7 < var3; ++var7) {
-				var8 = this.field278[var7];
+				var8 = this.field272[var7];
 
-				for (int var9 = 0; var9 < this.field277[var8]; ++var9) {
-					this.field274[var6++] = var1.method1188(var5);
+				for (int var9 = 0; var9 < this.field275[var8]; ++var9) {
+					this.field274[var6++] = var1.method1138(var5);
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("am")
-	int method797(int[] var1, int var2) {
+	@ObfuscatedName("aq")
+	int method730(int[] var1, int var2) {
 		int var3 = var1[var2];
 		int var4 = -1;
 		int var5 = Integer.MIN_VALUE;
@@ -116,8 +116,8 @@ public class VorbisFloor {
 		return var4;
 	}
 
-	@ObfuscatedName("ap")
-	int method794(int[] var1, int var2) {
+	@ObfuscatedName("aw")
+	int method738(int[] var1, int var2) {
 		int var3 = var1[var2];
 		int var4 = -1;
 		int var5 = Integer.MAX_VALUE;
@@ -133,8 +133,8 @@ public class VorbisFloor {
 		return var4;
 	}
 
-	@ObfuscatedName("af")
-	int method790(int var1, int var2, int var3, int var4, int var5) {
+	@ObfuscatedName("al")
+	int method725(int var1, int var2, int var3, int var4, int var5) {
 		int var6 = var4 - var2;
 		int var7 = var3 - var1;
 		int var8 = var6 < 0 ? -var6 : var6;
@@ -143,8 +143,8 @@ public class VorbisFloor {
 		return var6 < 0 ? var2 - var10 : var10 + var2;
 	}
 
-	@ObfuscatedName("aj")
-	void method791(int var1, int var2, int var3, int var4, float[] var5, int var6) {
+	@ObfuscatedName("ai")
+	void method726(int var1, int var2, int var3, int var4, float[] var5, int var6) {
 		int var7 = var4 - var2;
 		int var8 = var3 - var1;
 		int var9 = var7 < 0 ? -var7 : var7;
@@ -172,48 +172,48 @@ public class VorbisFloor {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lcs;)Lcl;"
+		descriptor = "(Lcl;)Lci;"
 	)
-	class59 method793(class60 var1) {
-		boolean var2 = var1.method1189() != 0;
+	class59 method728(class60 var1) {
+		boolean var2 = var1.method1139() != 0;
 		if (!var2) {
 			return new class59(this, false, (int[])null, (int[])null, (boolean[])null);
 		} else {
 			class59 var3 = new class59(this, true, (int[])null, (int[])null, (boolean[])null);
 			int var4 = this.field274.length;
-			if (var3.field427 == null || var3.field427.length < var4) {
-				var3.field427 = new int[var4];
-				var3.field426 = new int[var4];
-				var3.field428 = new boolean[var4];
+			if (var3.field424 == null || var3.field424.length < var4) {
+				var3.field424 = new int[var4];
+				var3.field422 = new int[var4];
+				var3.field426 = new boolean[var4];
 			}
 
 			int var5;
 			for (var5 = 0; var5 < var4; ++var5) {
-				var3.field427[var5] = this.field274[var5];
+				var3.field424[var5] = this.field274[var5];
 			}
 
 			var5 = field276[this.multiplier - 1];
-			int var6 = class191.iLog(var5 - 1);
-			var3.field426[0] = var1.method1188(var6);
-			var3.field426[1] = var1.method1188(var6);
+			int var6 = WorldMapAreaData.iLog(var5 - 1);
+			var3.field422[0] = var1.method1138(var6);
+			var3.field422[1] = var1.method1138(var6);
 			int var7 = 2;
 
-			for (int var8 = 0; var8 < this.field278.length; ++var8) {
-				int var9 = this.field278[var8];
-				int var10 = this.field277[var9];
-				int var11 = this.field272[var9];
+			for (int var8 = 0; var8 < this.field272.length; ++var8) {
+				int var9 = this.field272[var8];
+				int var10 = this.field275[var9];
+				int var11 = this.field277[var9];
 				int var12 = (1 << var11) - 1;
 				int var13 = 0;
 				if (var11 > 0) {
-					var13 = VorbisSample.field379[this.field279[var9]].method1084(var1);
+					var13 = VorbisSample.field374[this.field270[var9]].method1042(var1);
 				}
 
 				for (int var14 = 0; var14 < var10; ++var14) {
-					int var15 = this.field280[var9][var13 & var12];
+					int var15 = this.field278[var9][var13 & var12];
 					var13 >>>= var11;
-					var3.field426[var7++] = var15 >= 0 ? VorbisSample.field379[var15].method1084(var1) : 0;
+					var3.field422[var7++] = var15 >= 0 ? VorbisSample.field374[var15].method1042(var1) : 0;
 				}
 			}
 

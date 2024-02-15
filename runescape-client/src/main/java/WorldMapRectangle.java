@@ -4,67 +4,43 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("je")
+@ObfuscatedName("jb")
 @Implements("WorldMapRectangle")
 public final class WorldMapRectangle {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 2084419831
+		intValue = 461321989
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1215993933
+		intValue = 1928726943
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -213602905
+		intValue = 965704867
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 762996225
+		intValue = -2135639707
 	)
 	@Export("y")
 	int y;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Ljj;"
+		descriptor = "Ljn;"
 	)
 	final WorldMapRenderer this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljj;)V"
+		descriptor = "(Ljn;)V"
 	)
 	WorldMapRectangle(WorldMapRenderer var1) {
 		this.this$0 = var1;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "17"
-	)
-	public static void method5019(int var0, int var1, int var2, int var3) {
-		class319.musicPlayerStatus = var0;
-		class319.field3464 = var1;
-		class319.field3465 = var2;
-		class319.field3454 = var3;
-	}
-
-	@ObfuscatedName("it")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1151527319"
-	)
-	static final void method5020() {
-		if (WorldMap.pcmPlayer1 != null) {
-			WorldMap.pcmPlayer1.run();
-		}
-
 	}
 }

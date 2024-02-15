@@ -4,55 +4,72 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("kl")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Ljk;"
-	)
-	public static final WorldMapCacheName field2669;
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Ljk;"
-	)
-	public static final WorldMapCacheName field2671;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Ljk;"
-	)
-	public static final WorldMapCacheName field2670;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Ljk;"
-	)
-	static final WorldMapCacheName field2673;
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ljk;"
+		descriptor = "Lkl;"
 	)
-	public static final WorldMapCacheName field2672;
-	@ObfuscatedName("hm")
-	static String field2676;
-	@ObfuscatedName("lm")
-	@ObfuscatedGetter(
-		intValue = -532013549
+	public static final WorldMapCacheName field2680;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lkl;"
 	)
-	@Export("oculusOrbFocalPointY")
-	static int oculusOrbFocalPointY;
+	public static final WorldMapCacheName field2678;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lkl;"
+	)
+	public static final WorldMapCacheName field2681;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lkl;"
+	)
+	static final WorldMapCacheName field2677;
 	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lkl;"
+	)
+	public static final WorldMapCacheName field2682;
+	@ObfuscatedName("ci")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
+	@Export("clientLanguage")
+	static Language clientLanguage;
+	@ObfuscatedName("jc")
+	@ObfuscatedSignature(
+		descriptor = "[Lvg;"
+	)
+	static IndexedSprite[] field2685;
+	@ObfuscatedName("ub")
+	@ObfuscatedGetter(
+		intValue = -957921043
+	)
+	static int field2683;
+	@ObfuscatedName("as")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2669 = new WorldMapCacheName("details");
-		field2671 = new WorldMapCacheName("compositemap");
-		field2670 = new WorldMapCacheName("compositetexture");
-		field2673 = new WorldMapCacheName("area");
-		field2672 = new WorldMapCacheName("labels");
+		field2680 = new WorldMapCacheName("details");
+		field2678 = new WorldMapCacheName("compositemap");
+		field2681 = new WorldMapCacheName("compositetexture");
+		field2677 = new WorldMapCacheName("area");
+		field2682 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
+	}
+
+	@ObfuscatedName("gx")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1813975840"
+	)
+	static int method5111(int var0) {
+		return var0 * 3 + 600;
 	}
 }

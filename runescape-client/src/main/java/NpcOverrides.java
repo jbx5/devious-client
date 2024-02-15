@@ -4,49 +4,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hb")
+@ObfuscatedName("ht")
 @Implements("NpcOverrides")
 public class NpcOverrides {
-	@ObfuscatedName("ki")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1511812829
+		longValue = -5178930276951482385L
 	)
-	static int field1944;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		longValue = 673336549290330359L
-	)
-	public long field1943;
-	@ObfuscatedName("ap")
+	public long field1960;
+	@ObfuscatedName("aw")
 	@Export("modelIds")
 	int[] modelIds;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@Export("useLocalPlayer")
 	public boolean useLocalPlayer;
 
 	public NpcOverrides(long var1, int[] var3, short[] var4, short[] var5, boolean var6) {
 		this.useLocalPlayer = false;
-		this.field1943 = var1;
+		this.field1960 = var1;
 		this.modelIds = var3;
 		this.recolorTo = var4;
 		this.retextureTo = var5;
 		this.useLocalPlayer = var6;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("jy")
 	@ObfuscatedSignature(
-		descriptor = "(Low;Low;Low;I)V",
-		garbageValue = "1762838554"
+		descriptor = "(B)Z",
+		garbageValue = "-80"
 	)
-	public static void method3715(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
-		SequenceDefinition.SequenceDefinition_archive = var0;
-		SequenceDefinition.SequenceDefinition_animationsArchive = var1;
-		class332.SequenceDefinition_skeletonsArchive = var2;
+	static boolean method3696() {
+		return (Client.drawPlayerNames & 1) != 0;
+	}
+
+	@ObfuscatedName("mi")
+	@ObfuscatedSignature(
+		descriptor = "(Lng;I)V",
+		garbageValue = "243841173"
+	)
+	@Export("Widget_addToMenu")
+	static final void Widget_addToMenu(Widget var0) {
+		if (var0.buttonType == 1) {
+			class106.method2775(var0.buttonText, "", 24, 0, 0, var0.id, var0.itemId);
+		}
+
+		String var1;
+		if (var0.buttonType == 2 && !Client.isSpellSelected) {
+			var1 = UserComparator9.Widget_getSpellActionName(var0);
+			if (var1 != null) {
+				class106.method2775(var1, class370.colorStartTag(65280) + var0.field3785, 25, 0, -1, var0.id, var0.itemId);
+			}
+		}
+
+		if (var0.buttonType == 3) {
+			UrlRequest.insertMenuItemNoShift("Close", "", 26, 0, 0, var0.id);
+		}
+
+		if (var0.buttonType == 4) {
+			UrlRequest.insertMenuItemNoShift(var0.buttonText, "", 28, 0, 0, var0.id);
+		}
+
+		if (var0.buttonType == 5) {
+			UrlRequest.insertMenuItemNoShift(var0.buttonText, "", 29, 0, 0, var0.id);
+		}
+
+		if (var0.buttonType == 6 && Client.meslayerContinueWidget == null) {
+			UrlRequest.insertMenuItemNoShift(var0.buttonText, "", 30, 0, -1, var0.id);
+		}
+
+		if (var0.isIf3) {
+			if (Client.isSpellSelected) {
+				if (class175.method3550(class429.getWidgetFlags(var0)) && (class128.selectedSpellFlags & 32) == 32) {
+					class106.method2775(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + var0.dataText, 58, 0, var0.childIndex, var0.id, var0.itemId);
+				}
+			} else {
+				for (int var6 = 9; var6 >= 5; --var6) {
+					int var4 = class429.getWidgetFlags(var0);
+					boolean var8 = (var4 >> var6 + 1 & 1) != 0;
+					String var9;
+					if (!var8 && var0.onOp == null) {
+						var9 = null;
+					} else if (var0.actions != null && var0.actions.length > var6 && var0.actions[var6] != null && var0.actions[var6].trim().length() != 0) {
+						var9 = var0.actions[var6];
+					} else {
+						var9 = null;
+					}
+
+					if (var9 != null) {
+						class106.method2775(var9, var0.dataText, 1007, var6 + 1, var0.childIndex, var0.id, var0.itemId);
+					}
+				}
+
+				var1 = UserComparator9.Widget_getSpellActionName(var0);
+				if (var1 != null) {
+					class106.method2775(var1, var0.dataText, 25, 0, var0.childIndex, var0.id, var0.itemId);
+				}
+
+				for (int var2 = 4; var2 >= 0; --var2) {
+					int var5 = class429.getWidgetFlags(var0);
+					boolean var10 = (var5 >> var2 + 1 & 1) != 0;
+					String var3;
+					if (!var10 && var0.onOp == null) {
+						var3 = null;
+					} else if (var0.actions != null && var0.actions.length > var2 && var0.actions[var2] != null && var0.actions[var2].trim().length() != 0) {
+						var3 = var0.actions[var2];
+					} else {
+						var3 = null;
+					}
+
+					if (var3 != null) {
+						class246.insertMenuItem(var3, var0.dataText, 57, var2 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry);
+					}
+				}
+
+				if (MusicPatch.method6335(class429.getWidgetFlags(var0))) {
+					UrlRequest.insertMenuItemNoShift("Continue", "", 30, 0, var0.childIndex, var0.id);
+				}
+			}
+		}
+
 	}
 }

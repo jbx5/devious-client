@@ -3,16 +3,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pu")
+@ObfuscatedName("pr")
 @Implements("NodeDeque")
 public class NodeDeque {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "Lse;"
 	)
 	@Export("sentinel")
 	public Node sentinel;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lse;"
 	)
@@ -25,7 +25,7 @@ public class NodeDeque {
 		this.sentinel.next = this.sentinel;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@Export("clear")
 	public void clear() {
 		while (true) {
@@ -39,7 +39,7 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Lse;)V"
 	)
@@ -55,7 +55,7 @@ public class NodeDeque {
 		var1.previous.next = var1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Lse;)V"
 	)
@@ -71,7 +71,7 @@ public class NodeDeque {
 		var1.previous.next = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
@@ -86,7 +86,7 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
@@ -101,7 +101,7 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
@@ -117,7 +117,7 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
@@ -133,7 +133,7 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
@@ -149,7 +149,7 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
@@ -165,12 +165,12 @@ public class NodeDeque {
 		}
 	}
 
-	@ObfuscatedName("au")
-	public boolean method7336() {
+	@ObfuscatedName("ak")
+	public boolean method7425() {
 		return this.sentinel.previous == this.sentinel;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(Lse;Lse;)V"
 	)

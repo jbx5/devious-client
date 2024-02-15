@@ -6,29 +6,29 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("ki")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
+	@ObfuscatedName("af")
+	HashSet field2691;
 	@ObfuscatedName("ax")
-	HashSet field2679;
-	@ObfuscatedName("aw")
-	HashSet field2677;
-	@ObfuscatedName("az")
+	HashSet field2689;
+	@ObfuscatedName("an")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("dd")
+	@ObfuscatedName("cp")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;Luk;IZI)V",
-		garbageValue = "990990632"
+		descriptor = "(Luq;Luq;IZB)V",
+		garbageValue = "43"
 	)
-	void method5111(Buffer var1, Buffer var2, int var3, boolean var4) {
-		this.method4652(var1, var3);
+	void method5134(Buffer var1, Buffer var2, int var3, boolean var4) {
+		this.method4668(var1, var3);
 		int var5 = var2.readUnsignedShort();
-		this.field2679 = new HashSet(var5);
+		this.field2691 = new HashSet(var5);
 
 		int var6;
 		for (var6 = 0; var6 < var5; ++var6) {
@@ -40,11 +40,11 @@ public class WorldMapAreaData extends WorldMapArea {
 				continue;
 			}
 
-			this.field2679.add(var7);
+			this.field2691.add(var7);
 		}
 
 		var6 = var2.readUnsignedShort();
-		this.field2677 = new HashSet(var6);
+		this.field2689 = new HashSet(var6);
 
 		for (int var10 = 0; var10 < var6; ++var10) {
 			WorldMapData_1 var8 = new WorldMapData_1();
@@ -55,16 +55,16 @@ public class WorldMapAreaData extends WorldMapArea {
 				continue;
 			}
 
-			this.field2677.add(var8);
+			this.field2689.add(var8);
 		}
 
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("dc")
+	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;ZB)V",
-		garbageValue = "-37"
+		descriptor = "(Luq;ZI)V",
+		garbageValue = "-1880896362"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -80,5 +80,75 @@ public class WorldMapAreaData extends WorldMapArea {
 			}
 		}
 
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(III)Ldc;",
+		garbageValue = "-2047893868"
+	)
+	@Export("getScript")
+	static Script getScript(int var0, int var1) {
+		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
+		if (var2 != null) {
+			return var2;
+		} else {
+			String var3 = String.valueOf(var0);
+			int var4 = WorldMapSectionType.archive12.getGroupId(var3);
+			if (var4 == -1) {
+				return null;
+			} else {
+				byte[] var5 = WorldMapSectionType.archive12.takeFileFlat(var4);
+				if (var5 != null) {
+					if (var5.length <= 1) {
+						return null;
+					}
+
+					var2 = class257.newScript(var5);
+					if (var2 != null) {
+						Script.Script_cached.put(var2, (long)(var0 << 16));
+						return var2;
+					}
+				}
+
+				return null;
+			}
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1563955362"
+	)
+	@Export("iLog")
+	public static int iLog(int var0) {
+		int var1 = 0;
+		if (var0 < 0 || var0 >= 65536) {
+			var0 >>>= 16;
+			var1 += 16;
+		}
+
+		if (var0 >= 256) {
+			var0 >>>= 8;
+			var1 += 8;
+		}
+
+		if (var0 >= 16) {
+			var0 >>>= 4;
+			var1 += 4;
+		}
+
+		if (var0 >= 4) {
+			var0 >>>= 2;
+			var1 += 2;
+		}
+
+		if (var0 >= 1) {
+			var0 >>>= 1;
+			++var1;
+		}
+
+		return var0 + var1;
 	}
 }
