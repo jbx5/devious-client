@@ -4,42 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jg")
+@ObfuscatedName("ju")
 @Implements("WorldMapSection1")
 public class WorldMapSection1 implements WorldMapSection {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1429332299
+		intValue = -122563265
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -884816495
+		intValue = -570138147
 	)
 	@Export("planes")
 	int planes;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -199217743
+		intValue = 1774405817
 	)
 	@Export("regionStartX")
 	int regionStartX;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -2018774791
+		intValue = -1611275883
 	)
 	@Export("regionStartY")
 	int regionStartY;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1816170301
+		intValue = 370098425
 	)
 	@Export("regionEndX")
 	int regionEndX;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1271566957
+		intValue = -1903102761
 	)
 	@Export("regionEndY")
 	int regionEndY;
@@ -47,10 +47,10 @@ public class WorldMapSection1 implements WorldMapSection {
 	WorldMapSection1() {
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljr;S)V",
-		garbageValue = "30931"
+		descriptor = "(Ljw;I)V",
+		garbageValue = "1490465463"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -72,34 +72,34 @@ public class WorldMapSection1 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)Z",
-		garbageValue = "1446024671"
+		garbageValue = "1956662927"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
-		if (var1 >= this.minPlane && var1 < this.planes + this.minPlane) {
+		if (var1 >= this.minPlane && var1 < this.minPlane + this.planes) {
 			return var2 >> 6 == this.regionStartX && var3 >> 6 == this.regionStartY;
 		} else {
 			return false;
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-1938918886"
+		garbageValue = "-677960221"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >> 6 == this.regionEndX && var2 >> 6 == this.regionEndY;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)[I",
-		garbageValue = "2068201380"
+		garbageValue = "1252911580"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -111,10 +111,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lmu;",
-		garbageValue = "1554678257"
+		descriptor = "(III)Lns;",
+		garbageValue = "-1671728396"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -127,10 +127,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;B)V",
-		garbageValue = "16"
+		descriptor = "(Luq;I)V",
+		garbageValue = "-1659975265"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -143,33 +143,12 @@ public class WorldMapSection1 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "16190"
+		descriptor = "(I)V",
+		garbageValue = "-2012482191"
 	)
 	@Export("postRead")
 	void postRead() {
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "696305486"
-	)
-	static void method5058() {
-		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-			if (var0.stream1 != null) {
-				ClanSettings.pcmStreamMixer.removeSubStream(var0.stream1);
-				var0.stream1 = null;
-			}
-
-			if (var0.stream2 != null) {
-				ClanSettings.pcmStreamMixer.removeSubStream(var0.stream2);
-				var0.stream2 = null;
-			}
-		}
-
-		ObjectSound.objectSounds.clear();
 	}
 }

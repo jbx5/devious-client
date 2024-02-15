@@ -3,91 +3,112 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cs")
+@ObfuscatedName("cl")
 public class class60 {
-	@ObfuscatedName("gg")
-	@Export("characterId")
-	static String characterId;
-	@ObfuscatedName("ok")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -2095567381
+		intValue = 1913802217
 	)
-	@Export("menuHeight")
-	static int menuHeight;
-	@ObfuscatedName("pq")
+	@Export("Interpreter_stringStackSize")
+	static int Interpreter_stringStackSize;
+	@ObfuscatedName("ib")
+	@ObfuscatedSignature(
+		descriptor = "Lpb;"
+	)
+	@Export("fontPlain11")
+	static Font fontPlain11;
+	@ObfuscatedName("ng")
 	@ObfuscatedGetter(
-		intValue = 931534025
+		intValue = -1977376505
 	)
-	@Export("selectedSpellFlags")
-	static int selectedSpellFlags;
-	@ObfuscatedName("am")
-	byte[] field430;
-	@ObfuscatedName("ap")
+	@Export("menuWidth")
+	static int menuWidth;
+	@ObfuscatedName("aq")
+	byte[] field431;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 95763601
+		intValue = -1308733505
 	)
-	int field433;
-	@ObfuscatedName("af")
+	int field430;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1089651909
+		intValue = 296190363
 	)
-	int field432;
+	int field434;
 
 	class60() {
-		this.field430 = null;
-		this.field433 = 0;
-		this.field432 = 0;
+		this.field431 = null;
+		this.field430 = 0;
+		this.field434 = 0;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1595212669"
+		garbageValue = "-1558898831"
 	)
-	int method1188(int var1) {
+	int method1138(int var1) {
 		int var2 = 0;
 
 		int var3;
 		int var4;
-		for (var3 = 0; var1 >= 8 - this.field432; var1 -= var4) {
-			var4 = 8 - this.field432;
+		for (var3 = 0; var1 >= 8 - this.field434; var1 -= var4) {
+			var4 = 8 - this.field434;
 			int var5 = (1 << var4) - 1;
-			var2 += (this.field430[this.field433] >> this.field432 & var5) << var3;
-			this.field432 = 0;
-			++this.field433;
+			var2 += (this.field431[this.field430] >> this.field434 & var5) << var3;
+			this.field434 = 0;
+			++this.field430;
 			var3 += var4;
 		}
 
 		if (var1 > 0) {
 			var4 = (1 << var1) - 1;
-			var2 += (this.field430[this.field433] >> this.field432 & var4) << var3;
-			this.field432 += var1;
+			var2 += (this.field431[this.field430] >> this.field434 & var4) << var3;
+			this.field434 += var1;
 		}
 
 		return var2;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "705214862"
+		garbageValue = "-1615671029"
 	)
-	int method1189() {
-		int var1 = this.field430[this.field433] >> this.field432 & 1;
-		++this.field432;
-		this.field433 += this.field432 >> 3;
-		this.field432 &= 7;
+	int method1139() {
+		int var1 = this.field431[this.field430] >> this.field434 & 1;
+		++this.field434;
+		this.field430 += this.field434 >> 3;
+		this.field434 &= 7;
 		return var1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "([BII)V",
-		garbageValue = "176102354"
+		descriptor = "([BIB)V",
+		garbageValue = "50"
 	)
-	void method1187(byte[] var1, int var2) {
-		this.field430 = var1;
-		this.field433 = var2;
-		this.field432 = 0;
+	void method1141(byte[] var1, int var2) {
+		this.field431 = var1;
+		this.field430 = var2;
+		this.field434 = 0;
+	}
+
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "(Lbj;B)V",
+		garbageValue = "8"
+	)
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
+		}
+
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
+		}
+
 	}
 }

@@ -1,41 +1,28 @@
 import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ay")
+@ObfuscatedName("ad")
 @Implements("AsyncHttpResponse")
 public class AsyncHttpResponse {
-	@ObfuscatedName("wd")
+	@ObfuscatedName("kf")
 	@ObfuscatedGetter(
-		intValue = 567578519
+		intValue = -442066059
 	)
-	@Export("foundItemIndex")
-	static int foundItemIndex;
-	@ObfuscatedName("ao")
-	public static ThreadPoolExecutor field85;
-	@ObfuscatedName("fs")
+	@Export("cameraY")
+	static int cameraY;
+	@ObfuscatedName("uz")
 	@ObfuscatedGetter(
-		longValue = 2210412390535978497L
+		intValue = -1584333625
 	)
-	static long field83;
-	@ObfuscatedName("gr")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	static Archive field80;
-	@ObfuscatedName("ql")
-	@ObfuscatedSignature(
-		descriptor = "[Lnn;"
-	)
-	static Widget[] field78;
-	@ObfuscatedName("am")
+	static int field86;
+	@ObfuscatedName("aq")
 	@Export("responseFuture")
 	Future responseFuture;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("errorMessage")
 	String errorMessage;
 
@@ -44,15 +31,15 @@ public class AsyncHttpResponse {
 	}
 
 	AsyncHttpResponse(String var1) {
-		this.method274(var1);
+		this.method240(var1);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-76"
+		garbageValue = "17"
 	)
-	void method274(String var1) {
+	void method240(String var1) {
 		if (var1 == null) {
 			var1 = "";
 		}
@@ -65,40 +52,40 @@ public class AsyncHttpResponse {
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "80"
+		garbageValue = "-59"
 	)
 	@Export("getErrorMessage")
 	public final String getErrorMessage() {
 		return this.errorMessage;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1544046253"
+		garbageValue = "1166311642"
 	)
 	@Export("hasError")
 	public boolean hasError() {
 		return this.errorMessage != null || this.responseFuture == null;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-403372870"
+		garbageValue = "-2031124639"
 	)
 	@Export("hasFinished")
 	public final boolean hasFinished() {
 		return this.hasError() ? true : this.responseFuture.isDone();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lab;",
-		garbageValue = "52"
+		descriptor = "(I)Lay;",
+		garbageValue = "-1043212072"
 	)
 	@Export("await")
 	public final HttpResponse await() {
@@ -112,19 +99,51 @@ public class AsyncHttpResponse {
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
-				this.method274(var2);
+				this.method240(var2);
 				return new HttpResponse(var2);
 			}
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lco;",
-		garbageValue = "-1149524749"
+		descriptor = "(IIIZII)J",
+		garbageValue = "1100565094"
 	)
-	@Export("Messages_getMessage")
-	static Message Messages_getMessage(int var0) {
-		return (Message)Messages.Messages_hashTable.get((long)var0);
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4) {
+		long var5 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17;
+		if (var3) {
+			var5 |= 65536L;
+		}
+
+		return var5;
+	}
+
+	@ObfuscatedName("kq")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "-65"
+	)
+	static final void method252(int var0, int var1) {
+		if (Client.menuOptionsCount >= 2 || Client.isItemSelected != 0 || Client.isSpellSelected) {
+			if (Client.showMouseOverText) {
+				int var2 = FontName.method9113();
+				String var3;
+				if (Client.isItemSelected == 1 && Client.menuOptionsCount < 2) {
+					var3 = "Use" + " " + Client.field822 + " " + "->";
+				} else if (Client.isSpellSelected && Client.menuOptionsCount < 2) {
+					var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
+				} else {
+					var3 = SoundSystem.method810(var2);
+				}
+
+				if (Client.menuOptionsCount > 2) {
+					var3 = var3 + class370.colorStartTag(16777215) + " " + '/' + " " + (Client.menuOptionsCount - 2) + " more options";
+				}
+
+				class166.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
+			}
+		}
 	}
 }

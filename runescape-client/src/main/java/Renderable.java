@@ -4,12 +4,21 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kp")
+@ObfuscatedName("ky")
 @Implements("Renderable")
 public abstract class Renderable extends DualNode {
-	@ObfuscatedName("en")
+	@ObfuscatedName("ew")
+	@ObfuscatedSignature(
+		descriptor = "Lom;"
+	)
+	@Export("archive6")
+	static Archive archive6;
+	@ObfuscatedName("ga")
+	@Export("characterId")
+	static String characterId;
+	@ObfuscatedName("ey")
 	@ObfuscatedGetter(
-		intValue = -561555235
+		intValue = -1921985017
 	)
 	@Export("height")
 	public int height;
@@ -18,17 +27,17 @@ public abstract class Renderable extends DualNode {
 		this.height = 1000;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lko;",
-		garbageValue = "-714420560"
+		descriptor = "(I)Lkz;",
+		garbageValue = "1036754463"
 	)
 	@Export("getModel")
 	protected Model getModel() {
 		return null;
 	}
 
-	@ObfuscatedName("do")
+	@ObfuscatedName("de")
 	@Export("draw")
 	void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, long var9) {
 		Model var11 = this.getModel();

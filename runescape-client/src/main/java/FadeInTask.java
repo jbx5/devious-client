@@ -2,132 +2,124 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("qt")
+@ObfuscatedName("qd")
 @Implements("FadeInTask")
 public class FadeInTask extends SongTask {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lma;"
+		descriptor = "Lmy;"
 	)
-	MusicSong field4592;
-	@ObfuscatedName("ap")
+	MusicSong field4625;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 790629697
+		intValue = 964825125
 	)
-	int field4593;
+	int field4624;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqd;IZI)V"
+		descriptor = "(Lqe;IZI)V"
 	)
 	public FadeInTask(SongTask var1, int var2, boolean var3, int var4) {
 		super(var1);
-		this.field4592 = null;
-		this.field4593 = 0;
-		super.field4597 = "FadeInTask";
+		this.field4625 = null;
+		this.field4624 = 0;
+		super.field4627 = "FadeInTask";
 		if (var2 >= 0) {
-			if (var3 && var2 < class319.field3461.size()) {
-				this.field4592 = (MusicSong)class319.field3461.get(var2);
-			} else if (!var3 && var2 < class319.musicSongs.size()) {
-				this.field4592 = (MusicSong)class319.musicSongs.get(var2);
+			if (var3 && var2 < class321.field3478.size()) {
+				this.field4625 = (MusicSong)class321.field3478.get(var2);
+			} else if (!var3 && var2 < class321.musicSongs.size()) {
+				this.field4625 = (MusicSong)class321.musicSongs.get(var2);
 			}
 
-			this.field4593 = var4;
+			this.field4624 = var4;
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "2012801823"
+		garbageValue = "-2024199564"
 	)
-	public boolean vmethod7975() {
-		if (this.field4592 != null && this.field4592.midiPcmStream != null) {
-			this.field4592.field3580 = true;
+	public boolean vmethod8043() {
+		if (this.field4625 != null && this.field4625.midiPcmStream != null) {
+			this.field4625.field3597 = true;
 
 			try {
-				if (this.field4592.field3576 < (float)this.field4592.musicTrackVolume && this.field4592.midiPcmStream.isReady()) {
-					float var1 = this.field4593 == 0 ? (float)this.field4593 : (float)this.field4592.musicTrackVolume / (float)this.field4593;
-					MusicSong var10000 = this.field4592;
-					var10000.field3576 += 0.0F == var1 ? (float)this.field4592.musicTrackVolume : var1;
-					if (this.field4592.field3576 > (float)this.field4592.musicTrackVolume) {
-						this.field4592.field3576 = (float)this.field4592.musicTrackVolume;
+				if (this.field4625.field3602 < (float)this.field4625.musicTrackVolume && this.field4625.midiPcmStream.isReady()) {
+					float var1 = this.field4624 == 0 ? (float)this.field4624 : (float)this.field4625.musicTrackVolume / (float)this.field4624;
+					MusicSong var10000 = this.field4625;
+					var10000.field3602 += 0.0F == var1 ? (float)this.field4625.musicTrackVolume : var1;
+					if (this.field4625.field3602 > (float)this.field4625.musicTrackVolume) {
+						this.field4625.field3602 = (float)this.field4625.musicTrackVolume;
 					}
 
-					this.field4592.midiPcmStream.setPcmStreamVolume((int)this.field4592.field3576);
+					this.field4625.midiPcmStream.setPcmStreamVolume((int)this.field4625.field3602);
 					return false;
 				}
 			} catch (Exception var3) {
-				this.method7954(var3.getMessage());
+				this.method8017(var3.getMessage());
 				return true;
 			}
 
-			this.field4592.field3580 = false;
+			this.field4625.field3597 = false;
 			return true;
 		} else {
 			return true;
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("jl")
 	@ObfuscatedSignature(
-		descriptor = "(ILdd;ZI)I",
-		garbageValue = "431023974"
+		descriptor = "(IIIIIIII)V",
+		garbageValue = "1973315729"
 	)
-	static int method7948(int var0, Script var1, boolean var2) {
-		int var3 = -1;
-		Widget var4;
-		if (var0 >= 2000) {
-			var0 -= 1000;
-			var3 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize];
-			var4 = class380.widgetDefinition.method6348(var3);
-		} else {
-			var4 = var2 ? class31.scriptDotWidget : class185.scriptActiveWidget;
+	static final void method8010(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		var5 = class127.method2998(var5, var6);
+		int var7 = 2048 - var3 & 2047;
+		int var8 = 2048 - var4 & 2047;
+		int var9 = 0;
+		int var10 = 0;
+		int var11 = var5;
+		int var12;
+		int var13;
+		int var14;
+		if (var7 != 0) {
+			var12 = Rasterizer3D.Rasterizer3D_sine[var7];
+			var13 = Rasterizer3D.Rasterizer3D_cosine[var7];
+			var14 = var10 * var13 - var5 * var12 >> 16;
+			var11 = var13 * var5 + var12 * var10 >> 16;
+			var10 = var14;
 		}
 
-		if (var0 == ScriptOpcodes.CC_SETPOSITION) {
-			UserComparator6.Interpreter_intStackSize -= 4;
-			var4.rawX = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize];
-			var4.rawY = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 1];
-			var4.xAlignment = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 2];
-			var4.yAlignment = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 3];
-			FaceNormal.invalidateWidget(var4);
-			VertexNormal.client.alignWidget(var4);
-			if (var3 != -1 && var4.type == 0) {
-				RestClientThreadFactory.revalidateWidgetScroll(class380.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETSIZE) {
-			UserComparator6.Interpreter_intStackSize -= 4;
-			var4.rawWidth = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize];
-			var4.rawHeight = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 1];
-			var4.widthAlignment = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 2];
-			var4.heightAlignment = Interpreter.Interpreter_intStack[UserComparator6.Interpreter_intStackSize + 3];
-			FaceNormal.invalidateWidget(var4);
-			VertexNormal.client.alignWidget(var4);
-			if (var3 != -1 && var4.type == 0) {
-				RestClientThreadFactory.revalidateWidgetScroll(class380.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETHIDE) {
-			boolean var5 = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize] == 1;
-			if (var5 != var4.isHidden) {
-				var4.isHidden = var5;
-				FaceNormal.invalidateWidget(var4);
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETNOCLICKTHROUGH) {
-			var4.noClickThrough = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize] == 1;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_SETNOSCROLLTHROUGH) {
-			var4.noScrollThrough = Interpreter.Interpreter_intStack[--UserComparator6.Interpreter_intStackSize] == 1;
-			return 1;
-		} else {
-			return 2;
+		if (var8 != 0) {
+			var12 = Rasterizer3D.Rasterizer3D_sine[var8];
+			var13 = Rasterizer3D.Rasterizer3D_cosine[var8];
+			var14 = var12 * var11 + var13 * var9 >> 16;
+			var11 = var11 * var13 - var9 * var12 >> 16;
+			var9 = var14;
 		}
+
+		if (Client.isCameraLocked) {
+			class362.field3961 = var0 - var9;
+			ArchiveDiskAction.field4355 = var1 - var10;
+			AABB.field2914 = var2 - var11;
+			WorldMapCacheName.field2683 = var3;
+			FriendsChat.field4736 = var4;
+		} else {
+			ClanMate.cameraX = var0 - var9;
+			AsyncHttpResponse.cameraY = var1 - var10;
+			class317.cameraZ = var2 - var11;
+			FriendSystem.cameraPitch = var3;
+			Script.cameraYaw = var4;
+		}
+
+		if (Client.oculusOrbState == 1 && Client.staffModLevel >= 2 && Client.cycle % 50 == 0 && (Friend.oculusOrbFocalPointX >> 7 != VarpDefinition.localPlayer.x >> 7 || class59.oculusOrbFocalPointY >> 7 != VarpDefinition.localPlayer.y >> 7)) {
+			var12 = VarpDefinition.localPlayer.plane;
+			var13 = Projectile.baseX * 64 + (Friend.oculusOrbFocalPointX >> 7);
+			var14 = GameEngine.baseY * 64 + (class59.oculusOrbFocalPointY >> 7);
+			Login.method2195(var13, var14, var12, true);
+		}
+
 	}
 }

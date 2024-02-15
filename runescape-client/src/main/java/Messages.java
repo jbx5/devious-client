@@ -6,30 +6,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ew")
+@ObfuscatedName("ec")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Ltb;"
+		descriptor = "Lta;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lpm;"
+		descriptor = "Lph;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1483704105
+		intValue = -1247673627
 	)
 	@Export("Messages_count")
 	static int Messages_count;
+	@ObfuscatedName("ak")
+	public static short[] field1422;
 
 	static {
 		Messages_channels = new HashMap();
@@ -38,64 +40,20 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "1347462958"
+		descriptor = "(Lcj;Lcj;IZIZB)I",
+		garbageValue = "1"
 	)
-	public static final boolean method2837(char var0) {
-		if (Character.isISOControl(var0)) {
-			return false;
-		} else if (WorldMapIcon_0.isAlphaNumeric(var0)) {
-			return true;
+	static int method2863(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
+		int var6 = class433.compareWorlds(var0, var1, var2, var3);
+		if (var6 != 0) {
+			return var3 ? -var6 : var6;
+		} else if (var4 == -1) {
+			return 0;
 		} else {
-			char[] var1 = class509.field5074;
-
-			int var2;
-			char var3;
-			for (var2 = 0; var2 < var1.length; ++var2) {
-				var3 = var1[var2];
-				if (var0 == var3) {
-					return true;
-				}
-			}
-
-			var1 = class509.field5076;
-
-			for (var2 = 0; var2 < var1.length; ++var2) {
-				var3 = var1[var2];
-				if (var0 == var3) {
-					return true;
-				}
-			}
-
-			return false;
+			int var7 = class433.compareWorlds(var0, var1, var4, var5);
+			return var5 ? -var7 : var7;
 		}
-	}
-
-	@ObfuscatedName("ik")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1250012045"
-	)
-	static final void method2849() {
-		if (Client.logoutTimer > 0) {
-			class189.logOut();
-		} else {
-			Client.timer.method8040();
-			class131.updateGameState(40);
-			PlayerType.field4298 = Client.packetWriter.getSocket();
-			Client.packetWriter.removeSocket();
-		}
-	}
-
-	@ObfuscatedName("on")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "76"
-	)
-	static final void method2850() {
-		Client.field706 = Client.cycleCntr;
-		VarpDefinition.field1832 = true;
 	}
 }

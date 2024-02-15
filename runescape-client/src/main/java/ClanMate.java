@@ -1,26 +1,27 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rx")
+@ObfuscatedName("rj")
 @Implements("ClanMate")
 public class ClanMate extends Buddy {
-	@ObfuscatedName("fi")
-	@ObfuscatedSignature(
-		descriptor = "Lri;"
+	@ObfuscatedName("ka")
+	@ObfuscatedGetter(
+		intValue = -1257119545
 	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
-	@ObfuscatedName("am")
+	@Export("cameraX")
+	static int cameraX;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lrb;"
+		descriptor = "Lrm;"
 	)
 	@Export("friend")
 	TriBool friend;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lrb;"
+		descriptor = "Lrm;"
 	)
 	@Export("ignored")
 	TriBool ignored;
@@ -30,20 +31,20 @@ public class ClanMate extends Buddy {
 		this.ignored = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
+		descriptor = "(I)V",
+		garbageValue = "-1478284792"
 	)
 	@Export("clearIsFriend")
 	void clearIsFriend() {
 		this.friend = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-14"
+		garbageValue = "-63"
 	)
 	@Export("isFriend")
 	public final boolean isFriend() {
@@ -54,30 +55,30 @@ public class ClanMate extends Buddy {
 		return this.friend == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1398592953"
+		descriptor = "(B)V",
+		garbageValue = "89"
 	)
 	@Export("fillIsFriend")
 	void fillIsFriend() {
-		this.friend = class332.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.friend = InterfaceParent.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "2"
+		garbageValue = "112"
 	)
 	@Export("clearIsIgnored")
 	void clearIsIgnored() {
 		this.ignored = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-192003731"
+		garbageValue = "-2044809638"
 	)
 	@Export("isIgnored")
 	public final boolean isIgnored() {
@@ -88,27 +89,13 @@ public class ClanMate extends Buddy {
 		return this.ignored == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-90"
+		descriptor = "(I)V",
+		garbageValue = "2017946025"
 	)
 	@Export("fillIsIgnored")
 	void fillIsIgnored() {
-		this.ignored = class332.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
-	}
-
-	@ObfuscatedName("bq")
-	@ObfuscatedSignature(
-		descriptor = "(Lnz;I)Z",
-		garbageValue = "1973794054"
-	)
-	static boolean method8252(PlayerComposition var0) {
-		if (var0.equipment[0] < 512) {
-			return false;
-		} else {
-			ItemComposition var1 = class341.ItemDefinition_get(var0.equipment[0] - 512);
-			return var1.maleModel1 != class205.field2257.field2259 && var1.maleModel2 != class205.field2257.field2259;
-		}
+		this.ignored = InterfaceParent.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 }

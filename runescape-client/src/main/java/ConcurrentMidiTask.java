@@ -1,66 +1,55 @@
 import java.util.ArrayList;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qy")
+@ObfuscatedName("qh")
 @Implements("ConcurrentMidiTask")
 public class ConcurrentMidiTask extends SongTask {
-	@ObfuscatedName("am")
-	ArrayList field4600;
+	@ObfuscatedName("aq")
+	ArrayList field4631;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqd;Ljava/util/ArrayList;)V"
+		descriptor = "(Lqe;Ljava/util/ArrayList;)V"
 	)
 	public ConcurrentMidiTask(SongTask var1, ArrayList var2) {
 		super(var1);
-		this.field4600 = var2;
-		super.field4597 = "ConcurrentMidiTask";
+		this.field4631 = var2;
+		super.field4627 = "ConcurrentMidiTask";
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "2012801823"
+		garbageValue = "-2024199564"
 	)
-	public boolean vmethod7975() {
-		for (int var1 = 0; var1 < this.field4600.size(); ++var1) {
-			SongTask var2 = (SongTask)this.field4600.get(var1);
+	public boolean vmethod8043() {
+		for (int var1 = 0; var1 < this.field4631.size(); ++var1) {
+			SongTask var2 = (SongTask)this.field4631.get(var1);
 			if (var2 == null) {
-				this.field4600.remove(var1);
+				this.field4631.remove(var1);
 				--var1;
-			} else if (var2.vmethod7975()) {
-				if (var2.method7949()) {
-					this.method7954(var2.method7952());
-					this.field4600.clear();
+			} else if (var2.vmethod8043()) {
+				if (var2.method8013()) {
+					this.method8017(var2.method8015());
+					this.field4631.clear();
 					return true;
 				}
 
-				if (var2.method7953() != null) {
-					this.field4600.add(var2.method7953());
+				if (var2.method8016() != null) {
+					this.field4631.add(var2.method8016());
 				}
 
-				super.field4594 = var2.field4594;
-				this.field4600.remove(var1);
+				super.field4630 = var2.field4630;
+				this.field4631.remove(var1);
 				--var1;
 			}
 		}
 
-		if (this.field4600.isEmpty()) {
+		if (this.field4631.isEmpty()) {
 			return true;
 		} else {
 			return false;
 		}
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(IS)Lgw;",
-		garbageValue = "-683"
-	)
-	@Export("WorldMapElement_get")
-	public static WorldMapElement WorldMapElement_get(int var0) {
-		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
 	}
 }

@@ -1,32 +1,26 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gc")
+@ObfuscatedName("gs")
 public class class172 extends DualNode {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lll;"
 	)
-	@Export("field1913")
-	public static EvictingDualNodeHashTable field1913;
-	@ObfuscatedName("ud")
-	@ObfuscatedGetter(
-		intValue = 266444160
-	)
-	static int field1817;
+	@Export("field1842")
+	public static EvictingDualNodeHashTable field1842;
 
 	static {
-		field1913 = new EvictingDualNodeHashTable(64);
+		field1842 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "70"
+		descriptor = "(I)[Lmf;",
+		garbageValue = "-1094244381"
 	)
-	public static int method3570(int var0) {
-		return class480.field4859[var0 & 16383];
+	static class314[] method3542() {
+		return new class314[]{class314.field3435, class314.field3424, class314.field3429, class314.field3430, class314.field3427, class314.field3425, class314.field3433, class314.field3426};
 	}
 }

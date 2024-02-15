@@ -1,96 +1,133 @@
 import java.util.concurrent.Callable;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ap")
+@ObfuscatedName("aw")
 public class class1 implements Callable {
-	@ObfuscatedName("cv")
+	@ObfuscatedName("hk")
+	static int[] field0;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lnd;"
-	)
-	static StudioGame field3;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Luk;"
+		descriptor = "Luq;"
 	)
 	final Buffer field1;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Laj;"
+		descriptor = "Lai;"
 	)
-	final class3 field0;
+	final class3 field2;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Laz;"
 	)
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lao;Luk;Laj;)V"
+		descriptor = "(Laz;Luq;Lai;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
 		this.field1 = var2;
-		this.field0 = var3;
+		this.field2 = var3;
 	}
 
 	public Object call() {
-		return this.field0.vmethod15(this.field1);
+		return this.field2.vmethod14(this.field1);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lde;",
-		garbageValue = "800016326"
+		descriptor = "(Lun;I)V",
+		garbageValue = "-1777404820"
 	)
-	static class90[] method6() {
-		return new class90[]{class90.field1087, class90.field1090, class90.field1092, class90.field1091, class90.field1096, class90.field1089};
+	@Export("updatePlayer")
+	static final void updatePlayer(PacketBuffer var0) {
+		var0.importIndex();
+		int var1 = Client.localPlayerIndex;
+		Player var2 = VarpDefinition.localPlayer = Client.players[var1] = new Player();
+		var2.index = var1;
+		int var3 = var0.readBits(30);
+		byte var4 = (byte)(var3 >> 28);
+		int var5 = var3 >> 14 & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - Projectile.baseX * 64;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - GameEngine.baseY * 64;
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		class473.Client_plane = var2.plane = var4;
+		if (Players.field1389[var1] != null) {
+			var2.read(Players.field1389[var1]);
+		}
+
+		Players.Players_count = 0;
+		Players.Players_indices[++Players.Players_count - 1] = var1;
+		Players.field1379[var1] = 0;
+		Players.Players_emptyIdxCount = 0;
+
+		for (int var7 = 1; var7 < 2048; ++var7) {
+			if (var7 != var1) {
+				int var8 = var0.readBits(18);
+				int var9 = var8 >> 16;
+				int var10 = var8 >> 8 & 597;
+				int var11 = var8 & 597;
+				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+				Players.Players_orientations[var7] = 0;
+				Players.Players_targetIndices[var7] = -1;
+				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
+				Players.field1379[var7] = 0;
+			}
+		}
+
+		var0.exportIndex();
 	}
 
-	@ObfuscatedName("be")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(ILdd;ZI)I",
-		garbageValue = "762793489"
+		descriptor = "(IIIIB)V",
+		garbageValue = "-57"
 	)
-	static int method10(int var0, Script var1, boolean var2) {
-		return 2;
+	@Export("itemContainerSetItem")
+	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
+		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var4 == null) {
+			var4 = new ItemContainer();
+			ItemContainer.itemContainers.put(var4, (long)var0);
+		}
+
+		if (var4.ids.length <= var1) {
+			int[] var5 = new int[var1 + 1];
+			int[] var6 = new int[var1 + 1];
+
+			int var7;
+			for (var7 = 0; var7 < var4.ids.length; ++var7) {
+				var5[var7] = var4.ids[var7];
+				var6[var7] = var4.quantities[var7];
+			}
+
+			for (var7 = var4.ids.length; var7 < var1; ++var7) {
+				var5[var7] = -1;
+				var6[var7] = 0;
+			}
+
+			var4.ids = var5;
+			var4.quantities = var6;
+		}
+
+		var4.ids[var1] = var2;
+		var4.quantities[var1] = var3;
 	}
 
-	@ObfuscatedName("lw")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Ldk;B)V",
-		garbageValue = "1"
+		descriptor = "(IZIZB)V",
+		garbageValue = "125"
 	)
-	static final void method12(PendingSpawn var0) {
-		long var1 = 0L;
-		int var3 = -1;
-		int var4 = 0;
-		int var5 = 0;
-		if (var0.type == 0) {
-			var1 = GrandExchangeOfferOwnWorldComparator.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
+	@Export("sortWorldList")
+	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
+		if (WorldMapID.World_worlds != null) {
+			WorldMapSectionType.doWorldSorting(0, WorldMapID.World_worlds.length - 1, var0, var1, var2, var3);
 		}
 
-		if (var0.type == 1) {
-			var1 = GrandExchangeOfferOwnWorldComparator.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 2) {
-			var1 = GrandExchangeOfferOwnWorldComparator.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 3) {
-			var1 = GrandExchangeOfferOwnWorldComparator.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (0L != var1) {
-			int var6 = GrandExchangeOfferOwnWorldComparator.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1);
-			var3 = class167.Entity_unpackID(var1);
-			var4 = var6 & 31;
-			var5 = var6 >> 6 & 3;
-		}
-
-		var0.objectId = var3;
-		var0.field1163 = var4;
-		var0.field1162 = var5;
 	}
 }

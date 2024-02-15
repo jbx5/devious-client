@@ -1,111 +1,145 @@
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ao")
+@ObfuscatedName("az")
 public class class7 {
-	@ObfuscatedName("am")
-	ExecutorService field10;
-	@ObfuscatedName("ap")
-	Future field11;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Luk;"
-	)
-	final Buffer field12;
 	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Laj;"
+	@ObfuscatedGetter(
+		intValue = 1342537435
 	)
-	final class3 field13;
+	static int field21;
+	@ObfuscatedName("aq")
+	ExecutorService field18;
+	@ObfuscatedName("aw")
+	Future field13;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Luq;"
+	)
+	final Buffer field15;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lai;"
+	)
+	final class3 field16;
 
 	@ObfuscatedSignature(
-		descriptor = "(Luk;Laj;)V"
+		descriptor = "(Luq;Lai;)V"
 	)
 	public class7(Buffer var1, class3 var2) {
-		this.field10 = Executors.newSingleThreadExecutor();
-		this.field12 = var1;
-		this.field13 = var2;
-		this.method50();
+		this.field18 = Executors.newSingleThreadExecutor();
+		this.field15 = var1;
+		this.field16 = var2;
+		this.method43();
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1275905562"
+		garbageValue = "385185200"
 	)
-	public boolean method44() {
-		return this.field11.isDone();
+	public boolean method40() {
+		return this.field13.isDone();
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "25"
+		garbageValue = "-46"
 	)
-	public void method45() {
-		this.field10.shutdown();
-		this.field10 = null;
+	public void method41() {
+		this.field18.shutdown();
+		this.field18 = null;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)Luk;",
-		garbageValue = "1"
+		descriptor = "(I)Luq;",
+		garbageValue = "-1961365501"
 	)
-	public Buffer method46() {
+	public Buffer method42() {
 		try {
-			return (Buffer)this.field11.get();
+			return (Buffer)this.field13.get();
 		} catch (Exception var2) {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "57"
+		descriptor = "(I)V",
+		garbageValue = "764307874"
 	)
-	void method50() {
-		this.field11 = this.field10.submit(new class1(this, this.field12, this.field13));
+	void method43() {
+		this.field13 = this.field18.submit(new class1(this, this.field15, this.field16));
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("hs")
 	@ObfuscatedSignature(
-		descriptor = "(IIILhg;II)V",
-		garbageValue = "-867036510"
+		descriptor = "(III)V",
+		garbageValue = "393503738"
 	)
-	@Export("createObjectSound")
-	static void createObjectSound(int var0, int var1, int var2, ObjectComposition var3, int var4) {
-		ObjectSound var5 = new ObjectSound();
-		var5.plane = var0;
-		var5.x = var1 * 128;
-		var5.y = var2 * 16384;
-		int var6 = var3.sizeX;
-		int var7 = var3.sizeY;
-		if (var4 == 1 || var4 == 3) {
-			var6 = var3.sizeY;
-			var7 = var3.sizeX;
+	static void method39(int var0, int var1) {
+		if (class30.clientPreferences.getMusicVolume() != 0 && var0 != -1) {
+			ArrayList var2 = new ArrayList();
+			var2.add(new MusicSong(WorldMapSectionType.field2612, var0, 0, class30.clientPreferences.getMusicVolume(), false));
+			PacketWriter.method2891(var2, 0, 0, 0, 0, true);
+			Client.playingJingle = true;
 		}
 
-		var5.maxX = (var6 + var1) * 128;
-		var5.maxY = (var7 + var2) * 128;
-		var5.soundEffectId = var3.ambientSoundId;
-		var5.field844 = var3.int7 * 16384;
-		var5.field834 = var3.int5;
-		var5.field840 = var3.int6;
-		var5.soundEffectIds = var3.soundEffectIds;
-		if (var3.transforms != null) {
-			var5.obj = var3;
-			var5.set();
+	}
+
+	@ObfuscatedName("ig")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V",
+		garbageValue = "1011099662"
+	)
+	static final void method53(int var0, int var1, int var2) {
+		if (ClanMate.cameraX < var0) {
+			ClanMate.cameraX = (var0 - ClanMate.cameraX) * GameBuild.field3978 / 1000 + ClanMate.cameraX + class516.field5118;
+			if (ClanMate.cameraX > var0) {
+				ClanMate.cameraX = var0;
+			}
 		}
 
-		ObjectSound.objectSounds.addFirst(var5);
-		if (var5.soundEffectIds != null) {
-			var5.field842 = var5.field834 + (int)(Math.random() * (double)(var5.field840 - var5.field834));
+		if (ClanMate.cameraX > var0) {
+			ClanMate.cameraX -= (ClanMate.cameraX - var0) * GameBuild.field3978 / 1000 + class516.field5118;
+			if (ClanMate.cameraX < var0) {
+				ClanMate.cameraX = var0;
+			}
+		}
+
+		if (AsyncHttpResponse.cameraY < var1) {
+			AsyncHttpResponse.cameraY = (var1 - AsyncHttpResponse.cameraY) * GameBuild.field3978 / 1000 + AsyncHttpResponse.cameraY + class516.field5118;
+			if (AsyncHttpResponse.cameraY > var1) {
+				AsyncHttpResponse.cameraY = var1;
+			}
+		}
+
+		if (AsyncHttpResponse.cameraY > var1) {
+			AsyncHttpResponse.cameraY -= (AsyncHttpResponse.cameraY - var1) * GameBuild.field3978 / 1000 + class516.field5118;
+			if (AsyncHttpResponse.cameraY < var1) {
+				AsyncHttpResponse.cameraY = var1;
+			}
+		}
+
+		if (class317.cameraZ < var2) {
+			class317.cameraZ = (var2 - class317.cameraZ) * GameBuild.field3978 / 1000 + class317.cameraZ + class516.field5118;
+			if (class317.cameraZ > var2) {
+				class317.cameraZ = var2;
+			}
+		}
+
+		if (class317.cameraZ > var2) {
+			class317.cameraZ -= (class317.cameraZ - var2) * GameBuild.field3978 / 1000 + class516.field5118;
+			if (class317.cameraZ < var2) {
+				class317.cameraZ = var2;
+			}
 		}
 
 	}

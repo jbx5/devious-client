@@ -1,55 +1,53 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bx")
+@ObfuscatedName("bv")
 public class class36 {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lph;"
+		descriptor = "Lpo;"
 	)
 	@Export("reflectionChecks")
 	public static IterableNodeDeque reflectionChecks;
-	@ObfuscatedName("fo")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
+	@ObfuscatedName("cq")
+	@ObfuscatedGetter(
+		intValue = -1651175915
 	)
-	@Export("archive2")
-	static Archive archive2;
+	@Export("otpMedium")
+	static int otpMedium;
 
 	static {
 		reflectionChecks = new IterableNodeDeque();
 	}
 
-	@ObfuscatedName("ct")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(ILmu;ZI)V",
-		garbageValue = "-1965967218"
+		descriptor = "(Lof;I)V",
+		garbageValue = "-1197841897"
 	)
-	static void method731(int var0, Coord var1, boolean var2) {
-		WorldMapArea var3 = class132.getWorldMap().getMapArea(var0);
-		int var4 = KeyHandler.localPlayer.plane;
-		int var5 = HealthBarDefinition.baseX * 64 + (KeyHandler.localPlayer.x >> 7);
-		int var6 = WorldMapScaleHandler.baseY * 64 + (KeyHandler.localPlayer.y >> 7);
-		Coord var7 = new Coord(var4, var5, var6);
-		class132.getWorldMap().method8867(var3, var7, var1, var2);
+	public static void method660(AbstractArchive var0) {
+		ParamComposition.ParamDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("ju")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1920272827"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "1"
 	)
-	static final int method729(int var0) {
-		return Math.abs(var0 - HealthBarUpdate.cameraYaw) > 1024 ? var0 + 2048 * (var0 < HealthBarUpdate.cameraYaw ? 1 : -1) : var0;
+	static void method659(String var0, String var1, String var2) {
+		JagexCache.method4224(7);
+		SecureUrlRequester.setLoginResponseString(var0, var1, var2);
 	}
 
-	@ObfuscatedName("pj")
+	@ObfuscatedName("oo")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "100"
+		descriptor = "(B)V",
+		garbageValue = "-55"
 	)
-	public static boolean method733() {
-		return Client.staffModLevel >= 2;
+	@Export("reinitializeClient")
+	static void reinitializeClient() {
+		class30.clientPreferences.method2550(Client.field688);
 	}
 }

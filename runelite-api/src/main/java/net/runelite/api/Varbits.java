@@ -902,6 +902,14 @@ public final class Varbits
 	public static final int VIGGORA_LOCATION = 815;
 
 	/**
+	 * If the player has a spellbook swap active
+	 * <p>
+	 * 0 = inactive
+	 * 1 = active
+	 */
+	public static final int SPELLBOOK_SWAP = 3617;
+
+	/**
 	 * Draynor manor basement
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">asd</a>
 	 */

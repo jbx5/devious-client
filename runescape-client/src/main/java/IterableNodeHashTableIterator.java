@@ -7,22 +7,22 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("tj")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ltb;"
+		descriptor = "Lta;"
 	)
 	@Export("hashTable")
 	IterableNodeHashTable hashTable;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lse;"
 	)
 	@Export("head")
 	Node head;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("index")
 	int index;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "Lse;"
 	)
@@ -30,7 +30,7 @@ public class IterableNodeHashTableIterator implements Iterator {
 	Node last;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ltb;)V"
+		descriptor = "(Lta;)V"
 	)
 	public IterableNodeHashTableIterator(IterableNodeHashTable var1) {
 		this.last = null;
@@ -38,7 +38,7 @@ public class IterableNodeHashTableIterator implements Iterator {
 		this.start();
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@Export("start")
 	void start() {
 		this.head = this.hashTable.buckets[0].previous;
@@ -46,11 +46,11 @@ public class IterableNodeHashTableIterator implements Iterator {
 		this.last = null;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "()Lse;"
 	)
-	public Node method9062() {
+	public Node method9127() {
 		this.start();
 		return (Node)this.next();
 	}
@@ -77,11 +77,6 @@ public class IterableNodeHashTableIterator implements Iterator {
 		}
 	}
 
-	public void remove() {
-		this.last.remove();
-		this.last = null;
-	}
-
 	public boolean hasNext() {
 		if (this.hashTable.buckets[this.index - 1] != this.head) {
 			return true;
@@ -96,6 +91,15 @@ public class IterableNodeHashTableIterator implements Iterator {
 			}
 
 			return false;
+		}
+	}
+
+	public void remove() {
+		if (this.last == null) {
+			throw new IllegalStateException();
+		} else {
+			this.last.remove();
+			this.last = null;
 		}
 	}
 }

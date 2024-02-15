@@ -1,44 +1,42 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aq")
+@ObfuscatedName("ar")
 public final class class4 {
-	@ObfuscatedName("ge")
-	@Export("refreshToken")
-	static String refreshToken;
-
-	@ObfuscatedName("kh")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIII)V",
-		garbageValue = "-467280453"
+		descriptor = "Lof;"
 	)
-	static void method16(int var0, int var1, int var2, int var3, int var4, int var5) {
-		NodeDeque var6 = Client.groundItems[var0][var1][var2];
-		if (var6 != null) {
-			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
-				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
-					var7.quantity = var5;
-					break;
-				}
-			}
+	@Export("KitDefinition_modelsArchive")
+	static AbstractArchive KitDefinition_modelsArchive;
+	@ObfuscatedName("jn")
+	@ObfuscatedGetter(
+		intValue = 404669667
+	)
+	static int field3;
 
-			class134.updateItemPile(var0, var1, var2);
-		}
-
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lfm;",
+		garbageValue = "1472575201"
+	)
+	static class141[] method20() {
+		return new class141[]{class141.field1642, class141.field1653, class141.field1641, class141.field1652, class141.field1645, class141.field1646, class141.field1647, class141.field1648, class141.field1649};
 	}
 
-	@ObfuscatedName("ph")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIZI)V",
-		garbageValue = "-1850141553"
+		descriptor = "(ILdc;ZI)I",
+		garbageValue = "2032896608"
 	)
-	static void method17(int var0, int var1, int var2, boolean var3) {
-		PacketBufferNode var4 = class482.getPacketBufferNode(ClientPacket.field3213, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeIntIME(var3 ? Client.revision : 0);
-		var4.packetBuffer.writeShortLE(var0);
-		var4.packetBuffer.writeByte(var2);
-		var4.packetBuffer.writeShort(var1);
-		Client.packetWriter.addNode(var4);
+	static int method19(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = class470.method8697() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

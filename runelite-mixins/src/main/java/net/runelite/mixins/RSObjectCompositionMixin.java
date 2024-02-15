@@ -91,7 +91,7 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 			{
 				if (getModelIds() != null && !getObjectDefinitionIsLowDetail())
 				{
-					buffer.setOffset(buffer.getOffset() + var3 * 2);
+					buffer.setOffset(buffer.getOffset() + 2 * var3);
 				}
 				else
 				{
@@ -254,12 +254,14 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 			{
 				setAmbientSoundId(buffer.readUnsignedShort());
 				setInt7(buffer.readUnsignedByte());
+				setInt8((getObjectDefinitionIsRev220SoundData() ? buffer.readUnsignedByte() : 0));
 			}
 			else if (opcode == 79)
 			{
 				setInt5(buffer.readUnsignedShort());
 				setInt6(buffer.readUnsignedShort());
 				setInt7(buffer.readUnsignedByte());
+				setInt8((getObjectDefinitionIsRev220SoundData() ? buffer.readUnsignedByte() : 0));
 
 				var3 = buffer.readUnsignedByte();
 				setSoundEffectIds(new int[var3]);

@@ -1,57 +1,90 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tf")
-public abstract class class496 {
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = -1027722541
-	)
-	int field4952;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -655717521
-	)
-	int field4949;
+@ObfuscatedName("tn")
+public class class496 extends class498 {
 	@ObfuscatedName("aa")
-	double field4951;
-	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -893308173
+		intValue = -230506827
 	)
-	int field4950;
+	@Export("gameCyclesToDo")
+	static int gameCyclesToDo;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = 618556217
+	)
+	int field4975;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = -331728869
+	)
+	int field4972;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1973859157
+	)
+	int field4970;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 1689296487
+	)
+	int field4973;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -1749243225
+	)
+	int field4974;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 113974539
+	)
+	int field4976;
 
-	class496(int var1, int var2) {
-		this.field4952 = 0;
-		this.field4949 = 0;
-		this.field4951 = 0.0D;
-		this.field4950 = 0;
-		this.field4952 = var1;
-		this.field4949 = 0;
-		this.field4950 = var2 >= 0 && var2 <= 27 ? var2 : 0;
-		this.field4951 = class209.method4207(this.field4949, this.field4952, this.field4950);
+	public class496(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+		super(var7, var8);
+		this.field4975 = 0;
+		this.field4972 = 0;
+		this.field4970 = 0;
+		this.field4973 = 0;
+		this.field4974 = 0;
+		this.field4976 = 0;
+		this.field4975 = var1;
+		this.field4972 = var2;
+		this.field4970 = var3;
+		this.field4973 = var4;
+		this.field4974 = var5;
+		this.field4976 = var6;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "2"
+		descriptor = "(I)I",
+		garbageValue = "1316582552"
 	)
-	public void method8831() {
-		if (this.field4949 < this.field4952) {
-			++this.field4949;
-			this.field4951 = class209.method4207(this.field4949, this.field4952, this.field4950);
-		}
-
+	public int vmethod8869() {
+		double var1 = this.method8876();
+		return (int)Math.round(var1 * (double)(this.field4973 - this.field4975) + (double)this.field4975);
 	}
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(I)D",
-		garbageValue = "-38619419"
+		descriptor = "(I)I",
+		garbageValue = "1514290339"
 	)
-	double method8828() {
-		return this.field4951;
+	public int vmethod8868() {
+		double var1 = this.method8876();
+		return (int)Math.round(var1 * (double)(this.field4974 - this.field4972) + (double)this.field4972);
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-79"
+	)
+	public int vmethod8874() {
+		double var1 = this.method8876();
+		return (int)Math.round(var1 * (double)(this.field4976 - this.field4970) + (double)this.field4970);
 	}
 }

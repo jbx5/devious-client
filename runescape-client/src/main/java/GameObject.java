@@ -4,89 +4,97 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ll")
+@ObfuscatedName("la")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("am")
+	@ObfuscatedName("wf")
 	@ObfuscatedGetter(
-		intValue = -1406588919
+		intValue = -344460445
+	)
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("dk")
+	static boolean field3131;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -1797510003
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 903979213
+		intValue = 2122061283
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1936995303
+		intValue = -1307458835
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1834904139
+		intValue = 990255065
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Lky;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 2016007957
+		intValue = 733062771
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -873123859
+		intValue = -2090331591
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -460248005
+		intValue = 1972009079
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -857619617
+		intValue = -1144008403
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1093355515
+		intValue = 1776545777
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 35503397
+		intValue = 779132871
 	)
-	int field3134;
-	@ObfuscatedName("an")
+	int field3132;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1238217845
+		intValue = -908903719
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		longValue = -1518418869526017207L
+		longValue = -1053012787197118801L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -13334823
+		intValue = 613582333
 	)
 	@Export("flags")
 	int flags;
@@ -96,53 +104,54 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("jc")
+	@ObfuscatedName("js")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)V",
-		garbageValue = "-41"
+		descriptor = "(ZI)V",
+		garbageValue = "-788767206"
 	)
-	static final void method5901(int var0, int var1, int var2) {
-		if (GameEngine.cameraX < var0) {
-			GameEngine.cameraX = (var0 - GameEngine.cameraX) * class380.field4416 / 1000 + GameEngine.cameraX + HealthBarDefinition.field1890;
-			if (GameEngine.cameraX > var0) {
-				GameEngine.cameraX = var0;
+	@Export("addNpcsToScene")
+	static final void addNpcsToScene(boolean var0) {
+		for (int var1 = 0; var1 < Client.npcCount; ++var1) {
+			NPC var2 = Client.npcs[Client.npcIndices[var1]];
+			if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) {
+				int var3 = var2.x >> 7;
+				int var4 = var2.y >> 7;
+				if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
+					if (var2.field1212 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
+						if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) {
+							continue;
+						}
+
+						Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount;
+					}
+
+					long var5 = AsyncHttpResponse.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]);
+					var2.playerCycle = Client.cycle;
+					Actor.scene.drawEntity(class473.Client_plane, var2.x, var2.y, class272.getTileHeight(var2.field1212 * 64 - 64 + var2.x, var2.field1212 * 64 - 64 + var2.y, class473.Client_plane), var2.field1212 * 64 - 64 + 60, var2, var2.rotation, var5, var2.isWalking);
+				}
 			}
 		}
 
-		if (GameEngine.cameraX > var0) {
-			GameEngine.cameraX -= (GameEngine.cameraX - var0) * class380.field4416 / 1000 + HealthBarDefinition.field1890;
-			if (GameEngine.cameraX < var0) {
-				GameEngine.cameraX = var0;
-			}
-		}
+	}
 
-		if (class28.cameraY < var1) {
-			class28.cameraY = (var1 - class28.cameraY) * class380.field4416 / 1000 + class28.cameraY + HealthBarDefinition.field1890;
-			if (class28.cameraY > var1) {
-				class28.cameraY = var1;
+	@ObfuscatedName("lp")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-99454612"
+	)
+	static void method5963() {
+		if (Client.isSpellSelected) {
+			Widget var0 = ArchiveLoader.widgetDefinition.getWidgetChild(class160.selectedSpellWidget, Client.selectedSpellChildIndex);
+			if (var0 != null && var0.onTargetLeave != null) {
+				ScriptEvent var1 = new ScriptEvent();
+				var1.widget = var0;
+				var1.args = var0.onTargetLeave;
+				class177.runScriptEvent(var1);
 			}
-		}
 
-		if (class28.cameraY > var1) {
-			class28.cameraY -= (class28.cameraY - var1) * class380.field4416 / 1000 + HealthBarDefinition.field1890;
-			if (class28.cameraY < var1) {
-				class28.cameraY = var1;
-			}
+			Client.selectedSpellItemId = -1;
+			Client.isSpellSelected = false;
+			UserComparator5.invalidateWidget(var0);
 		}
-
-		if (GrandExchangeOfferTotalQuantityComparator.cameraZ < var2) {
-			GrandExchangeOfferTotalQuantityComparator.cameraZ = (var2 - GrandExchangeOfferTotalQuantityComparator.cameraZ) * class380.field4416 / 1000 + GrandExchangeOfferTotalQuantityComparator.cameraZ + HealthBarDefinition.field1890;
-			if (GrandExchangeOfferTotalQuantityComparator.cameraZ > var2) {
-				GrandExchangeOfferTotalQuantityComparator.cameraZ = var2;
-			}
-		}
-
-		if (GrandExchangeOfferTotalQuantityComparator.cameraZ > var2) {
-			GrandExchangeOfferTotalQuantityComparator.cameraZ -= (GrandExchangeOfferTotalQuantityComparator.cameraZ - var2) * class380.field4416 / 1000 + HealthBarDefinition.field1890;
-			if (GrandExchangeOfferTotalQuantityComparator.cameraZ < var2) {
-				GrandExchangeOfferTotalQuantityComparator.cameraZ = var2;
-			}
-		}
-
 	}
 }

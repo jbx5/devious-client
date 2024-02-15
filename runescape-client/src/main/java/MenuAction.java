@@ -3,43 +3,46 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("cj")
+@ObfuscatedName("cb")
 @Implements("MenuAction")
 public class MenuAction {
-	@ObfuscatedName("am")
+	@ObfuscatedName("cf")
+	@Export("otp")
+	static String otp;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 769982607
+		intValue = -152157689
 	)
 	@Export("param0")
 	int param0;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -1099171469
+		intValue = 834502213
 	)
 	@Export("param1")
 	int param1;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1768966103
+		intValue = 1900928069
 	)
 	@Export("opcode")
 	int opcode;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -899309113
+		intValue = -298892889
 	)
 	@Export("identifier")
 	int identifier;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1062677145
+		intValue = -785738783
 	)
 	@Export("itemId")
 	int itemId;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@Export("action")
 	String action;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@Export("target")
 	String target;
 

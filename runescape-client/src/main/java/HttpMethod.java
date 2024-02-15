@@ -1,63 +1,60 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("aa")
+@ObfuscatedName("au")
 @Implements("HttpMethod")
 public class HttpMethod implements Enum {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Laa;"
+		descriptor = "Lau;"
 	)
 	@Export("POST")
 	public static final HttpMethod POST;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Laa;"
+		descriptor = "Lau;"
 	)
 	@Export("GET")
 	public static final HttpMethod GET;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Laa;"
+		descriptor = "Lau;"
 	)
 	@Export("PUT")
 	static final HttpMethod PUT;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Laa;"
+		descriptor = "Lau;"
 	)
 	@Export("PATCH")
 	static final HttpMethod PATCH;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Laa;"
+		descriptor = "Lau;"
 	)
 	@Export("DELETE")
 	static final HttpMethod DELETE;
-	@ObfuscatedName("bi")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
-	@ObfuscatedName("ua")
-	@ObfuscatedGetter(
-		intValue = -1484275712
+	@ObfuscatedName("bl")
+	@ObfuscatedSignature(
+		descriptor = "Lrc;"
 	)
-	static int field29;
-	@ObfuscatedName("ar")
+	static Bounds field35;
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1539111659
+		intValue = 1320722447
 	)
-	int field22;
-	@ObfuscatedName("ag")
+	int field30;
+	@ObfuscatedName("aa")
 	@Export("name")
 	String name;
+	@ObfuscatedName("az")
+	boolean field32;
 	@ObfuscatedName("ao")
 	boolean field25;
-	@ObfuscatedName("ae")
-	boolean field26;
 
 	static {
 		POST = new HttpMethod(0, "POST", true, true);
@@ -68,118 +65,142 @@ public class HttpMethod implements Enum {
 	}
 
 	HttpMethod(int var1, String var2, boolean var3, boolean var4) {
-		this.field22 = var1;
+		this.field30 = var1;
 		this.name = var2;
-		this.field25 = var3;
-		this.field26 = var4;
+		this.field32 = var3;
+		this.field25 = var4;
 	}
 
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1549455343"
-	)
-	boolean method64() {
-		return this.field25;
-	}
-
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-884190501"
+		garbageValue = "691209479"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field22;
+		return this.field30;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "-12"
+		descriptor = "(I)Z",
+		garbageValue = "-236928179"
+	)
+	boolean method63() {
+		return this.field32;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "997211650"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1715077183"
+		descriptor = "(B)Z",
+		garbageValue = "93"
 	)
-	boolean method63() {
-		return this.field26;
+	boolean method68() {
+		return this.field25;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lhl;",
-		garbageValue = "15"
+		descriptor = "(FFFFLfr;B)V",
+		garbageValue = "34"
 	)
-	@Export("SequenceDefinition_get")
-	public static SequenceDefinition SequenceDefinition_get(int var0) {
-		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static void method67(float var0, float var1, float var2, float var3, class132 var4) {
+		float var5 = var1 - var0;
+		float var6 = var2 - var1;
+		float var7 = var3 - var2;
+		float var8 = var6 - var5;
+		var4.field1566 = var7 - var6 - var8;
+		var4.field1562 = var8 + var8 + var8;
+		var4.field1564 = var5 + var5 + var5;
+		var4.field1563 = var0;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(ILdc;ZI)I",
+		garbageValue = "-1822218626"
+	)
+	static int method83(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : class141.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = TextureProvider.Widget_unpackTargetMask(class429.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
+
+				return 1;
+			} else {
+				return 2;
+			}
 		} else {
-			byte[] var2 = SequenceDefinition.SequenceDefinition_archive.takeFile(12, var0);
-			var1 = new SequenceDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = "";
 			}
 
-			var1.postDecode();
-			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-			return var1;
+			return 1;
 		}
 	}
 
-	@ObfuscatedName("ib")
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(ILdc;ZI)I",
+		garbageValue = "-259088192"
+	)
+	static int method82(int var0, Script var1, boolean var2) {
+		Widget var3 = ArchiveLoader.widgetDefinition.method6431(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = TextureProvider.Widget_unpackTargetMask(class429.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.IF_GETOP) {
+			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
+
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class60.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("hr")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-781544794"
+		garbageValue = "-2111193111"
 	)
-	static final void method79() {
-		if (SecureUrlRequester.Client_plane != Client.field732) {
-			Client.field732 = SecureUrlRequester.Client_plane;
-			class102.method2738(SecureUrlRequester.Client_plane);
-		}
-
-	}
-
-	@ObfuscatedName("op")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-888075873"
-	)
-	@Export("Clan_joinChat")
-	static final void Clan_joinChat(String var0) {
-		if (!var0.equals("")) {
-			PacketBufferNode var1 = class482.getPacketBufferNode(ClientPacket.field3217, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(CollisionMap.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
-		}
-	}
-
-	@ObfuscatedName("oo")
-	@ObfuscatedSignature(
-		descriptor = "(IIZI)V",
-		garbageValue = "2023850938"
-	)
-	static final void method69(int var0, int var1, boolean var2) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3492()) {
-				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				PacketBufferNode var4 = class482.getPacketBufferNode(ClientPacket.field3231, Client.packetWriter.isaacCipher);
-				var4.packetBuffer.writeByte(4 + CollisionMap.stringCp1252NullTerminatedByteSize(var3.username.getName()));
-				var4.packetBuffer.writeByte(var0);
-				var4.packetBuffer.writeShort(var1);
-				var4.packetBuffer.writeBoolean(var2);
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
-				Client.packetWriter.addNode(var4);
-			}
-		}
+	static final void method80() {
+		FriendLoginUpdate.method8302();
 	}
 }

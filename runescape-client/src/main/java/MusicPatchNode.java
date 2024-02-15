@@ -1,248 +1,178 @@
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInputStream;
-import java.io.OptionalDataException;
-import java.io.StreamCorruptedException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
 
-@ObfuscatedName("mv")
+@ObfuscatedName("mw")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("fj")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	static Archive field3548;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1904391139
+		intValue = -2014932929
 	)
-	int field3557;
-	@ObfuscatedName("ap")
+	int field3576;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmq;"
 	)
 	@Export("table")
 	MusicPatch table;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lbm;"
+		descriptor = "Lbr;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lmx;"
+		descriptor = "Lmh;"
 	)
-	MusicPatchNode2 field3545;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -1453854541
-	)
-	int field3553;
+	MusicPatchNode2 field3567;
 	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -498307473
+		intValue = 864391351
 	)
-	int field3568;
-	@ObfuscatedName("ag")
+	int field3572;
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1106342015
+		intValue = 1791347925
 	)
-	int field3551;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = -1299660053
-	)
-	int field3552;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -333556033
-	)
-	int field3549;
+	int field3569;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 167889727
+		intValue = -1287444843
 	)
-	int field3567;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = -180870853
-	)
-	int field3550;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = -1877852160
-	)
-	int field3556;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -195124119
-	)
-	int field3566;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -1100860522
-	)
-	int field3558;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = -1426969919
-	)
-	int field3559;
+	int field3570;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1250059833
+		intValue = 781872781
 	)
-	int field3560;
-	@ObfuscatedName("av")
+	int field3580;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -958429645
+		intValue = -215055731
 	)
-	int field3561;
+	int field3581;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = -1171568241
+	)
+	int field3573;
 	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1476946873
+		intValue = 1801689695
 	)
-	int field3562;
-	@ObfuscatedName("ay")
+	int field3574;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 1949253632
+	)
+	int field3571;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 981667397
+	)
+	int field3582;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 1841880265
+	)
+	int field3577;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = -906107239
+	)
+	int field3578;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -2050032387
+	)
+	int field3579;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 1276025151
+	)
+	int field3586;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1874591773
+	)
+	int field3565;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "Lbs;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("as")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 729467977
+		intValue = -289353881
 	)
-	int field3564;
-	@ObfuscatedName("ah")
+	int field3583;
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -425741649
+		intValue = -1232026487
 	)
-	int field3554;
+	int field3584;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "86"
+		garbageValue = "1"
 	)
-	void method6288() {
+	void method6378() {
 		this.table = null;
 		this.rawSound = null;
-		this.field3545 = null;
+		this.field3567 = null;
 		this.stream = null;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("lh")
 	@ObfuscatedSignature(
-		descriptor = "(Luo;B)V",
-		garbageValue = "25"
+		descriptor = "(IIIIIIB)V",
+		garbageValue = "1"
 	)
-	@Export("performReflectionCheck")
-	public static void performReflectionCheck(PacketBuffer var0) {
-		ReflectionCheck var1 = (ReflectionCheck)class36.reflectionChecks.last();
-		if (var1 != null) {
-			int var2 = var0.offset;
-			var0.writeInt(var1.id);
+	static final void method6381(int var0, int var1, int var2, int var3, int var4, int var5) {
+		int var6 = var2 - var0;
+		int var7 = var3 - var1;
+		int var8 = var6 >= 0 ? var6 : -var6;
+		int var9 = var7 >= 0 ? var7 : -var7;
+		int var10 = var8;
+		if (var8 < var9) {
+			var10 = var9;
+		}
 
-			for (int var3 = 0; var3 < var1.size; ++var3) {
-				if (var1.creationErrors[var3] != 0) {
-					var0.writeByte(var1.creationErrors[var3]);
-				} else {
-					try {
-						int var4 = var1.operations[var3];
-						Field var5;
-						int var6;
-						if (var4 == 0) {
-							var5 = var1.fields[var3];
-							var6 = Reflection.getInt(var5, (Object)null);
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						} else if (var4 == 1) {
-							var5 = var1.fields[var3];
-							Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]);
-							var0.writeByte(0);
-						} else if (var4 == 2) {
-							var5 = var1.fields[var3];
-							var6 = var5.getModifiers();
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						}
-
-						Method var25;
-						if (var4 != 3) {
-							if (var4 == 4) {
-								var25 = var1.methods[var3];
-								var6 = var25.getModifiers();
-								var0.writeByte(0);
-								var0.writeInt(var6);
-							}
-						} else {
-							var25 = var1.methods[var3];
-							byte[][] var10 = var1.arguments[var3];
-							Object[] var7 = new Object[var10.length];
-
-							for (int var8 = 0; var8 < var10.length; ++var8) {
-								ObjectInputStream var9 = new ObjectInputStream(new ByteArrayInputStream(var10[var8]));
-								var7[var8] = var9.readObject();
-							}
-
-							Object var11 = Reflection.invoke(var25, (Object)null, var7);
-							if (var11 == null) {
-								var0.writeByte(0);
-							} else if (var11 instanceof Number) {
-								var0.writeByte(1);
-								var0.writeLong(((Number)var11).longValue());
-							} else if (var11 instanceof String) {
-								var0.writeByte(2);
-								var0.writeStringCp1252NullTerminated((String)var11);
-							} else {
-								var0.writeByte(4);
-							}
-						}
-					} catch (ClassNotFoundException var13) {
-						var0.writeByte(-10);
-					} catch (InvalidClassException var14) {
-						var0.writeByte(-11);
-					} catch (StreamCorruptedException var15) {
-						var0.writeByte(-12);
-					} catch (OptionalDataException var16) {
-						var0.writeByte(-13);
-					} catch (IllegalAccessException var17) {
-						var0.writeByte(-14);
-					} catch (IllegalArgumentException var18) {
-						var0.writeByte(-15);
-					} catch (InvocationTargetException var19) {
-						var0.writeByte(-16);
-					} catch (SecurityException var20) {
-						var0.writeByte(-17);
-					} catch (IOException var21) {
-						var0.writeByte(-18);
-					} catch (NullPointerException var22) {
-						var0.writeByte(-19);
-					} catch (Exception var23) {
-						var0.writeByte(-20);
-					} catch (Throwable var24) {
-						var0.writeByte(-21);
-					}
-				}
+		if (var10 != 0) {
+			int var11 = (var6 << 16) / var10;
+			int var12 = (var7 << 16) / var10;
+			if (var12 <= var11) {
+				var11 = -var11;
+			} else {
+				var12 = -var12;
 			}
 
-			var0.writeCrc(var2);
-			var1.remove();
+			int var13 = var5 * var12 >> 17;
+			int var14 = var5 * var12 + 1 >> 17;
+			int var15 = var5 * var11 >> 17;
+			int var16 = var5 * var11 + 1 >> 17;
+			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
+			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
+			int var17 = var0 + var13;
+			int var18 = var0 - var14;
+			int var19 = var0 + var6 - var14;
+			int var20 = var0 + var6 + var13;
+			int var21 = var15 + var1;
+			int var22 = var1 - var16;
+			int var23 = var7 + var1 - var16;
+			int var24 = var15 + var7 + var1;
+			Rasterizer3D.method5296(var17, var18, var19);
+			Rasterizer3D.rasterFlat(var21, var22, var23, var17, var18, var19, 0.0F, 0.0F, 0.0F, var4);
+			Rasterizer3D.method5296(var17, var19, var20);
+			Rasterizer3D.rasterFlat(var21, var23, var24, var17, var19, var20, 0.0F, 0.0F, 0.0F, var4);
 		}
 	}
 }

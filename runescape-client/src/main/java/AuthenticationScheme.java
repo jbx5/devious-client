@@ -1,52 +1,57 @@
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("em")
 @Implements("AuthenticationScheme")
 public enum AuthenticationScheme implements Enum {
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lea;"
-	)
-	@Export("USERNAME_PASSWORD_REMEMBER")
-	USERNAME_PASSWORD_REMEMBER(1, 0),
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lea;"
-	)
-	@Export("TOKEN_REMEMBER")
-	TOKEN_REMEMBER(0, 1),
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lea;"
-	)
-	@Export("USERNAME_PASSWORD")
-	USERNAME_PASSWORD(3, 2),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lea;"
-	)
-	@Export("TOKEN")
-	TOKEN(4, 3),
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lea;"
+		descriptor = "Lem;"
 	)
-	field1473(2, 4);
-
+	@Export("USERNAME_PASSWORD_REMEMBER")
+	USERNAME_PASSWORD_REMEMBER(3, 0),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lem;"
+	)
+	@Export("TOKEN_REMEMBER")
+	TOKEN_REMEMBER(2, 1),
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lem;"
+	)
+	@Export("USERNAME_PASSWORD")
+	USERNAME_PASSWORD(4, 2),
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lem;"
+	)
+	@Export("TOKEN")
+	TOKEN(0, 3),
 	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lem;"
+	)
+	field1493(1, 4);
+
+	@ObfuscatedName("tv")
+	@ObfuscatedSignature(
+		descriptor = "Lbf;"
+	)
+	@Export("pcmPlayer1")
+	static PcmPlayer pcmPlayer1;
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1046332187
+		intValue = -978634339
 	)
 	@Export("schemeId")
 	public final int schemeId;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1180048497
+		intValue = -761276969
 	)
 	@Export("packetId")
 	final int packetId;
@@ -56,81 +61,31 @@ public enum AuthenticationScheme implements Enum {
 		this.packetId = var4;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-884190501"
+		garbageValue = "691209479"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.packetId;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Low;Low;ZII)V",
-		garbageValue = "734075679"
+		descriptor = "(Lng;IB)V",
+		garbageValue = "4"
 	)
-	static void method3004(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
-		if (Login.clearLoginScreen) {
-			if (var3 == 4) {
-				Actor.method2489(4);
-			}
-
+	@Export("Widget_setKeyIgnoreHeld")
+	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+		if (var0.field3739 == null) {
+			throw new RuntimeException();
 		} else {
-			if (var3 == 0) {
-				class408.method7592(var2);
-			} else {
-				Actor.method2489(var3);
+			if (var0.field3871 == null) {
+				var0.field3871 = new int[var0.field3739.length];
 			}
 
-			Rasterizer2D.Rasterizer2D_clear();
-			byte[] var4 = var0.takeFileByNames("title.jpg", "");
-			Buddy.leftTitleSprite = class181.method3691(var4);
-			SecureRandomCallable.rightTitleSprite = Buddy.leftTitleSprite.mirrorHorizontally();
-			SecureRandomFuture.method2235(var1, Client.worldProperties);
-			Login.titleboxSprite = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");
-			class182.titlebuttonSprite = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton", "");
-			Login.field925 = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
-			class473.field4839 = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
-			VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
-			Login.runesSprite = class412.method7748(var1, "runes", "");
-			Clock.title_muteSprite = class412.method7748(var1, "title_mute", "");
-			class182.options_buttons_0Sprite = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
-			class465.field4805 = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
-			class402.options_buttons_2Sprite = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
-			Decimator.field410 = VarcInt.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
-			class31.field168 = class182.options_buttons_0Sprite.subWidth;
-			Skills.field3911 = class182.options_buttons_0Sprite.subHeight;
-			SpriteMask.loginScreenRunesAnimation = new LoginScreenAnimation(Login.runesSprite);
-			if (var2) {
-				Login.Login_username = "";
-				Login.Login_password = "";
-				Login.field934 = new String[8];
-				Login.field924 = 0;
-			}
-
-			class130.otpMedium = 0;
-			class148.otp = "";
-			Login.rememberUsername = true;
-			Login.worldSelectOpen = false;
-			if (!class93.clientPreferences.isTitleMusicDisabled()) {
-				ArrayList var5 = new ArrayList();
-				var5.add(new MusicSong(WorldMapSection0.archive6, "scape main", "", 255, false));
-				LoginScreenAnimation.method2528(var5, 0, 0, 0, 100, false);
-			} else {
-				Actor.method2488(0, 0);
-			}
-
-			FontName.method9049();
-			class220.method4348().method7126(false);
-			Login.clearLoginScreen = true;
-			Login.xPadding = (class524.canvasWidth - 765) / 2;
-			Login.loginBoxX = Login.xPadding + 202;
-			class433.loginBoxCenter = Login.loginBoxX + 180;
-			Buddy.leftTitleSprite.drawAt(Login.xPadding, 0);
-			SecureRandomCallable.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
-			GrandExchangeEvents.logoSprite.drawAt(Login.xPadding + 382 - GrandExchangeEvents.logoSprite.subWidth / 2, 18);
+			var0.field3871[var1] = Integer.MAX_VALUE;
 		}
 	}
 }

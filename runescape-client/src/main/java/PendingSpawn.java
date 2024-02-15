@@ -1,225 +1,197 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dk")
+@ObfuscatedName("dy")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -7190583
+		intValue = 513675807
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -309329667
+		intValue = -1632112785
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -440010209
+		intValue = -1681149729
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 956622833
+		intValue = -1122616449
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1260061589
+		intValue = -1123586699
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -284572845
+		intValue = 1514165237
 	)
-	int field1162;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 1964960583
-	)
-	int field1163;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 91823357
-	)
-	int field1164;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -2132160277
-	)
-	int field1157;
+	int field1197;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 427908289
+		intValue = 448930155
 	)
-	int field1166;
+	int field1196;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -1410243379
+	)
+	int field1198;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -650330621
+	)
+	int field1199;
 	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1348057939
+		intValue = -50867125
 	)
-	int field1167;
-	@ObfuscatedName("ad")
+	int field1191;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1116431321
+		intValue = 739646929
 	)
-	int field1169;
-	@ObfuscatedName("ax")
+	int field1203;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1748127727
+		intValue = 1655104173
+	)
+	int field1202;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 1161862785
 	)
 	@Export("delay")
 	int delay;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -255769707
+		intValue = -2100710063
 	)
 	@Export("hitpoints")
 	int hitpoints;
 
 	PendingSpawn() {
-		this.field1169 = 31;
+		this.field1202 = 31;
 		this.delay = 0;
 		this.hitpoints = -1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "349896774"
+		descriptor = "(IB)V",
+		garbageValue = "102"
 	)
-	void method2443(int var1) {
-		this.field1169 = var1;
+	void method2455(int var1) {
+		this.field1202 = var1;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "65280"
+		garbageValue = "-2006124018"
 	)
-	boolean method2442(int var1) {
+	boolean method2460(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
-			return (this.field1169 & 1 << var1) != 0;
+			return (this.field1202 & 1 << var1) != 0;
 		} else {
 			return true;
 		}
 	}
 
-	@ObfuscatedName("bh")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Lnn;II)V",
-		garbageValue = "300310316"
+		descriptor = "(I)V",
+		garbageValue = "1061121183"
 	)
-	public static void method2448(Widget var0, int var1) {
-		ItemComposition var2 = class341.ItemDefinition_get(var1);
-		var0.field3759.equipment[var2.maleModel] = var1 + 512;
-		if (var2.maleModel1 != -1) {
-			var0.field3759.equipment[var2.maleModel1] = 0;
-		}
-
-		if (var2.maleModel2 != -1) {
-			var0.field3759.equipment[var2.maleModel2] = 0;
-		}
-
-		var0.field3759.method6383();
+	static void method2459() {
+		ItemContainer.itemContainers = new NodeHashTable(32);
 	}
 
-	@ObfuscatedName("jv")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ldf;I)V",
-		garbageValue = "-469241818"
+		descriptor = "(I)V",
+		garbageValue = "-204477510"
 	)
-	static final void method2449(Actor var0) {
-		int var2;
-		int var3;
-		int var4;
-		if (var0.targetIndex != -1) {
-			Object var1 = null;
-			var2 = 65536;
-			if (var0.targetIndex < var2) {
-				var1 = Client.npcs[var0.targetIndex];
-			} else {
-				var1 = Client.players[var0.targetIndex - var2];
-			}
+	static void method2454() {
+		Iterator var0 = Messages.Messages_hashTable.iterator();
 
-			if (var1 != null) {
-				var3 = var0.x - ((Actor)var1).x;
-				var4 = var0.y - ((Actor)var1).y;
-				if (var3 != 0 || var4 != 0) {
-					int var6 = (int)(Math.atan2((double)var3, (double)var4) * 325.94932345220167D) & 2047;
-					var0.orientation = var6;
-				}
-			} else if (var0.false0) {
-				var0.targetIndex = -1;
-				var0.false0 = false;
-			}
+		while (var0.hasNext()) {
+			Message var1 = (Message)var0.next();
+			var1.clearIsFromFriend();
 		}
 
-		int var7;
-		if (var0.pathLength == 0 || var0.field1245 > 0) {
-			var7 = -1;
-			if (var0.field1213 != -1 && var0.field1210 != -1) {
-				var2 = var0.field1213 * 128 - HealthBarDefinition.baseX * 8192 + 64;
-				var3 = var0.field1210 * 128 - WorldMapScaleHandler.baseY * 8192 + 64;
-				var4 = var0.x - var2;
-				int var8 = var0.y - var3;
-				if (var4 != 0 || var8 != 0) {
-					var7 = class189.method3782(var4, var8);
-				}
-			} else if (var0.field1208 != -1) {
-				var7 = var0.field1208;
-			}
+	}
 
-			if (var7 != -1) {
-				var0.orientation = var7;
-				if (var0.field1211) {
-					var0.rotation = var0.orientation;
-				}
-			}
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)V",
+		garbageValue = "97"
+	)
+	static void method2458(boolean var0) {
+		MusicSong var2;
+		if (var0) {
+			Iterator var7 = class321.musicSongs.iterator();
 
-			var0.method2460();
-		}
+			while (true) {
+				do {
+					if (!var7.hasNext()) {
+						class321.musicSongs.clear();
+						return;
+					}
 
-		var7 = var0.orientation - var0.rotation & 2047;
-		if (var7 != 0) {
-			boolean var10 = true;
-			boolean var11 = true;
-			++var0.field1239;
-			var4 = var7 > 1024 ? -1 : 1;
-			var0.rotation += var0.field1240 * var4;
-			boolean var12 = true;
-			if (var7 < var0.field1240 || var7 > 2048 - var0.field1240) {
-				var0.rotation = var0.orientation;
-				var12 = false;
-			}
+					var2 = (MusicSong)var7.next();
+				} while(var2 == null);
 
-			if (var0.field1240 > 0 && var0.idleSequence == var0.movementSequence && (var0.field1239 > 25 || var12)) {
-				if (var4 == -1 && var0.turnLeftSequence != -1) {
-					var0.movementSequence = var0.turnLeftSequence;
-				} else if (var4 == 1 && var0.turnRightSequence != -1) {
-					var0.movementSequence = var0.turnRightSequence;
-				} else {
-					var0.movementSequence = var0.walkSequence;
+				var2.midiPcmStream.clear();
+				var2.midiPcmStream.method6202();
+				var2.midiPcmStream.setPcmStreamVolume(0);
+				var2.midiPcmStream.field3518 = 0;
+				int var3 = var2.musicTrackGroupId;
+				int var4 = var2.musicTrackFileId;
+				Iterator var5 = class321.field3482.iterator();
+
+				while (var5.hasNext()) {
+					class327 var6 = (class327)var5.next();
+					var6.vmethod6339(var3, var4);
 				}
 			}
-
-			var0.rotation &= 2047;
 		} else {
-			if (var0.false0) {
-				var0.targetIndex = -1;
-				var0.false0 = false;
+			for (int var1 = 0; var1 < class321.musicSongs.size(); ++var1) {
+				var2 = (MusicSong)class321.musicSongs.get(var1);
+				if (var2 == null) {
+					class321.musicSongs.remove(var1);
+					--var1;
+				} else if (var2.field3595) {
+					if (var2.midiPcmStream.field3518 > 0) {
+						--var2.midiPcmStream.field3518;
+					}
+
+					var2.midiPcmStream.clear();
+					var2.midiPcmStream.method6202();
+					var2.midiPcmStream.setPcmStreamVolume(0);
+					class321.musicSongs.remove(var1);
+					--var1;
+				} else {
+					var2.field3595 = true;
+				}
 			}
 
-			var0.field1239 = 0;
 		}
-
 	}
 }

@@ -6,40 +6,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rf")
+@ObfuscatedName("ri")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-	@ObfuscatedName("am")
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 1521097063
+	)
+	static int field4801;
+	@ObfuscatedName("aq")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("outputStream")
 	OutputStream outputStream;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1476152249
+		intValue = 1682690735
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -72662605
+		intValue = 1028221283
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1528143255
+		intValue = -989749177
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@Export("exception")
 	IOException exception;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@Export("closed")
 	boolean closed;
 
@@ -54,10 +59,10 @@ public class BufferedSink implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "854013615"
+		garbageValue = "-1142605561"
 	)
 	@Export("isClosed")
 	boolean isClosed() {
@@ -79,10 +84,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)V",
-		garbageValue = "1"
+		descriptor = "([BIII)V",
+		garbageValue = "-1268911124"
 	)
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
@@ -119,10 +124,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-24"
+		descriptor = "(I)V",
+		garbageValue = "-709556386"
 	)
 	@Export("close")
 	void close() {
@@ -196,43 +201,5 @@ public class BufferedSink implements Runnable {
 			}
 		} while(!this.isClosed());
 
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "2115908768"
-	)
-	static final boolean method8461(int var0, int var1) {
-		ObjectComposition var2 = class137.getObjectDefinition(var0);
-		if (var1 == 11) {
-			var1 = 10;
-		}
-
-		if (var1 >= 5 && var1 <= 8) {
-			var1 = 4;
-		}
-
-		return var2.method3932(var1);
-	}
-
-	@ObfuscatedName("ng")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1859289931"
-	)
-	static final void method8450(int var0) {
-		if (class380.widgetDefinition.loadInterface(var0)) {
-			Widget[] var1 = class380.widgetDefinition.Widget_interfaceComponents[var0];
-
-			for (int var2 = 0; var2 < var1.length; ++var2) {
-				Widget var3 = var1[var2];
-				if (var3 != null) {
-					var3.modelFrame = 0;
-					var3.modelFrameCycle = 0;
-				}
-			}
-
-		}
 	}
 }

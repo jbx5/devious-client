@@ -200,8 +200,6 @@ public final class WidgetID
 	public static final int SANITY_GROUP_ID = InterfaceID.SANITY;
 	public static final int THE_STRANGLER_INFECTION_GROUP_ID = InterfaceID.STRANGLER;
 
-	public static final int BANK_TUTORIAL_GROUP_ID = InterfaceID.BANK_TUTORIAL;
-
 	/**
 	 * OpenOSRS
 	 */
@@ -225,6 +223,11 @@ public final class WidgetID
 	 */
 	public static final int SET_DISPLAY_NAME_GROUP_ID = 558;
 	public static final int CHARACTER_CREATOR_GROUP_ID = 679;
+
+	/**
+	 * Bank tutorial
+	 */
+	public static final int BANK_TUTORIAL_GROUP_ID = 664;
 
 	static class WorldMap
 	{
