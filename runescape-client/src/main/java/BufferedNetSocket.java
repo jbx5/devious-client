@@ -609,7 +609,7 @@ public class BufferedNetSocket extends AbstractSocket {
 						if (class93.field1181 == Client.field553) {
 							VarbitComposition.field2061 = false;
 							Interpreter.updateGameState(20);
-							class407.updateLoginState(LoginState.field514);
+							class407.updateLoginState(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
 						}
 
 					}

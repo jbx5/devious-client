@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -10,154 +11,179 @@ public class LoginState {
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field519;
+	@Export("SHUTDOWN_PREVIOUS_CONNECTION")
+	static final LoginState SHUTDOWN_PREVIOUS_CONNECTION;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field495;
+	@Export("INIT_MOUSEHANDLER_SOCKET")
+	static final LoginState INIT_MOUSEHANDLER_SOCKET;
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field496;
+	@Export("UNMAPPED_20")
+	static final LoginState UNMAPPED_20;
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field497;
+	@Export("READ_LOGIN_STATUS")
+	static final LoginState READ_LOGIN_STATUS;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field498;
+	@Export("READ_RANDOM_VERIFICATION_NUMBER")
+	static final LoginState READ_RANDOM_VERIFICATION_NUMBER;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field499;
+	@Export("WRITE_INITIAL_LOGIN_PACKET")
+	static final LoginState WRITE_INITIAL_LOGIN_PACKET;
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field500;
+	@Export("READ_CLIENT_INFO_STATUS")
+	static final LoginState READ_CLIENT_INFO_STATUS;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field494;
+	@Export("READ_DIGEST_PARSER_PACKET_SIZE")
+	static final LoginState READ_DIGEST_PARSER_PACKET_SIZE;
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field502;
+	@Export("SUBMIT_DIGEST_PARSER_TASK")
+	static final LoginState SUBMIT_DIGEST_PARSER_TASK;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field503;
+	@Export("WRITE_DIGEST_PARSER_RESULT")
+	static final LoginState WRITE_DIGEST_PARSER_RESULT;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field504;
+	@Export("READ_STATE_11_PACKET_SIZE")
+	static final LoginState READ_STATE_11_PACKET_SIZE;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field505;
+	@Export("UNMAPPED_11")
+	static final LoginState UNMAPPED_11;
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field511;
+	@Export("READ_PROFILE_TRANSFER_TIME")
+	static final LoginState READ_PROFILE_TRANSFER_TIME;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field506;
+	@Export("PROFILE_TRANSFER")
+	static final LoginState PROFILE_TRANSFER;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field501;
+	@Export("UNMAPPED")
+	static final LoginState UNMAPPED;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field509;
+	@Export("READ_ACCOUNT_INFO")
+	static final LoginState READ_ACCOUNT_INFO;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field518;
+	@Export("SET_SERVER_PROTOCOL")
+	static final LoginState SET_SERVER_PROTOCOL;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field508;
+	@Export("UPDATE_PLAYER_AND_LOAD_REGIONS")
+	static final LoginState UPDATE_PLAYER_AND_LOAD_REGIONS;
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field512;
+	@Export("UNMAPPED_17")
+	static final LoginState UNMAPPED_17;
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field513;
+	@Export("UNMAPPED_18")
+	static final LoginState UNMAPPED_18;
 	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field507;
+	@Export("UNMAPPED_19")
+	static final LoginState UNMAPPED_19;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field515;
+	@Export("REFRESHING_TOKEN")
+	static final LoginState REFRESHING_TOKEN;
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field516;
+	@Export("TOKEN_RESPONSE")
+	static final LoginState TOKEN_RESPONSE;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field517;
+	@Export("UNMAPPED_21")
+	static final LoginState UNMAPPED_21;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "Lcv;"
 	)
-	static final LoginState field514;
+	@Export("READ_ACCOUNT_INFO_PACKET_SIZE")
+	static final LoginState READ_ACCOUNT_INFO_PACKET_SIZE;
 
 	static {
-		field519 = new LoginState();
-		field495 = new LoginState();
-		field496 = new LoginState();
-		field497 = new LoginState();
-		field498 = new LoginState();
-		field499 = new LoginState();
-		field500 = new LoginState();
-		field494 = new LoginState();
-		field502 = new LoginState();
-		field503 = new LoginState();
-		field504 = new LoginState();
-		field505 = new LoginState();
-		field511 = new LoginState();
-		field506 = new LoginState();
-		field501 = new LoginState();
-		field509 = new LoginState();
-		field518 = new LoginState();
-		field508 = new LoginState();
-		field512 = new LoginState();
-		field513 = new LoginState();
-		field507 = new LoginState();
-		field515 = new LoginState();
-		field516 = new LoginState();
-		field517 = new LoginState();
-		field514 = new LoginState();
+		SHUTDOWN_PREVIOUS_CONNECTION = new LoginState();
+		INIT_MOUSEHANDLER_SOCKET = new LoginState();
+		UNMAPPED_20 = new LoginState();
+		READ_LOGIN_STATUS = new LoginState();
+		READ_RANDOM_VERIFICATION_NUMBER = new LoginState();
+		WRITE_INITIAL_LOGIN_PACKET = new LoginState();
+		READ_CLIENT_INFO_STATUS = new LoginState();
+		READ_DIGEST_PARSER_PACKET_SIZE = new LoginState();
+		SUBMIT_DIGEST_PARSER_TASK = new LoginState();
+		WRITE_DIGEST_PARSER_RESULT = new LoginState();
+		READ_STATE_11_PACKET_SIZE = new LoginState();
+		UNMAPPED_11 = new LoginState();
+		READ_PROFILE_TRANSFER_TIME = new LoginState();
+		PROFILE_TRANSFER = new LoginState();
+		UNMAPPED = new LoginState();
+		READ_ACCOUNT_INFO = new LoginState();
+		SET_SERVER_PROTOCOL = new LoginState();
+		UPDATE_PLAYER_AND_LOAD_REGIONS = new LoginState();
+		UNMAPPED_17 = new LoginState();
+		UNMAPPED_18 = new LoginState();
+		UNMAPPED_19 = new LoginState();
+		REFRESHING_TOKEN = new LoginState();
+		TOKEN_RESPONSE = new LoginState();
+		UNMAPPED_21 = new LoginState();
+		READ_ACCOUNT_INFO_PACKET_SIZE = new LoginState();
 	}
 
 	LoginState() {

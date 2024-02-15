@@ -2316,7 +2316,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		PacketBuffer var2 = packetWriter.packetBuffer;
 
 		try {
-			if (loginState == LoginState.field519) {
+			if (loginState == LoginState.SHUTDOWN_PREVIOUS_CONNECTION) {
 				if (ApproximateRouteStrategy.field489 == null && (secureRandomFuture.isDone() || field559 > 250)) {
 					ApproximateRouteStrategy.field489 = secureRandomFuture.get();
 					secureRandomFuture.shutdown();
@@ -2336,7 +2336,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						if (this.containsAccessAndRefreshToken()) {
 							try {
 								this.requestRefreshAccessToken(class521.refreshToken);
-								class407.updateLoginState(LoginState.field516);
+								class407.updateLoginState(LoginState.TOKEN_RESPONSE);
 							} catch (Throwable var21) {
 								class315.RunException_sendStackTrace((String)null, var21);
 								class93.getLoginError(65);
@@ -2350,7 +2350,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 							try {
 								this.authenticate(class357.sessionId, Renderable.characterId);
-								class407.updateLoginState(LoginState.field515);
+								class407.updateLoginState(LoginState.REFRESHING_TOKEN);
 							} catch (Exception var20) {
 								class315.RunException_sendStackTrace((String)null, var20);
 								class93.getLoginError(65);
@@ -2358,13 +2358,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							}
 						}
 					} else {
-						class407.updateLoginState(LoginState.field495);
+						class407.updateLoginState(LoginState.INIT_MOUSEHANDLER_SOCKET);
 					}
 				}
 			}
 
 			HttpResponse var23;
-			if (loginState == LoginState.field516) {
+			if (loginState == LoginState.TOKEN_RESPONSE) {
 				if (this.refreshAccessTokenRequestFuture != null) {
 					if (!this.refreshAccessTokenRequestFuture.isDone()) {
 						return;
@@ -2432,10 +2432,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				this.requestOtlToken(KeyHandler.accessToken);
-				class407.updateLoginState(LoginState.field515);
+				class407.updateLoginState(LoginState.REFRESHING_TOKEN);
 			}
 
-			if (LoginState.field515 == loginState) {
+			if (LoginState.REFRESHING_TOKEN == loginState) {
 				if (this.otlTokenRequestFuture != null) {
 					if (!this.otlTokenRequestFuture.isDone()) {
 						return;
@@ -2507,10 +2507,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				field559 = 0;
-				class407.updateLoginState(LoginState.field495);
+				class407.updateLoginState(LoginState.INIT_MOUSEHANDLER_SOCKET);
 			}
 
-			if (LoginState.field495 == loginState) {
+			if (LoginState.INIT_MOUSEHANDLER_SOCKET == loginState) {
 				if (ClientPreferences.field1324 == null) {
 					ClientPreferences.field1324 = GameEngine.taskHandler.newSocketTask(class183.worldHost, class316.currentPort);
 				}
@@ -2525,23 +2525,23 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var1 = var25;
 					packetWriter.setSocket(var25);
 					ClientPreferences.field1324 = null;
-					class407.updateLoginState(LoginState.field496);
+					class407.updateLoginState(LoginState.UNMAPPED_20);
 				}
 			}
 
 			PacketBufferNode var27;
-			if (loginState == LoginState.field496) {
+			if (loginState == LoginState.UNMAPPED_20) {
 				packetWriter.clearBuffer();
 				var27 = class166.method3491();
 				var27.packetBuffer.writeByte(class314.field3435.field3432);
 				packetWriter.addNode(var27);
 				packetWriter.flush();
 				var2.offset = 0;
-				class407.updateLoginState(LoginState.field497);
+				class407.updateLoginState(LoginState.READ_LOGIN_STATUS);
 			}
 
 			int var12;
-			if (loginState == LoginState.field497) {
+			if (loginState == LoginState.READ_LOGIN_STATUS) {
 				if (AuthenticationScheme.pcmPlayer1 != null) {
 					AuthenticationScheme.pcmPlayer1.method741();
 				}
@@ -2558,11 +2558,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					var2.offset = 0;
-					class407.updateLoginState(LoginState.field498);
+					class407.updateLoginState(LoginState.READ_RANDOM_VERIFICATION_NUMBER);
 				}
 			}
 
-			if (LoginState.field498 == loginState) {
+			if (LoginState.READ_RANDOM_VERIFICATION_NUMBER == loginState) {
 				if (var2.offset < 8) {
 					var12 = ((AbstractSocket)var1).available();
 					if (var12 > 8 - var2.offset) {
@@ -2578,11 +2578,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (var2.offset == 8) {
 					var2.offset = 0;
 					VarpDefinition.field1862 = var2.readLong();
-					class407.updateLoginState(LoginState.field499);
+					class407.updateLoginState(LoginState.WRITE_INITIAL_LOGIN_PACKET);
 				}
 			}
 
-			if (loginState == LoginState.field499) {
+			if (loginState == LoginState.WRITE_INITIAL_LOGIN_PACKET) {
 				packetWriter.packetBuffer.offset = 0;
 				packetWriter.clearBuffer();
 				PacketBuffer var29 = new PacketBuffer(500);
@@ -2707,60 +2707,60 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				var2.newIsaacCipher(var10);
-				class407.updateLoginState(LoginState.field500);
+				class407.updateLoginState(LoginState.READ_CLIENT_INFO_STATUS);
 			}
 
 			int var13;
-			if (loginState == LoginState.field500 && ((AbstractSocket)var1).available() > 0) {
+			if (loginState == LoginState.READ_CLIENT_INFO_STATUS && ((AbstractSocket)var1).available() > 0) {
 				var12 = ((AbstractSocket)var1).readUnsignedByte();
 				if (var12 == 61) {
 					var13 = ((AbstractSocket)var1).available();
 					GameObject.field3131 = var13 == 1 && ((AbstractSocket)var1).readUnsignedByte() == 1;
-					class407.updateLoginState(LoginState.field499);
+					class407.updateLoginState(LoginState.WRITE_INITIAL_LOGIN_PACKET);
 				}
 
 				if (var12 == 21 && gameState == 20) {
-					class407.updateLoginState(LoginState.field511);
+					class407.updateLoginState(LoginState.READ_PROFILE_TRANSFER_TIME);
 				} else if (var12 == 2) {
 					if (WorldMapScaleHandler.field2696) {
-						class407.updateLoginState(LoginState.field517);
+						class407.updateLoginState(LoginState.UNMAPPED_21);
 					} else {
-						class407.updateLoginState(LoginState.field501);
+						class407.updateLoginState(LoginState.UNMAPPED);
 					}
 				} else if (var12 == 15 && gameState == 40) {
 					packetWriter.serverPacketLength = -1;
-					class407.updateLoginState(LoginState.field507);
+					class407.updateLoginState(LoginState.UNMAPPED_19);
 				} else if (var12 == 64) {
-					class407.updateLoginState(LoginState.field504);
+					class407.updateLoginState(LoginState.READ_STATE_11_PACKET_SIZE);
 				} else if (var12 == 23 && field560 < 1) {
 					++field560;
-					class407.updateLoginState(LoginState.field519);
+					class407.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 				} else if (var12 == 29) {
-					class407.updateLoginState(LoginState.field512);
+					class407.updateLoginState(LoginState.UNMAPPED_17);
 				} else {
 					if (var12 != 69) {
 						class93.getLoginError(var12);
 						return;
 					}
 
-					class407.updateLoginState(LoginState.field494);
+					class407.updateLoginState(LoginState.READ_DIGEST_PARSER_PACKET_SIZE);
 				}
 			}
 
-			if (loginState == LoginState.field517) {
+			if (loginState == LoginState.UNMAPPED_21) {
 				VarbitComposition.field2061 = true;
 				WorldMapDecoration.method5033(class93.field1166);
 				Interpreter.updateGameState(0);
 			}
 
-			if (loginState == LoginState.field494 && ((AbstractSocket)var1).available() >= 2) {
+			if (loginState == LoginState.READ_DIGEST_PARSER_PACKET_SIZE && ((AbstractSocket)var1).available() >= 2) {
 				((AbstractSocket)var1).read(var2.array, 0, 2);
 				var2.offset = 0;
 				class410.field4556 = var2.readUnsignedShort();
-				class407.updateLoginState(LoginState.field502);
+				class407.updateLoginState(LoginState.SUBMIT_DIGEST_PARSER_TASK);
 			}
 
-			if (LoginState.field502 == loginState && ((AbstractSocket)var1).available() >= class410.field4556) {
+			if (LoginState.SUBMIT_DIGEST_PARSER_TASK == loginState && ((AbstractSocket)var1).available() >= class410.field4556) {
 				var2.offset = 0;
 				((AbstractSocket)var1).read(var2.array, var2.offset, class410.field4556);
 				class6[] var32 = new class6[]{class6.field12};
@@ -2769,14 +2769,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				try {
 					class3 var34 = class218.method4251(var33);
 					this.field581 = new class7(var2, var34);
-					class407.updateLoginState(LoginState.field503);
+					class407.updateLoginState(LoginState.WRITE_DIGEST_PARSER_RESULT);
 				} catch (Exception var15) {
 					class93.getLoginError(22);
 					return;
 				}
 			}
 
-			if (loginState == LoginState.field503 && this.field581.method40()) {
+			if (loginState == LoginState.WRITE_DIGEST_PARSER_RESULT && this.field581.method40()) {
 				this.field580 = this.field581.method42();
 				this.field581.method41();
 				this.field581 = null;
@@ -2793,52 +2793,52 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				packetWriter.addNode(var27);
 				packetWriter.flush();
 				this.field580 = null;
-				class407.updateLoginState(LoginState.field500);
+				class407.updateLoginState(LoginState.READ_CLIENT_INFO_STATUS);
 			}
 
-			if (loginState == LoginState.field504 && ((AbstractSocket)var1).available() > 0) {
+			if (loginState == LoginState.READ_STATE_11_PACKET_SIZE && ((AbstractSocket)var1).available() > 0) {
 				class133.field1589 = ((AbstractSocket)var1).readUnsignedByte();
-				class407.updateLoginState(LoginState.field505);
+				class407.updateLoginState(LoginState.UNMAPPED_11);
 			}
 
-			if (loginState == LoginState.field505 && ((AbstractSocket)var1).available() >= class133.field1589) {
+			if (loginState == LoginState.UNMAPPED_11 && ((AbstractSocket)var1).available() >= class133.field1589) {
 				((AbstractSocket)var1).read(var2.array, 0, class133.field1589);
 				var2.offset = 0;
-				class407.updateLoginState(LoginState.field500);
+				class407.updateLoginState(LoginState.READ_CLIENT_INFO_STATUS);
 			}
 
-			if (loginState == LoginState.field511 && ((AbstractSocket)var1).available() > 0) {
+			if (loginState == LoginState.READ_PROFILE_TRANSFER_TIME && ((AbstractSocket)var1).available() > 0) {
 				field561 = (((AbstractSocket)var1).readUnsignedByte() + 3) * 60;
-				class407.updateLoginState(LoginState.field506);
+				class407.updateLoginState(LoginState.PROFILE_TRANSFER);
 			}
 
-			if (loginState == LoginState.field506) {
+			if (loginState == LoginState.PROFILE_TRANSFER) {
 				field559 = 0;
 				SecureUrlRequester.setLoginResponseString("You have only just left another world.", "Your profile will be transferred in:", field561 / 60 + " seconds.");
 				if (--field561 <= 0) {
-					class407.updateLoginState(LoginState.field519);
+					class407.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 				}
 
-			} else if (LoginState.field514 == loginState) {
+			} else if (LoginState.READ_ACCOUNT_INFO_PACKET_SIZE == loginState) {
 				var27 = class166.method3491();
 				var27.packetBuffer.writeByte(class314.field3429.field3432);
 				var27.packetBuffer.writeShort(class314.field3429.field3431);
 				class161.method3436(var27);
 				packetWriter.addNode(var27);
 				packetWriter.flush();
-				class407.updateLoginState(LoginState.field501);
+				class407.updateLoginState(LoginState.UNMAPPED);
 			} else {
-				if (loginState == LoginState.field501 && ((AbstractSocket)var1).available() >= 1) {
+				if (loginState == LoginState.UNMAPPED && ((AbstractSocket)var1).available() >= 1) {
 					UrlRequester.field1442 = ((AbstractSocket)var1).readUnsignedByte();
 					if (UrlRequester.field1442 != class314.field3430.field3431) {
 						class93.getLoginError(UrlRequester.field1442);
 						return;
 					}
 
-					class407.updateLoginState(LoginState.field509);
+					class407.updateLoginState(LoginState.READ_ACCOUNT_INFO);
 				}
 
-				if (LoginState.field509 == loginState && ((AbstractSocket)var1).available() >= UrlRequester.field1442) {
+				if (LoginState.READ_ACCOUNT_INFO == loginState && ((AbstractSocket)var1).available() >= UrlRequester.field1442) {
 					boolean var43 = ((AbstractSocket)var1).readUnsignedByte() == 1;
 					((AbstractSocket)var1).read(var2.array, 0, 4);
 					var2.offset = 0;
@@ -2874,10 +2874,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var2.offset = 0;
 					userHash = var2.readLong();
 					VarbitComposition.method3830().method4263(this.https);
-					class407.updateLoginState(LoginState.field518);
+					class407.updateLoginState(LoginState.SET_SERVER_PROTOCOL);
 				}
 
-				if (LoginState.field518 == loginState && ((AbstractSocket)var1).available() >= packetWriter.serverPacketLength) {
+				if (LoginState.SET_SERVER_PROTOCOL == loginState && ((AbstractSocket)var1).available() >= packetWriter.serverPacketLength) {
 					((AbstractSocket)var1).read(var2.array, 0, 1);
 					var2.offset = 0;
 					if (var2.method9431()) {
@@ -2903,10 +2903,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					} catch (Throwable var14) {
 					}
 
-					class407.updateLoginState(LoginState.field508);
+					class407.updateLoginState(LoginState.UPDATE_PLAYER_AND_LOAD_REGIONS);
 				}
 
-				if (LoginState.field508 == loginState) {
+				if (LoginState.UPDATE_PLAYER_AND_LOAD_REGIONS == loginState) {
 					if (((AbstractSocket)var1).available() >= packetWriter.serverPacketLength) {
 						var2.offset = 0;
 						((AbstractSocket)var1).read(var2.array, 0, packetWriter.serverPacketLength);
@@ -2920,15 +2920,15 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 				} else {
-					if (loginState == LoginState.field512 && ((AbstractSocket)var1).available() >= 2) {
+					if (loginState == LoginState.UNMAPPED_17 && ((AbstractSocket)var1).available() >= 2) {
 						var2.offset = 0;
 						((AbstractSocket)var1).read(var2.array, 0, 2);
 						var2.offset = 0;
 						class131.field1550 = var2.readUnsignedShort();
-						class407.updateLoginState(LoginState.field513);
+						class407.updateLoginState(LoginState.UNMAPPED_18);
 					}
 
-					if (LoginState.field513 == loginState && ((AbstractSocket)var1).available() >= class131.field1550) {
+					if (LoginState.UNMAPPED_18 == loginState && ((AbstractSocket)var1).available() >= class131.field1550) {
 						var2.offset = 0;
 						((AbstractSocket)var1).read(var2.array, 0, class131.field1550);
 						var2.offset = 0;
@@ -2942,7 +2942,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						}
 					}
 
-					if (loginState != LoginState.field507) {
+					if (loginState != LoginState.UNMAPPED_19) {
 						++field559;
 						if (field559 > 2000) {
 							if (field560 < 1) {
@@ -2953,7 +2953,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 								}
 
 								++field560;
-								class407.updateLoginState(LoginState.field519);
+								class407.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 							} else {
 								class93.getLoginError(-3);
 							}
@@ -3034,7 +3034,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				++field560;
-				class407.updateLoginState(LoginState.field519);
+				class407.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 			} else {
 				class93.getLoginError(-2);
 			}
