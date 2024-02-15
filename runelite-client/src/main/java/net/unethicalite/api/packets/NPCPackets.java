@@ -134,7 +134,7 @@ public class NPCPackets
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPNPC2(), client.getPacketWriter().getIsaacCipher());
 		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
-		packetBufferNode.getPacketBuffer().writeShort(npcIndex);
+		packetBufferNode.getPacketBuffer().writeShortAdd(npcIndex);
 		return packetBufferNode;
 	}
 
