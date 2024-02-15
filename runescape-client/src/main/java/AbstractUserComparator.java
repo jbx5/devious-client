@@ -4,20 +4,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rd")
+@ObfuscatedName("rg")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("nextComparator")
 	Comparator nextComparator;
 
 	protected AbstractUserComparator() {
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;I)V",
-		garbageValue = "1637630099"
+		descriptor = "(Ljava/util/Comparator;B)V",
+		garbageValue = "73"
 	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
@@ -29,10 +29,10 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lrq;Lrq;I)I",
-		garbageValue = "1006271333"
+		descriptor = "(Lra;Lra;B)I",
+		garbageValue = "30"
 	)
 	@Export("compareUser")
 	protected final int compareUser(User var1, User var2) {
@@ -41,5 +41,15 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1895728260"
+	)
+	@Export("getWindowedMode")
+	static int getWindowedMode() {
+		return Client.isResizable ? 2 : 1;
 	}
 }

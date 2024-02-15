@@ -1625,8 +1625,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("DBTableIndex_cache")
 	RSEvictingDualNodeHashTable getDbTableIndexCache();
 
-	@Import("Widget_cachedSpriteMasks")
-	RSEvictingDualNodeHashTable getSpriteMasksCache();;
+	//@Import("Widget_cachedSpriteMasks")
+	//RSEvictingDualNodeHashTable getSpriteMasksCache();;
 
 	@Import("field1909")
 	RSEvictingDualNodeHashTable getField1909();
@@ -1637,11 +1637,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("field1915")
 	RSEvictingDualNodeHashTable getField1915();
 
-	@Import("archive7")
-	RSEvictingDualNodeHashTable getArchive7();
+	@Import("field2022")
+	RSEvictingDualNodeHashTable getfield2022();
 
-	@Import("archive5")
-	RSEvictingDualNodeHashTable getArchive5();
+	@Import("field1842")
+	RSEvictingDualNodeHashTable getField1842();
 
 	@Import("field2007")
 	RSEvictingDualNodeHashTable getField2007();
@@ -1658,8 +1658,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("field2136")
 	RSEvictingDualNodeHashTable getField2136();
 
-	@Import("archive4")
-	RSEvictingDualNodeHashTable getArchive4();
+	@Import("field1864")
+	RSEvictingDualNodeHashTable getField1864();
+
+	@Import("field1851")
+	RSEvictingDualNodeHashTable getField1851();
 
 	@Import("archive11")
 	RSEvictingDualNodeHashTable getArchive11();
@@ -1786,7 +1789,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setLoginIndex(int index);
 
 	@Import("loginState")
-	int getRSLoginState();
+	RSLoginState getRSLoginState();
 
 	@Construct
 	RSClientPacket createClientPacket(int opcode, int length);

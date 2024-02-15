@@ -1,37 +1,39 @@
-import net.runelite.mapping.Export;
+import java.util.Iterator;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tw")
-final class class515 implements class514 {
-	@ObfuscatedName("an")
-	@Export("Tiles_lightness")
-	static int[] Tiles_lightness;
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Luk;B)V",
-		garbageValue = "-38"
+@ObfuscatedName("tz")
+class class515 implements Iterator {
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -351257941
 	)
-	public void vmethod9263(Object var1, Buffer var2) {
-		this.method9225((Integer)var1, var2);
+	int field5112;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Ltx;"
+	)
+	final class516 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Ltx;)V"
+	)
+	class515(class516 var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Luk;I)Ljava/lang/Object;",
-		garbageValue = "183213382"
-	)
-	public Object vmethod9259(Buffer var1) {
-		return var1.readInt();
+	public Object next() {
+		int var1 = ++this.field5112 - 1;
+		class475 var2 = (class475)this.this$0.field5115.get((long)var1);
+		return var2 != null ? var2 : this.this$0.method9274(var1);
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Integer;Luk;I)V",
-		garbageValue = "1734718861"
-	)
-	void method9225(Integer var1, Buffer var2) {
-		var2.writeInt(var1);
+	public void remove() {
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean hasNext() {
+		return this.field5112 < this.this$0.method8723();
 	}
 }

@@ -1,19 +1,12 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eq")
+@ObfuscatedName("ed")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 1549455343
-	)
-	@Export("Interpreter_intStackSize")
-	static int Interpreter_intStackSize;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -21,10 +14,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lrj;Lrj;B)I",
-		garbageValue = "37"
+		descriptor = "(Lry;Lry;I)I",
+		garbageValue = "1081617748"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -39,36 +32,23 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ce")
+	@ObfuscatedName("lu")
 	@ObfuscatedSignature(
-		descriptor = "([BI)[B",
-		garbageValue = "1306902939"
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "84"
 	)
-	@Export("decompressBytes")
-	static final byte[] decompressBytes(byte[] var0) {
-		Buffer var1 = new Buffer(var0);
-		int var2 = var1.readUnsignedByte();
-		int var3 = var1.readInt();
-		if (var3 < 0 || AbstractArchive.field4364 != 0 && var3 > AbstractArchive.field4364) {
-			throw new RuntimeException();
-		} else if (var2 == 0) {
-			byte[] var6 = new byte[var3];
-			var1.readBytes(var6, 0, var3);
-			return var6;
-		} else {
-			int var4 = var1.readInt();
-			if (var4 >= 0 && (AbstractArchive.field4364 == 0 || var4 <= AbstractArchive.field4364)) {
-				byte[] var5 = new byte[var4];
-				if (var2 == 1) {
-					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
-				} else {
-					AbstractArchive.gzipDecompressor.decompress(var1, var5);
-				}
+	@Export("formatItemStacks")
+	static final String formatItemStacks(int var0) {
+		String var1 = Integer.toString(var0);
 
-				return var5;
-			} else {
-				throw new RuntimeException();
-			}
+		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
+			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
+		}
+
+		if (var1.length() > 9) {
+			return " " + class370.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
+		} else {
+			return var1.length() > 6 ? " " + class370.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + class370.colorStartTag(16776960) + var1 + "</col>";
 		}
 	}
 }

@@ -4,35 +4,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hn")
+@ObfuscatedName("hj")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements Enum {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lhn;"
+		descriptor = "Lhj;"
 	)
-	field1937(0, 0),
-	@ObfuscatedName("ap")
+	field1950(2, 0),
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lhn;"
+		descriptor = "Lhj;"
 	)
 	@Export("HorizontalAlignment_centered")
-	HorizontalAlignment_centered(2, 1),
-	@ObfuscatedName("af")
+	HorizontalAlignment_centered(1, 1),
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lhn;"
+		descriptor = "Lhj;"
 	)
-	field1935(1, 2);
+	field1951(0, 2);
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ji")
+	@Export("regionMapArchives")
+	static byte[][] regionMapArchives;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -965677749
+		intValue = -1967956355
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -1995200501
+		intValue = 1226860911
 	)
 	@Export("id")
 	final int id;
@@ -42,10 +45,10 @@ public enum HorizontalAlignment implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-884190501"
+		garbageValue = "691209479"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
@@ -54,13 +57,19 @@ public enum HorizontalAlignment implements Enum {
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-5089"
+		descriptor = "(I)V",
+		garbageValue = "628076490"
 	)
-	static void method3713() {
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
+	public static void method3694() {
+		VarpDefinition.VarpDefinition_cached.clear();
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "537001060"
+	)
+	static boolean method3688(char var0) {
+		return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".indexOf(var0) != -1;
 	}
 }

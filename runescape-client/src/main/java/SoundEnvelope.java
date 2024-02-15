@@ -3,40 +3,40 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bh")
+@ObfuscatedName("bg")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@Export("segments")
 	int segments;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("durations")
 	int[] durations;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("phases")
 	int[] phases;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("start")
 	int start;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@Export("end")
 	int end;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@Export("form")
 	int form;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@Export("ticks")
 	int ticks;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@Export("phaseIndex")
 	int phaseIndex;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@Export("step")
 	int step;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@Export("amplitude")
 	int amplitude;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ak")
 	@Export("max")
 	int max;
 
@@ -50,9 +50,9 @@ public class SoundEnvelope {
 		this.phases[1] = 65535;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;)V"
+		descriptor = "(Luq;)V"
 	)
 	@Export("decode")
 	final void decode(Buffer var1) {
@@ -62,9 +62,9 @@ public class SoundEnvelope {
 		this.decodeSegments(var1);
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Luk;)V"
+		descriptor = "(Luq;)V"
 	)
 	@Export("decodeSegments")
 	final void decodeSegments(Buffer var1) {
@@ -79,7 +79,7 @@ public class SoundEnvelope {
 
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("reset")
 	final void reset() {
 		this.ticks = 0;
@@ -89,7 +89,7 @@ public class SoundEnvelope {
 		this.max = 0;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("doStep")
 	final int doStep(int var1) {
 		if (this.max >= this.ticks) {

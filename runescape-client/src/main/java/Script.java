@@ -1,56 +1,63 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
+@ObfuscatedName("dc")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llq;"
+		descriptor = "Lll;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("ap")
-	String field979;
-	@ObfuscatedName("af")
+	@ObfuscatedName("kb")
+	@ObfuscatedGetter(
+		intValue = -60125901
+	)
+	@Export("cameraYaw")
+	static int cameraYaw;
+	@ObfuscatedName("aw")
+	String field1028;
+	@ObfuscatedName("al")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -165630961
+		intValue = 975929733
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1498866603
+		intValue = -1886750317
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 634248277
+		intValue = -107184905
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1186762681
+		intValue = -1363295215
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Ltb;"
+		descriptor = "[Lta;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -62,80 +69,131 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Ltb;",
-		garbageValue = "-1812104264"
+		descriptor = "(II)[Lta;",
+		garbageValue = "-1377003092"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lhi;",
-		garbageValue = "0"
+		descriptor = "([Ljava/lang/String;[SIII)V",
+		garbageValue = "-1836660217"
 	)
-	@Export("StructDefinition_getStructDefinition")
-	public static StructComposition StructDefinition_getStructDefinition(int var0) {
-		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = StructComposition.StructDefinition_archive.takeFile(34, var0);
-			var1 = new StructComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	@Export("sortItemsByName")
+	public static void sortItemsByName(String[] var0, short[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			short var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
+
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					short var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
+				}
 			}
 
-			var1.postDecode();
-			StructComposition.StructDefinition_cached.put(var1, (long)var0);
-			return var1;
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			sortItemsByName(var0, var1, var2, var5 - 1);
+			sortItemsByName(var0, var1, var5 + 1, var3);
+		}
+
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;IZB)I",
+		garbageValue = "-22"
+	)
+	static int method2242(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
+
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
+
+					if (var8 == '+') {
+						continue;
+					}
+				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var5 * var1 + var10;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
+			}
+
+			if (!var4) {
+				throw new NumberFormatException();
+			} else {
+				return var5;
+			}
+		} else {
+			throw new IllegalArgumentException("" + var1);
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lho;",
-		garbageValue = "538407903"
+		descriptor = "(I)V",
+		garbageValue = "63250644"
 	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
+	static void method2240() {
+		Iterator var0 = Messages.Messages_hashTable.iterator();
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(CLol;I)I",
-		garbageValue = "-885374361"
-	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
+		while (var0.hasNext()) {
+			Message var1 = (Message)var0.next();
+			var1.clearIsFromIgnored();
 		}
 
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
-		}
-
-		return var2;
 	}
 }

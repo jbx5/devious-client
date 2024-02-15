@@ -3,25 +3,19 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("da")
+@ObfuscatedName("du")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lts;"
+		descriptor = "Ltl;"
 	)
 	@Export("itemContainers")
 	static NodeHashTable itemContainers;
-	@ObfuscatedName("me")
-	@ObfuscatedSignature(
-		descriptor = "Lkj;"
-	)
-	@Export("textureProvider")
-	static TextureProvider textureProvider;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@Export("ids")
 	int[] ids;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@Export("quantities")
 	int[] quantities;
 
@@ -34,51 +28,34 @@ public class ItemContainer extends Node {
 		this.quantities = new int[]{0};
 	}
 
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
-		garbageValue = "-37"
-	)
-	@Export("addChatMessage")
-	static void addChatMessage(int var0, String var1, String var2, String var3) {
-		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
-		if (var4 == null) {
-			var4 = new ChatChannel();
-			Messages.Messages_channels.put(var0, var4);
-		}
-
-		Message var5 = var4.addMessage(var0, var1, var2, var3);
-		Messages.Messages_hashTable.put(var5, (long)var5.count);
-		Messages.Messages_queue.add(var5);
-		Client.chatCycle = Client.cycleCntr;
-	}
-
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-23"
+		descriptor = "(I)V",
+		garbageValue = "1803810767"
 	)
-	public static int method2347(int var0) {
-		--var0;
-		var0 |= var0 >>> 1;
-		var0 |= var0 >>> 2;
-		var0 |= var0 >>> 4;
-		var0 |= var0 >>> 8;
-		var0 |= var0 >>> 16;
-		return var0 + 1;
+	public static void method2347() {
+		class186.field2026.clear();
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-335792914"
+		descriptor = "(II)Lhw;",
+		garbageValue = "-1645742938"
 	)
-	static void method2350() {
-		if (class281.loadWorlds()) {
-			Login.worldSelectOpen = true;
-			Login.worldSelectPage = 0;
-			Login.worldSelectPagesCount = 0;
-		}
+	@Export("getEnum")
+	public static EnumComposition getEnum(int var0) {
+		EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = GrandExchangeOfferWorldComparator.EnumDefinition_archive.takeFile(8, var0);
+			var1 = new EnumComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
 
+			EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

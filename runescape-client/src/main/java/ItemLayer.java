@@ -4,54 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kz")
+@ObfuscatedName("ka")
 @Implements("ItemLayer")
 public final class ItemLayer {
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -612752779
+		intValue = -1645759743
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = -235929600
-	)
+	@ObfuscatedName("aw")
 	@Export("x")
 	int x;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1448069827
+		intValue = -425014597
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Lky;"
 	)
 	@Export("first")
 	Renderable first;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Lky;"
 	)
 	@Export("second")
 	Renderable second;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Lky;"
 	)
 	@Export("third")
 	Renderable third;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		longValue = -5128273485840900591L
+		longValue = 6282540839477725861L
 	)
 	@Export("tag")
 	long tag;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 1921801005
+		intValue = 116812191
 	)
 	@Export("height")
 	int height;

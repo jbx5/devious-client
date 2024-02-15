@@ -1,80 +1,52 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iw")
-public abstract class class222 {
-	@ObfuscatedName("aj")
-	String field2376;
+@ObfuscatedName("iu")
+public class class222 {
+	@ObfuscatedName("ai")
+	public String field2394;
+	@ObfuscatedName("ar")
+	public float[] field2399;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 776962611
+	)
+	public int field2395;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = 151618499
+	)
+	public int field2396;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 1753802885
+	)
+	public int field2397;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lih;"
+		descriptor = "Lit;"
 	)
-	final class219 this$0;
+	final class221 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lih;Ljava/lang/String;)V"
+		descriptor = "(Lit;)V"
 	)
-	class222(class219 var1, String var2) {
+	class222(class221 var1) {
 		this.this$0 = var1;
-		this.field2376 = var2;
+		this.field2399 = new float[4];
+		this.field2395 = 1;
+		this.field2396 = 1;
+		this.field2397 = 0;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("mp")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "945435280"
+		descriptor = "(IB)V",
+		garbageValue = "17"
 	)
-	public abstract int vmethod4368();
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1115253500"
-	)
-	public int vmethod4370() {
-		return -1;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1875884586"
-	)
-	public String vmethod4369() {
-		return null;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1357718894"
-	)
-	public String method4376() {
-		return this.field2376;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(Lnn;IIIB)V",
-		garbageValue = "13"
-	)
-	@Export("Widget_setKeyRate")
-	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
-		if (var0.field3779 == null) {
-			throw new RuntimeException();
-		} else {
-			var0.field3779[var1] = var2;
-			var0.field3787[var1] = var3;
-		}
-	}
-
-	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-		descriptor = "(ILdd;ZB)I",
-		garbageValue = "3"
-	)
-	static int method4381(int var0, Script var1, boolean var2) {
-		return 2;
+	static final void method4344(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		class30.clientPreferences.updateAreaSoundEffectsVolume(var0);
 	}
 }

@@ -3,13 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oh")
+@ObfuscatedName("pp")
 @Implements("Enum")
 public interface Enum {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-884190501"
+		garbageValue = "691209479"
 	)
 	@Export("rsOrdinal")
 	int rsOrdinal();

@@ -4,78 +4,72 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lu")
+@ObfuscatedName("lc")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("ku")
-	@ObfuscatedSignature(
-		descriptor = "Luc;"
-	)
-	@Export("compass")
-	static SpritePixels compass;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1617612513
+		intValue = -355801299
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1266112317
+		intValue = 1594438977
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1208845479
+		intValue = 1706758751
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 352052341
+		intValue = 1390257743
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -2047175573
+		intValue = 1006420929
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1149054363
+		intValue = 696303159
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -1740811189
+		intValue = -1645144365
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Lky;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lkp;"
+		descriptor = "Lky;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		longValue = 3453845455137359487L
+		longValue = 705769494631973791L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -138305535
+		intValue = 147237553
 	)
 	@Export("flags")
 	int flags;

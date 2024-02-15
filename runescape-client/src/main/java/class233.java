@@ -1,45 +1,67 @@
-import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ib")
-public class class233 implements Comparator {
-	@ObfuscatedName("am")
-	@Export("javaVendor")
-	public static String javaVendor;
-
-	class233() {
-	}
-
-	@ObfuscatedName("am")
+@ObfuscatedName("ip")
+public enum class233 implements Enum {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Liv;Liv;I)I",
-		garbageValue = "381751439"
+		descriptor = "Lip;"
 	)
-	int method4578(class228 var1, class228 var2) {
-		return var1.method4498() - var2.method4498();
+	field2471((byte)-1),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lip;"
+	)
+	field2469((byte)0),
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lip;"
+	)
+	field2470((byte)1),
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lip;"
+	)
+	field2472((byte)2);
+
+	@ObfuscatedName("ar")
+	public byte field2473;
+
+	class233(byte var3) {
+		this.field2473 = var3;
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.method4578((class228)var1, (class228)var2);
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	@ObfuscatedName("jd")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1139421000"
+		garbageValue = "691209479"
 	)
-	static final int method4588() {
-		if (class93.clientPreferences.isRoofsHidden()) {
-			return SecureUrlRequester.Client_plane;
-		} else {
-			int var0 = HttpRequestTask.getTileHeight(GameEngine.cameraX, GrandExchangeOfferTotalQuantityComparator.cameraZ, SecureUrlRequester.Client_plane);
-			return var0 - class28.cameraY < 800 && (Tiles.Tiles_renderFlags[SecureUrlRequester.Client_plane][GameEngine.cameraX >> 7][GrandExchangeOfferTotalQuantityComparator.cameraZ >> 7] & 4) != 0 ? SecureUrlRequester.Client_plane : 3;
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field2473;
+	}
+
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "(Lhe;I)Z",
+		garbageValue = "1258060610"
+	)
+	static boolean method4568(ObjectComposition var0) {
+		if (var0.transforms != null) {
+			int[] var1 = var0.transforms;
+
+			for (int var2 = 0; var2 < var1.length; ++var2) {
+				int var3 = var1[var2];
+				ObjectComposition var4 = class127.getObjectDefinition(var3);
+				if (var4.mapIconId != -1) {
+					return true;
+				}
+			}
+		} else if (var0.mapIconId != -1) {
+			return true;
 		}
+
+		return false;
 	}
 }
