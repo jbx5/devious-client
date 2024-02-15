@@ -1788,8 +1788,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setLoginIndex(int index);
 
-	//@Import("loginState")
-	//int getRSLoginState();
+	@Import("loginState")
+	RSLoginState getRSLoginState();
 
 	@Construct
 	RSClientPacket createClientPacket(int opcode, int length);
