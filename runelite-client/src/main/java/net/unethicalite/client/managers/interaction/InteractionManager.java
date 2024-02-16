@@ -121,7 +121,7 @@ public class InteractionManager
 						{
 							if (config.sendClickPacket())
 							{
-								MousePackets.queueClickPacket(finalClickPoint.x, finalClickPoint.y);
+								MousePackets.queueClickPacketCurrent();
 							}
 
 							if (event.getOpcode() == MenuAction.CC_OP || event.getOpcode() == MenuAction.CC_OP_LOW_PRIORITY)
@@ -193,7 +193,7 @@ public class InteractionManager
 				{
 					if (config.sendClickPacket())
 					{
-						MousePackets.queueClickPacket(x, y);
+						MousePackets.queueClickPacketCurrent();
 					}
 					client.invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getIdentifier(),
 							entry.getOpcode().getId(), entry.getParam0(), entry.getParam1(), x, y);

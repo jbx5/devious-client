@@ -24,6 +24,27 @@ public class MousePackets
 		MousePackets.queueClickPacket(mouseInfo, x, y);
 	}
 
+	public static void queueClickPacketCurrent()
+	{
+		Static.getClient().setMouseLastPressedMillis(System.currentTimeMillis());
+		int mousePressedTime = ((int) (Static.getClient().getMouseLastPressedMillis() - Static.getClient().getClientMouseLastPressedMillis()));
+		if (mousePressedTime < 0)
+		{
+			mousePressedTime = 0;
+		}
+		if (mousePressedTime > 32767)
+		{
+			mousePressedTime = 32767;
+		}
+		Static.getClient().setClientMouseLastPressedMillis(Static.getClient().getMouseLastPressedMillis());
+		int mouseInfo = (mousePressedTime << 1);
+		int x = Static.getClient().getMouseHandler().getCurrentX();
+		int y = Static.getClient().getMouseHandler().getCurrentY();
+		Static.getClient().getMouseHandler().setLastPressedX(x);
+		Static.getClient().getMouseHandler().setLastPressedY(y);
+		MousePackets.queueClickPacket(mouseInfo, x, y);
+	}
+
 	public static void queueClickPacket(int mouseInfo, int x, int y)
 	{
 		GameThread.invoke(() -> createClickPacket(mouseInfo, x, y).send());
