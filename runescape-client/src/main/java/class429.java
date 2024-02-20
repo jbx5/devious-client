@@ -66,7 +66,7 @@ public class class429 {
 	@Export("loginScreen")
 	static void loginScreen(GameEngine var0, Font var1, Font var2) {
 		if (Login.worldSelectOpen) {
-			class202.method3919(var0);
+			Sound.method3919(var0);
 		} else {
 			if ((MouseHandler.MouseHandler_lastButton == 1 || !DbTableType.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
 				class30.clientPreferences.updateTitleMusicDisabled(!class30.clientPreferences.isTitleMusicDisabled());

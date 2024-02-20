@@ -55,7 +55,7 @@ public class class94 {
 		descriptor = "(Lhy;IIZS)V",
 		garbageValue = "12148"
 	)
-	static void method2453(class202 var0, int var1, int var2, boolean var3) {
+	static void method2453(Sound var0, int var1, int var2, boolean var3) {
 		if (var0 != null) {
 			if (var0.field2109 == 0) {
 				if (!var3) {
