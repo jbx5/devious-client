@@ -44,7 +44,7 @@ public class class344 {
 	SpritePixels method6459() {
 		if (this.field3650 == null && this.field3651 != null && this.field3651.isDone()) {
 			if (this.field3651.getResponse() != null) {
-				this.field3650 = class202.method3920(this.field3651.getResponse());
+				this.field3650 = Sound.method3920(this.field3651.getResponse());
 			}
 
 			this.field3651 = null;
@@ -97,7 +97,7 @@ public class class344 {
 
 			Rasterizer2D.Rasterizer2D_clear();
 			byte[] var4 = var0.takeFileByNames("title.jpg", "");
-			Login.leftTitleSprite = class202.method3920(var4);
+			Login.leftTitleSprite = Sound.method3920(var4);
 			WorldMapLabelSize.rightTitleSprite = Login.leftTitleSprite.mirrorHorizontally();
 			class213.method4205(var1, Client.worldProperties);
 			class155.titleboxSprite = class173.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");

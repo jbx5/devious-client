@@ -138,7 +138,7 @@ public class Skeleton extends Node {
 
 			if (var4 != null) {
 				if (var4.isInteractable) {
-					if (!var4.field2005 || Client.followerIndex == var1) {
+					if (!var4.isFollower || Client.followerIndex == var1) {
 						String var5 = var0.method2670();
 						int var6;
 						int var9;
@@ -170,7 +170,7 @@ public class Skeleton extends Node {
 							var5 = var5 + var8 + " " + " (" + "level-" + var6 + ")";
 						}
 
-						if (var4.isFollower && Client.followerOpsLowPriority) {
+						if (var4.lowPriorityFollowerOps && Client.followerOpsLowPriority) {
 							UrlRequest.insertMenuItemNoShift("Examine", class370.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
 						}
 
@@ -181,7 +181,7 @@ public class Skeleton extends Node {
 								UrlRequest.insertMenuItemNoShift(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + class370.colorStartTag(16776960) + var5, 8, var1, var2, var3);
 							}
 						} else {
-							var6 = var4.isFollower && Client.followerOpsLowPriority ? 2000 : 0;
+							var6 = var4.lowPriorityFollowerOps && Client.followerOpsLowPriority ? 2000 : 0;
 							String[] var7 = var4.actions;
 							int var11;
 							if (var7 != null) {
@@ -249,7 +249,7 @@ public class Skeleton extends Node {
 								}
 							}
 
-							if (!var4.isFollower || !Client.followerOpsLowPriority) {
+							if (!var4.lowPriorityFollowerOps || !Client.followerOpsLowPriority) {
 								UrlRequest.insertMenuItemNoShift("Examine", class370.colorStartTag(16776960) + var5, 1003, var1, var2, var3);
 							}
 						}

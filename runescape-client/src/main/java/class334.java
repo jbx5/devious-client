@@ -36,7 +36,7 @@ public class class334 extends Node {
 	static void method6394(SequenceDefinition var0, int var1, int var2, int var3, Actor var4) {
 		if (Client.soundEffectCount < 50) {
 			if (var0.field2255 != null && var0.field2255.containsKey(var1)) {
-				class202 var5 = (class202)var0.field2255.get(var1);
+				Sound var5 = (Sound)var0.field2255.get(var1);
 				if (var5 != null) {
 					int var6 = var5.field2109 & 31;
 					if ((var6 <= 0 || class30.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var6 != 0 || class30.clientPreferences.getSoundEffectsVolume() != 0)) {
