@@ -46,6 +46,19 @@ public enum CharterShipLocation
     private final WorldPoint worldPoint;
     private static final Map<Pair<WorldPoint, WorldPoint>, Integer> priceMap = new HashMap<>();
 
+    private final static int PORT_SARIM_WIDGET = 26;
+    private final static int PORT_KHAZARD_WIDGET = 23;
+    private final static int CORSAIR_COVE_WIDGET = 32;
+    private final static int PORT_PHASMATYS_WIDGET = 5;
+    private final static int CATHERBY_WIDGET = 8;
+    private final static int MUSA_POINT_WIDGET = 14;
+    private final static int BRIMHAVEN_WIDGET = 20;
+    private final static int SHIPYARD_WIDGET = 11;
+    private final static int PORT_TYRAS_WIDGET = 2;
+    private final static int MOS_LE_HARMLESS_WIDGET = 29;
+    private final static int PRIFFDINAS_WIDGET = 35;
+
+
     CharterShipLocation(WorldPoint worldPoint)
     {
         this.worldPoint = worldPoint;
@@ -201,227 +214,227 @@ public enum CharterShipLocation
             priceModifier *= 0.5;
             if (gold >= 1100 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-                transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
-                transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
             if (gold >= 1300 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-                transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
             if (gold >= 2500 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
             }
             if (gold >= 2900 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
             }
             if (gold >= 3200 * priceModifier && Quests.getState(Quest.REGICIDE) == QuestState.FINISHED)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
             if (gold >= 3500 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
             if (gold >= 3900 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
             if (gold >= 4080 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
-                transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
             if (gold >= 4100 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-                transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
         }
         if (Quests.getState(Quest.SONG_OF_THE_ELVES) == QuestState.FINISHED)
         {
             if (gold >= 1420 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
+                transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
             }
             if (gold >= 2800 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
+                transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
             }
             if (gold >= 3200 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
             }
             if (gold >= 3450 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
+                transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
             }
             if (gold >= 3560 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
+                transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
             }
             if (gold >= 4000 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
+                transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
             }
             if (gold >= 4400 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
+                transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
             }
             if (gold >= 4800 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
+                transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
             }
 
             if (gold >= 5200 * priceModifier)
             {
-                transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
+                transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
             }
             if (gold >= 4950 * priceModifier && Quests.getState(Quest.CABIN_FEVER) == QuestState.FINISHED)
             {
-                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), 33));
-                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), 26));
+                transports.add(charterTransport(CharterShipLocation.MOS_LE_HARMLESS_DOCK.getWorldPoint(), CharterShipLocation.PRIFFDINAS_SHIP.getWorldPoint(), PRIFFDINAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PRIFFDINAS_DOCK.getWorldPoint(), CharterShipLocation.MOS_LE_HARMLESS_SHIP.getWorldPoint(), MOS_LE_HARMLESS_WIDGET));
             }
         }
         if (gold >= 200 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
-            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
+            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
         }
         if (gold >= 400 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
-            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
         }
         if (gold >= 480 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
         }
         if (gold >= 600 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
         }
         if (gold >= 680 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
 
         }
         if (gold >= 720 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
         }
         if (gold >= 800 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
         }
         if (gold >= 1000 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
-            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
         }
         if (gold >= 1100 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
+            transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
         }
         if (gold >= 1200 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
         }
         if (gold >= 1280 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
         }
         if (gold >= 1300 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
         }
         if (gold >= 1600 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
-            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
-            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
         }
         if (gold >= 2900 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
+            transports.add(charterTransport(CharterShipLocation.BRIMHAVEN_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
         }
         if (gold >= 3200 * priceModifier)
         {
             if (Quests.getState(Quest.REGICIDE) == QuestState.FINISHED)
             {
-                transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), 2));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), 17));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), 14));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), 23));
-                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
+                transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.MUSA_POINT_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_SARIM_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.SHIP_YARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_TYRAS_SHIP.getWorldPoint(), PORT_TYRAS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.BRIMHAVEN_SHIP.getWorldPoint(), BRIMHAVEN_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.MUSA_POINT_SHIP.getWorldPoint(), MUSA_POINT_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.PORT_SARIM_SHIP.getWorldPoint(), PORT_SARIM_WIDGET));
+                transports.add(charterTransport(CharterShipLocation.PORT_TYRAS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
             }
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), 11));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.SHIP_YARD_SHIP.getWorldPoint(), SHIPYARD_WIDGET));
         }
         if (gold >= 3500 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), 8));
+            transports.add(charterTransport(CharterShipLocation.CATHERBY_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.CATHERBY_SHIP.getWorldPoint(), CATHERBY_WIDGET));
         }
         if (gold >= 4040 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), 32));
+            transports.add(charterTransport(CharterShipLocation.CORSAIR_COVE_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.CORSAIR_COVE_SHIP.getWorldPoint(), CORSAIR_COVE_WIDGET));
         }
         if (gold >= 4100 * priceModifier)
         {
-            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), 5));
-            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), 20));
+            transports.add(charterTransport(CharterShipLocation.PORT_KHAZARD_DOCK.getWorldPoint(), CharterShipLocation.PORT_PHASMATYS_SHIP.getWorldPoint(), PORT_PHASMATYS_WIDGET));
+            transports.add(charterTransport(CharterShipLocation.PORT_PHASMATYS_DOCK.getWorldPoint(), CharterShipLocation.PORT_KHAZARD_SHIP.getWorldPoint(), PORT_KHAZARD_WIDGET));
         }
         return transports;
     }
