@@ -214,10 +214,11 @@ public class NPCComposition extends DualNode {
 	@Export("isClipped")
 	public boolean isClipped;
 	@ObfuscatedName("bg")
-	public boolean field2005;
-	@ObfuscatedName("be")
 	@Export("isFollower")
 	public boolean isFollower;
+	@ObfuscatedName("be")
+	@Export("lowPriorityFollowerOps")
+	public boolean lowPriorityFollowerOps;
 	@ObfuscatedName("bc")
 	@Export("headIconArchiveIds")
 	int[] headIconArchiveIds;
@@ -267,8 +268,8 @@ public class NPCComposition extends DualNode {
 		this.transformVarp = -1;
 		this.isInteractable = true;
 		this.isClipped = true;
-		this.field2005 = false;
 		this.isFollower = false;
+		this.lowPriorityFollowerOps = false;
 		this.headIconArchiveIds = null;
 		this.headIconSpriteIndex = null;
 	}
@@ -422,9 +423,9 @@ public class NPCComposition extends DualNode {
 					this.field1984 = var1.readUnsignedShort();
 					this.field1986 = var1.readUnsignedShort();
 				} else if (var2 == 122) {
-					this.field2005 = true;
-				} else if (var2 == 123) {
 					this.isFollower = true;
+				} else if (var2 == 123) {
+					this.lowPriorityFollowerOps = true;
 				} else if (var2 == 249) {
 					this.params = class324.readStringIntParameters(var1, this.params);
 				}
