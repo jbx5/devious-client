@@ -76,7 +76,7 @@ public class Sound {
 		garbageValue = "-1796017443"
 	)
 	static void method3919(GameEngine var0) {
-		class228 var1 = PacketBufferNode.method6051();
+		IndexCheck var1 = PacketBufferNode.method6051();
 
 		while (var1.method4431()) {
 			if (var1.field2434 == 13) {

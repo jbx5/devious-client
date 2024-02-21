@@ -117,4 +117,105 @@ public abstract class CameraMixin implements RSClient
 		}
 		lastPitch = pitch;
 	}
+
+	@Inject
+	private static boolean invertPitch;
+
+	@Inject
+	private static boolean invertYaw;
+
+	@Inject
+	@Override
+	public void setInvertPitch(boolean state)
+	{
+		invertPitch = state;
+	}
+
+	@Inject
+	@Override
+	public void setInvertYaw(boolean state)
+	{
+		invertYaw = state;
+	}
+
+	@Inject
+	private static int cameraMouseButtonMask;
+
+	@Inject
+	@Override
+	public void setCameraMouseButtonMask(int mask)
+	{
+		cameraMouseButtonMask = mask;
+	}
+
+	@Inject
+	@FieldHook("camAngleDX")
+	private static void onCamAngleDXChanged(int idx)
+	{
+		label74:
+		{
+			int mouseCurrentButton = client.getMouseCurrentButton();
+			if (cameraMouseButtonMask != 0)
+			{
+				if ((cameraMouseButtonMask >> mouseCurrentButton & 1) != 0)
+				{
+					break label74;
+				}
+			}
+			else if (mouseCurrentButton == 4 && client.isMouseCam())
+			{
+				break label74;
+			}
+
+			if (client.getIndexCheck().isValidIndexInRange(96))
+			{
+				client.setCamAngleDY(client.getCamAngleDY() + (-24 - client.getCamAngleDY()) / 2);
+			}
+			else if (client.getIndexCheck().isValidIndexInRange(97))
+			{
+				client.setCamAngleDY(client.getCamAngleDY() + (24 - client.getCamAngleDY()) / 2);
+			}
+			else
+			{
+				client.setCamAngleDY(client.getCamAngleDY() / 2);
+			}
+
+			if (client.getIndexCheck().isValidIndexInRange(98))
+			{
+				client.setCamAngleDX(client.getCamAngleDX() + (12 - client.getCamAngleDX()) / 2);
+			}
+			else if (client.getIndexCheck().isValidIndexInRange(99))
+			{
+				client.setCamAngleDX(client.getCamAngleDX() + (-12 - client.getCamAngleDX()) / 2);
+			}
+			else
+			{
+				client.setCamAngleDX(client.getCamAngleDX() / 2);
+			}
+
+			client.setMouseCamClickedY(client.getMouseHandlerY());
+			client.setMouseCamClickedX(client.getMouseHandlerX());
+			return;
+		}
+
+		int var2 = client.getMouseHandlerY() - client.getMouseCamClickedY();
+		int var3 = client.getMouseCamClickedX() - client.getMouseHandlerX();
+		//ip = (int)((float)(var2 * 2) * mg);
+		client.setCamAngleDY(var2 * 2);
+		//ok = (int)((float)(var3 * 2) * mg);
+		client.setCamAngleDX(var3 * 2);
+
+		if (invertPitch)
+		{
+			client.setCamAngleDX(-client.getCamAngleDX());
+		}
+
+		if (invertYaw)
+		{
+			client.setCamAngleDY(-client.getCamAngleDY());
+		}
+
+		client.setMouseCamClickedY(var2 != -1 && var2 != 1 ? (client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2 : client.getMouseHandlerY());
+		client.setMouseCamClickedX(var3 != -1 && var3 != 1 ? (client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2 : client.getMouseHandlerX());
+	}
 }

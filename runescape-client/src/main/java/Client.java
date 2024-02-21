@@ -491,7 +491,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = -1458723051
 	)
-	static int field615;
+	@Export("mouseCamClickedX")
+	static int mouseCamClickedX;
 	@ObfuscatedName("kq")
 	@ObfuscatedGetter(
 		intValue = -1360376197
@@ -1160,7 +1161,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedSignature(
 		descriptor = "Liw;"
 	)
-	static class228 field792;
+	@Export("indexCheck")
+	static IndexCheck indexCheck;
 	@ObfuscatedName("sa")
 	@ObfuscatedSignature(
 		descriptor = "Lir;"
@@ -1532,7 +1534,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		camAngleY = 0;
 		camAngleDY = 0;
 		camAngleDX = 0;
-		field615 = 0;
+		mouseCamClickedX = 0;
 		mouseCamClickedY = 0;
 		oculusOrbState = 0;
 		camFollowHeight = 50;
@@ -1681,7 +1683,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		field643 = "";
 		crossWorldMessageIds = new long[100];
 		crossWorldMessageIdsIndex = 0;
-		field792 = new class228();
+		indexCheck = new IndexCheck();
 		field737 = new class226();
 		field706 = 0;
 		field660 = new int[128];
@@ -1813,7 +1815,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		this.setUpMouse();
 		ServerPacket.mouseWheel = this.mouseWheel();
 		this.method546(field737, 0);
-		this.method546(field792, 1);
+		this.method546(indexCheck, 1);
 		this.setUpClipboard();
 		class155.masterDisk = new ArchiveDisk(255, JagexCache.JagexCache_dat2File, JagexCache.JagexCache_idx255File, 500000);
 		class30.clientPreferences = class167.method3498();
@@ -1900,7 +1902,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		}
 
 		class190.method3774();
-		field792.method4430();
+		indexCheck.method4430();
 		this.method532();
 		synchronized(MouseHandler.MouseHandler_instance) {
 			MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
@@ -3238,13 +3240,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					packetWriter.addNode(var14);
 				}
 
-				if (field792.field2431 > 0) {
+				if (indexCheck.field2431 > 0) {
 					var14 = ViewportMouse.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, packetWriter.isaacCipher);
 					var14.packetBuffer.writeShort(0);
 					var2 = var14.packetBuffer.offset;
 					long var19 = SecureRandomCallable.method2320();
 
-					for (var5 = 0; var5 < field792.field2431; ++var5) {
+					for (var5 = 0; var5 < indexCheck.field2431; ++var5) {
 						long var21 = var19 - field583;
 						if (var21 > 16777215L) {
 							var21 = 16777215L;
@@ -3252,7 +3254,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 						field583 = var19;
 						var14.packetBuffer.writeMediumLE((int)var21);
-						var14.packetBuffer.writeByte(field792.field2423[var5]);
+						var14.packetBuffer.writeByte(indexCheck.field2423[var5]);
 					}
 
 					var14.packetBuffer.writeLengthShort(var14.packetBuffer.offset - var2);
@@ -3263,7 +3265,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					--field626;
 				}
 
-				if (field792.method4466(96) || field792.method4466(97) || field792.method4466(98) || field792.method4466(99)) {
+				if (indexCheck.isValidIndexInRange(96) || indexCheck.isValidIndexInRange(97) || indexCheck.isValidIndexInRange(98) || indexCheck.isValidIndexInRange(99)) {
 					field544 = true;
 				}
 
@@ -3452,8 +3454,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						field746 = false;
 						field706 = 0;
 
-						while (field792.method4431() && field706 < 128) {
-							if (staffModLevel >= 2 && field792.method4466(82) && field792.field2434 == 66) {
+						while (indexCheck.method4431() && field706 < 128) {
+							if (staffModLevel >= 2 && indexCheck.isValidIndexInRange(82) && indexCheck.field2434 == 66) {
 								StringBuilder var47 = new StringBuilder();
 
 								Message var42;
@@ -3466,15 +3468,15 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 								String var51 = var47.toString();
 								class193.client.method463(var51);
-							} else if (oculusOrbState != 1 || field792.field2428 <= 0) {
-								field768[field706] = field792.field2434;
-								field660[field706] = field792.field2428;
+							} else if (oculusOrbState != 1 || indexCheck.field2428 <= 0) {
+								field768[field706] = indexCheck.field2434;
+								field660[field706] = indexCheck.field2428;
 								++field706;
 							}
 						}
 
 						boolean var34 = staffModLevel >= 2;
-						if (var34 && field792.method4466(82) && field792.method4466(81) && mouseWheelRotation != 0) {
+						if (var34 && indexCheck.isValidIndexInRange(82) && indexCheck.isValidIndexInRange(81) && mouseWheelRotation != 0) {
 							var4 = VarpDefinition.localPlayer.plane - mouseWheelRotation;
 							if (var4 < 0) {
 								var4 = 0;
@@ -3534,7 +3536,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																		var6 = Scene.Scene_selectedY;
 																		PacketBufferNode var28 = ViewportMouse.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher);
 																		var28.packetBuffer.writeByte(5);
-																		var28.packetBuffer.writeByteSub(field792.method4466(82) ? (field792.method4466(81) ? 2 : 1) : 0);
+																		var28.packetBuffer.writeByteSub(indexCheck.isValidIndexInRange(82) ? (indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
 																		var28.packetBuffer.writeShortAdd(Projectile.baseX * 64 + var5);
 																		var28.packetBuffer.writeShortAdd(GameEngine.baseY * 64 + var6);
 																		packetWriter.addNode(var28);
@@ -3709,7 +3711,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																			case 0:
 																				field737.method4402(var52.field2420);
 																				var45.method6722(true);
-																				var45.method6545(var52.field2417, var52.field2418, field792.method4466(82), field792.method4466(81));
+																				var45.method6545(var52.field2417, var52.field2418, indexCheck.isValidIndexInRange(82), indexCheck.isValidIndexInRange(81));
 																				break;
 																			case 1:
 																				var45.method6546(var52.field2417, var52.field2418);
@@ -3830,7 +3832,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		viewportY = -1;
 		if (rootInterface != -1) {
 			rootWidgetCount = 0;
-			class228.drawWidgets(rootInterface, 0, 0, GameEngine.canvasWidth, WorldMapArea.canvasHeight, 0, 0, -1);
+			IndexCheck.drawWidgets(rootInterface, 0, 0, GameEngine.canvasWidth, WorldMapArea.canvasHeight, 0, 0, -1);
 		}
 
 		Rasterizer2D.Rasterizer2D_resetClip();

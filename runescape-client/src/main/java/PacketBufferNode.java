@@ -140,7 +140,7 @@ public class PacketBufferNode extends Node {
 		descriptor = "(I)Liw;",
 		garbageValue = "-865577578"
 	)
-	public static class228 method6051() {
-		return Client.field792;
+	public static IndexCheck method6051() {
+		return Client.indexCheck;
 	}
 }

@@ -152,7 +152,7 @@ public class class429 {
 						var26 = 1;
 					}
 
-					class228 var27 = PacketBufferNode.method6051();
+					IndexCheck var27 = PacketBufferNode.method6051();
 					short var57;
 					int var58;
 					if (Login.loginIndex == 0) {
@@ -322,7 +322,7 @@ public class class429 {
 												}
 											}
 
-											if ((var27.method4466(82) || var27.method4466(87)) && var27.field2434 == 67) {
+											if ((var27.isValidIndexInRange(82) || var27.isValidIndexInRange(87)) && var27.field2434 == 67) {
 												Clipboard var69 = Toolkit.getDefaultToolkit().getSystemClipboard();
 												var70 = var69.getContents(class193.client);
 												var62 = 20 - Login.Login_password.length();

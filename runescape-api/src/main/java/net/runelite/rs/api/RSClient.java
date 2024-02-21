@@ -81,6 +81,33 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getCameraYaw();
 
+	@Import("mouseCamClickedX")
+	int getMouseCamClickedX();
+
+	@Import("mouseCamClickedX")
+	void setMouseCamClickedX(int mouseCamClickedX);
+
+	@Import("mouseCamClickedY")
+	int getMouseCamClickedY();
+
+	@Import("mouseCamClickedY")
+	void setMouseCamClickedY(int mouseCamClickedY);
+
+	@Import("MouseHandler_x")
+	int getMouseHandlerX();
+
+	@Import("MouseHandler_x")
+	void setMouseHandlerX(int mouseHandlerX);
+
+	@Import("MouseHandler_y")
+	int getMouseHandlerY();
+
+	@Import("MouseHandler_y")
+	void setMouseHandlerY(int mouseHandlerY);
+
+	@Import("indexCheck")
+	RSIndexCheck getIndexCheck();
+
 	@Import("worldId")
 	int getWorld();
 

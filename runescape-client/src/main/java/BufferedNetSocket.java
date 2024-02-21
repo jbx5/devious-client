@@ -157,7 +157,7 @@ public class BufferedNetSocket extends AbstractSocket {
 				if (Client.field553 == class93.field1177) {
 					SoundSystem.method805(22050, !Client.isLowDetail, 2);
 					ArrayList var36 = new ArrayList(3);
-					AuthenticationScheme.pcmPlayer1 = class228.method4433(GameEngine.taskHandler, 0, 2048);
+					AuthenticationScheme.pcmPlayer1 = IndexCheck.method4433(GameEngine.taskHandler, 0, 2048);
 					SceneTilePaint.pcmStreamMixer = new PcmStreamMixer();
 					PcmStreamMixer var38 = new PcmStreamMixer();
 					var38.addSubStream(SceneTilePaint.pcmStreamMixer);
