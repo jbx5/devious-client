@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import com.google.common.primitives.Floats;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -139,6 +140,16 @@ public abstract class CameraMixin implements RSClient
 	}
 
 	@Inject
+	private static float cameraSpeed = 1.0F;
+
+	@Inject
+	@Override
+	public void setCameraSpeed(float var1)
+	{
+		cameraSpeed = Floats.constrainToRange(var1, 0.2F, 5.0F);
+	}
+
+	@Inject
 	private static int cameraMouseButtonMask;
 
 	@Inject
@@ -169,11 +180,11 @@ public abstract class CameraMixin implements RSClient
 
 			if (client.getIndexCheck().isValidIndexInRange(96))
 			{
-				client.setCamAngleDY(client.getCamAngleDY() + (-24 - client.getCamAngleDY()) / 2);
+				client.setCamAngleDY((int) (client.getCamAngleDY() + (-24 * cameraSpeed - client.getCamAngleDY()) / 2));
 			}
 			else if (client.getIndexCheck().isValidIndexInRange(97))
 			{
-				client.setCamAngleDY(client.getCamAngleDY() + (24 - client.getCamAngleDY()) / 2);
+				client.setCamAngleDY((int) (client.getCamAngleDY() + (24 * cameraSpeed - client.getCamAngleDY()) / 2));
 			}
 			else
 			{
@@ -182,11 +193,11 @@ public abstract class CameraMixin implements RSClient
 
 			if (client.getIndexCheck().isValidIndexInRange(98))
 			{
-				client.setCamAngleDX(client.getCamAngleDX() + (12 - client.getCamAngleDX()) / 2);
+				client.setCamAngleDX((int) (client.getCamAngleDX() + (12 * cameraSpeed - client.getCamAngleDX()) / 2));
 			}
 			else if (client.getIndexCheck().isValidIndexInRange(99))
 			{
-				client.setCamAngleDX(client.getCamAngleDX() + (-12 - client.getCamAngleDX()) / 2);
+				client.setCamAngleDX((int) (client.getCamAngleDX() + (-12 * cameraSpeed - client.getCamAngleDX()) / 2));
 			}
 			else
 			{
@@ -200,10 +211,8 @@ public abstract class CameraMixin implements RSClient
 
 		int var2 = client.getMouseHandlerY() - client.getMouseCamClickedY();
 		int var3 = client.getMouseCamClickedX() - client.getMouseHandlerX();
-		//ip = (int)((float)(var2 * 2) * mg);
-		client.setCamAngleDY(var2 * 2);
-		//ok = (int)((float)(var3 * 2) * mg);
-		client.setCamAngleDX(var3 * 2);
+		client.setCamAngleDY((int) (var2 * 2 * cameraSpeed));
+		client.setCamAngleDX((int) (var3 * 2 * cameraSpeed));
 
 		if (invertPitch)
 		{
