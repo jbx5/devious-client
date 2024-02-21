@@ -237,13 +237,13 @@ public class ObjectComposition extends DualNode {
 	public int ambientSoundId;
 	@ObfuscatedName("bh")
 	@ObfuscatedGetter(
-		intValue = -1109311488
+		intValue = 884668293
 	)
 	@Export("int7")
 	public int int7;
 	@ObfuscatedName("bs")
 	@ObfuscatedGetter(
-		intValue = 467288064
+		intValue = -500756263
 	)
 	@Export("int8")
 	public int int8;
