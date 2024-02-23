@@ -188,13 +188,13 @@ public class class315 {
 		} else if (Client.oculusOrbState == 1) {
 			class518.method9298();
 			short var10 = -1;
-			if (Client.field792.method4466(33)) {
+			if (Client.indexCheck.isValidIndexInRange(33)) {
 				var10 = 0;
-			} else if (Client.field792.method4466(49)) {
+			} else if (Client.indexCheck.isValidIndexInRange(49)) {
 				var10 = 1024;
 			}
 
-			if (Client.field792.method4466(48)) {
+			if (Client.indexCheck.isValidIndexInRange(48)) {
 				if (var10 == 0) {
 					var10 = 1792;
 				} else if (var10 == 1024) {
@@ -202,7 +202,7 @@ public class class315 {
 				} else {
 					var10 = 1536;
 				}
-			} else if (Client.field792.method4466(50)) {
+			} else if (Client.indexCheck.isValidIndexInRange(50)) {
 				if (var10 == 0) {
 					var10 = 256;
 				} else if (var10 == 1024) {
@@ -213,15 +213,15 @@ public class class315 {
 			}
 
 			byte var11 = 0;
-			if (Client.field792.method4466(35)) {
+			if (Client.indexCheck.isValidIndexInRange(35)) {
 				var11 = -1;
-			} else if (Client.field792.method4466(51)) {
+			} else if (Client.indexCheck.isValidIndexInRange(51)) {
 				var11 = 1;
 			}
 
 			var2 = 0;
 			if (var10 >= 0 || var11 != 0) {
-				var2 = Client.field792.method4466(81) ? Client.oculusOrbSlowedSpeed : Client.oculusOrbNormalSpeed;
+				var2 = Client.indexCheck.isValidIndexInRange(81) ? Client.oculusOrbSlowedSpeed : Client.oculusOrbNormalSpeed;
 				var2 *= 16;
 				Client.field620 = var10;
 				Client.field577 = var11;
@@ -257,7 +257,7 @@ public class class315 {
 				Client.field577 = -1;
 			}
 
-			if (Client.field792.method4466(13)) {
+			if (Client.indexCheck.isValidIndexInRange(13)) {
 				Client.packetWriter.addNode(ViewportMouse.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 				Client.oculusOrbState = 0;
 			}
@@ -267,28 +267,28 @@ public class class315 {
 			var0 = MouseHandler.MouseHandler_y - Client.mouseCamClickedY;
 			Client.camAngleDX = var0 * 2;
 			Client.mouseCamClickedY = var0 != -1 && var0 != 1 ? (Client.mouseCamClickedY + MouseHandler.MouseHandler_y) / 2 : MouseHandler.MouseHandler_y;
-			var1 = Client.field615 - MouseHandler.MouseHandler_x;
+			var1 = Client.mouseCamClickedX - MouseHandler.MouseHandler_x;
 			Client.camAngleDY = var1 * 2;
-			Client.field615 = var1 != -1 && var1 != 1 ? (Client.field615 + MouseHandler.MouseHandler_x) / 2 : MouseHandler.MouseHandler_x;
+			Client.mouseCamClickedX = var1 != -1 && var1 != 1 ? (Client.mouseCamClickedX + MouseHandler.MouseHandler_x) / 2 : MouseHandler.MouseHandler_x;
 		} else {
-			if (Client.field792.method4466(96)) {
+			if (Client.indexCheck.isValidIndexInRange(96)) {
 				Client.camAngleDY += (-24 - Client.camAngleDY) / 2;
-			} else if (Client.field792.method4466(97)) {
+			} else if (Client.indexCheck.isValidIndexInRange(97)) {
 				Client.camAngleDY += (24 - Client.camAngleDY) / 2;
 			} else {
 				Client.camAngleDY /= 2;
 			}
 
-			if (Client.field792.method4466(98)) {
+			if (Client.indexCheck.isValidIndexInRange(98)) {
 				Client.camAngleDX += (12 - Client.camAngleDX) / 2;
-			} else if (Client.field792.method4466(99)) {
+			} else if (Client.indexCheck.isValidIndexInRange(99)) {
 				Client.camAngleDX += (-12 - Client.camAngleDX) / 2;
 			} else {
 				Client.camAngleDX /= 2;
 			}
 
 			Client.mouseCamClickedY = MouseHandler.MouseHandler_y;
-			Client.field615 = MouseHandler.MouseHandler_x;
+			Client.mouseCamClickedX = MouseHandler.MouseHandler_x;
 		}
 
 		Client.camAngleY = Client.camAngleDY / 2 + Client.camAngleY & 2047;

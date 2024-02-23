@@ -36,8 +36,8 @@ import net.runelite.api.HealthBar;
 import net.runelite.api.SpriteID;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.events.BeforeMenuRender;
-import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.PostHealthBar;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.widgets.Widget;
@@ -141,7 +141,7 @@ public class InterfaceStylesPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onBeforeRender(BeforeRender event)
+	public void onPostClientTick(PostClientTick event)
 	{
 		adjustWidgetDimensions();
 	}
@@ -194,6 +194,11 @@ public class InterfaceStylesPlugin extends Plugin
 	private void overrideSprites()
 	{
 		final Skin configuredSkin = config.skin();
+		if (configuredSkin == Skin.DEFAULT)
+		{
+			return;
+		}
+
 		for (SpriteOverride spriteOverride : SpriteOverride.values())
 		{
 			for (Skin skin : spriteOverride.getSkin())
@@ -232,6 +237,11 @@ public class InterfaceStylesPlugin extends Plugin
 	private void overrideWidgetSprites()
 	{
 		final Skin configuredSkin = config.skin();
+		if (configuredSkin == Skin.DEFAULT)
+		{
+			return;
+		}
+
 		for (WidgetOverride widgetOverride : WidgetOverride.values())
 		{
 			if (widgetOverride.getSkin() == configuredSkin
@@ -283,9 +293,15 @@ public class InterfaceStylesPlugin extends Plugin
 
 	private void adjustWidgetDimensions()
 	{
+		var skin = config.skin();
+		if (skin == Skin.DEFAULT)
+		{
+			return;
+		}
+
 		for (WidgetOffset widgetOffset : WidgetOffset.values())
 		{
-			if (widgetOffset.getSkin() != config.skin())
+			if (widgetOffset.getSkin() != skin)
 			{
 				continue;
 			}

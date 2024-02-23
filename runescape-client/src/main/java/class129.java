@@ -447,7 +447,7 @@ public class class129 {
 
 							InterfaceParent var28 = (InterfaceParent)Client.interfaceParents.get((long)var10.id);
 							if (var28 != null) {
-								class228.drawWidgets(var28.group, var15, var16, var17, var18, var12, var13, var11);
+								IndexCheck.drawWidgets(var28.group, var15, var16, var17, var18, var12, var13, var11);
 							}
 
 							Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
