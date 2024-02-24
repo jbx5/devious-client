@@ -923,6 +923,7 @@ public abstract class RSClientMixin implements RSClient
 		menuEntry.setType(MenuAction.of(opcode));
 		menuEntry.setParam0(param1);
 		menuEntry.setParam1(param2);
+		menuEntry.setParent(null);
 		menuEntry.setConsumer(null);
 		menuEntry.setForceLeftClick(forceLeftClick);
 		menuEntry.setItemId(itemId);
@@ -1005,6 +1006,7 @@ public abstract class RSClientMixin implements RSClient
 			menuEntry.setParam0(0);
 			menuEntry.setParam1(0);
 			menuEntry.setItemId(-1);
+			menuEntry.setParent(null);
 			menuEntry.setConsumer(null);
 
 			return menuEntry;
@@ -1284,6 +1286,7 @@ public abstract class RSClientMixin implements RSClient
 				{
 					rl$logger.error("about to crash: opcnt:{} tmpopcnt:{} i:{}", optionCount, tmpOptionsCount, i);
 				}
+				rl$menuEntries[i].setParent(null);
 				rl$menuEntries[i].setConsumer(null);
 			}
 		}
@@ -1306,6 +1309,7 @@ public abstract class RSClientMixin implements RSClient
 			else
 			{
 				rl$menuEntries[tmpOptionsCount].setConsumer(null);
+				rl$menuEntries[tmpOptionsCount].setParent(null);
 			}
 
 			MenuEntryAdded menuEntryAdded = new MenuEntryAdded(

@@ -180,11 +180,11 @@ public abstract class CameraMixin implements RSClient
 
 			if (client.getIndexCheck().isValidIndexInRange(96))
 			{
-				client.setCamAngleDY((int) (client.getCamAngleDY() + (-24 * cameraSpeed - client.getCamAngleDY()) / 2));
+				client.setCamAngleDY((int) (client.getCamAngleDY() + (-24.0F * cameraSpeed - client.getCamAngleDY()) / 2));
 			}
 			else if (client.getIndexCheck().isValidIndexInRange(97))
 			{
-				client.setCamAngleDY((int) (client.getCamAngleDY() + (24 * cameraSpeed - client.getCamAngleDY()) / 2));
+				client.setCamAngleDY((int) (client.getCamAngleDY() + (24.0F * cameraSpeed - client.getCamAngleDY()) / 2));
 			}
 			else
 			{
@@ -193,11 +193,11 @@ public abstract class CameraMixin implements RSClient
 
 			if (client.getIndexCheck().isValidIndexInRange(98))
 			{
-				client.setCamAngleDX((int) (client.getCamAngleDX() + (12 * cameraSpeed - client.getCamAngleDX()) / 2));
+				client.setCamAngleDX((int) (client.getCamAngleDX() + (12.0F * cameraSpeed - client.getCamAngleDX()) / 2));
 			}
 			else if (client.getIndexCheck().isValidIndexInRange(99))
 			{
-				client.setCamAngleDX((int) (client.getCamAngleDX() + (-12 * cameraSpeed - client.getCamAngleDX()) / 2));
+				client.setCamAngleDX((int) (client.getCamAngleDX() + (-12.0F * cameraSpeed - client.getCamAngleDX()) / 2));
 			}
 			else
 			{
@@ -211,8 +211,8 @@ public abstract class CameraMixin implements RSClient
 
 		int var2 = client.getMouseHandlerY() - client.getMouseCamClickedY();
 		int var3 = client.getMouseCamClickedX() - client.getMouseHandlerX();
-		client.setCamAngleDY((int) (var2 * 2 * cameraSpeed));
-		client.setCamAngleDX((int) (var3 * 2 * cameraSpeed));
+		client.setCamAngleDX((int) ((float) (var2 * 2) * cameraSpeed));
+		client.setCamAngleDY((int) ((float) (var3 * 2) * cameraSpeed));
 
 		if (invertPitch)
 		{
@@ -224,7 +224,7 @@ public abstract class CameraMixin implements RSClient
 			client.setCamAngleDY(-client.getCamAngleDY());
 		}
 
-		client.setMouseCamClickedY(var2 != -1 && var2 != 1 ? (client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2 : client.getMouseHandlerY());
-		client.setMouseCamClickedX(var3 != -1 && var3 != 1 ? (client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2 : client.getMouseHandlerX());
+//		client.setMouseCamClickedY(var2 != -1 && var2 != 1 ? (client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2 : client.getMouseHandlerY());
+//		client.setMouseCamClickedX(var3 != -1 && var3 != 1 ? (client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2 : client.getMouseHandlerX());
 	}
 }
