@@ -111,7 +111,8 @@ public class class169 extends class145 {
 		descriptor = "(B)V",
 		garbageValue = "67"
 	)
-	static final void method3518() {
+	@Export("renderMenu")
+	static final void renderMenu() {
 		int var0 = class245.menuX;
 		int var1 = Decimator.menuY;
 		int var2 = class60.menuWidth;
@@ -144,6 +145,6 @@ public class class169 extends class145 {
 			var10.draw(var11, var0 + 3, var8, var9, 0);
 		}
 
-		class106.method2774(class245.menuX, Decimator.menuY, class60.menuWidth, class167.menuHeight);
+		class106.invalidateWidgetsUnder(class245.menuX, Decimator.menuY, class60.menuWidth, class167.menuHeight);
 	}
 }

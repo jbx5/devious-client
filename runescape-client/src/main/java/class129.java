@@ -248,7 +248,8 @@ public class class129 {
 		descriptor = "(II)V",
 		garbageValue = "1910155406"
 	)
-	static final void method3067(int var0) {
+	@Export("menuActionByIdx")
+	static final void menuActionByIdx(int var0) {
 		if (var0 >= 0) {
 			int var1 = Client.menuArguments1[var0];
 			int var2 = Client.menuArguments2[var0];

@@ -50,7 +50,8 @@ final class class106 implements class339 {
 		descriptor = "(IIIII)V",
 		garbageValue = "1485975719"
 	)
-	static final void method2774(int var0, int var1, int var2, int var3) {
+	@Export("invalidateWidgetsUnder")
+	static final void invalidateWidgetsUnder(int var0, int var1, int var2, int var3) {
 		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
 			if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
 				Client.field721[var4] = true;

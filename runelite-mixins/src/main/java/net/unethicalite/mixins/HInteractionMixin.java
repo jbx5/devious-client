@@ -113,20 +113,20 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	@Replace("menuAction")
 	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
 	{
-		RSRuneLiteMenuEntry menuEntry = null;
-		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
-		{
-			if (client.getMenuOpcodes()[i] == opcode
-					&& client.getMenuIdentifiers()[i] == id
-					&& client.getMenuArguments1()[i] == param0
-					&& client.getMenuArguments2()[i] == param1
-					&& client.getMenuItemIds()[i] == itemId
-					&& option.equals(client.getMenuOptions()[i])
-					&& target.equals(client.getMenuTargets()[i])
-			)
-			{
-				menuEntry = rl$menuEntries[i];
-				break;
+		RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) client.getClickedMenuEntry();
+		if(menuEntry == null) {
+			for (int i = client.getMenuOptionCount() - 1; i >= 0; --i) {
+				if (client.getMenuOpcodes()[i] == opcode
+						&& client.getMenuIdentifiers()[i] == id
+						&& client.getMenuArguments1()[i] == param0
+						&& client.getMenuArguments2()[i] == param1
+						&& client.getMenuItemIds()[i] == itemId
+						&& option.equals(client.getMenuOptions()[i])
+						&& target.equals(client.getMenuTargets()[i])
+				) {
+					menuEntry = rl$menuEntries[i];
+					break;
+				}
 			}
 		}
 

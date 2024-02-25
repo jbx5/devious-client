@@ -38,6 +38,7 @@ import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Import;
 
 public interface RSClient extends RSGameEngine, Client
@@ -1127,6 +1128,18 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuWidth")
 	int getMenuWidth();
 
+	@Import("menuX")
+	void setMenuX(int x);
+
+	@Import("menuY")
+	void setMenuY(int y);
+
+	@Import("menuHeight")
+	void setMenuHeight(int h);
+
+	@Import("menuWidth")
+	void setMenuWidth(int w);
+
 	@Import("fontBold12")
 	RSFont getFontBold12();
 
@@ -1240,6 +1253,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("insertMenuItem")
 	@Override
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int argument3, boolean forceLeftClick);
+
+	@Import("invalidateWidgetsUnder")
+	void invalidateWidgetsUnder(int var0, int var1, int var2, int var3);
 
 	@Import("selectedSpellWidget")
 	@Override

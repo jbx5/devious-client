@@ -3851,7 +3851,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				AsyncHttpResponse.method252(viewportX, viewportY);
 			}
 		} else {
-			class169.method3518();
+			class169.renderMenu();
 		}
 
 		if (gameDrawingMode == 3) {
@@ -6118,7 +6118,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (var7 != -1) {
-						class129.method3067(var7);
+						class129.menuActionByIdx(var7);
 					}
 
 					isMenuOpen = false;
@@ -6131,7 +6131,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if ((var1 == 1 || !DbTableType.mouseCam && var1 == 4) && menuOptionsCount > 0) {
-					class129.method3067(var2);
+					class129.menuActionByIdx(var2);
 				}
 
 				if (var1 == 2 && menuOptionsCount > 0) {

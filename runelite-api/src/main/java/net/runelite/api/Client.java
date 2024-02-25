@@ -785,6 +785,19 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	void setMenuScroll(int scroll);
 
+	int getSubmenuX();
+	MenuEntry getClickedMenuEntry();
+	int getSubmenuY();
+	int getSubmenuWidth();
+	int getSubmenuHeight();
+	int getSubmenuScroll();
+	int getSubmenuIdx();
+	void setSubmenuX(int x);
+	void setSubmenuY(int y);
+	void setSubmenuWidth(int w);
+	void setSubmenuHeight(int h);
+	void setSubmenuScroll(int s);
+	void setSubmenuIdx(int idx);
 	/**
 	 * Get the menu x location. Only valid if the menu is open.
 	 *

@@ -85,7 +85,7 @@ public abstract class RouteStrategy {
 			if (var1) {
 				UserComparator8.rasterProvider.drawFull(0, 0);
 			} else {
-				class106.method2774(var3, var4, var5, var6);
+				class106.invalidateWidgetsUnder(var3, var4, var5, var6);
 			}
 
 		}
