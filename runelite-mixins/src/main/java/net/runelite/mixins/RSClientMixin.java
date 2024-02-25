@@ -125,7 +125,6 @@ import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
 import net.runelite.api.widgets.WidgetUtil;
-import net.runelite.mapping.Export;
 import net.runelite.rs.api.RSAbstractArchive;
 import net.runelite.rs.api.RSArchive;
 import net.runelite.rs.api.RSBuffer;
@@ -346,24 +345,29 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public int getMenuScroll() {
+	public int getMenuScroll()
+	{
 		return menuScroll;
 	}
 	@Inject
 	@Override
-	public void setMenuScroll(int s) {
+	public void setMenuScroll(int s)
+	{
 		menuScroll = s;
 	}
 	@Inject
 	@Override
-	public int getSubmenuX() {
+	public int getSubmenuX()
+	{
 		return submenuX;
 	}
 	@Inject
 	@Override
-	public MenuEntry getClickedMenuEntry() {
+	public MenuEntry getClickedMenuEntry()
+	{
 		MenuEntry toRet = null;
-		if(clickedIdx != -1) {
+		if (clickedIdx != -1)
+		{
 			toRet = rl$menuEntries[clickedIdx];
 			clickedIdx = -1;
 		}
@@ -371,57 +375,68 @@ public abstract class RSClientMixin implements RSClient
 	}
 	@Inject
 	@Override
-	public int getSubmenuY() {
+	public int getSubmenuY()
+	{
 		return submenuY;
 	}
 	@Inject
 	@Override
-	public int getSubmenuWidth() {
+	public int getSubmenuWidth()
+	{
 		return submenuWidth;
 	}
 	@Inject
 	@Override
-	public int getSubmenuHeight() {
+	public int getSubmenuHeight()
+	{
 		return submenuHeight;
 	}
 	@Inject
 	@Override
-	public int getSubmenuScroll(){
+	public int getSubmenuScroll()
+	{
 		return submenuScroll;
 	}
 	@Inject
 	@Override
-	public int getSubmenuIdx() {
+	public int getSubmenuIdx()
+	{
 		return submenuIdx;
 	}
 	@Inject
 	@Override
-	public void setSubmenuX(int x) {
+	public void setSubmenuX(int x)
+	{
 		submenuX = x;
 	}
 	@Inject
 	@Override
-	public void setSubmenuY(int y){
-		submenuY= y;
+	public void setSubmenuY(int y)
+	{
+		submenuY = y;
 	}
 	@Inject
 	@Override
-	public void setSubmenuWidth(int w) {
+	public void setSubmenuWidth(int w)
+	{
 		submenuWidth = w;
 	}
 	@Inject
 	@Override
-	public void setSubmenuHeight(int h) {
+	public void setSubmenuHeight(int h)
+	{
 		submenuHeight = h;
 	}
 	@Inject
 	@Override
-	public void setSubmenuScroll(int s){
-		submenuScroll= s;
+	public void setSubmenuScroll(int s)
+	{
+		submenuScroll = s;
 	}
 	@Inject
 	@Override
-	public void setSubmenuIdx(int idx) {
+	public void setSubmenuIdx(int idx)
+	{
 		submenuIdx = idx;
 	}
 
@@ -1245,9 +1260,12 @@ public abstract class RSClientMixin implements RSClient
 					for (var8 = 0; var8 < entries.length; ++var8)
 					{
 						MenuEntry e = entries[var8];
-						if(e.getParent() == null) {
+						if (e.getParent() == null)
+						{
 							rootMenuTotalCount++;
-						} else if(((RSRuneLiteMenuEntry)e.getParent()).getIdx() == client.getSubmenuIdx()) {
+						}
+						else if (((RSRuneLiteMenuEntry)e.getParent()).getIdx() == client.getSubmenuIdx())
+						{
 							submenuTotalCount++;
 						}
 					}
@@ -1256,14 +1274,17 @@ public abstract class RSClientMixin implements RSClient
 					for (var8 = 0; var8 < entries.length; ++var8)
 					{
 						MenuEntry e = entries[var8];
-						if(e.getParent() == null) {
+						if (e.getParent() == null)
+						{
 							int rowY = (rootMenuTotalCount - 1 - rootMenuCount - client.getMenuScroll()) * 15 + client.getMenuY() + 31;
 							if (client.getMouseLastPressedX() > client.getMenuX() && client.getMouseLastPressedX() < client.getMenuWidth() + client.getMenuX() && client.getMouseLastPressedY() > rowY - 13 && client.getMouseLastPressedY() < rowY + 3)
 							{
 								var7 = var8;
 							}
 							rootMenuCount++;
-						} else if(((RSRuneLiteMenuEntry)e.getParent()).getIdx() == client.getSubmenuIdx()) {
+						}
+						else if (((RSRuneLiteMenuEntry)e.getParent()).getIdx() == client.getSubmenuIdx())
+						{
 							int rowY = (submenuTotalCount - 1 - submenuCount - client.getSubmenuScroll()) * 15 + client.getSubmenuY() + 31;
 							if (client.getMouseLastPressedX() > client.getSubmenuX() && client.getMouseLastPressedX() < client.getSubmenuWidth() + client.getSubmenuX() && client.getMouseLastPressedY() > rowY - 13 && client.getMouseLastPressedY() < rowY + 3)
 							{
@@ -1301,7 +1322,9 @@ public abstract class RSClientMixin implements RSClient
 						if (client.getWidgetWidths()[var12] + client.getWidgetPositionsX()[var12] > client.getMenuX() && client.getWidgetPositionsX()[var12] < client.getMenuX() + client.getMenuWidth() && client.getWidgetHeights()[var12] + client.getWidgetPositionsY()[var12] > client.getMenuY() && client.getWidgetPositionsY()[var12] < client.getMenuY() +  client.getMenuHeight())
 						{
 							client.getValidRootWidgets()[var12] = true;
-						} else if(client.getSubmenuIdx() != -1 && (client.getWidgetWidths()[var12] + client.getWidgetPositionsX()[var12] > client.getSubmenuX() && client.getWidgetPositionsX()[var12] < client.getSubmenuX() + client.getSubmenuWidth() && client.getWidgetHeights()[var12] + client.getWidgetPositionsY()[var12] > client.getSubmenuY() && client.getWidgetPositionsY()[var12] < client.getSubmenuY()+ client.getSubmenuHeight())) {
+						}
+						else if (client.getSubmenuIdx() != -1 && (client.getWidgetWidths()[var12] + client.getWidgetPositionsX()[var12] > client.getSubmenuX() && client.getWidgetPositionsX()[var12] < client.getSubmenuX() + client.getSubmenuWidth() && client.getWidgetHeights()[var12] + client.getWidgetPositionsY()[var12] > client.getSubmenuY() && client.getWidgetPositionsY()[var12] < client.getSubmenuY() + client.getSubmenuHeight()))
+						{
 							client.getValidRootWidgets()[var12] = true;
 						}
 					}
@@ -2296,18 +2319,22 @@ public abstract class RSClientMixin implements RSClient
 		int var4;
 		int var5;
 		int realCount = 0;
-		for (var4 = 0; var4 < client.getMenuOptionCount(); ++var4) {
+		for (var4 = 0; var4 < client.getMenuOptionCount(); ++var4)
+		{
 			MenuEntry tempMenuEntry = client.getMenuEntries()[var4];
-			if(tempMenuEntry.getParent() != null) {
+			if (tempMenuEntry.getParent() != null)
+			{
 				continue;
 			}
 			realCount++;
 			String s = tempMenuEntry.getOption();
-			if (!tempMenuEntry.getTarget().isEmpty()) {
+			if (!tempMenuEntry.getTarget().isEmpty())
+			{
 				s = s + " " + tempMenuEntry.getTarget();
 			}
 
-			if (tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU) {
+			if (tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU)
+			{
 				s = s + " <col=ffffff><gt>";
 			}
 			tempWidth = Math.max(client.getFontBold12().getTextWidth(s), tempWidth);
@@ -2316,20 +2343,24 @@ public abstract class RSClientMixin implements RSClient
 		tempWidth += 8;
 		var4 = realCount * 15 + 22;
 		var5 = x - tempWidth / 2;
-		if (var5 + tempWidth > client.getCanvasWidth()) {
+		if (var5 + tempWidth > client.getCanvasWidth())
+		{
 			var5 = client.getCanvasWidth() - tempWidth;
 		}
 
-		if (var5 < 0) {
+		if (var5 < 0)
+		{
 			var5 = 0;
 		}
 
 		int var6 = y;
-		if (var4 + y > client.getCanvasHeight()) {
+		if (var4 + y > client.getCanvasHeight())
+		{
 			var6 = client.getCanvasHeight() - var4;
 		}
 
-		if (var6 < 0) {
+		if (var6 < 0)
+		{
 			var6 = 0;
 		}
 
@@ -2343,10 +2374,12 @@ public abstract class RSClientMixin implements RSClient
 
 
 	@Replace("renderMenu")
-	public static void rs$renderMenu() {
+	public static void rs$renderMenu()
+	{
 		BeforeMenuRender event = new BeforeMenuRender();
 		client.getCallbacks().post(event);
-		if(!event.isConsumed()) {
+		if (!event.isConsumed())
+		{
 			client.drawOriginalMenu(255);
 		}
 	}

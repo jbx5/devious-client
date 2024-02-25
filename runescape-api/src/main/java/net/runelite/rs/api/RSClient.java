@@ -38,7 +38,6 @@ import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Import;
 
 public interface RSClient extends RSGameEngine, Client
