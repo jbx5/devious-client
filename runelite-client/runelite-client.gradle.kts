@@ -203,7 +203,7 @@ tasks {
         group = "openosrs"
     }
 
-    register<JavaExec>("RuneLite.main()") {
+    register<JavaExec>("RunRuneLite") {
         group = "openosrs"
 
         classpath = project.sourceSets.main.get().runtimeClasspath
