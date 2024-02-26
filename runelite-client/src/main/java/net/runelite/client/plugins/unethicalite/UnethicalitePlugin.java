@@ -17,7 +17,7 @@ import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
-import java.awt.*;
+import java.awt.Rectangle;
 import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ExecutorService;
