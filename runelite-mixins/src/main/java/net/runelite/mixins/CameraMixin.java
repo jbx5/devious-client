@@ -140,6 +140,16 @@ public abstract class CameraMixin implements RSClient
 	}
 
 	@Inject
+	@FieldHook("camAngleDY")
+	private static void onCamAngleDYChange(int index)
+	{
+		if (invertYaw && client.getMouseCurrentButton() == 4 && client.isMouseCam())
+		{
+			client.setCamAngleDY(-client.getCamAngleDY());
+		}
+	}
+
+	@Inject
 	private static float cameraSpeed = 1.0F;
 
 	@Inject
@@ -209,22 +219,17 @@ public abstract class CameraMixin implements RSClient
 			return;
 		}
 
-		int var2 = client.getMouseHandlerY() - client.getMouseCamClickedY();
-		int var3 = client.getMouseCamClickedX() - client.getMouseHandlerX();
-		client.setCamAngleDX((int) ((float) (var2 * 2) * cameraSpeed));
-		client.setCamAngleDY((int) ((float) (var3 * 2) * cameraSpeed));
+		/*int distanceY = client.getMouseHandlerY() - client.getMouseCamClickedY();
+		int distanceX = client.getMouseCamClickedX() - client.getMouseHandlerX();
+		client.setCamAngleDX((int) ((float) (distanceY * 2) * cameraSpeed));
+		client.setCamAngleDY((int) ((float) (distanceX * 2) * cameraSpeed));*/
 
 		if (invertPitch)
 		{
 			client.setCamAngleDX(-client.getCamAngleDX());
 		}
 
-		if (invertYaw)
-		{
-			client.setCamAngleDY(-client.getCamAngleDY());
-		}
-
-//		client.setMouseCamClickedY(var2 != -1 && var2 != 1 ? (client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2 : client.getMouseHandlerY());
-//		client.setMouseCamClickedX(var3 != -1 && var3 != 1 ? (client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2 : client.getMouseHandlerX());
+		//client.setMouseCamClickedY(distanceY != -1 && distanceY != 1 ? (int) ((client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2) : client.getMouseHandlerY());
+		//client.setMouseCamClickedX(distanceX != -1 && distanceX != 1 ? (int) ((client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2) : client.getMouseHandlerX());
 	}
 }
