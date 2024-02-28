@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.events.WidgetPressed;
 import net.runelite.api.mixins.FieldHook;
@@ -33,6 +34,7 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFont;
 import net.runelite.rs.api.RSMenuAction;
+import net.runelite.rs.api.RSRuneLiteMenuEntry;
 
 @Mixin(RSClient.class)
 public abstract class MenuMixin implements RSClient
@@ -53,14 +55,68 @@ public abstract class MenuMixin implements RSClient
 	private static RSMenuAction tempMenuAction;
 
 	@Inject
-	@Override
-	public void draw2010Menu(int alpha)
+	void initSubmenu(int x, int y)
 	{
-		int x = getMenuX();
-		int y = getMenuY();
-		int w = getMenuWidth();
-		int h = getMenuHeight();
+		if (client.getSubmenuIdx() != -1)
+		{
+			RSRuneLiteMenuEntry rootEntry = (RSRuneLiteMenuEntry) client.getMenuEntries()[client.getSubmenuIdx()];
+			String s = rootEntry.getOption();
+			if (!rootEntry.getTarget().isEmpty())
+			{
+				s = s + " " + rootEntry.getTarget();
+			}
 
+			if (rootEntry.getType() == MenuAction.RUNELITE_SUBMENU)
+			{
+				s = s + " <col=ffffff><gt>";
+			}
+			int tempWidth = client.getFontBold12().getTextWidth(s);
+			int realCount = 0;
+
+			for (MenuEntry me : client.getMenuEntries())
+			{
+				if (me.getParent() == null) continue;
+				if (((RSRuneLiteMenuEntry)me.getParent()).getIdx() == rootEntry.getIdx())
+				{
+					realCount++;
+					tempWidth = Math.max(client.getFontBold12().getTextWidth(
+							(me.getTarget().length() > 0 ? me.getOption() + " " + me.getTarget() : me.getOption())
+					), tempWidth);
+				}
+			}
+			tempWidth += 8;
+			int var4 = realCount * 15 + 22;
+			int var5 = x/* - tempWidth / 2*/;
+			if (var5 + tempWidth > client.getCanvasWidth())
+			{
+				var5 = client.getCanvasWidth() - tempWidth;
+			}
+
+			if (var5 < 0)
+			{
+				var5 = 0;
+			}
+
+			int var6 = y;
+			if (var4 + y > client.getCanvasHeight())
+			{
+				var6 = client.getCanvasHeight() - var4;
+			}
+
+			if (var6 < 0)
+			{
+				var6 = 0;
+			}
+
+			client.setSubmenuX(var5);
+			client.setSubmenuY(var6);
+			client.setSubmenuWidth(tempWidth);
+			client.setSubmenuHeight(realCount * 15 + 22);
+		}
+	}
+	@Inject
+	private void draw2010MenuNest(MenuEntry parent, int x, int y, int w, int h, int scroll, int alpha)
+	{
 		// Outside border
 		rasterizerDrawHorizontalLineAlpha(x + 2, y, w - 4, MENU_BORDER_OUTER_2010, alpha);
 		rasterizerDrawHorizontalLineAlpha(x + 2, y + h - 1, w - 4, MENU_BORDER_OUTER_2010, alpha);
@@ -96,30 +152,126 @@ public abstract class MenuMixin implements RSClient
 		RSFont font = getFontBold12();
 		font.drawTextLeftAligned("Choose Option", x + 3, y + 14, MENU_TEXT_2010, -1);
 
+		MenuEntry[] entries = getMenuEntries();
+
 		int mouseX = getMouseX();
 		int mouseY = getMouseY();
-
-		int count = getMenuOptionCount();
-		String[] targets = getMenuTargets();
-		String[] options = getMenuOptions();
-		for (int i = 0; i < count; i++)
+		int realCount = 0;
+		for (int i = 0; i < entries.length; i++)
 		{
-			int rowY = y + (count - 1 - i) * 15 + 31;
-
-			String s = options[i];
-			if (!targets[i].isEmpty())
+			if (entries[i].getParent() == parent)
 			{
-				s += " " + targets[i];
-			}
-
-			font.drawTextLeftAligned(s, x + 3, rowY, MENU_TEXT_2010, -1);
-
-			// Highlight current option
-			if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
-			{
-				rasterizerFillRectangleAlpha(x + 3, rowY - 12, w - 6, 15, 0xffffff, 80);
+				realCount++;
 			}
 		}
+		int realIdx = 0;
+		for (int i = 0; i < entries.length; i++)
+		{
+			MenuEntry entry = entries[i];
+			if (entry.getParent() == parent && realCount - 1 - realIdx >= scroll)
+			{
+				int rowY = y + (realCount - 1 - realIdx - scroll) * 15 + 31;
+				realIdx++;
+				String s = entry.getOption();
+				if (!entry.getTarget().isEmpty())
+				{
+					s = s + " " + entry.getTarget();
+				}
+
+				if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+				{
+					s = s + " <col=ffffff><gt>";
+				}
+
+				font.drawTextLeftAligned(s, x + 3, rowY, MENU_TEXT_2010, -1);
+				if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
+				{
+					rasterizerFillRectangleAlpha(x + 3, rowY - 12, w - 6, 15, 0xffffff, 80);
+					if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+					{
+						setSubmenuIdx(i);
+						initSubmenu(x + w, rowY - 31);
+					}
+				}
+				if (client.getSubmenuIdx() == i)
+				{
+					this.draw2010MenuNest(entry, getSubmenuX(), getSubmenuY(), getSubmenuWidth(), getSubmenuHeight(), getSubmenuScroll(), alpha);
+				}
+			}
+		}
+		client.invalidateWidgetsUnder(x, y, w, h);
+	}
+	@Inject
+	@Override
+	public void draw2010Menu(int alpha)
+	{
+		int x = getMenuX();
+		int y = getMenuY();
+		int w = getMenuWidth();
+		int h = getMenuHeight();
+
+		draw2010MenuNest(null, x, y, w, h, getMenuScroll(), alpha);
+
+	}
+
+	@Inject
+	private void drawOriginalMenuNest(MenuEntry parent, int x, int y, int w, int h, int scroll, int alpha)
+	{
+		rasterizerFillRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
+		rasterizerDrawRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
+		rasterizerFillRectangleAlpha(x + 1, y + 1, w - 2, 16, 0, alpha);
+		rasterizerDrawRectangleAlpha(x + 1, y + 18, w - 2, h - 19, 0, alpha);
+		RSFont font = getFontBold12();
+		font.drawTextLeftAligned("Choose Option", x + 3, y + 14, ORIGINAL_BG, -1);
+
+		MenuEntry[] entries = getMenuEntries();
+
+		int mouseX = getMouseX();
+		int mouseY = getMouseY();
+		int realCount = 0;
+		for (int i = 0; i < entries.length; i++)
+		{
+			if (entries[i].getParent() == parent)
+			{
+				realCount++;
+			}
+		}
+		int realIdx = 0;
+		for (int i = 0; i < entries.length; i++)
+		{
+			MenuEntry entry = entries[i];
+			if (entry.getParent() == parent && realCount - 1 - realIdx >= scroll)
+			{
+				int rowY = y + (realCount - 1 - realIdx - scroll) * 15 + 31;
+				realIdx++;
+				String s = entry.getOption();
+				if (!entry.getTarget().isEmpty())
+				{
+					s = s + " " + entry.getTarget();
+				}
+
+				if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+				{
+					s = s + " <col=ffffff><gt>";
+				}
+				int highlight = 0xFFFFFF;
+				if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
+				{
+					highlight = 0xFFFF00;
+					if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+					{
+						setSubmenuIdx(i);
+						initSubmenu(x + w, rowY - 31);
+					}
+				}
+				font.drawTextLeftAligned(s, x + 3, rowY, highlight, -1);
+				if (client.getSubmenuIdx() == i)
+				{
+					this.drawOriginalMenuNest(entry, getSubmenuX(), getSubmenuY(), getSubmenuWidth(), getSubmenuHeight(), getSubmenuScroll(), alpha);
+				}
+			}
+		}
+		client.invalidateWidgetsUnder(x, y, w, h);
 	}
 
 	@Inject
@@ -130,37 +282,7 @@ public abstract class MenuMixin implements RSClient
 		int y = getMenuY();
 		int w = getMenuWidth();
 		int h = getMenuHeight();
-		rasterizerFillRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
-		rasterizerDrawRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
-		rasterizerFillRectangleAlpha(x + 1, y + 1, w - 2, 16, 0, alpha);
-		rasterizerDrawRectangleAlpha(x + 1, y + 18, w - 2, h - 19, 0, alpha);
-		RSFont font = getFontBold12();
-		font.drawTextLeftAligned("Choose Option", x + 3, y + 14, ORIGINAL_BG, -1);
-
-		int mouseX = getMouseX();
-		int mouseY = getMouseY();
-
-		int count = getMenuOptionCount();
-		String[] targets = getMenuTargets();
-		String[] options = getMenuOptions();
-		for (int i = 0; i < count; i++)
-		{
-			int rowY = y + (count - 1 - i) * 15 + 31;
-
-			String s = options[i];
-			if (!targets[i].isEmpty())
-			{
-				s += " " + targets[i];
-			}
-
-			int highlight = 0xFFFFFF;
-			if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
-			{
-				highlight = 0xFFFF00;
-			}
-
-			font.drawTextLeftAligned(s, x + 3, rowY, highlight, -1);
-		}
+		drawOriginalMenuNest(null, x, y, w, h, getMenuScroll(), alpha);
 	}
 
 	@Inject
