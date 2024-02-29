@@ -157,7 +157,8 @@ public abstract class MenuMixin implements RSClient
 		rasterizerDrawCircleAlpha(x + w - 2, y + h - 2, 0, MENU_BORDER_OUTER_2010, alpha);
 
 		RSFont font = getFontBold12();
-		font.drawTextLeftAligned("Choose Option", x + 3, y + 14, MENU_TEXT_2010, -1);
+		String option = parent == null ? "Choose Option" : parent.getTarget();
+		font.drawTextLeftAligned(option, x + 3, y + 14, MENU_TEXT_2010, -1);
 
 		MenuEntry[] entries = getMenuEntries();
 
@@ -224,12 +225,22 @@ public abstract class MenuMixin implements RSClient
 	@Inject
 	private void drawOriginalMenuNest(MenuEntry parent, int x, int y, int w, int h, int scroll, int alpha)
 	{
-		rasterizerFillRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
-		rasterizerDrawRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
-		rasterizerFillRectangleAlpha(x + 1, y + 1, w - 2, 16, 0, alpha);
-		rasterizerDrawRectangleAlpha(x + 1, y + 18, w - 2, h - 19, 0, alpha);
+		if (alpha != 255)
+		{
+			rasterizerFillRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
+			rasterizerFillRectangleAlpha(x + 1, y + 1, w - 2, 16, 0, alpha);
+			rasterizerDrawRectangleAlpha(x + 1, y + 18, w - 2, h - 19, 0, alpha);
+		}
+		else
+		{
+			rasterizerFillRectangle(x, y, w, h, ORIGINAL_BG);
+			rasterizerFillRectangle(x + 1, y + 1, w - 2, 16, 0);
+			rasterizerDrawRectangle(x + 1, y + 18, w - 2, h - 19, 0);
+		}
+
 		RSFont font = getFontBold12();
-		font.drawTextLeftAligned("Choose Option", x + 3, y + 14, ORIGINAL_BG, -1);
+		String option = parent == null ? "Choose Option" : parent.getTarget();
+		font.drawTextLeftAligned(option, x + 3, y + 14, ORIGINAL_BG, -1);
 
 		MenuEntry[] entries = getMenuEntries();
 
@@ -271,7 +282,7 @@ public abstract class MenuMixin implements RSClient
 						initSubmenu(x + w, rowY - 31);
 					}
 				}
-				font.drawTextLeftAligned(s, x + 3, rowY, highlight, -1);
+				font.drawTextLeftAligned(s, x + 3, rowY, highlight, 0);
 				if (client.getSubmenuIdx() == i)
 				{
 					this.drawOriginalMenuNest(entry, getSubmenuX(), getSubmenuY(), getSubmenuWidth(), getSubmenuHeight(), getSubmenuScroll(), alpha);
