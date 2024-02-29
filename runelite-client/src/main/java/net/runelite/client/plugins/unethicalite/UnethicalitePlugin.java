@@ -5,8 +5,6 @@ import net.runelite.api.Client;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.input.MouseManager;
-import net.runelite.client.input.MouseWheelListener;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.unethicalite.regions.RegionHandler;
 import net.runelite.client.plugins.unethicalite.ui.UnethicalitePanel;
@@ -17,8 +15,6 @@ import net.unethicalite.api.plugins.SettingsPlugin;
 import net.unethicalite.client.config.UnethicaliteConfig;
 
 import javax.inject.Inject;
-import java.awt.Rectangle;
-import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.ExecutorService;
 
@@ -35,9 +31,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 
 	@Inject
 	private EventBus eventBus;
-
-	@Inject
-	private MouseManager mouseManager;
 
 	@Inject
 	private RegionHandler regionHandler;
@@ -57,29 +50,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 	private UnethicalitePanel unethicalitePanel;
 	private NavigationButton navButton;
 
-	private MouseWheelListener menuScrollHandler = new MouseWheelListener() {
-		@Override
-		public MouseWheelEvent mouseWheelMoved(MouseWheelEvent event)
-		{
-			if (client.isMenuOpen())
-			{
-				Rectangle menuBounds = new Rectangle(client.getMenuX(), client.getMenuY(), client.getMenuWidth(), client.getMenuHeight());
-				Rectangle submenuBounds = new Rectangle(client.getSubmenuX(), client.getSubmenuY(), client.getSubmenuWidth(), client.getSubmenuHeight());
-				if (submenuBounds.contains(event.getX(), event.getY()))
-				{
-					client.setSubmenuScroll(Math.max(0, client.getSubmenuScroll() + event.getWheelRotation()));
-					event.consume();
-				}
-				else if (menuBounds.contains(event.getX(), event.getY()))
-				{
-					client.setMenuScroll(Math.max(0, client.getMenuScroll() + event.getWheelRotation()));
-					event.consume();
-				}
-			}
-			return event;
-		}
-	};
-
 	@Override
 	protected void startUp() throws Exception
 	{
@@ -88,8 +58,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 		unethicalitePanel = new UnethicalitePanel(client, config, configManager);
 
 		eventBus.register(unethicalitePanel);
-
-		mouseManager.registerMouseWheelListener(0, menuScrollHandler);
 
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "openosrs.png");
 
@@ -106,7 +74,6 @@ public class UnethicalitePlugin extends SettingsPlugin
 	@Override
 	protected void shutDown() throws Exception
 	{
-		mouseManager.unregisterMouseWheelListener(menuScrollHandler);
 		clientToolbar.removeNavigation(navButton);
 		eventBus.unregister(regionHandler);
 		eventBus.unregister(unethicalitePanel);
