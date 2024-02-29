@@ -1259,9 +1259,9 @@ public abstract class RSClientMixin implements RSClient
 						client.setSubmenuIdx(-1);
 					}
 
-					if (client.isMenuOpen() && client.getMouseWheelRotation() != 0 && menuScrollMax > 0)
+					if (client.isMenuOpen() && client.getMouseWheelRotation() != 0)
 					{
-						if (!regMenuCheck)
+						if (!regMenuCheck && menuScrollMax > 0)
 						{
 							client.setMenuScroll(menuScroll + client.getMouseWheelRotation());
 							if (menuScroll < 0)
@@ -1274,7 +1274,7 @@ public abstract class RSClientMixin implements RSClient
 							}
 						}
 
-						if (!subMenuCheck)
+						if (!subMenuCheck && submenuScrollMax > 0)
 						{
 							client.setSubmenuScroll(submenuScroll + client.getMouseWheelRotation());
 							if (submenuScroll < 0)
