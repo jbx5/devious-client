@@ -105,6 +105,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("MouseHandler_y")
 	void setMouseHandlerY(int mouseHandlerY);
 
+	@Import("mouseWheelRotation")
+	int getMouseWheelRotation();
+
 	@Import("indexCheck")
 	RSIndexCheck getIndexCheck();
 

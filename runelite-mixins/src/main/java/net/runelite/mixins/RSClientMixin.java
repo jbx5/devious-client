@@ -339,10 +339,20 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	private int submenuScroll = 0;
 	@Inject
+	private static int submenuScrollMax = 0;
+	@Inject
 	private int submenuIdx = -1;
 	@Inject
 	private int menuScroll = 0;
+	@Inject
+	private static int menuScrollMax = 0;
 
+	@Inject
+	@Override
+	public boolean isMenuScrollable()
+	{
+		return menuScrollMax > 0;
+	}
 	@Inject
 	@Override
 	public int getMenuScroll()
@@ -353,7 +363,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setMenuScroll(int s)
 	{
-		menuScroll = s;
+		menuScroll = Ints.constrainToRange(s, 0, menuScrollMax);
 	}
 	@Inject
 	@Override
@@ -431,7 +441,13 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setSubmenuScroll(int s)
 	{
-		submenuScroll = s;
+		submenuScroll = Ints.constrainToRange(s, 0, submenuScrollMax);
+	}
+	@Inject
+	@Override
+	public void setSubmenuScrollMax(int max)
+	{
+		submenuScrollMax = max;
 	}
 	@Inject
 	@Override
@@ -1233,7 +1249,46 @@ public abstract class RSClientMixin implements RSClient
 					//this checks if the mouse is not contained in the menu area
 					boolean regMenuCheck = (var2 < client.getMenuX() - 10 || var2 > client.getMenuX() + client.getMenuWidth() + 10 || var3 < client.getMenuY() - 10 || var3 > client.getMenuY() + client.getMenuHeight() + 10);
 					boolean subMenuCheck = (var2 < client.getSubmenuX() - 10 || var2 > client.getSubmenuX() + client.getSubmenuWidth() + 10 ||  var3 < client.getSubmenuY() - 10 || var3 > client.getSubmenuY() + client.getSubmenuHeight() + 10);
-					if (regMenuCheck && (client.getSubmenuIdx() == -1 || subMenuCheck))
+					if (regMenuCheck && subMenuCheck)
+					{
+						client.setMenuOpen(false);
+						client.setSubmenuIdx(-1);
+					}
+					else if (subMenuCheck)
+					{
+						client.setSubmenuIdx(-1);
+					}
+
+					if (client.isMenuOpen() && client.getMouseWheelRotation() != 0 && menuScrollMax > 0)
+					{
+						if (!regMenuCheck)
+						{
+							client.setMenuScroll(menuScroll + client.getMouseWheelRotation());
+							if (menuScroll < 0)
+							{
+								menuScroll = 0;
+							}
+							else if (menuScroll > menuScrollMax)
+							{
+								menuScroll = menuScrollMax;
+							}
+						}
+
+						if (!subMenuCheck)
+						{
+							client.setSubmenuScroll(submenuScroll + client.getMouseWheelRotation());
+							if (submenuScroll < 0)
+							{
+								submenuScroll = 0;
+							}
+							else if (submenuScroll > submenuScrollMax)
+							{
+								submenuScroll = submenuScrollMax;
+							}
+						}
+					}
+
+					/*if (regMenuCheck && (client.getSubmenuIdx() == -1 || subMenuCheck))
 					{
 						client.setMenuOpen(false);
 						for (var8 = 0; var8 < client.getRootWidgetCount(); ++var8)
@@ -1247,7 +1302,7 @@ public abstract class RSClientMixin implements RSClient
 								client.getValidRootWidgets()[var8] = true;
 							}
 						}
-					}
+					}*/
 				}
 
 				if (var19 == 1 || !client.isMouseCam() && var19 == 4)
@@ -2370,6 +2425,13 @@ public abstract class RSClientMixin implements RSClient
 		client.setMenuHeight(realCount * 15 + 22);
 		client.getScene().menuOpen(client.getPlane(), x - client.getViewportXOffset(), y - client.getViewportYOffset(), false);
 		client.setMenuOpen(true);
+
+		client.setMenuScroll(0);
+		menuScrollMax = 0;
+		if (var4 > this.getCanvasHeight())
+		{
+			menuScrollMax = (var4 - this.getCanvasHeight() + 14) / 15;
+		}
 	}
 
 

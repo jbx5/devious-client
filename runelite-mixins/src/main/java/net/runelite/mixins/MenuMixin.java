@@ -112,6 +112,13 @@ public abstract class MenuMixin implements RSClient
 			client.setSubmenuY(var6);
 			client.setSubmenuWidth(tempWidth);
 			client.setSubmenuHeight(realCount * 15 + 22);
+
+			client.setSubmenuScroll(0);
+			client.setSubmenuScrollMax(0);
+			if (var4 > this.getCanvasHeight())
+			{
+				client.setSubmenuScrollMax(var4 - this.getCanvasHeight() + 14 / 15);
+			}
 		}
 	}
 	@Inject
