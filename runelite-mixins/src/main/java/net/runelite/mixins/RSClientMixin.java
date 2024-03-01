@@ -1246,22 +1246,22 @@ public abstract class RSClientMixin implements RSClient
 				{
 					var2 = client.getMouseX();
 					var3 = client.getMouseY();
-					//this checks if the mouse is not contained in the menu area
-					boolean regMenuCheck = (var2 < client.getMenuX() - 10 || var2 > client.getMenuX() + client.getMenuWidth() + 10 || var3 < client.getMenuY() - 10 || var3 > client.getMenuY() + client.getMenuHeight() + 10);
-					boolean subMenuCheck = (var2 < client.getSubmenuX() - 10 || var2 > client.getSubmenuX() + client.getSubmenuWidth() + 10 ||  var3 < client.getSubmenuY() - 10 || var3 > client.getSubmenuY() + client.getSubmenuHeight() + 10);
-					if (regMenuCheck && subMenuCheck)
+					//this checks if the mouse is contained in the menu area
+					boolean regmenuContainsMouse = (var2 >= client.getMenuX() - 10 && var2 <= client.getMenuX() + client.getMenuWidth() + 10 && var3 >= client.getMenuY() - 10 && var3 <= client.getMenuY() + client.getMenuHeight() + 10);
+					boolean submenuContainsMouse = (var2 >= client.getSubmenuX() - 10 && var2 <= client.getSubmenuX() + client.getSubmenuWidth() + 10 && var3 >= client.getSubmenuY() - 10 && var3 <= client.getSubmenuY() + client.getSubmenuHeight() + 10);
+					if (!regmenuContainsMouse && !submenuContainsMouse)
 					{
 						client.setMenuOpen(false);
 						client.setSubmenuIdx(-1);
 					}
-					else if (subMenuCheck)
+					else if (!submenuContainsMouse)
 					{
 						client.setSubmenuIdx(-1);
 					}
 
 					if (client.isMenuOpen() && client.getMouseWheelRotation() != 0)
 					{
-						if (!regMenuCheck && menuScrollMax > 0)
+						if (regmenuContainsMouse && menuScrollMax > 0)
 						{
 							client.setMenuScroll(menuScroll + client.getMouseWheelRotation());
 							if (menuScroll < 0)
@@ -1274,7 +1274,7 @@ public abstract class RSClientMixin implements RSClient
 							}
 						}
 
-						if (!subMenuCheck && submenuScrollMax > 0)
+						if (submenuContainsMouse && submenuScrollMax > 0)
 						{
 							client.setSubmenuScroll(submenuScroll + client.getMouseWheelRotation());
 							if (submenuScroll < 0)
@@ -1287,22 +1287,6 @@ public abstract class RSClientMixin implements RSClient
 							}
 						}
 					}
-
-					/*if (regMenuCheck && (client.getSubmenuIdx() == -1 || subMenuCheck))
-					{
-						client.setMenuOpen(false);
-						for (var8 = 0; var8 < client.getRootWidgetCount(); ++var8)
-						{
-							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] >  client.getMenuX() && client.getWidgetPositionsX()[var8] <  client.getMenuX() +  client.getMenuWidth() && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > client.getMenuY() && client.getWidgetPositionsY()[var8] < client.getMenuY() + client.getMenuHeight())
-							{
-								client.getValidRootWidgets()[var8] = true;
-							}
-							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] > client.getSubmenuX() && client.getWidgetPositionsX()[var8] < client.getSubmenuX() + client.getMenuWidth() && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > client.getSubmenuY() && client.getWidgetPositionsY()[var8] < client.getSubmenuY() + client.getSubmenuHeight())
-							{
-								client.getValidRootWidgets()[var8] = true;
-							}
-						}
-					}*/
 				}
 
 				if (var19 == 1 || !client.isMouseCam() && var19 == 4)
