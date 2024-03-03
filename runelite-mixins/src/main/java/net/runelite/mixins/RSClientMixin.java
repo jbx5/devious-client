@@ -1253,6 +1253,17 @@ public abstract class RSClientMixin implements RSClient
 					{
 						client.setMenuOpen(false);
 						client.setSubmenuIdx(-1);
+						for (var8 = 0; var8 < client.getRootWidgetCount(); ++var8)
+						{
+							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] >  client.getMenuX() && client.getWidgetPositionsX()[var8] <  client.getMenuX() +  client.getMenuWidth() && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > client.getMenuY() && client.getWidgetPositionsY()[var8] < client.getMenuY() + client.getMenuHeight())
+							{
+								client.getValidRootWidgets()[var8] = true;
+							}
+							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] > client.getSubmenuX() && client.getWidgetPositionsX()[var8] < client.getSubmenuX() + client.getMenuWidth() && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > client.getSubmenuY() && client.getWidgetPositionsY()[var8] < client.getSubmenuY() + client.getSubmenuHeight())
+							{
+								client.getValidRootWidgets()[var8] = true;
+							}
+						}
 					}
 					else if (!submenuContainsMouse)
 					{
