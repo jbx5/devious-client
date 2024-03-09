@@ -89,7 +89,8 @@ public abstract class MenuMixin implements RSClient
 			int var5 = x/* - tempWidth / 2*/;
 			if (var5 + tempWidth > client.getCanvasWidth())
 			{
-				var5 = client.getCanvasWidth() - tempWidth;
+				//var5 = client.getCanvasWidth() - tempWidth;
+				var5 = x - tempWidth - getMenuWidth();
 			}
 
 			if (var5 < 0)
