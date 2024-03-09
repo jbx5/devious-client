@@ -81,4 +81,26 @@ public abstract class RSEvictingDualNodeHashTableMixin implements RSEvictingDual
 			this.setHashTable(iterableNodeHashTable);
 		}
 	}
+
+	@Inject
+	public static void check(String name, RSEvictingDualNodeHashTable dualNodeHashTable)
+	{
+		boolean var3 = dualNodeHashTable.isTrashing();
+		dualNodeHashTable.setThreshold(dualNodeHashTable.getThreshold() * 0.92F + (var3 ? 0.07999998F : 0.0F));
+		if (var3)
+		{
+			if (dualNodeHashTable.getThreshold() > 0.2F)
+			{
+				client.getLogger().trace("cache {} is thrashing", name);
+			}
+
+			if (dualNodeHashTable.getThreshold() > 0.9F && dualNodeHashTable.getCapacity() < dualNodeHashTable.getTmpCapacity() * 8)
+			{
+				dualNodeHashTable.increaseCapacity(dualNodeHashTable.getCapacity() * 2);
+				client.getLogger().info("cache {} thrashing, enlarging to {} entries", name, dualNodeHashTable.getCapacity());
+			}
+		}
+
+		dualNodeHashTable.getDeque().add(dualNodeHashTable.getDualNode());
+	}
 }

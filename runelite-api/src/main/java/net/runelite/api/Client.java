@@ -2542,6 +2542,8 @@ public interface Client extends OAuthApi, GameEngine
 
 	Rasterizer getRasterizer();
 
+	void checkResize();
+
 	/*
 	 * Unethical
 	 */
