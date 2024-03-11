@@ -1,6 +1,1581 @@
 [
   {
     "source": {
+      "x": 2736,
+      "y": 3580,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2736,
+      "y": 3580,
+      "plane": 1
+    },
+    "action": "Climb-up",
+    "objectId": 25682,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2736,
+      "y": 3580,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2736,
+      "y": 3580,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 25683,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2950,
+      "y": 9515,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2950,
+      "y": 9520,
+      "plane": 1
+    },
+    "action": "Enter",
+    "objectId": 12460,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2950,
+      "y": 9520,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2950,
+      "y": 9515,
+      "plane": 1
+    },
+    "action": "Exit",
+    "objectId": 12462,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1689,
+      "y": 9801,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1687,
+      "y": 9801,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 31697,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1687,
+      "y": 9801,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1689,
+      "y": 9801,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 31697,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1702,
+      "y": 9800,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1708,
+      "y": 9800,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 31699,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1708,
+      "y": 9800,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1702,
+      "y": 9800,
+      "plane": 0
+    },
+    "action": "Cross",
+    "objectId": 31699,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1711,
+      "y": 9820,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1711,
+      "y": 9824,
+      "plane": 0
+    },
+    "action": "Enter",
+    "objectId": 31696,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1711,
+      "y": 9824,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1711,
+      "y": 9820,
+      "plane": 0
+    },
+    "action": "Enter",
+    "objectId": 31695,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1610,
+      "y": 3794,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1617,
+      "y": 3794,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 27855,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1617,
+      "y": 3794,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1610,
+      "y": 3794,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27853,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1621,
+      "y": 3791,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1621,
+      "y": 3798,
+      "plane": 2
+    },
+    "action": "Climb",
+    "objectId": 27851,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1621,
+      "y": 3798,
+      "plane": 2
+    },
+    "destination": {
+      "x": 1621,
+      "y": 3791,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27852,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1608,
+      "y": 3819,
+      "plane": 2
+    },
+    "destination": {
+      "x": 1615,
+      "y": 3819,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27852,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1615,
+      "y": 3819,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1608,
+      "y": 3819,
+      "plane": 2
+    },
+    "action": "Climb",
+    "objectId": 27851,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1610,
+      "y": 3828,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1617,
+      "y": 3828,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 27856,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1617,
+      "y": 3828,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1610,
+      "y": 3828,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27854,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1643,
+      "y": 3818,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1643,
+      "y": 3825,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27853,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1643,
+      "y": 3825,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1643,
+      "y": 3818,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 27855,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1643,
+      "y": 3828,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1650,
+      "y": 3828,
+      "plane": 2
+    },
+    "action": "Climb",
+    "objectId": 27851,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1650,
+      "y": 3828,
+      "plane": 2
+    },
+    "destination": {
+      "x": 1643,
+      "y": 3828,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27852,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1639,
+      "y": 3803,
+      "plane": 2
+    },
+    "destination": {
+      "x": 1639,
+      "y": 3810,
+      "plane": 1
+    },
+    "action": "Climb",
+    "objectId": 27852,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1639,
+      "y": 3810,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1639,
+      "y": 3803,
+      "plane": 2
+    },
+    "action": "Climb",
+    "objectId": 27851,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2801,
+      "y": 3703,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2803,
+      "y": 3703,
+      "plane": 0
+    },
+    "action": "Chop down",
+    "objectId": 5904,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2806,
+      "y": 3703,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2808,
+      "y": 3703,
+      "plane": 0
+    },
+    "action": "Chop down",
+    "objectId": 5904,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2803,
+      "y": 3703,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2801,
+      "y": 3703,
+      "plane": 0
+    },
+    "action": "Chop down",
+    "objectId": 5904,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2808,
+      "y": 3703,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2806,
+      "y": 3703,
+      "plane": 0
+    },
+    "action": "Chop down",
+    "objectId": 5904,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2799,
+      "y": 3666,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2799,
+      "y": 3665,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 5891,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2799,
+      "y": 3665,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2799,
+      "y": 3666,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 5891,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2761,
+      "y": 3660,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2761,
+      "y": 3657,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 5847,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2579,
+      "y": 9656,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2578,
+      "y": 9656,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 39,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2578,
+      "y": 9656,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2579,
+      "y": 9656,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 39,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2704,
+      "y": 3404,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2704,
+      "y": 3404,
+      "plane": 2
+    },
+    "action": "Climb-up",
+    "objectId": 16683,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2704,
+      "y": 3404,
+      "plane": 2
+    },
+    "destination": {
+      "x": 2704,
+      "y": 3404,
+      "plane": 1
+    },
+    "action": "Climb-down",
+    "objectId": 16679,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2700,
+      "y": 3405,
+      "plane": 2
+    },
+    "destination": {
+      "x": 2700,
+      "y": 3405,
+      "plane": 3
+    },
+    "action": "Climb-up",
+    "objectId": 16683,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2700,
+      "y": 3405,
+      "plane": 3
+    },
+    "destination": {
+      "x": 2700,
+      "y": 3405,
+      "plane": 2
+    },
+    "action": "Climb-down",
+    "objectId": 16679,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2378,
+      "y": 4717,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2376,
+      "y": 4717,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2959,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2376,
+      "y": 4717,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2378,
+      "y": 4717,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2959,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2377,
+      "y": 4727,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2378,
+      "y": 4728,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2960,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2378,
+      "y": 4728,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2377,
+      "y": 4727,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2960,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2382,
+      "y": 4730,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2382,
+      "y": 4728,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2961,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2382,
+      "y": 4728,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2382,
+      "y": 4730,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2961,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2387,
+      "y": 4727,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2388,
+      "y": 4728,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2962,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2388,
+      "y": 4728,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2387,
+      "y": 4727,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2962,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2390,
+      "y": 4717,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2390,
+      "y": 4719,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2964,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2390,
+      "y": 4719,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2390,
+      "y": 4717,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2964,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2390,
+      "y": 4723,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2390,
+      "y": 4725,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2963,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2390,
+      "y": 4725,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2390,
+      "y": 4723,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 2963,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2790,
+      "y": 9295,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2789,
+      "y": 9296,
+      "plane": 0
+    },
+    "action": "Jump-over",
+    "objectId": 2926,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2789,
+      "y": 9296,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2790,
+      "y": 9295,
+      "plane": 0
+    },
+    "action": "Jump-over",
+    "objectId": 2926,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2868,
+      "y": 2941,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2868,
+      "y": 2939,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2893,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2868,
+      "y": 2939,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2868,
+      "y": 2937,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2892,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2868,
+      "y": 2936,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2868,
+      "y": 2934,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2889,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2872,
+      "y": 2934,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2872,
+      "y": 2936,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2892,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2872,
+      "y": 2936,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2872,
+      "y": 2934,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2892,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2872,
+      "y": 2938,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2872,
+      "y": 2940,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2889,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2872,
+      "y": 2940,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2872,
+      "y": 2938,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2889,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2816,
+      "y": 2940,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2816,
+      "y": 2938,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2893,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2816,
+      "y": 2938,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2816,
+      "y": 2940,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2893,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2816,
+      "y": 2938,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2816,
+      "y": 2936,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2892,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2816,
+      "y": 2936,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2816,
+      "y": 2938,
+      "plane": 0
+    },
+    "action": "Chop-down",
+    "objectId": 2892,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1765,
+      "y": 10149,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1765,
+      "y": 10150,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 31709,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1765,
+      "y": 10150,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1765,
+      "y": 10149,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 31709,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2550,
+      "y": 3027,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2550,
+      "y": 3028,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2786,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2549,
+      "y": 3027,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2549,
+      "y": 3028,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2787,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2504,
+      "y": 3063,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2503,
+      "y": 3063,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2789,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2503,
+      "y": 3063,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2504,
+      "y": 3063,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2789,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2504,
+      "y": 3062,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2503,
+      "y": 3062,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2788,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2503,
+      "y": 3062,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2504,
+      "y": 3062,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 2788,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2548,
+      "y": 3119,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2548,
+      "y": 3117,
+      "plane": 1
+    },
+    "action": "Climb-up",
+    "objectId": 20056,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2549,
+      "y": 3112,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2549,
+      "y": 3112,
+      "plane": 2
+    },
+    "action": "Climb-up",
+    "objectId": 2796,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2549,
+      "y": 3112,
+      "plane": 2
+    },
+    "destination": {
+      "x": 2549,
+      "y": 3112,
+      "plane": 1
+    },
+    "action": "Climb-down",
+    "objectId": 2797,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2544,
+      "y": 3112,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2544,
+      "y": 3112,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 17122,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3285,
+      "y": 3496,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3285,
+      "y": 3492,
+      "plane": 1
+    },
+    "action": "Climb-up",
+    "objectId": 11797,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3285,
+      "y": 3492,
+      "plane": 1
+    },
+    "destination": {
+      "x": 3285,
+      "y": 3496,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 11799,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2783,
+      "y": 3057,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2782,
+      "y": 3057,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 779,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2782,
+      "y": 3057,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2783,
+      "y": 3057,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 779,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2793,
+      "y": 3054,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2792,
+      "y": 3054,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 779,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2792,
+      "y": 3054,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2793,
+      "y": 3054,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 779,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2803,
+      "y": 3058,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2802,
+      "y": 3058,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 779,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2802,
+      "y": 3058,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2803,
+      "y": 3058,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 779,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2795,
+      "y": 2979,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2791,
+      "y": 2979,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 2231,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2791,
+      "y": 2979,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2795,
+      "y": 2979,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 2231,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2782,
+      "y": 3086,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2782,
+      "y": 3086,
+      "plane": 1
+    },
+    "action": "Climb-up",
+    "objectId": 16683,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2782,
+      "y": 3086,
+      "plane": 1
+    },
+    "destination": {
+      "x": 2782,
+      "y": 3086,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 16679,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2712,
+      "y": 2766,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2712,
+      "y": 2766,
+      "plane": 2
+    },
+    "action": "Climb-up",
+    "objectId": 4775,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2712,
+      "y": 2766,
+      "plane": 2
+    },
+    "destination": {
+      "x": 2712,
+      "y": 2766,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 4777,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2730,
+      "y": 2766,
+      "plane": 2
+    },
+    "destination": {
+      "x": 2730,
+      "y": 2766,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 4776,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2730,
+      "y": 2766,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2730,
+      "y": 2766,
+      "plane": 2
+    },
+    "action": "Climb-up",
+    "objectId": 4774,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2435,
+      "y": 3314,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2495,
+      "y": 9716,
+      "plane": 0
+    },
+    "action": "Enter",
+    "objectId": 3213,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2495,
+      "y": 9716,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2436,
+      "y": 3315,
+      "plane": 0
+    },
+    "action": "Leave",
+    "objectId": 3214,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2516,
+      "y": 4626,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2516,
+      "y": 4627,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 4545,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2516,
+      "y": 4627,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2516,
+      "y": 4626,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 4545,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2513,
+      "y": 4626,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2513,
+      "y": 4627,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 4546,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2513,
+      "y": 4627,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2513,
+      "y": 4626,
+      "plane": 0
+    },
+    "action": "Open",
+    "objectId": 4546,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2515,
+      "y": 4629,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2515,
+      "y": 4632,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 4485,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2515,
+      "y": 4632,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2515,
+      "y": 4629,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 4485,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2552,
+      "y": 3561,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2552,
+      "y": 3558,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 20210,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2552,
+      "y": 3558,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2552,
+      "y": 3561,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 20210,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2643,
+      "y": 9892,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2643,
+      "y": 9893,
+      "plane": 0
+    },
+    "action": "Push",
+    "objectId": 1597,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2643,
+      "y": 9893,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2643,
+      "y": 9892,
+      "plane": 0
+    },
+    "action": "Push",
+    "objectId": 1597,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2877,
+      "y": 3622,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2880,
+      "y": 3622,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 3791,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2858,
+      "y": 3626,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2861,
+      "y": 3626,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 3790,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 2856,
+      "y": 3611,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2856,
+      "y": 3613,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 3748,
+    "requirements": {}
+  },
+  {
+    "source": {
       "x": 3097,
       "y": 3107,
       "plane": 0
@@ -78545,10 +80120,10 @@
   },
   {
     "source": {
-    "x": 3308,
-    "y": 3491,
-    "plane": 0
-  },
+      "x": 3308,
+      "y": 3491,
+      "plane": 0
+    },
     "destination": {
       "x": 3308,
       "y": 3493,
