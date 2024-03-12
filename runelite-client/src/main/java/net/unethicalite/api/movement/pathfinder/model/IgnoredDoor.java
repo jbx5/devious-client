@@ -5,8 +5,6 @@ import lombok.Value;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.movement.pathfinder.model.requirement.Requirements;
 
-import java.util.List;
-
 @Value
 @AllArgsConstructor
 public class IgnoredDoor

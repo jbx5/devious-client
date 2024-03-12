@@ -12,7 +12,6 @@ import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
-import net.unethicalite.api.movement.Movement;
 import net.unethicalite.api.movement.pathfinder.model.CharterShipLocation;
 import net.unethicalite.api.movement.pathfinder.model.IgnoredDoor;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
