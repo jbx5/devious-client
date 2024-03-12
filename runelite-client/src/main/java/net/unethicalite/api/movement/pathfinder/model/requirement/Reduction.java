@@ -4,4 +4,5 @@ public enum Reduction
 {
     AND,
     OR,
+    NOT
 }
