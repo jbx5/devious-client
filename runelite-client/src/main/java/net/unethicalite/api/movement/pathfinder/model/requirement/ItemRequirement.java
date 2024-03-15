@@ -37,6 +37,15 @@ public class ItemRequirement implements Requirement
                 {
                     return ids.stream().anyMatch(it -> Inventory.getCount(true, it) >= amount);
                 }
+            case NOT:
+                if (equipped)
+                {
+                    return ids.stream().noneMatch(it -> Equipment.getCount(true, it) >= amount);
+                }
+                else
+                {
+                    return ids.stream().noneMatch(it -> Inventory.getCount(true, it) >= amount);
+                }
         }
         return false;
     }
