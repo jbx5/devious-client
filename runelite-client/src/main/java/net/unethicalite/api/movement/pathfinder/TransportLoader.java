@@ -833,6 +833,10 @@ public class TransportLoader
                 {
                     gnome.interact("Glider");
                 }
+                else
+                {
+                    Movement.walk(Walker.nearestWalkableTile(source));
+                }
             }
         });
     }
