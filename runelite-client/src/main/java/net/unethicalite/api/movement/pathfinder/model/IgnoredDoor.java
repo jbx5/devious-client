@@ -12,4 +12,14 @@ public class IgnoredDoor
 	WorldPoint location;
 	int id;
 	Requirements requirements;
+
+	@Override
+	public String toString()
+	{
+		return "IgnoredDoor{" +
+			"location=" + location +
+			", id=" + id +
+			", requirements=" + requirements.fulfilled() +
+			'}';
+	}
 }
