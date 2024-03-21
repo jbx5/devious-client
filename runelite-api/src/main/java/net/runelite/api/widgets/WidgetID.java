@@ -346,9 +346,9 @@ public final class WidgetID
 		static final int INCINERATOR = 46;
 		static final int INCINERATOR_CONFIRM = 47;
 		static final int EQUIPMENT_CONTENT_CONTAINER = 69;
-		static final int SETTINGS_BUTTON = 113;
-		static final int EQUIPMENT_BUTTON = 114;
-		static final int POPUP = 116;
+		static final int SETTINGS_BUTTON = 114;
+		static final int EQUIPMENT_BUTTON = 115;
+		static final int POPUP = 117;
 	}
 
 	static class BankTutorial
