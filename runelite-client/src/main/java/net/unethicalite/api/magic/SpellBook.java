@@ -80,12 +80,28 @@ public enum SpellBook
 				new RuneRequirement(5, Rune.AIR),
 				new RuneRequirement(1, Rune.LAW)
 		),
+		TELEPORT_TO_KOUREND(
+			48,
+			WidgetInfo.SPELL_KOUREND_HOME_TELEPORT,
+			true,
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(1, Rune.WATER),
+			new RuneRequirement(1, Rune.FIRE)
+		),
 		ARDOUGNE_TELEPORT(
 				51,
 				WidgetInfo.SPELL_ARDOUGNE_TELEPORT,
 				true,
 				new RuneRequirement(2, Rune.WATER),
 				new RuneRequirement(2, Rune.LAW)
+		),
+		CIVITAS_ILLA_FORTIS_TELEPORT(
+			54,
+			WidgetInfo.SPELL_CIVITAS_ILLA_FORTIS_TELEPORT,
+			true,
+			new RuneRequirement(2, Rune.LAW),
+			new RuneRequirement(1, Rune.EARTH),
+			new RuneRequirement(1, Rune.FIRE)
 		),
 		WATCHTOWER_TELEPORT(
 				58,
@@ -107,15 +123,6 @@ public enum SpellBook
 				true,
 				new RuneRequirement(2, Rune.FIRE),
 				new RuneRequirement(2, Rune.WATER),
-				new RuneRequirement(2, Rune.LAW)
-		),
-		TELEPORT_TO_KOUREND(
-				69,
-				WidgetInfo.SPELL_TELEPORT_TO_KOUREND,
-				true,
-				new RuneRequirement(5, Rune.FIRE),
-				new RuneRequirement(4, Rune.WATER),
-				new RuneRequirement(2, Rune.SOUL),
 				new RuneRequirement(2, Rune.LAW)
 		),
 		TELEOTHER_LUMBRIDGE(
