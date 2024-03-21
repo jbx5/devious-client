@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Item;
 import net.runelite.api.ItemID;
-import net.runelite.api.Tile;
-import net.runelite.api.WallObject;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.items.Equipment;
@@ -15,7 +13,6 @@ import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.pathfinder.model.CharterShipLocation;
 import net.unethicalite.api.movement.pathfinder.model.IgnoredDoor;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
-import net.unethicalite.api.scene.Tiles;
 import net.unethicalite.client.Static;
 
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 {
 	final CollisionMap map;
 	final Map<WorldPoint, List<Transport>> transports;
-	private List<IgnoredDoor> ignoredDoors;
+	private Map<WorldPoint, IgnoredDoor> ignoredDoors;
 	private List<Node> start;
 	private WorldArea target;
 	private List<WorldPoint> targetTiles;
@@ -78,7 +75,7 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		this.transports = transports;
 		this.target = target;
 		this.targetTiles = target.toWorldPointList();
-		this.ignoredDoors = new IgnoredDoorLoader().getIgnoredDoors();
+		this.ignoredDoors = IgnoredDoorLoader.getIgnoredDoors();
 		this.start = new ArrayList<>();
 		this.nearest = null;
 		this.avoidWilderness = avoidWilderness;
@@ -166,13 +163,9 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		{
 			return;
 		}
-		Tile tile = Tiles.getAt(neighbor);
-		if (tile != null)
+		if (ignoredDoors.getOrDefault(neighbor, null) != null)
 		{
-			WallObject door = tile.getWallObject();
-			if (door != null && ignoredDoors.stream().anyMatch(ignoredDoor -> ignoredDoor.getLocation().equals(neighbor) &&
-				ignoredDoor.getId() == door.getId() &&
-				ignoredDoor.getRequirements().fulfilled()))
+			if (ignoredDoors.get(neighbor).getRequirements().fulfilled())
 			{
 				return;
 			}

@@ -18,6 +18,7 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.unethicalite.regions.TileFlag;
 import net.unethicalite.api.game.Game;
 import net.unethicalite.api.movement.Reachable;
+import net.unethicalite.api.movement.pathfinder.IgnoredDoorLoader;
 import net.unethicalite.api.movement.pathfinder.TeleportLoader;
 import net.unethicalite.api.movement.pathfinder.TransportLoader;
 import net.unethicalite.api.movement.pathfinder.Walker;
@@ -147,6 +148,7 @@ public class RegionManager
     public void init()
     {
         executorService.submit(TransportLoader::init);
+        executorService.submit(IgnoredDoorLoader::init);
         Static.getEventBus().register(this);
     }
 
