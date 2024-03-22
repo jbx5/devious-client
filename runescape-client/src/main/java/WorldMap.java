@@ -467,9 +467,9 @@ public class WorldMap {
 			int var7 = (int)((float)this.centerTileY - ((float)(var2 - this.worldMapDisplayY) - (float)this.getDisplayHeight() * this.zoom / 2.0F) / this.zoom);
 			this.mouseCoord = this.currentMapArea.coord(var6 + this.currentMapArea.getRegionLowX() * 64, var7 + this.currentMapArea.getRegionLowY() * 64);
 			if (this.mouseCoord != null && var3) {
-				class228 var8 = PacketBufferNode.method6051();
+				IndexCheck var8 = PacketBufferNode.method6051();
 				boolean var9 = Client.staffModLevel >= 2;
-				if (var9 && var8.method4466(82) && var8.method4466(81)) {
+				if (var9 && var8.isValidIndexInRange(82) && var8.isValidIndexInRange(81)) {
 					Login.method2195(this.mouseCoord.x, this.mouseCoord.y, this.mouseCoord.plane, false);
 				} else {
 					boolean var10 = true;

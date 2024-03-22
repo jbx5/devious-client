@@ -136,6 +136,14 @@ public abstract class ScriptVMMixin implements RSClient
 					client.addChatMessage(ChatMessageType.of(messageType), "", message, null, true);
 					return true;
 				}
+				else if ("scrollWheelZoom".equals(stringOp))
+				{
+					if (client.isMenuOpen())
+					{
+						client.getIntStack()[client.getIntStackSize() - 1] = 1;
+						return true;
+					}
+				}
 				ScriptCallbackEvent event = new ScriptCallbackEvent();
 				event.setScript(currentScript);
 				event.setEventName(stringOp);

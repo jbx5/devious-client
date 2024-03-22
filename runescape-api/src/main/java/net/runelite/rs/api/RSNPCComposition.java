@@ -25,6 +25,9 @@ public interface RSNPCComposition extends NPCComposition
 	@Override
 	boolean isFollower();
 
+	@Import("lowPriorityFollowerOps")
+	boolean isLowPriorityFollowerOps();
+
 	@Import("isInteractable")
 	@Override
 	boolean isInteractible();

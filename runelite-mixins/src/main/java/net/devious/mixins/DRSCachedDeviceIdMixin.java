@@ -9,8 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Properties;
 import java.util.UUID;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -37,13 +35,7 @@ public abstract class DRSCachedDeviceIdMixin implements RSPlatformInfo
 	{
 		if (!client.useCachedUUID())
 		{
-			int option = JOptionPane.showConfirmDialog(new JFrame(), "Do you want to use cached random uuid?", "UUID request", JOptionPane.YES_NO_OPTION);
-			if (option == JOptionPane.NO_OPTION)
-			{
-				String deviceId = copy$getDeviceId(os);
-				client.getLogger().warn("Found deviceId (UUID): {}", deviceId);
-				return deviceId;
-			}
+			return copy$getDeviceId(os);
 		}
 
 		String cachedDeviceId = getCachedUUID(client.getUsername());

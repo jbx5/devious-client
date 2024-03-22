@@ -160,6 +160,17 @@ public class TransportLoader
                                 "That's great, can you take me there please?"));
                     }
                 }
+                else if (Quests.isFinished(Quest.A_KINGDOM_DIVIDED)) // Veos is replaced during/after quest
+                {
+                    transports.add(npcTransport(new WorldPoint(3053, 3245, 0),
+                        new WorldPoint(1824, 3695, 1),
+                        "Cabin Boy Herbert",
+                        "Port Piscarilius"));
+                    transports.add(npcTransport(new WorldPoint(3053, 3245, 0),
+                        new WorldPoint(1504, 3395, 1),
+                        "Cabin Boy Herbert",
+                        "Land's End"));
+                }
                 else // Has talked to Veos before
                 {
                     transports.add(npcTransport(new WorldPoint(3054, 3245, 0),
@@ -374,7 +385,19 @@ public class TransportLoader
             transports.add(trapDoorTransport(new WorldPoint(3422, 3484, 0), new WorldPoint(3440, 9887, 0), 3432, 3433));
 
             // Port Piscarilius
-            transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
+            if (Quests.isFinished(Quest.A_KINGDOM_DIVIDED)) // Veos is replaced during/after quest
+            {
+                transports.add(npcTransport(new WorldPoint(1826, 3691, 0), new WorldPoint(3055, 3242, 1), 10932, "Port Sarim"));
+                transports.add(npcTransport(new WorldPoint(1826, 3691, 0), new WorldPoint(1504, 3395, 1), 10932, "Land's End"));
+            }
+            else
+            {
+                transports.add(npcTransport(new WorldPoint(1824, 3691, 0), new WorldPoint(3055, 3242, 1), 10727, "Port Sarim"));
+            }
+
+            // Land's End
+            transports.add(npcTransport(new WorldPoint(1504, 3401, 0), new WorldPoint(3055, 3242, 1), 7471, "Port Sarim"));
+            transports.add(npcTransport(new WorldPoint(1504, 3401, 0), new WorldPoint(1824, 3695, 1), 7471, "Port Piscarilius"));
 
             // Glarial's tomb
             transports.add(itemUseTransport(new WorldPoint(2557, 3444, 0), new WorldPoint(2555, 9844, 0), 294, 1992));
@@ -809,6 +832,10 @@ public class TransportLoader
                 if (gnome != null)
                 {
                     gnome.interact("Glider");
+                }
+                else
+                {
+                    Movement.walk(Walker.nearestWalkableTile(source));
                 }
             }
         });

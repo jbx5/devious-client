@@ -308,7 +308,7 @@ public class WorldMapRegion {
 					if (var7 == null) {
 						var9 = new WorldMapSprite();
 					} else {
-						var9 = new WorldMapSprite(class202.method3920(var7).pixels);
+						var9 = new WorldMapSprite(Sound.method3920(var7).pixels);
 					}
 
 					SpritePixels var11 = new SpritePixels(this.pixelsPerTile * 64, this.pixelsPerTile * 64);

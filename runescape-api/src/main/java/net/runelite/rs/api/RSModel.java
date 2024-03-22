@@ -210,4 +210,8 @@ public interface RSModel extends RSRenderable, Model
 	@Import("drawFrustum")
 	@Override
 	void drawFrustum(int zero, int xRotate, int yRotate, int zRotate, int xCamera, int yCamera, int zCamera);
+
+	@Import("drawOrtho")
+	@Override
+	void drawOrtho(int zero, int xRotate, int yRotate, int zRotate, int xCamera, int yCamera, int zCamera, int zoom);
 }
