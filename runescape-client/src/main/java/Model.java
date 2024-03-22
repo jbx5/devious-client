@@ -1230,7 +1230,8 @@ public class Model extends Renderable {
 	}
 
 	@ObfuscatedName("ba")
-	public final void method5708(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+	@Export("drawOrtho")
+	public final void drawOrtho(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
 		if (this.boundsType != 2 && this.boundsType != 1) {
 			this.method5707();
 		}
