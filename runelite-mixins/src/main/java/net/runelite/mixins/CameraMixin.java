@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import com.google.common.primitives.Floats;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
@@ -116,5 +117,119 @@ public abstract class CameraMixin implements RSClient
 			}
 		}
 		lastPitch = pitch;
+	}
+
+	@Inject
+	private static boolean invertPitch;
+
+	@Inject
+	private static boolean invertYaw;
+
+	@Inject
+	@Override
+	public void setInvertPitch(boolean state)
+	{
+		invertPitch = state;
+	}
+
+	@Inject
+	@Override
+	public void setInvertYaw(boolean state)
+	{
+		invertYaw = state;
+	}
+
+	@Inject
+	@FieldHook("camAngleDY")
+	private static void onCamAngleDYChange(int index)
+	{
+		if (invertYaw && client.getMouseCurrentButton() == 4 && client.isMouseCam())
+		{
+			client.setCamAngleDY(-client.getCamAngleDY());
+		}
+	}
+
+	@Inject
+	private static float cameraSpeed = 1.0F;
+
+	@Inject
+	@Override
+	public void setCameraSpeed(float var1)
+	{
+		cameraSpeed = Floats.constrainToRange(var1, 0.2F, 5.0F);
+	}
+
+	@Inject
+	private static int cameraMouseButtonMask;
+
+	@Inject
+	@Override
+	public void setCameraMouseButtonMask(int mask)
+	{
+		cameraMouseButtonMask = mask;
+	}
+
+	@Inject
+	@FieldHook("camAngleDX")
+	private static void onCamAngleDXChanged(int idx)
+	{
+		label74:
+		{
+			int mouseCurrentButton = client.getMouseCurrentButton();
+			if (cameraMouseButtonMask != 0)
+			{
+				if ((cameraMouseButtonMask >> mouseCurrentButton & 1) != 0)
+				{
+					break label74;
+				}
+			}
+			else if (mouseCurrentButton == 4 && client.isMouseCam())
+			{
+				break label74;
+			}
+
+			if (client.getIndexCheck().isValidIndexInRange(96))
+			{
+				client.setCamAngleDY((int) (client.getCamAngleDY() + (-24.0F * cameraSpeed - client.getCamAngleDY()) / 2));
+			}
+			else if (client.getIndexCheck().isValidIndexInRange(97))
+			{
+				client.setCamAngleDY((int) (client.getCamAngleDY() + (24.0F * cameraSpeed - client.getCamAngleDY()) / 2));
+			}
+			else
+			{
+				client.setCamAngleDY(client.getCamAngleDY() / 2);
+			}
+
+			if (client.getIndexCheck().isValidIndexInRange(98))
+			{
+				client.setCamAngleDX((int) (client.getCamAngleDX() + (12.0F * cameraSpeed - client.getCamAngleDX()) / 2));
+			}
+			else if (client.getIndexCheck().isValidIndexInRange(99))
+			{
+				client.setCamAngleDX((int) (client.getCamAngleDX() + (-12.0F * cameraSpeed - client.getCamAngleDX()) / 2));
+			}
+			else
+			{
+				client.setCamAngleDX(client.getCamAngleDX() / 2);
+			}
+
+			client.setMouseCamClickedY(client.getMouseHandlerY());
+			client.setMouseCamClickedX(client.getMouseHandlerX());
+			return;
+		}
+
+		/*int distanceY = client.getMouseHandlerY() - client.getMouseCamClickedY();
+		int distanceX = client.getMouseCamClickedX() - client.getMouseHandlerX();
+		client.setCamAngleDX((int) ((float) (distanceY * 2) * cameraSpeed));
+		client.setCamAngleDY((int) ((float) (distanceX * 2) * cameraSpeed));*/
+
+		if (invertPitch)
+		{
+			client.setCamAngleDX(-client.getCamAngleDX());
+		}
+
+		//client.setMouseCamClickedY(distanceY != -1 && distanceY != 1 ? (int) ((client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2) : client.getMouseHandlerY());
+		//client.setMouseCamClickedX(distanceX != -1 && distanceX != 1 ? (int) ((client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2) : client.getMouseHandlerX());
 	}
 }

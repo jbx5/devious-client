@@ -3,12 +3,14 @@ import java.awt.image.PixelGrabber;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("hy")
-public class class202 {
+@Implements("Sound")
+public class Sound {
 	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
 		intValue = 1780874977
@@ -30,7 +32,7 @@ public class class202 {
 	)
 	public int field2113;
 
-	class202(int var1, int var2, int var3, int var4) {
+	Sound(int var1, int var2, int var3, int var4) {
 		this.field2107 = 0;
 		this.field2108 = 0;
 		this.field2109 = 0;
@@ -74,7 +76,7 @@ public class class202 {
 		garbageValue = "-1796017443"
 	)
 	static void method3919(GameEngine var0) {
-		class228 var1 = PacketBufferNode.method6051();
+		IndexCheck var1 = PacketBufferNode.method6051();
 
 		while (var1.method4431()) {
 			if (var1.field2434 == 13) {

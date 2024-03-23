@@ -588,7 +588,7 @@ public interface Client extends OAuthApi, GameEngine
 	/**
 	 * Gets the widget that is being dragged on.
 	 * <p>
-	 * The widget being dragged has the {@link net.runelite.api.widgets.WidgetConfig#DRAG_ON}
+	 * The widget being dragged has the {@link net.runelite.api.widgets.WidgetConfig#DRAG}
 	 * flag set, and is the widget currently under the dragged widget.
 	 *
 	 * @return the dragged on widget, null if not dragging any widget
@@ -785,6 +785,20 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	void setMenuScroll(int scroll);
 
+	int getSubmenuX();
+	MenuEntry getClickedMenuEntry();
+	int getSubmenuY();
+	int getSubmenuWidth();
+	int getSubmenuHeight();
+	int getSubmenuScroll();
+	int getSubmenuIdx();
+	void setSubmenuX(int x);
+	void setSubmenuY(int y);
+	void setSubmenuWidth(int w);
+	void setSubmenuHeight(int h);
+	void setSubmenuScroll(int s);
+	void setSubmenuScrollMax(int max);
+	void setSubmenuIdx(int idx);
 	/**
 	 * Get the menu x location. Only valid if the menu is open.
 	 *
@@ -1611,6 +1625,19 @@ public interface Client extends OAuthApi, GameEngine
 	 * @param cameraPitchTarget target camera pitch
 	 */
 	void setCameraPitchTarget(int cameraPitchTarget);
+
+	/**
+	 * Sets the camera speed
+	 * @param speed
+	 */
+	void setCameraSpeed(float speed);
+
+	/**
+	 * Sets the mask for which mouse buttons control the camera.
+	 * Use 0 for the default behavior of mouse button 4 if "middle mouse moves camera" is on.
+	 * @param mask
+	 */
+	void setCameraMouseButtonMask(int mask);
 
 	/**
 	 * Sets whether the camera pitch can exceed the normal limits set
@@ -2514,6 +2541,8 @@ public interface Client extends OAuthApi, GameEngine
 	void posToCameraAngle(int var0, int var1);
 
 	Rasterizer getRasterizer();
+
+	void checkResize();
 
 	/*
 	 * Unethical

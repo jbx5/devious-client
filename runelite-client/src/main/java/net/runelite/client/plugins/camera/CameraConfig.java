@@ -124,10 +124,21 @@ public interface CameraConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "cameraSpeed",
+		name = "Camera Speed",
+		description = "Speed which the camera moves from input",
+		position = 7
+	)
+	default double cameraSpeed()
+	{
+		return 1f;
+	}
+
+	@ConfigItem(
 		keyName = "preserveYaw",
 		name = "Preserve yaw on world hop",
 		description = "Preserves the camera yaw (left/right) when world hopping.",
-		position = 7
+		position = 8
 	)
 	default boolean preserveYaw()
 	{
@@ -139,7 +150,7 @@ public interface CameraConfig extends Config
 		keyName = "rightClickMovesCamera",
 		name = "Right click moves camera",
 		description = "Remaps right click to middle mouse click",
-		position = 8,
+		position = 9,
 		section = mouseSettingsSection
 	)
 	default boolean rightClickMovesCamera()
@@ -151,7 +162,7 @@ public interface CameraConfig extends Config
 		keyName = "rightClickObjects",
 		name = "Right click objects",
 		description = "Right clicking objects opens the menu when 'Right click moves camera' is on",
-		position = 9,
+		position = 10,
 		section = mouseSettingsSection
 	)
 	default boolean rightClickObjects()
@@ -163,7 +174,7 @@ public interface CameraConfig extends Config
 		keyName = "rightClickExamine",
 		name = "Right click examine",
 		description = "Right clicking examinable objects opens the menu when 'Right click moves camera' is on",
-		position = 10,
+		position = 11,
 		section = mouseSettingsSection
 	)
 	default boolean rightClickExamine()
@@ -172,10 +183,23 @@ public interface CameraConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "rightClickMenuBlocksCamera",
+		name = "Right click menu blocks camera",
+		description = "Prevents camera movement when 'Right click moves camera' is on and the right click menu<br>" +
+			"is opened due to either 'Right click objects' or 'Right click examine' being on.",
+		position = 12,
+		section = mouseSettingsSection
+	)
+	default boolean rightClickMenuBlocksCamera()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 		keyName = "middleClickMenu",
 		name = "Middle-button opens menu",
 		description = "Remaps middle mouse click to right click",
-		position = 11,
+		position = 13,
 		section = mouseSettingsSection
 	)
 	default boolean middleClickMenu()
@@ -187,7 +211,7 @@ public interface CameraConfig extends Config
 		keyName = "invertYaw",
 		name = "Invert Yaw",
 		description = "Makes moving the camera horizontally with the mouse backwards",
-		position = 12,
+		position = 14,
 		section = mouseSettingsSection
 	)
 	default boolean invertYaw()
@@ -199,7 +223,7 @@ public interface CameraConfig extends Config
 		keyName = "invertPitch",
 		name = "Invert Pitch",
 		description = "Makes moving the camera vertically with the mouse backwards",
-		position = 13,
+		position = 15,
 		section = mouseSettingsSection
 	)
 	default boolean invertPitch()

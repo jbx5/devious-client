@@ -81,6 +81,36 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getCameraYaw();
 
+	@Import("mouseCamClickedX")
+	int getMouseCamClickedX();
+
+	@Import("mouseCamClickedX")
+	void setMouseCamClickedX(int mouseCamClickedX);
+
+	@Import("mouseCamClickedY")
+	int getMouseCamClickedY();
+
+	@Import("mouseCamClickedY")
+	void setMouseCamClickedY(int mouseCamClickedY);
+
+	@Import("MouseHandler_x")
+	int getMouseHandlerX();
+
+	@Import("MouseHandler_x")
+	void setMouseHandlerX(int mouseHandlerX);
+
+	@Import("MouseHandler_y")
+	int getMouseHandlerY();
+
+	@Import("MouseHandler_y")
+	void setMouseHandlerY(int mouseHandlerY);
+
+	@Import("mouseWheelRotation")
+	int getMouseWheelRotation();
+
+	@Import("indexCheck")
+	RSIndexCheck getIndexCheck();
+
 	@Import("worldId")
 	int getWorld();
 
@@ -1100,6 +1130,18 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuWidth")
 	int getMenuWidth();
 
+	@Import("menuX")
+	void setMenuX(int x);
+
+	@Import("menuY")
+	void setMenuY(int y);
+
+	@Import("menuHeight")
+	void setMenuHeight(int h);
+
+	@Import("menuWidth")
+	void setMenuWidth(int w);
+
 	@Import("fontBold12")
 	RSFont getFontBold12();
 
@@ -1213,6 +1255,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("insertMenuItem")
 	@Override
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int argument3, boolean forceLeftClick);
+
+	@Import("invalidateWidgetsUnder")
+	void invalidateWidgetsUnder(int var0, int var1, int var2, int var3);
 
 	@Import("selectedSpellWidget")
 	@Override
@@ -1527,69 +1572,21 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("objectSounds")
 	RSNodeDeque getAmbientSoundEffects();
 
-	@Import("EnumDefinition_cached")
-	RSEvictingDualNodeHashTable getEnumDefinitionCache();
-
-	@Import("FloorUnderlayDefinition_cached")
-	RSEvictingDualNodeHashTable getFloorUnderlayDefinitionCache();
-
 	@Import("FloorOverlayDefinition_archive")
 	RSAbstractArchive getFloorOverlayDefinitionArchive();
 
 	@Import("FloorOverlayDefinition_cached")
 	RSEvictingDualNodeHashTable getFloorOverlayDefinitionCache();
 
-	@Import("HitSplatDefinition_cached")
-	RSEvictingDualNodeHashTable getHitSplatDefinitionCache();
-
-	@Import("HitSplatDefinition_cachedSprites")
-	RSEvictingDualNodeHashTable getHitSplatDefinitionSpritesCache();
-
-	@Import("HitSplatDefinition_cachedFonts")
-	RSEvictingDualNodeHashTable getHitSplatDefinitionFontsCache();
-
-	@Import("InvDefinition_cached")
-	RSEvictingDualNodeHashTable getInvDefinitionCache();
-
 	@Import("ItemDefinition_cached")
 	@Override
 	RSEvictingDualNodeHashTable getItemCompositionCache();
 
-	@Import("ItemDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getItemDefinitionModelsCache();
-
-	@Import("ItemDefinition_cachedSprites")
-	RSEvictingDualNodeHashTable getItemDefinitionSpritesCache();
-
-	@Import("KitDefinition_cached")
-	RSEvictingDualNodeHashTable getKitDefinitionCache();
-
-	@Import("NpcDefinition_cached")
-	RSEvictingDualNodeHashTable getNpcDefinitionCache();
-
-	@Import("NpcDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getNpcDefinitionModelsCache();
-
-	@Import("ObjectDefinition_cached")
-	RSEvictingDualNodeHashTable getObjectDefinitionCache();
-
 	@Import("ObjectDefinition_cached")
 	RSEvictingDualNodeHashTable getObjectCompositionCache();
 
-	@Import("ObjectDefinition_cachedModelData")
-	RSEvictingDualNodeHashTable getObjectDefinitionModelDataCache();
-
-	@Import("ObjectDefinition_cachedEntities")
-	RSEvictingDualNodeHashTable getObjectDefinitionEntitiesCache();
-
 	@Import("ObjectDefinition_cachedModels")
 	RSEvictingDualNodeHashTable getObjectDefinitionModelsCache();
-
-	@Import("ParamDefinition_cached")
-	RSEvictingDualNodeHashTable getParamDefinitionCache();
-
-	@Import("PlayerAppearance_cachedModels")
-	RSEvictingDualNodeHashTable getPlayerAppearanceModelsCache();
 
 	@Import("SequenceDefinition_cached")
 	@Override
@@ -1597,72 +1594,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("SequenceDefinition_cached")
 	RSEvictingDualNodeHashTable getSequenceDefinitionCache();
-
-	@Import("SequenceDefinition_cachedFrames")
-	RSEvictingDualNodeHashTable getSequenceDefinitionFramesCache();
-
-	@Import("SequenceDefinition_cachedModel")
-	RSEvictingDualNodeHashTable getSequenceDefinitionModelsCache();
-
-	@Import("SpotAnimationDefinition_cached")
-	RSEvictingDualNodeHashTable getSpotAnimationDefinitionCache();
-
-	@Import("SpotAnimationDefinition_cachedModels")
-	RSEvictingDualNodeHashTable getSpotAnimationDefinitionModelsCache();
-
-	@Import("VarcInt_cached")
-	RSEvictingDualNodeHashTable getVarcIntCache();
-
-	@Import("VarpDefinition_cached")
-	RSEvictingDualNodeHashTable getVarpDefinitionCache();
-
-	@Import("DBRowType_cache")
-	RSEvictingDualNodeHashTable getDbRowTypeCache();
-
-	@Import("DBTableType_cache")
-	RSEvictingDualNodeHashTable getDbTableTypeCache();
-
-	@Import("DBTableIndex_cache")
-	RSEvictingDualNodeHashTable getDbTableIndexCache();
-
-	//@Import("Widget_cachedSpriteMasks")
-	//RSEvictingDualNodeHashTable getSpriteMasksCache();;
-
-	@Import("field1909")
-	RSEvictingDualNodeHashTable getField1909();
-
-	@Import("field1913")
-	RSEvictingDualNodeHashTable getField1913();
-
-	@Import("field1915")
-	RSEvictingDualNodeHashTable getField1915();
-
-	@Import("field2022")
-	RSEvictingDualNodeHashTable getfield2022();
-
-	@Import("field1842")
-	RSEvictingDualNodeHashTable getField1842();
-
-	@Import("field2007")
-	RSEvictingDualNodeHashTable getField2007();
-
-	@Import("field2023")
-	RSEvictingDualNodeHashTable getField2023();
-
-	@Import("field2026")
-	RSEvictingDualNodeHashTable getField2026();
-
-	@Import("field2100")
-	RSEvictingDualNodeHashTable getField2100();
-
-	@Import("field2136")
-	RSEvictingDualNodeHashTable getField2136();
-
-	@Import("field1864")
-	RSEvictingDualNodeHashTable getField1864();
-
-	@Import("field1851")
-	RSEvictingDualNodeHashTable getField1851();
 
 	@Import("archive11")
 	RSEvictingDualNodeHashTable getArchive11();

@@ -187,7 +187,7 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		}
 		else
 		{
-			client.getMenuEntries()[this.idx] = (MenuEntry) parent;
+			this.parent = (MenuEntry) parent;
 			return this;
 		}
 	}
@@ -426,6 +426,10 @@ public class RuneLiteMenuEntry implements MenuEntry {
 
 	@Override
 	public String toString() {
-		return "MenuEntryImpl(getOption=" + this.getOption() + ", getTarget=" + this.getTarget() + ", getIdentifier=" + this.getIdentifier() + ", getType=" + this.getType() + ", getParam0=" + this.getParam0() + ", getParam1=" + this.getParam1() + ", getItemId=" + this.getItemId() + ", isForceLeftClick=" + this.isForceLeftClick() + ", isDeprioritized=" + this.isDeprioritized() + ")";
+		int pidx = -1;
+		if(parent instanceof RuneLiteMenuEntry) {
+			pidx = ((RuneLiteMenuEntry)this.getParent()).getIdx();
+		}
+		return "MenuEntryImpl(idx="+ this.idx + ", parent=" + pidx + ", getOption=" + this.getOption() + ", getTarget=" + this.getTarget() + ", getIdentifier=" + this.getIdentifier() + ", getType=" + this.getType() + ", getParam0=" + this.getParam0() + ", getParam1=" + this.getParam1() + ", getItemId=" + this.getItemId() + ", isForceLeftClick=" + this.isForceLeftClick() + ", isDeprioritized=" + this.isDeprioritized() + ")";
 	}
 }

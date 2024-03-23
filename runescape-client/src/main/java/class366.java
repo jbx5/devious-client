@@ -13,15 +13,15 @@ public class class366 {
 		int var3;
 		if (var0 == 3500) {
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.field792.method4466(var3) ? 1 : 0;
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
 			return 1;
 		} else if (var0 == 3501) {
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.field792.method4450(var3) ? 1 : 0;
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.indexCheck.method4450(var3) ? 1 : 0;
 			return 1;
 		} else if (var0 == 3502) {
 			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.field792.method4440(var3) ? 1 : 0;
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.indexCheck.method4440(var3) ? 1 : 0;
 			return 1;
 		} else {
 			return 2;

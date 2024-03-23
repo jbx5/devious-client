@@ -66,7 +66,7 @@ public class class429 {
 	@Export("loginScreen")
 	static void loginScreen(GameEngine var0, Font var1, Font var2) {
 		if (Login.worldSelectOpen) {
-			class202.method3919(var0);
+			Sound.method3919(var0);
 		} else {
 			if ((MouseHandler.MouseHandler_lastButton == 1 || !DbTableType.mouseCam && MouseHandler.MouseHandler_lastButton == 4) && MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 765 - 50 && MouseHandler.MouseHandler_lastPressedY >= 453) {
 				class30.clientPreferences.updateTitleMusicDisabled(!class30.clientPreferences.isTitleMusicDisabled());
@@ -152,7 +152,7 @@ public class class429 {
 						var26 = 1;
 					}
 
-					class228 var27 = PacketBufferNode.method6051();
+					IndexCheck var27 = PacketBufferNode.method6051();
 					short var57;
 					int var58;
 					if (Login.loginIndex == 0) {
@@ -322,7 +322,7 @@ public class class429 {
 												}
 											}
 
-											if ((var27.method4466(82) || var27.method4466(87)) && var27.field2434 == 67) {
+											if ((var27.isValidIndexInRange(82) || var27.isValidIndexInRange(87)) && var27.field2434 == 67) {
 												Clipboard var69 = Toolkit.getDefaultToolkit().getSystemClipboard();
 												var70 = var69.getContents(class193.client);
 												var62 = 20 - Login.Login_password.length();

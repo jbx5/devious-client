@@ -129,7 +129,7 @@ public class ObjectPackets
 		var client = Static.getClient();
 		var clientPacket = Game.getClientPacket();
 		var packetBufferNode = Static.getClient().preparePacket(clientPacket.OPLOCT(), client.getPacketWriter().getIsaacCipher());
-		packetBufferNode.getPacketBuffer().writeIntIME(sourceWidgetId);
+		packetBufferNode.getPacketBuffer().writeIntME(sourceWidgetId);
 		packetBufferNode.getPacketBuffer().writeShortAddLE(objectId);
 		packetBufferNode.getPacketBuffer().writeShort(sourceItemId);
 		packetBufferNode.getPacketBuffer().writeShortLE(worldPointY);

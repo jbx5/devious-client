@@ -66,7 +66,7 @@ public class SequenceDefinition extends DualNode {
 		descriptor = "[Lhy;"
 	)
 	@Export("soundEffects")
-	public class202[] soundEffects;
+	public Sound[] soundEffects;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = 537916267
@@ -235,11 +235,11 @@ public class SequenceDefinition extends DualNode {
 			int var19;
 			if (var2 == 13) {
 				var3 = var1.readUnsignedByte();
-				this.soundEffects = new class202[var3];
+				this.soundEffects = new Sound[var3];
 
 				for (var4 = 0; var4 < var3; ++var4) {
-					class202 var13;
-					class202[] var14;
+					Sound var13;
+					Sound[] var14;
 					label163: {
 						var14 = this.soundEffects;
 						if (var1 != null) {
@@ -260,7 +260,7 @@ public class SequenceDefinition extends DualNode {
 							}
 
 							if (var17 >= 1 && var18 >= 1 && var19 >= 0 && var11 >= 0) {
-								var13 = new class202(var17, var18, var19, var11);
+								var13 = new Sound(var17, var18, var19, var11);
 								break label163;
 							}
 						}
@@ -278,7 +278,7 @@ public class SequenceDefinition extends DualNode {
 
 				for (var4 = 0; var4 < var3; ++var4) {
 					int var5;
-					class202 var6;
+					Sound var6;
 					label177: {
 						var5 = var1.readUnsignedShort();
 						if (var1 != null) {
@@ -300,7 +300,7 @@ public class SequenceDefinition extends DualNode {
 							}
 
 							if (var16 >= 1 && var17 >= 1 && var18 >= 0 && var19 >= 0) {
-								var6 = new class202(var16, var17, var18, var19);
+								var6 = new Sound(var16, var17, var18, var19);
 								break label177;
 							}
 						}

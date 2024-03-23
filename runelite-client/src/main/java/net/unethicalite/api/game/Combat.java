@@ -24,7 +24,7 @@ public class Combat
 {
 	private static final int SPEC_VARP = 301;
 	private static final int SPEC_ENERGY_VARP = 300;
-	private static final Supplier<Widget> SPEC_BUTTON = () -> Widgets.get(593, 36);
+	private static final Supplier<Widget> SPEC_BUTTON = () -> Widgets.get(593, 37);
 
 	private static final int VENOM_THRESHOLD = 1000000;
 

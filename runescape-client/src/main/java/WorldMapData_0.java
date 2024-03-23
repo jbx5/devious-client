@@ -246,13 +246,13 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 								Interpreter.Interpreter_intStackSize -= 2;
 								var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 								var10 = new Coord(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
-								class202.method3918(var3, var10, false);
+								Sound.method3918(var3, var10, false);
 								return 1;
 							} else if (var0 == 6620) {
 								Interpreter.Interpreter_intStackSize -= 2;
 								var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 								var10 = new Coord(Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]);
-								class202.method3918(var3, var10, true);
+								Sound.method3918(var3, var10, true);
 								return 1;
 							} else if (var0 == ScriptOpcodes.WORLDMAP_COORDINMAP) {
 								Interpreter.Interpreter_intStackSize -= 2;

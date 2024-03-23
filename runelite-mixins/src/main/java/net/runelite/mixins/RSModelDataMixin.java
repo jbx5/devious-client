@@ -245,6 +245,21 @@ public abstract class RSModelDataMixin implements RSModelData
 
 	@Inject
 	@Override
+	public RSModelData cloneTransparencies(boolean force)
+	{
+		if (this.getFaceTransparencies() != null)
+		{
+			this.setFaceTransparencies(Arrays.copyOf(this.getFaceTransparencies(), this.getFaceTransparencies().length));
+		}
+		else if (force)
+		{
+			this.setFaceTransparencies(new byte[this.getFaceCount()]);
+		}
+		return this;
+	}
+
+	@Inject
+	@Override
 	public RSModelData rotateY90Ccw()
 	{
 		for (int var1 = 0; var1 < this.getVerticesCount(); ++var1)

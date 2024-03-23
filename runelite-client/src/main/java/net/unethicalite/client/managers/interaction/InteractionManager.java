@@ -26,6 +26,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Singleton
 @Slf4j
@@ -52,34 +53,46 @@ public class InteractionManager
 	@Subscribe
 	public void onMenuAutomated(MenuAutomated event)
 	{
-		Point clickPoint = getClickPoint(event);
+		AtomicReference<Point> clickPoint = new AtomicReference<>(getClickPoint(event));
 		MouseHandler mouseHandler = client.getMouseHandler();
 
 		try
 		{
 			SceneEntity entity = event.getEntity();
 
-			if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
+			if (config.sendClickPacket() || config.interactMethod() == InteractMethod.MOUSE_EVENTS)
 			{
-				net.runelite.api.Point entityClickPoint = entity.getClickPoint();
-				if (entityClickPoint != null)
+				if (entity != null && config.mouseBehavior() == MouseBehavior.CLICKBOXES)
 				{
-					clickPoint = entityClickPoint.getAwtPoint();
+					AtomicReference<net.runelite.api.Point> entityClickPoint = new AtomicReference<>();
+					GameThread.invoke(() ->
+					{
+						entityClickPoint.set(entity.getClickPoint());
+					});
+
+					Time.sleepUntil(() ->
+					{
+						if (entityClickPoint.get() != null)
+						{
+							clickPoint.set(entityClickPoint.get().getAwtPoint());
+							return true;
+						}
+						return false;
+					}, 50);
 				}
 			}
 
-			if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint))
+			if (event.getOpcode() == MenuAction.WALK && clickOffScreen(clickPoint.get()))
 			{
 				net.runelite.api.Point newPoint = CoordUtils.localToMinimap(client,
-						LocalPoint.fromScene(event.getParam0(), event.getParam1()), 6400);
+					LocalPoint.fromScene(event.getParam0(), event.getParam1()), 6400);
 				if (newPoint != null)
 				{
-					clickPoint = newPoint.getAwtPoint();
+					clickPoint.set(newPoint.getAwtPoint());
 				}
 			}
 
-			Point finalClickPoint = clickPoint;
-
+			final Point finalClickPoint = clickPoint.get();
 			switch (config.interactMethod())
 			{
 				case MOUSE_FORWARDING:
@@ -89,7 +102,7 @@ public class InteractionManager
 				case MOUSE_EVENTS:
 					if (config.naturalMouse())
 					{
-						naturalMouse.moveTo(clickPoint.x, clickPoint.y);
+						naturalMouse.moveTo(finalClickPoint.x, finalClickPoint.y);
 					}
 
 					GameThread.invoke(() ->
@@ -111,7 +124,7 @@ public class InteractionManager
 					break;
 
 				case INVOKE:
-					processAction(event, clickPoint.x, clickPoint.y);
+					processAction(event, finalClickPoint.x, finalClickPoint.y);
 					break;
 
 				case PACKETS:

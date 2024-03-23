@@ -248,7 +248,8 @@ public class class129 {
 		descriptor = "(II)V",
 		garbageValue = "1910155406"
 	)
-	static final void method3067(int var0) {
+	@Export("menuActionByIdx")
+	static final void menuActionByIdx(int var0) {
 		if (var0 >= 0) {
 			int var1 = Client.menuArguments1[var0];
 			int var2 = Client.menuArguments2[var0];
@@ -447,7 +448,7 @@ public class class129 {
 
 							InterfaceParent var28 = (InterfaceParent)Client.interfaceParents.get((long)var10.id);
 							if (var28 != null) {
-								class228.drawWidgets(var28.group, var15, var16, var17, var18, var12, var13, var11);
+								IndexCheck.drawWidgets(var28.group, var15, var16, var17, var18, var12, var13, var11);
 							}
 
 							Rasterizer2D.Rasterizer2D_setClip(var2, var3, var4, var5);
@@ -678,7 +679,7 @@ public class class129 {
 												} else {
 													var39.calculateBoundsCylinder();
 													if (var10.modelOrthog) {
-														var39.method5708(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var23 + var22 + var10.modelOffsetY, var24 + var10.modelOffsetY, var10.modelZoom);
+														var39.drawOrtho(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var23 + var22 + var10.modelOffsetY, var24 + var10.modelOffsetY, var10.modelZoom);
 													} else {
 														var39.drawFrustum(0, var10.modelAngleY, var10.modelAngleZ, var10.modelAngleX, var10.modelOffsetX, var22 + var23 + var10.modelOffsetY, var24 + var10.modelOffsetY);
 													}

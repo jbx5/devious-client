@@ -420,7 +420,7 @@ public abstract class class161 extends Node {
 									for (var23 = 0; var23 < var9.field3739[var20].length; ++var23) {
 										boolean var24 = false;
 										if (var9.field3871 != null) {
-											var24 = Client.field792.method4466(var9.field3739[var20][var23]);
+											var24 = Client.indexCheck.isValidIndexInRange(var9.field3739[var20][var23]);
 										}
 
 										if (Login.method2193(var9.field3739[var20][var23]) || var24) {
@@ -430,7 +430,7 @@ public abstract class class161 extends Node {
 											}
 
 											byte var33 = var9.field3806[var20][var23];
-											if (var33 == 0 || ((var33 & 8) == 0 || !Client.field792.method4466(86) && !Client.field792.method4466(82) && !Client.field792.method4466(81)) && ((var33 & 2) == 0 || Client.field792.method4466(86)) && ((var33 & 1) == 0 || Client.field792.method4466(82)) && ((var33 & 4) == 0 || Client.field792.method4466(81))) {
+											if (var33 == 0 || ((var33 & 8) == 0 || !Client.indexCheck.isValidIndexInRange(86) && !Client.indexCheck.isValidIndexInRange(82) && !Client.indexCheck.isValidIndexInRange(81)) && ((var33 & 2) == 0 || Client.indexCheck.isValidIndexInRange(86)) && ((var33 & 1) == 0 || Client.indexCheck.isValidIndexInRange(82)) && ((var33 & 4) == 0 || Client.indexCheck.isValidIndexInRange(81))) {
 												var28 = true;
 												break;
 											}
@@ -781,7 +781,7 @@ public abstract class class161 extends Node {
 								ScriptEvent var31;
 								int[] var38;
 								if (var9.field3837 != null) {
-									var38 = Client.field792.method4434();
+									var38 = Client.indexCheck.method4434();
 
 									for (var23 = 0; var23 < var38.length; ++var23) {
 										var31 = new ScriptEvent();
@@ -793,7 +793,7 @@ public abstract class class161 extends Node {
 								}
 
 								if (var9.field3838 != null) {
-									var38 = Client.field792.method4435();
+									var38 = Client.indexCheck.method4435();
 
 									for (var23 = 0; var23 < var38.length; ++var23) {
 										var31 = new ScriptEvent();

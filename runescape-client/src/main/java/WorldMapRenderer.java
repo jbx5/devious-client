@@ -169,7 +169,7 @@ public final class WorldMapRenderer {
 			System.nanoTime();
 			if (var1.isValidFileName(WorldMapCacheName.field2681.name, var2)) {
 				byte[] var20 = var1.takeFileByNames(WorldMapCacheName.field2681.name, var2);
-				this.compositeTextureSprite = class202.method3920(var20);
+				this.compositeTextureSprite = Sound.method3920(var20);
 			}
 
 			System.nanoTime();

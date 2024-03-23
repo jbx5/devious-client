@@ -2,13 +2,15 @@ import java.util.Arrays;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
 
 @ObfuscatedName("iw")
-public class class228 implements class29 {
+@Implements("IndexCheck")
+public class IndexCheck implements class29 {
 	@ObfuscatedName("aq")
 	char[] field2433;
 	@ObfuscatedName("aw")
@@ -56,7 +58,7 @@ public class class228 implements class29 {
 	)
 	public int field2434;
 
-	public class228() {
+	public IndexCheck() {
 		this.field2433 = new char[128];
 		this.field2421 = new int[128];
 		this.field2423 = new int[128];
@@ -182,7 +184,8 @@ public class class228 implements class29 {
 		descriptor = "(IB)Z",
 		garbageValue = "93"
 	)
-	public boolean method4466(int var1) {
+	@Export("isValidIndexInRange")
+	public boolean isValidIndexInRange(int var1) {
 		return var1 >= 0 && var1 < 112 ? this.field2430[var1] : false;
 	}
 

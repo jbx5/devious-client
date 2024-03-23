@@ -40,7 +40,7 @@ public final class Canvas extends java.awt.Canvas {
 	)
 	static int method296(int var0, Script var1, boolean var2) {
 		if (var0 < 1000) {
-			return class228.method4468(var0, var1, var2);
+			return IndexCheck.method4468(var0, var1, var2);
 		} else if (var0 < 1100) {
 			return class357.method6983(var0, var1, var2);
 		} else if (var0 < 1200) {
