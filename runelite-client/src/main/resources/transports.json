@@ -80365,5 +80365,35 @@
     "action": "Cross",
     "objectId": 34949,
     "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1647,
+      "y": 4829,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1648,
+      "y": 4829,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 29657,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1648,
+      "y": 4829,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1647,
+      "y": 4829,
+      "plane": 0
+    },
+    "action": "Climb",
+    "objectId": 29657,
+    "requirements": {}
   }
 ]
