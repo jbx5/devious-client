@@ -31,10 +31,16 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.zip.GZIPOutputStream;
 
 import lombok.extern.slf4j.Slf4j;
@@ -184,22 +190,41 @@ public class CollisionMapDumper
 
 			Collection<Region> regions = dumper.regionLoader.getRegions();
 
-			int n = 0;
 			int total = regions.size();
+
+			ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+			List<Future<Void>> futures = new ArrayList<>();
 
 			for (Region region : regions)
 			{
-				dumper.makeCollisionMap(region);
+				futures.add(executor.submit(() ->
+				{
+					dumper.makeCollisionMap(region);
+					return null;
+				}));
+			}
+
+			executor.shutdown();
+
+			int n = 0;
+			for (Future<Void> future : futures)
+			{
+				future.get(); // wait for task to complete
 				if (++n % 100 == 0)
 				{
 					log.info("Processed " + n + " / " + total + " regions");
 				}
 			}
+
 			File file = dumper.writeToFile();
 			if (file != null)
 			{
 				log.info("Wrote collision map to " + file);
 			}
+		}
+		catch (ExecutionException | InterruptedException e)
+		{
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -561,6 +586,9 @@ public class CollisionMapDumper
 
 		APE_ATOLL_JAIL_DOOR_4800(4800),
 		APE_ATOLL_JAIL_DOOR_4801(4801),
+
+		AL_KHARID_GATE_44599(44599),
+		AL_KHARID_GATE_44598(44598),
 
 		ARDOUGNE_BASEMENT_CELL_DOOR_35795(35795),
 
