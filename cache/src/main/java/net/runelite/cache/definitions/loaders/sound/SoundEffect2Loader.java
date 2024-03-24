@@ -22,63 +22,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.definitions.sound;
+package net.runelite.cache.definitions.loaders.sound;
 
-public class SoundEffectTrackDefinition
+import net.runelite.cache.definitions.sound.SoundEffect2Definition;
+import net.runelite.cache.io.InputStream;
+
+public class SoundEffect2Loader
 {
-	public int start;
-	public InstrumentDefinition[] instruments = new InstrumentDefinition[10];
-	public int end;
-
-	public final byte[] mix()
+	public SoundEffect2Definition load(InputStream in)
 	{
-		int var2;
-		int var1 = 0;
+		SoundEffect2Definition se = new SoundEffect2Definition();
 
-		for (var2 = 0; var2 < 10; ++var2)
+		load(se, in);
+
+		return se;
+	}
+
+	private void load(SoundEffect2Definition se, InputStream var1)
+	{
+		se.field1087 = var1.readUnsignedByte();
+		se.field1088 = var1.readInt();
+		se.field1089 = var1.readInt();
+		this.method1144(se, var1);
+	}
+
+	final void method1144(SoundEffect2Definition se, InputStream var1)
+	{
+		se.field1092 = var1.readUnsignedByte();
+		se.field1086 = new int[se.field1092];
+		se.field1090 = new int[se.field1092];
+
+		for (int var2 = 0; var2 < se.field1092; ++var2)
 		{
-			if (this.instruments[var2] == null || this.instruments[var2].duration + this.instruments[var2].offset <= var1)
-			{
-				continue;
-			}
-
-			var1 = this.instruments[var2].duration + this.instruments[var2].offset;
+			se.field1086[var2] = var1.readUnsignedShort();
+			se.field1090[var2] = var1.readUnsignedShort();
 		}
 
-		if (var1 == 0)
-		{
-			return new byte[0];
-		}
-
-		var2 = var1 * 22050 / 1000;
-
-		byte[] var3 = new byte[var2];
-
-		for (int i = 0; i < 10; ++i)
-		{
-			if (this.instruments[i] == null)
-			{
-				continue;
-			}
-
-			int var5 = this.instruments[i].duration * 22050 / 1000;
-			int var6 = this.instruments[i].offset * 22050 / 1000;
-
-			int[] var7 = this.instruments[i].synthesize(var5, this.instruments[i].duration);
-
-			for (int j = 0; j < var5; ++j)
-			{
-				int var9 = (var7[j] >> 8) + var3[j + var6];
-
-				if ((var9 + 128 & -256) != 0)
-				{
-					var9 = var9 >> 31 ^ 127;
-				}
-
-				var3[j + var6] = (byte) var9;
-			}
-		}
-
-		return var3;
 	}
 }

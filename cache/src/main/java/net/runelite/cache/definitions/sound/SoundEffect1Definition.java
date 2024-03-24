@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2017, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,42 +22,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache;
+package net.runelite.cache.definitions.sound;
 
-import java.io.File;
-import java.io.IOException;
-import net.runelite.cache.fs.Store;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class SpritePixelsManagerTest
+public class SoundEffect1Definition
 {
-	private static final Logger logger = LoggerFactory.getLogger(SpritePixelsManagerTest.class);
-
-	@Rule
-	public TemporaryFolder folder = StoreLocation.getTemporaryFolder();
-
-	@Test
-	@Ignore
-	public void test() throws IOException
+	public SoundEffect2Definition field1173;
+	public SoundEffect2Definition field1174;
+	public SoundEffect2Definition field1175;
+	public int field1176 = 500;
+	public int[] field1177 = new int[]
 	{
-		File dumpDir = folder.newFolder();
-
-		try (Store store = new Store(StoreLocation.LOCATION))
-		{
-			store.load();
-
-			SpriteManager dumper = new SpriteManager(
-				store
-			);
-			dumper.load();
-			dumper.export(dumpDir);
-		}
-
-		logger.info("Dumped to {}", dumpDir);
-	}
+		0, 0, 0, 0, 0
+	};
+	public SoundEffect2Definition field1178;
+	public int[] field1179 = new int[]
+	{
+		0, 0, 0, 0, 0
+	};
+	public int[] field1180 = new int[]
+	{
+		0, 0, 0, 0, 0
+	};
+	public SoundEffect2Definition field1181;
+	public SoundEffect3Definition field1182;
+	public SoundEffect2Definition field1183;
+	public int field1184 = 100;
+	public SoundEffect2Definition field1186;
+	public int field1187 = 0;
+	public int field1188 = 0;
+	public SoundEffect2Definition field1192;
+	public SoundEffect2Definition field1193;
 }
