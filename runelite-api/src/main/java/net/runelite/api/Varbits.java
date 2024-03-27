@@ -926,6 +926,11 @@ public final class Varbits
 	public static final int CURSE_OF_THE_MOONS = 9853;
 
 	/**
+	 * The amount of Doom stacks received in the Fortis Colosseum.
+	 */
+	public static final int COLOSSEUM_DOOM = 9801;
+
+	/**
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">Draynor manor basement</a>
 	 */
 
