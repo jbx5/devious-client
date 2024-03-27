@@ -541,7 +541,7 @@ public class HttpResponse {
 													var25 = var10.modelFrame;
 												}
 
-												var38 = var10.method6657(class243.widgetDefinition, var34, var25, var35, class133.localPlayer.appearance, var44);
+												var38 = var10.getModel(class243.widgetDefinition, var34, var25, var35, class133.localPlayer.appearance, var44);
 												if (var38 == null && Widget.field3740) {
 													WorldMapData_0.invalidateWidget(var10);
 												}

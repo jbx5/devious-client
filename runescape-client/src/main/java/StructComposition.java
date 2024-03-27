@@ -275,7 +275,7 @@ public class StructComposition extends DualNode {
 						return 1;
 					} else if (var0 == 4218) {
 						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
-						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = HttpRequest.ItemDefinition_get(var3).field2334;
+						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = HttpRequest.ItemDefinition_get(var3).examine;
 						return 1;
 					} else {
 						return 2;

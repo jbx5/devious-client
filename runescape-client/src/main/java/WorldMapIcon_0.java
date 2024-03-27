@@ -193,7 +193,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 				if (Client.randomDatData != null) {
 					var7.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
 				} else {
-					byte[] var18 = Player.method2330();
+					byte[] var18 = Player.randomDatData2();
 					var7.writeBytes(var18, 0, var18.length);
 				}
 

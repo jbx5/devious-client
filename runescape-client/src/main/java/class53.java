@@ -224,7 +224,7 @@ public class class53 extends Node {
 	)
 	static final void method1052(int var0, int var1) {
 		if (Client.hintArrowType == 2) {
-			class129.worldToScreen(Client.field535 * 64 + (Client.hintArrowX - GrandExchangeOfferOwnWorldComparator.baseX * 64 << 7), Client.field712 * 64 + (Client.hintArrowY - DevicePcmPlayerProvider.baseY * 64 << 7), Client.field534 * 4);
+			class129.worldToScreen(Client.hintArrowSubX * 64 + (Client.hintArrowX - GrandExchangeOfferOwnWorldComparator.baseX * 64 << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - DevicePcmPlayerProvider.baseY * 64 << 7), Client.hintArrowHeight * 4);
 			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
 				class137.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
 			}

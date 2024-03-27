@@ -11,7 +11,8 @@ public class ArchiveLoader {
 	@ObfuscatedName("ve")
 	static List field1055;
 	@ObfuscatedName("gl")
-	static String field1054;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "Lov;"

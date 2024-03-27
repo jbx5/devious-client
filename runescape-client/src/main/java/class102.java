@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -341,7 +342,8 @@ public class class102 {
 		descriptor = "(Lcu;I)V",
 		garbageValue = "94460787"
 	)
-	static void method2651(LoginState var0) {
+	@Export("updateLoginState")
+	static void updateLoginState(LoginState var0) {
 		if (GraphicsObject.loginState != var0) {
 			GraphicsObject.loginState = var0;
 		}

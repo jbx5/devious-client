@@ -254,14 +254,14 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 			{
 				setAmbientSoundId(buffer.readUnsignedShort());
 				setInt7(buffer.readUnsignedByte());
-				setInt8((getObjectDefinitionIsRev220SoundData() ? buffer.readUnsignedByte() : 0));
+				setInt8(buffer.readUnsignedByte());
 			}
 			else if (opcode == 79)
 			{
 				setInt5(buffer.readUnsignedShort());
 				setInt6(buffer.readUnsignedShort());
 				setInt7(buffer.readUnsignedByte());
-				setInt8((getObjectDefinitionIsRev220SoundData() ? buffer.readUnsignedByte() : 0));
+				setInt8(buffer.readUnsignedByte());
 
 				var3 = buffer.readUnsignedByte();
 				setSoundEffectIds(new int[var3]);

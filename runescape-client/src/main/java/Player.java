@@ -666,7 +666,8 @@ public final class Player extends Actor {
 		descriptor = "(I)[B",
 		garbageValue = "201430276"
 	)
-	public static byte[] method2330() {
+	@Export("randomDatData2")
+	public static byte[] randomDatData2() {
 		byte[] var0 = new byte[24];
 
 		try {

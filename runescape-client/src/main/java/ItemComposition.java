@@ -53,7 +53,8 @@ public class ItemComposition extends DualNode {
 	@Export("name")
 	public String name;
 	@ObfuscatedName("au")
-	public String field2334;
+	@Export("examine")
+	public String examine;
 	@ObfuscatedName("ay")
 	@Export("recolorFrom")
 	public short[] recolorFrom;
@@ -157,7 +158,8 @@ public class ItemComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = 1128123567
 	)
-	int field2332;
+	@Export("femaleModel1")
+	int femaleModel1;
 	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
 		intValue = -1577591191
@@ -185,8 +187,8 @@ public class ItemComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = 898507413
 	)
-	@Export("femaleModel1")
-	int femaleModel1;
+	@Export("femaleModel2")
+	int femaleModel2;
 	@ObfuscatedName("bi")
 	@ObfuscatedGetter(
 		intValue = -1686684813
@@ -254,14 +256,14 @@ public class ItemComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = 1608007329
 	)
-	@Export("contrast")
-	public int contrast;
+	@Export("ambient")
+	public int ambient;
 	@ObfuscatedName("ci")
 	@ObfuscatedGetter(
 		intValue = -451149597
 	)
-	@Export("ambient")
-	public int ambient;
+	@Export("contrast")
+	public int contrast;
 	@ObfuscatedName("ct")
 	@ObfuscatedGetter(
 		intValue = -77241073
@@ -315,7 +317,7 @@ public class ItemComposition extends DualNode {
 
 	ItemComposition() {
 		this.name = "null";
-		this.field2334 = "null";
+		this.examine = "null";
 		this.zoom2d = 2000;
 		this.xan2d = 0;
 		this.yan2d = 0;
@@ -332,12 +334,12 @@ public class ItemComposition extends DualNode {
 		this.inventoryActions = new String[]{null, null, null, null, "Drop"};
 		this.shiftClickIndex = -2;
 		this.femaleModel = -1;
-		this.field2332 = -1;
+		this.femaleModel1 = -1;
 		this.femaleOffset = 0;
 		this.maleHeadModel = -1;
 		this.maleHeadModel2 = -1;
 		this.field2307 = 0;
-		this.femaleModel1 = -1;
+		this.femaleModel2 = -1;
 		this.femaleHeadModel = -1;
 		this.femaleHeadModel2 = -1;
 		this.field2320 = -1;
@@ -348,8 +350,8 @@ public class ItemComposition extends DualNode {
 		this.resizeX = 128;
 		this.resizeY = 128;
 		this.resizeZ = 128;
-		this.contrast = 0;
 		this.ambient = 0;
+		this.contrast = 0;
 		this.team = 0;
 		this.field2325 = 0;
 		this.isTradable = false;
@@ -401,7 +403,7 @@ public class ItemComposition extends DualNode {
 		} else if (var2 == 2) {
 			this.name = var1.readStringCp1252NullTerminated();
 		} else if (var2 == 3) {
-			this.field2334 = var1.readStringCp1252NullTerminated();
+			this.examine = var1.readStringCp1252NullTerminated();
 		} else if (var2 == 4) {
 			this.zoom2d = var1.readUnsignedShort();
 		} else if (var2 == 5) {
@@ -434,7 +436,7 @@ public class ItemComposition extends DualNode {
 			this.femaleModel = var1.readUnsignedShort();
 			this.femaleOffset = var1.readUnsignedByte();
 		} else if (var2 == 24) {
-			this.field2332 = var1.readUnsignedShort();
+			this.femaleModel1 = var1.readUnsignedShort();
 		} else if (var2 == 25) {
 			this.maleHeadModel = var1.readUnsignedShort();
 			this.field2307 = var1.readUnsignedByte();
@@ -477,7 +479,7 @@ public class ItemComposition extends DualNode {
 			} else if (var2 == 75) {
 				this.field2325 = var1.readShort();
 			} else if (var2 == 78) {
-				this.femaleModel1 = var1.readUnsignedShort();
+				this.femaleModel2 = var1.readUnsignedShort();
 			} else if (var2 == 79) {
 				this.femaleHeadModel = var1.readUnsignedShort();
 			} else if (var2 == 90) {
@@ -511,9 +513,9 @@ public class ItemComposition extends DualNode {
 			} else if (var2 == 112) {
 				this.resizeZ = var1.readUnsignedShort();
 			} else if (var2 == 113) {
-				this.contrast = var1.readByte();
+				this.ambient = var1.readByte();
 			} else if (var2 == 114) {
-				this.ambient = var1.readByte() * 5;
+				this.contrast = var1.readByte() * 5;
 			} else if (var2 == 115) {
 				this.team = var1.readUnsignedByte();
 			} else if (var2 == 139) {
@@ -550,7 +552,7 @@ public class ItemComposition extends DualNode {
 		this.retextureFrom = var1.retextureFrom;
 		this.retextureTo = var1.retextureTo;
 		this.name = var2.name;
-		this.field2334 = "Swap this note at any bank for the equivalent item";
+		this.examine = "Swap this note at any bank for the equivalent item";
 		this.isMembersOnly = var2.isMembersOnly;
 		this.price = var2.price;
 		this.isStackable = 1;
@@ -575,15 +577,15 @@ public class ItemComposition extends DualNode {
 		this.retextureFrom = var2.retextureFrom;
 		this.retextureTo = var2.retextureTo;
 		this.name = var2.name;
-		this.field2334 = var2.field2334;
+		this.examine = var2.examine;
 		this.isMembersOnly = var2.isMembersOnly;
 		this.isStackable = var2.isStackable;
 		this.maleModel = var2.maleModel;
 		this.maleModel1 = var2.maleModel1;
 		this.maleModel2 = var2.maleModel2;
 		this.femaleModel = var2.femaleModel;
-		this.field2332 = var2.field2332;
 		this.femaleModel1 = var2.femaleModel1;
+		this.femaleModel2 = var2.femaleModel2;
 		this.maleHeadModel = var2.maleHeadModel;
 		this.maleHeadModel2 = var2.maleHeadModel2;
 		this.femaleHeadModel = var2.femaleHeadModel;
@@ -625,7 +627,7 @@ public class ItemComposition extends DualNode {
 		this.retextureTo = var1.retextureTo;
 		this.isStackable = var1.isStackable;
 		this.name = var2.name;
-		this.field2334 = var2.field2334;
+		this.examine = var2.examine;
 		this.price = 0;
 		this.isMembersOnly = false;
 		this.isTradable = false;
@@ -723,7 +725,7 @@ public class ItemComposition extends DualNode {
 					}
 				}
 
-				var5 = var6.toModel(this.contrast + 64, this.ambient + 768, -50, -10, -50);
+				var5 = var6.toModel(this.ambient + 64, this.contrast + 768, -50, -10, -50);
 				var5.isSingleTile = true;
 				ItemDefinition_cachedModels.put(var5, (long)this.id);
 				return var5;
@@ -762,8 +764,8 @@ public class ItemComposition extends DualNode {
 	)
 	public final boolean method4141(int var1) {
 		int var2 = this.femaleModel;
-		int var3 = this.field2332;
-		int var4 = this.femaleModel1;
+		int var3 = this.femaleModel1;
+		int var4 = this.femaleModel2;
 		if (var1 == 1) {
 			var2 = this.maleHeadModel;
 			var3 = this.maleHeadModel2;
@@ -797,8 +799,8 @@ public class ItemComposition extends DualNode {
 	)
 	public final ModelData method4142(int var1) {
 		int var2 = this.femaleModel;
-		int var3 = this.field2332;
-		int var4 = this.femaleModel1;
+		int var3 = this.femaleModel1;
+		int var4 = this.femaleModel2;
 		if (var1 == 1) {
 			var2 = this.maleHeadModel;
 			var3 = this.maleHeadModel2;

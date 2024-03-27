@@ -1324,7 +1324,8 @@ public class Widget extends Node {
 		descriptor = "(Lnm;Lig;IZLnq;Lhg;I)Ljn;",
 		garbageValue = "1914091918"
 	)
-	public Model method6657(WidgetDefinition var1, SequenceDefinition var2, int var3, boolean var4, PlayerComposition var5, NpcOverrides var6) {
+	@Export("getModel")
+	public Model getModel(WidgetDefinition var1, SequenceDefinition var2, int var3, boolean var4, PlayerComposition var5, NpcOverrides var6) {
 		field3740 = false;
 		int var7;
 		int var8;
@@ -1368,8 +1369,8 @@ public class Widget extends Node {
 				case 4:
 					ItemComposition var15 = HttpRequest.ItemDefinition_get(var8);
 					var12 = var15.getModelData(10);
-					var13 += var15.contrast;
-					var14 += var15.ambient;
+					var13 += var15.ambient;
+					var14 += var15.contrast;
 				case 5:
 				default:
 					break;

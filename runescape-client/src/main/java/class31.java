@@ -10,8 +10,8 @@ public class class31 {
 	@ObfuscatedName("ah")
 	public static String field150;
 	@ObfuscatedName("ga")
-	@Export("authServiceBaseUrl")
-	static String authServiceBaseUrl;
+	@Export("gameSessionServiceBaseUrl")
+	static String gameSessionServiceBaseUrl;
 
 	static {
 		field153 = null;

@@ -723,7 +723,7 @@ public class KitDefinition extends DualNode {
 							if (Client.field540 == class93.field1169) {
 								class276.field3052 = false;
 								FaceNormal.updateGameState(20);
-								class102.method2651(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
+								class102.updateLoginState(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
 							}
 
 						}

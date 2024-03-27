@@ -208,7 +208,7 @@ public class FaceNormal {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class102.method2651(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
+				class102.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 				Client.field544 = 0;
 				Client.field667 = 0;
 				Client.timer.method7927(var0);

@@ -233,7 +233,7 @@ public class HttpRequest {
 					var1.name = var1.name + " (Members)";
 				}
 
-				var1.field2334 = "Login to a members' server to use this object.";
+				var1.examine = "Login to a members' server to use this object.";
 				var1.isTradable = false;
 
 				int var3;
