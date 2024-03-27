@@ -55,7 +55,7 @@ final class class107 implements class339 {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = FadeInTask.getPacketBufferNode(ClientPacket.field3212, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = FadeInTask.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(class418.privateChatMode.field5374);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -71,7 +71,7 @@ final class class107 implements class339 {
 				HttpRequestTask.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 1];
-				var6 = FadeInTask.getPacketBufferNode(ClientPacket.field3281, Client.packetWriter.isaacCipher);
+				var6 = FadeInTask.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -145,7 +145,7 @@ final class class107 implements class339 {
 							AbstractWorldMapIcon.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[AbstractWorldMapIcon.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[AbstractWorldMapIcon.Interpreter_stringStackSize + 1];
-							var12 = FadeInTask.getPacketBufferNode(ClientPacket.field3267, Client.packetWriter.isaacCipher);
+							var12 = FadeInTask.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

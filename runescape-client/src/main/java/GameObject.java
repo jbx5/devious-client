@@ -125,7 +125,7 @@ public final class GameObject {
 	@Export("clanKickUser")
 	static final void clanKickUser(String var0) {
 		if (class143.friendsChat != null) {
-			PacketBufferNode var1 = FadeInTask.getPacketBufferNode(ClientPacket.field3260, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = FadeInTask.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 			Client.packetWriter.addNode(var1);

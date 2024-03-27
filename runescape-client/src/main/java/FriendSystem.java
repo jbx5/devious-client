@@ -179,7 +179,7 @@ public class FriendSystem {
 				} else if (this.isIgnored(var2)) {
 					Client.method1791(var1);
 				} else {
-					PacketBufferNode var3 = FadeInTask.getPacketBufferNode(ClientPacket.field3207, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = FadeInTask.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -248,7 +248,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					Client.field716 = Client.cycleCntr;
-					PacketBufferNode var3 = FadeInTask.getPacketBufferNode(ClientPacket.field3275, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = FadeInTask.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -287,7 +287,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					Client.field716 = Client.cycleCntr;
 					if (var2) {
-						PacketBufferNode var4 = FadeInTask.getPacketBufferNode(ClientPacket.field3231, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = FadeInTask.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);

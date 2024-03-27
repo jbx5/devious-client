@@ -370,7 +370,7 @@ public class Varcs {
 					var15 = KitDefinition.method3778(var7);
 				}
 
-				PacketBufferNode var13 = FadeInTask.getPacketBufferNode(ClientPacket.field3286, Client.packetWriter.isaacCipher);
+				PacketBufferNode var13 = FadeInTask.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
 				var13.packetBuffer.writeInt(var15);
 				Client.packetWriter.addNode(var13);
 				return 1;
@@ -378,14 +378,14 @@ public class Varcs {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--AbstractWorldMapIcon.Interpreter_stringStackSize];
-					var11 = FadeInTask.getPacketBufferNode(ClientPacket.field3233, Client.packetWriter.isaacCipher);
+					var11 = FadeInTask.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--AbstractWorldMapIcon.Interpreter_stringStackSize];
-					var11 = FadeInTask.getPacketBufferNode(ClientPacket.field3220, Client.packetWriter.isaacCipher);
+					var11 = FadeInTask.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
@@ -429,7 +429,7 @@ public class Varcs {
 						return 1;
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
-						var11 = FadeInTask.getPacketBufferNode(ClientPacket.field3232, Client.packetWriter.isaacCipher);
+						var11 = FadeInTask.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeShort(var3);
 						Client.packetWriter.addNode(var11);
 						return 1;

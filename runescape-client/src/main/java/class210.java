@@ -42,7 +42,7 @@ public class class210 extends DualNode {
 		garbageValue = "1087730208"
 	)
 	static void method3929() {
-		Client.packetWriter.addNode(FadeInTask.getPacketBufferNode(ClientPacket.field3282, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(FadeInTask.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

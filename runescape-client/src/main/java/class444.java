@@ -273,7 +273,7 @@ public final class class444 implements Comparable {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (UrlRequest.client.hasFrame()) {
-					var19 = FadeInTask.getPacketBufferNode(ClientPacket.field3211, Client.packetWriter.isaacCipher);
+					var19 = FadeInTask.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

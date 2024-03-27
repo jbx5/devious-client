@@ -592,7 +592,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3246, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShort(var3);
 				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -608,7 +608,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3202, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var10.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var10);
@@ -623,7 +623,7 @@ public class CollisionMap {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3277, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 			var14.packetBuffer.writeShort(var3);
@@ -641,7 +641,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3292, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
 				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -655,7 +655,7 @@ public class CollisionMap {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3235, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeShortAddLE(var3);
@@ -670,7 +670,7 @@ public class CollisionMap {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3295, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 			var14.packetBuffer.writeShortLE(var3);
 			var14.packetBuffer.writeShortLE(DevicePcmPlayerProvider.baseY * 64 + var1);
@@ -687,7 +687,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3237, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var10);
@@ -721,7 +721,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3269, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var10);
@@ -739,7 +739,7 @@ public class CollisionMap {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3280, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
@@ -762,7 +762,7 @@ public class CollisionMap {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3272, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeShortLE(Client.selectedSpellItemId);
 			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
@@ -795,7 +795,7 @@ public class CollisionMap {
 		int var11;
 		Widget var16;
 		if (var2 == 29) {
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3251, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var14);
 			var16 = class243.widgetDefinition.method6281(var1);
@@ -817,7 +817,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
 				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
@@ -831,7 +831,7 @@ public class CollisionMap {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3244, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
@@ -858,7 +858,7 @@ public class CollisionMap {
 		}
 
 		if (var2 == 28) {
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3251, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeInt(var1);
 			Client.packetWriter.addNode(var14);
 			var16 = class243.widgetDefinition.method6281(var1);
@@ -874,7 +874,7 @@ public class CollisionMap {
 			Client.mouseCrossY = var8;
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
-			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3241, Client.packetWriter.isaacCipher);
+			var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeShortAdd(var3);
@@ -920,7 +920,7 @@ public class CollisionMap {
 					AbstractWorldMapData.runScriptEvent(var17);
 				}
 
-				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3236, Client.packetWriter.isaacCipher);
+				var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeIntME(var1);
 				var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var10.packetBuffer.writeShortAdd(var0);
@@ -959,7 +959,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3226, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
@@ -973,7 +973,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeShortLE(var3);
@@ -988,7 +988,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3221, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -1011,7 +1011,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3238, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeInt(ChatChannel.selectedSpellWidget);
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var10.packetBuffer.writeShort(Client.selectedSpellItemId);
@@ -1030,7 +1030,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3268, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortLE(var3);
 					var10.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -1050,7 +1050,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3279, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortAddLE(var3);
 					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -1066,7 +1066,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3291, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 					var10.packetBuffer.writeIntME(ChatChannel.selectedSpellWidget);
 					var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
@@ -1081,7 +1081,7 @@ public class CollisionMap {
 				Client.mouseCrossY = var8;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3270, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var14);
 			}
@@ -1093,7 +1093,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3273, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -1108,7 +1108,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3256, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
 				var14.packetBuffer.writeShortAdd(var3);
@@ -1125,7 +1125,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3204, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortLE(var3);
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -1141,7 +1141,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3214, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortAdd(var3);
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -1158,7 +1158,7 @@ public class CollisionMap {
 					}
 
 					if (var12) {
-						var13 = FadeInTask.getPacketBufferNode(ClientPacket.field3251, Client.packetWriter.isaacCipher);
+						var13 = FadeInTask.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 						var13.packetBuffer.writeInt(var1);
 						Client.packetWriter.addNode(var13);
 					}
@@ -1174,7 +1174,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3230, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
@@ -1190,7 +1190,7 @@ public class CollisionMap {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3298, Client.packetWriter.isaacCipher);
+					var10 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortLE(var3);
 					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
@@ -1204,7 +1204,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3264, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
@@ -1219,7 +1219,7 @@ public class CollisionMap {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3229, Client.packetWriter.isaacCipher);
+				var14 = FadeInTask.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeInt(ChatChannel.selectedSpellWidget);
 				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
@@ -1243,7 +1243,7 @@ public class CollisionMap {
 					}
 
 					if (var19 != null) {
-						var13 = FadeInTask.getPacketBufferNode(ClientPacket.field3247, Client.packetWriter.isaacCipher);
+						var13 = FadeInTask.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 						var13.packetBuffer.writeShortAddLE(var19.id);
 						Client.packetWriter.addNode(var13);
 					}

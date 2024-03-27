@@ -201,7 +201,7 @@ public class LoginState {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = FadeInTask.getPacketBufferNode(ClientPacket.field3242, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = FadeInTask.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeInt(var0);
 		var2.packetBuffer.writeShortAdd(var1);
 		Client.packetWriter.addNode(var2);
@@ -213,7 +213,7 @@ public class LoginState {
 		garbageValue = "1"
 	)
 	static final void method1200() {
-		PacketBufferNode var0 = FadeInTask.getPacketBufferNode(ClientPacket.field3252, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = FadeInTask.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field873 = true;
 

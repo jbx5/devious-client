@@ -178,7 +178,7 @@ public class RestClientThreadFactory implements ThreadFactory {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var5 = FadeInTask.getPacketBufferNode(ClientPacket.field3278, Client.packetWriter.isaacCipher);
+			PacketBufferNode var5 = FadeInTask.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var5.packetBuffer.writeByte(class36.getWindowedMode());
 			var5.packetBuffer.writeShort(class148.canvasWidth);
 			var5.packetBuffer.writeShort(class342.canvasHeight);

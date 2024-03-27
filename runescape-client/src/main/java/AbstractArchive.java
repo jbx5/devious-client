@@ -793,7 +793,7 @@ public abstract class AbstractArchive {
 				if (var7) {
 					PacketBufferNode var10;
 					if (var0 == 1) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3218, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -801,7 +801,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 2) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3293, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -809,7 +809,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 3) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3258, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -817,7 +817,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 4) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3249, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -825,7 +825,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 5) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3257, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -833,7 +833,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 6) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3223, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -841,7 +841,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 7) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3222, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -849,7 +849,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 8) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3217, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -857,7 +857,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 9) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3290, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
@@ -865,7 +865,7 @@ public abstract class AbstractArchive {
 					}
 
 					if (var0 == 10) {
-						var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3262, Client.packetWriter.isaacCipher);
+						var10 = FadeInTask.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
 						var10.packetBuffer.writeInt(var1);
 						var10.packetBuffer.writeShort(var2);
 						var10.packetBuffer.writeShort(var3);
