@@ -27,18 +27,11 @@ package net.runelite.cache;
 import com.google.common.io.Files;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import net.runelite.cache.definitions.loaders.sound.SoundEffectTrackLoader;
-import net.runelite.cache.definitions.sound.SoundEffectTrackDefinition;
+import net.runelite.cache.definitions.loaders.sound.SoundEffectLoader;
+import net.runelite.cache.definitions.sound.SoundEffectDefinition;
 import net.runelite.cache.fs.Archive;
 import net.runelite.cache.fs.Index;
 import net.runelite.cache.fs.Storage;
@@ -77,65 +70,11 @@ public class SoundEffectsDumperTest
 			{
 				byte[] contents = archive.decompress(storage.loadArchive(archive));
 
-				SoundEffectTrackLoader setLoader = new SoundEffectTrackLoader();
-				SoundEffectTrackDefinition soundEffect = setLoader.load(contents);
+				SoundEffectLoader soundEffectLoader = new SoundEffectLoader();
+				SoundEffectDefinition soundEffect = soundEffectLoader.load(contents);
 
 				Files.asCharSink(new File(dumpDir, archive.getArchiveId() + ".json"), Charset.defaultCharset()).write(gson.toJson(soundEffect));
 				++count;
-			}
-		}
-
-		logger.info("Dumped {} sound effects to {}", count, dumpDir);
-	}
-
-	@Test
-	public void extractWavTest() throws IOException
-	{
-		File dumpDir = folder.newFolder();
-		int count = 0;
-
-		try (Store store = new Store(StoreLocation.LOCATION))
-		{
-			store.load();
-
-			Storage storage = store.getStorage();
-			Index index = store.getIndex(IndexType.SOUNDEFFECTS);
-
-			for (Archive archive : index.getArchives())
-			{
-				byte[] contents = archive.decompress(storage.loadArchive(archive));
-
-				SoundEffectTrackLoader setLoader = new SoundEffectTrackLoader();
-				SoundEffectTrackDefinition soundEffect = setLoader.load(contents);
-				try
-				{
-					Object audioStream;
-					byte[] data = soundEffect.mix();
-
-					AudioFormat audioFormat = new AudioFormat(22050.0f, 8, 1, true, false);
-					audioStream = new AudioInputStream(new ByteArrayInputStream(data), audioFormat, data.length);
-
-					ByteArrayOutputStream bos = new ByteArrayOutputStream();
-					AudioSystem.write((AudioInputStream) audioStream, AudioFileFormat.Type.WAVE, bos);
-					data = bos.toByteArray();
-
-					FileOutputStream fos = new FileOutputStream(new File(dumpDir, archive.getArchiveId() + ".wav"));
-
-					try
-					{
-						fos.write(data);
-					}
-					finally
-					{
-						fos.close();
-					}
-
-					++count;
-				}
-				catch (Exception e)
-				{
-					continue;
-				}
 			}
 		}
 

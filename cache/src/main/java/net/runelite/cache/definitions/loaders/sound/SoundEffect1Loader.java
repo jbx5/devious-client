@@ -24,39 +24,70 @@
  */
 package net.runelite.cache.definitions.loaders.sound;
 
-import net.runelite.cache.definitions.sound.SoundEffectDefinition;
 import net.runelite.cache.definitions.sound.SoundEffect1Definition;
+import net.runelite.cache.definitions.sound.SoundEffect2Definition;
 import net.runelite.cache.io.InputStream;
 
-public class SoundEffectLoader
+public class SoundEffect1Loader
 {
-	public SoundEffectDefinition load(byte[] b)
+	private final SoundEffect2Loader se2Loader = new SoundEffect2Loader();
+	private final SoundEffect3Loader se3Loader = new SoundEffect3Loader();
+
+	public SoundEffect1Definition load(InputStream in)
 	{
-		SoundEffectDefinition se = new SoundEffectDefinition();
-		InputStream in = new InputStream(b);
+		SoundEffect1Definition se = new SoundEffect1Definition();
 
 		load(se, in);
 
 		return se;
 	}
 
-	private void load(SoundEffectDefinition se, InputStream var1)
+	private void load(SoundEffect1Definition se, InputStream var1)
 	{
-		for (int var2 = 0; var2 < 10; ++var2)
+		se.field1181 = se2Loader.load(var1);
+		se.field1173 = se2Loader.load(var1);
+		int var2 = var1.readUnsignedByte();
+		if (var2 != 0)
 		{
-			int var3 = var1.readUnsignedByte();
-			if (var3 != 0)
-			{
-				var1.setOffset(var1.getOffset() - 1);
-
-				SoundEffect1Loader se1Loader = new SoundEffect1Loader();
-				SoundEffect1Definition se1 = se1Loader.load(var1);
-
-				se.field1008[var2] = se1;
-			}
+			var1.setOffset(var1.getOffset() - 1);
+			se.field1174 = se2Loader.load(var1);
+			se.field1193 = se2Loader.load(var1);
 		}
 
-		se.field1006 = var1.readUnsignedShort();
-		se.field1009 = var1.readUnsignedShort();
+		var2 = var1.readUnsignedByte();
+		if (var2 != 0)
+		{
+			var1.setOffset(var1.getOffset() - 1);
+			se.field1183 = se2Loader.load(var1);
+			se.field1192 = se2Loader.load(var1);
+		}
+
+		var2 = var1.readUnsignedByte();
+		if (var2 != 0)
+		{
+			var1.setOffset(var1.getOffset() - 1);
+			se.field1178 = se2Loader.load(var1);
+			se.field1175 = se2Loader.load(var1);
+		}
+
+		for (int var3 = 0; var3 < 10; ++var3)
+		{
+			int var4 = var1.readUnsignedShortSmart();
+			if (var4 == 0)
+			{
+				break;
+			}
+
+			se.field1180[var3] = var4;
+			se.field1179[var3] = var1.readShortSmart();
+			se.field1177[var3] = var1.readUnsignedShortSmart();
+		}
+
+		se.field1187 = var1.readUnsignedShortSmart();
+		se.field1184 = var1.readUnsignedShortSmart();
+		se.field1176 = var1.readUnsignedShort();
+		se.field1188 = var1.readUnsignedShort();
+		se.field1186 = new SoundEffect2Definition();
+		se.field1182 = se3Loader.load(var1, se.field1186);
 	}
 }

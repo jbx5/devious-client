@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,60 +22,42 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.definitions.sound;
+package net.runelite.cache;
 
-public class AudioEnvelopeDefinition
+import java.io.File;
+import java.io.IOException;
+import net.runelite.cache.fs.Store;
+import org.junit.Ignore;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class SpriteManagerTest
 {
-	public int segments = 2;
-	public int[] durations = new int[2];
-	public int[] phases = new int[2];
-	public int start;
-	public int end;
-	public int form;
-	public int ticks;
-	public int phaseIndex;
-	public int step;
-	public int amplitude;
-	public int max;
+	private static final Logger logger = LoggerFactory.getLogger(SpriteManagerTest.class);
 
-	public AudioEnvelopeDefinition()
-	{
-		this.durations[0] = 0;
-		this.durations[1] = '\uffff';
-		this.phases[0] = 0;
-		this.phases[1] = '\uffff';
-	}
+	@Rule
+	public TemporaryFolder folder = StoreLocation.getTemporaryFolder();
 
-	public final int step(int var1)
+	@Test
+	@Ignore
+	public void test() throws IOException
 	{
-		if (this.max >= this.ticks)
+		File dumpDir = folder.newFolder();
+
+		try (Store store = new Store(StoreLocation.LOCATION))
 		{
-			this.amplitude = this.phases[this.phaseIndex++] << 15;
+			store.load();
 
-			if (this.phaseIndex >= this.segments)
-			{
-				this.phaseIndex = this.segments - 1;
-			}
-
-			this.ticks = (int) ((double) this.durations[this.phaseIndex] / 65536.0 * (double) var1);
-
-			if (this.ticks > this.max)
-			{
-				this.step = ((this.phases[this.phaseIndex] << 15) - this.amplitude) / (this.ticks - this.max);
-			}
+			SpriteManager dumper = new SpriteManager(
+				store
+			);
+			dumper.load();
+			dumper.export(dumpDir);
 		}
-		this.amplitude += this.step;
-		++this.max;
 
-		return this.amplitude - this.step >> 15;
-	}
-
-	public final void reset()
-	{
-		this.ticks = 0;
-		this.phaseIndex = 0;
-		this.step = 0;
-		this.amplitude = 0;
-		this.max = 0;
+		logger.info("Dumped to {}", dumpDir);
 	}
 }
