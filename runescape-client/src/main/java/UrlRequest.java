@@ -511,7 +511,7 @@ public class UrlRequest {
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var11);
 					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
-					var13.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var12);
+					var13.packetBuffer.writeShortLE(DevicePcmPlayerProvider.baseY * 64 + var12);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);

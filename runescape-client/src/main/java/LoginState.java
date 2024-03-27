@@ -203,7 +203,7 @@ public class LoginState {
 	static void resumePauseWidget(int var0, int var1) {
 		PacketBufferNode var2 = FadeInTask.getPacketBufferNode(ClientPacket.field3242, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeInt(var0);
-		var2.packetBuffer.writeIntLE(var1);
+		var2.packetBuffer.writeShortAdd(var1);
 		Client.packetWriter.addNode(var2);
 	}
 

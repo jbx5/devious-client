@@ -232,10 +232,10 @@ public class HealthBarDefinition extends DualNode {
 	)
 	public static void method3818(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = FadeInTask.getPacketBufferNode(ClientPacket.field3263, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeShortLE(var3 ? Client.hintArrowHeight : 0);
-		var4.packetBuffer.writeShortAdd(var0);
+		var4.packetBuffer.writeIntME(var3 ? Client.hintArrowHeight : 0);
+		var4.packetBuffer.writeShortLE(var0);
 		var4.packetBuffer.writeByteAdd(var2);
-		var4.packetBuffer.writeShortAdd(var1);
+		var4.packetBuffer.writeShortLE(var1);
 		Client.packetWriter.addNode(var4);
 	}
 }

@@ -594,7 +594,7 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3246, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShort(var3);
-				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -610,7 +610,7 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3202, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-				var10.packetBuffer.writeShortAdd(var3);
+				var10.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -627,7 +627,7 @@ public class CollisionMap {
 			var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 			var14.packetBuffer.writeShort(var3);
-			var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
+			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -643,7 +643,7 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3292, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
-				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -656,7 +656,7 @@ public class CollisionMap {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3235, Client.packetWriter.isaacCipher);
-			var14.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+			var14.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeShortAddLE(var3);
 			var14.packetBuffer.writeShortAddLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
@@ -671,9 +671,9 @@ public class CollisionMap {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3295, Client.packetWriter.isaacCipher);
-			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeShortAdd(var3);
-			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
+			var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+			var14.packetBuffer.writeShortLE(var3);
+			var14.packetBuffer.writeShortLE(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			Client.packetWriter.addNode(var14);
 		}
@@ -702,13 +702,13 @@ public class CollisionMap {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3225, Client.packetWriter.isaacCipher);
-			var14.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-			var14.packetBuffer.writeIntLE(var3);
-			var14.packetBuffer.writeShortAdd(class254.field2776);
+			var14.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+			var14.packetBuffer.writeShortAdd(var3);
+			var14.packetBuffer.writeShortLE(class254.field2776);
 			var14.packetBuffer.writeShortAddLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeIntME(class366.field3997);
-			var14.packetBuffer.writeShortAdd(class500.field5007);
-			var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
+			var14.packetBuffer.writeIntLE(class366.field3997);
+			var14.packetBuffer.writeShortLE(class500.field5007);
+			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -722,7 +722,7 @@ public class CollisionMap {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3269, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var10.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var10);
 			}
@@ -742,8 +742,8 @@ public class CollisionMap {
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3280, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
-			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeShortAdd(var3);
+			var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+			var14.packetBuffer.writeShortLE(var3);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -763,13 +763,13 @@ public class CollisionMap {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3272, Client.packetWriter.isaacCipher);
-			var14.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
-			var14.packetBuffer.writeIntLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
+			var14.packetBuffer.writeShortLE(Client.selectedSpellItemId);
+			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
 			var14.packetBuffer.writeInt(ChatChannel.selectedSpellWidget);
 			var14.packetBuffer.writeShortAddLE(var3);
 			var14.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-			var14.packetBuffer.writeIntLE(Client.selectedSpellChildIndex);
+			var14.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -785,9 +785,9 @@ public class CollisionMap {
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3289, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShort(class500.field5007);
 				var10.packetBuffer.writeInt(class366.field3997);
-				var10.packetBuffer.writeShortAdd(var3);
+				var10.packetBuffer.writeShortLE(var3);
 				var10.packetBuffer.writeShort(class254.field2776);
-				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -819,7 +819,7 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
 				var10.packetBuffer.writeShortAddLE(var3);
-				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var10);
 			}
 		}
@@ -834,8 +834,8 @@ public class CollisionMap {
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3244, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
-			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeIntLE(var3);
+			var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+			var14.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -848,12 +848,12 @@ public class CollisionMap {
 			Client.destinationY = var1;
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3253, Client.packetWriter.isaacCipher);
 			var14.packetBuffer.writeShortAddLE(DevicePcmPlayerProvider.baseY * 64 + var1);
-			var14.packetBuffer.writeIntLE(class500.field5007);
-			var14.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+			var14.packetBuffer.writeShortAdd(class500.field5007);
+			var14.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 			var14.packetBuffer.writeShortAddLE(var3);
 			var14.packetBuffer.writeShortAddLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeIntLE(class254.field2776);
-			var14.packetBuffer.writeIntME(class366.field3997);
+			var14.packetBuffer.writeShortAdd(class254.field2776);
+			var14.packetBuffer.writeIntLE(class366.field3997);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -875,9 +875,9 @@ public class CollisionMap {
 			Client.mouseCrossColor = 2;
 			Client.mouseCrossState = 0;
 			var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3241, Client.packetWriter.isaacCipher);
-			var14.packetBuffer.writeIntLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-			var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
-			var14.packetBuffer.writeIntLE(var3);
+			var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+			var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
+			var14.packetBuffer.writeShortAdd(var3);
 			Client.packetWriter.addNode(var14);
 		}
 
@@ -899,8 +899,8 @@ public class CollisionMap {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3296, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-				var10.packetBuffer.writeShortAdd(class500.field5007);
+				var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var10.packetBuffer.writeShortLE(class500.field5007);
 				var10.packetBuffer.writeShort(var3);
 				var10.packetBuffer.writeInt(class366.field3997);
 				var10.packetBuffer.writeShort(class254.field2776);
@@ -921,11 +921,11 @@ public class CollisionMap {
 				}
 
 				var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3236, Client.packetWriter.isaacCipher);
-				var10.packetBuffer.writeShortLE(var1);
-				var10.packetBuffer.writeIntLE(Client.selectedSpellItemId);
-				var10.packetBuffer.writeIntLE(var0);
-				var10.packetBuffer.writeShortLE(ChatChannel.selectedSpellWidget);
-				var10.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
+				var10.packetBuffer.writeIntME(var1);
+				var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
+				var10.packetBuffer.writeShortAdd(var0);
+				var10.packetBuffer.writeIntME(ChatChannel.selectedSpellWidget);
+				var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 				var10.packetBuffer.writeShortAddLE(var4);
 				Client.packetWriter.addNode(var10);
 			}
@@ -960,8 +960,8 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3226, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-					var10.packetBuffer.writeShortAdd(var3);
+					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
 				}
 			}
@@ -975,9 +975,9 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3209, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-				var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-				var14.packetBuffer.writeShortAdd(var3);
-				var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
+				var14.packetBuffer.writeShortLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+				var14.packetBuffer.writeShortLE(var3);
+				var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
 				Client.packetWriter.addNode(var14);
 			}
 
@@ -989,7 +989,7 @@ public class CollisionMap {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3221, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeShortAdd(var3);
+				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
@@ -1016,7 +1016,7 @@ public class CollisionMap {
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var10.packetBuffer.writeShort(Client.selectedSpellItemId);
 					var10.packetBuffer.writeShort(Client.selectedSpellChildIndex);
-					var10.packetBuffer.writeShortAdd(var3);
+					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
 				}
 			}
@@ -1031,7 +1031,7 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3268, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeShortAdd(var3);
+					var10.packetBuffer.writeShortLE(var3);
 					var10.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
 				}
@@ -1052,7 +1052,7 @@ public class CollisionMap {
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3279, Client.packetWriter.isaacCipher);
 					var10.packetBuffer.writeShortAddLE(var3);
-					var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
 				}
 			}
@@ -1067,9 +1067,9 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3291, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
-					var10.packetBuffer.writeShortLE(ChatChannel.selectedSpellWidget);
-					var10.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
+					var10.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
+					var10.packetBuffer.writeIntME(ChatChannel.selectedSpellWidget);
+					var10.packetBuffer.writeShortLE(Client.selectedSpellItemId);
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var10.packetBuffer.writeShort(var3);
 					Client.packetWriter.addNode(var10);
@@ -1094,10 +1094,10 @@ public class CollisionMap {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3273, Client.packetWriter.isaacCipher);
-				var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
-				var14.packetBuffer.writeShortAdd(var3);
-				var14.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-				var14.packetBuffer.writeIntLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
+				var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
+				var14.packetBuffer.writeShortLE(var3);
+				var14.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var14.packetBuffer.writeShortAdd(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				Client.packetWriter.addNode(var14);
 			}
 
@@ -1111,7 +1111,7 @@ public class CollisionMap {
 				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3256, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeShort(DevicePcmPlayerProvider.baseY * 64 + var1);
-				var14.packetBuffer.writeIntLE(var3);
+				var14.packetBuffer.writeShortAdd(var3);
 				var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}
@@ -1126,7 +1126,7 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3204, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeShortAdd(var3);
+					var10.packetBuffer.writeShortLE(var3);
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
 				}
@@ -1142,7 +1142,7 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3214, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeIntLE(var3);
+					var10.packetBuffer.writeShortAdd(var3);
 					var10.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
 				}
@@ -1175,8 +1175,8 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3230, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-					var10.packetBuffer.writeShortAdd(var3);
+					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+					var10.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var10);
 				}
 			}
@@ -1191,8 +1191,8 @@ public class CollisionMap {
 					Client.destinationX = var0;
 					Client.destinationY = var1;
 					var10 = FadeInTask.getPacketBufferNode(ClientPacket.field3298, Client.packetWriter.isaacCipher);
-					var10.packetBuffer.writeShortAdd(var3);
-					var10.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+					var10.packetBuffer.writeShortLE(var3);
+					var10.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var10);
 				}
 			}
@@ -1206,9 +1206,9 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3264, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeShortAddLE(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
-				var14.packetBuffer.writeShortAdd(var3);
-				var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
-				var14.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
+				var14.packetBuffer.writeShortLE(var3);
+				var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
+				var14.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}
 
@@ -1221,11 +1221,11 @@ public class CollisionMap {
 				Client.destinationY = var1;
 				var14 = FadeInTask.getPacketBufferNode(ClientPacket.field3229, Client.packetWriter.isaacCipher);
 				var14.packetBuffer.writeInt(ChatChannel.selectedSpellWidget);
-				var14.packetBuffer.writeShortAdd(var3);
+				var14.packetBuffer.writeShortLE(var3);
 				var14.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var0);
 				var14.packetBuffer.writeShort(Client.selectedSpellChildIndex);
-				var14.packetBuffer.writeIntLE(DevicePcmPlayerProvider.baseY * 64 + var1);
-				var14.packetBuffer.writeIntLE(Client.selectedSpellItemId);
+				var14.packetBuffer.writeShortAdd(DevicePcmPlayerProvider.baseY * 64 + var1);
+				var14.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var14.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				Client.packetWriter.addNode(var14);
 			}

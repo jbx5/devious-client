@@ -185,9 +185,9 @@ public class class149 extends class144 {
 		int var6;
 		int var7;
 		if (!Client.isInInstance) {
-			var2 = var1.readUnsignedByteNeg();
-			var3 = var1.readUnsignedByteNeg();
-			var1.readShortLE();
+			var2 = var1.readUnsignedShortAddLE();
+			var3 = var1.readUnsignedShortAddLE();
+			var1.method9519();
 			int var4 = var1.readUnsignedShort();
 			MusicPatchPcmStream.xteaKeys = new int[var4][4];
 
@@ -218,7 +218,7 @@ public class class149 extends class144 {
 		} else {
 			var2 = var1.readUnsignedShort();
 			var3 = var1.readUnsignedShortAdd();
-			boolean var15 = var1.method9462() == 1;
+			boolean var15 = var1.readUnsignedByteNeg() == 1;
 			var5 = var1.readUnsignedShort();
 			var1.importIndex();
 

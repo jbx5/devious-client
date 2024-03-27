@@ -40,12 +40,12 @@ public class class200 {
 							int[] var3 = var0.field2426.method6675();
 							if (var3 != null) {
 								PacketBufferNode var4 = FadeInTask.getPacketBufferNode(ClientPacket.field3294, Client.packetWriter.isaacCipher);
-								var4.packetBuffer.writeIntME(var0.field2426.method6673());
+								var4.packetBuffer.writeIntLE(var0.field2426.method6673());
 								var4.packetBuffer.writeShort(var0.field2426.childIndex);
 								var4.packetBuffer.writeInt(var3[1]);
-								var4.packetBuffer.writeShortLE(var3[2]);
-								var4.packetBuffer.writeIntME(var0.field2426.id);
-								var4.packetBuffer.writeShortLE(var3[0]);
+								var4.packetBuffer.writeIntME(var3[2]);
+								var4.packetBuffer.writeIntLE(var0.field2426.id);
+								var4.packetBuffer.writeIntME(var3[0]);
 								Client.packetWriter.addNode(var4);
 							}
 						}

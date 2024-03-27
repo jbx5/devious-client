@@ -75,23 +75,23 @@ public abstract class AbstractSocket {
 				PacketBufferNode var8;
 				if (var0 == 1) {
 					var8 = FadeInTask.getPacketBufferNode(ClientPacket.field3204, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
+					var8.packetBuffer.writeShortLE(var3[var6]);
 					var8.packetBuffer.writeByte(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
 					var8 = FadeInTask.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShortAddLE(var3[var6]);
-					var8.packetBuffer.writeByteSub(0);
+					var8.packetBuffer.writeByteNeg(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
 					var8 = FadeInTask.getPacketBufferNode(ClientPacket.field3298, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
-					var8.packetBuffer.writeByteSub(0);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					var8.packetBuffer.writeByteNeg(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
 					var8 = FadeInTask.getPacketBufferNode(ClientPacket.field3226, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteSub(0);
-					var8.packetBuffer.writeShortAdd(var3[var6]);
+					var8.packetBuffer.writeByteNeg(0);
+					var8.packetBuffer.writeShortLE(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				}
 

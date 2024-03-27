@@ -62,8 +62,8 @@ public class class204 extends DualNode {
 		int var9;
 		int var12;
 		if ((var3 & 16) != 0) {
-			var5 = var0.readUnsignedByteNeg();
-			PlayerType var6 = (PlayerType)KitDefinition.findEnumerated(Huffman.PlayerType_values(), var0.method9298());
+			var5 = var0.readUnsignedShortAddLE();
+			PlayerType var6 = (PlayerType)KitDefinition.findEnumerated(Huffman.PlayerType_values(), var0.readUnsignedByteAdd());
 			boolean var7 = var0.readUnsignedByteSub() == 1;
 			var8 = var0.readUnsignedByteSub();
 			var9 = var0.offset;
@@ -104,7 +104,7 @@ public class class204 extends DualNode {
 
 		int var16;
 		if ((var3 & 128) != 0) {
-			var5 = var0.readUnsignedByteNeg();
+			var5 = var0.readUnsignedShortAddLE();
 			if (var5 == 65535) {
 				var5 = -1;
 			}
@@ -140,7 +140,7 @@ public class class204 extends DualNode {
 				}
 			}
 
-			var16 = var0.method9298();
+			var16 = var0.readUnsignedByteAdd();
 			if (var16 > 0) {
 				for (var22 = 0; var22 < var16; ++var22) {
 					var8 = var0.readUShortSmart();
@@ -148,7 +148,7 @@ public class class204 extends DualNode {
 					if (var9 != 32767) {
 						var24 = var0.readUShortSmart();
 						var18 = var0.readUnsignedByte();
-						var12 = var9 > 0 ? var0.method9298() : var18;
+						var12 = var9 > 0 ? var0.readUnsignedByteAdd() : var18;
 						var2.addHealthBar(var8, Client.cycle, var9, var24, var18, var12);
 					} else {
 						var2.removeHealthBar(var8);
@@ -164,7 +164,7 @@ public class class204 extends DualNode {
 			var2.field1253 = var0.readByteAdd();
 			var2.spotAnimation = var0.readUnsignedShort() + Client.cycle;
 			var2.field1256 = var0.readUnsignedShort() + Client.cycle;
-			var2.field1203 = var0.readUnsignedByteAdd();
+			var2.field1203 = var0.readUnsignedShortLE();
 			if (var2.field1147) {
 				var2.field1251 += var2.tileX;
 				var2.field1238 += var2.tileY;
@@ -183,12 +183,12 @@ public class class204 extends DualNode {
 		}
 
 		if ((var3 & 1024) != 0) {
-			var5 = var0.readUnsignedByteAdd();
+			var5 = var0.readUnsignedShortLE();
 			var16 = var5 >> 8;
 			var22 = var16 >= 13 && var16 <= 20 ? var16 - 12 : 0;
-			PlayerType var17 = (PlayerType)KitDefinition.findEnumerated(Huffman.PlayerType_values(), var0.method9462());
+			PlayerType var17 = (PlayerType)KitDefinition.findEnumerated(Huffman.PlayerType_values(), var0.readUnsignedByteNeg());
 			boolean var23 = var0.readUnsignedByte() == 1;
-			var24 = var0.method9298();
+			var24 = var0.readUnsignedByteAdd();
 			var18 = var0.offset;
 			if (var2.username != null && var2.appearance != null) {
 				boolean var25 = false;
@@ -261,12 +261,12 @@ public class class204 extends DualNode {
 		}
 
 		if ((var3 & 8192) != 0) {
-			var2.field1260 = Client.cycle + var0.readUnsignedByteNeg();
-			var2.field1236 = Client.cycle + var0.readUnsignedByteAdd();
+			var2.field1260 = Client.cycle + var0.readUnsignedShortAddLE();
+			var2.field1236 = Client.cycle + var0.readUnsignedShortLE();
 			var2.field1261 = var0.readByteNeg();
 			var2.field1263 = var0.readByte();
 			var2.field1235 = var0.readByte();
-			var2.field1265 = (byte)var0.method9462();
+			var2.field1265 = (byte)var0.readUnsignedByteNeg();
 		}
 
 		if ((var3 & 512) != 0) {
@@ -274,7 +274,7 @@ public class class204 extends DualNode {
 		}
 
 		if ((var3 & 4) != 0) {
-			var5 = var0.method9462();
+			var5 = var0.readUnsignedByteNeg();
 			byte[] var21 = new byte[var5];
 			Buffer var19 = new Buffer(var21);
 			var0.method9320(var21, 0, var5);
@@ -283,8 +283,8 @@ public class class204 extends DualNode {
 		}
 
 		if ((var3 & 64) != 0) {
-			var2.targetIndex = var0.readUnsignedByteNeg();
-			var2.targetIndex += var0.method9462() << 16;
+			var2.targetIndex = var0.readUnsignedShortAddLE();
+			var2.targetIndex += var0.readUnsignedByteNeg() << 16;
 			var5 = 16777215;
 			if (var2.targetIndex == var5) {
 				var2.targetIndex = -1;
@@ -295,7 +295,7 @@ public class class204 extends DualNode {
 			var5 = var0.readUnsignedByteSub();
 
 			for (var16 = 0; var16 < var5; ++var16) {
-				var22 = var0.method9298();
+				var22 = var0.readUnsignedByteAdd();
 				var8 = var0.readUnsignedShort();
 				var9 = var0.readUnsignedIntIME();
 				var2.updateSpotAnimation(var22, var8, var9 >> 16, var9 & 65535);

@@ -163,7 +163,7 @@ public class class232 {
 		int var25;
 		if (class311.field3312 == var0) {
 			var22 = var1.readUnsignedShortAdd();
-			var23 = var1.method9298();
+			var23 = var1.readUnsignedByteAdd();
 			var4 = (var23 >> 4 & 7) + ModelData0.field2905;
 			var5 = (var23 & 7) + class332.field3602;
 			var6 = var1.readUnsignedByteSub();
@@ -187,13 +187,13 @@ public class class232 {
 				var3 = var1.readByteSub();
 				var4 = var1.readUnsignedShortAdd();
 				var5 = var1.readUnsignedShort();
-				var6 = var1.method9462();
+				var6 = var1.readUnsignedByteNeg();
 				var7 = var6 >> 2;
 				var8 = var6 & 3;
 				var9 = Client.field586[var7];
 				byte var10 = var1.readByteSub();
-				var11 = var1.readUnsignedByteAdd();
-				var12 = var1.readUnsignedByteAdd();
+				var11 = var1.readUnsignedShortLE();
+				var12 = var1.readUnsignedShortLE();
 				var13 = var1.readUnsignedByte();
 				var14 = (var13 >> 4 & 7) + ModelData0.field2905;
 				var15 = (var13 & 7) + class332.field3602;
@@ -212,12 +212,12 @@ public class class232 {
 			}
 
 			if (class311.field3307 == var0) {
-				var22 = var1.method9298();
+				var22 = var1.readUnsignedByteAdd();
 				var23 = (var22 >> 4 & 7) + ModelData0.field2905;
 				var4 = (var22 & 7) + class332.field3602;
-				var5 = var1.readUnsignedByteAdd();
+				var5 = var1.readUnsignedShortLE();
 				var6 = var1.readUnsignedShort();
-				var7 = var1.method9298();
+				var7 = var1.readUnsignedByteAdd();
 				if (var23 >= 0 && var4 >= 0 && var23 < 104 && var4 < 104) {
 					var23 = var23 * 128 + 64;
 					var4 = var4 * 128 + 64;
@@ -227,11 +227,11 @@ public class class232 {
 				}
 
 			} else if (class311.field3310 == var0) {
-				var22 = var1.method9462() * 4;
+				var22 = var1.readUnsignedByteNeg() * 4;
 				var3 = var1.readByteNeg();
-				var4 = var1.readUnsignedByteAdd();
-				var5 = var1.readUnsignedByteAdd();
-				var6 = var1.method9298() * 4;
+				var4 = var1.readUnsignedShortLE();
+				var5 = var1.readUnsignedShortLE();
+				var6 = var1.readUnsignedByteAdd() * 4;
 				var7 = var1.method9312();
 				var8 = var1.method9313();
 				var9 = var1.readUnsignedByteSub();
@@ -240,7 +240,7 @@ public class class232 {
 				byte var27 = var1.readByteAdd();
 				var13 = var1.readUnsignedByte();
 				var14 = var1.readUnsignedShortAdd();
-				var15 = var1.readUnsignedByteAdd();
+				var15 = var1.readUnsignedShortLE();
 				var12 = var27 + var25;
 				var23 = var3 + var11;
 				if (var25 >= 0 && var11 >= 0 && var25 < 104 && var11 < 104 && var12 >= 0 && var23 >= 0 && var12 < 104 && var23 < 104 && var14 != 65535) {
@@ -250,8 +250,8 @@ public class class232 {
 
 			} else if (class311.field3309 == var0) {
 				var22 = var1.readUnsignedByte();
-				var23 = var1.readUnsignedByteNeg();
-				var4 = var1.method9298();
+				var23 = var1.readUnsignedShortAddLE();
+				var4 = var1.readUnsignedByteAdd();
 				var5 = (var4 >> 4 & 7) + ModelData0.field2905;
 				var6 = (var4 & 7) + class332.field3602;
 				if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
@@ -290,14 +290,14 @@ public class class232 {
 				}
 
 			} else if (class311.field3311 == var0) {
-				var22 = var1.readUnsignedByteAdd();
+				var22 = var1.readUnsignedShortLE();
 				var23 = var1.readUnsignedByteSub();
 				var4 = (var23 >> 4 & 7) + ModelData0.field2905;
 				var5 = (var23 & 7) + class332.field3602;
 				var6 = var1.readUnsignedByteSub();
-				var7 = var1.method9298() & 31;
-				var8 = var1.method9298();
-				var9 = var1.method9298();
+				var7 = var1.readUnsignedByteAdd() & 31;
+				var8 = var1.readUnsignedByteAdd();
+				var9 = var1.readUnsignedByteAdd();
 				if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 					var25 = var7 + 1;
 					if (class133.localPlayer.pathX[0] >= var4 - var25 && class133.localPlayer.pathX[0] <= var4 + var25 && class133.localPlayer.pathY[0] >= var5 - var25 && class133.localPlayer.pathY[0] <= var25 + var5 && NPC.clientPreferences.getAreaSoundEffectsVolume() != 0 && var6 > 0 && Client.soundEffectCount < 50) {
@@ -312,14 +312,14 @@ public class class232 {
 				}
 
 			} else if (class311.field3314 == var0) {
-				var22 = var1.readUnsignedShortAddLE();
-				var23 = var1.readUnsignedByteNeg();
-				var4 = var1.readUnsignedByteAdd();
+				var22 = var1.readUnsignedIntLE();
+				var23 = var1.readUnsignedShortAddLE();
+				var4 = var1.readUnsignedShortLE();
 				var5 = var1.readUnsignedShortAdd();
 				var6 = var1.readUnsignedByte();
-				var7 = var1.method9298();
+				var7 = var1.readUnsignedByteAdd();
 				boolean var24 = var1.readUnsignedByte() == 1;
-				var9 = var1.method9298();
+				var9 = var1.readUnsignedByteAdd();
 				var25 = (var9 >> 4 & 7) + ModelData0.field2905;
 				var11 = (var9 & 7) + class332.field3602;
 				if (var25 >= 0 && var11 >= 0 && var25 < 104 && var11 < 104) {
@@ -341,23 +341,23 @@ public class class232 {
 				}
 
 			} else if (class311.field3304 == var0) {
-				var22 = var1.method9462();
+				var22 = var1.readUnsignedByteNeg();
 				var23 = (var22 >> 4 & 7) + ModelData0.field2905;
 				var4 = (var22 & 7) + class332.field3602;
-				var5 = var1.readUnsignedShortAddLE();
+				var5 = var1.readUnsignedIntLE();
 				var6 = var1.readUnsignedShortAdd();
-				var7 = var1.readUnsignedShortLE();
+				var7 = var1.readUnsignedIntME();
 				if (var23 >= 0 && var4 >= 0 && var23 < 104 && var4 < 104) {
 					var8 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
 					class13.method170(var8, var23, var4, var6, var7, var5);
 				}
 
 			} else if (class311.field3302 == var0) {
-				var22 = var1.readUnsignedShortAddLE();
+				var22 = var1.readUnsignedIntLE();
 				var23 = var1.readUnsignedByteSub();
 				var4 = (var23 >> 4 & 7) + ModelData0.field2905;
 				var5 = (var23 & 7) + class332.field3602;
-				var6 = var1.readUnsignedByteAdd();
+				var6 = var1.readUnsignedShortLE();
 				if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 					var7 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
 					MusicPatchNode.method6224(var7, var4, var5, var6, var22);
