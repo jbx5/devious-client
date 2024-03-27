@@ -2,52 +2,48 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("tu")
+@ObfuscatedName("ty")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("os")
-	@ObfuscatedSignature(
-		descriptor = "Lng;"
-	)
-	static Widget field5062;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@Export("name")
 	String name;
 
@@ -64,52 +60,47 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Ltu;",
-		garbageValue = "1003881005"
+		descriptor = "(I)V",
+		garbageValue = "1244687277"
 	)
-	public static FontName[] method9110() {
-		return new FontName[]{FontName_bold12, FontName_verdana11, FontName_plain11, FontName_verdana13, FontName_plain12, FontName_verdana15};
+	public static void method8922() {
+		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lof;B)V",
-		garbageValue = "66"
+		descriptor = "(ILdn;ZS)I",
+		garbageValue = "17987"
 	)
-	public static void method9114(AbstractArchive var0) {
-		InvDefinition.InvDefinition_archive = var0;
-	}
+	static int method8923(int var0, Script var1, boolean var2) {
+		Widget var3 = class243.widgetDefinition.method6281(Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = class342.Widget_unpackTargetMask(class33.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.IF_GETOP) {
+			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Loo;",
-		garbageValue = "28"
-	)
-	@Export("PlayerType_values")
-	public static PlayerType[] PlayerType_values() {
-		return new PlayerType[]{PlayerType.field4341, PlayerType.field4348, PlayerType.PlayerType_ironman, PlayerType.field4340, PlayerType.field4345, PlayerType.PlayerType_normal, PlayerType.PlayerType_ultimateIronman, PlayerType.field4344, PlayerType.PlayerType_playerModerator, PlayerType.field4336, PlayerType.PlayerType_jagexModerator, PlayerType.field4349, PlayerType.field4347, PlayerType.field4343, PlayerType.field4342, PlayerType.PlayerType_hardcoreIronman, PlayerType.field4346};
-	}
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = "";
+			}
 
-	@ObfuscatedName("ic")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-13732"
-	)
-	static void method9111() {
-		if (VarpDefinition.localPlayer.x >> 7 == Client.destinationX && VarpDefinition.localPlayer.y >> 7 == Client.destinationY) {
-			Client.destinationX = 0;
+			return 1;
 		}
-
-	}
-
-	@ObfuscatedName("la")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1476352820"
-	)
-	static final int method9113() {
-		return Client.menuOptionsCount - 1;
 	}
 }

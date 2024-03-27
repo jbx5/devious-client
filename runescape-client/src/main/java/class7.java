@@ -1,146 +1,103 @@
-import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("az")
+@ObfuscatedName("aw")
 public class class7 {
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = 1342537435
-	)
-	static int field21;
-	@ObfuscatedName("aq")
-	ExecutorService field18;
-	@ObfuscatedName("aw")
-	Future field13;
-	@ObfuscatedName("al")
+	@ObfuscatedName("dp")
 	@ObfuscatedSignature(
-		descriptor = "Luq;"
+		descriptor = "[Lvl;"
 	)
-	final Buffer field15;
-	@ObfuscatedName("ai")
+	@Export("worldSelectStars")
+	static IndexedSprite[] worldSelectStars;
+	@ObfuscatedName("az")
+	ExecutorService field20;
+	@ObfuscatedName("ah")
+	Future field22;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lai;"
+		descriptor = "Lur;"
 	)
-	final class3 field16;
+	final Buffer field19;
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lat;"
+	)
+	final class3 field18;
 
 	@ObfuscatedSignature(
-		descriptor = "(Luq;Lai;)V"
+		descriptor = "(Lur;Lat;)V"
 	)
 	public class7(Buffer var1, class3 var2) {
-		this.field18 = Executors.newSingleThreadExecutor();
-		this.field15 = var1;
-		this.field16 = var2;
-		this.method43();
+		this.field20 = Executors.newSingleThreadExecutor();
+		this.field19 = var1;
+		this.field18 = var2;
+		this.method48();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "385185200"
+		descriptor = "(S)Z",
+		garbageValue = "-17070"
 	)
-	public boolean method40() {
-		return this.field13.isDone();
+	public boolean method46() {
+		return this.field22.isDone();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-46"
+		descriptor = "(S)V",
+		garbageValue = "18832"
 	)
-	public void method41() {
-		this.field18.shutdown();
-		this.field18 = null;
+	public void method59() {
+		this.field20.shutdown();
+		this.field20 = null;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)Luq;",
-		garbageValue = "-1961365501"
+		descriptor = "(B)Lur;",
+		garbageValue = "-10"
 	)
-	public Buffer method42() {
+	public Buffer method58() {
 		try {
-			return (Buffer)this.field13.get();
+			return (Buffer)this.field22.get();
 		} catch (Exception var2) {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "107"
+	)
+	void method48() {
+		this.field22 = this.field20.submit(new class1(this, this.field19, this.field18));
+	}
+
+	@ObfuscatedName("ah")
+	public static int method60(long var0) {
+		return (int)(var0 >>> 0 & 127L);
+	}
+
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "764307874"
+		garbageValue = "266384949"
 	)
-	void method43() {
-		this.field13 = this.field18.submit(new class1(this, this.field15, this.field16));
-	}
-
-	@ObfuscatedName("hs")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "393503738"
-	)
-	static void method39(int var0, int var1) {
-		if (class30.clientPreferences.getMusicVolume() != 0 && var0 != -1) {
-			ArrayList var2 = new ArrayList();
-			var2.add(new MusicSong(WorldMapSectionType.field2612, var0, 0, class30.clientPreferences.getMusicVolume(), false));
-			PacketWriter.method2891(var2, 0, 0, 0, 0, true);
-			Client.playingJingle = true;
-		}
-
-	}
-
-	@ObfuscatedName("ig")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "1011099662"
-	)
-	static final void method53(int var0, int var1, int var2) {
-		if (ClanMate.cameraX < var0) {
-			ClanMate.cameraX = (var0 - ClanMate.cameraX) * GameBuild.field3978 / 1000 + ClanMate.cameraX + class516.field5118;
-			if (ClanMate.cameraX > var0) {
-				ClanMate.cameraX = var0;
+	static void method44() {
+		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+			if (NPC.clientPreferences.getRememberedUsername() != null) {
+				Login.Login_username = NPC.clientPreferences.getRememberedUsername();
+				Client.Login_isUsernameRemembered = true;
+			} else {
+				Client.Login_isUsernameRemembered = false;
 			}
-		}
 
-		if (ClanMate.cameraX > var0) {
-			ClanMate.cameraX -= (ClanMate.cameraX - var0) * GameBuild.field3978 / 1000 + class516.field5118;
-			if (ClanMate.cameraX < var0) {
-				ClanMate.cameraX = var0;
-			}
 		}
-
-		if (AsyncHttpResponse.cameraY < var1) {
-			AsyncHttpResponse.cameraY = (var1 - AsyncHttpResponse.cameraY) * GameBuild.field3978 / 1000 + AsyncHttpResponse.cameraY + class516.field5118;
-			if (AsyncHttpResponse.cameraY > var1) {
-				AsyncHttpResponse.cameraY = var1;
-			}
-		}
-
-		if (AsyncHttpResponse.cameraY > var1) {
-			AsyncHttpResponse.cameraY -= (AsyncHttpResponse.cameraY - var1) * GameBuild.field3978 / 1000 + class516.field5118;
-			if (AsyncHttpResponse.cameraY < var1) {
-				AsyncHttpResponse.cameraY = var1;
-			}
-		}
-
-		if (class317.cameraZ < var2) {
-			class317.cameraZ = (var2 - class317.cameraZ) * GameBuild.field3978 / 1000 + class317.cameraZ + class516.field5118;
-			if (class317.cameraZ > var2) {
-				class317.cameraZ = var2;
-			}
-		}
-
-		if (class317.cameraZ > var2) {
-			class317.cameraZ -= (class317.cameraZ - var2) * GameBuild.field3978 / 1000 + class516.field5118;
-			if (class317.cameraZ < var2) {
-				class317.cameraZ = var2;
-			}
-		}
-
 	}
 }

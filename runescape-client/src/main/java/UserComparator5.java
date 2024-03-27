@@ -3,10 +3,16 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eh")
+@ObfuscatedName("ex")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "[Ltw;"
+	)
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
+	@ObfuscatedName("az")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +20,10 @@ public class UserComparator5 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lry;Lry;I)I",
-		garbageValue = "702648455"
+		descriptor = "(Lrw;Lrw;I)I",
+		garbageValue = "-1640560389"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -36,26 +42,30 @@ public class UserComparator5 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lcj;",
-		garbageValue = "44"
+		descriptor = "(Loc;B)V",
+		garbageValue = "101"
 	)
-	@Export("getNextWorldListWorld")
-	static World getNextWorldListWorld() {
-		return World.World_listCount < World.World_count ? WorldMapID.World_worlds[++World.World_listCount - 1] : null;
+	public static void method2892(AbstractArchive var0) {
+		class17.EnumDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("mx")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lng;B)V",
-		garbageValue = "0"
+		descriptor = "(B)V",
+		garbageValue = "73"
 	)
-	@Export("invalidateWidget")
-	public static void invalidateWidget(Widget var0) {
-		if (var0 != null && var0.cycle == Client.field832) {
-			Client.validRootWidgets[var0.rootIndex] = true;
-		}
+	public static void method2897() {
+		class321.field3496.clear();
+	}
 
+	@ObfuscatedName("ht")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-996502494"
+	)
+	static int method2898(int var0) {
+		return var0 * 3 + 600;
 	}
 }

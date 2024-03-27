@@ -1,54 +1,56 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
-public abstract class class145 extends Node {
-	class145() {
+@ObfuscatedName("fk")
+public class class145 extends class144 {
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -1742224277
+	)
+	int field1678;
+	@ObfuscatedName("ah")
+	boolean field1677;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfh;"
+	)
+	final class147 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lfh;)V"
+	)
+	class145(class147 var1) {
+		this.this$0 = var1;
+		this.field1678 = -1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;I)V",
-		garbageValue = "584073694"
+		descriptor = "(Lur;I)V",
+		garbageValue = "1253598633"
 	)
-	abstract void vmethod3512(Buffer var1);
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Lgt;I)V",
-		garbageValue = "406847376"
-	)
-	abstract void vmethod3513(ClanSettings var1);
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lgu;",
-		garbageValue = "-66"
-	)
-	public static VarcInt method3229(int var0) {
-		VarcInt var1 = (VarcInt)VarcInt.VarcInt_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class528.VarcInt_archive.takeFile(19, var0);
-			var1 = new VarcInt();
-			if (var2 != null) {
-				var1.method3593(new Buffer(var2));
-			}
-
-			VarcInt.VarcInt_cached.put(var1, (long)var0);
-			return var1;
-		}
+	void vmethod3420(Buffer var1) {
+		this.field1678 = var1.readUnsignedShort();
+		this.field1677 = var1.readUnsignedByte() == 1;
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)I",
-		garbageValue = "0"
+		descriptor = "(Lfp;B)V",
+		garbageValue = "-123"
 	)
-	@Export("stringCp1252NullTerminatedByteSize")
-	public static int stringCp1252NullTerminatedByteSize(String var0) {
-		return var0.length() + 1;
+	void vmethod3419(ClanSettings var1) {
+		var1.method3253(this.field1678, this.field1677);
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
+		garbageValue = "61"
+	)
+	static void method3156(String var0, String var1, String var2) {
+		class210.method3930(7);
+		class59.setLoginResponseString(var0, var1, var2);
 	}
 }

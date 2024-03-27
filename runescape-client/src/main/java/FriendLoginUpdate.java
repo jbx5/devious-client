@@ -4,50 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rk")
+@ObfuscatedName("rf")
 @Implements("FriendLoginUpdate")
 public class FriendLoginUpdate extends Link {
-	@ObfuscatedName("cg")
-	@ObfuscatedSignature(
-		descriptor = "Lte;"
-	)
-	@Export("loginType")
-	static LoginType loginType;
-	@ObfuscatedName("js")
-	@Export("xteaKeys")
-	static int[][] xteaKeys;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1925686629
+		intValue = -1711175003
 	)
-	public int field4751;
-	@ObfuscatedName("aw")
+	public int field4787;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lvn;"
+		descriptor = "Lvx;"
 	)
 	@Export("username")
 	public Username username;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@Export("world")
 	public short world;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvn;I)V"
+		descriptor = "(Lvx;I)V"
 	)
 	FriendLoginUpdate(Username var1, int var2) {
-		this.field4751 = (int)(SecureRandomCallable.method2320() / 1000L);
+		this.field4787 = (int)(VerticalAlignment.method3924() / 1000L);
 		this.username = var1;
 		this.world = (short)var2;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2060638001"
-	)
-	public static void method8302() {
-		KitDefinition.KitDefinition_archive = null;
-		class4.KitDefinition_modelsArchive = null;
-		KitDefinition.KitDefinition_fileCount = 0;
 	}
 }

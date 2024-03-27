@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ns")
+@ObfuscatedName("nn")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1626902329
+		intValue = 2091700133
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1359676603
+		intValue = 1081214275
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 831568535
+		intValue = 1464789173
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lns;)V"
+		descriptor = "(Lnn;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
@@ -52,24 +52,20 @@ public class Coord {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-22"
+		descriptor = "(I)I",
+		garbageValue = "804057570"
 	)
 	@Export("packed")
 	public int packed() {
-		int var2 = this.plane;
-		int var3 = this.x;
-		int var4 = this.y;
-		int var1 = var2 << 28 | var3 << 14 | var4;
-		return var1;
+		return Actor.method2392(this.plane, this.x, this.y);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lns;I)Z",
-		garbageValue = "1894188010"
+		descriptor = "(Lnn;I)Z",
+		garbageValue = "655102500"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
@@ -82,10 +78,10 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "-16"
+		descriptor = "(Ljava/lang/String;S)Ljava/lang/String;",
+		garbageValue = "503"
 	)
 	@Export("toString")
 	String toString(String var1) {
@@ -106,5 +102,15 @@ public class Coord {
 
 	public String toString() {
 		return this.toString(",");
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lcn;",
+		garbageValue = "939558819"
+	)
+	@Export("Messages_getMessage")
+	static Message Messages_getMessage(int var0) {
+		return (Message)Messages.Messages_hashTable.get((long)var0);
 	}
 }

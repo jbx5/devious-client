@@ -2,31 +2,27 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 
-@ObfuscatedName("af")
+@ObfuscatedName("ax")
 class class13 extends DefaultTlsClient {
-	@ObfuscatedName("ih")
-	@Export("regions")
-	static int[] regions;
-	@ObfuscatedName("jf")
-	@ObfuscatedSignature(
-		descriptor = "[Lvd;"
+	@ObfuscatedName("gg")
+	@ObfuscatedGetter(
+		intValue = 1515401243
 	)
-	@Export("headIconPkSprites")
-	static SpritePixels[] headIconPkSprites;
+	static int field60;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Laj;"
+		descriptor = "Lai;"
 	)
 	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Laj;)V"
+		descriptor = "(Lai;)V"
 	)
 	class13(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
@@ -54,34 +50,23 @@ class class13 extends DefaultTlsClient {
 		return new class11(this);
 	}
 
-	@ObfuscatedName("ll")
+	@ObfuscatedName("kd")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lng;B)Ljava/lang/String;",
-		garbageValue = "52"
+		descriptor = "(IIIIIII)V",
+		garbageValue = "258076310"
 	)
-	static String method155(String var0, Widget var1) {
-		if (var0.indexOf("%") != -1) {
-			for (int var2 = 1; var2 <= 5; ++var2) {
-				while (true) {
-					int var3 = var0.indexOf("%" + var2);
-					if (var3 == -1) {
-						break;
-					}
-
-					String var4 = var0.substring(0, var3);
-					int var6 = Client.method1763(var1, var2 - 1);
-					String var5;
-					if (var6 < 999999999) {
-						var5 = Integer.toString(var6);
-					} else {
-						var5 = "*";
-					}
-
-					var0 = var4 + var5 + var0.substring(var3 + 2);
+	static void method170(int var0, int var1, int var2, int var3, int var4, int var5) {
+		NodeDeque var6 = Client.groundItems[var0][var1][var2];
+		if (var6 != null) {
+			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
+				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
+					var7.quantity = var5;
+					break;
 				}
 			}
+
+			class477.updateItemPile(var0, var1, var2);
 		}
 
-		return var0;
 	}
 }

@@ -2,12 +2,12 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bx")
+@ObfuscatedName("bg")
 public interface class51 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lbf;",
-		garbageValue = "-265670238"
+		descriptor = "(B)Lby;",
+		garbageValue = "1"
 	)
 	@Export("player")
 	PcmPlayer player();

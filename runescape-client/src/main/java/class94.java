@@ -1,80 +1,72 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ds")
+@ObfuscatedName("dy")
 public class class94 {
-	@ObfuscatedName("as")
+	@ObfuscatedName("ii")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
+		descriptor = "Lea;"
 	)
-	public static void method2451() {
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (int var0 = 0; var0 < class33.field169; ++var0) {
-				class173.JagexCache_idxFiles[var0].close();
-			}
-
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var2) {
-		}
-
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "877422910"
-	)
-	public static int method2452(int var0, int var1, int var2) {
-		int var3 = class315.method6060(var2 - var1 + 1);
-		var3 <<= var1;
-		var0 |= var3;
-		return var0;
-	}
+	@Export("urlRequester")
+	static UrlRequester urlRequester;
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-15452"
+		descriptor = "(B)V",
+		garbageValue = "-11"
 	)
-	static void method2450() {
-		Players.Players_count = 0;
-
-		for (int var0 = 0; var0 < 2048; ++var0) {
-			Players.field1389[var0] = null;
-			Players.field1378[var0] = class233.field2470;
-		}
-
+	public static void method2385() {
+		class191.field1913.clear();
 	}
 
-	@ObfuscatedName("hy")
+	@ObfuscatedName("mo")
 	@ObfuscatedSignature(
-		descriptor = "(Lhy;IIZS)V",
-		garbageValue = "12148"
+		descriptor = "(Lnt;IIZI)V",
+		garbageValue = "-1356173158"
 	)
-	static void method2453(Sound var0, int var1, int var2, boolean var3) {
-		if (var0 != null) {
-			if (var0.field2109 == 0) {
-				if (!var3) {
-					return;
-				}
-
-				Client.soundLocations[Client.soundEffectCount] = 0;
-			} else {
-				int var4 = (var1 - 64) / 128;
-				int var5 = (var2 - 64) / 128;
-				Client.soundLocations[Client.soundEffectCount] = (var5 << 8) + var0.field2109 + (var4 << 16);
-			}
-
-			Client.soundEffectIds[Client.soundEffectCount] = var0.field2107;
-			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var0.field2108;
-			Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
-			Client.soundEffects[Client.soundEffectCount] = null;
-			Client.field554[Client.soundEffectCount] = var0.field2113;
-			++Client.soundEffectCount;
+	@Export("alignWidgetSize")
+	static void alignWidgetSize(Widget var0, int var1, int var2, boolean var3) {
+		int var4 = var0.width;
+		int var5 = var0.height;
+		if (var0.widthAlignment == 0) {
+			var0.width = var0.rawWidth;
+		} else if (var0.widthAlignment == 1) {
+			var0.width = var1 - var0.rawWidth;
+		} else if (var0.widthAlignment == 2) {
+			var0.width = var0.rawWidth * var1 >> 14;
 		}
+
+		if (var0.heightAlignment == 0) {
+			var0.height = var0.rawHeight;
+		} else if (var0.heightAlignment == 1) {
+			var0.height = var2 - var0.rawHeight;
+		} else if (var0.heightAlignment == 2) {
+			var0.height = var2 * var0.rawHeight >> 14;
+		}
+
+		if (var0.widthAlignment == 4) {
+			var0.width = var0.field3760 * var0.height / var0.field3831;
+		}
+
+		if (var0.heightAlignment == 4) {
+			var0.height = var0.field3831 * var0.width / var0.field3760;
+		}
+
+		if (var0.contentType == 1337) {
+			Client.viewportWidget = var0;
+		}
+
+		if (var0.type == 12) {
+			var0.method6667().method6369(var0.width, var0.height);
+		}
+
+		if (var3 && var0.onResize != null && (var4 != var0.width || var5 != var0.height)) {
+			ScriptEvent var6 = new ScriptEvent();
+			var6.widget = var0;
+			var6.args = var0.onResize;
+			Client.scriptEvents.addFirst(var6);
+		}
+
 	}
 }

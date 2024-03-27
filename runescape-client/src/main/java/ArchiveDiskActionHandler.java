@@ -4,39 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("or")
+@ObfuscatedName("oq")
 @Implements("ArchiveDiskActionHandler")
 public class ArchiveDiskActionHandler implements Runnable {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lpr;"
+		descriptor = "Lps;"
 	)
 	@Export("ArchiveDiskActionHandler_requestQueue")
-	static final NodeDeque ArchiveDiskActionHandler_requestQueue;
-	@ObfuscatedName("aw")
+	public static final NodeDeque ArchiveDiskActionHandler_requestQueue;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lpr;"
+		descriptor = "Lps;"
 	)
 	@Export("ArchiveDiskActionHandler_responseQueue")
-	static NodeDeque ArchiveDiskActionHandler_responseQueue;
-	@ObfuscatedName("al")
+	public static NodeDeque ArchiveDiskActionHandler_responseQueue;
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -407533941
+		intValue = 1592027713
 	)
-	static int field4362;
-	@ObfuscatedName("ai")
-	static boolean field4363;
-	@ObfuscatedName("ar")
+	static int field4360;
+	@ObfuscatedName("at")
+	static boolean field4358;
+	@ObfuscatedName("an")
 	static Object field4365;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("ArchiveDiskActionHandler_thread")
 	static Thread ArchiveDiskActionHandler_thread;
 
 	static {
 		ArchiveDiskActionHandler_requestQueue = new NodeDeque();
 		ArchiveDiskActionHandler_responseQueue = new NodeDeque();
-		field4362 = 0;
-		field4363 = false;
+		field4360 = 0;
+		field4358 = false;
 		field4365 = new Object();
 	}
 
@@ -65,103 +65,100 @@ public class ArchiveDiskActionHandler implements Runnable {
 					}
 
 					synchronized(field4365) {
-						if ((field4363 || field4362 <= 1) && ArchiveDiskActionHandler_requestQueue.method7425()) {
-							field4362 = 0;
+						if ((field4358 || field4360 <= 1) && ArchiveDiskActionHandler_requestQueue.method7256()) {
+							field4360 = 0;
 							field4365.notifyAll();
 							return;
 						}
 
-						field4362 = 600;
+						field4360 = 600;
 					}
 				} else {
-					LoginPacket.method3209(100L);
+					class499.method8677(100L);
 					synchronized(field4365) {
-						if ((field4363 || field4362 <= 1) && ArchiveDiskActionHandler_requestQueue.method7425()) {
-							field4362 = 0;
+						if ((field4358 || field4360 <= 1) && ArchiveDiskActionHandler_requestQueue.method7256()) {
+							field4360 = 0;
 							field4365.notifyAll();
 							return;
 						}
 
-						--field4362;
+						--field4360;
 					}
 				}
 			}
 		} catch (Exception var13) {
-			class315.RunException_sendStackTrace((String)null, var13);
+			class180.RunException_sendStackTrace((String)null, var13);
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lhb;",
-		garbageValue = "-21"
+		descriptor = "(IIIIIIIB)Z",
+		garbageValue = "2"
 	)
-	@Export("ItemDefinition_get")
-	public static ItemComposition ItemDefinition_get(int var0) {
-		ItemComposition var1 = (ItemComposition)ItemComposition.ItemDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static final boolean method6905(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		int var7 = ViewportMouse.ViewportMouse_y + var6;
+		if (var7 < var0 && var7 < var1 && var7 < var2) {
+			return false;
 		} else {
-			byte[] var2 = ItemComposition.ItemDefinition_archive.takeFile(10, var0);
-			var1 = new ItemComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.post();
-			if (var1.noteTemplate != -1) {
-				var1.genCert(ItemDefinition_get(var1.noteTemplate), ItemDefinition_get(var1.note));
-			}
-
-			if (var1.notedId != -1) {
-				var1.genBought(ItemDefinition_get(var1.notedId), ItemDefinition_get(var1.unnotedId));
-			}
-
-			if (var1.placeholderTemplate != -1) {
-				var1.genPlaceholder(ItemDefinition_get(var1.placeholderTemplate), ItemDefinition_get(var1.placeholder));
-			}
-
-			if (!HealthBarUpdate.ItemDefinition_inMembersWorld && var1.isMembersOnly) {
-				if (var1.noteTemplate == -1 && var1.notedId == -1 && var1.placeholderTemplate == -1) {
-					var1.name = var1.name + " (Members)";
-				}
-
-				var1.isTradable = false;
-
-				int var3;
-				for (var3 = 0; var3 < var1.groundActions.length; ++var3) {
-					var1.groundActions[var3] = null;
-				}
-
-				for (var3 = 0; var3 < var1.inventoryActions.length; ++var3) {
-					if (var3 != 4) {
-						var1.inventoryActions[var3] = null;
-					}
-				}
-
-				var1.shiftClickIndex = -2;
-				var1.team = 0;
-				if (var1.params != null) {
-					boolean var6 = false;
-
-					for (Node var4 = var1.params.first(); var4 != null; var4 = var1.params.next()) {
-						ParamComposition var5 = UserComparator4.getParamDefinition((int)var4.key);
-						if (var5.autoDisable) {
-							var4.remove();
-						} else {
-							var6 = true;
-						}
-					}
-
-					if (!var6) {
-						var1.params = null;
-					}
+			var7 = ViewportMouse.ViewportMouse_y - var6;
+			if (var7 > var0 && var7 > var1 && var7 > var2) {
+				return false;
+			} else {
+				var7 = ViewportMouse.ViewportMouse_x + var6;
+				if (var7 < var3 && var7 < var4 && var7 < var5) {
+					return false;
+				} else {
+					var7 = ViewportMouse.ViewportMouse_x - var6;
+					return var7 <= var3 || var7 <= var4 || var7 <= var5;
 				}
 			}
-
-			ItemComposition.ItemDefinition_cached.put(var1, (long)var0);
-			return var1;
 		}
+	}
+
+	@ObfuscatedName("oh")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZS)V",
+		garbageValue = "-19196"
+	)
+	@Export("findItemDefinitions")
+	static void findItemDefinitions(String var0, boolean var1) {
+		var0 = var0.toLowerCase();
+		short[] var2 = new short[16];
+		int var3 = 0;
+
+		for (int var4 = 0; var4 < ItemComposition.ItemDefinition_fileCount; ++var4) {
+			ItemComposition var9 = HttpRequest.ItemDefinition_get(var4);
+			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) {
+				if (var3 >= 250) {
+					ReflectionCheck.foundItemIdCount = -1;
+					class59.foundItemIds = null;
+					return;
+				}
+
+				if (var3 >= var2.length) {
+					short[] var6 = new short[var2.length * 2];
+
+					for (int var7 = 0; var7 < var3; ++var7) {
+						var6[var7] = var2[var7];
+					}
+
+					var2 = var6;
+				}
+
+				var2[var3++] = (short)var4;
+			}
+		}
+
+		class59.foundItemIds = var2;
+		MusicSong.foundItemIndex = 0;
+		ReflectionCheck.foundItemIdCount = var3;
+		String[] var8 = new String[ReflectionCheck.foundItemIdCount];
+
+		for (int var5 = 0; var5 < ReflectionCheck.foundItemIdCount; ++var5) {
+			var8[var5] = HttpRequest.ItemDefinition_get(var2[var5]).name;
+		}
+
+		class467.method8371(var8, class59.foundItemIds);
 	}
 }

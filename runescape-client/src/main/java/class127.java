@@ -3,151 +3,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
+@ObfuscatedName("ev")
 public class class127 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("at")
+	public static final float field1518;
+	@ObfuscatedName("an")
+	public static final float field1522;
+	@ObfuscatedName("ao")
+	static float[] field1523;
+	@ObfuscatedName("ab")
+	static float[] field1524;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 300976639
+		intValue = -1855052619
 	)
-	int field1501;
-	@ObfuscatedName("aw")
-	float field1500;
-	@ObfuscatedName("al")
-	float field1503;
-	@ObfuscatedName("ai")
-	float field1502;
-	@ObfuscatedName("ar")
-	float field1499;
-	@ObfuscatedName("as")
-	float field1506;
-	@ObfuscatedName("aa")
+	static int field1519;
+	@ObfuscatedName("cg")
 	@ObfuscatedSignature(
-		descriptor = "Leo;"
+		descriptor = "Ltr;"
 	)
-	class127 field1505;
+	@Export("loginType")
+	static LoginType loginType;
+	@ObfuscatedName("gw")
+	@ObfuscatedGetter(
+		intValue = -2081060261
+	)
+	static int field1520;
+	@ObfuscatedName("jq")
+	@Export("regionMapArchives")
+	static byte[][] regionMapArchives;
 
-	class127() {
-		this.field1503 = Float.MAX_VALUE;
-		this.field1502 = Float.MAX_VALUE;
-		this.field1499 = Float.MAX_VALUE;
-		this.field1506 = Float.MAX_VALUE;
+	static {
+		field1518 = Math.ulp(1.0F);
+		field1522 = field1518 * 2.0F;
+		field1523 = new float[4];
+		field1524 = new float[5];
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;II)V",
-		garbageValue = "-1382456271"
+		descriptor = "(II)Lik;",
+		garbageValue = "1828485110"
 	)
-	void method2994(Buffer var1, int var2) {
-		this.field1501 = var1.readShort();
-		this.field1500 = var1.method9481();
-		this.field1503 = var1.method9481();
-		this.field1502 = var1.method9481();
-		this.field1499 = var1.method9481();
-		this.field1506 = var1.method9481();
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lhe;",
-		garbageValue = "-1080781222"
-	)
-	@Export("getObjectDefinition")
-	public static ObjectComposition getObjectDefinition(int var0) {
-		ObjectComposition var1 = (ObjectComposition)ObjectComposition.ObjectDefinition_cached.get((long)var0);
+	@Export("getParamDefinition")
+	public static ParamComposition getParamDefinition(int var0) {
+		ParamComposition var1 = (ParamComposition)ParamComposition.ParamDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = ObjectComposition.ObjectDefinition_archive.takeFile(6, var0);
-			var1 = new ObjectComposition();
-			var1.id = var0;
+			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0);
+			var1 = new ParamComposition();
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
 			var1.postDecode();
-			if (var1.isSolid) {
-				var1.interactType = 0;
-				var1.boolean1 = false;
-			}
-
-			ObjectComposition.ObjectDefinition_cached.put(var1, (long)var0);
+			ParamComposition.ParamDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Z",
-		garbageValue = "72"
+		descriptor = "(FB)F",
+		garbageValue = "24"
 	)
-	static final boolean method2999(byte[] var0, int var1, int var2) {
-		boolean var3 = true;
-		Buffer var4 = new Buffer(var0);
-		int var5 = -1;
-
-		label71:
-		while (true) {
-			int var6 = var4.readIncrSmallSmart();
-			if (var6 == 0) {
-				return var3;
-			}
-
-			var5 += var6;
-			int var7 = 0;
-			boolean var8 = false;
-
-			while (true) {
-				int var9;
-				while (!var8) {
-					var9 = var4.readUShortSmart();
-					if (var9 == 0) {
-						continue label71;
-					}
-
-					var7 += var9 - 1;
-					int var10 = var7 & 63;
-					int var11 = var7 >> 6 & 63;
-					int var12 = var4.readUnsignedByte() >> 2;
-					int var13 = var11 + var1;
-					int var14 = var10 + var2;
-					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
-						ObjectComposition var15 = getObjectDefinition(var5);
-						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
-							if (!var15.needsModelFiles()) {
-								++Client.field621;
-								var3 = false;
-							}
-
-							var8 = true;
-						}
-					}
-				}
-
-				var9 = var4.readUShortSmart();
-				if (var9 == 0) {
-					break;
-				}
-
-				var4.readUnsignedByte();
-			}
-		}
+	public static final float method2957(float var0) {
+		float var1 = 75.0F;
+		float var2 = 10000.0F;
+		float var3 = 750000.0F / (10000.0F - 9925.0F * var0);
+		return (var3 - 75.0F) / 9925.0F;
 	}
 
-	@ObfuscatedName("jj")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1602956230"
+		descriptor = "(I)V",
+		garbageValue = "910049428"
 	)
-	static int method2998(int var0, int var1) {
-		int var2 = var1 - 334;
-		if (var2 < 0) {
-			var2 = 0;
-		} else if (var2 > 100) {
-			var2 = 100;
+	static void method2958() {
+		if (class11.loadWorlds()) {
+			Login.worldSelectOpen = true;
+			Login.worldSelectPage = 0;
+			Login.worldSelectPagesCount = 0;
 		}
 
-		int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
-		return var0 * var3 / 256;
 	}
 }
