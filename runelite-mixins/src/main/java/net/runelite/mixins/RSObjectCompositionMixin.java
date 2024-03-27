@@ -3,11 +3,9 @@ package net.runelite.mixins;
 import net.runelite.api.IterableHashTable;
 import net.runelite.api.Node;
 import net.runelite.api.events.PostObjectComposition;
-import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSBuffer;
 import net.runelite.rs.api.RSClient;
@@ -52,8 +50,8 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 		return accessBitMask;
 	}
 
-	@Copy("decodeNext")
-	@Replace("decodeNext")
+	//@Copy("decodeNext")
+	//Replace("decodeNext")
 	public void decodeNext(RSBuffer buffer, int opcode)
 	{
 		int var3;
