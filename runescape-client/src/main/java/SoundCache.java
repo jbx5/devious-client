@@ -1,49 +1,61 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bc")
+@ObfuscatedName("bq")
 @Implements("SoundCache")
 public class SoundCache {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("fb")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Lov;"
+	)
+	static Archive field308;
+	@ObfuscatedName("fs")
+	@ObfuscatedGetter(
+		intValue = -1490751183
+	)
+	@Export("js5Port")
+	static int js5Port;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Loc;"
 	)
 	@Export("soundEffectIndex")
 	AbstractArchive soundEffectIndex;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Loc;"
 	)
-	AbstractArchive field313;
-	@ObfuscatedName("al")
+	AbstractArchive field305;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ltl;"
+		descriptor = "Ltv;"
 	)
-	NodeHashTable field315;
+	NodeHashTable field309;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lof;Lof;)V"
+		descriptor = "(Loc;Loc;)V"
 	)
 	public SoundCache(AbstractArchive var1, AbstractArchive var2) {
 		new NodeHashTable(256);
-		this.field315 = new NodeHashTable(256);
+		this.field309 = new NodeHashTable(256);
 		this.soundEffectIndex = var1;
-		this.field313 = var2;
+		this.field305 = var2;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(II[II)Lbr;",
-		garbageValue = "1714505709"
+		garbageValue = "1763738474"
 	)
 	@Export("getSoundEffect0")
 	RawSound getSoundEffect0(int var1, int var2, int[] var3) {
-		long var4 = this.method816(var1, var2, false);
-		class53 var6 = (class53)this.field315.get(var4);
+		long var4 = this.method827(var1, var2, false);
+		class53 var6 = (class53)this.field309.get(var4);
 		if (var6 != null) {
-			return var6.method1067();
+			return var6.method1044();
 		} else if (var3 != null && var3[0] <= 0) {
 			return null;
 		} else {
@@ -52,7 +64,7 @@ public class SoundCache {
 				return null;
 			} else {
 				RawSound var8 = var7.toRawSound();
-				this.field315.put(new class53(var8), var4);
+				this.field309.put(new class53(var8), var4);
 				if (var3 != null) {
 					var3[0] -= var8.samples.length;
 				}
@@ -62,32 +74,32 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lch;",
-		garbageValue = "-171105070"
+		descriptor = "(III)Lcj;",
+		garbageValue = "-199146739"
 	)
-	class53 method833(int var1, int var2) {
-		long var3 = this.method816(var1, var2, true);
-		class53 var5 = (class53)this.field315.get(var3);
+	class53 method832(int var1, int var2) {
+		long var3 = this.method827(var1, var2, true);
+		class53 var5 = (class53)this.field309.get(var3);
 		if (var5 != null) {
 			return var5;
 		} else {
-			VorbisSample var6 = VorbisSample.readMusicSample(this.field313, var1, var2);
+			VorbisSample var6 = VorbisSample.readMusicSample(this.field305, var1, var2);
 			if (var6 == null) {
 				return new class53();
 			} else {
 				class53 var7 = new class53(var6);
-				this.field315.put(var7, var3);
+				this.field309.put(var7, var3);
 				return var7;
 			}
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I[II)Lbr;",
-		garbageValue = "910014038"
+		descriptor = "(I[IB)Lbr;",
+		garbageValue = "-28"
 	)
 	@Export("getSoundEffect")
 	RawSound getSoundEffect(int var1, int[] var2) {
@@ -100,72 +112,148 @@ public class SoundCache {
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lch;",
-		garbageValue = "319483265"
+		descriptor = "(IS)Lcj;",
+		garbageValue = "1769"
 	)
-	public class53 method811(int var1) {
-		if (this.field313.getGroupCount() == 1) {
-			return this.method833(0, var1);
-		} else if (this.field313.getGroupFileCount(var1) == 1) {
-			return this.method833(var1, 0);
+	public class53 method834(int var1) {
+		if (this.field305.getGroupCount() == 1) {
+			return this.method832(0, var1);
+		} else if (this.field305.getGroupFileCount(var1) == 1) {
+			return this.method832(var1, 0);
 		} else {
 			throw new RuntimeException();
 		}
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lbr;",
-		garbageValue = "-603395092"
+		descriptor = "(IB)Lbr;",
+		garbageValue = "-42"
 	)
-	public RawSound method815(int var1) {
+	public RawSound method826(int var1) {
 		return this.getSoundEffect(var1, (int[])null);
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(IIZI)J",
-		garbageValue = "-150175168"
+		descriptor = "(IIZB)J",
+		garbageValue = "123"
 	)
-	long method816(int var1, int var2, boolean var3) {
+	long method827(int var1, int var2, boolean var3) {
 		int var4 = var2 ^ (var1 << 4 & 65535 | var1 >> 12);
 		var4 |= var1 << 16;
 		return var3 ? (long)var4 ^ 4294967296L : (long)var4;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("id")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "36"
+		descriptor = "(B)V",
+		garbageValue = "-60"
 	)
-	public static int method830(int var0) {
-		return class483.field4887[var0 & 16383];
+	static void method821() {
+		if (ModeWhere.worldMap != null) {
+			ModeWhere.worldMap.method8719(class172.Client_plane, GrandExchangeOfferOwnWorldComparator.baseX * 64 + (class133.localPlayer.x >> 7), DevicePcmPlayerProvider.baseY * 64 + (class133.localPlayer.y >> 7), false);
+			ModeWhere.worldMap.loadCache();
+		}
+
+	}
+
+	@ObfuscatedName("kq")
+	@ObfuscatedSignature(
+		descriptor = "(Lun;I)V",
+		garbageValue = "350310469"
+	)
+	static final void method836(PacketBuffer var0) {
+		var0.importIndex();
+		int var1 = var0.readBits(8);
+		int var2;
+		if (var1 < Client.npcCount) {
+			for (var2 = var1; var2 < Client.npcCount; ++var2) {
+				Client.field643[++Client.field637 - 1] = Client.npcIndices[var2];
+			}
+		}
+
+		if (var1 > Client.npcCount) {
+			throw new RuntimeException("");
+		} else {
+			Client.npcCount = 0;
+
+			for (var2 = 0; var2 < var1; ++var2) {
+				int var3 = Client.npcIndices[var2];
+				NPC var4 = Client.npcs[var3];
+				int var5 = var0.readBits(1);
+				if (var5 == 0) {
+					Client.npcIndices[++Client.npcCount - 1] = var3;
+					var4.npcCycle = Client.cycle;
+				} else {
+					int var6 = var0.readBits(2);
+					if (var6 == 0) {
+						Client.npcIndices[++Client.npcCount - 1] = var3;
+						var4.npcCycle = Client.cycle;
+						Client.field742[++Client.field571 - 1] = var3;
+					} else {
+						int var7;
+						int var8;
+						if (var6 == 1) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							var7 = var0.readBits(3);
+							var4.method2585(var7, class233.field2486);
+							var8 = var0.readBits(1);
+							if (var8 == 1) {
+								Client.field742[++Client.field571 - 1] = var3;
+							}
+						} else if (var6 == 2) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							if (var0.readBits(1) == 1) {
+								var7 = var0.readBits(3);
+								var4.method2585(var7, class233.field2485);
+								var8 = var0.readBits(3);
+								var4.method2585(var8, class233.field2485);
+							} else {
+								var7 = var0.readBits(3);
+								var4.method2585(var7, class233.field2483);
+							}
+
+							var7 = var0.readBits(1);
+							if (var7 == 1) {
+								Client.field742[++Client.field571 - 1] = var3;
+							}
+						} else if (var6 == 3) {
+							Client.field643[++Client.field637 - 1] = var3;
+						}
+					}
+				}
+			}
+
+		}
 	}
 
 	@ObfuscatedName("kl")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIIIIIII)V",
-		garbageValue = "821258949"
+		descriptor = "(Ldk;I)V",
+		garbageValue = "-1001279696"
 	)
-	static void method832(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
-		var1 = var1 * 128 + 64;
-		var2 = var2 * 128 + 64;
-		var3 = var3 * 128 + 64;
-		var4 = var4 * 128 + 64;
-		Projectile var14 = new Projectile(var6, var0, var1, var2, class272.getTileHeight(var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
-		var14.setDestination(var3, var4, class272.getTileHeight(var3, var4, var0) - var8, var9 + Client.cycle);
-		Client.projectiles.addFirst(var14);
-	}
-
-	@ObfuscatedName("mc")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1520853752"
-	)
-	static final void method831(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		class30.clientPreferences.updateSoundEffectVolume(var0);
+	static void method843(NPC var0) {
+		var0.field1249 = var0.definition.size;
+		var0.field1268 = var0.definition.rotation;
+		var0.walkSequence = var0.definition.walkSequence;
+		var0.walkBackSequence = var0.definition.walkBackSequence;
+		var0.walkLeftSequence = var0.definition.walkLeftSequence;
+		var0.walkRightSequence = var0.definition.walkRightSequence;
+		var0.idleSequence = var0.definition.idleSequence;
+		var0.turnLeftSequence = var0.definition.turnLeftSequence;
+		var0.turnRightSequence = var0.definition.turnRightSequence;
+		var0.runSequence = var0.definition.field2117;
+		var0.field1213 = var0.definition.field2105;
+		var0.field1214 = var0.definition.field2119;
+		var0.field1215 = var0.definition.field2111;
+		var0.field1264 = var0.definition.field2121;
+		var0.field1269 = var0.definition.field2122;
+		var0.field1218 = var0.definition.field2123;
+		var0.field1226 = var0.definition.field2124;
 	}
 }

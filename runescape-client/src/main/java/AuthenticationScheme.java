@@ -4,54 +4,54 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("em")
+@ObfuscatedName("fx")
 @Implements("AuthenticationScheme")
 public enum AuthenticationScheme implements Enum {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lfx;"
 	)
 	@Export("USERNAME_PASSWORD_REMEMBER")
-	USERNAME_PASSWORD_REMEMBER(3, 0),
-	@ObfuscatedName("aw")
+	USERNAME_PASSWORD_REMEMBER(4, 0),
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lfx;"
 	)
 	@Export("TOKEN_REMEMBER")
-	TOKEN_REMEMBER(2, 1),
-	@ObfuscatedName("al")
+	TOKEN_REMEMBER(0, 1),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lfx;"
 	)
 	@Export("USERNAME_PASSWORD")
-	USERNAME_PASSWORD(4, 2),
-	@ObfuscatedName("ai")
+	USERNAME_PASSWORD(1, 2),
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lfx;"
 	)
 	@Export("TOKEN")
-	TOKEN(0, 3),
+	TOKEN(2, 3),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lfx;"
+	)
+	field1660(3, 4);
+
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lvl;"
 	)
-	field1493(1, 4);
-
-	@ObfuscatedName("tv")
-	@ObfuscatedSignature(
-		descriptor = "Lbf;"
-	)
-	@Export("pcmPlayer1")
-	static PcmPlayer pcmPlayer1;
-	@ObfuscatedName("as")
+	@Export("options_buttons_2Sprite")
+	static IndexedSprite options_buttons_2Sprite;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -978634339
+		intValue = 158462547
 	)
 	@Export("schemeId")
 	public final int schemeId;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -761276969
+		intValue = 579504551
 	)
 	@Export("packetId")
 	final int packetId;
@@ -61,31 +61,13 @@ public enum AuthenticationScheme implements Enum {
 		this.packetId = var4;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "691209479"
+		garbageValue = "800883718"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.packetId;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lng;IB)V",
-		garbageValue = "4"
-	)
-	@Export("Widget_setKeyIgnoreHeld")
-	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
-		if (var0.field3739 == null) {
-			throw new RuntimeException();
-		} else {
-			if (var0.field3871 == null) {
-				var0.field3871 = new int[var0.field3739.length];
-			}
-
-			var0.field3871[var1] = Integer.MAX_VALUE;
-		}
 	}
 }

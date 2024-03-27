@@ -1,92 +1,39 @@
 import java.util.Iterator;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tx")
-public class class516 extends class474 implements class299 {
-	@ObfuscatedName("dq")
-	@ObfuscatedSignature(
-		descriptor = "Lvg;"
-	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
-	@ObfuscatedName("tx")
+@ObfuscatedName("tb")
+class class516 implements Iterator {
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1748523701
+		intValue = -2053439433
 	)
-	static int field5118;
-	@ObfuscatedName("aw")
+	int field5146;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Ltc;"
 	)
-	final AbstractArchive field5116;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	final DemotingHashTable field5115;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = -2110259639
-	)
-	final int field5114;
+	final class517 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lox;ILpe;Lof;)V"
+		descriptor = "(Ltc;)V"
 	)
-	public class516(StudioGame var1, int var2, Language var3, AbstractArchive var4) {
-		super(var1, var3, var4 != null ? var4.getGroupFileCount(var2) : 0);
-		this.field5115 = new DemotingHashTable(64);
-		this.field5116 = var4;
-		this.field5114 = var2;
+	class516(class517 var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lsy;",
-		garbageValue = "79"
-	)
-	protected class476 vmethod9278(int var1) {
-		synchronized(this.field5115) {
-			class475 var2 = (class475)this.field5115.get((long)var1);
-			if (var2 == null) {
-				var2 = this.method9274(var1);
-				this.field5115.method5975(var2, (long)var1);
-			}
-
-			return var2;
-		}
+	public boolean hasNext() {
+		return this.field5146 < this.this$0.method8504();
 	}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lsn;",
-		garbageValue = "-1765623354"
-	)
-	class475 method9274(int var1) {
-		byte[] var2 = this.field5116.takeFile(this.field5114, var1);
-		class475 var3 = new class475(var1);
-		if (var2 != null) {
-			var3.method8736(new Buffer(var2));
-		}
-
-		return var3;
+	public void remove() {
+		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "198654526"
-	)
-	public void method9275() {
-		synchronized(this.field5115) {
-			this.field5115.clear();
-		}
-	}
-
-	public Iterator iterator() {
-		return new class515(this);
+	public Object next() {
+		int var1 = ++this.field5146 - 1;
+		class476 var2 = (class476)this.this$0.field5148.get((long)var1);
+		return var2 != null ? var2 : this.this$0.method9069(var1);
 	}
 }

@@ -2,81 +2,103 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
+@ObfuscatedName("hx")
 public class class192 extends DualNode {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lll;"
+		descriptor = "Llt;"
 	)
-	@Export("field2022")
-	public static EvictingDualNodeHashTable field2022;
+	@Export("field1915")
+	static EvictingDualNodeHashTable field1915;
 
 	static {
-		field2022 = new EvictingDualNodeHashTable(64);
+		field1915 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("ik")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2103900652"
+		descriptor = "(IB)I",
+		garbageValue = "-15"
 	)
-	static final void method3779() {
-		int var0;
-		int var1;
-		int var2;
-		if (!Client.field789) {
-			var0 = WorldMapArea.field2529 * 16384 + 64;
-			var1 = UserComparator7.field1462 * 128 + 64;
-			var2 = class272.getTileHeight(var0, var1, class473.Client_plane) - WorldMapSectionType.field2609;
-			class7.method53(var0, var2, var1);
-		} else if (Client.field813 != null) {
-			ClanMate.cameraX = Client.field813.vmethod8869();
-			class317.cameraZ = Client.field813.vmethod8868();
-			if (Client.field614) {
-				AsyncHttpResponse.cameraY = Client.field813.vmethod8874();
-			} else {
-				AsyncHttpResponse.cameraY = class272.getTileHeight(ClanMate.cameraX, class317.cameraZ, class473.Client_plane) - Client.field813.vmethod8874();
-			}
-
-			Client.field813.method8882();
-		}
-
-		if (!Client.field790) {
-			var0 = VarbitComposition.field2065 * 16384 + 64;
-			var1 = class11.field46 * 128 + 64;
-			var2 = class272.getTileHeight(var0, var1, class473.Client_plane) - ChatChannel.field1045;
-			int var3 = var0 - ClanMate.cameraX;
-			int var4 = var2 - AsyncHttpResponse.cameraY;
-			int var5 = var1 - class317.cameraZ;
-			int var6 = (int)Math.sqrt((double)(var5 * var5 + var3 * var3));
-			int var7 = (int)(Math.atan2((double)var4, (double)var6) * 325.9490051269531D) & 2047;
-			int var8 = (int)(Math.atan2((double)var3, (double)var5) * -325.9490051269531D) & 2047;
-			ScriptEvent.method2360(var7, var8);
+	public static int method3717(int var0) {
+		class138 var1 = class90.method2315(var0);
+		if (var1 == null) {
+			return 2;
 		} else {
-			if (Client.field794 != null) {
-				FriendSystem.cameraPitch = Client.field794.method8865();
-				FriendSystem.cameraPitch = Math.min(Math.max(FriendSystem.cameraPitch, 128), 383);
-				Client.field794.method8882();
+			return var1.method3087() ? 0 : 1;
+		}
+	}
+
+	@ObfuscatedName("kh")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-71"
+	)
+	static final void method3720() {
+		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
+			if (var0.hitpoints > 0) {
+				--var0.hitpoints;
 			}
 
-			if (Client.field793 != null) {
-				Script.cameraYaw = Client.field793.method8865() & 2047;
-				Client.field793.method8882();
+			boolean var1;
+			int var2;
+			int var3;
+			ObjectComposition var4;
+			if (var0.hitpoints == 0) {
+				if (var0.objectId >= 0) {
+					var2 = var0.objectId;
+					var3 = var0.field1188;
+					var4 = MouseRecorder.getObjectDefinition(var2);
+					if (var3 == 11) {
+						var3 = 10;
+					}
+
+					if (var3 >= 5 && var3 <= 8) {
+						var3 = 4;
+					}
+
+					var1 = var4.method4098(var3);
+					if (!var1) {
+						continue;
+					}
+				}
+
+				ObjectSound.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field1187, var0.field1188, var0.field1192);
+				var0.remove();
+			} else {
+				if (var0.delay > 0) {
+					--var0.delay;
+				}
+
+				if (var0.delay == 0 && var0.x >= 1 && var0.y >= 1 && var0.x <= 102 && var0.y <= 102) {
+					if (var0.field1198 >= 0) {
+						var2 = var0.field1198;
+						var3 = var0.field1191;
+						var4 = MouseRecorder.getObjectDefinition(var2);
+						if (var3 == 11) {
+							var3 = 10;
+						}
+
+						if (var3 >= 5 && var3 <= 8) {
+							var3 = 4;
+						}
+
+						var1 = var4.method4098(var3);
+						if (!var1) {
+							continue;
+						}
+					}
+
+					ObjectSound.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.field1198, var0.field1190, var0.field1191, var0.field1192);
+					var0.delay = -1;
+					if (var0.field1198 == var0.objectId && var0.objectId == -1) {
+						var0.remove();
+					} else if (var0.objectId == var0.field1198 && var0.field1190 == var0.field1187 && var0.field1191 == var0.field1188) {
+						var0.remove();
+					}
+				}
 			}
 		}
 
-	}
-
-	@ObfuscatedName("le")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "997645488"
-	)
-	@Export("resumePauseWidget")
-	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = ViewportMouse.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeShortAddLE(var1);
-		var2.packetBuffer.writeIntLE(var0);
-		Client.packetWriter.addNode(var2);
 	}
 }

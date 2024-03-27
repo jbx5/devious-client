@@ -1,49 +1,61 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fz")
-public class class153 extends class161 {
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -610642393
+@ObfuscatedName("fg")
+public class class153 extends class144 {
+	@ObfuscatedName("ft")
+	@ObfuscatedSignature(
+		descriptor = "Lov;"
 	)
-	int field1721;
+	static Archive field1726;
+	@ObfuscatedName("az")
+	String field1725;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lga;"
+		descriptor = "Lfh;"
 	)
-	final class162 this$0;
+	final class147 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lga;)V"
+		descriptor = "(Lfh;)V"
 	)
-	class153(class162 var1) {
+	class153(class147 var1) {
 		this.this$0 = var1;
-		this.field1721 = -1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;I)V",
-		garbageValue = "1174207862"
+		descriptor = "(Lur;I)V",
+		garbageValue = "1253598633"
 	)
-	void vmethod3504(Buffer var1) {
-		this.field1721 = var1.readUnsignedShort();
-		var1.readUnsignedByte();
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
+	void vmethod3420(Buffer var1) {
+		this.field1725 = var1.readStringCp1252NullTerminated();
+		var1.readInt();
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Lfp;B)V",
+		garbageValue = "-123"
+	)
+	void vmethod3419(ClanSettings var1) {
+		var1.name = this.field1725;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Loc;Ljava/lang/String;Ljava/lang/String;I)Lvl;",
+		garbageValue = "-802580152"
+	)
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
+			return null;
+		} else {
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			return class384.method7113(var0, var3, var4);
 		}
-
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(Lgg;I)V",
-		garbageValue = "378355771"
-	)
-	void vmethod3509(ClanChannel var1) {
-		var1.removeMember(this.field1721);
 	}
 }

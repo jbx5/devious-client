@@ -1,71 +1,49 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sq")
-public abstract class class474 extends class297 implements class541 {
+@ObfuscatedName("so")
+public class class474 implements class479 {
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lox;Lpe;I)V"
+		descriptor = "Ltu;"
 	)
-	protected class474(StudioGame var1, Language var2, int var3) {
-		super(var1, var2, var3);
+	public final class509 field4900;
+
+	@ObfuscatedSignature(
+		descriptor = "(Ltm;)V"
+	)
+	class474(class510 var1) {
+		this.field4900 = var1;
 	}
 
-	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lsy;",
-		garbageValue = "79"
+		descriptor = "(Lsz;)V"
 	)
-	protected abstract class476 vmethod9278(int var1);
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-21"
-	)
-	public int method8723() {
-		return super.field3147;
+	public class474(class475 var1) {
+		this(new class510(var1));
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/Object;",
-		garbageValue = "-276041869"
+		descriptor = "(II)I",
+		garbageValue = "563046583"
 	)
-	public Object vmethod9769(int var1) {
-		class476 var2 = this.vmethod9278(var1);
-		return var2 != null && var2.method8738() ? var2.method8741() : null;
+	public int method8494(int var1) {
+		return this.field4900.vmethod8996(var1);
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("jy")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;I)Luk;",
-		garbageValue = "568285893"
+		descriptor = "(Ldi;I)Z",
+		garbageValue = "953022005"
 	)
-	public class542 method8725(Buffer var1) {
-		int var2 = var1.readUnsignedShort();
-		class476 var3 = this.vmethod9278(var2);
-		class542 var4 = new class542(var2);
-		Class var5 = var3.field4875.field5129;
-		if (var5 == Integer.class) {
-			var4.field5268 = var1.readInt();
-		} else if (var5 == Long.class) {
-			var4.field5268 = var1.readLong();
-		} else if (var5 == String.class) {
-			var4.field5268 = var1.readStringCp1252NullCircumfixed();
+	static boolean method8495(Player var0) {
+		if (Client.drawPlayerNames == 0) {
+			return false;
+		} else if (class133.localPlayer == var0) {
+			return Tiles.method2268();
 		} else {
-			if (!class537.class.isAssignableFrom(var5)) {
-				throw new IllegalStateException();
-			}
-
-			try {
-				class537 var6 = (class537)var5.newInstance();
-				var6.method9744(var1);
-				var4.field5268 = var6;
-			} catch (InstantiationException var7) {
-			} catch (IllegalAccessException var8) {
-			}
+			return Language.method7199() || class4.method18() && var0.isFriend() || Tiles.method2219() && var0.isFriendsChatMember();
 		}
-
-		return var4;
 	}
 }

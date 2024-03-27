@@ -1,125 +1,109 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qd")
+@ObfuscatedName("qh")
 @Implements("FadeInTask")
 public class FadeInTask extends SongTask {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lmy;"
+		descriptor = "Lml;"
 	)
-	MusicSong field4625;
-	@ObfuscatedName("aw")
+	MusicSong field4648;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 964825125
+		intValue = -773370011
 	)
-	int field4624;
+	int field4647;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqe;IZI)V"
+		descriptor = "(Lqc;IZI)V"
 	)
 	public FadeInTask(SongTask var1, int var2, boolean var3, int var4) {
 		super(var1);
-		this.field4625 = null;
-		this.field4624 = 0;
-		super.field4627 = "FadeInTask";
+		this.field4648 = null;
+		this.field4647 = 0;
+		super.field4651 = "FadeInTask";
 		if (var2 >= 0) {
-			if (var3 && var2 < class321.field3478.size()) {
-				this.field4625 = (MusicSong)class321.field3478.get(var2);
+			if (var3 && var2 < class321.field3500.size()) {
+				this.field4648 = (MusicSong)class321.field3500.get(var2);
 			} else if (!var3 && var2 < class321.musicSongs.size()) {
-				this.field4625 = (MusicSong)class321.musicSongs.get(var2);
+				this.field4648 = (MusicSong)class321.musicSongs.get(var2);
 			}
 
-			this.field4624 = var4;
+			this.field4647 = var4;
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-2024199564"
+		garbageValue = "-362428891"
 	)
-	public boolean vmethod8043() {
-		if (this.field4625 != null && this.field4625.midiPcmStream != null) {
-			this.field4625.field3597 = true;
+	public boolean vmethod7854() {
+		if (this.field4648 != null && this.field4648.midiPcmStream != null) {
+			this.field4648.field3604 = true;
 
 			try {
-				if (this.field4625.field3602 < (float)this.field4625.musicTrackVolume && this.field4625.midiPcmStream.isReady()) {
-					float var1 = this.field4624 == 0 ? (float)this.field4624 : (float)this.field4625.musicTrackVolume / (float)this.field4624;
-					MusicSong var10000 = this.field4625;
-					var10000.field3602 += 0.0F == var1 ? (float)this.field4625.musicTrackVolume : var1;
-					if (this.field4625.field3602 > (float)this.field4625.musicTrackVolume) {
-						this.field4625.field3602 = (float)this.field4625.musicTrackVolume;
+				if (this.field4648.field3608 < (float)this.field4648.musicTrackVolume && this.field4648.midiPcmStream.isReady()) {
+					float var1 = this.field4647 == 0 ? (float)this.field4647 : (float)this.field4648.musicTrackVolume / (float)this.field4647;
+					MusicSong var10000 = this.field4648;
+					var10000.field3608 += 0.0F == var1 ? (float)this.field4648.musicTrackVolume : var1;
+					if (this.field4648.field3608 > (float)this.field4648.musicTrackVolume) {
+						this.field4648.field3608 = (float)this.field4648.musicTrackVolume;
 					}
 
-					this.field4625.midiPcmStream.setPcmStreamVolume((int)this.field4625.field3602);
+					this.field4648.midiPcmStream.setPcmStreamVolume((int)this.field4648.field3608);
 					return false;
 				}
 			} catch (Exception var3) {
-				this.method8017(var3.getMessage());
+				this.method7844(var3.getMessage());
 				return true;
 			}
 
-			this.field4625.field3597 = false;
+			this.field4648.field3604 = false;
 			return true;
 		} else {
 			return true;
 		}
 	}
 
-	@ObfuscatedName("jl")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)V",
-		garbageValue = "1973315729"
+		descriptor = "(B)V",
+		garbageValue = "12"
 	)
-	static final void method8010(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		var5 = class127.method2998(var5, var6);
-		int var7 = 2048 - var3 & 2047;
-		int var8 = 2048 - var4 & 2047;
-		int var9 = 0;
-		int var10 = 0;
-		int var11 = var5;
-		int var12;
-		int var13;
-		int var14;
-		if (var7 != 0) {
-			var12 = Rasterizer3D.Rasterizer3D_sine[var7];
-			var13 = Rasterizer3D.Rasterizer3D_cosine[var7];
-			var14 = var10 * var13 - var5 * var12 >> 16;
-			var11 = var13 * var5 + var12 * var10 >> 16;
-			var10 = var14;
-		}
+	public static void method7823() {
+		class195.field1864.clear();
+	}
 
-		if (var8 != 0) {
-			var12 = Rasterizer3D.Rasterizer3D_sine[var8];
-			var13 = Rasterizer3D.Rasterizer3D_cosine[var8];
-			var14 = var12 * var11 + var13 * var9 >> 16;
-			var11 = var11 * var13 - var9 * var12 >> 16;
-			var9 = var14;
-		}
-
-		if (Client.isCameraLocked) {
-			class362.field3961 = var0 - var9;
-			ArchiveDiskAction.field4355 = var1 - var10;
-			AABB.field2914 = var2 - var11;
-			WorldMapCacheName.field2683 = var3;
-			FriendsChat.field4736 = var4;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(Llw;Lvb;B)Lmh;",
+		garbageValue = "-76"
+	)
+	@Export("getPacketBufferNode")
+	public static PacketBufferNode getPacketBufferNode(ClientPacket var0, IsaacCipher var1) {
+		PacketBufferNode var2 = WorldMapSection0.method5639();
+		var2.clientPacket = var0;
+		var2.clientPacketLength = var0.length;
+		if (var2.clientPacketLength == -1) {
+			var2.packetBuffer = new PacketBuffer(260);
+		} else if (var2.clientPacketLength == -2) {
+			var2.packetBuffer = new PacketBuffer(10000);
+		} else if (var2.clientPacketLength <= 18) {
+			var2.packetBuffer = new PacketBuffer(20);
+		} else if (var2.clientPacketLength <= 98) {
+			var2.packetBuffer = new PacketBuffer(100);
 		} else {
-			ClanMate.cameraX = var0 - var9;
-			AsyncHttpResponse.cameraY = var1 - var10;
-			class317.cameraZ = var2 - var11;
-			FriendSystem.cameraPitch = var3;
-			Script.cameraYaw = var4;
+			var2.packetBuffer = new PacketBuffer(260);
 		}
 
-		if (Client.oculusOrbState == 1 && Client.staffModLevel >= 2 && Client.cycle % 50 == 0 && (Friend.oculusOrbFocalPointX >> 7 != VarpDefinition.localPlayer.x >> 7 || class59.oculusOrbFocalPointY >> 7 != VarpDefinition.localPlayer.y >> 7)) {
-			var12 = VarpDefinition.localPlayer.plane;
-			var13 = Projectile.baseX * 64 + (Friend.oculusOrbFocalPointX >> 7);
-			var14 = GameEngine.baseY * 64 + (class59.oculusOrbFocalPointY >> 7);
-			Login.method2195(var13, var14, var12, true);
-		}
-
+		var2.packetBuffer.setIsaacCipher(var1);
+		var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
+		var2.index = 0;
+		return var2;
 	}
 }

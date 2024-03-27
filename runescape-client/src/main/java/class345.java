@@ -1,35 +1,40 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nn")
+@ObfuscatedName("ny")
 public class class345 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("fj")
+	@ObfuscatedSignature(
+		descriptor = "Lrj;"
+	)
+	static GraphicsDefaults field3680;
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "Lnf;"
 	)
-	public class347 field3656;
-	@ObfuscatedName("aw")
+	public class347 field3674;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lnv;"
+		descriptor = "Lna;"
 	)
-	class341 field3655;
-	@ObfuscatedName("al")
+	class341 field3672;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lbo;"
+		descriptor = "Lbz;"
 	)
-	class27 field3657;
-	@ObfuscatedName("ai")
-	public Object[] field3658;
-	@ObfuscatedName("ar")
-	public Object[] field3659;
-	@ObfuscatedName("as")
-	public Object[] field3654;
-	@ObfuscatedName("aa")
-	public Object[] field3660;
+	class27 field3678;
+	@ObfuscatedName("at")
+	public Object[] field3671;
+	@ObfuscatedName("an")
+	public Object[] field3675;
+	@ObfuscatedName("ao")
+	public Object[] field3676;
+	@ObfuscatedName("ab")
+	public Object[] field3677;
 
 	class345() {
-		this.field3656 = new class347();
-		this.field3655 = new class341();
-		this.field3657 = new class27();
+		this.field3674 = new class347();
+		this.field3672 = new class341();
+		this.field3678 = new class27();
 	}
 }

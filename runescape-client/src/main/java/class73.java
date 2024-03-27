@@ -4,92 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cc")
+@ObfuscatedName("ch")
 public class class73 {
-	@ObfuscatedName("wo")
-	@Export("foundItemIds")
-	static short[] foundItemIds;
-	@ObfuscatedName("ar")
-	static final BigInteger field912;
-	@ObfuscatedName("as")
-	static final BigInteger field916;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1558904169
+		intValue = 349131713
 	)
-	static int field921;
+	public static int field911;
+	@ObfuscatedName("an")
+	static final BigInteger field898;
+	@ObfuscatedName("ao")
+	static final BigInteger field902;
 	@ObfuscatedName("eh")
-	@ObfuscatedGetter(
-		longValue = -311790209696913705L
-	)
-	static long field922;
-	@ObfuscatedName("qv")
 	@ObfuscatedSignature(
-		descriptor = "Lsc;"
+		descriptor = "Lov;"
 	)
-	static class473 field920;
-	@ObfuscatedName("te")
-	@ObfuscatedSignature(
-		descriptor = "Lcn;"
-	)
-	@Export("decimator")
-	static Decimator decimator;
+	@Export("archive9")
+	static Archive archive9;
+	@ObfuscatedName("jl")
+	@Export("regionLandArchives")
+	static byte[][] regionLandArchives;
 
 	static {
-		field912 = new BigInteger("80782894952180643741752986186714059433953886149239752893425047584684715842049");
-		field916 = new BigInteger("7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683");
+		field898 = new BigInteger("80782894952180643741752986186714059433953886149239752893425047584684715842049");
+		field902 = new BigInteger("7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683");
 	}
 
-	@ObfuscatedName("kw")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "1659794248"
+		descriptor = "(IIII)I",
+		garbageValue = "1431032114"
 	)
-	@Export("updateItemPile")
-	static void updateItemPile(int var0, int var1, int var2) {
-		NodeDeque var3 = Client.groundItems[var0][var1][var2];
-		if (var3 == null) {
-			Actor.scene.removeGroundItemPile(var0, var1, var2);
-		} else {
-			long var4 = -99999999L;
-			TileItem var6 = null;
-
-			TileItem var7;
-			for (var7 = (TileItem)var3.last(); var7 != null; var7 = (TileItem)var3.previous()) {
-				ItemComposition var8 = ArchiveDiskActionHandler.ItemDefinition_get(var7.id);
-				long var12 = (long)var8.price;
-				if (var8.isStackable == 1) {
-					var12 *= var7.quantity < Integer.MAX_VALUE ? (long)(var7.quantity + 1) : (long)var7.quantity;
-				}
-
-				if (var12 > var4) {
-					var4 = var12;
-					var6 = var7;
-				}
-			}
-
-			if (var6 == null) {
-				Actor.scene.removeGroundItemPile(var0, var1, var2);
-			} else {
-				var3.addLast(var6);
-				TileItem var14 = null;
-				TileItem var9 = null;
-
-				for (var7 = (TileItem)var3.last(); var7 != null; var7 = (TileItem)var3.previous()) {
-					if (var6.id != var7.id) {
-						if (var14 == null) {
-							var14 = var7;
-						}
-
-						if (var14.id != var7.id && var9 == null) {
-							var9 = var7;
-						}
-					}
-				}
-
-				long var10 = AsyncHttpResponse.calculateTag(var1, var2, 3, false, 0);
-				Actor.scene.newGroundItemPile(var0, var1, var2, class272.getTileHeight(var1 * 128 + 64, var2 * 128 + 64, var0), var6, var10, var14, var9);
-			}
-		}
+	public static int method2084(int var0, int var1, int var2) {
+		int var3 = class75.method2089(var2 - var1 + 1);
+		var3 <<= var1;
+		return var0 & ~var3;
 	}
 }

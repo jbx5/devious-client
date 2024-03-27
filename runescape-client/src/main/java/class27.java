@@ -3,110 +3,113 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bo")
+@ObfuscatedName("bz")
 public class class27 {
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lbe;"
-	)
-	@Export("soundSystem")
-	static SoundSystem soundSystem;
-	@ObfuscatedName("aa")
-	int[] field127;
-	@ObfuscatedName("az")
-	int[] field128;
-
-	public class27() {
-		this.field127 = new int[112];
-		this.field128 = new int[192];
-		Arrays.fill(this.field127, 3);
-		Arrays.fill(this.field128, 3);
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-77"
-	)
-	public void method359(int var1, int var2) {
-		if (this.method386(var1) && this.method369(var2)) {
-			this.field127[var1] = var2;
-		}
-
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(CII)V",
-		garbageValue = "1201352236"
-	)
-	public void method360(char var1, int var2) {
-		if (this.method377(var1) && this.method369(var2)) {
-			this.field128[var1] = var2;
-		}
-
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1745274365"
-	)
-	public int method361(int var1) {
-		return this.method386(var1) ? this.field127[var1] : 0;
-	}
-
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(CI)I",
-		garbageValue = "155074636"
+		descriptor = "Lvl;"
 	)
-	public int method362(char var1) {
-		return this.method377(var1) ? this.field128[var1] : 0;
-	}
+	@Export("options_buttons_0Sprite")
+	static IndexedSprite options_buttons_0Sprite;
+	@ObfuscatedName("cq")
+	@Export("otp")
+	static String otp;
+	@ObfuscatedName("ab")
+	int[] field121;
+	@ObfuscatedName("aw")
+	int[] field118;
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1589962869"
-	)
-	public boolean method363(int var1) {
-		return this.method386(var1) && (this.field127[var1] == 1 || this.field127[var1] == 3);
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-674999067"
-	)
-	public boolean method358(char var1) {
-		return this.method377(var1) && (this.field128[var1] == 1 || this.field128[var1] == 3);
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-729885849"
-	)
-	public boolean method387(int var1) {
-		return this.method386(var1) && (this.field127[var1] == 2 || this.field127[var1] == 3);
+	public class27() {
+		this.field121 = new int[112];
+		this.field118 = new int[192];
+		Arrays.fill(this.field121, 3);
+		Arrays.fill(this.field118, 3);
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-1669763559"
+		descriptor = "(III)V",
+		garbageValue = "5000268"
 	)
-	public boolean method380(char var1) {
-		return this.method377(var1) && (this.field128[var1] == 2 || this.field128[var1] == 3);
+	public void method396(int var1, int var2) {
+		if (this.method372(var1) && this.method361(var2)) {
+			this.field121[var1] = var2;
+		}
+
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(CII)V",
+		garbageValue = "-1060120672"
+	)
+	public void method402(char var1, int var2) {
+		if (this.method371(var1) && this.method361(var2)) {
+			this.field118[var1] = var2;
+		}
+
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "3"
+	)
+	public int method364(int var1) {
+		return this.method372(var1) ? this.field121[var1] : 0;
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(CB)I",
+		garbageValue = "-90"
+	)
+	public int method379(char var1) {
+		return this.method371(var1) ? this.field118[var1] : 0;
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1831477201"
+	)
+	public boolean method366(int var1) {
+		return this.method372(var1) && (this.field121[var1] == 1 || this.field121[var1] == 3);
 	}
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "2047713770"
+		descriptor = "(CI)Z",
+		garbageValue = "907464497"
 	)
-	boolean method386(int var1) {
+	public boolean method367(char var1) {
+		return this.method371(var1) && (this.field118[var1] == 1 || this.field118[var1] == 3);
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "46"
+	)
+	public boolean method368(int var1) {
+		return this.method372(var1) && (this.field121[var1] == 2 || this.field121[var1] == 3);
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "1220370851"
+	)
+	public boolean method365(char var1) {
+		return this.method371(var1) && (this.field118[var1] == 2 || this.field118[var1] == 3);
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "32"
+	)
+	boolean method372(int var1) {
 		if (var1 >= 0 && var1 < 112) {
 			return true;
 		} else {
@@ -115,12 +118,12 @@ public class class27 {
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "2055456568"
+		descriptor = "(CB)Z",
+		garbageValue = "67"
 	)
-	boolean method377(char var1) {
+	boolean method371(char var1) {
 		if (var1 >= 0 && var1 < 192) {
 			return true;
 		} else {
@@ -129,12 +132,12 @@ public class class27 {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-51"
+		descriptor = "(II)Z",
+		garbageValue = "-1181765278"
 	)
-	boolean method369(int var1) {
+	boolean method361(int var1) {
 		if (var1 >= 0 && var1 < 4) {
 			return true;
 		} else {
@@ -143,100 +146,62 @@ public class class27 {
 		}
 	}
 
-	@ObfuscatedName("mk")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lng;IIB)V",
-		garbageValue = "-59"
+		descriptor = "(Ljava/lang/CharSequence;I)[B",
+		garbageValue = "670557189"
 	)
-	@Export("clickWidget")
-	static final void clickWidget(Widget var0, int var1, int var2) {
-		if (Client.clickedWidget == null && !Client.isMenuOpen) {
-			if (var0 != null) {
-				Widget var5 = var0;
-				int var7 = class429.getWidgetFlags(var0);
-				int var6 = var7 >> 17 & 7;
-				int var8 = var6;
-				Widget var4;
-				int var9;
-				if (var6 == 0) {
-					var4 = null;
-				} else {
-					var9 = 0;
+	public static byte[] method401(CharSequence var0) {
+		int var1 = var0.length();
+		byte[] var2 = new byte[var1];
 
-					while (true) {
-						if (var9 >= var8) {
-							var4 = var5;
-							break;
-						}
-
-						var5 = ArchiveLoader.widgetDefinition.method6431(var5.parentId);
-						if (var5 == null) {
-							var4 = null;
-							break;
-						}
-
-						++var9;
-					}
-				}
-
-				Widget var10 = var4;
-				if (var4 == null) {
-					var10 = var0.parent;
-				}
-
-				if (var10 != null) {
-					Client.clickedWidget = var0;
-					var5 = var0;
-					var7 = class429.getWidgetFlags(var0);
-					var6 = var7 >> 17 & 7;
-					var8 = var6;
-					if (var6 == 0) {
-						var4 = null;
-					} else {
-						var9 = 0;
-
-						while (true) {
-							if (var9 >= var8) {
-								var4 = var5;
-								break;
-							}
-
-							var5 = ArchiveLoader.widgetDefinition.method6431(var5.parentId);
-							if (var5 == null) {
-								var4 = null;
-								break;
-							}
-
-							++var9;
-						}
-					}
-
-					var10 = var4;
-					if (var4 == null) {
-						var10 = var0.parent;
-					}
-
-					Client.clickedWidgetParent = var10;
-					Client.widgetClickX = var1;
-					Client.widgetClickY = var2;
-					WorldMapLabelSize.widgetDragDuration = 0;
-					Client.isDraggingWidget = false;
-					int var11 = FontName.method9113();
-					if (var11 != -1) {
-						class363.tempMenuAction = new MenuAction();
-						class363.tempMenuAction.param0 = Client.menuArguments1[var11];
-						class363.tempMenuAction.param1 = Client.menuArguments2[var11];
-						class363.tempMenuAction.opcode = Client.menuOpcodes[var11];
-						class363.tempMenuAction.identifier = Client.menuIdentifiers[var11];
-						class363.tempMenuAction.itemId = Client.menuItemIds[var11];
-						class363.tempMenuAction.action = Client.menuActions[var11];
-						class363.tempMenuAction.target = Client.menuTargets[var11];
-					}
-
-					return;
-				}
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if (var4 > 127) {
+				var2[var3] = 63;
+			} else {
+				var2[var3] = (byte)var4;
 			}
-
 		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(Lto;ILjava/lang/String;B)Ljava/lang/String;",
+		garbageValue = "0"
+	)
+	static String method400(IterableNodeHashTable var0, int var1, String var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
+			return var3 == null ? var2 : (String)var3.obj;
+		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "21"
+	)
+	public static void method362() {
+		DbRowType.DBRowType_cache.clear();
+	}
+
+	@ObfuscatedName("hl")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "596339197"
+	)
+	@Export("setAuthenticationScheme")
+	static final void setAuthenticationScheme(boolean var0) {
+		if (var0) {
+			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
+		} else {
+			Client.authenticationScheme = NPC.clientPreferences.containsKey(Login.Login_username) ? AuthenticationScheme.USERNAME_PASSWORD_REMEMBER : AuthenticationScheme.USERNAME_PASSWORD;
+		}
+
 	}
 }

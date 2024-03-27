@@ -1,99 +1,98 @@
 import java.awt.datatransfer.Clipboard;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ir")
+@ObfuscatedName("iy")
 public class class226 implements class29 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lng;"
+		descriptor = "Lnt;"
 	)
-	Widget field2414;
-	@ObfuscatedName("aw")
-	boolean field2412;
-	@ObfuscatedName("al")
-	boolean field2411;
+	Widget field2418;
+	@ObfuscatedName("ah")
+	boolean field2416;
+	@ObfuscatedName("af")
+	boolean field2417;
 
 	public class226() {
-		this.field2414 = null;
-		this.field2412 = false;
-		this.field2411 = false;
+		this.field2418 = null;
+		this.field2416 = false;
+		this.field2417 = false;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "2108130536"
+		garbageValue = "743662152"
 	)
-	public boolean vmethod4425(int var1) {
-		if (this.field2414 == null) {
+	public boolean vmethod4317(int var1) {
+		if (this.field2418 == null) {
 			return false;
 		} else {
-			class27 var2 = this.field2414.method6825();
+			class27 var2 = this.field2418.method6682();
 			if (var2 == null) {
 				return false;
 			} else {
-				if (var2.method387(var1)) {
+				if (var2.method368(var1)) {
 					switch(var1) {
 					case 81:
-						this.field2411 = true;
+						this.field2417 = true;
 						break;
 					case 82:
-						this.field2412 = true;
+						this.field2416 = true;
 						break;
 					default:
-						if (this.method4398(var1)) {
-							UserComparator5.invalidateWidget(this.field2414);
+						if (this.method4291(var1)) {
+							WorldMapData_0.invalidateWidget(this.field2418);
 						}
 					}
 				}
 
-				return var2.method363(var1);
+				return var2.method366(var1);
 			}
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "2132067941"
+		descriptor = "(IB)Z",
+		garbageValue = "-99"
 	)
-	public boolean vmethod4442(int var1) {
+	public boolean vmethod4312(int var1) {
 		switch(var1) {
 		case 81:
-			this.field2411 = false;
+			this.field2417 = false;
 			return false;
 		case 82:
-			this.field2412 = false;
+			this.field2416 = false;
 			return false;
 		default:
 			return false;
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-71"
+		descriptor = "(CI)Z",
+		garbageValue = "-1370736452"
 	)
-	public boolean vmethod4427(char var1) {
-		if (this.field2414 == null) {
+	public boolean vmethod4324(char var1) {
+		if (this.field2418 == null) {
 			return false;
-		} else if (!class344.method6465(var1)) {
+		} else if (!HealthBar.method2576(var1)) {
 			return false;
 		} else {
-			class347 var2 = this.field2414.method6806();
-			if (var2 != null && var2.method6562()) {
-				class27 var3 = this.field2414.method6825();
+			class347 var2 = this.field2418.method6667();
+			if (var2 != null && var2.method6513()) {
+				class27 var3 = this.field2418.method6682();
 				if (var3 == null) {
 					return false;
 				} else {
-					if (var3.method380(var1) && var2.method6524(var1)) {
-						UserComparator5.invalidateWidget(this.field2414);
+					if (var3.method365(var1) && var2.method6404(var1)) {
+						WorldMapData_0.invalidateWidget(this.field2418);
 					}
 
-					return var3.method358(var1);
+					return var3.method367(var1);
 				}
 			} else {
 				return false;
@@ -101,211 +100,211 @@ public class class226 implements class29 {
 		}
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)Z",
-		garbageValue = "289932078"
+		descriptor = "(ZB)Z",
+		garbageValue = "-10"
 	)
-	public boolean vmethod4467(boolean var1) {
+	public boolean vmethod4339(boolean var1) {
 		return false;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lng;B)V",
-		garbageValue = "-104"
+		descriptor = "(Lnt;I)V",
+		garbageValue = "-697987739"
 	)
-	public void method4402(Widget var1) {
+	public void method4278(Widget var1) {
 		if (var1 != null) {
-			if (var1 != this.field2414) {
-				this.method4394();
-				this.field2414 = var1;
+			if (var1 != this.field2418) {
+				this.method4282();
+				this.field2418 = var1;
 			}
 
-			class345 var2 = var1.method6841();
+			class345 var2 = var1.method6683();
 			if (var2 != null) {
-				if (!var2.field3656.method6557() && var2.field3659 != null) {
+				if (!var2.field3674.method6459() && var2.field3675 != null) {
 					ScriptEvent var3 = new ScriptEvent();
-					var3.method2355(var1);
-					var3.setArgs(var2.field3659);
-					DirectByteArrayCopier.method6959().addFirst(var3);
+					var3.method2305(var1);
+					var3.setArgs(var2.field3675);
+					class131.method3048().addFirst(var3);
 				}
 
-				var2.field3656.method6722(true);
+				var2.field3674.method6486(true);
 			}
 		} else {
-			this.method4394();
+			this.method4282();
 		}
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lng;",
-		garbageValue = "10"
+		descriptor = "(B)Lnt;",
+		garbageValue = "-5"
 	)
-	public Widget method4393() {
-		return this.field2414;
+	public Widget method4279() {
+		return this.field2418;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "27"
+		descriptor = "(I)V",
+		garbageValue = "1023376258"
 	)
-	public void method4394() {
-		if (this.field2414 != null) {
-			class345 var1 = this.field2414.method6841();
-			Widget var2 = this.field2414;
-			this.field2414 = null;
+	public void method4282() {
+		if (this.field2418 != null) {
+			class345 var1 = this.field2418.method6683();
+			Widget var2 = this.field2418;
+			this.field2418 = null;
 			if (var1 != null) {
-				if (var1.field3656.method6557() && var1.field3659 != null) {
+				if (var1.field3674.method6459() && var1.field3675 != null) {
 					ScriptEvent var3 = new ScriptEvent();
-					var3.method2355(var2);
-					var3.setArgs(var1.field3659);
-					DirectByteArrayCopier.method6959().addFirst(var3);
+					var3.method2305(var2);
+					var3.setArgs(var1.field3675);
+					class131.method3048().addFirst(var3);
 				}
 
-				var1.field3656.method6722(false);
+				var1.field3674.method6486(false);
 			}
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "91"
+		descriptor = "(II)Z",
+		garbageValue = "1455473962"
 	)
-	boolean method4398(int var1) {
-		if (this.field2414 == null) {
+	boolean method4291(int var1) {
+		if (this.field2418 == null) {
 			return false;
 		} else {
-			class347 var2 = this.field2414.method6806();
-			if (var2 != null && var2.method6562()) {
+			class347 var2 = this.field2418.method6667();
+			if (var2 != null && var2.method6513()) {
 				Clipboard var5;
 				switch(var1) {
 				case 13:
-					this.method4394();
+					this.method4282();
 					return true;
 				case 48:
-					if (this.field2412) {
-						var2.method6514();
+					if (this.field2416) {
+						var2.method6387();
 					}
 
 					return true;
 				case 65:
-					if (this.field2412) {
-						var5 = class193.client.method460();
-						var2.method6747(var5);
+					if (this.field2416) {
+						var5 = UrlRequest.client.method464();
+						var2.method6420(var5);
 					}
 
 					return true;
 				case 66:
-					if (this.field2412) {
-						var5 = class193.client.method460();
-						var2.method6547(var5);
+					if (this.field2416) {
+						var5 = UrlRequest.client.method464();
+						var2.method6405(var5);
 					}
 
 					return true;
 				case 67:
-					if (this.field2412) {
-						var5 = class193.client.method460();
-						var2.method6599(var5);
+					if (this.field2416) {
+						var5 = UrlRequest.client.method464();
+						var2.method6518(var5);
 					}
 
 					return true;
 				case 84:
-					if (var2.method6568() == 0) {
-						var2.method6524(10);
-					} else if (this.field2411 && var2.method6572()) {
-						var2.method6524(10);
+					if (var2.method6574() == 0) {
+						var2.method6404(10);
+					} else if (this.field2417 && var2.method6430()) {
+						var2.method6404(10);
 					} else {
-						class345 var3 = this.field2414.method6841();
+						class345 var3 = this.field2418.method6683();
 						ScriptEvent var4 = new ScriptEvent();
-						var4.method2355(this.field2414);
-						var4.setArgs(var3.field3660);
-						DirectByteArrayCopier.method6959().addFirst(var4);
-						this.method4394();
+						var4.method2305(this.field2418);
+						var4.setArgs(var3.field3677);
+						class131.method3048().addFirst(var4);
+						this.method4282();
 					}
 
 					return true;
 				case 85:
-					if (this.field2412) {
-						var2.method6783();
+					if (this.field2416) {
+						var2.method6384();
 					} else {
-						var2.method6525();
+						var2.method6382();
 					}
 
 					return true;
 				case 96:
-					if (this.field2412) {
-						var2.method6537(this.field2411);
+					if (this.field2416) {
+						var2.method6558(this.field2417);
 					} else {
-						var2.method6535(this.field2411);
+						var2.method6393(this.field2417);
 					}
 
 					return true;
 				case 97:
-					if (this.field2412) {
-						var2.method6538(this.field2411);
+					if (this.field2416) {
+						var2.method6396(this.field2417);
 					} else {
-						var2.method6737(this.field2411);
+						var2.method6487(this.field2417);
 					}
 
 					return true;
 				case 98:
-					if (this.field2412) {
-						var2.method6550();
+					if (this.field2416) {
+						var2.method6591();
 					} else {
-						var2.method6539(this.field2411);
+						var2.method6415(this.field2417);
 					}
 
 					return true;
 				case 99:
-					if (this.field2412) {
-						var2.method6653();
+					if (this.field2416) {
+						var2.method6401();
 					} else {
-						var2.method6710(this.field2411);
+						var2.method6398(this.field2417);
 					}
 
 					return true;
 				case 101:
-					if (this.field2412) {
-						var2.method6528();
+					if (this.field2416) {
+						var2.method6385();
 					} else {
-						var2.method6526();
+						var2.method6383();
 					}
 
 					return true;
 				case 102:
-					if (this.field2412) {
-						var2.method6533(this.field2411);
+					if (this.field2416) {
+						var2.method6391(this.field2417);
 					} else {
-						var2.method6531(this.field2411);
+						var2.method6389(this.field2417);
 					}
 
 					return true;
 				case 103:
-					if (this.field2412) {
-						var2.method6766(this.field2411);
+					if (this.field2416) {
+						var2.method6502(this.field2417);
 					} else {
-						var2.method6532(this.field2411);
+						var2.method6419(this.field2417);
 					}
 
 					return true;
 				case 104:
-					if (this.field2412) {
-						var2.method6543(this.field2411);
+					if (this.field2416) {
+						var2.method6444(this.field2417);
 					} else {
-						var2.method6505(this.field2411);
+						var2.method6399(this.field2417);
 					}
 
 					return true;
 				case 105:
-					if (this.field2412) {
-						var2.method6544(this.field2411);
+					if (this.field2416) {
+						var2.method6402(this.field2417);
 					} else {
-						var2.method6542(this.field2411);
+						var2.method6400(this.field2417);
 					}
 
 					return true;
@@ -318,107 +317,30 @@ public class class226 implements class29 {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(CI)B",
-		garbageValue = "556823062"
+		descriptor = "(CB)Z",
+		garbageValue = "41"
 	)
-	@Export("charToByteCp1252")
-	public static byte charToByteCp1252(char var0) {
-		byte var1;
-		if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
-			var1 = (byte)var0;
-		} else if (var0 == 8364) {
-			var1 = -128;
-		} else if (var0 == 8218) {
-			var1 = -126;
-		} else if (var0 == 402) {
-			var1 = -125;
-		} else if (var0 == 8222) {
-			var1 = -124;
-		} else if (var0 == 8230) {
-			var1 = -123;
-		} else if (var0 == 8224) {
-			var1 = -122;
-		} else if (var0 == 8225) {
-			var1 = -121;
-		} else if (var0 == 710) {
-			var1 = -120;
-		} else if (var0 == 8240) {
-			var1 = -119;
-		} else if (var0 == 352) {
-			var1 = -118;
-		} else if (var0 == 8249) {
-			var1 = -117;
-		} else if (var0 == 338) {
-			var1 = -116;
-		} else if (var0 == 381) {
-			var1 = -114;
-		} else if (var0 == 8216) {
-			var1 = -111;
-		} else if (var0 == 8217) {
-			var1 = -110;
-		} else if (var0 == 8220) {
-			var1 = -109;
-		} else if (var0 == 8221) {
-			var1 = -108;
-		} else if (var0 == 8226) {
-			var1 = -107;
-		} else if (var0 == 8211) {
-			var1 = -106;
-		} else if (var0 == 8212) {
-			var1 = -105;
-		} else if (var0 == 732) {
-			var1 = -104;
-		} else if (var0 == 8482) {
-			var1 = -103;
-		} else if (var0 == 353) {
-			var1 = -102;
-		} else if (var0 == 8250) {
-			var1 = -101;
-		} else if (var0 == 339) {
-			var1 = -100;
-		} else if (var0 == 382) {
-			var1 = -98;
-		} else if (var0 == 376) {
-			var1 = -97;
-		} else {
-			var1 = 63;
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(CLpe;B)I",
-		garbageValue = "82"
-	)
-	@Export("lowercaseChar")
-	static int lowercaseChar(char var0, Language var1) {
-		int var2 = var0 << 4;
-		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
-			var0 = Character.toLowerCase(var0);
-			var2 = (var0 << 4) + 1;
-		}
-
-		if (var0 == 241 && var1 == Language.Language_ES) {
-			var2 = 1762;
-		}
-
-		return var2;
+	public static final boolean method4307(char var0) {
+		return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)I",
-		garbageValue = "-13"
+		descriptor = "(IB)Lot;",
+		garbageValue = "0"
 	)
-	static int method4395(String var0) {
-		if (var0.equals("centre")) {
-			return 1;
-		} else {
-			return !var0.equals("bottom") && !var0.equals("right") ? 0 : 2;
+	public static GameBuild method4306(int var0) {
+		GameBuild[] var1 = FaceNormal.method4885();
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			GameBuild var3 = var1[var2];
+			if (var0 == var3.buildId) {
+				return var3;
+			}
 		}
+
+		return null;
 	}
 }
