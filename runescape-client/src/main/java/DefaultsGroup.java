@@ -4,41 +4,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rs")
+@ObfuscatedName("rc")
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lrs;"
+		descriptor = "Lrc;"
 	)
-	static final DefaultsGroup field4809;
-	@ObfuscatedName("aw")
+	static final DefaultsGroup field4841;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lrs;"
+		descriptor = "Lrc;"
 	)
-	static final DefaultsGroup field4808;
-	@ObfuscatedName("al")
+	static final DefaultsGroup field4840;
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1422233943
+		intValue = -1130001369
 	)
 	@Export("group")
 	final int group;
 
 	static {
-		field4809 = new DefaultsGroup(1);
-		field4808 = new DefaultsGroup(3);
+		field4841 = new DefaultsGroup(1);
+		field4840 = new DefaultsGroup(3);
 	}
 
 	DefaultsGroup(int var1) {
 		this.group = var1;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(Lof;I)V",
-		garbageValue = "-664569182"
-	)
-	public static void method8542(AbstractArchive var0) {
-		GrandExchangeOfferWorldComparator.EnumDefinition_archive = var0;
 	}
 }

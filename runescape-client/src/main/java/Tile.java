@@ -4,129 +4,132 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kw")
+@ObfuscatedName("jh")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("iw")
+	@Export("regionLandArchiveIds")
+	static int[] regionLandArchiveIds;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1250509033
+		intValue = -668451045
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -714916873
+		intValue = 867288095
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -961502115
+		intValue = 401221575
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1006789137
+		intValue = -1598634067
 	)
 	@Export("originalPlane")
 	int originalPlane;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Llk;"
+		descriptor = "Ljs;"
 	)
 	@Export("paint")
 	SceneTilePaint paint;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lkh;"
+		descriptor = "Ljg;"
 	)
 	@Export("model")
 	SceneTileModel model;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Llf;"
+		descriptor = "Lku;"
 	)
 	@Export("boundaryObject")
 	BoundaryObject boundaryObject;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Llc;"
+		descriptor = "Lkm;"
 	)
 	@Export("wallDecoration")
 	WallDecoration wallDecoration;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lkj;"
+		descriptor = "Ljf;"
 	)
 	@Export("floorDecoration")
 	FloorDecoration floorDecoration;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lka;"
+		descriptor = "Ljc;"
 	)
 	@Export("itemLayer")
 	ItemLayer itemLayer;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1884419007
+		intValue = -1426142267
 	)
 	@Export("gameObjectsCount")
 	int gameObjectsCount;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "[Lla;"
+		descriptor = "[Lkk;"
 	)
 	@Export("gameObjects")
 	GameObject[] gameObjects;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@Export("gameObjectEdgeMasks")
 	int[] gameObjectEdgeMasks;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1588374161
+		intValue = 1022218731
 	)
 	@Export("gameObjectsEdgeMask")
 	int gameObjectsEdgeMask;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1842825159
+		intValue = -906793913
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("an")
+	@ObfuscatedName("aj")
 	@Export("drawPrimary")
 	boolean drawPrimary;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("au")
 	@Export("drawSecondary")
 	boolean drawSecondary;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ay")
 	@Export("drawGameObjects")
 	boolean drawGameObjects;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 707406203
+		intValue = 1376316457
 	)
 	@Export("drawGameObjectEdges")
 	int drawGameObjectEdges;
-	@ObfuscatedName("at")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -556659883
+		intValue = -287320169
 	)
-	int field2811;
-	@ObfuscatedName("ay")
+	int field2602;
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -342018933
+		intValue = 37074917
 	)
-	int field2794;
-	@ObfuscatedName("ae")
+	int field2583;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -685978953
+		intValue = 2057043439
 	)
-	int field2813;
-	@ObfuscatedName("ac")
+	int field2604;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lkw;"
+		descriptor = "Ljh;"
 	)
 	@Export("linkedBelowTile")
 	Tile linkedBelowTile;
@@ -140,176 +143,91 @@ public final class Tile extends Node {
 		this.y = var3;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;FB)F",
-		garbageValue = "2"
+		descriptor = "(CLpv;I)C",
+		garbageValue = "994159739"
 	)
-	static float method5276(class132 var0, float var1) {
-		if (var0 != null && var0.method3091() != 0) {
-			if (var1 < (float)var0.field1559[0].field1501) {
-				return var0.field1557 == class130.field1548 ? var0.field1559[0].field1500 : class297.method5965(var0, var1, true);
-			} else if (var1 > (float)var0.field1559[var0.method3091() - 1].field1501) {
-				return var0.field1574 == class130.field1548 ? var0.field1559[var0.method3091() - 1].field1500 : class297.method5965(var0, var1, false);
-			} else if (var0.field1555) {
-				return var0.field1559[0].field1500;
-			} else {
-				class127 var2 = var0.method3090(var1);
-				boolean var3 = false;
-				boolean var4 = false;
-				if (var2 == null) {
-					return 0.0F;
-				} else {
-					float var5;
-					float var6;
-					float var7;
-					if ((double)var2.field1499 == 0.0D && 0.0D == (double)var2.field1506) {
-						var3 = true;
-					} else if (Float.MAX_VALUE == var2.field1499 && Float.MAX_VALUE == var2.field1506) {
-						var4 = true;
-					} else if (var2.field1505 != null) {
-						if (var0.field1571) {
-							var5 = (float)var2.field1501;
-							float var9 = var2.field1500;
-							var6 = var2.field1499 * 0.33333334F + var5;
-							float var10 = var2.field1506 * 0.33333334F + var9;
-							float var8 = (float)var2.field1505.field1501;
-							float var12 = var2.field1505.field1500;
-							var7 = var8 - var2.field1505.field1503 * 0.33333334F;
-							float var11 = var12 - var2.field1505.field1502 * 0.33333334F;
-							if (var0.field1565) {
-								float var15 = var10;
-								float var16 = var11;
-								if (var0 != null) {
-									float var17 = var8 - var5;
-									if ((double)var17 != 0.0D) {
-										float var18 = var6 - var5;
-										float var19 = var7 - var5;
-										float[] var20 = new float[]{var18 / var17, var19 / var17};
-										var0.field1560 = 0.33333334F == var20[0] && 0.6666667F == var20[1];
-										float var21 = var20[0];
-										float var22 = var20[1];
-										if ((double)var20[0] < 0.0D) {
-											var20[0] = 0.0F;
-										}
-
-										if ((double)var20[1] > 1.0D) {
-											var20[1] = 1.0F;
-										}
-
-										if ((double)var20[0] > 1.0D || var20[1] < -1.0F) {
-											var20[1] = 1.0F - var20[1];
-											if (var20[0] < 0.0F) {
-												var20[0] = 0.0F;
-											}
-
-											if (var20[1] < 0.0F) {
-												var20[1] = 0.0F;
-											}
-
-											if (var20[0] > 1.0F || var20[1] > 1.0F) {
-												float var23 = (float)((double)var20[1] * ((double)var20[1] - 2.0D) + (double)((var20[0] - 2.0F + var20[1]) * var20[0]) + 1.0D);
-												if (class128.field1512 + var23 > 0.0F) {
-													if (var20[0] + class128.field1512 < 1.3333334F) {
-														float var24 = var20[0] - 2.0F;
-														float var25 = var20[0] - 1.0F;
-														float var26 = (float)Math.sqrt((double)(var24 * var24 - var25 * var25 * 4.0F));
-														float var27 = (var26 + -var24) * 0.5F;
-														if (class128.field1512 + var20[1] > var27) {
-															var20[1] = var27 - class128.field1512;
-														} else {
-															var27 = (-var24 - var26) * 0.5F;
-															if (var20[1] < var27 + class128.field1512) {
-																var20[1] = class128.field1512 + var27;
-															}
-														}
-													} else {
-														var20[0] = 1.3333334F - class128.field1512;
-														var20[1] = 0.33333334F - class128.field1512;
-													}
-												}
-											}
-
-											var20[1] = 1.0F - var20[1];
-										}
-
-										if (var21 != var20[0]) {
-											float var13 = var17 * var20[0] + var5;
-											if (0.0D != (double)var21) {
-												var15 = var9 + var20[0] * (var10 - var9) / var21;
-											}
-										}
-
-										if (var22 != var20[1]) {
-											float var14 = var20[1] * var17 + var5;
-											if ((double)var22 != 1.0D) {
-												var16 = (float)((double)var12 - (double)(var12 - var11) * (1.0D - (double)var20[1]) / (1.0D - (double)var22));
-											}
-										}
-
-										var0.field1561 = var5;
-										var0.field1556 = var8;
-										HttpMethod.method67(0.0F, var20[0], var20[1], 1.0F, var0);
-										class93.method2443(var9, var15, var16, var12, var0);
-									}
-								}
-							} else {
-								LoginPacket.method3208(var0, var5, var6, var7, var8, var9, var10, var11, var12);
-							}
-
-							var0.field1571 = false;
-						}
-					} else {
-						var3 = true;
-					}
-
-					if (var3) {
-						return var2.field1500;
-					} else if (var4) {
-						return (float)var2.field1501 != var1 && var2.field1505 != null ? var2.field1505.field1500 : var2.field1500;
-					} else if (var0.field1565) {
-						if (var0 == null) {
-							var5 = 0.0F;
-						} else {
-							if (var0.field1561 == var1) {
-								var6 = 0.0F;
-							} else if (var1 == var0.field1556) {
-								var6 = 1.0F;
-							} else {
-								var6 = (var1 - var0.field1561) / (var0.field1556 - var0.field1561);
-							}
-
-							if (var0.field1560) {
-								var7 = var6;
-							} else {
-								class128.field1511[3] = var0.field1566;
-								class128.field1511[2] = var0.field1562;
-								class128.field1511[1] = var0.field1564;
-								class128.field1511[0] = var0.field1563 - var6;
-								class128.field1510[0] = 0.0F;
-								class128.field1510[1] = 0.0F;
-								class128.field1510[2] = 0.0F;
-								class128.field1510[3] = 0.0F;
-								class128.field1510[4] = 0.0F;
-								int var28 = class148.method3244(class128.field1511, 3, 0.0F, true, 1.0F, true, class128.field1510);
-								if (var28 == 1) {
-									var7 = class128.field1510[0];
-								} else {
-									var7 = 0.0F;
-								}
-							}
-
-							var5 = var0.field1567 + var7 * (var0.field1569 + var7 * (var0.field1573 + var0.field1570 * var7));
-						}
-
-						return var5;
-					} else {
-						return ArchiveLoader.method2325(var0, var1);
-					}
-				}
+	@Export("standardizeChar")
+	static char standardizeChar(char var0, Language var1) {
+		if (var0 >= 192 && var0 <= 255) {
+			if (var0 >= 192 && var0 <= 198) {
+				return 'A';
 			}
+
+			if (var0 == 199) {
+				return 'C';
+			}
+
+			if (var0 >= 200 && var0 <= 203) {
+				return 'E';
+			}
+
+			if (var0 >= 204 && var0 <= 207) {
+				return 'I';
+			}
+
+			if (var0 == 209 && var1 != Language.Language_ES) {
+				return 'N';
+			}
+
+			if (var0 >= 210 && var0 <= 214) {
+				return 'O';
+			}
+
+			if (var0 >= 217 && var0 <= 220) {
+				return 'U';
+			}
+
+			if (var0 == 221) {
+				return 'Y';
+			}
+
+			if (var0 == 223) {
+				return 's';
+			}
+
+			if (var0 >= 224 && var0 <= 230) {
+				return 'a';
+			}
+
+			if (var0 == 231) {
+				return 'c';
+			}
+
+			if (var0 >= 232 && var0 <= 235) {
+				return 'e';
+			}
+
+			if (var0 >= 236 && var0 <= 239) {
+				return 'i';
+			}
+
+			if (var0 == 241 && var1 != Language.Language_ES) {
+				return 'n';
+			}
+
+			if (var0 >= 242 && var0 <= 246) {
+				return 'o';
+			}
+
+			if (var0 >= 249 && var0 <= 252) {
+				return 'u';
+			}
+
+			if (var0 == 253 || var0 == 255) {
+				return 'y';
+			}
+		}
+
+		if (var0 == 338) {
+			return 'O';
+		} else if (var0 == 339) {
+			return 'o';
+		} else if (var0 == 376) {
+			return 'Y';
 		} else {
-			return 0.0F;
+			return var0;
 		}
 	}
 }

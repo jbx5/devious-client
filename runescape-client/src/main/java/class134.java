@@ -1,185 +1,188 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fj")
-public class class134 implements Enum {
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1595;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1607;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1596;
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1613;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1598;
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1599;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1600;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1601;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1602;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1603;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1608;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1605;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1606;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1594;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1609;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1604;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lfj;"
-	)
-	static final class134 field1610;
-	@ObfuscatedName("gf")
-	@Export("gameSessionServiceBaseUrl")
-	static String gameSessionServiceBaseUrl;
-	@ObfuscatedName("on")
-	@ObfuscatedSignature(
-		descriptor = "Lng;"
-	)
-	@Export("mousedOverWidgetIf1")
-	static Widget mousedOverWidgetIf1;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -1953087335
-	)
-	final int field1611;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -895136985
-	)
-	final int field1612;
+@ObfuscatedName("fc")
+public class class134 implements class125 {
+	@ObfuscatedName("gb")
+	@Export("sessionId")
+	static String sessionId;
+
 	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1661970145
-	)
-	final int field1615;
-
-	static {
-		field1595 = new class134(0, 0, (String)null, -1, -1);
-		field1607 = new class134(1, 1, (String)null, 0, 2);
-		field1596 = new class134(2, 2, (String)null, 1, 2);
-		field1613 = new class134(3, 3, (String)null, 2, 2);
-		field1598 = new class134(4, 4, (String)null, 3, 1);
-		field1599 = new class134(5, 5, (String)null, 4, 1);
-		field1600 = new class134(6, 6, (String)null, 5, 1);
-		field1601 = new class134(7, 7, (String)null, 6, 3);
-		field1602 = new class134(8, 8, (String)null, 7, 3);
-		field1603 = new class134(9, 9, (String)null, 8, 3);
-		field1608 = new class134(10, 10, (String)null, 0, 7);
-		field1605 = new class134(11, 11, (String)null, 1, 7);
-		field1606 = new class134(12, 12, (String)null, 2, 7);
-		field1594 = new class134(13, 13, (String)null, 3, 7);
-		field1609 = new class134(14, 14, (String)null, 4, 7);
-		field1604 = new class134(15, 15, (String)null, 5, 7);
-		field1610 = new class134(16, 16, (String)null, 0, 5);
-	}
-
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;II)V",
-		garbageValue = "-1"
+		descriptor = "(Ljava/lang/CharSequence;II[BII)I",
+		garbageValue = "-1827607701"
 	)
-	class134(int var1, int var2, String var3, int var4, int var5) {
-		this.field1611 = var1;
-		this.field1612 = var2;
-		this.field1615 = var4;
-	}
+	@Export("encodeStringCp1252")
+	public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
+		int var5 = var2 - var1;
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "691209479"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1612;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "87"
-	)
-	int method3124() {
-		return this.field1615;
-	}
-
-	@ObfuscatedName("he")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)V",
-		garbageValue = "104"
-	)
-	@Export("queueSoundEffect")
-	static void queueSoundEffect(int var0, int var1, int var2) {
-		if (class30.clientPreferences.getSoundEffectsVolume() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
-			Client.soundEffectIds[Client.soundEffectCount] = var0;
-			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var1;
-			Client.queuedSoundEffectDelays[Client.soundEffectCount] = var2;
-			Client.soundEffects[Client.soundEffectCount] = null;
-			Client.soundLocations[Client.soundEffectCount] = 0;
-			Client.field554[Client.soundEffectCount] = 0;
-			++Client.soundEffectCount;
+		for (int var6 = 0; var6 < var5; ++var6) {
+			char var7 = var0.charAt(var6 + var1);
+			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+				var3[var6 + var4] = (byte)var7;
+			} else if (var7 == 8364) {
+				var3[var6 + var4] = -128;
+			} else if (var7 == 8218) {
+				var3[var6 + var4] = -126;
+			} else if (var7 == 402) {
+				var3[var6 + var4] = -125;
+			} else if (var7 == 8222) {
+				var3[var6 + var4] = -124;
+			} else if (var7 == 8230) {
+				var3[var6 + var4] = -123;
+			} else if (var7 == 8224) {
+				var3[var6 + var4] = -122;
+			} else if (var7 == 8225) {
+				var3[var6 + var4] = -121;
+			} else if (var7 == 710) {
+				var3[var6 + var4] = -120;
+			} else if (var7 == 8240) {
+				var3[var6 + var4] = -119;
+			} else if (var7 == 352) {
+				var3[var6 + var4] = -118;
+			} else if (var7 == 8249) {
+				var3[var6 + var4] = -117;
+			} else if (var7 == 338) {
+				var3[var6 + var4] = -116;
+			} else if (var7 == 381) {
+				var3[var6 + var4] = -114;
+			} else if (var7 == 8216) {
+				var3[var6 + var4] = -111;
+			} else if (var7 == 8217) {
+				var3[var6 + var4] = -110;
+			} else if (var7 == 8220) {
+				var3[var6 + var4] = -109;
+			} else if (var7 == 8221) {
+				var3[var6 + var4] = -108;
+			} else if (var7 == 8226) {
+				var3[var6 + var4] = -107;
+			} else if (var7 == 8211) {
+				var3[var6 + var4] = -106;
+			} else if (var7 == 8212) {
+				var3[var6 + var4] = -105;
+			} else if (var7 == 732) {
+				var3[var6 + var4] = -104;
+			} else if (var7 == 8482) {
+				var3[var6 + var4] = -103;
+			} else if (var7 == 353) {
+				var3[var6 + var4] = -102;
+			} else if (var7 == 8250) {
+				var3[var6 + var4] = -101;
+			} else if (var7 == 339) {
+				var3[var6 + var4] = -100;
+			} else if (var7 == 382) {
+				var3[var6 + var4] = -98;
+			} else if (var7 == 376) {
+				var3[var6 + var4] = -97;
+			} else {
+				var3[var6 + var4] = 63;
+			}
 		}
 
+		return var5;
+	}
+
+	@ObfuscatedName("bz")
+	@ObfuscatedSignature(
+		descriptor = "(ILdn;ZB)I",
+		garbageValue = "32"
+	)
+	static int method3072(int var0, Script var1, boolean var2) {
+		int var3;
+		int var6;
+		int var9;
+		if (var0 == ScriptOpcodes.ENUM_STRING) {
+			HttpRequestTask.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 1];
+			EnumComposition var10 = class162.getEnum(var3);
+			if (var10.outputType != 's') {
+			}
+
+			for (var6 = 0; var6 < var10.outputCount; ++var6) {
+				if (var9 == var10.keys[var6]) {
+					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var10.strVals[var6];
+					var10 = null;
+					break;
+				}
+			}
+
+			if (var10 != null) {
+				Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var10.defaultStr;
+			}
+
+			return 1;
+		} else if (var0 != ScriptOpcodes.ENUM) {
+			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
+				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				EnumComposition var4 = class162.getEnum(var3);
+				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4.size();
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			HttpRequestTask.Interpreter_intStackSize -= 4;
+			var3 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 2];
+			var6 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 3];
+			EnumComposition var7 = class162.getEnum(var5);
+			if (var3 == var7.inputType && var9 == var7.outputType) {
+				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+					if (var6 == var7.keys[var8]) {
+						if (var9 == 115) {
+							Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var7.strVals[var8];
+						} else {
+							Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7.intVals[var8];
+						}
+
+						var7 = null;
+						break;
+					}
+				}
+
+				if (var7 != null) {
+					if (var9 == 115) {
+						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var7.defaultStr;
+					} else {
+						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7.defaultInt;
+					}
+				}
+
+				return 1;
+			} else {
+				if (var9 == 115) {
+					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = "null";
+				} else {
+					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
+			}
+		}
+	}
+
+	@ObfuscatedName("nd")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)V",
+		garbageValue = "54"
+	)
+	static final void method3073(int var0, int var1) {
+		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : HttpRequestTask.guestClanChannel;
+		if (var2 != null && var1 >= 0 && var1 < var2.method3394()) {
+			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
+			if (var3.rank == -1) {
+				String var4 = var3.username.getName();
+				PacketBufferNode var5 = FadeInTask.getPacketBufferNode(ClientPacket.field3250, Client.packetWriter.isaacCipher);
+				var5.packetBuffer.writeByte(3 + SequenceDefinition.stringCp1252NullTerminatedByteSize(var4));
+				var5.packetBuffer.writeByte(var0);
+				var5.packetBuffer.writeShort(var1);
+				var5.packetBuffer.writeStringCp1252NullTerminated(var4);
+				Client.packetWriter.addNode(var5);
+			}
+		}
 	}
 }

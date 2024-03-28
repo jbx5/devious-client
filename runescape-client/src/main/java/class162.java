@@ -3,86 +3,69 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ga")
-public class class162 {
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "[Lvg;"
-	)
-	@Export("worldSelectFlagSprites")
-	static IndexedSprite[] worldSelectFlagSprites;
-	@ObfuscatedName("aq")
+@ObfuscatedName("gj")
+public class class162 extends class144 {
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		longValue = -906448207537196297L
+		intValue = -2112148803
 	)
-	long field1786;
-	@ObfuscatedName("aw")
+	int field1790;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		longValue = 6665924676591181619L
+		intValue = 1316051959
 	)
-	public long field1785;
-	@ObfuscatedName("al")
+	int field1787;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lfh;"
 	)
-	IterableNodeDeque field1787;
+	final class147 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Luq;)V"
+		descriptor = "(Lfh;)V"
 	)
-	public class162(Buffer var1) {
-		this.field1785 = -1L;
-		this.field1787 = new IterableNodeDeque();
-		this.method3441(var1);
+	class162(class147 var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;I)V",
-		garbageValue = "-175058432"
+		descriptor = "(Lur;I)V",
+		garbageValue = "1253598633"
 	)
-	void method3441(Buffer var1) {
-		this.field1786 = var1.readLong();
-		this.field1785 = var1.readLong();
-
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-			Object var3;
-			if (var2 == 1) {
-				var3 = new class157(this);
-			} else if (var2 == 4) {
-				var3 = new class168(this);
-			} else if (var2 == 3) {
-				var3 = new class153(this);
-			} else if (var2 == 2) {
-				var3 = new class151(this);
-			} else {
-				if (var2 != 5) {
-					throw new RuntimeException("");
-				}
-
-				var3 = new class158(this);
-			}
-
-			((class161)var3).vmethod3504(var1);
-			this.field1787.addFirst((Node)var3);
-		}
-
+	void vmethod3420(Buffer var1) {
+		this.field1790 = var1.readInt();
+		this.field1787 = var1.readInt();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lgg;I)V",
-		garbageValue = "2036232616"
+		descriptor = "(Lfp;B)V",
+		garbageValue = "-123"
 	)
-	public void method3442(ClanChannel var1) {
-		if (var1.key == this.field1786 && var1.field1808 == this.field1785) {
-			for (class161 var2 = (class161)this.field1787.last(); var2 != null; var2 = (class161)this.field1787.previous()) {
-				var2.vmethod3509(var1);
-			}
+	void vmethod3419(ClanSettings var1) {
+		var1.method3268(this.field1790, this.field1787);
+	}
 
-			++var1.field1808;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lhe;",
+		garbageValue = "1186478165"
+	)
+	@Export("getEnum")
+	public static EnumComposition getEnum(int var0) {
+		EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
 		} else {
-			throw new RuntimeException("");
+			byte[] var2 = class17.EnumDefinition_archive.takeFile(8, var0);
+			var1 = new EnumComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 }

@@ -3,88 +3,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ic")
+@ObfuscatedName("ir")
 public class class230 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lic;"
+		descriptor = "Lir;"
 	)
-	static final class230 field2450;
-	@ObfuscatedName("aw")
+	static final class230 field2465;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lic;"
+		descriptor = "Lir;"
 	)
-	static final class230 field2446;
-	@ObfuscatedName("al")
+	static final class230 field2458;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lic;"
+		descriptor = "Lir;"
 	)
-	static final class230 field2447;
-	@ObfuscatedName("ai")
+	static final class230 field2460;
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lic;"
+		descriptor = "Lir;"
 	)
-	static final class230 field2448;
-	@ObfuscatedName("ar")
+	static final class230 field2461;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lic;"
+		descriptor = "Lir;"
 	)
-	static final class230 field2449;
+	static final class230 field2462;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class230 field2463;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	static final class230 field2459;
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lic;"
+		descriptor = "[Lir;"
 	)
-	static final class230 field2445;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lic;"
-	)
-	static final class230 field2451;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "[Lic;"
-	)
-	static final class230[] field2455;
-	@ObfuscatedName("az")
+	static final class230[] field2468;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1495969513
+		intValue = 1438247315
 	)
-	final int field2452;
-	@ObfuscatedName("ao")
+	final int field2464;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -2113963923
+		intValue = -1396607597
 	)
-	final int field2453;
-	@ObfuscatedName("au")
+	final int field2466;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1237540519
+		intValue = -1101552509
 	)
-	final int field2454;
+	final int field2467;
 
 	static {
-		field2450 = new class230(0, 8, 8);
-		field2446 = new class230(6, 16, 16);
-		field2447 = new class230(3, 32, 32);
-		field2448 = new class230(1, 48, 48);
-		field2449 = new class230(2, 64, 64);
-		field2445 = new class230(4, 96, 96);
-		field2451 = new class230(5, 128, 128);
-		field2455 = DirectByteArrayCopier.method6962();
-		Arrays.sort(field2455, new class235());
+		field2465 = new class230(1, 8, 8);
+		field2458 = new class230(0, 16, 16);
+		field2460 = new class230(2, 32, 32);
+		field2461 = new class230(5, 48, 48);
+		field2462 = new class230(3, 64, 64);
+		field2463 = new class230(4, 96, 96);
+		field2459 = new class230(6, 128, 128);
+		class230[] var0 = new class230[]{field2458, field2465, field2460, field2462, field2463, field2461, field2459};
+		field2468 = var0;
+		Arrays.sort(field2468, new class235());
 	}
 
 	class230(int var1, int var2, int var3) {
-		this.field2452 = var1;
-		this.field2453 = var2;
-		this.field2454 = var3;
+		this.field2464 = var1;
+		this.field2466 = var2;
+		this.field2467 = var3;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "140463448"
+		descriptor = "(B)I",
+		garbageValue = "-71"
 	)
-	int method4505() {
-		return this.field2454 * this.field2453;
+	int method4388() {
+		return this.field2466 * this.field2467;
 	}
 }

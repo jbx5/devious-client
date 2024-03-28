@@ -4,86 +4,81 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rt")
+@ObfuscatedName("rx")
 @Implements("FriendsChat")
 public class FriendsChat extends UserList {
-	@ObfuscatedName("uq")
-	@ObfuscatedGetter(
-		intValue = -1532293877
-	)
-	static int field4736;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Ltr;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lru;"
+		descriptor = "Lrd;"
 	)
 	@Export("localUser")
 	final Usernamed localUser;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@Export("owner")
 	public String owner;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("minKick")
 	public byte minKick;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1728806629
+		intValue = 326395263
 	)
 	@Export("rank")
 	public int rank;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -625990309
+		intValue = -450657103
 	)
-	int field4743;
+	int field4781;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lte;Lru;)V"
+		descriptor = "(Ltr;Lrd;)V"
 	)
 	public FriendsChat(LoginType var1, Usernamed var2) {
 		super(500);
 		this.name = null;
 		this.owner = null;
-		this.field4743 = 1;
+		this.field4781 = 1;
 		this.loginType = var1;
 		this.localUser = var2;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lra;",
-		garbageValue = "4"
+		descriptor = "(I)Lrr;",
+		garbageValue = "958125629"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new ClanMate();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IS)[Lra;",
-		garbageValue = "19510"
+		descriptor = "(IB)[Lrr;",
+		garbageValue = "8"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new ClanMate[var1];
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1677257374"
+		garbageValue = "-1466026233"
 	)
-	final void method8265(String var1) {
-		String var3 = class224.base37DecodeLong(class135.method3138(var1));
+	final void method8061(String var1) {
+		String var3 = ModelData0.base37DecodeLong(HttpMethod.method83(var1));
 		if (var3 == null) {
 			var3 = "";
 		}
@@ -94,10 +89,10 @@ public class FriendsChat extends UserList {
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "68"
+		garbageValue = "0"
 	)
-	final void method8266(String var1) {
-		String var3 = class224.base37DecodeLong(class135.method3138(var1));
+	final void method8062(String var1) {
+		String var3 = ModelData0.base37DecodeLong(HttpMethod.method83(var1));
 		if (var3 == null) {
 			var3 = "";
 		}
@@ -105,78 +100,52 @@ public class FriendsChat extends UserList {
 		this.owner = var3;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;II)V",
-		garbageValue = "-1885490435"
+		descriptor = "(Lur;II)V",
+		garbageValue = "-582457281"
 	)
-	public final void method8277(Buffer var1, int var2) {
-		this.method8266(var1.readStringCp1252NullTerminated());
+	public final void method8063(Buffer var1, int var2) {
+		this.method8062(var1.readStringCp1252NullTerminated());
 		long var3 = var1.readLong();
-		long var6 = var3;
-		String var5;
-		int var8;
-		if (var3 > 0L && var3 < 6582952005840035281L) {
-			if (var3 % 37L == 0L) {
-				var5 = null;
-			} else {
-				var8 = 0;
-
-				for (long var9 = var3; var9 != 0L; var9 /= 37L) {
-					++var8;
-				}
-
-				StringBuilder var11 = new StringBuilder(var8);
-
-				while (0L != var6) {
-					long var12 = var6;
-					var6 /= 37L;
-					var11.append(class407.base37Table[(int)(var12 - 37L * var6)]);
-				}
-
-				var5 = var11.reverse().toString();
-			}
-		} else {
-			var5 = null;
-		}
-
-		this.method8265(var5);
+		this.method8061(class204.method3849(var3));
 		this.minKick = var1.readByte();
-		short var14;
+		int var5;
+		short var6;
 		if (var2 == 1) {
-			var8 = var1.readUnsignedByte();
-			var14 = 255;
+			var5 = var1.readUnsignedByte();
+			var6 = 255;
 		} else {
 			if (var2 != 2) {
 				throw new IllegalArgumentException("Invalid friend chat full update version: " + var2);
 			}
 
-			var8 = var1.readShortSmartSub();
-			var14 = -1;
+			var5 = var1.readShortSmartSub();
+			var6 = -1;
 		}
 
-		if (var8 != var14) {
-			int var10 = var8;
+		if (var6 != var5) {
+			int var7 = var5;
 			this.clear();
 
-			for (int var15 = 0; var15 < var10; ++var15) {
-				ClanMate var16 = (ClanMate)this.addLastNoPreviousUsername(new Username(var1.readStringCp1252NullTerminated(), this.loginType));
-				int var13 = var1.readUnsignedShort();
-				var16.set(var13, ++this.field4743 - 1);
-				var16.rank = var1.readByte();
+			for (int var8 = 0; var8 < var7; ++var8) {
+				ClanMate var9 = (ClanMate)this.addLastNoPreviousUsername(new Username(var1.readStringCp1252NullTerminated(), this.loginType));
+				int var10 = var1.readUnsignedShort();
+				var9.set(var10, ++this.field4781 - 1);
+				var9.rank = var1.readByte();
 				var1.readStringCp1252NullTerminated();
-				this.isLocalPlayer(var16);
+				this.isLocalPlayer(var9);
 			}
 
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;B)V",
-		garbageValue = "11"
+		descriptor = "(Lur;S)V",
+		garbageValue = "-27733"
 	)
-	public final void method8268(Buffer var1) {
+	public final void method8064(Buffer var1) {
 		Username var2 = new Username(var1.readStringCp1252NullTerminated(), this.loginType);
 		int var3 = var1.readUnsignedShort();
 		byte var4 = var1.readByte();
@@ -206,17 +175,17 @@ public class FriendsChat extends UserList {
 				var6 = (ClanMate)this.addLastNoPreviousUsername(var2);
 			}
 
-			var6.set(var3, ++this.field4743 - 1);
+			var6.set(var3, ++this.field4781 - 1);
 			var6.rank = var4;
 			this.isLocalPlayer(var6);
 		}
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-260912037"
+		garbageValue = "-23993344"
 	)
 	@Export("clearFriends")
 	public final void clearFriends() {
@@ -226,10 +195,10 @@ public class FriendsChat extends UserList {
 
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-19"
+		descriptor = "(I)V",
+		garbageValue = "1982522955"
 	)
 	@Export("invalidateIgnoreds")
 	public final void invalidateIgnoreds() {
@@ -239,10 +208,10 @@ public class FriendsChat extends UserList {
 
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Lrj;B)V",
-		garbageValue = "-35"
+		descriptor = "(Lry;I)V",
+		garbageValue = "-244184152"
 	)
 	@Export("isLocalPlayer")
 	final void isLocalPlayer(ClanMate var1) {
@@ -250,5 +219,27 @@ public class FriendsChat extends UserList {
 			this.rank = var1.rank;
 		}
 
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lhr;",
+		garbageValue = "659347855"
+	)
+	@Export("getInvDefinition")
+	public static InvDefinition getInvDefinition(int var0) {
+		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = InvDefinition.InvDefinition_archive.takeFile(5, var0);
+			var1 = new InvDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

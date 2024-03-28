@@ -1,33 +1,59 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lv")
+@ObfuscatedName("ke")
 @Implements("ModelData0")
 public class ModelData0 {
-	@ObfuscatedName("pm")
-	@ObfuscatedSignature(
-		descriptor = "[Lng;"
+	@ObfuscatedName("jh")
+	@ObfuscatedGetter(
+		intValue = -237699939
 	)
-	static Widget[] field3105;
+	static int field2905;
+	@ObfuscatedName("oh")
+	@ObfuscatedSignature(
+		descriptor = "Lnt;"
+	)
+	@Export("mousedOverWidgetIf1")
+	static Widget mousedOverWidgetIf1;
 
 	ModelData0() {
 	}
 
-	@ObfuscatedName("om")
-	@ObfuscatedSignature(
-		descriptor = "(II)Luz;",
-		garbageValue = "1337525422"
-	)
-	@Export("getDbTable")
-	static DbTable getDbTable(int var0) {
-		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
-		if (var1 == null) {
-			var1 = new DbTable(class150.field1703, class133.method3115(var0), class227.method4423(var0));
-			Client.DBTableIndex_cache.put(var1, (long)var0);
-		}
+	@ObfuscatedName("af")
+	@Export("base37DecodeLong")
+	public static String base37DecodeLong(long var0) {
+		if (var0 > 0L && var0 < 6582952005840035281L) {
+			if (0L == var0 % 37L) {
+				return null;
+			} else {
+				int var2 = 0;
 
-		return var1;
+				for (long var3 = var0; 0L != var3; var3 /= 37L) {
+					++var2;
+				}
+
+				StringBuilder var5;
+				char var8;
+				for (var5 = new StringBuilder(var2); 0L != var0; var5.append(var8)) {
+					long var6 = var0;
+					var0 /= 37L;
+					var8 = class408.base37Table[(int)(var6 - 37L * var0)];
+					if (var8 == '_') {
+						int var9 = var5.length() - 1;
+						var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
+						var8 = 160;
+					}
+				}
+
+				var5.reverse();
+				var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
+				return var5.toString();
+			}
+		} else {
+			return null;
+		}
 	}
 }

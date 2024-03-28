@@ -1,30 +1,23 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rd")
+@ObfuscatedName("rh")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("kx")
-	@ObfuscatedGetter(
-		intValue = -490399289
-	)
-	@Export("oculusOrbFocalPointX")
-	static int oculusOrbFocalPointX;
-	@ObfuscatedName("aq")
-	boolean field4745;
-	@ObfuscatedName("aw")
-	boolean field4748;
+	@ObfuscatedName("az")
+	boolean field4783;
+	@ObfuscatedName("ah")
+	boolean field4782;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lrd;I)I",
-		garbageValue = "1533507026"
+		descriptor = "(Lrh;I)I",
+		garbageValue = "-1758673926"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -36,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4745 && !var1.field4745) {
+		} else if (this.field4783 && !var1.field4783) {
 			return -1;
-		} else if (!this.field4745 && var1.field4745) {
+		} else if (!this.field4783 && var1.field4783) {
 			return 1;
-		} else if (this.field4748 && !var1.field4748) {
+		} else if (this.field4782 && !var1.field4782) {
 			return -1;
-		} else if (!this.field4748 && var1.field4748) {
+		} else if (!this.field4782 && var1.field4782) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lra;B)I",
-		garbageValue = "-67"
+		descriptor = "(Lrr;B)I",
+		garbageValue = "25"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -63,12 +56,26 @@ public class Friend extends Buddy {
 		return this.compareToFriend((Friend)var1);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Ldh;",
-		garbageValue = "-54"
+		descriptor = "(I)[Lsk;",
+		garbageValue = "1208243676"
 	)
-	static class91[] method8300() {
-		return new class91[]{class91.field1132, class91.field1128, class91.field1127, class91.field1123, class91.field1124, class91.field1130};
+	static class473[] method8100() {
+		return new class473[]{class473.field4894, class473.field4895, class473.field4893, class473.field4896};
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "277588749"
+	)
+	static void method8099() {
+		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
+			Login.currentLoginField = 1;
+		} else {
+			Login.currentLoginField = 0;
+		}
+
 	}
 }

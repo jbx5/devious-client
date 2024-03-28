@@ -60,8 +60,20 @@ public class RegionOverlay extends Overlay
 		this.executorService = executorService;
 
 		setPosition(OverlayPosition.DYNAMIC);
-		setLayer(OverlayLayer.ABOVE_WIDGETS);
+		setLayer(OverlayLayer.ABOVE_SCENE);
 		setPriority(Overlay.PRIORITY_LOW);
+	}
+
+	public void swapLayer()
+	{
+		if (getLayer() == OverlayLayer.ABOVE_SCENE)
+		{
+			setLayer(OverlayLayer.ABOVE_WIDGETS);
+		}
+		else
+		{
+			setLayer(OverlayLayer.ABOVE_SCENE);
+		}
 	}
 
 	@Override
@@ -72,7 +84,6 @@ public class RegionOverlay extends Overlay
 		{
 			Rectangle mapBounds = worldMap.getBounds();
 			graphics.setClip(mapBounds);
-
 			if (config.transportsOverlay())
 			{
 				List<Transport> transports = TransportLoader.buildTransports();

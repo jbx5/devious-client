@@ -3,10 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("es")
+@ObfuscatedName("em")
 @Implements("UserComparator9")
 public class UserComparator9 extends AbstractUserComparator {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "Lum;"
+	)
+	@Export("rasterProvider")
+	public static AbstractRasterProvider rasterProvider;
+	@ObfuscatedName("em")
+	@ObfuscatedSignature(
+		descriptor = "Lov;"
+	)
+	@Export("archive2")
+	static Archive archive2;
+	@ObfuscatedName("az")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +26,10 @@ public class UserComparator9 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lry;Lry;B)I",
-		garbageValue = "-99"
+		descriptor = "(Lrw;Lrw;I)I",
+		garbageValue = "-501726256"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -30,35 +42,5 @@ public class UserComparator9 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lsr;",
-		garbageValue = "73"
-	)
-	public static class469 method2965() {
-		synchronized(class469.field4845) {
-			if (class469.field4842 == 0) {
-				return new class469();
-			} else {
-				class469.field4845[--class469.field4842].method8627();
-				return class469.field4845[class469.field4842];
-			}
-		}
-	}
-
-	@ObfuscatedName("na")
-	@ObfuscatedSignature(
-		descriptor = "(Lng;B)Ljava/lang/String;",
-		garbageValue = "-127"
-	)
-	@Export("Widget_getSpellActionName")
-	static String Widget_getSpellActionName(Widget var0) {
-		if (TextureProvider.Widget_unpackTargetMask(class429.getWidgetFlags(var0)) == 0) {
-			return null;
-		} else {
-			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
-		}
 	}
 }

@@ -3,10 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("vl")
+@ObfuscatedName("vd")
 @Implements("IntHashTable")
 public class IntHashTable {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@Export("array")
 	int[] array;
 
@@ -32,10 +32,10 @@ public class IntHashTable {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "112"
+		descriptor = "(II)I",
+		garbageValue = "1726110087"
 	)
 	@Export("get")
 	public int get(int var1) {
@@ -54,5 +54,75 @@ public class IntHashTable {
 
 			var3 = var3 + 1 & var2;
 		}
+	}
+
+	@ObfuscatedName("iq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "8"
+	)
+	@Export("doCheat")
+	static final void doCheat(String var0) {
+		if (var0.equalsIgnoreCase("toggleroof")) {
+			NPC.clientPreferences.updateRoofsHidden(!NPC.clientPreferences.isRoofsHidden());
+			if (NPC.clientPreferences.isRoofsHidden()) {
+				SecureRandomCallable.addGameMessage(99, "", "Roofs are now all hidden");
+			} else {
+				SecureRandomCallable.addGameMessage(99, "", "Roofs will only be removed selectively");
+			}
+		}
+
+		if (var0.startsWith("zbuf")) {
+			boolean var1 = KitDefinition.method3778(var0.substring(5).trim()) == 1;
+			UrlRequest.client.method510(var1);
+			Rasterizer3D.method4562(var1);
+		}
+
+		if (var0.equalsIgnoreCase("z")) {
+			Client.z = !Client.z;
+		}
+
+		if (var0.equalsIgnoreCase("displayfps")) {
+			NPC.clientPreferences.toggleDisplayFps();
+		}
+
+		if (var0.equalsIgnoreCase("renderself")) {
+			Client.renderSelf = !Client.renderSelf;
+		}
+
+		if (var0.equalsIgnoreCase("mouseovertext")) {
+			Client.showMouseOverText = !Client.showMouseOverText;
+		}
+
+		if (Client.staffModLevel >= 2) {
+			if (var0.equalsIgnoreCase("errortest")) {
+				throw new RuntimeException();
+			}
+
+			if (var0.equalsIgnoreCase("showcoord")) {
+				ModeWhere.worldMap.showCoord = !ModeWhere.worldMap.showCoord;
+			}
+
+			if (var0.equalsIgnoreCase("fpson")) {
+				NPC.clientPreferences.updateDisplayFps(true);
+			}
+
+			if (var0.equalsIgnoreCase("fpsoff")) {
+				NPC.clientPreferences.updateDisplayFps(false);
+			}
+
+			if (var0.equalsIgnoreCase("gc")) {
+				System.gc();
+			}
+
+			if (var0.equalsIgnoreCase("clientdrop")) {
+				class190.method3709();
+			}
+		}
+
+		PacketBufferNode var2 = FadeInTask.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(var0.length() + 1);
+		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+		Client.packetWriter.addNode(var2);
 	}
 }

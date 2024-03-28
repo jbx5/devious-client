@@ -10,27 +10,35 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("el")
+@ObfuscatedName("ea")
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
-	@ObfuscatedName("fl")
-	@ObfuscatedGetter(
-		intValue = 1230446191
+	@ObfuscatedName("ag")
+	public static short[][] field1454;
+	@ObfuscatedName("ex")
+	@ObfuscatedSignature(
+		descriptor = "Lov;"
 	)
-	static int field1442;
-	@ObfuscatedName("aq")
+	static Archive field1452;
+	@ObfuscatedName("fo")
+	@ObfuscatedGetter(
+		intValue = 1555622417
+	)
+	static int field1453;
+	@ObfuscatedName("az")
 	@Export("requestThread")
 	final Thread requestThread;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@Export("isClosed")
 	volatile boolean isClosed;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@Export("requests")
 	Queue requests;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 850496283
+		intValue = 1698107757
 	)
 	@Export("clientRevision")
 	int clientRevision;
@@ -43,21 +51,21 @@ public abstract class UrlRequester implements Runnable {
 		this.clientRevision = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Leb;I)V",
-		garbageValue = "407769226"
+		descriptor = "(Lel;I)V",
+		garbageValue = "1625450923"
 	)
 	@Export("openConnection")
 	abstract void openConnection(UrlRequest var1) throws IOException;
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;B)I",
-		garbageValue = "14"
+		descriptor = "(Ljava/net/URLConnection;I)I",
+		garbageValue = "1958691031"
 	)
-	int method2896(URLConnection var1) {
-		int var2 = UrlRequest.field1445;
+	int method2804(URLConnection var1) {
+		int var2 = UrlRequest.field1464;
 		if (var1 != null) {
 			try {
 				if (var1 instanceof HttpURLConnection) {
@@ -70,10 +78,10 @@ public abstract class UrlRequester implements Runnable {
 		return var2;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URLConnection;I)V",
-		garbageValue = "-541443087"
+		garbageValue = "-383350647"
 	)
 	@Export("setDefaultRequestProperties")
 	void setDefaultRequestProperties(URLConnection var1) {
@@ -84,12 +92,12 @@ public abstract class UrlRequester implements Runnable {
 		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.clientRevision);
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;Leb;B)V",
-		garbageValue = "14"
+		descriptor = "(Ljava/net/URLConnection;Lel;B)V",
+		garbageValue = "-45"
 	)
-	void method2897(URLConnection var1, UrlRequest var2) {
+	void method2806(URLConnection var1, UrlRequest var2) {
 		DataInputStream var3 = null;
 
 		try {
@@ -101,7 +109,7 @@ public abstract class UrlRequester implements Runnable {
 				var3.readFully(var4);
 			} else {
 				var4 = new byte[0];
-				byte[] var6 = class342.ByteArrayPool_getArray(5000);
+				byte[] var6 = class195.ByteArrayPool_getArray(5000);
 
 				for (int var7 = var3.read(var6); var7 > -1; var7 = var3.read(var6)) {
 					byte[] var8 = new byte[var4.length + var7];
@@ -110,14 +118,14 @@ public abstract class UrlRequester implements Runnable {
 					var4 = var8;
 				}
 
-				ClanChannelMember.ByteArrayPool_release(var6);
+				WorldMapIcon_0.ByteArrayPool_release(var6);
 			}
 
 			var2.response0 = var4;
 		} catch (IOException var14) {
 			var2.response0 = null;
 		} finally {
-			var2.field1448 = this.method2896(var1);
+			var2.field1465 = this.method2804(var1);
 		}
 
 		if (var3 != null) {
@@ -129,10 +137,10 @@ public abstract class UrlRequester implements Runnable {
 
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;B)Leb;",
-		garbageValue = "25"
+		descriptor = "(Ljava/net/URL;B)Lel;",
+		garbageValue = "73"
 	)
 	@Export("request")
 	public UrlRequest request(URL var1) {
@@ -144,10 +152,10 @@ public abstract class UrlRequester implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1990531541"
+		descriptor = "(B)V",
+		garbageValue = "9"
 	)
 	@Export("close")
 	public void close() {
@@ -181,9 +189,151 @@ public abstract class UrlRequester implements Runnable {
 
 				this.openConnection(var1);
 			} catch (Exception var7) {
-				class315.RunException_sendStackTrace((String)null, var7);
+				class180.RunException_sendStackTrace((String)null, var7);
 			}
 		}
 
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(ILdn;ZI)I",
+		garbageValue = "-481908362"
+	)
+	static int method2833(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var3 = class243.widgetDefinition.method6281(Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize]);
+		} else {
+			var3 = var2 ? class475.scriptDotWidget : class535.scriptActiveWidget;
+		}
+
+		WorldMapData_0.invalidateWidget(var3);
+		int var4;
+		int var5;
+		if (var0 != ScriptOpcodes.CC_SETOBJECT && var0 != ScriptOpcodes.CC_SETOBJECT_NONUM && var0 != ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM) {
+			if (var0 == ScriptOpcodes.CC_SETNPCHEAD) {
+				var3.modelType = 2;
+				var3.modelId = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETPLAYERHEAD_SELF) {
+				var3.modelType = 3;
+				var3.modelId = class133.localPlayer.appearance.getChatHeadId();
+				return 1;
+			} else if (var0 == 1207) {
+				boolean var7 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize] == 1;
+				ChatChannel.method2212(var3, class133.localPlayer.appearance, var7);
+				return 1;
+			} else if (var0 == 1208) {
+				var4 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				if (var3.field3801 == null) {
+					throw new RuntimeException("");
+				} else {
+					Actor.method2413(var3, var4);
+					return 1;
+				}
+			} else if (var0 == 1209) {
+				HttpRequestTask.Interpreter_intStackSize -= 2;
+				var4 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize];
+				var5 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 1];
+				if (var3.field3801 == null) {
+					throw new RuntimeException("");
+				} else {
+					HorizontalAlignment.method3854(var3, var4, var5);
+					return 1;
+				}
+			} else if (var0 == 1210) {
+				var4 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				if (var3.field3801 == null) {
+					throw new RuntimeException("");
+				} else {
+					PacketBufferNode.method5921(var3, class133.localPlayer.appearance.gender, var4);
+					return 1;
+				}
+			} else {
+				return 2;
+			}
+		} else {
+			HttpRequestTask.Interpreter_intStackSize -= 2;
+			var4 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize];
+			var5 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 1];
+			var3.itemId = var4;
+			var3.itemQuantity = var5;
+			ItemComposition var6 = HttpRequest.ItemDefinition_get(var4);
+			var3.modelAngleX = var6.xan2d;
+			var3.modelAngleY = var6.yan2d;
+			var3.modelAngleZ = var6.zan2d;
+			var3.modelOffsetX = var6.offsetX2d;
+			var3.modelOffsetY = var6.offsetY2d;
+			var3.modelZoom = var6.zoom2d;
+			if (var0 == ScriptOpcodes.CC_SETOBJECT_NONUM) {
+				var3.itemQuantityMode = 0;
+			} else if (var0 == ScriptOpcodes.CC_SETOBJECT_ALWAYS_NUM | 1 == var6.isStackable) {
+				var3.itemQuantityMode = 1;
+			} else {
+				var3.itemQuantityMode = 2;
+			}
+
+			if (var3.field3799 > 0) {
+				var3.modelZoom = var3.modelZoom * 32 / var3.field3799;
+			} else if (var3.rawWidth > 0) {
+				var3.modelZoom = var3.modelZoom * 32 / var3.rawWidth;
+			}
+
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "(ILdn;ZI)I",
+		garbageValue = "-747589187"
+	)
+	static int method2831(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.indexCheck.method4333(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.indexCheck.method4319(var3) ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	@ObfuscatedName("nq")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)Ldv;",
+		garbageValue = "44"
+	)
+	@Export("openInterface")
+	static final InterfaceParent openInterface(int var0, int var1, int var2) {
+		InterfaceParent var3 = new InterfaceParent();
+		var3.group = var1;
+		var3.type = var2;
+		Client.interfaceParents.put(var3, (long)var0);
+		ApproximateRouteStrategy.method1186(var1);
+		Widget var4 = class243.widgetDefinition.method6281(var0);
+		WorldMapData_0.invalidateWidget(var4);
+		if (Client.meslayerContinueWidget != null) {
+			WorldMapData_0.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		IsaacCipher.revalidateWidgetScroll(class243.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
+		KeyHandler.runWidgetOnLoadListener(var1);
+		if (Client.rootInterface != -1) {
+			Login.runIntfCloseListeners(Client.rootInterface, 1);
+		}
+
+		return var3;
 	}
 }

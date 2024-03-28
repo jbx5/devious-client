@@ -29,6 +29,6 @@ import lombok.Data;
 @Data
 public class XteaKey
 {
-	private int region;
-	private int keys[];
+	private int mapsquare;
+	private int key[];
 }

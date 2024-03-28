@@ -2,32 +2,28 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pu")
+@ObfuscatedName("pf")
 public class class415 {
-	@ObfuscatedName("aq")
-	public char field4583;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 24885643
+		intValue = -795795573
 	)
-	public int field4584;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -1703916661
-	)
-	public int field4585;
+	int field4604;
 
-	class415() {
-		this.field4584 = 0;
-		this.field4585 = 0;
+	@ObfuscatedSignature(
+		descriptor = "(IZ)V",
+		garbageValue = "1"
+	)
+	class415(int var1, boolean var2) {
+		this.field4604 = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ljava/lang/String;",
-		garbageValue = "-2"
+		descriptor = "(I)I",
+		garbageValue = "1088158396"
 	)
-	static String method7833(int var0) {
-		return "<img=" + var0 + ">";
+	public int method7647() {
+		return this.field4604;
 	}
 }

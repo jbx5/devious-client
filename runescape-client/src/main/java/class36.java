@@ -1,53 +1,50 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bv")
+@ObfuscatedName("bh")
 public class class36 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lpr;"
 	)
 	@Export("reflectionChecks")
 	public static IterableNodeDeque reflectionChecks;
-	@ObfuscatedName("cq")
-	@ObfuscatedGetter(
-		intValue = -1651175915
-	)
-	@Export("otpMedium")
-	static int otpMedium;
 
 	static {
 		reflectionChecks = new IterableNodeDeque();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ig")
 	@ObfuscatedSignature(
-		descriptor = "(Lof;I)V",
-		garbageValue = "-1197841897"
+		descriptor = "(I)I",
+		garbageValue = "2115669668"
 	)
-	public static void method660(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
+	@Export("getWindowedMode")
+	static int getWindowedMode() {
+		return Client.isResizable ? 2 : 1;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("jd")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;B)V",
-		garbageValue = "1"
+		descriptor = "(IIIII)V",
+		garbageValue = "-873724081"
 	)
-	static void method659(String var0, String var1, String var2) {
-		JagexCache.method4224(7);
-		SecureUrlRequester.setLoginResponseString(var0, var1, var2);
-	}
+	static final void method664(int var0, int var1, int var2, int var3) {
+		Client.field750 = 0;
+		int var4 = GrandExchangeOfferOwnWorldComparator.baseX * 64 + (class133.localPlayer.x >> 7);
+		int var5 = DevicePcmPlayerProvider.baseY * 64 + (class133.localPlayer.y >> 7);
+		if (var4 >= 3053 && var4 <= 3156 && var5 >= 3056 && var5 <= 3136) {
+			Client.field750 = 1;
+		}
 
-	@ObfuscatedName("oo")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-55"
-	)
-	@Export("reinitializeClient")
-	static void reinitializeClient() {
-		class30.clientPreferences.method2550(Client.field688);
+		if (var4 >= 3072 && var4 <= 3118 && var5 >= 9492 && var5 <= 9535) {
+			Client.field750 = 1;
+		}
+
+		if (Client.field750 == 1 && var4 >= 3139 && var4 <= 3199 && var5 >= 3008 && var5 <= 3062) {
+			Client.field750 = 0;
+		}
+
 	}
 }

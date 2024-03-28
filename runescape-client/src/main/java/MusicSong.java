@@ -3,100 +3,107 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("my")
+@ObfuscatedName("ml")
 @Implements("MusicSong")
 public class MusicSong {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("wf")
+	@ObfuscatedGetter(
+		intValue = -391930707
+	)
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Loc;"
 	)
 	@Export("musicTrackArchive")
 	public AbstractArchive musicTrackArchive;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1197960543
+		intValue = 2141247955
 	)
 	@Export("musicTrackGroupId")
 	public int musicTrackGroupId;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -547529051
+		intValue = -114208929
 	)
 	@Export("musicTrackFileId")
 	public int musicTrackFileId;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 2068932023
+		intValue = 1472570331
 	)
 	@Export("musicTrackVolume")
 	public int musicTrackVolume;
-	@ObfuscatedName("ar")
-	public float field3602;
-	@ObfuscatedName("as")
+	@ObfuscatedName("an")
+	public float field3608;
+	@ObfuscatedName("ao")
 	@Export("musicTrackBoolean")
 	public boolean musicTrackBoolean;
-	@ObfuscatedName("aa")
-	public boolean field3589;
-	@ObfuscatedName("az")
-	public boolean field3596;
-	@ObfuscatedName("ao")
-	public boolean field3597;
-	@ObfuscatedName("au")
-	boolean field3595;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ab")
+	public boolean field3610;
+	@ObfuscatedName("aw")
+	public boolean field3617;
+	@ObfuscatedName("ad")
+	public boolean field3604;
+	@ObfuscatedName("al")
+	boolean field3612;
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lmo;"
+		descriptor = "Lmx;"
 	)
 	@Export("midiPcmStream")
 	public MidiPcmStream midiPcmStream;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lbc;"
+		descriptor = "Lbq;"
 	)
-	public SoundCache field3600;
-	@ObfuscatedName("aj")
+	public SoundCache field3615;
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lmr;"
 	)
-	public MusicTrack field3593;
+	public MusicTrack field3616;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lof;Ljava/lang/String;Ljava/lang/String;IZ)V"
+		descriptor = "(Loc;Ljava/lang/String;Ljava/lang/String;IZ)V"
 	)
 	public MusicSong(AbstractArchive var1, String var2, String var3, int var4, boolean var5) {
 		this.musicTrackGroupId = -1;
 		this.musicTrackFileId = -1;
 		this.musicTrackVolume = 0;
-		this.field3602 = 0.0F;
+		this.field3608 = 0.0F;
 		this.musicTrackBoolean = false;
-		this.field3597 = false;
-		this.field3595 = false;
+		this.field3604 = false;
+		this.field3612 = false;
 		this.musicTrackGroupId = var1.getGroupId(var2);
 		this.musicTrackFileId = var1.getFileId(this.musicTrackGroupId, var3);
-		this.method6390(var1, this.musicTrackGroupId, this.musicTrackFileId, var4, var5);
+		this.method6239(var1, this.musicTrackGroupId, this.musicTrackFileId, var4, var5);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lof;IIIZ)V"
+		descriptor = "(Loc;IIIZ)V"
 	)
 	public MusicSong(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
 		this.musicTrackGroupId = -1;
 		this.musicTrackFileId = -1;
 		this.musicTrackVolume = 0;
-		this.field3602 = 0.0F;
+		this.field3608 = 0.0F;
 		this.musicTrackBoolean = false;
-		this.field3597 = false;
-		this.field3595 = false;
-		this.method6390(var1, var2, var3, var4, var5);
+		this.field3604 = false;
+		this.field3612 = false;
+		this.method6239(var1, var2, var3, var4, var5);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lof;IIIZI)V",
-		garbageValue = "1009228261"
+		descriptor = "(Loc;IIIZB)V",
+		garbageValue = "3"
 	)
-	void method6390(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
+	void method6239(AbstractArchive var1, int var2, int var3, int var4, boolean var5) {
 		this.musicTrackArchive = var1;
 		this.musicTrackGroupId = var2;
 		this.musicTrackFileId = var3;
@@ -104,17 +111,71 @@ public class MusicSong {
 		this.musicTrackBoolean = var5;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1608518026"
+		garbageValue = "2138717915"
 	)
-	public static int method6389(int var0) {
-		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
-		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
-		var0 = var0 + (var0 >>> 4) & 252645135;
-		var0 += var0 >>> 8;
-		var0 += var0 >>> 16;
-		return var0 & 255;
+	@Export("Messages_getLastChatID")
+	static int Messages_getLastChatID(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
+		}
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(ILdn;ZI)I",
+		garbageValue = "-1606535135"
+	)
+	static int method6238(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? class475.scriptDotWidget : class535.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = class342.Widget_unpackTargetMask(class33.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
+
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
+		}
+	}
+
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "(Lba;I)V",
+		garbageValue = "1334168126"
+	)
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
+		}
+
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
+		}
+
 	}
 }

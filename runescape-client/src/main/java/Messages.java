@@ -6,32 +6,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ec")
+@ObfuscatedName("et")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lta;"
+		descriptor = "Lto;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lph;"
+		descriptor = "Lpa;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1247673627
+		intValue = -165356607
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("ak")
-	public static short[] field1422;
 
 	static {
 		Messages_channels = new HashMap();
@@ -40,20 +38,39 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lcj;Lcj;IZIZB)I",
-		garbageValue = "1"
+		descriptor = "(I)[Lnu;",
+		garbageValue = "563384072"
 	)
-	static int method2863(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
-		int var6 = class433.compareWorlds(var0, var1, var2, var3);
-		if (var6 != 0) {
-			return var3 ? -var6 : var6;
-		} else if (var4 == -1) {
-			return 0;
+	static class363[] method2755() {
+		return new class363[]{class363.field3974, class363.field3970};
+	}
+
+	@ObfuscatedName("lp")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "-1807441736"
+	)
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (class243.widgetDefinition.loadInterface(var0)) {
+			MusicPatchNode.field3599 = null;
+			HttpResponse.drawInterface(class243.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			if (MusicPatchNode.field3599 != null) {
+				HttpResponse.drawInterface(MusicPatchNode.field3599, -1412584499, var1, var2, var3, var4, class276.field3040, HealthBarDefinition.field2044, var7);
+				MusicPatchNode.field3599 = null;
+			}
+
 		} else {
-			int var7 = class433.compareWorlds(var0, var1, var4, var5);
-			return var5 ? -var7 : var7;
+			if (var7 != -1) {
+				Client.validRootWidgets[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) {
+					Client.validRootWidgets[var8] = true;
+				}
+			}
+
 		}
 	}
 }
