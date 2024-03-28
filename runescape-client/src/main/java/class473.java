@@ -3,45 +3,52 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sc")
-public class class473 implements class478 {
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = -129874327
-	)
-	static int field4870;
-	@ObfuscatedName("mb")
-	@ObfuscatedGetter(
-		intValue = -1215891921
-	)
-	@Export("Client_plane")
-	static int Client_plane;
-	@ObfuscatedName("aq")
+@ObfuscatedName("sk")
+public enum class473 implements Enum {
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lty;"
+		descriptor = "Lsk;"
 	)
-	public final class508 field4873;
+	field4893(1, 1),
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lsk;"
+	)
+	field4894(0, 2),
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lsk;"
+	)
+	field4895(3, 3),
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lsk;"
+	)
+	field4896(2, 10);
 
-	@ObfuscatedSignature(
-		descriptor = "(Lti;)V"
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -1961207145
 	)
-	class473(class509 var1) {
-		this.field4873 = var1;
+	final int field4897;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -14554463
+	)
+	final int field4898;
+
+	class473(int var3, int var4) {
+		this.field4897 = var3;
+		this.field4898 = var4;
 	}
 
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lsq;)V"
+		descriptor = "(I)I",
+		garbageValue = "800883718"
 	)
-	public class473(class474 var1) {
-		this(new class509(var1));
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "2135189026"
-	)
-	public int method8720(int var1) {
-		return this.field4873.vmethod9189(var1);
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field4898;
 	}
 }

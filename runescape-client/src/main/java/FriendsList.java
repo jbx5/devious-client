@@ -4,61 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rh")
+@ObfuscatedName("ri")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-	@ObfuscatedName("al")
+	@ObfuscatedName("un")
+	@ObfuscatedGetter(
+		intValue = -1181442811
+	)
+	static int field4774;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Ltr;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1599785051
+		intValue = 1067177149
 	)
-	int field4734;
-	@ObfuscatedName("ar")
+	int field4770;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lpy;"
+		descriptor = "Lpp;"
 	)
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lte;)V"
+		descriptor = "(Ltr;)V"
 	)
 	public FriendsList(LoginType var1) {
 		super(400);
-		this.field4734 = 1;
+		this.field4770 = 1;
 		this.friendLoginUpdates = new LinkDeque();
 		this.loginType = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lra;",
-		garbageValue = "4"
+		descriptor = "(I)Lrr;",
+		garbageValue = "958125629"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Friend();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IS)[Lra;",
-		garbageValue = "19510"
+		descriptor = "(IB)[Lrr;",
+		garbageValue = "8"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lvn;ZB)Z",
-		garbageValue = "4"
+		descriptor = "(Lvx;ZB)Z",
+		garbageValue = "-47"
 	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
@@ -72,8 +77,8 @@ public class FriendsList extends UserList {
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;II)V",
-		garbageValue = "-1626902329"
+		descriptor = "(Lur;II)V",
+		garbageValue = "651672522"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
@@ -98,7 +103,7 @@ public class FriendsList extends UserList {
 					Friend var11 = (Friend)this.getByCurrentUsername(var4);
 					if (var3) {
 						Friend var12 = (Friend)this.getByCurrentUsername(var5);
-						if (var12 != null && var11 != var12) {
+						if (var12 != null && var12 != var11) {
 							if (var11 != null) {
 								this.remove(var12);
 							} else {
@@ -137,17 +142,17 @@ public class FriendsList extends UserList {
 					}
 
 					if (var6 != var11.world) {
-						var11.int2 = ++this.field4734 - 1;
+						var11.int2 = ++this.field4770 - 1;
 						if (var11.world == -1 && var6 == 0) {
-							var11.int2 = -(var11.int2 * -2090324989) * 1270931115;
+							var11.int2 = -(var11.int2 * -895635327) * 2012385153;
 						}
 
 						var11.world = var6;
 					}
 
 					var11.rank = var7;
-					var11.field4745 = var9;
-					var11.field4748 = var10;
+					var11.field4783 = var9;
+					var11.field4782 = var10;
 					continue;
 				}
 

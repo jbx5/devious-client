@@ -3,17 +3,17 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("be")
+@ObfuscatedName("bt")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "[Lbf;"
+		descriptor = "[Lby;"
 	)
 	@Export("players")
-	volatile PcmPlayer[] players;
+	public volatile PcmPlayer[] players;
 
-	SoundSystem() {
+	public SoundSystem() {
 		this.players = new PcmPlayer[2];
 	}
 
@@ -26,94 +26,85 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			class315.RunException_sendStackTrace((String)null, var4);
+			class180.RunException_sendStackTrace((String)null, var4);
 		}
 
 	}
 
-	@ObfuscatedName("as")
-	public static int method809(long var0) {
-		return (int)(var0 >>> 7 & 127L);
-	}
-
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IZIB)V",
-		garbageValue = "115"
+		descriptor = "(III)I",
+		garbageValue = "-1240103721"
 	)
-	public static final void method805(int var0, boolean var1, int var2) {
-		if (var0 >= 8000 && var0 <= 48000) {
-			PcmPlayer.field295 = var0;
-			PcmPlayer.PcmPlayer_stereo = var1;
-			class362.field3960 = var2;
+	static final int method817(int var0, int var1) {
+		if (var0 == -2) {
+			return 12345678;
+		} else if (var0 == -1) {
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return var1;
 		} else {
-			throw new IllegalArgumentException();
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
 		}
 	}
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("mm")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1560357606"
+		descriptor = "(Lnt;B)Z",
+		garbageValue = "-5"
 	)
-	static int method808() {
-		return Login.loginIndex;
-	}
-
-	@ObfuscatedName("lj")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "2146340843"
-	)
-	static String method810(int var0) {
-		if (var0 < 0) {
-			return "";
+	@Export("runCs1")
+	static final boolean runCs1(Widget var0) {
+		if (var0.cs1Comparisons == null) {
+			return false;
 		} else {
-			return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
-		}
-	}
+			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
+				int var2 = class147.method3173(var0, var1);
+				int var3 = var0.cs1ComparisonValues[var1];
+				if (var0.cs1Comparisons[var1] == 2) {
+					if (var2 >= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 3) {
+					if (var2 <= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 4) {
+					if (var2 == var3) {
+						return false;
+					}
+				} else if (var3 != var2) {
+					return false;
+				}
+			}
 
-	@ObfuscatedName("nj")
-	@ObfuscatedSignature(
-		descriptor = "(Lng;I)Z",
-		garbageValue = "-2081066520"
-	)
-	static final boolean method807(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 205) {
-			Client.logoutTimer = 250;
 			return true;
+		}
+	}
+
+	@ObfuscatedName("nu")
+	@ObfuscatedSignature(
+		descriptor = "(Lnt;IB)Ljava/lang/String;",
+		garbageValue = "-66"
+	)
+	static String method819(Widget var0, int var1) {
+		int var3 = class33.getWidgetFlags(var0);
+		boolean var2 = (var3 >> var1 + 1 & 1) != 0;
+		if (!var2 && var0.onOp == null) {
+			return null;
 		} else {
-			int var2;
-			int var3;
-			if (var1 >= 300 && var1 <= 313) {
-				var2 = (var1 - 300) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.changeAppearance(var2, var3 == 1);
-			}
-
-			if (var1 >= 314 && var1 <= 323) {
-				var2 = (var1 - 314) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.method6471(var2, var3 == 1);
-			}
-
-			if (var1 == 324) {
-				Client.playerAppearance.method6493(0);
-			}
-
-			if (var1 == 325) {
-				Client.playerAppearance.method6493(1);
-			}
-
-			if (var1 == 326) {
-				PacketBufferNode var4 = ViewportMouse.getPacketBufferNode(ClientPacket.field3201, Client.packetWriter.isaacCipher);
-				Client.playerAppearance.write(var4.packetBuffer);
-				Client.packetWriter.addNode(var4);
-				return true;
-			} else {
-				return false;
-			}
+			return var0.actions != null && var0.actions.length > var1 && var0.actions[var1] != null && var0.actions[var1].trim().length() != 0 ? var0.actions[var1] : null;
 		}
 	}
 }

@@ -4,11 +4,12 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ab")
+@ObfuscatedName("ac")
 @Implements("Canvas")
 public final class Canvas extends java.awt.Canvas {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@Export("component")
 	Component component;
 
@@ -24,172 +25,199 @@ public final class Canvas extends java.awt.Canvas {
 		this.component.paint(var1);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "67"
+		descriptor = "(B)V",
+		garbageValue = "-28"
 	)
-	static int method297() {
-		return ++Messages.Messages_count - 1;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(ILdc;ZI)I",
-		garbageValue = "1372269351"
-	)
-	static int method296(int var0, Script var1, boolean var2) {
-		if (var0 < 1000) {
-			return IndexCheck.method4468(var0, var1, var2);
-		} else if (var0 < 1100) {
-			return class357.method6983(var0, var1, var2);
-		} else if (var0 < 1200) {
-			return class103.method2749(var0, var1, var2);
-		} else if (var0 < 1300) {
-			return class193.method3783(var0, var1, var2);
-		} else if (var0 < 1400) {
-			return class175.method3549(var0, var1, var2);
-		} else if (var0 < 1500) {
-			return SecureRandomSSLSocket.method145(var0, var1, var2);
-		} else if (var0 < 1600) {
-			return class155.method3310(var0, var1, var2);
-		} else if (var0 < 1700) {
-			return VarbitComposition.method3832(var0, var1, var2);
-		} else if (var0 < 1800) {
-			return class136.method3143(var0, var1, var2);
-		} else if (var0 < 1900) {
-			return HttpMethod.method83(var0, var1, var2);
-		} else if (var0 < 2000) {
-			return UserComparator4.method2936(var0, var1, var2);
-		} else if (var0 < 2100) {
-			return class357.method6983(var0, var1, var2);
-		} else if (var0 < 2200) {
-			return class103.method2749(var0, var1, var2);
-		} else if (var0 < 2300) {
-			return class193.method3783(var0, var1, var2);
-		} else if (var0 < 2400) {
-			return class175.method3549(var0, var1, var2);
-		} else if (var0 < 2500) {
-			return SecureRandomSSLSocket.method145(var0, var1, var2);
-		} else if (var0 < 2600) {
-			return Occluder.method5636(var0, var1, var2);
-		} else if (var0 < 2700) {
-			return ArchiveDiskAction.method7035(var0, var1, var2);
-		} else if (var0 < 2800) {
-			return class11.method106(var0, var1, var2);
-		} else if (var0 < 2900) {
-			return HttpMethod.method82(var0, var1, var2);
-		} else if (var0 < 3000) {
-			return UserComparator4.method2936(var0, var1, var2);
-		} else if (var0 < 3200) {
-			return Archive.method7100(var0, var1, var2);
-		} else if (var0 < 3300) {
-			return FloorUnderlayDefinition.method3816(var0, var1, var2);
-		} else if (var0 < 3400) {
-			return Player.method2437(var0, var1, var2);
-		} else if (var0 < 3500) {
-			return class257.method5057(var0, var1, var2);
-		} else if (var0 < 3600) {
-			return class366.method7007(var0, var1, var2);
-		} else if (var0 < 3700) {
-			return class209.method4124(var0, var1, var2);
-		} else if (var0 < 3800) {
-			return CollisionMap.method4470(var0, var1, var2);
-		} else if (var0 < 3900) {
-			return class371.method7019(var0, var1, var2);
-		} else if (var0 < 4000) {
-			return HttpRequestTask.method255(var0, var1, var2);
-		} else if (var0 < 4100) {
-			return WorldMapSprite.method5040(var0, var1, var2);
-		} else if (var0 < 4200) {
-			return class161.method3440(var0, var1, var2);
-		} else if (var0 < 4300) {
-			return class218.method4259(var0, var1, var2);
-		} else if (var0 < 5100) {
-			return StructComposition.method3875(var0, var1, var2);
-		} else if (var0 < 5400) {
-			return TextureProvider.method5671(var0, var1, var2);
-		} else if (var0 < 5600) {
-			return LoginState.method1207(var0, var1, var2);
-		} else if (var0 < 5700) {
-			return HttpRequest.method98(var0, var1, var2);
-		} else if (var0 < 6300) {
-			return class93.method2439(var0, var1, var2);
-		} else if (var0 < 6600) {
-			return class182.method3658(var0, var1, var2);
-		} else if (var0 < 6700) {
-			return WorldMapData_0.method4613(var0, var1, var2);
-		} else if (var0 < 6800) {
-			return Login.method2199(var0, var1, var2);
-		} else if (var0 < 6900) {
-			return AABB.method5619(var0, var1, var2);
-		} else if (var0 < 7000) {
-			return BuddyRankComparator.method2976(var0, var1, var2);
-		} else if (var0 < 7100) {
-			return WorldMapID.method5043(var0, var1, var2);
-		} else if (var0 < 7200) {
-			return class4.method19(var0, var1, var2);
-		} else if (var0 < 7300) {
-			return FloorOverlayDefinition.method4052(var0, var1, var2);
-		} else if (var0 < 7500) {
-			return class11.method100(var0, var1, var2);
-		} else if (var0 < 7600) {
-			return PcmPlayer.method790(var0, var1, var2);
-		} else if (var0 < 7700) {
-			return Client.method1531(var0, var1, var2);
-		} else {
-			return var0 < 8100 ? CollisionMap.method4501(var0, var1, var2) : 2;
-		}
-	}
-
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1833781181"
-	)
-	static final int method295(int var0, int var1) {
-		if (var0 == -1) {
-			return 12345678;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
+	static void method294() {
+		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var0.stream1 != null) {
+				HealthBarUpdate.pcmStreamMixer.removeSubStream(var0.stream1);
+				var0.stream1 = null;
 			}
 
-			return (var0 & 65408) + var1;
+			if (var0.stream2 != null) {
+				HealthBarUpdate.pcmStreamMixer.removeSubStream(var0.stream2);
+				var0.stream2 = null;
+			}
+		}
+
+		ObjectSound.objectSounds.clear();
+	}
+
+	@ObfuscatedName("bd")
+	@ObfuscatedSignature(
+		descriptor = "(ILdn;ZB)I",
+		garbageValue = "82"
+	)
+	static int method297(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERTYPE) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].type();
+			return 1;
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERITEM) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].id;
+			return 1;
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERPRICE) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].unitPrice;
+			return 1;
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOUNT) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].totalQuantity;
+			return 1;
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDCOUNT) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentQuantity;
+			return 1;
+		} else if (var0 == ScriptOpcodes.STOCKMARKET_GETOFFERCOMPLETEDGOLD) {
+			var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentPrice;
+			return 1;
+		} else {
+			int var13;
+			if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFEREMPTY) {
+				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var13 == 0 ? 1 : 0;
+				return 1;
+			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERSTABLE) {
+				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var13 == 2 ? 1 : 0;
+				return 1;
+			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERFINISHED) {
+				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var13 == 5 ? 1 : 0;
+				return 1;
+			} else if (var0 == ScriptOpcodes.STOCKMARKET_ISOFFERADDING) {
+				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var13 == 1 ? 1 : 0;
+				return 1;
+			} else {
+				boolean var12;
+				if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_NAME) {
+					var12 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize] == 1;
+					if (class233.grandExchangeEvents != null) {
+						class233.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_nameComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_PRICE) {
+					var12 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize] == 1;
+					if (class233.grandExchangeEvents != null) {
+						class233.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_priceComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTFILTERBY_WORLD) {
+					HttpRequestTask.Interpreter_intStackSize -= 2;
+					var12 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize] == 1;
+					boolean var11 = Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize + 1] == 1;
+					if (class233.grandExchangeEvents != null) {
+						Client.GrandExchangeEvents_worldComparator.filterWorlds = var11;
+						class233.grandExchangeEvents.sort(Client.GrandExchangeEvents_worldComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_AGE) {
+					var12 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize] == 1;
+					if (class233.grandExchangeEvents != null) {
+						class233.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_ageComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_SORTBY_COUNT) {
+					var12 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize] == 1;
+					if (class233.grandExchangeEvents != null) {
+						class233.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_quantityComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == ScriptOpcodes.TRADINGPOST_GETTOTALOFFERS) {
+					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = class233.grandExchangeEvents == null ? 0 : class233.grandExchangeEvents.events.size();
+					return 1;
+				} else {
+					GrandExchangeEvent var4;
+					if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERWORLD) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4.world;
+						return 1;
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERNAME) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var4.getOfferName();
+						return 1;
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPREVIOUSNAME) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var4.getPreviousOfferName();
+						return 1;
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERAGE) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						long var5 = VerticalAlignment.method3924() - class170.field1839 - var4.age;
+						int var7 = (int)(var5 / 3600000L);
+						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L);
+						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L);
+						String var10 = var7 + ":" + var8 / 10 + var8 % 10 + ":" + var9 / 10 + var9 % 10;
+						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var10;
+						return 1;
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERCOUNT) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.totalQuantity;
+						return 1;
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERPRICE) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.unitPrice;
+						return 1;
+					} else if (var0 == ScriptOpcodes.TRADINGPOST_GETOFFERITEM) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)class233.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.id;
+						return 1;
+					} else if (var0 == 3939) {
+						var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
+						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = HttpRequest.ItemDefinition_get(var3).isTradable ? 1 : 0;
+						return 1;
+					} else {
+						return 2;
+					}
+				}
+			}
 		}
 	}
 
-	@ObfuscatedName("hk")
+	@ObfuscatedName("jo")
 	@ObfuscatedSignature(
-		descriptor = "(IS)V",
-		garbageValue = "15632"
+		descriptor = "(IIIB)I",
+		garbageValue = "9"
 	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		class485.logOut();
-		switch(var0) {
-		case 1:
-			JagexCache.method4224(24);
-			SecureUrlRequester.setLoginResponseString("", "You were disconnected from the server.", "");
-			break;
-		case 2:
-			class75.SpriteBuffer_reset();
-		}
+	@Export("getTileHeight")
+	static final int getTileHeight(int var0, int var1, int var2) {
+		int var3 = var0 >> 7;
+		int var4 = var1 >> 7;
+		if (var3 >= 0 && var4 >= 0 && var3 <= 103 && var4 <= 103) {
+			int var5 = var2;
+			if (var2 < 3 && (Tiles.Tiles_renderFlags[1][var3][var4] & 2) == 2) {
+				var5 = var2 + 1;
+			}
 
-	}
-
-	@ObfuscatedName("mo")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "595411787"
-	)
-	@Export("runIntfCloseListeners")
-	static final void runIntfCloseListeners(int var0, int var1) {
-		if (ArchiveLoader.widgetDefinition.loadInterface(var0)) {
-			class128.runComponentCloseListeners(ArchiveLoader.widgetDefinition.Widget_interfaceComponents[var0], var1);
+			int var6 = var0 & 127;
+			int var7 = var1 & 127;
+			int var8 = (128 - var6) * Tiles.Tiles_heights[var5][var3][var4] + Tiles.Tiles_heights[var5][var3 + 1][var4] * var6 >> 7;
+			int var9 = var6 * Tiles.Tiles_heights[var5][var3 + 1][var4 + 1] + Tiles.Tiles_heights[var5][var3][var4 + 1] * (128 - var6) >> 7;
+			return var7 * var9 + var8 * (128 - var7) >> 7;
+		} else {
+			return 0;
 		}
 	}
 }

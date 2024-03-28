@@ -4,175 +4,159 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mw")
+@ObfuscatedName("me")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -2014932929
-	)
-	int field3576;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("pz")
 	@ObfuscatedSignature(
-		descriptor = "Lmq;"
+		descriptor = "[Lnt;"
+	)
+	static Widget[] field3599;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -852660057
+	)
+	int field3590;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lmn;"
 	)
 	@Export("table")
 	MusicPatch table;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "Lbr;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lmh;"
+		descriptor = "Lmb;"
 	)
-	MusicPatchNode2 field3567;
-	@ObfuscatedName("ar")
+	MusicPatchNode2 field3579;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 864391351
-	)
-	int field3572;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 1791347925
-	)
-	int field3569;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -1287444843
-	)
-	int field3570;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = 781872781
+		intValue = 87480399
 	)
 	int field3580;
 	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -215055731
+		intValue = 1451998411
 	)
 	int field3581;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1171568241
+		intValue = -457870065
 	)
-	int field3573;
-	@ObfuscatedName("ak")
+	int field3576;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1801689695
+		intValue = 2009498693
 	)
-	int field3574;
-	@ObfuscatedName("ah")
+	int field3589;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 1949253632
+		intValue = -1044006111
 	)
-	int field3571;
-	@ObfuscatedName("aj")
+	int field3583;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 981667397
+		intValue = 1170562565
 	)
-	int field3582;
-	@ObfuscatedName("af")
+	int field3596;
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1841880265
-	)
-	int field3577;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -906107239
-	)
-	int field3578;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = -2050032387
-	)
-	int field3579;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 1276025151
+		intValue = -952204807
 	)
 	int field3586;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1874591773
+		intValue = -301285376
 	)
-	int field3565;
-	@ObfuscatedName("ad")
+	int field3587;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = -1223812093
+	)
+	int field3588;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = 491069611
+	)
+	int field3593;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = 1203991787
+	)
+	int field3582;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 867871950
+	)
+	int field3584;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 904372071
+	)
+	int field3592;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 2089745007
+	)
+	int field3595;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lbs;"
+		descriptor = "Lbm;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("at")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -289353881
+		intValue = 1048714269
 	)
-	int field3583;
-	@ObfuscatedName("ae")
+	int field3577;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1232026487
+		intValue = -35637821
 	)
-	int field3584;
+	int field3597;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
+		descriptor = "(I)V",
+		garbageValue = "344891528"
 	)
-	void method6378() {
+	void method6225() {
 		this.table = null;
 		this.rawSound = null;
-		this.field3567 = null;
+		this.field3579 = null;
 		this.stream = null;
 	}
 
-	@ObfuscatedName("lh")
+	@ObfuscatedName("ka")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIB)V",
-		garbageValue = "1"
+		descriptor = "(IIIIII)V",
+		garbageValue = "1674082536"
 	)
-	static final void method6381(int var0, int var1, int var2, int var3, int var4, int var5) {
-		int var6 = var2 - var0;
-		int var7 = var3 - var1;
-		int var8 = var6 >= 0 ? var6 : -var6;
-		int var9 = var7 >= 0 ? var7 : -var7;
-		int var10 = var8;
-		if (var8 < var9) {
-			var10 = var9;
-		}
-
-		if (var10 != 0) {
-			int var11 = (var6 << 16) / var10;
-			int var12 = (var7 << 16) / var10;
-			if (var12 <= var11) {
-				var11 = -var11;
-			} else {
-				var12 = -var12;
+	static void method6224(int var0, int var1, int var2, int var3, int var4) {
+		NodeDeque var5 = Client.groundItems[var0][var1][var2];
+		if (var5 != null) {
+			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
+				if ((var3 & 32767) == var6.id && var4 == var6.quantity) {
+					var6.remove();
+					break;
+				}
 			}
 
-			int var13 = var5 * var12 >> 17;
-			int var14 = var5 * var12 + 1 >> 17;
-			int var15 = var5 * var11 >> 17;
-			int var16 = var5 * var11 + 1 >> 17;
-			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
-			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
-			int var17 = var0 + var13;
-			int var18 = var0 - var14;
-			int var19 = var0 + var6 - var14;
-			int var20 = var0 + var6 + var13;
-			int var21 = var15 + var1;
-			int var22 = var1 - var16;
-			int var23 = var7 + var1 - var16;
-			int var24 = var15 + var7 + var1;
-			Rasterizer3D.method5296(var17, var18, var19);
-			Rasterizer3D.rasterFlat(var21, var22, var23, var17, var18, var19, 0.0F, 0.0F, 0.0F, var4);
-			Rasterizer3D.method5296(var17, var19, var20);
-			Rasterizer3D.rasterFlat(var21, var23, var24, var17, var19, var20, 0.0F, 0.0F, 0.0F, var4);
+			if (var5.last() == null) {
+				Client.groundItems[var0][var1][var2] = null;
+			}
+
+			class477.updateItemPile(var0, var1, var2);
 		}
+
 	}
 }

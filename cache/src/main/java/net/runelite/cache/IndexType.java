@@ -49,12 +49,12 @@ public enum IndexType
 	DBTABLEINDEX(21);
 
 	private int id;
-	
+
 	IndexType(int id)
 	{
 		this.id = id;
 	}
-	
+
 	public int getNumber()
 	{
 		return id;

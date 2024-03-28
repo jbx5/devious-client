@@ -7,22 +7,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ov")
+@ObfuscatedName("ou")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@Export("events")
 	public final List events;
 
@@ -35,7 +35,7 @@ public class GrandExchangeEvents {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Luq;Z)V",
+		descriptor = "(Lur;Z)V",
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -57,10 +57,10 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;ZI)V",
-		garbageValue = "-1547639986"
+		garbageValue = "170347143"
 	)
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
@@ -68,6 +68,24 @@ public class GrandExchangeEvents {
 			Collections.sort(this.events, var1);
 		} else {
 			Collections.sort(this.events, Collections.reverseOrder(var1));
+		}
+
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(Loc;II)V",
+		garbageValue = "-150389200"
+	)
+	static void method7082(AbstractArchive var0, int var1) {
+		if ((var1 & class530.field5201.rsOrdinal()) != 0) {
+			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
+		} else if ((var1 & class530.field5192.rsOrdinal()) != 0) {
+			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
+		} else if ((var1 & class530.field5197.rsOrdinal()) != 0) {
+			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo_speedrunning", "");
+		} else {
+			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
 		}
 
 	}

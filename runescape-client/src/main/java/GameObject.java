@@ -4,97 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("la")
+@ObfuscatedName("kk")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("wf")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -344460445
-	)
-	@Export("foundItemIndex")
-	static int foundItemIndex;
-	@ObfuscatedName("dk")
-	static boolean field3131;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -1797510003
+		intValue = -426885431
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 2122061283
+		intValue = 949053627
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1307458835
+		intValue = -579758287
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 990255065
+		intValue = -75311981
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	@Export("renderable")
-	public Renderable renderable;
-	@ObfuscatedName("as")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 733062771
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -2090331591
+		intValue = -1838078397
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Ljd;"
+	)
+	@Export("renderable")
+	public Renderable renderable;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1972009079
+		intValue = 1231846989
+	)
+	@Export("orientation")
+	int orientation;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = 1221231993
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -1144008403
+		intValue = 1563803153
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1776545777
+		intValue = -1819773647
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 779132871
+		intValue = -474154295
 	)
-	int field3132;
-	@ObfuscatedName("ah")
+	int field2948;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -908903719
+		intValue = -419984023
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		longValue = -1053012787197118801L
+		longValue = -790211439261957893L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 613582333
+		intValue = 698081091
 	)
 	@Export("flags")
 	int flags;
@@ -104,54 +96,39 @@ public final class GameObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("js")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-788767206"
-	)
-	@Export("addNpcsToScene")
-	static final void addNpcsToScene(boolean var0) {
-		for (int var1 = 0; var1 < Client.npcCount; ++var1) {
-			NPC var2 = Client.npcs[Client.npcIndices[var1]];
-			if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) {
-				int var3 = var2.x >> 7;
-				int var4 = var2.y >> 7;
-				if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
-					if (var2.field1212 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
-						if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) {
-							continue;
-						}
-
-						Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount;
-					}
-
-					long var5 = AsyncHttpResponse.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]);
-					var2.playerCycle = Client.cycle;
-					Actor.scene.drawEntity(class473.Client_plane, var2.x, var2.y, class272.getTileHeight(var2.field1212 * 64 - 64 + var2.x, var2.field1212 * 64 - 64 + var2.y, class473.Client_plane), var2.field1212 * 64 - 64 + 60, var2, var2.rotation, var5, var2.isWalking);
-				}
-			}
-		}
-
-	}
-
-	@ObfuscatedName("lp")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-99454612"
+		garbageValue = "-1740520249"
 	)
-	static void method5963() {
-		if (Client.isSpellSelected) {
-			Widget var0 = ArchiveLoader.widgetDefinition.getWidgetChild(class160.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class177.runScriptEvent(var1);
-			}
+	public static void method5220() {
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
+	}
 
-			Client.selectedSpellItemId = -1;
-			Client.isSpellSelected = false;
-			UserComparator5.invalidateWidget(var0);
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/Object;",
+		garbageValue = "1985186064"
+	)
+	static Object method5218(int var0) {
+		return class33.method457((class522)KitDefinition.findEnumerated(class522.method9125(), var0));
+	}
+
+	@ObfuscatedName("nb")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "1930840269"
+	)
+	@Export("clanKickUser")
+	static final void clanKickUser(String var0) {
+		if (class143.friendsChat != null) {
+			PacketBufferNode var1 = FadeInTask.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
 		}
 	}
 }

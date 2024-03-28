@@ -4,51 +4,50 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lk")
+@ObfuscatedName("js")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-	@ObfuscatedName("ts")
+	@ObfuscatedName("fa")
 	@ObfuscatedSignature(
-		descriptor = "Lbb;"
+		descriptor = "Lov;"
 	)
-	@Export("pcmStreamMixer")
-	static PcmStreamMixer pcmStreamMixer;
-	@ObfuscatedName("aq")
+	static Archive field2883;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 677978795
+		intValue = -1324322579
 	)
 	@Export("swColor")
 	int swColor;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1630788437
+		intValue = -1052157573
 	)
 	@Export("seColor")
 	int seColor;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1609665507
+		intValue = 340042019
 	)
 	@Export("neColor")
 	int neColor;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1064087665
+		intValue = 1259764427
 	)
 	@Export("nwColor")
 	int nwColor;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 273150913
+		intValue = 663340031
 	)
 	@Export("texture")
 	int texture;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("isFlat")
 	boolean isFlat;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 637934421
+		intValue = -1157824399
 	)
 	@Export("rgb")
 	int rgb;
@@ -62,5 +61,23 @@ public final class SceneTilePaint {
 		this.texture = var5;
 		this.rgb = var6;
 		this.isFlat = var7;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "1"
+	)
+	public static int method5104(int var0) {
+		return var0 + -512;
+	}
+
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "(ILdn;ZI)I",
+		garbageValue = "1288752357"
+	)
+	static int method5103(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 }

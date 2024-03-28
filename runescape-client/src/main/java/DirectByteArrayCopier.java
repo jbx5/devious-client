@@ -4,17 +4,23 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nh")
+@ObfuscatedName("nb")
 @Implements("DirectByteArrayCopier")
 public class DirectByteArrayCopier extends AbstractByteArrayCopier {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("dw")
+	@ObfuscatedSignature(
+		descriptor = "Lvl;"
+	)
+	@Export("worldSelectRightSprite")
+	static IndexedSprite worldSelectRightSprite;
+	@ObfuscatedName("az")
 	@Export("directBuffer")
 	ByteBuffer directBuffer;
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)[B",
-		garbageValue = "-1949273929"
+		descriptor = "(B)[B",
+		garbageValue = "-126"
 	)
 	@Export("get")
 	byte[] get() {
@@ -24,33 +30,15 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 		return var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "([BI)V",
-		garbageValue = "-994274734"
+		descriptor = "([BB)V",
+		garbageValue = "-67"
 	)
 	@Export("set")
 	public void set(byte[] var1) {
 		this.directBuffer = ByteBuffer.allocateDirect(var1.length);
 		this.directBuffer.position(0);
 		this.directBuffer.put(var1);
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lic;",
-		garbageValue = "772879827"
-	)
-	static class230[] method6962() {
-		return new class230[]{class230.field2450, class230.field2448, class230.field2449, class230.field2447, class230.field2445, class230.field2451, class230.field2446};
-	}
-
-	@ObfuscatedName("jz")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lpr;",
-		garbageValue = "1514000923"
-	)
-	public static NodeDeque method6959() {
-		return Client.scriptEvents;
 	}
 }

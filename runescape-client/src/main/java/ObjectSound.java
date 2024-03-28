@@ -4,94 +4,94 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ck")
+@ObfuscatedName("cv")
 @Implements("ObjectSound")
 public final class ObjectSound extends Node {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lpr;"
+		descriptor = "Lps;"
 	)
 	@Export("objectSounds")
 	static NodeDeque objectSounds;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1722320907
+		intValue = -927953281
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 351317541
+		intValue = -784486528
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 2006300032
+		intValue = 762373049
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -2136873344
+		intValue = -1924527011
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 863217715
+		intValue = -1003361881
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -2039856379
+		intValue = -632801265
 	)
-	int field872;
-	@ObfuscatedName("az")
+	int field846;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -546088405
+		intValue = 912132477
 	)
-	int field864;
-	@ObfuscatedName("ao")
+	int field847;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 2049420587
+		intValue = 426447249
 	)
 	@Export("soundEffectId")
 	int soundEffectId;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lbs;"
+		descriptor = "Lbm;"
 	)
 	@Export("stream1")
 	RawPcmStream stream1;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1620105503
+		intValue = 1111981983
 	)
-	int field875;
-	@ObfuscatedName("ah")
+	int field841;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 555083037
+		intValue = 997080131
 	)
-	int field877;
-	@ObfuscatedName("aj")
+	int field854;
+	@ObfuscatedName("ai")
 	@Export("soundEffectIds")
 	int[] soundEffectIds;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 126439761
-	)
-	int field878;
 	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = 1341306061
+	)
+	int field843;
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lbs;"
+		descriptor = "Lbm;"
 	)
 	@Export("stream2")
 	RawPcmStream stream2;
-	@ObfuscatedName("an")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lhe;"
+		descriptor = "Lis;"
 	)
 	@Export("obj")
 	ObjectComposition obj;
@@ -103,10 +103,10 @@ public final class ObjectSound extends Node {
 	ObjectSound() {
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "4"
+		descriptor = "(I)V",
+		garbageValue = "1862821053"
 	)
 	@Export("set")
 	void set() {
@@ -114,93 +114,176 @@ public final class ObjectSound extends Node {
 		ObjectComposition var2 = this.obj.transform();
 		if (var2 != null) {
 			this.soundEffectId = var2.ambientSoundId;
-			this.field872 = var2.int7 * 128;
-			this.field864 = var2.int8 * 128;
-			this.field875 = var2.int5;
-			this.field877 = var2.int6;
+			this.field846 = var2.int7 * 16384;
+			this.field847 = var2.int8 * 16384;
+			this.field841 = var2.int5;
+			this.field854 = var2.int6;
 			this.soundEffectIds = var2.soundEffectIds;
 		} else {
 			this.soundEffectId = -1;
-			this.field872 = 0;
-			this.field864 = 0;
-			this.field875 = 0;
-			this.field877 = 0;
+			this.field846 = 0;
+			this.field847 = 0;
+			this.field841 = 0;
+			this.field854 = 0;
 			this.soundEffectIds = null;
 		}
 
 		if (var1 != this.soundEffectId && this.stream1 != null) {
-			SceneTilePaint.pcmStreamMixer.removeSubStream(this.stream1);
+			HealthBarUpdate.pcmStreamMixer.removeSubStream(this.stream1);
 			this.stream1 = null;
 		}
 
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("gc")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "78"
+		descriptor = "(I)Lta;",
+		garbageValue = "398370712"
 	)
-	static final boolean method1947(char var0) {
-		if (Character.isISOControl(var0)) {
-			return false;
-		} else if (BoundaryObject.isAlphaNumeric(var0)) {
-			return true;
-		} else {
-			char[] var1 = class512.field5095;
-
-			int var2;
-			char var3;
-			for (var2 = 0; var2 < var1.length; ++var2) {
-				var3 = var1[var2];
-				if (var0 == var3) {
-					return true;
-				}
-			}
-
-			var1 = class512.field5096;
-
-			for (var2 = 0; var2 < var1.length; ++var2) {
-				var3 = var1[var2];
-				if (var0 == var3) {
-					return true;
-				}
-			}
-
-			return false;
-		}
+	@Export("getPlatformInfo")
+	static PlatformInfo getPlatformInfo() {
+		return class166.platformInfo;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("kg")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lhj;",
-		garbageValue = "-688519849"
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "-1343112272"
 	)
-	static HorizontalAlignment[] method1953() {
-		return new HorizontalAlignment[]{HorizontalAlignment.field1951, HorizontalAlignment.HorizontalAlignment_centered, HorizontalAlignment.field1950};
-	}
+	@Export("addPendingSpawnToScene")
+	static final void addPendingSpawnToScene(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
+			if (Client.isLowDetail && var0 != class172.Client_plane) {
+				return;
+			}
 
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIB)Z",
-		garbageValue = "20"
-	)
-	static final boolean method1954(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		int var7 = ViewportMouse.ViewportMouse_y + var6;
-		if (var7 < var0 && var7 < var1 && var7 < var2) {
-			return false;
-		} else {
-			var7 = ViewportMouse.ViewportMouse_y - var6;
-			if (var7 > var0 && var7 > var1 && var7 > var2) {
-				return false;
-			} else {
-				var7 = ViewportMouse.ViewportMouse_x + var6;
-				if (var7 < var3 && var7 < var4 && var7 < var5) {
-					return false;
-				} else {
-					var7 = ViewportMouse.ViewportMouse_x - var6;
-					return var7 <= var3 || var7 <= var4 || var7 <= var5;
+			long var8 = 0L;
+			boolean var10 = true;
+			boolean var11 = false;
+			boolean var12 = false;
+			if (var1 == 0) {
+				var8 = LoginType.scene.getBoundaryObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 1) {
+				var8 = LoginType.scene.getWallDecorationTag(var0, var2, var3);
+			}
+
+			if (var1 == 2) {
+				var8 = LoginType.scene.getGameObjectTag(var0, var2, var3);
+			}
+
+			if (var1 == 3) {
+				var8 = LoginType.scene.getFloorDecorationTag(var0, var2, var3);
+			}
+
+			int var13;
+			ObjectComposition var14;
+			if (var8 != 0L) {
+				var13 = LoginType.scene.getObjectFlags(var0, var2, var3, var8);
+				int var25 = NpcOverrides.Entity_unpackID(var8);
+				int var26 = var13 & 31;
+				int var27 = var13 >> 6 & 3;
+				var14 = MouseRecorder.getObjectDefinition(var25);
+				if (var14 != null && var14.hasSound()) {
+					int var17 = var14.sizeX;
+					int var18 = var14.sizeY;
+					if (var27 == 1 || var27 == 3) {
+						var17 = var14.sizeY;
+						var18 = var14.sizeX;
+					}
+
+					int var19 = (var17 + var2) * 128;
+					int var20 = (var18 + var3) * 128;
+					int var15 = var2 * 128;
+					int var16 = var3 * 128;
+					int var21 = var14.ambientSoundId;
+					int var22 = var14.int7 * 16384;
+					int var23 = var14.int8 * 16384;
+					if (var14.transforms != null) {
+						ObjectComposition var24 = var14.transform();
+						if (var24 != null) {
+							var21 = var24.ambientSoundId;
+							var22 = var24.int7 * 16384;
+							var23 = var24.int8 * 16384;
+						}
+					}
+
+					Object var10000 = null;
+
+					for (ObjectSound var28 = (ObjectSound)objectSounds.last(); var28 != null; var28 = (ObjectSound)objectSounds.previous()) {
+						if (var0 == var28.plane && var15 == var28.x * 128 && var16 == var28.y * 16384 && var19 == var28.maxX * 16384 && var20 == var28.maxY * 16384 && var21 == var28.soundEffectId && var22 == var28.field846 && var23 == var28.field847) {
+							if (var28.stream1 != null) {
+								HealthBarUpdate.pcmStreamMixer.removeSubStream(var28.stream1);
+								var28.stream1 = null;
+							}
+
+							if (var28.stream2 != null) {
+								HealthBarUpdate.pcmStreamMixer.removeSubStream(var28.stream2);
+								var28.stream2 = null;
+							}
+
+							var28.remove();
+							break;
+						}
+
+						var10000 = null;
+					}
+				}
+
+				if (var1 == 0) {
+					LoginType.scene.removeBoundaryObject(var0, var2, var3);
+					if (var14.interactType != 0) {
+						Client.collisionMaps[var0].method4358(var2, var3, var26, var27, var14.boolean1);
+					}
+				}
+
+				if (var1 == 1) {
+					LoginType.scene.removeWallDecoration(var0, var2, var3);
+				}
+
+				if (var1 == 2) {
+					LoginType.scene.removeGameObject(var0, var2, var3);
+					if (var2 + var14.sizeX > 103 || var3 + var14.sizeX > 103 || var2 + var14.sizeY > 103 || var3 + var14.sizeY > 103) {
+						return;
+					}
+
+					if (var14.interactType != 0) {
+						Client.collisionMaps[var0].setFlagOffNonSquare(var2, var3, var14.sizeX, var14.sizeY, var27, var14.boolean1);
+					}
+				}
+
+				if (var1 == 3) {
+					LoginType.scene.removeFloorDecoration(var0, var2, var3);
+					if (var14.interactType == 1) {
+						Client.collisionMaps[var0].method4361(var2, var3);
+					}
+				}
+			}
+
+			if (var4 >= 0) {
+				var13 = var0;
+				if (var0 < 3 && (Tiles.Tiles_renderFlags[1][var2][var3] & 2) == 2) {
+					var13 = var0 + 1;
+				}
+
+				ServerPacket.method5935(var0, var13, var2, var3, var4, var5, var6, var7, LoginType.scene, Client.collisionMaps[var0]);
+				var14 = MouseRecorder.getObjectDefinition(var4);
+				if (var14 != null && var14.hasSound()) {
+					JagNetThread.createObjectSound(var13, var2, var3, var14, var5);
 				}
 			}
 		}
+
+	}
+
+	@ObfuscatedName("no")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "0"
+	)
+	static final void method1921(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		NPC.clientPreferences.updateAreaSoundEffectsVolume(var0);
 	}
 }

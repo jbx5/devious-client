@@ -4,41 +4,41 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("ej")
 @Implements("AttackOption")
 public enum AttackOption implements Enum {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lea;"
+		descriptor = "Lej;"
 	)
 	@Export("AttackOption_dependsOnCombatLevels")
 	AttackOption_dependsOnCombatLevels(0),
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lea;"
+		descriptor = "Lej;"
 	)
 	@Export("AttackOption_alwaysRightClick")
 	AttackOption_alwaysRightClick(1),
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lea;"
+		descriptor = "Lej;"
 	)
-	field1364(2),
-	@ObfuscatedName("ai")
+	field1358(2),
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lea;"
+		descriptor = "Lej;"
 	)
 	@Export("AttackOption_hidden")
 	AttackOption_hidden(3),
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lea;"
+		descriptor = "Lej;"
 	)
-	field1362(4);
+	field1360(4);
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1735123761
+		intValue = -780233271
 	)
 	@Export("id")
 	final int id;
@@ -47,23 +47,22 @@ public enum AttackOption implements Enum {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "691209479"
+		garbageValue = "800883718"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("hl")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-1485439106"
+		descriptor = "(I)Lgp;",
+		garbageValue = "-530117581"
 	)
-	@Export("getUserId")
-	static long getUserId() {
-		return Client.userId;
+	public static class180 method2678() {
+		return class180.field1917;
 	}
 }

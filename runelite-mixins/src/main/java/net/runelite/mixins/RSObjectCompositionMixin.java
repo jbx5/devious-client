@@ -3,11 +3,9 @@ package net.runelite.mixins;
 import net.runelite.api.IterableHashTable;
 import net.runelite.api.Node;
 import net.runelite.api.events.PostObjectComposition;
-import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
-import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSBuffer;
 import net.runelite.rs.api.RSClient;
@@ -52,8 +50,8 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 		return accessBitMask;
 	}
 
-	@Copy("decodeNext")
-	@Replace("decodeNext")
+	//@Copy("decodeNext")
+	//Replace("decodeNext")
 	public void decodeNext(RSBuffer buffer, int opcode)
 	{
 		int var3;
@@ -254,14 +252,14 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 			{
 				setAmbientSoundId(buffer.readUnsignedShort());
 				setInt7(buffer.readUnsignedByte());
-				setInt8((getObjectDefinitionIsRev220SoundData() ? buffer.readUnsignedByte() : 0));
+				setInt8(buffer.readUnsignedByte());
 			}
 			else if (opcode == 79)
 			{
 				setInt5(buffer.readUnsignedShort());
 				setInt6(buffer.readUnsignedShort());
 				setInt7(buffer.readUnsignedByte());
-				setInt8((getObjectDefinitionIsRev220SoundData() ? buffer.readUnsignedByte() : 0));
+				setInt8(buffer.readUnsignedByte());
 
 				var3 = buffer.readUnsignedByte();
 				setSoundEffectIds(new int[var3]);

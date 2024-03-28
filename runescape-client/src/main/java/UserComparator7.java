@@ -1,18 +1,16 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("er")
+@ObfuscatedName("eu")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("tm")
-	@ObfuscatedGetter(
-		intValue = -803127296
-	)
-	static int field1462;
 	@ObfuscatedName("aq")
+	@Export("osName")
+	static String osName;
+	@ObfuscatedName("az")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +18,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lry;Lry;B)I",
-		garbageValue = "-3"
+		descriptor = "(Lrw;Lrw;I)I",
+		garbageValue = "706076372"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,12 +36,14 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lea;",
-		garbageValue = "-24"
+		descriptor = "(I)Ljava/security/SecureRandom;",
+		garbageValue = "1834002259"
 	)
-	static AttackOption[] method2951() {
-		return new AttackOption[]{AttackOption.field1362, AttackOption.field1364, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden, AttackOption.AttackOption_alwaysRightClick};
+	static SecureRandom method2883() {
+		SecureRandom var0 = new SecureRandom();
+		var0.nextInt();
+		return var0;
 	}
 }

@@ -1,134 +1,108 @@
-import java.applet.Applet;
 import java.io.IOException;
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import netscape.javascript.JSObject;
 
-@ObfuscatedName("rr")
+@ObfuscatedName("rq")
 @Implements("AbstractSocket")
 public abstract class AbstractSocket {
-	@ObfuscatedName("az")
-	@Export("SpriteBuffer_spritePalette")
-	public static int[] SpriteBuffer_spritePalette;
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "[Lvg;"
-	)
-	@Export("mapSceneSprites")
-	static IndexedSprite[] mapSceneSprites;
-
 	AbstractSocket() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "854871960"
+		garbageValue = "-1478013130"
 	)
 	@Export("isAvailable")
 	public abstract boolean isAvailable(int var1) throws IOException;
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1869781257"
+		garbageValue = "-1012786095"
 	)
 	@Export("available")
 	public abstract int available() throws IOException;
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1680246450"
+		garbageValue = "257991578"
 	)
 	@Export("readUnsignedByte")
 	public abstract int readUnsignedByte() throws IOException;
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "([BIIS)I",
-		garbageValue = "230"
+		descriptor = "([BIIB)I",
+		garbageValue = "1"
 	)
 	@Export("read")
 	public abstract int read(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "437315408"
+		garbageValue = "1580683310"
 	)
 	@Export("write")
 	public abstract void write(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "33"
+		garbageValue = "124"
 	)
 	@Export("close")
 	public abstract void close();
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ln")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ILjava/lang/String;B)Z",
-		garbageValue = "-43"
+		descriptor = "(ILjava/lang/String;B)V",
+		garbageValue = "-1"
 	)
-	static boolean method8473(String var0, int var1, String var2) {
-		if (var1 == 0) {
-			try {
-				if (!class31.field160.startsWith("win")) {
-					throw new Exception();
-				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
-					throw new Exception();
-				} else {
-					String var14 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
+	static void method8256(int var0, String var1) {
+		int var2 = Players.Players_count;
+		int[] var3 = Players.Players_indices;
+		boolean var4 = false;
+		Username var5 = new Username(var1, class127.loginType);
 
-					for (int var4 = 0; var4 < var0.length(); ++var4) {
-						if (var14.indexOf(var0.charAt(var4)) == -1) {
-							throw new Exception();
-						}
-					}
-
-					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
-					return true;
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = Client.players[var3[var6]];
+			if (var7 != null && var7 != class133.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					var8.packetBuffer.writeByte(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
+					var8.packetBuffer.writeByteNeg(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					var8.packetBuffer.writeByteNeg(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteNeg(0);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					Client.packetWriter.addNode(var8);
 				}
-			} catch (Throwable var8) {
-				return false;
-			}
-		} else if (var1 == 1) {
-			try {
-				Applet var7 = class31.field164;
-				Object[] var5 = new Object[]{(new URL(class31.field164.getCodeBase(), var0)).toString()};
-				Object var13 = JSObject.getWindow(var7).call(var2, var5);
-				return var13 != null;
-			} catch (Throwable var9) {
-				return false;
-			}
-		} else if (var1 == 2) {
-			try {
-				class31.field164.getAppletContext().showDocument(new URL(class31.field164.getCodeBase(), var0), "_blank");
-				return true;
-			} catch (Exception var10) {
-				return false;
-			}
-		} else if (var1 == 3) {
-			try {
-				Applet var3 = class31.field164;
-				JSObject.getWindow(var3).call("loggedout", (Object[])null);
-			} catch (Throwable var12) {
-			}
 
-			try {
-				class31.field164.getAppletContext().showDocument(new URL(class31.field164.getCodeBase(), var0), "_top");
-				return true;
-			} catch (Exception var11) {
-				return false;
+				var4 = true;
+				break;
 			}
-		} else {
-			throw new IllegalArgumentException();
 		}
+
+		if (!var4) {
+			SecureRandomCallable.addGameMessage(4, "", "Unable to find " + var1);
+		}
+
 	}
 }

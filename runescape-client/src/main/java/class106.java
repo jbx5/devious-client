@@ -1,71 +1,93 @@
+import java.awt.Component;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
+@ObfuscatedName("en")
 final class class106 implements class339 {
-	@ObfuscatedName("cm")
-	static String field1372;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1419582299
+	)
+	static int field1375;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lng;"
+		descriptor = "Lnt;"
 	)
 	final Widget val$cc;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lng;)V"
+		descriptor = "(Lnt;)V"
 	)
 	class106(Widget var1) {
 		this.val$cc = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1847242304"
+	)
+	public void vmethod6279() {
+		if (this.val$cc != null && this.val$cc.method6683().field3676 != null) {
+			ScriptEvent var1 = new ScriptEvent();
+			var1.method2305(this.val$cc);
+			var1.setArgs(this.val$cc.method6683().field3676);
+			class131.method3048().addFirst(var1);
+		}
+
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/awt/Component;B)V",
+		garbageValue = "50"
+	)
+	static void method2699(Component var0) {
+		var0.addMouseListener(MouseHandler.MouseHandler_instance);
+		var0.addMouseMotionListener(MouseHandler.MouseHandler_instance);
+		var0.addFocusListener(MouseHandler.MouseHandler_instance);
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)I",
+		garbageValue = "380838610"
+	)
+	public static int method2696(int var0, int var1, int var2) {
+		int var3 = class75.method2089(var2 - var1 + 1);
+		var3 <<= var1;
+		var0 |= var3;
+		return var0;
+	}
+
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "3"
+		garbageValue = "-117"
 	)
-	public void vmethod6430() {
-		if (this.val$cc != null && this.val$cc.method6841().field3654 != null) {
-			ScriptEvent var1 = new ScriptEvent();
-			var1.method2355(this.val$cc);
-			var1.setArgs(this.val$cc.method6841().field3654);
-			DirectByteArrayCopier.method6959().addFirst(var1);
+	public static void method2698() {
+		KitDefinition.KitDefinition_cached.clear();
+	}
+
+	@ObfuscatedName("hh")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "410458647"
+	)
+	@Export("forceDisconnect")
+	static final void forceDisconnect(int var0) {
+		PacketBufferNode.logOut();
+		switch(var0) {
+		case 1:
+			class210.method3930(24);
+			class59.setLoginResponseString("", "You were disconnected from the server.", "");
+			break;
+		case 2:
+			class210.method3930(24);
+			class59.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 		}
 
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)Lcy;",
-		garbageValue = "-93"
-	)
-	@Export("Messages_getByChannelAndID")
-	static Message Messages_getByChannelAndID(int var0, int var1) {
-		ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
-		return var2.getMessage(var1);
-	}
-
-	@ObfuscatedName("ks")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1485975719"
-	)
-	@Export("invalidateWidgetsUnder")
-	static final void invalidateWidgetsUnder(int var0, int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
-			if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
-				Client.field721[var4] = true;
-			}
-		}
-
-	}
-
-	@ObfuscatedName("lo")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIII)V",
-		garbageValue = "-1004297114"
-	)
-	static final void method2775(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-		class246.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false);
 	}
 }

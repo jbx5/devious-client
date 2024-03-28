@@ -1,117 +1,141 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qe")
+@ObfuscatedName("qc")
 @Implements("SongTask")
 public abstract class SongTask {
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
+		descriptor = "Lqc;"
 	)
 	@Export("songTask")
 	SongTask songTask;
-	@ObfuscatedName("ai")
-	String field4626;
-	@ObfuscatedName("ar")
-	String field4627;
-	@ObfuscatedName("as")
-	boolean field4629;
-	@ObfuscatedName("aa")
-	boolean field4630;
+	@ObfuscatedName("at")
+	String field4653;
+	@ObfuscatedName("an")
+	String field4651;
+	@ObfuscatedName("ao")
+	boolean field4650;
+	@ObfuscatedName("ab")
+	boolean field4654;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqe;)V"
+		descriptor = "(Lqc;)V"
 	)
 	SongTask(SongTask var1) {
 		this.songTask = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-2024199564"
+		garbageValue = "-362428891"
 	)
-	public abstract boolean vmethod8043();
+	public abstract boolean vmethod7854();
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "21996"
+	)
+	public boolean method7826() {
+		return this.field4650;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1961667359"
+	)
+	public boolean method7829() {
+		return this.field4654;
+	}
 
 	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "1"
-	)
-	public boolean method8013() {
-		return this.field4629;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "105"
-	)
-	public boolean method8038() {
-		return this.field4630;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "404483720"
+		garbageValue = "495814194"
 	)
-	public String method8015() {
-		return "Error in task: " + this.field4627 + ", Error message: " + this.field4626;
+	public String method7842() {
+		return "Error in task: " + this.field4651 + ", Error message: " + this.field4653;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lqe;",
-		garbageValue = "1254351439"
+		descriptor = "(B)Lqc;",
+		garbageValue = "-5"
 	)
-	public SongTask method8016() {
+	public SongTask method7827() {
 		return this.songTask;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "665644567"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "53"
 	)
-	void method8017(String var1) {
-		this.field4629 = true;
-		this.field4626 = var1;
+	void method7844(String var1) {
+		this.field4650 = true;
+		this.field4653 = var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Lda;III)V",
-		garbageValue = "-1262684689"
+		descriptor = "(ZI)V",
+		garbageValue = "2033769251"
 	)
-	@Export("runScript")
-	static void runScript(ScriptEvent var0, int var1, int var2) {
-		Object[] var3 = var0.args;
-		Script var4;
-		if (WorldMapLabelSize.isWorldMapEvent(var0.type)) {
-			class429.worldMapEvent = (WorldMapEvent)var3[0];
-			WorldMapElement var6 = class139.WorldMapElement_get(class429.worldMapEvent.mapElement);
-			var4 = class223.getWorldMapScript(var0.type, var6.objectId, var6.category);
+	static void method7848(boolean var0) {
+		MusicSong var2;
+		if (var0) {
+			Iterator var7 = class321.musicSongs.iterator();
+
+			while (true) {
+				do {
+					if (!var7.hasNext()) {
+						class321.musicSongs.clear();
+						return;
+					}
+
+					var2 = (MusicSong)var7.next();
+				} while(var2 == null);
+
+				var2.midiPcmStream.clear();
+				var2.midiPcmStream.method6004();
+				var2.midiPcmStream.setPcmStreamVolume(0);
+				var2.midiPcmStream.field3534 = 0;
+				int var3 = var2.musicTrackGroupId;
+				int var4 = var2.musicTrackFileId;
+				Iterator var5 = class321.field3499.iterator();
+
+				while (var5.hasNext()) {
+					class327 var6 = (class327)var5.next();
+					var6.vmethod6187(var3, var4);
+				}
+			}
 		} else {
-			int var5 = (Integer)var3[0];
-			var4 = GrandExchangeOfferOwnWorldComparator.getScript(var5);
+			for (int var1 = 0; var1 < class321.musicSongs.size(); ++var1) {
+				var2 = (MusicSong)class321.musicSongs.get(var1);
+				if (var2 == null) {
+					class321.musicSongs.remove(var1);
+					--var1;
+				} else if (var2.field3612) {
+					if (var2.midiPcmStream.field3534 > 0) {
+						--var2.midiPcmStream.field3534;
+					}
+
+					var2.midiPcmStream.clear();
+					var2.midiPcmStream.method6004();
+					var2.midiPcmStream.setPcmStreamVolume(0);
+					class321.musicSongs.remove(var1);
+					--var1;
+				} else {
+					var2.field3612 = true;
+				}
+			}
+
 		}
-
-		if (var4 != null) {
-			PacketWriter.runScriptLogic(var0, var4, var1, var2);
-		}
-
-	}
-
-	@ObfuscatedName("gd")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lsg;",
-		garbageValue = "1413435483"
-	)
-	@Export("getPlatformInfo")
-	static PlatformInfo getPlatformInfo() {
-		return class31.platformInfo;
 	}
 }

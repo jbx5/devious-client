@@ -4,40 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cn")
+@ObfuscatedName("cl")
 @Implements("Decimator")
 public class Decimator {
-	@ObfuscatedName("aj")
+	@ObfuscatedName("vy")
 	@ObfuscatedSignature(
-		descriptor = "Lpb;"
+		descriptor = "Lra;"
 	)
-	@Export("ItemDefinition_fontPlain11")
-	public static Font ItemDefinition_fontPlain11;
-	@ObfuscatedName("np")
-	@ObfuscatedGetter(
-		intValue = 1949191081
+	@Export("masterDisk")
+	static ArchiveDisk masterDisk;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Loc;"
 	)
-	@Export("menuY")
-	static int menuY;
-	@ObfuscatedName("ai")
+	public static AbstractArchive field395;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1558579081
+		intValue = 2080347225
 	)
 	@Export("inputRate")
 	int inputRate;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 793602059
+		intValue = -1126485821
 	)
 	@Export("outputRate")
 	int outputRate;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("table")
 	int[][] table;
 
 	public Decimator(int var1, int var2) {
 		if (var2 != var1) {
-			int var3 = UserList.method8427(var1, var2);
+			int var3 = ItemContainer.method2301(var1, var2);
 			var1 /= var3;
 			var2 /= var3;
 			this.inputRate = var1;
@@ -46,8 +45,8 @@ public class Decimator {
 
 			for (int var4 = 0; var4 < var1; ++var4) {
 				int[] var5 = this.table[var4];
-				double var6 = 6.0D + (double)var4 / (double)var1;
-				int var8 = (int)Math.floor(var6 - 7.0D + 1.0D);
+				double var6 = (double)var4 / (double)var1 + 6.0D;
+				int var8 = (int)Math.floor(1.0D + (var6 - 7.0D));
 				if (var8 < 0) {
 					var8 = 0;
 				}
@@ -58,29 +57,29 @@ public class Decimator {
 				}
 
 				for (double var10 = (double)var2 / (double)var1; var8 < var9; ++var8) {
-					double var12 = 3.141592653589793D * ((double)var8 - var6);
+					double var12 = ((double)var8 - var6) * 3.141592653589793D;
 					double var14 = var10;
 					if (var12 < -1.0E-4D || var12 > 1.0E-4D) {
 						var14 = var10 * (Math.sin(var12) / var12);
 					}
 
 					var14 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var8 - var6));
-					var5[var8] = (int)Math.floor(65536.0D * var14 + 0.5D);
+					var5[var8] = (int)Math.floor(0.5D + 65536.0D * var14);
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "([BB)[B",
-		garbageValue = "21"
+		descriptor = "([BI)[B",
+		garbageValue = "1061414363"
 	)
 	@Export("resample")
 	byte[] resample(byte[] var1) {
 		if (this.table != null) {
-			int var2 = (int)((long)this.outputRate * (long)var1.length / (long)this.inputRate) + 14;
+			int var2 = (int)((long)var1.length * (long)this.outputRate / (long)this.inputRate) + 14;
 			int[] var3 = new int[var2];
 			int var4 = 0;
 			int var5 = 0;
@@ -92,7 +91,7 @@ public class Decimator {
 
 				int var9;
 				for (var9 = 0; var9 < 14; ++var9) {
-					var3[var9 + var4] += var8[var9] * var7;
+					var3[var9 + var4] += var7 * var8[var9];
 				}
 
 				var5 += this.outputRate;
@@ -118,24 +117,24 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "1434711410"
+		garbageValue = "446395893"
 	)
 	@Export("scaleRate")
 	int scaleRate(int var1) {
 		if (this.table != null) {
-			var1 = (int)((long)this.outputRate * (long)var1 / (long)this.inputRate);
+			var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate);
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1390182066"
+		garbageValue = "512990791"
 	)
 	@Export("scalePosition")
 	int scalePosition(int var1) {
@@ -146,105 +145,28 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-717284719"
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "284284053"
 	)
-	public static boolean method1103(int var0) {
-		return (var0 >> 20 & 1) != 0;
+	@Export("colorStartTag")
+	static String colorStartTag(int var0) {
+		return "<col=" + Integer.toHexString(var0) + ">";
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "747088777"
+		descriptor = "(ZI)V",
+		garbageValue = "888621734"
 	)
-	public static int method1107(int var0, int var1, int var2) {
-		int var3 = class315.method6060(var2 - var1 + 1);
-		var3 <<= var1;
-		return var0 & ~var3;
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-76245267"
-	)
-	static final int method1104(int var0, int var1) {
-		int var2 = class210.method4166(var0 - 1, var1 - 1) + class210.method4166(var0 + 1, var1 - 1) + class210.method4166(var0 - 1, 1 + var1) + class210.method4166(var0 + 1, 1 + var1);
-		int var3 = class210.method4166(var0 - 1, var1) + class210.method4166(var0 + 1, var1) + class210.method4166(var0, var1 - 1) + class210.method4166(var0, 1 + var1);
-		int var4 = class210.method4166(var0, var1);
-		return var2 / 16 + var3 / 8 + var4 / 4;
-	}
-
-	@ObfuscatedName("jb")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "0"
-	)
-	static final void method1096(int var0) {
-		int[] var1 = KeyHandler.sceneMinimapSprite.pixels;
-		int var2 = var1.length;
-
-		int var3;
-		for (var3 = 0; var3 < var2; ++var3) {
-			var1[var3] = 0;
+	public static void method1085(boolean var0) {
+		if (var0 != class168.ItemDefinition_inMembersWorld) {
+			ItemComposition.ItemDefinition_cached.clear();
+			ItemComposition.ItemDefinition_cachedModels.clear();
+			ItemComposition.ItemDefinition_cachedSprites.clear();
+			class168.ItemDefinition_inMembersWorld = var0;
 		}
 
-		int var4;
-		int var5;
-		for (var3 = 1; var3 < 103; ++var3) {
-			var4 = (103 - var3) * 2048 + 24628;
-
-			for (var5 = 1; var5 < 103; ++var5) {
-				if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) {
-					Actor.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
-				}
-
-				if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
-					Actor.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
-				}
-
-				var4 += 4;
-			}
-		}
-
-		var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10);
-		var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16;
-		KeyHandler.sceneMinimapSprite.setRaster();
-
-		int var6;
-		for (var5 = 1; var5 < 103; ++var5) {
-			for (var6 = 1; var6 < 103; ++var6) {
-				if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) {
-					FloorOverlayDefinition.drawObject(var0, var6, var5, var3, var4);
-				}
-
-				if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) {
-					FloorOverlayDefinition.drawObject(var0 + 1, var6, var5, var3, var4);
-				}
-			}
-		}
-
-		Client.mapIconCount = 0;
-
-		for (var5 = 0; var5 < 104; ++var5) {
-			for (var6 = 0; var6 < 104; ++var6) {
-				long var7 = Actor.scene.getFloorDecorationTag(class473.Client_plane, var5, var6);
-				if (var7 != 0L) {
-					int var9 = Message.Entity_unpackID(var7);
-					int var10 = class127.getObjectDefinition(var9).mapIconId;
-					if (var10 >= 0 && class139.WorldMapElement_get(var10).field1876) {
-						Client.mapIcons[Client.mapIconCount] = class139.WorldMapElement_get(var10).getSpriteBool(false);
-						Client.mapIconXs[Client.mapIconCount] = var5;
-						Client.mapIconYs[Client.mapIconCount] = var6;
-						++Client.mapIconCount;
-					}
-				}
-			}
-		}
-
-		UserComparator8.rasterProvider.apply();
 	}
 }

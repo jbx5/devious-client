@@ -3,56 +3,56 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oz")
+@ObfuscatedName("or")
 public enum class370 implements Enum {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lor;"
 	)
-	field4326(-1),
-	@ObfuscatedName("aw")
+	field4324(-1),
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lor;"
 	)
 	field4320(0),
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lor;"
 	)
 	field4321(1),
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lor;"
 	)
-	field4322(2);
+	field4319(2);
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1892902383
+		intValue = -1262682605
 	)
-	final int field4323;
+	final int field4322;
 
 	class370(int var3) {
-		this.field4323 = var3;
+		this.field4322 = var3;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "691209479"
+		garbageValue = "800883718"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field4323;
+		return this.field4322;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("mx")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-377082167"
+		descriptor = "(ZI)V",
+		garbageValue = "-574157606"
 	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
+	@Export("setTapToDrop")
+	static void setTapToDrop(boolean var0) {
+		Client.tapToDrop = var0;
 	}
 }

@@ -200,42 +200,6 @@ public class JSONTokener {
 		}
 	}
 
-	public boolean more() throws JSONException {
-		char var1 = this.next();
-		if (var1 == 0) {
-			return false;
-		} else {
-			this.back();
-			return true;
-		}
-	}
-
-	public char next(char var1) throws JSONException {
-		char var2 = this.next();
-		if (var2 != var1) {
-			throw this.syntaxError("Expected '" + var1 + "' and instead saw '" + var2 + "'");
-		} else {
-			return var2;
-		}
-	}
-
-	public String nextTo(char var1) throws JSONException {
-		StringBuffer var2 = new StringBuffer();
-
-		while (true) {
-			char var3 = this.next();
-			if (var3 == var1 || var3 == 0 || var3 == '\n' || var3 == '\r') {
-				if (var3 != 0) {
-					this.back();
-				}
-
-				return var2.toString().trim();
-			}
-
-			var2.append(var3);
-		}
-	}
-
 	public char skipTo(char var1) throws JSONException {
 		char var2;
 		try {
@@ -258,6 +222,32 @@ public class JSONTokener {
 		return var2;
 	}
 
+	public String nextTo(char var1) throws JSONException {
+		StringBuffer var2 = new StringBuffer();
+
+		while (true) {
+			char var3 = this.next();
+			if (var3 == var1 || var3 == 0 || var3 == '\n' || var3 == '\r') {
+				if (var3 != 0) {
+					this.back();
+				}
+
+				return var2.toString().trim();
+			}
+
+			var2.append(var3);
+		}
+	}
+
+	public char next(char var1) throws JSONException {
+		char var2 = this.next();
+		if (var2 != var1) {
+			throw this.syntaxError("Expected '" + var1 + "' and instead saw '" + var2 + "'");
+		} else {
+			return var2;
+		}
+	}
+
 	public String nextTo(String var1) throws JSONException {
 		StringBuffer var3 = new StringBuffer();
 
@@ -272,6 +262,16 @@ public class JSONTokener {
 			}
 
 			var3.append(var2);
+		}
+	}
+
+	public boolean more() throws JSONException {
+		char var1 = this.next();
+		if (var1 == 0) {
+			return false;
+		} else {
+			this.back();
+			return true;
 		}
 	}
 

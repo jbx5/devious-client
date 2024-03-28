@@ -3,64 +3,64 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rn")
+@ObfuscatedName("rp")
 @Implements("IgnoreList")
 public class IgnoreList extends UserList {
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Ltr;"
 	)
-	final LoginType field4726;
+	final LoginType field4768;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lte;)V"
+		descriptor = "(Ltr;)V"
 	)
 	public IgnoreList(LoginType var1) {
 		super(400);
-		this.field4726 = var1;
+		this.field4768 = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lra;",
-		garbageValue = "4"
+		descriptor = "(I)Lrr;",
+		garbageValue = "958125629"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Ignored();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IS)[Lra;",
-		garbageValue = "19510"
+		descriptor = "(IB)[Lrr;",
+		garbageValue = "8"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Ignored[var1];
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Luq;IB)V",
-		garbageValue = "7"
+		descriptor = "(Lur;IB)V",
+		garbageValue = "1"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
 		while (var1.offset < var2) {
 			int var3 = var1.readUnsignedByte();
 			if (var3 == 4) {
-				Username var10 = new Username(var1.readStringCp1252NullTerminated(), this.field4726);
+				Username var10 = new Username(var1.readStringCp1252NullTerminated(), this.field4768);
 				if (!var10.hasCleanName()) {
 					throw new IllegalStateException();
 				}
 
 				boolean var11 = false;
-				InterfaceParent.friendSystem.removeIgnore(var10.getName(), var11);
+				class334.friendSystem.removeIgnore(var10.getName(), var11);
 			} else {
 				boolean var4 = (var3 & 1) != 0;
-				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.field4726);
-				Username var6 = new Username(var1.readStringCp1252NullTerminated(), this.field4726);
+				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.field4768);
+				Username var6 = new Username(var1.readStringCp1252NullTerminated(), this.field4768);
 				var1.readStringCp1252NullTerminated();
 				if (!var5.hasCleanName()) {
 					throw new IllegalStateException();
@@ -90,15 +90,17 @@ public class IgnoreList extends UserList {
 
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-5"
+		descriptor = "(II)I",
+		garbageValue = "-2081162974"
 	)
-	static final void method8240(String var0) {
-		PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
+	static int method8043(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
+		}
 	}
 }

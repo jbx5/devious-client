@@ -4,72 +4,72 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lc")
+@ObfuscatedName("km")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -355801299
+		intValue = 2057960553
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1594438977
+		intValue = 444344465
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("al")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1706758751
+		intValue = -845965803
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1390257743
+		intValue = -401311141
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1006420929
-	)
-	@Export("orientation2")
-	int orientation2;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 696303159
+		intValue = 1058397013
 	)
 	@Export("xOffset")
 	int xOffset;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1645144365
+		intValue = 255519261
+	)
+	@Export("orientation2")
+	int orientation2;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -18673619
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("az")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Ljd;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Ljd;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		longValue = 705769494631973791L
+		longValue = -8691895186979174981L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 147237553
+		intValue = -1389807105
 	)
 	@Export("flags")
 	int flags;

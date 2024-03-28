@@ -110,8 +110,10 @@ public enum ScriptVarType
 	 * The character used when encoding or decoding types.
 	 */
 	private final char keyChar;
+
 	/**
 	 * The full name of the var type.
 	 */
 	private final String fullName;
+
 }

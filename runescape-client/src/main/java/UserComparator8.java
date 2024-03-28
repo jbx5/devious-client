@@ -3,18 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ef")
+@ObfuscatedName("ee")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("ao")
-	static int[] field1457;
-	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-		descriptor = "Lua;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -22,10 +14,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lry;Lry;I)I",
-		garbageValue = "-1579115164"
+		descriptor = "(Lrw;Lrw;I)I",
+		garbageValue = "1273296448"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -44,46 +36,49 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-2029946391"
+		descriptor = "(IB)Lho;",
+		garbageValue = "0"
 	)
-	static final boolean method2944() {
-		return ViewportMouse.ViewportMouse_isInViewport;
+	@Export("VarpDefinition_get")
+	public static VarpDefinition VarpDefinition_get(int var0) {
+		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
+			var1 = new VarpDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 
-	@ObfuscatedName("be")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lng;II)V",
-		garbageValue = "-1245873869"
+		descriptor = "(IIB)I",
+		garbageValue = "-36"
 	)
-	public static void method2942(Widget var0, int var1) {
-		ItemComposition var2 = ArchiveDiskActionHandler.ItemDefinition_get(var1);
-		var0.field3774.equipment[var2.maleModel] = var1 + 512;
-		if (var2.maleModel1 != -1) {
-			var0.field3774.equipment[var2.maleModel1] = 0;
-		}
+	static int method2872(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else if (var1 == -1) {
+			return 0;
+		} else {
+			int var3 = 0;
 
-		if (var2.maleModel2 != -1) {
-			var0.field3774.equipment[var2.maleModel2] = 0;
-		}
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4];
+				}
+			}
 
-		var0.field3774.method6477();
-	}
-
-	@ObfuscatedName("nc")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-30"
-	)
-	@Export("clanKickUser")
-	static final void clanKickUser(String var0) {
-		if (Projectile.friendsChat != null) {
-			PacketBufferNode var1 = ViewportMouse.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class145.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
+			return var3;
 		}
 	}
 }

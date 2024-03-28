@@ -8,11 +8,11 @@ final class JSONObject$Null {
 		return var1 == null || this == var1;
 	}
 
-	public String toString() {
-		return "null";
-	}
-
 	public final Object clone() {
 		return this;
+	}
+
+	public String toString() {
+		return "null";
 	}
 }

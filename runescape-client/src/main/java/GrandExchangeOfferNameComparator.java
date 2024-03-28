@@ -4,41 +4,47 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ol")
+@ObfuscatedName("oj")
 @Implements("GrandExchangeOfferNameComparator")
 final class GrandExchangeOfferNameComparator implements Comparator {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Loj;Loj;B)I",
-		garbageValue = "-65"
+		descriptor = "(Log;Log;I)I",
+		garbageValue = "-602639414"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
 		return var1.getOfferName().compareTo(var2.getOfferName());
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
-	}
-
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("nn")
+	public int compare(Object var1, Object var2) {
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
+	}
+
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lng;IIIB)V",
-		garbageValue = "1"
+		descriptor = "(II)Luw;",
+		garbageValue = "1457262054"
 	)
-	static final void method7261(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.method6801(ArchiveLoader.widgetDefinition, false);
-		if (var4 != null) {
-			if (Client.minimapState < 3) {
-				Varps.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
-			} else {
-				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
+	@Export("getDbRowType")
+	public static DbRowType getDbRowType(int var0) {
+		DbRowType var1 = (DbRowType)DbRowType.DBRowType_cache.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = DbRowType.field5175.takeFile(38, var0);
+			var1 = new DbRowType();
+			if (var2 != null) {
+				var1.method9168(new Buffer(var2));
 			}
 
+			var1.method9170();
+			DbRowType.DBRowType_cache.put(var1, (long)var0);
+			return var1;
 		}
 	}
 }

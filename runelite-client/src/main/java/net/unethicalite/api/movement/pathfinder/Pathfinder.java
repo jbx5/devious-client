@@ -11,7 +11,6 @@ import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.items.Equipment;
 import net.unethicalite.api.items.Inventory;
 import net.unethicalite.api.movement.pathfinder.model.CharterShipLocation;
-import net.unethicalite.api.movement.pathfinder.model.IgnoredDoor;
 import net.unethicalite.api.movement.pathfinder.model.Transport;
 import net.unethicalite.client.Static;
 
@@ -32,7 +31,6 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 {
 	final CollisionMap map;
 	final Map<WorldPoint, List<Transport>> transports;
-	private Map<WorldPoint, IgnoredDoor> ignoredDoors;
 	private List<Node> start;
 	private WorldArea target;
 	private List<WorldPoint> targetTiles;
@@ -75,7 +73,6 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		this.transports = transports;
 		this.target = target;
 		this.targetTiles = target.toWorldPointList();
-		this.ignoredDoors = IgnoredDoorLoader.getIgnoredDoors();
 		this.start = new ArrayList<>();
 		this.nearest = null;
 		this.avoidWilderness = avoidWilderness;
@@ -162,13 +159,6 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		if (avoidWilderness && isInWilderness(neighbor) && !isInWilderness(node.position) && !targetsInWilderness)
 		{
 			return;
-		}
-		if (ignoredDoors.getOrDefault(neighbor, null) != null)
-		{
-			if (ignoredDoors.get(neighbor).getRequirements().fulfilled())
-			{
-				return;
-			}
 		}
 		int cost = CharterShipLocation.getCharterShipCost(node.position, neighbor, ringOfCharosEquipped);
 		if (useCharterShips && cost > node.goldAvailable)

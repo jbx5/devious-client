@@ -259,7 +259,7 @@ public class ScriptWriter extends rs2asmBaseListener
 		}
 
 		int index = 0;
-		@SuppressWarnings("unchecked") Map<Integer, Integer>[] maps = new Map[count];
+		Map<Integer, Integer>[] maps = new Map[count];
 		for (LookupSwitch lswitch : switches)
 		{
 			if (lswitch == null)
