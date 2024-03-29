@@ -280,7 +280,7 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 			switch(var0) {
 			case 2:
 				class59.setLoginResponseString(Strings.field4127, Strings.field4273, Strings.field4274);
-				class210.method3930(6);
+				class210.updateLoginIndex(6);
 				break;
 			case 3:
 				class59.setLoginResponseString("", "Error connecting to server.", "");

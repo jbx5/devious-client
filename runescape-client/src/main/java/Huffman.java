@@ -531,7 +531,7 @@ public class Huffman {
 
 									var10 = ReflectionCheck.loginBoxCenter + 80;
 									if (var6 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var48 >= var26 - 20 && var48 <= var26 + 20) {
-										class210.method3930(0);
+										class210.updateLoginIndex(0);
 									}
 									break;
 								}
@@ -539,7 +539,7 @@ public class Huffman {
 								if (var25.field2440 == 84) {
 									class130.Login_promptCredentials(false);
 								} else if (var25.field2440 == 13) {
-									class210.method3930(0);
+									class210.updateLoginIndex(0);
 								}
 							}
 						} else {
@@ -592,7 +592,7 @@ public class Huffman {
 
 								var50 = Login.loginBoxX + 180 + 80;
 								if (var6 == 1 && var37 >= var50 - 75 && var37 <= var50 + 75 && var48 >= var40 - 20 && var48 <= var40 + 20) {
-									class210.method3930(0);
+									class210.updateLoginIndex(0);
 									Login.Login_username = "";
 									Login.Login_password = "";
 									SpriteMask.otpMedium = 0;
@@ -618,7 +618,7 @@ public class Huffman {
 									if (!NPC.clientPreferences.isUsernameHidden()) {
 										Login.Login_username = "";
 										NPC.clientPreferences.updateRememberedUsername((String)null);
-										Friend.method8099();
+										Friend.focusPasswordWhenUsernameFilled();
 									}
 								}
 
@@ -655,7 +655,7 @@ public class Huffman {
 																Login.Login_username = Login.Login_username + var25.field2428;
 															}
 														} else {
-															class210.method3930(0);
+															class210.updateLoginIndex(0);
 															Login.Login_username = "";
 															Login.Login_password = "";
 															SpriteMask.otpMedium = 0;
@@ -729,7 +729,7 @@ public class Huffman {
 											++var18;
 										}
 
-										class210.method3930(3);
+										class210.updateLoginIndex(3);
 										return;
 									} catch (UnsupportedFlavorException var33) {
 									} catch (IOException var34) {
@@ -787,7 +787,7 @@ public class Huffman {
 
 										var10 = Login.loginBoxX + 180 + 80;
 										if (var6 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var48 >= var26 - 20 && var48 <= var26 + 20) {
-											class210.method3930(0);
+											class210.updateLoginIndex(0);
 											Login.Login_username = "";
 											Login.Login_password = "";
 											SpriteMask.otpMedium = 0;
@@ -805,7 +805,7 @@ public class Huffman {
 											}
 
 											if (var25.field2440 == 13) {
-												class210.method3930(0);
+												class210.updateLoginIndex(0);
 												Login.Login_username = "";
 												Login.Login_password = "";
 												SpriteMask.otpMedium = 0;
@@ -965,7 +965,7 @@ public class Huffman {
 												if (var6 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var48 >= var26 - 20 && var48 <= var26 + 20) {
 													class129.openURL(WorldMapData_0.method5235("secure", true) + "m=dob/set_dob.ws", true, false);
 													class59.setLoginResponseString("", "Page has opened in the browser.", "");
-													class210.method3930(6);
+													class210.updateLoginIndex(6);
 													return;
 												}
 
@@ -980,7 +980,7 @@ public class Huffman {
 											if (var6 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var48 >= var26 - 20 && var48 <= var26 + 20) {
 												class129.openURL("https://www.jagex.com/terms/privacy", true, false);
 												class59.setLoginResponseString("", "Page has opened in the browser.", "");
-												class210.method3930(6);
+												class210.updateLoginIndex(6);
 												return;
 											}
 
@@ -1024,7 +1024,7 @@ public class Huffman {
 											var10 = ReflectionCheck.loginBoxCenter - 80;
 											var26 = 311;
 											if (var6 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var48 >= var26 - 20 && var48 <= var26 + 20) {
-												NPC.clientPreferences.method2478(Client.field513);
+												NPC.clientPreferences.updateEULA(Client.eula);
 												class172.method3497(true);
 											}
 
@@ -1059,7 +1059,7 @@ public class Huffman {
 											if (var6 == 1 && var37 >= var50 - 75 && var37 <= var50 + 75 && var48 >= var40 - 20 && var48 <= var40 + 20) {
 												class129.openURL(var32, true, false);
 												class59.setLoginResponseString("", "Page has opened in the browser.", "");
-												class210.method3930(6);
+												class210.updateLoginIndex(6);
 												return;
 											}
 
@@ -1080,7 +1080,7 @@ public class Huffman {
 											if (var6 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var48 >= var26 - 20 && var48 <= var26 + 20) {
 												class129.openURL(WorldMapData_0.method5235("secure", true) + "m=dob/set_dob.ws", true, false);
 												class59.setLoginResponseString("", "Page has opened in the browser.", "");
-												class210.method3930(6);
+												class210.updateLoginIndex(6);
 												return;
 											}
 

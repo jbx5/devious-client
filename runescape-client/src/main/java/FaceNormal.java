@@ -261,7 +261,7 @@ public class FaceNormal {
 					Login.clearLoginScreen = false;
 				}
 			} else {
-				var1 = HttpRequest.method101() ? 0 : 12;
+				var1 = HttpRequest.hasAcceptedEULA() ? 0 : 12;
 				class306.method5907(SpriteMask.archive10, GameEngine.archive8, true, var1);
 			}
 

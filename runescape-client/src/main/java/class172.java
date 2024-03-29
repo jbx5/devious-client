@@ -67,13 +67,13 @@ public class class172 {
 	)
 	static void method3497(boolean var0) {
 		byte var1 = 0;
-		if (!HttpRequest.method101()) {
+		if (!HttpRequest.hasAcceptedEULA()) {
 			var1 = 12;
-		} else if (UrlRequest.client.containsAccessAndRefreshToken() || UrlRequest.client.method1212() || UrlRequest.client.containsSessionAndCharacterId()) {
+		} else if (UrlRequest.client.containsAccessAndRefreshToken() || UrlRequest.client.otlTokenRequesterInitialized() || UrlRequest.client.containsSessionAndCharacterId()) {
 			var1 = 10;
 		}
 
-		class210.method3930(var1);
+		class210.updateLoginIndex(var1);
 		if (var0) {
 			Login.Login_username = "";
 			Login.Login_password = "";
@@ -81,7 +81,7 @@ public class class172 {
 			class27.otp = "";
 		}
 
-		class7.method44();
-		Friend.method8099();
+		class7.updateToRememberedUsername();
+		Friend.focusPasswordWhenUsernameFilled();
 	}
 }

@@ -811,7 +811,8 @@ public class HttpRequest {
 		descriptor = "(I)Z",
 		garbageValue = "1344105936"
 	)
-	static boolean method101() {
-		return NPC.clientPreferences.method2479() >= Client.field513;
+	@Export("hasAcceptedEULA")
+	static boolean hasAcceptedEULA() {
+		return NPC.clientPreferences.eula() >= Client.eula;
 	}
 }
