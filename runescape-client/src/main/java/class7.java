@@ -89,7 +89,8 @@ public class class7 {
 		descriptor = "(I)V",
 		garbageValue = "266384949"
 	)
-	static void method44() {
+	@Export("updateToRememberedUsername")
+	static void updateToRememberedUsername() {
 		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
 			if (NPC.clientPreferences.getRememberedUsername() != null) {
 				Login.Login_username = NPC.clientPreferences.getRememberedUsername();

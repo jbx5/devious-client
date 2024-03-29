@@ -53,7 +53,8 @@ public class ClientPreferences {
 	@ObfuscatedGetter(
 		intValue = -2082315561
 	)
-	int field1305;
+	@Export("eula")
+	int eula;
 	@ObfuscatedName("ar")
 	@Export("rememberedUsername")
 	String rememberedUsername;
@@ -74,7 +75,7 @@ public class ClientPreferences {
 		this.musicVolume = 127;
 		this.soundEffectsVolume = 127;
 		this.areaSoundEffectsVolume = 127;
-		this.field1305 = -1;
+		this.eula = -1;
 		this.rememberedUsername = null;
 		this.windowMode = 1;
 		this.parameters = new LinkedHashMap();
@@ -91,7 +92,7 @@ public class ClientPreferences {
 		this.musicVolume = 127;
 		this.soundEffectsVolume = 127;
 		this.areaSoundEffectsVolume = 127;
-		this.field1305 = -1;
+		this.eula = -1;
 		this.rememberedUsername = null;
 		this.windowMode = 1;
 		this.parameters = new LinkedHashMap();
@@ -136,7 +137,7 @@ public class ClientPreferences {
 				}
 
 				if (var2 > 7) {
-					this.field1305 = var1.readUnsignedByte();
+					this.eula = var1.readUnsignedByte();
 				}
 
 				if (var2 > 8) {
@@ -190,7 +191,7 @@ public class ClientPreferences {
 		var1.writeByte(this.musicVolume);
 		var1.writeByte(this.soundEffectsVolume);
 		var1.writeByte(this.areaSoundEffectsVolume);
-		var1.writeByte(this.field1305);
+		var1.writeByte(this.eula);
 		var1.writeByte(this.displayFps ? 1 : 0);
 		var1.writeInt(this.field1312);
 		return var1;
@@ -415,8 +416,9 @@ public class ClientPreferences {
 		descriptor = "(II)V",
 		garbageValue = "-1155748080"
 	)
-	void method2478(int var1) {
-		this.field1305 = var1;
+	@Export("updateEULA")
+	void updateEULA(int eula) {
+		this.eula = eula;
 		class486.savePreferences();
 	}
 
@@ -425,8 +427,8 @@ public class ClientPreferences {
 		descriptor = "(I)I",
 		garbageValue = "796072003"
 	)
-	int method2479() {
-		return this.field1305;
+	int eula() {
+		return this.eula;
 	}
 
 	@ObfuscatedName("bz")

@@ -118,7 +118,7 @@ public class WorldMapLabelSize {
 		garbageValue = "-1812937310"
 	)
 	static void method5240(int var0) {
-		class210.method3930(14);
+		class210.updateLoginIndex(14);
 		Login.Login_banType = var0;
 	}
 

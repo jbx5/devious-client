@@ -15,14 +15,14 @@ public class class306 {
 	static void method5907(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
 		if (Login.clearLoginScreen) {
 			if (var3 == 4) {
-				class210.method3930(4);
+				class210.updateLoginIndex(4);
 			}
 
 		} else {
 			if (var3 == 0) {
 				class172.method3497(var2);
 			} else {
-				class210.method3930(var3);
+				class210.updateLoginIndex(var3);
 			}
 
 			Rasterizer2D.Rasterizer2D_clear();

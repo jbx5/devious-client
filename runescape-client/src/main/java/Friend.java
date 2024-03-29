@@ -70,7 +70,8 @@ public class Friend extends Buddy {
 		descriptor = "(I)V",
 		garbageValue = "277588749"
 	)
-	static void method8099() {
+	@Export("focusPasswordWhenUsernameFilled")
+	static void focusPasswordWhenUsernameFilled() {
 		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
 			Login.currentLoginField = 1;
 		} else {

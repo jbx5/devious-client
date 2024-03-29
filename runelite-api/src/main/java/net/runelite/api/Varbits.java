@@ -910,8 +910,7 @@ public final class Varbits
 	public static final int SPELLBOOK_SWAP = 3617;
 
 	/**
-	 * Draynor manor basement
-	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">asd</a>
+	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">Draynor manor basement</a>
 	 */
 
 	public static final int DRAYNOR_MANOR_BASEMENT_LEVER_A = 1788;

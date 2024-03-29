@@ -245,8 +245,8 @@ public class IndexCheck implements class29 {
 			Login.Login_response1 = "This is a <col=00ffff>Beta<col=ffffff> world.";
 			Login.Login_response2 = "Your normal account will not be affected.";
 			Login.Login_response3 = "";
-			class210.method3930(1);
-			Friend.method8099();
+			class210.updateLoginIndex(1);
+			Friend.focusPasswordWhenUsernameFilled();
 		} else if ((Client.worldProperties & class530.field5221.rsOrdinal()) != 0) {
 			if ((Client.worldProperties & class530.field5199.rsOrdinal()) != 0) {
 				Login.Login_response1 = "This is a <col=ffff00>High Risk <col=ff0000>PvP<col=ffffff> world.";
@@ -259,15 +259,15 @@ public class IndexCheck implements class29 {
 			}
 
 			Login.Login_response0 = "Warning!";
-			class210.method3930(1);
-			Friend.method8099();
+			class210.updateLoginIndex(1);
+			Friend.focusPasswordWhenUsernameFilled();
 		} else if ((Client.worldProperties & class530.field5199.rsOrdinal()) != 0) {
 			Login.Login_response1 = "This is a <col=ffff00>High Risk<col=ffffff> world.";
 			Login.Login_response2 = "The Protect Item prayer will";
 			Login.Login_response3 = "not work on this world.";
 			Login.Login_response0 = "Warning!";
-			class210.method3930(1);
-			Friend.method8099();
+			class210.updateLoginIndex(1);
+			Friend.focusPasswordWhenUsernameFilled();
 		} else {
 			class130.Login_promptCredentials(false);
 		}

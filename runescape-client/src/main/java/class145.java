@@ -50,7 +50,7 @@ public class class145 extends class144 {
 		garbageValue = "61"
 	)
 	static void method3156(String var0, String var1, String var2) {
-		class210.method3930(7);
+		class210.updateLoginIndex(7);
 		class59.setLoginResponseString(var0, var1, var2);
 	}
 }

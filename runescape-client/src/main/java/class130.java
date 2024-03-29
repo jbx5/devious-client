@@ -186,19 +186,19 @@ public class class130 implements Callable {
 	)
 	@Export("Login_promptCredentials")
 	static void Login_promptCredentials(boolean var0) {
-		if (!UrlRequest.client.containsAccessAndRefreshToken() && !UrlRequest.client.method1212() && !UrlRequest.client.containsSessionAndCharacterId()) {
+		if (!UrlRequest.client.containsAccessAndRefreshToken() && !UrlRequest.client.otlTokenRequesterInitialized() && !UrlRequest.client.containsSessionAndCharacterId()) {
 			Login.Login_response1 = "";
 			Login.Login_response2 = "Enter your username/email & password.";
 			Login.Login_response3 = "";
-			class210.method3930(2);
+			class210.updateLoginIndex(2);
 			if (var0) {
 				Login.Login_password = "";
 			}
 
-			class7.method44();
-			Friend.method8099();
+			class7.updateToRememberedUsername();
+			Friend.focusPasswordWhenUsernameFilled();
 		} else {
-			class210.method3930(10);
+			class210.updateLoginIndex(10);
 		}
 	}
 

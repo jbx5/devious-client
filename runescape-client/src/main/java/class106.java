@@ -81,11 +81,11 @@ final class class106 implements class339 {
 		PacketBufferNode.logOut();
 		switch(var0) {
 		case 1:
-			class210.method3930(24);
+			class210.updateLoginIndex(24);
 			class59.setLoginResponseString("", "You were disconnected from the server.", "");
 			break;
 		case 2:
-			class210.method3930(24);
+			class210.updateLoginIndex(24);
 			class59.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 		}
 

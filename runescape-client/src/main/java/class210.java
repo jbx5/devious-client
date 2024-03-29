@@ -30,7 +30,8 @@ public class class210 extends DualNode {
 		descriptor = "(II)V",
 		garbageValue = "139624089"
 	)
-	static void method3930(int var0) {
+	@Export("updateLoginIndex")
+	static void updateLoginIndex(int var0) {
 		if (var0 != Login.loginIndex) {
 			Login.loginIndex = var0;
 		}
