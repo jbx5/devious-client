@@ -143,7 +143,7 @@ public class EventBus
 						caller,
 						"accept",
 						MethodType.methodType(Consumer.class, clazz),
-						subscription.changeParameterType(0, Object.class),
+						subscription.changeParameterType(method.getModifiers() & Modifier.STATIC, Object.class),
 						target,
 						subscription);
 
