@@ -265,9 +265,9 @@ public interface UnethicaliteConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "downloadCollisionData",
-			name = "Download collision data",
-			description = "Downloads new collision data from the server and updates the currently used collision map",
+			keyName = "loadClientCollisionData",
+			name = "Load client collision data",
+			description = "Loads collision map packaged with client",
 			position = 5,
 			section = pathfinderSection
 	)
@@ -278,8 +278,8 @@ public interface UnethicaliteConfig extends Config
 
 	@ConfigItem(
 			keyName = "localCollisionData",
-			name = "Load cached collision data",
-			description = "Loads the locally stored collision data",
+			name = "Load custom collision data",
+			description = "Loads custom collision map from .openosrs directory. The file should be named 'regions'",
 			position = 6,
 			section = pathfinderSection
 	)
