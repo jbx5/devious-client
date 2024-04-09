@@ -1545,6 +1545,21 @@ public interface Client extends OAuthApi, GameEngine
 	String[] getStringStack();
 
 	/**
+	 * Get the size of one of the cs2 vm's arrays.
+	 * @param arrayId the array id
+	 * @return
+	 */
+	int getArraySizes(int arrayId);
+
+	/**
+	 * Get one of the cs2 vm's arrays. Use {@link #getArraySizes(int)} to get
+	 * the array length.
+	 * @param arrayId the array id
+	 * @return
+	 */
+	int[] getArray(int arrayId);
+
+	/**
 	 * Gets the cs2 vm's active widget
 	 *
 	 * This is used for all {@code cc_*} operations with a {@code 0} operand
