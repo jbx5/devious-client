@@ -206,7 +206,7 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		}
 
 		JMenuItem configMenuItem = null;
-		if (pluginConfig.hasConfigurables())
+		if (pluginConfig.getConfigDescriptor() != null)
 		{
 			JButton configButton = new JButton(ConfigPanel.CONFIG_ICON);
 			SwingUtil.removeButtonDecorations(configButton);
