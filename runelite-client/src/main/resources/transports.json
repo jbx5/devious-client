@@ -11467,7 +11467,16 @@
     },
     "action": "Open",
     "objectId": 8739,
-    "requirements": {}
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "BIOHAZARD",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -11482,7 +11491,16 @@
     },
     "action": "Open",
     "objectId": 8738,
-    "requirements": {}
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "BIOHAZARD",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -11497,7 +11515,16 @@
     },
     "action": "Open",
     "objectId": 8738,
-    "requirements": {}
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "BIOHAZARD",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -11512,7 +11539,16 @@
     },
     "action": "Open",
     "objectId": 8739,
-    "requirements": {}
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "BIOHAZARD",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
   },
   {
     "source": {

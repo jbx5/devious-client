@@ -450,6 +450,32 @@ public interface UnethicalDevToolsConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+			keyName = "pathDebugLocation",
+			name = "Path debug location",
+			description = "Location to debug pathing. Format: x y z",
+			position = 7,
+			section = regions
+	)
+	default String pathDebugLocation()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "pathDebugButton",
+			name = "Debug pathing",
+			description = "Debug pathing to above location",
+			position = 8,
+			section = regions
+
+	)
+	default Button pathDebugButton()
+	{
+		return new Button();
+	}
+
 	@ConfigSection(
 			keyName = "interaction",
 			name = "Interaction",
