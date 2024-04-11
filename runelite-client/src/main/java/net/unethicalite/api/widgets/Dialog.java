@@ -177,6 +177,23 @@ public class Dialog
 		return false;
 	}
 
+	public static String getQuestion()
+	{
+		Widget widget = OPTIONS.get();
+		if (!Widgets.isVisible(widget))
+		{
+			return "";
+		}
+
+		Widget[] children = widget.getChildren();
+		if (children == null || children.length == 0)
+		{
+			return "";
+		}
+
+		return children[0].getText();
+	}
+
 	public static List<Widget> getOptions()
 	{
 		Widget widget = OPTIONS.get();
