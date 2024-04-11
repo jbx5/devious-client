@@ -199,7 +199,7 @@ public class ImageUtil
 	public static BufferedImage grayscaleImage(final BufferedImage image)
 	{
 		final Image grayImage = GrayFilter.createDisabledImage(image);
-		return ImageUtil.bufferedImageFromImage(grayImage);
+		return bufferedImageFromImage(grayImage);
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class ImageUtil
 		{
 			resized = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
 		}
-		return ImageUtil.bufferedImageFromImage(resized);
+		return bufferedImageFromImage(resized);
 	}
 
 	/**
