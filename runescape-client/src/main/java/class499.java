@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -58,7 +59,8 @@ public abstract class class499 extends class500 {
 		descriptor = "(IIIIIIIIIZS)V",
 		garbageValue = "18179"
 	)
-	static void method8670(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9) {
+	@Export("addTileItemToGroundItems")
+	static void addTileItemToGroundItems(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9) {
 		TileItem var10 = new TileItem();
 		var10.id = var3;
 		var10.quantity = var4;

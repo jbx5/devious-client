@@ -5,6 +5,7 @@ import net.runelite.api.events.ItemQuantityChanged;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSTileItem;
@@ -96,5 +97,57 @@ public abstract class RSTileItemMixin implements RSTileItem
 	public void setY(int y)
 	{
 		rl$sceneY = y;
+	}
+
+	@Inject
+	private int despawnTime;
+
+	@Inject
+	@Override
+	public int getDespawnTime()
+	{
+		return this.despawnTime;
+	}
+
+	@Inject
+	@Override
+	public void setDespawnTime(int despawnTime)
+	{
+		this.despawnTime = despawnTime;
+	}
+
+	@Inject
+	private int visibleTime;
+
+	@Inject
+	@Override
+	public int getVisibleTime()
+	{
+		return this.visibleTime;
+	}
+
+	@Inject
+	@Override
+	public void setVisibleTime(int visibleTime)
+	{
+		this.visibleTime = visibleTime;
+	}
+
+	@Replace("addTileItemToGroundItems")
+	static void addTileItemToGroundItems(int z, int x, int y, int id, int quantity, int flag, int visibleTime, int despawnTime, int var8, boolean var9)
+	{
+		RSTileItem tileItem = client.newTileItem();
+		tileItem.setId(id);
+		tileItem.setQuantity(quantity);
+		tileItem.setFlag(flag);
+		tileItem.setDespawnTime(despawnTime);
+		tileItem.setVisibleTime(visibleTime);
+		if (client.getGroundItemDeque()[z][x][y] == null)
+		{
+			client.getGroundItemDeque()[z][x][y] = client.newNodeDeque();
+		}
+
+		client.getGroundItemDeque()[z][x][y].addFirst(tileItem);
+		client.updateItemPile(z, x, y);
 	}
 }

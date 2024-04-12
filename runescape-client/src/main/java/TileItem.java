@@ -23,10 +23,11 @@ public final class TileItem extends Renderable {
 	@ObfuscatedGetter(
 		intValue = -2074293697
 	)
-	int field1368;
+	@Export("flag")
+	int flag;
 
 	TileItem() {
-		this.field1368 = 31;
+		this.flag = 31;
 	}
 
 	@ObfuscatedName("az")
@@ -35,7 +36,7 @@ public final class TileItem extends Renderable {
 		garbageValue = "-2105793353"
 	)
 	void method2680(int var1) {
-		this.field1368 = var1;
+		this.flag = var1;
 	}
 
 	@ObfuscatedName("ah")
@@ -55,7 +56,7 @@ public final class TileItem extends Renderable {
 	)
 	boolean method2690(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
-			return (this.field1368 & 1 << var1) != 0;
+			return (this.flag & 1 << var1) != 0;
 		} else {
 			return true;
 		}
