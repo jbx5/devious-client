@@ -73,7 +73,7 @@ import net.runelite.client.game.ItemVariationMapping;
 import net.runelite.client.game.SpriteManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import static net.runelite.client.plugins.timersandbuffs.GameIndicator.VENGEANCE_ACTIVE;
+import static net.runelite.client.plugins.timersandbuffs.GameCounter.*;
 import static net.runelite.client.plugins.timersandbuffs.GameTimer.*;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.RSTimeUnit;
@@ -142,6 +142,8 @@ public class TimersAndBuffsPlugin extends Plugin
 	private WorldPoint lastPoint;
 	private ElapsedTimer tzhaarTimer;
 
+	private final Map<GameCounter, BuffCounter> varCounters = new EnumMap<>(GameCounter.class);
+
 	@Inject
 	private ItemManager itemManager;
 
@@ -184,6 +186,8 @@ public class TimersAndBuffsPlugin extends Plugin
 		nextSuperAntifireTick = 0;
 		removeTzhaarTimer();
 		varTimers.clear();
+		infoBoxManager.removeIf(buffCounter -> buffCounter instanceof BuffCounter);
+		varCounters.clear();
 	}
 
 	@Subscribe
@@ -305,14 +309,7 @@ public class TimersAndBuffsPlugin extends Plugin
 
 		if (event.getVarbitId() == Varbits.VENGEANCE_ACTIVE && config.showVengeanceActive())
 		{
-			if (event.getValue() == 1)
-			{
-				createGameIndicator(VENGEANCE_ACTIVE);
-			}
-			else
-			{
-				removeGameIndicator(VENGEANCE_ACTIVE);
-			}
+			updateVarCounter(VENGEANCE_ACTIVE, event.getValue());
 		}
 
 		if (event.getVarbitId() == Varbits.DEATH_CHARGE && config.showArceuus())
@@ -684,7 +681,7 @@ public class TimersAndBuffsPlugin extends Plugin
 
 		if (!config.showVengeanceActive())
 		{
-			removeGameIndicator(VENGEANCE_ACTIVE);
+			removeVarCounter(VENGEANCE_ACTIVE);
 		}
 
 		if (!config.showTeleblock())
@@ -1086,7 +1083,6 @@ public class TimersAndBuffsPlugin extends Plugin
 		}
 	}
 
-
 	@Subscribe
 	public void onGraphicChanged(GraphicChanged event)
 	{
@@ -1221,31 +1217,6 @@ public class TimersAndBuffsPlugin extends Plugin
 		infoBoxManager.removeIf(t -> t instanceof TimerTimer && ((TimerTimer) t).getTimer() == timer);
 	}
 
-	private IndicatorIndicator createGameIndicator(GameIndicator gameIndicator)
-	{
-		removeGameIndicator(gameIndicator);
-
-		IndicatorIndicator indicator = new IndicatorIndicator(gameIndicator, this);
-		switch (gameIndicator.getImageType())
-		{
-			case SPRITE:
-				spriteManager.getSpriteAsync(gameIndicator.getImageId(), 0, indicator);
-				break;
-			case ITEM:
-				indicator.setImage(itemManager.getImage(gameIndicator.getImageId()));
-				break;
-		}
-		indicator.setTooltip(gameIndicator.getDescription());
-		infoBoxManager.addInfoBox(indicator);
-
-		return indicator;
-	}
-
-	private void removeGameIndicator(GameIndicator indicator)
-	{
-		infoBoxManager.removeIf(t -> t instanceof IndicatorIndicator && ((IndicatorIndicator) t).getIndicator() == indicator);
-	}
-
 	private void updateVarTimer(final GameTimer gameTimer, final int varValue, final IntUnaryOperator tickDuration)
 	{
 		updateVarTimer(gameTimer, varValue, i -> i == 0, tickDuration);
@@ -1279,5 +1250,54 @@ public class TimersAndBuffsPlugin extends Plugin
 	{
 		removeGameTimer(gameTimer);
 		varTimers.remove(gameTimer);
+	}
+
+	private void updateVarCounter(final GameCounter gameCounter, final int varValue)
+	{
+		BuffCounter buffCounter = varCounters.get(gameCounter);
+
+		if (varValue == 0)
+		{
+			removeVarCounter(gameCounter);
+		}
+		else if (buffCounter == null)
+		{
+			buffCounter = createBuffCounter(gameCounter, varValue);
+			varCounters.put(gameCounter, buffCounter);
+		}
+		else
+		{
+			buffCounter.setCount(varValue);
+		}
+	}
+
+	private BuffCounter createBuffCounter(GameCounter gameCounter, int count)
+	{
+		removeBuffCounter(gameCounter);
+
+		BuffCounter buffCounter = new BuffCounter(this, gameCounter, count);
+		switch (gameCounter.getImageType())
+		{
+			case SPRITE:
+				spriteManager.getSpriteAsync(gameCounter.getImageId(), 0, buffCounter);
+				break;
+			case ITEM:
+				buffCounter.setImage(itemManager.getImage(gameCounter.getImageId()));
+				break;
+		}
+		buffCounter.setTooltip(gameCounter.getDescription());
+		infoBoxManager.addInfoBox(buffCounter);
+		return buffCounter;
+	}
+
+	private void removeVarCounter(final GameCounter gameCounter)
+	{
+		removeBuffCounter(gameCounter);
+		varCounters.remove(gameCounter);
+	}
+
+	private void removeBuffCounter(GameCounter gameCounter)
+	{
+		infoBoxManager.removeIf(b -> b instanceof BuffCounter && ((BuffCounter) b).getGameCounter() == gameCounter);
 	}
 }
