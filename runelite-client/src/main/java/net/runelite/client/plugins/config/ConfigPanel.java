@@ -66,7 +66,6 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -883,24 +882,23 @@ class ConfigPanel extends PluginPanel
 			muxer.pushState(notifPanel);
 		});
 		panel.add(button, BorderLayout.WEST);
-
-		JCheckBox checkbox = new JCheckBox();
+		ToggleButton toggleButton = new ToggleButton();
 		{
 			Notification notif = configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), Notification.class);
-			checkbox.setSelected(notif.isEnabled());
+			toggleButton.setSelected(notif.isEnabled());
 		}
-		checkbox.addActionListener(ae ->
+		toggleButton.addActionListener(ae ->
 		{
-			button.setVisible(checkbox.isSelected());
+			button.setVisible(toggleButton.isSelected());
 
 			Notification notif = configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), Notification.class);
-			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), notif.withEnabled(checkbox.isSelected()));
+			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), notif.withEnabled(toggleButton.isSelected()));
 		});
-		checkbox.setBackground(ColorScheme.LIGHT_GRAY_COLOR);
-		panel.add(checkbox, BorderLayout.EAST);
+		toggleButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		panel.add(toggleButton, BorderLayout.EAST);
 
-		// button visibility is tied to the checkbox
-		button.setVisible(checkbox.isSelected());
+		// button visibility is tied to the togglebutton
+		button.setVisible(toggleButton.isSelected());
 		return panel;
 	}
 
