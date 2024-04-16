@@ -61,10 +61,12 @@ import java.util.TreeMap;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -104,6 +106,7 @@ import net.runelite.client.config.ConfigTitle;
 import net.runelite.client.config.ConfigTitleDescriptor;
 import net.runelite.client.config.Keybind;
 import net.runelite.client.config.ModifierlessKeybind;
+import net.runelite.client.config.Notification;
 import net.runelite.client.config.Range;
 import net.runelite.client.config.Units;
 import net.runelite.client.eventbus.EventBus;
@@ -137,6 +140,7 @@ class ConfigPanel extends PluginPanel
 	private static final int SPINNER_FIELD_WIDTH = 6;
 	private static final ImageIcon SECTION_EXPAND_ICON;
 	private static final ImageIcon SECTION_RETRACT_ICON;
+	static final ImageIcon CONFIG_ICON;
 	static final ImageIcon BACK_ICON;
 
 	private static final Map<ConfigSectionDescriptor, Boolean> sectionExpandStates = new HashMap<>();
@@ -151,6 +155,8 @@ class ConfigPanel extends PluginPanel
 		SECTION_EXPAND_ICON = new ImageIcon(sectionRetractIcon);
 		final BufferedImage sectionExpandIcon = ImageUtil.rotateImage(sectionRetractIcon, Math.PI / 2);
 		SECTION_RETRACT_ICON = new ImageIcon(sectionExpandIcon);
+		BufferedImage configIcon = ImageUtil.loadImageResource(ConfigPanel.class, "config_edit_icon.png");
+		CONFIG_ICON = new ImageIcon(configIcon);
 	}
 
 	private final PluginListPanel pluginList;
@@ -158,6 +164,7 @@ class ConfigPanel extends PluginPanel
 	private final PluginManager pluginManager;
 	private final ExternalPluginManager externalPluginManager;
 	private final ColorPickerManager colorPickerManager;
+	private final Provider<NotificationPanel> notificationPanelProvider;
 	private final OPRSExternalPluginManager oprsExternalPluginManager;
 	private final EventBus eventBus;
 
@@ -174,6 +181,7 @@ class ConfigPanel extends PluginPanel
 	@Inject
 	private ConfigPanel(PluginListPanel pluginList, ConfigManager configManager, PluginManager pluginManager,
 		ExternalPluginManager externalPluginManager, ColorPickerManager colorPickerManager,
+		Provider<NotificationPanel> notificationPanelProvider,
 		OPRSExternalPluginManager oprsExternalPluginManager, EventBus eventBus)
 	{
 		super(false);
@@ -183,6 +191,7 @@ class ConfigPanel extends PluginPanel
 		this.pluginManager = pluginManager;
 		this.externalPluginManager = externalPluginManager;
 		this.colorPickerManager = colorPickerManager;
+		this.notificationPanelProvider = notificationPanelProvider;
 		this.oprsExternalPluginManager = oprsExternalPluginManager;
 		this.eventBus = eventBus;
 
@@ -520,6 +529,10 @@ class ConfigPanel extends PluginPanel
 			{
 				item.add(createKeybind(cd, cid), BorderLayout.EAST);
 			}
+			else if (cid.getType() == Notification.class)
+			{
+				item.add(createNotification(cd, cid), BorderLayout.EAST);
+			}
 			else if (cid.getType() instanceof ParameterizedType)
 			{
 				ParameterizedType parameterizedType = (ParameterizedType) cid.getType();
@@ -655,7 +668,7 @@ class ConfigPanel extends PluginPanel
 		Units units = cid.getUnits();
 		if (units != null)
 		{
-			spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units));
+			spinnerTextField.setFormatterFactory(new UnitFormatterFactory(units.value()));
 		}
 
 		return spinner;
@@ -852,6 +865,43 @@ class ConfigPanel extends PluginPanel
 		});
 
 		return button;
+	}
+
+	private JPanel createNotification(ConfigDescriptor cd, ConfigItemDescriptor cid)
+	{
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+
+		JButton button = new JButton(ConfigPanel.CONFIG_ICON);
+		SwingUtil.removeButtonDecorations(button);
+		button.setPreferredSize(new Dimension(25, 0));
+		button.addActionListener(l ->
+		{
+			var muxer = pluginList.getMuxer();
+			var notifPanel = notificationPanelProvider.get();
+			notifPanel.init(cd, cid);
+			muxer.pushState(notifPanel);
+		});
+		panel.add(button, BorderLayout.WEST);
+
+		JCheckBox checkbox = new JCheckBox();
+		{
+			Notification notif = configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), Notification.class);
+			checkbox.setSelected(notif.isEnabled());
+		}
+		checkbox.addActionListener(ae ->
+		{
+			button.setVisible(checkbox.isSelected());
+
+			Notification notif = configManager.getConfiguration(cd.getGroup().value(), cid.getItem().keyName(), Notification.class);
+			configManager.setConfiguration(cd.getGroup().value(), cid.getItem().keyName(), notif.withEnabled(checkbox.isSelected()));
+		});
+		checkbox.setBackground(ColorScheme.LIGHT_GRAY_COLOR);
+		panel.add(checkbox, BorderLayout.EAST);
+
+		// button visibility is tied to the checkbox
+		button.setVisible(checkbox.isSelected());
+		return panel;
 	}
 
 	private JPanel createList(ConfigDescriptor cd, ConfigItemDescriptor cid)

@@ -29,15 +29,14 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFormattedTextField;
 import lombok.RequiredArgsConstructor;
-import net.runelite.client.config.Units;
 
 public final class UnitFormatter extends JFormattedTextField.AbstractFormatter
 {
 	private final String units;
 
-	public UnitFormatter(Units units)
+	public UnitFormatter(String units)
 	{
-		this.units = units.value();
+		this.units = units;
 	}
 
 	@Override
@@ -75,7 +74,7 @@ public final class UnitFormatter extends JFormattedTextField.AbstractFormatter
 @RequiredArgsConstructor
 final class UnitFormatterFactory extends JFormattedTextField.AbstractFormatterFactory
 {
-	private final Units units;
+	private final String units;
 	private final Map<JFormattedTextField, JFormattedTextField.AbstractFormatter> formatters = new HashMap<>();
 
 	@Override

@@ -98,7 +98,7 @@ public class CannonPluginTest
 	public void before()
 	{
 		Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
-		cannonAmmoChanged.setVarpId(VarPlayer.CANNON_AMMO);
+		cannonAmmoChanged.setVarpId(VarPlayer.CANNON_AMMO.getId());
 	}
 
 	@Test

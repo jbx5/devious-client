@@ -1409,7 +1409,7 @@ public class MinimalConfigPanel extends PluginPanel
 		@Override
 		public JFormattedTextField.AbstractFormatter getFormatter(final JFormattedTextField tf)
 		{
-			return formatters.computeIfAbsent(tf, (key) -> new UnitFormatter(units));
+			return formatters.computeIfAbsent(tf, (key) -> new UnitFormatter(units.value()));
 		}
 	}
 }

@@ -100,6 +100,7 @@ import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
+import java.util.WeakHashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
@@ -146,6 +147,8 @@ public class ConfigManager
 	// null => we need to make a new profile
 	@Nullable
 	private String rsProfileKey;
+
+	private final Map<Type, Serializer<?>> serializers = Collections.synchronizedMap(new WeakHashMap<>());
 
 	@Inject
 	public ConfigManager(
@@ -914,6 +917,27 @@ public class ConfigManager
 				return gson.fromJson(str, parameterizedType);
 			}
 		}
+		if (type instanceof Class)
+		{
+			Class<?> clazz = (Class<?>) type;
+			ConfigSerializer configSerializer = clazz.getAnnotation(ConfigSerializer.class);
+			if (configSerializer != null)
+			{
+				Class<? extends Serializer<?>> serializerClass = configSerializer.value();
+				Serializer<?> serializer = serializers.get(type);
+				if (serializer == null)
+				{
+					// Guice holds references to all jitted types.
+					// To allow class unloading, use a temporary child injector
+					// and use it to get the instance, and cache it a weak map.
+					serializer = RuneLite.getInjector()
+						.createChildInjector()
+						.getInstance(serializerClass);
+					serializers.put(type, serializer);
+				}
+				return serializer.deserialize(str);
+			}
+		}
 		if (type == EnumSet.class)
 		{
 			try
@@ -1012,6 +1036,23 @@ public class ConfigManager
 		if (object instanceof Set)
 		{
 			return gson.toJson(object, Set.class);
+		}
+		if (object != null)
+		{
+			ConfigSerializer configSerializer = object.getClass().getAnnotation(ConfigSerializer.class);
+			if (configSerializer != null)
+			{
+				Class<? extends Serializer<?>> serializerClass = configSerializer.value();
+				Serializer serializer = serializers.get(serializerClass);
+				if (serializer == null)
+				{
+					serializer = RuneLite.getInjector()
+						.createChildInjector()
+						.getInstance(serializerClass);
+					serializers.put(serializerClass, serializer);
+				}
+				return serializer.serialize(object);
+			}
 		}
 		return object == null ? null : object.toString();
 	}
