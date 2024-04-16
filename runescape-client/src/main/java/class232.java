@@ -324,7 +324,7 @@ public class class232 {
 				var11 = (var9 & 7) + class332.field3602;
 				if (var25 >= 0 && var11 >= 0 && var25 < 104 && var11 < 104) {
 					var12 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class499.method8670(var12, var25, var11, var4, var22, var7, var23, var5, var6, var24);
+					class499.addTileItemToGroundItems(var12, var25, var11, var4, var22, var7, var23, var5, var6, var24);
 				}
 
 			} else if (class311.field3308 == var0) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, Jordan Atwood <nightfirecat@protonmail.com>
+ * Copyright (c) 2024, DapperMickie <rustenhovenmick@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,11 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter(onMethod_ = @Override)
-public enum MiningBonus implements SkillBonus
+public enum AgilityBonus implements SkillBonus
 {
-	PROSPECTOR_KIT("Prospector Kit", 1.025f),
+	WILDERNESS_AGILITY_TICKET_11_TO_50("11-50 Wilderness Tickets", 1.05f),
+	WILDERNESS_AGILITY_TICKET_51_TO_100("51-100 Wilderness Tickets", 1.1f),
+	WILDERNESS_AGILITY_TICKET_101_PLUS("101+ Wilderness Tickets", 1.15f),
 	;
 
 	private final String name;

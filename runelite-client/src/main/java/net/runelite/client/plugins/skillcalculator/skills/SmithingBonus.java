@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, Jordan Atwood <nightfirecat@protonmail.com>
+ * Copyright (c) 2024, DapperMickie <rustenhovenmick@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,9 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter(onMethod_ = @Override)
-public enum MiningBonus implements SkillBonus
+public enum SmithingBonus implements SkillBonus
 {
-	PROSPECTOR_KIT("Prospector Kit", 1.025f),
+	GOLDSMITH_GAUNTLETS("Goldsmith Gauntlets", 2.5f),
 	;
 
 	private final String name;

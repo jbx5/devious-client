@@ -33,15 +33,16 @@ import lombok.Getter;
 @Getter(onMethod_ = @Override)
 public enum PrayerBonus implements SkillBonus
 {
-	LIT_GILDED_ALTAR("Lit Gilded Altar (350%)", 3.5f),
-	ECTOFUNTUS("Ectofuntus (400%)", 4),
-	CHAOS_ALTAR("Chaos Altar (700%)", 7),
-	MORYTANIA_DIARY_3_SHADES("Morytania Diary 3 Shades (150%)", 1.5f),
-	BONECRUSHER("Bonecrusher (50%)", 0.5f),
-	SINISTER_OFFERING("Sinister Offering (300%)", 3),
-	DEMONIC_OFFERING("Demonic Offering (300%)", 3),
-	SACRED_BONE_BURNER("Sacred Bone Burner (300%)", 3),
-	ZEALOT_ROBES("Zealot Robes (105%)", 1.05f),
+	BONECRUSHER("Bonecrusher", 0.5f),
+	SACRED_BONE_BURNER("Sacred Bone Burner", 3),
+	SINISTER_OFFERING("Sinister Offering", 3),
+	LIT_GILDED_ALTAR("Lit Gilded Altar", 3.5f),
+	ECTOFUNTUS("Ectofuntus", 4),
+	CHAOS_ALTAR("Chaos Altar", 7),
+	BLESSED_SUNFIRE_WINE("Blessed Sunfire Wine", 1.2f),
+	DEMONIC_OFFERING("Demonic Offering", 3),
+	MORYTANIA_DIARY_3_SHADES("Morytania Diary 3 Shades", 1.5f),
+	ZEALOT_ROBES("Zealot Robes", 1.05f),
 	;
 	
 	static final PrayerBonus[] BONE_BONUSES = {
@@ -59,38 +60,20 @@ public enum PrayerBonus implements SkillBonus
 	@Override
 	public Set<PrayerBonus> getCanBeStackedWith()
 	{
-		final Set<PrayerBonus> others = EnumSet.noneOf(PrayerBonus.class);
-
 		switch (this)
 		{
 			case ECTOFUNTUS:
 			case LIT_GILDED_ALTAR:
 			case CHAOS_ALTAR:
-				others.add(ZEALOT_ROBES);
-				others.add(DEMONIC_OFFERING);
-				break;
-			case SACRED_BONE_BURNER:
-			case BONECRUSHER:
-				others.add(DEMONIC_OFFERING);
-				break;
-			case MORYTANIA_DIARY_3_SHADES:
-				others.add(DEMONIC_OFFERING);
-				others.add(SINISTER_OFFERING);
-				break;
-			case ZEALOT_ROBES:
-				others.add(ECTOFUNTUS);
-				others.add(LIT_GILDED_ALTAR);
-				others.add(CHAOS_ALTAR);
-				others.add(DEMONIC_OFFERING);
-				break;
-			case DEMONIC_OFFERING:
-				return EnumSet.complementOf(EnumSet.of(DEMONIC_OFFERING));
 			case SINISTER_OFFERING:
-				others.add(MORYTANIA_DIARY_3_SHADES);
-				others.add(DEMONIC_OFFERING);
-				break;
+				return EnumSet.complementOf(EnumSet.of(ECTOFUNTUS, LIT_GILDED_ALTAR, CHAOS_ALTAR, SINISTER_OFFERING, SACRED_BONE_BURNER, BONECRUSHER));
+			case BONECRUSHER:
+			case SACRED_BONE_BURNER:
+				return EnumSet.complementOf(EnumSet.of(ECTOFUNTUS, LIT_GILDED_ALTAR, CHAOS_ALTAR, SINISTER_OFFERING, SACRED_BONE_BURNER, BONECRUSHER, ZEALOT_ROBES));
+			case ZEALOT_ROBES:
+				return EnumSet.complementOf(EnumSet.of(BONECRUSHER, SACRED_BONE_BURNER, ZEALOT_ROBES));
+			default:
+				return EnumSet.complementOf(EnumSet.of(this));
 		}
-
-		return others;
 	}
 }
