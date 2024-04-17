@@ -329,4 +329,11 @@ public abstract class MenuMixin implements RSClient
 		tempMenuAction.setParam0(entry.getParam0());
 		tempMenuAction.setParam1(entry.getParam1());
 	}
+
+	@Inject
+	@Override
+	public void menuAction(int p0, int p1, MenuAction action, int id, int itemId, String option, String target)
+	{
+		client.sendMenuAction(p0, p1, action.getId(), id, itemId, option, target, -1, -1);
+	}
 }
