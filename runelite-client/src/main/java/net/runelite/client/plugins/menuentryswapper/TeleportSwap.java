@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2024, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +22,42 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.menuentryswapper;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.27"
+import java.util.ArrayList;
+import java.util.List;
 
-    const val openosrsVersion = "4.31.2"
+class TeleportSwap
+{
+	boolean worn;
+	boolean held;
+	String option;
+	List<TeleportSub> subs = new ArrayList<>();
 
-    const val rsversion = 221
-    const val cacheversion = 165
+	TeleportSwap addSub(String option, Runnable r)
+	{
+		var sub = new TeleportSub();
+		sub.option = option;
+		sub.execute = r;
+		subs.add(sub);
+		return this;
+	}
 
-    const val lombokVersion = "1.18.30"
+	TeleportSwap worn()
+	{
+		worn = true;
+		return this;
+	}
 
-    const val flatLafVersion = "3.2.5-rl4"
+	TeleportSwap held()
+	{
+		held = true;
+		return this;
+	}
+}
 
-    const val unethicaliteVersion = "1.0.20-EXPERIMENTAL"
+class TeleportSub
+{
+	String option;
+	Runnable execute;
 }

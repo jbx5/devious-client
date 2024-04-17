@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2024, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +22,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.config;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.27"
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-    const val openosrsVersion = "4.31.2"
-
-    const val rsversion = 221
-    const val cacheversion = 165
-
-    const val lombokVersion = "1.18.30"
-
-    const val flatLafVersion = "3.2.5-rl4"
-
-    const val unethicaliteVersion = "1.0.20-EXPERIMENTAL"
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface ConfigSerializer
+{
+	Class<? extends Serializer<?>> value();
 }

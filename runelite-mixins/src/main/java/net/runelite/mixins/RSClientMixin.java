@@ -2383,7 +2383,7 @@ public abstract class RSClientMixin implements RSClient
 				s = s + " " + tempMenuEntry.getTarget();
 			}
 
-			if (tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU)
+			if (tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU || tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
 			{
 				s = s + " <col=ffffff><gt>";
 			}
