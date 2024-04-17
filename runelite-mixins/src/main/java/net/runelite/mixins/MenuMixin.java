@@ -66,7 +66,7 @@ public abstract class MenuMixin implements RSClient
 				s = s + " " + rootEntry.getTarget();
 			}
 
-			if (rootEntry.getType() == MenuAction.RUNELITE_SUBMENU)
+			if (rootEntry.getType() == MenuAction.RUNELITE_SUBMENU || rootEntry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
 			{
 				s = s + " <col=ffffff><gt>";
 			}
@@ -187,7 +187,7 @@ public abstract class MenuMixin implements RSClient
 					s = s + " " + entry.getTarget();
 				}
 
-				if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+				if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
 				{
 					s = s + " <col=ffffff><gt>";
 				}
@@ -196,7 +196,7 @@ public abstract class MenuMixin implements RSClient
 				if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
 				{
 					rasterizerFillRectangleAlpha(x + 3, rowY - 12, w - 6, 15, 0xffffff, 80);
-					if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+					if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
 					{
 						setSubmenuIdx(i);
 						initSubmenu(x + w, rowY - 31);
@@ -269,7 +269,7 @@ public abstract class MenuMixin implements RSClient
 					s = s + " " + entry.getTarget();
 				}
 
-				if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+				if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
 				{
 					s = s + " <col=ffffff><gt>";
 				}
@@ -277,7 +277,7 @@ public abstract class MenuMixin implements RSClient
 				if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
 				{
 					highlight = 0xFFFF00;
-					if (entry.getType() == MenuAction.RUNELITE_SUBMENU)
+					if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
 					{
 						setSubmenuIdx(i);
 						initSubmenu(x + w, rowY - 31);
