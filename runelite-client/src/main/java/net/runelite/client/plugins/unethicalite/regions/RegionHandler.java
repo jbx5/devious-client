@@ -130,7 +130,7 @@ public class RegionHandler
 			collisionMap.overwrite(new GlobalCollisionMap(
 					new GZIPInputStream(new ByteArrayInputStream(is.readAllBytes())).readAllBytes()
 			));
-			log.debug("Loaded cached collision data");
+			log.debug("Loaded custom collision data");
 		}
 		catch (Exception e)
 		{
