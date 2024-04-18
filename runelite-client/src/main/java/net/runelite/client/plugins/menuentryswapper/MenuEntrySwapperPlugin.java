@@ -898,27 +898,30 @@ public class MenuEntrySwapperPlugin extends Plugin
 						}
 					}
 
-					var subSwaps = teleportSwaps.get(itemComposition.getId())
-						.stream()
-						.filter(ts -> ts.worn)
-						.collect(Collectors.toList());
-					for (TeleportSwap top : subSwaps)
+					if (config.teleportSubmenus())
 					{
-						for (TeleportSub sub : top.subs)
+						var subSwaps = teleportSwaps.get(itemComposition.getId())
+							.stream()
+							.filter(ts -> ts.worn)
+							.collect(Collectors.toList());
+						for (TeleportSwap top : subSwaps)
 						{
-							if (leftClickOp == null || leftClickOp != sub.option.hashCode())
+							for (TeleportSub sub : top.subs)
 							{
-								leftClickMenus.add(client.createMenuEntry(idx)
-									.setOption(sub.option)
-									.setType(MenuAction.RUNELITE)
-									.onClick(wornItemConsumer(itemComposition, sub.option, sub.option.hashCode(), false)));
-							}
-							if (shiftClickOp == null || shiftClickOp != sub.option.hashCode())
-							{
-								shiftClickMenus.add(client.createMenuEntry(idx)
-									.setOption(sub.option)
-									.setType(MenuAction.RUNELITE)
-									.onClick(wornItemConsumer(itemComposition, sub.option, sub.option.hashCode(), true)));
+								if (leftClickOp == null || leftClickOp != sub.option.hashCode())
+								{
+									leftClickMenus.add(client.createMenuEntry(idx)
+										.setOption(sub.option)
+										.setType(MenuAction.RUNELITE)
+										.onClick(wornItemConsumer(itemComposition, sub.option, sub.option.hashCode(), false)));
+								}
+								if (shiftClickOp == null || shiftClickOp != sub.option.hashCode())
+								{
+									shiftClickMenus.add(client.createMenuEntry(idx)
+										.setOption(sub.option)
+										.setType(MenuAction.RUNELITE)
+										.onClick(wornItemConsumer(itemComposition, sub.option, sub.option.hashCode(), true)));
+								}
 							}
 						}
 					}
@@ -1081,27 +1084,30 @@ public class MenuEntrySwapperPlugin extends Plugin
 					}
 				}
 
-				var subSwaps = teleportSwaps.get(itemComposition.getId())
-					.stream()
-					.filter(ts -> ts.held)
-					.collect(Collectors.toList());
-				for (TeleportSwap top : subSwaps)
+				if (config.teleportSubmenus())
 				{
-					for (TeleportSub sub : top.subs)
+					var subSwaps = teleportSwaps.get(itemComposition.getId())
+						.stream()
+						.filter(ts -> ts.held)
+						.collect(Collectors.toList());
+					for (TeleportSwap top : subSwaps)
 					{
-						if (leftClickOp == null || leftClickOp != sub.option.hashCode())
+						for (TeleportSub sub : top.subs)
 						{
-							leftClickMenus.add(client.createMenuEntry(idx)
-								.setOption(sub.option)
-								.setType(MenuAction.RUNELITE)
-								.onClick(heldItemConsumer(itemComposition, sub.option, sub.option.hashCode(), false)));
-						}
-						if (shiftClickOp == null || shiftClickOp != sub.option.hashCode())
-						{
-							shiftClickMenus.add(client.createMenuEntry(idx)
-								.setOption(sub.option)
-								.setType(MenuAction.RUNELITE)
-								.onClick(heldItemConsumer(itemComposition, sub.option, sub.option.hashCode(), true)));
+							if (leftClickOp == null || leftClickOp != sub.option.hashCode())
+							{
+								leftClickMenus.add(client.createMenuEntry(idx)
+									.setOption(sub.option)
+									.setType(MenuAction.RUNELITE)
+									.onClick(heldItemConsumer(itemComposition, sub.option, sub.option.hashCode(), false)));
+							}
+							if (shiftClickOp == null || shiftClickOp != sub.option.hashCode())
+							{
+								shiftClickMenus.add(client.createMenuEntry(idx)
+									.setOption(sub.option)
+									.setType(MenuAction.RUNELITE)
+									.onClick(heldItemConsumer(itemComposition, sub.option, sub.option.hashCode(), true)));
+							}
 						}
 					}
 				}
@@ -2096,15 +2102,20 @@ public class MenuEntrySwapperPlugin extends Plugin
 				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 6); // POH Portals
 				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 5);
 			})
-			.addSub("Yanille", () ->
+			.addSub("Brimhaven", () ->
 			{
 				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 6); // POH Portals
 				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 6);
 			})
-			.addSub("Prifddinas", () ->
+			.addSub("Yanille", () ->
 			{
 				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 6); // POH Portals
 				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 7);
+			})
+			.addSub("Prifddinas", () ->
+			{
+				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 6); // POH Portals
+				pauseresume(ComponentID.ADVENTURE_LOG_OPTIONS, 8);
 			});
 		// endregion
 
@@ -2186,7 +2197,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 				final String target = me.getTarget();
 				for (TeleportSub sub : swap.subs)
 				{
-					client.createMenuEntry(-1 - off++)
+					client.createMenuEntry(-2 - off++)
 						.setParam0(p0)
 						.setParam1(p1)
 						.setOption(sub.option)
@@ -2224,7 +2235,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 				final String target = me.getTarget();
 				for (TeleportSub sub : swap.subs)
 				{
-					client.createMenuEntry(-1 - off++)
+					client.createMenuEntry(-2 - off++)
 						.setParam0(p0)
 						.setParam1(p1)
 						.setOption(sub.option)

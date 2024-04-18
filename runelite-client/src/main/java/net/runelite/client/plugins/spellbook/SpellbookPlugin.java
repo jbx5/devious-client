@@ -53,6 +53,7 @@ import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ProfileChanged;
 import net.runelite.client.menus.MenuManager;
 import net.runelite.client.menus.WidgetMenuOption;
 import net.runelite.client.plugins.Plugin;
@@ -124,6 +125,12 @@ public class SpellbookPlugin extends Plugin
 	{
 		clearReoderMenus();
 		clientThread.invokeLater(this::reinitializeSpellbook);
+	}
+
+	@Subscribe
+	public void onProfileChanged(ProfileChanged event)
+	{
+		clientThread.invokeLater(this::redrawSpellbook);
 	}
 
 	@Override
@@ -373,11 +380,16 @@ public class SpellbookPlugin extends Plugin
 				{
 					Widget s = e.getSource();
 
-					boolean hidden = isHidden(spellbookEnum, spellObjId);
+					// Spells can be shared between spellbooks, so we can't assume spellbookEnum is the current spellbook.
+					// from ~magic_spellbook_redraw
+					int subSpellbookId = client.getEnum(EnumID.SPELLBOOKS_SUB).getIntValue(client.getVarbitValue(Varbits.SPELLBOOK));
+					int spellbookId = client.getEnum(subSpellbookId).getIntValue(client.getVarbitValue(Varbits.SPELLBOOK_SUBMENU));
+
+					boolean hidden = isHidden(spellbookId, spellObjId);
 					hidden = !hidden;
 
 					log.debug("Changing {} to hidden: {}", s.getName(), hidden);
-					setHidden(spellbookEnum, spellObjId, hidden);
+					setHidden(spellbookId, spellObjId, hidden);
 
 					s.setOpacity(hidden ? 100 : 0);
 					s.setAction(HIDE_UNHIDE_OP, hidden ? "Unhide" : "Hide");
