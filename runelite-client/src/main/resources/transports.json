@@ -56254,7 +56254,40 @@
     },
     "action": "Exit",
     "objectId": 3526,
-    "requirements": {}
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "NATURE_SPIRIT",
+          "states": [
+            "FINISHED"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3442,
+      "y": 9734,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3440,
+      "y": 3337,
+      "plane": 0
+    },
+    "action": "Exit",
+    "objectId": 3525,
+    "requirements": {
+      "questRequirements": [
+        {
+          "quest": "NATURE_SPIRIT",
+          "states": [
+            "IN_PROGRESS"
+          ]
+        }
+      ]
+    }
   },
   {
     "source": {
@@ -80760,6 +80793,311 @@
     },
     "action": "Open",
     "objectId": 2338,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3219,
+      "y": 9618,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3221,
+      "y": 9618,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 6898,
+    "requirements": {
+      "varRequirements": [
+        {
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARBIT",
+          "var": 532,
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3221,
+      "y": 9618,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3219,
+      "y": 9618,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 6899,
+    "requirements": {
+      "varRequirements": [
+        {
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARBIT",
+          "var": 532,
+          "value": 4
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2569,
+      "y": 5189,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2569,
+      "y": 5190,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 15731,
+    "requirements": {
+      "varRequirements": [
+        {
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARBIT",
+          "var": 538,
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2569,
+      "y": 5190,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2569,
+      "y": 5189,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 15731,
+    "requirements": {
+      "varRequirements": [
+        {
+          "comparison": "GREATER_THAN_EQUAL",
+          "type": "VARBIT",
+          "var": 538,
+          "value": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 2568,
+      "y": 5185,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3166,
+      "y": 9623,
+      "plane": 0
+    },
+    "action": "Climb-up",
+    "objectId": 15747,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3224,
+      "y": 9604,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3224,
+      "y": 9600,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 6912,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3224,
+      "y": 9600,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3224,
+      "y": 9604,
+      "plane": 0
+    },
+    "action": "Squeeze-through",
+    "objectId": 6912,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3167,
+      "y": 2819,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3167,
+      "y": 2816,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "location": "INVENTORY",
+          "ids": [
+            1854
+          ],
+          "amount": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3167,
+      "y": 2816,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3167,
+      "y": 2819,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3193,
+      "y": 2842,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3196,
+      "y": 2842,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "location": "INVENTORY",
+          "ids": [
+            1854
+          ],
+          "amount": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3193,
+      "y": 2843,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3196,
+      "y": 2843,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "location": "INVENTORY",
+          "ids": [
+            1854
+          ],
+          "amount": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3196,
+      "y": 2843,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3193,
+      "y": 2843,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3196,
+      "y": 2842,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3193,
+      "y": 2842,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 3168,
+      "y": 2819,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3168,
+      "y": 2816,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
+    "requirements": {
+      "itemRequirements": [
+        {
+          "reduction": "AND",
+          "location": "INVENTORY",
+          "ids": [
+            1854
+          ],
+          "amount": 1
+        }
+      ]
+    }
+  },
+  {
+    "source": {
+      "x": 3168,
+      "y": 2816,
+      "plane": 0
+    },
+    "destination": {
+      "x": 3168,
+      "y": 2819,
+      "plane": 0
+    },
+    "action": "Go-through",
+    "objectId": 41326,
     "requirements": {}
   }
 ]
