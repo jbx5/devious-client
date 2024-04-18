@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -58,7 +59,8 @@ public final class class444 implements Comparable {
 		descriptor = "(I)V",
 		garbageValue = "972835992"
 	)
-	static final void method8026() {
+	@Export("loadRegion")
+	static final void loadRegion() {
 		UserComparator10.method2915(false);
 		Client.field578 = 0;
 		boolean var0 = true;

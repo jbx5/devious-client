@@ -1886,7 +1886,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 						Huffman.loginScreen(this, DevicePcmPlayerProvider.fontPlain11, class316.fontPlain12);
 						this.doCycleLoggedOut();
 					} else if (gameState == 25) {
-						class444.method8026();
+						class444.loadRegion();
 					}
 				} else {
 					Huffman.loginScreen(this, DevicePcmPlayerProvider.fontPlain11, class316.fontPlain12);
