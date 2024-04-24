@@ -77,14 +77,41 @@ public interface RSItemComposition extends ItemComposition
 	@Import("getModel")
 	RSModel getModel(int quantity);
 
-	@Import("unnotedId")
+	@Import("model")
 	int getInventoryModel();
+
+	@Import("model")
+	void setInventoryModel(int model);
 
 	@Import("recolorTo")
 	short[] getColorToReplaceWith();
 
+	@Import("recolorTo")
+	void setColorToReplaceWith(short[] color);
+
+	@Import("recolorFrom")
+	short[] getColorToReplace();
+
+	@Import("recolorFrom")
+	void setColorToReplace(short[] color);
+
 	@Import("retextureTo")
 	short[] getTextureToReplaceWith();
+
+	@Import("retextureTo")
+	void setTextureToReplaceWith(short[] texture);
+
+	@Import("retextureFrom")
+	short[] getTextureToReplace();
+
+	@Import("retextureFrom")
+	void setTextureToReplace(short[] texture);
+
+	@Import("zoom2d")
+	int getModelZoom();
+
+	@Import("zoom2d")
+	void setModelZoom(int zoom);
 
 	@Import("params")
 	RSIterableNodeHashTable getParams();

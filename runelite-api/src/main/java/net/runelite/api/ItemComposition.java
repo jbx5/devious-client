@@ -220,6 +220,18 @@ public interface ItemComposition extends ParamHolder
 	void setTextureToReplaceWith(short[] textureToReplaceWith);
 
 	/**
+	 * Get the model zoom for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	int getModelZoom();
+
+	/**
+	 * Set the model zoom for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	void setModelZoom(int zoom);
+
+	/**
 	 * Get the x angle for 2d item sprites used in the inventory.
 	 * @see net.runelite.api.coords.Angle
 	 * @return
