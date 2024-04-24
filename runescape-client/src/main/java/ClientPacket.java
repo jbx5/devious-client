@@ -41,7 +41,7 @@ public class ClientPacket implements class309 {
 	@ObfuscatedSignature(
 		descriptor = "Llw;"
 	)
-	public static final ClientPacket field3208;
+	public static final ClientPacket MINIMAP_CLICK;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Llw;"
@@ -517,7 +517,7 @@ public class ClientPacket implements class309 {
 		field3205 = new ClientPacket(3, 1);
 		WIDGET_TYPE = new ClientPacket(4, 4);
 		FRIEND_ADDUSER = new ClientPacket(5, -1);
-		field3208 = new ClientPacket(6, -1);
+		MINIMAP_CLICK = new ClientPacket(6, -1);
 		CHAT_SENDABUSEREPORT = new ClientPacket(7, -1);
 		OPNPC4 = new ClientPacket(8, 3);
 		DETECT_MODIFIED_CLIENT = new ClientPacket(9, 4);

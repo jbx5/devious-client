@@ -507,7 +507,7 @@ public class UrlRequest {
 					int var10 = var8 * var5 - var4 * var7 >> 11;
 					int var11 = var9 + class133.localPlayer.x >> 7;
 					int var12 = class133.localPlayer.y - var10 >> 7;
-					PacketBufferNode var13 = FadeInTask.getPacketBufferNode(ClientPacket.field3208, Client.packetWriter.isaacCipher);
+					PacketBufferNode var13 = FadeInTask.getPacketBufferNode(ClientPacket.MINIMAP_CLICK, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShort(GrandExchangeOfferOwnWorldComparator.baseX * 64 + var11);
 					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
