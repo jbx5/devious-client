@@ -113,6 +113,18 @@ public interface RSItemComposition extends ItemComposition
 	@Import("zoom2d")
 	void setModelZoom(int zoom);
 
+	@Import("offsetX2d")
+	int getOffsetX();
+
+	@Import("offsetX2d")
+	void setOffsetX(int offsetX);
+
+	@Import("offsetY2d")
+	int getOffsetY();
+
+	@Import("offsetY2d")
+	void setOffsetY(int offsetY);
+
 	@Import("params")
 	RSIterableNodeHashTable getParams();
 
