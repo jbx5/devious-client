@@ -214,8 +214,10 @@ public class TransportLoader
 
                 if (Quests.isFinished(Quest.THE_LOST_TRIBE))
                 {
-                    transports.add(npcTransport(new WorldPoint(3229, 9610, 0), new WorldPoint(3316, 9613, 0), NpcID.KAZGAR_7301, "Mines"));
-                    transports.add(npcTransport(new WorldPoint(3316, 9613, 0), new WorldPoint(3229, 9610, 0), NpcID.MISTAG_7299, "Cellar"));
+                    transports.add(npcTransport(new WorldPoint(3229, 9610, 0), new WorldPoint(3316, 9613, 0), "Kazgar",
+                        "Mines"));
+                    transports.add(npcTransport(new WorldPoint(3316, 9613, 0), new WorldPoint(3229, 9610, 0), "Mistag",
+                        "Cellar"));
                 }
 
                 // Tree Gnome Village
@@ -306,6 +308,38 @@ public class TransportLoader
                 // Al Kharid to and from Ruins of Unkah
                 transports.add(npcTransport(new WorldPoint(3272, 3144, 0), new WorldPoint(3148, 2842, 0), NpcID.FERRYMAN_SATHWOOD, "Ferry"));
                 transports.add(npcTransport(new WorldPoint(3148, 2842, 0), new WorldPoint(3272, 3144, 0), NpcID.FERRYMAN_NATHWOOD, "Ferry"));
+
+                // Gnome Gliders
+                if (Quests.isFinished(Quest.THE_GRAND_TREE))
+                {
+                    for (var source : GnomeGliderLocation.values())
+                    {
+                        for (var target : GnomeGliderLocation.values())
+                        {
+                            if (source.getWorldPoint() == GnomeGliderLocation.LEMANTO_ANDRA.getWorldPoint())
+                            {
+                                continue;
+                            }
+                            if ((source.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() ||
+                                target.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint()) &&
+                                !Quests.isFinished(Quest.ONE_SMALL_FAVOUR))
+                            {
+                                continue;
+                            }
+                            if ((source.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() ||
+                                target.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint()) &&
+                                !Quests.isFinished(Quest.MONKEY_MADNESS_II))
+                            {
+                                continue;
+                            }
+
+                            if (source != target)
+                            {
+                                transports.add(gnomeGliderTransport(source.getWorldPoint(), target.getWorldPoint(), target.getWidgetID()));
+                            }
+                        }
+                    }
+                }
             }
 
             // Entrana
@@ -343,37 +377,6 @@ public class TransportLoader
             transports.add(trapDoorTransport(new WorldPoint(2648, 3213, 0), new WorldPoint(3038, 4376, 0), ObjectID.TRAPDOOR_21921, ObjectID.TRAPDOOR_21922));
             transports.add(objectTransport(new WorldPoint(3038, 4376, 0), new WorldPoint(2649, 3212, 0), ObjectID.LADDER_17974, "Climb-up"));
 
-            // Gnome Gliders
-            if (Quests.isFinished(Quest.THE_GRAND_TREE))
-            {
-                for (var source : GnomeGliderLocation.values())
-                {
-                    for (var target : GnomeGliderLocation.values())
-                    {
-                        if (source.getWorldPoint() == GnomeGliderLocation.LEMANTO_ANDRA.getWorldPoint())
-                        {
-                            continue;
-                        }
-                        if ((source.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint() ||
-                            target.getWorldPoint() == GnomeGliderLocation.LEMANTOLLY_UNDRI.getWorldPoint()) &&
-                                !Quests.isFinished(Quest.ONE_SMALL_FAVOUR))
-                        {
-                            continue;
-                        }
-                        if ((source.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint() ||
-                            target.getWorldPoint() == GnomeGliderLocation.OOKOOKOLLY_UNDRI.getWorldPoint()) &&
-                                !Quests.isFinished(Quest.MONKEY_MADNESS_II))
-                        {
-                            continue;
-                        }
-
-                        if (source != target)
-                        {
-                            transports.add(gnomeGliderTransport(source.getWorldPoint(), target.getWorldPoint(), target.getWidgetID()));
-                        }
-                    }
-                }
-            }
             // Gnome stronghold
             transports.add(objectDialogTransport(new WorldPoint(2460, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
             transports.add(objectDialogTransport(new WorldPoint(2461, 3382, 0), new WorldPoint(2461, 3385, 0), 190, new String[] {"Open"}, "Sorry, I'm a bit busy."));
