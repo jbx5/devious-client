@@ -232,6 +232,30 @@ public interface ItemComposition extends ParamHolder
 	void setModelZoom(int zoom);
 
 	/**
+	 * Get the offsetX for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	int getOffsetX();
+
+	/**
+	 * Set the offsetX for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	void setOffsetX(int offsetX);
+
+	/**
+	 * Get the offsetY for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	int getOffsetY();
+
+	/**
+	 * Set the offsetY for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	void setOffsetY(int offsetY);
+
+	/**
 	 * Get the x angle for 2d item sprites used in the inventory.
 	 * @see net.runelite.api.coords.Angle
 	 * @return
@@ -277,8 +301,20 @@ public interface ItemComposition extends ParamHolder
 	int getAmbient();
 
 	/**
+	 * Set the ambient light value
+	 * @return
+	 */
+	void setAmbient(int ambient);
+
+	/**
 	 * Get the contrast light value
 	 * @return
 	 */
 	int getContrast();
+
+	/**
+	 * Set the contrast light value
+	 * @return
+	 */
+	void setContrast(int contrast);
 }

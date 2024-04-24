@@ -126,7 +126,39 @@ public interface RSItemComposition extends ItemComposition
 	@Override
 	int getAmbient();
 
+	@Import("ambient")
+	@Override
+	void setAmbient(int ambient);
+
 	@Import("contrast")
 	@Override
 	int getContrast();
+
+	@Import("contrast")
+	@Override
+	void setContrast(int contrast);
+
+	@Import("xan2d")
+	@Override
+	int getXan2d();
+
+	@Import("yan2d")
+	@Override
+	int getYan2d();
+
+	@Import("zan2d")
+	@Override
+	int getZan2d();
+
+	@Import("xan2d")
+	@Override
+	void setXan2d(int angle);
+
+	@Import("yan2d")
+	@Override
+	void setYan2d(int angle);
+
+	@Import("zan2d")
+	@Override
+	void setZan2d(int angle);
 }
