@@ -83,6 +83,7 @@ public interface ItemComposition extends ParamHolder
 	 * @return the general store value of the item
 	 *
 	 * @see Constants#HIGH_ALCHEMY_MULTIPLIER
+	 * @see ItemComposition#getHaPrice()
 	 */
 	int getPrice();
 
@@ -227,7 +228,7 @@ public interface ItemComposition extends ParamHolder
 
 	/**
 	 * Set the model zoom for 2d item sprites used in the inventory.
-	 * @return
+	 * @param zoom
 	 */
 	void setModelZoom(int zoom);
 
@@ -239,7 +240,7 @@ public interface ItemComposition extends ParamHolder
 
 	/**
 	 * Set the offsetX for 2d item sprites used in the inventory.
-	 * @return
+	 * @param offsetX
 	 */
 	void setOffsetX(int offsetX);
 
@@ -251,7 +252,7 @@ public interface ItemComposition extends ParamHolder
 
 	/**
 	 * Set the offsetY for 2d item sprites used in the inventory.
-	 * @return
+	 * @param offsetY
 	 */
 	void setOffsetY(int offsetY);
 
@@ -302,7 +303,7 @@ public interface ItemComposition extends ParamHolder
 
 	/**
 	 * Set the ambient light value
-	 * @return
+	 * @param ambient
 	 */
 	void setAmbient(int ambient);
 
@@ -314,7 +315,7 @@ public interface ItemComposition extends ParamHolder
 
 	/**
 	 * Set the contrast light value
-	 * @return
+	 * @param contrast
 	 */
 	void setContrast(int contrast);
 }
