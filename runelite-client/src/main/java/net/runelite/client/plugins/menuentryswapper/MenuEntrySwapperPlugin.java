@@ -1247,7 +1247,7 @@ public class MenuEntrySwapperPlugin extends Plugin
 					for (int i = idx; i >= 0; --i)
 					{
 						final MenuEntry opEntry = entries[i];
-						if (opEntry.getWidget() != w)
+						if (opEntry.getWidget() != w || opEntry.getType() == MenuAction.RUNELITE)
 						{
 							continue;
 						}
