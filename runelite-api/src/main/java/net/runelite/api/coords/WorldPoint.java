@@ -44,6 +44,7 @@ import java.util.List;
 import static net.runelite.api.Constants.CHUNK_SIZE;
 import static net.runelite.api.Constants.REGION_SIZE;
 import net.runelite.api.Scene;
+import net.runelite.api.WorldView;
 
 /**
  * A three-dimensional point representing the coordinate of a Tile.
@@ -74,8 +75,6 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 
 	/**
 	 * The plane level of the Tile, also referred as z-axis coordinate.
-	 *
-	 * @see Client#getPlane()
 	 */
 	private final int plane;
 
@@ -139,15 +138,10 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 * @param y the tiles y coordinate
 	 * @return true if the tile is in the scene, false otherwise
 	 */
+	@Deprecated
 	public static boolean isInScene(Client client, int x, int y)
 	{
-		int baseX = client.getBaseX();
-		int baseY = client.getBaseY();
-
-		int maxX = baseX + Perspective.SCENE_SIZE;
-		int maxY = baseY + Perspective.SCENE_SIZE;
-
-		return x >= baseX && x < maxX && y >= baseY && y < maxY;
+		return isInScene(client.getTopLevelWorldView().getScene(), x, y);
 	}
 
 	/**
@@ -156,9 +150,21 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 * @param client the client
 	 * @return true if this tile is in the scene, false otherwise
 	 */
+	@Deprecated
 	public boolean isInScene(Client client)
 	{
-		return client.getPlane() == plane && isInScene(client, x, y);
+		return isInScene(client.getTopLevelWorldView());
+	}
+
+	/**
+	 * Checks whether this tile is located in the scene.
+	 *
+	 * @param worldView the scene to check
+	 * @return true if this tile is in the scene, false otherwise
+	 */
+	public boolean isInScene(WorldView worldView)
+	{
+		return worldView.getPlane() == plane && isInScene(worldView.getScene(), x, y);
 	}
 
 	/**
@@ -170,7 +176,22 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 */
 	public static WorldPoint fromLocal(Client client, LocalPoint local)
 	{
-		return fromLocal(client, local.getX(), local.getY(), client.getPlane());
+		var wv = client.getWorldView(local.getWorldView());
+		return fromLocal(wv, local.getX(), local.getY(), wv.getPlane());
+	}
+
+	/**
+	 * Gets the coordinate of the tile that contains the passed local point.
+	 *
+	 * @param wv the scene
+	 * @param x the local x-axis coordinate
+	 * @param y the local x-axis coordinate
+	 * @param plane the plane
+	 * @return the tile coordinate containing the local point
+	 */
+	public static WorldPoint fromLocal(WorldView wv, int x, int y, int plane)
+	{
+		return fromLocal(wv.getScene(), x, y, plane);
 	}
 
 	/**
@@ -200,13 +221,10 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 * @param plane the plane
 	 * @return the tile coordinate containing the local point
 	 */
+	@Deprecated
 	public static WorldPoint fromLocal(Client client, int x, int y, int plane)
 	{
-		return new WorldPoint(
-			(x >> Perspective.LOCAL_COORD_BITS) + client.getBaseX(),
-			(y >> Perspective.LOCAL_COORD_BITS) + client.getBaseY(),
-			plane
-		);
+		return fromLocal(client.getTopLevelWorldView(), x, y, plane);
 	}
 
 	/**
@@ -219,7 +237,8 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 */
 	public static WorldPoint fromLocalInstance(Client client, LocalPoint localPoint)
 	{
-		return fromLocalInstance(client, localPoint, client.getPlane());
+		var wv = client.getWorldView(localPoint.getWorldView());
+		return fromLocalInstance(client, localPoint, wv.getPlane());
 	}
 
 	/**
@@ -233,9 +252,11 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 */
 	public static WorldPoint fromLocalInstance(Client client, LocalPoint localPoint, int plane)
 	{
-		if (client.isInInstancedRegion())
+		var wv = client.getWorldView(localPoint.getWorldView());
+
+		if (wv.getScene().isInstance())
 		{
-			return fromLocalInstance(client.getInstanceTemplateChunks(), localPoint, plane);
+			return fromLocalInstance(wv.getScene().getInstanceTemplateChunks(), localPoint, plane);
 		}
 		else
 		{
@@ -294,16 +315,10 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	 * Get occurrences of a tile on the scene, accounting for instances. There may be
 	 * more than one if the same template chunk occurs more than once on the scene.
 	 */
+	@Deprecated
 	public static Collection<WorldPoint> toLocalInstance(Client client, WorldPoint worldPoint)
 	{
-		if (client.isInInstancedRegion())
-		{
-			return toLocalInstance(client.getInstanceTemplateChunks(), client.getBaseX(), client.getBaseY(), worldPoint);
-		}
-		else
-		{
-			return Collections.singleton(worldPoint);
-		}
+		return toLocalInstance(client.getTopLevelWorldView().getScene(), worldPoint);
 	}
 
 	/**
@@ -426,6 +441,12 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 		return Math.max(Math.abs(getX() - other.getX()), Math.abs(getY() - other.getY()));
 	}
 
+	@Deprecated
+	public static WorldPoint fromScene(Client client, int x, int y, int plane)
+	{
+		return fromScene(client.getTopLevelWorldView().getScene(), x, y, plane);
+	}
+
 	/**
 	 * Gets the straight-line distance between this point and another.
 	 * <p>
@@ -463,11 +484,14 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	/**
 	 * Converts the passed scene coordinates to a world space
 	 */
-	public static WorldPoint fromScene(Client client, int x, int y, int plane)
+	public static WorldPoint fromScene(WorldView wv, int x, int y, int plane)
 	{
-		return fromScene(client.getScene(), x, y, plane);
+		return fromScene(wv.getScene(), x, y , plane);
 	}
 
+	/**
+	 * Converts the passed scene coordinates to a world space
+	 */
 	public static WorldPoint fromScene(Scene scene, int x, int y, int plane)
 	{
 		return new WorldPoint(
