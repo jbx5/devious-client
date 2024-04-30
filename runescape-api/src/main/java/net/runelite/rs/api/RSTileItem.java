@@ -39,6 +39,8 @@ public interface RSTileItem extends RSRenderable, TileItem
 	 */
 	Tile getTile();
 
-	void setDespawnTime(int despawnTime);
 	void setVisibleTime(int visibleTime);
+	void setDespawnTime(int despawnTime);
+	void setOwnership(int ownership);
+	void setPrivate(boolean isPrivate);
 }

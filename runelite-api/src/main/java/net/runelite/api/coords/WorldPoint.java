@@ -695,6 +695,14 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 		return new WorldArea(this, 1, 1);
 	}
 
+	/**
+	 * Create a WorldPoint from a packed Jagex coordinate
+	 */
+	public static WorldPoint fromCoord(int c)
+	{
+		return new WorldPoint((c >>> 14) & 0x3FFF, c & 0x3FFF, (c >>> 28) & 0x3);
+	}
+
 	public void outline(Client client, Graphics2D graphics2D, Color color)
 	{
 		outline(client, graphics2D, color, null);

@@ -100,6 +100,23 @@ public abstract class RSTileItemMixin implements RSTileItem
 	}
 
 	@Inject
+	private int visibleTime;
+
+	@Inject
+	@Override
+	public int getVisibleTime()
+	{
+		return this.visibleTime;
+	}
+
+	@Inject
+	@Override
+	public void setVisibleTime(int visibleTime)
+	{
+		this.visibleTime = visibleTime;
+	}
+
+	@Inject
 	private int despawnTime;
 
 	@Inject
@@ -117,31 +134,50 @@ public abstract class RSTileItemMixin implements RSTileItem
 	}
 
 	@Inject
-	private int visibleTime;
+	private int ownership;
 
 	@Inject
 	@Override
-	public int getVisibleTime()
+	public int getOwnership()
 	{
-		return this.visibleTime;
+		return this.ownership;
 	}
 
 	@Inject
 	@Override
-	public void setVisibleTime(int visibleTime)
+	public void setOwnership(int ownership)
 	{
-		this.visibleTime = visibleTime;
+		this.ownership = ownership;
+	}
+
+	@Inject
+	private boolean isPrivate;
+
+	@Inject
+	@Override
+	public boolean isPrivate()
+	{
+		return this.isPrivate;
+	}
+
+	@Inject
+	@Override
+	public void setPrivate(boolean isPrivate)
+	{
+		this.isPrivate = isPrivate;
 	}
 
 	@Replace("addTileItemToGroundItems")
-	static void addTileItemToGroundItems(int z, int x, int y, int id, int quantity, int flag, int visibleTime, int despawnTime, int var8, boolean var9)
+	static void addTileItemToGroundItems(int z, int x, int y, int id, int quantity, int flag, int visibleTime, int despawnTime, int ownership, boolean isPrivate)
 	{
 		RSTileItem tileItem = client.newTileItem();
 		tileItem.setId(id);
 		tileItem.setQuantity(quantity);
 		tileItem.setFlag(flag);
-		tileItem.setDespawnTime(despawnTime);
-		tileItem.setVisibleTime(visibleTime);
+		tileItem.setVisibleTime(visibleTime + client.getTickCount());
+		tileItem.setDespawnTime(despawnTime + client.getTickCount());
+		tileItem.setOwnership(ownership);
+		tileItem.setPrivate(isPrivate);
 		if (client.getGroundItemDeque()[z][x][y] == null)
 		{
 			client.getGroundItemDeque()[z][x][y] = client.newNodeDeque();
