@@ -280,7 +280,7 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	@Override
 	public boolean isItemOp() {
 		MenuAction menuAction = this.getType();
-		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY) {
+		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY || menuAction == MenuAction.RUNELITE_SUBMENU_WIDGET) {
 			int identifier = this.getIdentifier();
 			int param1 = this.getParam1();
 			if (param1 == 9764864) {
@@ -302,7 +302,7 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	@Override
 	public int getItemOp() {
 		MenuAction menuAction = this.getType();
-		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY) {
+		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY || menuAction == MenuAction.RUNELITE_SUBMENU_WIDGET) {
 			int identifier = this.getIdentifier();
 			int param0 = this.getParam0();
 			int param1 = this.getParam1();

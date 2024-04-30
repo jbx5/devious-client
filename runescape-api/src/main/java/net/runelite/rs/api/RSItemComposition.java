@@ -134,22 +134,6 @@ public interface RSItemComposition extends ItemComposition
 	@Import("params")
 	void setParams(RSIterableNodeHashTable params);
 
-	@Import("ambient")
-	@Override
-	int getAmbient();
-
-	@Import("ambient")
-	@Override
-	void setAmbient(int ambient);
-
-	@Import("contrast")
-	@Override
-	int getContrast();
-
-	@Import("contrast")
-	@Override
-	void setContrast(int contrast);
-
 	@Import("xan2d")
 	@Override
 	int getXan2d();
@@ -173,4 +157,20 @@ public interface RSItemComposition extends ItemComposition
 	@Import("zan2d")
 	@Override
 	void setZan2d(int angle);
+
+	@Import("ambient")
+	@Override
+	int getAmbient();
+
+	@Import("ambient")
+	@Override
+	void setAmbient(int ambient);
+
+	@Import("contrast")
+	@Override
+	int getContrast();
+
+	@Import("contrast")
+	@Override
+	void setContrast(int contrast);
 }
