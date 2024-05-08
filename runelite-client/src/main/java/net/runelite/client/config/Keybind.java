@@ -133,7 +133,7 @@ public class Keybind
 			}
 			else
 			{
-				assert mf != null;
+				//assert mf != null;
 				return this.keyCode == keyCode && (this.modifiers & modifiers) == this.modifiers && ((mf & this.modifiers) == mf);
 			}
 		}
