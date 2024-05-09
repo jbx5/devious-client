@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Seth <Sethtroll3@gmail.com>
+ * Copyright (c) 2024, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,53 +22,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.motherlode;
+package net.runelite.client.plugins.loottracker;
 
-import java.time.Duration;
-import java.time.Instant;
-import javax.inject.Singleton;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import lombok.Builder;
+import lombok.NonNull;
+import lombok.Value;
+import net.runelite.client.game.ItemStack;
+import net.runelite.client.plugins.Plugin;
+import net.runelite.http.api.loottracker.LootRecordType;
 
-@Getter
-@Slf4j
-@Singleton
-class MotherlodeSession
+/**
+ * Event for plugins to publish new loot to the loot tracker
+ */
+@Builder
+@Value
+public class PluginLootReceived
 {
-	private static final long HOUR = Duration.ofHours(1).toMillis();
-
-	private int perHour;
-
-	private Instant lastPayDirtMined;
-	private int totalMined;
-
-	private Instant recentPayDirtMined;
-	private int recentMined;
-
-	public void incrementPayDirtMined()
-	{
-		Instant now = Instant.now();
-
-		lastPayDirtMined = now;
-		++totalMined;
-
-		if (recentMined == 0)
-		{
-			recentPayDirtMined = now;
-		}
-		++recentMined;
-
-		Duration timeSinceStart = Duration.between(recentPayDirtMined, now);
-		if (!timeSinceStart.isZero())
-		{
-			perHour = (int) ((double) recentMined * (double) HOUR / (double) timeSinceStart.toMillis());
-		}
-	}
-
-	public void resetRecent()
-	{
-		recentPayDirtMined = null;
-		recentMined = 0;
-	}
-
+	@NonNull
+	Plugin source;
+	@NonNull
+	String name;
+	@Builder.Default
+	int combatLevel = -1;
+	@NonNull
+	LootRecordType type;
+	@NonNull
+	Collection<ItemStack> items;
+	@Builder.Default
+	int amount = 1;
+	@Nullable
+	Object metadata;
 }
