@@ -219,6 +219,14 @@ public interface Client extends OAuthApi, GameEngine
 	void setWorldSelectOpen(boolean open);
 
 	/**
+	 * Gets the display name of the active account when launched from the Jagex launcher.
+	 *
+	 * @return The active account's display name, or {@code null} if not launched from the Jagex launcher
+	 */
+	@Nullable
+	String getLauncherDisplayName();
+
+	/**
 	 * DEPRECATED. See getAccountHash instead.
 	 * Gets the current logged in username.
 	 *
