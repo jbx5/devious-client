@@ -38,11 +38,11 @@ public abstract class DRSCachedDeviceIdMixin implements RSPlatformInfo
 			return copy$getDeviceId(os);
 		}
 
-		String cachedDeviceId = getCachedUUID(client.getUsername() != null ? client.getUsername() : client.getCharacterId());
+		String cachedDeviceId = getCachedUUID(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
 		if (cachedDeviceId == null)
 		{
 			cachedDeviceId = UUID.randomUUID().toString();
-			writeCachedUUID(client.getUsername() != null ? client.getUsername() : client.getCharacterId(), cachedDeviceId);
+			writeCachedUUID(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId(), cachedDeviceId);
 		}
 		client.getLogger().info("Using cached deviceId (UUID): {}", cachedDeviceId);
 		return cachedDeviceId;
@@ -74,14 +74,14 @@ public abstract class DRSCachedDeviceIdMixin implements RSPlatformInfo
 			}
 		}
 
-		String uuid = cachedUUIDProperties.getProperty(client.getUsername() != null ? client.getUsername() : client.getCharacterId());
+		String uuid = cachedUUIDProperties.getProperty(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
 		return uuid != null ? uuid : null;
 	}
 
 	@Inject
 	private void writeCachedUUID(String username, String UUID)
 	{
-		cachedUUIDProperties.setProperty(client.getUsername() != null ? client.getUsername() : client.getCharacterId(), UUID);
+		cachedUUIDProperties.setProperty(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId(), UUID);
 		try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Files.newOutputStream(cachedUUIDFile.toPath()), StandardCharsets.UTF_8))
 		{
 			cachedUUIDProperties.store(outputStreamWriter, "Cached UUID");
