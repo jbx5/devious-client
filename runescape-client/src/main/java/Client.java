@@ -3581,7 +3581,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																			field612 += (var10 - field612) / 80;
 																		}
 
-																		FloorUnderlayDefinition.field2198 = Canvas.getTileHeight(class133.localPlayer.x, class133.localPlayer.y, class172.Client_plane) - camFollowHeight;
+																		FloorUnderlayDefinition.oculusOrbFocalPointZ = Canvas.getTileHeight(class133.localPlayer.x, class133.localPlayer.y, class172.Client_plane) - camFollowHeight;
 																	} else if (oculusOrbState == 1) {
 																		class152.method3221();
 																		short var38 = -1;
@@ -3644,9 +3644,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																			}
 
 																			if (field605 != 0) {
-																				FloorUnderlayDefinition.field2198 += var7 * field605;
-																				if (FloorUnderlayDefinition.field2198 > 0) {
-																					FloorUnderlayDefinition.field2198 = 0;
+																				FloorUnderlayDefinition.oculusOrbFocalPointZ += var7 * field605;
+																				if (FloorUnderlayDefinition.oculusOrbFocalPointZ > 0) {
+																					FloorUnderlayDefinition.oculusOrbFocalPointZ = 0;
 																				}
 																			}
 																		} else {

@@ -23,7 +23,8 @@ public class FloorUnderlayDefinition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = -408656389
 	)
-	static int field2198;
+	@Export("oculusOrbFocalPointZ")
+	static int oculusOrbFocalPointZ;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
 		intValue = -1195864831

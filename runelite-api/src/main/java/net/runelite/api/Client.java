@@ -2137,15 +2137,26 @@ public interface Client extends OAuthApi, GameEngine
 	@Deprecated
 	int getOculusOrbFocalPointY();
 
+	@Deprecated
+	int getOculusOrbFocalPointZ();
+
 	/**
 	 * Sets local X coord where the camera is pointing when the Oculus orb is active
 	 */
+	@Deprecated
 	void setOculusOrbFocalPointX(int xPos);
 
 	/**
 	 * Sets local Y coord where the camera is pointing when the Oculus orb is active
 	 */
+	@Deprecated
 	void setOculusOrbFocalPointY(int yPos);
+
+	/**
+	 * Sets local Z coord where the camera is pointing when the Oculus orb is active
+	 */
+	@Deprecated
+	void setOculusOrbFocalPointZ(int zPos);
 
 	/**
 	 * Opens in-game world hopper interface

@@ -421,8 +421,8 @@ public class class152 extends class160 {
 
 			class185.oculusOrbFocalPointX = class133.localPlayer.x;
 			int var2 = Canvas.getTileHeight(class133.localPlayer.x, class133.localPlayer.y, class172.Client_plane) - Client.camFollowHeight;
-			if (var2 < FloorUnderlayDefinition.field2198) {
-				FloorUnderlayDefinition.field2198 = var2;
+			if (var2 < FloorUnderlayDefinition.oculusOrbFocalPointZ) {
+				FloorUnderlayDefinition.oculusOrbFocalPointZ = var2;
 			}
 
 			Skeleton.oculusOrbFocalPointY = class133.localPlayer.y;
