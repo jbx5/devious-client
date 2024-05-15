@@ -24,6 +24,7 @@
  */
 package net.runelite.mixins;
 
+import com.google.common.base.Preconditions;
 import com.google.common.primitives.Floats;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
@@ -231,5 +232,84 @@ public abstract class CameraMixin implements RSClient
 
 		//client.setMouseCamClickedY(distanceY != -1 && distanceY != 1 ? (int) ((client.getMouseHandlerY() + client.getMouseCamClickedY()) / 2) : client.getMouseHandlerY());
 		//client.setMouseCamClickedX(distanceX != -1 && distanceX != 1 ? (int) ((client.getMouseHandlerX() + client.getMouseCamClickedX()) / 2) : client.getMouseHandlerX());
+	}
+
+	@Inject
+	static double cameraFocalPointX;
+
+	@Inject
+	static double cameraFocalPointY;
+
+	@Inject
+	static double cameraFocalPointZ;
+
+	@Inject
+	@Override
+	public int getCameraMode()
+	{
+		return getOculusOrbState();
+	}
+
+	@Inject
+	@Override
+	public void setCameraMode(int mode)
+	{
+		Preconditions.checkArgument(mode == 0 || mode == 1, "invalid camera mode");
+		setOculusOrbState(mode);
+	}
+
+	@Inject
+	@Override
+	public double getCameraFocalPointX()
+	{
+		return cameraFocalPointX;
+	}
+
+	@Inject
+	@Override
+	public void setCameraFocalPointX(double x)
+	{
+		Preconditions.checkArgument(this.getCameraMode() == 1, "must be in free camera mode");
+		cameraFocalPointX = x;
+		setOculusOrbFocalPointX((int) x);
+	}
+
+	@Inject
+	@Override
+	public double getCameraFocalPointY()
+	{
+		return cameraFocalPointY;
+	}
+
+	@Inject
+	@Override
+	public void setCameraFocalPointY(double y)
+	{
+		Preconditions.checkArgument(this.getCameraMode() == 1, "must be in free camera mode");
+		cameraFocalPointY = y;
+		setOculusOrbFocalPointX((int) y);
+	}
+
+	@Inject
+	@Override
+	public double getCameraFocalPointZ()
+	{
+		return cameraFocalPointZ;
+	}
+
+	@Inject
+	@Override
+	public void setCameraFocalPointZ(double z)
+	{
+		Preconditions.checkArgument(this.getCameraMode() == 1, "must be in free camera mode");
+		cameraFocalPointZ = z;
+		setOculusOrbFocalPointZ((int) z);
+	}
+
+	@Inject
+	@Override
+	public void setFreeCameraSpeed(int speed)
+	{
+		setOculusOrbNormalSpeed(speed);
 	}
 }

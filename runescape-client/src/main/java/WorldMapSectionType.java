@@ -205,7 +205,7 @@ public enum WorldMapSectionType implements Enum {
 		}
 
 		int var5 = Client.camAngleY & 2047;
-		class128.method2989(class185.oculusOrbFocalPointX, FloorUnderlayDefinition.field2198, Skeleton.oculusOrbFocalPointY, var16, var5, UserComparator5.method2898(var16), var3);
+		class128.method2989(class185.oculusOrbFocalPointX, FloorUnderlayDefinition.oculusOrbFocalPointZ, Skeleton.oculusOrbFocalPointY, var16, var5, UserComparator5.method2898(var16), var3);
 		int var7;
 		int var8;
 		if (!Client.isCameraLocked) {
