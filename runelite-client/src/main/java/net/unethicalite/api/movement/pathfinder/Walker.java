@@ -38,10 +38,13 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Predicate;
 
 @Singleton
@@ -56,8 +59,8 @@ public class Walker
     private static final int MAX_NEAREST_SEARCH_ITERATIONS = 10;
 
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private static Future<List<WorldPoint>> pathFuture = null;
-    private static WorldArea currentDestination = null;
+    private static final AtomicReference<Future<List<WorldPoint>>> pathFuture = new AtomicReference<>();
+    private static final AtomicReference<WorldArea> currentDestination = new AtomicReference<>();
     private static boolean disableTeleports;
     private static boolean disableTransports;
 
@@ -94,7 +97,7 @@ public class Walker
         Player local = Players.getLocal();
         if (destination.contains(local))
         {
-            currentDestination = null;
+            currentDestination.set(null);
             return true;
         }
 
@@ -203,7 +206,7 @@ public class Walker
     public static boolean step(WorldPoint destination)
     {
         Player local = Players.getLocal();
-        log.debug("Stepping towards " + destination);
+        log.debug("Stepping towards {}", destination);
         Movement.walk(destination);
 
         if (local.getWorldLocation().equals(destination))
@@ -483,56 +486,50 @@ public class Walker
             boolean forced
     )
     {
-        if (pathFuture == null)
+        boolean sameDestination = currentDestination.get() != null
+                && destination.getX() == currentDestination.get().getX()
+                && destination.getY() == currentDestination.get().getY()
+                && destination.getPlane() == currentDestination.get().getPlane()
+                && destination.getWidth() == currentDestination.get().getWidth()
+                && destination.getHeight() == currentDestination.get().getHeight();
+
+        if (pathFuture.get() == null
+                || !destination.equals(currentDestination.get())
+                || !sameDestination
+                || RegionManager.shouldRefreshPath()
+                || forced)
         {
-            pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
-            currentDestination = destination;
+            if (pathFuture.get() != null)
+            {
+                log.debug("Cancelling current path");
+                pathFuture.get().cancel(true);
+            }
+
+            log.debug("Building path");
+            pathFuture.set(executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness)));
+            currentDestination.set(destination);
         }
 
-        boolean sameDestination = currentDestination != null
-                && destination.getX() == currentDestination.getX()
-                && destination.getY() == currentDestination.getY()
-                && destination.getPlane() == currentDestination.getPlane()
-                && destination.getWidth() == currentDestination.getWidth()
-                && destination.getHeight() == currentDestination.getHeight();
-        boolean shouldRefresh = RegionManager.shouldRefreshPath();
-
-		if (shouldRefresh)
-		{
-			log.debug("Path should refresh!");
-		}
-
-        if (!sameDestination || shouldRefresh || forced)
+        if (Static.getClient().isClientThread())
         {
-            log.debug("Cancelling current path");
-            pathFuture.cancel(true);
-            pathFuture = executor.submit(new Pathfinder(Static.getGlobalCollisionMap(), buildTransportLinks(), startPoints, destination, avoidWilderness));
-            currentDestination = destination;
+            log.debug("Cannot block client thread for path future result");
+            return List.of();
         }
 
         try
         {
-            if (Static.getClient().isClientThread())
-            {
-                // 16-17ms for 60fps, 6-7ms for 144fps
-                return pathFuture.get(10, TimeUnit.MILLISECONDS);
-            }
-            return pathFuture.get();
+            return pathFuture.get().get(5, TimeUnit.SECONDS);
         }
-        catch (Exception e)
+        catch (InterruptedException | ExecutionException | TimeoutException e)
         {
-            log.debug("Path is loading");
+            log.warn("Path is loading... takes longer as expected..", e);
             return List.of();
         }
     }
 
     public static List<WorldPoint> buildPath()
     {
-        if (currentDestination == null)
-        {
-            return List.of();
-        }
-        return buildPath(currentDestination);
+        return currentDestination.get() == null ? List.of() : buildPath(currentDestination.get());
     }
 
     public static List<WorldPoint> buildPath(WorldArea destination, boolean avoidWilderness, boolean forced)
