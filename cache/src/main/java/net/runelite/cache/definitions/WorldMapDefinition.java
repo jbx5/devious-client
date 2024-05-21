@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Lotto <https://github.com/devLotto>
+ * Copyright (c) 2017, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,24 +22,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.http.api.worlds;
+package net.runelite.cache.definitions;
 
-public enum WorldType
+import java.util.List;
+import lombok.Data;
+import net.runelite.cache.region.Position;
+
+@Data
+public class WorldMapDefinition
 {
-	MEMBERS,
-	PVP,
-	BOUNTY,
-	PVP_ARENA,
-	SKILL_TOTAL,
-	QUEST_SPEEDRUNNING,
-	HIGH_RISK,
-	LAST_MAN_STANDING,
-	BETA_WORLD,
-	LEGACY_ONLY,
-	EOC_ONLY,
-	NOSAVE_MODE,
-	TOURNAMENT,
-	FRESH_START_WORLD,
-	DEADMAN,
-	SEASONAL,
+	public String safeName;
+	public String name;
+	public int emptyTileColor;
+	public int backgroundColor;
+	public int defaultZoom;
+	public int fileId;
+	public boolean isSurface;
+	public List<WorldMapTypeBase> regionList;
+	public Position position;
 }
