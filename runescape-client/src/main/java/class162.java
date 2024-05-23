@@ -1,71 +1,122 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gj")
-public class class162 extends class144 {
-	@ObfuscatedName("az")
+@ObfuscatedName("gs")
+public class class162 extends class147 {
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -2112148803
+		longValue = -3097145892863964123L
 	)
-	int field1790;
-	@ObfuscatedName("ah")
+	long field1804;
+	@ObfuscatedName("al")
+	String field1801;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1316051959
+		intValue = 1923959749
 	)
-	int field1787;
+	int field1802;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfh;"
+		descriptor = "Lfu;"
 	)
-	final class147 this$0;
+	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfh;)V"
+		descriptor = "(Lfu;)V"
 	)
-	class162(class147 var1) {
+	class162(class150 var1) {
 		this.this$0 = var1;
+		this.field1804 = -1L;
+		this.field1801 = null;
+		this.field1802 = 0;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;I)V",
-		garbageValue = "1253598633"
+		descriptor = "(Lua;I)V",
+		garbageValue = "1738227110"
 	)
-	void vmethod3420(Buffer var1) {
-		this.field1790 = var1.readInt();
-		this.field1787 = var1.readInt();
+	void vmethod3486(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1804 = var1.readLong();
+		}
+
+		this.field1801 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1802 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfp;B)V",
-		garbageValue = "-123"
+		descriptor = "(Lgc;B)V",
+		garbageValue = "100"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3268(this.field1790, this.field1787);
+	void vmethod3490(ClanSettings var1) {
+		var1.method3325(this.field1804, this.field1801, this.field1802);
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("jm")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lhe;",
-		garbageValue = "1186478165"
+		descriptor = "(Lde;III)V",
+		garbageValue = "-1966702872"
 	)
-	@Export("getEnum")
-	public static EnumComposition getEnum(int var0) {
-		EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class17.EnumDefinition_archive.takeFile(8, var0);
-			var1 = new EnumComposition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	static void method3413(Player var0, int var1, int var2) {
+		if (var0.field1223 == var1 && var1 != -1) {
+			int var3 = FaceNormal.SequenceDefinition_get(var1).restartMode;
+			if (var3 == 1) {
+				var0.field1250 = 0;
+				var0.field1251 = 0;
+				var0.field1252 = var2;
+				var0.field1239 = 0;
 			}
 
-			EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
-			return var1;
+			if (var3 == 2) {
+				var0.field1239 = 0;
+			}
+		} else if (var1 == -1 || var0.field1223 == -1 || FaceNormal.SequenceDefinition_get(var1).field2409 >= FaceNormal.SequenceDefinition_get(var0.field1223).field2409) {
+			var0.field1223 = var1;
+			var0.field1250 = 0;
+			var0.field1251 = 0;
+			var0.field1252 = var2;
+			var0.field1239 = 0;
+			var0.field1226 = var0.field1274;
 		}
+
+	}
+
+	@ObfuscatedName("li")
+	@ObfuscatedSignature(
+		descriptor = "(Ldt;IIIIIIIIIII)V",
+		garbageValue = "-1586816445"
+	)
+	static void method3417(class101 var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+		NodeDeque var11 = var0.field1342;
+		PendingSpawn var12 = null;
+
+		for (PendingSpawn var13 = (PendingSpawn)var11.last(); var13 != null; var13 = (PendingSpawn)var11.previous()) {
+			if (var13.field1200 == var1 && var2 == var13.field1192 && var3 == var13.field1196 && var4 == var13.field1191) {
+				var12 = var13;
+				break;
+			}
+		}
+
+		if (var12 == null) {
+			var12 = new PendingSpawn();
+			var12.field1200 = var1;
+			var12.field1191 = var4;
+			var12.field1192 = var2;
+			var12.field1196 = var3;
+			var12.field1190 = -1;
+			GraphicsObject.method2099(var0, var12);
+			var11.addFirst(var12);
+		}
+
+		var12.field1193 = var5;
+		var12.field1197 = var6;
+		var12.field1198 = var7;
+		var12.field1202 = var9;
+		var12.field1203 = var10;
+		var12.method2412(var8);
 	}
 }

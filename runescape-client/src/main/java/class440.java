@@ -1,43 +1,62 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Iterator;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qf")
-class class440 implements Comparator {
-	@ObfuscatedName("ua")
-	@ObfuscatedGetter(
-		intValue = 1293834423
-	)
-	static int field4745;
-	// $FF: synthetic field
+@ObfuscatedName("qu")
+public class class440 extends SongTask {
 	@ObfuscatedSignature(
-		descriptor = "Lqy;"
+		descriptor = "(Lre;)V"
 	)
-	final HttpHeaders this$0;
-
-	@ObfuscatedSignature(
-		descriptor = "(Lqy;)V"
-	)
-	class440(HttpHeaders var1) {
-		this.this$0 = var1;
+	public class440(SongTask var1) {
+		super(var1);
+		super.field4793 = "StartSongTask";
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;B)I",
-		garbageValue = "29"
+		descriptor = "(I)Z",
+		garbageValue = "1230726323"
 	)
-	int method7988(Entry var1, Entry var2) {
-		return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
+	public boolean vmethod8329() {
+		Iterator var1 = class329.musicSongs.iterator();
+
+		while (var1.hasNext()) {
+			MusicSong var2 = (MusicSong)var1.next();
+			if (var2 != null && !var2.field3694 && var2.midiPcmStream != null) {
+				try {
+					var2.midiPcmStream.method6259();
+					var2.midiPcmStream.setPcmStreamVolume(0);
+					if (var2.field3685 != null) {
+						var2.midiPcmStream.setMusicTrack(var2.field3685, var2.musicTrackBoolean);
+					}
+
+					var2.field3685 = null;
+					var2.field3695 = null;
+					var2.musicTrackArchive = null;
+					var2.field3694 = true;
+				} catch (Exception var4) {
+					BufferedSink.RunException_sendStackTrace((String)null, var4);
+					this.method8305(var4.getMessage());
+					return true;
+				}
+			}
+		}
+
+		super.field4798 = true;
+		return true;
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.method7988((Entry)var1, (Entry)var2);
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
+	@ObfuscatedName("jl")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-90"
+	)
+	static final int method8290() {
+		if (class459.clientPreferences.isRoofsHidden()) {
+			return class358.scene.field1348;
+		} else {
+			int var0 = SoundSystem.method856(class358.scene, PlayerComposition.cameraX, UserComparator4.cameraZ, class358.scene.field1348);
+			return var0 - class171.cameraY < 800 && (class358.scene.field1340[class358.scene.field1348][PlayerComposition.cameraX >> 7][UserComparator4.cameraZ >> 7] & 4) != 0 ? class358.scene.field1348 : 3;
+		}
 	}
 }

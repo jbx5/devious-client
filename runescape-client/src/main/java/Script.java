@@ -4,53 +4,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dn")
+@ObfuscatedName("dm")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Llt;"
+		descriptor = "Llm;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("ah")
-	String field1008;
-	@ObfuscatedName("af")
+	@ObfuscatedName("au")
+	static String[] field1016;
+	@ObfuscatedName("cm")
+	@ObfuscatedGetter(
+		intValue = 246565167
+	)
+	static int field1026;
+	@ObfuscatedName("al")
+	String field1019;
+	@ObfuscatedName("aj")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -604534135
+		intValue = 54182531
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1078243665
+		intValue = -972598111
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1779528905
+		intValue = 296809297
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1199096097
+		intValue = 1223292047
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "[Lto;"
+		descriptor = "[Ltu;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -62,13 +69,37 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IB)[Lto;",
-		garbageValue = "52"
+		descriptor = "(IB)[Ltu;",
+		garbageValue = "70"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "([Ljava/lang/String;[II)V",
+		garbageValue = "958054688"
+	)
+	public static void method2209(String[] var0, int[] var1) {
+		class195.quicksortStringsWithCorrespondingIntegers(var0, var1, 0, var0.length - 1);
+	}
+
+	@ObfuscatedName("pd")
+	@ObfuscatedSignature(
+		descriptor = "(Lua;II)V",
+		garbageValue = "-915995285"
+	)
+	static void method2220(Buffer var0, int var1) {
+		byte[] var2 = var0.array;
+		if (Client.randomDatData == null) {
+			Client.randomDatData = new byte[24];
+		}
+
+		class446.writeRandomDat(var2, var1, Client.randomDatData, 0, 24);
+		UrlRequest.method2944(var0, var1);
 	}
 }

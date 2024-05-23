@@ -1,33 +1,21 @@
-import java.util.Arrays;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("df")
+@ObfuscatedName("db")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("vw")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Low;"
-	)
-	static JagNetThread field1023;
-	@ObfuscatedName("oq")
-	@ObfuscatedGetter(
-		intValue = 1843303509
-	)
-	@Export("selectedSpellWidget")
-	static int selectedSpellWidget;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "[Lcn;"
+		descriptor = "[Lco;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 2014772997
+		intValue = -1975266977
 	)
 	@Export("count")
 	int count;
@@ -36,10 +24,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)Lcn;",
-		garbageValue = "236"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lco;",
+		garbageValue = "-411117179"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -67,46 +55,126 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcn;",
-		garbageValue = "1879054956"
+		descriptor = "(II)Lco;",
+		garbageValue = "1382132932"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "10766"
+		descriptor = "(I)I",
+		garbageValue = "1557589062"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-3938"
+		descriptor = "(IZB)[B",
+		garbageValue = "-36"
 	)
-	public static void method2216() {
-		class214.field2136.clear();
+	@Export("ByteArrayPool_getArrayBool")
+	public static byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
+		synchronized(ByteArrayPool.field4816) {
+			byte[] var3;
+			if ((var0 == 100 || var0 < 100 && var1) && ByteArrayPool.ByteArrayPool_smallCount > 0) {
+				var3 = ByteArrayPool.ByteArrayPool_small[--ByteArrayPool.ByteArrayPool_smallCount];
+				ByteArrayPool.ByteArrayPool_small[ByteArrayPool.ByteArrayPool_smallCount] = null;
+				return var3;
+			}
+
+			if ((var0 == 5000 || var0 < 5000 && var1) && ByteArrayPool.ByteArrayPool_mediumCount > 0) {
+				var3 = ByteArrayPool.ByteArrayPool_medium[--ByteArrayPool.ByteArrayPool_mediumCount];
+				ByteArrayPool.ByteArrayPool_medium[ByteArrayPool.ByteArrayPool_mediumCount] = null;
+				return var3;
+			}
+
+			if ((var0 == 10000 || var0 < 10000 && var1) && ByteArrayPool.ByteArrayPool_largeCount > 0) {
+				var3 = ByteArrayPool.ByteArrayPool_large[--ByteArrayPool.ByteArrayPool_largeCount];
+				ByteArrayPool.ByteArrayPool_large[ByteArrayPool.ByteArrayPool_largeCount] = null;
+				return var3;
+			}
+
+			if ((var0 == 30000 || var0 < 30000 && var1) && ByteArrayPool.field4818 > 0) {
+				var3 = ByteArrayPool.field4826[--ByteArrayPool.field4818];
+				ByteArrayPool.field4826[ByteArrayPool.field4818] = null;
+				return var3;
+			}
+
+			int var6;
+			if (class202.ByteArrayPool_arrays != null) {
+				for (var6 = 0; var6 < class47.ByteArrayPool_alternativeSizes.length; ++var6) {
+					if ((class47.ByteArrayPool_alternativeSizes[var6] == var0 || var0 < class47.ByteArrayPool_alternativeSizes[var6] && var1) && ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6] > 0) {
+						byte[] var4 = class202.ByteArrayPool_arrays[var6][--ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6]];
+						class202.ByteArrayPool_arrays[var6][ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6]] = null;
+						return var4;
+					}
+				}
+			}
+
+			if (var1 && class47.ByteArrayPool_alternativeSizes != null) {
+				for (var6 = 0; var6 < class47.ByteArrayPool_alternativeSizes.length; ++var6) {
+					if (var0 <= class47.ByteArrayPool_alternativeSizes[var6] && ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6] < class202.ByteArrayPool_arrays[var6].length) {
+						return new byte[class47.ByteArrayPool_alternativeSizes[var6]];
+					}
+				}
+			}
+		}
+
+		return new byte[var0];
 	}
 
-	@ObfuscatedName("bt")
+	@ObfuscatedName("mh")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;Lnq;ZB)V",
-		garbageValue = "-111"
+		descriptor = "(ILjava/lang/String;I)V",
+		garbageValue = "-1022757602"
 	)
-	public static void method2212(Widget var0, PlayerComposition var1, boolean var2) {
-		var0.modelType = 7;
-		var0.field3801 = new PlayerComposition(var1);
-		if (!var2) {
-			var0.field3801.equipment = Arrays.copyOf(var0.field3801.field3695, var0.field3801.field3695.length);
-			var0.field3801.method6332();
+	static void method2226(int var0, String var1) {
+		int var2 = class17.localPlayer.field1134.field1336.field1415;
+		int[] var3 = class17.localPlayer.field1134.field1336.field1416;
+		boolean var4 = false;
+		Username var5 = new Username(var1, class236.loginType);
+
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = class17.localPlayer.field1134.field1341[var3[var6]];
+			if (var7 != null && var7 != class17.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = WorldMapElement.getPacketBufferNode(ClientPacket.field3274, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeShortLE(0);
+					var8.packetBuffer.writeShortAddLE(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = WorldMapElement.getPacketBufferNode(ClientPacket.field3307, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteNeg(0);
+					var8.packetBuffer.writeShort(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = WorldMapElement.getPacketBufferNode(ClientPacket.field3297, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByte(0);
+					var8.packetBuffer.writeShortAdd(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = WorldMapElement.getPacketBufferNode(ClientPacket.field3278, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteNeg(0);
+					var8.packetBuffer.writeIntLE(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				}
+
+				var4 = true;
+				break;
+			}
+		}
+
+		if (!var4) {
+			UrlRequest.addGameMessage(4, "", "Unable to find " + var1);
 		}
 
 	}

@@ -1,39 +1,56 @@
-import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tb")
-class class516 implements Iterator {
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = -2053439433
-	)
-	int field5146;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Ltc;"
-	)
-	final class517 this$0;
+@ObfuscatedName("to")
+public class class516 {
+	@ObfuscatedName("ak")
+	public final Object field5199;
+	@ObfuscatedName("al")
+	public final Object field5198;
 
-	@ObfuscatedSignature(
-		descriptor = "(Ltc;)V"
-	)
-	class516(class517 var1) {
-		this.this$0 = var1;
+	public class516(Object var1, Object var2) {
+		this.field5199 = var1;
+		this.field5198 = var2;
 	}
 
-	public boolean hasNext() {
-		return this.field5146 < this.this$0.method8504();
+	public String toString() {
+		return this.field5199 + ", " + this.field5198;
 	}
 
-	public void remove() {
-		throw new UnsupportedOperationException();
+	public boolean equals(Object var1) {
+		if (var1 != null && var1 instanceof class516) {
+			class516 var2 = (class516)var1;
+			if (this.field5199 == null) {
+				if (var2.field5199 != null) {
+					return false;
+				}
+			} else if (!this.field5199.equals(var2.field5199)) {
+				return false;
+			}
+
+			if (this.field5198 == null) {
+				if (var2.field5198 != null) {
+					return false;
+				}
+			} else if (!this.field5198.equals(var2.field5198)) {
+				return false;
+			}
+
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public Object next() {
-		int var1 = ++this.field5146 - 1;
-		class476 var2 = (class476)this.this$0.field5148.get((long)var1);
-		return var2 != null ? var2 : this.this$0.method9069(var1);
+	public int hashCode() {
+		int var1 = 0;
+		if (this.field5199 != null) {
+			var1 += this.field5199.hashCode();
+		}
+
+		if (this.field5198 != null) {
+			var1 += 31 * this.field5198.hashCode();
+		}
+
+		return var1;
 	}
 }

@@ -1,369 +1,187 @@
+import java.io.File;
+import java.io.RandomAccessFile;
+import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iz")
+@ObfuscatedName("im")
 public class class232 {
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
+	)
+	static final class232 field2495;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
+	)
+	static final class232 field2500;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
+	)
+	static final class232 field2496;
 	@ObfuscatedName("az")
-	final int[][] field2476;
-	@ObfuscatedName("ah")
-	final int[][] field2479;
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
+	)
+	static final class232 field2497;
 	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = -1247409161
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
 	)
-	int field2481;
+	static final class232 field2498;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
+	)
+	static final class232 field2494;
 	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1078506777
+	@ObfuscatedSignature(
+		descriptor = "Lim;"
 	)
-	int field2477;
-	@ObfuscatedName("an")
-	final int[] field2478;
-	@ObfuscatedName("ao")
-	final int[] field2474;
+	static final class232 field2505;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "[Lim;"
+	)
+	static final class232[] field2504;
+	@ObfuscatedName("gx")
+	@Export("refreshToken")
+	static String refreshToken;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1133988185
+		intValue = 1004792327
 	)
-	final int field2480;
+	final int field2501;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -54152801
+	)
+	final int field2499;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -620293915
+	)
+	final int field2503;
 
-	class232(int var1, int var2) {
-		this.field2476 = new int[var1][var2];
-		this.field2479 = new int[var1][var2];
-		int var3 = var2 * var1;
-		int var4 = class193.method3722(var3 / 4);
-		this.field2478 = new int[var4];
-		this.field2474 = new int[var4];
-		this.field2480 = var4 - 1;
+	static {
+		field2495 = new class232(0, 8, 8);
+		field2500 = new class232(5, 16, 16);
+		field2496 = new class232(4, 32, 32);
+		field2497 = new class232(3, 48, 48);
+		field2498 = new class232(6, 64, 64);
+		field2494 = new class232(1, 96, 96);
+		field2505 = new class232(2, 128, 128);
+		class232[] var0 = new class232[]{field2495, field2494, field2505, field2497, field2496, field2500, field2498};
+		field2504 = var0;
+		Arrays.sort(field2504, new class240());
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "118"
-	)
-	void method4401() {
-		for (int var1 = 0; var1 < this.field2476.length; ++var1) {
-			for (int var2 = 0; var2 < this.field2476[var1].length; ++var2) {
-				this.field2476[var1][var2] = 0;
-				this.field2479[var1][var2] = 99999999;
-			}
-		}
-
+	class232(int var1, int var2, int var3) {
+		this.field2501 = var1;
+		this.field2499 = var2;
+		this.field2503 = var3;
 	}
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "102"
-	)
-	void method4402(int var1, int var2) {
-		this.field2481 = var1;
-		this.field2477 = var2;
-	}
-
-	@ObfuscatedName("af")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "89"
+		garbageValue = "-17"
 	)
-	int method4403() {
-		return this.field2481;
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1903798289"
-	)
-	int method4404() {
-		return this.field2477;
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1073721780"
-	)
-	int method4405() {
-		return this.field2476.length;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1563145756"
-	)
-	int method4400() {
-		return this.field2476[0].length;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(I)[[I",
-		garbageValue = "2132677962"
-	)
-	int[][] method4406() {
-		return this.field2476;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)[[I",
-		garbageValue = "-334912628"
-	)
-	int[][] method4427() {
-		return this.field2479;
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(S)[I",
-		garbageValue = "11830"
-	)
-	int[] method4409() {
-		return this.field2478;
+	int method4488() {
+		return this.field2499 * this.field2503;
 	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)[I",
-		garbageValue = "-2088099832"
+		descriptor = "(Ljava/lang/String;I)Ljava/io/File;",
+		garbageValue = "1470987644"
 	)
-	int[] method4428() {
-		return this.field2474;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "45"
-	)
-	int method4430() {
-		return this.field2480;
-	}
-
-	@ObfuscatedName("ke")
-	@ObfuscatedSignature(
-		descriptor = "(Llk;I)V",
-		garbageValue = "907453280"
-	)
-	static final void method4433(class311 var0) {
-		PacketBuffer var1 = Client.packetWriter.packetBuffer;
-		int var4;
-		int var5;
-		int var6;
-		int var7;
-		int var8;
-		int var9;
-		int var11;
-		int var22;
-		int var23;
-		int var25;
-		if (class311.field3312 == var0) {
-			var22 = var1.readUnsignedShortAdd();
-			var23 = var1.readUnsignedByteAdd();
-			var4 = (var23 >> 4 & 7) + ModelData0.field2905;
-			var5 = (var23 & 7) + class332.field3602;
-			var6 = var1.readUnsignedByteSub();
-			var7 = var6 >> 2;
-			var8 = var6 & 3;
-			var9 = Client.field586[var7];
-			var25 = var1.readUnsignedByteSub();
-			if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-				var11 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-				class332.method6230(var11, var4, var5, var9, var22, var7, var8, var25, 0, -1);
-			}
-
+	@Export("getFile")
+	static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
 		} else {
-			byte var3;
-			int var12;
-			int var13;
-			int var14;
-			int var15;
-			if (class311.field3305 == var0) {
-				byte var2 = var1.readByteSub();
-				var3 = var1.readByteSub();
-				var4 = var1.readUnsignedShortAdd();
-				var5 = var1.readUnsignedShort();
-				var6 = var1.readUnsignedByteNeg();
-				var7 = var6 >> 2;
-				var8 = var6 & 3;
-				var9 = Client.field586[var7];
-				byte var10 = var1.readByteSub();
-				var11 = var1.readUnsignedShortLE();
-				var12 = var1.readUnsignedShortLE();
-				var13 = var1.readUnsignedByte();
-				var14 = (var13 >> 4 & 7) + ModelData0.field2905;
-				var15 = (var13 & 7) + class332.field3602;
-				byte var16 = var1.readByteNeg();
-				Player var17;
-				if (var4 == Client.localPlayerIndex) {
-					var17 = class133.localPlayer;
-				} else {
-					var17 = Client.players[var4];
-				}
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(class327.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
 
-				if (var17 != null) {
-					int var18 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class129.method3005(var18, var14, var15, var7, var8, var9, var5, var11, var12, var2, var3, var10, var16, var17);
-				}
-			}
-
-			if (class311.field3307 == var0) {
-				var22 = var1.readUnsignedByteAdd();
-				var23 = (var22 >> 4 & 7) + ModelData0.field2905;
-				var4 = (var22 & 7) + class332.field3602;
-				var5 = var1.readUnsignedShortLE();
-				var6 = var1.readUnsignedShort();
-				var7 = var1.readUnsignedByteAdd();
-				if (var23 >= 0 && var4 >= 0 && var23 < 104 && var4 < 104) {
-					var23 = var23 * 128 + 64;
-					var4 = var4 * 128 + 64;
-					var8 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					GraphicsObject var21 = new GraphicsObject(var6, var8, var23, var4, Canvas.getTileHeight(var23, var4, var8) - var7, var5, Client.cycle);
-					Client.graphicsObjects.addFirst(var21);
-				}
-
-			} else if (class311.field3310 == var0) {
-				var22 = var1.readUnsignedByteNeg() * 4;
-				var3 = var1.readByteNeg();
-				var4 = var1.readUnsignedShortLE();
-				var5 = var1.readUnsignedShortLE();
-				var6 = var1.readUnsignedByteAdd() * 4;
-				var7 = var1.method9312();
-				var8 = var1.method9313();
-				var9 = var1.readUnsignedByteSub();
-				var25 = (var9 >> 4 & 7) + ModelData0.field2905;
-				var11 = (var9 & 7) + class332.field3602;
-				byte var27 = var1.readByteAdd();
-				var13 = var1.readUnsignedByte();
-				var14 = var1.readUnsignedShortAdd();
-				var15 = var1.readUnsignedShortLE();
-				var12 = var27 + var25;
-				var23 = var3 + var11;
-				if (var25 >= 0 && var11 >= 0 && var25 < 104 && var11 < 104 && var12 >= 0 && var23 >= 0 && var12 < 104 && var23 < 104 && var14 != 65535) {
-					int var28 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class156.method3318(var28, var25, var11, var12, var23, var7, var14, var6, var22, var15, var5, var13, var4, var8);
-				}
-
-			} else if (class311.field3309 == var0) {
-				var22 = var1.readUnsignedByte();
-				var23 = var1.readUnsignedShortAddLE();
-				var4 = var1.readUnsignedByteAdd();
-				var5 = (var4 >> 4 & 7) + ModelData0.field2905;
-				var6 = (var4 & 7) + class332.field3602;
-				if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-					var7 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class6.method42(var7, var5, var6, var23, var22);
-				}
-
-			} else if (class311.field3306 == var0) {
-				var22 = var1.readUnsignedShortAdd();
-				var23 = var1.readUnsignedByte();
-				var4 = var23 >> 2;
-				var5 = var23 & 3;
-				var6 = Client.field586[var4];
-				var7 = var1.readUnsignedByteSub();
-				var8 = (var7 >> 4 & 7) + ModelData0.field2905;
-				var9 = (var7 & 7) + class332.field3602;
-				if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) {
-					var25 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					PendingSpawn var19 = Message.method1178(var25, var8, var9, var6);
-					if (var19 != null) {
-						ObjectComposition var20 = MouseRecorder.getObjectDefinition(var19.field1198);
-						if (var20.field2297) {
-							var19.field1192 = var22;
-							return;
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
 						}
+					} catch (Exception var7) {
 					}
 
-					boolean var26 = HorizontalAlignment.method3853(var25, var8, var9, var4, var5, var6, var22);
-					if (var26) {
-						return;
-					}
-
-					if (var19 != null) {
-						var19.field1192 = var22;
-					}
+					throw new RuntimeException();
 				}
-
-			} else if (class311.field3311 == var0) {
-				var22 = var1.readUnsignedShortLE();
-				var23 = var1.readUnsignedByteSub();
-				var4 = (var23 >> 4 & 7) + ModelData0.field2905;
-				var5 = (var23 & 7) + class332.field3602;
-				var6 = var1.readUnsignedByteSub();
-				var7 = var1.readUnsignedByteAdd() & 31;
-				var8 = var1.readUnsignedByteAdd();
-				var9 = var1.readUnsignedByteAdd();
-				if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-					var25 = var7 + 1;
-					if (class133.localPlayer.pathX[0] >= var4 - var25 && class133.localPlayer.pathX[0] <= var4 + var25 && class133.localPlayer.pathY[0] >= var5 - var25 && class133.localPlayer.pathY[0] <= var25 + var5 && NPC.clientPreferences.getAreaSoundEffectsVolume() != 0 && var6 > 0 && Client.soundEffectCount < 50) {
-						Client.soundEffectIds[Client.soundEffectCount] = var22;
-						Client.soundEffects[Client.soundEffectCount] = null;
-						Client.soundLocations[Client.soundEffectCount] = var7 + (var5 << 8) + (var4 << 16);
-						Client.queuedSoundEffectLoops[Client.soundEffectCount] = var6;
-						Client.queuedSoundEffectDelays[Client.soundEffectCount] = var8;
-						Client.field770[Client.soundEffectCount] = var9;
-						++Client.soundEffectCount;
-					}
-				}
-
-			} else if (class311.field3314 == var0) {
-				var22 = var1.readUnsignedIntLE();
-				var23 = var1.readUnsignedShortAddLE();
-				var4 = var1.readUnsignedShortLE();
-				var5 = var1.readUnsignedShortAdd();
-				var6 = var1.readUnsignedByte();
-				var7 = var1.readUnsignedByteAdd();
-				boolean var24 = var1.readUnsignedByte() == 1;
-				var9 = var1.readUnsignedByteAdd();
-				var25 = (var9 >> 4 & 7) + ModelData0.field2905;
-				var11 = (var9 & 7) + class332.field3602;
-				if (var25 >= 0 && var11 >= 0 && var25 < 104 && var11 < 104) {
-					var12 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class499.addTileItemToGroundItems(var12, var25, var11, var4, var22, var7, var23, var5, var6, var24);
-				}
-
-			} else if (class311.field3308 == var0) {
-				var22 = var1.readUnsignedByteSub();
-				var23 = (var22 >> 4 & 7) + ModelData0.field2905;
-				var4 = (var22 & 7) + class332.field3602;
-				var5 = var1.readUnsignedByteSub();
-				var6 = var5 >> 2;
-				var7 = var5 & 3;
-				var8 = Client.field586[var6];
-				if (var23 >= 0 && var4 >= 0 && var23 < 104 && var4 < 104) {
-					var9 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class332.method6230(var9, var23, var4, var8, -1, var6, var7, 31, 0, -1);
-				}
-
-			} else if (class311.field3304 == var0) {
-				var22 = var1.readUnsignedByteNeg();
-				var23 = (var22 >> 4 & 7) + ModelData0.field2905;
-				var4 = (var22 & 7) + class332.field3602;
-				var5 = var1.readUnsignedIntLE();
-				var6 = var1.readUnsignedShortAdd();
-				var7 = var1.readUnsignedIntME();
-				if (var23 >= 0 && var4 >= 0 && var23 < 104 && var4 < 104) {
-					var8 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					class13.method170(var8, var23, var4, var6, var7, var5);
-				}
-
-			} else if (class311.field3302 == var0) {
-				var22 = var1.readUnsignedIntLE();
-				var23 = var1.readUnsignedByteSub();
-				var4 = (var23 >> 4 & 7) + ModelData0.field2905;
-				var5 = (var23 & 7) + class332.field3602;
-				var6 = var1.readUnsignedShortLE();
-				if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
-					var7 = Client.field587 == -1 ? class172.Client_plane : Client.field587;
-					MusicPatchNode.method6224(var7, var4, var5, var6, var22);
-				}
-
 			}
 		}
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Ldt;IIIIB)V",
+		garbageValue = "-17"
+	)
+	static final void method4489(class101 var0, int var1, int var2, int var3, int var4) {
+		int[][][] var5 = var0.field1339;
+		int var6 = var0.field1346 - 1;
+		int var7 = var0.field1330 - 1;
+
+		for (int var8 = var2; var8 <= var2 + var4; ++var8) {
+			for (int var9 = var1; var9 <= var3 + var1; ++var9) {
+				if (var9 >= 0 && var9 < var5[0].length - 1 && var8 >= 0 && var8 < var5[0][0].length - 1) {
+					class202.Tiles_underlays2[0][var9][var8] = 127;
+					if (var9 == var1 && var9 > 0) {
+						var5[0][var9][var8] = var5[0][var9 - 1][var8];
+					}
+
+					if (var3 + var1 == var9 && var9 < var6) {
+						var5[0][var9][var8] = var5[0][var9 + 1][var8];
+					}
+
+					if (var8 == var2 && var8 > 0) {
+						var5[0][var9][var8] = var5[0][var9][var8 - 1];
+					}
+
+					if (var8 == var2 + var4 && var8 < var7) {
+						var5[0][var9][var8] = var5[0][var9][var8 + 1];
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("pg")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "458391555"
+	)
+	public static boolean method4491() {
+		return Client.staffModLevel >= 2;
 	}
 }

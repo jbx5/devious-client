@@ -1,13 +1,19 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uo")
-public class class529 {
+@ObfuscatedName("ui")
+public interface class529 {
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/Object;Lua;S)V",
+		garbageValue = "220"
+	)
+	void vmethod9521(Object var1, Buffer var2);
+
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lel;"
+		descriptor = "(Lua;B)Ljava/lang/Object;",
+		garbageValue = "-12"
 	)
-	@Export("World_request")
-	static UrlRequest World_request;
+	Object vmethod9520(Buffer var1);
 }

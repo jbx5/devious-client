@@ -3,239 +3,52 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("vx")
+@ObfuscatedName("vv")
 @Implements("Username")
 public class Username implements Comparable {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("name")
 	String name;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@Export("cleanName")
 	String cleanName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ltr;)V"
+		descriptor = "(Ljava/lang/String;Lux;)V"
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
-		String var4;
-		if (var1 == null) {
-			var4 = null;
-		} else {
-			label108: {
-				int var5 = 0;
-
-				int var6;
-				for (var6 = var1.length(); var5 < var6 && class226.method4307(var1.charAt(var5)); ++var5) {
-				}
-
-				while (var6 > var5 && class226.method4307(var1.charAt(var6 - 1))) {
-					--var6;
-				}
-
-				int var7 = var6 - var5;
-				if (var7 >= 1) {
-					byte var9;
-					if (var2 == null) {
-						var9 = 12;
-					} else {
-						switch(var2.field5114) {
-						case 4:
-							var9 = 20;
-							break;
-						default:
-							var9 = 12;
-						}
-					}
-
-					if (var7 <= var9) {
-						StringBuilder var15 = new StringBuilder(var7);
-
-						for (int var17 = var5; var17 < var6; ++var17) {
-							char var10 = var1.charAt(var17);
-							boolean var11;
-							if (Character.isISOControl(var10)) {
-								var11 = false;
-							} else if (class210.isAlphaNumeric(var10)) {
-								var11 = true;
-							} else {
-								char[] var12 = class513.field5125;
-								int var13 = 0;
-
-								label75:
-								while (true) {
-									char var14;
-									if (var13 >= var12.length) {
-										var12 = class513.field5122;
-
-										for (var13 = 0; var13 < var12.length; ++var13) {
-											var14 = var12[var13];
-											if (var14 == var10) {
-												var11 = true;
-												break label75;
-											}
-										}
-
-										var11 = false;
-										break;
-									}
-
-									var14 = var12[var13];
-									if (var10 == var14) {
-										var11 = true;
-										break;
-									}
-
-									++var13;
-								}
-							}
-
-							if (var11) {
-								char var16 = LoginType.method8998(var10);
-								if (var16 != 0) {
-									var15.append(var16);
-								}
-							}
-						}
-
-						if (var15.length() == 0) {
-							var4 = null;
-						} else {
-							var4 = var15.toString();
-						}
-						break label108;
-					}
-				}
-
-				var4 = null;
-			}
-		}
-
-		this.cleanName = var4;
+		this.cleanName = class183.method3692(var1, var2);
 	}
 
 	public Username(String var1) {
 		this.name = var1;
-		LoginType var4 = LoginType.oldscape;
-		String var3;
-		if (var1 == null) {
-			var3 = null;
-		} else {
-			label108: {
-				int var5 = 0;
-
-				int var6;
-				for (var6 = var1.length(); var5 < var6 && class226.method4307(var1.charAt(var5)); ++var5) {
-				}
-
-				while (var6 > var5 && class226.method4307(var1.charAt(var6 - 1))) {
-					--var6;
-				}
-
-				int var7 = var6 - var5;
-				if (var7 >= 1) {
-					byte var9;
-					if (var4 == null) {
-						var9 = 12;
-					} else {
-						switch(var4.field5114) {
-						case 4:
-							var9 = 20;
-							break;
-						default:
-							var9 = 12;
-						}
-					}
-
-					if (var7 <= var9) {
-						StringBuilder var15 = new StringBuilder(var7);
-
-						for (int var17 = var5; var17 < var6; ++var17) {
-							char var10 = var1.charAt(var17);
-							boolean var11;
-							if (Character.isISOControl(var10)) {
-								var11 = false;
-							} else if (class210.isAlphaNumeric(var10)) {
-								var11 = true;
-							} else {
-								char[] var12 = class513.field5125;
-								int var13 = 0;
-
-								label75:
-								while (true) {
-									char var14;
-									if (var13 >= var12.length) {
-										var12 = class513.field5122;
-
-										for (var13 = 0; var13 < var12.length; ++var13) {
-											var14 = var12[var13];
-											if (var14 == var10) {
-												var11 = true;
-												break label75;
-											}
-										}
-
-										var11 = false;
-										break;
-									}
-
-									var14 = var12[var13];
-									if (var14 == var10) {
-										var11 = true;
-										break;
-									}
-
-									++var13;
-								}
-							}
-
-							if (var11) {
-								char var16 = LoginType.method8998(var10);
-								if (var16 != 0) {
-									var15.append(var16);
-								}
-							}
-						}
-
-						if (var15.length() == 0) {
-							var3 = null;
-						} else {
-							var3 = var15.toString();
-						}
-						break label108;
-					}
-				}
-
-				var3 = null;
-			}
-		}
-
-		this.cleanName = var3;
+		this.cleanName = class183.method3692(var1, LoginType.oldscape);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "847884069"
+		garbageValue = "-1367820920"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "2010003749"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "40"
 	)
-	public String method9893() {
+	public String method10265() {
 		return this.cleanName;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1523802503"
+		garbageValue = "-977528300"
 	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
@@ -244,8 +57,8 @@ public class Username implements Comparable {
 
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Lvx;I)I",
-		garbageValue = "-734248268"
+		descriptor = "(Lvv;I)I",
+		garbageValue = "-1513222102"
 	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {

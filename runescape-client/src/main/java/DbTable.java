@@ -4,54 +4,61 @@ import java.util.List;
 import java.util.Map;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uh")
+@ObfuscatedName("um")
 @Implements("DbTable")
 public class DbTable extends DualNode {
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	class522[] field5171;
 	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 46472907
+	)
+	@Export("canvasHeight")
+	public static int canvasHeight;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "[Luy;"
+	)
+	class533[] field5283;
+	@ObfuscatedName("af")
 	@Export("columns")
 	List columns;
 
 	@ObfuscatedSignature(
-		descriptor = "(Loc;I)V"
+		descriptor = "(Lor;I)V"
 	)
 	public DbTable(AbstractArchive var1, int var2) {
 		byte[] var3 = var1.takeFile(var2, 0);
-		this.method9162(new Buffer(var3));
+		this.method9551(new Buffer(var3));
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Loc;II)V"
+		descriptor = "(Lor;II)V"
 	)
 	public DbTable(AbstractArchive var1, int var2, int var3) {
 		byte[] var4 = var1.takeFile(var2, var3 + 1);
-		this.method9162(new Buffer(var4));
+		this.method9551(new Buffer(var4));
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;I)V",
-		garbageValue = "63767484"
+		descriptor = "(Lua;I)V",
+		garbageValue = "304196563"
 	)
-	void method9162(Buffer var1) {
+	void method9551(Buffer var1) {
 		int var2 = var1.packBytesToInt();
-		this.field5171 = new class522[var2];
+		this.field5283 = new class533[var2];
 		this.columns = new ArrayList(var2);
 
 		for (int var3 = 0; var3 < var2; ++var3) {
-			this.field5171[var3] = (class522)KitDefinition.findEnumerated(class522.method9125(), var1.readUnsignedByte());
+			this.field5283[var3] = (class533)MenuAction.findEnumerated(class533.method9515(), var1.readUnsignedByte());
 			int var4 = var1.packBytesToInt();
 			HashMap var5 = new HashMap(var4);
 
 			while (var4-- > 0) {
-				Object var6 = this.field5171[var3].method9112(var1);
+				Object var6 = this.field5283[var3].method9508(var1);
 				int var7 = var1.packBytesToInt();
 				ArrayList var8 = new ArrayList();
 
@@ -68,12 +75,12 @@ public class DbTable extends DualNode {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
-		garbageValue = "1455037139"
+		garbageValue = "-1612093890"
 	)
-	public List method9164(Object var1, int var2) {
+	public List method9552(Object var1, int var2) {
 		if (var2 < 0) {
 			var2 = 0;
 		}

@@ -1,13 +1,25 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("es")
+@ObfuscatedName("ey")
 @Implements("UserComparator4")
 public class UserComparator4 implements Comparator {
-	@ObfuscatedName("az")
+	@ObfuscatedName("af")
+	@Export("Interpreter_stringLocals")
+	static String[] Interpreter_stringLocals;
+	@ObfuscatedName("jr")
+	static int[] field1495;
+	@ObfuscatedName("kq")
+	@ObfuscatedGetter(
+		intValue = 983493133
+	)
+	@Export("cameraZ")
+	static int cameraZ;
+	@ObfuscatedName("ak")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -15,39 +27,30 @@ public class UserComparator4 implements Comparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrw;Lrw;I)I",
-		garbageValue = "1853958875"
+		descriptor = "(Lso;Lso;B)I",
+		garbageValue = "-12"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(Buddy var1, Buddy var2) {
 		return this.reversed ? var1.int2 - var2.int2 : var2.int2 - var1.int2;
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((Buddy)var1, (Buddy)var2);
-	}
-
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1841158278"
-	)
-	public static void method2861(int var0) {
-		MouseHandler.MouseHandler_idleCycles = var0;
+	public int compare(Object var1, Object var2) {
+		return this.compare_bridged((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "580400104"
+		descriptor = "(Lor;I)V",
+		garbageValue = "1898937873"
 	)
-	public static void method2868() {
-		EnumComposition.EnumDefinition_cached.clear();
+	public static void method2955(AbstractArchive var0) {
+		FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
 	}
 }

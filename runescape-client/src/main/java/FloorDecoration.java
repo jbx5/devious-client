@@ -4,48 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jf")
+@ObfuscatedName("jm")
 @Implements("FloorDecoration")
 public final class FloorDecoration {
-	@ObfuscatedName("jy")
-	@ObfuscatedSignature(
-		descriptor = "Lvg;"
-	)
-	@Export("compass")
-	static SpritePixels compass;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 334123469
+		intValue = -2036021473
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 2007569035
+		intValue = 1144628483
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1499379891
+		intValue = -2027200960
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Ljd;"
+		descriptor = "Lju;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		longValue = 9050821616856748983L
+		longValue = 3445693261772232823L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -362934189
+		intValue = -1918367719
 	)
 	@Export("flags")
 	int flags;
@@ -53,47 +47,39 @@ public final class FloorDecoration {
 	FloorDecoration() {
 	}
 
-	@ObfuscatedName("nr")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;I)V",
-		garbageValue = "-1438496947"
+		descriptor = "(III)I",
+		garbageValue = "-643853821"
 	)
-	static final void method4550(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 324) {
-			if (Client.field799 == -1) {
-				Client.field799 = var0.spriteId2;
-				Client.field800 = var0.spriteId;
-			}
+	static final int method4666(int var0, int var1) {
+		int var2 = UserComparator6.method3021(var0 - 1, var1 - 1) + UserComparator6.method3021(1 + var0, var1 - 1) + UserComparator6.method3021(var0 - 1, var1 + 1) + UserComparator6.method3021(1 + var0, 1 + var1);
+		int var3 = UserComparator6.method3021(var0 - 1, var1) + UserComparator6.method3021(var0 + 1, var1) + UserComparator6.method3021(var0, var1 - 1) + UserComparator6.method3021(var0, 1 + var1);
+		int var4 = UserComparator6.method3021(var0, var1);
+		return var2 / 16 + var3 / 8 + var4 / 4;
+	}
 
-			if (Client.playerAppearance.gender == 1) {
-				var0.spriteId2 = Client.field799;
-			} else {
-				var0.spriteId2 = Client.field800;
-			}
-
-		} else if (var1 == 325) {
-			if (Client.field799 == -1) {
-				Client.field799 = var0.spriteId2;
-				Client.field800 = var0.spriteId;
-			}
-
-			if (Client.playerAppearance.gender == 1) {
-				var0.spriteId2 = Client.field800;
-			} else {
-				var0.spriteId2 = Client.field799;
-			}
-
-		} else if (var1 == 327) {
-			var0.modelAngleX = 150;
-			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
-			var0.modelType = 5;
-			var0.modelId = 0;
-		} else if (var1 == 328) {
-			var0.modelAngleX = 150;
-			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
-			var0.modelType = 5;
-			var0.modelId = 1;
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "(ILdm;ZI)I",
+		garbageValue = "418571588"
+	)
+	static int method4667(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = Client.indexCheck.method4450(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = Client.indexCheck.method4419(var3) ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 }

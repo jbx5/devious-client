@@ -1,16 +1,29 @@
-import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eu")
+@ObfuscatedName("ew")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("aq")
-	@Export("osName")
-	static String osName;
-	@ObfuscatedName("az")
+	@ObfuscatedName("wd")
+	@ObfuscatedGetter(
+		intValue = -1566429995
+	)
+	@Export("foundItemIndex")
+	static int foundItemIndex;
+	@ObfuscatedName("ug")
+	@ObfuscatedGetter(
+		intValue = -1141587141
+	)
+	static int field1505;
+	@ObfuscatedName("us")
+	@ObfuscatedGetter(
+		intValue = -939137475
+	)
+	static int field1502;
+	@ObfuscatedName("ak")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -18,10 +31,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrw;Lrw;I)I",
-		garbageValue = "706076372"
+		descriptor = "(Lso;Lso;I)I",
+		garbageValue = "-1564815998"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -36,14 +49,12 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/security/SecureRandom;",
-		garbageValue = "1834002259"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "62"
 	)
-	static SecureRandom method2883() {
-		SecureRandom var0 = new SecureRandom();
-		var0.nextInt();
-		return var0;
+	static void method2966(String var0) {
+		Login.displayName = ClanChannelMember.method3246(var0);
 	}
 }

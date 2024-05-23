@@ -4,36 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("dy")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-	@ObfuscatedName("ti")
+	@ObfuscatedName("td")
 	@ObfuscatedSignature(
-		descriptor = "Lbj;"
+		descriptor = "Lvc;"
 	)
-	@Export("pcmStreamMixer")
-	static PcmStreamMixer pcmStreamMixer;
-	@ObfuscatedName("az")
+	static SpritePixels field1287;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1580888811
+		intValue = 1989060845
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -788832115
+		intValue = 1214608319
 	)
 	@Export("health")
 	int health;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1410048185
+		intValue = 1387533589
 	)
 	@Export("health2")
 	int health2;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1022084677
+		intValue = -1932430059
 	)
 	@Export("cycleOffset")
 	int cycleOffset;
@@ -45,10 +44,10 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-228574189"
+		garbageValue = "-91299081"
 	)
 	@Export("set")
 	void set(int var1, int var2, int var3, int var4) {
@@ -56,5 +55,26 @@ public class HealthBarUpdate extends Node {
 		this.health = var2;
 		this.health2 = var3;
 		this.cycleOffset = var4;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-95"
+	)
+	@Export("Messages_getHistorySize")
+	static int Messages_getHistorySize(int var0) {
+		ChatChannel var1 = (ChatChannel)Messages.Messages_channels.get(var0);
+		return var1 == null ? 0 : var1.size();
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)I",
+		garbageValue = "114"
+	)
+	public static int method2468(int var0, int var1) {
+		int var2 = var0 >>> 31;
+		return (var0 + var2) / var1 - var2;
 	}
 }

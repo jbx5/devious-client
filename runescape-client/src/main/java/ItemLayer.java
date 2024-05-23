@@ -4,72 +4,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jc")
+@ObfuscatedName("jh")
 @Implements("ItemLayer")
 public final class ItemLayer {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1091610659
+		intValue = 1738797291
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 2108686336
+		intValue = -1428347469
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -697043463
+		intValue = -1795281107
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Ljd;"
+		descriptor = "Lju;"
 	)
 	@Export("first")
 	Renderable first;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ljd;"
+		descriptor = "Lju;"
 	)
 	@Export("second")
 	Renderable second;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Ljd;"
+		descriptor = "Lju;"
 	)
 	@Export("third")
 	Renderable third;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		longValue = -2233441093947553815L
+		longValue = -8933060122100064223L
 	)
 	@Export("tag")
 	long tag;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 810270927
+		intValue = 1853806987
 	)
-	@Export("height")
-	int height;
+	int field2550;
 
 	ItemLayer() {
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1029444021"
+		descriptor = "(Lor;I)V",
+		garbageValue = "1856605907"
 	)
-	public static void method4476() {
-		if (MouseHandler.MouseHandler_instance != null) {
-			synchronized(MouseHandler.MouseHandler_instance) {
-				MouseHandler.MouseHandler_instance = null;
-			}
+	public static void method4586(AbstractArchive var0) {
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(CII)Ljava/lang/String;",
+		garbageValue = "-439952169"
+	)
+	public static String method4585(char var0, int var1) {
+		char[] var2 = new char[var1];
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			var2[var3] = var0;
 		}
 
+		return new String(var2);
 	}
 }

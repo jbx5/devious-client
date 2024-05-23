@@ -4,20 +4,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rg")
+@ObfuscatedName("sc")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@Export("nextComparator")
 	Comparator nextComparator;
 
 	protected AbstractUserComparator() {
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;B)V",
-		garbageValue = "-72"
+		descriptor = "(Ljava/util/Comparator;I)V",
+		garbageValue = "-3048478"
 	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
@@ -29,10 +29,10 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(Lrr;Lrr;B)I",
-		garbageValue = "24"
+		descriptor = "(Lsg;Lsg;I)I",
+		garbageValue = "-1648628728"
 	)
 	@Export("compareUser")
 	protected final int compareUser(User var1, User var2) {

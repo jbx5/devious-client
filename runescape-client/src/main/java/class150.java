@@ -1,154 +1,123 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fl")
-public class class150 extends class160 {
-	@ObfuscatedName("te")
+@ObfuscatedName("fu")
+public class class150 {
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1865203712
+		longValue = -8184252867772202709L
 	)
-	static int field1714;
-	@ObfuscatedName("az")
+	long field1710;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 332451705
+		intValue = 1680514671
 	)
-	int field1712;
-	@ObfuscatedName("ah")
-	byte field1708;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 1037364917
-	)
-	int field1709;
-	@ObfuscatedName("at")
-	String field1711;
-	// $FF: synthetic field
+	public int field1706;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lps;"
 	)
-	final class161 this$0;
+	IterableNodeDeque field1711;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgt;)V"
+		descriptor = "(Lua;)V"
 	)
-	class150(class161 var1) {
-		this.this$0 = var1;
-		this.field1712 = -1;
+	public class150(Buffer var1) {
+		this.field1706 = -1;
+		this.field1711 = new IterableNodeDeque();
+		this.method3252(var1);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;B)V",
-		garbageValue = "33"
+		descriptor = "(Lua;I)V",
+		garbageValue = "-1169519545"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1712 = var1.readUnsignedShort();
-		this.field1708 = var1.readByte();
-		this.field1709 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1711 = var1.readStringCp1252NullTerminated();
-	}
+	void method3252(Buffer var1) {
+		this.field1710 = var1.readLong();
+		this.field1706 = var1.readInt();
 
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lgi;B)V",
-		garbageValue = "18"
-	)
-	void vmethod3413(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1712);
-		var2.rank = this.field1708;
-		var2.world = this.field1709;
-		var2.username = new Username(this.field1711);
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lur;II)Ljava/lang/String;",
-		garbageValue = "-1195308716"
-	)
-	static String method3199(Buffer var0, int var1) {
-		try {
-			int var2 = var0.readUShortSmart();
-			if (var2 > var1) {
-				var2 = var1;
-			}
-
-			byte[] var3 = new byte[var2];
-			var0.offset += class352.huffman.decompress(var0.array, var0.offset, var3, 0, var2);
-			String var4 = Tiles.decodeStringCp1252(var3, 0, var2);
-			return var4;
-		} catch (Exception var6) {
-			return "Cabbage";
-		}
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "([BIIIIIIIII[Lix;B)V",
-		garbageValue = "22"
-	)
-	static final void method3200(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, CollisionMap[] var10) {
-		int var12;
-		for (int var11 = 0; var11 < 8; ++var11) {
-			for (var12 = 0; var12 < 8; ++var12) {
-				if (var11 + var2 > 0 && var11 + var2 < 103 && var3 + var12 > 0 && var3 + var12 < 103) {
-					int[] var10000 = var10[var1].flags[var11 + var2];
-					var10000[var3 + var12] &= -16777217;
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 3) {
+				var3 = new class169(this);
+			} else if (var2 == 1) {
+				var3 = new LoginPacket(this);
+			} else if (var2 == 13) {
+				var3 = new class162(this);
+			} else if (var2 == 4) {
+				var3 = new class154(this);
+			} else if (var2 == 6) {
+				var3 = new class161(this);
+			} else if (var2 == 5) {
+				var3 = new class146(this);
+			} else if (var2 == 2) {
+				var3 = new class151(this);
+			} else if (var2 == 7) {
+				var3 = new class144(this);
+			} else if (var2 == 14) {
+				var3 = new class148(this);
+			} else if (var2 == 8) {
+				var3 = new class165(this);
+			} else if (var2 == 9) {
+				var3 = new class171(this);
+			} else if (var2 == 10) {
+				var3 = new class157(this);
+			} else if (var2 == 11) {
+				var3 = new class152(this);
+			} else if (var2 == 12) {
+				var3 = new class156(this);
+			} else {
+				if (var2 != 15) {
+					throw new RuntimeException("");
 				}
+
+				var3 = new class166(this);
 			}
-		}
 
-		Buffer var24 = new Buffer(var0);
-
-		for (var12 = 0; var12 < 4; ++var12) {
-			for (int var13 = 0; var13 < 64; ++var13) {
-				for (int var14 = 0; var14 < 64; ++var14) {
-					if (var12 == var4 && var13 >= var5 && var13 < var5 + 8 && var14 >= var6 && var14 < var6 + 8) {
-						int var15 = var2 + GameEngine.method621(var13 & 7, var14 & 7, var7);
-						int var18 = var13 & 7;
-						int var19 = var14 & 7;
-						int var20 = var7 & 3;
-						int var17;
-						if (var20 == 0) {
-							var17 = var19;
-						} else if (var20 == 1) {
-							var17 = 7 - var18;
-						} else if (var20 == 2) {
-							var17 = 7 - var19;
-						} else {
-							var17 = var18;
-						}
-
-						int var21 = var17 + var3;
-						int var22 = (var13 & 7) + var8 + var2;
-						int var23 = var3 + (var14 & 7) + var9;
-						FriendSystem.loadTerrain(var24, var1, var15, var21, var22, var23, var7);
-					} else {
-						FriendSystem.loadTerrain(var24, 0, -1, -1, 0, 0, 0);
-					}
-				}
-			}
+			((class147)var3).vmethod3486(var1);
+			this.field1711.addFirst((Node)var3);
 		}
 
 	}
 
-	@ObfuscatedName("go")
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Lgc;I)V",
+		garbageValue = "143754529"
+	)
+	public void method3261(ClanSettings var1) {
+		if (this.field1710 == var1.field1784 && this.field1706 == var1.field1763) {
+			for (class147 var2 = (class147)this.field1711.last(); var2 != null; var2 = (class147)this.field1711.previous()) {
+				var2.vmethod3490(var1);
+			}
+
+			++var1.field1763;
+		} else {
+			throw new RuntimeException("");
+		}
+	}
+
+	@ObfuscatedName("lk")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "15699"
+	)
+	static final boolean method3254() {
+		return Client.isMenuOpen;
+	}
+
+	@ObfuscatedName("og")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1804184647"
+		garbageValue = "-1894426333"
 	)
-	static void method3201() {
-		FloorDecoration.compass = null;
-		class315.redHintArrowSprite = null;
-		CollisionMap.mapSceneSprites = null;
-		class91.headIconPkSprites = null;
-		class334.headIconPrayerSprites = null;
-		class137.headIconHintSprites = null;
-		class33.mapDotSprites = null;
-		class286.crossSprites = null;
-		KeyHandler.field115 = null;
-		FriendSystem.scrollBarSprites = null;
-		class168.field1834 = null;
+	@Export("Clan_leaveChat")
+	static final void Clan_leaveChat() {
+		PacketBufferNode var0 = WorldMapElement.getPacketBufferNode(ClientPacket.field3347, Client.packetWriter.isaacCipher);
+		var0.packetBuffer.writeByte(0);
+		Client.packetWriter.addNode(var0);
 	}
 }

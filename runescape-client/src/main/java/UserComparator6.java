@@ -1,18 +1,18 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eh")
+@ObfuscatedName("eq")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("ez")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = -1608214613
 	)
-	@Export("archive6")
-	static Archive archive6;
-	@ObfuscatedName("az")
+	static int field1529;
+	@ObfuscatedName("ak")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +20,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrw;Lrw;I)I",
-		garbageValue = "693520879"
+		descriptor = "(Lso;Lso;I)I",
+		garbageValue = "-563542583"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,24 +38,46 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(S)Lck;",
-		garbageValue = "20289"
+		descriptor = "(I)V",
+		garbageValue = "487878865"
 	)
-	@Export("getNextWorldListWorld")
-	static World getNextWorldListWorld() {
-		return World.World_listCount < World.World_count ? World.World_worlds[++World.World_listCount - 1] : null;
+	static void method3016() {
+		class197.Tiles_underlays = null;
+		Tiles.Tiles_overlays = null;
+		class253.Tiles_shapes = null;
+		AbstractByteArrayCopier.field3975 = null;
+		SongTask.field4795 = null;
+		class202.Tiles_underlays2 = null;
+		class17.field84 = null;
+		ParamComposition.Tiles_hue = null;
+		class194.Tiles_saturation = null;
+		Tiles.Tiles_lightness = null;
+		class131.Tiles_hueMultiplier = null;
+		Tiles.field1050 = null;
 	}
 
-	@ObfuscatedName("hb")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lov;Ljava/lang/String;S)V",
-		garbageValue = "15657"
+		descriptor = "(III)I",
+		garbageValue = "-166924155"
 	)
-	static void method2944(Archive var0, String var1) {
-		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
-		Client.archiveLoaders.add(var2);
-		Client.field773 += var2.groupCount;
+	static final int method3021(int var0, int var1) {
+		int var2 = var0 + var1 * 57;
+		var2 ^= var2 << 13;
+		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
+		return var3 >> 19 & 255;
+	}
+
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(Ldn;I)V",
+		garbageValue = "-257555905"
+	)
+	static void method3020(class94 var0) {
+		if (Client.field561 != var0) {
+			Client.field561 = var0;
+		}
 	}
 }

@@ -1,50 +1,37 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iu")
-public enum class233 implements Enum {
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
+@ObfuscatedName("id")
+public class class233 {
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 1214006285
 	)
-	field2488((byte)-1),
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	field2483((byte)0),
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	field2486((byte)1),
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	field2485((byte)2);
+	int field2507;
 
-	@ObfuscatedName("vn")
 	@ObfuscatedSignature(
-		descriptor = "Lou;"
+		descriptor = "(Ljr;I)V"
 	)
-	@Export("grandExchangeEvents")
-	static GrandExchangeEvents grandExchangeEvents;
-	@ObfuscatedName("an")
-	public byte field2482;
-
-	class233(byte var3) {
-		this.field2482 = var3;
+	public class233(class238 var1, int var2) {
+		this.field2507 = var2;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "800883718"
+		descriptor = "(B)I",
+		garbageValue = "0"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field2482;
+	public int method4493() {
+		return this.field2507;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "3179692"
+	)
+	public static void method4496() {
+		class203.field2007.clear();
 	}
 }

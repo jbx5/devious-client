@@ -4,93 +4,101 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dl")
+@ObfuscatedName("dr")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("az")
+	@ObfuscatedName("fp")
+	@ObfuscatedSignature(
+		descriptor = "Lot;"
+	)
+	static Archive field1038;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	class101 field1036;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1875987271
+		intValue = -221657491
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 580288009
+		intValue = 361896199
 	)
-	@Export("type")
-	int type;
-	@ObfuscatedName("af")
+	int field1030;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1217689137
+		intValue = 2000434069
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("at")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -2089744901
+		intValue = -415493371
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("an")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1520454211
+		intValue = -25327393
 	)
-	@Export("x")
-	int x;
-	@ObfuscatedName("ao")
+	int field1031;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1273210321
+		intValue = 743991919
 	)
-	@Export("y")
-	int y;
+	int field1034;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Lic;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1672181835
+		intValue = -440522477
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1429640881
+		intValue = -212623117
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLjd;)V"
+		descriptor = "(Ldt;IIIIIIIZLju;)V"
 	)
-	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
-		this.id = var1;
-		this.type = var2;
-		this.orientation = var3;
-		this.plane = var4;
-		this.x = var5;
-		this.y = var6;
-		if (var7 != -1) {
-			this.sequenceDefinition = DevicePcmPlayerProvider.SequenceDefinition_get(var7);
+	DynamicObject(class101 var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, Renderable var10) {
+		this.field1036 = var1;
+		this.id = var2;
+		this.field1030 = var3;
+		this.orientation = var4;
+		this.plane = var5;
+		this.field1031 = var6;
+		this.field1034 = var7;
+		if (var8 != -1) {
+			this.sequenceDefinition = FaceNormal.SequenceDefinition_get(var8);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.restartMode == 0 && var9 != null && var9 instanceof DynamicObject) {
-				DynamicObject var10 = (DynamicObject)var9;
-				if (var10.sequenceDefinition == this.sequenceDefinition) {
-					this.frame = var10.frame;
-					this.cycleStart = var10.cycleStart;
+			if (this.sequenceDefinition.restartMode == 0 && var10 != null && var10 instanceof DynamicObject) {
+				DynamicObject var11 = (DynamicObject)var10;
+				if (this.sequenceDefinition == var11.sequenceDefinition) {
+					this.frame = var11.frame;
+					this.cycleStart = var11.cycleStart;
 					return;
 				}
 			}
 
-			if (var8 && this.sequenceDefinition.frameCount != -1) {
+			if (var9 && this.sequenceDefinition.frameCount != -1) {
 				if (!this.sequenceDefinition.isCachedModelIdSet()) {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4232());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4326());
 				}
 			}
 		}
@@ -99,8 +107,8 @@ public class DynamicObject extends Renderable {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljn;",
-		garbageValue = "1157175232"
+		descriptor = "(I)Lkb;",
+		garbageValue = "-852782106"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -112,7 +120,7 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (this.sequenceDefinition.isCachedModelIdSet()) {
-				var2 = this.sequenceDefinition.method4232();
+				var2 = this.sequenceDefinition.method4326();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -122,11 +130,11 @@ public class DynamicObject extends Renderable {
 					}
 				}
 			} else {
-				label81: {
+				label83: {
 					do {
 						do {
 							if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
-								break label81;
+								break label83;
 							}
 
 							var1 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -143,7 +151,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = MouseRecorder.getObjectDefinition(this.id);
+		ObjectComposition var12 = HitSplatDefinition.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -160,41 +168,52 @@ public class DynamicObject extends Renderable {
 				var3 = var12.sizeX;
 			}
 
-			int var4 = (var2 >> 1) + this.x;
-			int var5 = (var2 + 1 >> 1) + this.x;
-			int var6 = (var3 >> 1) + this.y;
-			int var7 = (var3 + 1 >> 1) + this.y;
-			int[][] var8 = Tiles.Tiles_heights[this.plane];
-			int var9 = var8[var4][var7] + var8[var4][var6] + var8[var5][var6] + var8[var5][var7] >> 2;
-			int var10 = (this.x << 7) + (var2 << 6);
-			int var11 = (this.y << 7) + (var3 << 6);
-			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
+			int var4 = (var2 >> 1) + this.field1031;
+			int var5 = (var2 + 1 >> 1) + this.field1031;
+			int var6 = (var3 >> 1) + this.field1034;
+			int var7 = (var3 + 1 >> 1) + this.field1034;
+			int[][] var8 = this.field1036.field1339[this.plane];
+			int var9 = var8[var4][var7] + var8[var5][var6] + var8[var4][var6] + var8[var5][var7] >> 2;
+			int var10 = (this.field1031 << 7) + (var2 << 6);
+			int var11 = (this.field1034 << 7) + (var3 << 6);
+			return var12.getModelDynamic(this.field1030, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "28"
+		descriptor = "(III)V",
+		garbageValue = "295501002"
 	)
-	@Export("changeWorldSelectSorting")
-	static void changeWorldSelectSorting(int var0, int var1) {
-		int[] var2 = new int[4];
-		int[] var3 = new int[4];
-		var2[0] = var0;
-		var3[0] = var1;
-		int var4 = 1;
-
-		for (int var5 = 0; var5 < 4; ++var5) {
-			if (World.World_sortOption1[var5] != var0) {
-				var2[var4] = World.World_sortOption1[var5];
-				var3[var4] = World.World_sortOption2[var5];
-				++var4;
-			}
+	public static void method2224(int var0, int var1) {
+		VarbitComposition var2 = MouseHandler.method689(var0);
+		int var3 = var2.baseVar;
+		int var4 = var2.startBit;
+		int var5 = var2.endBit;
+		int var6 = Varps.Varps_masks[var5 - var4];
+		if (var1 < 0 || var1 > var6) {
+			var1 = 0;
 		}
 
-		World.World_sortOption1 = var2;
-		World.World_sortOption2 = var3;
-		FloorUnderlayDefinition.sortWorlds(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+		var6 <<= var4;
+		Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lnb;II)V",
+		garbageValue = "-1992565034"
+	)
+	@Export("Widget_setKeyIgnoreHeld")
+	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+		if (var0.field3891 == null) {
+			throw new RuntimeException();
+		} else {
+			if (var0.field3822 == null) {
+				var0.field3822 = new int[var0.field3891.length];
+			}
+
+			var0.field3822[var1] = Integer.MAX_VALUE;
+		}
 	}
 }

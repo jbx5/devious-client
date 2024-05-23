@@ -4,43 +4,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jy")
+@ObfuscatedName("jn")
 @Implements("Skeleton")
 public class Skeleton extends Node {
-	@ObfuscatedName("kt")
+	@ObfuscatedName("cc")
+	static String field2697;
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -1324166715
-	)
-	@Export("oculusOrbFocalPointY")
-	static int oculusOrbFocalPointY;
-	@ObfuscatedName("uk")
-	@ObfuscatedGetter(
-		intValue = -1790423680
-	)
-	static int field2633;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = -1822758027
+		intValue = 215908835
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -536717565
+		intValue = 415648975
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@Export("transformTypes")
 	int[] transformTypes;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@Export("labels")
 	int[][] labels;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Ljr;"
+		descriptor = "Lje;"
 	)
-	class243 field2636;
+	class249 field2703;
 
 	public Skeleton(int var1, byte[] var2) {
 		this.id = var1;
@@ -67,27 +58,54 @@ public class Skeleton extends Node {
 		if (var3.offset < var3.array.length) {
 			var4 = var3.readUnsignedShort();
 			if (var4 > 0) {
-				this.field2636 = new class243(var3, var4);
+				this.field2703 = new class249(var3, var4);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-619378321"
+		garbageValue = "1286736484"
 	)
-	public int method4695() {
+	public int method4846() {
 		return this.count;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljr;",
-		garbageValue = "1023110495"
+		descriptor = "(I)Lje;",
+		garbageValue = "-868887817"
 	)
-	public class243 method4697() {
-		return this.field2636;
+	public class249 method4844() {
+		return this.field2703;
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1894808035"
+	)
+	public static int method4848(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1821199649"
+	)
+	public static void method4849() {
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
 	}
 }

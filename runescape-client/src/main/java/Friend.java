@@ -3,21 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rh")
+@ObfuscatedName("rf")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("az")
-	boolean field4783;
-	@ObfuscatedName("ah")
-	boolean field4782;
+	@ObfuscatedName("ak")
+	boolean field4912;
+	@ObfuscatedName("al")
+	boolean field4911;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrh;I)I",
-		garbageValue = "-1758673926"
+		descriptor = "(Lrf;B)I",
+		garbageValue = "-9"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -29,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4783 && !var1.field4783) {
+		} else if (this.field4912 && !var1.field4912) {
 			return -1;
-		} else if (!this.field4783 && var1.field4783) {
+		} else if (!this.field4912 && var1.field4912) {
 			return 1;
-		} else if (this.field4782 && !var1.field4782) {
+		} else if (this.field4911 && !var1.field4911) {
 			return -1;
-		} else if (!this.field4782 && var1.field4782) {
+		} else if (!this.field4911 && var1.field4911) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lrr;B)I",
-		garbageValue = "25"
+		descriptor = "(Lsg;I)I",
+		garbageValue = "-1406397913"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -56,27 +56,36 @@ public class Friend extends Buddy {
 		return this.compareToFriend((Friend)var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lsk;",
-		garbageValue = "1208243676"
+		descriptor = "(I)[Ldu;",
+		garbageValue = "1441188035"
 	)
-	static class473[] method8100() {
-		return new class473[]{class473.field4894, class473.field4895, class473.field4893, class473.field4896};
+	static class91[] method8592() {
+		return new class91[]{class91.field1119, class91.field1115, class91.field1120, class91.field1118, class91.field1116};
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("pj")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "277588749"
+		descriptor = "(II)V",
+		garbageValue = "654862285"
 	)
-	@Export("focusPasswordWhenUsernameFilled")
-	static void focusPasswordWhenUsernameFilled() {
-		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-			Login.currentLoginField = 1;
-		} else {
-			Login.currentLoginField = 0;
-		}
+	static void method8588(int var0) {
+		SequenceDefinition var1 = FaceNormal.SequenceDefinition_get(var0);
+		if (var1.isCachedModelIdSet()) {
+			int var3 = var1.SequenceDefinition_cachedModelId;
+			class141 var4 = HealthBar.method2651(var3);
+			int var2;
+			if (var4 == null) {
+				var2 = 2;
+			} else {
+				var2 = var4.method3149() ? 0 : 1;
+			}
 
+			if (var2 == 2) {
+				Client.field824.add(var1.SequenceDefinition_cachedModelId);
+			}
+
+		}
 	}
 }

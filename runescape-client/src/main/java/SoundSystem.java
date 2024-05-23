@@ -3,17 +3,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bt")
+@ObfuscatedName("bm")
 @Implements("SoundSystem")
 public class SoundSystem implements Runnable {
-	@ObfuscatedName("az")
+	@ObfuscatedName("we")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "[Lby;"
+		descriptor = "[Lbd;"
 	)
 	@Export("players")
-	public volatile PcmPlayer[] players;
+	volatile PcmPlayer[] players;
 
-	public SoundSystem() {
+	SoundSystem() {
 		this.players = new PcmPlayer[2];
 	}
 
@@ -26,85 +29,61 @@ public class SoundSystem implements Runnable {
 				}
 			}
 		} catch (Exception var4) {
-			class180.RunException_sendStackTrace((String)null, var4);
+			BufferedSink.RunException_sendStackTrace((String)null, var4);
 		}
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1240103721"
+		descriptor = "(I)V",
+		garbageValue = "1676746541"
 	)
-	static final int method817(int var0, int var1) {
-		if (var0 == -2) {
-			return 12345678;
-		} else if (var0 == -1) {
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
+	public static void method855() {
+		class218.field1909.clear();
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1301917324"
+	)
+	public static void method851() {
+		class329.field3579.clear();
+	}
+
+	@ObfuscatedName("kp")
+	@ObfuscatedSignature(
+		descriptor = "(Ldt;IIIB)I",
+		garbageValue = "-84"
+	)
+	static final int method856(class101 var0, int var1, int var2, int var3) {
+		int var4 = var1 >> 7;
+		int var5 = var2 >> 7;
+		if (var4 >= 0 && var5 >= 0 && var4 < var0.field1340[0].length && var5 < var0.field1340[0][0].length) {
+			int var6 = var3;
+			if (var3 < 3 && (var0.field1340[1][var4][var5] & 2) == 2) {
+				var6 = var3 + 1;
 			}
 
-			return var1;
+			int var7 = var1 & 127;
+			int var8 = var2 & 127;
+			int var9 = var7 * var0.field1339[var6][var4 + 1][var5] + var0.field1339[var6][var4][var5] * (128 - var7) >> 7;
+			int var10 = var7 * var0.field1339[var6][var4 + 1][var5 + 1] + var0.field1339[var6][var4][var5 + 1] * (128 - var7) >> 7;
+			return var8 * var10 + var9 * (128 - var8) >> 7;
 		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
+			return 0;
 		}
 	}
 
-	@ObfuscatedName("mm")
+	@ObfuscatedName("px")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;B)Z",
-		garbageValue = "-5"
+		descriptor = "(Lca;I)V",
+		garbageValue = "-143017937"
 	)
-	@Export("runCs1")
-	static final boolean runCs1(Widget var0) {
-		if (var0.cs1Comparisons == null) {
-			return false;
-		} else {
-			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
-				int var2 = class147.method3173(var0, var1);
-				int var3 = var0.cs1ComparisonValues[var1];
-				if (var0.cs1Comparisons[var1] == 2) {
-					if (var2 >= var3) {
-						return false;
-					}
-				} else if (var0.cs1Comparisons[var1] == 3) {
-					if (var2 <= var3) {
-						return false;
-					}
-				} else if (var0.cs1Comparisons[var1] == 4) {
-					if (var2 == var3) {
-						return false;
-					}
-				} else if (var3 != var2) {
-					return false;
-				}
-			}
-
-			return true;
-		}
-	}
-
-	@ObfuscatedName("nu")
-	@ObfuscatedSignature(
-		descriptor = "(Lnt;IB)Ljava/lang/String;",
-		garbageValue = "-66"
-	)
-	static String method819(Widget var0, int var1) {
-		int var3 = class33.getWidgetFlags(var0);
-		boolean var2 = (var3 >> var1 + 1 & 1) != 0;
-		if (!var2 && var0.onOp == null) {
-			return null;
-		} else {
-			return var0.actions != null && var0.actions.length > var1 && var0.actions[var1] != null && var0.actions[var1].trim().length() != 0 ? var0.actions[var1] : null;
+	static void method854(LoginState var0) {
+		if (Tiles.loginState != var0) {
+			Tiles.loginState = var0;
 		}
 	}
 }

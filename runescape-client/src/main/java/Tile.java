@@ -4,230 +4,139 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jh")
+@ObfuscatedName("jz")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("iw")
-	@Export("regionLandArchiveIds")
-	static int[] regionLandArchiveIds;
+	@ObfuscatedName("ph")
+	@ObfuscatedGetter(
+		intValue = -896049715
+	)
+	@Export("widgetDragDuration")
+	static int widgetDragDuration;
+	@ObfuscatedName("qj")
+	@ObfuscatedSignature(
+		descriptor = "Luj;"
+	)
+	static class528 field2639;
+	@ObfuscatedName("un")
+	@ObfuscatedGetter(
+		intValue = -1619357703
+	)
+	static int field2641;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -1506494255
+	)
+	int field2656;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -118489229
+	)
+	int field2638;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 1838880061
+	)
+	int field2655;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -668451045
+		intValue = 100104241
 	)
-	@Export("plane")
-	int plane;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 867288095
-	)
-	@Export("x")
-	int x;
+	int field2640;
 	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 401221575
-	)
-	@Export("y")
-	int y;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1598634067
-	)
-	@Export("originalPlane")
-	int originalPlane;
-	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Ljs;"
+		descriptor = "Lkg;"
 	)
 	@Export("paint")
 	SceneTilePaint paint;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Ljg;"
+		descriptor = "Lke;"
 	)
 	@Export("model")
 	SceneTileModel model;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
+		descriptor = "Lkt;"
 	)
 	@Export("boundaryObject")
 	BoundaryObject boundaryObject;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lkm;"
+		descriptor = "Lkj;"
 	)
 	@Export("wallDecoration")
 	WallDecoration wallDecoration;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Ljf;"
+		descriptor = "Ljm;"
 	)
-	@Export("floorDecoration")
-	FloorDecoration floorDecoration;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Ljc;"
-	)
-	@Export("itemLayer")
-	ItemLayer itemLayer;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = -1426142267
-	)
-	@Export("gameObjectsCount")
-	int gameObjectsCount;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "[Lkk;"
-	)
-	@Export("gameObjects")
-	GameObject[] gameObjects;
-	@ObfuscatedName("ai")
-	@Export("gameObjectEdgeMasks")
-	int[] gameObjectEdgeMasks;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = 1022218731
-	)
-	@Export("gameObjectsEdgeMask")
-	int gameObjectsEdgeMask;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = -906793913
-	)
-	@Export("minPlane")
-	int minPlane;
-	@ObfuscatedName("aj")
-	@Export("drawPrimary")
-	boolean drawPrimary;
-	@ObfuscatedName("au")
-	@Export("drawSecondary")
-	boolean drawSecondary;
-	@ObfuscatedName("ay")
-	@Export("drawGameObjects")
-	boolean drawGameObjects;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 1376316457
-	)
-	@Export("drawGameObjectEdges")
-	int drawGameObjectEdges;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = -287320169
-	)
-	int field2602;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = 37074917
-	)
-	int field2583;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 2057043439
-	)
-	int field2604;
-	@ObfuscatedName("am")
+	FloorDecoration field2645;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Ljh;"
 	)
-	@Export("linkedBelowTile")
-	Tile linkedBelowTile;
+	ItemLayer field2646;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 8092243
+	)
+	int field2647;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "[Lkf;"
+	)
+	GameObject[] field2637;
+	@ObfuscatedName("aq")
+	int[] field2649;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 1261156353
+	)
+	int field2650;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 225429201
+	)
+	int field2651;
+	@ObfuscatedName("ax")
+	boolean field2662;
+	@ObfuscatedName("ay")
+	boolean field2653;
+	@ObfuscatedName("au")
+	boolean field2644;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 1960205435
+	)
+	int field2648;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = 176877587
+	)
+	int field2660;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 1016934781
+	)
+	int field2657;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 2034123681
+	)
+	int field2658;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Ljz;"
+	)
+	Tile field2659;
 
 	Tile(int var1, int var2, int var3) {
-		this.gameObjects = new GameObject[5];
-		this.gameObjectEdgeMasks = new int[5];
-		this.gameObjectsEdgeMask = 0;
-		this.originalPlane = this.plane = var1;
-		this.x = var2;
-		this.y = var3;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(CLpv;I)C",
-		garbageValue = "994159739"
-	)
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if (var0 >= 192 && var0 <= 255) {
-			if (var0 >= 192 && var0 <= 198) {
-				return 'A';
-			}
-
-			if (var0 == 199) {
-				return 'C';
-			}
-
-			if (var0 >= 200 && var0 <= 203) {
-				return 'E';
-			}
-
-			if (var0 >= 204 && var0 <= 207) {
-				return 'I';
-			}
-
-			if (var0 == 209 && var1 != Language.Language_ES) {
-				return 'N';
-			}
-
-			if (var0 >= 210 && var0 <= 214) {
-				return 'O';
-			}
-
-			if (var0 >= 217 && var0 <= 220) {
-				return 'U';
-			}
-
-			if (var0 == 221) {
-				return 'Y';
-			}
-
-			if (var0 == 223) {
-				return 's';
-			}
-
-			if (var0 >= 224 && var0 <= 230) {
-				return 'a';
-			}
-
-			if (var0 == 231) {
-				return 'c';
-			}
-
-			if (var0 >= 232 && var0 <= 235) {
-				return 'e';
-			}
-
-			if (var0 >= 236 && var0 <= 239) {
-				return 'i';
-			}
-
-			if (var0 == 241 && var1 != Language.Language_ES) {
-				return 'n';
-			}
-
-			if (var0 >= 242 && var0 <= 246) {
-				return 'o';
-			}
-
-			if (var0 >= 249 && var0 <= 252) {
-				return 'u';
-			}
-
-			if (var0 == 253 || var0 == 255) {
-				return 'y';
-			}
-		}
-
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
-		} else if (var0 == 376) {
-			return 'Y';
-		} else {
-			return var0;
-		}
+		this.field2637 = new GameObject[5];
+		this.field2649 = new int[5];
+		this.field2650 = 0;
+		this.field2640 = this.field2656 = var1;
+		this.field2638 = var2;
+		this.field2655 = var3;
 	}
 }

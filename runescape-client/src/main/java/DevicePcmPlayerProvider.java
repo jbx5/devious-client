@@ -3,235 +3,265 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("am")
+@ObfuscatedName("an")
 @Implements("DevicePcmPlayerProvider")
 public class DevicePcmPlayerProvider implements class51 {
-	@ObfuscatedName("ie")
-	@ObfuscatedSignature(
-		descriptor = "Lpx;"
-	)
-	@Export("fontPlain11")
-	static Font fontPlain11;
-	@ObfuscatedName("il")
-	@ObfuscatedSignature(
-		descriptor = "Lpx;"
-	)
-	@Export("fontBold12")
-	static Font fontBold12;
-	@ObfuscatedName("io")
+	@ObfuscatedName("bi")
+	@Export("fontHelvetica13")
+	static java.awt.Font fontHelvetica13;
+	@ObfuscatedName("gj")
 	@ObfuscatedGetter(
-		intValue = -181082999
+		intValue = 1521460135
 	)
-	@Export("baseY")
-	static int baseY;
-	@ObfuscatedName("qb")
-	@ObfuscatedSignature(
-		descriptor = "Ltc;"
-	)
-	static class517 field99;
+	static int field114;
 
 	DevicePcmPlayerProvider() {
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lby;",
-		garbageValue = "1"
+		descriptor = "(I)Lbd;",
+		garbageValue = "2031489257"
 	)
 	@Export("player")
 	public PcmPlayer player() {
 		return new DevicePcmPlayer();
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lig;",
-		garbageValue = "99"
+		descriptor = "(II)Lhz;",
+		garbageValue = "-1166165948"
 	)
-	@Export("SequenceDefinition_get")
-	public static SequenceDefinition SequenceDefinition_get(int var0) {
-		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
+	@Export("getEnum")
+	public static EnumComposition getEnum(int var0) {
+		EnumComposition var1 = (EnumComposition)EnumComposition.EnumDefinition_cached.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = SequenceDefinition.SequenceDefinition_archive.takeFile(12, var0);
-			var1 = new SequenceDefinition();
+			byte[] var2 = EnumComposition.EnumDefinition_archive.takeFile(8, var0);
+			var1 = new EnumComposition();
 			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
-			var1.postDecode();
-			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
+			EnumComposition.EnumDefinition_cached.put(var1, (long)var0);
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("is")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-571645870"
+		descriptor = "(Lnb;III)V",
+		garbageValue = "589984685"
 	)
-	public static void method290() {
-		VarbitComposition.VarbitDefinition_cached.clear();
-	}
+	@Export("checkIfMinimapClicked")
+	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
+		if (Client.minimapState == 0 || Client.minimapState == 3) {
+			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !class105.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
+				SpriteMask var3 = var0.method6924(AsyncRestClient.widgetDefinition, true);
+				if (var3 == null) {
+					return;
+				}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(ILdn;ZI)I",
-		garbageValue = "-327851457"
-	)
-	static int method291(int var0, Script var1, boolean var2) {
-		Widget var3 = class243.widgetDefinition.method6281(Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.scrollX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.scrollY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTEXT) {
-			Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var3.text;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLWIDTH) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.scrollWidth;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETSCROLLHEIGHT) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.scrollHeight;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELZOOM) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.modelZoom;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_X) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.modelAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Z) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELANGLE_Y) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.modelAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETTRANS) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.transparencyTop;
-			return 1;
-		} else if (var0 == 2610) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.transparencyBot;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETCOLOUR) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.color;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETFILLCOLOUR) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.color2;
-			return 1;
-		} else if (var0 == 2613) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
-			return 1;
-		} else {
-			class341 var4;
-			if (var0 == 2617) {
-				var4 = var3.method6699();
-				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4 != null ? var4.field3655 : 0;
+				int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
+				int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
+				if (var3.contains(var4, var5)) {
+					var4 -= var3.width / 2;
+					var5 -= var3.height / 2;
+					int var6 = Client.camAngleY & 2047;
+					int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
+					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
+					int var9 = var7 * var5 + var8 * var4 >> 11;
+					int var10 = var8 * var5 - var4 * var7 >> 11;
+					int var11 = Interpreter.field899.vmethod8779() + var9 >> 7;
+					int var12 = Interpreter.field899.vmethod8773() - var10 >> 7;
+					PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.field3282, Client.packetWriter.isaacCipher);
+					var13.packetBuffer.writeByte(18);
+					var13.packetBuffer.writeShortAddLE(var12 + class358.scene.field1333);
+					var13.packetBuffer.writeShortAdd(var11 + class358.scene.field1337);
+					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
+					var13.packetBuffer.writeByte(var4);
+					var13.packetBuffer.writeByte(var5);
+					var13.packetBuffer.writeShort(Client.camAngleY);
+					var13.packetBuffer.writeByte(57);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(89);
+					var13.packetBuffer.writeShort(class17.localPlayer.x);
+					var13.packetBuffer.writeShort(class17.localPlayer.y);
+					var13.packetBuffer.writeByte(63);
+					Client.packetWriter.addNode(var13);
+					Client.destinationX = var11;
+					Client.destinationY = var12;
+				}
 			}
 
-			if (var0 == 2618) {
-				var4 = var3.method6699();
-				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4 != null ? var4.field3656 : 0;
-				return 1;
+		}
+	}
+
+	@ObfuscatedName("no")
+	@ObfuscatedSignature(
+		descriptor = "(Lnb;IIIIIII)V",
+		garbageValue = "198415184"
+	)
+	static final void method295(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (Client.field611) {
+			Client.alternativeScrollbarWidth = 32;
+		} else {
+			Client.alternativeScrollbarWidth = 0;
+		}
+
+		Client.field611 = false;
+		int var7;
+		if (MouseHandler.MouseHandler_currentButton == 1 || !class105.mouseCam && MouseHandler.MouseHandler_currentButton == 4) {
+			if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
+				var0.scrollY -= 4;
+				class324.invalidateWidget(var0);
+			} else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
+				var0.scrollY += 4;
+				class324.invalidateWidget(var0);
+			} else if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
+				var7 = var3 * (var3 - 32) / var4;
+				if (var7 < 8) {
+					var7 = 8;
+				}
+
+				int var8 = var6 - var2 - 16 - var7 / 2;
+				int var9 = var3 - 32 - var7;
+				var0.scrollY = var8 * (var4 - var3) / var9;
+				class324.invalidateWidget(var0);
+				Client.field611 = true;
+			}
+		}
+
+		if (Client.mouseWheelRotation != 0) {
+			var7 = var0.width;
+			if (var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
+				var0.scrollY += Client.mouseWheelRotation * 45;
+				class324.invalidateWidget(var0);
+			}
+		}
+
+	}
+
+	@ObfuscatedName("nr")
+	@ObfuscatedSignature(
+		descriptor = "(Lnb;I)V",
+		garbageValue = "-962419780"
+	)
+	@Export("Widget_addToMenu")
+	static final void Widget_addToMenu(Widget var0) {
+		String var1;
+		int var2;
+		int var3;
+		if (var0.buttonType == 1) {
+			var1 = var0.buttonText;
+			var2 = var0.id;
+			var3 = var0.itemId;
+			class194.method3796(var1, "", 24, 0, 0, var2, var3, false, -1);
+		}
+
+		int var4;
+		String var9;
+		if (var0.buttonType == 2 && !Client.isSpellSelected) {
+			var1 = class105.Widget_getSpellActionName(var0);
+			if (var1 != null) {
+				var9 = HttpAuthenticationHeader.colorStartTag(65280) + var0.field3848;
+				var3 = var0.id;
+				var4 = var0.itemId;
+				class194.method3796(var1, var9, 25, 0, -1, var3, var4, false, -1);
+			}
+		}
+
+		if (var0.buttonType == 3) {
+			KeyHandler.insertMenuItemNoShift("Close", "", 26, 0, 0, var0.id);
+		}
+
+		if (var0.buttonType == 4) {
+			KeyHandler.insertMenuItemNoShift(var0.buttonText, "", 28, 0, 0, var0.id);
+		}
+
+		if (var0.buttonType == 5) {
+			KeyHandler.insertMenuItemNoShift(var0.buttonText, "", 29, 0, 0, var0.id);
+		}
+
+		if (var0.buttonType == 6 && Client.meslayerContinueWidget == null) {
+			KeyHandler.insertMenuItemNoShift(var0.buttonText, "", 30, 0, -1, var0.id);
+		}
+
+		if (var0.isIf3) {
+			int var5;
+			if (Client.isSpellSelected) {
+				if (class166.method3447(class160.getWidgetFlags(var0)) && (GrandExchangeOfferUnitPriceComparator.selectedSpellFlags & 32) == 32) {
+					var1 = Client.selectedSpellActionName;
+					var9 = Client.selectedSpellName + " " + "->" + " " + var0.dataText;
+					var3 = var0.childIndex;
+					var4 = var0.id;
+					var5 = var0.itemId;
+					class194.method3796(var1, var9, 58, 0, var3, var4, var5, false, -1);
+				}
 			} else {
-				class347 var7;
-				if (var0 == 2619) {
-					var7 = var3.method6667();
-					Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6413().method7539() : "";
-					return 1;
-				} else if (var0 == 2620) {
-					var4 = var3.method6699();
-					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var4 != null ? var4.field3657 : 0;
-					return 1;
-				} else if (var0 == 2621) {
-					var7 = var3.method6667();
-					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6423() : 0;
-					return 1;
-				} else if (var0 == 2622) {
-					var7 = var3.method6667();
-					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6424() : 0;
-					return 1;
-				} else if (var0 == 2623) {
-					var7 = var3.method6667();
-					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6425() : 0;
-					return 1;
-				} else if (var0 == 2624) {
-					var7 = var3.method6667();
-					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null && var7.method6459() ? 1 : 0;
-					return 1;
-				} else if (var0 != 2625) {
-					if (var0 == 2626) {
-						var7 = var3.method6667();
-						Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var7 != null ? var7.method6431().method7763() : "";
-						return 1;
-					} else if (var0 == 2627) {
-						var7 = var3.method6667();
-						int var5 = var7 != null ? var7.method6559() : 0;
-						int var6 = var7 != null ? var7.method6510() : 0;
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Math.min(var5, var6);
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = Math.max(var5, var6);
-						return 1;
-					} else if (var0 == 2628) {
-						var7 = var3.method6667();
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6510() : 0;
-						return 1;
-					} else if (var0 == 2629) {
-						var7 = var3.method6667();
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6427() : 0;
-						return 1;
-					} else if (var0 == 2630) {
-						var7 = var3.method6667();
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6574() : 0;
-						return 1;
-					} else if (var0 == 2631) {
-						var7 = var3.method6667();
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6428() : 0;
-						return 1;
-					} else if (var0 == 2632) {
-						var7 = var3.method6667();
-						Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null ? var7.method6429() : 0;
-						return 1;
+				for (int var10 = 9; var10 >= 5; --var10) {
+					if (!class141.method3171(class160.getWidgetFlags(var0), var10) && var0.onOp == null) {
+						var9 = null;
+					} else if (var0.actions != null && var0.actions.length > var10 && var0.actions[var10] != null && var0.actions[var10].trim().length() != 0) {
+						var9 = var0.actions[var10];
 					} else {
-						class27 var8;
-						if (var0 == 2633) {
-							var8 = var3.method6682();
-							Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize - 1] = var8 != null ? var8.method364(Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize - 1]) : 0;
-							return 1;
-						} else if (var0 == 2634) {
-							var8 = var3.method6682();
-							Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize - 1] = var8 != null ? var8.method379((char)Interpreter.Interpreter_intStack[HttpRequestTask.Interpreter_intStackSize - 1]) : 0;
-							return 1;
-						} else {
-							return 2;
-						}
+						var9 = null;
 					}
-				} else {
-					var7 = var3.method6667();
-					Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = var7 != null && var7.method6416() ? 1 : 0;
-					return 1;
+
+					if (var9 != null) {
+						String var12 = var0.dataText;
+						var5 = var10 + 1;
+						int var6 = var0.childIndex;
+						int var7 = var0.id;
+						int var8 = var0.itemId;
+						class194.method3796(var9, var12, 1007, var5, var6, var7, var8, false, -1);
+					}
+				}
+
+				var1 = class105.Widget_getSpellActionName(var0);
+				if (var1 != null) {
+					var9 = var0.dataText;
+					var3 = var0.childIndex;
+					var4 = var0.id;
+					var5 = var0.itemId;
+					class194.method3796(var1, var9, 25, 0, var3, var4, var5, false, -1);
+				}
+
+				for (var2 = 4; var2 >= 0; --var2) {
+					String var11;
+					if (!class141.method3171(class160.getWidgetFlags(var0), var2) && var0.onOp == null) {
+						var11 = null;
+					} else if (var0.actions != null && var0.actions.length > var2 && var0.actions[var2] != null && var0.actions[var2].trim().length() != 0) {
+						var11 = var0.actions[var2];
+					} else {
+						var11 = null;
+					}
+
+					if (var11 != null) {
+						class194.method3796(var11, var0.dataText, 57, var2 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry, -1);
+					}
+				}
+
+				var3 = class160.getWidgetFlags(var0);
+				boolean var13 = (var3 & 1) != 0;
+				if (var13) {
+					KeyHandler.insertMenuItemNoShift("Continue", "", 30, 0, var0.childIndex, var0.id);
 				}
 			}
 		}
+
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("pk")
 	@ObfuscatedSignature(
-		descriptor = "(ILdn;ZI)I",
-		garbageValue = "-1047926071"
+		descriptor = "(ZI)V",
+		garbageValue = "-555959200"
 	)
-	static int method293(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.LOGOUT) {
-			Client.logoutTimer = 250;
-			return 1;
-		} else {
-			return 2;
-		}
+	static void method299(boolean var0) {
+		Client.leftClickOpensMenu = var0;
 	}
 }

@@ -3,84 +3,80 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("kc")
+@ObfuscatedName("ly")
 @Implements("WorldMapRectangle")
 public final class WorldMapRectangle {
-	@ObfuscatedName("dm")
-	static boolean field3108;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 652910965
+		intValue = 1141718873
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1086019289
+		intValue = -398680227
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 382152447
+		intValue = -971106859
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1356764147
+		intValue = -1158165341
 	)
 	@Export("y")
 	int y;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lkh;"
+		descriptor = "Lki;"
 	)
 	final WorldMapRenderer this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lkh;)V"
+		descriptor = "(Lki;)V"
 	)
 	WorldMapRectangle(WorldMapRenderer var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("kr")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(Ldt;I)V",
-		garbageValue = "1552824540"
+		descriptor = "(ILdm;ZB)I",
+		garbageValue = "-79"
 	)
-	static final void method5683(PendingSpawn var0) {
-		long var1 = 0L;
-		int var3 = -1;
-		int var4 = 0;
-		int var5 = 0;
-		if (var0.type == 0) {
-			var1 = LoginType.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
-		}
+	static int method5933(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : SecureRandomSSLSocket.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = TaskHandler.Widget_unpackTargetMask(class160.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
 
-		if (var0.type == 1) {
-			var1 = LoginType.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-		}
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = "";
+			}
 
-		if (var0.type == 2) {
-			var1 = LoginType.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
+			return 1;
 		}
-
-		if (var0.type == 3) {
-			var1 = LoginType.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var1 != 0L) {
-			int var6 = LoginType.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1);
-			var3 = NpcOverrides.Entity_unpackID(var1);
-			var4 = var6 & 31;
-			var5 = var6 >> 6 & 3;
-		}
-
-		var0.objectId = var3;
-		var0.field1188 = var4;
-		var0.field1187 = var5;
 	}
 }

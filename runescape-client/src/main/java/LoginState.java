@@ -3,165 +3,165 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cu")
+@ObfuscatedName("ca")
 @Implements("LoginState")
 public class LoginState {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("SHUTDOWN_PREVIOUS_CONNECTION")
 	static final LoginState SHUTDOWN_PREVIOUS_CONNECTION;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("INIT_MOUSEHANDLER_SOCKET")
 	static final LoginState INIT_MOUSEHANDLER_SOCKET;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED_20")
 	static final LoginState UNMAPPED_20;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_LOGIN_STATUS")
 	static final LoginState READ_LOGIN_STATUS;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_RANDOM_VERIFICATION_NUMBER")
 	static final LoginState READ_RANDOM_VERIFICATION_NUMBER;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("WRITE_INITIAL_LOGIN_PACKET")
 	static final LoginState WRITE_INITIAL_LOGIN_PACKET;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_CLIENT_INFO_STATUS")
 	static final LoginState READ_CLIENT_INFO_STATUS;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_DIGEST_PARSER_PACKET_SIZE")
 	static final LoginState READ_DIGEST_PARSER_PACKET_SIZE;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("SUBMIT_DIGEST_PARSER_TASK")
 	static final LoginState SUBMIT_DIGEST_PARSER_TASK;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("WRITE_DIGEST_PARSER_RESULT")
 	static final LoginState WRITE_DIGEST_PARSER_RESULT;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_STATE_11_PACKET_SIZE")
 	static final LoginState READ_STATE_11_PACKET_SIZE;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED_11")
 	static final LoginState UNMAPPED_11;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_PROFILE_TRANSFER_TIME")
 	static final LoginState READ_PROFILE_TRANSFER_TIME;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("PROFILE_TRANSFER")
 	static final LoginState PROFILE_TRANSFER;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED")
 	static final LoginState UNMAPPED;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_ACCOUNT_INFO")
 	static final LoginState READ_ACCOUNT_INFO;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("SET_SERVER_PROTOCOL")
 	static final LoginState SET_SERVER_PROTOCOL;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UPDATE_PLAYER_AND_LOAD_REGIONS")
 	static final LoginState UPDATE_PLAYER_AND_LOAD_REGIONS;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED_17")
 	static final LoginState UNMAPPED_17;
-	@ObfuscatedName("av")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED_18")
 	static final LoginState UNMAPPED_18;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED_19")
 	static final LoginState UNMAPPED_19;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("REFRESHING_TOKEN")
 	static final LoginState REFRESHING_TOKEN;
-	@ObfuscatedName("am")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("TOKEN_RESPONSE")
 	static final LoginState TOKEN_RESPONSE;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("UNMAPPED_21")
 	static final LoginState UNMAPPED_21;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lcu;"
+		descriptor = "Lca;"
 	)
 	@Export("READ_ACCOUNT_INFO_PACKET_SIZE")
 	static final LoginState READ_ACCOUNT_INFO_PACKET_SIZE;
-	@ObfuscatedName("fd")
+	@ObfuscatedName("ee")
 	@ObfuscatedSignature(
-		descriptor = "Lov;"
+		descriptor = "Lot;"
 	)
-	@Export("archive13")
-	static Archive archive13;
+	@Export("archive4")
+	static Archive archive4;
 
 	static {
 		SHUTDOWN_PREVIOUS_CONNECTION = new LoginState();
@@ -194,40 +194,12 @@ public class LoginState {
 	LoginState() {
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("kg")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-7"
+		descriptor = "(Ldt;Ldh;IB)V",
+		garbageValue = "-81"
 	)
-	@Export("resumePauseWidget")
-	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = FadeInTask.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeInt(var0);
-		var2.packetBuffer.writeShortAdd(var1);
-		Client.packetWriter.addNode(var2);
-	}
-
-	@ObfuscatedName("ny")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
-	)
-	static final void method1200() {
-		PacketBufferNode var0 = FadeInTask.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
-		Client.packetWriter.addNode(var0);
-		Interpreter.field873 = true;
-
-		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
-			if (var1.type == 0 || var1.type == 3) {
-				FloorUnderlayDefinition.closeInterface(var1, true);
-			}
-		}
-
-		if (Client.meslayerContinueWidget != null) {
-			WorldMapData_0.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		Interpreter.field873 = false;
+	static final void method1226(class101 var0, Actor var1, int var2) {
+		MenuAction.method2115(var0, var1.x, var1.y, var2);
 	}
 }

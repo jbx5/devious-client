@@ -1,131 +1,127 @@
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.concurrent.ScheduledExecutorService;
-import net.runelite.mapping.Export;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fj")
+@ObfuscatedName("fp")
 @Implements("LoginPacket")
-public class LoginPacket extends class144 {
-	@ObfuscatedName("aw")
-	@Export("soundSystemExecutor")
-	public static ScheduledExecutorService soundSystemExecutor;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		longValue = 3521707125531879261L
+public class LoginPacket extends class147 {
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
 	)
-	long field1670;
-	@ObfuscatedName("ah")
-	String field1672;
+	public static AbstractArchive field1682;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		longValue = 2791208581734828753L
+	)
+	long field1685;
+	@ObfuscatedName("al")
+	String field1683;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfh;"
+		descriptor = "Lfu;"
 	)
-	final class147 this$0;
+	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfh;)V"
+		descriptor = "(Lfu;)V"
 	)
-	LoginPacket(class147 var1) {
+	LoginPacket(class150 var1) {
 		this.this$0 = var1;
-		this.field1670 = -1L;
-		this.field1672 = null;
+		this.field1685 = -1L;
+		this.field1683 = null;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;I)V",
-		garbageValue = "1253598633"
+		descriptor = "(Lua;I)V",
+		garbageValue = "1738227110"
 	)
-	void vmethod3420(Buffer var1) {
+	void vmethod3486(Buffer var1) {
 		if (var1.readUnsignedByte() != 255) {
 			--var1.offset;
-			this.field1670 = var1.readLong();
+			this.field1685 = var1.readLong();
 		}
 
-		this.field1672 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1683 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfp;B)V",
-		garbageValue = "-123"
+		descriptor = "(Lgc;B)V",
+		garbageValue = "100"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3246(this.field1670, this.field1672, 0);
+	void vmethod3490(ClanSettings var1) {
+		var1.method3325(this.field1685, this.field1683, 0);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "702516616"
+		descriptor = "(I)[Lmj;",
+		garbageValue = "901583378"
 	)
-	@Export("createRandomDatFile")
-	static void createRandomDatFile() {
-		try {
-			File var0 = new File(class136.userHomeDirectory, "random.dat");
-			int var2;
-			if (var0.exists()) {
-				JagexCache.JagexCache_randomDat = new BufferedFile(new AccessFile(var0, "rw", 25L), 24, 0);
-			} else {
-				label37:
-				for (int var1 = 0; var1 < class60.field423.length; ++var1) {
-					for (var2 = 0; var2 < HealthBar.field1327.length; ++var2) {
-						File var3 = new File(HealthBar.field1327[var2] + class60.field423[var1] + File.separatorChar + "random.dat");
-						if (var3.exists()) {
-							JagexCache.JagexCache_randomDat = new BufferedFile(new AccessFile(var3, "rw", 25L), 24, 0);
-							break label37;
-						}
-					}
-				}
+	static class322[] method3218() {
+		return new class322[]{class322.field3532, class322.field3537, class322.field3534, class322.field3535, class322.field3541, class322.field3539, class322.field3533, class322.field3540};
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/util/Date;",
+		garbageValue = "-1172017478"
+	)
+	static Date method3213() throws ParseException {
+		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
+		var0.setLenient(false);
+		StringBuilder var1 = new StringBuilder();
+		String[] var2 = Login.field960;
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			String var4 = var2[var3];
+			if (var4 == null) {
+				AbstractWorldMapData.method5932("Date not valid.", "Please ensure all characters are populated.", "");
+				return null;
 			}
 
-			if (JagexCache.JagexCache_randomDat == null) {
-				RandomAccessFile var4 = new RandomAccessFile(var0, "rw");
-				var2 = var4.read();
-				var4.seek(0L);
-				var4.write(var2);
-				var4.seek(0L);
-				var4.close();
-				JagexCache.JagexCache_randomDat = new BufferedFile(new AccessFile(var0, "rw", 25L), 24, 0);
-			}
-		} catch (IOException var5) {
+			var1.append(var4);
 		}
 
+		var1.append("12");
+		return var0.parse(var1.toString());
 	}
 
-	@ObfuscatedName("lu")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lnt;I)Ljava/lang/String;",
-		garbageValue = "324544575"
+		descriptor = "(ILdm;ZI)I",
+		garbageValue = "-1143420848"
 	)
-	static String method3137(String var0, Widget var1) {
-		if (var0.indexOf("%") != -1) {
-			for (int var2 = 1; var2 <= 5; ++var2) {
-				while (true) {
-					int var3 = var0.indexOf("%" + var2);
-					if (var3 == -1) {
-						break;
-					}
-
-					String var4 = var0.substring(0, var3);
-					int var6 = class147.method3173(var1, var2 - 1);
-					String var5;
-					if (var6 < 999999999) {
-						var5 = Integer.toString(var6);
-					} else {
-						var5 = "*";
-					}
-
-					var0 = var4 + var5 + var0.substring(var3 + 2);
-				}
-			}
+	static int method3219(int var0, Script var1, boolean var2) {
+		Widget var3 = AsyncRestClient.widgetDefinition.method6536(Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETX) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETY) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
 		}
-
-		return var0;
 	}
 }

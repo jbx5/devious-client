@@ -4,35 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("if")
+@ObfuscatedName("ie")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements Enum {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lif;"
+		descriptor = "Lie;"
 	)
-	field2156(0, 0),
-	@ObfuscatedName("ah")
+	field2171(2, 0),
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lif;"
+		descriptor = "Lie;"
 	)
 	@Export("VerticalAlignment_centered")
-	VerticalAlignment_centered(2, 1),
-	@ObfuscatedName("af")
+	VerticalAlignment_centered(0, 1),
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lif;"
+		descriptor = "Lie;"
 	)
-	field2150(1, 2);
+	field2169(1, 2);
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1517045021
+		intValue = -574374745
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 618118699
+		intValue = -1906955675
 	)
 	@Export("id")
 	final int id;
@@ -42,28 +42,23 @@ public enum VerticalAlignment implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "800883718"
+		garbageValue = "-311400525"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-1527744421"
+		descriptor = "(I)V",
+		garbageValue = "-1466610076"
 	)
-	public static final synchronized long method3924() {
-		long var0 = System.currentTimeMillis();
-		if (var0 < class317.field3472) {
-			class317.field3470 += class317.field3472 - var0;
-		}
-
-		class317.field3472 = var0;
-		return class317.field3470 + var0;
+	static void method4030() {
+		ParamComposition.updateLoginIndex(24);
+		WorldMapSection2.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 }

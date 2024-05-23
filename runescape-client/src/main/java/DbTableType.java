@@ -3,24 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uv")
+@ObfuscatedName("ut")
 @Implements("DbTableType")
 public class DbTableType extends DualNode {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lor;"
 	)
-	static AbstractArchive field5163;
-	@ObfuscatedName("ah")
+	static AbstractArchive field5279;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Llt;"
+		descriptor = "Llm;"
 	)
 	@Export("DBTableType_cache")
 	static EvictingDualNodeHashTable DBTableType_cache;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@Export("types")
 	public int[][] types;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@Export("defaultValues")
 	public Object[][] defaultValues;
 
@@ -31,28 +31,28 @@ public class DbTableType extends DualNode {
 	DbTableType() {
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;B)V",
-		garbageValue = "12"
+		descriptor = "(Lua;I)V",
+		garbageValue = "209942218"
 	)
-	void method9148(Buffer var1) {
+	void method9532(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method9155(var1, var2);
+			this.method9537(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;IB)V",
-		garbageValue = "41"
+		descriptor = "(Lua;II)V",
+		garbageValue = "-325571558"
 	)
-	void method9155(Buffer var1, int var2) {
+	void method9537(Buffer var1, int var2) {
 		if (var2 == 1) {
 			int var3 = var1.readUnsignedByte();
 			if (this.types == null) {
@@ -81,8 +81,8 @@ public class DbTableType extends DualNode {
 					for (int var13 = 0; var13 < var11; ++var13) {
 						for (int var14 = 0; var14 < var7.length; ++var14) {
 							int var15 = var14 + var7.length * var13;
-							class522 var16 = class211.method3931(var7[var14]);
-							var12[var15] = var16.method9112(var1);
+							class533 var16 = WorldMapIcon_1.method5497(var7[var14]);
+							var12[var15] = var16.method9508(var1);
 						}
 					}
 
@@ -93,11 +93,35 @@ public class DbTableType extends DualNode {
 
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "6"
+		descriptor = "(I)V",
+		garbageValue = "886548584"
 	)
-	void method9151() {
+	void method9534() {
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "-150416972"
+	)
+	public static boolean method9548(char var0) {
+		if ((var0 < ' ' || var0 >= 127) && (var0 <= 127 || var0 >= 160) && (var0 <= 160 || var0 > 255)) {
+			if (var0 != 0) {
+				char[] var1 = class412.cp1252AsciiExtension;
+
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					char var3 = var1[var2];
+					if (var0 == var3) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

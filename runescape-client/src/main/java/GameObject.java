@@ -4,131 +4,121 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kk")
+@ObfuscatedName("kf")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("az")
+	@ObfuscatedName("fh")
+	@ObfuscatedSignature(
+		descriptor = "Lot;"
+	)
+	@Export("archive6")
+	static Archive archive6;
+	@ObfuscatedName("uy")
 	@ObfuscatedGetter(
-		intValue = -426885431
+		intValue = -974194965
+	)
+	static int field3031;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -783151089
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 949053627
+		intValue = 1852068695
 	)
-	@Export("z")
-	int z;
+	int field3018;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -167741727
+	)
+	int field3019;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 1721181881
+	)
+	int field3020;
 	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = -579758287
+	@ObfuscatedSignature(
+		descriptor = "Lju;"
 	)
-	@Export("centerX")
-	int centerX;
+	public Renderable field3021;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -1056312055
+	)
+	int field3022;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -75311981
-	)
-	@Export("centerY")
-	int centerY;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = -1838078397
+		intValue = -1825265297
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Ljd;"
-	)
-	@Export("renderable")
-	public Renderable renderable;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1231846989
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = 1221231993
+		intValue = -1493092463
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1563803153
+		intValue = 1774789875
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1819773647
+		intValue = 1436587587
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -474154295
+		intValue = -1092203407
 	)
-	int field2948;
-	@ObfuscatedName("ag")
+	int field3026;
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -419984023
+		intValue = 1422878921
 	)
-	@Export("lastDrawn")
-	int lastDrawn;
-	@ObfuscatedName("ai")
+	int field3028;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		longValue = -790211439261957893L
+		longValue = 6238027129843276915L
 	)
-	@Export("tag")
-	public long tag;
-	@ObfuscatedName("ax")
+	public long field3029;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 698081091
+		intValue = 2016533671
 	)
-	@Export("flags")
-	int flags;
+	int field3017;
 
 	GameObject() {
-		this.tag = 0L;
-		this.flags = 0;
+		this.field3029 = 0L;
+		this.field3017 = 0;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1740520249"
+		descriptor = "(IIB)I",
+		garbageValue = "-97"
 	)
-	public static void method5220() {
-		ObjectComposition.ObjectDefinition_cached.clear();
-		ObjectComposition.ObjectDefinition_cachedModelData.clear();
-		ObjectComposition.ObjectDefinition_cachedEntities.clear();
-		ObjectComposition.ObjectDefinition_cachedModels.clear();
+	@Export("shift8LeftAndAdd")
+	public static int shift8LeftAndAdd(int var0, int var1) {
+		return (var0 << 8) + var1;
 	}
 
-	@ObfuscatedName("cw")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/Object;",
-		garbageValue = "1985186064"
+		descriptor = "(Ljava/lang/String;B)I",
+		garbageValue = "91"
 	)
-	static Object method5218(int var0) {
-		return class33.method457((class522)KitDefinition.findEnumerated(class522.method9125(), var0));
-	}
-
-	@ObfuscatedName("nb")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1930840269"
-	)
-	@Export("clanKickUser")
-	static final void clanKickUser(String var0) {
-		if (class143.friendsChat != null) {
-			PacketBufferNode var1 = FadeInTask.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(SequenceDefinition.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
+	static int method5474(String var0) {
+		if (var0.equals("centre")) {
+			return 1;
+		} else {
+			return !var0.equals("bottom") && !var0.equals("right") ? 0 : 2;
 		}
 	}
 }

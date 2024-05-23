@@ -1,34 +1,33 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("la")
+@ObfuscatedName("lw")
 @Implements("WorldMapEvent")
 public class WorldMapEvent {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 2032352393
+		intValue = -716843431
 	)
 	@Export("mapElement")
 	public int mapElement;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lnn;"
+		descriptor = "Lnj;"
 	)
 	@Export("coord1")
 	public Coord coord1;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lnn;"
+		descriptor = "Lnj;"
 	)
 	@Export("coord2")
 	public Coord coord2;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILnn;Lnn;)V"
+		descriptor = "(ILnj;Lnj;)V"
 	)
 	public WorldMapEvent(int var1, Coord var2, Coord var3) {
 		this.mapElement = var1;
@@ -36,37 +35,27 @@ public class WorldMapEvent {
 		this.coord2 = var3;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "27188790"
+		descriptor = "(S)Lmd;",
+		garbageValue = "8024"
 	)
-	static void method5834() {
-		Iterator var0 = class321.musicSongs.iterator();
+	public static PacketBufferNode method6095() {
+		return PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0 ? new PacketBufferNode() : PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
+	}
 
-		while (true) {
-			MusicSong var1;
-			do {
-				if (!var0.hasNext()) {
-					class321.musicSongs.clear();
-					return;
-				}
-
-				var1 = (MusicSong)var0.next();
-			} while(var1 == null);
-
-			var1.midiPcmStream.clear();
-			var1.midiPcmStream.method6004();
-			var1.midiPcmStream.setPcmStreamVolume(0);
-			var1.midiPcmStream.field3534 = 0;
-			int var2 = var1.musicTrackGroupId;
-			int var3 = var1.musicTrackFileId;
-			Iterator var4 = class321.field3499.iterator();
-
-			while (var4.hasNext()) {
-				class327 var5 = (class327)var4.next();
-				var5.vmethod6187(var2, var3);
-			}
-		}
+	@ObfuscatedName("ki")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIIIIIIIII)V",
+		garbageValue = "-583873077"
+	)
+	static void method6096(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
+		var1 = var1 * 128 + 64;
+		var2 = var2 * 128 + 64;
+		var3 = var3 * 128 + 64;
+		var4 = var4 * 128 + 64;
+		Projectile var14 = new Projectile(var6, var0, var1, var2, SoundSystem.method856(ModeWhere.field4623, var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
+		var14.setDestination(var3, var4, SoundSystem.method856(ModeWhere.field4623, var3, var4, var0) - var8, var9 + Client.cycle);
+		ModeWhere.field4623.field1351.addFirst(var14);
 	}
 }

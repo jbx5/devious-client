@@ -1,120 +1,69 @@
-import net.runelite.mapping.Export;
+import java.util.concurrent.Callable;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fd")
-public class class132 implements Enum {
+@ObfuscatedName("fy")
+public class class132 implements Callable {
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lfm;"
+	)
+	final class133 field1577;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	final class134 field1574;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lfz;"
+	)
+	final class135 field1575;
 	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
-	)
-	static final class132 field1590;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
-	)
-	static final class132 field1583;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
-	)
-	static final class132 field1593;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
-	)
-	static final class132 field1585;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
-	)
-	static final class132 field1586;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
-	)
-	static final class132 field1582;
-	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -430465133
+		intValue = 106186067
 	)
-	final int field1588;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = -1552462787
-	)
-	final int field1589;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -840093281
-	)
-	final int field1591;
-
-	static {
-		field1590 = new class132(0, 0, (String)null, 0);
-		field1583 = new class132(1, 1, (String)null, 9);
-		field1593 = new class132(2, 2, (String)null, 3);
-		field1585 = new class132(3, 3, (String)null, 6);
-		field1586 = new class132(4, 4, (String)null, 1);
-		field1582 = new class132(5, 5, (String)null, 3);
-	}
-
-	class132(int var1, int var2, String var3, int var4) {
-		this.field1588 = var1;
-		this.field1589 = var2;
-		this.field1591 = var4;
-	}
-
-	@ObfuscatedName("az")
+	final int field1576;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "800883718"
+		descriptor = "Lfo;"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1589;
+	final class141 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lfo;Lfm;Lfr;Lfz;I)V"
+	)
+	class132(class141 var1, class133 var2, class134 var3, class135 var4, int var5) {
+		this.this$0 = var1;
+		this.field1577 = var2;
+		this.field1574 = var3;
+		this.field1575 = var4;
+		this.field1576 = var5;
 	}
 
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "6120736"
-	)
-	int method3049() {
-		return this.field1591;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;S)Ljava/lang/String;",
-		garbageValue = "30808"
-	)
-	public static String method3057(CharSequence var0) {
-		int var2 = var0.length();
-		char[] var3 = new char[var2];
-
-		for (int var4 = 0; var4 < var2; ++var4) {
-			var3[var4] = '*';
+	public Object call() {
+		this.field1577.method3091();
+		class133[][] var1;
+		if (this.field1574 == class134.field1604) {
+			var1 = this.this$0.field1647;
+		} else {
+			var1 = this.this$0.field1653;
 		}
 
-		String var1 = new String(var3);
-		return var1;
+		var1[this.field1576][this.field1575.method3120()] = this.field1577;
+		return null;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("lm")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)I",
-		garbageValue = "1524995741"
+		descriptor = "(Lcj;III)V",
+		garbageValue = "-1443572211"
 	)
-	public static int method3058(byte[] var0, int var1, int var2) {
-		int var3 = -1;
-
-		for (int var4 = var1; var4 < var2; ++var4) {
-			var3 = var3 >>> 8 ^ Buffer.field5235[(var3 ^ var0[var4]) & 255];
+	static final void method3076(MenuAction var0, int var1, int var2) {
+		if (var0 != null) {
+			PacketWriter.method2899(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.field927, var0.action, var0.target, var1, var2);
 		}
 
-		var3 = ~var3;
-		return var3;
 	}
 }
