@@ -324,9 +324,6 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	/**
 	 * Get occurrences of a tile on the scene, accounting for instances. There may be
 	 * more than one if the same template chunk occurs more than once on the scene.
-	 * @param scene
-	 * @param worldPoint
-	 * @return
 	 */
 	public static Collection<WorldPoint> toLocalInstance(Scene scene, WorldPoint worldPoint)
 	{
@@ -441,12 +438,6 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 		return Math.max(Math.abs(getX() - other.getX()), Math.abs(getY() - other.getY()));
 	}
 
-	@Deprecated
-	public static WorldPoint fromScene(Client client, int x, int y, int plane)
-	{
-		return fromScene(client.getTopLevelWorldView().getScene(), x, y, plane);
-	}
-
 	/**
 	 * Gets the straight-line distance between this point and another.
 	 * <p>
@@ -479,6 +470,12 @@ public class WorldPoint implements net.unethicalite.api.Positionable
 	public float distanceTo2DHypotenuse(WorldPoint other)
 	{
 		return (float) Math.hypot(getX() - other.getX(), getY() - other.getY());
+	}
+
+	@Deprecated
+	public static WorldPoint fromScene(Client client, int x, int y, int plane)
+	{
+		return fromScene(client.getTopLevelWorldView().getScene(), x, y, plane);
 	}
 
 	/**

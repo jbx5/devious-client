@@ -387,8 +387,9 @@ public class Perspective
 		int sceneY = point.getSceneY();
 		if (sceneX >= 0 && sceneY >= 0 && sceneX < SCENE_SIZE && sceneY < SCENE_SIZE)
 		{
-			byte[][][] tileSettings = client.getTileSettings();
-			int[][][] tileHeights = client.getTileHeights();
+			var wv = client.getWorldView(point.getWorldView());
+			byte[][][] tileSettings = wv.getTileSettings();
+			int[][][] tileHeights = wv.getTileHeights();
 
 			int z1 = plane;
 			if (plane < Constants.MAX_Z - 1 && (tileSettings[1][sceneX][sceneY] & TILE_FLAG_BRIDGE) == TILE_FLAG_BRIDGE)
@@ -409,19 +410,15 @@ public class Perspective
 	/**
 	 * Get the height of a location, in local coordinates. Interpolates the height from the adjacent tiles.
 	 * Does not account for bridges.
-	 * @param client
-	 * @param localX
-	 * @param localY
-	 * @param plane
 	 * @return
 	 */
-	private static int getHeight(@Nonnull Client client, int localX, int localY, int plane)
+	private static int getHeight(@Nonnull Scene scene, int localX, int localY, int plane)
 	{
 		int sceneX = localX >> LOCAL_COORD_BITS;
 		int sceneY = localY >> LOCAL_COORD_BITS;
 		if (sceneX >= 0 && sceneY >= 0 && sceneX < SCENE_SIZE && sceneY < SCENE_SIZE)
 		{
-			int[][][] tileHeights = client.getTileHeights();
+			int[][][] tileHeights = scene.getTileHeights();
 
 			int x = localX & (LOCAL_TILE_SIZE - 1);
 			int y = localY & (LOCAL_TILE_SIZE - 1);
@@ -457,7 +454,7 @@ public class Perspective
 	 */
 	public static Polygon getCanvasTilePoly(@Nonnull Client client, @Nonnull LocalPoint localLocation, int zOffset)
 	{
-		return getCanvasTileAreaPoly(client, localLocation, 1, 1, client.getPlane(), zOffset);
+		return getCanvasTileAreaPoly(client, localLocation, 1, 1, -1, zOffset);
 	}
 
 	/**
@@ -470,7 +467,7 @@ public class Perspective
 	 */
 	public static Polygon getCanvasTileAreaPoly(@Nonnull Client client, @Nonnull LocalPoint localLocation, int size)
 	{
-		return getCanvasTileAreaPoly(client, localLocation, size, size, client.getPlane(), 0);
+		return getCanvasTileAreaPoly(client, localLocation, size, size, -1, 0);
 	}
 
 	/**
@@ -497,9 +494,17 @@ public class Perspective
 			return null;
 		}
 
-		final byte[][][] tileSettings = client.getTileSettings();
+		final var wv = client.getWorldView(localLocation.getWorldView());
+		final byte[][][] tileSettings = wv.getTileSettings();
 		final int sceneX = localLocation.getSceneX();
 		final int sceneY = localLocation.getSceneY();
+
+		if (plane == -1)
+		{
+			plane = wv.getPlane();
+		}
+
+		var scene = wv.getScene();
 
 		int tilePlane = plane;
 		if (plane < Constants.MAX_Z - 1 && (tileSettings[1][sceneX][sceneY] & TILE_FLAG_BRIDGE) == TILE_FLAG_BRIDGE)
@@ -519,10 +524,10 @@ public class Perspective
 		final int nwX = neX;
 		final int nwY = swY;
 
-		final int swHeight = getHeight(client, swX, swY, tilePlane) - zOffset;
-		final int nwHeight = getHeight(client, nwX, nwY, tilePlane) - zOffset;
-		final int neHeight = getHeight(client, neX, neY, tilePlane) - zOffset;
-		final int seHeight = getHeight(client, seX, seY, tilePlane) - zOffset;
+		final int swHeight = getHeight(scene, swX, swY, tilePlane) - zOffset;
+		final int nwHeight = getHeight(scene, nwX, nwY, tilePlane) - zOffset;
+		final int neHeight = getHeight(scene, neX, neY, tilePlane) - zOffset;
+		final int seHeight = getHeight(scene, seX, seY, tilePlane) - zOffset;
 
 		Point p1 = localToCanvas(client, swX, swY, swHeight);
 		Point p2 = localToCanvas(client, nwX, nwY, nwHeight);
@@ -566,7 +571,13 @@ public class Perspective
 			return null;
 		}
 
-		int plane = client.getPlane();
+		var wv = client.getWorldView(localLocation.getWorldView());
+		if (wv == null)
+		{
+			return null;
+		}
+
+		int plane = wv.getPlane();
 
 		Point p = localToCanvas(client, localLocation, plane, zOffset);
 
@@ -598,7 +609,13 @@ public class Perspective
 		@Nonnull BufferedImage image,
 		int zOffset)
 	{
-		int plane = client.getPlane();
+		var wv = client.getWorldView(localLocation.getWorldView());
+		if (wv == null)
+		{
+			return null;
+		}
+
+		int plane = wv.getPlane();
 
 		Point p = localToCanvas(client, localLocation, plane, zOffset);
 
@@ -645,17 +662,23 @@ public class Perspective
 	 *
 	 * @param client the game client
 	 * @param localLocation local location of the tile
-	 * @param spritePixels SpritePixel for size measurement
+	 * @param sprite SpritePixel for size measurement
 	 * @param zOffset offset from ground plane
 	 * @return a {@link Point} on screen corresponding to the given localLocation.
 	 */
 	public static Point getCanvasSpriteLocation(
 		@Nonnull Client client,
 		@Nonnull LocalPoint localLocation,
-		@Nonnull SpritePixels spritePixels,
+		@Nonnull SpritePixels sprite,
 		int zOffset)
 	{
-		int plane = client.getPlane();
+		var wv = client.getWorldView(localLocation.getWorldView());
+		if (wv == null)
+		{
+			return null;
+		}
+
+		int plane = wv.getPlane();
 
 		Point p = localToCanvas(client, localLocation, plane, zOffset);
 
@@ -664,8 +687,8 @@ public class Perspective
 			return null;
 		}
 
-		int xOffset = p.getX() - spritePixels.getWidth() / 2;
-		int yOffset = p.getY() - spritePixels.getHeight() / 2;
+		int xOffset = p.getX() - sprite.getWidth() / 2;
+		int yOffset = p.getY() - sprite.getHeight() / 2;
 
 		return new Point(xOffset, yOffset);
 	}
@@ -726,7 +749,7 @@ public class Perspective
 			return null;
 		}
 
-		if (model.isClickable())
+		if (model.useBoundingBox())
 		{
 			return bounds;
 		}
