@@ -2480,10 +2480,7 @@ public interface Client extends OAuthApi, GameEngine
 	 * @see InstanceTemplates
 	 */
 	@Deprecated
-	default int[][][] getInstanceTemplateChunks()
-	{
-		return getTopLevelWorldView().getScene().getInstanceTemplateChunks();
-	}
+	int[][][] getInstanceTemplateChunks();
 
 	/**
 	 * Returns a 2D array containing XTEA encryption keys used to decrypt
