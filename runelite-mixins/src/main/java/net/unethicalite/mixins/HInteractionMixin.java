@@ -181,6 +181,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		if (menuEntry == null)
 		{
 			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, itemId, false);
+			tmpEntry.setWorldViewId(-1);
 			event = new MenuOptionClicked(tmpEntry);
 
 			if (canvasX != -1 || canvasY != -1)
@@ -198,6 +199,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 				menuEntry.setParam0(menu.getParam0());
 				menuEntry.setParam1(menu.getParam1());
 				menuEntry.setItemId(menu.getItemId());
+				menuEntry.setWorldViewId(menu.getWorldViewId());
 				menuEntry.setOption(menu.getOption());
 				menuEntry.setTarget(menu.getTarget());
 			}
