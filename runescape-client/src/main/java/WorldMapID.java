@@ -65,8 +65,8 @@ public class WorldMapID {
 		var10.id = var3;
 		var10.quantity = var4;
 		var10.setFlag(var5);
-		var10.visibileTime = Client.serverTick + var6;
-		var10.despawnTime = var7 + Client.serverTick;
+		var10.visibileTime = Client.serverCycle + var6;
+		var10.despawnTime = var7 + Client.serverCycle;
 		var10.ownership = var8;
 		var10.isPrivate = var9;
 		if (ModeWhere.worldView.groundItems[var0][var1][var2] == null) {

@@ -162,8 +162,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	@ObfuscatedGetter(
 		intValue = 967009251
 	)
-	@Export("serverTick")
-	static int serverTick;
+	@Export("serverCycle")
+	static int serverCycle;
 	@ObfuscatedName("dg")
 	@ObfuscatedGetter(
 		longValue = -8540685319604864889L
@@ -1412,7 +1412,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 		field540 = false;
 		isLoading = true;
 		cycle = 0;
-		serverTick = 0;
+		serverCycle = 0;
 		mouseLastLastPressedTimeMillis = 1L;
 		field751 = -1;
 		field546 = -1;
@@ -5565,7 +5565,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (ServerPacket.field3503 == var1.serverPacket) {
-					++serverTick;
+					++serverCycle;
 					var1.serverPacket = null;
 					return true;
 				}

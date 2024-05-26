@@ -2229,10 +2229,17 @@ public abstract class RSClientMixin implements RSClient
 	}*/
 
 	@Inject
-	@FieldHook("serverTick")
-	public static void onServerTickChanged(int idx)
+	private static int rl$serverTick;
+
+	@Inject
+	@FieldHook("serverCycle")
+	public static void onServerTicksChanged(int idx)
 	{
-		client.getCallbacks().serverTick();
+		if (client.getServerCycle() == rl$serverTick + 1)
+		{
+			client.getCallbacks().serverTick();
+		}
+		rl$serverTick = client.getServerCycle();
 	}
 
 	@Inject

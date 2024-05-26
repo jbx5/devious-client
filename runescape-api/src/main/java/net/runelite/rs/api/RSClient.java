@@ -512,6 +512,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	int getGameCycle();
 
+	@Import("serverCycle")
+	int getServerCycle();
+
 	@Import("Messages_channels")
 	@Override
 	Map getChatLineMap();

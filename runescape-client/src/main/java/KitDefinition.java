@@ -270,7 +270,7 @@ public class KitDefinition extends DualNode {
 		Client.playingJingle = false;
 		class151.method3270();
 		class105.updateGameState(10);
-		Client.serverTick = 0;
+		Client.serverCycle = 0;
 		MilliClock.method3646().method3660();
 		MilliClock.method3646().method3663();
 	}
