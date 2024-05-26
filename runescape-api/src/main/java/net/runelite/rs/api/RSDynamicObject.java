@@ -22,4 +22,7 @@ public interface RSDynamicObject extends RSRenderable, DynamicObject
 	@Import("sequenceDefinition")
 	@Override
 	RSSequenceDefinition getAnimation();
+
+	@Import("worldView")
+	RSWorldView getWorldView();
 }

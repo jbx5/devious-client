@@ -208,7 +208,7 @@ public class SoundCache {
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
 		PacketBufferNode var2 = WorldMapElement.getPacketBufferNode(ClientPacket.field3324, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.method9712(var0);
+		var2.packetBuffer.writeIntIME(var0);
 		var2.packetBuffer.writeShortAdd(var1);
 		Client.packetWriter.addNode(var2);
 	}

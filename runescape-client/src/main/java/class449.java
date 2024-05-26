@@ -32,7 +32,7 @@ public class class449 {
 		Client.hintArrowType = 0;
 		Huffman.method7078();
 		MouseHandler.MouseHandler_idleCycles = 0;
-		class101.method2642();
+		WorldView.method2642();
 		Client.isItemSelected = 0;
 		Client.isSpellSelected = false;
 		Client.soundEffectCount = 0;
@@ -45,7 +45,7 @@ public class class449 {
 		Client.destinationY = 0;
 		Client.playerAttackOption = AttackOption.AttackOption_hidden;
 		Client.npcAttackOption = AttackOption.AttackOption_hidden;
-		class358.scene.clear();
+		class358.topLevelWorldView.clear();
 		class33.friendSystem.clear();
 		if (VarpDefinition.field2003 > 5000) {
 		}
@@ -83,7 +83,7 @@ public class class449 {
 		Client.playerAppearance.method6566((int[])null, (int[])null, new int[]{0, 0, 0, 0, 0}, 0, -1);
 
 		for (var0 = 0; var0 < 8; ++var0) {
-			Client.overheadText[var0] = null;
+			Client.playerMenuActions[var0] = null;
 			Client.playerOptionsPriorities[var0] = false;
 		}
 

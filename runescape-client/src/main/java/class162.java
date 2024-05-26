@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -61,26 +62,27 @@ public class class162 extends class147 {
 		descriptor = "(Lde;III)V",
 		garbageValue = "-1966702872"
 	)
-	static void method3413(Player var0, int var1, int var2) {
-		if (var0.field1223 == var1 && var1 != -1) {
+	@Export("performPlayerAnimation")
+	static void performPlayerAnimation(Player var0, int var1, int var2) {
+		if (var0.sequence == var1 && var1 != -1) {
 			int var3 = FaceNormal.SequenceDefinition_get(var1).restartMode;
 			if (var3 == 1) {
-				var0.field1250 = 0;
-				var0.field1251 = 0;
-				var0.field1252 = var2;
+				var0.sequenceFrame = 0;
+				var0.sequenceFrameCycle = 0;
+				var0.sequenceDelay = var2;
 				var0.field1239 = 0;
 			}
 
 			if (var3 == 2) {
 				var0.field1239 = 0;
 			}
-		} else if (var1 == -1 || var0.field1223 == -1 || FaceNormal.SequenceDefinition_get(var1).field2409 >= FaceNormal.SequenceDefinition_get(var0.field1223).field2409) {
-			var0.field1223 = var1;
-			var0.field1250 = 0;
-			var0.field1251 = 0;
-			var0.field1252 = var2;
+		} else if (var1 == -1 || var0.sequence == -1 || FaceNormal.SequenceDefinition_get(var1).field2409 >= FaceNormal.SequenceDefinition_get(var0.sequence).field2409) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
 			var0.field1239 = 0;
-			var0.field1226 = var0.field1274;
+			var0.field1226 = var0.pathLength;
 		}
 
 	}
@@ -90,12 +92,12 @@ public class class162 extends class147 {
 		descriptor = "(Ldt;IIIIIIIIIII)V",
 		garbageValue = "-1586816445"
 	)
-	static void method3417(class101 var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
-		NodeDeque var11 = var0.field1342;
+	static void method3417(WorldView var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+		NodeDeque var11 = var0.pendingSpawns;
 		PendingSpawn var12 = null;
 
 		for (PendingSpawn var13 = (PendingSpawn)var11.last(); var13 != null; var13 = (PendingSpawn)var11.previous()) {
-			if (var13.field1200 == var1 && var2 == var13.field1192 && var3 == var13.field1196 && var4 == var13.field1191) {
+			if (var13.plane == var1 && var2 == var13.x && var3 == var13.y && var4 == var13.type) {
 				var12 = var13;
 				break;
 			}
@@ -103,10 +105,10 @@ public class class162 extends class147 {
 
 		if (var12 == null) {
 			var12 = new PendingSpawn();
-			var12.field1200 = var1;
-			var12.field1191 = var4;
-			var12.field1192 = var2;
-			var12.field1196 = var3;
+			var12.plane = var1;
+			var12.type = var4;
+			var12.x = var2;
+			var12.y = var3;
 			var12.field1190 = -1;
 			GraphicsObject.method2099(var0, var12);
 			var11.addFirst(var12);
@@ -115,8 +117,8 @@ public class class162 extends class147 {
 		var12.field1193 = var5;
 		var12.field1197 = var6;
 		var12.field1198 = var7;
-		var12.field1202 = var9;
-		var12.field1203 = var10;
+		var12.delay = var9;
+		var12.hitpoints = var10;
 		var12.method2412(var8);
 	}
 }

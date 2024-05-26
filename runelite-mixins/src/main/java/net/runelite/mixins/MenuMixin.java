@@ -334,6 +334,6 @@ public abstract class MenuMixin implements RSClient
 	@Override
 	public void menuAction(int p0, int p1, MenuAction action, int id, int itemId, String option, String target)
 	{
-		client.sendMenuAction(p0, p1, action.getId(), id, itemId, option, target, -1, -1);
+		client.sendMenuAction(p0, p1, action.getId(), id, itemId, client.getTopLevelWorldView().getId(), option, target, -1, -1);
 	}
 }

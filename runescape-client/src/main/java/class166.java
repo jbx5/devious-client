@@ -205,10 +205,11 @@ public class class166 extends class147 {
 		descriptor = "(Ldt;IIIS)V",
 		garbageValue = "188"
 	)
-	static final void method3440(class101 var0, int var1, int var2, int var3) {
-		NodeDeque var4 = var0.field1349[var1][var2][var3];
+	@Export("updateItemPile2")
+	static final void updateItemPile2(WorldView var0, int var1, int var2, int var3) {
+		NodeDeque var4 = var0.groundItems[var1][var2][var3];
 		if (var4 == null) {
-			var0.field1331.removeGroundItemPile(var1, var2, var3);
+			var0.scene.removeGroundItemPile(var1, var2, var3);
 		} else {
 			long var5 = -99999999L;
 			TileItem var7 = null;
@@ -228,7 +229,7 @@ public class class166 extends class147 {
 			}
 
 			if (var7 == null) {
-				var0.field1331.removeGroundItemPile(var1, var2, var3);
+				var0.scene.removeGroundItemPile(var1, var2, var3);
 			} else {
 				var4.addLast(var7);
 				TileItem var15 = null;
@@ -246,8 +247,8 @@ public class class166 extends class147 {
 					}
 				}
 
-				long var11 = KitDefinition.method3900(var2, var3, 3, false, 0, var0.field1335);
-				var0.field1331.newGroundItemPile(var1, var2, var3, SoundSystem.method856(var0, var2 * 128 + 64, var3 * 128 + 64, var1), var7, var11, var15, var10);
+				long var11 = KitDefinition.calculateTag(var2, var3, 3, false, 0, var0.id);
+				var0.scene.newGroundItemPile(var1, var2, var3, SoundSystem.getTileHeight(var0, var2 * 128 + 64, var3 * 128 + 64, var1), var7, var11, var15, var10);
 			}
 		}
 	}

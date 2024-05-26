@@ -213,7 +213,7 @@ public class Language implements Enum {
 			return 1;
 		} else if (var0 == ScriptOpcodes.ANIM) {
 			class13.Interpreter_intStackSize -= 2;
-			class162.method3413(class17.localPlayer, Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize + 1]);
+			class162.performPlayerAnimation(class17.localPlayer, Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize + 1]);
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_CLOSE) {
 			if (!Interpreter.field895) {
@@ -306,7 +306,7 @@ public class Language implements Enum {
 							PacketBufferNode var6 = WorldMapElement.getPacketBufferNode(ClientPacket.field3331, Client.packetWriter.isaacCipher);
 							var6.packetBuffer.writeShort(1 + class432.stringCp1252NullTerminatedByteSize(var4) + class432.stringCp1252NullTerminatedByteSize(var5));
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5);
-							var6.packetBuffer.writeShortLE(var3);
+							var6.packetBuffer.writeByteSub(var3);
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4);
 							Client.packetWriter.addNode(var6);
 							return 1;

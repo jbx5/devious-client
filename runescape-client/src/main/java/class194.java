@@ -33,13 +33,13 @@ public class class194 extends DualNode {
 		garbageValue = "279781873"
 	)
 	static void method3795(PacketBufferNode var0) {
-		var0.packetBuffer.method9712(class177.archive8.hash);
+		var0.packetBuffer.writeIntIME(class177.archive8.hash);
 		var0.packetBuffer.writeIntME(class141.field1656.hash);
 		var0.packetBuffer.writeInt(class332.field3638.hash);
 		var0.packetBuffer.writeInt(GameObject.archive6.hash);
 		var0.packetBuffer.writeIntME(class104.archive13.hash);
-		var0.packetBuffer.writeIntIME(class135.field1637.hash);
-		var0.packetBuffer.method9712(class138.archive10.hash);
+		var0.packetBuffer.writeIntLE(class135.field1637.hash);
+		var0.packetBuffer.writeIntIME(class138.archive10.hash);
 	}
 
 	@ObfuscatedName("md")
@@ -47,7 +47,8 @@ public class class194 extends DualNode {
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZIB)V",
 		garbageValue = "65"
 	)
-	static final void method3796(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8) {
+	@Export("insertMenuItem")
+	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8) {
 		if (!Client.isMenuOpen) {
 			if (Client.menuOptionsCount < 500) {
 				Client.menuActions[Client.menuOptionsCount] = var0;
@@ -57,7 +58,7 @@ public class class194 extends DualNode {
 				Client.menuArguments1[Client.menuOptionsCount] = var4;
 				Client.menuArguments2[Client.menuOptionsCount] = var5;
 				Client.menuItemIds[Client.menuOptionsCount] = var6;
-				Client.field677[Client.menuOptionsCount] = var8;
+				Client.menuWorldViewIds[Client.menuOptionsCount] = var8;
 				Client.menuShiftClick[Client.menuOptionsCount] = var7;
 				++Client.menuOptionsCount;
 			}

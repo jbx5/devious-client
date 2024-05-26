@@ -89,13 +89,13 @@ public class class533 implements Enum {
 		descriptor = "(Ldt;I)V",
 		garbageValue = "2134611847"
 	)
-	static final void method9517(class101 var0) {
-		int var1 = var0.field1346;
-		int var2 = var0.field1330;
-		int[][][] var3 = var0.field1339;
-		byte[][][] var4 = var0.field1340;
-		Scene var5 = var0.field1331;
-		CollisionMap[] var6 = var0.field1332;
+	static final void method9517(WorldView var0) {
+		int var1 = var0.sizeX;
+		int var2 = var0.sizeY;
+		int[][][] var3 = var0.tileHeights;
+		byte[][][] var4 = var0.tileSettings;
+		Scene var5 = var0.scene;
+		CollisionMap[] var6 = var0.collisionMaps;
 
 		int var7;
 		int var8;
@@ -104,9 +104,9 @@ public class class533 implements Enum {
 		for (var7 = 0; var7 < 4; ++var7) {
 			for (var8 = 0; var8 < var1; ++var8) {
 				for (var9 = 0; var9 < var2; ++var9) {
-					if ((var0.field1340[var7][var8][var9] & 1) == 1) {
+					if ((var0.tileSettings[var7][var8][var9] & 1) == 1) {
 						var10 = var7;
-						if ((var0.field1340[1][var8][var9] & 2) == 2) {
+						if ((var0.tileSettings[1][var8][var9] & 2) == 2) {
 							var10 = var7 - 1;
 						}
 
@@ -118,22 +118,22 @@ public class class533 implements Enum {
 			}
 		}
 
-		Tiles.Players_emptyIdxCount += (int)(Math.random() * 5.0D) - 2;
-		if (Tiles.Players_emptyIdxCount < -8) {
-			Tiles.Players_emptyIdxCount = -8;
+		Tiles.rndHue += (int)(Math.random() * 5.0D) - 2;
+		if (Tiles.rndHue < -8) {
+			Tiles.rndHue = -8;
 		}
 
-		if (Tiles.Players_emptyIdxCount > 8) {
-			Tiles.Players_emptyIdxCount = 8;
+		if (Tiles.rndHue > 8) {
+			Tiles.rndHue = 8;
 		}
 
-		Tiles.Players_pendingUpdateCount += (int)(Math.random() * 5.0D) - 2;
-		if (Tiles.Players_pendingUpdateCount < -16) {
-			Tiles.Players_pendingUpdateCount = -16;
+		Tiles.rndLightness += (int)(Math.random() * 5.0D) - 2;
+		if (Tiles.rndLightness < -16) {
+			Tiles.rndLightness = -16;
 		}
 
-		if (Tiles.Players_pendingUpdateCount > 16) {
-			Tiles.Players_pendingUpdateCount = 16;
+		if (Tiles.rndLightness > 16) {
+			Tiles.rndLightness = 16;
 		}
 
 		int var14;
@@ -274,8 +274,8 @@ public class class533 implements Enum {
 									var39 = var18 / var21;
 									var40 = var19 / var21;
 									var36 = class429.method7981(var38, var39, var40);
-									var38 = var38 + Tiles.Players_emptyIdxCount & 255;
-									var40 += Tiles.Players_pendingUpdateCount;
+									var38 = var38 + Tiles.rndHue & 255;
+									var40 += Tiles.rndLightness;
 									if (var40 < 0) {
 										var40 = 0;
 									} else if (var40 > 255) {
@@ -361,8 +361,8 @@ public class class533 implements Enum {
 										var46 = -2;
 									} else {
 										var45 = class429.method7981(var41.hue, var41.saturation, var41.lightness);
-										var47 = var41.hue + Tiles.Players_emptyIdxCount & 255;
-										var48 = var41.lightness + Tiles.Players_pendingUpdateCount;
+										var47 = var41.hue + Tiles.rndHue & 255;
+										var48 = var41.lightness + Tiles.rndLightness;
 										if (var48 < 0) {
 											var48 = 0;
 										} else if (var48 > 255) {
@@ -378,8 +378,8 @@ public class class533 implements Enum {
 									}
 
 									if (var41.secondaryRgb != -1) {
-										var48 = var41.secondaryHue + Tiles.Players_emptyIdxCount & 255;
-										int var49 = var41.secondaryLightness + Tiles.Players_pendingUpdateCount;
+										var48 = var41.secondaryHue + Tiles.rndHue & 255;
+										int var49 = var41.secondaryLightness + Tiles.rndLightness;
 										if (var49 < 0) {
 											var49 = 0;
 										} else if (var49 > 255) {
@@ -475,7 +475,7 @@ public class class533 implements Enum {
 								var61 = 240;
 								var20 = var3[var17][var60][var14] - var61;
 								var21 = var3[var16][var60][var14];
-								var5.method4935(var10, 1, var60 * 128, var60 * 128, var14 * 128, var15 * 128 + 128, var20, var21);
+								var5.Scene_addOccluder(var10, 1, var60 * 128, var60 * 128, var14 * 128, var15 * 128 + 128, var20, var21);
 
 								for (var22 = var16; var22 <= var17; ++var22) {
 									for (var23 = var14; var23 <= var15; ++var23) {
@@ -525,7 +525,7 @@ public class class533 implements Enum {
 								var61 = 240;
 								var20 = var3[var17][var14][var59] - var61;
 								var21 = var3[var16][var14][var59];
-								var5.method4935(var10, 2, var14 * 128, var15 * 128 + 128, var59 * 128, var59 * 128, var20, var21);
+								var5.Scene_addOccluder(var10, 2, var14 * 128, var15 * 128 + 128, var59 * 128, var59 * 128, var20, var21);
 
 								for (var22 = var16; var22 <= var17; ++var22) {
 									for (var23 = var14; var23 <= var15; ++var23) {
@@ -572,7 +572,7 @@ public class class533 implements Enum {
 
 							if ((var17 - var16 + 1) * (var15 - var14 + 1) >= 4) {
 								var18 = var3[var58][var14][var16];
-								var5.method4935(var10, 4, var14 * 128, var15 * 128 + 128, var16 * 128, var17 * 128 + 128, var18, var18);
+								var5.Scene_addOccluder(var10, 4, var14 * 128, var15 * 128 + 128, var16 * 128, var17 * 128 + 128, var18, var18);
 
 								for (var19 = var14; var19 <= var15; ++var19) {
 									for (var20 = var16; var20 <= var17; ++var20) {
@@ -619,10 +619,10 @@ public class class533 implements Enum {
 								PacketBufferNode var4 = WorldMapElement.getPacketBufferNode(ClientPacket.field3342, Client.packetWriter.isaacCipher);
 								var4.packetBuffer.writeIntME(var0.field2459.method7052());
 								var4.packetBuffer.writeIntME(var3[1]);
-								var4.packetBuffer.method9712(var3[2]);
+								var4.packetBuffer.writeIntIME(var3[2]);
 								var4.packetBuffer.writeShortAddLE(var0.field2459.childIndex);
-								var4.packetBuffer.method9712(var0.field2459.id);
-								var4.packetBuffer.writeIntIME(var3[0]);
+								var4.packetBuffer.writeIntIME(var0.field2459.id);
+								var4.packetBuffer.writeIntLE(var3[0]);
 								Client.packetWriter.addNode(var4);
 							}
 						}

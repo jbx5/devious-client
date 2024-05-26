@@ -272,9 +272,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
 		descriptor = "(S)V",
 		garbageValue = "338"
 	)
-	static void method692() {
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
 		Huffman.method7078();
-		Client.field677[0] = -1;
+		Client.menuWorldViewIds[0] = -1;
 		Client.menuActions[0] = "Cancel";
 		Client.menuTargets[0] = "";
 		Client.menuOpcodes[0] = 1006;

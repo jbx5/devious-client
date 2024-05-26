@@ -53,10 +53,10 @@ public class class440 extends SongTask {
 	)
 	static final int method8290() {
 		if (class459.clientPreferences.isRoofsHidden()) {
-			return class358.scene.field1348;
+			return class358.topLevelWorldView.plane;
 		} else {
-			int var0 = SoundSystem.method856(class358.scene, PlayerComposition.cameraX, UserComparator4.cameraZ, class358.scene.field1348);
-			return var0 - class171.cameraY < 800 && (class358.scene.field1340[class358.scene.field1348][PlayerComposition.cameraX >> 7][UserComparator4.cameraZ >> 7] & 4) != 0 ? class358.scene.field1348 : 3;
+			int var0 = SoundSystem.getTileHeight(class358.topLevelWorldView, PlayerComposition.cameraX, UserComparator4.cameraZ, class358.topLevelWorldView.plane);
+			return var0 - class171.cameraY < 800 && (class358.topLevelWorldView.tileSettings[class358.topLevelWorldView.plane][PlayerComposition.cameraX >> 7][UserComparator4.cameraZ >> 7] & 4) != 0 ? class358.topLevelWorldView.plane : 3;
 		}
 	}
 }

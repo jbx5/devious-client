@@ -1,9 +1,11 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("kl")
-public abstract class class260 {
+@Implements("Projection")
+public abstract class Projection {
 	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
 		descriptor = "Lot;"
@@ -11,28 +13,31 @@ public abstract class class260 {
 	@Export("archive2")
 	static Archive archive2;
 
-	class260() {
+	Projection() {
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Lju;IIIIJ)V"
 	)
-	abstract void vmethod5146(Renderable var1, int var2, int var3, int var4, int var5, long var6);
+	@Export("draw")
+	abstract void draw(Renderable var1, int var2, int var3, int var4, int var5, long var6);
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(Ljy;Lkg;IIIB)V",
 		garbageValue = "30"
 	)
-	abstract void vmethod5147(Scene var1, SceneTilePaint var2, int var3, int var4, int var5);
+	@Export("drawTileUnderlay")
+	abstract void drawTileUnderlay(Scene var1, SceneTilePaint var2, int var3, int var4, int var5);
 
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Ljy;Lke;IIB)V",
 		garbageValue = "14"
 	)
-	abstract void vmethod5148(Scene var1, SceneTileModel var2, int var3, int var4);
+	@Export("drawTileOverlay")
+	abstract void drawTileOverlay(Scene var1, SceneTileModel var2, int var3, int var4);
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -62,9 +67,9 @@ public abstract class class260 {
 				Rasterizer3D.clips.field2973 = true;
 			}
 
-			if (var1.field2734 && Scene.containsBounds(var1.field2738, var1.field2739, var22, var24, var20, var21, var23, var19)) {
-				var1.field2740 = var3;
-				var1.field2741 = var4;
+			if (var1.checkClick && Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var22, var24, var20, var21, var23, var19)) {
+				var1.baseX = var3;
+				var1.baseY = var4;
 			}
 
 			if (var2.texture == -1) {
@@ -90,9 +95,9 @@ public abstract class class260 {
 				Rasterizer3D.clips.field2973 = true;
 			}
 
-			if (var1.field2734 && Scene.containsBounds(var1.field2738, var1.field2739, var18, var20, var24, var17, var19, var23)) {
-				var1.field2740 = var3;
-				var1.field2741 = var4;
+			if (var1.checkClick && Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var18, var20, var24, var17, var19, var23)) {
+				var1.baseX = var3;
+				var1.baseY = var4;
 			}
 
 			if (var2.texture == -1) {
@@ -138,14 +143,14 @@ public abstract class class260 {
 					Rasterizer3D.clips.field2973 = true;
 				}
 
-				if (var1.field2734 && Scene.containsBounds(var1.field2738, var1.field2739, var13, var14, var15, var10, var11, var12)) {
-					var1.field2740 = var3;
-					var1.field2741 = var4;
+				if (var1.checkClick && Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var13, var14, var15, var10, var11, var12)) {
+					var1.baseX = var3;
+					var1.baseY = var4;
 				}
 
 				if (var2.triangleTextureId != null && var2.triangleTextureId[var6] != -1) {
 					if (!Scene.Scene_isLowDetail) {
-						if (var2.field2852) {
+						if (var2.isFlat) {
 							Rasterizer3D.method4700(var13, var14, var15, var10, var11, var12, var16, var17, var18, var2.triangleColorA[var6], var2.triangleColorB[var6], var2.triangleColorC[var6], SceneTileModel.field2858[0], SceneTileModel.field2858[1], SceneTileModel.field2858[3], SceneTileModel.field2859[0], SceneTileModel.field2859[1], SceneTileModel.field2859[3], SceneTileModel.field2860[0], SceneTileModel.field2860[1], SceneTileModel.field2860[3], var2.triangleTextureId[var6]);
 						} else {
 							Rasterizer3D.method4700(var13, var14, var15, var10, var11, var12, var16, var17, var18, var2.triangleColorA[var6], var2.triangleColorB[var6], var2.triangleColorC[var6], SceneTileModel.field2858[var7], SceneTileModel.field2858[var8], SceneTileModel.field2858[var9], SceneTileModel.field2859[var7], SceneTileModel.field2859[var8], SceneTileModel.field2859[var9], SceneTileModel.field2860[var7], SceneTileModel.field2860[var8], SceneTileModel.field2860[var9], var2.triangleTextureId[var6]);

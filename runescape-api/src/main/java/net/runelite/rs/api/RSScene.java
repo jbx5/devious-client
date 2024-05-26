@@ -25,7 +25,7 @@ public interface RSScene extends Scene
 	int[][] getTileRotation2D();
 
 	@Import("drawTile")
-	void draw(Tile tile, boolean var2);
+	void draw(RSProjection projection, Tile tile, boolean var2);
 
 	@Import("tileHeights")
 	@Override
@@ -95,9 +95,18 @@ public interface RSScene extends Scene
 	@Override
 	int getBaseX();
 
+	@Import("baseX")
+	void setBaseX(int x);
+
 	@Import("baseY")
 	@Override
 	int getBaseY();
+
+	@Import("baseY")
+	void setBaseY(int y);
+
+	@Import("viewportWalking")
+	void setViewportWalking(boolean viewportWalking);
 
 	@Import("isInInstance")
 	@Override
@@ -112,4 +121,107 @@ public interface RSScene extends Scene
 
 	@Import("drawEntity")
 	boolean drawEntity(int level, int x, int y, int z, int radius, Renderable renderable, int orientation, long var8, boolean drawFrontTilesFirst);
+
+	@Import("worldViewId")
+	@Override
+	int getWorldViewId();
+
+	@Import("Scene_drawnCount")
+	int getCycle();
+
+	@Import("Scene_drawnCount")
+	void setCycle(int cycle);
+
+	//@Import("visibilityMap")
+	//boolean[][][][] getVisibilityMaps();
+
+	@Import("visibilityMap")
+	void visibilityMap(int var1, int var2);
+
+	@Import("visibleTiles")
+	boolean setRenderArea(int var1, int var2);
+
+	@Import("Scene_cameraX")
+	int getCameraX2();
+
+	@Import("Scene_cameraX")
+	void setCameraX2(int cameraX2);
+
+	@Import("Scene_cameraY")
+	int getCameraY2();
+
+	@Import("Scene_cameraY")
+	void setCameraY2(int cameraY2);
+
+	@Import("Scene_cameraZ")
+	int getCameraZ2();
+
+	@Import("Scene_cameraZ")
+	void setCameraZ2(int cameraZ2);
+
+	@Import("Scene_cameraXTile")
+	void setScreenCenterX(int screenCenterX);
+
+	@Import("Scene_cameraYTile")
+	void setScreenCenterZ(int screenCenterZ); // <-- This is correct!
+
+	@Import("Scene_plane")
+	void setScenePlane(int scenePlane);
+
+	@Import("Scene_plane")
+	int getScenePlane();
+
+	@Import("Scene_cameraXTileMin")
+	void setMinTileX(int i);
+
+	@Import("Scene_cameraYTileMin")
+	void setMinTileZ(int i); // <-- This is correct!
+
+	@Import("Scene_cameraXTileMax")
+	void setMaxTileX(int i);
+
+	@Import("Scene_cameraYTileMax")
+	void setMaxTileZ(int i); // <-- This is correct!
+
+	@Import("tileUpdateCount")
+	int getTileUpdateCount();
+
+	@Import("tileUpdateCount")
+	void setTileUpdateCount(int tileUpdateCount);
+
+	@Import("Scene_selectedScreenX")
+	int getMouseX2();
+
+	@Import("Scene_selectedScreenY")
+	int getMouseY2();
+
+	@Import("Scene_selectedScreenX")
+	void setMouseCanvasHoverPositionX(int x);
+
+	@Import("Scene_selectedScreenY")
+	void setMouseCanvasHoverPositionY(int y);
+
+	/*@Import("Scene_selectedX")
+	int getSelectedSceneTileX();
+
+	@Import("Scene_selectedX")
+	void setSelectedSceneTileX(int selectedSceneTileX);
+
+	@Import("Scene_selectedY")
+	int getSelectedSceneTileY();
+
+	@Import("Scene_selectedY")
+	void setSelectedSceneTileY(int selectedSceneTileY);*/
+
+	@Import("Scene_tilesDeque")
+	RSNodeDeque getTilesDeque();
+
+	@Import("checkClick")
+	boolean isCheckClick();
+
+	@Import("Scene_offsetOccluder")
+	int getOffsetOccluder();
+
+	@Import("Scene_offsetOccluder")
+	void setOffsetOccluder(int offset);
 }

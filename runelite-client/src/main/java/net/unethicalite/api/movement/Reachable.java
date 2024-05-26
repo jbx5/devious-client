@@ -286,7 +286,7 @@ public class Reachable
 		// List of tiles that can interact with worldArea and can be walked on
 		return surrounding.toWorldPointList().stream()
 			.filter(p -> !locatableArea.contains(p))
-			.filter(p -> locatableArea.canMelee(Static.getClient(), p.toWorldArea()))
+			.filter(p -> locatableArea.canMelee(Static.getClient().getTopLevelWorldView(), p.toWorldArea()))
 			.filter(p -> !isObstacle(p))
 			.collect(Collectors.toList());
 	}

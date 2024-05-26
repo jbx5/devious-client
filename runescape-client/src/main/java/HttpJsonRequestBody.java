@@ -104,8 +104,8 @@ public class HttpJsonRequestBody implements HttpPayload {
 		garbageValue = "11831"
 	)
 	static final void method8938() {
-		for (int var0 = 0; var0 < class358.scene.field1336.field1415; ++var0) {
-			Player var1 = class358.scene.field1341[class358.scene.field1336.field1416[var0]];
+		for (int var0 = 0; var0 < class358.topLevelWorldView.playerUpdateManager.playerCount; ++var0) {
+			Player var1 = class358.topLevelWorldView.players[class358.topLevelWorldView.playerUpdateManager.playerIndices[var0]];
 			var1.method2366();
 		}
 

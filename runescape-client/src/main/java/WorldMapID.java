@@ -64,17 +64,17 @@ public class WorldMapID {
 		TileItem var10 = new TileItem();
 		var10.id = var3;
 		var10.quantity = var4;
-		var10.method2757(var5);
-		var10.field1394 = Client.field543 + var6;
-		var10.field1399 = var7 + Client.field543;
-		var10.field1396 = var8;
-		var10.field1395 = var9;
-		if (ModeWhere.field4623.field1349[var0][var1][var2] == null) {
-			ModeWhere.field4623.field1349[var0][var1][var2] = new NodeDeque();
+		var10.setFlag(var5);
+		var10.visibileTime = Client.serverTick + var6;
+		var10.despawnTime = var7 + Client.serverTick;
+		var10.ownership = var8;
+		var10.isPrivate = var9;
+		if (ModeWhere.worldView.groundItems[var0][var1][var2] == null) {
+			ModeWhere.worldView.groundItems[var0][var1][var2] = new NodeDeque();
 		}
 
-		ModeWhere.field4623.field1349[var0][var1][var2].addFirst(var10);
-		class349.method6551(var0, var1, var2);
+		ModeWhere.worldView.groundItems[var0][var1][var2].addFirst(var10);
+		class349.updateItemPile(var0, var1, var2);
 	}
 
 	@ObfuscatedName("mc")
@@ -111,9 +111,9 @@ public class WorldMapID {
 					var4 = Client.menuItemIds[var1];
 					Client.menuItemIds[var1] = Client.menuItemIds[var1 + 1];
 					Client.menuItemIds[var1 + 1] = var4;
-					var4 = Client.field677[var1];
-					Client.field677[var1] = Client.field677[var1 + 1];
-					Client.field677[var1 + 1] = var4;
+					var4 = Client.menuWorldViewIds[var1];
+					Client.menuWorldViewIds[var1] = Client.menuWorldViewIds[var1 + 1];
+					Client.menuWorldViewIds[var1 + 1] = var4;
 					boolean var5 = Client.menuShiftClick[var1];
 					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1];
 					Client.menuShiftClick[var1 + 1] = var5;

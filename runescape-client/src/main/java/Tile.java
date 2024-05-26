@@ -27,22 +27,26 @@ public final class Tile extends Node {
 	@ObfuscatedGetter(
 		intValue = -1506494255
 	)
-	int field2656;
+	@Export("plane")
+	int plane;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
 		intValue = -118489229
 	)
-	int field2638;
+	@Export("x")
+	int x;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = 1838880061
 	)
-	int field2655;
+	@Export("y")
+	int y;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = 100104241
 	)
-	int field2640;
+	@Export("originalPlane")
+	int originalPlane;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "Lkg;"
@@ -71,45 +75,56 @@ public final class Tile extends Node {
 	@ObfuscatedSignature(
 		descriptor = "Ljm;"
 	)
-	FloorDecoration field2645;
+	@Export("floorDecoration")
+	FloorDecoration floorDecoration;
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Ljh;"
 	)
-	ItemLayer field2646;
+	@Export("itemLayer")
+	ItemLayer itemLayer;
 	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
 		intValue = 8092243
 	)
-	int field2647;
+	@Export("gameObjectsCount")
+	int gameObjectsCount;
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "[Lkf;"
 	)
-	GameObject[] field2637;
+	@Export("gameObjects")
+	GameObject[] gameObjects;
 	@ObfuscatedName("aq")
-	int[] field2649;
+	@Export("gameObjectEdgeMasks")
+	int[] gameObjectEdgeMasks;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
 		intValue = 1261156353
 	)
-	int field2650;
+	@Export("gameObjectsEdgeMask")
+	int gameObjectsEdgeMask;
 	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
 		intValue = 225429201
 	)
-	int field2651;
+	@Export("minPlane")
+	int minPlane;
 	@ObfuscatedName("ax")
-	boolean field2662;
+	@Export("drawPrimary")
+	boolean drawPrimary;
 	@ObfuscatedName("ay")
-	boolean field2653;
+	@Export("drawSecondary")
+	boolean drawSecondary;
 	@ObfuscatedName("au")
-	boolean field2644;
+	@Export("drawGameObjects")
+	boolean drawGameObjects;
 	@ObfuscatedName("as")
 	@ObfuscatedGetter(
 		intValue = 1960205435
 	)
-	int field2648;
+	@Export("drawGameObjectEdges")
+	int drawGameObjectEdges;
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
 		intValue = 176877587
@@ -129,14 +144,15 @@ public final class Tile extends Node {
 	@ObfuscatedSignature(
 		descriptor = "Ljz;"
 	)
-	Tile field2659;
+	@Export("linkedBelowTile")
+	Tile linkedBelowTile;
 
 	Tile(int var1, int var2, int var3) {
-		this.field2637 = new GameObject[5];
-		this.field2649 = new int[5];
-		this.field2650 = 0;
-		this.field2640 = this.field2656 = var1;
-		this.field2638 = var2;
-		this.field2655 = var3;
+		this.gameObjects = new GameObject[5];
+		this.gameObjectEdgeMasks = new int[5];
+		this.gameObjectsEdgeMask = 0;
+		this.originalPlane = this.plane = var1;
+		this.x = var2;
+		this.y = var3;
 	}
 }

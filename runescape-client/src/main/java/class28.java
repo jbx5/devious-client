@@ -117,38 +117,39 @@ public class class28 {
 		descriptor = "(Lde;IIIII)V",
 		garbageValue = "42083710"
 	)
-	static final void method423(Player var0, int var1, int var2, int var3, int var4) {
-		if (var0.field1157 != Client.localPlayerIndex) {
+	@Export("addPlayerToMenu")
+	static final void addPlayerToMenu(Player var0, int var1, int var2, int var3, int var4) {
+		if (var0.index != Client.localPlayerIndex) {
 			if (Client.menuOptionsCount < 400) {
 				String var5;
-				if (var0.field1141 == 0) {
-					var5 = var0.field1139[0] + var0.username + var0.field1139[1] + class315.method6164(var0.field1147, class17.localPlayer.field1147) + " " + " (" + "level-" + var0.field1147 + ")" + var0.field1139[2];
+				if (var0.skillLevel == 0) {
+					var5 = var0.actions[0] + var0.username + var0.actions[1] + class315.method6164(var0.combatLevel, class17.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
 				} else {
-					var5 = var0.field1139[0] + var0.username + var0.field1139[1] + " " + " (" + "skill-" + var0.field1141 + ")" + var0.field1139[2];
+					var5 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
 				}
 
 				int var6;
 				if (Client.isItemSelected == 1) {
-					class194.method3796("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16777215) + var5, 14, var1, var2, var3, -1, false, var4);
+					class194.insertMenuItem("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16777215) + var5, 14, var1, var2, var3, -1, false, var4);
 				} else if (Client.isSpellSelected) {
 					if ((GrandExchangeOfferUnitPriceComparator.selectedSpellFlags & 8) == 8) {
-						class194.method3796(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16777215) + var5, 15, var1, var2, var3, -1, false, var4);
+						class194.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16777215) + var5, 15, var1, var2, var3, -1, false, var4);
 					}
 				} else {
 					for (var6 = 7; var6 >= 0; --var6) {
-						if (Client.overheadText[var6] != null) {
+						if (Client.playerMenuActions[var6] != null) {
 							short var7 = 0;
-							if (Client.overheadText[var6].equalsIgnoreCase("Attack")) {
+							if (Client.playerMenuActions[var6].equalsIgnoreCase("Attack")) {
 								if (AttackOption.AttackOption_hidden == Client.playerAttackOption) {
 									continue;
 								}
 
-								if (AttackOption.field1384 == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.field1147 > class17.localPlayer.field1147) {
+								if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > class17.localPlayer.combatLevel) {
 									var7 = 2000;
 								}
 
-								if (class17.localPlayer.field1164 != 0 && var0.field1164 != 0) {
-									if (var0.field1164 == class17.localPlayer.field1164) {
+								if (class17.localPlayer.team != 0 && var0.team != 0) {
+									if (var0.team == class17.localPlayer.team) {
 										var7 = 2000;
 									} else {
 										var7 = 0;
@@ -161,8 +162,8 @@ public class class28 {
 							}
 
 							boolean var8 = false;
-							int var9 = Client.field660[var6] + var7;
-							class194.method3796(Client.overheadText[var6], HttpAuthenticationHeader.colorStartTag(16777215) + var5, var9, var1, var2, var3, -1, false, var4);
+							int var9 = Client.playerMenuOpcodes[var6] + var7;
+							class194.insertMenuItem(Client.playerMenuActions[var6], HttpAuthenticationHeader.colorStartTag(16777215) + var5, var9, var1, var2, var3, -1, false, var4);
 						}
 					}
 				}

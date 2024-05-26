@@ -139,7 +139,7 @@ public abstract class class305 implements class307 {
 								}
 
 								if (!Client.isMenuOpen) {
-									MouseHandler.method692();
+									MouseHandler.addCancelMenuEntry();
 								}
 							}
 						} else if (var9.noScrollThrough && MouseHandler.MouseHandler_x >= var12 && MouseHandler.MouseHandler_y >= var13 && MouseHandler.MouseHandler_x < var14 && MouseHandler.MouseHandler_y < var15) {
@@ -618,7 +618,7 @@ public abstract class class305 implements class307 {
 									}
 
 									if (!Client.isMenuOpen) {
-										MouseHandler.method692();
+										MouseHandler.addCancelMenuEntry();
 									}
 								}
 

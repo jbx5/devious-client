@@ -93,7 +93,7 @@ public class FontName {
 		garbageValue = "1305902891"
 	)
 	static boolean method9301(int var0, int var1, int var2, int var3, int var4, int var5) {
-		return class59.method1147(ModeWhere.field4623.field1348, var0, var1, var2, var3, var4, var5);
+		return class59.method1147(ModeWhere.worldView.plane, var0, var1, var2, var3, var4, var5);
 	}
 
 	@ObfuscatedName("ns")
@@ -141,7 +141,7 @@ public class FontName {
 						if (var11 != -1 && (!KeyHandler.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
 							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
 								if (var11 + 1 == var10.itemIds[var12]) {
-									var7 += var10.field3807[var12];
+									var7 += var10.itemQuantities[var12];
 								}
 							}
 						}
@@ -160,7 +160,7 @@ public class FontName {
 					}
 
 					if (var6 == 8) {
-						var7 = class17.localPlayer.field1147;
+						var7 = class17.localPlayer.combatLevel;
 					}
 
 					if (var6 == 9) {
@@ -218,11 +218,11 @@ public class FontName {
 					}
 
 					if (var6 == 18) {
-						var7 = (class17.localPlayer.x >> 7) + class358.scene.field1337;
+						var7 = (class17.localPlayer.x >> 7) + class358.topLevelWorldView.baseX;
 					}
 
 					if (var6 == 19) {
-						var7 = (class17.localPlayer.y >> 7) + class358.scene.field1333;
+						var7 = (class17.localPlayer.y >> 7) + class358.topLevelWorldView.baseY;
 					}
 
 					if (var6 == 20) {

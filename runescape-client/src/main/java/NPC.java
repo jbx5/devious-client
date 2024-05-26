@@ -1,10 +1,12 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dv")
-public final class class103 extends Actor {
+@Implements("NPC")
+public final class NPC extends Actor {
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = -563542583
@@ -19,7 +21,8 @@ public final class class103 extends Actor {
 	@ObfuscatedSignature(
 		descriptor = "Liq;"
 	)
-	NPCComposition field1359;
+	@Export("definition")
+	NPCComposition definition;
 	@ObfuscatedName("al")
 	String field1365;
 	@ObfuscatedName("az")
@@ -36,19 +39,21 @@ public final class class103 extends Actor {
 	@ObfuscatedSignature(
 		descriptor = "Lio;"
 	)
-	NpcOverrides field1363;
+	@Export("modelOverrides")
+	NpcOverrides modelOverrides;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Lio;"
 	)
-	NpcOverrides field1360;
+	@Export("chatheadOverrides")
+	NpcOverrides chatheadOverrides;
 
 	static {
 		field1364 = 1;
 		field1366 = 1;
 	}
 
-	class103() {
+	NPC() {
 		this.field1365 = "";
 		this.field1361 = 31;
 	}
@@ -60,26 +65,26 @@ public final class class103 extends Actor {
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		if (this.field1359 == null) {
+		if (this.definition == null) {
 			return null;
 		} else {
-			SequenceDefinition var1 = super.field1223 != -1 && super.field1252 == 0 ? FaceNormal.SequenceDefinition_get(super.field1223) : null;
-			SequenceDefinition var2 = super.field1245 == -1 || super.idleSequence == super.field1245 && var1 != null ? null : FaceNormal.SequenceDefinition_get(super.field1245);
+			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? FaceNormal.SequenceDefinition_get(super.sequence) : null;
+			SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : FaceNormal.SequenceDefinition_get(super.movementSequence);
 			Model var3 = null;
-			if (this.field1363 != null && this.field1363.useLocalPlayer) {
-				var3 = class17.localPlayer.appearance.getModel(var1, super.field1250, var2, super.movementFrame);
+			if (this.modelOverrides != null && this.modelOverrides.useLocalPlayer) {
+				var3 = class17.localPlayer.appearance.getModel(var1, super.sequenceFrame, var2, super.movementFrame);
 			} else {
-				var3 = this.field1359.getModel(var1, super.field1250, var2, super.movementFrame, this.field1363);
+				var3 = this.definition.getModel(var1, super.sequenceFrame, var2, super.movementFrame, this.modelOverrides);
 			}
 
 			if (var3 == null) {
 				return null;
 			} else {
 				var3.calculateBoundsCylinder();
-				super.field1279 = var3.height;
+				super.defaultHeight = var3.height;
 				int var4 = var3.indicesCount;
 				var3 = this.method2451(var3);
-				if (this.field1359.size == 1) {
+				if (this.definition.size == 1) {
 					var3.isSingleTile = true;
 				}
 
@@ -138,11 +143,11 @@ public final class class103 extends Actor {
 		if (!this.field1365.isEmpty()) {
 			return this.field1365;
 		} else {
-			NPCComposition var1 = this.field1359;
+			NPCComposition var1 = this.definition;
 			if (var1.transforms != null) {
 				var1 = var1.transform();
 				if (var1 == null) {
-					var1 = this.field1359;
+					var1 = this.definition;
 				}
 			}
 
@@ -156,8 +161,8 @@ public final class class103 extends Actor {
 		garbageValue = "-1257539379"
 	)
 	final void method2657(int var1, class237 var2) {
-		int var3 = super.field1229[0];
-		int var4 = super.field1276[0];
+		int var3 = super.pathX[0];
+		int var4 = super.pathY[0];
 		if (var1 == 0) {
 			--var3;
 			++var4;
@@ -194,23 +199,23 @@ public final class class103 extends Actor {
 			--var4;
 		}
 
-		if (super.field1223 != -1 && FaceNormal.SequenceDefinition_get(super.field1223).field2422 == 1) {
-			super.field1223 = -1;
+		if (super.sequence != -1 && FaceNormal.SequenceDefinition_get(super.sequence).field2422 == 1) {
+			super.sequence = -1;
 		}
 
-		if (super.field1274 < 9) {
-			++super.field1274;
+		if (super.pathLength < 9) {
+			++super.pathLength;
 		}
 
-		for (int var5 = super.field1274; var5 > 0; --var5) {
-			super.field1229[var5] = super.field1229[var5 - 1];
-			super.field1276[var5] = super.field1276[var5 - 1];
-			super.field1277[var5] = super.field1277[var5 - 1];
+		for (int var5 = super.pathLength; var5 > 0; --var5) {
+			super.pathX[var5] = super.pathX[var5 - 1];
+			super.pathY[var5] = super.pathY[var5 - 1];
+			super.pathTraversed[var5] = super.pathTraversed[var5 - 1];
 		}
 
-		super.field1229[0] = var3;
-		super.field1276[0] = var4;
-		super.field1277[0] = var2;
+		super.pathX[0] = var3;
+		super.pathY[0] = var4;
+		super.pathTraversed[0] = var2;
 	}
 
 	@ObfuscatedName("au")
@@ -219,38 +224,38 @@ public final class class103 extends Actor {
 		garbageValue = "-1209588403"
 	)
 	final void method2658(int var1, int var2, boolean var3) {
-		if (super.field1223 != -1 && FaceNormal.SequenceDefinition_get(super.field1223).field2422 == 1) {
-			super.field1223 = -1;
+		if (super.sequence != -1 && FaceNormal.SequenceDefinition_get(super.sequence).field2422 == 1) {
+			super.sequence = -1;
 		}
 
 		if (!var3) {
-			int var4 = var1 - super.field1229[0];
-			int var5 = var2 - super.field1276[0];
+			int var4 = var1 - super.pathX[0];
+			int var5 = var2 - super.pathY[0];
 			if (var4 >= -8 && var4 <= 8 && var5 >= -8 && var5 <= 8) {
-				if (super.field1274 < 9) {
-					++super.field1274;
+				if (super.pathLength < 9) {
+					++super.pathLength;
 				}
 
-				for (int var6 = super.field1274; var6 > 0; --var6) {
-					super.field1229[var6] = super.field1229[var6 - 1];
-					super.field1276[var6] = super.field1276[var6 - 1];
-					super.field1277[var6] = super.field1277[var6 - 1];
+				for (int var6 = super.pathLength; var6 > 0; --var6) {
+					super.pathX[var6] = super.pathX[var6 - 1];
+					super.pathY[var6] = super.pathY[var6 - 1];
+					super.pathTraversed[var6] = super.pathTraversed[var6 - 1];
 				}
 
-				super.field1229[0] = var1;
-				super.field1276[0] = var2;
-				super.field1277[0] = class237.field2525;
+				super.pathX[0] = var1;
+				super.pathY[0] = var2;
+				super.pathTraversed[0] = class237.field2525;
 				return;
 			}
 		}
 
-		super.field1274 = 0;
+		super.pathLength = 0;
 		super.field1226 = 0;
 		super.field1278 = 0;
-		super.field1229[0] = var1;
-		super.field1276[0] = var2;
-		super.x = super.field1208 * 64 + super.field1229[0] * 128;
-		super.y = super.field1208 * 64 + super.field1276[0] * 128;
+		super.pathX[0] = var1;
+		super.pathY[0] = var2;
+		super.x = super.field1208 * 64 + super.pathX[0] * 128;
+		super.y = super.field1208 * 64 + super.pathY[0] * 128;
 	}
 
 	@ObfuscatedName("as")
@@ -259,7 +264,7 @@ public final class class103 extends Actor {
 		garbageValue = "-19"
 	)
 	int[] method2661() {
-		return this.field1362 != null ? this.field1362.method9898() : this.field1359.method3962();
+		return this.field1362 != null ? this.field1362.method9898() : this.definition.method3962();
 	}
 
 	@ObfuscatedName("aw")
@@ -268,7 +273,7 @@ public final class class103 extends Actor {
 		garbageValue = "487823525"
 	)
 	short[] method2662() {
-		return this.field1362 != null ? this.field1362.method9895() : this.field1359.method3977();
+		return this.field1362 != null ? this.field1362.method9895() : this.definition.method3977();
 	}
 
 	@ObfuscatedName("ad")
@@ -278,7 +283,7 @@ public final class class103 extends Actor {
 	)
 	void method2663(int var1, int var2, short var3) {
 		if (this.field1362 == null) {
-			this.field1362 = new class546(this.field1359);
+			this.field1362 = new class546(this.definition);
 		}
 
 		this.field1362.method9896(var1, var2, var3);
@@ -291,7 +296,7 @@ public final class class103 extends Actor {
 	)
 	void method2664(int[] var1, short[] var2) {
 		if (this.field1362 == null) {
-			this.field1362 = new class546(this.field1359);
+			this.field1362 = new class546(this.definition);
 		}
 
 		this.field1362.method9897(var1, var2);
@@ -312,7 +317,7 @@ public final class class103 extends Actor {
 		garbageValue = "259624253"
 	)
 	void method2692(NpcOverrides var1) {
-		this.field1360 = var1;
+		this.chatheadOverrides = var1;
 	}
 
 	@ObfuscatedName("ar")
@@ -321,7 +326,7 @@ public final class class103 extends Actor {
 		garbageValue = "128"
 	)
 	NpcOverrides method2667() {
-		return this.field1360;
+		return this.chatheadOverrides;
 	}
 
 	@ObfuscatedName("ag")
@@ -330,7 +335,7 @@ public final class class103 extends Actor {
 		garbageValue = "1478714438"
 	)
 	void method2668(NpcOverrides var1) {
-		this.field1363 = var1;
+		this.modelOverrides = var1;
 	}
 
 	@ObfuscatedName("bs")
@@ -340,7 +345,7 @@ public final class class103 extends Actor {
 	)
 	@Export("isVisible")
 	final boolean isVisible() {
-		return this.field1359 != null;
+		return this.definition != null;
 	}
 
 	@ObfuscatedName("bf")
@@ -349,7 +354,7 @@ public final class class103 extends Actor {
 		garbageValue = "-1516009994"
 	)
 	void method2669() {
-		this.field1360 = null;
+		this.chatheadOverrides = null;
 	}
 
 	@ObfuscatedName("bo")
@@ -358,7 +363,7 @@ public final class class103 extends Actor {
 		garbageValue = "1"
 	)
 	void method2688() {
-		this.field1363 = null;
+		this.modelOverrides = null;
 	}
 
 	@ObfuscatedName("al")

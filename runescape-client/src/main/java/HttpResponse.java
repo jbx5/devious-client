@@ -143,11 +143,11 @@ public class HttpResponse {
 		GameEngine.taskHandler = null;
 		class13.clear();
 		class141.method3164();
-		ModeWhere.field4623.clear();
+		ModeWhere.worldView.clear();
 
 		for (int var1 = 0; var1 < 4; ++var1) {
-			if (ModeWhere.field4623.field1332[var1] != null) {
-				ModeWhere.field4623.field1332[var1].clear();
+			if (ModeWhere.worldView.collisionMaps[var1] != null) {
+				ModeWhere.worldView.collisionMaps[var1].clear();
 			}
 		}
 

@@ -58,8 +58,8 @@ public enum class365 implements Enum {
 	)
 	static final void method7116() {
 		Client.field650 = 0;
-		int var0 = (class17.localPlayer.x >> 7) + class358.scene.field1337;
-		int var1 = (class17.localPlayer.y >> 7) + class358.scene.field1333;
+		int var0 = (class17.localPlayer.x >> 7) + class358.topLevelWorldView.baseX;
+		int var1 = (class17.localPlayer.y >> 7) + class358.topLevelWorldView.baseY;
 		if (var0 >= 3053 && var0 <= 3156 && var1 >= 3056 && var1 <= 3136) {
 			Client.field650 = 1;
 		}

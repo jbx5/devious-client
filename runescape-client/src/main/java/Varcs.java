@@ -55,7 +55,7 @@ public class Varcs {
 
 	Varcs() {
 		this.unwrittenChanges = false;
-		int var1 = class260.archive2.getGroupFileCount(19);
+		int var1 = Projection.archive2.getGroupFileCount(19);
 		this.map = new HashMap();
 		this.intsPersistence = new boolean[var1];
 
@@ -66,8 +66,8 @@ public class Varcs {
 		}
 
 		var2 = 0;
-		if (class260.archive2.method7176(15)) {
-			var2 = class260.archive2.getGroupFileCount(15);
+		if (Projection.archive2.method7176(15)) {
+			var2 = Projection.archive2.getGroupFileCount(15);
 		}
 
 		this.strings = new String[var2];

@@ -57,19 +57,20 @@ public class SoundSystem implements Runnable {
 		descriptor = "(Ldt;IIIB)I",
 		garbageValue = "-84"
 	)
-	static final int method856(class101 var0, int var1, int var2, int var3) {
+	@Export("getTileHeight")
+	static final int getTileHeight(WorldView var0, int var1, int var2, int var3) {
 		int var4 = var1 >> 7;
 		int var5 = var2 >> 7;
-		if (var4 >= 0 && var5 >= 0 && var4 < var0.field1340[0].length && var5 < var0.field1340[0][0].length) {
+		if (var4 >= 0 && var5 >= 0 && var4 < var0.tileSettings[0].length && var5 < var0.tileSettings[0][0].length) {
 			int var6 = var3;
-			if (var3 < 3 && (var0.field1340[1][var4][var5] & 2) == 2) {
+			if (var3 < 3 && (var0.tileSettings[1][var4][var5] & 2) == 2) {
 				var6 = var3 + 1;
 			}
 
 			int var7 = var1 & 127;
 			int var8 = var2 & 127;
-			int var9 = var7 * var0.field1339[var6][var4 + 1][var5] + var0.field1339[var6][var4][var5] * (128 - var7) >> 7;
-			int var10 = var7 * var0.field1339[var6][var4 + 1][var5 + 1] + var0.field1339[var6][var4][var5 + 1] * (128 - var7) >> 7;
+			int var9 = var7 * var0.tileHeights[var6][var4 + 1][var5] + var0.tileHeights[var6][var4][var5] * (128 - var7) >> 7;
+			int var10 = var7 * var0.tileHeights[var6][var4 + 1][var5 + 1] + var0.tileHeights[var6][var4][var5 + 1] * (128 - var7) >> 7;
 			return var8 * var10 + var9 * (128 - var8) >> 7;
 		} else {
 			return 0;
@@ -81,7 +82,8 @@ public class SoundSystem implements Runnable {
 		descriptor = "(Lca;I)V",
 		garbageValue = "-143017937"
 	)
-	static void method854(LoginState var0) {
+	@Export("updateLoginState")
+	static void updateLoginState(LoginState var0) {
 		if (Tiles.loginState != var0) {
 			Tiles.loginState = var0;
 		}

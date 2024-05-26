@@ -106,6 +106,6 @@ public class class60 {
 			var2[var3] = var7 * var8 >> 16;
 		}
 
-		class358.scene.field1331.method4901(var2, 500, 800, var0 * 334 / var1, 334);
+		class358.topLevelWorldView.scene.method4901(var2, 500, 800, var0 * 334 / var1, 334);
 	}
 }

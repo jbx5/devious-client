@@ -1,9 +1,12 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("st")
-public class class475 implements class67 {
+@Implements("WorldEntity")
+public class WorldEntity implements class67 {
 	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
 		intValue = -80661597
@@ -48,7 +51,8 @@ public class class475 implements class67 {
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	public class101 field4947;
+	@Export("worldView")
+	public WorldView worldView;
 	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
 		intValue = -79032087
@@ -64,7 +68,7 @@ public class class475 implements class67 {
 	)
 	class237[] field4951;
 
-	public class475(int var1, int var2, int var3, int var4) {
+	public WorldEntity(int var1, int var2, int var3, int var4) {
 		this.field4948 = 0;
 		this.field4940 = 0;
 		this.field4941 = 2;
@@ -77,7 +81,7 @@ public class class475 implements class67 {
 		this.field4942 = new int[10];
 		this.field4950 = new int[10];
 		this.field4951 = new class237[10];
-		this.field4947 = new class101(var1, var2, var3, var4);
+		this.worldView = new WorldView(var1, var2, var3, var4);
 	}
 
 	@ObfuscatedName("ak")
@@ -113,7 +117,7 @@ public class class475 implements class67 {
 		garbageValue = "0"
 	)
 	public void method8761() {
-		this.field4947.field1331.field2746 = this.field4947.field1348;
+		this.worldView.scene.Scene_plane = this.worldView.plane;
 	}
 
 	@ObfuscatedName("av")

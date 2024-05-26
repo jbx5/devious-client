@@ -119,7 +119,7 @@ public class class134 implements Enum {
 		descriptor = "(Ldt;[BIII)V",
 		garbageValue = "-106912157"
 	)
-	static final void method3113(class101 var0, byte[] var1, int var2, int var3) {
+	static final void method3113(WorldView var0, byte[] var1, int var2, int var3) {
 		Buffer var4 = new Buffer(var1);
 		int var5 = -1;
 
@@ -147,18 +147,18 @@ public class class134 implements Enum {
 				int var14 = var12 & 3;
 				int var15 = var10 + var2;
 				int var16 = var3 + var9;
-				if (var15 > 0 && var16 > 0 && var15 < var0.field1339[0].length - 2 && var16 < var0.field1339[0][0].length - 2) {
+				if (var15 > 0 && var16 > 0 && var15 < var0.tileHeights[0].length - 2 && var16 < var0.tileHeights[0][0].length - 2) {
 					int var17 = var11;
-					if ((var0.field1340[1][var15][var16] & 2) == 2) {
+					if ((var0.tileSettings[1][var15][var16] & 2) == 2) {
 						var17 = var11 - 1;
 					}
 
 					CollisionMap var18 = null;
-					if (var17 >= 0 && var0.field1332 != null) {
-						var18 = var0.field1332[var17];
+					if (var17 >= 0 && var0.collisionMaps != null) {
+						var18 = var0.collisionMaps[var17];
 					}
 
-					class130.method3051(var0, var11, var15, var16, var5, var14, var13, var18);
+					class130.addObjects(var0, var11, var15, var16, var5, var14, var13, var18);
 				}
 			}
 		}

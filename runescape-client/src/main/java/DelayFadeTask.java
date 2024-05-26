@@ -167,15 +167,15 @@ public class DelayFadeTask extends SongTask {
 		descriptor = "(Ldt;Luk;B)V",
 		garbageValue = "9"
 	)
-	static void method8284(class101 var0, PacketBuffer var1) {
+	static void method8284(WorldView var0, PacketBuffer var1) {
 		int var2 = var1.readUnsignedShort();
-		class475 var3 = var0.field1347[var2];
-		class101 var4 = var3.field4947;
-		var4.field1337 = var1.readUnsignedShort();
-		var4.field1333 = var1.readUnsignedShort();
-		var4.field1336.method2776(var1, false);
-		int var5 = var4.field1346 / 8;
-		int var6 = var4.field1330 / 8;
+		WorldEntity var3 = var0.worldEntities[var2];
+		WorldView var4 = var3.worldView;
+		var4.baseX = var1.readUnsignedShort();
+		var4.baseY = var1.readUnsignedShort();
+		var4.playerUpdateManager.updatePlayer(var1, false);
+		int var5 = var4.sizeX / 8;
+		int var6 = var4.sizeY / 8;
 		int var7 = var1.readUnsignedShort();
 		var1.importIndex();
 

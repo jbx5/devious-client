@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
@@ -10,57 +11,68 @@ public final class Occluder {
 	@ObfuscatedGetter(
 		intValue = -1025240969
 	)
-	int field2821;
+	@Export("minTileX")
+	int minTileX;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
 		intValue = 1453570063
 	)
-	int field2813;
+	@Export("maxTileX")
+	int maxTileX;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = 469225541
 	)
-	int field2814;
+	@Export("minTileY")
+	int minTileY;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = 279556457
 	)
-	int field2826;
+	@Export("maxTileY")
+	int maxTileY;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
 		intValue = -831024831
 	)
-	int field2818;
+	@Export("type")
+	int type;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
 		intValue = 2010056849
 	)
-	int field2817;
+	@Export("minX")
+	int minX;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = -69169141
 	)
-	int field2815;
+	@Export("maxX")
+	int maxX;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
 		intValue = -313400937
 	)
-	int field2828;
+	@Export("minZ")
+	int minZ;
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
 		intValue = 373936233
 	)
-	int field2820;
+	@Export("maxZ")
+	int maxZ;
 	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
 		intValue = -569242405
 	)
-	int field2812;
+	@Export("minY")
+	int minY;
 	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
 		intValue = -402547651
 	)
-	int field2822;
+	@Export("maxY")
+	int maxY;
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(
 		intValue = -61929801

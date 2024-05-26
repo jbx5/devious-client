@@ -1,7 +1,9 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 
 @ObfuscatedName("mk")
 public class class326 {
 	@ObfuscatedName("gq")
-	static String field3558;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 }

@@ -87,33 +87,34 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 		descriptor = "(Ldt;Ldh;IB)V",
 		garbageValue = "0"
 	)
-	static final void method1212(class101 var0, Actor var1, int var2) {
+	@Export("updateActorSequence")
+	static final void updateActorSequence(WorldView var0, Actor var1, int var2) {
 		SequenceDefinition var4;
 		int var5;
 		int var7;
 		int var10;
-		if (var1.field1260 >= Client.cycle) {
-			int var3 = Math.max(1, var1.field1260 - Client.cycle);
+		if (var1.spotAnimation >= Client.cycle) {
+			int var3 = Math.max(1, var1.spotAnimation - Client.cycle);
 			var10 = var1.field1208 * 64 + var1.field1256 * 128;
 			var5 = var1.field1208 * 64 + var1.field1258 * 128;
 			var1.x += (var10 - var1.x) / var3;
 			var1.y += (var5 - var1.y) / var3;
 			var1.field1278 = 0;
-			var1.field1282 = var1.field1262;
+			var1.orientation = var1.field1262;
 		} else if (var1.field1261 >= Client.cycle) {
-			boolean var13 = Client.cycle == var1.field1261 || var1.field1223 == -1 || var1.field1252 != 0;
+			boolean var13 = Client.cycle == var1.field1261 || var1.sequence == -1 || var1.sequenceDelay != 0;
 			if (!var13) {
-				var4 = FaceNormal.SequenceDefinition_get(var1.field1223);
+				var4 = FaceNormal.SequenceDefinition_get(var1.sequence);
 				if (var4 != null && !var4.isCachedModelIdSet()) {
-					var13 = var1.field1251 + 1 > var4.frameLengths[var1.field1250];
+					var13 = var1.sequenceFrameCycle + 1 > var4.frameLengths[var1.sequenceFrame];
 				} else {
 					var13 = true;
 				}
 			}
 
 			if (var13) {
-				var10 = var1.field1261 - var1.field1260;
-				var5 = Client.cycle - var1.field1260;
+				var10 = var1.field1261 - var1.spotAnimation;
+				var5 = Client.cycle - var1.spotAnimation;
 				int var6 = var1.field1208 * 64 + var1.field1256 * 128;
 				var7 = var1.field1208 * 64 + var1.field1258 * 128;
 				int var8 = var1.field1208 * 64 + var1.field1257 * 128;
@@ -123,41 +124,41 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 			}
 
 			var1.field1278 = 0;
-			var1.field1282 = var1.field1262;
-			var1.field1209 = var1.field1282;
+			var1.orientation = var1.field1262;
+			var1.rotation = var1.orientation;
 		} else {
 			class186.method3735(var1);
 		}
 
 		if (var1.x < 128 || var1.y < 128 || var1.x >= 13184 || var1.y >= 13184) {
-			var1.field1223 = -1;
-			var1.field1260 = 0;
+			var1.sequence = -1;
+			var1.spotAnimation = 0;
 			var1.field1261 = 0;
 			var1.clearSpotAnimations();
-			var1.x = var1.field1229[0] * 128 + var1.field1208 * 64;
-			var1.y = var1.field1276[0] * 128 + var1.field1208 * 64;
+			var1.x = var1.pathX[0] * 128 + var1.field1208 * 64;
+			var1.y = var1.pathY[0] * 128 + var1.field1208 * 64;
 			var1.method2420();
 		}
 
 		if (var1 == class17.localPlayer && (var1.x < 1536 || var1.y < 1536 || var1.x >= 11776 || var1.y >= 11776)) {
-			var1.field1223 = -1;
-			var1.field1260 = 0;
+			var1.sequence = -1;
+			var1.spotAnimation = 0;
 			var1.field1261 = 0;
 			var1.clearSpotAnimations();
-			var1.x = var1.field1229[0] * 128 + var1.field1208 * 64;
-			var1.y = var1.field1276[0] * 128 + var1.field1208 * 64;
+			var1.x = var1.pathX[0] * 128 + var1.field1208 * 64;
+			var1.y = var1.pathY[0] * 128 + var1.field1208 * 64;
 			var1.method2420();
 		}
 
 		PlayerComposition.method6613(var0, var1);
-		var1.field1207 = false;
-		if (var1.field1245 != -1) {
-			SequenceDefinition var11 = FaceNormal.SequenceDefinition_get(var1.field1245);
+		var1.isWalking = false;
+		if (var1.movementSequence != -1) {
+			SequenceDefinition var11 = FaceNormal.SequenceDefinition_get(var1.movementSequence);
 			if (var11 != null) {
 				if (!var11.isCachedModelIdSet() && var11.frameIds != null) {
-					++var1.field1247;
-					if (var1.movementFrame < var11.frameIds.length && var1.field1247 > var11.frameLengths[var1.movementFrame]) {
-						var1.field1247 = 1;
+					++var1.movementFrameCycle;
+					if (var1.movementFrame < var11.frameIds.length && var1.movementFrameCycle > var11.frameLengths[var1.movementFrame]) {
+						var1.movementFrameCycle = 1;
 						++var1.movementFrame;
 						Tiles.method2272(var11, var1.movementFrame, var1.x, var1.y, var1);
 					}
@@ -170,12 +171,12 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 							}
 
 							if (var1.movementFrame < 0 || var1.movementFrame >= var11.frameIds.length || var11.field2430 && var1.field1248 >= var11.field2426) {
-								var1.field1247 = 0;
+								var1.movementFrameCycle = 0;
 								var1.movementFrame = 0;
 								var1.field1248 = 0;
 							}
 						} else {
-							var1.field1247 = 0;
+							var1.movementFrameCycle = 0;
 							var1.movementFrame = 0;
 						}
 
@@ -195,21 +196,21 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 
 							if (var1.movementFrame < 0 || var1.movementFrame >= var10 || var11.field2430 && var1.field1248 >= var11.field2426) {
 								var1.movementFrame = 0;
-								var1.field1247 = 0;
+								var1.movementFrameCycle = 0;
 								var1.field1248 = 0;
 							}
 						} else {
-							var1.field1247 = 0;
+							var1.movementFrameCycle = 0;
 							var1.movementFrame = 0;
 						}
 
 						class31.method448(var11, var1.movementFrame, var1.x, var1.y, var1);
 					}
 				} else {
-					var1.field1245 = -1;
+					var1.movementSequence = -1;
 				}
 			} else {
-				var1.field1245 = -1;
+				var1.movementSequence = -1;
 			}
 		}
 
@@ -225,9 +226,9 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 					var14.spotAnimationFrame = Math.max(var14.spotAnimationFrame, 0);
 					SequenceDefinition var12 = FaceNormal.SequenceDefinition_get(var5);
 					if (var12.frameIds != null && !var12.isCachedModelIdSet()) {
-						++var14.field4952;
-						if (var14.spotAnimationFrame < var12.frameIds.length && var14.field4952 > var12.frameLengths[var14.spotAnimationFrame]) {
-							var14.field4952 = 1;
+						++var14.spotAnimationFrameCycle;
+						if (var14.spotAnimationFrame < var12.frameIds.length && var14.spotAnimationFrameCycle > var12.frameLengths[var14.spotAnimationFrame]) {
+							var14.spotAnimationFrameCycle = 1;
 							++var14.spotAnimationFrame;
 							Tiles.method2272(var12, var14.spotAnimationFrame, var1.x, var1.y, var1);
 						}
@@ -253,62 +254,62 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 			}
 		}
 
-		if (var1.field1223 != -1 && var1.field1252 <= 1) {
-			var4 = FaceNormal.SequenceDefinition_get(var1.field1223);
-			if (var4.field2431 == 1 && var1.field1226 > 0 && var1.field1260 <= Client.cycle && var1.field1261 < Client.cycle) {
-				var1.field1252 = 1;
+		if (var1.sequence != -1 && var1.sequenceDelay <= 1) {
+			var4 = FaceNormal.SequenceDefinition_get(var1.sequence);
+			if (var4.field2431 == 1 && var1.field1226 > 0 && var1.spotAnimation <= Client.cycle && var1.field1261 < Client.cycle) {
+				var1.sequenceDelay = 1;
 				return;
 			}
 		}
 
-		if (var1.field1223 != -1 && var1.field1252 == 0) {
-			var4 = FaceNormal.SequenceDefinition_get(var1.field1223);
+		if (var1.sequence != -1 && var1.sequenceDelay == 0) {
+			var4 = FaceNormal.SequenceDefinition_get(var1.sequence);
 			if (var4 == null) {
-				var1.field1223 = -1;
+				var1.sequence = -1;
 			} else if (!var4.isCachedModelIdSet() && var4.frameIds != null) {
-				++var1.field1251;
-				if (var1.field1250 < var4.frameIds.length && var1.field1251 > var4.frameLengths[var1.field1250]) {
-					var1.field1251 = 1;
-					++var1.field1250;
-					Tiles.method2272(var4, var1.field1250, var1.x, var1.y, var1);
+				++var1.sequenceFrameCycle;
+				if (var1.sequenceFrame < var4.frameIds.length && var1.sequenceFrameCycle > var4.frameLengths[var1.sequenceFrame]) {
+					var1.sequenceFrameCycle = 1;
+					++var1.sequenceFrame;
+					Tiles.method2272(var4, var1.sequenceFrame, var1.x, var1.y, var1);
 				}
 
-				if (var1.field1250 >= var4.frameIds.length) {
-					var1.field1250 -= var4.frameCount;
+				if (var1.sequenceFrame >= var4.frameIds.length) {
+					var1.sequenceFrame -= var4.frameCount;
 					++var1.field1239;
 					if (var1.field1239 >= var4.field2426) {
-						var1.field1223 = -1;
-					} else if (var1.field1250 >= 0 && var1.field1250 < var4.frameIds.length) {
-						Tiles.method2272(var4, var1.field1250, var1.x, var1.y, var1);
+						var1.sequence = -1;
+					} else if (var1.sequenceFrame >= 0 && var1.sequenceFrame < var4.frameIds.length) {
+						Tiles.method2272(var4, var1.sequenceFrame, var1.x, var1.y, var1);
 					} else {
-						var1.field1223 = -1;
+						var1.sequence = -1;
 					}
 				}
 
-				var1.field1207 = var4.field2425;
+				var1.isWalking = var4.field2425;
 			} else if (var4.isCachedModelIdSet()) {
-				++var1.field1250;
+				++var1.sequenceFrame;
 				var5 = var4.method4326();
-				if (var1.field1250 < var5) {
-					class31.method448(var4, var1.field1250, var1.x, var1.y, var1);
+				if (var1.sequenceFrame < var5) {
+					class31.method448(var4, var1.sequenceFrame, var1.x, var1.y, var1);
 				} else {
-					var1.field1250 -= var4.frameCount;
+					var1.sequenceFrame -= var4.frameCount;
 					++var1.field1239;
 					if (var1.field1239 >= var4.field2426) {
-						var1.field1223 = -1;
-					} else if (var1.field1250 >= 0 && var1.field1250 < var5) {
-						class31.method448(var4, var1.field1250, var1.x, var1.y, var1);
+						var1.sequence = -1;
+					} else if (var1.sequenceFrame >= 0 && var1.sequenceFrame < var5) {
+						class31.method448(var4, var1.sequenceFrame, var1.x, var1.y, var1);
 					} else {
-						var1.field1223 = -1;
+						var1.sequence = -1;
 					}
 				}
 			} else {
-				var1.field1223 = -1;
+				var1.sequence = -1;
 			}
 		}
 
-		if (var1.field1252 > 0) {
-			--var1.field1252;
+		if (var1.sequenceDelay > 0) {
+			--var1.sequenceDelay;
 		}
 
 	}
@@ -318,10 +319,11 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 		descriptor = "(Ldt;IIIIIIIII)V",
 		garbageValue = "2062265240"
 	)
-	static final void method1202(class101 var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		Scene var9 = var0.field1331;
-		if (var3 >= 1 && var4 >= 1 && var3 <= var0.field1346 - 1 && var4 <= var0.field1330 - 1) {
-			if (Client.isLowDetail && var0.field1348 != var1) {
+	@Export("addPendingSpawnToScene")
+	static final void addPendingSpawnToScene(WorldView var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+		Scene var9 = var0.scene;
+		if (var3 >= 1 && var4 >= 1 && var3 <= var0.sizeX - 1 && var4 <= var0.sizeY - 1) {
+			if (Client.isLowDetail && var0.plane != var1) {
 				return;
 			}
 
@@ -349,7 +351,7 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 			ObjectComposition var16;
 			if (var10 != 0L) {
 				var15 = var9.getObjectFlags(var1, var3, var4, var10);
-				int var27 = class105.method2748(var10);
+				int var27 = class105.Entity_unpackID(var10);
 				int var28 = var15 & 31;
 				int var29 = var15 >> 6 & 3;
 				var16 = HitSplatDefinition.getObjectDefinition(var27);
@@ -402,7 +404,7 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 				if (var2 == 0) {
 					var9.removeBoundaryObject(var1, var3, var4);
 					if (var16.interactType != 0) {
-						var0.field1332[var1].method4478(var3, var4, var28, var29, var16.boolean1);
+						var0.collisionMaps[var1].method4478(var3, var4, var28, var29, var16.boolean1);
 					}
 				}
 
@@ -412,30 +414,30 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 
 				if (var2 == 2) {
 					var9.removeGameObject(var1, var3, var4);
-					if (var3 + var16.sizeX > var0.field1346 - 1 || var4 + var16.sizeX > var0.field1330 - 1 || var3 + var16.sizeY > var0.field1346 - 1 || var4 + var16.sizeY > var0.field1330 - 1) {
+					if (var3 + var16.sizeX > var0.sizeX - 1 || var4 + var16.sizeX > var0.sizeY - 1 || var3 + var16.sizeY > var0.sizeX - 1 || var4 + var16.sizeY > var0.sizeY - 1) {
 						return;
 					}
 
 					if (var16.interactType != 0) {
-						var0.field1332[var1].setFlagOffNonSquare(var3, var4, var16.sizeX, var16.sizeY, var29, var16.boolean1);
+						var0.collisionMaps[var1].setFlagOffNonSquare(var3, var4, var16.sizeX, var16.sizeY, var29, var16.boolean1);
 					}
 				}
 
 				if (var2 == 3) {
 					var9.removeFloorDecoration(var1, var3, var4);
 					if (var16.interactType == 1) {
-						var0.field1332[var1].method4470(var3, var4);
+						var0.collisionMaps[var1].method4470(var3, var4);
 					}
 				}
 			}
 
 			if (var5 >= 0) {
 				var15 = var1;
-				if (var1 < 3 && (var0.field1340[1][var3][var4] & 2) == 2) {
+				if (var1 < 3 && (var0.tileSettings[1][var3][var4] & 2) == 2) {
 					var15 = var1 + 1;
 				}
 
-				MusicPatch.method6441(var0, var1, var15, var3, var4, var5, var6, var7, var8, var0.field1332[var1]);
+				MusicPatch.method6441(var0, var1, var15, var3, var4, var5, var6, var7, var8, var0.collisionMaps[var1]);
 				var16 = HitSplatDefinition.getObjectDefinition(var5);
 				if (var16 != null && var16.hasSound()) {
 					SoundCache.createObjectSound(var15, var3, var4, var16, var6);

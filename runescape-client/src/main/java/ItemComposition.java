@@ -947,7 +947,7 @@ public class ItemComposition extends DualNode {
 	)
 	@Export("getStringParam")
 	public String getStringParam(int var1, String var2) {
-		return class103.method2726(this.params, var1, var2);
+		return NPC.method2726(this.params, var1, var2);
 	}
 
 	@ObfuscatedName("aw")

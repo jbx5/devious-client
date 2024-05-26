@@ -175,9 +175,9 @@ public class class210 extends DualNode {
 		descriptor = "(Ldt;I)V",
 		garbageValue = "-1339166352"
 	)
-	static void method4021(class101 var0) {
-		if (Client.combatTargetPlayerIndex >= 0 && var0.field1341[Client.combatTargetPlayerIndex] != null) {
-			class425.method7948(var0, Client.combatTargetPlayerIndex, false);
+	static void method4021(WorldView var0) {
+		if (Client.combatTargetPlayerIndex >= 0 && var0.players[Client.combatTargetPlayerIndex] != null) {
+			class425.addPlayerToScene(var0, Client.combatTargetPlayerIndex, false);
 		}
 
 	}

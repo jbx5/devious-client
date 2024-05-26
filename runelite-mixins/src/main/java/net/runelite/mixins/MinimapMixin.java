@@ -67,7 +67,7 @@ public abstract class MinimapMixin implements RSClient
 		RSSpritePixels ourSprite = createSpritePixels(new int[512 * 512], 512, 512);
 		RSSpritePixels theirSprite = getMinimapSprite();
 
-		RSScene scene = getScene();
+		RSScene scene = getTopLevelWorldView().getScene();
 		int[] pixels = ourSprite.getPixels();
 		byte[][][] tileSettings = getTileSettings();
 

@@ -584,37 +584,37 @@ public class PlayerComposition {
 		descriptor = "(Ldt;Ldh;I)V",
 		garbageValue = "1243672315"
 	)
-	static final void method6613(class101 var0, Actor var1) {
+	static final void method6613(WorldView var0, Actor var1) {
 		int var3;
 		int var4;
 		int var5;
-		if (var1.field1219 != -1) {
+		if (var1.targetIndex != -1) {
 			Object var2 = null;
 			var3 = 65536;
-			if (var1.field1219 < var3) {
-				var2 = var0.field1343[var1.field1219];
+			if (var1.targetIndex < var3) {
+				var2 = var0.npcs[var1.targetIndex];
 			} else {
-				var2 = var0.field1341[var1.field1219 - var3];
+				var2 = var0.players[var1.targetIndex - var3];
 			}
 
 			if (var2 != null) {
 				var4 = var1.x - ((Actor)var2).x;
 				var5 = var1.y - ((Actor)var2).y;
 				if (var4 != 0 || var5 != 0) {
-					var1.field1282 = class182.method3653(var4, var5);
+					var1.orientation = class182.method3653(var4, var5);
 				}
-			} else if (var1.field1240) {
-				var1.field1219 = -1;
-				var1.field1240 = false;
+			} else if (var1.false0) {
+				var1.targetIndex = -1;
+				var1.false0 = false;
 			}
 		}
 
 		int var8;
-		if (var1.field1274 == 0 || var1.field1278 > 0) {
+		if (var1.pathLength == 0 || var1.field1278 > 0) {
 			var8 = -1;
 			if (var1.field1242 != -1 && var1.field1243 != -1) {
-				var3 = var1.field1242 * 128 - class358.scene.field1337 * 128 + 64;
-				var4 = var1.field1243 * 128 - class358.scene.field1333 * 128 + 64;
+				var3 = var1.field1242 * 128 - class358.topLevelWorldView.baseX * 128 + 64;
+				var4 = var1.field1243 * 128 - class358.topLevelWorldView.baseY * 128 + 64;
 				var5 = var1.x - var3;
 				int var6 = var1.y - var4;
 				if (var5 != 0 || var6 != 0) {
@@ -625,43 +625,43 @@ public class PlayerComposition {
 			}
 
 			if (var8 != -1) {
-				var1.field1282 = var8;
+				var1.orientation = var8;
 				if (var1.field1244) {
-					var1.field1209 = var1.field1282;
+					var1.rotation = var1.orientation;
 				}
 			}
 
 			var1.method2447();
 		}
 
-		var8 = var1.field1282 - var1.field1209 & 2047;
+		var8 = var1.orientation - var1.rotation & 2047;
 		if (var8 != 0) {
 			boolean var9 = true;
 			boolean var10 = true;
 			++var1.field1272;
 			var5 = var8 > 1024 ? -1 : 1;
-			var1.field1209 += var5 * var1.field1238;
+			var1.rotation += var5 * var1.field1238;
 			boolean var11 = true;
 			if (var8 < var1.field1238 || var8 > 2048 - var1.field1238) {
-				var1.field1209 = var1.field1282;
+				var1.rotation = var1.orientation;
 				var11 = false;
 			}
 
-			if (var1.field1238 > 0 && var1.idleSequence == var1.field1245 && (var1.field1272 > 25 || var11)) {
-				if (var5 == -1 && var1.field1241 != -1) {
-					var1.field1245 = var1.field1241;
-				} else if (var5 == 1 && var1.field1212 != -1) {
-					var1.field1245 = var1.field1212;
+			if (var1.field1238 > 0 && var1.idleSequence == var1.movementSequence && (var1.field1272 > 25 || var11)) {
+				if (var5 == -1 && var1.turnLeftSequence != -1) {
+					var1.movementSequence = var1.turnLeftSequence;
+				} else if (var5 == 1 && var1.turnRightSequence != -1) {
+					var1.movementSequence = var1.turnRightSequence;
 				} else {
-					var1.field1245 = var1.field1213;
+					var1.movementSequence = var1.walkSequence;
 				}
 			}
 
-			var1.field1209 &= 2047;
+			var1.rotation &= 2047;
 		} else {
-			if (var1.field1240) {
-				var1.field1219 = -1;
-				var1.field1240 = false;
+			if (var1.false0) {
+				var1.targetIndex = -1;
+				var1.false0 = false;
 			}
 
 			var1.field1272 = 0;

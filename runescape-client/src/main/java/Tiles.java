@@ -37,14 +37,14 @@ public final class Tiles {
 	@ObfuscatedGetter(
 		intValue = 1511509861
 	)
-	@Export("Players_emptyIdxCount")
-	static int Players_emptyIdxCount;
+	@Export("rndHue")
+	static int rndHue;
 	@ObfuscatedName("am")
 	@ObfuscatedGetter(
 		intValue = -1397851693
 	)
-	@Export("Players_pendingUpdateCount")
-	static int Players_pendingUpdateCount;
+	@Export("rndLightness")
+	static int rndLightness;
 	@ObfuscatedName("fj")
 	@ObfuscatedSignature(
 		descriptor = "Lca;"
@@ -60,15 +60,15 @@ public final class Tiles {
 		field1054 = new int[]{0, -1, 0, 1};
 		field1055 = new int[]{1, -1, -1, 1};
 		field1056 = new int[]{-1, -1, 1, 1};
-		Players_emptyIdxCount = (int)(Math.random() * 17.0D) - 8;
-		Players_pendingUpdateCount = (int)(Math.random() * 33.0D) - 16;
+		rndHue = (int)(Math.random() * 17.0D) - 8;
+		rndLightness = (int)(Math.random() * 33.0D) - 16;
 	}
 
 	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(Ldt;[BIIIIIII)V"
 	)
-	static final void method2249(class101 var0, byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+	static final void method2249(WorldView var0, byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
 		Buffer var9 = new Buffer(var1);
 		int var10 = -1;
 
@@ -144,18 +144,18 @@ public final class Tiles {
 					}
 
 					var36 = var30 + var4;
-					if (var28 > 0 && var36 > 0 && var28 < var0.field1346 - 1 && var36 < var0.field1330 - 1) {
+					if (var28 > 0 && var36 > 0 && var28 < var0.sizeX - 1 && var36 < var0.sizeY - 1) {
 						int var37 = var2;
-						if ((var0.field1340[1][var28][var36] & 2) == 2) {
+						if ((var0.tileSettings[1][var28][var36] & 2) == 2) {
 							var37 = var2 - 1;
 						}
 
 						CollisionMap var38 = null;
-						if (var37 >= 0 && var0.field1332 != null) {
-							var38 = var0.field1332[var37];
+						if (var37 >= 0 && var0.collisionMaps != null) {
+							var38 = var0.collisionMaps[var37];
 						}
 
-						class130.method3051(var0, var2, var28, var36, var10, var19 + var8 & 3, var18, var38);
+						class130.addObjects(var0, var2, var28, var36, var10, var19 + var8 & 3, var18, var38);
 					}
 				}
 			}

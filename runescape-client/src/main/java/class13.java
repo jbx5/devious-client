@@ -175,8 +175,8 @@ class class13 extends DefaultTlsClient {
 			class438.archive12.clearFiles();
 		}
 
-		if (class260.archive2 != null) {
-			class260.archive2.clearFiles();
+		if (Projection.archive2 != null) {
+			Projection.archive2.clearFiles();
 		}
 
 		if (HealthBar.field1357 != null) {

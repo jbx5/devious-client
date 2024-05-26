@@ -41,7 +41,8 @@ public class MenuAction {
 	@ObfuscatedGetter(
 		intValue = 1628070977
 	)
-	int field927;
+	@Export("worldViewId")
+	int worldViewId;
 	@ObfuscatedName("at")
 	@Export("action")
 	String action;
@@ -90,9 +91,10 @@ public class MenuAction {
 		descriptor = "(Ldt;IIIB)V",
 		garbageValue = "2"
 	)
-	static final void method2115(class101 var0, int var1, int var2, int var3) {
+	@Export("worldToScreen")
+	static final void worldToScreen(WorldView var0, int var1, int var2, int var3) {
 		if (var1 >= 128 && var2 >= 128 && var1 <= 13056 && var2 <= 13056) {
-			int var4 = SoundSystem.method856(var0, var1, var2, var0.field1348) - var3;
+			int var4 = SoundSystem.getTileHeight(var0, var1, var2, var0.plane) - var3;
 			var1 -= PlayerComposition.cameraX;
 			var4 -= class171.cameraY;
 			var2 -= UserComparator4.cameraZ;
@@ -106,16 +108,16 @@ public class MenuAction {
 			var9 = var6 * var4 - var5 * var2 >> 16;
 			var2 = var5 * var4 + var6 * var2 >> 16;
 			if (var2 >= 50) {
-				Client.field643 = Client.viewportWidth / 2 + Client.viewportZoom * var1 / var2;
-				Client.field528 = Client.viewportHeight / 2 + var9 * Client.viewportZoom / var2;
+				Client.viewportTempX = Client.viewportWidth / 2 + Client.viewportZoom * var1 / var2;
+				Client.viewportTempY = Client.viewportHeight / 2 + var9 * Client.viewportZoom / var2;
 			} else {
-				Client.field643 = -1;
-				Client.field528 = -1;
+				Client.viewportTempX = -1;
+				Client.viewportTempY = -1;
 			}
 
 		} else {
-			Client.field643 = -1;
-			Client.field528 = -1;
+			Client.viewportTempX = -1;
+			Client.viewportTempY = -1;
 		}
 	}
 

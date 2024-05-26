@@ -56,9 +56,9 @@ public class PlayerCompositionColorTextureOverride {
 			Client.field823 = Client.cycle;
 			Decimator.field413.method7456();
 
-			for (int var0 = 0; var0 < class358.scene.field1341.length; ++var0) {
-				if (class358.scene.field1341[var0] != null) {
-					Decimator.field413.method7443((class358.scene.field1341[var0].x >> 7) + class358.scene.field1337, (class358.scene.field1341[var0].y >> 7) + class358.scene.field1333);
+			for (int var0 = 0; var0 < class358.topLevelWorldView.players.length; ++var0) {
+				if (class358.topLevelWorldView.players[var0] != null) {
+					Decimator.field413.method7443((class358.topLevelWorldView.players[var0].x >> 7) + class358.topLevelWorldView.baseX, (class358.topLevelWorldView.players[var0].y >> 7) + class358.topLevelWorldView.baseY);
 				}
 			}
 		}

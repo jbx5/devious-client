@@ -74,6 +74,11 @@ public interface Callbacks
 	void serverTick();
 
 	/**
+	 * Called after receiving update NPCs packet from server.
+	 */
+	void updateNpcs();
+
+	/**
 	 * Called after the scene is drawn.
 	 */
 	void drawScene();

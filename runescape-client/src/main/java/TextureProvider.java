@@ -11,7 +11,8 @@ public class TextureProvider implements TextureLoader {
 	@ObfuscatedGetter(
 		intValue = -940011597
 	)
-	static int field2830;
+	@Export("oculusOrbFocalPointZ")
+	static int oculusOrbFocalPointZ;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "[Ljw;"

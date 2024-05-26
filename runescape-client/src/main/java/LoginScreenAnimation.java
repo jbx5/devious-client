@@ -478,7 +478,7 @@ public class LoginScreenAnimation {
 		garbageValue = "-7"
 	)
 	static AttackOption[] method2502() {
-		return new AttackOption[]{AttackOption.field1390, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1384, AttackOption.field1385};
+		return new AttackOption[]{AttackOption.field1390, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1385};
 	}
 
 	@ObfuscatedName("az")

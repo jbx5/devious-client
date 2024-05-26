@@ -106,7 +106,7 @@ public class IgnoreList extends UserList {
 			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var6 + var2, 0);
 			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 16777215);
 			WorldMapSection2.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-			class486.method8903(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var2 + var6);
+			class486.invalidateWidgetsUnder(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var2 + var6);
 			if (var1) {
 				WorldMapSprite.rasterProvider.drawFull(0, 0);
 			} else {

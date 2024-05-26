@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -13,7 +14,8 @@ public class class76 {
 	@ObfuscatedGetter(
 		intValue = -763033945
 	)
-	static int field931;
+	@Export("oculusOrbFocalPointY")
+	static int oculusOrbFocalPointY;
 	@ObfuscatedName("uq")
 	@ObfuscatedGetter(
 		intValue = 1156664192

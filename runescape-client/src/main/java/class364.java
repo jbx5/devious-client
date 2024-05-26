@@ -404,10 +404,10 @@ public class class364 {
 												NpcOverrides var44 = null;
 												if (var10.modelType == 6) {
 													var24 = var10.modelId;
-													if (var24 >= 0 && var24 < class358.scene.field1343.length) {
-														class103 var33 = class358.scene.field1343[var24];
-														if (var33 != null && var33.field1359 != null) {
-															var26 = var33.field1359.method3985();
+													if (var24 >= 0 && var24 < class358.topLevelWorldView.npcs.length) {
+														NPC var33 = class358.topLevelWorldView.npcs[var24];
+														if (var33 != null && var33.definition != null) {
+															var26 = var33.definition.method3985();
 															if (var26 != -1) {
 																var10.modelId = var26;
 															}

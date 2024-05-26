@@ -384,9 +384,9 @@ public class class141 extends DualNode {
 		descriptor = "(Ldt;Lde;IILjv;I)V",
 		garbageValue = "-389547247"
 	)
-	static final void method3184(class101 var0, Player var1, int var2, int var3, class237 var4) {
-		int var5 = var1.field1229[0];
-		int var6 = var1.field1276[0];
+	static final void method3184(WorldView var0, Player var1, int var2, int var3, class237 var4) {
+		int var5 = var1.pathX[0];
+		int var6 = var1.pathY[0];
 		int var7 = var1.transformedSize();
 		if (var5 >= var7 && var5 < 104 - var7 && var6 >= var7 && var6 < 104 - var7) {
 			if (var2 >= var7 && var2 < 104 - var7 && var3 >= var7 && var3 < 104 - var7) {
@@ -394,10 +394,10 @@ public class class141 extends DualNode {
 				int var11 = var1.transformedSize();
 				Client.field829.approxDestinationX = var2;
 				Client.field829.approxDestinationY = var3;
-				Client.field829.field2509 = 1;
-				Client.field829.field2512 = 1;
+				Client.field829.approxDestinationSizeX = 1;
+				Client.field829.approxDestinationSizeY = 1;
 				ApproximateRouteStrategy var12 = Client.field829;
-				int var13 = var8.method4556(var5, var6, var11, var12, var0.field1332[var1.plane], true, Client.field830, Client.field831);
+				int var13 = var8.method4556(var5, var6, var11, var12, var0.collisionMaps[var1.plane], true, Client.field830, Client.field831);
 				if (var13 >= 1) {
 					for (int var14 = 0; var14 < var13 - 1; ++var14) {
 						var1.method2372(Client.field830[var14], Client.field831[var14], var4);

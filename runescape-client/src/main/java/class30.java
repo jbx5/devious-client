@@ -14,7 +14,7 @@ public class class30 {
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	static class101 field155;
+	static WorldView field155;
 	@ObfuscatedName("km")
 	@ObfuscatedSignature(
 		descriptor = "[Lvl;"

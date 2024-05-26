@@ -55,6 +55,6 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 		WorldMapLabelSize.tempMenuAction.itemId = Client.menuItemIds[var0];
 		WorldMapLabelSize.tempMenuAction.action = Client.menuActions[var0];
 		WorldMapLabelSize.tempMenuAction.target = Client.menuTargets[var0];
-		WorldMapLabelSize.tempMenuAction.field927 = Client.field677[var0];
+		WorldMapLabelSize.tempMenuAction.worldViewId = Client.menuWorldViewIds[var0];
 	}
 }

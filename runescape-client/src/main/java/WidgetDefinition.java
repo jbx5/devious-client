@@ -273,11 +273,11 @@ public class WidgetDefinition {
 		descriptor = "(Ldt;IIIB)I",
 		garbageValue = "-1"
 	)
-	static int method6546(class101 var0, int var1, int var2, int var3) {
-		if ((var0.field1340[var1][var2][var3] & 8) != 0) {
+	static int method6546(WorldView var0, int var1, int var2, int var3) {
+		if ((var0.tileSettings[var1][var2][var3] & 8) != 0) {
 			return 0;
 		} else {
-			return var1 > 0 && (var0.field1340[1][var2][var3] & 2) != 0 ? var1 - 1 : var1;
+			return var1 > 0 && (var0.tileSettings[1][var2][var3] & 2) != 0 ? var1 - 1 : var1;
 		}
 	}
 }

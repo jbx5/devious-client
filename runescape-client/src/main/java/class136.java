@@ -43,7 +43,7 @@ class class136 implements Callable {
 		garbageValue = "491916421"
 	)
 	static void method3128(int var0, int var1, int var2, int var3, int var4, int var5) {
-		NodeDeque var6 = ModeWhere.field4623.field1349[var0][var1][var2];
+		NodeDeque var6 = ModeWhere.worldView.groundItems[var0][var1][var2];
 		if (var6 != null) {
 			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
 				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
@@ -52,7 +52,7 @@ class class136 implements Callable {
 				}
 			}
 
-			class349.method6551(var0, var1, var2);
+			class349.updateItemPile(var0, var1, var2);
 		}
 
 	}

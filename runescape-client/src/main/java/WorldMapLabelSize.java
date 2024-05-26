@@ -186,8 +186,8 @@ public class WorldMapLabelSize {
 		descriptor = "(Ldt;IIB)V",
 		garbageValue = "-105"
 	)
-	static final void method5493(class101 var0, int var1, int var2) {
-		class166.method3440(var0, var0.field1348, var1, var2);
+	static final void method5493(WorldView var0, int var1, int var2) {
+		class166.updateItemPile2(var0, var0.plane, var1, var2);
 	}
 
 	@ObfuscatedName("op")

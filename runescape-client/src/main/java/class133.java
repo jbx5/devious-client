@@ -87,7 +87,7 @@ public class class133 {
 	int method3097(Buffer var1, int var2) {
 		int var3 = var1.readUnsignedShort();
 		int var4 = var1.readUnsignedByte();
-		class142 var5 = (class142)MenuAction.findEnumerated(class103.method2725(), var4);
+		class142 var5 = (class142)MenuAction.findEnumerated(NPC.method2725(), var4);
 		if (var5 == null) {
 			var5 = class142.field1657;
 		}

@@ -62,7 +62,7 @@ public class class132 implements Callable {
 	)
 	static final void method3076(MenuAction var0, int var1, int var2) {
 		if (var0 != null) {
-			PacketWriter.method2899(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.field927, var0.action, var0.target, var1, var2);
+			PacketWriter.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.worldViewId, var0.action, var0.target, var1, var2);
 		}
 
 	}

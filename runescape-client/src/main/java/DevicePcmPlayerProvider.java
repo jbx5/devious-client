@@ -79,8 +79,8 @@ public class DevicePcmPlayerProvider implements class51 {
 					int var12 = Interpreter.field899.vmethod8773() - var10 >> 7;
 					PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.field3282, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeShortAddLE(var12 + class358.scene.field1333);
-					var13.packetBuffer.writeShortAdd(var11 + class358.scene.field1337);
+					var13.packetBuffer.writeShortAddLE(var12 + class358.topLevelWorldView.baseY);
+					var13.packetBuffer.writeShortAdd(var11 + class358.topLevelWorldView.baseX);
 					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
@@ -160,7 +160,7 @@ public class DevicePcmPlayerProvider implements class51 {
 			var1 = var0.buttonText;
 			var2 = var0.id;
 			var3 = var0.itemId;
-			class194.method3796(var1, "", 24, 0, 0, var2, var3, false, -1);
+			class194.insertMenuItem(var1, "", 24, 0, 0, var2, var3, false, -1);
 		}
 
 		int var4;
@@ -171,7 +171,7 @@ public class DevicePcmPlayerProvider implements class51 {
 				var9 = HttpAuthenticationHeader.colorStartTag(65280) + var0.field3848;
 				var3 = var0.id;
 				var4 = var0.itemId;
-				class194.method3796(var1, var9, 25, 0, -1, var3, var4, false, -1);
+				class194.insertMenuItem(var1, var9, 25, 0, -1, var3, var4, false, -1);
 			}
 		}
 
@@ -200,7 +200,7 @@ public class DevicePcmPlayerProvider implements class51 {
 					var3 = var0.childIndex;
 					var4 = var0.id;
 					var5 = var0.itemId;
-					class194.method3796(var1, var9, 58, 0, var3, var4, var5, false, -1);
+					class194.insertMenuItem(var1, var9, 58, 0, var3, var4, var5, false, -1);
 				}
 			} else {
 				for (int var10 = 9; var10 >= 5; --var10) {
@@ -218,7 +218,7 @@ public class DevicePcmPlayerProvider implements class51 {
 						int var6 = var0.childIndex;
 						int var7 = var0.id;
 						int var8 = var0.itemId;
-						class194.method3796(var9, var12, 1007, var5, var6, var7, var8, false, -1);
+						class194.insertMenuItem(var9, var12, 1007, var5, var6, var7, var8, false, -1);
 					}
 				}
 
@@ -228,7 +228,7 @@ public class DevicePcmPlayerProvider implements class51 {
 					var3 = var0.childIndex;
 					var4 = var0.id;
 					var5 = var0.itemId;
-					class194.method3796(var1, var9, 25, 0, var3, var4, var5, false, -1);
+					class194.insertMenuItem(var1, var9, 25, 0, var3, var4, var5, false, -1);
 				}
 
 				for (var2 = 4; var2 >= 0; --var2) {
@@ -242,7 +242,7 @@ public class DevicePcmPlayerProvider implements class51 {
 					}
 
 					if (var11 != null) {
-						class194.method3796(var11, var0.dataText, 57, var2 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry, -1);
+						class194.insertMenuItem(var11, var0.dataText, 57, var2 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry, -1);
 					}
 				}
 

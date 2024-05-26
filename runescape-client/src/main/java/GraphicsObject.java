@@ -158,36 +158,36 @@ public class GraphicsObject extends Renderable {
 		descriptor = "(Ldt;Ldk;I)V",
 		garbageValue = "2074227552"
 	)
-	static final void method2099(class101 var0, PendingSpawn var1) {
-		Scene var2 = var0.field1331;
+	static final void method2099(WorldView var0, PendingSpawn var1) {
+		Scene var2 = var0.scene;
 		long var3 = 0L;
 		int var5 = -1;
 		int var6 = 0;
 		int var7 = 0;
-		if (var1.field1191 == 0) {
-			var3 = var2.getBoundaryObjectTag(var1.field1200, var1.field1192, var1.field1196);
+		if (var1.type == 0) {
+			var3 = var2.getBoundaryObjectTag(var1.plane, var1.x, var1.y);
 		}
 
-		if (var1.field1191 == 1) {
-			var3 = var2.getWallDecorationTag(var1.field1200, var1.field1192, var1.field1196);
+		if (var1.type == 1) {
+			var3 = var2.getWallDecorationTag(var1.plane, var1.x, var1.y);
 		}
 
-		if (var1.field1191 == 2) {
-			var3 = var2.getGameObjectTag(var1.field1200, var1.field1192, var1.field1196);
+		if (var1.type == 2) {
+			var3 = var2.getGameObjectTag(var1.plane, var1.x, var1.y);
 		}
 
-		if (var1.field1191 == 3) {
-			var3 = var2.getFloorDecorationTag(var1.field1200, var1.field1192, var1.field1196);
+		if (var1.type == 3) {
+			var3 = var2.getFloorDecorationTag(var1.plane, var1.x, var1.y);
 		}
 
 		if (var3 != 0L) {
-			int var8 = var2.getObjectFlags(var1.field1200, var1.field1192, var1.field1196, var3);
-			var5 = class105.method2748(var3);
+			int var8 = var2.getObjectFlags(var1.plane, var1.x, var1.y, var3);
+			var5 = class105.Entity_unpackID(var3);
 			var6 = var8 & 31;
 			var7 = var8 >> 6 & 3;
 		}
 
-		var1.field1194 = var5;
+		var1.objectId = var5;
 		var1.field1201 = var6;
 		var1.field1195 = var7;
 	}

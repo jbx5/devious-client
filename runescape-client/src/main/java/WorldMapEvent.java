@@ -54,8 +54,8 @@ public class WorldMapEvent {
 		var2 = var2 * 128 + 64;
 		var3 = var3 * 128 + 64;
 		var4 = var4 * 128 + 64;
-		Projectile var14 = new Projectile(var6, var0, var1, var2, SoundSystem.method856(ModeWhere.field4623, var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
-		var14.setDestination(var3, var4, SoundSystem.method856(ModeWhere.field4623, var3, var4, var0) - var8, var9 + Client.cycle);
-		ModeWhere.field4623.field1351.addFirst(var14);
+		Projectile var14 = new Projectile(var6, var0, var1, var2, SoundSystem.getTileHeight(ModeWhere.worldView, var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
+		var14.setDestination(var3, var4, SoundSystem.getTileHeight(ModeWhere.worldView, var3, var4, var0) - var8, var9 + Client.cycle);
+		ModeWhere.worldView.projectiles.addFirst(var14);
 	}
 }

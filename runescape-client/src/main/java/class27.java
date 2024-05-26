@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -249,8 +250,9 @@ public class class27 {
 		descriptor = "(IIIIII)V",
 		garbageValue = "-1425892999"
 	)
-	static final void method415(int var0, int var1, int var2, int var3, int var4) {
-		Scene var5 = class358.scene.field1331;
+	@Export("drawObject")
+	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
+		Scene var5 = class358.topLevelWorldView.scene;
 		long var6 = var5.getBoundaryObjectTag(var0, var1, var2);
 		int var8;
 		int var9;
@@ -268,9 +270,9 @@ public class class27 {
 				var11 = var4;
 			}
 
-			int[] var13 = HealthBarUpdate.field1287.pixels;
+			int[] var13 = HealthBarUpdate.sceneMinimapSprite.pixels;
 			var14 = var1 * 4 + (103 - var2) * 2048 + 24624;
-			var15 = class105.method2748(var6);
+			var15 = class105.Entity_unpackID(var6);
 			ObjectComposition var16 = HitSplatDefinition.getObjectDefinition(var15);
 			if (var16.mapSceneId != -1) {
 				IndexedSprite var17 = AsyncRestClient.mapSceneSprites[var16.mapSceneId];
@@ -347,7 +349,7 @@ public class class27 {
 			var8 = var5.getObjectFlags(var0, var1, var2, var6);
 			var9 = var8 >> 6 & 3;
 			var10 = var8 & 31;
-			var11 = class105.method2748(var6);
+			var11 = class105.Entity_unpackID(var6);
 			ObjectComposition var20 = HitSplatDefinition.getObjectDefinition(var11);
 			if (var20.mapSceneId != -1) {
 				IndexedSprite var27 = AsyncRestClient.mapSceneSprites[var20.mapSceneId];
@@ -363,7 +365,7 @@ public class class27 {
 					var21 = 15597568;
 				}
 
-				int[] var22 = HealthBarUpdate.field1287.pixels;
+				int[] var22 = HealthBarUpdate.sceneMinimapSprite.pixels;
 				int var23 = var1 * 4 + (103 - var2) * 2048 + 24624;
 				if (var9 != 0 && var9 != 2) {
 					var22[var23] = var21;
@@ -381,7 +383,7 @@ public class class27 {
 
 		var6 = var5.getFloorDecorationTag(var0, var1, var2);
 		if (var6 != 0L) {
-			var8 = class105.method2748(var6);
+			var8 = class105.Entity_unpackID(var6);
 			ObjectComposition var24 = HitSplatDefinition.getObjectDefinition(var8);
 			if (var24.mapSceneId != -1) {
 				IndexedSprite var25 = AsyncRestClient.mapSceneSprites[var24.mapSceneId];

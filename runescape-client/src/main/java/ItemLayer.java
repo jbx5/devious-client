@@ -53,7 +53,8 @@ public final class ItemLayer {
 	@ObfuscatedGetter(
 		intValue = 1853806987
 	)
-	int field2550;
+	@Export("height")
+	int height;
 
 	ItemLayer() {
 	}

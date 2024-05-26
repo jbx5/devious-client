@@ -188,24 +188,24 @@ public final class class4 {
 		descriptor = "(Ldv;B)V",
 		garbageValue = "-60"
 	)
-	static void method15(class103 var0) {
-		var0.field1208 = var0.field1359.size;
-		var0.field1238 = var0.field1359.rotation;
-		var0.field1213 = var0.field1359.walkSequence;
-		var0.field1222 = var0.field1359.walkBackSequence;
-		var0.field1205 = var0.field1359.walkLeftSequence;
-		var0.field1216 = var0.field1359.walkRightSequence;
-		var0.idleSequence = var0.field1359.idleSequence;
-		var0.field1241 = var0.field1359.turnLeftSequence;
-		var0.field1212 = var0.field1359.turnRightSequence;
-		var0.field1217 = var0.field1359.field2130;
-		var0.field1215 = var0.field1359.field2131;
-		var0.field1225 = var0.field1359.field2161;
-		var0.field1220 = var0.field1359.field2133;
-		var0.field1273 = var0.field1359.field2134;
-		var0.field1206 = var0.field1359.field2135;
-		var0.field1281 = var0.field1359.field2136;
-		var0.field1228 = var0.field1359.field2124;
+	static void method15(NPC var0) {
+		var0.field1208 = var0.definition.size;
+		var0.field1238 = var0.definition.rotation;
+		var0.walkSequence = var0.definition.walkSequence;
+		var0.walkBackSequence = var0.definition.walkBackSequence;
+		var0.walkLeftSequence = var0.definition.walkLeftSequence;
+		var0.walkRightSequence = var0.definition.walkRightSequence;
+		var0.idleSequence = var0.definition.idleSequence;
+		var0.turnLeftSequence = var0.definition.turnLeftSequence;
+		var0.turnRightSequence = var0.definition.turnRightSequence;
+		var0.runSequence = var0.definition.field2130;
+		var0.field1215 = var0.definition.field2131;
+		var0.field1225 = var0.definition.field2161;
+		var0.field1220 = var0.definition.field2133;
+		var0.field1273 = var0.definition.field2134;
+		var0.field1206 = var0.definition.field2135;
+		var0.field1281 = var0.definition.field2136;
+		var0.field1228 = var0.definition.field2124;
 	}
 
 	@ObfuscatedName("mp")
@@ -213,8 +213,9 @@ public final class class4 {
 		descriptor = "(Ldv;IIIII)V",
 		garbageValue = "-384431621"
 	)
-	static final void method16(class103 var0, int var1, int var2, int var3, int var4) {
-		NPCComposition var5 = var0.field1359;
+	@Export("addNpcToMenu")
+	static final void addNpcToMenu(NPC var0, int var1, int var2, int var3, int var4) {
+		NPCComposition var5 = var0.definition;
 		if (Client.menuOptionsCount < 400) {
 			if (var5.transforms != null) {
 				var5 = var5.transform();
@@ -227,18 +228,18 @@ public final class class4 {
 						int var7;
 						if (var5.combatLevel != 0 && var0.field1280 != 0) {
 							var7 = var0.field1280 != -1 ? var0.field1280 : var5.combatLevel;
-							var6 = var6 + class315.method6164(var7, class17.localPlayer.field1147) + " " + " (" + "level-" + var7 + ")";
+							var6 = var6 + class315.method6164(var7, class17.localPlayer.combatLevel) + " " + " (" + "level-" + var7 + ")";
 						}
 
 						if (var5.lowPriorityFollowerOps && Client.followerOpsLowPriority) {
-							class194.method3796("Examine", HttpAuthenticationHeader.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
+							class194.insertMenuItem("Examine", HttpAuthenticationHeader.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
 						}
 
 						if (Client.isItemSelected == 1) {
-							class194.method3796("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16776960) + var6, 7, var1, var2, var3, -1, false, var4);
+							class194.insertMenuItem("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16776960) + var6, 7, var1, var2, var3, -1, false, var4);
 						} else if (Client.isSpellSelected) {
 							if ((GrandExchangeOfferUnitPriceComparator.selectedSpellFlags & 2) == 2) {
-								class194.method3796(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16776960) + var6, 8, var1, var2, var3, -1, false, var4);
+								class194.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16776960) + var6, 8, var1, var2, var3, -1, false, var4);
 							}
 						} else {
 							var7 = var5.lowPriorityFollowerOps && Client.followerOpsLowPriority ? 2000 : 0;
@@ -269,7 +270,7 @@ public final class class4 {
 											var10 = var7 + 13;
 										}
 
-										class194.method3796(var8[var9], HttpAuthenticationHeader.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
+										class194.insertMenuItem(var8[var9], HttpAuthenticationHeader.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
 									}
 								}
 							}
@@ -279,7 +280,7 @@ public final class class4 {
 									if (var0.method2693(var9) && var8[var9] != null && var8[var9].equalsIgnoreCase("Attack")) {
 										short var11 = 0;
 										if (Client.npcAttackOption != AttackOption.AttackOption_hidden) {
-											if (AttackOption.field1384 == Client.npcAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.npcAttackOption && var5.combatLevel > class17.localPlayer.field1147) {
+											if (AttackOption.AttackOption_alwaysRightClick == Client.npcAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.npcAttackOption && var5.combatLevel > class17.localPlayer.combatLevel) {
 												var11 = 2000;
 											}
 
@@ -304,14 +305,14 @@ public final class class4 {
 												var10 = var11 + 13;
 											}
 
-											class194.method3796(var8[var9], HttpAuthenticationHeader.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
+											class194.insertMenuItem(var8[var9], HttpAuthenticationHeader.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
 										}
 									}
 								}
 							}
 
 							if (!var5.lowPriorityFollowerOps || !Client.followerOpsLowPriority) {
-								class194.method3796("Examine", HttpAuthenticationHeader.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
+								class194.insertMenuItem("Examine", HttpAuthenticationHeader.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
 							}
 						}
 

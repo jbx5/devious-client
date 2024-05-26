@@ -245,7 +245,7 @@ public class ClanChannelMember {
 			}
 
 			if (var1 == 22) {
-				AttackOption[] var3 = new AttackOption[]{AttackOption.field1390, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1384, AttackOption.field1385};
+				AttackOption[] var3 = new AttackOption[]{AttackOption.field1390, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1385};
 				Client.npcAttackOption = (AttackOption)MenuAction.findEnumerated(var3, var2);
 				if (Client.npcAttackOption == null) {
 					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;

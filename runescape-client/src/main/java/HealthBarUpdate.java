@@ -11,7 +11,8 @@ public class HealthBarUpdate extends Node {
 	@ObfuscatedSignature(
 		descriptor = "Lvc;"
 	)
-	static SpritePixels field1287;
+	@Export("sceneMinimapSprite")
+	static SpritePixels sceneMinimapSprite;
 	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
 		intValue = 1989060845

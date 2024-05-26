@@ -232,6 +232,13 @@ public interface Client extends OAuthApi, GameEngine
 	void setOtp(String otp);
 
 	/**
+	 * Sets whether to use authenticator token or normal password scheme, login by setting game state to 20 {@link GameState#LOGGING_IN}
+	 *
+	 * @param otp
+	 */
+	void login(boolean otp);
+
+	/**
 	 * Gets currently selected login field. 0 is username, and 1 is password.
 	 *
 	 * @return currently selected login field
@@ -2444,7 +2451,6 @@ public interface Client extends OAuthApi, GameEngine
 	void checkResize();
 
 	void menuAction(int p0, int p1, MenuAction action, int id, int itemId, String option, String target);
-
 
 	/**
 	 * Get worldview by id

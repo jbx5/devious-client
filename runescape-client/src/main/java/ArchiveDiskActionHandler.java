@@ -103,7 +103,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 		garbageValue = "-27"
 	)
 	@Export("FillMode_values")
-	public static class557[] FillMode_values() {
-		return new class557[]{class557.SOLID, class557.field5427, class557.field5426};
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.SOLID, FillMode.field5427, FillMode.field5426};
 	}
 }

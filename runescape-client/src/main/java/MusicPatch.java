@@ -542,7 +542,7 @@ public class MusicPatch extends Node {
 		descriptor = "(Ldt;IIIIIIIILir;B)V",
 		garbageValue = "83"
 	)
-	static final void method6441(class101 var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, CollisionMap var9) {
+	static final void method6441(WorldView var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, CollisionMap var9) {
 		ObjectComposition var10 = HitSplatDefinition.getObjectDefinition(var5);
 		int var11 = var8 >= 0 ? var8 : var10.animationId;
 		int var12;
@@ -557,7 +557,7 @@ public class MusicPatch extends Node {
 
 		int var14;
 		int var15;
-		if (var3 + var12 <= var0.field1346) {
+		if (var3 + var12 <= var0.sizeX) {
 			var14 = var3 + (var12 >> 1);
 			var15 = var3 + (var12 + 1 >> 1);
 		} else {
@@ -567,7 +567,7 @@ public class MusicPatch extends Node {
 
 		int var16;
 		int var17;
-		if (var13 + var4 <= var0.field1330) {
+		if (var13 + var4 <= var0.sizeY) {
 			var16 = (var13 >> 1) + var4;
 			var17 = (var13 + 1 >> 1) + var4;
 		} else {
@@ -575,12 +575,12 @@ public class MusicPatch extends Node {
 			var17 = var4 + 1;
 		}
 
-		int[][] var18 = var0.field1339[var2];
+		int[][] var18 = var0.tileHeights[var2];
 		int var19 = var18[var15][var17] + var18[var14][var16] + var18[var15][var16] + var18[var14][var17] >> 2;
 		int var20 = (var3 << 7) + (var12 << 6);
 		int var21 = (var4 << 7) + (var13 << 6);
-		Scene var22 = var0.field1331;
-		long var23 = KitDefinition.method3900(var3, var4, 2, var10.int1 == 0, var5, var0.field1335);
+		Scene var22 = var0.scene;
+		long var23 = KitDefinition.calculateTag(var3, var4, 2, var10.int1 == 0, var5, var0.id);
 		int var25 = (var6 << 6) + var7;
 		if (var10.int3 == 1) {
 			var25 += 256;
@@ -694,7 +694,7 @@ public class MusicPatch extends Node {
 						var26 = 16;
 						var27 = var22.getBoundaryObjectTag(var1, var3, var4);
 						if (0L != var27) {
-							var26 = HitSplatDefinition.getObjectDefinition(class105.method2748(var27)).int2;
+							var26 = HitSplatDefinition.getObjectDefinition(class105.Entity_unpackID(var27)).int2;
 						}
 
 						if (var11 == -1 && var10.transforms == null) {
@@ -708,7 +708,7 @@ public class MusicPatch extends Node {
 						var26 = 8;
 						var27 = var22.getBoundaryObjectTag(var1, var3, var4);
 						if (var27 != 0L) {
-							var26 = HitSplatDefinition.getObjectDefinition(class105.method2748(var27)).int2 / 2;
+							var26 = HitSplatDefinition.getObjectDefinition(class105.Entity_unpackID(var27)).int2 / 2;
 						}
 
 						if (var11 == -1 && var10.transforms == null) {
@@ -731,7 +731,7 @@ public class MusicPatch extends Node {
 						var26 = 8;
 						var27 = var22.getBoundaryObjectTag(var1, var3, var4);
 						if (0L != var27) {
-							var26 = HitSplatDefinition.getObjectDefinition(class105.method2748(var27)).int2 / 2;
+							var26 = HitSplatDefinition.getObjectDefinition(class105.Entity_unpackID(var27)).int2 / 2;
 						}
 
 						int var31 = var6 + 2 & 3;

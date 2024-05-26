@@ -243,7 +243,8 @@ public class KitDefinition extends DualNode {
 		descriptor = "(IIIZIIB)J",
 		garbageValue = "3"
 	)
-	public static long method3900(int var0, int var1, int var2, boolean var3, int var4, int var5) {
+	@Export("calculateTag")
+	public static long calculateTag(int var0, int var1, int var2, boolean var3, int var4, int var5) {
 		long var6 = (long)((var0 & 127) << 0 | (var1 & 127) << 7 | (var2 & 3) << 14) | ((long)var4 & 4294967295L) << 17 | ((long)var5 & 2047L) << 49;
 		if (var3) {
 			var6 |= 65536L;
@@ -261,7 +262,7 @@ public class KitDefinition extends DualNode {
 	static final void logOut() {
 		Client.packetWriter.close();
 		class13.clear();
-		class358.scene.clear();
+		class358.topLevelWorldView.clear();
 		Client.field552.method4379();
 		System.gc();
 		Skills.method7123(0, 0);
@@ -269,7 +270,7 @@ public class KitDefinition extends DualNode {
 		Client.playingJingle = false;
 		class151.method3270();
 		class105.updateGameState(10);
-		Client.field543 = 0;
+		Client.serverTick = 0;
 		MilliClock.method3646().method3660();
 		MilliClock.method3646().method3663();
 	}
@@ -291,17 +292,17 @@ public class KitDefinition extends DualNode {
 		int var23;
 		int var24;
 		if (class319.field3384 == var0) {
-			var23 = var1.readUnsignedByteSub();
+			var23 = var1.readUnsignedByteNeg();
 			var3 = (var23 >> 4 & 7) + HttpRequestTask.field96;
 			var4 = (var23 & 7) + class323.field3544;
-			var24 = var1.readShortLE() & 31;
+			var24 = var1.readUnsignedByteAdd() & 31;
 			var6 = var1.readUnsignedByte();
-			var7 = var1.readUnsignedByteSub();
-			var8 = var1.readShortLE();
-			var9 = var1.readUnsignedIntLE();
-			if (var3 >= 0 && var4 >= 0 && var3 < ModeWhere.field4623.field1346 && var4 < ModeWhere.field4623.field1330) {
+			var7 = var1.readUnsignedByteNeg();
+			var8 = var1.readUnsignedByteAdd();
+			var9 = var1.readUnsignedShortLE();
+			if (var3 >= 0 && var4 >= 0 && var3 < ModeWhere.worldView.sizeX && var4 < ModeWhere.worldView.sizeY) {
 				var10 = var24 + 1;
-				if (class17.localPlayer.field1229[0] >= var3 - var10 && class17.localPlayer.field1229[0] <= var3 + var10 && class17.localPlayer.field1276[0] >= var4 - var10 && class17.localPlayer.field1276[0] <= var4 + var10 && class459.clientPreferences.getAreaSoundEffectsVolume() != 0 && var8 > 0 && Client.soundEffectCount < 50) {
+				if (class17.localPlayer.pathX[0] >= var3 - var10 && class17.localPlayer.pathX[0] <= var3 + var10 && class17.localPlayer.pathY[0] >= var4 - var10 && class17.localPlayer.pathY[0] <= var4 + var10 && class459.clientPreferences.getAreaSoundEffectsVolume() != 0 && var8 > 0 && Client.soundEffectCount < 50) {
 					Client.soundEffectIds[Client.soundEffectCount] = var9;
 					Client.soundEffects[Client.soundEffectCount] = null;
 					Client.soundLocations[Client.soundEffectCount] = var24 + (var4 << 8) + (var3 << 16);
@@ -318,30 +319,30 @@ public class KitDefinition extends DualNode {
 			int var14;
 			int var15;
 			if (class319.field3382 == var0) {
-				byte var2 = var1.readByteSub();
-				var3 = var1.readUnsignedIntIME();
-				var4 = var1.readUnsignedIntIME();
-				byte var5 = var1.readByteAdd();
-				var6 = var1.readUnsignedIntIME();
+				byte var2 = var1.readByteAdd();
+				var3 = var1.readUnsignedShortAdd();
+				var4 = var1.readUnsignedShortAdd();
+				byte var5 = var1.readByteNeg();
+				var6 = var1.readUnsignedShortAdd();
 				var7 = var1.readUnsignedByte();
 				var8 = var7 >> 2;
 				var9 = var7 & 3;
 				var10 = Client.field604[var8];
-				byte var11 = var1.readByteNeg();
-				var12 = var1.readShortLE();
+				byte var11 = var1.readByteSub();
+				var12 = var1.readUnsignedByteAdd();
 				var13 = (var12 >> 4 & 7) + HttpRequestTask.field96;
 				var14 = (var12 & 7) + class323.field3544;
 				var15 = var1.readUnsignedShortAddLE();
-				byte var16 = var1.readByteSub();
+				byte var16 = var1.readByteAdd();
 				Player var17;
 				if (var15 == Client.localPlayerIndex) {
 					var17 = class17.localPlayer;
 				} else {
-					var17 = ModeWhere.field4623.field1341[var15];
+					var17 = ModeWhere.worldView.players[var15];
 				}
 
 				if (var17 != null) {
-					int var18 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
+					int var18 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
 					class142.method3197(var18, var13, var14, var8, var9, var10, var3, var6, var4, var5, var11, var2, var16, var17);
 				}
 			}
@@ -349,31 +350,31 @@ public class KitDefinition extends DualNode {
 			int var27;
 			if (class319.field3375 == var0) {
 				var23 = var1.readUnsignedByte();
-				var3 = var1.readShortLE();
+				var3 = var1.readUnsignedByteAdd();
 				var4 = (var3 >> 4 & 7) + HttpRequestTask.field96;
 				var24 = (var3 & 7) + class323.field3544;
-				var6 = var1.readShortLE();
+				var6 = var1.readUnsignedByteAdd();
 				var7 = var6 >> 2;
 				var8 = var6 & 3;
 				var9 = Client.field604[var7];
-				var10 = var1.readUnsignedIntIME();
-				if (var4 >= 0 && var24 >= 0 && var4 < ModeWhere.field4623.field1346 && var24 < ModeWhere.field4623.field1330) {
-					var27 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
-					class162.method3417(ModeWhere.field4623, var27, var4, var24, var9, var10, var7, var8, var23, 0, -1);
+				var10 = var1.readUnsignedShortAdd();
+				if (var4 >= 0 && var24 >= 0 && var4 < ModeWhere.worldView.sizeX && var24 < ModeWhere.worldView.sizeY) {
+					var27 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
+					class162.method3417(ModeWhere.worldView, var27, var4, var24, var9, var10, var7, var8, var23, 0, -1);
 				}
 
 			} else if (class319.field3378 == var0) {
 				var23 = var1.readUnsignedShort();
-				var3 = var1.readShortLE();
+				var3 = var1.readUnsignedByteAdd();
 				var4 = (var3 >> 4 & 7) + HttpRequestTask.field96;
 				var24 = (var3 & 7) + class323.field3544;
-				var6 = var1.readUnsignedByteSub();
+				var6 = var1.readUnsignedByteNeg();
 				var7 = var6 >> 2;
 				var8 = var6 & 3;
 				var9 = Client.field604[var7];
 				if (var4 >= 0 && var24 >= 0 && var4 < 103 && var24 < 103) {
-					var10 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
-					PendingSpawn var21 = class177.method3603(ModeWhere.field4623, var10, var4, var24, var9);
+					var10 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
+					PendingSpawn var21 = class177.method3603(ModeWhere.worldView, var10, var4, var24, var9);
 					if (var21 != null) {
 						ObjectComposition var22 = HitSplatDefinition.getObjectDefinition(var21.field1193);
 						if (var22.field2315) {
@@ -393,60 +394,60 @@ public class KitDefinition extends DualNode {
 				}
 
 			} else if (class319.field3379 == var0) {
-				var23 = var1.readUnsignedIntLE();
+				var23 = var1.readUnsignedShortLE();
 				var3 = var1.readUnsignedShort();
-				var4 = var1.readUnsignedByteAdd();
-				var24 = var1.readUnsignedShortAdd();
-				var6 = var1.readUnsignedShortAdd() * 4;
-				byte var26 = var1.readByteAdd();
-				var8 = var1.readUnsignedByteAdd();
-				var9 = var1.readUnsignedByteSub();
+				var4 = var1.method9313();
+				var24 = var1.readUnsignedByteSub();
+				var6 = var1.readUnsignedByteSub() * 4;
+				byte var26 = var1.readByteNeg();
+				var8 = var1.method9313();
+				var9 = var1.readUnsignedByteNeg();
 				var10 = (var9 >> 4 & 7) + HttpRequestTask.field96;
 				var27 = (var9 & 7) + class323.field3544;
-				var12 = var1.readUnsignedByteSub() * 4;
+				var12 = var1.readUnsignedByteNeg() * 4;
 				var13 = var1.readUnsignedShort();
 				var14 = var1.readUnsignedShort();
 				byte var29 = var1.readByte();
 				var7 = var26 + var10;
 				var15 = var29 + var27;
-				if (var10 >= 0 && var27 >= 0 && var10 < ModeWhere.field4623.field1346 && var27 < ModeWhere.field4623.field1330 && var7 >= 0 && var15 >= 0 && var7 < ModeWhere.field4623.field1346 && var15 < ModeWhere.field4623.field1330 && var3 != 65535) {
-					int var30 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
+				if (var10 >= 0 && var27 >= 0 && var10 < ModeWhere.worldView.sizeX && var27 < ModeWhere.worldView.sizeY && var7 >= 0 && var15 >= 0 && var7 < ModeWhere.worldView.sizeX && var15 < ModeWhere.worldView.sizeY && var3 != 65535) {
+					int var30 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
 					WorldMapEvent.method6096(var30, var10, var27, var7, var15, var4, var3, var6, var12, var14, var13, var24, var23, var8);
 				}
 
 			} else if (class319.field3383 == var0) {
-				var23 = var1.readUnsignedShortAdd();
+				var23 = var1.readUnsignedByteSub();
 				var3 = (var23 >> 4 & 7) + HttpRequestTask.field96;
 				var4 = (var23 & 7) + class323.field3544;
-				var24 = var1.method9715();
+				var24 = var1.readUnsignedIntME();
 				var6 = var1.readUnsignedShortAddLE();
-				var7 = var1.method9715();
-				if (var3 >= 0 && var4 >= 0 && var3 < ModeWhere.field4623.field1346 && var4 < ModeWhere.field4623.field1330) {
-					var8 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
+				var7 = var1.readUnsignedIntME();
+				if (var3 >= 0 && var4 >= 0 && var3 < ModeWhere.worldView.sizeX && var4 < ModeWhere.worldView.sizeY) {
+					var8 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
 					class136.method3128(var8, var3, var4, var6, var7, var24);
 				}
 
 			} else {
 				if (class319.field3387 == var0) {
 					var23 = var1.readUnsignedShort();
-					var3 = var1.readUnsignedByteSub();
-					var4 = var1.readShortLE();
+					var3 = var1.readUnsignedByteNeg();
+					var4 = var1.readUnsignedByteAdd();
 					var24 = (var4 >> 4 & 7) + HttpRequestTask.field96;
 					var6 = (var4 & 7) + class323.field3544;
-					var7 = ModeWhere.field4623.field1348;
-					if (var24 >= 0 && var6 >= 0 && var24 < ModeWhere.field4623.field1346 && var6 < ModeWhere.field4623.field1330) {
-						NodeDeque var19 = ModeWhere.field4623.field1349[var7][var24][var6];
+					var7 = ModeWhere.worldView.plane;
+					if (var24 >= 0 && var6 >= 0 && var24 < ModeWhere.worldView.sizeX && var6 < ModeWhere.worldView.sizeY) {
+						NodeDeque var19 = ModeWhere.worldView.groundItems[var7][var24][var6];
 						if (var19 != null) {
 							for (TileItem var31 = (TileItem)var19.last(); var31 != null; var31 = (TileItem)var19.previous()) {
 								if ((var23 & 32767) == var31.id) {
-									var31.method2757(var3);
+									var31.setFlag(var3);
 									break;
 								}
 							}
 						}
 
-						if (var24 >= 0 && var6 >= 0 && var24 < ModeWhere.field4623.field1346 && var6 < ModeWhere.field4623.field1330) {
-							var9 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
+						if (var24 >= 0 && var6 >= 0 && var24 < ModeWhere.worldView.sizeX && var6 < ModeWhere.worldView.sizeY) {
+							var9 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
 							class140.method3146(var9, var24, var6, var23, var3);
 						}
 
@@ -456,55 +457,55 @@ public class KitDefinition extends DualNode {
 
 				if (class319.field3377 == var0) {
 					var23 = var1.readUnsignedShort();
-					var3 = var1.readUnsignedIntIME();
-					var4 = var1.readUnsignedShortLE();
-					var24 = var1.readUnsignedIntIME();
+					var3 = var1.readUnsignedShortAdd();
+					var4 = var1.readUnsignedIntLE();
+					var24 = var1.readUnsignedShortAdd();
 					var6 = var1.readUnsignedByte();
 					boolean var25 = var1.readUnsignedByte() == 1;
-					var8 = var1.readUnsignedShortAdd();
+					var8 = var1.readUnsignedByteSub();
 					var9 = (var8 >> 4 & 7) + HttpRequestTask.field96;
 					var10 = (var8 & 7) + class323.field3544;
-					var27 = var1.readUnsignedShortAdd();
-					if (var9 >= 0 && var10 >= 0 && var9 < ModeWhere.field4623.field1346 && var10 < ModeWhere.field4623.field1330) {
-						var12 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
+					var27 = var1.readUnsignedByteSub();
+					if (var9 >= 0 && var10 >= 0 && var9 < ModeWhere.worldView.sizeX && var10 < ModeWhere.worldView.sizeY) {
+						var12 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
 						WorldMapID.addTileItemToGroundItems(var12, var9, var10, var24, var4, var27, var23, var3, var6, var25);
 					}
 
 				} else if (class319.field3380 == var0) {
-					var23 = var1.readUnsignedByteSub();
+					var23 = var1.readUnsignedByteNeg();
 					var3 = var23 >> 2;
 					var4 = var23 & 3;
 					var24 = Client.field604[var3];
 					var6 = var1.readUnsignedByte();
 					var7 = (var6 >> 4 & 7) + HttpRequestTask.field96;
 					var8 = (var6 & 7) + class323.field3544;
-					if (var7 >= 0 && var8 >= 0 && var7 < ModeWhere.field4623.field1346 && var8 < ModeWhere.field4623.field1330) {
-						var9 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
-						class162.method3417(ModeWhere.field4623, var9, var7, var8, var24, -1, var3, var4, 31, 0, -1);
+					if (var7 >= 0 && var8 >= 0 && var7 < ModeWhere.worldView.sizeX && var8 < ModeWhere.worldView.sizeY) {
+						var9 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
+						class162.method3417(ModeWhere.worldView, var9, var7, var8, var24, -1, var3, var4, 31, 0, -1);
 					}
 
 				} else if (class319.field3388 == var0) {
-					var23 = var1.readUnsignedShortAdd();
+					var23 = var1.readUnsignedByteSub();
 					var3 = (var23 >> 4 & 7) + HttpRequestTask.field96;
 					var4 = (var23 & 7) + class323.field3544;
-					var24 = var1.readUnsignedIntLE();
-					var6 = var1.readUnsignedShortAdd();
+					var24 = var1.readUnsignedShortLE();
+					var6 = var1.readUnsignedByteSub();
 					var7 = var1.readUnsignedShort();
-					if (var3 >= 0 && var4 >= 0 && var3 < ModeWhere.field4623.field1346 && var4 < ModeWhere.field4623.field1330) {
+					if (var3 >= 0 && var4 >= 0 && var3 < ModeWhere.worldView.sizeX && var4 < ModeWhere.worldView.sizeY) {
 						var3 = var3 * 128 + 64;
 						var4 = var4 * 128 + 64;
-						var8 = Client.field753 == -1 ? ModeWhere.field4623.field1348 : Client.field753;
-						GraphicsObject var20 = new GraphicsObject(var24, var8, var3, var4, SoundSystem.method856(ModeWhere.field4623, var3, var4, var8) - var6, var7, Client.cycle);
-						ModeWhere.field4623.field1352.addFirst(var20);
+						var8 = Client.field753 == -1 ? ModeWhere.worldView.plane : Client.field753;
+						GraphicsObject var20 = new GraphicsObject(var24, var8, var3, var4, SoundSystem.getTileHeight(ModeWhere.worldView, var3, var4, var8) - var6, var7, Client.cycle);
+						ModeWhere.worldView.graphicsObjects.addFirst(var20);
 					}
 
 				} else if (class319.field3385 == var0) {
-					var23 = var1.readUnsignedShortAdd();
+					var23 = var1.readUnsignedByteSub();
 					var3 = (var23 >> 4 & 7) + HttpRequestTask.field96;
 					var4 = (var23 & 7) + class323.field3544;
-					var24 = var1.method9715();
+					var24 = var1.readUnsignedIntME();
 					var6 = var1.readUnsignedShortAddLE();
-					var7 = ModeWhere.field4623.field1348;
+					var7 = ModeWhere.worldView.plane;
 					if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 						var8 = Client.field753 == -1 ? var7 : Client.field753;
 						Coord.method6523(var8, var3, var4, var6, var24);

@@ -155,27 +155,27 @@ public class class53 extends Node {
 		descriptor = "(Ldt;I)V",
 		garbageValue = "46472907"
 	)
-	static final void method1091(class101 var0) {
-		int[] var1 = var0.field1336.field1416;
+	static final void method1091(WorldView var0) {
+		int[] var1 = var0.playerUpdateManager.playerIndices;
 
 		int var2;
-		for (var2 = 0; var2 < var0.field1336.field1415; ++var2) {
-			Player var5 = var0.field1341[var1[var2]];
-			if (var5 != null && var5.field1218 > 0) {
-				--var5.field1218;
-				if (var5.field1218 == 0) {
-					var5.field1224 = null;
+		for (var2 = 0; var2 < var0.playerUpdateManager.playerCount; ++var2) {
+			Player var5 = var0.players[var1[var2]];
+			if (var5 != null && var5.overheadTextCyclesRemaining > 0) {
+				--var5.overheadTextCyclesRemaining;
+				if (var5.overheadTextCyclesRemaining == 0) {
+					var5.overheadText = null;
 				}
 			}
 		}
 
-		for (var2 = 0; var2 < var0.field1344; ++var2) {
-			int var3 = var0.field1345[var2];
-			class103 var4 = var0.field1343[var3];
-			if (var4 != null && var4.field1218 > 0) {
-				--var4.field1218;
-				if (var4.field1218 == 0) {
-					var4.field1224 = null;
+		for (var2 = 0; var2 < var0.npcCount; ++var2) {
+			int var3 = var0.npcIndices[var2];
+			NPC var4 = var0.npcs[var3];
+			if (var4 != null && var4.overheadTextCyclesRemaining > 0) {
+				--var4.overheadTextCyclesRemaining;
+				if (var4.overheadTextCyclesRemaining == 0) {
+					var4.overheadText = null;
 				}
 			}
 		}

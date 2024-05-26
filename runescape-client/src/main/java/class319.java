@@ -116,11 +116,11 @@ public class class319 {
 		descriptor = "(Ldt;III)V",
 		garbageValue = "-1485751769"
 	)
-	static final void method6168(class101 var0, int var1, int var2) {
+	static final void method6168(WorldView var0, int var1, int var2) {
 		if (Client.hintArrowType == 2) {
-			MenuAction.method2115(var0, Client.field556 * 64 + (Client.field769 - var0.field1337 << 7), Client.field534 * 64 + (Client.field554 - var0.field1333 << 7), Client.field555 * 2);
-			if (Client.field643 > -1 && Client.cycle % 20 < 10) {
-				class369.headIconHintSprites[0].drawTransBgAt(Client.field643 + var1 - 12, var2 + Client.field528 - 28);
+			MenuAction.worldToScreen(var0, Client.hintArrowSubX * 64 + (Client.hintArrowX - var0.baseX << 7), Client.hintArrowSubY * 64 + (Client.hintArrowY - var0.baseY << 7), Client.hintArrowHeight * 2);
+			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
+				class369.headIconHintSprites[0].drawTransBgAt(Client.viewportTempX + var1 - 12, var2 + Client.viewportTempY - 28);
 			}
 
 		}

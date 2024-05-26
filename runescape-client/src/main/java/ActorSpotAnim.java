@@ -23,7 +23,8 @@ public class ActorSpotAnim extends Node {
 	@ObfuscatedGetter(
 		intValue = 1972188803
 	)
-	public int field4952;
+	@Export("spotAnimationFrameCycle")
+	public int spotAnimationFrameCycle;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = 661479403
@@ -39,7 +40,7 @@ public class ActorSpotAnim extends Node {
 	public ActorSpotAnim(int var1, int var2, int var3, int var4) {
 		this.spotAnimation = -1;
 		this.spotAnimationFrame = 0;
-		this.field4952 = 0;
+		this.spotAnimationFrameCycle = 0;
 		this.field4955 = 0;
 		this.spotAnimationHeight = 0;
 		this.spotAnimation = var1;

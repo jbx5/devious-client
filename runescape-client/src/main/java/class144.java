@@ -117,11 +117,11 @@ public class class144 extends class147 {
 			int var2 = Client.menuArguments2[var0];
 			int var3 = Client.menuOpcodes[var0];
 			int var4 = Client.menuIdentifiers[var0];
-			int var5 = Client.field677[var0];
+			int var5 = Client.menuWorldViewIds[var0];
 			int var6 = Client.menuItemIds[var0];
 			String var7 = Client.menuActions[var0];
 			String var8 = Client.menuTargets[var0];
-			PacketWriter.method2899(var1, var2, var3, var4, var6, var5, var7, var8, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
+			PacketWriter.menuAction(var1, var2, var3, var4, var6, var5, var7, var8, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
 		}
 	}
 }

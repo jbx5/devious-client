@@ -194,7 +194,7 @@ public class Widget extends Node {
 		descriptor = "Lvm;"
 	)
 	@Export("fillMode")
-	public class557 fillMode;
+	public FillMode fillMode;
 	@ObfuscatedName("cm")
 	@ObfuscatedGetter(
 		intValue = 477398947
@@ -584,7 +584,8 @@ public class Widget extends Node {
 	@Export("itemIds")
 	public int[] itemIds;
 	@ObfuscatedName("ga")
-	public int[] field3807;
+	@Export("itemQuantities")
+	public int[] itemQuantities;
 	@ObfuscatedName("gg")
 	@ObfuscatedGetter(
 		intValue = 2107973379
@@ -698,7 +699,7 @@ public class Widget extends Node {
 		this.mouseOverColor = 0;
 		this.mouseOverColor2 = 0;
 		this.fill = false;
-		this.fillMode = class557.SOLID;
+		this.fillMode = FillMode.SOLID;
 		this.transparencyTop = 0;
 		this.transparencyBot = 0;
 		this.lineWid = 1;

@@ -67,10 +67,11 @@ public class class47 {
 		descriptor = "(Ldt;Ldh;IIIIII)V",
 		garbageValue = "1707412999"
 	)
-	static final void method886(class101 var0, Actor var1, int var2, int var3, int var4, int var5, int var6) {
+	@Export("drawActor2d")
+	static final void drawActor2d(WorldView var0, Actor var1, int var2, int var3, int var4, int var5, int var6) {
 		if (var1 != null && var1.isVisible()) {
-			if (var1 instanceof class103) {
-				NPCComposition var7 = ((class103)var1).field1359;
+			if (var1 instanceof NPC) {
+				NPCComposition var7 = ((NPC)var1).definition;
 				if (var7.transforms != null) {
 					var7 = var7.transform();
 				}
@@ -80,23 +81,23 @@ public class class47 {
 				}
 			}
 
-			int var76 = var0.field1336.field1415;
-			int[] var8 = var0.field1336.field1416;
+			int var76 = var0.playerUpdateManager.playerCount;
+			int[] var8 = var0.playerUpdateManager.playerIndices;
 			boolean var9 = var2 < var76;
 			int var10 = -2;
-			if (var1.field1224 != null && (!var9 || !var1.field1227 && (Client.publicChatMode == 4 || !var1.field1221 && (Client.publicChatMode == 0 || Client.publicChatMode == 3 || Client.publicChatMode == 1 && ((Player)var1).isFriend())))) {
-				LoginState.method1226(var0, var1, var1.field1279);
-				if (Client.field643 > -1 && Client.hintArrowPlayerIndex < Client.hintArrowX) {
-					Client.field562[Client.hintArrowPlayerIndex] = WorldMapRenderer.fontBold12.stringWidth(var1.field1224) / 2;
-					Client.field635[Client.hintArrowPlayerIndex] = WorldMapRenderer.fontBold12.ascent;
-					Client.npcIndices[Client.hintArrowPlayerIndex] = Client.field643;
-					Client.field634[Client.hintArrowPlayerIndex] = Client.field528 - var10;
-					Client.field648[Client.hintArrowPlayerIndex] = var1.field1253;
-					Client.field742[Client.hintArrowPlayerIndex] = var1.field1230;
-					Client.field640[Client.hintArrowPlayerIndex] = var1.field1218;
-					Client.field787[Client.hintArrowPlayerIndex] = var1.field1211;
-					Client.playerMenuActions[Client.hintArrowPlayerIndex] = var1.field1224;
-					++Client.hintArrowPlayerIndex;
+			if (var1.overheadText != null && (!var9 || !var1.field1227 && (Client.publicChatMode == 4 || !var1.field1221 && (Client.publicChatMode == 0 || Client.publicChatMode == 3 || Client.publicChatMode == 1 && ((Player)var1).isFriend())))) {
+				LoginState.method1226(var0, var1, var1.defaultHeight);
+				if (Client.viewportTempX > -1 && Client.overheadTextCount < Client.overheadTextLimit) {
+					Client.overheadTextXOffsets[Client.overheadTextCount] = WorldMapRenderer.fontBold12.stringWidth(var1.overheadText) / 2;
+					Client.overheadTextAscents[Client.overheadTextCount] = WorldMapRenderer.fontBold12.ascent;
+					Client.overheadTextXs[Client.overheadTextCount] = Client.viewportTempX;
+					Client.overheadTextYs[Client.overheadTextCount] = Client.viewportTempY - var10;
+					Client.overheadTextColors[Client.overheadTextCount] = var1.field1253;
+					Client.overheadTextEffects[Client.overheadTextCount] = var1.field1230;
+					Client.overheadTextCyclesRemaining[Client.overheadTextCount] = var1.overheadTextCyclesRemaining;
+					Client.field787[Client.overheadTextCount] = var1.field1211;
+					Client.overheadText[Client.overheadTextCount] = var1.overheadText;
+					++Client.overheadTextCount;
 					var10 += 12;
 				}
 			}
@@ -105,7 +106,7 @@ public class class47 {
 			int var23;
 			int var24;
 			if (!var1.healthBars.method7588()) {
-				LoginState.method1226(var0, var1, var1.field1279 + 15);
+				LoginState.method1226(var0, var1, var1.defaultHeight + 15);
 
 				for (HealthBar var11 = (HealthBar)var1.healthBars.last(); var11 != null; var11 = (HealthBar)var1.healthBars.previous()) {
 					HealthBarUpdate var12 = var11.get(Client.cycle);
@@ -159,8 +160,8 @@ public class class47 {
 
 							var90 = var79.subHeight;
 							var10 += var90;
-							var23 = var3 + Client.field643 - (var16 >> 1);
-							var24 = var4 + Client.field528 - var10;
+							var23 = var3 + Client.viewportTempX - (var16 >> 1);
+							var24 = var4 + Client.viewportTempY - var10;
 							var23 -= var86;
 							if (var83 >= 0 && var83 < 255) {
 								var79.drawTransAt(var23, var24, var83);
@@ -176,9 +177,9 @@ public class class47 {
 							var10 += 2;
 						} else {
 							var10 += 5;
-							if (Client.field643 > -1) {
-								var90 = var3 + Client.field643 - (var16 >> 1);
-								var23 = var4 + Client.field528 - var10;
+							if (Client.viewportTempX > -1) {
+								var90 = var3 + Client.viewportTempX - (var16 >> 1);
+								var23 = var4 + Client.viewportTempY - var10;
 								Rasterizer2D.Rasterizer2D_fillRectangle(var90, var23, var106, 5, 65280);
 								Rasterizer2D.Rasterizer2D_fillRectangle(var90 + var106, var23, var16 - var106, 5, 16711680);
 							}
@@ -193,7 +194,7 @@ public class class47 {
 				var10 += 7;
 			}
 
-			if (var9 && Client.cycle == var1.field1264) {
+			if (var9 && Client.cycle == var1.playerCycle) {
 				Player var93 = (Player)var1;
 				boolean var77;
 				if (Client.drawPlayerNames == 0) {
@@ -214,10 +215,10 @@ public class class47 {
 				if (var77) {
 					Player var100 = (Player)var1;
 					if (var9) {
-						LoginState.method1226(var0, var1, var1.field1279 + 15);
+						LoginState.method1226(var0, var1, var1.defaultHeight + 15);
 						AbstractFont var103 = (AbstractFont)Client.fontsMap.get(FontName.FontName_plain12);
 						var10 += 4;
-						var103.drawCentered(var100.username.getName(), var3 + Client.field643, var4 + Client.field528 - var10, 16777215, 0);
+						var103.drawCentered(var100.username.getName(), var3 + Client.viewportTempX, var4 + Client.viewportTempY - var10, 16777215, 0);
 						var10 += 18;
 					}
 				}
@@ -225,34 +226,34 @@ public class class47 {
 
 			if (var9) {
 				Player var91 = (Player)var1;
-				if (var91.field1142) {
+				if (var91.isHidden) {
 					return;
 				}
 
-				if (var91.field1136 != -1 || var91.field1137 != -1) {
-					LoginState.method1226(var0, var1, var1.field1279 + 15);
-					if (Client.field643 > -1) {
-						if (var91.field1136 != -1) {
+				if (var91.headIconPk != -1 || var91.headIconPrayer != -1) {
+					LoginState.method1226(var0, var1, var1.defaultHeight + 15);
+					if (Client.viewportTempX > -1) {
+						if (var91.headIconPk != -1) {
 							var10 += 25;
-							class4.headIconPkSprites[var91.field1136].drawTransBgAt(var3 + Client.field643 - 12, var4 + Client.field528 - var10);
+							class4.headIconPkSprites[var91.headIconPk].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - var10);
 						}
 
-						if (var91.field1137 != -1) {
+						if (var91.headIconPrayer != -1) {
 							var10 += 25;
-							HttpMethod.headIconPrayerSprites[var91.field1137].drawTransBgAt(var3 + Client.field643 - 12, var4 + Client.field528 - var10);
+							HttpMethod.headIconPrayerSprites[var91.headIconPrayer].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - var10);
 						}
 					}
 				}
 
-				if (var2 >= 0 && Client.hintArrowType == 10 && var8[var2] == Client.field817) {
-					LoginState.method1226(var0, var1, var1.field1279 + 15);
-					if (Client.field643 > -1) {
+				if (var2 >= 0 && Client.hintArrowType == 10 && var8[var2] == Client.hintArrowPlayerIndex) {
+					LoginState.method1226(var0, var1, var1.defaultHeight + 15);
+					if (Client.viewportTempX > -1) {
 						var10 += class369.headIconHintSprites[1].subHeight;
-						class369.headIconHintSprites[1].drawTransBgAt(var3 + Client.field643 - 12, var4 + Client.field528 - var10);
+						class369.headIconHintSprites[1].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - var10);
 					}
 				}
 			} else {
-				class103 var92 = (class103)var1;
+				NPC var92 = (NPC)var1;
 				int[] var94 = var92.method2661();
 				short[] var102 = var92.method2662();
 				if (var102 != null && var94 != null) {
@@ -269,19 +270,19 @@ public class class47 {
 							}
 
 							if (var17 != null) {
-								LoginState.method1226(var0, var1, var1.field1279 + 15);
-								if (Client.field643 > -1) {
-									var17.drawTransBgAt(var3 + Client.field643 - (var17.subWidth >> 1), var4 - var17.subHeight + Client.field528 - 4);
+								LoginState.method1226(var0, var1, var1.defaultHeight + 15);
+								if (Client.viewportTempX > -1) {
+									var17.drawTransBgAt(var3 + Client.viewportTempX - (var17.subWidth >> 1), var4 - var17.subHeight + Client.viewportTempY - 4);
 								}
 							}
 						}
 					}
 				}
 
-				if (Client.hintArrowType == 1 && var0.field1345[var2 - var76] == Client.field610 && Client.cycle % 20 < 10) {
-					LoginState.method1226(var0, var1, var1.field1279 + 15);
-					if (Client.field643 > -1) {
-						class369.headIconHintSprites[0].drawTransBgAt(var3 + Client.field643 - 12, var4 + Client.field528 - 28);
+				if (Client.hintArrowType == 1 && var0.npcIndices[var2 - var76] == Client.hintArrowNpcIndex && Client.cycle % 20 < 10) {
+					LoginState.method1226(var0, var1, var1.defaultHeight + 15);
+					if (Client.viewportTempX > -1) {
+						class369.headIconHintSprites[0].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - 28);
 					}
 				}
 			}
@@ -322,21 +323,21 @@ public class class47 {
 					if (var104 == null) {
 						var1.hitSplatCycles[var101] = -1;
 					} else {
-						LoginState.method1226(var0, var1, var1.field1279 / 2);
-						if (Client.field643 > -1) {
+						LoginState.method1226(var0, var1, var1.defaultHeight / 2);
+						if (Client.viewportTempX > -1) {
 							boolean var105 = true;
 							if (var101 == 1) {
-								Client.field528 -= 20;
+								Client.viewportTempY -= 20;
 							}
 
 							if (var101 == 2) {
-								Client.field643 -= 15;
-								Client.field528 -= 10;
+								Client.viewportTempX -= 15;
+								Client.viewportTempY -= 10;
 							}
 
 							if (var101 == 3) {
-								Client.field643 += 15;
-								Client.field528 -= 10;
+								Client.viewportTempX += 15;
+								Client.viewportTempY -= 10;
 							}
 
 							SpritePixels var19 = null;
@@ -565,8 +566,8 @@ public class class47 {
 							var63 = var1.hitSplatCycles[var101] - Client.cycle;
 							int var64 = var104.field2260 - var63 * var104.field2260 / var104.field2261;
 							int var65 = var63 * var104.field2245 / var104.field2261 + -var104.field2245;
-							int var66 = var64 + (var3 + Client.field643 - (var52 >> 1));
-							int var67 = var65 + (var4 + Client.field528 - 12);
+							int var66 = var64 + (var3 + Client.viewportTempX - (var52 >> 1));
+							int var67 = var65 + (var4 + Client.viewportTempY - 12);
 							int var68 = var67;
 							int var69 = var67 + var43;
 							int var70 = var67 + var104.field2265 + 15;

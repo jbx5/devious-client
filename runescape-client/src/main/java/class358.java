@@ -8,6 +8,6 @@ public class class358 {
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	@Export("scene")
-	static class101 scene;
+	@Export("topLevelWorldView")
+	static WorldView topLevelWorldView;
 }

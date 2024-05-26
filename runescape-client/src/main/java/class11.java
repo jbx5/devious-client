@@ -106,19 +106,19 @@ class class11 implements TlsAuthentication {
 	)
 	static void method100() {
 		if (Client.field627 && class17.localPlayer != null) {
-			int var0 = class17.localPlayer.field1229[0];
-			int var1 = class17.localPlayer.field1276[0];
+			int var0 = class17.localPlayer.pathX[0];
+			int var1 = class17.localPlayer.pathY[0];
 			if (var0 < 0 || var1 < 0 || var0 >= 104 || var1 >= 104) {
 				return;
 			}
 
-			class33.field178 = class17.localPlayer.x;
-			int var2 = SoundSystem.method856(class358.scene, class17.localPlayer.x, class17.localPlayer.y, class358.scene.field1348) - Client.camFollowHeight;
-			if (var2 < TextureProvider.field2830) {
-				TextureProvider.field2830 = var2;
+			class33.oculusOrbFocalPointX = class17.localPlayer.x;
+			int var2 = SoundSystem.getTileHeight(class358.topLevelWorldView, class17.localPlayer.x, class17.localPlayer.y, class358.topLevelWorldView.plane) - Client.camFollowHeight;
+			if (var2 < TextureProvider.oculusOrbFocalPointZ) {
+				TextureProvider.oculusOrbFocalPointZ = var2;
 			}
 
-			class76.field931 = class17.localPlayer.y;
+			class76.oculusOrbFocalPointY = class17.localPlayer.y;
 			Client.field627 = false;
 		}
 

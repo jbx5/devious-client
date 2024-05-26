@@ -483,7 +483,7 @@ public class WorldMap {
 					PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.field3336, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByteNeg(var12);
 					var13.packetBuffer.writeShortAddLE(var11);
-					var13.packetBuffer.method9712(0);
+					var13.packetBuffer.writeIntIME(0);
 					var13.packetBuffer.writeShort(var15);
 					Client.packetWriter.addNode(var13);
 				} else {

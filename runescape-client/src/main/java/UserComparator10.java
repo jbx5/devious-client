@@ -38,8 +38,8 @@ public class UserComparator10 extends AbstractUserComparator {
 		descriptor = "(Ldt;[BIIIIIIIIII)V",
 		garbageValue = "653933494"
 	)
-	static final void method2998(class101 var0, byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
-		CollisionMap[] var11 = var0.field1332;
+	static final void method2998(WorldView var0, byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+		CollisionMap[] var11 = var0.collisionMaps;
 		int var13;
 		if (var11 != null) {
 			for (int var12 = 0; var12 < 8; ++var12) {
@@ -76,9 +76,9 @@ public class UserComparator10 extends AbstractUserComparator {
 						int var22 = var4 + WorldMapLabel.method5937(var14 & 7, var15 & 7, var8);
 						int var23 = var3 + (var14 & 7) + var9;
 						int var24 = var10 + (var15 & 7) + var4;
-						class151.method3269(var0, var25, var2, var21, var22, var23, var24, var8);
+						class151.loadTerrain(var0, var25, var2, var21, var22, var23, var24, var8);
 					} else {
-						class151.method3269(var0, var25, 0, -1, -1, 0, 0, 0);
+						class151.loadTerrain(var0, var25, 0, -1, -1, 0, 0, 0);
 					}
 				}
 			}

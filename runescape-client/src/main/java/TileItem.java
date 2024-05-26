@@ -23,19 +23,23 @@ public final class TileItem extends Renderable {
 	@ObfuscatedGetter(
 		intValue = 419336507
 	)
-	int field1394;
+	@Export("visibleTime")
+	int visibileTime;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = 359021447
 	)
-	int field1399;
+	@Export("despawnTime")
+	int despawnTime;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
 		intValue = -1547995727
 	)
-	int field1396;
+	@Export("ownership")
+	int ownership;
 	@ObfuscatedName("aa")
-	boolean field1395;
+	@Export("isPrivate")
+	boolean isPrivate;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
 		intValue = 238010175
@@ -52,7 +56,8 @@ public final class TileItem extends Renderable {
 		descriptor = "(II)V",
 		garbageValue = "251603547"
 	)
-	void method2757(int var1) {
+	@Export("setFlag")
+	void setFlag(int var1) {
 		this.flag = var1;
 	}
 

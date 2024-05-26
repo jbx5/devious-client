@@ -139,9 +139,9 @@ class class17 implements SSLSession {
 	static int method235(int var0, Script var1, boolean var2) {
 		int var3;
 		if (var0 == 6600) {
-			var3 = class358.scene.field1348;
-			int var15 = (localPlayer.x >> 7) + class358.scene.field1337;
-			int var8 = (localPlayer.y >> 7) + class358.scene.field1333;
+			var3 = class358.topLevelWorldView.plane;
+			int var15 = (localPlayer.x >> 7) + class358.topLevelWorldView.baseX;
+			int var8 = (localPlayer.y >> 7) + class358.topLevelWorldView.baseY;
 			class142.getWorldMap().method9095(var3, var15, var8, true);
 			return 1;
 		} else {

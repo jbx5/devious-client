@@ -40,7 +40,8 @@ public class class349 {
 		descriptor = "(IIII)V",
 		garbageValue = "312360827"
 	)
-	static final void method6551(int var0, int var1, int var2) {
-		class166.method3440(ModeWhere.field4623, var0, var1, var2);
+	@Export("updateItemPile")
+	static final void updateItemPile(int var0, int var1, int var2) {
+		class166.updateItemPile2(ModeWhere.worldView, var0, var1, var2);
 	}
 }

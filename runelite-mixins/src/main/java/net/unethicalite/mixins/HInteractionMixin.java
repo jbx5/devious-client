@@ -111,7 +111,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 	@Copy("menuAction")
 	@Replace("menuAction")
-	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
+	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, int worldViewId, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) client.getClickedMenuEntry();
 		if (menuEntry == null)
@@ -123,6 +123,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 						&& client.getMenuArguments1()[i] == param0
 						&& client.getMenuArguments2()[i] == param1
 						&& client.getMenuItemIds()[i] == itemId
+					        && client.getMenuWorldViewIds()[i] == worldViewId
 						&& option.equals(client.getMenuOptions()[i])
 						&& target.equals(client.getMenuTargets()[i])
 				)
@@ -142,7 +143,8 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 					client.getTempMenuAction().getTarget().equals(target) &&
 					client.getTempMenuAction().getParam0() == param0 &&
 					client.getTempMenuAction().getParam1() == param1 &&
-					client.getTempMenuAction().getItemId() == itemId;
+					client.getTempMenuAction().getItemId() == itemId &&
+				        client.getTempMenuAction().getWorldViewId() == worldViewId;
 		}
 
 		if (menuEntry == null && isTemp)
@@ -165,6 +167,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.getMenuArguments1()[i] = param0;
 			client.getMenuArguments2()[i] = param1;
 			client.getMenuItemIds()[i] = itemId;
+			client.getMenuWorldViewIds()[i] = worldViewId;
 			client.getMenuForceLeftClick()[i] = false;
 			menuEntry = rl$menuEntries[i];
 
@@ -231,7 +234,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.setSelectedSceneTileY(event.getParam1());
 			client.setViewportWalking(true);
 
-			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, "Automated", "", canvasX, canvasY);
+			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, -1, "Automated", "", canvasX, canvasY);
 			return;
 		}
 
@@ -245,7 +248,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		{
 			copy$menuAction(event.getParam0(), event.getParam1(),
 					event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
-					event.getId(), event.getItemId(), event.getMenuOption(), event.getMenuTarget(),
+					event.getId(), event.getItemId(), event.getWorldViewId(), event.getMenuOption(), event.getMenuTarget(),
 					canvasX, canvasY);
 		}
 	}

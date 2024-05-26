@@ -1520,7 +1520,7 @@ public class class355 {
 					return 1;
 				} else if (var0 == 1125) {
 					var23 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
-					class557 var22 = (class557)MenuAction.findEnumerated(ArchiveDiskActionHandler.FillMode_values(), var23);
+					FillMode var22 = (FillMode)MenuAction.findEnumerated(ArchiveDiskActionHandler.FillMode_values(), var23);
 					if (var22 != null) {
 						var3.fillMode = var22;
 						class324.invalidateWidget(var3);

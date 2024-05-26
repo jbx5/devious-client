@@ -16,7 +16,8 @@ public class DynamicObject extends Renderable {
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	class101 field1036;
+	@Export("worldView")
+	WorldView worldView;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
 		intValue = -221657491
@@ -27,7 +28,8 @@ public class DynamicObject extends Renderable {
 	@ObfuscatedGetter(
 		intValue = 361896199
 	)
-	int field1030;
+	@Export("type")
+	int type;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = 2000434069
@@ -44,12 +46,14 @@ public class DynamicObject extends Renderable {
 	@ObfuscatedGetter(
 		intValue = -25327393
 	)
-	int field1031;
+	@Export("x")
+	int x;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = 743991919
 	)
-	int field1034;
+	@Export("y")
+	int y;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Lic;"
@@ -72,14 +76,14 @@ public class DynamicObject extends Renderable {
 	@ObfuscatedSignature(
 		descriptor = "(Ldt;IIIIIIIZLju;)V"
 	)
-	DynamicObject(class101 var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, Renderable var10) {
-		this.field1036 = var1;
+	DynamicObject(WorldView var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, Renderable var10) {
+		this.worldView = var1;
 		this.id = var2;
-		this.field1030 = var3;
+		this.type = var3;
 		this.orientation = var4;
 		this.plane = var5;
-		this.field1031 = var6;
-		this.field1034 = var7;
+		this.x = var6;
+		this.y = var7;
 		if (var8 != -1) {
 			this.sequenceDefinition = FaceNormal.SequenceDefinition_get(var8);
 			this.frame = 0;
@@ -168,15 +172,15 @@ public class DynamicObject extends Renderable {
 				var3 = var12.sizeX;
 			}
 
-			int var4 = (var2 >> 1) + this.field1031;
-			int var5 = (var2 + 1 >> 1) + this.field1031;
-			int var6 = (var3 >> 1) + this.field1034;
-			int var7 = (var3 + 1 >> 1) + this.field1034;
-			int[][] var8 = this.field1036.field1339[this.plane];
+			int var4 = (var2 >> 1) + this.x;
+			int var5 = (var2 + 1 >> 1) + this.x;
+			int var6 = (var3 >> 1) + this.y;
+			int var7 = (var3 + 1 >> 1) + this.y;
+			int[][] var8 = this.worldView.tileHeights[this.plane];
 			int var9 = var8[var4][var7] + var8[var5][var6] + var8[var4][var6] + var8[var5][var7] >> 2;
-			int var10 = (this.field1031 << 7) + (var2 << 6);
-			int var11 = (this.field1034 << 7) + (var3 << 6);
-			return var12.getModelDynamic(this.field1030, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
+			int var10 = (this.x << 7) + (var2 << 6);
+			int var11 = (this.y << 7) + (var3 << 6);
+			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 

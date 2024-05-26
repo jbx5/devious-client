@@ -141,6 +141,8 @@ public interface Scene extends Renderable
 
 	void setRoofRemovalMode(int flags);
 
+	int getRoofRemovalMode();
+
 	/**
 	 * Get the underlay ids for the scene. The value stored is id + 1, with 0 for no underlay.
 	 * @return

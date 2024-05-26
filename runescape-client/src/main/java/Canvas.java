@@ -396,7 +396,7 @@ public final class Canvas extends java.awt.Canvas {
 																continue label1505;
 															}
 
-															class101.method2633(var23.field2464);
+															WorldView.method2633(var23.field2464);
 															if (var23.field2476 == 85 && Login.Login_username.length() > 0) {
 																Login.Login_username = Login.Login_username.substring(0, Login.Login_username.length() - 1);
 															}
@@ -986,7 +986,7 @@ public final class Canvas extends java.awt.Canvas {
 		garbageValue = "268666553"
 	)
 	protected static final void method311() {
-		class557.clock.mark();
+		FillMode.clock.mark();
 
 		int var0;
 		for (var0 = 0; var0 < 32; ++var0) {

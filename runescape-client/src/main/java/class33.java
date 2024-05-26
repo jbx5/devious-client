@@ -9,7 +9,8 @@ public class class33 {
 	@ObfuscatedGetter(
 		intValue = 1550817359
 	)
-	static int field178;
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
 	@ObfuscatedName("vy")
 	@ObfuscatedSignature(
 		descriptor = "Lcq;"

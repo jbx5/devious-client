@@ -45,9 +45,9 @@ public class class74 {
 		descriptor = "(Ldt;I)V",
 		garbageValue = "-1284123860"
 	)
-	static void method2114(class101 var0) {
+	static void method2114(WorldView var0) {
 		if (Client.renderSelf) {
-			class425.method7948(var0, Client.localPlayerIndex, false);
+			class425.addPlayerToScene(var0, Client.localPlayerIndex, false);
 		}
 
 	}

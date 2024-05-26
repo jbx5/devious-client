@@ -206,7 +206,7 @@ public class ReflectionCheck extends Node {
 						} else if (class94.field1170 == Client.field561) {
 							WorldMapRegion.field3093 = InterfaceParent.newArchive(class384.field4471.field4493, false, true, true, false);
 							class324.field3552 = InterfaceParent.newArchive(class384.field4486.field4493, false, true, true, false);
-							class260.archive2 = InterfaceParent.newArchive(class384.field4485.field4493, true, false, true, false);
+							Projection.archive2 = InterfaceParent.newArchive(class384.field4485.field4493, true, false, true, false);
 							LoginState.archive4 = InterfaceParent.newArchive(class384.field4474.field4493, false, true, true, false);
 							SceneTilePaint.archive9 = InterfaceParent.newArchive(class384.field4476.field4493, true, true, true, false);
 							Varcs.field1452 = InterfaceParent.newArchive(class384.field4478.field4493, false, true, true, false);
@@ -223,69 +223,69 @@ public class ReflectionCheck extends Node {
 							UserComparator6.method3020(class94.field1173);
 						} else if (class94.field1173 != Client.field561) {
 							if (Client.field561 == class94.field1167) {
-								class358.scene = new class101(-1, 104, 104, class459.clientPreferences.method2577());
-								ModeWhere.field4623 = class358.scene;
-								HealthBarUpdate.field1287 = new SpritePixels(512, 512);
+								class358.topLevelWorldView = new WorldView(-1, 104, 104, class459.clientPreferences.method2577());
+								ModeWhere.worldView = class358.topLevelWorldView;
+								HealthBarUpdate.sceneMinimapSprite = new SpritePixels(512, 512);
 								class175.method3576(30, "Starting game engine...");
 								UserComparator6.method3020(class94.field1165);
 							} else if (Client.field561 == class94.field1165) {
-								if (!class260.archive2.isFullyLoaded()) {
-									class175.method3576(40, "Loading config - " + class260.archive2.loadPercent() + "%");
+								if (!Projection.archive2.isFullyLoaded()) {
+									class175.method3576(40, "Loading config - " + Projection.archive2.loadPercent() + "%");
 								} else if (!HealthBar.field1357.isFullyLoaded()) {
 									class175.method3576(40, "Loading config - " + (80 + class438.archive12.loadPercent() / 6) + "%");
 								} else {
-									UserComparator4.method2955(class260.archive2);
-									Archive var25 = class260.archive2;
+									UserComparator4.method2955(Projection.archive2);
+									Archive var25 = Projection.archive2;
 									FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var25;
-									var19 = class260.archive2;
+									var19 = Projection.archive2;
 									var20 = Varcs.field1452;
 									KitDefinition.KitDefinition_archive = var19;
 									class156.KitDefinition_modelsArchive = var20;
 									class420.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
-									PcmPlayer.method838(class260.archive2, Varcs.field1452, Client.isLowDetail);
-									var21 = class260.archive2;
+									PcmPlayer.method838(Projection.archive2, Varcs.field1452, Client.isLowDetail);
+									var21 = Projection.archive2;
 									var22 = Varcs.field1452;
 									NPCComposition.NpcDefinition_archive = var21;
 									class30.field158 = var22;
-									Archive.method7224(class260.archive2);
-									ItemContainer.method2314(class260.archive2, Varcs.field1452, Client.isMembersWorld, class554.fontPlain11);
-									var5 = class260.archive2;
+									Archive.method7224(Projection.archive2);
+									ItemContainer.method2314(Projection.archive2, Varcs.field1452, Client.isMembersWorld, class554.fontPlain11);
+									var5 = Projection.archive2;
 									Archive var6 = WorldMapRegion.field3093;
 									Archive var7 = class324.field3552;
 									SequenceDefinition.SequenceDefinition_archive = var5;
 									SequenceDefinition.SequenceDefinition_animationsArchive = var6;
 									SequenceDefinition.SequenceDefinition_skeletonsArchive = var7;
-									Archive var8 = class260.archive2;
+									Archive var8 = Projection.archive2;
 									Archive var9 = Varcs.field1452;
 									class202.SpotAnimationDefinition_archive = var8;
 									SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var9;
-									ClanChannelMember.method3250(class260.archive2);
-									InvDefinition.method3783(class260.archive2);
+									ClanChannelMember.method3250(Projection.archive2);
+									InvDefinition.method3783(Projection.archive2);
 									AsyncRestClient.widgetDefinition = new WidgetDefinition(LoginState.archive4, Varcs.field1452, class177.archive8, class104.archive13, DynamicObject.field1038);
-									Archive var10 = class260.archive2;
+									Archive var10 = Projection.archive2;
 									InvDefinition.InvDefinition_archive = var10;
-									Archive var11 = class260.archive2;
+									Archive var11 = Projection.archive2;
 									EnumComposition.EnumDefinition_archive = var11;
-									HttpResponse.method272(class260.archive2);
-									ItemLayer.method4586(class260.archive2);
-									class87.method2317(class260.archive2);
-									WorldMapScaleHandler.method6049(class260.archive2);
-									Archive var12 = class260.archive2;
+									HttpResponse.method272(Projection.archive2);
+									ItemLayer.method4586(Projection.archive2);
+									class87.method2317(Projection.archive2);
+									WorldMapScaleHandler.method6049(Projection.archive2);
+									Archive var12 = Projection.archive2;
 									DbRowType.field5288 = var12;
-									Tile.field2639 = new class528(class111.field1431, 54, class188.clientLanguage, class260.archive2);
-									ApproximateRouteStrategy.field491 = new class528(class111.field1431, 47, class188.clientLanguage, class260.archive2);
+									Tile.field2639 = new class528(class111.field1431, 54, class188.clientLanguage, Projection.archive2);
+									ApproximateRouteStrategy.field491 = new class528(class111.field1431, 47, class188.clientLanguage, Projection.archive2);
 									WorldMapCacheName.varcs = new Varcs();
-									Archive var13 = class260.archive2;
+									Archive var13 = Projection.archive2;
 									Archive var14 = class177.archive8;
 									Archive var15 = class104.archive13;
 									HitSplatDefinition.HitSplatDefinition_archive = var13;
 									class332.field3636 = var14;
 									HitSplatDefinition.HitSplatDefinition_fontsArchive = var15;
-									Archive var16 = class260.archive2;
+									Archive var16 = Projection.archive2;
 									Archive var17 = class177.archive8;
 									HealthBarDefinition.HealthBarDefinition_archive = var16;
 									HealthBarDefinition.field2064 = var17;
-									Renderable.method5097(class260.archive2, class177.archive8);
+									Renderable.method5097(Projection.archive2, class177.archive8);
 									class175.method3576(50, "Loaded config");
 									UserComparator6.method3020(class94.field1174);
 								}
@@ -441,7 +441,7 @@ public class ReflectionCheck extends Node {
 								if (Client.field561 == class94.field1182) {
 									class527.field5252 = false;
 									class105.updateGameState(20);
-									SoundSystem.method854(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
+									SoundSystem.updateLoginState(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
 								}
 
 							}
@@ -449,7 +449,7 @@ public class ReflectionCheck extends Node {
 							var18 = 0;
 							var28 = var18 + WorldMapRegion.field3093.percentage() * 5 / 100;
 							var28 += class324.field3552.percentage() * 2 / 100;
-							var28 += class260.archive2.percentage() / 100;
+							var28 += Projection.archive2.percentage() / 100;
 							var28 += LoginState.archive4.percentage() / 100;
 							var28 += SceneTilePaint.archive9.percentage() * 10 / 100;
 							var28 += Varcs.field1452.percentage() * 65 / 100;

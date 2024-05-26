@@ -14,7 +14,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@Export("cameraPitch")
 	static int cameraPitch;
 	@ObfuscatedName("an")
-	boolean field1207;
+	@Export("isWalking")
+	boolean isWalking;
 	@ObfuscatedName("bw")
 	@ObfuscatedGetter(
 		intValue = 1664267167
@@ -31,7 +32,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = -1773475719
 	)
-	int field1209;
+	@Export("rotation")
+	int rotation;
 	@ObfuscatedName("bg")
 	@ObfuscatedGetter(
 		intValue = 585148803
@@ -41,7 +43,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = -2089671869
 	)
-	int field1264;
+	@Export("playerCycle")
+	int playerCycle;
 	@ObfuscatedName("bh")
 	@ObfuscatedGetter(
 		intValue = -1581269493
@@ -52,37 +55,44 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = -1749214235
 	)
-	int field1241;
+	@Export("turnLeftSequence")
+	int turnLeftSequence;
 	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
 		intValue = -1144226535
 	)
-	int field1212;
+	@Export("turnRightSequence")
+	int turnRightSequence;
 	@ObfuscatedName("br")
 	@ObfuscatedGetter(
 		intValue = 1957996463
 	)
-	int field1213;
+	@Export("walkSequence")
+	int walkSequence;
 	@ObfuscatedName("bx")
 	@ObfuscatedGetter(
 		intValue = 1125955673
 	)
-	int field1222;
+	@Export("walkBackSequence")
+	int walkBackSequence;
 	@ObfuscatedName("bd")
 	@ObfuscatedGetter(
 		intValue = -957437539
 	)
-	int field1205;
+	@Export("walkLeftSequence")
+	int walkLeftSequence;
 	@ObfuscatedName("bv")
 	@ObfuscatedGetter(
 		intValue = -2018655779
 	)
-	int field1216;
+	@Export("walkRightSequence")
+	int walkRightSequence;
 	@ObfuscatedName("bm")
 	@ObfuscatedGetter(
 		intValue = 891114171
 	)
-	int field1217;
+	@Export("runSequence")
+	int runSequence;
 	@ObfuscatedName("bq")
 	@ObfuscatedGetter(
 		intValue = 507518675
@@ -119,7 +129,8 @@ public abstract class Actor extends Renderable implements class67 {
 	)
 	int field1228;
 	@ObfuscatedName("cw")
-	String field1224;
+	@Export("overheadText")
+	String overheadText;
 	@ObfuscatedName("ck")
 	boolean field1221;
 	@ObfuscatedName("cn")
@@ -128,7 +139,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = -1201567313
 	)
-	int field1218;
+	@Export("overheadTextCyclesRemaining")
+	int overheadTextCyclesRemaining;
 	@ObfuscatedName("cp")
 	@ObfuscatedGetter(
 		intValue = -1201696001
@@ -142,7 +154,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedName("cs")
 	int[] field1211;
 	@ObfuscatedName("ci")
-	byte field1232;
+	@Export("hitSplatCount")
+	byte hitSplatCount;
 	@ObfuscatedName("cc")
 	@Export("hitSplatTypes")
 	int[] hitSplatTypes;
@@ -168,9 +181,11 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = 1270669829
 	)
-	int field1219;
+	@Export("targetIndex")
+	int targetIndex;
 	@ObfuscatedName("ca")
-	boolean field1240;
+	@Export("false0")
+	boolean false0;
 	@ObfuscatedName("cl")
 	@ObfuscatedGetter(
 		intValue = -1050668579
@@ -192,7 +207,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = -1893608467
 	)
-	int field1245;
+	@Export("movementSequence")
+	int movementSequence;
 	@ObfuscatedName("cv")
 	@ObfuscatedGetter(
 		intValue = -302041719
@@ -203,7 +219,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = -312855407
 	)
-	int field1247;
+	@Export("movementFrameCycle")
+	int movementFrameCycle;
 	@ObfuscatedName("cu")
 	@ObfuscatedGetter(
 		intValue = 1449333731
@@ -213,22 +230,26 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = 2002995319
 	)
-	int field1223;
+	@Export("sequence")
+	int sequence;
 	@ObfuscatedName("dj")
 	@ObfuscatedGetter(
 		intValue = 986534879
 	)
-	int field1250;
+	@Export("sequenceFrame")
+	int sequenceFrame;
 	@ObfuscatedName("dq")
 	@ObfuscatedGetter(
 		intValue = 1556843513
 	)
-	int field1251;
+	@Export("sequenceFrameCycle")
+	int sequenceFrameCycle;
 	@ObfuscatedName("dm")
 	@ObfuscatedGetter(
 		intValue = -1993218675
 	)
-	int field1252;
+	@Export("sequenceDelay")
+	int sequenceDelay;
 	@ObfuscatedName("dr")
 	@ObfuscatedGetter(
 		intValue = -1586944317
@@ -270,7 +291,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = 2090490753
 	)
-	int field1260;
+	@Export("spotAnimation")
+	int spotAnimation;
 	@ObfuscatedName("dw")
 	@ObfuscatedGetter(
 		intValue = -212558525
@@ -285,12 +307,14 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = 2066389715
 	)
-	int field1263;
+	@Export("npcCycle")
+	int npcCycle;
 	@ObfuscatedName("dc")
 	@ObfuscatedGetter(
 		intValue = 1256709759
 	)
-	int field1279;
+	@Export("defaultHeight")
+	int defaultHeight;
 	@ObfuscatedName("de")
 	@ObfuscatedGetter(
 		intValue = 1988886193
@@ -313,7 +337,8 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = 74629429
 	)
-	int field1282;
+	@Export("orientation")
+	int orientation;
 	@ObfuscatedName("dx")
 	@ObfuscatedGetter(
 		intValue = -845513489
@@ -328,16 +353,20 @@ public abstract class Actor extends Renderable implements class67 {
 	@ObfuscatedGetter(
 		intValue = 443603663
 	)
-	int field1274;
+	@Export("pathLength")
+	int pathLength;
 	@ObfuscatedName("dv")
-	int[] field1229;
+	@Export("pathX")
+	int[] pathX;
 	@ObfuscatedName("ei")
-	int[] field1276;
+	@Export("pathY")
+	int[] pathY;
 	@ObfuscatedName("en")
 	@ObfuscatedSignature(
 		descriptor = "[Ljv;"
 	)
-	class237[] field1277;
+	@Export("pathTraversed")
+	class237[] pathTraversed;
 	@ObfuscatedName("ej")
 	@ObfuscatedGetter(
 		intValue = -559968405
@@ -355,16 +384,16 @@ public abstract class Actor extends Renderable implements class67 {
 	int field1280;
 
 	Actor() {
-		this.field1207 = false;
+		this.isWalking = false;
 		this.field1208 = 1;
 		this.idleSequence = -1;
-		this.field1241 = -1;
-		this.field1212 = -1;
-		this.field1213 = -1;
-		this.field1222 = -1;
-		this.field1205 = -1;
-		this.field1216 = -1;
-		this.field1217 = -1;
+		this.turnLeftSequence = -1;
+		this.turnRightSequence = -1;
+		this.walkSequence = -1;
+		this.walkBackSequence = -1;
+		this.walkLeftSequence = -1;
+		this.walkRightSequence = -1;
+		this.runSequence = -1;
 		this.field1215 = -1;
 		this.field1225 = -1;
 		this.field1220 = -1;
@@ -372,45 +401,45 @@ public abstract class Actor extends Renderable implements class67 {
 		this.field1206 = -1;
 		this.field1281 = -1;
 		this.field1228 = -1;
-		this.field1224 = null;
+		this.overheadText = null;
 		this.field1227 = false;
-		this.field1218 = 100;
+		this.overheadTextCyclesRemaining = 100;
 		this.field1253 = 0;
 		this.field1230 = 0;
 		this.field1211 = null;
-		this.field1232 = 0;
+		this.hitSplatCount = 0;
 		this.hitSplatTypes = new int[4];
 		this.hitSplatValues = new int[4];
 		this.hitSplatCycles = new int[4];
 		this.hitSplatTypes2 = new int[4];
 		this.hitSplatValues2 = new int[4];
 		this.healthBars = new IterableNodeDeque();
-		this.field1219 = -1;
-		this.field1240 = false;
+		this.targetIndex = -1;
+		this.false0 = false;
 		this.field1204 = -1;
 		this.field1242 = -1;
 		this.field1243 = -1;
-		this.field1245 = -1;
+		this.movementSequence = -1;
 		this.movementFrame = 0;
-		this.field1247 = 0;
+		this.movementFrameCycle = 0;
 		this.field1248 = 0;
-		this.field1223 = -1;
-		this.field1250 = 0;
-		this.field1251 = 0;
-		this.field1252 = 0;
+		this.sequence = -1;
+		this.sequenceFrame = 0;
+		this.sequenceFrameCycle = 0;
+		this.sequenceDelay = 0;
 		this.field1239 = 0;
 		this.spotAnimations = new IterableNodeHashTable(4);
 		this.graphicsCount = 0;
-		this.field1263 = 0;
-		this.field1279 = 200;
+		this.npcCycle = 0;
+		this.defaultHeight = 200;
 		this.field1265 = -1;
 		this.field1266 = -1;
 		this.field1272 = 0;
 		this.field1238 = 32;
-		this.field1274 = 0;
-		this.field1229 = new int[10];
-		this.field1276 = new int[10];
-		this.field1277 = new class237[10];
+		this.pathLength = 0;
+		this.pathX = new int[10];
+		this.pathY = new int[10];
+		this.pathTraversed = new class237[10];
 		this.field1278 = 0;
 		this.field1226 = 0;
 		this.field1280 = -1;
@@ -440,7 +469,7 @@ public abstract class Actor extends Renderable implements class67 {
 		garbageValue = "-53"
 	)
 	public int vmethod8774() {
-		return class358.scene.field1348;
+		return class358.topLevelWorldView.plane;
 	}
 
 	@ObfuscatedName("bs")
@@ -459,7 +488,7 @@ public abstract class Actor extends Renderable implements class67 {
 		garbageValue = "42"
 	)
 	final void method2420() {
-		this.field1274 = 0;
+		this.pathLength = 0;
 		this.field1226 = 0;
 	}
 
@@ -522,12 +551,12 @@ public abstract class Actor extends Renderable implements class67 {
 			}
 		} else {
 			if (var7) {
-				this.field1232 = 0;
+				this.hitSplatCount = 0;
 			}
 
 			for (var14 = 0; var14 < 4; ++var14) {
-				byte var15 = this.field1232;
-				this.field1232 = (byte)((this.field1232 + 1) % 4);
+				byte var15 = this.hitSplatCount;
+				this.hitSplatCount = (byte)((this.hitSplatCount + 1) % 4);
 				if (this.hitSplatCycles[var15] <= var5) {
 					var9 = var15;
 					break;
@@ -751,19 +780,19 @@ public abstract class Actor extends Renderable implements class67 {
 		descriptor = "(Ldt;I)V",
 		garbageValue = "-747158696"
 	)
-	static final void method2464(class101 var0) {
-		for (PendingSpawn var1 = (PendingSpawn)var0.field1342.last(); var1 != null; var1 = (PendingSpawn)var0.field1342.previous()) {
-			if (var1.field1203 > 0) {
-				--var1.field1203;
+	static final void method2464(WorldView var0) {
+		for (PendingSpawn var1 = (PendingSpawn)var0.pendingSpawns.last(); var1 != null; var1 = (PendingSpawn)var0.pendingSpawns.previous()) {
+			if (var1.hitpoints > 0) {
+				--var1.hitpoints;
 			}
 
 			boolean var2;
 			int var3;
 			int var4;
 			ObjectComposition var5;
-			if (var1.field1203 == 0) {
-				if (var1.field1194 >= 0) {
-					var3 = var1.field1194;
+			if (var1.hitpoints == 0) {
+				if (var1.objectId >= 0) {
+					var3 = var1.objectId;
 					var4 = var1.field1201;
 					var5 = HitSplatDefinition.getObjectDefinition(var3);
 					if (var4 == 11) {
@@ -780,14 +809,14 @@ public abstract class Actor extends Renderable implements class67 {
 					}
 				}
 
-				GrandExchangeOfferOwnWorldComparator.method1202(var0, var1.field1200, var1.field1191, var1.field1192, var1.field1196, var1.field1194, var1.field1195, var1.field1201, var1.field1190);
+				GrandExchangeOfferOwnWorldComparator.addPendingSpawnToScene(var0, var1.plane, var1.type, var1.x, var1.y, var1.objectId, var1.field1195, var1.field1201, var1.field1190);
 				var1.remove();
 			} else {
-				if (var1.field1202 > 0) {
-					--var1.field1202;
+				if (var1.delay > 0) {
+					--var1.delay;
 				}
 
-				if (var1.field1202 == 0 && var1.field1192 >= 1 && var1.field1196 >= 1 && var1.field1192 <= 102 && var1.field1196 <= 102) {
+				if (var1.delay == 0 && var1.x >= 1 && var1.y >= 1 && var1.x <= 102 && var1.y <= 102) {
 					if (var1.field1193 >= 0) {
 						var3 = var1.field1193;
 						var4 = var1.field1197;
@@ -806,11 +835,11 @@ public abstract class Actor extends Renderable implements class67 {
 						}
 					}
 
-					GrandExchangeOfferOwnWorldComparator.method1202(var0, var1.field1200, var1.field1191, var1.field1192, var1.field1196, var1.field1193, var1.field1198, var1.field1197, var1.field1190);
-					var1.field1202 = -1;
-					if (var1.field1193 == var1.field1194 && var1.field1194 == -1) {
+					GrandExchangeOfferOwnWorldComparator.addPendingSpawnToScene(var0, var1.plane, var1.type, var1.x, var1.y, var1.field1193, var1.field1198, var1.field1197, var1.field1190);
+					var1.delay = -1;
+					if (var1.field1193 == var1.objectId && var1.objectId == -1) {
 						var1.remove();
-					} else if (var1.field1193 == var1.field1194 && var1.field1198 == var1.field1195 && var1.field1201 == var1.field1197) {
+					} else if (var1.field1193 == var1.objectId && var1.field1198 == var1.field1195 && var1.field1201 == var1.field1197) {
 						var1.remove();
 					}
 				}

@@ -1,10 +1,12 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("vm")
-public enum class557 implements Enum {
+@Implements("FillMode")
+public enum FillMode implements Enum {
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lvm;"
@@ -39,7 +41,7 @@ public enum class557 implements Enum {
 	)
 	final int field5428;
 
-	class557(int var3, int var4) {
+	FillMode(int var3, int var4) {
 		this.field5429 = var3;
 		this.field5428 = var4;
 	}

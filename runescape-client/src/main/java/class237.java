@@ -153,8 +153,8 @@ public enum class237 implements Enum {
 				class108.friendsChat.sort();
 			}
 
-			for (int var0 = 0; var0 < class358.scene.field1336.field1415; ++var0) {
-				Player var1 = class358.scene.field1341[class358.scene.field1336.field1416[var0]];
+			for (int var0 = 0; var0 < class358.topLevelWorldView.playerUpdateManager.playerCount; ++var0) {
+				Player var1 = class358.topLevelWorldView.players[class358.topLevelWorldView.playerUpdateManager.playerIndices[var0]];
 				var1.clearIsInFriendsChat();
 			}
 
@@ -168,15 +168,15 @@ public enum class237 implements Enum {
 		descriptor = "(Ldt;B)V",
 		garbageValue = "-13"
 	)
-	static final void method4552(class101 var0) {
-		for (GraphicsObject var1 = (GraphicsObject)var0.field1352.last(); var1 != null; var1 = (GraphicsObject)var0.field1352.previous()) {
-			if (var0.field1348 == var1.plane && !var1.isFinished) {
+	static final void method4552(WorldView var0) {
+		for (GraphicsObject var1 = (GraphicsObject)var0.graphicsObjects.last(); var1 != null; var1 = (GraphicsObject)var0.graphicsObjects.previous()) {
+			if (var0.plane == var1.plane && !var1.isFinished) {
 				if (Client.cycle >= var1.cycleStart) {
 					var1.advance(Client.graphicsCycle);
 					if (var1.isFinished) {
 						var1.remove();
 					} else {
-						var0.field1331.drawEntity(var1.plane, var1.x, var1.y, var1.z, 60, var1, 0, -1L, false);
+						var0.scene.drawEntity(var1.plane, var1.x, var1.y, var1.z, 60, var1, 0, -1L, false);
 					}
 				}
 			} else {

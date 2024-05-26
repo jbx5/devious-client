@@ -24,18 +24,19 @@
  */
 package net.runelite.mixins;
 
+import java.util.HashSet;
+import java.util.Set;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GroundObject;
-import net.runelite.api.Perspective;
 import net.runelite.api.Renderable;
 import net.runelite.api.SceneTileModel;
 import net.runelite.api.SceneTilePaint;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
-import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
@@ -44,21 +45,13 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSPlayer;
+import net.runelite.rs.api.RSProjection;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteObject;
 import net.runelite.rs.api.RSScene;
-import net.runelite.rs.api.RSSceneTileModel;
 import net.runelite.rs.api.RSTile;
 import net.runelite.rs.api.RSTileItem;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import static net.runelite.api.Constants.ROOF_FLAG_BETWEEN;
-import static net.runelite.api.Constants.ROOF_FLAG_DESTINATION;
-import static net.runelite.api.Constants.ROOF_FLAG_HOVERED;
-import static net.runelite.api.Constants.ROOF_FLAG_POSITION;
+import net.unethicalite.api.events.PlaneChanged;
 
 @Mixin(RSScene.class)
 public abstract class RSSceneMixin implements RSScene
@@ -119,7 +112,20 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	private static byte[][][] rl$tileShapes;
 
+	@Copy("draw")
 	@Replace("draw")
+	void copy$drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
+	{
+		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			viewportColor = 0;
+			drawCallbacks.drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
+		}
+		copy$drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
+	}
+
+	/*@Replace("draw")
 	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
 	{
 		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
@@ -763,7 +769,7 @@ public abstract class RSSceneMixin implements RSScene
 		{
 			client.getLogger().warn("error during overlay rendering", ex);
 		}
-	}
+	}*/
 
 	@Inject
 	@Override
@@ -782,8 +788,8 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	private static void setTargetTile(int targetX, int targetY)
 	{
-		client.setSelectedSceneTileX(targetX);
-		client.setSelectedSceneTileY(targetY);
+		client.getTopLevelWorldView().getScene().setBaseX(targetX);
+		client.getTopLevelWorldView().getScene().setBaseY(targetY);
 	}
 
 	@Override
@@ -802,7 +808,7 @@ public abstract class RSSceneMixin implements RSScene
 		RSTileItem item = client.newTileItem();
 		item.setId(id);
 		item.setQuantity(quantity);
-		RSNodeDeque[][][] groundItems = client.getGroundItemDeque();
+		RSNodeDeque[][][] groundItems = client.getWorldView().getGroundItems();
 
 		if (groundItems[plane][sceneX][sceneY] == null)
 		{
@@ -830,7 +836,7 @@ public abstract class RSSceneMixin implements RSScene
 			return;
 		}
 
-		RSNodeDeque items = client.getGroundItemDeque()[plane][sceneX][sceneY];
+		RSNodeDeque items = client.getWorldView().getGroundItems()[plane][sceneX][sceneY];
 
 		if (items == null)
 		{
@@ -848,7 +854,7 @@ public abstract class RSSceneMixin implements RSScene
 
 		if (items.last() == null)
 		{
-			client.getGroundItemDeque()[plane][sceneX][sceneY] = null;
+			client.getWorldView().getGroundItems()[plane][sceneX][sceneY] = null;
 		}
 
 		client.updateItemPile(plane, sceneX, sceneY);
@@ -1110,6 +1116,13 @@ public abstract class RSSceneMixin implements RSScene
 
 	@Inject
 	@Override
+	public int getRoofRemovalMode()
+	{
+		return rl$roofRemovalMode;
+	}
+
+	@Inject
+	@Override
 	public void generateHouses()
 	{
 		rl$tiles = new int[4][104][104];
@@ -1137,7 +1150,7 @@ public abstract class RSSceneMixin implements RSScene
 	public void iterateDeque(Tile var1, int var2)
 	{
 		Tile[][][] tiles = getTiles();
-		RSNodeDeque tilesDeque = client.getTilesDeque();
+		RSNodeDeque tilesDeque = client.getTopLevelWorldView().getScene().getTilesDeque();
 		tilesDeque.addFirst((RSNode) var1);
 
 		RSTile rsTile;
@@ -1295,16 +1308,16 @@ public abstract class RSSceneMixin implements RSScene
 	}
 
 	@Inject
-	public static void renderDraw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
+	public static void renderDraw(RSProjection projection, RSRenderable renderable, int orientation, int x, int y, int z, long hash)
 	{
 		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
 		if (drawCallbacks != null)
 		{
-			drawCallbacks.draw(renderable, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			drawCallbacks.draw(projection, client.getTopLevelWorldView().getScene(), renderable, orientation, x, y, z, hash);
 		}
 		else
 		{
-			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			projection.draw(renderable, orientation, x, y, z, hash);
 		}
 	}
 
@@ -1358,7 +1371,7 @@ public abstract class RSSceneMixin implements RSScene
 			var13 /= 128;
 			var14 /= 128;
 
-			return newGameObject(level, var11, var12, var13 - var11 + 1, var14 - var12 + 1, x, y, z, (RSRenderable) renderable, orientation, true, var8, 0);
+			return this.newGameObject(level, var11, var12, var13 - var11 + 1, var14 - var12 + 1, x, y, z, (RSRenderable) renderable, orientation, true, var8, 0);
 		}
 	}
 
@@ -1420,5 +1433,22 @@ public abstract class RSSceneMixin implements RSScene
 	public byte[][][] getExtendedTileSettings()
 	{
 		return rl$extendedTileSettings;
+	}
+
+	@FieldHook("Scene_offsetOccluder")
+	@Inject
+	public void offsetOccluderChanged(int idx)
+	{
+		if (this.getOffsetOccluder() == 25)
+		{
+			this.setOffsetOccluder(90);
+		}
+	}
+
+	@Inject
+	@FieldHook("Scene_plane")
+	public void scenePlaneChanged(int idx)
+	{
+		client.getCallbacks().post(new PlaneChanged(getScenePlane()));
 	}
 }

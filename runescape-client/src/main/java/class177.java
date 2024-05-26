@@ -36,9 +36,9 @@ public class class177 {
 		descriptor = "(Ldt;IIIII)Ldk;",
 		garbageValue = "50358831"
 	)
-	static final PendingSpawn method3603(class101 var0, int var1, int var2, int var3, int var4) {
-		for (PendingSpawn var5 = (PendingSpawn)var0.field1342.last(); var5 != null; var5 = (PendingSpawn)var0.field1342.previous()) {
-			if (var5.field1200 == var1 && var2 == var5.field1192 && var3 == var5.field1196 && var4 == var5.field1191) {
+	static final PendingSpawn method3603(WorldView var0, int var1, int var2, int var3, int var4) {
+		for (PendingSpawn var5 = (PendingSpawn)var0.pendingSpawns.last(); var5 != null; var5 = (PendingSpawn)var0.pendingSpawns.previous()) {
+			if (var5.plane == var1 && var2 == var5.x && var3 == var5.y && var4 == var5.type) {
 				return var5;
 			}
 		}

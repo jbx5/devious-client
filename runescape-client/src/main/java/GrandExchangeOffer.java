@@ -117,25 +117,25 @@ public class GrandExchangeOffer {
 			class105.updateGameState(25);
 			Client.field527 = true;
 			IgnoreList.drawLoadingMessage("Loading - please wait.", true);
-			int var3 = class358.scene.field1337;
-			int var4 = class358.scene.field1333;
-			class358.scene.field1337 = (var0 - 6) * 8;
-			class358.scene.field1333 = (var1 - 6) * 8;
-			int var5 = class358.scene.field1337 - var3;
-			int var6 = class358.scene.field1333 - var4;
-			var3 = class358.scene.field1337;
-			var4 = class358.scene.field1333;
+			int var3 = class358.topLevelWorldView.baseX;
+			int var4 = class358.topLevelWorldView.baseY;
+			class358.topLevelWorldView.baseX = (var0 - 6) * 8;
+			class358.topLevelWorldView.baseY = (var1 - 6) * 8;
+			int var5 = class358.topLevelWorldView.baseX - var3;
+			int var6 = class358.topLevelWorldView.baseY - var4;
+			var3 = class358.topLevelWorldView.baseX;
+			var4 = class358.topLevelWorldView.baseY;
 
 			int var7;
 			int var9;
 			int[] var10000;
 			for (var7 = 0; var7 < 65536; ++var7) {
-				class103 var19 = class358.scene.field1343[var7];
+				NPC var19 = class358.topLevelWorldView.npcs[var7];
 				if (var19 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
-						var10000 = var19.field1229;
+						var10000 = var19.pathX;
 						var10000[var9] -= var5;
-						var10000 = var19.field1276;
+						var10000 = var19.pathY;
 						var10000[var9] -= var6;
 					}
 
@@ -145,12 +145,12 @@ public class GrandExchangeOffer {
 			}
 
 			for (var7 = 0; var7 < 2048; ++var7) {
-				Player var22 = class358.scene.field1341[var7];
+				Player var22 = class358.topLevelWorldView.players[var7];
 				if (var22 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
-						var10000 = var22.field1229;
+						var10000 = var22.pathX;
 						var10000[var9] -= var5;
-						var10000 = var22.field1276;
+						var10000 = var22.pathY;
 						var10000[var9] -= var6;
 					}
 
@@ -160,7 +160,7 @@ public class GrandExchangeOffer {
 			}
 
 			for (var7 = 0; var7 < 2048; ++var7) {
-				class475 var23 = class358.scene.field1347[var7];
+				WorldEntity var23 = class358.topLevelWorldView.worldEntities[var7];
 				if (var23 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
 						var10000 = var23.field4942;
@@ -200,18 +200,18 @@ public class GrandExchangeOffer {
 
 					for (int var17 = 0; var17 < 4; ++var17) {
 						if (var15 >= 0 && var16 >= 0 && var15 < 104 && var16 < 104) {
-							class358.scene.field1349[var17][var13][var14] = class358.scene.field1349[var17][var15][var16];
+							class358.topLevelWorldView.groundItems[var17][var13][var14] = class358.topLevelWorldView.groundItems[var17][var15][var16];
 						} else {
-							class358.scene.field1349[var17][var13][var14] = null;
+							class358.topLevelWorldView.groundItems[var17][var13][var14] = null;
 						}
 					}
 				}
 			}
 
-			for (PendingSpawn var18 = (PendingSpawn)class358.scene.field1342.last(); var18 != null; var18 = (PendingSpawn)class358.scene.field1342.previous()) {
-				var18.field1192 -= var5;
-				var18.field1196 -= var6;
-				if (var18.field1192 < 0 || var18.field1196 < 0 || var18.field1192 >= 104 || var18.field1196 >= 104) {
+			for (PendingSpawn var18 = (PendingSpawn)class358.topLevelWorldView.pendingSpawns.last(); var18 != null; var18 = (PendingSpawn)class358.topLevelWorldView.pendingSpawns.previous()) {
+				var18.x -= var5;
+				var18.y -= var6;
+				if (var18.x < 0 || var18.y < 0 || var18.x >= 104 || var18.y >= 104) {
 					var18.remove();
 				}
 			}
@@ -225,14 +225,14 @@ public class GrandExchangeOffer {
 			Client.isCameraLocked = false;
 			PlayerComposition.cameraX -= var5 << 7;
 			UserComparator4.cameraZ -= var6 << 7;
-			class33.field178 -= var5 << 7;
-			class76.field931 -= var6 << 7;
+			class33.oculusOrbFocalPointX -= var5 << 7;
+			class76.oculusOrbFocalPointY -= var6 << 7;
 			Client.field771 = -1;
-			class358.scene.field1352.clear();
-			class358.scene.field1351.clear();
+			class358.topLevelWorldView.graphicsObjects.clear();
+			class358.topLevelWorldView.projectiles.clear();
 
 			for (var14 = 0; var14 < 4; ++var14) {
-				class358.scene.field1332[var14].clear();
+				class358.topLevelWorldView.collisionMaps[var14].clear();
 			}
 
 		}

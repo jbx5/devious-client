@@ -262,8 +262,8 @@ public class WorldMapSection2 implements WorldMapSection {
 			for (var1 = 0; var1 < class140.regionLandArchives.length; ++var1) {
 				byte[] var17 = WorldMapArchiveLoader.regionMapArchives[var1];
 				if (var17 != null) {
-					var3 = (Client.regions[var1] >> 8) * 64 - class358.scene.field1337;
-					var4 = (Client.regions[var1] & 255) * 64 - class358.scene.field1333;
+					var3 = (Client.regions[var1] >> 8) * 64 - class358.topLevelWorldView.baseX;
+					var4 = (Client.regions[var1] & 255) * 64 - class358.topLevelWorldView.baseY;
 					if (Client.isInInstance) {
 						var3 = 10;
 						var4 = 10;
@@ -281,17 +281,17 @@ public class WorldMapSection2 implements WorldMapSection {
 				}
 
 				class212.method4031();
-				class358.scene.field1331.clearTempGameObjects();
+				class358.topLevelWorldView.scene.clearTempGameObjects();
 
 				for (var1 = 0; var1 < 4; ++var1) {
-					class358.scene.field1332[var1].clear();
+					class358.topLevelWorldView.collisionMaps[var1].clear();
 				}
 
 				int var2;
 				for (var1 = 0; var1 < 4; ++var1) {
 					for (var2 = 0; var2 < 104; ++var2) {
 						for (var3 = 0; var3 < 104; ++var3) {
-							class358.scene.field1340[var1][var2][var3] = 0;
+							class358.topLevelWorldView.tileSettings[var1][var2][var3] = 0;
 						}
 					}
 				}
@@ -305,22 +305,22 @@ public class WorldMapSection2 implements WorldMapSection {
 				if (!Client.isInInstance) {
 					byte[] var16;
 					for (var2 = 0; var2 < var1; ++var2) {
-						var3 = (Client.regions[var2] >> 8) * 64 - class358.scene.field1337;
-						var4 = (Client.regions[var2] & 255) * 64 - class358.scene.field1333;
+						var3 = (Client.regions[var2] >> 8) * 64 - class358.topLevelWorldView.baseX;
+						var4 = (Client.regions[var2] & 255) * 64 - class358.topLevelWorldView.baseY;
 						var16 = class140.regionLandArchives[var2];
 						if (var16 != null) {
 							class212.method4031();
-							class485.method8896(class358.scene, var16, var3, var4, class485.field5007 * 8 - 48, DelayFadeTask.field4786 * 8 - 48);
+							class485.method8896(class358.topLevelWorldView, var16, var3, var4, class485.field5007 * 8 - 48, DelayFadeTask.field4786 * 8 - 48);
 						}
 					}
 
 					for (var2 = 0; var2 < var1; ++var2) {
-						var3 = (Client.regions[var2] >> 8) * 64 - class358.scene.field1337;
-						var4 = (Client.regions[var2] & 255) * 64 - class358.scene.field1333;
+						var3 = (Client.regions[var2] >> 8) * 64 - class358.topLevelWorldView.baseX;
+						var4 = (Client.regions[var2] & 255) * 64 - class358.topLevelWorldView.baseY;
 						var16 = class140.regionLandArchives[var2];
 						if (var16 == null && DelayFadeTask.field4786 < 800) {
 							class212.method4031();
-							class232.method4489(class358.scene, var3, var4, 64, 64);
+							class232.method4489(class358.topLevelWorldView, var3, var4, 64, 64);
 						}
 					}
 
@@ -329,10 +329,10 @@ public class WorldMapSection2 implements WorldMapSection {
 					for (var2 = 0; var2 < var1; ++var2) {
 						byte[] var15 = WorldMapArchiveLoader.regionMapArchives[var2];
 						if (var15 != null) {
-							var4 = (Client.regions[var2] >> 8) * 64 - class358.scene.field1337;
-							var5 = (Client.regions[var2] & 255) * 64 - class358.scene.field1333;
+							var4 = (Client.regions[var2] >> 8) * 64 - class358.topLevelWorldView.baseX;
+							var5 = (Client.regions[var2] & 255) * 64 - class358.topLevelWorldView.baseY;
 							class212.method4031();
-							class134.method3113(class358.scene, var15, var4, var5);
+							class134.method3113(class358.topLevelWorldView, var15, var4, var5);
 						}
 					}
 				}
@@ -350,7 +350,7 @@ public class WorldMapSection2 implements WorldMapSection {
 						for (var3 = 0; var3 < 13; ++var3) {
 							for (var4 = 0; var4 < 13; ++var4) {
 								boolean var18 = false;
-								var6 = Client.field609[var2][var3][var4];
+								var6 = Client.instanceChunkTemplates[var2][var3][var4];
 								if (var6 != -1) {
 									var7 = var6 >> 24 & 3;
 									var8 = var6 >> 1 & 3;
@@ -362,7 +362,7 @@ public class WorldMapSection2 implements WorldMapSection {
 										if (Client.regions[var12] == var11 && class140.regionLandArchives[var12] != null) {
 											int var13 = (var9 - var3) * 8;
 											int var14 = (var10 - var4) * 8;
-											UserComparator10.method2998(class358.scene, class140.regionLandArchives[var12], var2, var3 * 8, var4 * 8, var7, (var9 & 7) * 8, (var10 & 7) * 8, var8, var13, var14);
+											UserComparator10.method2998(class358.topLevelWorldView, class140.regionLandArchives[var12], var2, var3 * 8, var4 * 8, var7, (var9 & 7) * 8, (var10 & 7) * 8, var8, var13, var14);
 											var18 = true;
 											break;
 										}
@@ -370,7 +370,7 @@ public class WorldMapSection2 implements WorldMapSection {
 								}
 
 								if (!var18) {
-									SequenceDefinition.method4373(class358.scene.field1339, var2, var3 * 8, var4 * 8);
+									SequenceDefinition.method4373(class358.topLevelWorldView.tileHeights, var2, var3 * 8, var4 * 8);
 								}
 							}
 						}
@@ -378,9 +378,9 @@ public class WorldMapSection2 implements WorldMapSection {
 
 					for (var2 = 0; var2 < 13; ++var2) {
 						for (var3 = 0; var3 < 13; ++var3) {
-							var4 = Client.field609[0][var2][var3];
+							var4 = Client.instanceChunkTemplates[0][var2][var3];
 							if (var4 == -1) {
-								class232.method4489(class358.scene, var2 * 8, var3 * 8, 8, 8);
+								class232.method4489(class358.topLevelWorldView, var2 * 8, var3 * 8, 8, 8);
 							}
 						}
 					}
@@ -392,7 +392,7 @@ public class WorldMapSection2 implements WorldMapSection {
 
 						for (var3 = 0; var3 < 13; ++var3) {
 							for (var4 = 0; var4 < 13; ++var4) {
-								var5 = Client.field609[var2][var3][var4];
+								var5 = Client.instanceChunkTemplates[var2][var3][var4];
 								if (var5 != -1) {
 									var6 = var5 >> 24 & 3;
 									var7 = var5 >> 1 & 3;
@@ -402,7 +402,7 @@ public class WorldMapSection2 implements WorldMapSection {
 
 									for (var11 = 0; var11 < Client.regions.length; ++var11) {
 										if (Client.regions[var11] == var10 && WorldMapArchiveLoader.regionMapArchives[var11] != null) {
-											Tiles.method2249(class358.scene, WorldMapArchiveLoader.regionMapArchives[var11], var2, var3 * 8, var4 * 8, var6, (var8 & 7) * 8, (var9 & 7) * 8, var7);
+											Tiles.method2249(class358.topLevelWorldView, WorldMapArchiveLoader.regionMapArchives[var11], var2, var3 * 8, var4 * 8, var6, (var8 & 7) * 8, (var9 & 7) * 8, var7);
 											break;
 										}
 									}
@@ -414,26 +414,26 @@ public class WorldMapSection2 implements WorldMapSection {
 
 				HttpRequest.method99(true);
 				class212.method4031();
-				class533.method9517(class358.scene);
+				class533.method9517(class358.topLevelWorldView);
 				HttpRequest.method99(true);
 				var2 = Tiles.Tiles_minPlane;
-				if (var2 > class358.scene.field1348) {
-					var2 = class358.scene.field1348;
+				if (var2 > class358.topLevelWorldView.plane) {
+					var2 = class358.topLevelWorldView.plane;
 				}
 
-				if (var2 < class358.scene.field1348 - 1) {
-					var2 = class358.scene.field1348 - 1;
+				if (var2 < class358.topLevelWorldView.plane - 1) {
+					var2 = class358.topLevelWorldView.plane - 1;
 				}
 
 				if (Client.isLowDetail) {
-					class358.scene.field1331.init(Tiles.Tiles_minPlane);
+					class358.topLevelWorldView.scene.init(Tiles.Tiles_minPlane);
 				} else {
-					class358.scene.field1331.init(0);
+					class358.topLevelWorldView.scene.init(0);
 				}
 
 				for (var3 = 0; var3 < 104; ++var3) {
 					for (var4 = 0; var4 < 104; ++var4) {
-						WorldMapLabelSize.method5493(class358.scene, var3, var4);
+						WorldMapLabelSize.method5493(class358.topLevelWorldView, var3, var4);
 					}
 				}
 

@@ -88,7 +88,7 @@ public class class155 extends class163 {
 		descriptor = "(Ldt;ZLuk;I)V",
 		garbageValue = "1968808442"
 	)
-	static final void method3295(class101 var0, boolean var1, PacketBuffer var2) {
+	static final void method3295(WorldView var0, boolean var1, PacketBuffer var2) {
 		while (true) {
 			byte var3 = 16;
 			int var4 = 1 << var3;
@@ -96,19 +96,19 @@ public class class155 extends class163 {
 				int var5 = var2.readBits(var3);
 				if (var5 != var4 - 1) {
 					boolean var6 = false;
-					if (var0.field1343[var5] == null) {
-						var0.field1343[var5] = new class103();
+					if (var0.npcs[var5] == null) {
+						var0.npcs[var5] = new NPC();
 						var6 = true;
 					}
 
-					class103 var7 = var0.field1343[var5];
-					var0.field1345[++var0.field1344 - 1] = var5;
-					var7.field1263 = Client.cycle;
-					var7.field1359 = class134.getNpcDefinition(var2.readBits(14));
+					NPC var7 = var0.npcs[var5];
+					var0.npcIndices[++var0.npcCount - 1] = var5;
+					var7.npcCycle = Client.cycle;
+					var7.definition = class134.getNpcDefinition(var2.readBits(14));
 					int var8 = var2.readBits(1);
 					int var11 = var2.readBits(1);
 					if (var11 == 1) {
-						Client.overheadTextXs[++Client.field588 - 1] = var5;
+						Client.npcIndices[++Client.npcCount - 1] = var5;
 					}
 
 					int var9;
@@ -124,9 +124,9 @@ public class class155 extends class163 {
 						}
 					}
 
-					int var12 = Client.field803[var2.readBits(3)];
+					int var12 = Client.defaultRotations[var2.readBits(3)];
 					if (var6) {
-						var7.field1282 = var7.field1209 = var12;
+						var7.orientation = var7.rotation = var12;
 					}
 
 					boolean var13 = var2.readBits(1) == 1;
@@ -149,7 +149,7 @@ public class class155 extends class163 {
 
 					class4.method15(var7);
 					if (var7.field1238 == 0) {
-						var7.field1209 = 0;
+						var7.rotation = 0;
 					}
 
 					if (Client.field557 >= 222) {
@@ -157,7 +157,7 @@ public class class155 extends class163 {
 						continue;
 					}
 
-					var7.method2658(class17.localPlayer.field1229[0] + var9, class17.localPlayer.field1276[0] + var10, var8 == 1);
+					var7.method2658(class17.localPlayer.pathX[0] + var9, class17.localPlayer.pathY[0] + var10, var8 == 1);
 					continue;
 				}
 			}

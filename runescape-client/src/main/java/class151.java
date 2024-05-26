@@ -86,9 +86,10 @@ public class class151 extends class147 {
 		descriptor = "(Ldt;Lua;IIIIIIB)V",
 		garbageValue = "-4"
 	)
-	static final void method3269(class101 var0, Buffer var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		int[][][] var8 = var0.field1339;
-		byte[][][] var9 = var0.field1340;
+	@Export("loadTerrain")
+	static final void loadTerrain(WorldView var0, Buffer var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		int[][][] var8 = var0.tileHeights;
+		byte[][][] var9 = var0.tileSettings;
 		int var10;
 		if (var2 >= 0 && var2 < 4 && var3 >= 0 && var3 < var8[0].length - 1 && var4 >= 0 && var4 < var8[0][0].length - 1) {
 			var9[var2][var3][var4] = 0;

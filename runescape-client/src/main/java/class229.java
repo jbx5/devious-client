@@ -40,12 +40,12 @@ public class class229 extends Node {
 		descriptor = "(Ldt;B)V",
 		garbageValue = "-11"
 	)
-	static final void method4408(class101 var0) {
-		for (int var1 = 0; var1 < var0.field1344; ++var1) {
-			int var2 = var0.field1345[var1];
-			class103 var3 = var0.field1343[var2];
+	static final void method4408(WorldView var0) {
+		for (int var1 = 0; var1 < var0.npcCount; ++var1) {
+			int var2 = var0.npcIndices[var1];
+			NPC var3 = var0.npcs[var2];
 			if (var3 != null) {
-				GrandExchangeOfferOwnWorldComparator.method1212(var0, var3, var3.field1359.size);
+				GrandExchangeOfferOwnWorldComparator.updateActorSequence(var0, var3, var3.definition.size);
 			}
 		}
 

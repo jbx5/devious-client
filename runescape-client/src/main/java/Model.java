@@ -1980,7 +1980,7 @@ public class Model extends Renderable {
 	@ObfuscatedSignature(
 		descriptor = "(ILql;IIIJ)V"
 	)
-	void vmethod5205(int var1, class423 var2, int var3, int var4, int var5, long var6) {
+	void draw(int var1, class423 var2, int var3, int var4, int var5, long var6) {
 		if (this.boundsType != 1) {
 			this.calculateBoundsCylinder();
 		}

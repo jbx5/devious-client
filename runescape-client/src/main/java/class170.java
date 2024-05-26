@@ -56,16 +56,16 @@ public class class170 extends class163 {
 		descriptor = "(Ldt;I)V",
 		garbageValue = "239873725"
 	)
-	static final void method3484(class101 var0) {
-		for (Projectile var1 = (Projectile)var0.field1351.last(); var1 != null; var1 = (Projectile)var0.field1351.previous()) {
-			if (var0.field1348 == var1.plane && Client.cycle <= var1.cycleEnd) {
+	static final void method3484(WorldView var0) {
+		for (Projectile var1 = (Projectile)var0.projectiles.last(); var1 != null; var1 = (Projectile)var0.projectiles.previous()) {
+			if (var0.plane == var1.plane && Client.cycle <= var1.cycleEnd) {
 				if (Client.cycle >= var1.cycleStart) {
-					class103 var2;
+					NPC var2;
 					int var3;
 					Player var4;
 					if (!var1.isMoving && var1.field1005 != 0) {
 						if (var1.field1005 > 0) {
-							var2 = ModeWhere.field4623.field1343[var1.field1005 - 1];
+							var2 = ModeWhere.worldView.npcs[var1.field1005 - 1];
 							if (var2 != null && var2.x >= 0 && var2.x < 13312 && var2.y >= 0 && var2.y < 13312) {
 								var1.sourceX = var2.x;
 								var1.sourceY = var2.y;
@@ -76,7 +76,7 @@ public class class170 extends class163 {
 							if (var3 == Client.localPlayerIndex) {
 								var4 = class17.localPlayer;
 							} else {
-								var4 = ModeWhere.field4623.field1341[var3];
+								var4 = ModeWhere.worldView.players[var3];
 							}
 
 							if (var4 != null && var4.x >= 0 && var4.x < 13312 && var4.y >= 0 && var4.y < 13312) {
@@ -88,9 +88,9 @@ public class class170 extends class163 {
 					}
 
 					if (var1.targetIndex > 0) {
-						var2 = var0.field1343[var1.targetIndex - 1];
+						var2 = var0.npcs[var1.targetIndex - 1];
 						if (var2 != null && var2.x >= 0 && var2.x < 13312 && var2.y >= 0 && var2.y < 13312) {
-							var1.setDestination(var2.x, var2.y, SoundSystem.method856(var0, var2.x, var2.y, var1.plane) - var1.endHeight, Client.cycle);
+							var1.setDestination(var2.x, var2.y, SoundSystem.getTileHeight(var0, var2.x, var2.y, var1.plane) - var1.endHeight, Client.cycle);
 						}
 					}
 
@@ -99,16 +99,16 @@ public class class170 extends class163 {
 						if (var3 == Client.localPlayerIndex) {
 							var4 = class17.localPlayer;
 						} else {
-							var4 = var0.field1341[var3];
+							var4 = var0.players[var3];
 						}
 
 						if (var4 != null && var4.x >= 0 && var4.x < 13312 && var4.y >= 0 && var4.y < 13312) {
-							var1.setDestination(var4.x, var4.y, SoundSystem.method856(var0, var4.x, var4.y, var1.plane) - var1.endHeight, Client.cycle);
+							var1.setDestination(var4.x, var4.y, SoundSystem.getTileHeight(var0, var4.x, var4.y, var1.plane) - var1.endHeight, Client.cycle);
 						}
 					}
 
 					var1.advance(Client.graphicsCycle);
-					var0.field1331.drawEntity(var0.field1348, (int)var1.x, (int)var1.y, (int)var1.z, 60, var1, var1.yaw, -1L, false);
+					var0.scene.drawEntity(var0.plane, (int)var1.x, (int)var1.y, (int)var1.z, 60, var1, var1.yaw, -1L, false);
 				}
 			} else {
 				var1.remove();

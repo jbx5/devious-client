@@ -109,9 +109,9 @@ public class class157 extends class147 {
 			} else {
 				int var5;
 				if (var0 == ScriptOpcodes.COORD) {
-					var3 = class358.scene.field1348;
-					var4 = (class17.localPlayer.x >> 7) + class358.scene.field1337;
-					var5 = (class17.localPlayer.y >> 7) + class358.scene.field1333;
+					var3 = class358.topLevelWorldView.plane;
+					var4 = (class17.localPlayer.x >> 7) + class358.topLevelWorldView.baseX;
+					var5 = (class17.localPlayer.y >> 7) + class358.topLevelWorldView.baseY;
 					Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = (var4 << 14) + var5 + (var3 << 28);
 					return 1;
 				} else if (var0 == ScriptOpcodes.COORDX) {

@@ -89,24 +89,24 @@ public class class146 extends class147 {
 				int var35 = WorldMapScaleHandler.method6094(ViewportMouse.ViewportMouse_entityTags[var9]);
 				int var17 = var35;
 				int var18 = class109.method2774(ViewportMouse.ViewportMouse_entityTags[var9]);
-				int var20 = class105.method2748(ViewportMouse.ViewportMouse_entityTags[var9]);
+				int var20 = class105.Entity_unpackID(ViewportMouse.ViewportMouse_entityTags[var9]);
 				int var21 = var20;
 				int var22 = class294.method5940(var9);
 				if (var22 == 2047) {
 					var22 = -1;
 				}
 
-				class101 var23 = null;
-				if (var22 >= 0 && class358.scene.field1347[var22] != null) {
-					var23 = class358.scene.field1347[var22].field4947;
+				WorldView var23 = null;
+				if (var22 >= 0 && class358.topLevelWorldView.worldEntities[var22] != null) {
+					var23 = class358.topLevelWorldView.worldEntities[var22].worldView;
 				} else if (var22 == -1) {
-					var23 = class358.scene;
+					var23 = class358.topLevelWorldView;
 				}
 
 				if (var23 != null) {
-					int var24 = var23.field1348;
+					int var24 = var23.plane;
 					int var28;
-					if (var18 == 2 && var23.field1331.getObjectFlags(var24, var15, var35, var31) >= 0) {
+					if (var18 == 2 && var23.scene.getObjectFlags(var24, var15, var35, var31) >= 0) {
 						ObjectComposition var25 = HitSplatDefinition.getObjectDefinition(var20);
 						if (var25.transforms != null) {
 							var25 = var25.transform();
@@ -118,18 +118,18 @@ public class class146 extends class147 {
 
 						PendingSpawn var26 = null;
 
-						for (PendingSpawn var27 = (PendingSpawn)var23.field1342.last(); var27 != null; var27 = (PendingSpawn)var23.field1342.previous()) {
-							if (var24 == var27.field1200 && var15 == var27.field1192 && var17 == var27.field1196 && var21 == var27.field1193) {
+						for (PendingSpawn var27 = (PendingSpawn)var23.pendingSpawns.last(); var27 != null; var27 = (PendingSpawn)var23.pendingSpawns.previous()) {
+							if (var24 == var27.plane && var15 == var27.x && var17 == var27.y && var21 == var27.field1193) {
 								var26 = var27;
 								break;
 							}
 						}
 
 						if (Client.isItemSelected == 1) {
-							class194.method3796("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(65535) + var25.name, 1, var21, var15, var17, -1, false, var22);
+							class194.insertMenuItem("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(65535) + var25.name, 1, var21, var15, var17, -1, false, var22);
 						} else if (Client.isSpellSelected) {
 							if ((GrandExchangeOfferUnitPriceComparator.selectedSpellFlags & 4) == 4) {
-								class194.method3796(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(65535) + var25.name, 2, var21, var15, var17, -1, false, var22);
+								class194.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(65535) + var25.name, 2, var21, var15, var17, -1, false, var22);
 							}
 						} else {
 							String[] var43 = var25.actions;
@@ -157,74 +157,74 @@ public class class146 extends class147 {
 											var29 = 1001;
 										}
 
-										class194.method3796(var43[var28], HttpAuthenticationHeader.colorStartTag(65535) + var25.name, var29, var21, var15, var17, -1, false, var22);
+										class194.insertMenuItem(var43[var28], HttpAuthenticationHeader.colorStartTag(65535) + var25.name, var29, var21, var15, var17, -1, false, var22);
 									}
 								}
 							}
 
-							class194.method3796("Examine", HttpAuthenticationHeader.colorStartTag(65535) + var25.name, 1002, var25.id, var15, var17, -1, false, var22);
+							class194.insertMenuItem("Examine", HttpAuthenticationHeader.colorStartTag(65535) + var25.name, 1002, var25.id, var15, var17, -1, false, var22);
 						}
 					}
 
 					int var36;
 					Player var37;
-					class103 var44;
+					NPC var44;
 					int[] var45;
 					if (var18 == 1) {
-						class103 var39 = var23.field1343[var21];
+						NPC var39 = var23.npcs[var21];
 						if (var39 == null) {
 							continue;
 						}
 
-						if (var39.field1359.size == 1 && (var39.x & 127) == 64 && (var39.y & 127) == 64) {
-							for (var36 = 0; var36 < var23.field1344; ++var36) {
-								var44 = var23.field1343[var23.field1345[var36]];
-								if (var44 != null && var39 != var44 && var44.field1359.size == 1 && var44.x == var39.x && var39.y == var44.y) {
-									class4.method16(var44, var23.field1345[var36], var15, var17, var22);
+						if (var39.definition.size == 1 && (var39.x & 127) == 64 && (var39.y & 127) == 64) {
+							for (var36 = 0; var36 < var23.npcCount; ++var36) {
+								var44 = var23.npcs[var23.npcIndices[var36]];
+								if (var44 != null && var39 != var44 && var44.definition.size == 1 && var44.x == var39.x && var39.y == var44.y) {
+									class4.addNpcToMenu(var44, var23.npcIndices[var36], var15, var17, var22);
 								}
 							}
 
-							var36 = var23.field1336.field1415;
-							var45 = var23.field1336.field1416;
+							var36 = var23.playerUpdateManager.playerCount;
+							var45 = var23.playerUpdateManager.playerIndices;
 
 							for (var28 = 0; var28 < var36; ++var28) {
-								var37 = var23.field1341[var45[var28]];
+								var37 = var23.players[var45[var28]];
 								if (var37 != null && var39.x == var37.x && var37.y == var39.y) {
-									class28.method423(var37, var45[var28], var15, var17, var22);
+									class28.addPlayerToMenu(var37, var45[var28], var15, var17, var22);
 								}
 							}
 						}
 
-						class4.method16(var39, var21, var15, var17, var22);
+						class4.addNpcToMenu(var39, var21, var15, var17, var22);
 					}
 
 					if (var18 == 0) {
-						Player var40 = var23.field1341[var21];
+						Player var40 = var23.players[var21];
 						if (var40 == null) {
 							continue;
 						}
 
 						if ((var40.x & 127) == 64 && (var40.y & 127) == 64) {
-							for (var36 = 0; var36 < var23.field1344; ++var36) {
-								var44 = var23.field1343[var23.field1345[var36]];
-								if (var44 != null && var44.field1359.size == 1 && var44.x == var40.x && var44.y == var40.y) {
-									class4.method16(var44, var23.field1345[var36], var15, var17, var22);
+							for (var36 = 0; var36 < var23.npcCount; ++var36) {
+								var44 = var23.npcs[var23.npcIndices[var36]];
+								if (var44 != null && var44.definition.size == 1 && var44.x == var40.x && var44.y == var40.y) {
+									class4.addNpcToMenu(var44, var23.npcIndices[var36], var15, var17, var22);
 								}
 							}
 
-							var36 = var23.field1336.field1415;
-							var45 = var23.field1336.field1416;
+							var36 = var23.playerUpdateManager.playerCount;
+							var45 = var23.playerUpdateManager.playerIndices;
 
 							for (var28 = 0; var28 < var36; ++var28) {
-								var37 = var23.field1341[var45[var28]];
+								var37 = var23.players[var45[var28]];
 								if (var37 != null && var37 != var40 && var40.x == var37.x && var40.y == var37.y) {
-									class28.method423(var37, var45[var28], var15, var17, var22);
+									class28.addPlayerToMenu(var37, var45[var28], var15, var17, var22);
 								}
 							}
 						}
 
 						if (var21 != Client.combatTargetPlayerIndex) {
-							class28.method423(var40, var21, var15, var17, var22);
+							class28.addPlayerToMenu(var40, var21, var15, var17, var22);
 						} else {
 							var4 = var31;
 							var6 = var22;
@@ -232,15 +232,15 @@ public class class146 extends class147 {
 					}
 
 					if (var18 == 3) {
-						NodeDeque var41 = var23.field1349[var24][var15][var17];
+						NodeDeque var41 = var23.groundItems[var24][var15][var17];
 						if (var41 != null) {
 							for (TileItem var42 = (TileItem)var41.first(); var42 != null; var42 = (TileItem)var41.next()) {
 								ItemComposition var46 = KeyHandler.ItemDefinition_get(var42.id);
 								if (Client.isItemSelected == 1) {
-									class194.method3796("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 16, var42.id, var15, var17, -1, false, var22);
+									class194.insertMenuItem("Use", Client.field545 + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 16, var42.id, var15, var17, -1, false, var22);
 								} else if (Client.isSpellSelected) {
 									if ((GrandExchangeOfferUnitPriceComparator.selectedSpellFlags & 1) == 1) {
-										class194.method3796(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 17, var42.id, var15, var17, -1, false, var22);
+										class194.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 17, var42.id, var15, var17, -1, false, var22);
 									}
 								} else {
 									String[] var38 = var46.groundActions;
@@ -269,14 +269,14 @@ public class class146 extends class147 {
 													var30 = 22;
 												}
 
-												class194.method3796(var38[var47], HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, var30, var42.id, var15, var17, -1, false, var22);
+												class194.insertMenuItem(var38[var47], HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, var30, var42.id, var15, var17, -1, false, var22);
 											} else if (var47 == 2) {
-												class194.method3796("Take", HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 20, var42.id, var15, var17, -1, false, var22);
+												class194.insertMenuItem("Take", HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 20, var42.id, var15, var17, -1, false, var22);
 											}
 										}
 									}
 
-									class194.method3796("Examine", HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 1004, var42.id, var15, var17, -1, false, var22);
+									class194.insertMenuItem("Examine", HttpAuthenticationHeader.colorStartTag(16748608) + var46.name, 1004, var42.id, var15, var17, -1, false, var22);
 								}
 							}
 						}
@@ -288,8 +288,8 @@ public class class146 extends class147 {
 		if (-1L != var4) {
 			var9 = (int)(var4 >>> 0 & 127L);
 			int var11 = WorldMapScaleHandler.method6094(var4);
-			Player var12 = class358.scene.field1341[Client.combatTargetPlayerIndex];
-			class28.method423(var12, Client.combatTargetPlayerIndex, var9, var11, var6);
+			Player var12 = class358.topLevelWorldView.players[Client.combatTargetPlayerIndex];
+			class28.addPlayerToMenu(var12, Client.combatTargetPlayerIndex, var9, var11, var6);
 		}
 
 	}

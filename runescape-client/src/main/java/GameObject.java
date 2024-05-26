@@ -28,27 +28,32 @@ public final class GameObject {
 	@ObfuscatedGetter(
 		intValue = 1852068695
 	)
-	int field3018;
+	@Export("z")
+	int z;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = -167741727
 	)
-	int field3019;
+	@Export("centerX")
+	int centerX;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = 1721181881
 	)
-	int field3020;
+	@Export("centerY")
+	int centerY;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "Lju;"
 	)
-	public Renderable field3021;
+	@Export("renderable")
+	public Renderable renderable;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
 		intValue = -1056312055
 	)
-	int field3022;
+	@Export("orientation")
+	int orientation;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = -1825265297
@@ -82,21 +87,24 @@ public final class GameObject {
 	@ObfuscatedGetter(
 		intValue = 1422878921
 	)
-	int field3028;
+	@Export("lastDrawn")
+	int lastDrawn;
 	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
 		longValue = 6238027129843276915L
 	)
-	public long field3029;
+	@Export("tag")
+	public long tag;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
 		intValue = 2016533671
 	)
-	int field3017;
+	@Export("flags")
+	int flags;
 
 	GameObject() {
-		this.field3029 = 0L;
-		this.field3017 = 0;
+		this.tag = 0L;
+		this.flags = 0;
 	}
 
 	@ObfuscatedName("ak")

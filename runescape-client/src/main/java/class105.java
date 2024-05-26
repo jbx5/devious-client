@@ -73,7 +73,8 @@ public class class105 {
 	}
 
 	@ObfuscatedName("aa")
-	public static int method2748(long var0) {
+	@Export("Entity_unpackID")
+	public static int Entity_unpackID(long var0) {
 		return (int)(var0 >>> 17 & 4294967295L);
 	}
 
@@ -94,7 +95,7 @@ public class class105 {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				SoundSystem.method854(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
+				SoundSystem.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 				Client.field535 = 0;
 				Client.field566 = 0;
 				Client.timer.method8391(var0);

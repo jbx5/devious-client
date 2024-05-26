@@ -111,7 +111,7 @@ public class Coord {
 		garbageValue = "-535769687"
 	)
 	static void method6523(int var0, int var1, int var2, int var3, int var4) {
-		NodeDeque var5 = ModeWhere.field4623.field1349[var0][var1][var2];
+		NodeDeque var5 = ModeWhere.worldView.groundItems[var0][var1][var2];
 		if (var5 != null) {
 			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
 				if ((var3 & 32767) == var6.id && var4 == var6.quantity) {
@@ -121,10 +121,10 @@ public class Coord {
 			}
 
 			if (var5.last() == null) {
-				ModeWhere.field4623.field1349[var0][var1][var2] = null;
+				ModeWhere.worldView.groundItems[var0][var1][var2] = null;
 			}
 
-			class349.method6551(var0, var1, var2);
+			class349.updateItemPile(var0, var1, var2);
 		}
 
 	}

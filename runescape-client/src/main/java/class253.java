@@ -4,7 +4,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jk")
-public class class253 extends class260 {
+public class class253 extends Projection
+{
 	@ObfuscatedName("az")
 	@Export("Tiles_shapes")
 	static byte[][][] Tiles_shapes;
@@ -33,8 +34,8 @@ public class class253 extends class260 {
 	@ObfuscatedSignature(
 		descriptor = "(Lju;IIIIJ)V"
 	)
-	void vmethod5146(Renderable var1, int var2, int var3, int var4, int var5, long var6) {
-		var1.vmethod5205(var2, this.field2790, var3, var4, var5, var6);
+	void draw(Renderable var1, int var2, int var3, int var4, int var5, long var6) {
+		var1.draw(var2, this.field2790, var3, var4, var5, var6);
 	}
 
 	@ObfuscatedName("al")
@@ -42,7 +43,7 @@ public class class253 extends class260 {
 		descriptor = "(Ljy;Lkg;IIIB)V",
 		garbageValue = "30"
 	)
-	void vmethod5147(Scene var1, SceneTilePaint var2, int var3, int var4, int var5) {
+	void drawTileUnderlay(Scene var1, SceneTilePaint var2, int var3, int var4, int var5) {
 		int var6;
 		int var7 = var6 = var4 << 7;
 		int var8;
@@ -79,7 +80,7 @@ public class class253 extends class260 {
 		descriptor = "(Ljy;Lke;IIB)V",
 		garbageValue = "14"
 	)
-	void vmethod5148(Scene var1, SceneTileModel var2, int var3, int var4) {
+	void drawTileOverlay(Scene var1, SceneTileModel var2, int var3, int var4) {
 		int var5 = var2.vertexX.length;
 
 		for (int var6 = 0; var6 < var5; ++var6) {

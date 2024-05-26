@@ -100,24 +100,24 @@ public class class352 {
 		var0.packetBuffer.writeInt(0);
 		var0.packetBuffer.writeInt(class133.field1602.hash);
 		var0.packetBuffer.writeIntME(class333.field3643.hash);
-		var0.packetBuffer.writeIntIME(class332.field3638.hash);
-		var0.packetBuffer.writeIntIME(class260.archive2.hash);
-		var0.packetBuffer.method9712(class327.field3564.hash);
-		var0.packetBuffer.writeIntIME(HttpResponse.field105.hash);
+		var0.packetBuffer.writeIntLE(class332.field3638.hash);
+		var0.packetBuffer.writeIntLE(Projection.archive2.hash);
+		var0.packetBuffer.writeIntIME(class327.field3564.hash);
+		var0.packetBuffer.writeIntLE(HttpResponse.field105.hash);
 		var0.packetBuffer.writeInt(class177.archive8.hash);
 		var0.packetBuffer.writeInt(ClientPacket.field3374.hash);
 		var0.packetBuffer.writeInt(class135.field1637.hash);
-		var0.packetBuffer.writeIntIME(class138.archive10.hash);
+		var0.packetBuffer.writeIntLE(class138.archive10.hash);
 		var0.packetBuffer.writeInt(class141.field1656.hash);
-		var0.packetBuffer.writeIntIME(class324.field3552.hash);
-		var0.packetBuffer.method9712(LoginState.archive4.hash);
+		var0.packetBuffer.writeIntLE(class324.field3552.hash);
+		var0.packetBuffer.writeIntIME(LoginState.archive4.hash);
 		var0.packetBuffer.writeInt(Varcs.field1452.hash);
-		var0.packetBuffer.writeIntIME(class438.archive12.hash);
+		var0.packetBuffer.writeIntLE(class438.archive12.hash);
 		var0.packetBuffer.writeIntME(WorldMapRegion.field3093.hash);
-		var0.packetBuffer.writeIntIME(SceneTilePaint.archive9.hash);
+		var0.packetBuffer.writeIntLE(SceneTilePaint.archive9.hash);
 		var0.packetBuffer.writeIntME(GameObject.archive6.hash);
-		var0.packetBuffer.method9712(class53.field370.hash);
-		var0.packetBuffer.writeIntIME(class104.archive13.hash);
+		var0.packetBuffer.writeIntIME(class53.field370.hash);
+		var0.packetBuffer.writeIntLE(class104.archive13.hash);
 	}
 
 	@ObfuscatedName("kl")

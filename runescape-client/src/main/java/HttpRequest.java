@@ -45,20 +45,22 @@ public class HttpRequest {
 	@Export("requestInitialized")
 	boolean requestInitialized;
 	@ObfuscatedName("aa")
-	boolean field49;
+	@Export("followRedirects")
+	boolean followRedirects;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
 		intValue = 1512635903
 	)
-	int field50;
+	@Export("connectionTimeout")
+	int connectionTimeout;
 
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URL;Lao;Lrt;Z)V"
 	)
 	public HttpRequest(URL var1, HttpMethod var2, HttpHeaders var3, boolean var4) throws IOException {
 		this.requestInitialized = false;
-		this.field49 = false;
-		this.field50 = 300000;
+		this.followRedirects = false;
+		this.connectionTimeout = 300000;
 		if (!var2.method68()) {
 			throw new UnsupportedEncodingException("Unsupported request method used " + var2.getName());
 		} else {
@@ -141,8 +143,8 @@ public class HttpRequest {
 				}
 			}
 
-			this.connection.setConnectTimeout(this.field50);
-			this.connection.setInstanceFollowRedirects(this.field49);
+			this.connection.setConnectTimeout(this.connectionTimeout);
+			this.connection.setInstanceFollowRedirects(this.followRedirects);
 			this.requestInitialized = true;
 		}
 	}

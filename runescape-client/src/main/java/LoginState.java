@@ -199,7 +199,7 @@ public class LoginState {
 		descriptor = "(Ldt;Ldh;IB)V",
 		garbageValue = "-81"
 	)
-	static final void method1226(class101 var0, Actor var1, int var2) {
-		MenuAction.method2115(var0, var1.x, var1.y, var2);
+	static final void method1226(WorldView var0, Actor var1, int var2) {
+		MenuAction.worldToScreen(var0, var1.x, var1.y, var2);
 	}
 }

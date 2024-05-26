@@ -336,6 +336,6 @@ public class KeyHandler implements KeyListener, FocusListener {
 	)
 	@Export("insertMenuItemNoShift")
 	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		class194.method3796(var0, var1, var2, var3, var4, var5, -1, false, -1);
+		class194.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false, -1);
 	}
 }

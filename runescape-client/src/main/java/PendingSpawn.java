@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
@@ -10,27 +11,32 @@ public final class PendingSpawn extends Node {
 	@ObfuscatedGetter(
 		intValue = 1855293411
 	)
-	int field1200;
+	@Export("plane")
+	int plane;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
 		intValue = 1008038753
 	)
-	int field1191;
+	@Export("type")
+	int type;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = 433863545
 	)
-	int field1192;
+	@Export("x")
+	int x;
 	@ObfuscatedName("az")
 	@ObfuscatedGetter(
 		intValue = -264142591
 	)
-	int field1196;
+	@Export("y")
+	int y;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
 		intValue = 106953625
 	)
-	int field1194;
+	@Export("objectId")
+	int objectId;
 	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
 		intValue = -1536759051
@@ -70,17 +76,19 @@ public final class PendingSpawn extends Node {
 	@ObfuscatedGetter(
 		intValue = 1187381017
 	)
-	int field1202;
+	@Export("delay")
+	int delay;
 	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
 		intValue = 1758720105
 	)
-	int field1203;
+	@Export("hitpoints")
+	int hitpoints;
 
 	PendingSpawn() {
 		this.field1199 = 31;
-		this.field1202 = 0;
-		this.field1203 = -1;
+		this.delay = 0;
+		this.hitpoints = -1;
 	}
 
 	@ObfuscatedName("ak")

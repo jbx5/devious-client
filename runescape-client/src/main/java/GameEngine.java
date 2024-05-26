@@ -959,10 +959,10 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 				var8 = new MilliClock();
 			}
 
-			class557.clock = (Clock)var8;
+			FillMode.clock = (Clock)var8;
 
 			while (stopTimeMs == 0L || class129.method3033() < stopTimeMs) {
-				AbstractSocket.gameCyclesToDo = class557.clock.wait(cycleDurationMillis, fiveOrOne);
+				AbstractSocket.gameCyclesToDo = FillMode.clock.wait(cycleDurationMillis, fiveOrOne);
 
 				for (int var5 = 0; var5 < AbstractSocket.gameCyclesToDo; ++var5) {
 					this.clientTick();

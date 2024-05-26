@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -248,8 +249,9 @@ public class class130 {
 		descriptor = "(Ldt;IIIIIILir;B)V",
 		garbageValue = "39"
 	)
-	static final void method3051(class101 var0, int var1, int var2, int var3, int var4, int var5, int var6, CollisionMap var7) {
-		if (!Client.isLowDetail || (var0.field1340[0][var2][var3] & 2) != 0 || (var0.field1340[var1][var2][var3] & 16) == 0) {
+	@Export("addObjects")
+	static final void addObjects(WorldView var0, int var1, int var2, int var3, int var4, int var5, int var6, CollisionMap var7) {
+		if (!Client.isLowDetail || (var0.tileSettings[0][var2][var3] & 2) != 0 || (var0.tileSettings[var1][var2][var3] & 16) == 0) {
 			if (var1 < Tiles.Tiles_minPlane) {
 				Tiles.Tiles_minPlane = var1;
 			}
@@ -267,7 +269,7 @@ public class class130 {
 
 			int var11;
 			int var12;
-			if (var9 + var2 <= var0.field1346) {
+			if (var9 + var2 <= var0.sizeX) {
 				var11 = (var9 >> 1) + var2;
 				var12 = var2 + (var9 + 1 >> 1);
 			} else {
@@ -277,7 +279,7 @@ public class class130 {
 
 			int var13;
 			int var14;
-			if (var3 + var10 <= var0.field1330) {
+			if (var3 + var10 <= var0.sizeY) {
 				var13 = var3 + (var10 >> 1);
 				var14 = var3 + (var10 + 1 >> 1);
 			} else {
@@ -285,11 +287,11 @@ public class class130 {
 				var14 = var3 + 1;
 			}
 
-			int[][] var15 = var0.field1339[var1];
+			int[][] var15 = var0.tileHeights[var1];
 			int var16 = var15[var12][var13] + var15[var11][var13] + var15[var11][var14] + var15[var12][var14] >> 2;
 			int var17 = (var2 << 7) + (var9 << 6);
 			int var18 = (var3 << 7) + (var10 << 6);
-			long var19 = KitDefinition.method3900(var2, var3, 2, var8.int1 == 0, var4, var0.field1335);
+			long var19 = KitDefinition.calculateTag(var2, var3, 2, var8.int1 == 0, var4, var0.id);
 			int var21 = (var5 << 6) + var6;
 			if (var8.int3 == 1) {
 				var21 += 256;
@@ -299,7 +301,7 @@ public class class130 {
 				SoundCache.createObjectSound(var1, var2, var3, var8, var5);
 			}
 
-			Scene var22 = var0.field1331;
+			Scene var22 = var0.scene;
 			Object var30;
 			if (var6 == 22) {
 				if (!Client.isLowDetail || var8.int1 != 0 || var8.interactType == 1 || var8.boolean2) {
@@ -520,7 +522,7 @@ public class class130 {
 								var23 = 16;
 								var24 = var22.getBoundaryObjectTag(var1, var2, var3);
 								if (var24 != 0L) {
-									var23 = HitSplatDefinition.getObjectDefinition(class105.method2748(var24)).int2;
+									var23 = HitSplatDefinition.getObjectDefinition(class105.Entity_unpackID(var24)).int2;
 								}
 
 								if (var8.animationId == -1 && var8.transforms == null) {
@@ -534,7 +536,7 @@ public class class130 {
 								var23 = 8;
 								var24 = var22.getBoundaryObjectTag(var1, var2, var3);
 								if (0L != var24) {
-									var23 = HitSplatDefinition.getObjectDefinition(class105.method2748(var24)).int2 / 2;
+									var23 = HitSplatDefinition.getObjectDefinition(class105.Entity_unpackID(var24)).int2 / 2;
 								}
 
 								if (var8.animationId == -1 && var8.transforms == null) {
@@ -557,7 +559,7 @@ public class class130 {
 								var23 = 8;
 								var24 = var22.getBoundaryObjectTag(var1, var2, var3);
 								if (0L != var24) {
-									var23 = HitSplatDefinition.getObjectDefinition(class105.method2748(var24)).int2 / 2;
+									var23 = HitSplatDefinition.getObjectDefinition(class105.Entity_unpackID(var24)).int2 / 2;
 								}
 
 								int var28 = var5 + 2 & 3;

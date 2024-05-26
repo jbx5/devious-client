@@ -79,7 +79,8 @@ public enum ModeWhere implements Enum {
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	static class101 field4623;
+	@Export("worldView")
+	static WorldView worldView;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
 		intValue = -478390221
@@ -259,33 +260,33 @@ public enum ModeWhere implements Enum {
 			var0 = Interpreter.field899.vmethod8779();
 			var1 = Interpreter.field899.vmethod8773();
 			var2 = Interpreter.field899.vmethod8774();
-			if (class33.field178 - var0 < -500 || class33.field178 - var0 > 500 || class76.field931 - var1 < -500 || class76.field931 - var1 > 500) {
-				class33.field178 = var0;
-				class76.field931 = var1;
+			if (class33.oculusOrbFocalPointX - var0 < -500 || class33.oculusOrbFocalPointX - var0 > 500 || class76.oculusOrbFocalPointY - var1 < -500 || class76.oculusOrbFocalPointY - var1 > 500) {
+				class33.oculusOrbFocalPointX = var0;
+				class76.oculusOrbFocalPointY = var1;
 			}
 
-			if (var0 != class33.field178) {
-				class33.field178 += (var0 - class33.field178) / 16;
+			if (var0 != class33.oculusOrbFocalPointX) {
+				class33.oculusOrbFocalPointX += (var0 - class33.oculusOrbFocalPointX) / 16;
 			}
 
-			if (var1 != class76.field931) {
-				class76.field931 += (var1 - class76.field931) / 16;
+			if (var1 != class76.oculusOrbFocalPointY) {
+				class76.oculusOrbFocalPointY += (var1 - class76.oculusOrbFocalPointY) / 16;
 			}
 
-			var3 = class33.field178 >> 7;
-			var4 = class76.field931 >> 7;
-			var5 = SoundSystem.method856(class358.scene, class33.field178, class76.field931, var2);
+			var3 = class33.oculusOrbFocalPointX >> 7;
+			var4 = class76.oculusOrbFocalPointY >> 7;
+			var5 = SoundSystem.getTileHeight(class358.topLevelWorldView, class33.oculusOrbFocalPointX, class76.oculusOrbFocalPointY, var2);
 			int var6 = 0;
 			int var7;
 			if (var3 > 3 && var4 > 3 && var3 < 100 && var4 < 100) {
 				for (var7 = var3 - 4; var7 <= var3 + 4; ++var7) {
 					for (int var8 = var4 - 4; var8 <= var4 + 4; ++var8) {
 						int var9 = var2;
-						if (var2 < 3 && (class358.scene.field1340[1][var7][var8] & 2) == 2) {
+						if (var2 < 3 && (class358.topLevelWorldView.tileSettings[1][var7][var8] & 2) == 2) {
 							var9 = var2 + 1;
 						}
 
-						int var10 = var5 - class358.scene.field1339[var9][var7][var8];
+						int var10 = var5 - class358.topLevelWorldView.tileHeights[var9][var7][var8];
 						if (var10 > var6) {
 							var6 = var10;
 						}
@@ -302,13 +303,13 @@ public enum ModeWhere implements Enum {
 				var7 = 32768;
 			}
 
-			if (var7 > Client.hintArrowNpcIndex) {
-				Client.hintArrowNpcIndex += (var7 - Client.hintArrowNpcIndex) / 24;
-			} else if (var7 < Client.hintArrowNpcIndex) {
-				Client.hintArrowNpcIndex += (var7 - Client.hintArrowNpcIndex) / 80;
+			if (var7 > Client.field610) {
+				Client.field610 += (var7 - Client.field610) / 24;
+			} else if (var7 < Client.field610) {
+				Client.field610 += (var7 - Client.field610) / 80;
 			}
 
-			TextureProvider.field2830 = SoundSystem.method856(class358.scene, var0, var1, var2) - Client.camFollowHeight;
+			TextureProvider.oculusOrbFocalPointZ = SoundSystem.getTileHeight(class358.topLevelWorldView, var0, var1, var2) - Client.camFollowHeight;
 		} else if (Client.oculusOrbState == 1) {
 			class11.method100();
 			short var11 = -1;
@@ -366,14 +367,14 @@ public enum ModeWhere implements Enum {
 					var0 = Client.field622 - class206.cameraYaw & 2047;
 					var4 = Rasterizer3D.Rasterizer3D_sine[var0];
 					var5 = Rasterizer3D.Rasterizer3D_cosine[var0];
-					class33.field178 += var4 * var3 / 65536;
-					class76.field931 += var3 * var5 / 65536;
+					class33.oculusOrbFocalPointX += var4 * var3 / 65536;
+					class76.oculusOrbFocalPointY += var3 * var5 / 65536;
 				}
 
 				if (Client.field623 != 0) {
-					TextureProvider.field2830 += var3 * Client.field623;
-					if (TextureProvider.field2830 > 0) {
-						TextureProvider.field2830 = 0;
+					TextureProvider.oculusOrbFocalPointZ += var3 * Client.field623;
+					if (TextureProvider.oculusOrbFocalPointZ > 0) {
+						TextureProvider.oculusOrbFocalPointZ = 0;
 					}
 				}
 			} else {
@@ -387,35 +388,35 @@ public enum ModeWhere implements Enum {
 		}
 
 		if (MouseHandler.MouseHandler_currentButton == 4 && class105.mouseCam) {
-			var0 = MouseHandler.MouseHandler_y - Client.field618;
-			Client.field616 = var0 * 2;
-			Client.field618 = var0 != -1 && var0 != 1 ? (MouseHandler.MouseHandler_y + Client.field618) / 2 : MouseHandler.MouseHandler_y;
-			var1 = Client.field826 - MouseHandler.MouseHandler_x;
-			Client.field665 = var1 * 2;
-			Client.field826 = var1 != -1 && var1 != 1 ? (MouseHandler.MouseHandler_x + Client.field826) / 2 : MouseHandler.MouseHandler_x;
+			var0 = MouseHandler.MouseHandler_y - Client.mouseCamClickedY;
+			Client.camAngleDX = var0 * 2;
+			Client.mouseCamClickedY = var0 != -1 && var0 != 1 ? (MouseHandler.MouseHandler_y + Client.mouseCamClickedY) / 2 : MouseHandler.MouseHandler_y;
+			var1 = Client.mouseCamClickedX - MouseHandler.MouseHandler_x;
+			Client.camAngleDY = var1 * 2;
+			Client.mouseCamClickedX = var1 != -1 && var1 != 1 ? (MouseHandler.MouseHandler_x + Client.mouseCamClickedX) / 2 : MouseHandler.MouseHandler_x;
 		} else {
 			if (Client.indexCheck.isValidIndexInRange(96)) {
-				Client.field665 += (-24 - Client.field665) / 2;
+				Client.camAngleDY += (-24 - Client.camAngleDY) / 2;
 			} else if (Client.indexCheck.isValidIndexInRange(97)) {
-				Client.field665 += (24 - Client.field665) / 2;
+				Client.camAngleDY += (24 - Client.camAngleDY) / 2;
 			} else {
-				Client.field665 /= 2;
+				Client.camAngleDY /= 2;
 			}
 
 			if (Client.indexCheck.isValidIndexInRange(98)) {
-				Client.field616 += (12 - Client.field616) / 2;
+				Client.camAngleDX += (12 - Client.camAngleDX) / 2;
 			} else if (Client.indexCheck.isValidIndexInRange(99)) {
-				Client.field616 += (-12 - Client.field616) / 2;
+				Client.camAngleDX += (-12 - Client.camAngleDX) / 2;
 			} else {
-				Client.field616 /= 2;
+				Client.camAngleDX /= 2;
 			}
 
-			Client.field618 = MouseHandler.MouseHandler_y;
-			Client.field826 = MouseHandler.MouseHandler_x;
+			Client.mouseCamClickedY = MouseHandler.MouseHandler_y;
+			Client.mouseCamClickedX = MouseHandler.MouseHandler_x;
 		}
 
-		Client.camAngleY = Client.field665 / 2 + Client.camAngleY & 2047;
-		Client.camAngleX += Client.field616 / 2;
+		Client.camAngleY = Client.camAngleDY / 2 + Client.camAngleY & 2047;
+		Client.camAngleX += Client.camAngleDX / 2;
 		if (Client.camAngleX < 128) {
 			Client.camAngleX = 128;
 		}

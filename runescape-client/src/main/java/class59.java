@@ -185,17 +185,17 @@ public class class59 {
 		garbageValue = "-944551946"
 	)
 	static boolean method1147(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		Scene var7 = ModeWhere.field4623.field1331;
+		Scene var7 = ModeWhere.worldView.scene;
 		int var9;
 		if (var5 == class379.field4408.field4411) {
 			BoundaryObject var8 = var7.getGameObject(var0, var1, var2);
 			if (var8 != null) {
-				var9 = class105.method2748(var8.tag);
+				var9 = class105.Entity_unpackID(var8.tag);
 				if (var3 == WorldMapDecorationType.field3995.id) {
-					var8.renderable1 = new DynamicObject(ModeWhere.field4623, var9, 2, var4 + 4, var0, var1, var2, var6, false, var8.renderable1);
-					var8.renderable2 = new DynamicObject(ModeWhere.field4623, var9, 2, var4 + 1 & 3, var0, var1, var2, var6, false, var8.renderable2);
+					var8.renderable1 = new DynamicObject(ModeWhere.worldView, var9, 2, var4 + 4, var0, var1, var2, var6, false, var8.renderable1);
+					var8.renderable2 = new DynamicObject(ModeWhere.worldView, var9, 2, var4 + 1 & 3, var0, var1, var2, var6, false, var8.renderable2);
 				} else {
-					var8.renderable1 = new DynamicObject(ModeWhere.field4623, var9, var3, var4, var0, var1, var2, var6, false, var8.renderable1);
+					var8.renderable1 = new DynamicObject(ModeWhere.worldView, var9, var3, var4, var0, var1, var2, var6, false, var8.renderable1);
 				}
 
 				return true;
@@ -203,18 +203,18 @@ public class class59 {
 		} else if (var5 == class379.field4407.field4411) {
 			WallDecoration var10 = var7.getFloorDecoration(var0, var1, var2);
 			if (var10 != null) {
-				var9 = class105.method2748(var10.tag);
+				var9 = class105.Entity_unpackID(var10.tag);
 				if (var3 != WorldMapDecorationType.field4004.id && var3 != WorldMapDecorationType.field4002.id) {
 					if (var3 == WorldMapDecorationType.field4000.id) {
-						var10.renderable1 = new DynamicObject(ModeWhere.field4623, var9, 4, var4 + 4, var0, var1, var2, var6, false, var10.renderable1);
+						var10.renderable1 = new DynamicObject(ModeWhere.worldView, var9, 4, var4 + 4, var0, var1, var2, var6, false, var10.renderable1);
 					} else if (var3 == WorldMapDecorationType.field3998.id) {
-						var10.renderable1 = new DynamicObject(ModeWhere.field4623, var9, 4, (var4 + 2 & 3) + 4, var0, var1, var2, var6, false, var10.renderable1);
+						var10.renderable1 = new DynamicObject(ModeWhere.worldView, var9, 4, (var4 + 2 & 3) + 4, var0, var1, var2, var6, false, var10.renderable1);
 					} else if (var3 == WorldMapDecorationType.field3996.id) {
-						var10.renderable1 = new DynamicObject(ModeWhere.field4623, var9, 4, var4 + 4, var0, var1, var2, var6, false, var10.renderable1);
-						var10.renderable2 = new DynamicObject(ModeWhere.field4623, var9, 4, (var4 + 2 & 3) + 4, var0, var1, var2, var6, false, var10.renderable2);
+						var10.renderable1 = new DynamicObject(ModeWhere.worldView, var9, 4, var4 + 4, var0, var1, var2, var6, false, var10.renderable1);
+						var10.renderable2 = new DynamicObject(ModeWhere.worldView, var9, 4, (var4 + 2 & 3) + 4, var0, var1, var2, var6, false, var10.renderable2);
 					}
 				} else {
-					var10.renderable1 = new DynamicObject(ModeWhere.field4623, var9, 4, var4, var0, var1, var2, var6, false, var10.renderable1);
+					var10.renderable1 = new DynamicObject(ModeWhere.worldView, var9, 4, var4, var0, var1, var2, var6, false, var10.renderable1);
 				}
 
 				return true;
@@ -226,13 +226,13 @@ public class class59 {
 			}
 
 			if (var11 != null) {
-				var11.field3021 = new DynamicObject(ModeWhere.field4623, class105.method2748(var11.field3029), var3, var4, var0, var1, var2, var6, false, var11.field3021);
+				var11.renderable = new DynamicObject(ModeWhere.worldView, class105.Entity_unpackID(var11.tag), var3, var4, var0, var1, var2, var6, false, var11.renderable);
 				return true;
 			}
 		} else if (var5 == class379.field4410.field4411) {
 			FloorDecoration var12 = var7.method4876(var0, var1, var2);
 			if (var12 != null) {
-				var12.renderable = new DynamicObject(ModeWhere.field4623, class105.method2748(var12.tag), 22, var4, var0, var1, var2, var6, false, var12.renderable);
+				var12.renderable = new DynamicObject(ModeWhere.worldView, class105.Entity_unpackID(var12.tag), 22, var4, var0, var1, var2, var6, false, var12.renderable);
 				return true;
 			}
 		}
@@ -245,25 +245,25 @@ public class class59 {
 		descriptor = "(Ldt;Luk;B)V",
 		garbageValue = "-113"
 	)
-	static void method1148(class101 var0, PacketBuffer var1) {
+	static void method1148(WorldView var0, PacketBuffer var1) {
 		int var2 = var1.readUnsignedByte();
-		if (var2 < var0.field1334) {
+		if (var2 < var0.worldEntityCount) {
 			throw new RuntimeException("dang");
-		} else if (var2 > var0.field1334) {
+		} else if (var2 > var0.worldEntityCount) {
 			throw new RuntimeException("dang!");
 		} else {
-			var0.field1334 = 0;
+			var0.worldEntityCount = 0;
 
 			int var3;
 			int var4;
 			for (var3 = 0; var3 < var2; ++var3) {
-				var4 = var0.field1350[var3];
-				class475 var15 = var0.field1347[var4];
+				var4 = var0.worldEntityIndices[var3];
+				WorldEntity var15 = var0.worldEntities[var4];
 				boolean var6 = var1.readUnsignedByte() == 1;
 				if (!var6) {
-					var0.field1347[var4] = null;
+					var0.worldEntities[var4] = null;
 				} else {
-					var0.field1350[++var0.field1334 - 1] = var4;
+					var0.worldEntityIndices[++var0.worldEntityCount - 1] = var4;
 					byte var7 = var1.readByte();
 					byte var16 = var1.readByte();
 					var15.field4940 = var1.readUnsignedShort();
@@ -289,13 +289,13 @@ public class class59 {
 
 			while (var1.method9604(Client.packetWriter.serverPacketLength) >= 10) {
 				var3 = var1.readUnsignedShort();
-				var0.field1350[++var0.field1334 - 1] = var3;
+				var0.worldEntityIndices[++var0.worldEntityCount - 1] = var3;
 				var4 = var1.readUnsignedByte();
 				int var5 = var1.readUnsignedByte();
 				int var21 = var4 * 8;
 				int var22 = var5 * 8;
-				class475 var8 = new class475(var3, var21, var22, class459.clientPreferences.method2577());
-				var0.field1347[var3] = var8;
+				WorldEntity var8 = new WorldEntity(var3, var21, var22, class459.clientPreferences.method2577());
+				var0.worldEntities[var3] = var8;
 				int var9 = var1.readUnsignedByte();
 				int var10 = var1.readUnsignedByte();
 				var8.method8763(var9, var10);
