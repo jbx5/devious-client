@@ -3546,6 +3546,11 @@
           "skill": "RANGED",
           "level": 37
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -3600,6 +3605,11 @@
         {
           "skill": "RANGED",
           "level": 37
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -4081,6 +4091,11 @@
           "var": 4536,
           "value": 1
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -4111,6 +4126,11 @@
           "var": 4536,
           "value": 1
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -4140,6 +4160,11 @@
           "type": "VARBIT",
           "var": 4536,
           "value": 1
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -4171,6 +4196,11 @@
           "var": 4536,
           "value": 1
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -4201,6 +4231,11 @@
           "var": 4536,
           "value": 1
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -4230,6 +4265,11 @@
           "type": "VARBIT",
           "var": 4536,
           "value": 1
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -5078,6 +5118,11 @@
           "skill": "AGILITY",
           "level": 26
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -5100,6 +5145,11 @@
           "skill": "AGILITY",
           "level": 26
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -5122,6 +5172,11 @@
           "skill": "AGILITY",
           "level": 5
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -5143,6 +5198,11 @@
         {
           "skill": "AGILITY",
           "level": 5
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -8993,6 +9053,11 @@
           "skill": "AGILITY",
           "level": 16
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -9014,6 +9079,11 @@
         {
           "skill": "AGILITY",
           "level": 16
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -10747,6 +10817,11 @@
           "skill": "AGILITY",
           "level": 33
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -10769,6 +10844,11 @@
           "skill": "AGILITY",
           "level": 33
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -10790,6 +10870,11 @@
         {
           "skill": "AGILITY",
           "level": 33
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -11382,32 +11467,32 @@
   {
     "source": {
       "x": 2572,
-      "y":  3271,
+      "y": 3271,
       "plane": 1
     },
     "destination": {
       "x": 2572,
-      "y":  3271,
+      "y": 3271,
       "plane": 2
     },
-    "action":  "Climb-up",
+    "action": "Climb-up",
     "objectId": 16683,
-    "requirements":  {}
+    "requirements": {}
   },
   {
     "source": {
       "x": 2572,
-      "y":  3271,
+      "y": 3271,
       "plane": 2
     },
     "destination": {
       "x": 2572,
-      "y":  3271,
+      "y": 3271,
       "plane": 1
     },
-    "action":  "Climb-down",
+    "action": "Climb-down",
     "objectId": 16679,
-    "requirements":  {}
+    "requirements": {}
   },
   {
     "source": {
@@ -13588,6 +13673,11 @@
           "skill": "AGILITY",
           "level": 21
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -13609,6 +13699,11 @@
         {
           "skill": "AGILITY",
           "level": 21
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -14025,6 +14120,11 @@
           "skill": "AGILITY",
           "level": 51
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -14046,6 +14146,11 @@
         {
           "skill": "AGILITY",
           "level": 51
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -14069,6 +14174,11 @@
           "skill": "AGILITY",
           "level": 51
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -14090,6 +14200,11 @@
         {
           "skill": "AGILITY",
           "level": 51
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -14113,6 +14228,11 @@
           "skill": "AGILITY",
           "level": 51
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -14134,6 +14254,11 @@
         {
           "skill": "AGILITY",
           "level": 51
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -17203,6 +17328,11 @@
           "skill": "AGILITY",
           "level": 38
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -17224,6 +17354,11 @@
         {
           "skill": "AGILITY",
           "level": 38
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -18684,6 +18819,11 @@
           "skill": "AGILITY",
           "level": 70
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -18705,6 +18845,11 @@
         {
           "skill": "AGILITY",
           "level": 70
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -18728,6 +18873,11 @@
           "skill": "AGILITY",
           "level": 70
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -18750,6 +18900,11 @@
           "skill": "AGILITY",
           "level": 70
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -18832,6 +18987,11 @@
           "skill": "AGILITY",
           "level": 63
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -18853,6 +19013,11 @@
         {
           "skill": "AGILITY",
           "level": 63
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -19206,6 +19371,11 @@
           "skill": "AGILITY",
           "level": 80
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -19227,6 +19397,11 @@
         {
           "skill": "AGILITY",
           "level": 80
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -28780,6 +28955,11 @@
           "skill": "AGILITY",
           "level": 72
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -28801,6 +28981,11 @@
         {
           "skill": "AGILITY",
           "level": 72
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -34908,6 +35093,11 @@
           "skill": "AGILITY",
           "level": 71
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -34930,6 +35120,11 @@
           "skill": "AGILITY",
           "level": 71
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -34951,6 +35146,11 @@
         {
           "skill": "AGILITY",
           "level": 71
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -34974,6 +35174,11 @@
           "skill": "AGILITY",
           "level": 71
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -34995,6 +35200,11 @@
         {
           "skill": "AGILITY",
           "level": 71
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -35018,6 +35228,11 @@
           "skill": "AGILITY",
           "level": 71
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -35040,6 +35255,11 @@
           "skill": "AGILITY",
           "level": 71
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -35061,6 +35281,11 @@
         {
           "skill": "AGILITY",
           "level": 71
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -35369,6 +35594,11 @@
           "skill": "AGILITY",
           "level": 42
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -35390,6 +35620,11 @@
         {
           "skill": "AGILITY",
           "level": 42
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -37144,6 +37379,11 @@
         {
           "skill": "AGILITY",
           "level": 52
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -49884,6 +50124,11 @@
           "skill": "AGILITY",
           "level": 86
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -49905,6 +50150,11 @@
         {
           "skill": "AGILITY",
           "level": 86
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -51593,6 +51843,11 @@
           "skill": "AGILITY",
           "level": 60
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -51614,6 +51869,11 @@
         {
           "skill": "AGILITY",
           "level": 60
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -56045,6 +56305,11 @@
           "skill": "AGILITY",
           "level": 50
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -56066,6 +56331,11 @@
         {
           "skill": "AGILITY",
           "level": 50
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -56848,6 +57118,11 @@
           "skill": "AGILITY",
           "level": 65
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -56870,6 +57145,11 @@
           "skill": "AGILITY",
           "level": 65
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -56891,6 +57171,11 @@
         {
           "skill": "AGILITY",
           "level": 65
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -56914,6 +57199,11 @@
           "skill": "AGILITY",
           "level": 65
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -56936,6 +57226,11 @@
           "skill": "AGILITY",
           "level": 65
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -56958,6 +57253,11 @@
           "skill": "AGILITY",
           "level": 65
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -56979,6 +57279,11 @@
         {
           "skill": "AGILITY",
           "level": 65
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -58604,6 +58909,11 @@
           "skill": "AGILITY",
           "level": 57
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -58625,6 +58935,11 @@
         {
           "skill": "AGILITY",
           "level": 57
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -59197,6 +59512,11 @@
           "skill": "AGILITY",
           "level": 55
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -59218,6 +59538,11 @@
         {
           "skill": "AGILITY",
           "level": 55
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -63816,6 +64141,11 @@
           "skill": "AGILITY",
           "level": 81
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -63838,6 +64168,11 @@
           "skill": "AGILITY",
           "level": 81
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -63860,6 +64195,11 @@
           "skill": "AGILITY",
           "level": 81
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -63881,6 +64221,11 @@
         {
           "skill": "AGILITY",
           "level": 81
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -63904,6 +64249,11 @@
           "skill": "AGILITY",
           "level": 61
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -63925,6 +64275,11 @@
         {
           "skill": "AGILITY",
           "level": 61
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -64829,6 +65184,11 @@
           "skill": "AGILITY",
           "level": 64
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -64851,6 +65211,11 @@
           "skill": "AGILITY",
           "level": 64
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -64873,6 +65238,11 @@
           "skill": "AGILITY",
           "level": 64
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -64894,6 +65264,11 @@
         {
           "skill": "AGILITY",
           "level": 64
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -64916,6 +65291,11 @@
         {
           "skill": "AGILITY",
           "level": 64
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -65440,6 +65820,11 @@
           "var": 4493,
           "value": 0
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -65470,6 +65855,11 @@
           "var": 4493,
           "value": 0
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -65499,6 +65889,11 @@
           "type": "VARBIT",
           "var": 4493,
           "value": 0
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -65732,6 +66127,11 @@
           "skill": "AGILITY",
           "level": 41
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -65754,6 +66154,11 @@
           "skill": "AGILITY",
           "level": 41
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -65776,6 +66181,11 @@
           "skill": "AGILITY",
           "level": 43
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -65797,6 +66207,11 @@
         {
           "skill": "AGILITY",
           "level": 43
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -65820,6 +66235,11 @@
           "skill": "AGILITY",
           "level": 43
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -65842,6 +66262,11 @@
           "skill": "AGILITY",
           "level": 43
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -66014,6 +66439,11 @@
           "skill": "AGILITY",
           "level": 47
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -66035,6 +66465,11 @@
         {
           "skill": "AGILITY",
           "level": 47
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -66058,6 +66493,11 @@
           "skill": "AGILITY",
           "level": 47
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -66080,6 +66520,11 @@
           "skill": "AGILITY",
           "level": 47
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -66102,6 +66547,11 @@
           "skill": "AGILITY",
           "level": 43
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -66123,6 +66573,11 @@
         {
           "skill": "AGILITY",
           "level": 43
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -66146,6 +66601,11 @@
           "skill": "AGILITY",
           "level": 43
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -66167,6 +66627,11 @@
         {
           "skill": "AGILITY",
           "level": 43
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -67150,6 +67615,11 @@
           "skill": "AGILITY",
           "level": 44
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -67171,6 +67641,11 @@
         {
           "skill": "AGILITY",
           "level": 44
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -67253,6 +67728,11 @@
         {
           "skill": "AGILITY",
           "level": 60
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -67276,6 +67756,11 @@
           "skill": "AGILITY",
           "level": 60
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -67298,6 +67783,11 @@
           "skill": "AGILITY",
           "level": 60
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -67319,6 +67809,11 @@
         {
           "skill": "AGILITY",
           "level": 60
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -67537,6 +68032,11 @@
           "skill": "AGILITY",
           "level": 20
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -67558,6 +68058,11 @@
         {
           "skill": "AGILITY",
           "level": 20
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -67581,6 +68086,11 @@
           "skill": "AGILITY",
           "level": 20
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -67602,6 +68112,11 @@
         {
           "skill": "AGILITY",
           "level": 20
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -67625,6 +68140,11 @@
           "skill": "AGILITY",
           "level": 20
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -67646,6 +68166,11 @@
         {
           "skill": "AGILITY",
           "level": 20
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -69034,6 +69559,11 @@
           "skill": "AGILITY",
           "level": 69
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -69055,6 +69585,11 @@
         {
           "skill": "AGILITY",
           "level": 69
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -69078,6 +69613,11 @@
           "skill": "AGILITY",
           "level": 73
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -69100,6 +69640,11 @@
           "skill": "AGILITY",
           "level": 25
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -69121,6 +69666,11 @@
         {
           "skill": "AGILITY",
           "level": 25
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -69712,6 +70262,11 @@
           "skill": "AGILITY",
           "level": 48
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -69733,6 +70288,11 @@
         {
           "skill": "AGILITY",
           "level": 48
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -69756,6 +70316,11 @@
           "skill": "AGILITY",
           "level": 56
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -69777,6 +70342,11 @@
         {
           "skill": "AGILITY",
           "level": 56
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -71980,6 +72550,11 @@
           "skill": "AGILITY",
           "level": 59
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72002,6 +72577,11 @@
           "skill": "AGILITY",
           "level": 59
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72023,6 +72603,11 @@
         {
           "skill": "AGILITY",
           "level": 68
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -72046,6 +72631,11 @@
           "skill": "AGILITY",
           "level": 68
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72068,6 +72658,11 @@
           "skill": "AGILITY",
           "level": 85
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72089,6 +72684,11 @@
         {
           "skill": "AGILITY",
           "level": 85
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -72652,6 +73252,11 @@
           "skill": "AGILITY",
           "level": 76
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72673,6 +73278,11 @@
         {
           "skill": "AGILITY",
           "level": 76
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -72860,6 +73470,11 @@
           "skill": "AGILITY",
           "level": 70
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72881,6 +73496,11 @@
         {
           "skill": "AGILITY",
           "level": 70
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -72904,6 +73524,11 @@
           "skill": "AGILITY",
           "level": 64
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -72926,6 +73551,11 @@
           "skill": "AGILITY",
           "level": 64
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -73038,6 +73668,11 @@
           "skill": "AGILITY",
           "level": 13
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -73059,6 +73694,11 @@
         {
           "skill": "AGILITY",
           "level": 13
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -74226,6 +74866,11 @@
           "skill": "AGILITY",
           "level": 35
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -74247,6 +74892,11 @@
         {
           "skill": "AGILITY",
           "level": 35
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -75832,6 +76482,11 @@
           "skill": "AGILITY",
           "level": 10
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -75853,6 +76508,11 @@
         {
           "skill": "AGILITY",
           "level": 10
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -76582,6 +77242,11 @@
           "skill": "AGILITY",
           "level": 8
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -76603,6 +77268,11 @@
         {
           "skill": "AGILITY",
           "level": 22
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -77283,6 +77953,11 @@
           "skill": "AGILITY",
           "level": 17
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -77473,6 +78148,11 @@
           "skill": "AGILITY",
           "level": 34
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -77495,6 +78175,11 @@
           "skill": "AGILITY",
           "level": 34
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -77516,6 +78201,11 @@
         {
           "skill": "AGILITY",
           "level": 17
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -77638,6 +78328,11 @@
           "skill": "AGILITY",
           "level": 75
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -77659,6 +78354,11 @@
         {
           "skill": "AGILITY",
           "level": 75
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -77712,6 +78412,11 @@
           "skill": "AGILITY",
           "level": 72
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -77733,6 +78438,11 @@
         {
           "skill": "AGILITY",
           "level": 72
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -78278,6 +78988,11 @@
           "skill": "AGILITY",
           "level": 29
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -78300,6 +79015,11 @@
           "skill": "AGILITY",
           "level": 29
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -78322,6 +79042,11 @@
           "skill": "AGILITY",
           "level": 62
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -78343,6 +79068,11 @@
         {
           "skill": "AGILITY",
           "level": 62
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -78965,7 +79695,6 @@
     "objectId": 3255,
     "requirements": {}
   },
-
   {
     "source": {
       "x": 2142,
@@ -79460,21 +80189,22 @@
     "action": "Cross",
     "objectId": 3255,
     "requirements": {}
-  },{
-  "source": {
-    "x": 2480,
-    "y": 9714,
-    "plane": 0
   },
-  "destination": {
-    "x": 2480,
-    "y": 9712,
-    "plane": 0
+  {
+    "source": {
+      "x": 2480,
+      "y": 9714,
+      "plane": 0
+    },
+    "destination": {
+      "x": 2480,
+      "y": 9712,
+      "plane": 0
+    },
+    "action": "Climb-over",
+    "objectId": 3309,
+    "requirements": {}
   },
-  "action": "Climb-over",
-  "objectId": 3309,
-  "requirements": {}
-},
   {
     "source": {
       "x": 2480,
@@ -79629,6 +80359,11 @@
           "skill": "THIEVING",
           "level": 50
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -79651,6 +80386,11 @@
           "skill": "THIEVING",
           "level": 50
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -79673,6 +80413,11 @@
           "skill": "THIEVING",
           "level": 50
         }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
+        }
       ]
     }
   },
@@ -79694,6 +80439,11 @@
         {
           "skill": "THIEVING",
           "level": 50
+        }
+      ],
+      "worldRequirements": [
+        {
+          "memberWorld": true
         }
       ]
     }
@@ -80130,7 +80880,7 @@
       "plane": 0
     },
     "action": "Climb-over",
-    "objectId":  2618,
+    "objectId": 2618,
     "requirements": {
       "memberWorld": true
     }
@@ -80147,7 +80897,7 @@
       "plane": 0
     },
     "action": "Climb-over",
-    "objectId":  2618,
+    "objectId": 2618,
     "requirements": {
       "memberWorld": true
     }
@@ -80164,7 +80914,7 @@
       "plane": 1
     },
     "action": "Climb-up",
-    "objectId":  11794,
+    "objectId": 11794,
     "requirements": {
       "memberWorld": true
     }
@@ -80181,7 +80931,7 @@
       "plane": 0
     },
     "action": "Climb-down",
-    "objectId":  11795,
+    "objectId": 11795,
     "requirements": {
       "memberWorld": true
     }
