@@ -2187,34 +2187,6 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@MethodHook(value = "drawLoggedIn", end = true)
-	@Inject
-	public final void drawLoggedIn()
-	{
-		if (client.isMenuOpen())
-		{
-			renderMenu();
-		}
-	}
-
-	//@FIX_BROKEN
-	//@Replace("renderMenu")
-	@Inject
-	public static boolean renderMenu()
-	{
-		BeforeMenuRender event = new BeforeMenuRender();
-		client.getCallbacks().post(event);
-		if (event.isConsumed())
-		{
-			return true;
-		}
-		else
-		{
-			client.drawOriginalMenu(255);
-			return true;
-		}
-	}
-
 
 	/*@Copy("addWidgetItemMenuItem")
 	@Replace("addWidgetItemMenuItem")
@@ -3444,12 +3416,17 @@ public abstract class RSClientMixin implements RSClient
 		return var1 >= 0 && var1 < var2.length ? var2[var1] : null;
 	}
 
+	// Render menu
 	@Inject
 	public static boolean drawMenu()
 	{
 		BeforeMenuRender event = new BeforeMenuRender();
 		client.getCallbacks().post(event);
-		return event.isConsumed();
+		if (!event.isConsumed())
+		{
+			client.drawOriginalMenu(255);
+		}
+		return true;
 	}
 
 	@Inject
