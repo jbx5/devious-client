@@ -4,82 +4,88 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cl")
+@ObfuscatedName("cd")
 @Implements("Decimator")
 public class Decimator {
-	@ObfuscatedName("vy")
+	@ObfuscatedName("wf")
 	@ObfuscatedSignature(
-		descriptor = "Lra;"
+		descriptor = "Lpr;"
 	)
-	@Export("masterDisk")
-	static ArchiveDisk masterDisk;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Loc;"
-	)
-	public static AbstractArchive field395;
-	@ObfuscatedName("at")
+	public static class397 field413;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 2080347225
+		intValue = 1676912385
 	)
 	@Export("inputRate")
 	int inputRate;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1126485821
+		intValue = -1468640071
 	)
 	@Export("outputRate")
 	int outputRate;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@Export("table")
 	int[][] table;
 
 	public Decimator(int var1, int var2) {
 		if (var2 != var1) {
-			int var3 = ItemContainer.method2301(var1, var2);
-			var1 /= var3;
-			var2 /= var3;
+			int var4 = var1;
+			int var5 = var2;
+			if (var2 > var1) {
+				var4 = var2;
+				var5 = var1;
+			}
+
+			while (var5 != 0) {
+				int var6 = var4 % var5;
+				var4 = var5;
+				var5 = var6;
+			}
+
+			var1 /= var4;
+			var2 /= var4;
 			this.inputRate = var1;
 			this.outputRate = var2;
 			this.table = new int[var1][14];
 
-			for (int var4 = 0; var4 < var1; ++var4) {
-				int[] var5 = this.table[var4];
-				double var6 = (double)var4 / (double)var1 + 6.0D;
-				int var8 = (int)Math.floor(1.0D + (var6 - 7.0D));
-				if (var8 < 0) {
-					var8 = 0;
+			for (int var7 = 0; var7 < var1; ++var7) {
+				int[] var8 = this.table[var7];
+				double var9 = (double)var7 / (double)var1 + 6.0D;
+				int var11 = (int)Math.floor(1.0D + (var9 - 7.0D));
+				if (var11 < 0) {
+					var11 = 0;
 				}
 
-				int var9 = (int)Math.ceil(7.0D + var6);
-				if (var9 > 14) {
-					var9 = 14;
+				int var12 = (int)Math.ceil(var9 + 7.0D);
+				if (var12 > 14) {
+					var12 = 14;
 				}
 
-				for (double var10 = (double)var2 / (double)var1; var8 < var9; ++var8) {
-					double var12 = ((double)var8 - var6) * 3.141592653589793D;
-					double var14 = var10;
-					if (var12 < -1.0E-4D || var12 > 1.0E-4D) {
-						var14 = var10 * (Math.sin(var12) / var12);
+				for (double var13 = (double)var2 / (double)var1; var11 < var12; ++var11) {
+					double var15 = 3.141592653589793D * ((double)var11 - var9);
+					double var17 = var13;
+					if (var15 < -1.0E-4D || var15 > 1.0E-4D) {
+						var17 = var13 * (Math.sin(var15) / var15);
 					}
 
-					var14 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var8 - var6));
-					var5[var8] = (int)Math.floor(0.5D + 65536.0D * var14);
+					var17 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var11 - var9));
+					var8[var11] = (int)Math.floor(0.5D + var17 * 65536.0D);
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([BI)[B",
-		garbageValue = "1061414363"
+		descriptor = "([BB)[B",
+		garbageValue = "19"
 	)
 	@Export("resample")
 	byte[] resample(byte[] var1) {
 		if (this.table != null) {
-			int var2 = (int)((long)var1.length * (long)this.outputRate / (long)this.inputRate) + 14;
+			int var2 = (int)((long)this.outputRate * (long)var1.length / (long)this.inputRate) + 14;
 			int[] var3 = new int[var2];
 			int var4 = 0;
 			int var5 = 0;
@@ -91,7 +97,7 @@ public class Decimator {
 
 				int var9;
 				for (var9 = 0; var9 < 14; ++var9) {
-					var3[var9 + var4] += var7 * var8[var9];
+					var3[var4 + var9] += var8[var9] * var7;
 				}
 
 				var5 += this.outputRate;
@@ -117,24 +123,24 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "446395893"
+		descriptor = "(IB)I",
+		garbageValue = "56"
 	)
 	@Export("scaleRate")
 	int scaleRate(int var1) {
 		if (this.table != null) {
-			var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate);
+			var1 = (int)((long)this.outputRate * (long)var1 / (long)this.inputRate);
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "512990791"
+		descriptor = "(IB)I",
+		garbageValue = "-12"
 	)
 	@Export("scalePosition")
 	int scalePosition(int var1) {
@@ -143,30 +149,5 @@ public class Decimator {
 		}
 
 		return var1;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "284284053"
-	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "888621734"
-	)
-	public static void method1085(boolean var0) {
-		if (var0 != class168.ItemDefinition_inMembersWorld) {
-			ItemComposition.ItemDefinition_cached.clear();
-			ItemComposition.ItemDefinition_cachedModels.clear();
-			ItemComposition.ItemDefinition_cachedSprites.clear();
-			class168.ItemDefinition_inMembersWorld = var0;
-		}
-
 	}
 }

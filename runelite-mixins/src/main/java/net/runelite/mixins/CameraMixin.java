@@ -312,4 +312,25 @@ public abstract class CameraMixin implements RSClient
 	{
 		setOculusOrbNormalSpeed(speed);
 	}
+
+	@Inject
+	@Override
+	public int getCameraX2()
+	{
+		return this.getTopLevelWorldView().getScene().getCameraX2();
+	}
+
+	@Inject
+	@Override
+	public int getCameraY2()
+	{
+		return this.getTopLevelWorldView().getScene().getCameraY2();
+	}
+
+	@Inject
+	@Override
+	public int getCameraZ2()
+	{
+		return this.getTopLevelWorldView().getScene().getCameraZ2();
+	}
 }

@@ -189,6 +189,20 @@ public class MenuOptionClicked
 	}
 
 	/**
+	 * Get world view id
+	 * @return
+	 */
+	public int getWorldViewId()
+	{
+		return menuEntry.getWorldViewId();
+	}
+
+	public void setWorldViewId(int worldViewId)
+	{
+		menuEntry.setWorldViewId(worldViewId);
+	}
+
+	/**
 	 * Get the widget this menu entry is on, if this is a menu entry
 	 * with an associated widget. Such as eg, CC_OP.
 	 * @return
@@ -246,5 +260,6 @@ public class MenuOptionClicked
 		this.setParam0(entry.getParam0());
 		this.setParam1(entry.getParam1());
 		this.setItemId(entry.getItemId());
+		this.setWorldViewId(entry.getWorldViewId());
 	}
 }

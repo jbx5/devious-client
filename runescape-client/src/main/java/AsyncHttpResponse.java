@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ap")
+@ObfuscatedName("as")
 @Implements("AsyncHttpResponse")
 public class AsyncHttpResponse {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("responseFuture")
 	Future responseFuture;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@Export("errorMessage")
 	String errorMessage;
 
@@ -19,15 +19,15 @@ public class AsyncHttpResponse {
 	}
 
 	AsyncHttpResponse(String var1) {
-		this.method261(var1);
+		this.method250(var1);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "2142627404"
+		garbageValue = "1423475742"
 	)
-	void method261(String var1) {
+	void method250(String var1) {
 		if (var1 == null) {
 			var1 = "";
 		}
@@ -40,40 +40,40 @@ public class AsyncHttpResponse {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "559620010"
+		garbageValue = "374540017"
 	)
 	@Export("getErrorMessage")
 	public final String getErrorMessage() {
 		return this.errorMessage;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-741032955"
+		garbageValue = "137471638"
 	)
 	@Export("hasError")
 	public boolean hasError() {
 		return this.errorMessage != null || this.responseFuture == null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "61"
+		descriptor = "(S)Z",
+		garbageValue = "-10056"
 	)
 	@Export("hasFinished")
 	public final boolean hasFinished() {
 		return this.hasError() ? true : this.responseFuture.isDone();
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)Laa;",
-		garbageValue = "644655777"
+		descriptor = "(I)Lad;",
+		garbageValue = "412355004"
 	)
 	@Export("await")
 	public final HttpResponse await() {
@@ -87,9 +87,64 @@ public class AsyncHttpResponse {
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
-				this.method261(var2);
+				this.method250(var2);
 				return new HttpResponse(var2);
 			}
+		}
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lij;",
+		garbageValue = "32"
+	)
+	public static HitSplatDefinition method260(int var0) {
+		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0);
+			var1 = new HitSplatDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1857648377"
+	)
+	@Export("updateToRememberedUsername")
+	static void updateToRememberedUsername() {
+		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+			if (class459.clientPreferences.getRememberedUsername() != null) {
+				Login.Login_username = class459.clientPreferences.getRememberedUsername();
+				Client.Login_isUsernameRemembered = true;
+			} else {
+				Client.Login_isUsernameRemembered = false;
+			}
+
+		}
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "635952730"
+	)
+	@Export("isCharPrintable")
+	public static boolean isCharPrintable(char var0) {
+		if (var0 >= ' ' && var0 <= '~') {
+			return true;
+		} else if (var0 >= 160 && var0 <= 255) {
+			return true;
+		} else {
+			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
 		}
 	}
 }

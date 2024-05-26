@@ -1,61 +1,97 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fg")
-public class class153 extends class144 {
-	@ObfuscatedName("ft")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
+@ObfuscatedName("ff")
+public class class153 extends class163 {
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -1128650951
 	)
-	static Archive field1726;
+	int field1728;
+	@ObfuscatedName("al")
+	byte field1729;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 1845299605
+	)
+	int field1730;
 	@ObfuscatedName("az")
-	String field1725;
+	String field1731;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfh;"
+		descriptor = "Lgx;"
 	)
-	final class147 this$0;
+	final class164 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfh;)V"
+		descriptor = "(Lgx;)V"
 	)
-	class153(class147 var1) {
+	class153(class164 var1) {
 		this.this$0 = var1;
+		this.field1728 = -1;
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lua;I)V",
+		garbageValue = "-406894472"
+	)
+	void vmethod3479(Buffer var1) {
+		this.field1728 = var1.readUnsignedShort();
+		this.field1729 = var1.readByte();
+		this.field1730 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1731 = var1.readStringCp1252NullTerminated();
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Lgo;I)V",
+		garbageValue = "-472458599"
+	)
+	void vmethod3480(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1728);
+		var2.rank = this.field1729;
+		var2.world = this.field1730;
+		var2.username = new Username(this.field1731);
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;I)V",
-		garbageValue = "1253598633"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1822669547"
 	)
-	void vmethod3420(Buffer var1) {
-		this.field1725 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lfp;B)V",
-		garbageValue = "-123"
-	)
-	void vmethod3419(ClanSettings var1) {
-		var1.name = this.field1725;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Loc;Ljava/lang/String;Ljava/lang/String;I)Lvl;",
-		garbageValue = "-802580152"
-	)
-	@Export("SpriteBuffer_getIndexedSpriteByName")
-	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
-		if (!var0.isValidFileName(var1, var2)) {
-			return null;
+	static String method3282() {
+		String var0;
+		if (class459.clientPreferences.isUsernameHidden()) {
+			String var2 = Login.Login_username;
+			String var1 = ItemLayer.method4585('*', var2.length());
+			var0 = var1;
 		} else {
-			int var3 = var0.getGroupId(var1);
-			int var4 = var0.getFileId(var3, var2);
-			return class384.method7113(var0, var3, var4);
+			var0 = Login.Login_username;
+		}
+
+		return var0;
+	}
+
+	@ObfuscatedName("cp")
+	@ObfuscatedSignature(
+		descriptor = "(Luy;I)Ljava/lang/Object;",
+		garbageValue = "-949314910"
+	)
+	static Object method3285(class533 var0) {
+		if (var0 == null) {
+			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+		} else {
+			switch(var0.field5265) {
+			case 0:
+				return Interpreter.Interpreter_stringStack[--class166.Interpreter_stringStackSize];
+			case 2:
+				return Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
+			default:
+				throw new IllegalStateException("popValueOfType() failure - unsupported type");
+			}
 		}
 	}
 }

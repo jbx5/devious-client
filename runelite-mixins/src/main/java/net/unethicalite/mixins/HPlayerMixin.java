@@ -22,7 +22,7 @@ public abstract class HPlayerMixin extends RSPlayerMixin implements RSPlayer
 	{
 		for (int i = 0; i < client.getCachedPlayers().length; i++)
 		{
-			RSPlayer player = client.getCachedPlayers()[i];
+			RSPlayer player = (RSPlayer) client.getCachedPlayers()[i];
 			if (player != null && player.equals(this))
 			{
 				return i;

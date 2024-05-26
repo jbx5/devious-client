@@ -4,174 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tr")
+@ObfuscatedName("ux")
 @Implements("LoginType")
 public class LoginType {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lux;"
 	)
 	@Export("oldscape")
 	public static final LoginType oldscape;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lux;"
 	)
-	static final LoginType field5111;
+	static final LoginType field5223;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lux;"
+	)
+	static final LoginType field5219;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Lux;"
+	)
+	static final LoginType field5222;
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lux;"
 	)
-	static final LoginType field5112;
+	static final LoginType field5228;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lux;"
+	)
+	static final LoginType field5224;
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lux;"
 	)
-	static final LoginType field5113;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Ltr;"
-	)
-	static final LoginType field5119;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Ltr;"
-	)
-	static final LoginType field5115;
+	static final LoginType field5225;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lux;"
 	)
-	static final LoginType field5121;
-	@ObfuscatedName("aw")
+	static final LoginType field5226;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Ltr;"
+		descriptor = "Lux;"
 	)
-	static final LoginType field5117;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Ltr;"
-	)
-	public static final LoginType field5118;
-	@ObfuscatedName("jc")
-	@ObfuscatedSignature(
-		descriptor = "Ljp;"
-	)
-	@Export("scene")
-	static Scene scene;
-	@ObfuscatedName("al")
+	public static final LoginType field5227;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1389160821
+		intValue = 781445249
 	)
-	public final int field5114;
-	@ObfuscatedName("as")
-	final String field5120;
+	final int field5220;
+	@ObfuscatedName("ah")
+	final String field5229;
 
 	static {
-		oldscape = new LoginType(7, 0, "", "");
-		field5111 = new LoginType(6, 1, "", "");
-		field5112 = new LoginType(0, 2, "", "");
-		field5113 = new LoginType(3, 3, "", "");
-		field5119 = new LoginType(5, 4, "", "");
-		field5115 = new LoginType(4, 5, "", "");
-		field5121 = new LoginType(8, 6, "", "");
-		field5117 = new LoginType(2, 7, "", "");
-		field5118 = new LoginType(1, -1, "", "", true, new LoginType[]{oldscape, field5111, field5112, field5119, field5113});
+		oldscape = new LoginType(2, 0, "", "");
+		field5223 = new LoginType(6, 1, "", "");
+		field5219 = new LoginType(8, 2, "", "");
+		field5222 = new LoginType(7, 3, "", "");
+		field5228 = new LoginType(4, 4, "", "");
+		field5224 = new LoginType(5, 5, "", "");
+		field5225 = new LoginType(0, 6, "", "");
+		field5226 = new LoginType(1, 7, "", "");
+		field5227 = new LoginType(3, -1, "", "", true, new LoginType[]{oldscape, field5223, field5219, field5228, field5222});
 	}
 
 	LoginType(int var1, int var2, String var3, String var4) {
-		this.field5114 = var1;
-		this.field5120 = var4;
+		this.field5220 = var1;
+		this.field5229 = var4;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Ltr;)V"
+		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lux;)V"
 	)
 	LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
-		this.field5114 = var1;
-		this.field5120 = var4;
+		this.field5220 = var1;
+		this.field5229 = var4;
 	}
 
 	public String toString() {
-		return this.field5120;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "649028774"
-	)
-	public static char method8998(char var0) {
-		switch(var0) {
-		case ' ':
-		case '-':
-		case '_':
-		case ' ':
-			return '_';
-		case '#':
-		case '[':
-		case ']':
-			return var0;
-		case 'À':
-		case 'Á':
-		case 'Â':
-		case 'Ã':
-		case 'Ä':
-		case 'à':
-		case 'á':
-		case 'â':
-		case 'ã':
-		case 'ä':
-			return 'a';
-		case 'Ç':
-		case 'ç':
-			return 'c';
-		case 'È':
-		case 'É':
-		case 'Ê':
-		case 'Ë':
-		case 'è':
-		case 'é':
-		case 'ê':
-		case 'ë':
-			return 'e';
-		case 'Í':
-		case 'Î':
-		case 'Ï':
-		case 'í':
-		case 'î':
-		case 'ï':
-			return 'i';
-		case 'Ñ':
-		case 'ñ':
-			return 'n';
-		case 'Ò':
-		case 'Ó':
-		case 'Ô':
-		case 'Õ':
-		case 'Ö':
-		case 'ò':
-		case 'ó':
-		case 'ô':
-		case 'õ':
-		case 'ö':
-			return 'o';
-		case 'Ù':
-		case 'Ú':
-		case 'Û':
-		case 'Ü':
-		case 'ù':
-		case 'ú':
-		case 'û':
-		case 'ü':
-			return 'u';
-		case 'ß':
-			return 'b';
-		case 'ÿ':
-		case 'Ÿ':
-			return 'y';
-		default:
-			return Character.toLowerCase(var0);
-		}
+		return this.field5229;
 	}
 }

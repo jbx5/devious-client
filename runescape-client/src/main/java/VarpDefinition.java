@@ -4,24 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ho")
+@ObfuscatedName("hw")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lor;"
 	)
 	@Export("VarpDefinition_archive")
 	static AbstractArchive VarpDefinition_archive;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 922606951
+	)
+	public static int field2003;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Llt;"
+		descriptor = "Llm;"
 	)
 	@Export("VarpDefinition_cached")
 	public static EvictingDualNodeHashTable VarpDefinition_cached;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -29181899
+		intValue = 50356669
 	)
 	@Export("type")
 	public int type;
@@ -34,10 +39,10 @@ public class VarpDefinition extends DualNode {
 		this.type = 0;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;I)V",
-		garbageValue = "-692078049"
+		descriptor = "(Lua;I)V",
+		garbageValue = "1805975731"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -51,10 +56,10 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;II)V",
-		garbageValue = "641849920"
+		descriptor = "(Lua;II)V",
+		garbageValue = "-161821348"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {

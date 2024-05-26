@@ -4,48 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ks")
+@ObfuscatedName("kw")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 2085532593
+		intValue = -1428899307
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lkr;"
+		descriptor = "Lks;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -204262685
+		intValue = 1836164871
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lkz;"
+		descriptor = "Llh;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1397963449
+		intValue = -1038049103
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 1893994907
+		intValue = 91279571
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnn;Lnn;ILkr;)V"
+		descriptor = "(Lnj;Lnj;ILks;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -54,16 +54,16 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		this.init();
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1169709590"
+		descriptor = "(S)V",
+		garbageValue = "202"
 	)
 	@Export("init")
 	void init() {
-		this.element = MouseRecorder.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(WidgetDefinition.WorldMapElement_get(this.element));
-		WorldMapElement var1 = WidgetDefinition.WorldMapElement_get(this.getElement());
+		this.element = HitSplatDefinition.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(WorldMapElement.WorldMapElement_get(this.element));
+		WorldMapElement var1 = WorldMapElement.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -75,59 +75,59 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1650655075"
+		garbageValue = "117980127"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkz;",
-		garbageValue = "-2083618685"
+		descriptor = "(B)Llh;",
+		garbageValue = "48"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "139624089"
+		garbageValue = "-601586149"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1778353617"
+		garbageValue = "-1569951837"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(ILdn;ZI)I",
-		garbageValue = "-996049144"
+		descriptor = "(II)Luy;",
+		garbageValue = "-834018017"
 	)
-	static int method5262(int var0, Script var1, boolean var2) {
-		if (var0 == 6809) {
-			int var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
-			ObjectComposition var4 = MouseRecorder.getObjectDefinition(var3);
-			Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-			return 1;
+	public static class533 method5497(int var0) {
+		int var1 = class531.field5260[var0];
+		if (var1 == 1) {
+			return class533.field5263;
+		} else if (var1 == 2) {
+			return class533.field5267;
 		} else {
-			return 2;
+			return var1 == 3 ? class533.field5266 : null;
 		}
 	}
 }

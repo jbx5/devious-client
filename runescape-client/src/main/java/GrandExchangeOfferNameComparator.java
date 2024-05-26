@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oj")
+@ObfuscatedName("pu")
 @Implements("GrandExchangeOfferNameComparator")
 final class GrandExchangeOfferNameComparator implements Comparator {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Log;Log;I)I",
-		garbageValue = "-602639414"
+		descriptor = "(Lpm;Lpm;I)I",
+		garbageValue = "-1795325400"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -25,26 +25,24 @@ final class GrandExchangeOfferNameComparator implements Comparator {
 		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)Luw;",
-		garbageValue = "1457262054"
+		descriptor = "(I)V",
+		garbageValue = "2010055297"
 	)
-	@Export("getDbRowType")
-	public static DbRowType getDbRowType(int var0) {
-		DbRowType var1 = (DbRowType)DbRowType.DBRowType_cache.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = DbRowType.field5175.takeFile(38, var0);
-			var1 = new DbRowType();
-			if (var2 != null) {
-				var1.method9168(new Buffer(var2));
-			}
-
-			var1.method9170();
-			DbRowType.DBRowType_cache.put(var1, (long)var0);
-			return var1;
-		}
+	static void method7382() {
+		Tiles.Tiles_minPlane = 99;
+		class197.Tiles_underlays = new short[4][104][104];
+		Tiles.Tiles_overlays = new short[4][104][104];
+		class253.Tiles_shapes = new byte[4][104][104];
+		AbstractByteArrayCopier.field3975 = new byte[4][104][104];
+		SongTask.field4795 = new int[4][105][105];
+		class202.Tiles_underlays2 = new byte[4][105][105];
+		class17.field84 = new int[105][105];
+		ParamComposition.Tiles_hue = new int[104];
+		class194.Tiles_saturation = new int[104];
+		Tiles.Tiles_lightness = new int[104];
+		class131.Tiles_hueMultiplier = new int[104];
+		Tiles.field1050 = new int[104];
 	}
 }

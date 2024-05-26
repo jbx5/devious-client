@@ -32,9 +32,9 @@ public class Movement
 
 	public static void setDestination(int sceneX, int sceneY)
 	{
-		Static.getClient().setSelectedSceneTileX(sceneX);
-		Static.getClient().setSelectedSceneTileY(sceneY);
-		Static.getClient().setViewportWalking(true);
+		Static.getClient().getTopLevelWorldView().getScene().setBaseX(sceneX);
+		Static.getClient().getTopLevelWorldView().getScene().setBaseY(sceneY);
+		Static.getClient().getTopLevelWorldView().getScene().setViewportWalking(true);
 	}
 
 	public static WorldPoint getDestination()

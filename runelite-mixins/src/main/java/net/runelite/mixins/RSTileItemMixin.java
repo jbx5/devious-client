@@ -178,12 +178,12 @@ public abstract class RSTileItemMixin implements RSTileItem
 		tileItem.setDespawnTime(despawnTime + client.getTickCount());
 		tileItem.setOwnership(ownership);
 		tileItem.setPrivate(isPrivate);
-		if (client.getGroundItemDeque()[z][x][y] == null)
+		if (client.getWorldView().getGroundItems()[z][x][y] == null)
 		{
-			client.getGroundItemDeque()[z][x][y] = client.newNodeDeque();
+			client.getWorldView().getGroundItems()[z][x][y] = client.newNodeDeque();
 		}
 
-		client.getGroundItemDeque()[z][x][y].addFirst(tileItem);
+		client.getWorldView().getGroundItems()[z][x][y].addFirst(tileItem);
 		client.updateItemPile(z, x, y);
 	}
 }

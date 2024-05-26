@@ -4,39 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ot")
+@ObfuscatedName("ob")
 @Implements("GameBuild")
 public class GameBuild {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lob;"
 	)
 	@Export("LIVE")
 	static final GameBuild LIVE;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lob;"
 	)
 	@Export("BUILDLIVE")
 	static final GameBuild BUILDLIVE;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lob;"
 	)
 	@Export("RC")
 	static final GameBuild RC;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lob;"
 	)
 	@Export("WIP")
 	static final GameBuild WIP;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -471809715
+		intValue = -405984643
 	)
 	@Export("buildId")
 	final int buildId;

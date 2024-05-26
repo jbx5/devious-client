@@ -4,94 +4,101 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cv")
+@ObfuscatedName("cy")
 @Implements("ObjectSound")
 public final class ObjectSound extends Node {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lps;"
+		descriptor = "Lpk;"
 	)
 	@Export("objectSounds")
 	static NodeDeque objectSounds;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ct")
 	@ObfuscatedGetter(
-		intValue = -927953281
+		intValue = -628097453
+	)
+	static int field866;
+	@ObfuscatedName("hv")
+	static int[] field869;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 1864766337
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -784486528
+		intValue = 56891629
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 762373049
+		intValue = -2142850895
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1924527011
+		intValue = -1066887777
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -1003361881
+		intValue = 1156688000
 	)
 	@Export("maxY")
 	int maxY;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = -2046732581
+	)
+	int field859;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -632801265
+		intValue = 1096256259
 	)
-	int field846;
-	@ObfuscatedName("aw")
+	int field858;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 912132477
-	)
-	int field847;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = 426447249
+		intValue = 844790461
 	)
 	@Export("soundEffectId")
 	int soundEffectId;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lbm;"
+		descriptor = "Lbz;"
 	)
 	@Export("stream1")
 	RawPcmStream stream1;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1111981983
+		intValue = 835726103
 	)
-	int field841;
-	@ObfuscatedName("ag")
+	int field867;
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 997080131
+		intValue = 1986008745
 	)
-	int field854;
-	@ObfuscatedName("ai")
+	int field868;
+	@ObfuscatedName("aq")
 	@Export("soundEffectIds")
 	int[] soundEffectIds;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1341306061
+		intValue = -114126391
 	)
-	int field843;
-	@ObfuscatedName("ar")
+	int field870;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lbm;"
+		descriptor = "Lbz;"
 	)
 	@Export("stream2")
 	RawPcmStream stream2;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lis;"
+		descriptor = "Lin;"
 	)
 	@Export("obj")
 	ObjectComposition obj;
@@ -103,10 +110,10 @@ public final class ObjectSound extends Node {
 	ObjectSound() {
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1862821053"
+		garbageValue = "1305777046"
 	)
 	@Export("set")
 	void set() {
@@ -114,176 +121,157 @@ public final class ObjectSound extends Node {
 		ObjectComposition var2 = this.obj.transform();
 		if (var2 != null) {
 			this.soundEffectId = var2.ambientSoundId;
-			this.field846 = var2.int7 * 16384;
-			this.field847 = var2.int8 * 16384;
-			this.field841 = var2.int5;
-			this.field854 = var2.int6;
+			this.field859 = var2.int7 * 16384;
+			this.field858 = var2.int8 * 16384;
+			this.field867 = var2.int5;
+			this.field868 = var2.int6;
 			this.soundEffectIds = var2.soundEffectIds;
 		} else {
 			this.soundEffectId = -1;
-			this.field846 = 0;
-			this.field847 = 0;
-			this.field841 = 0;
-			this.field854 = 0;
+			this.field859 = 0;
+			this.field858 = 0;
+			this.field867 = 0;
+			this.field868 = 0;
 			this.soundEffectIds = null;
 		}
 
 		if (var1 != this.soundEffectId && this.stream1 != null) {
-			HealthBarUpdate.pcmStreamMixer.removeSubStream(this.stream1);
+			class349.pcmStreamMixer.removeSubStream(this.stream1);
 			this.stream1 = null;
 		}
 
 	}
 
-	@ObfuscatedName("gc")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lta;",
-		garbageValue = "398370712"
+		descriptor = "(IB)Lhq;",
+		garbageValue = "103"
 	)
-	@Export("getPlatformInfo")
-	static PlatformInfo getPlatformInfo() {
-		return class166.platformInfo;
+	@Export("getInvDefinition")
+	public static InvDefinition getInvDefinition(int var0) {
+		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = InvDefinition.InvDefinition_archive.takeFile(5, var0);
+			var1 = new InvDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 
-	@ObfuscatedName("kg")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIII)V",
-		garbageValue = "-1343112272"
+		descriptor = "(IIB)Ldm;",
+		garbageValue = "79"
 	)
-	@Export("addPendingSpawnToScene")
-	static final void addPendingSpawnToScene(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		if (var2 >= 1 && var3 >= 1 && var2 <= 102 && var3 <= 102) {
-			if (Client.isLowDetail && var0 != class172.Client_plane) {
-				return;
-			}
-
-			long var8 = 0L;
-			boolean var10 = true;
-			boolean var11 = false;
-			boolean var12 = false;
-			if (var1 == 0) {
-				var8 = LoginType.scene.getBoundaryObjectTag(var0, var2, var3);
-			}
-
-			if (var1 == 1) {
-				var8 = LoginType.scene.getWallDecorationTag(var0, var2, var3);
-			}
-
-			if (var1 == 2) {
-				var8 = LoginType.scene.getGameObjectTag(var0, var2, var3);
-			}
-
-			if (var1 == 3) {
-				var8 = LoginType.scene.getFloorDecorationTag(var0, var2, var3);
-			}
-
-			int var13;
-			ObjectComposition var14;
-			if (var8 != 0L) {
-				var13 = LoginType.scene.getObjectFlags(var0, var2, var3, var8);
-				int var25 = NpcOverrides.Entity_unpackID(var8);
-				int var26 = var13 & 31;
-				int var27 = var13 >> 6 & 3;
-				var14 = MouseRecorder.getObjectDefinition(var25);
-				if (var14 != null && var14.hasSound()) {
-					int var17 = var14.sizeX;
-					int var18 = var14.sizeY;
-					if (var27 == 1 || var27 == 3) {
-						var17 = var14.sizeY;
-						var18 = var14.sizeX;
+	@Export("getScript")
+	static Script getScript(int var0, int var1) {
+		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
+		if (var2 != null) {
+			return var2;
+		} else {
+			String var3 = String.valueOf(var0);
+			int var4 = class438.archive12.getGroupId(var3);
+			if (var4 == -1) {
+				return null;
+			} else {
+				byte[] var5 = class438.archive12.takeFileFlat(var4);
+				if (var5 != null) {
+					if (var5.length <= 1) {
+						return null;
 					}
 
-					int var19 = (var17 + var2) * 128;
-					int var20 = (var18 + var3) * 128;
-					int var15 = var2 * 128;
-					int var16 = var3 * 128;
-					int var21 = var14.ambientSoundId;
-					int var22 = var14.int7 * 16384;
-					int var23 = var14.int8 * 16384;
-					if (var14.transforms != null) {
-						ObjectComposition var24 = var14.transform();
-						if (var24 != null) {
-							var21 = var24.ambientSoundId;
-							var22 = var24.int7 * 16384;
-							var23 = var24.int8 * 16384;
-						}
-					}
-
-					Object var10000 = null;
-
-					for (ObjectSound var28 = (ObjectSound)objectSounds.last(); var28 != null; var28 = (ObjectSound)objectSounds.previous()) {
-						if (var0 == var28.plane && var15 == var28.x * 128 && var16 == var28.y * 16384 && var19 == var28.maxX * 16384 && var20 == var28.maxY * 16384 && var21 == var28.soundEffectId && var22 == var28.field846 && var23 == var28.field847) {
-							if (var28.stream1 != null) {
-								HealthBarUpdate.pcmStreamMixer.removeSubStream(var28.stream1);
-								var28.stream1 = null;
-							}
-
-							if (var28.stream2 != null) {
-								HealthBarUpdate.pcmStreamMixer.removeSubStream(var28.stream2);
-								var28.stream2 = null;
-							}
-
-							var28.remove();
-							break;
-						}
-
-						var10000 = null;
+					var2 = LoginScreenAnimation.newScript(var5);
+					if (var2 != null) {
+						Script.Script_cached.put(var2, (long)(var0 << 16));
+						return var2;
 					}
 				}
 
-				if (var1 == 0) {
-					LoginType.scene.removeBoundaryObject(var0, var2, var3);
-					if (var14.interactType != 0) {
-						Client.collisionMaps[var0].method4358(var2, var3, var26, var27, var14.boolean1);
-					}
-				}
-
-				if (var1 == 1) {
-					LoginType.scene.removeWallDecoration(var0, var2, var3);
-				}
-
-				if (var1 == 2) {
-					LoginType.scene.removeGameObject(var0, var2, var3);
-					if (var2 + var14.sizeX > 103 || var3 + var14.sizeX > 103 || var2 + var14.sizeY > 103 || var3 + var14.sizeY > 103) {
-						return;
-					}
-
-					if (var14.interactType != 0) {
-						Client.collisionMaps[var0].setFlagOffNonSquare(var2, var3, var14.sizeX, var14.sizeY, var27, var14.boolean1);
-					}
-				}
-
-				if (var1 == 3) {
-					LoginType.scene.removeFloorDecoration(var0, var2, var3);
-					if (var14.interactType == 1) {
-						Client.collisionMaps[var0].method4361(var2, var3);
-					}
-				}
+				return null;
 			}
+		}
+	}
 
-			if (var4 >= 0) {
-				var13 = var0;
-				if (var0 < 3 && (Tiles.Tiles_renderFlags[1][var2][var3] & 2) == 2) {
-					var13 = var0 + 1;
-				}
+	@ObfuscatedName("bg")
+	@ObfuscatedSignature(
+		descriptor = "(Lba;B)V",
+		garbageValue = "46"
+	)
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
+		}
 
-				ServerPacket.method5935(var0, var13, var2, var3, var4, var5, var6, var7, LoginType.scene, Client.collisionMaps[var0]);
-				var14 = MouseRecorder.getObjectDefinition(var4);
-				if (var14 != null && var14.hasSound()) {
-					JagNetThread.createObjectSound(var13, var2, var3, var14, var5);
-				}
-			}
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
 		}
 
 	}
 
-	@ObfuscatedName("no")
+	@ObfuscatedName("hn")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "0"
+		descriptor = "(IZZZZZI)Lot;",
+		garbageValue = "1244681496"
 	)
-	static final void method1921(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		NPC.clientPreferences.updateAreaSoundEffectsVolume(var0);
+	static Archive method1963(int var0, boolean var1, boolean var2, boolean var3, boolean var4, boolean var5) {
+		ArchiveDisk var6 = null;
+		if (JagexCache.JagexCache_dat2File != null) {
+			var6 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, class74.JagexCache_idxFiles[var0], 1000000);
+		}
+
+		return new Archive(var6, class332.masterDisk, HttpMethod.field32, var0, var1, var2, var3, var4, var5);
+	}
+
+	@ObfuscatedName("mq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1165354324"
+	)
+	static void method1954() {
+		if (Client.isSpellSelected) {
+			Widget var0 = AsyncRestClient.widgetDefinition.getWidgetChild(Strings.selectedSpellWidget, Client.selectedSpellChildIndex);
+			if (var0 != null && var0.onTargetLeave != null) {
+				ScriptEvent var1 = new ScriptEvent();
+				var1.widget = var0;
+				var1.args = var0.onTargetLeave;
+				class371.runScriptEvent(var1);
+			}
+
+			Client.selectedSpellItemId = -1;
+			Client.isSpellSelected = false;
+			class324.invalidateWidget(var0);
+		}
+	}
+
+	@ObfuscatedName("oi")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "111"
+	)
+	static final void method1966() {
+		PacketBufferNode var0 = WorldMapElement.getPacketBufferNode(ClientPacket.field3329, Client.packetWriter.isaacCipher);
+		Client.packetWriter.addNode(var0);
+		Interpreter.field895 = true;
+
+		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+			if (var1.type == 0 || var1.type == 3) {
+				MouseHandler.closeInterface(var1, true);
+			}
+		}
+
+		if (Client.meslayerContinueWidget != null) {
+			class324.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		Interpreter.field895 = false;
 	}
 }

@@ -2,80 +2,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gt")
-public class class161 {
-	@ObfuscatedName("az")
+@ObfuscatedName("gn")
+public class class161 extends class147 {
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		longValue = 2768228157651656441L
+		intValue = 748264935
 	)
-	long field1780;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		longValue = -310999304387576023L
-	)
-	public long field1781;
-	@ObfuscatedName("af")
+	int field1798;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lpr;"
+		descriptor = "Lfu;"
 	)
-	IterableNodeDeque field1786;
+	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lur;)V"
+		descriptor = "(Lfu;)V"
 	)
-	public class161(Buffer var1) {
-		this.field1781 = -1L;
-		this.field1786 = new IterableNodeDeque();
-		this.method3356(var1);
+	class161(class150 var1) {
+		this.this$0 = var1;
+		this.field1798 = -1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;B)V",
-		garbageValue = "79"
+		descriptor = "(Lua;I)V",
+		garbageValue = "1738227110"
 	)
-	void method3356(Buffer var1) {
-		this.field1780 = var1.readLong();
-		this.field1781 = var1.readLong();
-
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-			Object var3;
-			if (var2 == 1) {
-				var3 = new class156(this);
-			} else if (var2 == 4) {
-				var3 = new class167(this);
-			} else if (var2 == 3) {
-				var3 = new class152(this);
-			} else if (var2 == 2) {
-				var3 = new class150(this);
-			} else {
-				if (var2 != 5) {
-					throw new RuntimeException("");
-				}
-
-				var3 = new class157(this);
-			}
-
-			((class160)var3).vmethod3414(var1);
-			this.field1786.addFirst((Node)var3);
-		}
-
+	void vmethod3486(Buffer var1) {
+		this.field1798 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;B)V",
-		garbageValue = "2"
+		descriptor = "(Lgc;B)V",
+		garbageValue = "100"
 	)
-	public void method3357(ClanChannel var1) {
-		if (this.field1780 == var1.key && this.field1781 == var1.field1795) {
-			for (class160 var2 = (class160)this.field1786.last(); var2 != null; var2 = (class160)this.field1786.previous()) {
-				var2.vmethod3413(var1);
-			}
-
-			++var1.field1795;
-		} else {
-			throw new RuntimeException("");
-		}
+	void vmethod3490(ClanSettings var1) {
+		var1.method3329(this.field1798);
 	}
 }

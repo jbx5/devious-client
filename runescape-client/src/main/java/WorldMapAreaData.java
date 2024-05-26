@@ -6,29 +6,29 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ln")
+@ObfuscatedName("lt")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
+	@ObfuscatedName("ap")
+	HashSet field3243;
+	@ObfuscatedName("ae")
+	HashSet field3241;
 	@ObfuscatedName("ax")
-	HashSet field3162;
-	@ObfuscatedName("ar")
-	HashSet field3163;
-	@ObfuscatedName("aj")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("dl")
+	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;Lur;IZB)V",
-		garbageValue = "87"
+		descriptor = "(Lua;Lua;IZS)V",
+		garbageValue = "172"
 	)
-	void method5777(Buffer var1, Buffer var2, int var3, boolean var4) {
-		this.method5290(var1, var3);
+	void method6037(Buffer var1, Buffer var2, int var3, boolean var4) {
+		this.method5602(var1, var3);
 		int var5 = var2.readUnsignedShort();
-		this.field3162 = new HashSet(var5);
+		this.field3243 = new HashSet(var5);
 
 		int var6;
 		for (var6 = 0; var6 < var5; ++var6) {
@@ -40,11 +40,11 @@ public class WorldMapAreaData extends WorldMapArea {
 				continue;
 			}
 
-			this.field3162.add(var7);
+			this.field3243.add(var7);
 		}
 
 		var6 = var2.readUnsignedShort();
-		this.field3163 = new HashSet(var6);
+		this.field3241 = new HashSet(var6);
 
 		for (int var10 = 0; var10 < var6; ++var10) {
 			WorldMapData_1 var8 = new WorldMapData_1();
@@ -55,16 +55,16 @@ public class WorldMapAreaData extends WorldMapArea {
 				continue;
 			}
 
-			this.field3163.add(var8);
+			this.field3241.add(var8);
 		}
 
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("df")
+	@ObfuscatedName("dj")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;ZB)V",
-		garbageValue = "1"
+		descriptor = "(Lua;ZI)V",
+		garbageValue = "1569316140"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -80,25 +80,5 @@ public class WorldMapAreaData extends WorldMapArea {
 			}
 		}
 
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "16028"
-	)
-	static final int method5783(int var0, int var1) {
-		if (var0 == -1) {
-			return 12345678;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
-		}
 	}
 }

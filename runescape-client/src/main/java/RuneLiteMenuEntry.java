@@ -198,6 +198,11 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		return parent;
 	}
 
+	public WorldView getWorldView()
+	{
+		return (WorldView) client.getWorldView(this.getWorldViewId());
+	}
+
 	@Override
 	public boolean isForceLeftClick() {
 		return Client.menuShiftClick[this.idx];
@@ -206,6 +211,19 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	@Override
 	public MenuEntry setForceLeftClick(boolean forceLeftClick) {
 		Client.menuShiftClick[this.idx] = forceLeftClick;
+		return this;
+	}
+
+	@Override
+	public int getWorldViewId()
+	{
+		return client.getMenuWorldViewIds()[this.idx];
+	}
+
+	@Override
+	public MenuEntry setWorldViewId(int worldViewId)
+	{
+		client.getMenuWorldViewIds()[this.idx] = worldViewId;
 		return this;
 	}
 
@@ -238,6 +256,8 @@ public class RuneLiteMenuEntry implements MenuEntry {
 			} else if (this.getItemId() != menuEntry.getItemId()) {
 				return false;
 			} else if (this.isForceLeftClick() != menuEntry.isForceLeftClick()) {
+				return false;
+			} else if (this.getWorldViewId() != menuEntry.getWorldViewId()) {
 				return false;
 			} else if (this.isDeprioritized() != menuEntry.isDeprioritized()) {
 				return false;
@@ -414,6 +434,7 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		hash = hash * 59 + this.getParam1();
 		hash = hash * 59 + this.getItemId();
 		hash = hash * 59 + (this.isForceLeftClick() ? 79 : 97);
+		hash = hash * 59 + this.getWorldViewId();
 		hash = hash * 59 + (this.isDeprioritized() ? 79 : 97);
 		String option = this.getOption();
 		hash = hash * 59 + (option == null ? 43 : option.hashCode());
@@ -430,6 +451,6 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		if(parent instanceof RuneLiteMenuEntry) {
 			pidx = ((RuneLiteMenuEntry)this.getParent()).getIdx();
 		}
-		return "MenuEntryImpl(idx="+ this.idx + ", parent=" + pidx + ", getOption=" + this.getOption() + ", getTarget=" + this.getTarget() + ", getIdentifier=" + this.getIdentifier() + ", getType=" + this.getType() + ", getParam0=" + this.getParam0() + ", getParam1=" + this.getParam1() + ", getItemId=" + this.getItemId() + ", isForceLeftClick=" + this.isForceLeftClick() + ", isDeprioritized=" + this.isDeprioritized() + ")";
+		return "MenuEntryImpl(idx="+ this.idx + ", parent=" + pidx + ", getOption=" + this.getOption() + ", getTarget=" + this.getTarget() + ", getIdentifier=" + this.getIdentifier() + ", getType=" + this.getType() + ", getParam0=" + this.getParam0() + ", getParam1=" + this.getParam1() + ", getItemId=" + this.getItemId() + ", isForceLeftClick=" + this.isForceLeftClick() + ", getWorldViewId=" + this.getWorldViewId() + ", isDeprioritized=" + this.isDeprioritized() + ")";
 	}
 }

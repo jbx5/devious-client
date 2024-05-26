@@ -1,108 +1,167 @@
 import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("rq")
+@ObfuscatedName("sm")
 @Implements("AbstractSocket")
 public abstract class AbstractSocket {
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = -2003525899
+	)
+	@Export("gameCyclesToDo")
+	static int gameCyclesToDo;
+
 	AbstractSocket() {
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-1478013130"
+		garbageValue = "581185594"
 	)
 	@Export("isAvailable")
 	public abstract boolean isAvailable(int var1) throws IOException;
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1012786095"
+		descriptor = "(S)I",
+		garbageValue = "4373"
 	)
 	@Export("available")
 	public abstract int available() throws IOException;
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "257991578"
+		garbageValue = "502953664"
 	)
 	@Export("readUnsignedByte")
 	public abstract int readUnsignedByte() throws IOException;
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "([BIIB)I",
-		garbageValue = "1"
+		garbageValue = "2"
 	)
 	@Export("read")
 	public abstract int read(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "1580683310"
+		garbageValue = "1364608830"
 	)
 	@Export("write")
 	public abstract void write(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "124"
+		garbageValue = "-41"
 	)
 	@Export("close")
 	public abstract void close();
 
-	@ObfuscatedName("ln")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;B)V",
-		garbageValue = "-1"
+		descriptor = "(II)I",
+		garbageValue = "-1036201039"
 	)
-	static void method8256(int var0, String var1) {
-		int var2 = Players.Players_count;
-		int[] var3 = Players.Players_indices;
-		boolean var4 = false;
-		Username var5 = new Username(var1, class127.loginType);
+	public static int method8788(int var0) {
+		return class495.field5020[var0 & 16383];
+	}
 
-		for (int var6 = 0; var6 < var2; ++var6) {
-			Player var7 = Client.players[var3[var6]];
-			if (var7 != null && var7 != class133.localPlayer && var7.username != null && var7.username.equals(var5)) {
-				PacketBufferNode var8;
-				if (var0 == 1) {
-					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortLE(var3[var6]);
-					var8.packetBuffer.writeByte(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 4) {
-					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAddLE(var3[var6]);
-					var8.packetBuffer.writeByteNeg(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 6) {
-					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortLE(var3[var6]);
-					var8.packetBuffer.writeByteNeg(0);
-					Client.packetWriter.addNode(var8);
-				} else if (var0 == 7) {
-					var8 = FadeInTask.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeByteNeg(0);
-					var8.packetBuffer.writeShortLE(var3[var6]);
-					Client.packetWriter.addNode(var8);
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "([BIII)Z",
+		garbageValue = "-2007553994"
+	)
+	static final boolean method8801(byte[] var0, int var1, int var2) {
+		boolean var3 = true;
+		Buffer var4 = new Buffer(var0);
+		int var5 = -1;
+
+		label72:
+		while (true) {
+			int var6 = var4.readIncrSmallSmart();
+			if (var6 == 0) {
+				return var3;
+			}
+
+			var5 += var6;
+			int var7 = 0;
+			boolean var8 = false;
+
+			while (true) {
+				int var9;
+				while (!var8) {
+					var9 = var4.readUShortSmart();
+					if (var9 == 0) {
+						continue label72;
+					}
+
+					var7 += var9 - 1;
+					int var10 = var7 & 63;
+					int var11 = var7 >> 6 & 63;
+					int var12 = var4.readUnsignedByte() >> 2;
+					int var13 = var11 + var1;
+					int var14 = var10 + var2;
+					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+						ObjectComposition var15 = HitSplatDefinition.getObjectDefinition(var5);
+						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+							if (!var15.needsModelFiles()) {
+								++Client.field699;
+								var3 = false;
+							}
+
+							var8 = true;
+						}
+					}
 				}
 
-				var4 = true;
-				break;
+				var9 = var4.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var4.readUnsignedByte();
 			}
 		}
+	}
 
-		if (!var4) {
-			SecureRandomCallable.addGameMessage(4, "", "Unable to find " + var1);
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(ILdm;ZB)I",
+		garbageValue = "6"
+	)
+	static int method8808(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : SecureRandomSSLSocket.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.itemQuantity;
+			} else {
+				Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETID) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.childIndex;
+			return 1;
+		} else if (var0 == 1707) {
+			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3.method6931() ? 1 : 0;
+			return 1;
+		} else if (var0 == 1708) {
+			return InvDefinition.method3791(var3);
+		} else {
+			return var0 == 1709 ? class329.method6253(var3) : 2;
 		}
-
 	}
 }

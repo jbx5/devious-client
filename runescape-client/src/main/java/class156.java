@@ -1,74 +1,53 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gg")
-public class class156 extends class160 {
-	@ObfuscatedName("az")
-	String field1758;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 372181157
+@ObfuscatedName("gf")
+public class class156 extends class147 {
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
 	)
-	int field1759;
-	@ObfuscatedName("af")
-	byte field1760;
+	@Export("KitDefinition_modelsArchive")
+	public static AbstractArchive KitDefinition_modelsArchive;
+	@ObfuscatedName("ny")
+	@ObfuscatedGetter(
+		intValue = 154647647
+	)
+	@Export("menuX")
+	static int menuX;
+	@ObfuscatedName("ak")
+	String field1751;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgt;"
+		descriptor = "Lfu;"
 	)
-	final class161 this$0;
+	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgt;)V"
+		descriptor = "(Lfu;)V"
 	)
-	class156(class161 var1) {
+	class156(class150 var1) {
 		this.this$0 = var1;
-		this.field1758 = null;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;B)V",
-		garbageValue = "33"
+		descriptor = "(Lua;I)V",
+		garbageValue = "1738227110"
 	)
-	void vmethod3414(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			var1.readLong();
-		}
-
-		this.field1758 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1759 = var1.readUnsignedShort();
-		this.field1760 = var1.readByte();
-		var1.readLong();
+	void vmethod3486(Buffer var1) {
+		this.field1751 = var1.readStringCp1252NullTerminated();
+		var1.readInt();
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;B)V",
-		garbageValue = "18"
+		descriptor = "(Lgc;B)V",
+		garbageValue = "100"
 	)
-	void vmethod3413(ClanChannel var1) {
-		ClanChannelMember var2 = new ClanChannelMember();
-		var2.username = new Username(this.field1758);
-		var2.world = this.field1759;
-		var2.rank = this.field1760;
-		var1.addMember(var2);
-	}
-
-	@ObfuscatedName("kk")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIIIIIII)V",
-		garbageValue = "-552810314"
-	)
-	static void method3318(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
-		var1 = var1 * 128 + 64;
-		var2 = var2 * 128 + 64;
-		var3 = var3 * 128 + 64;
-		var4 = var4 * 128 + 64;
-		Projectile var14 = new Projectile(var6, var0, var1, var2, Canvas.getTileHeight(var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
-		var14.setDestination(var3, var4, Canvas.getTileHeight(var3, var4, var0) - var8, var9 + Client.cycle);
-		Client.projectiles.addFirst(var14);
+	void vmethod3490(ClanSettings var1) {
+		var1.name = this.field1751;
 	}
 }

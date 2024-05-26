@@ -3,22 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("em")
+@ObfuscatedName("et")
 @Implements("UserComparator9")
 public class UserComparator9 extends AbstractUserComparator {
-	@ObfuscatedName("bj")
-	@ObfuscatedSignature(
-		descriptor = "Lum;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("em")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
-	)
-	@Export("archive2")
-	static Archive archive2;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -26,10 +14,10 @@ public class UserComparator9 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrw;Lrw;I)I",
-		garbageValue = "-501726256"
+		descriptor = "(Lso;Lso;I)I",
+		garbageValue = "-1683934789"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -42,5 +30,14 @@ public class UserComparator9 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-923319002"
+	)
+	public static void method2989() {
+		VarcInt.VarcInt_cached.clear();
 	}
 }

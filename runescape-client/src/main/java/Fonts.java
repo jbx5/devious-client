@@ -4,27 +4,30 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tg")
+@ObfuscatedName("tz")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ar")
+	@Export("BZip2Decompressor_block")
+	static int[] BZip2Decompressor_block;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lor;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lor;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Loc;Loc;)V"
+		descriptor = "(Lor;Lor;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -32,10 +35,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([Lty;I)Ljava/util/HashMap;",
-		garbageValue = "465282109"
+		descriptor = "([Ltc;I)Ljava/util/HashMap;",
+		garbageValue = "-411117179"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -56,35 +59,26 @@ public class Fonts {
 				} else {
 					int var10 = var7.getGroupId(var9);
 					int var11 = var7.getFileId(var10, "");
-					byte[] var14 = var7.takeFile(var10, var11);
-					boolean var13;
-					if (var14 == null) {
-						var13 = false;
-					} else {
-						HttpQueryParams.SpriteBuffer_decode(var14);
-						var13 = true;
-					}
-
 					Font var12;
-					if (!var13) {
+					if (!class108.method2769(var7, var10, var11)) {
 						var12 = null;
 					} else {
-						byte[] var15 = var8.takeFile(var10, var11);
-						Font var18;
-						if (var15 == null) {
-							var18 = null;
+						byte[] var14 = var8.takeFile(var10, var11);
+						Font var13;
+						if (var14 == null) {
+							var13 = null;
 						} else {
-							Font var16 = new Font(var15, SpriteBufferProperties.SpriteBuffer_xOffsets, SpriteBufferProperties.SpriteBuffer_yOffsets, SpriteBufferProperties.SpriteBuffer_spriteWidths, Ignored.SpriteBuffer_spriteHeights, class126.SpriteBuffer_spritePalette, SpriteBufferProperties.SpriteBuffer_pixels);
+							Font var15 = new Font(var14, SpriteBufferProperties.SpriteBuffer_xOffsets, SpriteBufferProperties.SpriteBuffer_yOffsets, SpriteBufferProperties.SpriteBuffer_spriteWidths, SpriteBufferProperties.SpriteBuffer_spriteHeights, UrlRequest.SpriteBuffer_spritePalette, PlayerCompositionColorTextureOverride.SpriteBuffer_pixels);
 							SpriteBufferProperties.SpriteBuffer_xOffsets = null;
 							SpriteBufferProperties.SpriteBuffer_yOffsets = null;
 							SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
-							Ignored.SpriteBuffer_spriteHeights = null;
-							class126.SpriteBuffer_spritePalette = null;
-							SpriteBufferProperties.SpriteBuffer_pixels = null;
-							var18 = var16;
+							SpriteBufferProperties.SpriteBuffer_spriteHeights = null;
+							UrlRequest.SpriteBuffer_spritePalette = null;
+							PlayerCompositionColorTextureOverride.SpriteBuffer_pixels = null;
+							var13 = var15;
 						}
 
-						var12 = var18;
+						var12 = var13;
 					}
 
 					var6 = var12;
@@ -98,17 +92,5 @@ public class Fonts {
 		}
 
 		return var2;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-128"
-	)
-	static void method8920(int var0) {
-		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var1 != null) {
-			var1.remove();
-		}
 	}
 }

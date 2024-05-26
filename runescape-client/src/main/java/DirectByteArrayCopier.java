@@ -4,23 +4,17 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nb")
+@ObfuscatedName("nc")
 @Implements("DirectByteArrayCopier")
 public class DirectByteArrayCopier extends AbstractByteArrayCopier {
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "Lvl;"
-	)
-	@Export("worldSelectRightSprite")
-	static IndexedSprite worldSelectRightSprite;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("directBuffer")
 	ByteBuffer directBuffer;
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(B)[B",
-		garbageValue = "-126"
+		garbageValue = "20"
 	)
 	@Export("get")
 	byte[] get() {
@@ -30,15 +24,24 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 		return var1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "([BB)V",
-		garbageValue = "-67"
+		descriptor = "([BI)V",
+		garbageValue = "-957801632"
 	)
 	@Export("set")
 	public void set(byte[] var1) {
 		this.directBuffer = ByteBuffer.allocateDirect(var1.length);
 		this.directBuffer.position(0);
 		this.directBuffer.put(var1);
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Loz;",
+		garbageValue = "2103550747"
+	)
+	public static StudioGame[] method7109() {
+		return new StudioGame[]{StudioGame.game4, StudioGame.game5, StudioGame.oldscape, StudioGame.game3, StudioGame.stellardawn, StudioGame.runescape};
 	}
 }
