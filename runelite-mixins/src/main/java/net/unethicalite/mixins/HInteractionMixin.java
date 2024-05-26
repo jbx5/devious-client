@@ -230,9 +230,9 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 
 		if ("Automated".equals(event.getMenuOption()) && event.getMenuAction() == MenuAction.WALK)
 		{
-			client.setSelectedSceneTileX(event.getParam0());
-			client.setSelectedSceneTileY(event.getParam1());
-			client.setViewportWalking(true);
+			client.getTopLevelWorldView().getScene().setBaseX(event.getParam0());
+			client.getTopLevelWorldView().getScene().setBaseY(event.getParam1());
+			client.getTopLevelWorldView().getScene().setViewportWalking(true);
 
 			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, -1, "Automated", "", canvasX, canvasY);
 			return;

@@ -96,6 +96,7 @@ public interface RSScene extends Scene
 	int getBaseX();
 
 	@Import("baseX")
+	@Override
 	void setBaseX(int x);
 
 	@Import("baseY")
@@ -103,9 +104,11 @@ public interface RSScene extends Scene
 	int getBaseY();
 
 	@Import("baseY")
+	@Override
 	void setBaseY(int y);
 
 	@Import("viewportWalking")
+	@Override
 	void setViewportWalking(boolean viewportWalking);
 
 	@Import("isInInstance")

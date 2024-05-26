@@ -2778,11 +2778,11 @@ public interface Client extends OAuthApi, GameEngine
 
 	PacketBufferNode preparePacket(ClientPacket packet);
 
-	void setSelectedSceneTileX(int sceneX);
+	//void setSelectedSceneTileX(int sceneX);
 
-	void setSelectedSceneTileY(int sceneY);
+	//void setSelectedSceneTileY(int sceneY);
 
-	void setViewportWalking(boolean enabled);
+	//void setViewportWalking(boolean enabled);
 
 	void setCheckClick(boolean enabled);
 
