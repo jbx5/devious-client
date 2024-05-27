@@ -288,7 +288,7 @@ public class class533 implements Enum {
 								FloorOverlayDefinition var41;
 								if (var7 > 0) {
 									boolean var62 = true;
-									if (var26 == 0 && class253.Tiles_shapes[var7][var16][var22] != 0) {
+									if (var26 == 0 && TilesProjection.Tiles_shapes[var7][var16][var22] != 0) {
 										var62 = false;
 									}
 
@@ -329,7 +329,7 @@ public class class533 implements Enum {
 								if (var27 == 0) {
 									var5.addTile(var7, var16, var22, 0, 0, -1, var28, var29, var30, var31, class414.method7717(var36, var32), class414.method7717(var36, var33), class414.method7717(var36, var34), class414.method7717(var36, var35), 0, 0, 0, 0, var38, 0);
 								} else {
-									var39 = class253.Tiles_shapes[var7][var16][var22] + 1;
+									var39 = TilesProjection.Tiles_shapes[var7][var16][var22] + 1;
 									byte var63 = AbstractByteArrayCopier.field3975[var7][var16][var22];
 									int var52 = var27 - 1;
 									FloorOverlayDefinition var43 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var52);
@@ -406,7 +406,7 @@ public class class533 implements Enum {
 
 			class197.Tiles_underlays[var7] = null;
 			Tiles.Tiles_overlays[var7] = null;
-			class253.Tiles_shapes[var7] = null;
+			TilesProjection.Tiles_shapes[var7] = null;
 			AbstractByteArrayCopier.field3975[var7] = null;
 			class202.Tiles_underlays2[var7] = null;
 		}

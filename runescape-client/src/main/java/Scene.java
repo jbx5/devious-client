@@ -2532,7 +2532,7 @@ public class Scene extends Renderable {
 		this.Scene_cameraZ = (int)var22.method7863((float)var7, (float)var8, (float)var9);
 		this.Scene_cameraXTile = this.Scene_cameraX / 128;
 		this.Scene_cameraYTile = this.Scene_cameraZ / 128;
-		class253 var25 = new class253(var24);
+		TilesProjection var25 = new TilesProjection(var24);
 		this.method4911(var25);
 	}
 

@@ -282,7 +282,7 @@ public class HttpRequest {
 				}
 
 				var3.open(var3.capacity);
-				if (class253.field2792 > 0 && HttpMethod.soundSystem == null) {
+				if (TilesProjection.field2792 > 0 && HttpMethod.soundSystem == null) {
 					HttpMethod.soundSystem = new SoundSystem();
 					class213.soundSystemExecutor = Executors.newScheduledThreadPool(1);
 					class213.soundSystemExecutor.scheduleAtFixedRate(HttpMethod.soundSystem, 0L, 10L, TimeUnit.MILLISECONDS);

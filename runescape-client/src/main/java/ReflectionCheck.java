@@ -104,7 +104,7 @@ public class ReflectionCheck extends Node {
 					boolean var35 = !Client.isLowDetail;
 					UserComparator5.field1508 = 22050;
 					JagexCache.PcmPlayer_stereo = var35;
-					class253.field2792 = 2;
+					TilesProjection.field2792 = 2;
 					ArrayList var29 = new ArrayList(3);
 					class137.pcmPlayer1 = HttpRequest.method96(GameEngine.taskHandler, 0, 2048);
 					class349.pcmStreamMixer = new PcmStreamMixer();

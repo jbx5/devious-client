@@ -1,10 +1,12 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jk")
-public class class253 extends Projection
+@Implements("TilesProjection")
+public class TilesProjection extends Projection
 {
 	@ObfuscatedName("az")
 	@Export("Tiles_shapes")
@@ -25,7 +27,7 @@ public class class253 extends Projection
 	@ObfuscatedSignature(
 		descriptor = "(Lql;)V"
 	)
-	class253(class423 var1) {
+	TilesProjection(class423 var1) {
 		this.field2793 = new float[3];
 		this.field2790 = var1;
 	}
@@ -34,6 +36,7 @@ public class class253 extends Projection
 	@ObfuscatedSignature(
 		descriptor = "(Lju;IIIIJ)V"
 	)
+	@Export("draw")
 	void draw(Renderable var1, int var2, int var3, int var4, int var5, long var6) {
 		var1.draw(var2, this.field2790, var3, var4, var5, var6);
 	}
@@ -43,6 +46,7 @@ public class class253 extends Projection
 		descriptor = "(Ljy;Lkg;IIIB)V",
 		garbageValue = "30"
 	)
+	@Export("drawTileUnderlay")
 	void drawTileUnderlay(Scene var1, SceneTilePaint var2, int var3, int var4, int var5) {
 		int var6;
 		int var7 = var6 = var4 << 7;
@@ -80,6 +84,7 @@ public class class253 extends Projection
 		descriptor = "(Ljy;Lke;IIB)V",
 		garbageValue = "14"
 	)
+	@Export("drawTileOverlay")
 	void drawTileOverlay(Scene var1, SceneTileModel var2, int var3, int var4) {
 		int var5 = var2.vertexX.length;
 

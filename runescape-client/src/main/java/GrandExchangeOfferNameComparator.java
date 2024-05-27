@@ -34,7 +34,7 @@ final class GrandExchangeOfferNameComparator implements Comparator {
 		Tiles.Tiles_minPlane = 99;
 		class197.Tiles_underlays = new short[4][104][104];
 		Tiles.Tiles_overlays = new short[4][104][104];
-		class253.Tiles_shapes = new byte[4][104][104];
+		TilesProjection.Tiles_shapes = new byte[4][104][104];
 		AbstractByteArrayCopier.field3975 = new byte[4][104][104];
 		SongTask.field4795 = new int[4][105][105];
 		class202.Tiles_underlays2 = new byte[4][105][105];
