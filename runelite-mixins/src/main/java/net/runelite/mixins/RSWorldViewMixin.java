@@ -8,12 +8,16 @@ import net.runelite.api.Player;
 import net.runelite.api.Projectile;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.NpcSpawned;
+import net.runelite.api.events.PlayerDespawned;
+import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNPC;
+import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSScene;
 import net.runelite.rs.api.RSTile;
@@ -87,51 +91,46 @@ public abstract class RSWorldViewMixin implements RSWorldView
 	@Inject
 	public void cachedNPCsChanged(int idx)
 	{
-		RSNPC[] cachedNPCs = this.getNpcs();
-		if (idx < 0 || idx >= cachedNPCs.length)
+		if (idx > 0 && idx < this.getNpcs().length)
 		{
-			return;
-		}
-
-		RSNPC npc = cachedNPCs[idx];
-		if (npc != null)
-		{
-			npc.setIndex(idx);
-			client.getCallbacks().postDeferred(new NpcSpawned(npc));
+			RSNPC npc = this.getNpcs()[idx];
+			if (npc != null)
+			{
+				npc.setIndex(idx);
+				client.getCallbacks().postDeferred(new NpcSpawned(npc));
+			}
 		}
 	}
 
-	/*@Inject
-	private static RSPlayer[] oldPlayers = new RSPlayer[2048];
+	@Inject
+	public RSPlayer[] oldPlayers;
 
 	@MethodHook("<init>")
 	@Inject
 	public void rl$init(int var1, int var2, int var3, int var4)
 	{
-		//cachedPlayersChanged(-1);
+		this.oldPlayers = new RSPlayer[2048];
 	}
+
 
 	@FieldHook("players")
 	@Inject
 	public void cachedPlayersChanged(int idx)
 	{
-		RSPlayer[] cachedPlayers = this.getPlayers();
-		if (idx < 0 || idx >= cachedPlayers.length)
+		if (idx >= 0 && idx < this.getPlayers().length)
 		{
-			return;
+			RSPlayer player = this.getPlayers()[idx];
+			Player oldPlayer = this.oldPlayers[idx];
+			this.oldPlayers[idx] = player;
+			if (oldPlayer != null)
+			{
+				client.getCallbacks().post(new PlayerDespawned(oldPlayer));
+			}
+			if (player != null)
+			{
+				player.setWorldView(this);
+				client.getCallbacks().postDeferred(new PlayerSpawned(player));
+			}
 		}
-
-		RSPlayer player = cachedPlayers[idx];
-		RSPlayer oldPlayer = oldPlayers[idx];
-		oldPlayers[idx] = player;
-
-		if (oldPlayer != null)
-		{
-			client.getCallbacks().post(new PlayerDespawned(oldPlayer));
-		}
-		if (player != null)
-		{
-			client.getCallbacks().postDeferred(new PlayerSpawned(player));
-		}
-	}*/
+	}
 }
