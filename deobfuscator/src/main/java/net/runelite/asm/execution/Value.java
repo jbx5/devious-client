@@ -90,26 +90,26 @@ public class Value
 		
 		return o;
 	}
-
+	
 	public void arraySet(Value index, Value object)
 	{
 		if (isUnknownOrNull() || index.isUnknownOrNull())
 			return;
-
+		
 		int i = (int) index.value;
-
-		if (i < 0 || !value.getClass().getName().equals("["))
+		
+		if (i < 0)
 			return;
 
 		assert isArray();
-
+		
 		int len = Array.getLength(value);
 		if (len <= i)
 		{
 			value = Arrays.copyOf((Value[]) value, i + 1, Value[].class);
 			Arrays.fill((Value[]) value, len, i, UNKNOWN);
 		}
-
+		
 		Array.set(value, i, object);
 	}
 	
