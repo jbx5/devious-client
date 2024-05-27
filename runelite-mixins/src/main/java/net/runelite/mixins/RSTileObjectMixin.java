@@ -3,6 +3,7 @@ package net.runelite.mixins;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
 import net.runelite.api.TileObject;
+import net.runelite.api.WorldView;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.mixins.Inject;
@@ -121,5 +122,23 @@ public abstract class RSTileObjectMixin implements TileObject
 	public Point getMinimapLocation()
 	{
 		return Perspective.localToMinimap(client, getLocalLocation());
+	}
+
+	@Inject
+	public int getWorldViewId()
+	{
+		int id = (int) (this.getHash() >> 49) & 2047;
+		if (id == 2047)
+		{
+			id = -1;
+		}
+		return id;
+	}
+
+	@Inject
+	@Override
+	public WorldView getWorldView()
+	{
+		return client.getWorldView(getWorldViewId());
 	}
 }
