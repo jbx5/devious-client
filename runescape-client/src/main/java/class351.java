@@ -39,7 +39,7 @@ public class class351 {
 				if (class141.method3171(class160.getWidgetFlags(var5), var0 - 1)) {
 					PacketBufferNode var7;
 					if (var0 == 1) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3352, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -47,7 +47,7 @@ public class class351 {
 					}
 
 					if (var0 == 2) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3280, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -55,7 +55,7 @@ public class class351 {
 					}
 
 					if (var0 == 3) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3360, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -63,7 +63,7 @@ public class class351 {
 					}
 
 					if (var0 == 4) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3339, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -71,7 +71,7 @@ public class class351 {
 					}
 
 					if (var0 == 5) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3343, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -79,7 +79,7 @@ public class class351 {
 					}
 
 					if (var0 == 6) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3367, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -87,7 +87,7 @@ public class class351 {
 					}
 
 					if (var0 == 7) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3320, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -95,7 +95,7 @@ public class class351 {
 					}
 
 					if (var0 == 8) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3325, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -103,7 +103,7 @@ public class class351 {
 					}
 
 					if (var0 == 9) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3344, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);
@@ -111,7 +111,7 @@ public class class351 {
 					}
 
 					if (var0 == 10) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.field3310, Client.packetWriter.isaacCipher);
+						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
 						var7.packetBuffer.writeInt(var1);
 						var7.packetBuffer.writeShort(var2);
 						var7.packetBuffer.writeShort(var3);

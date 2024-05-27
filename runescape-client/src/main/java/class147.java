@@ -51,7 +51,7 @@ public abstract class class147 extends Node {
 		}
 
 		if (Client.gameState >= 25 && Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.field3368, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(class534.getWindowedMode());
 			var1.packetBuffer.writeShort(GameEngine.canvasWidth);
 			var1.packetBuffer.writeShort(DbTable.canvasHeight);

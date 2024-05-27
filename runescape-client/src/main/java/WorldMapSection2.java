@@ -442,7 +442,7 @@ public class WorldMapSection2 implements WorldMapSection {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (class188.client.hasFrame()) {
-					var19 = WorldMapElement.getPacketBufferNode(ClientPacket.field3363, Client.packetWriter.isaacCipher);
+					var19 = WorldMapElement.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

@@ -77,7 +77,7 @@ public class DevicePcmPlayerProvider implements class51 {
 					int var10 = var8 * var5 - var4 * var7 >> 11;
 					int var11 = Interpreter.field899.vmethod8779() + var9 >> 7;
 					int var12 = Interpreter.field899.vmethod8773() - var10 >> 7;
-					PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.field3282, Client.packetWriter.isaacCipher);
+					PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.MINIMAP_CLICK, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShortAddLE(var12 + class358.topLevelWorldView.baseY);
 					var13.packetBuffer.writeShortAdd(var11 + class358.topLevelWorldView.baseX);

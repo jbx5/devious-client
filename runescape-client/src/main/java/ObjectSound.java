@@ -257,7 +257,7 @@ public final class ObjectSound extends Node {
 		garbageValue = "111"
 	)
 	static final void method1966() {
-		PacketBufferNode var0 = WorldMapElement.getPacketBufferNode(ClientPacket.field3329, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = WorldMapElement.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field895 = true;
 
