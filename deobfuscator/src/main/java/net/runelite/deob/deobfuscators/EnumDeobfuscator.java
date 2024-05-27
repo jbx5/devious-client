@@ -39,6 +39,7 @@ import net.runelite.asm.attributes.code.instruction.types.LVTInstruction;
 import net.runelite.asm.attributes.code.instructions.ALoad;
 import net.runelite.asm.attributes.code.instructions.ILoad;
 import net.runelite.asm.attributes.code.instructions.InvokeSpecial;
+import net.runelite.asm.attributes.code.instructions.New;
 import net.runelite.asm.attributes.code.instructions.LDC;
 import net.runelite.asm.attributes.code.instructions.PutStatic;
 import net.runelite.asm.signature.Signature;
@@ -199,12 +200,21 @@ public class EnumDeobfuscator implements Deobfuscator
 			{
 				Instruction i = ins.getInstructions().get(j);
 
-				if (i.getType() == InstructionType.DUP && !seenDup)
+				if (i.getType() == InstructionType.DUP && !seenDup && j != 0 )
 				{
-					// XXX this should actually be the field name, but it seems to have no effect on fernflower
-					ins.addInstruction(j + 1, new LDC(ins, "runelite"));
-					ins.addInstruction(j + 2, new LDC(ins, count++));
-					seenDup = true;
+					Instruction prevInstruction = ins.getInstructions().get(j - 1);
+					if (prevInstruction.getType() == InstructionType.NEW)
+					{
+						New prevNewInstruction = (New) prevInstruction;
+						if (prevNewInstruction.getNewClass().equals(cf.getPoolClass()))
+						{
+							// XXX this should actually be the field name, but it seems to have no effect on fernflower
+							ins.addInstruction(j + 1, new LDC(ins, "runelite"));
+							ins.addInstruction(j + 2, new LDC(ins, count++));
+							seenDup = true;
+						}
+					}
+
 				}
 				else if (i.getType() == InstructionType.INVOKESPECIAL)
 				{
