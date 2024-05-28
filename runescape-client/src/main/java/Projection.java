@@ -44,7 +44,8 @@ public abstract class Projection {
 		descriptor = "(Ljy;Lkg;IIIIIIIIIIIIIII)V",
 		garbageValue = "1669183748"
 	)
-	void method5149(Scene var1, SceneTilePaint var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16) {
+	@Export("drawSceneTilePaint")
+	void drawSceneTilePaint(Scene var1, SceneTilePaint var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16) {
 		int var17 = Rasterizer3D.getClipMidX() + var5 * Rasterizer3D.get3dZoom() / var13;
 		int var18 = Rasterizer3D.getClipMidY() + var9 * Rasterizer3D.get3dZoom() / var13;
 		int var19 = Rasterizer3D.getClipMidX() + var6 * Rasterizer3D.get3dZoom() / var14;
@@ -119,7 +120,8 @@ public abstract class Projection {
 		descriptor = "(Ljy;Lke;IIB)V",
 		garbageValue = "119"
 	)
-	void method5158(Scene var1, SceneTileModel var2, int var3, int var4) {
+	@Export("drawSceneTileModel")
+	void drawSceneTileModel(Scene var1, SceneTileModel var2, int var3, int var4) {
 		Rasterizer3D.clips.field2983 = 0;
 		int var5 = var2.faceX.length;
 
@@ -172,7 +174,8 @@ public abstract class Projection {
 		descriptor = "(III)V",
 		garbageValue = "768609623"
 	)
-	public static final void method5163(int var0, int var1) {
+	@Export("initViewportMouse")
+	public static final void initViewportMouse(int var0, int var1) {
 		ViewportMouse.ViewportMouse_x = var0;
 		ViewportMouse.ViewportMouse_y = var1;
 		ViewportMouse.ViewportMouse_isInViewport = true;

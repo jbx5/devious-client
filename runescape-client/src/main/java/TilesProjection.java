@@ -76,7 +76,7 @@ public class TilesProjection extends Projection
 		var6 = (int)this.field2793[0];
 		var17 = (int)this.field2793[1];
 		var12 = (int)this.field2793[2] | 1;
-		this.method5149(var1, var2, var4, var5, var7, var11, var10, var6, var14, var15, var16, var17, var9, var8, var13, var12);
+		this.drawSceneTilePaint(var1, var2, var4, var5, var7, var11, var10, var6, var14, var15, var16, var17, var9, var8, var13, var12);
 	}
 
 	@ObfuscatedName("aj")
@@ -108,6 +108,6 @@ public class TilesProjection extends Projection
 			SceneTileModel.field2857[var6] = class175.method3578(var9);
 		}
 
-		this.method5158(var1, var2, var3, var4);
+		this.drawSceneTileModel(var1, var2, var3, var4);
 	}
 }

@@ -376,7 +376,7 @@ public class FaceNormal {
 		}
 
 		if (var19 >= var0 && var19 < var0 + var2 && var20 >= var1 && var20 < var3 + var1) {
-			Projection.method5163(var19 - var0, var20 - var1);
+			Projection.initViewportMouse(var19 - var0, var20 - var1);
 		} else {
 			class142.method3192();
 		}
