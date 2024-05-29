@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
  * Copyright (c) 2018, Abex
+ * Copyright (c) 2024, Tom C
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,11 +58,11 @@ public class EventBus
 	@Value
 	public static class Subscriber
 	{
-		private final Object object;
-		private final Method method;
-		private final float priority;
+		Object object;
+		Method method;
+		float priority;
 		@EqualsAndHashCode.Exclude
-		private final Consumer<Object> lambda;
+		Consumer<Object> lambda;
 
 		void invoke(final Object arg) throws Exception
 		{
@@ -69,9 +70,13 @@ public class EventBus
 			{
 				lambda.accept(arg);
 			}
-			else
+			else if (method != null)
 			{
 				method.invoke(object, arg);
+			}
+			else if (object instanceof Runnable)
+			{
+				((Runnable) object).run();
 			}
 		}
 	}
@@ -177,6 +182,27 @@ public class EventBus
 		subscribers = builder.build();
 
 		return sub;
+	}
+
+	/**
+	 * Registers a Runnable to the EventBus.
+	 *
+	 * @param eventClass the event class the runnable handles
+	 * @param runnable   the runnable to register
+	 * @param priority   the priority of the subscriber
+	 */
+	public synchronized void registerRunnable(@Nonnull final Class<?> eventClass, @Nonnull final Runnable runnable, float priority)
+	{
+		final Subscriber subscriber = new Subscriber(runnable, null, priority, null);
+		final ImmutableMultimap.Builder<Class<?>, Subscriber> builder = ImmutableMultimap.builder();
+		builder.putAll(subscribers);
+		builder.put(eventClass, subscriber);
+		builder.orderValuesBy(Comparator.comparingDouble(Subscriber::getPriority).reversed()
+				.thenComparing(s -> s.object.getClass().getName()));
+
+		subscribers = builder.build();
+
+		log.debug("Registering runnable for {} - {}", eventClass, subscriber);
 	}
 
 	/**

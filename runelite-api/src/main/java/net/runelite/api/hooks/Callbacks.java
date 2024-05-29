@@ -69,6 +69,11 @@ public interface Callbacks
 	void frame();
 
 	/**
+	 * Called each server tick
+	 */
+	void serverTick();
+
+	/**
 	 * Called after receiving update NPCs packet from server.
 	 */
 	void updateNpcs();

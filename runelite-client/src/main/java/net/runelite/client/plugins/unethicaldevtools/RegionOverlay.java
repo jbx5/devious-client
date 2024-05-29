@@ -6,6 +6,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.Point;
 import net.runelite.api.Tile;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.ConfigButtonClicked;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
@@ -190,6 +191,42 @@ public class RegionOverlay extends Overlay
 			}
 			generateMenu(clickPoint);
 		}
+	}
+
+	@Subscribe
+	public void onConfigButtonClicked(ConfigButtonClicked e)
+	{
+		if (!e.getGroup().equals("unethicaldevtools") && !e.getKey().equals("pathDebugButton"))
+		{
+			return;
+		}
+		WorldPoint location = getConfigLocation();
+		if (location == null)
+		{
+			return;
+		}
+		if (startTile == null)
+		{
+			executorService.execute(() -> path = Walker.calculatePath(location));
+		}
+		else
+		{
+			LinkedHashMap<WorldPoint, Teleport> teleports = buildTeleportLinks(location.toWorldArea());
+			List<WorldPoint> startPoints = new ArrayList<>(teleports.keySet());
+			startPoints.add(startTile);
+			executorService.execute(() -> path = Walker.calculatePath(
+				startPoints, location));
+		}
+	}
+
+	private WorldPoint getConfigLocation()
+	{
+		String[] split = config.pathDebugLocation().split(" ");
+		if (split.length != 3)
+		{
+			return null;
+		}
+		return new WorldPoint(Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
 	}
 
 	private void generateMenu(WorldPoint clickPoint)

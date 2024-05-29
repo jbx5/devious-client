@@ -4,64 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jx")
+@ObfuscatedName("kn")
 @Implements("ViewportMouse")
 public class ViewportMouse {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("ViewportMouse_isInViewport")
-	public static boolean ViewportMouse_isInViewport;
-	@ObfuscatedName("ah")
+	static boolean ViewportMouse_isInViewport;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -778481141
+		intValue = -2068561419
 	)
 	@Export("ViewportMouse_x")
-	public static int ViewportMouse_x;
-	@ObfuscatedName("af")
+	static int ViewportMouse_x;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 718040999
+		intValue = -291553027
 	)
 	@Export("ViewportMouse_y")
-	public static int ViewportMouse_y;
-	@ObfuscatedName("at")
+	static int ViewportMouse_y;
+	@ObfuscatedName("az")
 	@Export("ViewportMouse_false0")
-	public static boolean ViewportMouse_false0;
-	@ObfuscatedName("an")
+	static boolean ViewportMouse_false0;
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1542313969
+		intValue = 1189565193
 	)
-	static int field2855;
+	static int field2947;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1637450235
+	)
+	static int field2944;
 	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1286346729
+		intValue = -801708007
 	)
-	static int field2862;
-	@ObfuscatedName("aw")
+	static int field2950;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -2137355447
+		intValue = 629882969
 	)
-	static int field2861;
-	@ObfuscatedName("as")
+	static int field2951;
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -128438779
+		intValue = -101648395
 	)
-	static int field2859;
-	@ObfuscatedName("ax")
+	static int field2952;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1329375593
+		intValue = -369508143
+	)
+	static int field2953;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 960707977
 	)
 	@Export("ViewportMouse_entityCount")
-	public static int ViewportMouse_entityCount;
-	@ObfuscatedName("ar")
+	static int ViewportMouse_entityCount;
+	@ObfuscatedName("ae")
 	@Export("ViewportMouse_entityTags")
 	public static long[] ViewportMouse_entityTags;
-	@ObfuscatedName("cm")
-	static String field2868;
-	@ObfuscatedName("el")
-	@ObfuscatedSignature(
-		descriptor = "Lrq;"
-	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
 
 	static {
 		ViewportMouse_isInViewport = false;
@@ -72,20 +74,21 @@ public class ViewportMouse {
 		ViewportMouse_entityTags = new long[1000];
 	}
 
-	@ObfuscatedName("ne")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;IIIB)V",
-		garbageValue = "-76"
+		descriptor = "(I)V",
+		garbageValue = "-1475136830"
 	)
-	static final void method5101(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.method6658(class243.widgetDefinition, false);
-		if (var4 != null) {
-			if (Client.minimapState < 3) {
-				FloorDecoration.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
-			} else {
-				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
-			}
+	public static void method5347() {
+		class197.field1864.clear();
+	}
 
-		}
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "2002918647"
+	)
+	public static boolean method5348(int var0) {
+		return var0 >= WorldMapDecorationType.field4013.id && var0 <= WorldMapDecorationType.field4014.id;
 	}
 }

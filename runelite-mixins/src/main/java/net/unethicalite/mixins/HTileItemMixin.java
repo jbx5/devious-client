@@ -172,7 +172,7 @@ public abstract class HTileItemMixin implements RSTileItem
 	@Override
 	public long getTag()
 	{
-		return client.calculateTag(getX(), getY(), 3, false, 0);
+		return client.calculateTag(getX(), getY(), 3, false, 0, client.getTopLevelWorldView().getId());
 	}
 
 	@Inject

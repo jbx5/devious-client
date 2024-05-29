@@ -39,6 +39,7 @@ import net.runelite.rs.api.RSPcmStream;
 import net.runelite.rs.api.RSRawPcmStream;
 import net.runelite.rs.api.RSRawSound;
 import net.runelite.rs.api.RSSoundEffect;
+import net.runelite.rs.api.RSWorldView;
 
 @Mixin(RSClient.class)
 public abstract class SoundEffectMixin implements RSClient
@@ -55,11 +56,11 @@ public abstract class SoundEffectMixin implements RSClient
 	@Copy("updateActorSequence")
 	@Replace("updateActorSequence")
 	@SuppressWarnings("InfiniteRecursion")
-	public static void copy$updateActorSequence(RSActor actor, int size)
+	public static void copy$updateActorSequence(RSWorldView wv, RSActor actor, int size)
 	{
 		lastSoundEffectSourceActor = actor;
 
-		copy$updateActorSequence(actor, size);
+		copy$updateActorSequence(wv, actor, size);
 
 		lastSoundEffectSourceActor = null;
 	}

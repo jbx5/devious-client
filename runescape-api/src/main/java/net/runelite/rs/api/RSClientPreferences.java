@@ -1,17 +1,58 @@
 package net.runelite.rs.api;
 
+import java.util.Map;
 import net.runelite.api.Preferences;
 import net.runelite.mapping.Import;
 
 public interface RSClientPreferences extends Preferences
 {
-	@Import("rememberedUsername")
+	@Import("roofsHidden")
 	@Override
-	String getRememberedUsername();
+	void setHidingRoofs(boolean hidden);
 
-	@Import("rememberedUsername")
+	@Import("roofsHidden")
 	@Override
-	void setRememberedUsername(String username);
+	boolean isHidingRoofs();
+
+	@Import("hideUsername")
+	@Override
+	boolean getHideUsername();
+
+	@Import("hideUsername")
+	@Override
+	void setHideUsername(boolean hide);
+
+	@Import("titleMusicDisabled")
+	@Override
+	boolean isTitleMusicDisabled();
+
+	@Import("titleMusicDisabled")
+	@Override
+	void setTitleMusicDisabled(boolean disabled);
+
+	@Import("displayFps")
+	@Override
+	boolean isDisplayFps();
+
+	@Import("displayFps")
+	@Override
+	void setDisplayFps(boolean displayFps);
+
+	@Import("brightness")
+	@Override
+	double getBrightness();
+
+	@Import("brightness")
+	@Override
+	void setBrightness(double brightness);
+
+	@Import("musicVolume")
+	@Override
+	int getMusicVolume();
+
+	@Import("musicVolume")
+	@Override
+	void setMusicVolume(int i);
 
 	@Import("soundEffectsVolume")
 	@Override
@@ -29,22 +70,21 @@ public interface RSClientPreferences extends Preferences
 	@Override
 	void setAreaSoundEffectVolume(int i);
 
-	@Import("musicVolume")
-	int getMusicVolume();
-
-	@Import("musicVolume")
-	void setMusicVolume(int i);
-
-	@Import("hideUsername")
-	boolean getHideUsername();
-
-	@Import("roofsHidden")
+	@Import("eula")
 	@Override
-	void setHidingRoofs(boolean hidden);
+	int getEula();
 
-	@Import("roofsHidden")
+	@Import("eula")
 	@Override
-	boolean isHidingRoofs();
+	void setEula(int eula);
+
+	@Import("rememberedUsername")
+	@Override
+	String getRememberedUsername();
+
+	@Import("rememberedUsername")
+	@Override
+	void setRememberedUsername(String username);
 
 	@Import("windowMode")
 	@Override
@@ -54,11 +94,11 @@ public interface RSClientPreferences extends Preferences
 	@Override
 	int getWindowMode();
 
-	@Import("titleMusicDisabled")
+	@Import("parameters")
 	@Override
-	boolean isTitleMusicDisabled();
+	Map getParameters();
 
-	@Import("titleMusicDisabled")
+	@Import("savePreferences")
 	@Override
-	void setTitleMusicDisabled(boolean disabled);
+	void savePreferences();
 }

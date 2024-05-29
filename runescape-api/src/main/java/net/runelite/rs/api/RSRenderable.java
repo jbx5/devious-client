@@ -39,8 +39,4 @@ public interface RSRenderable extends RSNode, Renderable
 	@Import("getModel")
 	@Override
 	RSModel getModel();
-
-	@Import("draw")
-	@Override
-	void draw(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash);
 }

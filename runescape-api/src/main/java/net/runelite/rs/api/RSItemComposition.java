@@ -77,14 +77,53 @@ public interface RSItemComposition extends ItemComposition
 	@Import("getModel")
 	RSModel getModel(int quantity);
 
-	@Import("unnotedId")
+	@Import("model")
 	int getInventoryModel();
+
+	@Import("model")
+	void setInventoryModel(int model);
 
 	@Import("recolorTo")
 	short[] getColorToReplaceWith();
 
+	@Import("recolorTo")
+	void setColorToReplaceWith(short[] color);
+
+	@Import("recolorFrom")
+	short[] getColorToReplace();
+
+	@Import("recolorFrom")
+	void setColorToReplace(short[] color);
+
 	@Import("retextureTo")
 	short[] getTextureToReplaceWith();
+
+	@Import("retextureTo")
+	void setTextureToReplaceWith(short[] texture);
+
+	@Import("retextureFrom")
+	short[] getTextureToReplace();
+
+	@Import("retextureFrom")
+	void setTextureToReplace(short[] texture);
+
+	@Import("zoom2d")
+	int getModelZoom();
+
+	@Import("zoom2d")
+	void setModelZoom(int zoom);
+
+	@Import("offsetX2d")
+	int getOffsetX();
+
+	@Import("offsetX2d")
+	void setOffsetX(int offsetX);
+
+	@Import("offsetY2d")
+	int getOffsetY();
+
+	@Import("offsetY2d")
+	void setOffsetY(int offsetY);
 
 	@Import("params")
 	RSIterableNodeHashTable getParams();
@@ -95,11 +134,43 @@ public interface RSItemComposition extends ItemComposition
 	@Import("params")
 	void setParams(RSIterableNodeHashTable params);
 
+	@Import("xan2d")
+	@Override
+	int getXan2d();
+
+	@Import("yan2d")
+	@Override
+	int getYan2d();
+
+	@Import("zan2d")
+	@Override
+	int getZan2d();
+
+	@Import("xan2d")
+	@Override
+	void setXan2d(int angle);
+
+	@Import("yan2d")
+	@Override
+	void setYan2d(int angle);
+
+	@Import("zan2d")
+	@Override
+	void setZan2d(int angle);
+
 	@Import("ambient")
 	@Override
 	int getAmbient();
 
+	@Import("ambient")
+	@Override
+	void setAmbient(int ambient);
+
 	@Import("contrast")
 	@Override
 	int getContrast();
+
+	@Import("contrast")
+	@Override
+	void setContrast(int contrast);
 }

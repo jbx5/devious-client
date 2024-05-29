@@ -64,6 +64,12 @@ public interface RSMenuAction
 	@Import("itemId")
 	void setItemId(int itemId);
 
+	@Import("worldViewId")
+	int getWorldViewId();
+
+	@Import("worldViewId")
+	void setWorldViewId(int id);
+
 	@Import("target")
 	String getTarget();
 

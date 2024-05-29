@@ -32,7 +32,6 @@ import net.unethicalite.api.events.LobbyWorldSelectToggled;
 import net.unethicalite.api.events.LoginIndexChanged;
 import net.unethicalite.api.events.LoginStateChanged;
 import net.unethicalite.api.events.MenuAutomated;
-import net.unethicalite.api.events.PlaneChanged;
 import net.unethicalite.api.events.ServerPacketReceived;
 import net.unethicalite.api.events.WorldHopped;
 
@@ -137,13 +136,6 @@ public abstract class HClientMixin implements RSClient
 			client.getCallbacks().post(experienceGained);
 			previousExp[idx] = exp;
 		}
-	}
-
-	@Inject
-	@FieldHook("Client_plane")
-	public static void clientPlaneChanged(int idx)
-	{
-		client.getCallbacks().post(new PlaneChanged(client.getPlane()));
 	}
 
 	@Inject

@@ -1,88 +1,49 @@
-import java.util.ArrayList;
-import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
-class class137 implements Callable {
-	@ObfuscatedName("ja")
+@ObfuscatedName("fe")
+public class class137 implements class127 {
+	@ObfuscatedName("tt")
 	@ObfuscatedSignature(
-		descriptor = "[Lvg;"
+		descriptor = "Lbd;"
 	)
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lfa;"
-	)
-	final class138 this$0;
-	// $FF: synthetic field
-	final int val$workStart;
-	// $FF: synthetic field
-	final int val$workEnd;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "[Lff;"
-	)
-	final class130[] val$curveLoadJobs;
+	@Export("pcmPlayer1")
+	static PcmPlayer pcmPlayer1;
 
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lfa;II[Lff;)V"
+		descriptor = "([BILjava/lang/CharSequence;I)I",
+		garbageValue = "-278060780"
 	)
-	class137(class138 var1, int var2, int var3, class130[] var4) {
-		this.this$0 = var1;
-		this.val$workStart = var2;
-		this.val$workEnd = var3;
-		this.val$curveLoadJobs = var4;
+	public static int method3130(byte[] var0, int var1, CharSequence var2) {
+		int var3 = var2.length();
+		int var4 = var1;
+
+		for (int var5 = 0; var5 < var3; ++var5) {
+			char var6 = var2.charAt(var5);
+			if (var6 <= 127) {
+				var0[var4++] = (byte)var6;
+			} else if (var6 <= 2047) {
+				var0[var4++] = (byte)(192 | var6 >> 6);
+				var0[var4++] = (byte)(128 | var6 & '?');
+			} else {
+				var0[var4++] = (byte)(224 | var6 >> '\f');
+				var0[var4++] = (byte)(128 | var6 >> 6 & 63);
+				var0[var4++] = (byte)(128 | var6 & '?');
+			}
+		}
+
+		return var4 - var1;
 	}
 
-	public Object call() {
-		for (int var1 = this.val$workStart; var1 < this.val$workEnd; ++var1) {
-			this.val$curveLoadJobs[var1].call();
-		}
-
-		return null;
-	}
-
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)I",
-		garbageValue = "0"
+		descriptor = "(I)Lcl;",
+		garbageValue = "680681545"
 	)
-	static final int method3081(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
-	}
-
-	@ObfuscatedName("if")
-	@ObfuscatedSignature(
-		descriptor = "(IIS)V",
-		garbageValue = "2998"
-	)
-	static void method3080(int var0, int var1) {
-		if (NPC.clientPreferences.getMusicVolume() != 0 && var0 != -1) {
-			ArrayList var2 = new ArrayList();
-			var2.add(new MusicSong(WorldMapScaleHandler.field3167, var0, 0, NPC.clientPreferences.getMusicVolume(), false));
-			Renderable.method4881(var2, 0, 0, 0, 0, true);
-			Client.playingJingle = true;
-		}
-
+	@Export("getNextWorldListWorld")
+	static World getNextWorldListWorld() {
+		return World.World_listCount < World.World_count ? class415.World_worlds[++World.World_listCount - 1] : null;
 	}
 }

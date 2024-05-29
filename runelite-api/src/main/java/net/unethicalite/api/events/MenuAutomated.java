@@ -29,6 +29,8 @@ public class MenuAutomated
 	private int clickY = -1;
 	@Builder.Default
 	private int itemId = -1;
+	@Builder.Default
+	private int worldViewId = -1;
 	private SceneEntity entity;
 
 	public MenuEntry toEntry(Client client, int idx)

@@ -41,7 +41,9 @@ public enum VarPlayer
 {
 	POUCH_STATUS(261),
 	DUEL_PENDING(286),
+	CANNON_STATE(2),
 	CANNON_AMMO(3),
+	CANNON_COORD(4),
 	ATTACK_STYLE(43),
 	QUEST_POINTS(101),
 	IS_POISONED(102),
@@ -261,6 +263,14 @@ public enum VarPlayer
 	 * Assigned slayer task location. The mapping of value to name can be found in {@link EnumID#SLAYER_TASK_LOCATION}
 	 */
 	SLAYER_TASK_LOCATION(2096),
+
+	/**
+	 * Determines whether the woodcutting group bonus should be displayed on the buff bar or not.
+	 * 96 = displayed (including the woodcutting guild).
+	 * 0 = not displayed (after login until cutting a tree except normal trees or trees grown through farming).
+	 * -1 = not displayed (including normal trees or trees grown through farming).
+	 */
+	BUFF_BAR_WC_GROUP_BONUS(4007),
 
 	/**
 	 * Tutorial island progression

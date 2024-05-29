@@ -77,6 +77,12 @@ public interface RSPlayer extends RSActor, Player
 	@Import("skillLevel")
 	int getRSSkillLevel();
 
-//	@Import("actions")
-//	String[] getActions();
+	//@Import("actions")
+	//String[] getActions();
+
+	/*@Import("worldView")
+	RSWorldView getWorldView();
+
+	@Import("worldView")
+	void setWorldView(RSWorldView worldView);*/
 }

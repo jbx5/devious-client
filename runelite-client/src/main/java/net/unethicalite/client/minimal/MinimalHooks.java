@@ -28,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.BufferProvider;
 import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
+import net.runelite.api.Projection;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
 import net.runelite.api.events.BeforeMenuRender;
@@ -196,16 +197,16 @@ public class MinimalHooks implements Callbacks
 		}
 	}
 
-	public static void renderDraw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
+	public static void renderDraw(Projection projection, Renderable renderable, int orientation, int x, int y, int z, long hash)
 	{
 		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
 		if (drawCallbacks != null)
 		{
-			drawCallbacks.draw(renderable, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			drawCallbacks.draw(projection, client.getTopLevelWorldView().getScene(), renderable, orientation, x, y, z, hash);
 		}
 		else
 		{
-			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			projection.draw(renderable, orientation, x, y, z, hash);
 		}
 	}
 
@@ -277,6 +278,13 @@ public class MinimalHooks implements Callbacks
 	public void frame()
 	{
 		eventBus.post(BEFORE_RENDER);
+	}
+
+	@Override
+	public void serverTick()
+	{
+
+		this.shouldProcessGameTick = true;
 	}
 
 	/**

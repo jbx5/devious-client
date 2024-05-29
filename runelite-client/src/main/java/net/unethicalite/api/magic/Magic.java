@@ -74,6 +74,9 @@ public class Magic
 			Static.getClient().setSelectedSpellWidget(widget.getId());
 			Static.getClient().setSelectedSpellChildIndex(-1);
 			Static.getClient().setSpellSelected(true);
+
+			Static.getClient().setSelectedSpellActionName("Cast");
+			Static.getClient().setSelectedSpellName("<col=" + Integer.toHexString(65280) + widget.getName() + "<col=" + Integer.toHexString(16777215) + ">");
 		}
 	}
 

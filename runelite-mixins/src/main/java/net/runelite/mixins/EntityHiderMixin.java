@@ -35,6 +35,7 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSScene;
+import net.runelite.rs.api.RSWorldView;
 
 @Mixin(RSScene.class)
 public abstract class EntityHiderMixin implements RSScene
@@ -56,7 +57,7 @@ public abstract class EntityHiderMixin implements RSScene
 			 * Set the 'occupied' tick to -1, to reset the tile being 'occupied',
 			 * making the game think an entity hasn't been rendered at the location yet.
 			 */
-			client.getOccupiedTilesTick()[tileX][tileY] = -1;
+			client.getTopLevelWorldView().getOccupiedTilesTick()[tileX][tileY] = -1;
 		}
 
 		return shouldDraw &&
@@ -65,31 +66,31 @@ public abstract class EntityHiderMixin implements RSScene
 
 	@Copy("drawActor2d")
 	@Replace("drawActor2d")
-	private static void copy$draw2DExtras(RSActor actor, int var1, int var2, int var3, int var4, int var5)
+	private static void copy$draw2DExtras(RSWorldView wv, RSActor actor, int var1, int var2, int var3, int var4, int var5)
 	{
 		if (client.getCallbacks().draw(actor, true))
 		{
-			copy$draw2DExtras(actor, var1, var2, var3, var4, var5);
+			copy$draw2DExtras(wv, actor, var1, var2, var3, var4, var5);
 		}
 	}
 
 	@Copy("addPlayerToMenu")
 	@Replace("addPlayerToMenu")
-	static void copy$addPlayerToMenu(RSPlayer var0, int var1, int var2, int var3)
+	static void copy$addPlayerToMenu(RSPlayer var0, int var1, int var2, int var3, int var4)
 	{
 		if (client.getCallbacks().draw(var0, false))
 		{
-			copy$addPlayerToMenu(var0, var1, var2, var3);
+			copy$addPlayerToMenu(var0, var1, var2, var3, var4);
 		}
 	}
 
 	@Copy("addNpcToMenu")
 	@Replace("addNpcToMenu")
-	static void copy$addNpcToMenu(NPC var0, int var1, int var2, int var3)
+	static void copy$addNpcToMenu(NPC var0, int var1, int var2, int var3, int var4)
 	{
 		if (client.getCallbacks().draw(var0, false))
 		{
-			copy$addNpcToMenu(var0, var1, var2, var3);
+			copy$addNpcToMenu(var0, var1, var2, var3, var4);
 		}
 	}
 }

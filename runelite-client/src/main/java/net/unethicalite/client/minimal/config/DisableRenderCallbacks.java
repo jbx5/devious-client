@@ -1,5 +1,6 @@
 package net.unethicalite.client.minimal.config;
 
+import net.runelite.api.Projection;
 import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 import net.runelite.api.SceneTileModel;
@@ -10,19 +11,19 @@ import net.runelite.api.hooks.DrawCallbacks;
 public class DisableRenderCallbacks implements DrawCallbacks
 {
 	@Override
-	public void draw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
+	public void draw(Projection projection, Scene scene, Renderable renderable, int orientation, int x, int y, int z, long hash)
 	{
 
 	}
 
 	@Override
-	public void drawScenePaint(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, SceneTilePaint paint, int tileZ, int tileX, int tileY, int zoom, int centerX, int centerY)
+	public void drawScenePaint(Scene scene, SceneTilePaint paint, int plane, int tileX, int tileZ)
 	{
 
 	}
 
 	@Override
-	public void drawSceneModel(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, SceneTileModel model, int tileZ, int tileX, int tileY, int zoom, int centerX, int centerY)
+	public void drawSceneTileModel(Scene scene, SceneTileModel model, int tileX, int tileZ)
 	{
 
 	}

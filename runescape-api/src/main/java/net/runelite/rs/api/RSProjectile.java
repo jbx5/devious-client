@@ -110,4 +110,7 @@ public interface RSProjectile extends RSRenderable, Projectile
 
 	@Import("setDestination")
 	void setDestination(int targetX, int targetY, int targetZ, int cycle);
+
+	RSWorldView getWorldView();
+	void setWorldView(RSWorldView worldView);
 }

@@ -31,11 +31,18 @@ import net.runelite.api.coords.WorldPoint;
 import java.util.Arrays;
 import java.util.List;
 
+import org.intellij.lang.annotations.MagicConstant;
+
 /**
  * Represents an item inside an {@link ItemLayer}.
  */
 public interface TileItem extends Renderable, SceneEntity
 {
+	int OWNERSHIP_NONE = 0;
+	int OWNERSHIP_SELF = 1;
+	int OWNERSHIP_OTHER = 2;
+	int OWNERSHIP_GROUP = 3;
+
 	/**
 	 * @return the ID of the item
 	 * @see ItemID
@@ -43,6 +50,34 @@ public interface TileItem extends Renderable, SceneEntity
 	int getId();
 
 	int getQuantity();
+
+	/**
+	 * Get the time, in server ticks, when the item becomes visible to other players
+	 * @see Client#getTickCount()
+	 * @return
+	 */
+	int getVisibleTime();
+
+	/**
+	 * Get the time, in server ticks, when the item despawns
+	 * @see Client#getTickCount()
+	 * @return
+	 */
+	int getDespawnTime();
+
+	/**
+	 * Get the time, in server ticks, when the item becomes visible to other players, relative
+	 * to the spawn time.
+	 * @return
+	 */
+	@MagicConstant(intValues = {OWNERSHIP_NONE, OWNERSHIP_SELF, OWNERSHIP_OTHER, OWNERSHIP_GROUP})
+	int getOwnership();
+
+	/**
+	 * Test whether the item is private
+	 * @return
+	 */
+	boolean isPrivate();
 
 	/**
 	 * @return the tile this item is on

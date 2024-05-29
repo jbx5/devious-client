@@ -1,33 +1,27 @@
+import java.util.BitSet;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("no")
-public class class342 {
-	@ObfuscatedName("aq")
+@ObfuscatedName("nr")
+public class class342 extends Node {
+	@ObfuscatedName("dz")
+	@ObfuscatedSignature(
+		descriptor = "Lvl;"
+	)
+	@Export("worldSelectLeftSprite")
+	static IndexedSprite worldSelectLeftSprite;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 876070529
+		intValue = -1297812659
 	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
+	int field3699;
+	@ObfuscatedName("al")
+	BitSet field3698;
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-2054843409"
-	)
-	@Export("Widget_unpackTargetMask")
-	public static int Widget_unpackTargetMask(int var0) {
-		return var0 >> 11 & 63;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Lur;I)Ljava/lang/String;",
-		garbageValue = "1549371491"
-	)
-	public static String method6308(Buffer var0) {
-		return class150.method3199(var0, 32767);
+	class342(int var1) {
+		this.field3699 = var1;
+		this.field3698 = new BitSet(128);
 	}
 }

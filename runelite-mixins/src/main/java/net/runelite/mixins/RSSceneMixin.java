@@ -24,18 +24,19 @@
  */
 package net.runelite.mixins;
 
+import java.util.HashSet;
+import java.util.Set;
 import net.runelite.api.DecorativeObject;
 import net.runelite.api.GroundObject;
-import net.runelite.api.Perspective;
 import net.runelite.api.Renderable;
 import net.runelite.api.SceneTileModel;
 import net.runelite.api.SceneTilePaint;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
-import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
@@ -44,21 +45,13 @@ import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSPlayer;
+import net.runelite.rs.api.RSProjection;
 import net.runelite.rs.api.RSRenderable;
 import net.runelite.rs.api.RSRuneLiteObject;
 import net.runelite.rs.api.RSScene;
-import net.runelite.rs.api.RSSceneTileModel;
 import net.runelite.rs.api.RSTile;
 import net.runelite.rs.api.RSTileItem;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import static net.runelite.api.Constants.ROOF_FLAG_BETWEEN;
-import static net.runelite.api.Constants.ROOF_FLAG_DESTINATION;
-import static net.runelite.api.Constants.ROOF_FLAG_HOVERED;
-import static net.runelite.api.Constants.ROOF_FLAG_POSITION;
+import net.unethicalite.api.events.PlaneChanged;
 
 @Mixin(RSScene.class)
 public abstract class RSSceneMixin implements RSScene
@@ -119,7 +112,237 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	private static byte[][][] rl$tileShapes;
 
+	@Copy("draw")
 	@Replace("draw")
+	void copy$drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
+	{
+		if (!client.isMenuOpen() && !this.isCheckClick())
+		{
+			this.menuOpen(getScenePlane(), client.getMouseX() - client.getViewportXOffset(), client.getMouseY() - client.getViewportYOffset(), false);
+		}
+
+		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			viewportColor = 0;
+			drawCallbacks.drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
+		}
+
+		copy$drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
+		client.getCallbacks().drawScene();
+
+		if (drawCallbacks != null)
+		{
+			drawCallbacks.postDrawScene();
+		}
+	}
+
+	// Rev 222 RL method (draw intProjection)
+	/*@Copy("drawCam")
+	@Replace("drawCam")
+	public void qo(RSProjection projection)
+	{
+		RSIntProjection intProjection;
+		if (projection instanceof RSIntProjection)
+		{
+			intProjection = (RSIntProjection) projection;
+		}
+		else
+		{
+			return;
+		}
+
+		int cameraX = intProjection.getCameraX();
+		int cameraY = intProjection.getCameraY();
+		int cameraZ = intProjection.getCameraZ();
+		int cameraPitch = client.getCameraPitch();
+		int cameraYaw = client.getCameraYaw();
+		int plane = getScenePlane();
+
+		boolean isMenuOpen = client.isMenuOpen();
+		if (!isMenuOpen && !this.isCheckClick())
+		{
+			this.menuOpen(getScenePlane(), client.getMouseX() - client.getViewportXOffset(), client.getMouseY() - client.getViewportYOffset(), false);
+		}
+
+		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			viewportColor = 0;
+			drawCallbacks.drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
+			//drawCallbacks.drawScene(this.uj, this.zg, this.lc, this.jv, this.sb, this.bu);
+		}
+
+		final int distance = client.isGpu() ? rl$drawDistance : DEFAULT_DISTANCE;
+		int var5 = client.uk;
+		int var6 = Math.max(this.bv - distance, (5 - var5) * 8);
+		int var7 = Math.max(this.am - distance, (5 - var5) * 8);
+		int var8 = Math.min(this.bv + distance, this.dm - (5 - var5) * 8);
+		int var9 = Math.min(this.am + distance, this.cb - (5 - var5) * 8);
+		this.cx = var6;
+		this.dq = var7;
+		this.ac = var8;
+		this.cc = var9;
+		this.af = 0;
+		boolean var10 = this.xs != 0 && this.ak == -1;
+		int var14;
+		int var15;
+		int var16;
+		int var17;
+		int var18;
+		int var19;
+		int var20;
+		int var21;
+		if (var10) {
+			this.qm.clear();
+			RSPlayer var11 = client.getLocalPlayer();
+			LocalPoint var12;
+			if (var11 != null && (this.xs & 1) != 0) {
+				var12 = var11.getLocalLocation();
+				if (var12.isInScene()) {
+					this.qm.add(this.ip[this.zk.gp * 1305902891][var12.getSceneX() + this.tu][var12.getSceneY() + this.tu]);
+				}
+			}
+
+			if (this.ix >= this.aj && this.ix < this.pv && this.aw >= this.zg && this.aw < this.zm && (this.xs & 2) != 0) {
+				this.qm.add(this.ip[this.zk.gp * 1305902891][this.ix + this.tu][this.aw + this.tu]);
+			}
+
+			var12 = client.getLocalDestinationLocation();
+			if (var12 != null && var12.isInScene() && (this.xs & 4) != 0) {
+				this.qm.add(this.ip[this.zk.gp * 1305902891][var12.getSceneX() + this.tu][var12.getSceneY() + this.tu]);
+			}
+
+			if (ht.bb.getCameraPitch() < 310 && (this.xs & 8) != 0 && var11 != null) {
+				int var13 = var11.wr() >> 7;
+				var14 = var11.ou() >> 7;
+				var15 = ht.bb.getCameraX() >> 7;
+				var16 = ht.bb.getCameraY() >> 7;
+				if (var13 >= this.aj && var14 >= this.zg && var15 >= this.aj && var16 >= this.zg && var13 < this.pv && var14 < this.zm && var15 < this.pv && var16 < this.zm) {
+					var17 = Math.abs(var13 - var15);
+					var18 = Integer.compare(var13, var15);
+					var19 = -Math.abs(var14 - var16);
+					var20 = Integer.compare(var14, var16);
+					var21 = var17 + var19;
+
+					while(var15 != var13 || var16 != var14) {
+						if (this.st(this.zk.gp * 1305902891, var15 + this.tu, var16 + this.tu)) {
+							this.qm.add(this.ip[this.zk.gp * 1305902891][var15 + this.tu][var16 + this.tu]);
+						}
+
+						int var22 = 2 * var21;
+						if (var22 >= var19) {
+							var21 += var19;
+							var15 += var18;
+						} else {
+							var21 += var17;
+							var16 += var20;
+						}
+					}
+				}
+			}
+		}
+
+		if (!var2) {
+			this.ix = this.aj;
+			this.aw = this.zg;
+		}
+
+		int var23 = this.getMinLevel();
+
+		int var24;
+		boolean var25;
+		for(var24 = this.be - 1; var24 >= var23; --var24) {
+			var25 = this.ig(this.ai, this.aa, this.ci, var24, this.be - 1 == var24);
+
+			for(var14 = var6; var14 < var8; ++var14) {
+				var15 = var25 ? oc[var14] : var7;
+				var16 = var25 ? ex[var14] : var9 - 1;
+
+				for(var17 = var15; var17 <= var16; ++var17) {
+					var18 = this.hu(var24, var14, var17);
+					if (this.qp(var18)) {
+						var19 = this.eb(var18);
+						var20 = this.ip[this.zk.gp * 1305902891][var14][var17];
+						if (var19 > this.bu && !var10 || this.ak == -1 && !var25 && !this.qb(var14 - this.bv + this.az, var17 - this.am + this.az) && this.at[var24][var14][var17] - this.aa < 2000 || var10 && this.zk.gp * 1305902891 < var19 && var20 != 0 && this.qm.contains(var20)) {
+							int[] var10000 = this.tc;
+							var10000[var18] &= -23;
+						} else {
+							var21 = this.tc[var18];
+							var21 |= 6;
+							var21 |= this.qk[var18] > 0 ? 8 : 0;
+							var21 &= -16711697;
+							this.tc[var18] = var21;
+							++this.af;
+						}
+					}
+				}
+			}
+		}
+
+		label190:
+		for(var24 = 0; var24 < 2; ++var24) {
+			var25 = var24 == 0;
+
+			for(var14 = var23; var14 < this.be; ++var14) {
+				for(var15 = -distance; var15 <= 0; ++var15) {
+					var16 = var15 + this.bv;
+					var17 = this.bv - var15;
+					if (var16 >= var6 || var17 < var8) {
+						for(var18 = -distance; var18 <= 0; ++var18) {
+							var19 = var18 + this.am;
+							var20 = this.am - var18;
+							if (var16 >= var6) {
+								if (var19 >= var7) {
+									var21 = this.hu(var14, var16, var19);
+									if ((this.tc[var21] & 3) == 3) {
+										this.gu(projection, var21, var25);
+									}
+								}
+
+								if (var20 < var9) {
+									var21 = this.hu(var14, var16, var20);
+									if ((this.tc[var21] & 3) == 3) {
+										this.gu(projection, var21, var25);
+									}
+								}
+							}
+
+							if (var17 < var8) {
+								if (var19 >= var7) {
+									var21 = this.hu(var14, var17, var19);
+									if ((this.tc[var21] & 3) == 3) {
+										this.gu(projection, var21, var25);
+									}
+								}
+
+								if (var20 < var9) {
+									var21 = this.hu(var14, var17, var20);
+									if ((this.tc[var21] & 3) == 3) {
+										this.gu(projection, var21, var25);
+									}
+								}
+							}
+
+							if (this.af == 0) {
+								break label190;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		this.bn = false;
+		client.getCallbacks().drawScene();
+		if (drawCallbacks != null)
+		{
+			drawCallbacks.postDrawScene();
+		}
+
+	}*/
+
+	/*@Replace("draw")
 	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
 	{
 		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
@@ -763,7 +986,7 @@ public abstract class RSSceneMixin implements RSScene
 		{
 			client.getLogger().warn("error during overlay rendering", ex);
 		}
-	}
+	}*/
 
 	@Inject
 	@Override
@@ -782,8 +1005,8 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	private static void setTargetTile(int targetX, int targetY)
 	{
-		client.setSelectedSceneTileX(targetX);
-		client.setSelectedSceneTileY(targetY);
+		client.getTopLevelWorldView().getScene().setBaseX(targetX);
+		client.getTopLevelWorldView().getScene().setBaseY(targetY);
 	}
 
 	@Override
@@ -802,7 +1025,7 @@ public abstract class RSSceneMixin implements RSScene
 		RSTileItem item = client.newTileItem();
 		item.setId(id);
 		item.setQuantity(quantity);
-		RSNodeDeque[][][] groundItems = client.getGroundItemDeque();
+		RSNodeDeque[][][] groundItems = client.getWorldView().getGroundItems();
 
 		if (groundItems[plane][sceneX][sceneY] == null)
 		{
@@ -830,7 +1053,7 @@ public abstract class RSSceneMixin implements RSScene
 			return;
 		}
 
-		RSNodeDeque items = client.getGroundItemDeque()[plane][sceneX][sceneY];
+		RSNodeDeque items = client.getWorldView().getGroundItems()[plane][sceneX][sceneY];
 
 		if (items == null)
 		{
@@ -848,7 +1071,7 @@ public abstract class RSSceneMixin implements RSScene
 
 		if (items.last() == null)
 		{
-			client.getGroundItemDeque()[plane][sceneX][sceneY] = null;
+			client.getWorldView().getGroundItems()[plane][sceneX][sceneY] = null;
 		}
 
 		client.updateItemPile(plane, sceneX, sceneY);
@@ -1110,6 +1333,13 @@ public abstract class RSSceneMixin implements RSScene
 
 	@Inject
 	@Override
+	public int getRoofRemovalMode()
+	{
+		return rl$roofRemovalMode;
+	}
+
+	@Inject
+	@Override
 	public void generateHouses()
 	{
 		rl$tiles = new int[4][104][104];
@@ -1137,7 +1367,7 @@ public abstract class RSSceneMixin implements RSScene
 	public void iterateDeque(Tile var1, int var2)
 	{
 		Tile[][][] tiles = getTiles();
-		RSNodeDeque tilesDeque = client.getTilesDeque();
+		RSNodeDeque tilesDeque = client.getTopLevelWorldView().getScene().getTilesDeque();
 		tilesDeque.addFirst((RSNode) var1);
 
 		RSTile rsTile;
@@ -1295,16 +1525,16 @@ public abstract class RSSceneMixin implements RSScene
 	}
 
 	@Inject
-	public static void renderDraw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
+	public static void renderDraw(RSProjection projection, RSRenderable renderable, int orientation, int x, int y, int z, long hash)
 	{
 		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
 		if (drawCallbacks != null)
 		{
-			drawCallbacks.draw(renderable, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			drawCallbacks.draw(projection, client.getTopLevelWorldView().getScene(), renderable, orientation, x, y, z, hash);
 		}
 		else
 		{
-			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			projection.draw(renderable, orientation, x, y, z, hash);
 		}
 	}
 
@@ -1358,7 +1588,7 @@ public abstract class RSSceneMixin implements RSScene
 			var13 /= 128;
 			var14 /= 128;
 
-			return newGameObject(level, var11, var12, var13 - var11 + 1, var14 - var12 + 1, x, y, z, (RSRenderable) renderable, orientation, true, var8, 0);
+			return this.newGameObject(level, var11, var12, var13 - var11 + 1, var14 - var12 + 1, x, y, z, (RSRenderable) renderable, orientation, true, var8, 0);
 		}
 	}
 
@@ -1420,5 +1650,22 @@ public abstract class RSSceneMixin implements RSScene
 	public byte[][][] getExtendedTileSettings()
 	{
 		return rl$extendedTileSettings;
+	}
+
+	@FieldHook("Scene_offsetOccluder")
+	@Inject
+	public void offsetOccluderChanged(int idx)
+	{
+		if (this.getOffsetOccluder() == 25)
+		{
+			this.setOffsetOccluder(90);
+		}
+	}
+
+	@Inject
+	@FieldHook("Scene_plane")
+	public void scenePlaneChanged(int idx)
+	{
+		client.getCallbacks().post(new PlaneChanged(getScenePlane()));
 	}
 }
