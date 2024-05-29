@@ -158,7 +158,7 @@ public class FriendSystem {
 				} else if (this.isIgnored(var2)) {
 					class186.method3733(var1);
 				} else {
-					PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.field3281, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -233,7 +233,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					Client.field729 = Client.cycleCntr;
-					PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.field3301, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -257,7 +257,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					Client.field729 = Client.cycleCntr;
 					if (var2) {
-						PacketBufferNode var4 = WorldMapElement.getPacketBufferNode(ClientPacket.field3345, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = WorldMapElement.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);

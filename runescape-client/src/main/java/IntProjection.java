@@ -126,7 +126,7 @@ public class IntProjection extends Projection
 					var18 = var17 * this.pitchCos - var12 * this.pitchSin >> 16;
 					var12 = var17 * this.pitchSin + var12 * this.pitchCos >> 16;
 					if (var12 >= 50) {
-						this.method5149(var1, var2, var4, var5, var7, var11, var10, var6, var14, var15, var16, var18, var9, var8, var13, var12);
+						this.drawSceneTilePaint(var1, var2, var4, var5, var7, var11, var10, var6, var14, var15, var16, var18, var9, var8, var13, var12);
 					}
 				}
 			}
@@ -165,6 +165,6 @@ public class IntProjection extends Projection
 			SceneTileModel.field2857[var6] = class175.method3578(var9);
 		}
 
-		this.method5158(var1, var2, var3, var4);
+		this.drawSceneTileModel(var1, var2, var3, var4);
 	}
 }

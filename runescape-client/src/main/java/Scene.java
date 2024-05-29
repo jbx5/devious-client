@@ -1342,14 +1342,15 @@ public class Scene extends Renderable {
 		this.Scene_cameraYTile = var3 / 128;
 		this.Scene_plane = var6;
 		IntProjection var7 = new IntProjection(var1, var2, var3, var4, var5);
-		this.method4911(var7);
+		this.updateVisibleTilesAndOccluders(var7);
 	}
 
 	@ObfuscatedName("cb")
 	@ObfuscatedSignature(
 		descriptor = "(Lkl;)V"
 	)
-	void method4911(Projection var1) {
+	@Export("updateVisibleTilesAndOccluders")
+	void updateVisibleTilesAndOccluders(Projection var1) {
 		++this.Scene_drawnCount;
 		this.Scene_cameraXTileMin = this.Scene_cameraXTile - this.Scene_offsetOccluder;
 		if (this.Scene_cameraXTileMin < 0) {
@@ -2532,8 +2533,8 @@ public class Scene extends Renderable {
 		this.Scene_cameraZ = (int)var22.method7863((float)var7, (float)var8, (float)var9);
 		this.Scene_cameraXTile = this.Scene_cameraX / 128;
 		this.Scene_cameraYTile = this.Scene_cameraZ / 128;
-		class253 var25 = new class253(var24);
-		this.method4911(var25);
+		TilesProjection var25 = new TilesProjection(var24);
+		this.updateVisibleTilesAndOccluders(var25);
 	}
 
 	@ObfuscatedName("co")

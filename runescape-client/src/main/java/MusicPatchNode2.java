@@ -68,7 +68,7 @@ public class MusicPatchNode2 {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.field3319, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = WorldMapElement.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(WorldMap.privateChatMode.field5482);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -84,7 +84,7 @@ public class MusicPatchNode2 {
 				class13.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[class13.Interpreter_intStackSize + 1];
-				var6 = WorldMapElement.getPacketBufferNode(ClientPacket.field3294, Client.packetWriter.isaacCipher);
+				var6 = WorldMapElement.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -158,7 +158,7 @@ public class MusicPatchNode2 {
 							class166.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class166.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class166.Interpreter_stringStackSize + 1];
-							var12 = WorldMapElement.getPacketBufferNode(ClientPacket.field3321, Client.packetWriter.isaacCipher);
+							var12 = WorldMapElement.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

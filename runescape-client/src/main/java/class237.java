@@ -67,7 +67,19 @@ public enum class237 implements Enum {
 	public final float field2527;
 
 	static {
-		// $FF: Couldn't be decompiled
+		class237[] var0 = new class237[]{field2522, field2526, field2524, field2528, field2529, field2530, field2531, field2525, field2523};
+		field2533 = var0;
+		StringBuilder var4 = new StringBuilder();
+		class237[] var1 = field2533;
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			class237 var3 = var1[var2];
+			var4.append(var3.field2532);
+			var4.append(", ");
+		}
+
+		String var5 = var4.toString();
+		var5.substring(0, var5.length() - 2);
 	}
 
 	class237(byte var3, float var4) {

@@ -248,7 +248,7 @@ public class PacketWriter {
 					}
 
 					if (var18) {
-						var17 = WorldMapElement.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
+						var17 = WorldMapElement.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 						var17.packetBuffer.writeInt(var1);
 						Client.packetWriter.addNode(var17);
 					}
@@ -265,7 +265,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3334, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAddLE(var3);
 					var16.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -280,7 +280,7 @@ public class PacketWriter {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3303, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeShort(var0 + var11);
 				var23.packetBuffer.writeShortLE(var3);
 				var23.packetBuffer.writeShortAddLE(var12 + var1);
@@ -297,7 +297,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3326, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var16);
@@ -309,7 +309,7 @@ public class PacketWriter {
 				Client.mouseCrossY = var9;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3371, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeShortLE(var3);
 				Client.packetWriter.addNode(var23);
 			}
@@ -317,7 +317,7 @@ public class PacketWriter {
 			int var19;
 			Widget var24;
 			if (var2 == 29) {
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var23);
 				var24 = AsyncRestClient.widgetDefinition.method6536(var1);
@@ -339,7 +339,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3304, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortLE(var3);
 					var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -355,7 +355,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3369, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortLE(var3);
 					var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -371,7 +371,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3365, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShort(var3);
 					var16.packetBuffer.writeIntIME(Strings.selectedSpellWidget);
@@ -409,7 +409,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3293, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAddLE(var3);
 					var16.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -423,7 +423,7 @@ public class PacketWriter {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3359, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeShortLE(var0 + var11);
 				var23.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var23.packetBuffer.writeShortAddLE(var12 + var1);
@@ -440,7 +440,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3297, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var16);
@@ -454,7 +454,7 @@ public class PacketWriter {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3313, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeShortAdd(var0 + var11);
 				var23.packetBuffer.writeShortAddLE(var3);
 				var23.packetBuffer.writeShortAdd(var12 + var1);
@@ -475,7 +475,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3290, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAdd(var3);
 					var16.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -491,7 +491,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3278, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var16);
@@ -523,7 +523,7 @@ public class PacketWriter {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3356, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeShortAddLE(Client.selectedSpellItemId);
 				var23.packetBuffer.writeIntLE(Strings.selectedSpellWidget);
 				var23.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -543,7 +543,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3291, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 					var16.packetBuffer.writeInt(Strings.selectedSpellWidget);
@@ -562,7 +562,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3351, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var16);
@@ -581,7 +581,7 @@ public class PacketWriter {
 						class371.runScriptEvent(var25);
 					}
 
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3354, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeIntLE(var1);
 					var16.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 					var16.packetBuffer.writeShortAdd(var0);
@@ -601,7 +601,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3307, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShort(var3);
 					Client.packetWriter.addNode(var16);
@@ -609,7 +609,7 @@ public class PacketWriter {
 			}
 
 			if (var2 == 28) {
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var23);
 				var24 = AsyncRestClient.widgetDefinition.method6536(var1);
@@ -627,7 +627,7 @@ public class PacketWriter {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3275, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeShortAddLE(var12 + var1);
 				var23.packetBuffer.writeShortAddLE(var3);
 				var23.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -644,7 +644,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3274, Client.packetWriter.isaacCipher);
+					var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var16);
@@ -689,7 +689,7 @@ public class PacketWriter {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3328, Client.packetWriter.isaacCipher);
+				var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 				var23.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var23.packetBuffer.writeShortLE(var3);
 				var23.packetBuffer.writeShortAddLE(var0 + var11);
@@ -742,7 +742,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3279, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var23.packetBuffer.writeShortLE(var3);
 					var23.packetBuffer.writeShortLE(var0 + var11);
@@ -757,7 +757,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3370, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 					var23.packetBuffer.writeShortLE(var3);
 					var23.packetBuffer.writeShortAddLE(var0 + var11);
@@ -779,7 +779,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3299, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeShortAdd(var3);
 					var23.packetBuffer.writeShortAdd(var0 + var11);
 					var23.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -796,7 +796,7 @@ public class PacketWriter {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3361, Client.packetWriter.isaacCipher);
+						var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var16.packetBuffer.writeShortAddLE(var3);
 						Client.packetWriter.addNode(var16);
@@ -810,7 +810,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3300, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeShort(var3);
 					var23.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var23.packetBuffer.writeShortAddLE(var0 + var11);
@@ -825,7 +825,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3366, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var23.packetBuffer.writeShortAdd(var12 + var1);
 					var23.packetBuffer.writeShortLE(var0 + var11);
@@ -838,7 +838,7 @@ public class PacketWriter {
 					Client.mouseCrossY = var9;
 					Client.mouseCrossColor = 2;
 					Client.mouseCrossState = 0;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3302, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeShortAdd(var0 + var11);
 					var23.packetBuffer.writeShortLE(var12 + var1);
 					var23.packetBuffer.writeShort(var3);
@@ -852,7 +852,7 @@ public class PacketWriter {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.field3284, Client.packetWriter.isaacCipher);
+					var23 = WorldMapElement.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 					var23.packetBuffer.writeShort(var0 + var11);
 					var23.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var23.packetBuffer.writeShortLE(var12 + var1);
@@ -873,7 +873,7 @@ public class PacketWriter {
 						}
 
 						if (var27 != null) {
-							var17 = WorldMapElement.getPacketBufferNode(ClientPacket.field3341, Client.packetWriter.isaacCipher);
+							var17 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 							var17.packetBuffer.writeShortAddLE(var27.id);
 							Client.packetWriter.addNode(var17);
 						}
@@ -889,7 +889,7 @@ public class PacketWriter {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = WorldMapElement.getPacketBufferNode(ClientPacket.field3306, Client.packetWriter.isaacCipher);
+						var16 = WorldMapElement.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeShortAddLE(var3);
 						var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var16);

@@ -46,7 +46,7 @@ public class UserComparator6 extends AbstractUserComparator {
 	static void method3016() {
 		class197.Tiles_underlays = null;
 		Tiles.Tiles_overlays = null;
-		class253.Tiles_shapes = null;
+		TilesProjection.Tiles_shapes = null;
 		AbstractByteArrayCopier.field3975 = null;
 		SongTask.field4795 = null;
 		class202.Tiles_underlays2 = null;

@@ -95,7 +95,7 @@ public class class449 {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.field3368, Client.packetWriter.isaacCipher);
+			PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var3.packetBuffer.writeByte(class534.getWindowedMode());
 			var3.packetBuffer.writeShort(GameEngine.canvasWidth);
 			var3.packetBuffer.writeShort(DbTable.canvasHeight);

@@ -193,7 +193,7 @@ public class ModelData0 {
 		garbageValue = "88109315"
 	)
 	static void method5454() {
-		Client.packetWriter.addNode(WorldMapElement.getPacketBufferNode(ClientPacket.field3314, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(WorldMapElement.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

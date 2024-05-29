@@ -121,7 +121,7 @@ public class class151 extends class147 {
 
 				if (var10 <= 49) {
 					Tiles.Tiles_overlays[var2][var3][var4] = (short)var1.readShort();
-					class253.Tiles_shapes[var2][var3][var4] = (byte)((var10 - 2) / 4);
+					TilesProjection.Tiles_shapes[var2][var3][var4] = (byte)((var10 - 2) / 4);
 					AbstractByteArrayCopier.field3975[var2][var3][var4] = (byte)(var10 - 2 + var7 & 3);
 				} else if (var10 <= 81) {
 					var9[var2][var3][var4] = (byte)(var10 - 49);

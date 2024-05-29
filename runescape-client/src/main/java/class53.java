@@ -190,7 +190,7 @@ public class class53 extends Node {
 	@Export("clanKickUser")
 	static final void clanKickUser(String var0) {
 		if (class108.friendsChat != null) {
-			PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.field3323, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.CLAN_KICKUSER, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var0));
 			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 			Client.packetWriter.addNode(var1);

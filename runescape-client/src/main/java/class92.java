@@ -180,7 +180,7 @@ public enum class92 implements Enum {
 			}
 		}
 
-		PacketBufferNode var6 = WorldMapElement.getPacketBufferNode(ClientPacket.field3330, Client.packetWriter.isaacCipher);
+		PacketBufferNode var6 = WorldMapElement.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher);
 		var6.packetBuffer.writeByte(var0.length() + 1);
 		var6.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var6);
