@@ -1463,12 +1463,13 @@ public abstract class RSSceneMixin implements RSScene
 
 	@FieldHook("Scene_offsetOccluder")
 	@Inject
-	public void offsetOccluderChanged(int idx)
+	public void onDrawDistanceChanged(int idx)
 	{
-		if (this.getOffsetOccluder() == 25)
+		client.getLogger().debug("Draw distance changed: {}", this.getOffsetOccluder());
+		/*if (this.getOffsetOccluder() == 25)
 		{
 			this.setOffsetOccluder(90);
-		}
+		}*/
 	}
 
 	@Inject

@@ -223,7 +223,7 @@ public class ReflectionCheck extends Node {
 							UserComparator6.method3020(class94.field1173);
 						} else if (class94.field1173 != Client.field561) {
 							if (Client.field561 == class94.field1167) {
-								class358.topLevelWorldView = new WorldView(-1, 104, 104, class459.clientPreferences.method2577());
+								class358.topLevelWorldView = new WorldView(-1, 104, 104, class459.clientPreferences.getDrawDistance());
 								ModeWhere.worldView = class358.topLevelWorldView;
 								HealthBarUpdate.sceneMinimapSprite = new SpritePixels(512, 512);
 								class175.method3576(30, "Starting game engine...");

@@ -294,7 +294,7 @@ public class class59 {
 				int var5 = var1.readUnsignedByte();
 				int var21 = var4 * 8;
 				int var22 = var5 * 8;
-				WorldEntity var8 = new WorldEntity(var3, var21, var22, class459.clientPreferences.method2577());
+				WorldEntity var8 = new WorldEntity(var3, var21, var22, class459.clientPreferences.getDrawDistance());
 				var0.worldEntities[var3] = var8;
 				int var9 = var1.readUnsignedByte();
 				int var10 = var1.readUnsignedByte();
