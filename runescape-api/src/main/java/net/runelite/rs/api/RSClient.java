@@ -1170,6 +1170,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setShowMouseCross(boolean show);
 
+	@Import("mouseCrossState")
+	void setMouseCrossState(int state);
+
 	@Import("changedSkills")
 	int[] getChangedSkillLevels();
 
