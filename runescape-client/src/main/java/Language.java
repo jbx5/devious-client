@@ -555,10 +555,10 @@ public class Language implements Enum {
 							return 1;
 						} else if (var0 == 3185) {
 							var3 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
-							class459.clientPreferences.method2536(var3);
+							class459.clientPreferences.setDrawDistance(var3);
 							return 1;
 						} else if (var0 == 3186) {
-							var3 = class459.clientPreferences.method2577();
+							var3 = class459.clientPreferences.getDrawDistance();
 							Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var3;
 							return 1;
 						} else if (var0 == 3189) {

@@ -144,14 +144,14 @@ public enum class92 implements Enum {
 
 			try {
 				int var2 = Integer.parseInt(var3[1]);
-				class459.clientPreferences.method2536(var2);
+				class459.clientPreferences.setDrawDistance(var2);
 			} catch (NumberFormatException var5) {
 				UrlRequest.addGameMessage(99, "", String.format("Error setting draw distance. setdrawdistance should be in the format \"::setdrawdistance X\" where X is a valid number. Value provided: %s", var3[1]));
 			}
 		}
 
 		if (var0.equalsIgnoreCase("getdrawdistance")) {
-			UrlRequest.addGameMessage(99, "", String.format("%d", class459.clientPreferences.method2577()));
+			UrlRequest.addGameMessage(99, "", String.format("%d", class459.clientPreferences.getDrawDistance()));
 		}
 
 		if (Client.staffModLevel >= 2) {

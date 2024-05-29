@@ -1,6 +1,10 @@
 package net.runelite.mixins;
 
+import net.runelite.api.Scene;
+import net.runelite.api.SceneTileModel;
+import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSProjection;
@@ -103,7 +107,7 @@ public abstract class RSProjectionMixin implements RSProjection
 		}
 	}*/
 
-	/*@Copy("drawSceneTileModel")
+	@Copy("drawSceneTileModel")
 	@Replace("drawSceneTileModel")
 	void copy$drawSceneTileModel(Scene scene, SceneTileModel sceneTileModel, int x, int z)
 	{
@@ -112,5 +116,5 @@ public abstract class RSProjectionMixin implements RSProjection
 			client.getDrawCallbacks().drawSceneTileModel(scene, sceneTileModel, x, z);
 		}
 		copy$drawSceneTileModel(scene, sceneTileModel, x, z);
-	}*/
+	}
 }

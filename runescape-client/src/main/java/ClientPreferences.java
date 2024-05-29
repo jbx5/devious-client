@@ -68,7 +68,8 @@ public class ClientPreferences {
 	@ObfuscatedGetter(
 		intValue = -948621627
 	)
-	int field1327;
+	@Export("drawDistance")
+	int drawDistance;
 	@ObfuscatedName("au")
 	@Export("parameters")
 	final Map parameters;
@@ -83,7 +84,7 @@ public class ClientPreferences {
 		this.eula = -1;
 		this.rememberedUsername = null;
 		this.windowMode = 1;
-		this.field1327 = 25;
+		this.drawDistance = 25;
 		this.parameters = new LinkedHashMap();
 		this.method2505(true);
 	}
@@ -101,7 +102,7 @@ public class ClientPreferences {
 		this.eula = -1;
 		this.rememberedUsername = null;
 		this.windowMode = 1;
-		this.field1327 = 25;
+		this.drawDistance = 25;
 		this.parameters = new LinkedHashMap();
 		if (var1 != null && var1.array != null) {
 			int var2 = var1.readUnsignedByte();
@@ -156,7 +157,7 @@ public class ClientPreferences {
 				}
 
 				if (var2 > 10) {
-					this.field1327 = var1.readUnsignedByte();
+					this.drawDistance = var1.readUnsignedByte();
 				}
 			} else {
 				this.method2505(true);
@@ -205,7 +206,7 @@ public class ClientPreferences {
 		var1.writeByte(this.eula);
 		var1.writeByte(this.displayFps ? 1 : 0);
 		var1.writeInt(this.field1326);
-		var1.writeByte(this.field1327);
+		var1.writeByte(this.drawDistance);
 		return var1;
 	}
 
@@ -527,10 +528,11 @@ public class ClientPreferences {
 		descriptor = "(IB)V",
 		garbageValue = "16"
 	)
-	void method2536(int var1) {
-		this.field1327 = var1;
+	@Export("setDrawDistance")
+	void setDrawDistance(int var1) {
+		this.drawDistance = var1;
 		if (class358.topLevelWorldView != null) {
-			class358.topLevelWorldView.scene.method4971(class459.clientPreferences.method2577());
+			class358.topLevelWorldView.scene.method4971(class459.clientPreferences.getDrawDistance());
 		}
 
 		class202.savePreferences();
@@ -541,8 +543,9 @@ public class ClientPreferences {
 		descriptor = "(B)I",
 		garbageValue = "-110"
 	)
-	int method2577() {
-		return this.field1327;
+	@Export("getDrawDistance")
+	int getDrawDistance() {
+		return this.drawDistance;
 	}
 
 	@ObfuscatedName("at")

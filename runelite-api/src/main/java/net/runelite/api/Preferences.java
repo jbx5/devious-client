@@ -182,6 +182,20 @@ public interface Preferences
 	int getWindowMode();
 
 	/**
+	 * Get draw distance
+	 *
+	 * @return the draw distance
+	 */
+	int getDrawDistance();
+
+	/**
+	 * Set draw distance
+	 *
+	 * @param drawDistance
+	 */
+	void setDrawDistance(int drawDistance);
+
+	/**
 	 * Get parameters
 	 *
 	 * @return parameters
