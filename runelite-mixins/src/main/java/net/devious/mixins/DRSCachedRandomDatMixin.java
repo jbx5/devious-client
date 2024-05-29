@@ -106,8 +106,8 @@ public abstract class DRSCachedRandomDatMixin implements RSClient
 			return;
 		}
 
-		client.getLogger().info("Saving new random.dat data {} for user {}", newRandomDatData, client.getUsername());
-		client.writeCachedRandomDatData(client.getUsername(), newRandomDatData);
+		client.getLogger().info("Saving new random.dat data {} for user {}", newRandomDatData, client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
+		client.writeCachedRandomDatData(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId(), newRandomDatData);
 	}
 
 	@Copy("randomDatData2")
@@ -119,7 +119,7 @@ public abstract class DRSCachedRandomDatMixin implements RSClient
 			return copy$RandomDatData2();
 		}
 
-		byte[] cachedData = client.getCachedRandomDatData(client.getUsername());
+		byte[] cachedData = client.getCachedRandomDatData(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
 		if (cachedData == null)
 		{
 			cachedData = new byte[24];
@@ -128,7 +128,7 @@ public abstract class DRSCachedRandomDatMixin implements RSClient
 				cachedData[i] = -1;
 			}
 		}
-		client.getLogger().info("Using cached random.dat {} for user {}", cachedData, client.getUsername());
+		client.getLogger().info("Using cached random.dat {} for user {}", cachedData, client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
 		return cachedData;
 	}
 }

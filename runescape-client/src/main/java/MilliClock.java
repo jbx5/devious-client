@@ -4,129 +4,126 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("go")
+@ObfuscatedName("gp")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-	@ObfuscatedName("az")
-	long[] field1897;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ak")
+	long[] field1906;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -981477377
+		intValue = 229547495
 	)
-	int field1892;
+	int field1903;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -1612662661
+	)
+	int field1902;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		longValue = -1499200024151752591L
+	)
+	long field1905;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 632704011
+		intValue = 596736119
 	)
-	int field1894;
-	@ObfuscatedName("at")
+	int field1904;
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		longValue = 1026994790827227657L
+		intValue = -19734087
 	)
-	long field1895;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = 352660841
-	)
-	int field1896;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 1326604207
-	)
-	int field1893;
+	int field1907;
 
-	MilliClock() {
-		this.field1897 = new long[10];
-		this.field1892 = 256;
-		this.field1894 = 1;
-		this.field1896 = 0;
-		this.field1895 = VerticalAlignment.method3924();
+	public MilliClock() {
+		this.field1906 = new long[10];
+		this.field1903 = 256;
+		this.field1902 = 1;
+		this.field1904 = 0;
+		this.field1905 = class129.method3033();
 
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1897[var1] = this.field1895;
+			this.field1906[var1] = this.field1905;
 		}
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "503557522"
+		garbageValue = "1748185955"
 	)
 	@Export("mark")
 	public void mark() {
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1897[var1] = 0L;
+			this.field1906[var1] = 0L;
 		}
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-234645031"
+		descriptor = "(IIB)I",
+		garbageValue = "127"
 	)
 	@Export("wait")
 	public int wait(int var1, int var2) {
-		int var3 = this.field1892;
-		int var4 = this.field1894;
-		this.field1892 = 300;
-		this.field1894 = 1;
-		this.field1895 = VerticalAlignment.method3924();
-		if (this.field1897[this.field1893] == 0L) {
-			this.field1892 = var3;
-			this.field1894 = var4;
-		} else if (this.field1895 > this.field1897[this.field1893]) {
-			this.field1892 = (int)((long)(var1 * 2560) / (this.field1895 - this.field1897[this.field1893]));
+		int var3 = this.field1903;
+		int var4 = this.field1902;
+		this.field1903 = 300;
+		this.field1902 = 1;
+		this.field1905 = class129.method3033();
+		if (0L == this.field1906[this.field1907]) {
+			this.field1903 = var3;
+			this.field1902 = var4;
+		} else if (this.field1905 > this.field1906[this.field1907]) {
+			this.field1903 = (int)((long)(var1 * 2560) / (this.field1905 - this.field1906[this.field1907]));
 		}
 
-		if (this.field1892 < 25) {
-			this.field1892 = 25;
+		if (this.field1903 < 25) {
+			this.field1903 = 25;
 		}
 
-		if (this.field1892 > 256) {
-			this.field1892 = 256;
-			this.field1894 = (int)((long)var1 - (this.field1895 - this.field1897[this.field1893]) / 10L);
+		if (this.field1903 > 256) {
+			this.field1903 = 256;
+			this.field1902 = (int)((long)var1 - (this.field1905 - this.field1906[this.field1907]) / 10L);
 		}
 
-		if (this.field1894 > var1) {
-			this.field1894 = var1;
+		if (this.field1902 > var1) {
+			this.field1902 = var1;
 		}
 
-		this.field1897[this.field1893] = this.field1895;
-		this.field1893 = (this.field1893 + 1) % 10;
+		this.field1906[this.field1907] = this.field1905;
+		this.field1907 = (this.field1907 + 1) % 10;
 		int var5;
-		if (this.field1894 > 1) {
+		if (this.field1902 > 1) {
 			for (var5 = 0; var5 < 10; ++var5) {
-				if (0L != this.field1897[var5]) {
-					this.field1897[var5] += (long)this.field1894;
+				if (0L != this.field1906[var5]) {
+					this.field1906[var5] += (long)this.field1902;
 				}
 			}
 		}
 
-		if (this.field1894 < var2) {
-			this.field1894 = var2;
+		if (this.field1902 < var2) {
+			this.field1902 = var2;
 		}
 
-		class499.method8677((long)this.field1894);
+		class484.method8889((long)this.field1902);
 
-		for (var5 = 0; this.field1896 < 256; this.field1896 += this.field1892) {
+		for (var5 = 0; this.field1904 < 256; this.field1904 += this.field1903) {
 			++var5;
 		}
 
-		this.field1896 &= 255;
+		this.field1904 &= 255;
 		return var5;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1865360983"
+		descriptor = "(I)Lhi;",
+		garbageValue = "336880011"
 	)
-	static final int method3544(int var0, int var1) {
-		int var2 = TileItem.method2691(var0 - 1, var1 - 1) + TileItem.method2691(1 + var0, var1 - 1) + TileItem.method2691(var0 - 1, 1 + var1) + TileItem.method2691(1 + var0, 1 + var1);
-		int var3 = TileItem.method2691(var0 - 1, var1) + TileItem.method2691(1 + var0, var1) + TileItem.method2691(var0, var1 - 1) + TileItem.method2691(var0, 1 + var1);
-		int var4 = TileItem.method2691(var0, var1);
-		return var2 / 16 + var3 / 8 + var4 / 4;
+	public static class183 method3646() {
+		return class183.field1911;
 	}
 }

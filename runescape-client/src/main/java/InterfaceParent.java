@@ -4,71 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dv")
+@ObfuscatedName("dz")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -325947393
+		intValue = 1734803163
 	)
 	@Export("group")
 	int group;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1642221491
+		intValue = -242259599
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("af")
-	boolean field1076;
+	@ObfuscatedName("aj")
+	boolean field1091;
 
 	InterfaceParent() {
-		this.field1076 = false;
+		this.field1091 = false;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("hz")
 	@ObfuscatedSignature(
-		descriptor = "(Lun;I)V",
-		garbageValue = "-1733375835"
+		descriptor = "(IZZZZI)Lot;",
+		garbageValue = "2134359933"
 	)
-	@Export("updatePlayer")
-	static final void updatePlayer(PacketBuffer var0) {
-		var0.importIndex();
-		int var1 = Client.localPlayerIndex;
-		Player var2 = class133.localPlayer = Client.players[var1] = new Player();
-		var2.index = var1;
-		int var3 = var0.readBits(30);
-		byte var4 = (byte)(var3 >> 28);
-		int var5 = var3 >> 14 & 16383;
-		int var6 = var3 & 16383;
-		var2.pathX[0] = var5 - GrandExchangeOfferOwnWorldComparator.baseX * 64;
-		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
-		var2.pathY[0] = var6 - DevicePcmPlayerProvider.baseY * 64;
-		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
-		class172.Client_plane = var2.plane = var4;
-		if (Players.field1395[var1] != null) {
-			var2.read(Players.field1395[var1]);
+	@Export("newArchive")
+	static Archive newArchive(int var0, boolean var1, boolean var2, boolean var3, boolean var4) {
+		ArchiveDisk var5 = null;
+		if (JagexCache.JagexCache_dat2File != null) {
+			var5 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, class74.JagexCache_idxFiles[var0], 1000000);
 		}
 
-		Players.Players_count = 0;
-		Players.Players_indices[++Players.Players_count - 1] = var1;
-		Players.field1382[var1] = 0;
-		Players.Players_emptyIdxCount = 0;
+		return new Archive(var5, class332.masterDisk, HttpMethod.field32, var0, var1, var2, var3, var4, false);
+	}
 
-		for (int var7 = 1; var7 < 2048; ++var7) {
-			if (var7 != var1) {
-				int var8 = var0.readBits(18);
-				int var9 = var8 >> 16;
-				int var10 = var8 >> 8 & 597;
-				int var11 = var8 & 597;
-				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
-				Players.Players_orientations[var7] = 0;
-				Players.Players_targetIndices[var7] = -1;
-				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
-				Players.field1382[var7] = 0;
-			}
-		}
-
-		var0.exportIndex();
+	@ObfuscatedName("iy")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "590098191"
+	)
+	static final void method2318() {
+		KitDefinition.KitDefinition_archive = null;
+		class156.KitDefinition_modelsArchive = null;
+		class420.KitDefinition_fileCount = 0;
 	}
 }

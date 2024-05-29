@@ -24,24 +24,96 @@
  */
 package net.runelite.api;
 
+import java.util.Map;
+
 /**
  * Stores the clients persisting preferences.
  */
 public interface Preferences
 {
 	/**
-	 * Gets the remembered login username.
+	 * Is hide roofs?
 	 *
-	 * @return the remembered username
+	 * @return true if hiding roofs
 	 */
-	String getRememberedUsername();
+	boolean isHidingRoofs();
 
 	/**
-	 * Sets the remembered login username.
+	 * Set hide roofs
 	 *
-	 * @param username the new remembered username
+	 * @param hidden
 	 */
-	void setRememberedUsername(String username);
+	void setHidingRoofs(boolean hidden);
+
+	/**
+	 * Gets if the login name should be replaced with asterisks
+	 *
+	 * @return
+	 */
+	boolean getHideUsername();
+
+	/**
+	 * Set login name replacement with asterisks
+	 *
+	 * @param hide
+	 */
+	void setHideUsername(boolean hide);
+
+	/**
+	 * Is title music disabled?
+	 *
+	 * @return true if title music is disabled
+	 */
+	boolean isTitleMusicDisabled();
+
+	/**
+	 * Set title music disabled
+	 *
+	 * @param disabled
+	 */
+	void setTitleMusicDisabled(boolean disabled);
+
+	/**
+	 * Is displaying fps?
+	 *
+	 * @return true if displaying fps
+	 */
+	boolean isDisplayFps();
+
+	/**
+	 * Set display fps
+	 *
+	 * @param displayFps
+	 */
+	void setDisplayFps(boolean displayFps);
+
+	/**
+	 * Get screen brightness
+	 *
+	 * @return the screen brightness
+	 */
+	double getBrightness();
+
+	/**
+	 * Set screen brightness
+	 *
+	 * @param brightness
+	 */
+	void setBrightness(double brightness);
+
+	/**
+	 * Get music volume
+	 *
+	 * @return the music volume
+	 */
+	int getMusicVolume();
+
+	/**
+	 * Set music volume
+	 *
+	 * @param volume
+	 */
+	void setMusicVolume(int volume);
 
 	/**
 	 * Gets the sound effect volume
@@ -68,23 +140,56 @@ public interface Preferences
 	void setAreaSoundEffectVolume(int volume);
 
 	/**
-	 * Gets if the login name should be replaced with asterisks
+	 * Get eula
+	 *
+	 * @return the eula
 	 */
-	boolean getHideUsername();
+	int getEula();
 
-	void setMusicVolume(int volume);
+	/**
+	 * Set eula
+	 *
+	 * @param eula
+	 */
+	void setEula(int eula);
 
-	int getMusicVolume();
+	/**
+	 * Gets the remembered login username.
+	 *
+	 * @return the remembered username
+	 */
+	String getRememberedUsername();
 
+	/**
+	 * Sets the remembered login username.
+	 *
+	 * @param username the new remembered username
+	 */
+	void setRememberedUsername(String username);
+
+	/**
+	 * Set window mode
+	 *
+	 * @param mode
+	 */
 	void setWindowMode(int mode);
 
+	/**
+	 * Get window mode
+	 *
+	 * @return the window mode
+	 */
 	int getWindowMode();
 
-	boolean isTitleMusicDisabled();
+	/**
+	 * Get parameters
+	 *
+	 * @return parameters
+	 */
+	Map<String, Integer> getParameters();
 
-	void setTitleMusicDisabled(boolean disabled);
-
-	void setHidingRoofs(boolean hidden);
-
-	boolean isHidingRoofs();
+	/**
+	 * Save preferences after changing
+	 */
+	void savePreferences();
 }

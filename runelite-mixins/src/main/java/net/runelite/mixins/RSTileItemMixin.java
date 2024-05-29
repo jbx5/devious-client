@@ -5,6 +5,7 @@ import net.runelite.api.events.ItemQuantityChanged;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSTileItem;
@@ -96,5 +97,93 @@ public abstract class RSTileItemMixin implements RSTileItem
 	public void setY(int y)
 	{
 		rl$sceneY = y;
+	}
+
+	@Inject
+	private int visibleTime;
+
+	@Inject
+	@Override
+	public int getVisibleTime()
+	{
+		return this.visibleTime;
+	}
+
+	@Inject
+	@Override
+	public void setVisibleTime(int visibleTime)
+	{
+		this.visibleTime = visibleTime;
+	}
+
+	@Inject
+	private int despawnTime;
+
+	@Inject
+	@Override
+	public int getDespawnTime()
+	{
+		return this.despawnTime;
+	}
+
+	@Inject
+	@Override
+	public void setDespawnTime(int despawnTime)
+	{
+		this.despawnTime = despawnTime;
+	}
+
+	@Inject
+	private int ownership;
+
+	@Inject
+	@Override
+	public int getOwnership()
+	{
+		return this.ownership;
+	}
+
+	@Inject
+	@Override
+	public void setOwnership(int ownership)
+	{
+		this.ownership = ownership;
+	}
+
+	@Inject
+	private boolean isPrivate;
+
+	@Inject
+	@Override
+	public boolean isPrivate()
+	{
+		return this.isPrivate;
+	}
+
+	@Inject
+	@Override
+	public void setPrivate(boolean isPrivate)
+	{
+		this.isPrivate = isPrivate;
+	}
+
+	@Replace("addTileItemToGroundItems")
+	static void addTileItemToGroundItems(int z, int x, int y, int id, int quantity, int flag, int visibleTime, int despawnTime, int ownership, boolean isPrivate)
+	{
+		RSTileItem tileItem = client.newTileItem();
+		tileItem.setId(id);
+		tileItem.setQuantity(quantity);
+		tileItem.setFlag(flag);
+		tileItem.setVisibleTime(visibleTime + client.getTickCount());
+		tileItem.setDespawnTime(despawnTime + client.getTickCount());
+		tileItem.setOwnership(ownership);
+		tileItem.setPrivate(isPrivate);
+		if (client.getWorldView().getGroundItems()[z][x][y] == null)
+		{
+			client.getWorldView().getGroundItems()[z][x][y] = client.newNodeDeque();
+		}
+
+		client.getWorldView().getGroundItems()[z][x][y].addFirst(tileItem);
+		client.updateItemPile(z, x, y);
 	}
 }

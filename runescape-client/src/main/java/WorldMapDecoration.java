@@ -3,29 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("kx")
+@ObfuscatedName("le")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-	@ObfuscatedName("an")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1943305357
-	)
-	public static int field3118;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = 1090051195
+		intValue = -86955387
 	)
 	@Export("objectDefinitionId")
 	final int objectDefinitionId;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -112787079
+		intValue = -366743665
 	)
 	@Export("decoration")
 	final int decoration;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 150458509
+		intValue = 2066973857
 	)
 	@Export("rotation")
 	final int rotation;

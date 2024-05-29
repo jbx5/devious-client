@@ -3,6 +3,7 @@ package net.runelite.mixins;
 import net.runelite.api.AABB;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
+import net.runelite.api.Projection;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -30,7 +31,8 @@ public abstract class ClickboxMixin implements RSClient
 	private static final int[] rl$modelViewportYs = new int[4700];
 
 	@Inject
-	public void checkClickbox(Model rlModel, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int _x, int _y, int _z, long hash)
+	@Override
+	public void checkClickbox(Projection projection, Model rlModel, int orientation, int _x, int _y, int _z, long hash)
 	{
 		RSModel model = (RSModel) rlModel;
 		boolean hasFlag = hash != 0L && (int) (hash >>> 16 & 1L) != 1;
@@ -52,7 +54,7 @@ public abstract class ClickboxMixin implements RSClient
 		}
 
 		// only need a boundingbox check?
-		if (model.isClickable())
+		if (model.useBoundingBox())
 		{
 			addHashAtMouse(hash);
 			return;
@@ -103,7 +105,7 @@ public abstract class ClickboxMixin implements RSClient
 			y += _y;
 			z += _z;
 
-			var42 = z * yawSin + yawCos * x >> 16;
+			/*var42 = z * yawSin + yawCos * x >> 16;
 			z = yawCos * z - x * yawSin >> 16;
 			x = var42;
 			var42 = pitchCos * y - z * pitchSin >> 16;
@@ -117,7 +119,7 @@ public abstract class ClickboxMixin implements RSClient
 			else
 			{
 				rl$modelViewportYs[i] = -5000;
-			}
+			}*/
 		}
 
 		final int viewportMouseX = client.getViewportMouseX();
@@ -147,7 +149,7 @@ public abstract class ClickboxMixin implements RSClient
 				continue;
 			}
 
-			final int radius = model.isClickable() ? 20 : 5;
+			final int radius = model.useBoundingBox() ? 20 : 5;
 
 			int var18 = radius + viewportMouseY;
 			boolean var34;

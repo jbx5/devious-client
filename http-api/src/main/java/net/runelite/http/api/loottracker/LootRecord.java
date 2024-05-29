@@ -41,4 +41,6 @@ public class LootRecord
 	private Collection<GameItem> drops;
 	private Instant time;
 	private Integer world;
+	private Integer amount = 1;
+	private String source;
 }

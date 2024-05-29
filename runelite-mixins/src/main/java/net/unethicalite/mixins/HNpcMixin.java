@@ -121,7 +121,7 @@ public abstract class HNpcMixin implements RSNPC
 	@Inject
 	public long getTag()
 	{
-		return client.calculateTag(0, 0, 1, getComposition().isInteractible(), getIndex());
+		return client.calculateTag(0, 0, 1, getComposition().isInteractible(), getIndex(), getWorldView().getId());
 	}
 
 	@Inject

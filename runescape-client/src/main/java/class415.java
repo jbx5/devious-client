@@ -1,29 +1,29 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pf")
+@ObfuscatedName("ph")
 public class class415 {
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = -795795573
-	)
-	int field4604;
-
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IZ)V",
-		garbageValue = "1"
+		descriptor = "Lor;"
 	)
-	class415(int var1, boolean var2) {
-		this.field4604 = var1;
-	}
-
-	@ObfuscatedName("az")
+	public static AbstractArchive field4660;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1088158396"
+		descriptor = "[Lcl;"
 	)
-	public int method7647() {
-		return this.field4604;
+	@Export("World_worlds")
+	static World[] World_worlds;
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "11"
+	)
+	static void method7750(int var0) {
+		class423.field4693 = var0;
+		class423.field4691 = new class423[var0];
+		AccessFile.field5239 = 0;
 	}
 }

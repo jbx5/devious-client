@@ -1,82 +1,67 @@
-import java.io.File;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hh")
+@ObfuscatedName("hy")
 public class class193 extends DualNode {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Llt;"
+		descriptor = "Llm;"
 	)
-	@Export("field1851")
-	public static EvictingDualNodeHashTable field1851;
-	@ObfuscatedName("at")
-	static File field1986;
-	@ObfuscatedName("kk")
+	@Export("field1913")
+	public static EvictingDualNodeHashTable field1913;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1300460723
+		intValue = -1258299179
 	)
-	@Export("cameraZ")
-	static int cameraZ;
+	@Export("WorldMapElement_count")
+	public static int WorldMapElement_count;
 
 	static {
-		field1851 = new EvictingDualNodeHashTable(64);
+		field1913 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Lio;",
-		garbageValue = "256"
+		descriptor = "([BIII)Ljava/lang/String;",
+		garbageValue = "2123106198"
 	)
-	public static HitSplatDefinition method3723(int var0) {
-		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0);
-			var1 = new HitSplatDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	public static String method3793(byte[] var0, int var1, int var2) {
+		StringBuilder var3 = new StringBuilder();
+
+		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
+			int var5 = var0[var4] & 255;
+			var3.append(class413.field4654[var5 >>> 2]);
+			if (var4 < var2 - 1) {
+				int var6 = var0[var4 + 1] & 255;
+				var3.append(class413.field4654[(var5 & 3) << 4 | var6 >>> 4]);
+				if (var4 < var2 - 2) {
+					int var7 = var0[var4 + 2] & 255;
+					var3.append(class413.field4654[(var6 & 15) << 2 | var7 >>> 6]).append(class413.field4654[var7 & 63]);
+				} else {
+					var3.append(class413.field4654[(var6 & 15) << 2]).append("=");
+				}
+			} else {
+				var3.append(class413.field4654[(var5 & 3) << 4]).append("==");
 			}
-
-			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "-1853820072"
-	)
-	@Export("addChatMessage")
-	static void addChatMessage(int var0, String var1, String var2, String var3) {
-		ChatChannel var4 = (ChatChannel)Messages.Messages_channels.get(var0);
-		if (var4 == null) {
-			var4 = new ChatChannel();
-			Messages.Messages_channels.put(var0, var4);
 		}
 
-		Message var5 = var4.addMessage(var0, var1, var2, var3);
-		Messages.Messages_hashTable.put(var5, (long)var5.count);
-		Messages.Messages_queue.add(var5);
-		Client.chatCycle = Client.cycleCntr;
+		return var3.toString();
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("od")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-299676250"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "291471895"
 	)
-	public static int method3722(int var0) {
-		--var0;
-		var0 |= var0 >>> 1;
-		var0 |= var0 >>> 2;
-		var0 |= var0 >>> 4;
-		var0 |= var0 >>> 8;
-		var0 |= var0 >>> 16;
-		return var0 + 1;
+	@Export("Clan_joinChat")
+	static final void Clan_joinChat(String var0) {
+		if (!var0.equals("")) {
+			PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.field3347, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
+		}
 	}
 }

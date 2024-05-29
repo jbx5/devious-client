@@ -1,56 +1,39 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gn")
-public class class163 extends class144 {
-	@ObfuscatedName("ae")
-	@Export("BZip2Decompressor_block")
-	static int[] BZip2Decompressor_block;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = 186403147
-	)
-	int field1794;
-	// $FF: synthetic field
+@ObfuscatedName("gy")
+public abstract class class163 extends Node {
+	@ObfuscatedName("er")
 	@ObfuscatedSignature(
-		descriptor = "Lfh;"
+		descriptor = "Lhe;"
 	)
-	final class147 this$0;
+	@Export("js5SocketTask")
+	static Task js5SocketTask;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lfh;)V"
-	)
-	class163(class147 var1) {
-		this.this$0 = var1;
-		this.field1794 = -1;
+	class163() {
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;I)V",
-		garbageValue = "1253598633"
+		descriptor = "(Lua;I)V",
+		garbageValue = "-406894472"
 	)
-	void vmethod3420(Buffer var1) {
-		this.field1794 = var1.readUnsignedShort();
-	}
+	abstract void vmethod3479(Buffer var1);
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfp;B)V",
-		garbageValue = "-123"
+		descriptor = "(Lgo;I)V",
+		garbageValue = "-472458599"
 	)
-	void vmethod3419(ClanSettings var1) {
-		var1.method3281(this.field1794);
-	}
+	abstract void vmethod3480(ClanChannel var1);
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("mz")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "676429849"
+		descriptor = "(I)I",
+		garbageValue = "-1618960405"
 	)
-	public static int method3378(int var0) {
-		return var0 >>> 4 & class528.field5181;
+	static final int method3419() {
+		return Client.menuOptionsCount - 1;
 	}
 }

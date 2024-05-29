@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
@@ -8,51 +6,50 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gi")
+@ObfuscatedName("go")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
-	@ObfuscatedName("az")
-	boolean field1803;
-	@ObfuscatedName("ah")
-	boolean field1796;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ak")
+	boolean field1824;
+	@ObfuscatedName("al")
+	boolean field1823;
+	@ObfuscatedName("aj")
 	@Export("members")
 	public List members;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@Export("sortedMembers")
 	int[] sortedMembers;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		longValue = 5206037424797977369L
+		longValue = -7562717592565374625L
 	)
-	public long field1795;
-	@ObfuscatedName("ao")
+	public long field1826;
+	@ObfuscatedName("aa")
 	@Export("name")
 	public String name;
+	@ObfuscatedName("at")
+	public byte field1828;
 	@ObfuscatedName("ab")
-	public byte field1801;
-	@ObfuscatedName("aw")
-	public byte field1799;
+	public byte field1829;
 
 	static {
 		new BitSet(65536);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lur;)V"
+		descriptor = "(Lua;)V"
 	)
 	public ClanChannel(Buffer var1) {
-		this.field1796 = true;
+		this.field1823 = true;
 		this.name = null;
-		this.method3396(var1);
+		this.method3454(var1);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)[I",
-		garbageValue = "-1751960152"
+		garbageValue = "-1696830137"
 	)
 	@Export("getSortedMembers")
 	public int[] getSortedMembers() {
@@ -61,19 +58,19 @@ public class ClanChannel extends Node {
 			this.sortedMembers = new int[this.members.size()];
 
 			for (int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method9893();
+				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method10265();
 			}
 
-			class522.method9132(var1, this.sortedMembers);
+			Script.method2209(var1, this.sortedMembers);
 		}
 
 		return this.sortedMembers;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;B)V",
-		garbageValue = "-41"
+		descriptor = "(Lfj;B)V",
+		garbageValue = "98"
 	)
 	@Export("addMember")
 	void addMember(ClanChannelMember var1) {
@@ -81,10 +78,10 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "-45"
+		garbageValue = "103"
 	)
 	@Export("removeMember")
 	void removeMember(int var1) {
@@ -92,22 +89,22 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-34"
+		garbageValue = "-53"
 	)
-	public int method3394() {
+	public int method3453() {
 		return this.members.size();
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "880686013"
+		descriptor = "(Ljava/lang/String;B)I",
+		garbageValue = "65"
 	)
-	public int method3383(String var1) {
-		if (!this.field1796) {
+	public int method3456(String var1) {
+		if (!this.field1823) {
 			throw new RuntimeException("Displaynames not available");
 		} else {
 			for (int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -120,19 +117,19 @@ public class ClanChannel extends Node {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;B)V",
-		garbageValue = "-70"
+		descriptor = "(Lua;I)V",
+		garbageValue = "1665807316"
 	)
-	void method3396(Buffer var1) {
+	void method3454(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if ((var2 & 1) != 0) {
-			this.field1803 = true;
+			this.field1824 = true;
 		}
 
 		if ((var2 & 2) != 0) {
-			this.field1796 = true;
+			this.field1823 = true;
 		}
 
 		int var3 = 2;
@@ -141,22 +138,22 @@ public class ClanChannel extends Node {
 		}
 
 		super.key = var1.readLong();
-		this.field1795 = var1.readLong();
+		this.field1826 = var1.readLong();
 		this.name = var1.readStringCp1252NullTerminated();
 		var1.readBoolean();
-		this.field1799 = var1.readByte();
-		this.field1801 = var1.readByte();
+		this.field1829 = var1.readByte();
+		this.field1828 = var1.readByte();
 		int var4 = var1.readUnsignedShort();
 		if (var4 > 0) {
 			this.members = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; ++var5) {
 				ClanChannelMember var6 = new ClanChannelMember();
-				if (this.field1803) {
+				if (this.field1824) {
 					var1.readLong();
 				}
 
-				if (this.field1796) {
+				if (this.field1823) {
 					var6.username = new Username(var1.readStringCp1252NullTerminated());
 				}
 
@@ -170,132 +167,5 @@ public class ClanChannel extends Node {
 			}
 		}
 
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)[B",
-		garbageValue = "1593550106"
-	)
-	static byte[] method3399(String var0) {
-		boolean var1 = true;
-		boolean var2 = true;
-		int var3 = "pattern".length();
-		int var4 = 0;
-		byte[] var5 = new byte[8];
-
-		while (true) {
-			int var6 = var4 + var3;
-			if (var6 >= var0.length()) {
-				return null;
-			}
-
-			char var7 = var0.charAt(var6);
-			if (var7 == ':') {
-				if (var4 == 0) {
-					return null;
-				}
-
-				byte[] var8 = new byte[var4];
-				System.arraycopy(var5, 0, var8, 0, var4);
-				return var8;
-			}
-
-			if (var5.length == var4) {
-				return null;
-			}
-
-			if (var7 >= '0' && var7 <= '9') {
-				var7 = (char)(var7 - '0');
-			} else {
-				if (var7 < 'a' || var7 > 'z') {
-					return null;
-				}
-
-				var7 = (char)(var7 - 'W');
-			}
-
-			var5[var4++] = (byte)var7;
-		}
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZB)Ltz;",
-		garbageValue = "113"
-	)
-	@Export("getPreferencesFile")
-	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
-		File var3 = new File(JagexCache.cacheDir, "preferences" + var0 + ".dat");
-		if (var3.exists()) {
-			try {
-				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
-				return var10;
-			} catch (IOException var9) {
-			}
-		}
-
-		String var4 = "";
-		if (class409.cacheGamebuild == 33) {
-			var4 = "_rc";
-		} else if (class409.cacheGamebuild == 34) {
-			var4 = "_wip";
-		}
-
-		File var5 = new File(class136.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
-		AccessFile var6;
-		if (!var2 && var5.exists()) {
-			try {
-				var6 = new AccessFile(var5, "rw", 10000L);
-				return var6;
-			} catch (IOException var8) {
-			}
-		}
-
-		try {
-			var6 = new AccessFile(var3, "rw", 10000L);
-			return var6;
-		} catch (IOException var7) {
-			throw new RuntimeException();
-		}
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "(ILdn;ZI)I",
-		garbageValue = "371703173"
-	)
-	static int method3397(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
-			Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = class36.getWindowedMode();
-			return 1;
-		} else {
-			int var3;
-			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
-				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					MouseRecorder.setWindowedMode(var3);
-				}
-
-				return 1;
-			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[++HttpRequestTask.Interpreter_intStackSize - 1] = NPC.clientPreferences.getWindowMode();
-				return 1;
-			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
-				if (var0 == 5310) {
-					--HttpRequestTask.Interpreter_intStackSize;
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				var3 = Interpreter.Interpreter_intStack[--HttpRequestTask.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					NPC.clientPreferences.updateWindowMode(var3);
-				}
-
-				return 1;
-			}
-		}
 	}
 }

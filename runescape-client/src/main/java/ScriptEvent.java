@@ -4,67 +4,70 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dr")
+@ObfuscatedName("dw")
 @Implements("ScriptEvent")
 public class ScriptEvent extends Node {
-	@ObfuscatedName("az")
+	@ObfuscatedName("an")
+	@Export("userHomeDirectory")
+	static String userHomeDirectory;
+	@ObfuscatedName("ak")
 	@Export("args")
 	Object[] args;
-	@ObfuscatedName("ah")
-	boolean field1078;
-	@ObfuscatedName("af")
+	@ObfuscatedName("al")
+	boolean field1092;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lnt;"
+		descriptor = "Lnb;"
 	)
 	@Export("widget")
 	Widget widget;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1798935257
+		intValue = -361293249
 	)
 	@Export("mouseX")
 	int mouseX;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1899347697
+		intValue = -1225945623
 	)
 	@Export("mouseY")
 	int mouseY;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 572449949
+		intValue = 192584687
 	)
 	@Export("opIndex")
 	int opIndex;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lnt;"
+		descriptor = "Lnb;"
 	)
 	@Export("dragTarget")
 	Widget dragTarget;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -862554869
+		intValue = -1104718817
 	)
 	@Export("keyTyped")
 	int keyTyped;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1619291901
+		intValue = 1455858769
 	)
 	@Export("keyPressed")
 	int keyPressed;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@Export("targetName")
 	String targetName;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 2000331233
+		intValue = -262495581
 	)
-	int field1087;
-	@ObfuscatedName("ag")
+	int field1100;
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -2067849717
+		intValue = 759425415
 	)
 	@Export("type")
 	int type;
@@ -73,41 +76,65 @@ public class ScriptEvent extends Node {
 		this.type = 76;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/Object;B)V",
-		garbageValue = "-46"
+		descriptor = "([Ljava/lang/Object;I)V",
+		garbageValue = "1439023135"
 	)
 	@Export("setArgs")
 	public void setArgs(Object[] var1) {
 		this.args = var1;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "43"
+		descriptor = "(II)V",
+		garbageValue = "-672994861"
 	)
 	@Export("setType")
 	public void setType(int var1) {
 		this.type = var1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;I)V",
-		garbageValue = "-1958973698"
+		descriptor = "(Lnb;B)V",
+		garbageValue = "8"
 	)
-	public void method2305(Widget var1) {
+	public void method2327(Widget var1) {
 		this.widget = var1;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1960766410"
+		descriptor = "(II)Liz;",
+		garbageValue = "1731505000"
 	)
-	public static void method2306() {
-		InvDefinition.InvDefinition_cached.clear();
+	@Export("StructDefinition_getStructDefinition")
+	public static StructComposition StructDefinition_getStructDefinition(int var0) {
+		StructComposition var1 = (StructComposition)StructComposition.StructDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = StructComposition.StructDefinition_archive.takeFile(34, var0);
+			var1 = new StructComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			var1.postDecode();
+			StructComposition.StructDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(CB)Z",
+		garbageValue = "-116"
+	)
+	@Export("isAlphaNumeric")
+	public static boolean isAlphaNumeric(char var0) {
+		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

@@ -1,46 +1,37 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mu")
+@ObfuscatedName("nw")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-	@ObfuscatedName("cx")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -43988345
+		intValue = -285362375
 	)
-	@Export("otpMedium")
-	static int otpMedium;
-	@ObfuscatedName("ek")
-	@ObfuscatedSignature(
-		descriptor = "Lov;"
-	)
-	@Export("archive10")
-	static Archive archive10;
-	@ObfuscatedName("mh")
-	@ObfuscatedSignature(
-		descriptor = "Lje;"
-	)
-	@Export("textureProvider")
-	static TextureProvider textureProvider;
-	@ObfuscatedName("az")
+	static int field3705;
+	@ObfuscatedName("jb")
+	static byte[][] field3706;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1227224767
+		intValue = -771143131
 	)
 	@Export("width")
 	public final int width;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1511040213
+		intValue = 1324622685
 	)
 	@Export("height")
 	public final int height;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@Export("xWidths")
 	public final int[] xWidths;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@Export("xStarts")
 	public final int[] xStarts;
 
@@ -51,10 +42,10 @@ public class SpriteMask extends DualNode {
 		this.xStarts = var4;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)Z",
-		garbageValue = "106"
+		garbageValue = "12"
 	)
 	@Export("contains")
 	public boolean contains(int var1, int var2) {
@@ -68,50 +59,21 @@ public class SpriteMask extends DualNode {
 		return false;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "8"
+		descriptor = "(Ljava/lang/String;I)Z",
+		garbageValue = "-2060529092"
 	)
-	static final void method6248(int var0, int var1, int var2, int var3) {
-		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
-			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
-				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
-					TextureProvider.Tiles_underlays2[0][var5][var4] = 127;
-					if (var0 == var5 && var5 > 0) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
-					}
-
-					if (var0 + var2 == var5 && var5 < 103) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
-					}
-
-					if (var4 == var1 && var4 > 0) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
-					}
-
-					if (var3 + var1 == var4 && var4 < 103) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
-					}
-				}
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lnt;B)I",
-		garbageValue = "1"
-	)
-	static int method6247(Widget var0) {
-		if (var0.type != 11) {
-			Interpreter.Interpreter_stringStack[AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = "";
-			return 1;
+	static boolean method6499(String var0) {
+		if (var0 == null) {
+			return false;
 		} else {
-			String var1 = Interpreter.Interpreter_stringStack[--AbstractWorldMapIcon.Interpreter_stringStackSize];
-			Interpreter.Interpreter_stringStack[++AbstractWorldMapIcon.Interpreter_stringStackSize - 1] = var0.method6770(var1);
-			return 1;
+			try {
+				new URL(var0);
+				return true;
+			} catch (MalformedURLException var2) {
+				return false;
+			}
 		}
 	}
 }

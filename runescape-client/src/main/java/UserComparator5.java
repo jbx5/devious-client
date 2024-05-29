@@ -1,18 +1,18 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ex")
+@ObfuscatedName("ec")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "[Ltw;"
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 786316707
 	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("az")
+	public static int field1508;
+	@ObfuscatedName("ak")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +20,10 @@ public class UserComparator5 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lrw;Lrw;I)I",
-		garbageValue = "-1640560389"
+		descriptor = "(Lso;Lso;B)I",
+		garbageValue = "89"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -42,30 +42,23 @@ public class UserComparator5 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ot")
 	@ObfuscatedSignature(
-		descriptor = "(Loc;B)V",
-		garbageValue = "101"
+		descriptor = "(IIZI)V",
+		garbageValue = "2070121839"
 	)
-	public static void method2892(AbstractArchive var0) {
-		class17.EnumDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "73"
-	)
-	public static void method2897() {
-		class321.field3496.clear();
-	}
-
-	@ObfuscatedName("ht")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-996502494"
-	)
-	static int method2898(int var0) {
-		return var0 * 3 + 600;
+	static final void method2975(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3453()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = WorldMapElement.getPacketBufferNode(ClientPacket.field3346, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class432.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
+		}
 	}
 }

@@ -83,6 +83,7 @@ public interface ItemComposition extends ParamHolder
 	 * @return the general store value of the item
 	 *
 	 * @see Constants#HIGH_ALCHEMY_MULTIPLIER
+	 * @see ItemComposition#getHaPrice()
 	 */
 	int getPrice();
 
@@ -220,6 +221,42 @@ public interface ItemComposition extends ParamHolder
 	void setTextureToReplaceWith(short[] textureToReplaceWith);
 
 	/**
+	 * Get the model zoom for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	int getModelZoom();
+
+	/**
+	 * Set the model zoom for 2d item sprites used in the inventory.
+	 * @param zoom
+	 */
+	void setModelZoom(int zoom);
+
+	/**
+	 * Get the offsetX for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	int getOffsetX();
+
+	/**
+	 * Set the offsetX for 2d item sprites used in the inventory.
+	 * @param offsetX
+	 */
+	void setOffsetX(int offsetX);
+
+	/**
+	 * Get the offsetY for 2d item sprites used in the inventory.
+	 * @return
+	 */
+	int getOffsetY();
+
+	/**
+	 * Set the offsetY for 2d item sprites used in the inventory.
+	 * @param offsetY
+	 */
+	void setOffsetY(int offsetY);
+
+	/**
 	 * Get the x angle for 2d item sprites used in the inventory.
 	 * @see net.runelite.api.coords.Angle
 	 * @return
@@ -265,8 +302,20 @@ public interface ItemComposition extends ParamHolder
 	int getAmbient();
 
 	/**
+	 * Set the ambient light value
+	 * @param ambient
+	 */
+	void setAmbient(int ambient);
+
+	/**
 	 * Get the contrast light value
 	 * @return
 	 */
 	int getContrast();
+
+	/**
+	 * Set the contrast light value
+	 * @param contrast
+	 */
+	void setContrast(int contrast);
 }

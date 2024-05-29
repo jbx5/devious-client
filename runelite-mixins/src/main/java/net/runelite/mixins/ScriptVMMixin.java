@@ -253,4 +253,18 @@ public abstract class ScriptVMMixin implements RSClient
 			}
 		}
 	}
+
+	@Inject
+	@Override
+	public int getArraySizes(int arrayId)
+	{
+		return client.getArraySizes()[arrayId];
+	}
+
+	@Inject
+	@Override
+	public int[] getArray(int arrayId)
+	{
+		return client.getArrays()[arrayId];
+	}
 }

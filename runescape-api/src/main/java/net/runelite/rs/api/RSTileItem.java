@@ -19,6 +19,12 @@ public interface RSTileItem extends RSRenderable, TileItem
 	@Import("quantity")
 	void setQuantity(int quantity);
 
+	@Import("flag")
+	int getFlag();
+
+	@Import("flag")
+	void setFlag(int flag);
+
 	int getX();
 
 	void setX(int x);
@@ -32,4 +38,9 @@ public interface RSTileItem extends RSRenderable, TileItem
 	 * @return
 	 */
 	Tile getTile();
+
+	void setVisibleTime(int visibleTime);
+	void setDespawnTime(int despawnTime);
+	void setOwnership(int ownership);
+	void setPrivate(boolean isPrivate);
 }

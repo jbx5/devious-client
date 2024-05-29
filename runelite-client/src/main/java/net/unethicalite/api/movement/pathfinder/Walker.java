@@ -58,14 +58,39 @@ public class Walker
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
     private static Future<List<WorldPoint>> pathFuture = null;
     private static WorldArea currentDestination = null;
+    private static boolean disableTeleports;
+    private static boolean disableTransports;
 
     public static boolean walkTo(WorldPoint destination)
     {
-        return walkTo(destination.toWorldArea());
+        return walkTo(destination, false);
+    }
+
+    public static boolean walkTo(WorldPoint destination, boolean disableTeleports)
+    {
+        return walkTo(destination, disableTeleports, false);
+    }
+
+    public static boolean walkTo(WorldPoint destination, boolean disableTeleports, boolean disableTransports)
+    {
+        return walkTo(destination.toWorldArea(), disableTeleports, disableTransports);
     }
 
     public static boolean walkTo(WorldArea destination)
     {
+        return walkTo(destination, false);
+    }
+
+    public static boolean walkTo(WorldArea destination, boolean disableTeleports)
+    {
+        return walkTo(destination, disableTeleports, false);
+    }
+
+    public static boolean walkTo(WorldArea destination, boolean disableTeleports, boolean disableTransports)
+    {
+        Walker.disableTeleports = disableTeleports;
+        Walker.disableTransports = disableTransports;
+
         Player local = Players.getLocal();
         if (destination.contains(local))
         {
@@ -553,7 +578,7 @@ public class Walker
     public static Map<WorldPoint, List<Transport>> buildTransportLinks()
     {
         Map<WorldPoint, List<Transport>> out = new HashMap<>();
-        if (!Static.getUnethicaliteConfig().useTransports())
+        if (!Static.getUnethicaliteConfig().useTransports() || disableTransports)
         {
             return out;
         }
@@ -569,7 +594,7 @@ public class Walker
     public static LinkedHashMap<WorldPoint, Teleport> buildTeleportLinks(WorldArea destination)
     {
         LinkedHashMap<WorldPoint, Teleport> out = new LinkedHashMap<>();
-        if (!Static.getUnethicaliteConfig().useTeleports())
+        if (!Static.getUnethicaliteConfig().useTeleports() || disableTeleports)
         {
             return out;
         }

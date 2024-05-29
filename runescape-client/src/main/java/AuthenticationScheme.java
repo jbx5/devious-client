@@ -4,54 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fx")
+@ObfuscatedName("ft")
 @Implements("AuthenticationScheme")
 public enum AuthenticationScheme implements Enum {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lfx;"
+		descriptor = "Lft;"
 	)
 	@Export("USERNAME_PASSWORD_REMEMBER")
-	USERNAME_PASSWORD_REMEMBER(4, 0),
-	@ObfuscatedName("ah")
+	USERNAME_PASSWORD_REMEMBER(2, 0),
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lfx;"
+		descriptor = "Lft;"
 	)
 	@Export("TOKEN_REMEMBER")
-	TOKEN_REMEMBER(0, 1),
-	@ObfuscatedName("af")
+	TOKEN_REMEMBER(3, 1),
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lfx;"
+		descriptor = "Lft;"
 	)
 	@Export("USERNAME_PASSWORD")
-	USERNAME_PASSWORD(1, 2),
-	@ObfuscatedName("at")
+	USERNAME_PASSWORD(4, 2),
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lfx;"
+		descriptor = "Lft;"
 	)
 	@Export("TOKEN")
-	TOKEN(2, 3),
-	@ObfuscatedName("an")
+	TOKEN(0, 3),
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lfx;"
+		descriptor = "Lft;"
 	)
-	field1660(3, 4);
+	field1674(1, 4);
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lvl;"
-	)
-	@Export("options_buttons_2Sprite")
-	static IndexedSprite options_buttons_2Sprite;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 158462547
+		intValue = -510503497
 	)
 	@Export("schemeId")
 	public final int schemeId;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 579504551
+		intValue = 1684075565
 	)
 	@Export("packetId")
 	final int packetId;
@@ -61,10 +55,10 @@ public enum AuthenticationScheme implements Enum {
 		this.packetId = var4;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "800883718"
+		garbageValue = "-311400525"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {

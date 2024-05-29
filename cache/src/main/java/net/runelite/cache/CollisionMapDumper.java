@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
  * Copyright (c) 2022, Skretzo <https://github.com/Skretzo>
+ * Copyright (c) 2024, Jmlundeen <https://github.com/Jmlundeen>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,6 +44,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.zip.GZIPOutputStream;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.cache.definitions.ObjectDefinition;
 import net.runelite.cache.fs.Store;
@@ -65,9 +67,12 @@ import org.apache.commons.cli.ParseException;
  * Cache and XTEA keys can be downloaded from:
  * https://archive.openrs2.org/caches
  * add these parameters to the command line with paths to the cache and XTEA keys files:
- * --cachedir "path\to\cache folder" --xteapath "path\to\xtea keys file"
+ * --cachedir "path\to\cache folder"
+ * --xteapath "path\to\xtea keys file"
+ * --outputdir "path\to\output folder"
  */
 @Slf4j
+@Getter
 public class CollisionMapDumper
 {
 	private final RegionLoader regionLoader;
@@ -116,10 +121,14 @@ public class CollisionMapDumper
 		return buffer.array();
 	}
 
-	public File writeToFile()
+	public File writeToFile(String outputDir)
 	{
 		byte[] bytes = toBytes();
-		File fileLoc = new File("runelite-client/src/main/resources/regions");
+		if (outputDir == null)
+		{
+			outputDir = "runelite-client/src/main/resources/regions";
+		}
+		File fileLoc = new File(outputDir);
 		if (!fileLoc.isFile())
 		{
 			try
@@ -172,6 +181,7 @@ public class CollisionMapDumper
 
 		final String cacheDirectory = cmd.getOptionValue("cachedir");
 		final String xteaJSONPath = cmd.getOptionValue("xteapath");
+		final String outputDirectory = cmd.getOptionValue("outputdir");
 
 		XteaKeyManager xteaKeyManager = new XteaKeyManager();
 		try (FileInputStream fin = new FileInputStream(xteaJSONPath))
@@ -216,7 +226,7 @@ public class CollisionMapDumper
 				}
 			}
 
-			File file = dumper.writeToFile();
+			File file = dumper.writeToFile(outputDirectory);
 			if (file != null)
 			{
 				log.info("Wrote collision map to " + file);
@@ -244,7 +254,7 @@ public class CollisionMapDumper
 		addNeighborCollisions(flagMap, region, 1, -1);
 		addNeighborCollisions(flagMap, region, 1, 0);
 		addNeighborCollisions(flagMap, region, 1, 1);
-		regions[baseX / 64 * 256 + baseY / 64] = flagMap;
+		regions[region.getRegionID()] = flagMap;
 	}
 
 	private void addNeighborCollisions(FlagMap flagMap, Region region, int dx, int dy)
@@ -281,7 +291,6 @@ public class CollisionMapDumper
 						{
 							continue;
 						}
-
 						boolean tile = FlagMap.TILE_BLOCKED;
 						Boolean exclusion = Exclusion.matches(loc.getId());
 
@@ -316,10 +325,29 @@ public class CollisionMapDumper
 								{
 									for (int sy = 0; sy < sizeY; sy++)
 									{
-										flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_NORTH, tile);
-										flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_EAST, tile);
-										flagMap.set(X + sx, Y + sy - 1, Z, FlagMap.FLAG_NORTH, tile);
-										flagMap.set(X + sx - 1, Y + sy, Z, FlagMap.FLAG_EAST, tile);
+										if (type == 0 || type == 2)
+										{
+											if (orientation == 0) // wall on west
+											{
+												flagMap.set(X + sx - 1, Y + sy, Z, FlagMap.FLAG_WEST, tile);
+											}
+											else if (orientation == 1) // wall on north
+											{
+												flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_NORTH, tile);
+											}
+											else if (orientation == 2) // wall on east
+											{
+												flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_EAST, tile);
+											}
+											else if (orientation == 3) // wall on south
+											{
+												flagMap.set(X + sx, Y + sy - 1, Z, FlagMap.FLAG_SOUTH, tile);
+											}
+										}
+										else
+										{
+											setNeighborTileFlags(flagMap, X, Y, Z, tile, sx, sy);
+										}
 									}
 								}
 							}
@@ -410,16 +438,7 @@ public class CollisionMapDumper
 								{
 									tile = exclusion;
 								}
-								for (int sx = 0; sx < sizeX; sx++)
-								{
-									for (int sy = 0; sy < sizeY; sy++)
-									{
-										flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_NORTH, tile);
-										flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_EAST, tile);
-										flagMap.set(X + sx, Y + sy - 1, Z, FlagMap.FLAG_NORTH, tile);
-										flagMap.set(X + sx - 1, Y + sy, Z, FlagMap.FLAG_EAST, tile);
-									}
-								}
+								setObjectTileFlags(flagMap, sizeX, sizeY, X, Y, Z, tile);
 							}
 							else
 							{
@@ -457,16 +476,7 @@ public class CollisionMapDumper
 									tile = exclusion;
 								}
 
-								for (int sx = 0; sx < sizeX; sx++)
-								{
-									for (int sy = 0; sy < sizeY; sy++)
-									{
-										flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_NORTH, tile);
-										flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_EAST, tile);
-										flagMap.set(X + sx, Y + sy - 1, Z, FlagMap.FLAG_NORTH, tile);
-										flagMap.set(X + sx - 1, Y + sy, Z, FlagMap.FLAG_EAST, tile);
-									}
-								}
+								setObjectTileFlags(flagMap, sizeX, sizeY, X, Y, Z, tile);
 							}
 						}
 					}
@@ -492,6 +502,25 @@ public class CollisionMapDumper
 				}
 			}
 		}
+	}
+
+	private static void setObjectTileFlags(FlagMap flagMap, int sizeX, int sizeY, int X, int Y, int Z, boolean tile)
+	{
+		for (int sx = 0; sx < sizeX; sx++)
+		{
+			for (int sy = 0; sy < sizeY; sy++)
+			{
+				setNeighborTileFlags(flagMap, X, Y, Z, tile, sx, sy);
+			}
+		}
+	}
+
+	private static void setNeighborTileFlags(FlagMap flagMap, int X, int Y, int Z, boolean tile, int sx, int sy)
+	{
+		flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_NORTH, tile);
+		flagMap.set(X + sx, Y + sy, Z, FlagMap.FLAG_EAST, tile);
+		flagMap.set(X + sx, Y + sy - 1, Z, FlagMap.FLAG_NORTH, tile);
+		flagMap.set(X + sx - 1, Y + sy, Z, FlagMap.FLAG_EAST, tile);
 	}
 
 	private static class FlagMap
@@ -593,6 +622,11 @@ public class CollisionMapDumper
 		ARDOUGNE_BASEMENT_CELL_DOOR_35795(35795),
 
 		BRIMHAVEN_DUNGEON_EXIT_20878(20878),
+		BRIMHAVEN_GATE_1728(1728, FlagMap.TILE_DEFAULT),
+		BRIMHAVEN_GATE_1727(1727, FlagMap.TILE_DEFAULT),
+		BRIMHAVEN_DOOR_2628(2628),
+		BRIMHAVEN_DOOR_1722(1722),
+
 		BLACK_KNIGHTS_FORTRESS_DOOR_73(73),
 		BLACK_KNIGHTS_FORTRESS_DOOR_74(74),
 		BLACK_KNIGHTS_FORTRESS_DOOR_2337(2337),
@@ -611,6 +645,7 @@ public class CollisionMapDumper
 
 		DESERT_MINING_CAMP_PRISON_DOOR_2689(2689),
 
+		DRAYNOR_MANOR_BASEMENT_DOOR_44603(44603, FlagMap.TILE_DEFAULT),
 		DRAYNOR_MANOR_LARGE_DOOR_134(134),
 		DRAYNOR_MANOR_LARGE_DOOR_135(135),
 
@@ -618,6 +653,16 @@ public class CollisionMapDumper
 		DRUIDS_ROBES_4036(4036),
 
 		DWARF_CANNON_RAILING_15601(15601), // type = 9 is full blocked diagonal, type = 0 is wall, type = 1 is corner
+		DWARF_CANNON_RAILING_15602(15602),
+		DWARF_CANNON_RAILING_15603(15603),
+		DWARF_CANNON_GATE_15604(15604),
+		DWARF_CANNON_GATE_15605(15605),
+		DWARF_CANNON_RAILING_15590(15590),
+		DWARF_CANNON_RAILING_15591(15591),
+		DWARF_CANNON_RAILING_15592(15592),
+		DWARF_CANNON_RAILING_15593(15593),
+		DWARF_CANNON_RAILING_15594(15594),
+		DWARF_CANNON_RAILING_15595(15595),
 
 		EDGEVILLE_DUNGEON_DOOR_1804(1804),
 
@@ -637,6 +682,8 @@ public class CollisionMapDumper
 		FORTHOS_DUNGEON_WALL_34854(34854),
 
 		GOBLIN_TEMPLE_PRISON_DOOR_43457(43457),
+
+		GNOME_BATTLEFIELD_CRUMBLED_WALL(2185),
 
 		GRAND_EXCHANGE_BOOTH_10060(10060),
 		GRAND_EXCHANGE_BOOTH_10061(10061),
@@ -716,6 +763,8 @@ public class CollisionMapDumper
 		RAT_PITS_RAT_WALL_10342(10342), // type = 9 is full blocked diagonal, type = 2 is wall
 		RAT_PITS_RAT_WALL_10344(10344), // type = 9 is full blocked diagonal, type = 2 is wall
 
+		SINCLAIR_MANOR_WINDOW_26123(26123),
+
 		SCRUBFOOTS_CAVE_CREVICE_40889(40889),
 
 		SHANTAY_PASS_PRISON_DOOR_2692(2692),
@@ -729,6 +778,8 @@ public class CollisionMapDumper
 		TAVERLEY_DUNGEON_PRISON_DOOR_2143(2143),
 		TAVERLEY_DUNGEON_PRISON_DOOR_2144(2144),
 		TAVERLEY_DUNGEON_DUSTY_KEY_DOOR_2623(2623),
+		TAVERLY_MEMBERS_GATE_1727(1727),
+		TAVERLY_MEMBERS_GATE_1728(1728),
 
 		TEMPLE_OF_IKOV_DOOR_102(102),
 
@@ -745,9 +796,13 @@ public class CollisionMapDumper
 		TROLL_STRONGHOLD_EXIT_3774(3774),
 		TROLL_STRONGHOLD_PRISON_DOOR_3780(3780),
 
+		VARROCK_MUSEUM_GATE_24536(24536),
+
 		VIYELDI_CAVES_CREVICE_2918(2918),
 
 		WATERFALL_DUNGEON_DOOR_2002(2002),
+
+		WEST_ARDOUGNE_MOURNER_HOUSE_DOOR_37321(37321),
 
 		WILDERNESS_RESOURCE_AREA_GATE_26760(26760),
 

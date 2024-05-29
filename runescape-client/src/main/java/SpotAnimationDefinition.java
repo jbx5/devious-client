@@ -4,90 +4,84 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ie")
+@ObfuscatedName("ip")
 @Implements("SpotAnimationDefinition")
 public class SpotAnimationDefinition extends DualNode {
-	@ObfuscatedName("az")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Loc;"
-	)
-	@Export("SpotAnimationDefinition_archive")
-	public static AbstractArchive SpotAnimationDefinition_archive;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Loc;"
+		descriptor = "Lor;"
 	)
 	@Export("SpotAnimationDefinition_modelArchive")
 	public static AbstractArchive SpotAnimationDefinition_modelArchive;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Llt;"
+		descriptor = "Llm;"
 	)
 	@Export("SpotAnimationDefinition_cached")
 	public static EvictingDualNodeHashTable SpotAnimationDefinition_cached;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Llt;"
+		descriptor = "Llm;"
 	)
 	@Export("SpotAnimationDefinition_cachedModels")
 	public static EvictingDualNodeHashTable SpotAnimationDefinition_cachedModels;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -828236871
+		intValue = -880763715
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = 257967473
+		intValue = 831089047
 	)
 	@Export("archive")
 	int archive;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1810535167
+		intValue = 107112977
 	)
 	@Export("sequence")
 	public int sequence;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ab")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ao")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ah")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -1020551627
+		intValue = -2123612661
 	)
 	@Export("widthScale")
 	int widthScale;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -849190015
+		intValue = 2139694611
 	)
 	@Export("heightScale")
 	int heightScale;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -217106641
+		intValue = 800719853
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1561843695
+		intValue = -2134366815
 	)
 	@Export("ambient")
 	int ambient;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 2128906521
+		intValue = 1931691159
 	)
 	@Export("contrast")
 	int contrast;
@@ -106,10 +100,10 @@ public class SpotAnimationDefinition extends DualNode {
 		this.contrast = 0;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;B)V",
-		garbageValue = "1"
+		descriptor = "(Lua;B)V",
+		garbageValue = "43"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -123,10 +117,10 @@ public class SpotAnimationDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;II)V",
-		garbageValue = "-1451302455"
+		descriptor = "(Lua;IB)V",
+		garbageValue = "55"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -170,20 +164,20 @@ public class SpotAnimationDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljn;",
-		garbageValue = "2000373936"
+		descriptor = "(IS)Lkb;",
+		garbageValue = "28802"
 	)
 	@Export("getModel")
 	public final Model getModel(int var1) {
-		Model var2 = this.method3940();
+		Model var2 = this.method4036();
 		if (var2 == null) {
 			return null;
 		} else {
 			Model var3;
 			if (this.sequence != -1 && var1 != -1) {
-				var3 = DevicePcmPlayerProvider.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
+				var3 = FaceNormal.SequenceDefinition_get(this.sequence).transformSpotAnimationModel(var2, var1);
 			} else {
 				var3 = var2.toSharedSpotAnimationModel(true);
 			}
@@ -213,12 +207,12 @@ public class SpotAnimationDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljn;",
-		garbageValue = "255235863"
+		descriptor = "(I)Lkb;",
+		garbageValue = "-1042877857"
 	)
-	public final Model method3940() {
+	public final Model method4036() {
 		Model var1 = (Model)SpotAnimationDefinition_cachedModels.get((long)this.id);
 		if (var1 == null) {
 			ModelData var2 = ModelData.ModelData_get(SpotAnimationDefinition_modelArchive, this.archive, 0);
@@ -244,48 +238,5 @@ public class SpotAnimationDefinition extends DualNode {
 		}
 
 		return var1;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1016719915"
-	)
-	@Export("getVarbit")
-	public static int getVarbit(int var0) {
-		VarbitComposition var2 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
-		VarbitComposition var1;
-		if (var2 != null) {
-			var1 = var2;
-		} else {
-			byte[] var3 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
-			var2 = new VarbitComposition();
-			if (var3 != null) {
-				var2.decode(new Buffer(var3));
-			}
-
-			VarbitComposition.VarbitDefinition_cached.put(var2, (long)var0);
-			var1 = var2;
-		}
-
-		int var7 = var1.baseVar;
-		int var4 = var1.startBit;
-		int var5 = var1.endBit;
-		int var6 = Varps.Varps_masks[var5 - var4];
-		return Varps.Varps_main[var7] >> var4 & var6;
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
-	)
-	public static void method3949() {
-		SpriteBufferProperties.SpriteBuffer_xOffsets = null;
-		SpriteBufferProperties.SpriteBuffer_yOffsets = null;
-		SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
-		Ignored.SpriteBuffer_spriteHeights = null;
-		class126.SpriteBuffer_spritePalette = null;
-		SpriteBufferProperties.SpriteBuffer_pixels = null;
 	}
 }

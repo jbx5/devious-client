@@ -7,22 +7,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ou")
+@ObfuscatedName("oa")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
-	@ObfuscatedName("at")
+	@ObfuscatedName("az")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
-	@ObfuscatedName("an")
+	@ObfuscatedName("af")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("events")
 	public final List events;
 
@@ -35,7 +35,7 @@ public class GrandExchangeEvents {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lur;Z)V",
+		descriptor = "(Lua;Z)V",
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -57,10 +57,10 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;ZI)V",
-		garbageValue = "170347143"
+		descriptor = "(Ljava/util/Comparator;ZB)V",
+		garbageValue = "11"
 	)
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
@@ -72,21 +72,13 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("on")
 	@ObfuscatedSignature(
-		descriptor = "(Loc;II)V",
-		garbageValue = "-150389200"
+		descriptor = "(B)V",
+		garbageValue = "107"
 	)
-	static void method7082(AbstractArchive var0, int var1) {
-		if ((var1 & class530.field5201.rsOrdinal()) != 0) {
-			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
-		} else if ((var1 & class530.field5192.rsOrdinal()) != 0) {
-			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
-		} else if ((var1 & class530.field5197.rsOrdinal()) != 0) {
-			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo_speedrunning", "");
-		} else {
-			class390.logoSprite = class153.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
-		}
-
+	static final void method7359() {
+		Client.field731 = Client.cycleCntr;
+		class238.field2539 = true;
 	}
 }

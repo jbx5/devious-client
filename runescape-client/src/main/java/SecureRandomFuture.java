@@ -6,14 +6,15 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("dj")
+@ObfuscatedName("dq")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@Export("future")
 	Future future;
 
@@ -22,10 +23,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-65"
+		garbageValue = "-72"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -33,41 +34,43 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-2141524519"
+		garbageValue = "1137387516"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/security/SecureRandom;",
-		garbageValue = "1712781729"
+		descriptor = "(B)Ljava/security/SecureRandom;",
+		garbageValue = "-88"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
-		} catch (Exception var2) {
-			return UserComparator7.method2883();
+		} catch (Exception var4) {
+			SecureRandom var3 = new SecureRandom();
+			var3.nextInt();
+			return var3;
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lur;Lto;I)Lto;",
-		garbageValue = "53499372"
+		descriptor = "(Lua;Ltu;I)Ltu;",
+		garbageValue = "-659938420"
 	)
 	@Export("readStringIntParameters")
 	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
 		int var2 = var0.readUnsignedByte();
 		int var3;
 		if (var1 == null) {
-			var3 = class193.method3722(var2);
+			var3 = Skeleton.method4848(var2);
 			var1 = new IterableNodeHashTable(var3);
 		}
 
@@ -87,87 +90,66 @@ public class SecureRandomFuture {
 		return var1;
 	}
 
-	@ObfuscatedName("ir")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIZI)V",
-		garbageValue = "-783899767"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;",
+		garbageValue = "-1531639287"
 	)
-	@Export("setViewportShape")
-	static final void setViewportShape(int var0, int var1, int var2, int var3, boolean var4) {
-		if (var2 < 1) {
-			var2 = 1;
-		}
-
-		if (var3 < 1) {
-			var3 = 1;
-		}
-
-		int var5 = var3 - 334;
-		int var6;
-		if (var5 < 0) {
-			var6 = Client.field785;
-		} else if (var5 >= 100) {
-			var6 = Client.field786;
+	@Export("loadClassFromDescriptor")
+	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
+		if (var0.equals("B")) {
+			return Byte.TYPE;
+		} else if (var0.equals("I")) {
+			return Integer.TYPE;
+		} else if (var0.equals("S")) {
+			return Short.TYPE;
+		} else if (var0.equals("J")) {
+			return Long.TYPE;
+		} else if (var0.equals("Z")) {
+			return Boolean.TYPE;
+		} else if (var0.equals("F")) {
+			return Float.TYPE;
+		} else if (var0.equals("D")) {
+			return Double.TYPE;
+		} else if (var0.equals("C")) {
+			return Character.TYPE;
 		} else {
-			var6 = (Client.field786 - Client.field785) * var5 / 100 + Client.field785;
+			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
+		}
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Low;",
+		garbageValue = "661648443"
+	)
+	public static class378[] method2203() {
+		return new class378[]{class378.field4403, class378.field4402, class378.field4405, class378.field4404};
+	}
+
+	@ObfuscatedName("ob")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILvc;Lnw;I)V",
+		garbageValue = "1705832600"
+	)
+	@Export("worldToMinimap")
+	static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
+		int var6 = var3 * var3 + var2 * var2;
+		if (var6 > 4225 && var6 < 90000) {
+			int var7 = Client.camAngleY & 2047;
+			int var8 = Rasterizer3D.Rasterizer3D_sine[var7];
+			int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
+			int var10 = var3 * var8 + var9 * var2 >> 16;
+			int var11 = var3 * var9 - var8 * var2 >> 16;
+			double var12 = Math.atan2((double)var10, (double)var11);
+			int var14 = var5.width / 2 - 25;
+			int var15 = (int)(Math.sin(var12) * (double)var14);
+			int var16 = (int)(Math.cos(var12) * (double)var14);
+			byte var17 = 20;
+			class17.redHintArrowSprite.method10205(var15 + (var0 + var5.width / 2 - var17 / 2), var5.height / 2 + var1 - var17 / 2 - var16 - 10, var17, var17, 15, 15, var12, 256);
+		} else {
+			class94.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
 		}
 
-		int var7 = var3 * var6 * 512 / (var2 * 334);
-		int var8;
-		int var9;
-		short var14;
-		if (var7 < Client.field791) {
-			var14 = Client.field791;
-			var6 = var14 * var2 * 334 / (var3 * 512);
-			if (var6 > Client.field728) {
-				var6 = Client.field728;
-				var8 = var3 * var6 * 512 / (var14 * 334);
-				var9 = (var2 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var9, var3, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0 + var2 - var9, var1, var9, var3, -16777216);
-				}
-
-				var0 += var9;
-				var2 -= var9 * 2;
-			}
-		} else if (var7 > Client.field792) {
-			var14 = Client.field792;
-			var6 = var14 * var2 * 334 / (var3 * 512);
-			if (var6 < Client.field789) {
-				var6 = Client.field789;
-				var8 = var14 * var2 * 334 / (var6 * 512);
-				var9 = (var3 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
-				}
-
-				var1 += var9;
-				var3 -= var9 * 2;
-			}
-		}
-
-		Client.viewportZoom = var3 * var6 / 334;
-		if (var2 != Client.viewportWidth || var3 != Client.viewportHeight) {
-			int[] var13 = new int[9];
-
-			for (var9 = 0; var9 < var13.length; ++var9) {
-				int var10 = var9 * 32 + 15 + 128;
-				int var11 = UserComparator5.method2898(var10);
-				int var12 = Rasterizer3D.Rasterizer3D_sine[var10];
-				var11 = HttpRequest.method92(var11, var3);
-				var13[var9] = var12 * var11 >> 16;
-			}
-
-			Scene.Scene_buildVisiblityMap(var13, 500, 800, var2 * 334 / var3, 334);
-		}
-
-		Client.viewportOffsetX = var0;
-		Client.viewportOffsetY = var1;
-		Client.viewportWidth = var2;
-		Client.viewportHeight = var3;
 	}
 }

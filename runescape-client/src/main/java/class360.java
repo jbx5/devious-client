@@ -1,69 +1,94 @@
-import java.applet.Applet;
-import java.net.URL;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import netscape.javascript.JSObject;
 
-@ObfuscatedName("nx")
+@ObfuscatedName("na")
 public class class360 {
-	@ObfuscatedName("af")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ILjava/lang/String;I)Z",
-		garbageValue = "-627141573"
+		descriptor = "Lnd;"
 	)
-	static boolean method6859(String var0, int var1, String var2) {
-		if (var1 == 0) {
-			try {
-				if (!class31.field150.startsWith("win")) {
-					throw new Exception();
-				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
-					throw new Exception();
-				} else {
-					String var14 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
+	@Export("huffman")
+	public static Huffman huffman;
 
-					for (int var4 = 0; var4 < var0.length(); ++var4) {
-						if (var14.indexOf(var0.charAt(var4)) == -1) {
-							throw new Exception();
-						}
-					}
-
-					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
-					return true;
-				}
-			} catch (Throwable var8) {
-				return false;
-			}
-		} else if (var1 == 1) {
-			try {
-				Applet var7 = class31.field153;
-				Object[] var5 = new Object[]{(new URL(class31.field153.getCodeBase(), var0)).toString()};
-				Object var13 = JSObject.getWindow(var7).call(var2, var5);
-				return var13 != null;
-			} catch (Throwable var9) {
-				return false;
-			}
-		} else if (var1 == 2) {
-			try {
-				class31.field153.getAppletContext().showDocument(new URL(class31.field153.getCodeBase(), var0), "_blank");
-				return true;
-			} catch (Exception var10) {
-				return false;
-			}
-		} else if (var1 == 3) {
-			try {
-				Applet var3 = class31.field153;
-				JSObject.getWindow(var3).call("loggedout", (Object[])null);
-			} catch (Throwable var12) {
+	@ObfuscatedName("ak")
+	public static final int method7083(double var0, double var2, double var4) {
+		double var6 = var4;
+		double var8 = var4;
+		double var10 = var4;
+		if (var2 != 0.0D) {
+			double var12;
+			if (var4 < 0.5D) {
+				var12 = var4 * (var2 + 1.0D);
+			} else {
+				var12 = var2 + var4 - var2 * var4;
 			}
 
-			try {
-				class31.field153.getAppletContext().showDocument(new URL(class31.field153.getCodeBase(), var0), "_top");
-				return true;
-			} catch (Exception var11) {
-				return false;
+			double var14 = var4 * 2.0D - var12;
+			double var16 = var0 + 0.3333333333333333D;
+			if (var16 > 1.0D) {
+				--var16;
 			}
-		} else {
-			throw new IllegalArgumentException();
+
+			double var20 = var0 - 0.3333333333333333D;
+			if (var20 < 0.0D) {
+				++var20;
+			}
+
+			if (var16 * 6.0D < 1.0D) {
+				var6 = var16 * 6.0D * (var12 - var14) + var14;
+			} else if (var16 * 2.0D < 1.0D) {
+				var6 = var12;
+			} else if (var16 * 3.0D < 2.0D) {
+				var6 = (0.6666666666666666D - var16) * (var12 - var14) * 6.0D + var14;
+			} else {
+				var6 = var14;
+			}
+
+			if (var0 * 6.0D < 1.0D) {
+				var8 = var14 + var0 * (var12 - var14) * 6.0D;
+			} else if (2.0D * var0 < 1.0D) {
+				var8 = var12;
+			} else if (var0 * 3.0D < 2.0D) {
+				var8 = var14 + 6.0D * (0.6666666666666666D - var0) * (var12 - var14);
+			} else {
+				var8 = var14;
+			}
+
+			if (6.0D * var20 < 1.0D) {
+				var10 = var14 + 6.0D * (var12 - var14) * var20;
+			} else if (var20 * 2.0D < 1.0D) {
+				var10 = var12;
+			} else if (3.0D * var20 < 2.0D) {
+				var10 = 6.0D * (0.6666666666666666D - var20) * (var12 - var14) + var14;
+			} else {
+				var10 = var14;
+			}
 		}
+
+		int var22 = (int)(var6 * 256.0D);
+		int var13 = (int)(256.0D * var8);
+		int var23 = (int)(256.0D * var10);
+		int var15 = var23 + (var13 << 8) + (var22 << 16);
+		return var15;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "0"
+	)
+	static boolean method7088(int var0) {
+		return (var0 & 128) != 0;
+	}
+
+	@ObfuscatedName("oj")
+	@ObfuscatedSignature(
+		descriptor = "(Lnb;B)Z",
+		garbageValue = "37"
+	)
+	@Export("isComponentHidden")
+	static boolean isComponentHidden(Widget var0) {
+		return var0.isHidden;
 	}
 }

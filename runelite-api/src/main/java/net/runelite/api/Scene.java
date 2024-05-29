@@ -27,9 +27,9 @@ package net.runelite.api;
 import net.runelite.api.coords.WorldPoint;
 
 /**
- * Represents the entire 3D scene
+ * Represents a 3D scene
  */
-public interface Scene
+public interface Scene extends Renderable
 {
 	/**
 	 * Gets the tiles in the scene
@@ -60,6 +60,12 @@ public interface Scene
 
 	int getDrawDistance();
 	void setDrawDistance(int drawDistance);
+
+	/**
+	 * Get the world view id of this scene
+	 * @return the world view id, or -1 if this is the top level scene
+	 */
+	int getWorldViewId();
 
 	/**
 	 * Get the minimum scene level which will be rendered
@@ -135,6 +141,8 @@ public interface Scene
 
 	void setRoofRemovalMode(int flags);
 
+	int getRoofRemovalMode();
+
 	/**
 	 * Get the underlay ids for the scene. The value stored is id + 1, with 0 for no underlay.
 	 * @return
@@ -169,6 +177,8 @@ public interface Scene
 	 */
 	int getBaseX();
 
+	void setBaseX(int x);
+
 	/**
 	 * Returns the y-axis base coordinate.
 	 * <p>
@@ -178,6 +188,10 @@ public interface Scene
 	 * @return the base y-axis coordinate
 	 */
 	int getBaseY();
+
+	void setBaseY(int y);
+
+	void setViewportWalking(boolean enabled);
 
 	/**
 	 * Check if this scene is an instance

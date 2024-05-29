@@ -32,9 +32,9 @@ public class Movement
 
 	public static void setDestination(int sceneX, int sceneY)
 	{
-		Static.getClient().setSelectedSceneTileX(sceneX);
-		Static.getClient().setSelectedSceneTileY(sceneY);
-		Static.getClient().setViewportWalking(true);
+		Static.getClient().getTopLevelWorldView().getScene().setBaseX(sceneX);
+		Static.getClient().getTopLevelWorldView().getScene().setBaseY(sceneY);
+		Static.getClient().getTopLevelWorldView().getScene().setViewportWalking(true);
 	}
 
 	public static WorldPoint getDestination()
@@ -110,6 +110,16 @@ public class Movement
 		return Walker.walkTo(worldArea);
 	}
 
+	public static boolean walkTo(WorldArea worldArea, boolean disableTeleports)
+	{
+		return Walker.walkTo(worldArea, disableTeleports);
+	}
+
+	public static boolean walkTo(WorldArea worldArea, boolean disableTeleports, boolean disableTransports)
+	{
+		return Walker.walkTo(worldArea, disableTeleports, disableTransports);
+	}
+
 	public static void walk(Locatable locatable)
 	{
 		walk(locatable.getWorldLocation());
@@ -120,6 +130,15 @@ public class Movement
 		return Walker.walkTo(worldPoint);
 	}
 
+	public static boolean walkTo(WorldPoint worldPoint, boolean disableTeleports)
+	{
+		return Walker.walkTo(worldPoint, disableTeleports);
+	}
+
+	public static boolean walkTo(WorldPoint worldPoint, boolean disableTeleports, boolean disableTransports)
+	{
+		return Walker.walkTo(worldPoint, disableTeleports, disableTransports);
+	}
 
 	public static boolean walkTo(Locatable locatable)
 	{
