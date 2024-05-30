@@ -378,6 +378,13 @@ public interface Client extends OAuthApi, GameEngine
 	Point getMouseCanvasPosition();
 
 	/**
+	 * Draws the little cross thing that shows up when you click
+	 * at the cursor location. Pass 1 for yellow or 2 for red.
+	 * @param color
+	 */
+	void showMouseCross(int color);
+
+	/**
 	 * Gets the logged in player instance.
 	 *
 	 * @return the logged in player

@@ -82,6 +82,9 @@ public abstract class RSActorMixin implements RSActor
 	private WorldView worldView;
 
 	@Inject
+	private Actor lastInteracting = null;
+
+	@Inject
 	@Override
 	public WorldView getWorldView()
 	{
@@ -130,6 +133,13 @@ public abstract class RSActorMixin implements RSActor
 			client.getLogger().error("", e);
 			return null;
 		}
+	}
+
+	@Inject
+	@Override
+	public Actor getLastInteracting()
+	{
+		return lastInteracting;
 	}
 
 	@Inject
@@ -338,6 +348,11 @@ public abstract class RSActorMixin implements RSActor
 	@Inject
 	public void interactingChanged(int idx)
 	{
+		Actor interacting = getInteracting();
+		if (interacting != null)
+		{
+			lastInteracting = interacting;
+		}
 		InteractingChanged interactingChanged = new InteractingChanged(this, getInteracting());
 		client.getCallbacks().post(interactingChanged);
 	}
