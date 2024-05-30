@@ -45,7 +45,6 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSIntProjection;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
 import net.runelite.rs.api.RSPlayer;
@@ -65,7 +64,6 @@ import static net.runelite.api.Constants.ROOF_FLAG_POSITION;
 public abstract class RSSceneMixin implements RSScene
 {
 	private static final int INVALID_HSL_COLOR = 12345678;
-	private static final int DEFAULT_DISTANCE = 90; // 25
 	private static final int PITCH_LOWER_LIMIT = 128;
 	private static final int PITCH_UPPER_LIMIT = 383;
 
@@ -157,10 +155,9 @@ public abstract class RSSceneMixin implements RSScene
 			this.menuOpen(getScenePlane(), client.getMouseX() - client.getViewportXOffset(), client.getMouseY() - client.getViewportYOffset(), false);
 		}
 
-		RSIntProjection projection = (RSIntProjection) intProjection;
-		int cameraX = projection.getCameraX();
-		int cameraY = projection.getCameraY();
-		int cameraZ = projection.getCameraZ();
+		int cameraX = this.getCameraX2();
+		int cameraY = this.getCameraY2();
+		int cameraZ = this.getCameraZ2();
 		int cameraPitch = client.getCameraPitch();
 		int cameraYaw = client.getCameraYaw();
 		int plane = getScenePlane();
@@ -192,6 +189,8 @@ public abstract class RSSceneMixin implements RSScene
 		final int minLevel = getMinLevel();
 
 		final RSTile[][][] tiles = getTiles();
+
+		int DEFAULT_DISTANCE = this.getOffsetOccluder();
 		final int distance = isGpu ? rl$drawDistance : DEFAULT_DISTANCE;
 
 		if (cameraX < 0)
@@ -214,7 +213,7 @@ public abstract class RSSceneMixin implements RSScene
 
 		// we store the uncapped pitch for setting camera angle for the pitch relaxer
 		// we still have to cap the pitch in order to access the visibility map, though
-		int realPitch = cameraPitch;
+		/*int realPitch = cameraPitch;
 		if (cameraPitch < PITCH_LOWER_LIMIT)
 		{
 			cameraPitch = PITCH_LOWER_LIMIT;
@@ -231,7 +230,7 @@ public abstract class RSSceneMixin implements RSScene
 		projection.setPitchSin(Perspective.SINE[realPitch]);
 		projection.setPitchCos(Perspective.COSINE[realPitch]);
 		projection.setYawSin(Perspective.SINE[client.getCameraYaw()]);
-		projection.setYawCos(Perspective.COSINE[client.getCameraYaw()]);
+		projection.setYawCos(Perspective.COSINE[client.getCameraYaw()]);*/
 
 		boolean renderArea = setRenderArea((cameraPitch - 128) / 32, cameraYaw / 64);
 
