@@ -23,9 +23,7 @@ public class Strings {
 	@Export("selectedSpellWidget")
 	static int selectedSpellWidget;
 
-	@Export("initCredentials")
-	@ObfuscatedName("<clinit>")
-	static void initCredentials() {
+	static {
 		field4219 = "Please visit the support page for assistance.";
 		field4354 = "";
 		field4158 = "Page has opened in the browser.";
