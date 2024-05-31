@@ -86,11 +86,11 @@ public abstract class RSSceneMixin implements RSScene
 	@Shadow("viewportColor")
 	private static int viewportColor;
 
-	@Inject
-	private static int[] tmpX = new int[6];
+	//@Inject
+	//private static int[] tmpX = new int[6];
 
-	@Inject
-	private static int[] tmpY = new int[6];
+	//@Inject
+	//private static int[] tmpY = new int[6];
 
 	@Inject
 	private static int rl$drawDistance;
@@ -803,7 +803,8 @@ public abstract class RSSceneMixin implements RSScene
 	}
 
 	@Inject
-	private static void setTargetTile(int targetX, int targetY)
+	@Override
+	public void setTargetTile(int targetX, int targetY)
 	{
 		client.getTopLevelWorldView().getScene().setBaseX(targetX);
 		client.getTopLevelWorldView().getScene().setBaseY(targetY);
@@ -1216,7 +1217,8 @@ public abstract class RSSceneMixin implements RSScene
 	}
 
 	@Inject
-	public static void hoverTile(int x, int y, int plane)
+	@Override
+	public void hoverTile(int x, int y, int plane)
 	{
 		if (plane == client.getPlane() && !client.isMenuOpen())
 		{

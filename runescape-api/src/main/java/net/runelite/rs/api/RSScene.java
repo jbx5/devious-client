@@ -240,4 +240,7 @@ public interface RSScene extends Scene
 
 	@Construct
 	RSIntProjection newIntProjection(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw);
+
+	void setTargetTile(int targetX, int targetY);
+	void hoverTile(int x, int y, int plane);
 }
