@@ -45,6 +45,7 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSIntProjection;
 import net.runelite.rs.api.RSNode;
 import net.runelite.rs.api.RSNodeDeque;
 import net.runelite.rs.api.RSPlayer;
@@ -85,11 +86,11 @@ public abstract class RSSceneMixin implements RSScene
 	@Shadow("viewportColor")
 	private static int viewportColor;
 
-	@Inject
-	private static int[] tmpX = new int[6];
+	//@Inject
+	//private static int[] tmpX = new int[6];
 
-	@Inject
-	private static int[] tmpY = new int[6];
+	//@Inject
+	//private static int[] tmpY = new int[6];
 
 	@Inject
 	private static int rl$drawDistance;
@@ -118,32 +119,65 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	private static byte[][][] rl$tileShapes;
 
-	/*@Copy("draw")
 	@Replace("draw")
-	void copy$drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
+	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
 	{
-		if (!client.isMenuOpen() && !this.isCheckClick())
+		int maxX = getMaxX();
+		int maxZ = getMaxZ();
+
+		if (cameraX < 0)
 		{
-			this.menuOpen(getScenePlane(), client.getMouseX() - client.getViewportXOffset(), client.getMouseY() - client.getViewportYOffset(), false);
+			cameraX = 0;
+		}
+		else if (cameraX >= maxX * Perspective.LOCAL_TILE_SIZE)
+		{
+			cameraX = maxX * Perspective.LOCAL_TILE_SIZE - 1;
 		}
 
-		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
-		if (drawCallbacks != null)
+		if (cameraZ < 0)
 		{
-			viewportColor = 0;
-			drawCallbacks.drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
+			cameraZ = 0;
+		}
+		else if (cameraZ >= maxZ * Perspective.LOCAL_TILE_SIZE)
+		{
+			cameraZ = maxZ * Perspective.LOCAL_TILE_SIZE - 1;
 		}
 
-		copy$drawScene(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, plane);
-		client.getCallbacks().drawScene();
-
-		if (drawCallbacks != null)
+		// we store the uncapped pitch for setting camera angle for the pitch relaxer
+		// we still have to cap the pitch in order to access the visibility map, though
+		if (cameraPitch < PITCH_LOWER_LIMIT)
 		{
-			drawCallbacks.postDrawScene();
+			cameraPitch = PITCH_LOWER_LIMIT;
 		}
-	}*/
+		else if (cameraPitch > PITCH_UPPER_LIMIT)
+		{
+			cameraPitch = PITCH_UPPER_LIMIT;
+		}
+
+		/*if (!pitchRelaxEnabled)
+		{
+			realPitch = cameraPitch;
+		}
+
+		projection.setPitchSin(Perspective.SINE[realPitch]);
+		projection.setPitchCos(Perspective.COSINE[realPitch]);
+		projection.setYawSin(Perspective.SINE[client.getCameraYaw()]);
+		projection.setYawCos(Perspective.COSINE[client.getCameraYaw()]);*/
+
+		this.visibilityMap((cameraPitch - 128) / 32, cameraYaw / 64);
+		this.setRenderArea((cameraPitch - 128) / 32, cameraYaw / 64);
+		this.setCameraX2(cameraX);
+		this.setCameraY2(cameraY);
+		this.setCameraZ2(cameraZ);
+		this.setScreenCenterX(cameraX / Perspective.LOCAL_TILE_SIZE);
+		this.setScreenCenterZ(cameraZ / Perspective.LOCAL_TILE_SIZE);
+		this.setScenePlane(plane);
+		RSIntProjection projection = newIntProjection(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw);
+		this.updateVisibleTilesAndOccluders((RSProjection) projection);
+	}
 
 	@Replace("updateVisibleTilesAndOccluders")
+	@Inject
 	void updateVisibleTilesAndOccluders(RSProjection intProjection)
 	{
 		final boolean isGpu = client.isGpu();
@@ -182,10 +216,6 @@ public abstract class RSSceneMixin implements RSScene
 			);
 		}
 
-		final int maxX = getMaxX();
-		final int maxY = getMaxY();
-		final int maxZ = getMaxZ();
-
 		final int minLevel = getMinLevel();
 
 		final RSTile[][][] tiles = getTiles();
@@ -193,56 +223,11 @@ public abstract class RSSceneMixin implements RSScene
 		int DEFAULT_DISTANCE = this.getOffsetOccluder();
 		final int distance = isGpu ? rl$drawDistance : DEFAULT_DISTANCE;
 
-		if (cameraX < 0)
-		{
-			cameraX = 0;
-		}
-		else if (cameraX >= maxX * Perspective.LOCAL_TILE_SIZE)
-		{
-			cameraX = maxX * Perspective.LOCAL_TILE_SIZE - 1;
-		}
-
-		if (cameraZ < 0)
-		{
-			cameraZ = 0;
-		}
-		else if (cameraZ >= maxZ * Perspective.LOCAL_TILE_SIZE)
-		{
-			cameraZ = maxZ * Perspective.LOCAL_TILE_SIZE - 1;
-		}
-
-		// we store the uncapped pitch for setting camera angle for the pitch relaxer
-		// we still have to cap the pitch in order to access the visibility map, though
-		/*int realPitch = cameraPitch;
-		if (cameraPitch < PITCH_LOWER_LIMIT)
-		{
-			cameraPitch = PITCH_LOWER_LIMIT;
-		}
-		else if (cameraPitch > PITCH_UPPER_LIMIT)
-		{
-			cameraPitch = PITCH_UPPER_LIMIT;
-		}
-		if (!pitchRelaxEnabled)
-		{
-			realPitch = cameraPitch;
-		}
-
-		projection.setPitchSin(Perspective.SINE[realPitch]);
-		projection.setPitchCos(Perspective.COSINE[realPitch]);
-		projection.setYawSin(Perspective.SINE[client.getCameraYaw()]);
-		projection.setYawCos(Perspective.COSINE[client.getCameraYaw()]);*/
-
-		boolean renderArea = setRenderArea((cameraPitch - 128) / 32, cameraYaw / 64);
-
-		this.setCameraX2(cameraX);
-		this.setCameraY2(cameraY);
-		this.setCameraZ2(cameraZ);
-
-		int screenCenterX = cameraX / Perspective.LOCAL_TILE_SIZE;
-		int screenCenterZ = cameraZ / Perspective.LOCAL_TILE_SIZE;
-
-		this.setScreenCenterX(screenCenterX);
-		this.setScreenCenterZ(screenCenterZ);
+		int screenCenterX = getScreenCenterX();
+		int screenCenterZ = getScreenCenterZ();
+		int maxX = getMaxX();
+		int maxY = getMaxY();
+		int maxZ = getMaxZ();
 
 		int minTileX = screenCenterX - distance;
 		if (minTileX < 0)
@@ -295,7 +280,7 @@ public abstract class RSSceneMixin implements RSScene
 
 			if (rl$hoverX >= 0 && rl$hoverX < 104 && rl$hoverY >= 0 && rl$hoverY < 104 && (rl$roofRemovalMode & ROOF_FLAG_HOVERED) != 0)
 			{
-				rl$tilesToRemove.add(rl$tiles[client.getPlane()][rl$hoverX][rl$hoverY]);
+				rl$tilesToRemove.add(rl$tiles[plane][rl$hoverX][rl$hoverY]);
 			}
 
 			LocalPoint localDestinationLocation = client.getLocalDestinationLocation();
@@ -371,7 +356,14 @@ public abstract class RSSceneMixin implements RSScene
 						{
 							tile.setDraw(true);
 							tile.setVisible(true);
-							tile.setDrawEntities(true);
+							if (tile.getGameObjectsCount() > 0)
+							{
+								tile.setDrawEntities(true);
+							}
+							else
+							{
+								tile.setDrawEntities(false);
+							}
 							this.setTileUpdateCount(this.getTileUpdateCount() + 1);
 						}
 					}
@@ -393,9 +385,9 @@ public abstract class RSSceneMixin implements RSScene
 					{
 						int var13 = y + screenCenterZ;
 						int var14 = screenCenterZ - y;
-						if (var10 >= minTileX)
+						if (var10 >= minTileX && var10 < maxTileX)
 						{
-							if (var13 >= minTileZ)
+							if (var13 >= minTileZ && var13 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var10][var13];
 								if (tile != null && tile.isDraw())
@@ -404,7 +396,7 @@ public abstract class RSSceneMixin implements RSScene
 								}
 							}
 
-							if (var14 < maxTileZ)
+							if (var14 >= minTileZ && var14 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var10][var14];
 								if (tile != null && tile.isDraw())
@@ -414,9 +406,9 @@ public abstract class RSSceneMixin implements RSScene
 							}
 						}
 
-						if (var16 < maxTileX)
+						if (var16 >= minTileX && var16 < maxTileX)
 						{
-							if (var13 >= minTileZ)
+							if (var13 >= minTileZ && var13 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var16][var13];
 								if (tile != null && tile.isDraw())
@@ -425,7 +417,7 @@ public abstract class RSSceneMixin implements RSScene
 								}
 							}
 
-							if (var14 < maxTileZ)
+							if (var14 >= minTileZ && var14 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var16][var14];
 								if (tile != null && tile.isDraw())
@@ -472,7 +464,7 @@ public abstract class RSSceneMixin implements RSScene
 						int var14 = screenCenterZ - y;
 						if (var10 >= minTileX)
 						{
-							if (var13 >= minTileZ)
+							if (var13 >= minTileZ && var13 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var10][var13];
 								if (tile != null && tile.isDraw())
@@ -481,7 +473,7 @@ public abstract class RSSceneMixin implements RSScene
 								}
 							}
 
-							if (var14 < maxTileZ)
+							if (var14 >= minTileZ && var14 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var10][var14];
 								if (tile != null && tile.isDraw())
@@ -491,9 +483,9 @@ public abstract class RSSceneMixin implements RSScene
 							}
 						}
 
-						if (var16 < maxTileX)
+						if (var16 >= minTileX && var16 < maxTileX)
 						{
-							if (var13 >= minTileZ)
+							if (var13 >= minTileZ && var13 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var16][var13];
 								if (tile != null && tile.isDraw())
@@ -502,7 +494,7 @@ public abstract class RSSceneMixin implements RSScene
 								}
 							}
 
-							if (var14 < maxTileZ)
+							if (var14 >= minTileZ && var14 < maxTileZ)
 							{
 								RSTile tile = planeTiles[var16][var14];
 								if (tile != null && tile.isDraw())
@@ -811,7 +803,8 @@ public abstract class RSSceneMixin implements RSScene
 	}
 
 	@Inject
-	private static void setTargetTile(int targetX, int targetY)
+	@Override
+	public void setTargetTile(int targetX, int targetY)
 	{
 		client.getTopLevelWorldView().getScene().setBaseX(targetX);
 		client.getTopLevelWorldView().getScene().setBaseY(targetY);
@@ -1224,7 +1217,8 @@ public abstract class RSSceneMixin implements RSScene
 	}
 
 	@Inject
-	public static void hoverTile(int x, int y, int plane)
+	@Override
+	public void hoverTile(int x, int y, int plane)
 	{
 		if (plane == client.getPlane() && !client.isMenuOpen())
 		{

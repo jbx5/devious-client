@@ -26,6 +26,18 @@ public interface RSIntProjection extends IntProjection
 	@Import("cameraZ")
 	void setCameraZ(int cameraZ);
 
+	@Import("cameraPitch")
+	int getCameraPitch();
+
+	@Import("cameraPitch")
+	void setCameraPitch(int cameraPitch);
+
+	@Import("cameraYaw")
+	int getCameraYaw();
+
+	@Import("cameraYaw")
+	void setCameraYaw(int cameraYaw);
+
 	@Import("pitchSin")
 	@Override
 	int getPitchSin();
