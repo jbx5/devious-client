@@ -188,7 +188,7 @@ public class class59 {
 		Scene var7 = ModeWhere.worldView.scene;
 		int var9;
 		if (var5 == class379.field4408.field4411) {
-			BoundaryObject var8 = var7.getGameObject(var0, var1, var2);
+			BoundaryObject var8 = var7.getBoundaryObject(var0, var1, var2);
 			if (var8 != null) {
 				var9 = class105.Entity_unpackID(var8.tag);
 				if (var3 == WorldMapDecorationType.field3995.id) {
@@ -201,7 +201,7 @@ public class class59 {
 				return true;
 			}
 		} else if (var5 == class379.field4407.field4411) {
-			WallDecoration var10 = var7.getFloorDecoration(var0, var1, var2);
+			WallDecoration var10 = var7.getWallDecoration(var0, var1, var2);
 			if (var10 != null) {
 				var9 = class105.Entity_unpackID(var10.tag);
 				if (var3 != WorldMapDecorationType.field4004.id && var3 != WorldMapDecorationType.field4002.id) {
@@ -220,7 +220,7 @@ public class class59 {
 				return true;
 			}
 		} else if (var5 == class379.field4409.field4411) {
-			GameObject var11 = var7.method4875(var0, var1, var2);
+			GameObject var11 = var7.getGameObject(var0, var1, var2);
 			if (var3 == WorldMapDecorationType.field4014.id) {
 				var3 = WorldMapDecorationType.field4013.id;
 			}
@@ -230,7 +230,7 @@ public class class59 {
 				return true;
 			}
 		} else if (var5 == class379.field4410.field4411) {
-			FloorDecoration var12 = var7.method4876(var0, var1, var2);
+			FloorDecoration var12 = var7.getFloorDecoration(var0, var1, var2);
 			if (var12 != null) {
 				var12.renderable = new DynamicObject(ModeWhere.worldView, class105.Entity_unpackID(var12.tag), 22, var4, var0, var1, var2, var6, false, var12.renderable);
 				return true;
