@@ -2528,7 +2528,8 @@ public interface Client extends OAuthApi, GameEngine
 	@Deprecated
 	default Scene getScene()
 	{
-		return getTopLevelWorldView().getScene();
+		var wv = getTopLevelWorldView();
+		return wv == null ? null : wv.getScene();
 	}
 
 	/**

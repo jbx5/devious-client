@@ -1329,6 +1329,7 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	public static void renderDraw(RSProjection projection, RSRenderable renderable, int orientation, int x, int y, int z, long hash)
 	{
+		projection.draw(renderable, orientation, x, y, z, hash);
 		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
 		if (drawCallbacks != null)
 		{
