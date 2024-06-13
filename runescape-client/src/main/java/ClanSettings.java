@@ -60,7 +60,8 @@ public class ClanSettings {
 	@ObfuscatedName("ay")
 	int[] field1775;
 	@ObfuscatedName("au")
-	public int[] field1776;
+	@Export("memberJoinDates")
+	public int[] memberJoinDates;
 	@ObfuscatedName("as")
 	public boolean[] field1777;
 	@ObfuscatedName("aw")
@@ -142,10 +143,10 @@ public class ClanSettings {
 			this.field1775 = new int[var1];
 		}
 
-		if (this.field1776 != null) {
-			System.arraycopy(this.field1776, 0, this.field1776 = new int[var1], 0, this.memberCount);
+		if (this.memberJoinDates != null) {
+			System.arraycopy(this.memberJoinDates, 0, this.memberJoinDates = new int[var1], 0, this.memberCount);
 		} else {
-			this.field1776 = new int[var1];
+			this.memberJoinDates = new int[var1];
 		}
 
 		if (this.field1777 != null) {
@@ -283,7 +284,7 @@ public class ClanSettings {
 			}
 
 			this.field1775[this.memberCount] = 0;
-			this.field1776[this.memberCount] = var4;
+			this.memberJoinDates[this.memberCount] = var4;
 			this.field1777[this.memberCount] = false;
 			++this.memberCount;
 			this.sortedMembers = null;
@@ -304,14 +305,14 @@ public class ClanSettings {
 				this.memberNames = null;
 				this.memberRanks = null;
 				this.field1775 = null;
-				this.field1776 = null;
+				this.memberJoinDates = null;
 				this.field1777 = null;
 				this.currentOwner = -1;
 				this.field1779 = -1;
 			} else {
 				System.arraycopy(this.memberRanks, var1 + 1, this.memberRanks, var1, this.memberCount - var1);
 				System.arraycopy(this.field1775, var1 + 1, this.field1775, var1, this.memberCount - var1);
-				System.arraycopy(this.field1776, var1 + 1, this.field1776, var1, this.memberCount - var1);
+				System.arraycopy(this.memberJoinDates, var1 + 1, this.memberJoinDates, var1, this.memberCount - var1);
 				System.arraycopy(this.field1777, var1 + 1, this.field1777, var1, this.memberCount - var1);
 				if (this.memberHashes != null) {
 					System.arraycopy(this.memberHashes, var1 + 1, this.memberHashes, var1, this.memberCount - var1);
@@ -682,8 +683,8 @@ public class ClanSettings {
 					this.field1775 = new int[this.memberCount];
 				}
 
-				if (this.field1776 == null || this.field1776.length < this.memberCount) {
-					this.field1776 = new int[this.memberCount];
+				if (this.memberJoinDates == null || this.memberJoinDates.length < this.memberCount) {
+					this.memberJoinDates = new int[this.memberCount];
 				}
 
 				if (this.field1777 == null || this.field1777.length < this.memberCount) {
@@ -705,9 +706,9 @@ public class ClanSettings {
 					}
 
 					if (var2 >= 5) {
-						this.field1776[var4] = var1.readUnsignedShort();
+						this.memberJoinDates[var4] = var1.readUnsignedShort();
 					} else {
-						this.field1776[var4] = 0;
+						this.memberJoinDates[var4] = 0;
 					}
 
 					if (var2 >= 6) {

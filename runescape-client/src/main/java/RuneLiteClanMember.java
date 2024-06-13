@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanMember;
 public class RuneLiteClanMember implements ClanMember {
@@ -12,6 +13,12 @@ public class RuneLiteClanMember implements ClanMember {
 
 	public ClanRank getRank() {
 		return getClanRank(this.clanSettings.memberRanks[this.idx]);
+	}
+
+	@Override
+	public LocalDate getJoinDate() {
+		int memberJoinDate = this.clanSettings.memberJoinDates[this.idx];
+		return LocalDate.ofEpochDay((long)(11745 + memberJoinDate));
 	}
 
 	public String getName() {
