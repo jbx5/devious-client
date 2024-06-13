@@ -2732,6 +2732,24 @@ public interface Client extends OAuthApi, GameEngine
 	 * Unethical
 	 */
 
+	@Deprecated
+	default void setSelectedSceneTileX(int sceneX)
+	{
+		getTopLevelWorldView().getScene().setBaseX(sceneX);
+	}
+
+	@Deprecated
+	default void setSelectedSceneTileY(int sceneY)
+	{
+		getTopLevelWorldView().getScene().setBaseY(sceneY);
+	}
+
+	@Deprecated
+	default void setViewportWalking(boolean enabled)
+	{
+		getTopLevelWorldView().getScene().setViewportWalking(enabled);
+	}
+
 	default void interact(int identifier, int opcode, int param0, int param1)
 	{
 		interact(identifier, opcode, param0, param1, -1, -1);
@@ -2785,12 +2803,6 @@ public interface Client extends OAuthApi, GameEngine
 	PacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
 
 	PacketBufferNode preparePacket(ClientPacket packet);
-
-	//void setSelectedSceneTileX(int sceneX);
-
-	//void setSelectedSceneTileY(int sceneY);
-
-	//void setViewportWalking(boolean enabled);
 
 	void setCheckClick(boolean enabled);
 
