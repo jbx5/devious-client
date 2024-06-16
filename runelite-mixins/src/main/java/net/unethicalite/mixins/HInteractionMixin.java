@@ -259,7 +259,14 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 	@Override
 	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick)
 	{
-		insertMenuItem(action, target, opcode, identifier, argument1, argument2, getItemId(argument1, argument2, -1), forceLeftClick);
+		client.rsInsertMenuItem(action, target, opcode, identifier, argument1, argument2, getItemId(argument1, argument2, -1), forceLeftClick, -1);
+	}
+
+	@Inject
+	@Override
+	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick)
+	{
+		client.rsInsertMenuItem(action, target, opcode, identifier, argument1, argument2, itemId, forceLeftClick, -1);
 	}
 
 	@Inject

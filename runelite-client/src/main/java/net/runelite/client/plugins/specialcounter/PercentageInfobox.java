@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2024, 1Defence
+ * Copyright (c) 2024, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +23,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.specialcounter;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.32"
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import net.runelite.client.ui.overlay.infobox.InfoBox;
 
-    const val openosrsVersion = "4.31.2"
+class PercentageInfobox extends InfoBox
+{
+	private float percent = 1f;
 
-    const val rsversion = 222
-    const val cacheversion = 165
+	PercentageInfobox(BufferedImage image, SpecialCounterPlugin plugin)
+	{
+		super(image, plugin);
+	}
 
-    const val lombokVersion = "1.18.30"
+	void mul(float p)
+	{
+		percent *= p;
+	}
 
-    const val flatLafVersion = "3.2.5-rl4"
+	@Override
+	public String getTooltip()
+	{
+		return "Opponent defence has been reduced by " + getText() + ".";
+	}
 
-    const val unethicaliteVersion = "1.0.20-EXPERIMENTAL"
+	@Override
+	public Color getTextColor()
+	{
+		return Color.WHITE;
+	}
+
+	@Override
+	public String getText()
+	{
+		return (int) ((1 - percent) * 100) + "%";
+	}
 }

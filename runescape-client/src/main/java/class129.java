@@ -156,7 +156,7 @@ public class class129 {
 					return 1;
 				} else if (var0 == ScriptOpcodes.ACTIVECLANSETTINGS_GETAFFINEDJOINRUNEDAY) {
 					var3 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
-					Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = class333.field3642.field1776[var3];
+					Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = class333.field3642.memberJoinDates[var3];
 					return 1;
 				} else {
 					if (var0 == ScriptOpcodes.AFFINEDCLANSETTINGS_SETMUTED_FROMCHANNEL) {
