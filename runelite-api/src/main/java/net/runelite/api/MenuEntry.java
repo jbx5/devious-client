@@ -132,7 +132,6 @@ public interface MenuEntry
 	 * @see NullItemID
 	 */
 	int getItemId();
-	void setItemId(int itemId);
 
 	/**
 	 * Set the item id
