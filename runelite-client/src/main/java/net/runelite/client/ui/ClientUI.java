@@ -116,10 +116,10 @@ import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ClientShutdown;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.MouseAdapter;
 import net.runelite.client.input.MouseListener;
 import net.runelite.client.input.MouseManager;
-import net.runelite.client.input.KeyListener;
 import net.runelite.client.ui.laf.RuneLiteLAF;
 import net.runelite.client.ui.laf.RuneLiteRootPaneUI;
 import net.runelite.client.util.HotkeyListener;
@@ -930,7 +930,15 @@ public class ClientUI
 	 */
 	public void flashTaskbar()
 	{
-		Taskbar.getTaskbar().requestWindowUserAttention(frame);
+		Taskbar taskbar = Taskbar.getTaskbar();
+		if (taskbar.isSupported(Taskbar.Feature.USER_ATTENTION_WINDOW))
+		{
+			taskbar.requestWindowUserAttention(frame);
+		}
+		else
+		{
+			log.debug("USER_ATTENTION_WINDOW is not supported");
+		}
 	}
 
 	/**
