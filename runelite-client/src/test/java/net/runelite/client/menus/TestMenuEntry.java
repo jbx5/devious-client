@@ -261,6 +261,13 @@ public class TestMenuEntry implements MenuEntry
 		return itemId;
 	}
 
+	@Override
+	public MenuEntry setItemId(int itemId)
+	{
+		this.itemId = itemId;
+		return this;
+	}
+
 	@Nullable
 	@Override
 	public Widget getWidget()

@@ -752,4 +752,11 @@ public abstract class RSWidgetMixin implements RSWidget
 	{
 		return getRSFont(client.getWidgetDefinition());
 	}
+
+	@Inject
+	@Override
+	public void clearActions()
+	{
+		this.setActions(null);
+	}
 }

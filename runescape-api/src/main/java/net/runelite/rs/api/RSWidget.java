@@ -102,6 +102,9 @@ public interface RSWidget extends Widget
 //	@Override
 //	String[] getActions();
 
+	@Import("actions")
+	void setActions(String[] actions);
+
 	@Import("buttonText")
 	String getRSButtonText();
 
