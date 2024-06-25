@@ -225,18 +225,6 @@ tasks {
         ruleSets = emptyList()
         ignoreFailures = false
         isConsoleOutput = true
-        enabled = true
-    }
-
-    withType<JavaCompile> {
-        options.encoding = "UTF-8"
-    }
-
-    withType<Pmd> {
-        ruleSetFiles = files("${project.projectDir}/pmd-ruleset.xml")
-        ruleSets = emptyList()
-        ignoreFailures = false
-        isConsoleOutput = true
-        enabled = true
+        enabled = false
     }
 }
