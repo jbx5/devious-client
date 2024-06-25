@@ -26,6 +26,7 @@ package net.runelite.client.plugins.config;
 
 import com.google.common.collect.ImmutableList;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -138,7 +139,7 @@ public class PluginListPanel extends PluginPanel
 
 		searchBar = new IconTextField();
 		searchBar.setIcon(IconTextField.Icon.SEARCH);
-		searchBar.setPreferredSize(new Dimension(PANEL_WIDTH - 20, 30));
+		searchBar.setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH - 20, 30));
 		searchBar.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		searchBar.setHoverBackgroundColor(ColorScheme.DARK_GRAY_HOVER_COLOR);
 		searchBar.getDocument().addDocumentListener(new DocumentListener()
@@ -175,7 +176,7 @@ public class PluginListPanel extends PluginPanel
 		mainPanel = new FixedWidthPanel();
 		mainPanel.setBorder(new EmptyBorder(8, 10, 10, 10));
 		mainPanel.setLayout(new DynamicGridLayout(0, 1, 0, 5));
-		mainPanel.setAlignmentX(LEFT_ALIGNMENT);
+		mainPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
 		JButton externalPluginButton = new JButton("Plugin Hub");
 		externalPluginButton.setBorder(new EmptyBorder(5, 5, 5, 5));
