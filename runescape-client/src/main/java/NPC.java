@@ -387,10 +387,10 @@ public final class NPC extends Actor {
 	)
 	public static void method2713(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = class170.getPacketBufferNode(ClientPacket.field3338, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByteNeg(var0);
-		var4.packetBuffer.writeShortAddLE(var1);
-		var4.packetBuffer.writeByteAdd(var2);
-		var4.packetBuffer.writeIntME(var3 ? Client.revision : 0);
+		var4.packetBuffer.writeShortLE(var0);
+		var4.packetBuffer.writeShortAdd(var1);
+		var4.packetBuffer.writeByteNeg(var2);
+		var4.packetBuffer.writeIntLE(var3 ? Client.revision : 0);
 		Client.packetWriter.addNode(var4);
 	}
 }

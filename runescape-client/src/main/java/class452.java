@@ -105,9 +105,9 @@ public class class452 {
 					int var12 = StudioGame.field4084.vmethod8671() - var10 >> 7;
 					PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.field3340, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeByteNeg(var12 + class511.topLevelWorldView.baseY);
+					var13.packetBuffer.writeShortLE(var12 + class511.topLevelWorldView.baseY);
 					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
-					var13.packetBuffer.writeShortAdd(var11 + class511.topLevelWorldView.baseX);
+					var13.packetBuffer.writeShortAddLE(var11 + class511.topLevelWorldView.baseX);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);

@@ -76,7 +76,7 @@ public final class class325 {
 		if (!Client.isInInstance) {
 			var1.readShortLE();
 			int var2 = var1.readUnsignedShortAdd();
-			var3 = var1.method9599();
+			var3 = var1.readUnsignedShortLE();
 			var4 = var1.readUnsignedShort();
 			UserComparator10.xteaKeys = new int[var4][4];
 
@@ -105,8 +105,8 @@ public final class class325 {
 
 			ScriptEvent.method2384(var2, var3, true);
 		} else {
-			boolean var15 = var1.readUnsignedByteNeg() == 1;
-			var3 = var1.readUnsignedIntME();
+			boolean var15 = var1.readUnsignedByteSub() == 1;
+			var3 = var1.readUnsignedShortAddLE();
 			var4 = var1.readUnsignedShort();
 			var5 = var1.readUnsignedShort();
 			var1.importIndex();

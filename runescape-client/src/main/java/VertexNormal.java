@@ -57,19 +57,19 @@ public class VertexNormal {
 		garbageValue = "860894148"
 	)
 	static void method5914(PacketBufferNode var0) {
-		var0.packetBuffer.writeIntME(WorldMapSectionType.field2665.hash);
-		var0.packetBuffer.writeIntME(JagNetThread.field4545.hash);
-		var0.packetBuffer.writeIntIME(class195.field2052.hash);
+		var0.packetBuffer.writeIntLE(WorldMapSectionType.field2665.hash);
+		var0.packetBuffer.writeIntLE(JagNetThread.field4545.hash);
+		var0.packetBuffer.writeIntME(class195.field2052.hash);
 		var0.packetBuffer.writeInt(ApproximateRouteStrategy.archive2.hash);
-		var0.packetBuffer.writeIntLE(LoginPacket.field1684.hash);
-		var0.packetBuffer.writeIntME(VarpDefinition.field1881.hash);
-		var0.packetBuffer.writeIntIME(PlayerComposition.field3785.hash);
-		var0.packetBuffer.writeIntIME(class157.archive9.hash);
-		var0.packetBuffer.writeIntIME(WorldEntity.archive12.hash);
+		var0.packetBuffer.writeIntIME(LoginPacket.field1684.hash);
+		var0.packetBuffer.writeIntLE(VarpDefinition.field1881.hash);
+		var0.packetBuffer.writeIntME(PlayerComposition.field3785.hash);
+		var0.packetBuffer.writeIntME(class157.archive9.hash);
+		var0.packetBuffer.writeIntME(WorldEntity.archive12.hash);
 		var0.packetBuffer.writeInt(0);
-		var0.packetBuffer.writeIntLE(class151.field1715.hash);
+		var0.packetBuffer.writeIntIME(class151.field1715.hash);
 		var0.packetBuffer.writeInt(class498.field5069.hash);
-		var0.packetBuffer.writeIntLE(LoginScreenAnimation.archive4.hash);
-		var0.packetBuffer.writeIntIME(LoginState.field497.hash);
+		var0.packetBuffer.writeIntIME(LoginScreenAnimation.archive4.hash);
+		var0.packetBuffer.writeIntME(LoginState.field497.hash);
 	}
 }

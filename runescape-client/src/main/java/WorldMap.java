@@ -482,7 +482,7 @@ public class WorldMap {
 
 					if (var10) {
 						PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.field3339, Client.packetWriter.isaacCipher);
-						var13.packetBuffer.writeIntIME(this.mouseCoord.packed());
+						var13.packetBuffer.writeIntME(this.mouseCoord.packed());
 						Client.packetWriter.addNode(var13);
 						this.field5158 = 0L;
 					}

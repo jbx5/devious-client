@@ -709,12 +709,12 @@ public class PlayerUpdateManager {
 		}
 
 		if ((var4 & 8192) != 0) {
-			var3.field1251 = Client.cycle + var1.method9599();
-			var3.field1215 = Client.cycle + var1.readUnsignedIntME();
+			var3.field1251 = Client.cycle + var1.readUnsignedShortLE();
+			var3.field1215 = Client.cycle + var1.readUnsignedShortAddLE();
 			var3.field1223 = var1.readByteAdd();
 			var3.field1254 = var1.readByteSub();
 			var3.field1255 = var1.readByteAdd();
-			var3.field1239 = (byte)var1.readUnsignedByteSub();
+			var3.field1239 = (byte)var1.readUnsignedByteNeg();
 		}
 
 		int var7;
@@ -724,12 +724,12 @@ public class PlayerUpdateManager {
 				var6 = -1;
 			}
 
-			var7 = var1.readUnsignedByteSub();
+			var7 = var1.readUnsignedByteNeg();
 			Canvas.performPlayerAnimation(var3, var6, var7);
 		}
 
 		if ((var4 & 1) != 0) {
-			var6 = var1.readUnsignedByteNeg();
+			var6 = var1.readUnsignedByteSub();
 			byte[] var21 = new byte[var6];
 			Buffer var8 = new Buffer(var21);
 			var1.method9559(var21, 0, var6);
@@ -744,7 +744,7 @@ public class PlayerUpdateManager {
 			var3.field1245 = var1.readByte();
 			var3.spotAnimation = var1.readUnsignedShortAdd() + Client.cycle;
 			var3.field1260 = var1.readUnsignedShortAdd() + Client.cycle;
-			var3.field1248 = var1.method9599();
+			var3.field1248 = var1.readUnsignedShortLE();
 			if (var3.field1144) {
 				var3.field1242 += var3.tileX;
 				var3.field1244 += var3.tileY;
@@ -766,12 +766,12 @@ public class PlayerUpdateManager {
 		int var10;
 		int var22;
 		if ((var4 & 65536) != 0) {
-			var6 = var1.readUnsignedByteSub();
+			var6 = var1.readUnsignedByteNeg();
 
 			for (var7 = 0; var7 < var6; ++var7) {
-				var22 = var1.readUnsignedByteNeg();
+				var22 = var1.readUnsignedByteSub();
 				var9 = var1.readUnsignedShortAdd();
-				var10 = var1.readUnsignedByteAdd();
+				var10 = var1.readUnsignedIntLE();
 				var3.updateSpotAnimation(var22, var9, var10 >> 16, var10 & 65535);
 			}
 		}
@@ -780,7 +780,7 @@ public class PlayerUpdateManager {
 		int var13;
 		int var24;
 		if ((var4 & 8) != 0) {
-			var6 = var1.readUnsignedByteNeg();
+			var6 = var1.readUnsignedByteSub();
 			if (var6 > 0) {
 				for (var7 = 0; var7 < var6; ++var7) {
 					var9 = -1;
@@ -803,15 +803,15 @@ public class PlayerUpdateManager {
 				}
 			}
 
-			var7 = var1.readUnsignedIntIME();
+			var7 = var1.readUnsignedByteAdd();
 			if (var7 > 0) {
 				for (var22 = 0; var22 < var7; ++var22) {
 					var9 = var1.readUShortSmart();
 					var10 = var1.readUShortSmart();
 					if (var10 != 32767) {
 						var11 = var1.readUShortSmart();
-						var24 = var1.readUnsignedByteNeg();
-						var13 = var10 > 0 ? var1.readUnsignedIntIME() : var24;
+						var24 = var1.readUnsignedByteSub();
+						var13 = var10 > 0 ? var1.readUnsignedByteAdd() : var24;
 						var3.addHealthBar(var9, Client.cycle, var10, var11, var24, var13);
 					} else {
 						var3.removeHealthBar(var9);
@@ -821,8 +821,8 @@ public class PlayerUpdateManager {
 		}
 
 		if ((var4 & 32) != 0) {
-			var3.targetIndex = var1.readUnsignedIntME();
-			var3.targetIndex += var1.readUnsignedByteNeg() << 16;
+			var3.targetIndex = var1.readUnsignedShortAddLE();
+			var3.targetIndex += var1.readUnsignedByteSub() << 16;
 			var6 = 16777215;
 			if (var6 == var3.targetIndex) {
 				var3.targetIndex = -1;
@@ -830,10 +830,10 @@ public class PlayerUpdateManager {
 		}
 
 		if ((var4 & 4) != 0) {
-			var6 = var1.method9599();
-			PlayerType var31 = (PlayerType)class210.findEnumerated(class136.PlayerType_values(), var1.readUnsignedByteNeg());
-			boolean var32 = var1.readUnsignedByteSub() == 1;
-			var9 = var1.readUnsignedByteNeg();
+			var6 = var1.readUnsignedShortLE();
+			PlayerType var31 = (PlayerType)class210.findEnumerated(class136.PlayerType_values(), var1.readUnsignedByteSub());
+			boolean var32 = var1.readUnsignedByteNeg() == 1;
+			var9 = var1.readUnsignedByteSub();
 			var10 = var1.offset;
 			if (var3.username != null && var3.appearance != null) {
 				boolean var28 = false;
@@ -871,12 +871,12 @@ public class PlayerUpdateManager {
 		}
 
 		if ((var4 & 16384) != 0) {
-			var6 = var1.readUnsignedIntME();
+			var6 = var1.readUnsignedShortAddLE();
 			var7 = var6 >> 8;
 			var22 = var7 >= 13 && var7 <= 20 ? var7 - 12 : 0;
-			PlayerType var23 = (PlayerType)class210.findEnumerated(class136.PlayerType_values(), var1.readUnsignedIntIME());
-			boolean var29 = var1.readUnsignedByteSub() == 1;
-			var11 = var1.readUnsignedByteNeg();
+			PlayerType var23 = (PlayerType)class210.findEnumerated(class136.PlayerType_values(), var1.readUnsignedByteAdd());
+			boolean var29 = var1.readUnsignedByteNeg() == 1;
+			var11 = var1.readUnsignedByteSub();
 			var24 = var1.offset;
 			if (var3.username != null && var3.appearance != null) {
 				boolean var30 = false;
@@ -948,7 +948,7 @@ public class PlayerUpdateManager {
 		}
 
 		if ((var4 & 128) != 0) {
-			var3.field1227 = var1.method9599();
+			var3.field1227 = var1.readUnsignedShortLE();
 			if (var3.pathLength == 0) {
 				var3.orientation = var3.field1227;
 				var3.method2485();

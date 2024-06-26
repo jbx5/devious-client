@@ -93,14 +93,14 @@ public class class153 extends class163 {
 		int var19;
 		int var20;
 		if (class320.field3379 == var0) {
-			var2 = var1.readUnsignedIntIME();
-			var3 = var1.readUnsignedByteNeg() & 31;
-			var4 = var1.readUnsignedByteNeg();
-			var5 = var1.readUnsignedIntIME();
+			var2 = var1.readUnsignedByteAdd();
+			var3 = var1.readUnsignedByteSub() & 31;
+			var4 = var1.readUnsignedByteSub();
+			var5 = var1.readUnsignedByteAdd();
 			var6 = (var5 >> 4 & 7) + LoginPacket.field1682;
 			var7 = (var5 & 7) + NPC.field1350;
-			var20 = var1.readUnsignedIntIME();
-			var19 = var1.method9599();
+			var20 = var1.readUnsignedByteAdd();
+			var19 = var1.readUnsignedShortLE();
 			if (var6 >= 0 && var7 >= 0 && var6 < HttpResponse.worldView.sizeX && var7 < HttpResponse.worldView.sizeY) {
 				var10 = var3 + 1;
 				if (SoundCache.localPlayer.pathX[0] >= var6 - var10 && SoundCache.localPlayer.pathX[0] <= var10 + var6 && SoundCache.localPlayer.pathY[0] >= var7 - var10 && SoundCache.localPlayer.pathY[0] <= var10 + var7 && class105.clientPreferences.getAreaSoundEffectsVolume() != 0 && var2 > 0 && Client.soundEffectCount < 50) {
@@ -116,8 +116,8 @@ public class class153 extends class163 {
 
 		} else {
 			if (class320.field3382 == var0) {
-				var2 = var1.readUnsignedByteSub();
-				var3 = var1.readUnsignedByteSub();
+				var2 = var1.readUnsignedByteNeg();
+				var3 = var1.readUnsignedByteNeg();
 				var4 = (var3 >> 4 & 7) + LoginPacket.field1682;
 				var5 = (var3 & 7) + NPC.field1350;
 				var6 = var1.readUnsignedShort();
@@ -146,7 +146,7 @@ public class class153 extends class163 {
 				var2 = var1.readUnsignedByte();
 				var3 = (var2 >> 4 & 7) + LoginPacket.field1682;
 				var4 = (var2 & 7) + NPC.field1350;
-				var5 = var1.readUnsignedByteSub();
+				var5 = var1.readUnsignedByteNeg();
 				var6 = var5 >> 2;
 				var7 = var5 & 3;
 				var20 = Client.field579[var6];
@@ -156,12 +156,12 @@ public class class153 extends class163 {
 				}
 
 			} else if (class320.field3385 == var0) {
-				var2 = var1.readUnsignedIntIME();
+				var2 = var1.readUnsignedByteAdd();
 				var3 = (var2 >> 4 & 7) + LoginPacket.field1682;
 				var4 = (var2 & 7) + NPC.field1350;
-				var5 = var1.readUnsignedByteSub();
+				var5 = var1.readUnsignedByteNeg();
 				var6 = var1.readUnsignedShortAdd();
-				var7 = var1.method9599();
+				var7 = var1.readUnsignedShortLE();
 				if (var3 >= 0 && var4 >= 0 && var3 < HttpResponse.worldView.sizeX && var4 < HttpResponse.worldView.sizeY) {
 					var3 = class376.method7084(var3);
 					var4 = class376.method7084(var4);
@@ -171,10 +171,10 @@ public class class153 extends class163 {
 				}
 
 			} else if (class320.field3383 == var0) {
-				var2 = var1.readUnsignedShortLE();
+				var2 = var1.readUnsignedIntME();
 				var3 = var1.readUnsignedShort();
 				var4 = var1.readInt();
-				var5 = var1.readUnsignedByteSub();
+				var5 = var1.readUnsignedByteNeg();
 				var6 = (var5 >> 4 & 7) + LoginPacket.field1682;
 				var7 = (var5 & 7) + NPC.field1350;
 				if (var6 >= 0 && var7 >= 0 && var6 < HttpResponse.worldView.sizeX && var7 < HttpResponse.worldView.sizeY) {
@@ -191,18 +191,18 @@ public class class153 extends class163 {
 				int var16;
 				if (class320.field3387 == var0) {
 					byte var25 = var1.readByte();
-					var3 = var1.method9599();
+					var3 = var1.readUnsignedShortLE();
 					byte var27 = var1.readByteNeg();
-					var5 = var1.readUnsignedIntLE();
+					var5 = var1.method9613();
 					var6 = var1.readUnsignedByte();
-					var7 = var1.readUnsignedByteNeg();
+					var7 = var1.readUnsignedByteSub();
 					var20 = (var7 >> 4 & 7) + LoginPacket.field1682;
 					var19 = (var7 & 7) + NPC.field1350;
 					var10 = var1.readUnsignedByte() * 4;
-					var11 = var1.readUnsignedIntME();
+					var11 = var1.readUnsignedShortAddLE();
 					var12 = var1.readUnsignedShortAdd();
 					var13 = var1.readUnsignedShort();
-					var14 = var1.readUnsignedByteSub() * 4;
+					var14 = var1.readUnsignedByteNeg() * 4;
 					var15 = var1.method9607();
 					var2 = var25 + var20;
 					var4 = var27 + var19;
@@ -212,12 +212,12 @@ public class class153 extends class163 {
 					}
 
 				} else if (class320.field3381 == var0) {
-					var2 = var1.readUnsignedByteSub();
+					var2 = var1.readUnsignedByteNeg();
 					var3 = var2 >> 2;
 					var4 = var2 & 3;
 					var5 = Client.field579[var3];
-					var6 = var1.readUnsignedByteNeg();
-					var7 = var1.readUnsignedByteNeg();
+					var6 = var1.readUnsignedByteSub();
+					var7 = var1.readUnsignedByteSub();
 					var20 = (var7 >> 4 & 7) + LoginPacket.field1682;
 					var19 = (var7 & 7) + NPC.field1350;
 					var10 = var1.readUnsignedShortAdd();
@@ -227,11 +227,11 @@ public class class153 extends class163 {
 					}
 
 				} else if (class320.field3388 == var0) {
-					var2 = var1.readUnsignedByteSub();
+					var2 = var1.readUnsignedByteNeg();
 					var3 = (var2 >> 4 & 7) + LoginPacket.field1682;
 					var4 = (var2 & 7) + NPC.field1350;
-					var5 = var1.readUnsignedByteAdd();
-					var6 = var1.readUnsignedIntME();
+					var5 = var1.readUnsignedIntLE();
+					var6 = var1.readUnsignedShortAddLE();
 					var7 = HttpResponse.worldView.plane;
 					if (0 <= var3 && var3 < 104 && 0 <= var4 && var4 < 104) {
 						var20 = Client.field580 == -1 ? var7 : Client.field580;
@@ -246,14 +246,14 @@ public class class153 extends class163 {
 						byte var26 = var1.readByteNeg();
 						byte var28 = var1.readByteAdd();
 						byte var29 = var1.readByteNeg();
-						var20 = var1.readUnsignedByteNeg();
+						var20 = var1.readUnsignedByteSub();
 						var19 = (var20 >> 4 & 7) + LoginPacket.field1682;
 						var10 = (var20 & 7) + NPC.field1350;
-						var11 = var1.readUnsignedByteNeg();
+						var11 = var1.readUnsignedByteSub();
 						var12 = var11 >> 2;
 						var13 = var11 & 3;
 						var14 = Client.field579[var12];
-						var15 = var1.readUnsignedIntME();
+						var15 = var1.readUnsignedShortAddLE();
 						var16 = var1.readUnsignedShortAdd();
 						Player var17;
 						if (var16 == Client.localPlayerIndex) {
@@ -269,14 +269,14 @@ public class class153 extends class163 {
 					}
 
 					if (class320.field3384 == var0) {
-						var2 = var1.readUnsignedByteSub();
+						var2 = var1.readUnsignedByteNeg();
 						var3 = var2 >> 2;
 						var4 = var2 & 3;
 						var5 = Client.field579[var3];
-						var6 = var1.readUnsignedByteSub();
+						var6 = var1.readUnsignedByteNeg();
 						var7 = (var6 >> 4 & 7) + LoginPacket.field1682;
 						var20 = (var6 & 7) + NPC.field1350;
-						var19 = var1.method9599();
+						var19 = var1.readUnsignedShortLE();
 						if (0 <= var7 && var7 < 103 && 0 <= var20 && var20 < 103) {
 							var10 = Client.field580 == -1 ? HttpResponse.worldView.plane : Client.field580;
 							PendingSpawn var21 = class453.method8355(HttpResponse.worldView, var10, var7, var20, var5);
@@ -299,13 +299,13 @@ public class class153 extends class163 {
 						}
 
 					} else if (class320.field3380 == var0) {
-						var2 = var1.method9599();
-						boolean var24 = var1.readUnsignedByteNeg() == 1;
+						var2 = var1.readUnsignedShortLE();
+						boolean var24 = var1.readUnsignedByteSub() == 1;
 						var4 = var1.readUnsignedShortAdd();
-						var5 = var1.readUnsignedIntIME();
-						var6 = var1.readUnsignedIntIME();
+						var5 = var1.readUnsignedByteAdd();
+						var6 = var1.readUnsignedByteAdd();
 						var7 = var1.readUnsignedShort();
-						var20 = var1.readUnsignedShortLE();
+						var20 = var1.readUnsignedIntME();
 						var19 = var1.readUnsignedByte();
 						var10 = (var19 >> 4 & 7) + LoginPacket.field1682;
 						var11 = (var19 & 7) + NPC.field1350;
