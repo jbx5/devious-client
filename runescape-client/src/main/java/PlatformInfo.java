@@ -68,6 +68,7 @@ public class PlatformInfo extends Node implements class115 {
 	@ObfuscatedGetter(
 		intValue = -1024146357
 	)
+	@Export("field5105")
 	int field5105;
 	@ObfuscatedName("bn")
 	@ObfuscatedGetter(
@@ -82,8 +83,10 @@ public class PlatformInfo extends Node implements class115 {
 	@Export("field4541")
 	String field4541;
 	@ObfuscatedName("bd")
+	@Export("field5103")
 	String field5103;
 	@ObfuscatedName("bz")
+	@Export("field5110")
 	String field5110;
 	@ObfuscatedName("bk")
 	@ObfuscatedGetter(
@@ -95,21 +98,25 @@ public class PlatformInfo extends Node implements class115 {
 	@ObfuscatedGetter(
 		intValue = -2146477359
 	)
+	@Export("field5112")
 	int field5112;
 	@ObfuscatedName("bf")
 	@ObfuscatedGetter(
 		intValue = 2145527819
 	)
+	@Export("field5089")
 	int field5089;
 	@ObfuscatedName("cf")
 	@ObfuscatedGetter(
 		intValue = 1429426761
 	)
+	@Export("field5114")
 	int field5114;
 	@ObfuscatedName("cv")
 	@Export("field4537")
 	String field4537;
 	@ObfuscatedName("cl")
+	@Export("field5116")
 	String field5116;
 	@ObfuscatedName("cm")
 	@Export("field4539")
@@ -121,8 +128,10 @@ public class PlatformInfo extends Node implements class115 {
 	@Export("field4540")
 	int field4540;
 	@ObfuscatedName("cu")
+	@Export("field5119")
 	String field5119;
 	@ObfuscatedName("cn")
+	@Export("field5120")
 	String field5120;
 
 	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25, String var26, String var27) {
