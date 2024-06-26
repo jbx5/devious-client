@@ -103,7 +103,7 @@ public class class452 {
 					int var10 = var8 * var5 - var7 * var4 >> 11;
 					int var11 = StudioGame.field4084.vmethod8670() + var9 >> 7;
 					int var12 = StudioGame.field4084.vmethod8671() - var10 >> 7;
-					PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.field3340, Client.packetWriter.isaacCipher);
+					PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.MINIMAP_CLICK, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShortLE(var12 + class511.topLevelWorldView.baseY);
 					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);

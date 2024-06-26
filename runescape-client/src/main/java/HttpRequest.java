@@ -347,7 +347,7 @@ public class HttpRequest {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.field3332, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(class522.privateChatMode.field5503);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -363,7 +363,7 @@ public class HttpRequest {
 				class130.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
-				var6 = class170.getPacketBufferNode(ClientPacket.field3349, Client.packetWriter.isaacCipher);
+				var6 = class170.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(Actor.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -437,7 +437,7 @@ public class HttpRequest {
 							class337.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class337.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class337.Interpreter_stringStackSize + 1];
-							var12 = class170.getPacketBufferNode(ClientPacket.field3321, Client.packetWriter.isaacCipher);
+							var12 = class170.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

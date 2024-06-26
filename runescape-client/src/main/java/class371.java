@@ -47,7 +47,7 @@ public class class371 {
 					var15 = GrandExchangeEvent.method7351(var7);
 				}
 
-				PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.field3287, Client.packetWriter.isaacCipher);
+				PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
 				var13.packetBuffer.writeInt(var15);
 				Client.packetWriter.addNode(var13);
 				return 1;
@@ -55,14 +55,14 @@ public class class371 {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-					var11 = class170.getPacketBufferNode(ClientPacket.field3309, Client.packetWriter.isaacCipher);
+					var11 = class170.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-					var11 = class170.getPacketBufferNode(ClientPacket.field3281, Client.packetWriter.isaacCipher);
+					var11 = class170.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
@@ -106,7 +106,7 @@ public class class371 {
 						return 1;
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-						var11 = class170.getPacketBufferNode(ClientPacket.field3337, Client.packetWriter.isaacCipher);
+						var11 = class170.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeShort(var3);
 						Client.packetWriter.addNode(var11);
 						return 1;

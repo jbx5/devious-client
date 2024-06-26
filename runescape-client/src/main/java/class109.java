@@ -56,7 +56,7 @@ final class class109 implements class348 {
 		garbageValue = "-3"
 	)
 	static final void method2818() {
-		PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.field3358, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field870 = true;
 

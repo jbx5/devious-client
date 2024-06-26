@@ -57,7 +57,7 @@ class class333 implements ThreadFactory {
 	)
 	static void method6367() {
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.field3300, Client.packetWriter.isaacCipher);
+			PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var0.packetBuffer.writeByte(GrandExchangeOfferOwnWorldComparator.getWindowedMode());
 			var0.packetBuffer.writeShort(class74.canvasWidth);
 			var0.packetBuffer.writeShort(class1.canvasHeight);
