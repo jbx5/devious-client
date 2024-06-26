@@ -21,7 +21,7 @@ public final class ItemLayer {
 	int x;
 	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1431792064
+		intValue = -2058003033
 	)
 	@Export("y")
 	int y;
