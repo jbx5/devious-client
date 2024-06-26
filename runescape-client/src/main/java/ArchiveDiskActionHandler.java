@@ -121,7 +121,7 @@ public class ArchiveDiskActionHandler implements Runnable {
 	)
 	@Export("SpriteBuffer_getSprite")
 	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-		if (!FillMode.method3260(var0, var1, var2)) {
+		if (!class146.method3260(var0, var1, var2)) {
 			return null;
 		} else {
 			SpritePixels var4 = new SpritePixels();

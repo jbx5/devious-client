@@ -41,9 +41,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		descriptor = "(ZB)V",
 		garbageValue = "11"
 	)
-	static void method2998(boolean var0) {
+	@Export("updateLoginStatusUsernameRemembered")
+	static void updateLoginStatusUsernameRemembered(boolean var0) {
 		byte var1 = 0;
-		boolean var2 = class105.clientPreferences.method2594() >= Client.field637;
+		boolean var2 = class105.clientPreferences.getEULA() >= Client.field637;
 		if (!var2) {
 			var1 = 12;
 		} else if (class415.client.containsAccessAndRefreshToken() || class415.client.otlTokenRequesterInitialized() || class415.client.containsSessionAndCharacterId()) {
@@ -55,7 +56,7 @@ public class UserComparator8 extends AbstractUserComparator {
 			Login.Login_username = "";
 			Login.Login_password = "";
 			class6.otpMedium = 0;
-			FillMode.otp = "";
+			class146.otp = "";
 		}
 
 		if (Login.Login_username == null || Login.Login_username.length() <= 0) {

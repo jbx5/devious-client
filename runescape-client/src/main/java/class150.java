@@ -55,7 +55,7 @@ public class class150 {
 			} else if (var2 == 6) {
 				var3 = new class161(this);
 			} else if (var2 == 5) {
-				var3 = new FillMode(this);
+				var3 = new class146(this);
 			} else if (var2 == 2) {
 				var3 = new class151(this);
 			} else if (var2 == 7) {

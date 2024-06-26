@@ -393,7 +393,7 @@ public class Varps {
 						if (class418.mapSceneSprites == null) {
 							var2 = class7.archive8;
 							var3 = RouteStrategy.field2497.field5015;
-							if (!FillMode.method3260(var2, var3, 0)) {
+							if (!class146.method3260(var2, var3, 0)) {
 								var1 = null;
 							} else {
 								var23 = new IndexedSprite[SpriteBufferProperties.SpriteBuffer_spriteCount];
@@ -458,7 +458,7 @@ public class Varps {
 						if (UrlRequest.scrollBarSprites == null) {
 							var2 = class7.archive8;
 							var3 = RouteStrategy.field2497.field5021;
-							if (!FillMode.method3260(var2, var3, 0)) {
+							if (!class146.method3260(var2, var3, 0)) {
 								var1 = null;
 							} else {
 								var23 = new IndexedSprite[SpriteBufferProperties.SpriteBuffer_spriteCount];
@@ -574,7 +574,7 @@ public class Varps {
 						if (class94.field1165 == Client.field535) {
 							FloorUnderlayDefinition.field2095 = false;
 							ClanChannelMember.updateGameState(20);
-							class28.method434(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
+							class28.updateLoginState(LoginState.READ_ACCOUNT_INFO_PACKET_SIZE);
 						}
 
 					}

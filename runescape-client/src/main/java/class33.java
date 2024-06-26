@@ -56,7 +56,8 @@ public class class33 {
 		descriptor = "(Lok;II)Lmv;",
 		garbageValue = "1882744642"
 	)
-	static MusicPatch method482(AbstractArchive var0, int var1) {
+	@Export("updateExternalPlayer")
+	static MusicPatch updateExternalPlayer(AbstractArchive var0, int var1) {
 		byte[] var2 = var0.takeFileFlat(var1);
 		return var2 == null ? null : new MusicPatch(var2);
 	}

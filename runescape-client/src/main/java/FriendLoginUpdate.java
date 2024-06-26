@@ -37,7 +37,7 @@ public class FriendLoginUpdate extends Link {
 		garbageValue = "1061672460"
 	)
 	protected static final void method8525() {
-		FillMode.clock.mark();
+		class146.clock.mark();
 
 		int var0;
 		for (var0 = 0; var0 < 32; ++var0) {

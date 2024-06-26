@@ -123,11 +123,11 @@ public class UserComparator10 extends AbstractUserComparator {
 			int var10 = -2;
 			if (var1.overheadText != null && (!var9 || !var1.field1213 && (Client.publicChatMode == 4 || !var1.field1212 && (Client.publicChatMode == 0 || Client.publicChatMode == 3 || Client.publicChatMode == 1 && ((Player)var1).isFriend())))) {
 				GrandExchangeOfferNameComparator.method7320(var0, var1, var1.vmethod2708());
-				if (Client.viewportTempX > -1 && Client.overheadTextCount < Client.field607) {
+				if (Client.viewportTempX > -1 && Client.overheadTextCount < Client.overheadTextLimit) {
 					Client.overheadTextXOffsets[Client.overheadTextCount] = ParamComposition.fontBold12.stringWidth(var1.overheadText) / 2;
 					Client.overheadTextAscents[Client.overheadTextCount] = ParamComposition.fontBold12.ascent;
 					Client.overheadTextXs[Client.overheadTextCount] = Client.viewportTempX;
-					Client.overheadTextYs[Client.overheadTextCount] = Client.viewportTempX - var10;
+					Client.overheadTextYs[Client.overheadTextCount] = Client.viewportTempY - var10;
 					Client.overheadTextColors[Client.overheadTextCount] = var1.field1226;
 					Client.overheadTextEffects[Client.overheadTextCount] = var1.field1216;
 					Client.overheadTextCyclesRemaining[Client.overheadTextCount] = var1.overheadTextCyclesRemaining;
@@ -197,7 +197,7 @@ public class UserComparator10 extends AbstractUserComparator {
 							var89 = var80.subHeight;
 							var10 += var89;
 							var23 = var3 + Client.viewportTempX - (var16 >> 1);
-							var24 = var4 + Client.viewportTempX - var10;
+							var24 = var4 + Client.viewportTempY - var10;
 							var23 -= var85;
 							if (var82 >= 0 && var82 < 255) {
 								var80.drawTransAt(var23, var24, var82);
@@ -213,9 +213,9 @@ public class UserComparator10 extends AbstractUserComparator {
 							var10 += 2;
 						} else {
 							var10 += 5;
-							if (Client.viewportTempX > -1) {
+							if (Client.viewportTempY > -1) {
 								var89 = var3 + Client.viewportTempX - (var16 >> 1);
-								var23 = var4 + Client.viewportTempX - var10;
+								var23 = var4 + Client.viewportTempY - var10;
 								Rasterizer2D.Rasterizer2D_fillRectangle(var89, var23, var99, 5, 65280);
 								Rasterizer2D.Rasterizer2D_fillRectangle(var99 + var89, var23, var16 - var99, 5, 16711680);
 							}
@@ -237,7 +237,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					GrandExchangeOfferNameComparator.method7320(var0, var1, var1.vmethod2708() + 15);
 					AbstractFont var91 = (AbstractFont)Client.fontsMap.get(FontName.FontName_plain12);
 					var10 += 4;
-					var91.drawCentered(var90.username.getName(), var3 + Client.viewportTempX, var4 + Client.viewportTempX - var10, 16777215, 0);
+					var91.drawCentered(var90.username.getName(), var3 + Client.viewportTempX, var4 + Client.viewportTempY - var10, 16777215, 0);
 					var10 += 18;
 				}
 			}
@@ -250,15 +250,15 @@ public class UserComparator10 extends AbstractUserComparator {
 
 				if (var90.headIconPk != -1 || var90.headIconPrayer != -1) {
 					GrandExchangeOfferNameComparator.method7320(var0, var1, var1.defaultHeight + 15);
-					if (Client.viewportTempX > -1) {
+					if (Client.viewportTempY > -1) {
 						if (var90.headIconPk != -1) {
 							var10 += 25;
-							FaceNormal.headIconPkSprites[var90.headIconPk].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempX - var10);
+							FaceNormal.headIconPkSprites[var90.headIconPk].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - var10);
 						}
 
 						if (var90.headIconPrayer != -1) {
 							var10 += 25;
-							ArchiveDiskActionHandler.headIconPrayerSprites[var90.headIconPrayer].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempX - var10);
+							ArchiveDiskActionHandler.headIconPrayerSprites[var90.headIconPrayer].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - var10);
 						}
 					}
 				}
@@ -267,7 +267,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					GrandExchangeOfferNameComparator.method7320(var0, var1, var1.defaultHeight + 15);
 					if (Client.viewportTempX > -1) {
 						var10 += class337.headIconHintSprites[1].subHeight;
-						class337.headIconHintSprites[1].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempX - var10);
+						class337.headIconHintSprites[1].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - var10);
 					}
 				}
 			} else {
@@ -290,7 +290,7 @@ public class UserComparator10 extends AbstractUserComparator {
 							if (var17 != null) {
 								GrandExchangeOfferNameComparator.method7320(var0, var1, var1.vmethod2708() + 15);
 								if (Client.viewportTempX > -1) {
-									var17.drawTransBgAt(var3 + Client.viewportTempX - (var17.subWidth >> 1), (var14 + 1) * (var4 - var17.subHeight - 2) - var17.subHeight + Client.viewportTempX - 4);
+									var17.drawTransBgAt(var3 + Client.viewportTempX - (var17.subWidth >> 1), (var14 + 1) * (var4 - var17.subHeight - 2) - var17.subHeight + Client.viewportTempY - 4);
 								}
 							}
 						}
@@ -299,8 +299,8 @@ public class UserComparator10 extends AbstractUserComparator {
 
 				if (Client.hintArrowType == 1 && var0.npcIndices[var2 - var76] == Client.hintArrowNpcIndex && Client.cycle % 20 < 10) {
 					GrandExchangeOfferNameComparator.method7320(var0, var1, var1.vmethod2708() + 15);
-					if (Client.viewportTempX > -1) {
-						class337.headIconHintSprites[0].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempX - 28);
+					if (Client.viewportTempY > -1) {
+						class337.headIconHintSprites[0].drawTransBgAt(var3 + Client.viewportTempX - 12, var4 + Client.viewportTempY - 28);
 					}
 				}
 			}

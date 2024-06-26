@@ -87,12 +87,12 @@ public class WorldMapLabelSize {
 		garbageValue = "151913896"
 	)
 	static void method4567() {
-		FillMode.otp.trim();
-		if (FillMode.otp.length() != 6) {
+		class146.otp.trim();
+		if (class146.otp.length() != 6) {
 			VerticalAlignment.setLoginResponseString("", "Please enter a 6-digit PIN.", "");
 		} else {
-			class6.otpMedium = Integer.parseInt(FillMode.otp);
-			FillMode.otp = "";
+			class6.otpMedium = Integer.parseInt(class146.otp);
+			class146.otp = "";
 			class213.setAuthenticationScheme(true);
 			VerticalAlignment.setLoginResponseString("", "Connecting to server...", "");
 			ClanChannelMember.updateGameState(20);

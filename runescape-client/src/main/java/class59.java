@@ -156,7 +156,7 @@ public class class59 {
 			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var6 + var2, 0);
 			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var6 + var2 + var2, 16777215);
 			FloorUnderlayDefinition.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-			class137.method3188(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var6 + var2);
+			class137.invalidateWidgetsUnder(var3 - var2, var4 - var2, var5 + var2 + var2, var2 + var6 + var2);
 			if (var1) {
 				class434.rasterProvider.drawFull(0, 0);
 			} else {

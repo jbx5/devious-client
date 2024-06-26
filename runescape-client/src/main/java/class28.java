@@ -76,7 +76,8 @@ public class class28 {
 		descriptor = "(Lcy;I)V",
 		garbageValue = "296708301"
 	)
-	static void method434(LoginState var0) {
+	@Export("updateLoginState")
+	static void updateLoginState(LoginState var0) {
 		if (class134.loginState != var0) {
 			class134.loginState = var0;
 		}

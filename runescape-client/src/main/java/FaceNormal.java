@@ -207,7 +207,7 @@ public class FaceNormal {
 									Login.Login_username = "";
 									Login.Login_password = "";
 									class6.otpMedium = 0;
-									FillMode.otp = "";
+									class146.otp = "";
 									Login.rememberUsername = true;
 								}
 
@@ -267,7 +267,7 @@ public class FaceNormal {
 															Login.Login_username = "";
 															Login.Login_password = "";
 															class6.otpMedium = 0;
-															FillMode.otp = "";
+															class146.otp = "";
 															Login.rememberUsername = true;
 														}
 													}
@@ -328,7 +328,7 @@ public class FaceNormal {
 									var9 = Login.loginBoxX + 180;
 									var10 = 276;
 									if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
-										UserComparator8.method2998(false);
+										UserComparator8.updateLoginStatusUsernameRemembered(false);
 									}
 
 									var9 = Login.loginBoxX + 180;
@@ -361,7 +361,7 @@ public class FaceNormal {
 											Login.Login_username = "";
 											Login.Login_password = "";
 											class6.otpMedium = 0;
-											FillMode.otp = "";
+											class146.otp = "";
 										}
 
 										while (var23.method4382()) {
@@ -379,10 +379,10 @@ public class FaceNormal {
 												Login.Login_username = "";
 												Login.Login_password = "";
 												class6.otpMedium = 0;
-												FillMode.otp = "";
+												class146.otp = "";
 											} else {
-												if (var23.field2460 == 85 && FillMode.otp.length() > 0) {
-													FillMode.otp = FillMode.otp.substring(0, FillMode.otp.length() - 1);
+												if (var23.field2460 == 85 && class146.otp.length() > 0) {
+													class146.otp = class146.otp.substring(0, class146.otp.length() - 1);
 												}
 
 												if (var23.field2460 == 84) {
@@ -390,8 +390,8 @@ public class FaceNormal {
 													return;
 												}
 
-												if (var11 && FillMode.otp.length() < 6) {
-													FillMode.otp = FillMode.otp + var23.field2459;
+												if (var11 && class146.otp.length() < 6) {
+													class146.otp = class146.otp + var23.field2459;
 												}
 											}
 										}
@@ -701,7 +701,7 @@ public class FaceNormal {
 											var9 = Login.loginBoxX + 180;
 											var10 = 311;
 											if (var23.field2460 == 84 || var23.field2460 == 13 || var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
-												UserComparator8.method2998(false);
+												UserComparator8.updateLoginStatusUsernameRemembered(false);
 											}
 										} else if (Login.loginIndex == 10) {
 											var9 = Login.loginBoxX + 180;
@@ -734,7 +734,7 @@ public class FaceNormal {
 											var10 = 311;
 											if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
 												class105.clientPreferences.updateEULA(Client.field637);
-												UserComparator8.method2998(true);
+												UserComparator8.updateLoginStatusUsernameRemembered(true);
 											}
 
 											var9 = Login.loginBoxCenter + 80;
@@ -745,7 +745,7 @@ public class FaceNormal {
 											var9 = Login.loginBoxCenter;
 											var10 = 321;
 											if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
-												UserComparator8.method2998(true);
+												UserComparator8.updateLoginStatusUsernameRemembered(true);
 											}
 										} else if (Login.loginIndex == 14) {
 											String var35 = "";
@@ -781,7 +781,7 @@ public class FaceNormal {
 											var9 = Login.loginBoxX + 180;
 											var10 = 301;
 											if (var5 == 1 && var40 >= var9 - 75 && var40 <= var9 + 75 && var41 >= var10 - 20 && var41 <= var10 + 20) {
-												UserComparator8.method2998(false);
+												UserComparator8.updateLoginStatusUsernameRemembered(false);
 											}
 										} else if (Login.loginIndex == 32) {
 											var9 = Login.loginBoxX + 180 - 80;

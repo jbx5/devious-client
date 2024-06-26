@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -22,7 +23,8 @@ public class class426 {
 		descriptor = "(Lde;IIIIII)V",
 		garbageValue = "-1866067100"
 	)
-	static void method7874(WorldView var0, int var1, int var2, int var3, int var4, int var5) {
+	@Export("worldToScreen")
+	static void worldToScreen(WorldView var0, int var1, int var2, int var3, int var4, int var5) {
 		if (var1 >= 128 && 13056 >= var1 && var2 >= 128 && 13056 >= var2) {
 			int var6 = class169.getTileHeight(var0, var3, var4, var0.plane) - var5;
 			var1 -= class47.cameraX;
@@ -38,16 +40,16 @@ public class class426 {
 			var11 = var8 * var6 - var7 * var2 >> 16;
 			var2 = var8 * var2 + var6 * var7 >> 16;
 			if (var2 >= 50) {
-				Client.viewportTempX = Client.viewportWidth / 2 + Client.viewportZoom * var1 / var2;
-				Client.viewportTempX = Client.viewportHeight / 2 + var11 * Client.viewportZoom / var2;
+				Client.viewportTempY = Client.viewportWidth / 2 + Client.viewportZoom * var1 / var2;
+				Client.viewportTempY = Client.viewportHeight / 2 + var11 * Client.viewportZoom / var2;
 			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempX = -1;
+				Client.viewportTempY = -1;
+				Client.viewportTempY = -1;
 			}
 
 		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempX = -1;
+			Client.viewportTempY = -1;
+			Client.viewportTempY = -1;
 		}
 	}
 }

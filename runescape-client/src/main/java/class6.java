@@ -175,7 +175,7 @@ public enum class6 implements Enum {
 
 				var7.writeLong(var5.nextLong());
 				var7.writeLongMedium(var5.nextLong());
-				SoundSystem.method873(var7);
+				SoundSystem.randomDatData2(var7);
 				var7.writeLong(var5.nextLong());
 				var7.encryptRsa(class74.field888, class74.field897);
 				var9 = Actor.stringCp1252NullTerminatedByteSize(var4);

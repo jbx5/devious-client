@@ -181,7 +181,8 @@ public class NPCComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = -2012644261
 	)
-	int field2008;
+	@Export("contrast")
+	int contrast;
 	@ObfuscatedName("bu")
 	@ObfuscatedGetter(
 		intValue = 2046397449
@@ -265,7 +266,7 @@ public class NPCComposition extends DualNode {
 		this.heightScale = 128;
 		this.isVisible = false;
 		this.ambient = 0;
-		this.field2008 = 0;
+		this.contrast = 0;
 		this.rotation = 32;
 		this.transformVarbit = -1;
 		this.transformVarp = -1;
@@ -395,7 +396,7 @@ public class NPCComposition extends DualNode {
 		} else if (var2 == 100) {
 			this.ambient = var1.readByte();
 		} else if (var2 == 101) {
-			this.field2008 = var1.readByte();
+			this.contrast = var1.readByte();
 		} else {
 			int var5;
 			if (var2 == 102) {
@@ -506,7 +507,7 @@ public class NPCComposition extends DualNode {
 					return null;
 				}
 
-				var8 = var9.toModel(this.ambient + 64, this.field2008 * 5 + 850, -30, -50, -30);
+				var8 = var9.toModel(this.ambient + 64, this.contrast * 5 + 850, -30, -50, -30);
 				NpcDefinition_cachedModels.put(var8, var6);
 			}
 

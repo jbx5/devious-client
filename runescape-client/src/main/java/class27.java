@@ -223,7 +223,7 @@ public class class27 {
 						Client.npcIndices[++Client.npcCount - 1] = var5;
 					}
 
-					int var13 = Client.field703[var2.readBits(3)];
+					int var13 = Client.defaultRotations[var2.readBits(3)];
 					if (var6) {
 						var7.orientation = var7.rotation = var13;
 					}

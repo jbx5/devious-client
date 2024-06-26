@@ -257,7 +257,8 @@ public class class137 implements Enum {
 		descriptor = "(IIIII)V",
 		garbageValue = "-1432699417"
 	)
-	static final void method3188(int var0, int var1, int var2, int var3) {
+	@Export("invalidateWidgetsUnder")
+	static final void invalidateWidgetsUnder(int var0, int var1, int var2, int var3) {
 		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
 			if (Client.rootWidgetXs[var4] + Client.rootWidgetWidths[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetYs[var4] + Client.rootWidgetHeights[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
 				Client.validRootWidgets[var4] = true;

@@ -234,7 +234,7 @@ public class class140 {
 						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var24, 16777215, 0);
 						var24 += 15;
 						var5 = "PIN: ";
-						String var7 = FillMode.otp;
+						String var7 = class146.otp;
 						int var19 = var7.length();
 						char[] var20 = new char[var19];
 

@@ -4,67 +4,49 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("vq")
 @Implements("FillMode")
-public class FillMode extends class147 {
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lix;"
-	)
-	@Export("clock")
-	static Clock clock;
-	@ObfuscatedName("cx")
-	@Export("otp")
-	static String otp;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -328879889
-	)
-	int field1690;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lfn;"
-	)
-	final class150 this$0;
-
-	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
-	)
-	FillMode(class150 var1) {
-		this.this$0 = var1;
-		this.field1690 = -1;
-	}
-
+public enum FillMode implements Enum {
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "Lvq;"
 	)
-	void vmethod3528(Buffer var1) {
-		this.field1690 = var1.readUnsignedShort();
-	}
-
+	@Export("SOLID")
+	SOLID(0, 0),
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
+		descriptor = "Lvq;"
 	)
-	void vmethod3530(ClanSettings var1) {
-		var1.method3390(this.field1690);
+	field5444(1, 1),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lvq;"
+	)
+	field5446(2, 2);
+
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -484581119
+	)
+	public final int field5443;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -1671682405
+	)
+	final int field5447;
+
+	FillMode(int var3, int var4) {
+		this.field5443 = var3;
+		this.field5447 = var4;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lok;III)Z",
-		garbageValue = "145522420"
+		descriptor = "(I)I",
+		garbageValue = "2071992588"
 	)
-	public static boolean method3260(AbstractArchive var0, int var1, int var2) {
-		byte[] var3 = var0.takeFile(var1, var2);
-		if (var3 == null) {
-			return false;
-		} else {
-			DefaultsGroup.SpriteBuffer_decode(var3);
-			return true;
-		}
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field5447;
 	}
 }

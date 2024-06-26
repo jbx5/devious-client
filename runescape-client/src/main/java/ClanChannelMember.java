@@ -62,7 +62,7 @@ public class ClanChannelMember {
 			}
 
 			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class28.method434(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
+				class28.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
 				Client.field539 = 0;
 				Client.field560 = 0;
 				Client.timer.method8334(var0);
@@ -114,7 +114,7 @@ public class ClanChannelMember {
 					Login.clearLoginScreen = false;
 				}
 			} else {
-				boolean var1 = class105.clientPreferences.method2594() >= Client.field637;
+				boolean var1 = class105.clientPreferences.getEULA() >= Client.field637;
 				int var2 = var1 ? 0 : 12;
 				LoginScreenAnimation.method2563(WorldMapSection1.archive10, class7.archive8, true, var2);
 			}

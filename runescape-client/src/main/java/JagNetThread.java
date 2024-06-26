@@ -810,7 +810,7 @@ public class JagNetThread {
 					return 1;
 				} else if (var0 == 1125) {
 					var23 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-					class558 var22 = (class558)class210.findEnumerated(class142.FillMode_values(), var23);
+					FillMode var22 = (FillMode)class210.findEnumerated(class142.FillMode_values(), var23);
 					if (var22 != null) {
 						var3.fillMode = var22;
 						TriBool.invalidateWidget(var3);

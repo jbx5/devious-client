@@ -1024,10 +1024,10 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 			this.setFocusCycleRoot(true);
 			this.addCanvas();
 			this.setUp();
-			FillMode.clock = class399.method7401();
+			class146.clock = class399.method7401();
 
 			while (stopTimeMs == 0L || WorldMapData_1.method4861() < stopTimeMs) {
-				class156.gameCyclesToDo = FillMode.clock.wait(cycleDurationMillis, fiveOrOne);
+				class156.gameCyclesToDo = class146.clock.wait(cycleDurationMillis, fiveOrOne);
 
 				for (int var5 = 0; var5 < class156.gameCyclesToDo; ++var5) {
 					this.clientTick();

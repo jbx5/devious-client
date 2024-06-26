@@ -390,7 +390,7 @@ public final class NPC extends Actor {
 		var4.packetBuffer.writeByteNeg(var0);
 		var4.packetBuffer.writeShortAddLE(var1);
 		var4.packetBuffer.writeByteAdd(var2);
-		var4.packetBuffer.writeIntME(var3 ? Client.field601 : 0);
+		var4.packetBuffer.writeIntME(var3 ? Client.revision : 0);
 		Client.packetWriter.addNode(var4);
 	}
 }

@@ -19,7 +19,7 @@ public class class452 {
 			int var4 = var0.getGroupId(var2);
 			int var5 = var0.getFileId(var4, var3);
 			Font var6;
-			if (!FillMode.method3260(var0, var4, var5)) {
+			if (!class146.method3260(var0, var4, var5)) {
 				var6 = null;
 			} else {
 				byte[] var8 = var1.takeFile(var4, var5);

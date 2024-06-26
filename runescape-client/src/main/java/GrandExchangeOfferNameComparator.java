@@ -69,6 +69,6 @@ final class GrandExchangeOfferNameComparator implements Comparator {
 	)
 	static void method7320(WorldView var0, Actor var1, int var2) {
 		Coord var3 = var1.method2488(var0);
-		class426.method7874(var0, var3.x, var3.y, var1.x, var1.y, var2);
+		class426.worldToScreen(var0, var3.x, var3.y, var1.x, var1.y, var2);
 	}
 }

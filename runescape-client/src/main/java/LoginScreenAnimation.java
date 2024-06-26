@@ -492,7 +492,7 @@ public class LoginScreenAnimation {
 
 		} else {
 			if (var3 == 0) {
-				UserComparator8.method2998(var2);
+				UserComparator8.updateLoginStatusUsernameRemembered(var2);
 			} else {
 				class163.updateLoginIndex(var3);
 			}
@@ -534,7 +534,7 @@ public class LoginScreenAnimation {
 			}
 
 			class6.otpMedium = 0;
-			FillMode.otp = "";
+			class146.otp = "";
 			Login.rememberUsername = true;
 			Login.worldSelectOpen = false;
 			class47.method900();

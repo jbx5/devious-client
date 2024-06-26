@@ -440,7 +440,8 @@ public class ClientPreferences {
 		descriptor = "(I)I",
 		garbageValue = "-2067078598"
 	)
-	int method2594() {
+	@Export("getEULA")
+	int getEULA() {
 		return this.eula;
 	}
 

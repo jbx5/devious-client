@@ -414,7 +414,8 @@ public class SoundSystem implements Runnable {
 		descriptor = "(Lvp;I)V",
 		garbageValue = "-906642804"
 	)
-	static void method873(Buffer var0) {
+	@Export("randomDatData2")
+	static void randomDatData2(Buffer var0) {
 		if (Client.randomDatData != null) {
 			var0.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
 		} else {

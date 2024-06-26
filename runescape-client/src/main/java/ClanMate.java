@@ -98,6 +98,6 @@ public class ClanMate extends Buddy {
 		garbageValue = "1"
 	)
 	public static SpritePixels[] method8542(AbstractArchive var0, int var1, int var2) {
-		return !FillMode.method3260(var0, var1, var2) ? null : WorldMapRegion.method4809();
+		return !class146.method3260(var0, var1, var2) ? null : WorldMapRegion.method4809();
 	}
 }

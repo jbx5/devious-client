@@ -351,8 +351,8 @@ public class class142 extends DualNode {
 		garbageValue = "-2047102417"
 	)
 	@Export("FillMode_values")
-	public static class558[] FillMode_values() {
-		return new class558[]{class558.SOLID, class558.field5446, class558.field5444};
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.SOLID, FillMode.field5446, FillMode.field5444};
 	}
 
 	@ObfuscatedName("oh")

@@ -29,22 +29,26 @@ public class PlatformInfo extends Node implements class115 {
 	@ObfuscatedGetter(
 		intValue = 667260975
 	)
-	int field5115;
+	@Export("vendor")
+	int vendor;
 	@ObfuscatedName("bx")
 	@ObfuscatedGetter(
 		intValue = -1469332107
 	)
-	int field5099;
+	@Export("javaMajor")
+	int javaMajor;
 	@ObfuscatedName("bu")
 	@ObfuscatedGetter(
 		intValue = -485504683
 	)
-	int field5100;
+	@Export("javaMinor")
+	int javaMinor;
 	@ObfuscatedName("by")
 	@ObfuscatedGetter(
 		intValue = 880016047
 	)
-	int field5090;
+	@Export("javaPatch")
+	int javaPatch;
 	@ObfuscatedName("bw")
 	@Export("field4524")
 	boolean field4524;
@@ -58,7 +62,8 @@ public class PlatformInfo extends Node implements class115 {
 	@ObfuscatedGetter(
 		intValue = -439330597
 	)
-	int field5101;
+	@Export("cpuCores")
+	int cpuCores;
 	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
 		intValue = -1024146357
@@ -68,7 +73,8 @@ public class PlatformInfo extends Node implements class115 {
 	@ObfuscatedGetter(
 		intValue = 839691755
 	)
-	int field5106;
+	@Export("clockSpeed")
+	int clockSpeed;
 	@ObfuscatedName("bh")
 	@Export("field4536")
 	String field4536;
@@ -124,15 +130,15 @@ public class PlatformInfo extends Node implements class115 {
 		this.os = var1;
 		this.arch64 = var2;
 		this.osVersion = var3;
-		this.field5115 = var4;
-		this.field5099 = var5;
-		this.field5100 = var6;
-		this.field5090 = var7;
+		this.vendor = var4;
+		this.javaMajor = var5;
+		this.javaMinor = var6;
+		this.javaPatch = var7;
 		this.field4524 = var8;
 		this.maxMemory = var9;
-		this.field5101 = var10;
+		this.cpuCores = var10;
 		this.field5105 = var11;
-		this.field5106 = var12;
+		this.clockSpeed = var12;
 		this.field4536 = var13;
 		this.field4541 = var14;
 		this.field5103 = var15;
@@ -160,15 +166,15 @@ public class PlatformInfo extends Node implements class115 {
 		var1.writeByte(this.os);
 		var1.writeByte(this.arch64 ? 1 : 0);
 		var1.writeShort(this.osVersion);
-		var1.writeByte(this.field5115);
-		var1.writeByte(this.field5099);
-		var1.writeByte(this.field5100);
-		var1.writeByte(this.field5090);
+		var1.writeByte(this.vendor);
+		var1.writeByte(this.javaMajor);
+		var1.writeByte(this.javaMinor);
+		var1.writeByte(this.javaPatch);
 		var1.writeByte(this.field4524 ? 1 : 0);
 		var1.writeShort(this.maxMemory);
-		var1.writeByte(this.field5101);
+		var1.writeByte(this.cpuCores);
 		var1.writeMedium(this.field5105);
-		var1.writeShort(this.field5106);
+		var1.writeShort(this.clockSpeed);
 		var1.writeStringCp1252NullCircumfixed(this.field4536);
 		var1.writeStringCp1252NullCircumfixed(this.field4541);
 		var1.writeStringCp1252NullCircumfixed(this.field5103);

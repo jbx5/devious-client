@@ -422,9 +422,9 @@ public class class169 extends class147 {
 		if (Client.hintArrowType == 2) {
 			var27 = Client.hintArrowSubX * 64 + (Client.hintArrowX - var33.baseX << 7);
 			var28 = Client.hintArrowSubY * 64 + (Client.hintArrowY - var33.baseY << 7);
-			class426.method7874(var33, var27, var28, var27, var28, Client.hintArrowHeight * 4);
+			class426.worldToScreen(var33, var27, var28, var27, var28, Client.hintArrowHeight * 4);
 			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
-				class337.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempX + var1 - 28);
+				class337.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
 			}
 		}
 

@@ -50,7 +50,7 @@ public class class148 extends class147 {
 		garbageValue = "-445912438"
 	)
 	public static Font method3275(AbstractArchive var0, AbstractArchive var1, int var2, int var3) {
-		if (!FillMode.method3260(var0, var2, var3)) {
+		if (!class146.method3260(var0, var2, var3)) {
 			return null;
 		} else {
 			byte[] var5 = var1.takeFile(var2, var3);

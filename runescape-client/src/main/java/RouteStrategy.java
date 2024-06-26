@@ -35,8 +35,8 @@ public abstract class RouteStrategy {
 	@ObfuscatedGetter(
 		intValue = -2053854627
 	)
-	@Export("approxDestinationSizeX")
-	public int approxDestinationSizeX;
+	@Export("approxDestinationSizeY")
+	public int approxDestinationSizeY;
 
 	protected RouteStrategy() {
 	}

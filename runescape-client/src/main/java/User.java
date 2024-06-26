@@ -143,12 +143,12 @@ public class User implements Comparable {
 			}
 
 			Client.viewportTempX = Client.overheadTextXs[var10];
-			Client.viewportTempX = Client.overheadTextYs[var10] = var12;
+			Client.viewportTempY = Client.overheadTextYs[var10] = var12;
 			String var16 = Client.overheadText[var10];
 			if (Client.chatEffects == 0) {
 				int var17 = 16776960;
 				if (Client.overheadTextColors[var10] < 6) {
-					var17 = Client.defaultRotations[Client.overheadTextColors[var10]];
+					var17 = Client.field733[Client.overheadTextColors[var10]];
 				}
 
 				if (Client.overheadTextColors[var10] == 6) {
@@ -210,25 +210,25 @@ public class User implements Comparable {
 				}
 
 				if (Client.overheadTextEffects[var10] == 0) {
-					ParamComposition.fontBold12.method8081(var16, Client.viewportTempX + var1, var2 + Client.viewportTempX, var17, 0, Client.field540[var10]);
+					ParamComposition.fontBold12.method8081(var16, Client.viewportTempX + var1, var2 + Client.viewportTempY, var17, 0, Client.field540[var10]);
 				}
 
 				if (Client.overheadTextEffects[var10] == 1) {
-					ParamComposition.fontBold12.method8094(var16, Client.viewportTempX + var1, var2 + Client.viewportTempX, var17, 0, Client.viewportDrawCount, Client.field540[var10]);
+					ParamComposition.fontBold12.method8094(var16, Client.viewportTempX + var1, var2 + Client.viewportTempY, var17, 0, Client.viewportDrawCount, Client.field540[var10]);
 				}
 
 				if (Client.overheadTextEffects[var10] == 2) {
-					ParamComposition.fontBold12.method8095(var16, Client.viewportTempX + var1, var2 + Client.viewportTempX, var17, 0, Client.viewportDrawCount, Client.field540[var10]);
+					ParamComposition.fontBold12.method8095(var16, Client.viewportTempX + var1, var2 + Client.viewportTempY, var17, 0, Client.viewportDrawCount, Client.field540[var10]);
 				}
 
 				if (Client.overheadTextEffects[var10] == 3) {
-					ParamComposition.fontBold12.method8096(var16, Client.viewportTempX + var1, var2 + Client.viewportTempX, var17, 0, Client.viewportDrawCount, 150 - Client.overheadTextCyclesRemaining[var10], Client.field540[var10]);
+					ParamComposition.fontBold12.method8096(var16, Client.viewportTempX + var1, var2 + Client.viewportTempY, var17, 0, Client.viewportDrawCount, 150 - Client.overheadTextCyclesRemaining[var10], Client.field540[var10]);
 				}
 
 				if (Client.overheadTextEffects[var10] == 4) {
 					var18 = (150 - Client.overheadTextCyclesRemaining[var10]) * (ParamComposition.fontBold12.stringWidth(var16) + 100) / 150;
-					Rasterizer2D.Rasterizer2D_expandClip(Client.viewportTempX + var1 - 50, var2, Client.viewportTempX + var1 + 50, var2 + var4);
-					ParamComposition.fontBold12.method8098(var16, Client.viewportTempX + var1 + 50 - var18, var2 + Client.viewportTempX, var17, 0, Client.field540[var10]);
+					Rasterizer2D.Rasterizer2D_expandClip(Client.viewportTempX + var1 - 50, var2, Client.viewportTempY + var1 + 50, var2 + var4);
+					ParamComposition.fontBold12.method8098(var16, Client.viewportTempX + var1 + 50 - var18, var2 + Client.viewportTempY, var17, 0, Client.field540[var10]);
 					Rasterizer2D.Rasterizer2D_setClip(var1, var2, var3 + var1, var2 + var4);
 				}
 
@@ -241,12 +241,12 @@ public class User implements Comparable {
 						var19 = var18 - 125;
 					}
 
-					Rasterizer2D.Rasterizer2D_expandClip(var1, var2 + Client.viewportTempX - ParamComposition.fontBold12.ascent - 1, var3 + var1, var2 + Client.viewportTempX + 5);
-					ParamComposition.fontBold12.method8081(var16, Client.viewportTempX + var1, var19 + var2 + Client.viewportTempX, var17, 0, Client.field540[var10]);
+					Rasterizer2D.Rasterizer2D_expandClip(var1, var2 + Client.viewportTempX - ParamComposition.fontBold12.ascent - 1, var3 + var1, var2 + Client.viewportTempY + 5);
+					ParamComposition.fontBold12.method8081(var16, Client.viewportTempX + var1, var19 + var2 + Client.viewportTempY, var17, 0, Client.field540[var10]);
 					Rasterizer2D.Rasterizer2D_setClip(var1, var2, var3 + var1, var2 + var4);
 				}
 			} else {
-				ParamComposition.fontBold12.drawCentered(var16, Client.viewportTempX + var1, var2 + Client.viewportTempX, 16776960, 0);
+				ParamComposition.fontBold12.drawCentered(var16, Client.viewportTempX + var1, var2 + Client.viewportTempY, 16776960, 0);
 			}
 		}
 
