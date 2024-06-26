@@ -1,24 +1,18 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nd")
+@ObfuscatedName("on")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("ue")
-	@ObfuscatedGetter(
-		intValue = 888602669
-	)
-	static int field3967;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("masks")
 	int[] masks;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("bits")
 	byte[] bits;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("keys")
 	int[] keys;
 
@@ -47,7 +41,7 @@ public class Huffman {
 
 					for (var10 = var6 - 1; var10 >= 1; --var10) {
 						var11 = var3[var10];
-						if (var11 != var8) {
+						if (var8 != var11) {
 							break;
 						}
 
@@ -105,10 +99,10 @@ public class Huffman {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "([BII[BIB)I",
-		garbageValue = "-8"
+		descriptor = "([BII[BII)I",
+		garbageValue = "1220192808"
 	)
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -156,10 +150,10 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "([BI[BIII)I",
-		garbageValue = "618971915"
+		garbageValue = "610105332"
 	)
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -298,24 +292,5 @@ public class Huffman {
 
 			return var7 + 1 - var2;
 		}
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1609192847"
-	)
-	public static int method7070(int var0) {
-		return var0 >>> 12;
-	}
-
-	@ObfuscatedName("lr")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "13209"
-	)
-	static void method7078() {
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
 	}
 }

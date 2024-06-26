@@ -1,18 +1,12 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ec")
+@ObfuscatedName("et")
 @Implements("UserComparator5")
 public class UserComparator5 extends AbstractUserComparator {
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 786316707
-	)
-	public static int field1508;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +14,10 @@ public class UserComparator5 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lso;Lso;B)I",
-		garbageValue = "89"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "1083804617"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -40,25 +34,5 @@ public class UserComparator5 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
-	}
-
-	@ObfuscatedName("ot")
-	@ObfuscatedSignature(
-		descriptor = "(IIZI)V",
-		garbageValue = "2070121839"
-	)
-	static final void method2975(int var0, int var1, boolean var2) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3453()) {
-				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				PacketBufferNode var4 = WorldMapElement.getPacketBufferNode(ClientPacket.field3346, Client.packetWriter.isaacCipher);
-				var4.packetBuffer.writeByte(4 + class432.stringCp1252NullTerminatedByteSize(var3.username.getName()));
-				var4.packetBuffer.writeByte(var0);
-				var4.packetBuffer.writeShort(var1);
-				var4.packetBuffer.writeBoolean(var2);
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
-				Client.packetWriter.addNode(var4);
-			}
-		}
 	}
 }

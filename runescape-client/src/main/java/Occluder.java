@@ -2,127 +2,112 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jf")
+@ObfuscatedName("lq")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1025240969
+		intValue = 575408093
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 1453570063
+		intValue = 877137935
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 469225541
+		intValue = -1022802073
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 279556457
+		intValue = -992363163
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -831024831
+		intValue = 833361189
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 2010056849
+		intValue = -315839245
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -69169141
+		intValue = 633592847
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -313400937
+		intValue = 1959124921
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 373936233
+		intValue = 498239391
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -569242405
+		intValue = -578642149
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -402547651
+		intValue = 1847650875
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = -61929801
-	)
-	int field2823;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 455234887
-	)
-	int field2824;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = -1532708701
-	)
-	int field2825;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 695254481
-	)
-	int field2819;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = 929221857
-	)
-	int field2827;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 1200935641
-	)
-	int field2816;
 	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1142527599
+		intValue = -585445525
 	)
-	int field2829;
+	int field3039;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 1137855523
+	)
+	int field3043;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -423343487
+	)
+	int field3041;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = 2139834455
+	)
+	int field3044;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 315870443
+	)
+	int field3031;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 239975763
+	)
+	int field3032;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 1170254445
+	)
+	int field3045;
 
 	Occluder() {
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-957401312"
-	)
-	static final void method5112(String var0) {
-		StringBuilder var10000 = new StringBuilder();
-		Object var10001 = null;
-		var10000 = var10000.append("Please remove ").append(var0);
-		var10001 = null;
-		String var1 = var10000.append(" from your friend list first").toString();
-		UrlRequest.addGameMessage(30, "", var1);
 	}
 }

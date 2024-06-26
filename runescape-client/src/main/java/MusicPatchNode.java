@@ -4,156 +4,292 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ne")
+@ObfuscatedName("na")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1505215401
+		intValue = -729100137
 	)
-	int field3666;
-	@ObfuscatedName("al")
+	int field3685;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lmv;"
 	)
 	@Export("table")
 	MusicPatch table;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lbr;"
+		descriptor = "Lbl;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
-	MusicPatchNode2 field3665;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = -1927746767
-	)
-	int field3664;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = 1457269447
-	)
-	int field3668;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = 1435885311
-	)
-	int field3681;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1521106279
-	)
-	int field3669;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 2043099973
-	)
-	int field3679;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 253167265
-	)
-	int field3667;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 1615903851
-	)
-	int field3672;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = 1449132032
-	)
-	int field3670;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -1482273737
-	)
-	int field3674;
+	MusicPatchNode2 field3690;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 758523246
+		intValue = 1005303001
 	)
-	int field3680;
+	int field3679;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -868790673
+	)
+	int field3675;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -517826237
+	)
+	int field3681;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = -1043375921
+	)
+	int field3682;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 706498263
+	)
+	int field3683;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = -2119889119
+	)
+	int field3684;
 	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 1684840621
-	)
-	int field3676;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = 462063411
-	)
-	int field3677;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 1166177967
+		intValue = 1724018517
 	)
 	int field3678;
 	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -972526279
+		intValue = -348267781
 	)
-	int field3675;
-	@ObfuscatedName("as")
+	int field3689;
+	@ObfuscatedName("ah")
+	@ObfuscatedGetter(
+		intValue = 1147391719
+	)
+	int field3686;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 1168553427
+	)
+	int field3694;
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = -156080559
+	)
+	int field3680;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -271653801
+	)
+	int field3688;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = -1558729485
+	)
+	int field3687;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 1991784073
+	)
+	int field3692;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "Lbz;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -1146890015
+	)
+	int field3691;
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 2014877643
+		intValue = 1037298513
 	)
-	int field3662;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = -2026374001
-	)
-	int field3682;
+	int field3695;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1908529730"
+		garbageValue = "-330147749"
 	)
-	void method6478() {
+	void method6423() {
 		this.table = null;
 		this.rawSound = null;
-		this.field3665 = null;
+		this.field3690 = null;
 		this.stream = null;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("kp")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)I",
-		garbageValue = "0"
+		descriptor = "(IIIIII)V",
+		garbageValue = "-2143422785"
 	)
-	@Export("hashString")
-	public static int hashString(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
+	@Export("drawObject")
+	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
+		Scene var5 = class511.topLevelWorldView.scene;
+		long var6 = var5.getBoundaryObjectTag(var0, var1, var2);
+		int var8;
+		int var9;
+		int var10;
+		int var11;
+		int var15;
+		int var27;
+		if (0L != var6) {
+			var8 = var5.getObjectFlags(var0, var1, var2, var6);
+			var9 = var8 >> 6 & 3;
+			var10 = var8 & 31;
+			var11 = var3;
+			boolean var13 = 0L != var6;
+			if (var13) {
+				boolean var14 = (int)(var6 >>> 16 & 1L) == 1;
+				var13 = !var14;
+			}
 
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + UrlRequest.charToByteCp1252(var0.charAt(var3));
+			if (var13) {
+				var11 = var4;
+			}
+
+			int[] var20 = class196.sceneMinimapSprite.pixels;
+			var27 = var1 * 4 + (103 - var2) * 2048 + 24624;
+			var15 = class229.Entity_unpackID(var6);
+			ObjectComposition var16 = HttpRequest.getObjectDefinition(var15);
+			if (var16.mapSceneId != -1) {
+				IndexedSprite var17 = class418.mapSceneSprites[var16.mapSceneId];
+				if (var17 != null) {
+					int var18 = (var16.sizeX * 4 - var17.subWidth) / 2;
+					int var19 = (var16.sizeY * 4 - var17.subHeight) / 2;
+					var17.drawAt(var1 * 4 + var18 + 48, (104 - var2 - var16.sizeY) * 4 + var19 + 48);
+				}
+			} else {
+				if (var10 == 0 || var10 == 2) {
+					if (var9 == 0) {
+						var20[var27] = var11;
+						var20[var27 + 512] = var11;
+						var20[var27 + 1024] = var11;
+						var20[var27 + 1536] = var11;
+					} else if (var9 == 1) {
+						var20[var27] = var11;
+						var20[var27 + 1] = var11;
+						var20[var27 + 2] = var11;
+						var20[var27 + 3] = var11;
+					} else if (var9 == 2) {
+						var20[var27 + 3] = var11;
+						var20[var27 + 512 + 3] = var11;
+						var20[var27 + 1024 + 3] = var11;
+						var20[var27 + 1536 + 3] = var11;
+					} else if (var9 == 3) {
+						var20[var27 + 1536] = var11;
+						var20[var27 + 1536 + 1] = var11;
+						var20[var27 + 1536 + 2] = var11;
+						var20[var27 + 1536 + 3] = var11;
+					}
+				}
+
+				if (var10 == 3) {
+					if (var9 == 0) {
+						var20[var27] = var11;
+					} else if (var9 == 1) {
+						var20[var27 + 3] = var11;
+					} else if (var9 == 2) {
+						var20[var27 + 1536 + 3] = var11;
+					} else if (var9 == 3) {
+						var20[var27 + 1536] = var11;
+					}
+				}
+
+				if (var10 == 2) {
+					if (var9 == 3) {
+						var20[var27] = var11;
+						var20[var27 + 512] = var11;
+						var20[var27 + 1024] = var11;
+						var20[var27 + 1536] = var11;
+					} else if (var9 == 0) {
+						var20[var27] = var11;
+						var20[var27 + 1] = var11;
+						var20[var27 + 2] = var11;
+						var20[var27 + 3] = var11;
+					} else if (var9 == 1) {
+						var20[var27 + 3] = var11;
+						var20[var27 + 512 + 3] = var11;
+						var20[var27 + 1024 + 3] = var11;
+						var20[var27 + 1536 + 3] = var11;
+					} else if (var9 == 2) {
+						var20[var27 + 1536] = var11;
+						var20[var27 + 1536 + 1] = var11;
+						var20[var27 + 1536 + 2] = var11;
+						var20[var27 + 1536 + 3] = var11;
+					}
+				}
+			}
 		}
 
-		return var2;
-	}
+		var6 = var5.getGameObjectTag(var0, var1, var2);
+		if (0L != var6) {
+			var8 = var5.getObjectFlags(var0, var1, var2, var6);
+			var9 = var8 >> 6 & 3;
+			var10 = var8 & 31;
+			var11 = class229.Entity_unpackID(var6);
+			ObjectComposition var21 = HttpRequest.getObjectDefinition(var11);
+			if (var21.mapSceneId != -1) {
+				IndexedSprite var29 = class418.mapSceneSprites[var21.mapSceneId];
+				if (var29 != null) {
+					var27 = (var21.sizeX * 4 - var29.subWidth) / 2;
+					var15 = (var21.sizeY * 4 - var29.subHeight) / 2;
+					var29.drawAt(var1 * 4 + var27 + 48, (104 - var2 - var21.sizeY) * 4 + var15 + 48);
+				}
+			} else if (var10 == 9) {
+				int var26 = 15658734;
+				boolean var28 = 0L != var6;
+				if (var28) {
+					boolean var22 = (int)(var6 >>> 16 & 1L) == 1;
+					var28 = !var22;
+				}
 
-	@ObfuscatedName("cp")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)I",
-		garbageValue = "117"
-	)
-	public static int method6481(String var0) {
-		return var0.length() + 2;
+				if (var28) {
+					var26 = 15597568;
+				}
+
+				int[] var23 = class196.sceneMinimapSprite.pixels;
+				int var30 = var1 * 4 + (103 - var2) * 2048 + 24624;
+				if (var9 != 0 && var9 != 2) {
+					var23[var30] = var26;
+					var23[var30 + 1 + 512] = var26;
+					var23[var30 + 1024 + 2] = var26;
+					var23[var30 + 1536 + 3] = var26;
+				} else {
+					var23[var30 + 1536] = var26;
+					var23[var30 + 1 + 1024] = var26;
+					var23[var30 + 512 + 2] = var26;
+					var23[var30 + 3] = var26;
+				}
+			}
+		}
+
+		var6 = var5.getFloorDecorationTag(var0, var1, var2);
+		if (0L != var6) {
+			var8 = class229.Entity_unpackID(var6);
+			ObjectComposition var24 = HttpRequest.getObjectDefinition(var8);
+			if (var24.mapSceneId != -1) {
+				IndexedSprite var25 = class418.mapSceneSprites[var24.mapSceneId];
+				if (var25 != null) {
+					var11 = (var24.sizeX * 4 - var25.subWidth) / 2;
+					int var12 = (var24.sizeY * 4 - var25.subHeight) / 2;
+					var25.drawAt(var11 + var1 * 4 + 48, var12 + (104 - var2 - var24.sizeY) * 4 + 48);
+				}
+			}
+		}
+
 	}
 }

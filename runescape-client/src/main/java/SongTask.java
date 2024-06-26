@@ -3,83 +3,192 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("re")
+@ObfuscatedName("ro")
 @Implements("SongTask")
 public abstract class SongTask {
-	@ObfuscatedName("aq")
-	static int[][][] field4795;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lre;"
+		descriptor = "Lro;"
 	)
 	@Export("songTask")
 	SongTask songTask;
-	@ObfuscatedName("az")
-	String field4794;
-	@ObfuscatedName("af")
-	String field4793;
-	@ObfuscatedName("aa")
-	boolean field4796;
-	@ObfuscatedName("at")
-	boolean field4798;
+	@ObfuscatedName("ak")
+	String field4812;
+	@ObfuscatedName("ap")
+	String field4814;
+	@ObfuscatedName("an")
+	boolean field4813;
+	@ObfuscatedName("aj")
+	boolean field4816;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lre;)V"
+		descriptor = "(Lro;)V"
 	)
 	SongTask(SongTask var1) {
 		this.songTask = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "-4307"
+	)
+	public abstract boolean vmethod8276();
+
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1230726323"
+		garbageValue = "131549987"
 	)
-	public abstract boolean vmethod8329();
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-75"
-	)
-	public boolean method8301() {
-		return this.field4796;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "1"
-	)
-	public boolean method8302() {
-		return this.field4798;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1262267093"
-	)
-	public String method8319() {
-		return "Error in task: " + this.field4793 + ", Error message: " + this.field4794;
+	public boolean method8249() {
+		return this.field4813;
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lre;",
-		garbageValue = "55"
+		descriptor = "(I)Z",
+		garbageValue = "1551144894"
 	)
-	public SongTask method8304() {
+	public boolean method8250() {
+		return this.field4816;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-1477526739"
+	)
+	public String method8251() {
+		return "Error in task: " + this.field4814 + ", Error message: " + this.field4812;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lro;",
+		garbageValue = "-1949503996"
+	)
+	public SongTask method8254() {
 		return this.songTask;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-280657566"
+		garbageValue = "1766646668"
 	)
-	void method8305(String var1) {
-		this.field4796 = true;
-		this.field4794 = var1;
+	void method8253(String var1) {
+		this.field4813 = true;
+		this.field4812 = var1;
+	}
+
+	@ObfuscatedName("mz")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;B)V",
+		garbageValue = "-7"
+	)
+	@Export("widgetDefaultMenuAction")
+	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
+		Widget var5 = ModeWhere.widgetDefinition.getWidgetChild(var1, var2);
+		if (var5 != null) {
+			if (var5.onOp != null) {
+				ScriptEvent var6 = new ScriptEvent();
+				var6.widget = var5;
+				var6.opIndex = var0;
+				var6.targetName = var4;
+				var6.args = var5.onOp;
+				Projectile.runScriptEvent(var6);
+			}
+
+			boolean var8 = true;
+			if (var5.contentType > 0) {
+				var8 = class155.method3331(var5);
+			}
+
+			if (var8) {
+				if (Varps.method6452(ClanChannel.getWidgetFlags(var5), var0 - 1)) {
+					PacketBufferNode var7;
+					if (var0 == 1) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3307, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 2) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3304, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 3) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3374, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 4) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3344, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 5) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3308, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 6) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3334, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 7) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3336, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 8) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3331, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 9) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3355, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+					if (var0 == 10) {
+						var7 = class170.getPacketBufferNode(ClientPacket.field3343, Client.packetWriter.isaacCipher);
+						var7.packetBuffer.writeInt(var1);
+						var7.packetBuffer.writeShort(var2);
+						var7.packetBuffer.writeShort(var3);
+						Client.packetWriter.addNode(var7);
+					}
+
+				}
+			}
+		}
 	}
 }

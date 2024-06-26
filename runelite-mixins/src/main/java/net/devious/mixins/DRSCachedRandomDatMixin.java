@@ -15,6 +15,7 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.rs.api.RSBuffer;
 import net.runelite.rs.api.RSClient;
 
 @Mixin(RSClient.class)
@@ -112,11 +113,12 @@ public abstract class DRSCachedRandomDatMixin implements RSClient
 
 	@Copy("randomDatData2")
 	@Replace("randomDatData2")
-	public static byte[] copy$RandomDatData2()
+	public static void copy$RandomDatData2(RSBuffer buffer)
 	{
 		if (!client.useCachedRandomDat())
 		{
-			return copy$RandomDatData2();
+			copy$RandomDatData2(buffer);
+			return;
 		}
 
 		byte[] cachedData = client.getCachedRandomDatData(client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
@@ -128,7 +130,7 @@ public abstract class DRSCachedRandomDatMixin implements RSClient
 				cachedData[i] = -1;
 			}
 		}
+		buffer.writeBytes(cachedData, 0, cachedData.length);
 		client.getLogger().info("Using cached random.dat {} for user {}", cachedData, client.getUsername() != null && !client.getUsername().isEmpty() ? client.getUsername() : client.getCharacterId());
-		return cachedData;
 	}
 }

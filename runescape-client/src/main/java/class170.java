@@ -1,119 +1,87 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gr")
+@ObfuscatedName("gl")
 public class class170 extends class163 {
-	@ObfuscatedName("ak")
-	String field1842;
-	@ObfuscatedName("al")
-	byte field1840;
-	@ObfuscatedName("aj")
-	byte field1841;
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "Lde;"
+	)
+	static WorldView field1839;
+	@ObfuscatedName("aq")
+	String field1835;
+	@ObfuscatedName("ad")
+	byte field1838;
+	@ObfuscatedName("ag")
+	byte field1836;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgx;"
+		descriptor = "Lgi;"
 	)
 	final class164 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgx;)V"
+		descriptor = "(Lgi;)V"
 	)
 	class170(class164 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "-406894472"
+		descriptor = "(Lvp;I)V",
+		garbageValue = "-1435141567"
 	)
-	void vmethod3479(Buffer var1) {
-		this.field1842 = var1.readStringCp1252NullTerminatedOrNull();
-		if (this.field1842 != null) {
+	void vmethod3524(Buffer var1) {
+		this.field1835 = var1.readStringCp1252NullTerminatedOrNull();
+		if (this.field1835 != null) {
 			var1.readUnsignedByte();
-			this.field1840 = var1.readByte();
-			this.field1841 = var1.readByte();
+			this.field1838 = var1.readByte();
+			this.field1836 = var1.readByte();
 		}
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;I)V",
-		garbageValue = "-472458599"
+		descriptor = "(Lgj;I)V",
+		garbageValue = "902480534"
 	)
-	void vmethod3480(ClanChannel var1) {
-		var1.name = this.field1842;
-		if (this.field1842 != null) {
-			var1.field1828 = this.field1840;
-			var1.field1829 = this.field1841;
+	void vmethod3523(ClanChannel var1) {
+		var1.name = this.field1835;
+		if (this.field1835 != null) {
+			var1.field1823 = this.field1838;
+			var1.field1817 = this.field1836;
 		}
 
 	}
 
-	@ObfuscatedName("ju")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Ldt;I)V",
-		garbageValue = "239873725"
+		descriptor = "(Lmi;Lvs;S)Lmb;",
+		garbageValue = "25118"
 	)
-	static final void method3484(WorldView var0) {
-		for (Projectile var1 = (Projectile)var0.projectiles.last(); var1 != null; var1 = (Projectile)var0.projectiles.previous()) {
-			if (var0.plane == var1.plane && Client.cycle <= var1.cycleEnd) {
-				if (Client.cycle >= var1.cycleStart) {
-					NPC var2;
-					int var3;
-					Player var4;
-					if (!var1.isMoving && var1.field1005 != 0) {
-						if (var1.field1005 > 0) {
-							var2 = ModeWhere.worldView.npcs[var1.field1005 - 1];
-							if (var2 != null && var2.x >= 0 && var2.x < 13312 && var2.y >= 0 && var2.y < 13312) {
-								var1.sourceX = var2.x;
-								var1.sourceY = var2.y;
-								var1.setDestination(var1.field984, var1.field985, var1.field981, Client.cycle);
-							}
-						} else {
-							var3 = -var1.field1005 - 1;
-							if (var3 == Client.localPlayerIndex) {
-								var4 = class17.localPlayer;
-							} else {
-								var4 = ModeWhere.worldView.players[var3];
-							}
-
-							if (var4 != null && var4.x >= 0 && var4.x < 13312 && var4.y >= 0 && var4.y < 13312) {
-								var1.sourceX = var4.x;
-								var1.sourceY = var4.y;
-								var1.setDestination(var1.field984, var1.field985, var1.field981, Client.cycle);
-							}
-						}
-					}
-
-					if (var1.targetIndex > 0) {
-						var2 = var0.npcs[var1.targetIndex - 1];
-						if (var2 != null && var2.x >= 0 && var2.x < 13312 && var2.y >= 0 && var2.y < 13312) {
-							var1.setDestination(var2.x, var2.y, SoundSystem.getTileHeight(var0, var2.x, var2.y, var1.plane) - var1.endHeight, Client.cycle);
-						}
-					}
-
-					if (var1.targetIndex < 0) {
-						var3 = -var1.targetIndex - 1;
-						if (var3 == Client.localPlayerIndex) {
-							var4 = class17.localPlayer;
-						} else {
-							var4 = var0.players[var3];
-						}
-
-						if (var4 != null && var4.x >= 0 && var4.x < 13312 && var4.y >= 0 && var4.y < 13312) {
-							var1.setDestination(var4.x, var4.y, SoundSystem.getTileHeight(var0, var4.x, var4.y, var1.plane) - var1.endHeight, Client.cycle);
-						}
-					}
-
-					var1.advance(Client.graphicsCycle);
-					var0.scene.drawEntity(var0.plane, (int)var1.x, (int)var1.y, (int)var1.z, 60, var1, var1.yaw, -1L, false);
-				}
-			} else {
-				var1.remove();
-			}
+	@Export("getPacketBufferNode")
+	public static PacketBufferNode getPacketBufferNode(ClientPacket var0, IsaacCipher var1) {
+		PacketBufferNode var2 = class323.method6113();
+		var2.clientPacket = var0;
+		var2.clientPacketLength = var0.length;
+		if (var2.clientPacketLength == -1) {
+			var2.packetBuffer = new PacketBuffer(260);
+		} else if (var2.clientPacketLength == -2) {
+			var2.packetBuffer = new PacketBuffer(10000);
+		} else if (var2.clientPacketLength <= 18) {
+			var2.packetBuffer = new PacketBuffer(20);
+		} else if (var2.clientPacketLength <= 98) {
+			var2.packetBuffer = new PacketBuffer(100);
+		} else {
+			var2.packetBuffer = new PacketBuffer(260);
 		}
 
+		var2.packetBuffer.setIsaacCipher(var1);
+		var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
+		var2.index = 0;
+		return var2;
 	}
 }

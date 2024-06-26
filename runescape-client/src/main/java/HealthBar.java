@@ -3,45 +3,34 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dp")
+@ObfuscatedName("dl")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("fb")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
-	)
-	static Archive field1357;
-	@ObfuscatedName("tx")
-	@ObfuscatedSignature(
-		descriptor = "Lcd;"
-	)
-	@Export("decimator")
-	static Decimator decimator;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lhl;"
+		descriptor = "Lhy;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lps;"
+		descriptor = "Lpi;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhl;)V"
+		descriptor = "(Lhy;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIB)V",
-		garbageValue = "-21"
+		garbageValue = "-91"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -74,10 +63,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ldy;",
-		garbageValue = "-110"
+		descriptor = "(II)Ldh;",
+		garbageValue = "-1106798823"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -99,32 +88,39 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1652590674"
+		descriptor = "(B)Z",
+		garbageValue = "97"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7588();
+		return this.updates.method7494();
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfo;",
-		garbageValue = "1862300075"
+		descriptor = "(III)V",
+		garbageValue = "1657967277"
 	)
-	public static class141 method2651(int var0) {
-		class141 var1 = (class141)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			var1 = class333.method6434(SequenceDefinition.SequenceDefinition_animationsArchive, SequenceDefinition.SequenceDefinition_skeletonsArchive, var0, false);
-			if (var1 != null) {
-				SequenceDefinition.SequenceDefinition_cachedModel.put(var1, (long)var0);
-			}
+	@Export("changeWorldSelectSorting")
+	static void changeWorldSelectSorting(int var0, int var1) {
+		int[] var2 = new int[4];
+		int[] var3 = new int[4];
+		var2[0] = var0;
+		var3[0] = var1;
+		int var4 = 1;
 
-			return var1;
+		for (int var5 = 0; var5 < 4; ++var5) {
+			if (World.World_sortOption1[var5] != var0) {
+				var2[var4] = World.World_sortOption1[var5];
+				var3[var4] = World.World_sortOption2[var5];
+				++var4;
+			}
 		}
+
+		World.World_sortOption1 = var2;
+		World.World_sortOption2 = var3;
+		AbstractWorldMapData.sortWorlds(class357.World_worlds, 0, class357.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
 	}
 }

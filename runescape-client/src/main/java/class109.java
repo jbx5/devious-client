@@ -1,47 +1,76 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
-final class class109 implements class347 {
+@ObfuscatedName("ej")
+final class class109 implements class348 {
+	@ObfuscatedName("cg")
+	@ObfuscatedSignature(
+		descriptor = "Lof;"
+	)
+	static StudioGame field1400;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lnb;"
+		descriptor = "Lnx;"
 	)
 	final Widget val$cc;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnb;)V"
+		descriptor = "(Lnx;)V"
 	)
 	class109(Widget var1) {
 		this.val$cc = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "652965052"
+		garbageValue = "2099855571"
 	)
-	public void vmethod6534() {
-		if (this.val$cc != null && this.val$cc.method6945().field3750 != null) {
+	public void vmethod6510() {
+		if (this.val$cc != null && this.val$cc.method6892().field3766 != null) {
 			ScriptEvent var1 = new ScriptEvent();
-			var1.method2327(this.val$cc);
-			var1.setArgs(this.val$cc.method6945().field3750);
-			class47.method887().addFirst(var1);
+			var1.method2378(this.val$cc);
+			var1.setArgs(this.val$cc.method6892().field3766);
+			Varps.method6447().addFirst(var1);
 		}
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2110165275"
+		descriptor = "(Lth;ILjava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "1909911513"
 	)
-	public static void method2770() {
-		class216.field2136.clear();
+	static String method2817(IterableNodeHashTable var0, int var1, String var2) {
+		if (var0 == null) {
+			return var2;
+		} else {
+			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
+			return var3 == null ? var2 : (String)var3.obj;
+		}
 	}
 
-	@ObfuscatedName("az")
-	public static int method2774(long var0) {
-		return (int)(var0 >>> 14 & 3L);
+	@ObfuscatedName("nk")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-3"
+	)
+	static final void method2818() {
+		PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.field3358, Client.packetWriter.isaacCipher);
+		Client.packetWriter.addNode(var0);
+		Interpreter.field870 = true;
+
+		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+			if (var1.type == 0 || var1.type == 3) {
+				ArchiveDiskActionHandler.closeInterface(var1, true);
+			}
+		}
+
+		if (Client.meslayerContinueWidget != null) {
+			TriBool.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		Interpreter.field870 = false;
 	}
 }

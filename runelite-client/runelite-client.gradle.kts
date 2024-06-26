@@ -26,6 +26,7 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Collections.emptyList
 
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
@@ -33,6 +34,7 @@ plugins {
     java
     kotlin("jvm") version "1.6.21"
     id("org.jetbrains.kotlin.plugin.lombok") version "1.6.21"
+    pmd
 }
 
 repositories {
@@ -97,6 +99,9 @@ dependencies {
     implementation(group = "org.lwjgl", name = "lwjgl")
     implementation(group = "org.lwjgl", name = "lwjgl-opengl")
     implementation(group = "org.lwjgl", name = "lwjgl-opencl")
+
+    implementation(group = "net.sourceforge.pmd", name = "pmd-core", version = "7.2.0")
+    implementation(group = "net.sourceforge.pmd", name = "pmd-java", version = "7.2.0")
 
     runtimeOnly(project(":runescape-api"))
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-x64")
@@ -209,5 +214,17 @@ tasks {
         classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
         mainClass.set("net.unethicalite.client.Unethicalite")
+    }
+
+    withType<JavaCompile> {
+        options.encoding = "UTF-8"
+    }
+
+    withType<Pmd> {
+        ruleSetFiles = files("${project.projectDir}/pmd-ruleset.xml")
+        ruleSets = emptyList()
+        ignoreFailures = false
+        isConsoleOutput = true
+        enabled = false
     }
 }

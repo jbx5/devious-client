@@ -1,41 +1,196 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uu")
-public abstract class class542 {
+@ObfuscatedName("uy")
+public enum class542 implements Enum {
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5344(1),
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5318(2),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5319(4),
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5340(8),
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5321(16),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5333(32),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5323(64, true),
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5327(128),
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5325(256, true),
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5324(512),
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5337(1024),
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5338(2048),
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5329(4096),
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(Lor;III)Lvc;",
-		garbageValue = "-1974443202"
+		descriptor = "Luy;"
 	)
-	@Export("SpriteBuffer_getSprite")
-	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-		if (!class108.method2769(var0, var1, var2)) {
-			return null;
-		} else {
-			SpritePixels var4 = new SpritePixels();
-			var4.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
-			var4.height = class351.SpriteBuffer_spriteHeight;
-			var4.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[0];
-			var4.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[0];
-			var4.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[0];
-			var4.subHeight = SpriteBufferProperties.SpriteBuffer_spriteHeights[0];
-			int var5 = var4.subHeight * var4.subWidth;
-			byte[] var6 = PlayerCompositionColorTextureOverride.SpriteBuffer_pixels[0];
-			var4.pixels = new int[var5];
+	field5330(8192),
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5332(16384),
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5326(32768),
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5331(65536),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5334(131072),
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5335(262144),
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5336(524288),
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5322(1048576),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5348(2097152),
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5339(4194304),
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5346(8388608),
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5341(16777216),
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5342(33554432),
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5343(67108864, true),
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5328(134217728),
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5345(268435456),
+	@ObfuscatedName("bm")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5320(536870912, true),
+	@ObfuscatedName("bo")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5347(1073741824, true),
+	@ObfuscatedName("bi")
+	@ObfuscatedSignature(
+		descriptor = "Luy;"
+	)
+	field5317(Integer.MIN_VALUE);
 
-			for (int var7 = 0; var7 < var5; ++var7) {
-				var4.pixels[var7] = UrlRequest.SpriteBuffer_spritePalette[var6[var7] & 255];
-			}
+	@ObfuscatedName("ba")
+	@ObfuscatedGetter(
+		intValue = -467584781
+	)
+	final int field5349;
 
-			SpriteBufferProperties.SpriteBuffer_xOffsets = null;
-			SpriteBufferProperties.SpriteBuffer_yOffsets = null;
-			SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
-			SpriteBufferProperties.SpriteBuffer_spriteHeights = null;
-			UrlRequest.SpriteBuffer_spritePalette = null;
-			PlayerCompositionColorTextureOverride.SpriteBuffer_pixels = null;
-			return var4;
-		}
+	class542(int var3) {
+		this(var3, false);
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(IZ)V",
+		garbageValue = "1"
+	)
+	class542(int var3, boolean var4) {
+		this.field5349 = var3;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "2071992588"
+	)
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field5349;
 	}
 }

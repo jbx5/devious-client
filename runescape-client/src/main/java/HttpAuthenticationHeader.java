@@ -3,25 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ru")
+@ObfuscatedName("rr")
 @Implements("HttpAuthenticationHeader")
 public class HttpAuthenticationHeader {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lru;"
+		descriptor = "Lrr;"
 	)
 	@Export("BASIC")
 	static final HttpAuthenticationHeader BASIC;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lru;"
+		descriptor = "Lrr;"
 	)
 	@Export("BEARER")
 	static final HttpAuthenticationHeader BEARER;
-	@ObfuscatedName("bm")
-	@Export("hasFocus")
-	protected static boolean hasFocus;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("key")
 	final String key;
 
@@ -34,32 +31,13 @@ public class HttpAuthenticationHeader {
 		this.key = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "-110"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "193474009"
 	)
 	@Export("getKey")
 	String getKey() {
 		return this.key;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "1395652670"
-	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
-	}
-
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "(ILdm;ZI)I",
-		garbageValue = "-139734262"
-	)
-	static int method8417(int var0, Script var1, boolean var2) {
-		return 2;
 	}
 }

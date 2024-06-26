@@ -3,80 +3,76 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ly")
+@ObfuscatedName("js")
 @Implements("WorldMapRectangle")
 public final class WorldMapRectangle {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1141718873
+		intValue = -1109762615
+	)
+	static int field2687;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -1561084375
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -398680227
+		intValue = -1517997945
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -971106859
+		intValue = -316828137
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1158165341
+		intValue = -1082891503
 	)
 	@Export("y")
 	int y;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lki;"
+		descriptor = "Ljq;"
 	)
 	final WorldMapRenderer this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lki;)V"
+		descriptor = "(Ljq;)V"
 	)
 	WorldMapRectangle(WorldMapRenderer var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(ILdm;ZB)I",
-		garbageValue = "-79"
+		descriptor = "(Lth;III)I",
+		garbageValue = "593515944"
 	)
-	static int method5933(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? Interpreter.scriptDotWidget : SecureRandomSSLSocket.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
-			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = TaskHandler.Widget_unpackTargetMask(class160.getWidgetFlags(var3));
-			return 1;
-		} else if (var0 != ScriptOpcodes.CC_GETOP) {
-			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
-				if (var3.dataText == null) {
-					Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = "";
-				} else {
-					Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = var3.dataText;
-				}
-
-				return 1;
-			} else {
-				return 2;
-			}
+	static int method4997(IterableNodeHashTable var0, int var1, int var2) {
+		if (var0 == null) {
+			return var2;
 		} else {
-			int var4 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
-			--var4;
-			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
-				Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = var3.actions[var4];
-			} else {
-				Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = "";
-			}
-
-			return 1;
+			IntegerNode var3 = (IntegerNode)var0.get((long)var1);
+			return var3 == null ? var2 : var3.integer;
 		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lmb;",
+		garbageValue = "99"
+	)
+	public static PacketBufferNode method4996() {
+		PacketBufferNode var0 = class323.method6113();
+		var0.clientPacket = null;
+		var0.clientPacketLength = 0;
+		var0.packetBuffer = new PacketBuffer(5000);
+		return var0;
 	}
 }

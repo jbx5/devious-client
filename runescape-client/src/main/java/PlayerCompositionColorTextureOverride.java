@@ -1,76 +1,62 @@
-import java.awt.datatransfer.Clipboard;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ha")
+@ObfuscatedName("gz")
 @Implements("PlayerCompositionColorTextureOverride")
 public class PlayerCompositionColorTextureOverride {
-	@ObfuscatedName("ac")
-	@Export("SpriteBuffer_pixels")
-	public static byte[][] SpriteBuffer_pixels;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lez;"
+	)
+	@Export("World_request")
+	static UrlRequest World_request;
+	@ObfuscatedName("ag")
 	@Export("playerCompositionRecolorTo")
 	public short[] playerCompositionRecolorTo;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("playerCompositionRetextureTo")
 	public short[] playerCompositionRetextureTo;
 
-	public PlayerCompositionColorTextureOverride(int var1) {
-		ItemComposition var2 = KeyHandler.ItemDefinition_get(var1);
-		if (var2.method4249()) {
+	PlayerCompositionColorTextureOverride(int var1) {
+		ItemComposition var2 = class164.ItemDefinition_get(var1);
+		if (var2.method3977()) {
 			this.playerCompositionRecolorTo = new short[var2.recolorTo.length];
 			System.arraycopy(var2.recolorTo, 0, this.playerCompositionRecolorTo, 0, this.playerCompositionRecolorTo.length);
 		}
 
-		if (var2.method4250()) {
+		if (var2.method3978()) {
 			this.playerCompositionRetextureTo = new short[var2.retextureTo.length];
 			System.arraycopy(var2.retextureTo, 0, this.playerCompositionRetextureTo, 0, this.playerCompositionRetextureTo.length);
 		}
 
 	}
 
-	@ObfuscatedName("nl")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1613433714"
+		descriptor = "(II)Lfr;",
+		garbageValue = "65367968"
 	)
-	static boolean method3776(int var0) {
-		for (int var1 = 0; var1 < Client.field765; ++var1) {
-			if (Client.field767[var1] == var0) {
-				return true;
-			}
+	static class143 method3537(int var0) {
+		class143[] var1 = new class143[]{class143.field1663, class143.field1666, class143.field1662, class143.field1667, class143.field1671, class143.field1670, class143.field1668, class143.field1664, class143.field1669};
+		class143 var2 = (class143)class210.findEnumerated(var1, var0);
+		if (var2 == null) {
+			var2 = class143.field1669;
 		}
 
-		return false;
+		return var2;
 	}
 
-	@ObfuscatedName("pl")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1311417839"
+		descriptor = "([BB)[B",
+		garbageValue = "52"
 	)
-	static void method3777() {
-		if (Decimator.field413 != null) {
-			Client.field823 = Client.cycle;
-			Decimator.field413.method7456();
-
-			for (int var0 = 0; var0 < class358.topLevelWorldView.players.length; ++var0) {
-				if (class358.topLevelWorldView.players[var0] != null) {
-					Decimator.field413.method7443((class358.topLevelWorldView.players[var0].x >> 7) + class358.topLevelWorldView.baseX, (class358.topLevelWorldView.players[var0].y >> 7) + class358.topLevelWorldView.baseY);
-				}
-			}
-		}
-
-	}
-
-	@ObfuscatedName("pq")
-	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/awt/datatransfer/Clipboard;",
-		garbageValue = "0"
-	)
-	public static Clipboard method3778() {
-		return class188.client.method482();
+	static byte[] method3539(byte[] var0) {
+		int var1 = var0.length;
+		byte[] var2 = new byte[var1];
+		System.arraycopy(var0, 0, var2, 0, var1);
+		return var2;
 	}
 }

@@ -2,38 +2,41 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gy")
+@ObfuscatedName("ga")
 public abstract class class163 extends Node {
-	@ObfuscatedName("er")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lhe;"
+		descriptor = "[Luf;"
 	)
-	@Export("js5SocketTask")
-	static Task js5SocketTask;
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
 
 	class163() {
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "-406894472"
+		descriptor = "(Lvp;I)V",
+		garbageValue = "-1435141567"
 	)
-	abstract void vmethod3479(Buffer var1);
+	abstract void vmethod3524(Buffer var1);
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;I)V",
-		garbageValue = "-472458599"
+		descriptor = "(Lgj;I)V",
+		garbageValue = "902480534"
 	)
-	abstract void vmethod3480(ClanChannel var1);
+	abstract void vmethod3523(ClanChannel var1);
 
-	@ObfuscatedName("mz")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1618960405"
+		descriptor = "(II)V",
+		garbageValue = "-1202060921"
 	)
-	static final int method3419() {
-		return Client.menuOptionsCount - 1;
+	@Export("updateLoginIndex")
+	static void updateLoginIndex(int var0) {
+		if (var0 != Login.loginIndex) {
+			Login.loginIndex = var0;
+		}
 	}
 }

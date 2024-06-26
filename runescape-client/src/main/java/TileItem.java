@@ -4,45 +4,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("em")
+@ObfuscatedName("eo")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -2113245633
+		intValue = -2050678185
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 1911170797
+		intValue = 203441303
 	)
 	@Export("quantity")
 	int quantity;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 419336507
+		intValue = -1382347441
 	)
 	@Export("visibleTime")
-	int visibileTime;
-	@ObfuscatedName("az")
+	int visibleTime;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 359021447
+		intValue = -104143091
 	)
 	@Export("despawnTime")
 	int despawnTime;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1547995727
+		intValue = 587627049
 	)
 	@Export("ownership")
 	int ownership;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@Export("isPrivate")
 	boolean isPrivate;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 238010175
+		intValue = -1829546599
 	)
 	@Export("flag")
 	int flag;
@@ -51,22 +51,22 @@ public final class TileItem extends Renderable {
 		this.flag = 31;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "251603547"
+		garbageValue = "1837399962"
 	)
 	@Export("setFlag")
 	void setFlag(int var1) {
 		this.flag = var1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Z",
-		garbageValue = "57"
+		garbageValue = "-94"
 	)
-	boolean method2759(int var1) {
+	boolean method2799(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
 			return (this.flag & 1 << var1) != 0;
 		} else {
@@ -76,50 +76,49 @@ public final class TileItem extends Renderable {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkb;",
-		garbageValue = "-852782106"
+		descriptor = "(I)Llv;",
+		garbageValue = "-543123602"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return KeyHandler.ItemDefinition_get(this.id).getModel(this.quantity);
+		return class164.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
-		garbageValue = "1549229344"
+		descriptor = "(FFFFLfd;B)V",
+		garbageValue = "2"
 	)
-	public static String method2763(CharSequence[] var0, int var1, int var2) {
-		if (var2 == 0) {
-			return "";
-		} else if (var2 == 1) {
-			CharSequence var10 = var0[var1];
-			return var10 == null ? "null" : var10.toString();
+	static void method2795(float var0, float var1, float var2, float var3, class135 var4) {
+		float var5 = var1 - var0;
+		float var6 = var2 - var1;
+		float var7 = var3 - var2;
+		float var8 = var6 - var5;
+		var4.field1586 = var7 - var6 - var8;
+		var4.field1585 = var8 + var8 + var8;
+		var4.field1590 = var5 + var5 + var5;
+		var4.field1581 = var0;
+	}
+
+	@ObfuscatedName("hv")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1609375983"
+	)
+	static boolean method2805() {
+		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+			while (Client.archiveLoadersDone < Client.archiveLoaders.size()) {
+				ArchiveLoader var0 = (ArchiveLoader)Client.archiveLoaders.get(Client.archiveLoadersDone);
+				if (!var0.isLoaded()) {
+					return false;
+				}
+
+				++Client.archiveLoadersDone;
+			}
+
+			return true;
 		} else {
-			int var3 = var2 + var1;
-			int var4 = 0;
-
-			for (int var5 = var1; var5 < var3; ++var5) {
-				CharSequence var9 = var0[var5];
-				if (var9 == null) {
-					var4 += 4;
-				} else {
-					var4 += var9.length();
-				}
-			}
-
-			StringBuilder var8 = new StringBuilder(var4);
-
-			for (int var6 = var1; var6 < var3; ++var6) {
-				CharSequence var7 = var0[var6];
-				if (var7 == null) {
-					var8.append("null");
-				} else {
-					var8.append(var7);
-				}
-			}
-
-			return var8.toString();
+			return true;
 		}
 	}
 }

@@ -1,45 +1,75 @@
-import java.util.HashMap;
-import java.util.TimeZone;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("me")
-public final class class324 {
-	@ObfuscatedName("aj")
-	static final HashMap field3550;
-	@ObfuscatedName("eg")
+@ObfuscatedName("mn")
+public class class324 {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "([BZB)Ljava/lang/Object;",
+		garbageValue = "94"
 	)
-	static Archive field3552;
-
-	static {
-		field3550 = new HashMap();
-		TimeZone var0;
-		synchronized(field3550) {
-			TimeZone var2 = (TimeZone)field3550.get("Europe/London");
-			if (var2 == null) {
-				var2 = TimeZone.getTimeZone("Europe/London");
-				field3550.put("Europe/London", var2);
-			}
-
-			var0 = var2;
+	public static Object method6114(byte[] var0, boolean var1) {
+		if (var0 == null) {
+			return null;
+		} else if (var0.length > 136) {
+			DirectByteArrayCopier var2 = new DirectByteArrayCopier();
+			var2.set(var0);
+			return var2;
+		} else {
+			return var0;
 		}
-
-		java.util.Calendar.getInstance(var0);
 	}
 
-	@ObfuscatedName("nt")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lnb;I)V",
-		garbageValue = "9637510"
+		descriptor = "(IB)Z",
+		garbageValue = "-41"
 	)
-	@Export("invalidateWidget")
-	public static void invalidateWidget(Widget var0) {
-		if (var0 != null && var0.cycle == Client.field600) {
-			Client.validRootWidgets[var0.rootIndex] = true;
+	public static boolean method6117(int var0) {
+		return var0 >= WorldMapDecorationType.field4029.id && var0 <= WorldMapDecorationType.field4030.id;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lorg/json/JSONObject;Ljava/lang/String;B)[F",
+		garbageValue = "-125"
+	)
+	static float[] method6116(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
+
+		try {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
 		}
 
+		return var2;
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Lnx;B)I",
+		garbageValue = "-1"
+	)
+	static int method6115(Widget var0) {
+		if (var0.type != 11) {
+			--class337.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = -1;
+			return 1;
+		} else {
+			String var1 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var0.method6879(var1);
+			return 1;
+		}
 	}
 }

@@ -1,79 +1,67 @@
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ThreadFactory;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("my")
-public class class333 {
-	@ObfuscatedName("ax")
+@ObfuscatedName("mw")
+class class333 implements ThreadFactory {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lgc;"
+		descriptor = "Lok;"
 	)
-	static ClanSettings field3642;
-	@ObfuscatedName("fz")
-	@ObfuscatedSignature(
-		descriptor = "Lot;"
-	)
-	static Archive field3643;
-	@ObfuscatedName("ak")
+	@Export("VarcInt_archive")
+	public static AbstractArchive VarcInt_archive;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 435230045
+		intValue = -359790385
 	)
-	int field3639;
-	@ObfuscatedName("al")
+	@Export("KitDefinition_fileCount")
+	public static int KitDefinition_fileCount;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 440453039
+	)
+	static int field3643;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lck;"
+		descriptor = "Lmc;"
 	)
-	class53 field3640;
+	final MidiPcmStream this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILck;)V"
+		descriptor = "(Lmc;)V"
 	)
-	class333(int var1, class53 var2) {
-		this.field3639 = var1;
-		this.field3640 = var2;
+	class333(MidiPcmStream var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ak")
+	public Thread newThread(Runnable var1) {
+		return new Thread(var1, "OSRS WAV Load");
+	}
+
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lor;Lor;IZI)Lfo;",
-		garbageValue = "421206246"
+		descriptor = "(CI)Z",
+		garbageValue = "1598204448"
 	)
-	public static class141 method6434(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
-		boolean var4 = true;
-		byte[] var5 = var0.getFile(var2 >> 16 & 65535, var2 & 65535);
-		if (var5 == null) {
-			var4 = false;
-			return null;
-		} else {
-			int var6 = (var5[1] & 255) << 8 | var5[2] & 255;
-			byte[] var7;
-			if (var3) {
-				var7 = var1.getFile(0, var6);
-			} else {
-				var7 = var1.getFile(var6, 0);
-			}
+	@Export("isCharAlphabetic")
+	public static boolean isCharAlphabetic(char var0) {
+		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	}
 
-			if (var7 == null) {
-				var4 = false;
-			}
-
-			if (!var4) {
-				return null;
-			} else {
-				if (PcmPlayer.field279 == null) {
-					class141.field1649 = Runtime.getRuntime().availableProcessors();
-					PcmPlayer.field279 = new ThreadPoolExecutor(0, class141.field1649, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(class141.field1649 * 100 + 100), new class138());
-				}
-
-				try {
-					return new class141(var0, var1, var2, var3);
-				} catch (Exception var9) {
-					return null;
-				}
-			}
+	@ObfuscatedName("jn")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-223269989"
+	)
+	static void method6367() {
+		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
+			PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.field3300, Client.packetWriter.isaacCipher);
+			var0.packetBuffer.writeByte(GrandExchangeOfferOwnWorldComparator.getWindowedMode());
+			var0.packetBuffer.writeShort(class74.canvasWidth);
+			var0.packetBuffer.writeShort(class1.canvasHeight);
+			Client.packetWriter.addNode(var0);
 		}
 	}
 }
