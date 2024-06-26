@@ -458,7 +458,7 @@ public class MusicPatchPcmStream extends PcmStream {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (class415.client.hasFrame()) {
-					var19 = class170.getPacketBufferNode(ClientPacket.field3303, Client.packetWriter.isaacCipher);
+					var19 = class170.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

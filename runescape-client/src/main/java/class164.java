@@ -239,7 +239,7 @@ public class class164 {
 			}
 		}
 
-		PacketBufferNode var6 = class170.getPacketBufferNode(ClientPacket.field3285, Client.packetWriter.isaacCipher);
+		PacketBufferNode var6 = class170.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher);
 		var6.packetBuffer.writeByte(var0.length() + 1);
 		var6.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var6);

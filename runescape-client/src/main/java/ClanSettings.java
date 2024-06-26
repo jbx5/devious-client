@@ -776,7 +776,7 @@ public class ClanSettings {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = class170.getPacketBufferNode(ClientPacket.field3294, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = class170.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeIntME(var0);
 		var2.packetBuffer.writeShortAddLE(var1);
 		Client.packetWriter.addNode(var2);

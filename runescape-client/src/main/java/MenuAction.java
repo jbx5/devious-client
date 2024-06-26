@@ -94,7 +94,7 @@ public class MenuAction {
 				Client.mouseCrossY = var9;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3326, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAdd(var3);
 				Client.packetWriter.addNode(var15);
 			}
@@ -127,7 +127,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3288, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAdd(var3);
 				var15.packetBuffer.writeShort(var12 + var1);
 				var15.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
@@ -148,7 +148,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3328, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAddLE(var3);
 					var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -181,7 +181,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3297, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortLE(var12 + var1);
 				var15.packetBuffer.writeShortAdd(var3);
@@ -198,7 +198,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3310, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAddLE(var3);
 					var16.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -212,7 +212,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3369, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAdd(var12 + var1);
 				var15.packetBuffer.writeShortAddLE(var0 + var11);
 				var15.packetBuffer.writeShortAddLE(var3);
@@ -229,7 +229,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3345, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var16);
@@ -243,7 +243,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3292, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAdd(var3);
 				var15.packetBuffer.writeShort(var12 + var1);
@@ -260,7 +260,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3289, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var16);
@@ -276,7 +276,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3322, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShort(Client.selectedSpellItemId);
 					var16.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
 					var16.packetBuffer.writeShort(var3);
@@ -293,7 +293,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3350, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAddLE(var3);
 				var15.packetBuffer.writeShortAdd(var0 + var11);
@@ -328,7 +328,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3301, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortLE(var3);
 					var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -340,7 +340,7 @@ public class MenuAction {
 				Client.mouseCrossY = var9;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3347, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAddLE(var0 + var11);
 				var15.packetBuffer.writeShort(var3);
 				var15.packetBuffer.writeShort(var12 + var1);
@@ -356,7 +356,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3372, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShort(var3);
 					Client.packetWriter.addNode(var16);
@@ -385,7 +385,7 @@ public class MenuAction {
 			int var17;
 			Widget var24;
 			if (var2 == 29) {
-				var15 = class170.getPacketBufferNode(ClientPacket.field3351, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var15);
 				var24 = ModeWhere.widgetDefinition.method6519(var1);
@@ -405,7 +405,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3315, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAddLE(var12 + var1);
 				var15.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAddLE(var0 + var11);
@@ -422,7 +422,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3319, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAddLE(var3);
 					var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -438,7 +438,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3370, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeShortAddLE(var3);
 					var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					Client.packetWriter.addNode(var16);
@@ -452,7 +452,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3305, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAdd(var3);
 				var15.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAdd(var0 + var11);
@@ -480,7 +480,7 @@ public class MenuAction {
 						Projectile.runScriptEvent(var25);
 					}
 
-					var16 = class170.getPacketBufferNode(ClientPacket.field3293, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeIntME(Message.selectedSpellWidget);
 					var16.packetBuffer.writeIntIME(var1);
 					var16.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
@@ -498,7 +498,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3346, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortLE(var3);
 				var15.packetBuffer.writeShortAdd(var12 + var1);
 				var15.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -513,7 +513,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3316, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShort(var3);
 				var15.packetBuffer.writeShortLE(var0 + var11);
 				var15.packetBuffer.writeShortAdd(var12 + var1);
@@ -528,7 +528,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3335, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortAdd(var12 + var1);
 				var15.packetBuffer.writeShortAddLE(var3);
 				var15.packetBuffer.writeShortAddLE(var0 + var11);
@@ -546,7 +546,7 @@ public class MenuAction {
 					}
 
 					if (var19) {
-						var20 = class170.getPacketBufferNode(ClientPacket.field3351, Client.packetWriter.isaacCipher);
+						var20 = class170.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 						var20.packetBuffer.writeInt(var1);
 						Client.packetWriter.addNode(var20);
 					}
@@ -566,7 +566,7 @@ public class MenuAction {
 					}
 
 					if (var26 != null) {
-						var20 = class170.getPacketBufferNode(ClientPacket.field3283, Client.packetWriter.isaacCipher);
+						var20 = class170.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 						var20.packetBuffer.writeShortAdd(var26.id);
 						Client.packetWriter.addNode(var20);
 					}
@@ -582,7 +582,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var16 = class170.getPacketBufferNode(ClientPacket.field3362, Client.packetWriter.isaacCipher);
+					var16 = class170.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 					var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var16.packetBuffer.writeShortLE(var3);
 					Client.packetWriter.addNode(var16);
@@ -622,7 +622,7 @@ public class MenuAction {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var15 = class170.getPacketBufferNode(ClientPacket.field3324, Client.packetWriter.isaacCipher);
+				var15 = class170.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 				var15.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 				var15.packetBuffer.writeShort(var12 + var1);
@@ -661,7 +661,7 @@ public class MenuAction {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = class170.getPacketBufferNode(ClientPacket.field3323, Client.packetWriter.isaacCipher);
+						var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeShortAdd(var3);
 						var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var16);
@@ -675,7 +675,7 @@ public class MenuAction {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var15 = class170.getPacketBufferNode(ClientPacket.field3325, Client.packetWriter.isaacCipher);
+					var15 = class170.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 					var15.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var15.packetBuffer.writeShortAdd(var0 + var11);
 					var15.packetBuffer.writeShortAdd(var12 + var1);
@@ -692,7 +692,7 @@ public class MenuAction {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = class170.getPacketBufferNode(ClientPacket.field3333, Client.packetWriter.isaacCipher);
+						var16 = class170.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeInt(Message.selectedSpellWidget);
 						var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var16.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
@@ -711,7 +711,7 @@ public class MenuAction {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = class170.getPacketBufferNode(ClientPacket.field3278, Client.packetWriter.isaacCipher);
+						var16 = class170.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeShortAdd(var3);
 						var16.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var16);
@@ -719,7 +719,7 @@ public class MenuAction {
 				}
 
 				if (var2 == 28) {
-					var15 = class170.getPacketBufferNode(ClientPacket.field3351, Client.packetWriter.isaacCipher);
+					var15 = class170.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 					var15.packetBuffer.writeInt(var1);
 					Client.packetWriter.addNode(var15);
 					var24 = ModeWhere.widgetDefinition.method6519(var1);
@@ -745,7 +745,7 @@ public class MenuAction {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = class170.getPacketBufferNode(ClientPacket.field3312, Client.packetWriter.isaacCipher);
+						var16 = class170.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeShortAdd(var3);
 						var16.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var16);
@@ -761,7 +761,7 @@ public class MenuAction {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var16 = class170.getPacketBufferNode(ClientPacket.field3371, Client.packetWriter.isaacCipher);
+						var16 = class170.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 						var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var16.packetBuffer.writeShortAddLE(var3);
 						Client.packetWriter.addNode(var16);

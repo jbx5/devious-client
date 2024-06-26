@@ -120,22 +120,22 @@ public class class47 {
 			if (var7 != null && var7 != SoundCache.localPlayer && var7.username != null && var7.username.equals(var5)) {
 				PacketBufferNode var8;
 				if (var0 == 1) {
-					var8 = class170.getPacketBufferNode(ClientPacket.field3345, Client.packetWriter.isaacCipher);
+					var8 = class170.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByteSub(0);
 					var8.packetBuffer.writeShortAdd(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 4) {
-					var8 = class170.getPacketBufferNode(ClientPacket.field3372, Client.packetWriter.isaacCipher);
+					var8 = class170.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeByteSub(0);
 					var8.packetBuffer.writeShort(var3[var6]);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 6) {
-					var8 = class170.getPacketBufferNode(ClientPacket.field3319, Client.packetWriter.isaacCipher);
+					var8 = class170.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShortAddLE(var3[var6]);
 					var8.packetBuffer.writeByteAdd(0);
 					Client.packetWriter.addNode(var8);
 				} else if (var0 == 7) {
-					var8 = class170.getPacketBufferNode(ClientPacket.field3328, Client.packetWriter.isaacCipher);
+					var8 = class170.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShortAddLE(var3[var6]);
 					var8.packetBuffer.writeByteAdd(0);
 					Client.packetWriter.addNode(var8);
