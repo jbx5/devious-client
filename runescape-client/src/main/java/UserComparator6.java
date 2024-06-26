@@ -1,18 +1,14 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("eq")
+@ObfuscatedName("ey")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1608214613
-	)
-	static int field1529;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +16,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lso;Lso;I)I",
-		garbageValue = "-563542583"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "1402807579"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,46 +34,45 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "487878865"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;",
+		garbageValue = "268468568"
 	)
-	static void method3016() {
-		class197.Tiles_underlays = null;
-		Tiles.Tiles_overlays = null;
-		TilesProjection.Tiles_shapes = null;
-		AbstractByteArrayCopier.field3975 = null;
-		SongTask.field4795 = null;
-		class202.Tiles_underlays2 = null;
-		class17.field84 = null;
-		ParamComposition.Tiles_hue = null;
-		class194.Tiles_saturation = null;
-		Tiles.Tiles_lightness = null;
-		class131.Tiles_hueMultiplier = null;
-		Tiles.field1050 = null;
+	@Export("loadClassFromDescriptor")
+	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
+		if (var0.equals("B")) {
+			return Byte.TYPE;
+		} else if (var0.equals("I")) {
+			return Integer.TYPE;
+		} else if (var0.equals("S")) {
+			return Short.TYPE;
+		} else if (var0.equals("J")) {
+			return Long.TYPE;
+		} else if (var0.equals("Z")) {
+			return Boolean.TYPE;
+		} else if (var0.equals("F")) {
+			return Float.TYPE;
+		} else if (var0.equals("D")) {
+			return Double.TYPE;
+		} else if (var0.equals("C")) {
+			return Character.TYPE;
+		} else {
+			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
+		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-166924155"
+		descriptor = "(ILdg;ZB)I",
+		garbageValue = "10"
 	)
-	static final int method3021(int var0, int var1) {
-		int var2 = var0 + var1 * 57;
-		var2 ^= var2 << 13;
-		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
-		return var3 >> 19 & 255;
-	}
-
-	@ObfuscatedName("hs")
-	@ObfuscatedSignature(
-		descriptor = "(Ldn;I)V",
-		garbageValue = "-257555905"
-	)
-	static void method3020(class94 var0) {
-		if (Client.field561 != var0) {
-			Client.field561 = var0;
+	static int method3045(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.LOGOUT) {
+			Client.logoutTimer = 250;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 }

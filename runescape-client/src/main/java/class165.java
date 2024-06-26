@@ -3,89 +3,102 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ga")
+@ObfuscatedName("gn")
 public class class165 extends class147 {
-	@ObfuscatedName("ay")
-	static String[] field1815;
-	@ObfuscatedName("cr")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 219921597
+		intValue = 1586739759
 	)
-	static int field1813;
-	@ObfuscatedName("ak")
+	int field1815;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 774154011
+		intValue = 1757786379
 	)
-	int field1817;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -73970559
-	)
-	int field1816;
+	int field1814;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfu;"
+		descriptor = "Lfn;"
 	)
 	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfu;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class165(class150 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "1738227110"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
 	)
-	void vmethod3486(Buffer var1) {
-		this.field1817 = var1.readInt();
-		this.field1816 = var1.readInt();
+	void vmethod3528(Buffer var1) {
+		this.field1815 = var1.readInt();
+		this.field1814 = var1.readInt();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgc;B)V",
-		garbageValue = "100"
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
 	)
-	void vmethod3490(ClanSettings var1) {
-		var1.method3375(this.field1817, this.field1816);
+	void vmethod3530(ClanSettings var1) {
+		var1.method3364(this.field1815, this.field1814);
 	}
 
-	@ObfuscatedName("ak")
-	@Export("base37DecodeLong")
-	public static String base37DecodeLong(long var0) {
-		if (var0 > 0L && var0 < 6582952005840035281L) {
-			if (var0 % 37L == 0L) {
-				return null;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lgg;",
+		garbageValue = "-1362390097"
+	)
+	@Export("WorldMapElement_get")
+	public static WorldMapElement WorldMapElement_get(int var0) {
+		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;B)[B",
+		garbageValue = "-53"
+	)
+	public static byte[] method3465(CharSequence var0) {
+		int var1 = var0.length();
+		byte[] var2 = new byte[var1];
+
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if (var4 > 127) {
+				var2[var3] = 63;
 			} else {
-				int var2 = 0;
-
-				for (long var3 = var0; var3 != 0L; var3 /= 37L) {
-					++var2;
-				}
-
-				StringBuilder var5;
-				char var8;
-				for (var5 = new StringBuilder(var2); 0L != var0; var5.append(var8)) {
-					long var6 = var0;
-					var0 /= 37L;
-					var8 = class416.base37Table[(int)(var6 - var0 * 37L)];
-					if (var8 == '_') {
-						int var9 = var5.length() - 1;
-						var5.setCharAt(var9, Character.toUpperCase(var5.charAt(var9)));
-						var8 = 160;
-					}
-				}
-
-				var5.reverse();
-				var5.setCharAt(0, Character.toUpperCase(var5.charAt(0)));
-				return var5.toString();
+				var2[var3] = (byte)var4;
 			}
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-1609232635"
+	)
+	static int method3467(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else if (var1 == -1) {
+			return 0;
 		} else {
-			return null;
+			int var3 = 0;
+
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4];
+				}
+			}
+
+			return var3;
 		}
 	}
 }

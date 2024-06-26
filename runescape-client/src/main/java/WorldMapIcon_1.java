@@ -4,48 +4,48 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kw")
+@ObfuscatedName("jh")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1428899307
+		intValue = -1450931479
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lks;"
+		descriptor = "Ljc;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1836164871
+		intValue = -448614677
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lkm;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1038049103
+		intValue = -229828633
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 91279571
+		intValue = 1283382419
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnj;Lnj;ILks;)V"
+		descriptor = "(Lnl;Lnl;ILjc;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -54,16 +54,16 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		this.init();
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "202"
+		descriptor = "(I)V",
+		garbageValue = "-232242674"
 	)
 	@Export("init")
 	void init() {
-		this.element = HitSplatDefinition.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(WorldMapElement.WorldMapElement_get(this.element));
-		WorldMapElement var1 = WorldMapElement.WorldMapElement_get(this.getElement());
+		this.element = HttpRequest.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(class165.WorldMapElement_get(this.element));
+		WorldMapElement var1 = class165.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -75,59 +75,65 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "117980127"
+		descriptor = "(B)I",
+		garbageValue = "45"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)Llh;",
-		garbageValue = "48"
+		descriptor = "(I)Lkm;",
+		garbageValue = "-1023557554"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-601586149"
+		garbageValue = "-2127260294"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1569951837"
+		garbageValue = "-1490832213"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(II)Luy;",
-		garbageValue = "-834018017"
+		descriptor = "(I)V",
+		garbageValue = "403847596"
 	)
-	public static class533 method5497(int var0) {
-		int var1 = class531.field5260[var0];
-		if (var1 == 1) {
-			return class533.field5263;
-		} else if (var1 == 2) {
-			return class533.field5267;
+	public static void method4578() {
+		class330.field3585.clear();
+	}
+
+	@ObfuscatedName("ms")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "1183965945"
+	)
+	static String method4580(int var0) {
+		if (var0 < 0) {
+			return "";
 		} else {
-			return var1 == 3 ? class533.field5266 : null;
+			return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
 		}
 	}
 }

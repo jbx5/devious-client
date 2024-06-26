@@ -1,50 +1,101 @@
-import java.util.regex.Pattern;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pv")
-public final class class414 {
-	@ObfuscatedName("cj")
-	@ObfuscatedGetter(
-		intValue = 1729222907
-	)
-	@Export("otpMedium")
-	static int otpMedium;
+@ObfuscatedName("pa")
+public class class414 {
+	@ObfuscatedName("aq")
+	public static char[] field4669;
+	@ObfuscatedName("ad")
+	static char[] field4673;
+	@ObfuscatedName("ag")
+	static char[] field4671;
+	@ObfuscatedName("ak")
+	static int[] field4672;
+	@ObfuscatedName("dp")
+	static boolean field4670;
 
 	static {
-		Pattern.compile("^\\D*(\\d+)\\D*$");
-	}
+		field4669 = new char[64];
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
-	)
-	static final void method7741() {
-		Object var10000 = null;
-		String var0 = "Your friend list is full. Max of 200 for free users, and 400 for members";
-		UrlRequest.addGameMessage(30, "", var0);
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1617514960"
-	)
-	static final int method7717(int var0, int var1) {
-		if (var0 == -1) {
-			return 12345678;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
-
-			return (var0 & 65408) + var1;
+		int var0;
+		for (var0 = 0; var0 < 26; ++var0) {
+			field4669[var0] = (char)(var0 + 65);
 		}
+
+		for (var0 = 26; var0 < 52; ++var0) {
+			field4669[var0] = (char)(var0 + 97 - 26);
+		}
+
+		for (var0 = 52; var0 < 62; ++var0) {
+			field4669[var0] = (char)(var0 + 48 - 52);
+		}
+
+		field4669[62] = '+';
+		field4669[63] = '/';
+		field4673 = new char[64];
+
+		for (var0 = 0; var0 < 26; ++var0) {
+			field4673[var0] = (char)(var0 + 65);
+		}
+
+		for (var0 = 26; var0 < 52; ++var0) {
+			field4673[var0] = (char)(var0 + 97 - 26);
+		}
+
+		for (var0 = 52; var0 < 62; ++var0) {
+			field4673[var0] = (char)(var0 + 48 - 52);
+		}
+
+		field4673[62] = '*';
+		field4673[63] = '-';
+		field4671 = new char[64];
+
+		for (var0 = 0; var0 < 26; ++var0) {
+			field4671[var0] = (char)(var0 + 65);
+		}
+
+		for (var0 = 26; var0 < 52; ++var0) {
+			field4671[var0] = (char)(var0 + 97 - 26);
+		}
+
+		for (var0 = 52; var0 < 62; ++var0) {
+			field4671[var0] = (char)(var0 + 48 - 52);
+		}
+
+		field4671[62] = '-';
+		field4671[63] = '_';
+		field4672 = new int[128];
+
+		for (var0 = 0; var0 < field4672.length; ++var0) {
+			field4672[var0] = -1;
+		}
+
+		for (var0 = 65; var0 <= 90; ++var0) {
+			field4672[var0] = var0 - 65;
+		}
+
+		for (var0 = 97; var0 <= 122; ++var0) {
+			field4672[var0] = var0 - 97 + 26;
+		}
+
+		for (var0 = 48; var0 <= 57; ++var0) {
+			field4672[var0] = var0 - 48 + 52;
+		}
+
+		int[] var2 = field4672;
+		field4672[43] = 62;
+		var2[42] = 62;
+		int[] var1 = field4672;
+		field4672[47] = 63;
+		var1[45] = 63;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-48"
+	)
+	public static int method7619(int var0) {
+		return var0 >>> 4 & class540.field5313;
 	}
 }

@@ -7,167 +7,152 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tf")
+@ObfuscatedName("tr")
 @Implements("PlatformInfo")
-public class PlatformInfo extends Node {
-	@ObfuscatedName("bw")
+public class PlatformInfo extends Node implements class115 {
+	@ObfuscatedName("ba")
 	@ObfuscatedGetter(
-		intValue = -1333731967
+		intValue = 1443411709
 	)
 	@Export("os")
 	public int os;
-	@ObfuscatedName("bl")
+	@ObfuscatedName("bg")
 	@Export("arch64")
 	boolean arch64;
-	@ObfuscatedName("be")
+	@ObfuscatedName("bs")
 	@ObfuscatedGetter(
-		intValue = 48225155
+		intValue = -848330753
 	)
 	@Export("osVersion")
 	int osVersion;
-	@ObfuscatedName("bg")
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = -1130035443
+		intValue = 667260975
 	)
-	@Export("vendor")
-	int vendor;
+	int field5115;
+	@ObfuscatedName("bx")
+	@ObfuscatedGetter(
+		intValue = -1469332107
+	)
+	int field5099;
 	@ObfuscatedName("bu")
 	@ObfuscatedGetter(
-		intValue = 2075561049
+		intValue = -485504683
 	)
-	@Export("javaMajor")
-	int javaMajor;
-	@ObfuscatedName("bh")
+	int field5100;
+	@ObfuscatedName("by")
 	@ObfuscatedGetter(
-		intValue = -1055521719
+		intValue = 880016047
 	)
-	@Export("javaMinor")
-	int javaMinor;
-	@ObfuscatedName("bk")
-	@ObfuscatedGetter(
-		intValue = -678989481
-	)
-	@Export("javaPatch")
-	int javaPatch;
-	@ObfuscatedName("bp")
+	int field5090;
+	@ObfuscatedName("bw")
 	@Export("field4524")
 	boolean field4524;
-	@ObfuscatedName("br")
+	@ObfuscatedName("bl")
 	@ObfuscatedGetter(
-		intValue = 2109912297
+		intValue = -1454507281
 	)
 	@Export("maxMemory")
 	int maxMemory;
-	@ObfuscatedName("bx")
+	@ObfuscatedName("bc")
 	@ObfuscatedGetter(
-		intValue = -1144840647
+		intValue = -439330597
 	)
-	@Export("cpuCores")
-	int cpuCores;
-	@ObfuscatedName("bv")
+	int field5101;
+	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
-		intValue = 1274393823
+		intValue = -1024146357
 	)
-	@Export("field4527")
-	int field4527;
-	@ObfuscatedName("bm")
+	int field5105;
+	@ObfuscatedName("bn")
 	@ObfuscatedGetter(
-		intValue = 1481322487
+		intValue = 839691755
 	)
-	@Export("clockSpeed")
-	int clockSpeed;
-	@ObfuscatedName("bq")
+	int field5106;
+	@ObfuscatedName("bh")
 	@Export("field4536")
 	String field4536;
-	@ObfuscatedName("bj")
-	@Export("field4514")
-	String field4514;
-	@ObfuscatedName("bc")
-	@Export("field4528")
-	String field4528;
+	@ObfuscatedName("bq")
+	@Export("field4541")
+	String field4541;
+	@ObfuscatedName("bd")
+	String field5103;
 	@ObfuscatedName("bz")
-	@Export("field4532")
-	String field4532;
-	@ObfuscatedName("ba")
+	String field5110;
+	@ObfuscatedName("bk")
 	@ObfuscatedGetter(
-		intValue = 715881903
+		intValue = 1722479495
 	)
 	@Export("field4512")
 	int field4512;
-	@ObfuscatedName("bb")
+	@ObfuscatedName("br")
 	@ObfuscatedGetter(
-		intValue = -1975114093
+		intValue = -2146477359
 	)
-	@Export("field4534")
-	int field4534;
-	@ObfuscatedName("by")
+	int field5112;
+	@ObfuscatedName("bf")
 	@ObfuscatedGetter(
-		intValue = 567706703
+		intValue = 2145527819
 	)
-	@Export("field4535")
-	int field4535;
-	@ObfuscatedName("cw")
+	int field5089;
+	@ObfuscatedName("cf")
 	@ObfuscatedGetter(
-		intValue = 1954892853
+		intValue = 1429426761
 	)
-	@Export("field4530")
-	int field4530;
-	@ObfuscatedName("ck")
+	int field5114;
+	@ObfuscatedName("cv")
 	@Export("field4537")
 	String field4537;
-	@ObfuscatedName("cn")
-	@Export("field4538")
-	String field4538;
-	@ObfuscatedName("ch")
+	@ObfuscatedName("cl")
+	String field5116;
+	@ObfuscatedName("cm")
 	@Export("field4539")
 	int[] field4539;
-	@ObfuscatedName("cp")
+	@ObfuscatedName("cg")
 	@ObfuscatedGetter(
-		intValue = -40810841
+		intValue = 722566405
 	)
 	@Export("field4540")
 	int field4540;
-	@ObfuscatedName("cd")
-	@Export("field4541")
-	String field4541;
-	@ObfuscatedName("cs")
-	@Export("field4542")
-	String field4542;
+	@ObfuscatedName("cu")
+	String field5119;
+	@ObfuscatedName("cn")
+	String field5120;
 
 	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25, String var26, String var27) {
 		this.field4539 = new int[3];
 		this.os = var1;
 		this.arch64 = var2;
 		this.osVersion = var3;
-		this.vendor = var4;
-		this.javaMajor = var5;
-		this.javaMinor = var6;
-		this.javaPatch = var7;
+		this.field5115 = var4;
+		this.field5099 = var5;
+		this.field5100 = var6;
+		this.field5090 = var7;
 		this.field4524 = var8;
 		this.maxMemory = var9;
-		this.cpuCores = var10;
-		this.field4527 = var11;
-		this.clockSpeed = var12;
+		this.field5101 = var10;
+		this.field5105 = var11;
+		this.field5106 = var12;
 		this.field4536 = var13;
-		this.field4514 = var14;
-		this.field4528 = var15;
-		this.field4532 = var16;
+		this.field4541 = var14;
+		this.field5103 = var15;
+		this.field5110 = var16;
 		this.field4512 = var17;
-		this.field4534 = var18;
-		this.field4535 = var19;
-		this.field4530 = var20;
+		this.field5112 = var18;
+		this.field5089 = var19;
+		this.field5114 = var20;
 		this.field4537 = var21;
-		this.field4538 = var22;
+		this.field5116 = var22;
 		this.field4539 = var23;
 		this.field4540 = var24;
-		this.field4541 = var25;
-		this.field4542 = var26;
+		this.field5119 = var25;
+		this.field5120 = var26;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;B)V",
-		garbageValue = "-125"
+		descriptor = "(Lvp;I)V",
+		garbageValue = "1687880854"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
@@ -175,58 +160,74 @@ public class PlatformInfo extends Node {
 		var1.writeByte(this.os);
 		var1.writeByte(this.arch64 ? 1 : 0);
 		var1.writeShort(this.osVersion);
-		var1.writeByte(this.vendor);
-		var1.writeByte(this.javaMajor);
-		var1.writeByte(this.javaMinor);
-		var1.writeByte(this.javaPatch);
+		var1.writeByte(this.field5115);
+		var1.writeByte(this.field5099);
+		var1.writeByte(this.field5100);
+		var1.writeByte(this.field5090);
 		var1.writeByte(this.field4524 ? 1 : 0);
 		var1.writeShort(this.maxMemory);
-		var1.writeByte(this.cpuCores);
-		var1.writeMedium(this.field4527);
-		var1.writeShort(this.clockSpeed);
+		var1.writeByte(this.field5101);
+		var1.writeMedium(this.field5105);
+		var1.writeShort(this.field5106);
 		var1.writeStringCp1252NullCircumfixed(this.field4536);
-		var1.writeStringCp1252NullCircumfixed(this.field4514);
-		var1.writeStringCp1252NullCircumfixed(this.field4528);
-		var1.writeStringCp1252NullCircumfixed(this.field4532);
-		var1.writeByte(this.field4534);
+		var1.writeStringCp1252NullCircumfixed(this.field4541);
+		var1.writeStringCp1252NullCircumfixed(this.field5103);
+		var1.writeStringCp1252NullCircumfixed(this.field5110);
+		var1.writeByte(this.field5112);
 		var1.writeShort(this.field4512);
 		var1.writeStringCp1252NullCircumfixed(this.field4537);
-		var1.writeStringCp1252NullCircumfixed(this.field4538);
-		var1.writeByte(this.field4535);
-		var1.writeByte(this.field4530);
+		var1.writeStringCp1252NullCircumfixed(this.field5116);
+		var1.writeByte(this.field5089);
+		var1.writeByte(this.field5114);
 
 		for (int var2 = 0; var2 < this.field4539.length; ++var2) {
 			var1.writeInt(this.field4539[var2]);
 		}
 
 		var1.writeInt(this.field4540);
-		var1.writeStringCp1252NullCircumfixed(this.field4541);
-		var1.writeStringCp1252NullCircumfixed(this.field4542);
+		var1.writeStringCp1252NullCircumfixed(this.field5119);
+		var1.writeStringCp1252NullCircumfixed(this.field5120);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "10"
+		garbageValue = "1"
 	)
 	@Export("size")
 	public int size() {
 		byte var1 = 39;
-		int var2 = var1 + MusicPatchNode.method6481(this.field4536);
-		var2 += MusicPatchNode.method6481(this.field4514);
-		var2 += MusicPatchNode.method6481(this.field4528);
-		var2 += MusicPatchNode.method6481(this.field4532);
-		var2 += MusicPatchNode.method6481(this.field4537);
-		var2 += MusicPatchNode.method6481(this.field4538);
-		var2 += MusicPatchNode.method6481(this.field4541);
-		var2 += MusicPatchNode.method6481(this.field4542);
-		return var2;
+		String var4 = this.field4536;
+		int var3 = var4.length() + 2;
+		int var26 = var3 + var1;
+		String var7 = this.field4541;
+		int var6 = var7.length() + 2;
+		var26 += var6;
+		String var10 = this.field5103;
+		int var9 = var10.length() + 2;
+		var26 += var9;
+		String var13 = this.field5110;
+		int var12 = var13.length() + 2;
+		var26 += var12;
+		String var16 = this.field4537;
+		int var15 = var16.length() + 2;
+		var26 += var15;
+		String var19 = this.field5116;
+		int var18 = var19.length() + 2;
+		var26 += var18;
+		String var22 = this.field5119;
+		int var21 = var22.length() + 2;
+		var26 += var21;
+		String var25 = this.field5120;
+		int var24 = var25.length() + 2;
+		var26 += var24;
+		return var26;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "2105599574"
+		garbageValue = "1007469139"
 	)
 	@Export("getDeviceId")
 	public String getDeviceId(int var1) {
@@ -280,5 +281,35 @@ public class PlatformInfo extends Node {
 		}
 
 		return var3;
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZIZS)V",
+		garbageValue = "9342"
+	)
+	@Export("doWorldSorting")
+	static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
+		if (var0 < var1) {
+			int var6 = (var0 + var1) / 2;
+			int var7 = var0;
+			World var8 = class357.World_worlds[var6];
+			class357.World_worlds[var6] = class357.World_worlds[var1];
+			class357.World_worlds[var1] = var8;
+
+			for (int var9 = var0; var9 < var1; ++var9) {
+				if (class76.method2162(class357.World_worlds[var9], var8, var2, var3, var4, var5) <= 0) {
+					World var10 = class357.World_worlds[var9];
+					class357.World_worlds[var9] = class357.World_worlds[var7];
+					class357.World_worlds[var7++] = var10;
+				}
+			}
+
+			class357.World_worlds[var1] = class357.World_worlds[var7];
+			class357.World_worlds[var7] = var8;
+			doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
+			doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
+		}
+
 	}
 }

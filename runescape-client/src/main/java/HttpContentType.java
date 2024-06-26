@@ -3,22 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sd")
+@ObfuscatedName("sb")
 @Implements("HttpContentType")
 public class HttpContentType {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lsd;"
+		descriptor = "Lsb;"
 	)
 	@Export("APPLICATION_JSON")
 	public static final HttpContentType APPLICATION_JSON;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lsd;"
+		descriptor = "Lsb;"
 	)
 	@Export("TEXT_PLAIN")
 	static final HttpContentType TEXT_PLAIN;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("jh")
+	static byte[][] field5041;
+	@ObfuscatedName("ag")
 	@Export("contentType")
 	String contentType;
 
@@ -31,26 +33,13 @@ public class HttpContentType {
 		this.contentType = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "10"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "493235791"
 	)
 	@Export("getValue")
 	public String getValue() {
 		return this.contentType;
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(IZIZI)V",
-		garbageValue = "-2061884702"
-	)
-	@Export("sortWorldList")
-	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-		if (class415.World_worlds != null) {
-			class197.doWorldSorting(0, class415.World_worlds.length - 1, var0, var1, var2, var3);
-		}
-
 	}
 }

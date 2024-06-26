@@ -4,68 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ao")
+@ObfuscatedName("ai")
 @Implements("HttpMethod")
 public class HttpMethod implements Enum {
-	@ObfuscatedName("wj")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Loj;"
-	)
-	static JagNetThread field32;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Lai;"
 	)
 	@Export("POST")
 	public static final HttpMethod POST;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Lai;"
 	)
 	@Export("GET")
 	public static final HttpMethod GET;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Lai;"
 	)
 	@Export("PUT")
 	static final HttpMethod PUT;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Lai;"
 	)
 	@Export("PATCH")
 	static final HttpMethod PATCH;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Lai;"
 	)
 	@Export("DELETE")
 	static final HttpMethod DELETE;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lbm;"
-	)
-	@Export("soundSystem")
-	static SoundSystem soundSystem;
-	@ObfuscatedName("jj")
-	@ObfuscatedSignature(
-		descriptor = "[Lvc;"
-	)
-	@Export("headIconPrayerSprites")
-	static SpritePixels[] headIconPrayerSprites;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -683626941
+		intValue = -1613497083
 	)
 	int field33;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@Export("name")
 	String name;
+	@ObfuscatedName("av")
+	boolean field34;
 	@ObfuscatedName("ab")
-	boolean field36;
-	@ObfuscatedName("ac")
-	boolean field38;
+	boolean field42;
 
 	static {
 		POST = new HttpMethod(0, "POST", true, true);
@@ -78,45 +61,45 @@ public class HttpMethod implements Enum {
 	HttpMethod(int var1, String var2, boolean var3, boolean var4) {
 		this.field33 = var1;
 		this.name = var2;
-		this.field36 = var3;
-		this.field38 = var4;
+		this.field34 = var3;
+		this.field42 = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field33;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1882357801"
+		garbageValue = "-1679958433"
 	)
-	boolean method68() {
-		return this.field36;
+	boolean method66() {
+		return this.field34;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "11"
+		garbageValue = "22"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "391142984"
+		garbageValue = "1923575133"
 	)
-	boolean method77() {
-		return this.field38;
+	boolean method68() {
+		return this.field42;
 	}
 }

@@ -1,5 +1,3 @@
-import java.net.MalformedURLException;
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -9,29 +7,22 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("nw")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -285362375
-	)
-	static int field3705;
-	@ObfuscatedName("jb")
-	static byte[][] field3706;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = -771143131
+		intValue = -8597909
 	)
 	@Export("width")
 	public final int width;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 1324622685
+		intValue = 1301306069
 	)
 	@Export("height")
 	public final int height;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("xWidths")
 	public final int[] xWidths;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("xStarts")
 	public final int[] xStarts;
 
@@ -42,10 +33,10 @@ public class SpriteMask extends DualNode {
 		this.xStarts = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)Z",
-		garbageValue = "12"
+		garbageValue = "-62"
 	)
 	@Export("contains")
 	public boolean contains(int var1, int var2) {
@@ -57,23 +48,5 @@ public class SpriteMask extends DualNode {
 		}
 
 		return false;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Z",
-		garbageValue = "-2060529092"
-	)
-	static boolean method6499(String var0) {
-		if (var0 == null) {
-			return false;
-		} else {
-			try {
-				new URL(var0);
-				return true;
-			} catch (MalformedURLException var2) {
-				return false;
-			}
-		}
 	}
 }

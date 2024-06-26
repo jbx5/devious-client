@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
@@ -8,7 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("er")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -16,10 +14,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lso;Lso;B)I",
-		garbageValue = "-12"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "1919618517"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,44 +36,37 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZI)Lue;",
-		garbageValue = "1958383487"
+		descriptor = "(ZB)V",
+		garbageValue = "11"
 	)
-	@Export("getPreferencesFile")
-	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
-		File var3 = new File(class7.cacheDir, "preferences" + var0 + ".dat");
-		if (var3.exists()) {
-			try {
-				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
-				return var10;
-			} catch (IOException var9) {
+	static void method2998(boolean var0) {
+		byte var1 = 0;
+		boolean var2 = class105.clientPreferences.method2594() >= Client.field637;
+		if (!var2) {
+			var1 = 12;
+		} else if (class415.client.containsAccessAndRefreshToken() || class415.client.otlTokenRequesterInitialized() || class415.client.containsSessionAndCharacterId()) {
+			var1 = 10;
+		}
+
+		class163.updateLoginIndex(var1);
+		if (var0) {
+			Login.Login_username = "";
+			Login.Login_password = "";
+			class6.otpMedium = 0;
+			FillMode.otp = "";
+		}
+
+		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+			if (class105.clientPreferences.getRememberedUsername() != null) {
+				Login.Login_username = class105.clientPreferences.getRememberedUsername();
+				Client.Login_isUsernameRemembered = true;
+			} else {
+				Client.Login_isUsernameRemembered = false;
 			}
 		}
 
-		String var4 = "";
-		if (JagexCache.cacheGamebuild == 33) {
-			var4 = "_rc";
-		} else if (JagexCache.cacheGamebuild == 34) {
-			var4 = "_wip";
-		}
-
-		File var5 = new File(ScriptEvent.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
-		AccessFile var6;
-		if (!var2 && var5.exists()) {
-			try {
-				var6 = new AccessFile(var5, "rw", 10000L);
-				return var6;
-			} catch (IOException var8) {
-			}
-		}
-
-		try {
-			var6 = new AccessFile(var3, "rw", 10000L);
-			return var6;
-		} catch (IOException var7) {
-			throw new RuntimeException();
-		}
+		UserComparator4.focusPasswordWhenUsernameFilled();
 	}
 }

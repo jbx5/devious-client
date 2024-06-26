@@ -4,75 +4,80 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dv")
+@ObfuscatedName("dx")
 @Implements("NPC")
 public final class NPC extends Actor {
-	@ObfuscatedName("at")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -563542583
+		intValue = -1582882849
 	)
-	static int field1364;
-	@ObfuscatedName("ac")
+	static int field1349;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -556420941
+		intValue = 2050335803
 	)
-	static int field1366;
-	@ObfuscatedName("ak")
+	static int field1351;
+	@ObfuscatedName("jr")
+	@ObfuscatedGetter(
+		intValue = -982531667
+	)
+	static int field1350;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Liq;"
+		descriptor = "Lhb;"
 	)
 	@Export("definition")
 	NPCComposition definition;
-	@ObfuscatedName("al")
-	String field1365;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ad")
+	String field1344;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1321693809
+		intValue = -782127427
 	)
-	int field1361;
-	@ObfuscatedName("af")
+	int field1345;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lvs;"
+		descriptor = "Lvi;"
 	)
-	class546 field1362;
-	@ObfuscatedName("aa")
+	class547 field1352;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Lhh;"
 	)
 	@Export("modelOverrides")
 	NpcOverrides modelOverrides;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Lhh;"
 	)
 	@Export("chatheadOverrides")
 	NpcOverrides chatheadOverrides;
 
 	static {
-		field1364 = 1;
-		field1366 = 1;
+		field1349 = 1;
+		field1351 = 1;
 	}
 
 	NPC() {
-		this.field1365 = "";
-		this.field1361 = 31;
+		this.field1344 = "";
+		this.field1345 = 31;
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkb;",
-		garbageValue = "-852782106"
+		descriptor = "(I)Llv;",
+		garbageValue = "-543123602"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
 		if (this.definition == null) {
 			return null;
 		} else {
-			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? FaceNormal.SequenceDefinition_get(super.sequence) : null;
-			SequenceDefinition var2 = super.movementSequence == -1 || super.idleSequence == super.movementSequence && var1 != null ? null : FaceNormal.SequenceDefinition_get(super.movementSequence);
+			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? class353.SequenceDefinition_get(super.sequence) : null;
+			SequenceDefinition var2 = super.movementSequence != -1 && (super.idleSequence != super.movementSequence || var1 == null) ? class353.SequenceDefinition_get(super.movementSequence) : null;
 			Model var3 = null;
 			if (this.modelOverrides != null && this.modelOverrides.useLocalPlayer) {
-				var3 = class17.localPlayer.appearance.getModel(var1, super.sequenceFrame, var2, super.movementFrame);
+				var3 = SoundCache.localPlayer.appearance.getModel(var1, super.sequenceFrame, var2, super.movementFrame);
 			} else {
 				var3 = this.definition.getModel(var1, super.sequenceFrame, var2, super.movementFrame, this.modelOverrides);
 			}
@@ -83,17 +88,17 @@ public final class NPC extends Actor {
 				var3.calculateBoundsCylinder();
 				super.defaultHeight = var3.height;
 				int var4 = var3.indicesCount;
-				var3 = this.method2451(var3);
+				var3 = this.method2476(var3);
 				if (this.definition.size == 1) {
 					var3.isSingleTile = true;
 				}
 
-				if (super.field1270 != 0 && Client.cycle >= super.field1265 && Client.cycle < super.field1266) {
-					var3.overrideHue = super.field1267;
-					var3.overrideSaturation = super.field1268;
-					var3.overrideLuminance = super.field1269;
-					var3.overrideAmount = super.field1270;
-					var3.field2891 = (short)var4;
+				if (super.field1239 != 0 && Client.cycle >= super.field1251 && Client.cycle < super.field1215) {
+					var3.overrideHue = super.field1223;
+					var3.overrideSaturation = super.field1254;
+					var3.overrideLuminance = super.field1255;
+					var3.overrideAmount = super.field1239;
+					var3.field3156 = (short)var4;
 				} else {
 					var3.overrideAmount = 0;
 				}
@@ -103,45 +108,45 @@ public final class NPC extends Actor {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "18"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "382991979"
 	)
-	void method2653(String var1) {
-		this.field1365 = var1 == null ? "" : var1;
+	void method2698(String var1) {
+		this.field1344 = var1 == null ? "" : var1;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "517591977"
+		descriptor = "(IB)V",
+		garbageValue = "-13"
 	)
-	void method2678(int var1) {
-		this.field1361 = var1;
+	void method2700(int var1) {
+		this.field1345 = var1;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-253209929"
+		descriptor = "(IB)Z",
+		garbageValue = "4"
 	)
-	boolean method2693(int var1) {
+	boolean method2752(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
-			return (this.field1361 & 1 << var1) != 0;
+			return (this.field1345 & 1 << var1) != 0;
 		} else {
 			return true;
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1815081977"
+		garbageValue = "1556267325"
 	)
-	final String method2656() {
-		if (!this.field1365.isEmpty()) {
-			return this.field1365;
+	final String method2702() {
+		if (!this.field1344.isEmpty()) {
+			return this.field1344;
 		} else {
 			NPCComposition var1 = this.definition;
 			if (var1.transforms != null) {
@@ -155,12 +160,12 @@ public final class NPC extends Actor {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(ILjv;I)V",
-		garbageValue = "-1257539379"
+		descriptor = "(ILjb;B)V",
+		garbageValue = "31"
 	)
-	final void method2657(int var1, class237 var2) {
+	final void method2703(int var1, class238 var2) {
 		int var3 = super.pathX[0];
 		int var4 = super.pathY[0];
 		if (var1 == 0) {
@@ -199,7 +204,7 @@ public final class NPC extends Actor {
 			--var4;
 		}
 
-		if (super.sequence != -1 && FaceNormal.SequenceDefinition_get(super.sequence).field2422 == 1) {
+		if (super.sequence != -1 && class353.SequenceDefinition_get(super.sequence).field2283 == 1) {
 			super.sequence = -1;
 		}
 
@@ -218,13 +223,13 @@ public final class NPC extends Actor {
 		super.pathTraversed[0] = var2;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IIZI)V",
-		garbageValue = "-1209588403"
+		descriptor = "(IIZB)V",
+		garbageValue = "-122"
 	)
-	final void method2658(int var1, int var2, boolean var3) {
-		if (super.sequence != -1 && FaceNormal.SequenceDefinition_get(super.sequence).field2422 == 1) {
+	final void method2704(int var1, int var2, boolean var3) {
+		if (super.sequence != -1 && class353.SequenceDefinition_get(super.sequence).field2283 == 1) {
 			super.sequence = -1;
 		}
 
@@ -244,148 +249,148 @@ public final class NPC extends Actor {
 
 				super.pathX[0] = var1;
 				super.pathY[0] = var2;
-				super.pathTraversed[0] = class237.field2525;
+				super.pathTraversed[0] = class238.field2519;
 				return;
 			}
 		}
 
 		super.pathLength = 0;
-		super.field1226 = 0;
-		super.field1278 = 0;
+		super.field1265 = 0;
+		super.field1264 = 0;
 		super.pathX[0] = var1;
 		super.pathY[0] = var2;
-		super.x = super.field1208 * 64 + super.pathX[0] * 128;
-		super.y = super.field1208 * 64 + super.pathY[0] * 128;
+		super.x = super.field1194 * 64 + super.pathX[0] * 128;
+		super.y = super.field1194 * 64 + super.pathY[0] * 128;
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "-19"
+		descriptor = "(I)[I",
+		garbageValue = "-509525809"
 	)
-	int[] method2661() {
-		return this.field1362 != null ? this.field1362.method9898() : this.definition.method3962();
+	int[] method2707() {
+		return this.field1352 != null ? this.field1352.method9802() : this.definition.method3713();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)[S",
-		garbageValue = "487823525"
+		descriptor = "(S)[S",
+		garbageValue = "19445"
 	)
-	short[] method2662() {
-		return this.field1362 != null ? this.field1362.method9895() : this.definition.method3977();
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(IISI)V",
-		garbageValue = "1284521968"
-	)
-	void method2663(int var1, int var2, short var3) {
-		if (this.field1362 == null) {
-			this.field1362 = new class546(this.definition);
-		}
-
-		this.field1362.method9896(var1, var2, var3);
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "([I[SI)V",
-		garbageValue = "-990182938"
-	)
-	void method2664(int[] var1, short[] var2) {
-		if (this.field1362 == null) {
-			this.field1362 = new class546(this.definition);
-		}
-
-		this.field1362.method9897(var1, var2);
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1216332290"
-	)
-	void method2665() {
-		this.field1362 = null;
+	short[] method2720() {
+		return this.field1352 != null ? this.field1352.method9811() : this.definition.method3715();
 	}
 
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lio;I)V",
-		garbageValue = "259624253"
+		descriptor = "(IISB)V",
+		garbageValue = "16"
 	)
-	void method2692(NpcOverrides var1) {
-		this.chatheadOverrides = var1;
+	void method2709(int var1, int var2, short var3) {
+		if (this.field1352 == null) {
+			this.field1352 = new class547(this.definition);
+		}
+
+		this.field1352.method9804(var1, var2, var3);
 	}
 
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(S)Lio;",
-		garbageValue = "128"
+		descriptor = "([I[SI)V",
+		garbageValue = "429368392"
 	)
-	NpcOverrides method2667() {
+	void method2710(int[] var1, short[] var2) {
+		if (this.field1352 == null) {
+			this.field1352 = new class547(this.definition);
+		}
+
+		this.field1352.method9805(var1, var2);
+	}
+
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-41"
+	)
+	void method2723() {
+		this.field1352 = null;
+	}
+
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "(Lhh;I)V",
+		garbageValue = "-740821724"
+	)
+	void method2712(NpcOverrides var1) {
+		this.chatheadOverrides = var1;
+	}
+
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lhh;",
+		garbageValue = "1"
+	)
+	NpcOverrides method2762() {
 		return this.chatheadOverrides;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "(Lio;I)V",
-		garbageValue = "1478714438"
+		descriptor = "(Lhh;I)V",
+		garbageValue = "-549252376"
 	)
-	void method2668(NpcOverrides var1) {
+	void method2714(NpcOverrides var1) {
 		this.modelOverrides = var1;
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1899153369"
+		garbageValue = "1756478951"
 	)
 	@Export("isVisible")
 	final boolean isVisible() {
 		return this.definition != null;
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1516009994"
+		descriptor = "(B)V",
+		garbageValue = "8"
 	)
-	void method2669() {
+	void method2715() {
 		this.chatheadOverrides = null;
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
+		descriptor = "(I)V",
+		garbageValue = "-1090831740"
 	)
-	void method2688() {
+	void method2729() {
 		this.modelOverrides = null;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("dg")
 	@ObfuscatedSignature(
-		descriptor = "(Ltu;ILjava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "3"
+		descriptor = "(B)I",
+		garbageValue = "-30"
 	)
-	static String method2726(IterableNodeHashTable var0, int var1, String var2) {
-		if (var0 == null) {
-			return var2;
-		} else {
-			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-			return var3 == null ? var2 : (String)var3.obj;
-		}
+	int vmethod2708() {
+		return this.definition.field2030 == -1 ? super.defaultHeight : this.definition.field2030;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("pk")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lfx;",
-		garbageValue = "-63636975"
+		descriptor = "(IIIZI)V",
+		garbageValue = "1326777473"
 	)
-	static class142[] method2725() {
-		return new class142[]{class142.field1658, class142.field1668, class142.field1659, class142.field1660, class142.field1664, class142.field1662, class142.field1663, class142.field1666, class142.field1657};
+	public static void method2713(int var0, int var1, int var2, boolean var3) {
+		PacketBufferNode var4 = class170.getPacketBufferNode(ClientPacket.field3338, Client.packetWriter.isaacCipher);
+		var4.packetBuffer.writeByteNeg(var0);
+		var4.packetBuffer.writeShortAddLE(var1);
+		var4.packetBuffer.writeByteAdd(var2);
+		var4.packetBuffer.writeIntME(var3 ? Client.field601 : 0);
+		Client.packetWriter.addNode(var4);
 	}
 }

@@ -1,249 +1,189 @@
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("gj")
+@ObfuscatedName("gr")
 public class class160 extends class163 {
-	@ObfuscatedName("ve")
-	@ObfuscatedSignature(
-		descriptor = "Loa;"
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -704237327
 	)
-	@Export("grandExchangeEvents")
-	static GrandExchangeEvents grandExchangeEvents;
+	int field1793;
+	@ObfuscatedName("ad")
+	byte field1791;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 458286077
+	)
+	int field1790;
 	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = -735242945
-	)
-	int field1791;
-	@ObfuscatedName("al")
-	byte field1792;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = -1460325249
-	)
-	int field1795;
-	@ObfuscatedName("az")
-	String field1793;
+	String field1792;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgx;"
+		descriptor = "Lgi;"
 	)
 	final class164 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgx;)V"
+		descriptor = "(Lgi;)V"
 	)
 	class160(class164 var1) {
 		this.this$0 = var1;
-		this.field1791 = -1;
+		this.field1793 = -1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "-406894472"
+		descriptor = "(Lvp;I)V",
+		garbageValue = "-1435141567"
 	)
-	void vmethod3479(Buffer var1) {
+	void vmethod3524(Buffer var1) {
 		var1.readUnsignedByte();
-		this.field1791 = var1.readUnsignedShort();
-		this.field1792 = var1.readByte();
-		this.field1795 = var1.readUnsignedShort();
+		this.field1793 = var1.readUnsignedShort();
+		this.field1791 = var1.readByte();
+		this.field1790 = var1.readUnsignedShort();
 		var1.readLong();
-		this.field1793 = var1.readStringCp1252NullTerminated();
+		this.field1792 = var1.readStringCp1252NullTerminated();
 		var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;I)V",
-		garbageValue = "-472458599"
+		descriptor = "(Lgj;I)V",
+		garbageValue = "902480534"
 	)
-	void vmethod3480(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1791);
-		var2.rank = this.field1792;
-		var2.world = this.field1795;
-		var2.username = new Username(this.field1793);
+	void vmethod3523(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1793);
+		var2.rank = this.field1791;
+		var2.world = this.field1790;
+		var2.username = new Username(this.field1792);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Lpl;II)Lmd;",
-		garbageValue = "1937051095"
+		descriptor = "(Lok;B)V",
+		garbageValue = "104"
 	)
-	public static PacketBufferNode method3402(int var0, String var1, Language var2, int var3) {
-		PacketBufferNode var4 = WorldMapElement.getPacketBufferNode(ClientPacket.field3355, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeByte(0);
-		int var5 = var4.packetBuffer.offset;
-		var4.packetBuffer.writeByte(var0);
-		String var6 = var1.toLowerCase();
-		int var7 = 0;
-		byte[] var8 = null;
-		if (var6.startsWith("yellow:")) {
-			var7 = 0;
-			var1 = var1.substring("yellow:".length());
-		} else if (var6.startsWith("red:")) {
-			var7 = 1;
-			var1 = var1.substring("red:".length());
-		} else if (var6.startsWith("green:")) {
-			var7 = 2;
-			var1 = var1.substring("green:".length());
-		} else if (var6.startsWith("cyan:")) {
-			var7 = 3;
-			var1 = var1.substring("cyan:".length());
-		} else if (var6.startsWith("purple:")) {
-			var7 = 4;
-			var1 = var1.substring("purple:".length());
-		} else if (var6.startsWith("white:")) {
-			var7 = 5;
-			var1 = var1.substring("white:".length());
-		} else if (var6.startsWith("flash1:")) {
-			var7 = 6;
-			var1 = var1.substring("flash1:".length());
-		} else if (var6.startsWith("flash2:")) {
-			var7 = 7;
-			var1 = var1.substring("flash2:".length());
-		} else if (var6.startsWith("flash3:")) {
-			var7 = 8;
-			var1 = var1.substring("flash3:".length());
-		} else if (var6.startsWith("glow1:")) {
-			var7 = 9;
-			var1 = var1.substring("glow1:".length());
-		} else if (var6.startsWith("glow2:")) {
-			var7 = 10;
-			var1 = var1.substring("glow2:".length());
-		} else if (var6.startsWith("glow3:")) {
-			var7 = 11;
-			var1 = var1.substring("glow3:".length());
-		} else if (var6.startsWith("rainbow:")) {
-			var7 = 12;
-			var1 = var1.substring("rainbow:".length());
-		} else if (var6.startsWith("pattern")) {
-			boolean var10 = true;
-			boolean var11 = true;
-			int var12 = "pattern".length();
-			int var13 = 0;
-			byte[] var14 = new byte[8];
+	public static void method3426(AbstractArchive var0) {
+		FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var0;
+	}
 
-			byte[] var9;
-			while (true) {
-				int var15 = var12 + var13;
-				if (var15 >= var6.length()) {
-					var9 = null;
-					break;
-				}
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lvp;II)V",
+		garbageValue = "39216562"
+	)
+	@Export("readReflectionCheck")
+	public static void readReflectionCheck(Buffer var0, int var1) {
+		ReflectionCheck var2 = new ReflectionCheck();
+		var2.size = var0.readUnsignedByte();
+		var2.id = var0.readInt();
+		var2.operations = new int[var2.size];
+		var2.creationErrors = new int[var2.size];
+		var2.fields = new Field[var2.size];
+		var2.intReplaceValues = new int[var2.size];
+		var2.methods = new Method[var2.size];
+		var2.arguments = new byte[var2.size][][];
 
-				char var16 = var6.charAt(var15);
-				if (var16 == ':') {
-					if (var13 == 0) {
-						var9 = null;
-					} else {
-						byte[] var17 = new byte[var13];
-						System.arraycopy(var14, 0, var17, 0, var13);
-						var9 = var17;
+		for (int var3 = 0; var3 < var2.size; ++var3) {
+			try {
+				int var4 = var0.readUnsignedByte();
+				String var5;
+				String var6;
+				int var7;
+				if (var4 != 0 && var4 != 1 && var4 != 2) {
+					if (var4 == 3 || var4 == 4) {
+						var5 = var0.readStringCp1252NullTerminated();
+						var6 = var0.readStringCp1252NullTerminated();
+						var7 = var0.readUnsignedByte();
+						String[] var8 = new String[var7];
+
+						for (int var9 = 0; var9 < var7; ++var9) {
+							var8[var9] = var0.readStringCp1252NullTerminated();
+						}
+
+						String var20 = var0.readStringCp1252NullTerminated();
+						byte[][] var10 = new byte[var7][];
+						int var12;
+						if (var4 == 3) {
+							for (int var11 = 0; var11 < var7; ++var11) {
+								var12 = var0.readInt();
+								var10[var11] = new byte[var12];
+								var0.readBytes(var10[var11], 0, var12);
+							}
+						}
+
+						var2.operations[var3] = var4;
+						Class[] var21 = new Class[var7];
+
+						for (var12 = 0; var12 < var7; ++var12) {
+							var21[var12] = UserComparator6.loadClassFromDescriptor(var8[var12]);
+						}
+
+						Class var22 = UserComparator6.loadClassFromDescriptor(var20);
+						if (UserComparator6.loadClassFromDescriptor(var5).getClassLoader() == null) {
+							throw new SecurityException();
+						}
+
+						Method[] var13 = UserComparator6.loadClassFromDescriptor(var5).getDeclaredMethods();
+						Method[] var14 = var13;
+
+						for (int var15 = 0; var15 < var14.length; ++var15) {
+							Method var16 = var14[var15];
+							if (Reflection.getMethodName(var16).equals(var6)) {
+								Class[] var17 = Reflection.getParameterTypes(var16);
+								if (var17.length == var21.length) {
+									boolean var18 = true;
+
+									for (int var19 = 0; var19 < var21.length; ++var19) {
+										if (var17[var19] != var21[var19]) {
+											var18 = false;
+											break;
+										}
+									}
+
+									if (var18 && var22 == var16.getReturnType()) {
+										var2.methods[var3] = var16;
+									}
+								}
+							}
+						}
+
+						var2.arguments[var3] = var10;
 					}
-					break;
-				}
-
-				if (var14.length == var13) {
-					var9 = null;
-					break;
-				}
-
-				if (var16 >= '0' && var16 <= '9') {
-					var16 = (char)(var16 - '0');
 				} else {
-					if (var16 < 'a' || var16 > 'z') {
-						var9 = null;
-						break;
+					var5 = var0.readStringCp1252NullTerminated();
+					var6 = var0.readStringCp1252NullTerminated();
+					var7 = 0;
+					if (var4 == 1) {
+						var7 = var0.readInt();
 					}
 
-					var16 = (char)(var16 - 'W');
+					var2.operations[var3] = var4;
+					var2.intReplaceValues[var3] = var7;
+					if (UserComparator6.loadClassFromDescriptor(var5).getClassLoader() == null) {
+						throw new SecurityException();
+					}
+
+					var2.fields[var3] = Reflection.findField(UserComparator6.loadClassFromDescriptor(var5), var6);
 				}
-
-				var14[var13++] = (byte)var16;
-			}
-
-			var8 = var9;
-			if (var9 != null) {
-				var7 = var9.length + 12;
-				var1 = var1.substring("pattern".length() + var9.length + 1);
-			}
-		}
-
-		var6 = var1.toLowerCase();
-		byte var18 = 0;
-		if (var6.startsWith("wave:")) {
-			var18 = 1;
-			var1 = var1.substring("wave:".length());
-		} else if (var6.startsWith("wave2:")) {
-			var18 = 2;
-			var1 = var1.substring("wave2:".length());
-		} else if (var6.startsWith("shake:")) {
-			var18 = 3;
-			var1 = var1.substring("shake:".length());
-		} else if (var6.startsWith("scroll:")) {
-			var18 = 4;
-			var1 = var1.substring("scroll:".length());
-		} else if (var6.startsWith("slide:")) {
-			var18 = 5;
-			var1 = var1.substring("slide:".length());
-		}
-
-		var4.packetBuffer.writeByte(var7);
-		var4.packetBuffer.writeByte(var18);
-		if (var8 != null) {
-			for (int var19 = 0; var19 < var8.length; ++var19) {
-				var4.packetBuffer.writeByte(var8[var19]);
+			} catch (ClassNotFoundException var24) {
+				var2.creationErrors[var3] = -1;
+			} catch (SecurityException var25) {
+				var2.creationErrors[var3] = -2;
+			} catch (NullPointerException var26) {
+				var2.creationErrors[var3] = -3;
+			} catch (Exception var27) {
+				var2.creationErrors[var3] = -4;
+			} catch (Throwable var28) {
+				var2.creationErrors[var3] = -5;
 			}
 		}
 
-		class152.method3277(var4.packetBuffer, var1);
-		if (var0 == class365.field3988.rsOrdinal()) {
-			var4.packetBuffer.writeByte(var3);
-		}
-
-		var4.packetBuffer.writeLengthByte(var4.packetBuffer.offset - var5);
-		return var4;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "1"
-	)
-	public static int method3394(int var0, int var1) {
-		return (-3 - var0 << 8) + var1;
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2030374715"
-	)
-	public static void method3400() {
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (int var0 = 0; var0 < ModelData0.field2994; ++var0) {
-				class74.JagexCache_idxFiles[var0].close();
-			}
-
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var2) {
-		}
-
-	}
-
-	@ObfuscatedName("oc")
-	@ObfuscatedSignature(
-		descriptor = "(Lnb;I)I",
-		garbageValue = "655514975"
-	)
-	@Export("getWidgetFlags")
-	static int getWidgetFlags(Widget var0) {
-		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32));
-		return var1 != null ? var1.integer : var0.flags;
+		class36.reflectionChecks.addFirst(var2);
 	}
 }

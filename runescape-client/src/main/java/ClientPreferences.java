@@ -8,69 +8,69 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dx")
+@ObfuscatedName("dq")
 @Implements("ClientPreferences")
 public class ClientPreferences {
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@Export("roofsHidden")
 	boolean roofsHidden;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@Export("hideUsername")
 	boolean hideUsername;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@Export("titleMusicDisabled")
 	boolean titleMusicDisabled;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@Export("displayFps")
 	boolean displayFps;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 937088039
+		intValue = -2129688829
 	)
-	int field1326;
-	@ObfuscatedName("ao")
+	int field1308;
+	@ObfuscatedName("ai")
 	@Export("brightness")
 	double brightness;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1427090983
+		intValue = 1571776205
 	)
 	@Export("musicVolume")
 	int musicVolume;
-	@ObfuscatedName("av")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -483689475
+		intValue = 35823685
 	)
 	@Export("soundEffectsVolume")
 	int soundEffectsVolume;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -683553787
+		intValue = -966473101
 	)
 	@Export("areaSoundEffectsVolume")
 	int areaSoundEffectsVolume;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 20381337
+		intValue = -2063082351
 	)
 	@Export("eula")
 	int eula;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ax")
 	@Export("rememberedUsername")
 	String rememberedUsername;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -50596465
+		intValue = -21294833
 	)
 	@Export("windowMode")
 	int windowMode;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -948621627
+		intValue = -302803323
 	)
 	@Export("drawDistance")
 	int drawDistance;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ay")
 	@Export("parameters")
 	final Map parameters;
 
@@ -86,11 +86,11 @@ public class ClientPreferences {
 		this.windowMode = 1;
 		this.drawDistance = 25;
 		this.parameters = new LinkedHashMap();
-		this.method2505(true);
+		this.method2570(true);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lua;)V"
+		descriptor = "(Lvp;)V"
 	)
 	ClientPreferences(Buffer var1) {
 		this.hideUsername = false;
@@ -153,33 +153,33 @@ public class ClientPreferences {
 				}
 
 				if (var2 > 9) {
-					this.field1326 = var1.readInt();
+					this.field1308 = var1.readInt();
 				}
 
 				if (var2 > 10) {
 					this.drawDistance = var1.readUnsignedByte();
 				}
 			} else {
-				this.method2505(true);
+				this.method2570(true);
 			}
 		} else {
-			this.method2505(true);
+			this.method2570(true);
 		}
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(ZI)V",
-		garbageValue = "-1822140976"
+		garbageValue = "1781534199"
 	)
-	void method2505(boolean var1) {
+	void method2570(boolean var1) {
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lua;",
-		garbageValue = "-727087966"
+		descriptor = "(I)Lvp;",
+		garbageValue = "-1490151941"
 	)
 	@Export("toBuffer")
 	Buffer toBuffer() {
@@ -205,270 +205,270 @@ public class ClientPreferences {
 		var1.writeByte(this.areaSoundEffectsVolume);
 		var1.writeByte(this.eula);
 		var1.writeByte(this.displayFps ? 1 : 0);
-		var1.writeInt(this.field1326);
+		var1.writeInt(this.field1308);
 		var1.writeByte(this.drawDistance);
 		return var1;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "-96"
+		descriptor = "(ZI)V",
+		garbageValue = "1002772130"
 	)
 	@Export("updateRoofsHidden")
 	void updateRoofsHidden(boolean var1) {
 		this.roofsHidden = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1434051902"
+		descriptor = "(S)Z",
+		garbageValue = "5108"
 	)
 	@Export("isRoofsHidden")
 	boolean isRoofsHidden() {
 		return this.roofsHidden;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(ZI)V",
-		garbageValue = "428305558"
+		garbageValue = "1481400295"
 	)
 	@Export("updateHideUsername")
 	void updateHideUsername(boolean var1) {
 		this.hideUsername = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-718561153"
+		garbageValue = "583089813"
 	)
 	@Export("isUsernameHidden")
 	boolean isUsernameHidden() {
 		return this.hideUsername;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-891538985"
+		descriptor = "(ZB)V",
+		garbageValue = "44"
 	)
 	@Export("updateTitleMusicDisabled")
 	void updateTitleMusicDisabled(boolean var1) {
 		this.titleMusicDisabled = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1145206959"
+		descriptor = "(B)Z",
+		garbageValue = "-33"
 	)
 	@Export("isTitleMusicDisabled")
 	boolean isTitleMusicDisabled() {
 		return this.titleMusicDisabled;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(ZI)V",
-		garbageValue = "-1169976115"
+		garbageValue = "-1501958614"
 	)
 	@Export("updateDisplayFps")
 	void updateDisplayFps(boolean var1) {
 		this.displayFps = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "995239248"
+		garbageValue = "-1888445289"
 	)
 	@Export("toggleDisplayFps")
 	void toggleDisplayFps() {
 		this.updateDisplayFps(!this.displayFps);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "0"
+		descriptor = "(I)Z",
+		garbageValue = "-1285799567"
 	)
 	@Export("isDisplayingFps")
 	boolean isDisplayingFps() {
 		return this.displayFps;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1847221655"
+		garbageValue = "1510132892"
 	)
-	void method2556(int var1) {
-		this.field1326 = var1;
-		class202.savePreferences();
+	void method2657(int var1) {
+		this.field1308 = var1;
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1723685321"
+		descriptor = "(S)I",
+		garbageValue = "14927"
 	)
-	int method2618() {
-		return this.field1326;
+	int method2581() {
+		return this.field1308;
 	}
 
 	@ObfuscatedName("ax")
 	@Export("updateBrightness")
 	void updateBrightness(double var1) {
 		this.brightness = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)D",
-		garbageValue = "-45549100"
+		descriptor = "(S)D",
+		garbageValue = "30058"
 	)
 	@Export("getBrightness")
 	double getBrightness() {
 		return this.brightness;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-740577446"
+		descriptor = "(IB)V",
+		garbageValue = "-104"
 	)
 	@Export("updateMusicVolume")
 	void updateMusicVolume(int var1) {
 		this.musicVolume = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("as")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-21"
+		descriptor = "(S)I",
+		garbageValue = "16708"
 	)
 	@Export("getMusicVolume")
 	int getMusicVolume() {
 		return this.musicVolume;
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "2104366538"
+		garbageValue = "1392527593"
 	)
 	@Export("updateSoundEffectVolume")
 	void updateSoundEffectVolume(int var1) {
 		this.soundEffectsVolume = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "9933"
+		descriptor = "(I)I",
+		garbageValue = "1379856607"
 	)
 	@Export("getSoundEffectsVolume")
 	int getSoundEffectsVolume() {
 		return this.soundEffectsVolume;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-996029927"
+		descriptor = "(IB)V",
+		garbageValue = "1"
 	)
 	@Export("updateAreaSoundEffectsVolume")
 	void updateAreaSoundEffectsVolume(int var1) {
 		this.areaSoundEffectsVolume = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1831722097"
+		garbageValue = "-764746946"
 	)
 	@Export("getAreaSoundEffectsVolume")
 	int getAreaSoundEffectsVolume() {
 		return this.areaSoundEffectsVolume;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-9"
+		garbageValue = "8"
 	)
 	@Export("updateRememberedUsername")
 	void updateRememberedUsername(String var1) {
 		this.rememberedUsername = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-584717344"
+		garbageValue = "116600886"
 	)
 	@Export("getRememberedUsername")
 	String getRememberedUsername() {
 		return this.rememberedUsername;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1662012789"
+		garbageValue = "-1663331385"
 	)
 	@Export("updateEULA")
 	void updateEULA(int var1) {
 		this.eula = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("bs")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1611340914"
+		garbageValue = "-2067078598"
 	)
-	int method2529() {
+	int method2594() {
 		return this.eula;
 	}
 
-	@ObfuscatedName("bf")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "6"
+		descriptor = "(II)V",
+		garbageValue = "152492609"
 	)
 	@Export("updateWindowMode")
 	void updateWindowMode(int var1) {
 		this.windowMode = var1;
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-101495280"
+		garbageValue = "-1926292063"
 	)
 	@Export("getWindowMode")
 	int getWindowMode() {
 		return this.windowMode;
 	}
 
-	@ObfuscatedName("bi")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)V",
-		garbageValue = "539829909"
+		descriptor = "(Ljava/lang/String;IB)V",
+		garbageValue = "49"
 	)
 	@Export("put")
 	void put(String var1, int var2) {
@@ -480,13 +480,13 @@ public class ClientPreferences {
 		}
 
 		this.parameters.put(var3, var2);
-		class202.savePreferences();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)Z",
-		garbageValue = "6"
+		descriptor = "(Ljava/lang/String;I)Z",
+		garbageValue = "1515420889"
 	)
 	@Export("containsKey")
 	boolean containsKey(String var1) {
@@ -494,10 +494,10 @@ public class ClientPreferences {
 		return this.parameters.containsKey(var2);
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "1197187535"
+		garbageValue = "1840611241"
 	)
 	@Export("getParameterValue")
 	int getParameterValue(String var1) {
@@ -505,531 +505,72 @@ public class ClientPreferences {
 		return !this.parameters.containsKey(var2) ? 0 : (Integer)this.parameters.get(var2);
 	}
 
-	@ObfuscatedName("bw")
+	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "845688822"
+		garbageValue = "1923893280"
 	)
 	@Export("getParameterKey")
 	int getParameterKey(String var1) {
-		String var3 = var1.toLowerCase();
-		int var4 = var3.length();
-		int var5 = 0;
-
-		for (int var6 = 0; var6 < var4; ++var6) {
-			var5 = (var5 << 5) - var5 + var3.charAt(var6);
-		}
-
-		return var5;
+		return ViewportMouse.method5905(var1.toLowerCase());
 	}
 
-	@ObfuscatedName("bl")
+	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "16"
+		descriptor = "(II)V",
+		garbageValue = "-68376821"
 	)
 	@Export("setDrawDistance")
 	void setDrawDistance(int var1) {
 		this.drawDistance = var1;
-		if (class358.topLevelWorldView != null) {
-			class358.topLevelWorldView.scene.method4971(class459.clientPreferences.getDrawDistance());
-		}
-
-		class202.savePreferences();
+		WorldMapArea.method4700();
+		class133.savePreferences();
 	}
 
-	@ObfuscatedName("be")
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-110"
+		descriptor = "(I)I",
+		garbageValue = "-973938080"
 	)
 	@Export("getDrawDistance")
 	int getDrawDistance() {
 		return this.drawDistance;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-751638598"
+		descriptor = "([Ljava/lang/String;[IIII)V",
+		garbageValue = "-830757872"
 	)
-	static int method2629(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
-		} else {
-			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
-		}
-	}
+	@Export("quicksortStringsWithCorrespondingIntegers")
+	static void quicksortStringsWithCorrespondingIntegers(String[] var0, int[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			int var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
 
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "123"
-	)
-	static final boolean method2630() {
-		return ViewportMouse.ViewportMouse_isInViewport;
-	}
-
-	@ObfuscatedName("ls")
-	@ObfuscatedSignature(
-		descriptor = "(Ldt;ZLuk;I)V",
-		garbageValue = "-1493100299"
-	)
-	@Export("updateNpcs")
-	static final void updateNpcs(WorldView var0, boolean var1, PacketBuffer var2) {
-		Client.field658 = 0;
-		Client.npcCount = 0;
-		var2.importIndex();
-		int var3 = var2.readBits(8);
-		int var4;
-		if (var3 < var0.npcCount) {
-			for (var4 = var3; var4 < var0.npcCount; ++var4) {
-				Client.field659[++Client.field658 - 1] = var0.npcIndices[var4];
-			}
-		}
-
-		if (var3 > var0.npcCount) {
-			throw new RuntimeException("");
-		} else {
-			var0.npcCount = 0;
-
-			int var7;
-			int var8;
-			int var9;
-			int var10;
-			for (var4 = 0; var4 < var3; ++var4) {
-				int var20 = var0.npcIndices[var4];
-				NPC var21 = var0.npcs[var20];
-				var7 = var2.readBits(1);
-				if (var7 == 0) {
-					var0.npcIndices[++var0.npcCount - 1] = var20;
-					var21.npcCycle = Client.cycle;
-				} else {
-					var8 = var2.readBits(2);
-					if (var8 == 0) {
-						var0.npcIndices[++var0.npcCount - 1] = var20;
-						var21.npcCycle = Client.cycle;
-						Client.npcIndices[++Client.npcCount - 1] = var20;
-					} else if (var8 == 1) {
-						var0.npcIndices[++var0.npcCount - 1] = var20;
-						var21.npcCycle = Client.cycle;
-						var9 = var2.readBits(3);
-						var21.method2657(var9, class237.field2525);
-						var10 = var2.readBits(1);
-						if (var10 == 1) {
-							Client.npcIndices[++Client.npcCount - 1] = var20;
-						}
-					} else if (var8 == 2) {
-						var0.npcIndices[++var0.npcCount - 1] = var20;
-						var21.npcCycle = Client.cycle;
-						if (var2.readBits(1) == 1) {
-							var9 = var2.readBits(3);
-							var21.method2657(var9, class237.field2529);
-							var10 = var2.readBits(3);
-							var21.method2657(var10, class237.field2529);
-						} else {
-							var9 = var2.readBits(3);
-							var21.method2657(var9, class237.field2524);
-						}
-
-						var9 = var2.readBits(1);
-						if (var9 == 1) {
-							Client.npcIndices[++Client.npcCount - 1] = var20;
-						}
-					} else if (var8 == 3) {
-						Client.field659[++Client.field658 - 1] = var20;
-					}
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					int var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
 				}
 			}
 
-			class155.method3295(var0, var1, var2);
-
-			for (var3 = 0; var3 < Client.npcCount; ++var3) {
-				var4 = Client.npcIndices[var3];
-				NPC var5 = var0.npcs[var4];
-				int var6 = var2.readUnsignedByte();
-				if ((var6 & 1) != 0) {
-					var7 = var2.readUnsignedByte();
-					var6 += var7 << 8;
-				}
-
-				if ((var6 & 4096) != 0) {
-					var7 = var2.readUnsignedByte();
-					var6 += var7 << 16;
-				}
-
-				if ((var6 & 8) != 0) {
-					var5.definition = class134.getNpcDefinition(var2.readUnsignedShortAddLE());
-					class4.method15(var5);
-					var5.method2665();
-				}
-
-				if ((var6 & 4) != 0) {
-					var7 = var2.readUnsignedShortAddLE();
-					if (var7 == 65535) {
-						var7 = -1;
-					}
-
-					var8 = var2.readUnsignedByte();
-					if (var7 == var5.sequence && var7 != -1) {
-						var9 = FaceNormal.SequenceDefinition_get(var7).restartMode;
-						if (var9 == 1) {
-							var5.sequenceFrame = 0;
-							var5.sequenceFrameCycle = 0;
-							var5.sequenceDelay = var8;
-							var5.field1239 = 0;
-						}
-
-						if (var9 == 2) {
-							var5.field1239 = 0;
-						}
-					} else if (var7 == -1 || var5.sequence == -1 || FaceNormal.SequenceDefinition_get(var7).field2409 >= FaceNormal.SequenceDefinition_get(var5.sequence).field2409) {
-						var5.sequence = var7;
-						var5.sequenceFrame = 0;
-						var5.sequenceFrameCycle = 0;
-						var5.sequenceDelay = var8;
-						var5.field1239 = 0;
-						var5.field1226 = var5.pathLength;
-					}
-				}
-
-				if ((var6 & 2) != 0) {
-					var5.overheadText = var2.readStringCp1252NullTerminated();
-					var5.overheadTextCyclesRemaining = 100;
-				}
-
-				int var11;
-				int var12;
-				int[] var15;
-				short[] var16;
-				short[] var17;
-				long var18;
-				boolean var22;
-				if ((var6 & 512) != 0) {
-					var7 = var2.readUnsignedByte();
-					if ((var7 & 1) == 1) {
-						var5.method2688();
-					} else {
-						var15 = null;
-						if ((var7 & 2) == 2) {
-							var9 = var2.readUnsignedByteAdd();
-							var15 = new int[var9];
-
-							for (var10 = 0; var10 < var9; ++var10) {
-								var11 = var2.readUnsignedShortLE();
-								var11 = var11 == 65535 ? -1 : var11;
-								var15[var10] = var11;
-							}
-						}
-
-						var16 = null;
-						if ((var7 & 4) == 4) {
-							var10 = 0;
-							if (var5.definition.recolorTo != null) {
-								var10 = var5.definition.recolorTo.length;
-							}
-
-							var16 = new short[var10];
-
-							for (var11 = 0; var11 < var10; ++var11) {
-								var16[var11] = (short)var2.readUnsignedShortAdd();
-							}
-						}
-
-						var17 = null;
-						if ((var7 & 8) == 8) {
-							var11 = 0;
-							if (var5.definition.retextureTo != null) {
-								var11 = var5.definition.retextureTo.length;
-							}
-
-							var17 = new short[var11];
-
-							for (var12 = 0; var12 < var11; ++var12) {
-								var17[var12] = (short)var2.readUnsignedShort();
-							}
-						}
-
-						var22 = false;
-						if ((var7 & 16) != 0) {
-							var22 = var2.readUnsignedByteNeg() == 1;
-						}
-
-						var18 = (long)(++NPC.field1364 - 1);
-						var5.method2668(new NpcOverrides(var18, var15, var16, var17, var22));
-					}
-				}
-
-				if ((var6 & 128) != 0) {
-					var7 = var2.readUnsignedShortAdd();
-					var8 = var2.readUnsignedShort();
-					var5.field1244 = var2.readUnsignedByteSub() == 1;
-					var5.field1242 = var7;
-					var5.field1243 = var8;
-				}
-
-				if ((var6 & 131072) != 0) {
-					var7 = var2.readUnsignedByte();
-					var15 = new int[8];
-					var16 = new short[8];
-
-					for (var10 = 0; var10 < 8; ++var10) {
-						if ((var7 & 1 << var10) != 0) {
-							var15[var10] = var2.readNullableLargeSmart();
-							var16[var10] = (short)var2.readShortSmartSub();
-						} else {
-							var15[var10] = -1;
-							var16[var10] = -1;
-						}
-					}
-
-					var5.method2664(var15, var16);
-				}
-
-				if ((var6 & 2048) != 0) {
-					var7 = var2.readUnsignedByteNeg();
-					if ((var7 & 1) == 1) {
-						var5.method2669();
-					} else {
-						var15 = null;
-						if ((var7 & 2) == 2) {
-							var9 = var2.readUnsignedByteAdd();
-							var15 = new int[var9];
-
-							for (var10 = 0; var10 < var9; ++var10) {
-								var11 = var2.readUnsignedShortAdd();
-								var11 = var11 == 65535 ? -1 : var11;
-								var15[var10] = var11;
-							}
-						}
-
-						var16 = null;
-						if ((var7 & 4) == 4) {
-							var10 = 0;
-							if (var5.definition.recolorTo != null) {
-								var10 = var5.definition.recolorTo.length;
-							}
-
-							var16 = new short[var10];
-
-							for (var11 = 0; var11 < var10; ++var11) {
-								var16[var11] = (short)var2.readUnsignedShortAddLE();
-							}
-						}
-
-						var17 = null;
-						if ((var7 & 8) == 8) {
-							var11 = 0;
-							if (var5.definition.retextureTo != null) {
-								var11 = var5.definition.retextureTo.length;
-							}
-
-							var17 = new short[var11];
-
-							for (var12 = 0; var12 < var11; ++var12) {
-								var17[var12] = (short)var2.readUnsignedShortAdd();
-							}
-						}
-
-						var22 = false;
-						if ((var7 & 16) != 0) {
-							var22 = var2.readUnsignedByte() == 1;
-						}
-
-						var18 = (long)(++NPC.field1366 - 1);
-						var5.method2692(new NpcOverrides(var18, var15, var16, var17, var22));
-					}
-				}
-
-				if ((var6 & 1024) != 0) {
-					var5.method2653(var2.readStringCp1252NullTerminated());
-				}
-
-				if ((var6 & 32) != 0) {
-					var7 = var2.readUnsignedByteSub();
-					int var13;
-					if (var7 > 0) {
-						for (var8 = 0; var8 < var7; ++var8) {
-							var10 = -1;
-							var11 = -1;
-							var12 = -1;
-							var9 = var2.readUShortSmart();
-							if (var9 == 32767) {
-								var9 = var2.readUShortSmart();
-								var11 = var2.readUShortSmart();
-								var10 = var2.readUShortSmart();
-								var12 = var2.readUShortSmart();
-							} else if (var9 != 32766) {
-								var11 = var2.readUShortSmart();
-							} else {
-								var9 = -1;
-							}
-
-							var13 = var2.readUShortSmart();
-							var5.addHitSplat(var9, var11, var10, var12, Client.cycle, var13);
-						}
-					}
-
-					var8 = var2.readUnsignedByteNeg();
-					if (var8 > 0) {
-						for (var9 = 0; var9 < var8; ++var9) {
-							var10 = var2.readUShortSmart();
-							var11 = var2.readUShortSmart();
-							if (var11 != 32767) {
-								var12 = var2.readUShortSmart();
-								var13 = var2.readUnsignedByteSub();
-								int var14 = var11 > 0 ? var2.readUnsignedByteAdd() : var13;
-								var5.addHealthBar(var10, Client.cycle, var11, var12, var13, var14);
-							} else {
-								var5.removeHealthBar(var10);
-							}
-						}
-					}
-				}
-
-				if ((var6 & 256) != 0) {
-					var5.field1265 = Client.cycle + var2.readUnsignedShortAdd();
-					var5.field1266 = Client.cycle + var2.readUnsignedShortLE();
-					var5.field1267 = var2.readByteNeg();
-					var5.field1268 = var2.readByte();
-					var5.field1269 = var2.readByte();
-					var5.field1270 = (byte)var2.readUnsignedByteNeg();
-				}
-
-				if ((var6 & 32768) != 0) {
-					var5.field1280 = var2.readInt();
-				}
-
-				if ((var6 & 64) != 0) {
-					var5.targetIndex = var2.readUnsignedShortLE();
-					var5.targetIndex += var2.readUnsignedByteNeg() << 16;
-					var7 = 16777215;
-					if (var7 == var5.targetIndex) {
-						var5.targetIndex = -1;
-					}
-				}
-
-				if ((var6 & 262144) != 0) {
-					var7 = var2.readUnsignedIntLE();
-					var5.turnLeftSequence = (var7 & 1) != 0 ? var2.readUnsignedShort() : var5.definition.turnLeftSequence;
-					var5.turnRightSequence = (var7 & 2) != 0 ? var2.readUnsignedShortLE() : var5.definition.turnRightSequence;
-					var5.walkSequence = (var7 & 4) != 0 ? var2.readUnsignedShort() : var5.definition.walkSequence;
-					var5.walkBackSequence = (var7 & 8) != 0 ? var2.readUnsignedShortAdd() : var5.definition.walkBackSequence;
-					var5.walkLeftSequence = (var7 & 16) != 0 ? var2.readUnsignedShortAddLE() : var5.definition.walkLeftSequence;
-					var5.walkRightSequence = (var7 & 32) != 0 ? var2.readUnsignedShortLE() : var5.definition.walkRightSequence;
-					var5.runSequence = (var7 & 64) != 0 ? var2.readUnsignedShortLE() : var5.definition.field2130;
-					var5.field1215 = (var7 & 128) != 0 ? var2.readUnsignedShortLE() : var5.definition.field2131;
-					var5.field1225 = (var7 & 256) != 0 ? var2.readUnsignedShortLE() : var5.definition.field2161;
-					var5.field1220 = (var7 & 512) != 0 ? var2.readUnsignedShortAdd() : var5.definition.field2133;
-					var5.field1273 = (var7 & 1024) != 0 ? var2.readUnsignedShortAddLE() : var5.definition.field2134;
-					var5.field1206 = (var7 & 2048) != 0 ? var2.readUnsignedShortLE() : var5.definition.field2135;
-					var5.field1281 = (var7 & 4096) != 0 ? var2.readUnsignedShortLE() : var5.definition.field2136;
-					var5.field1228 = (var7 & 8192) != 0 ? var2.readUnsignedShortAddLE() : var5.definition.field2124;
-					var5.idleSequence = (var7 & 16384) != 0 ? var2.readUnsignedShortAdd() : var5.definition.idleSequence;
-				}
-
-				if ((var6 & 16) != 0) {
-					var2.readUnsignedShort();
-					var2.readUnsignedIntIME();
-				}
-
-				if ((var6 & 65536) != 0) {
-					var7 = var2.readUnsignedByteSub();
-
-					for (var8 = 0; var8 < var7; ++var8) {
-						var9 = var2.readUnsignedByteSub();
-						var10 = var2.readUnsignedShortLE();
-						var11 = var2.readInt();
-						var5.updateSpotAnimation(var9, var10, var11 >> 16, var11 & 65535);
-					}
-				}
-
-				if ((var6 & 8192) != 0) {
-					var5.method2678(var2.readUnsignedByteAdd());
-				}
-
-				if ((var6 & 16384) != 0) {
-					var5.field1256 = var2.readByteAdd();
-					var5.field1258 = var2.readByte();
-					var5.field1257 = var2.readByteSub();
-					var5.field1259 = var2.readByteAdd();
-					var5.spotAnimation = var2.readUnsignedShort() + Client.cycle;
-					var5.field1261 = var2.readUnsignedShort() + Client.cycle;
-					var5.field1262 = var2.readUnsignedShortLE();
-					var5.pathLength = 1;
-					var5.field1226 = 0;
-					var5.field1256 += var5.pathX[0];
-					var5.field1258 += var5.pathY[0];
-					var5.field1257 += var5.pathX[0];
-					var5.field1259 += var5.pathY[0];
-				}
-			}
-
-			for (var3 = 0; var3 < Client.field658; ++var3) {
-				var4 = Client.field659[var3];
-				if (var0.npcs[var4].npcCycle != Client.cycle) {
-					var0.npcs[var4].definition = null;
-					var0.npcs[var4] = null;
-				}
-			}
-
-			if (var2.offset != Client.packetWriter.serverPacketLength) {
-				throw new RuntimeException(var2.offset + "," + Client.packetWriter.serverPacketLength);
-			} else {
-				for (var3 = 0; var3 < var0.npcCount; ++var3) {
-					if (var0.npcs[var0.npcIndices[var3]] == null) {
-						throw new RuntimeException(var3 + "," + var0.npcCount);
-					}
-				}
-
-			}
-		}
-	}
-
-	@ObfuscatedName("nz")
-	@ObfuscatedSignature(
-		descriptor = "([Lnb;II)V",
-		garbageValue = "774896882"
-	)
-	@Export("runComponentCloseListeners")
-	static final void runComponentCloseListeners(Widget[] var0, int var1) {
-		for (int var2 = 0; var2 < var0.length; ++var2) {
-			Widget var3 = var0[var2];
-			if (var3 != null) {
-				if (var3.type == 0) {
-					if (var3.children != null) {
-						runComponentCloseListeners(var3.children, var1);
-					}
-
-					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
-					if (var4 != null) {
-						SecureUrlRequester.runIntfCloseListeners(var4.group, var1);
-					}
-				}
-
-				ScriptEvent var5;
-				if (var1 == 0 && var3.onDialogAbort != null) {
-					var5 = new ScriptEvent();
-					var5.widget = var3;
-					var5.args = var3.onDialogAbort;
-					class371.runScriptEvent(var5);
-				}
-
-				if (var1 == 1 && var3.onSubChange != null) {
-					if (var3.childIndex >= 0) {
-						Widget var6 = AsyncRestClient.widgetDefinition.method6536(var3.id);
-						if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
-							continue;
-						}
-					}
-
-					var5 = new ScriptEvent();
-					var5.widget = var3;
-					var5.args = var3.onSubChange;
-					class371.runScriptEvent(var5);
-				}
-			}
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			quicksortStringsWithCorrespondingIntegers(var0, var1, var2, var5 - 1);
+			quicksortStringsWithCorrespondingIntegers(var0, var1, var5 + 1, var3);
 		}
 
 	}

@@ -4,55 +4,67 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("vm")
+@ObfuscatedName("fu")
 @Implements("FillMode")
-public enum FillMode implements Enum {
-	@ObfuscatedName("ak")
+public class FillMode extends class147 {
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lvm;"
-	)
-	@Export("SOLID")
-	SOLID(0, 0),
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lvm;"
-	)
-	field5426(1, 1),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lvm;"
-	)
-	field5427(2, 2);
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lhh;"
+		descriptor = "Lix;"
 	)
 	@Export("clock")
 	static Clock clock;
-	@ObfuscatedName("az")
+	@ObfuscatedName("cx")
+	@Export("otp")
+	static String otp;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1771953401
+		intValue = -328879889
 	)
-	public final int field5429;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = -906848393
+	int field1690;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfn;"
 	)
-	final int field5428;
+	final class150 this$0;
 
-	FillMode(int var3, int var4) {
-		this.field5429 = var3;
-		this.field5428 = var4;
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;)V"
+	)
+	FillMode(class150 var1) {
+		this.this$0 = var1;
+		this.field1690 = -1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field5428;
+	void vmethod3528(Buffer var1) {
+		this.field1690 = var1.readUnsignedShort();
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
+	)
+	void vmethod3530(ClanSettings var1) {
+		var1.method3390(this.field1690);
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lok;III)Z",
+		garbageValue = "145522420"
+	)
+	public static boolean method3260(AbstractArchive var0, int var1, int var2) {
+		byte[] var3 = var0.takeFile(var1, var2);
+		if (var3 == null) {
+			return false;
+		} else {
+			DefaultsGroup.SpriteBuffer_decode(var3);
+			return true;
+		}
 	}
 }

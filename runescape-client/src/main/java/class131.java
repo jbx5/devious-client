@@ -1,62 +1,68 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fk")
-public enum class131 implements Enum {
+@ObfuscatedName("fw")
+public class class131 {
 	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	field1570(0, 0),
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	field1566(1, 1),
+	public static final float field1544;
+	@ObfuscatedName("ap")
+	public static final float field1539;
+	@ObfuscatedName("an")
+	static float[] field1540;
 	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	field1573(2, 2),
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	field1568(3, 3),
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	field1569(4, 4);
+	static float[] field1542;
+	@ObfuscatedName("jf")
+	@Export("regionLandArchiveIds")
+	static int[] regionLandArchiveIds;
 
-	@ObfuscatedName("ah")
-	@Export("Tiles_hueMultiplier")
-	static int[] Tiles_hueMultiplier;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -840155439
-	)
-	final int field1567;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -163051881
-	)
-	final int field1571;
-
-	class131(int var3, int var4) {
-		this.field1567 = var3;
-		this.field1571 = var4;
+	static {
+		field1544 = Math.ulp(1.0F);
+		field1539 = 2.0F * field1544;
+		field1540 = new float[4];
+		field1542 = new float[5];
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		descriptor = "(Ljava/util/ArrayList;ZI)V",
+		garbageValue = "-1728915559"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1571;
+	static void method3071(ArrayList var0, boolean var1) {
+		if (!var1) {
+			class330.field3585.clear();
+		}
+
+		Iterator var2 = var0.iterator();
+
+		while (var2.hasNext()) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+				if (!var1) {
+					class330.field3585.add(var3);
+				}
+
+				class330.field3587.add(var3);
+			}
+		}
+
+	}
+
+	@ObfuscatedName("io")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1947023152"
+	)
+	static final void method3068() {
+		if (Client.logoutTimer > 0) {
+			class135.logOut();
+		} else {
+			Client.timer.method8338();
+			ClanChannelMember.updateGameState(40);
+			class386.field4521 = Client.packetWriter.getSocket();
+			Client.packetWriter.removeSocket();
+		}
 	}
 }

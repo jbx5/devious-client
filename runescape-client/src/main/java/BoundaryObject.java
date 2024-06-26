@@ -4,60 +4,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kt")
+@ObfuscatedName("la")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("lw")
 	@ObfuscatedGetter(
-		intValue = -1993404823
+		intValue = 48501363
+	)
+	@Export("oculusOrbFocalPointZ")
+	static int oculusOrbFocalPointZ;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = 813042761
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -1814303763
+		intValue = -35525971
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1974071729
+		intValue = 282193472
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 336880011
+		intValue = -1427307041
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -487371055
+		intValue = 1529712313
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Lkt;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Lkt;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		longValue = 4933655260804929971L
+		longValue = 7437302260060701101L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1373030979
+		intValue = 696972967
 	)
 	@Export("flags")
 	int flags;
@@ -67,12 +73,31 @@ public final class BoundaryObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(ILun;I)Z",
-		garbageValue = "1718767909"
+		descriptor = "(IB)I",
+		garbageValue = "101"
 	)
-	public static boolean method5455(int var0, class541 var1) {
-		return (var0 & var1.rsOrdinal()) != 0;
+	@Export("Widget_unpackTargetMask")
+	public static int Widget_unpackTargetMask(int var0) {
+		return var0 >> 11 & 63;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Lok;IB)Lvv;",
+		garbageValue = "3"
+	)
+	public static IndexedSprite method6014(AbstractArchive var0, int var1) {
+		byte[] var3 = var0.takeFileFlat(var1);
+		boolean var2;
+		if (var3 == null) {
+			var2 = false;
+		} else {
+			DefaultsGroup.SpriteBuffer_decode(var3);
+			var2 = true;
+		}
+
+		return !var2 ? null : class159.method3419();
 	}
 }

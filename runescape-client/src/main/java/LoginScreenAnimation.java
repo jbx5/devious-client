@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
@@ -5,208 +6,214 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("di")
+@ObfuscatedName("dj")
 @Implements("LoginScreenAnimation")
 public class LoginScreenAnimation {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ff")
 	@ObfuscatedSignature(
-		descriptor = "[Lvl;"
+		descriptor = "Loz;"
+	)
+	@Export("archive4")
+	static Archive archive4;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "[Lvv;"
 	)
 	@Export("sprites")
 	IndexedSprite[] sprites;
-	@ObfuscatedName("at")
-	int[] field1296;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -58568865
-	)
-	int field1293;
-	@ObfuscatedName("ac")
-	int[] field1298;
-	@ObfuscatedName("ao")
-	int[] field1299;
-	@ObfuscatedName("ah")
-	int[] field1300;
+	@ObfuscatedName("aj")
+	int[] field1280;
 	@ObfuscatedName("av")
-	int[] field1301;
-	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -470519513
+		intValue = -1310190489
 	)
-	int field1302;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 431953485
-	)
-	int field1303;
+	int field1281;
+	@ObfuscatedName("ab")
+	int[] field1282;
+	@ObfuscatedName("ai")
+	int[] field1289;
 	@ObfuscatedName("ae")
-	int[] field1304;
-	@ObfuscatedName("ax")
-	int[] field1305;
-	@ObfuscatedName("ay")
 	int[] field1291;
 	@ObfuscatedName("au")
-	int[] field1297;
-	@ObfuscatedName("as")
+	int[] field1288;
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -592367857
+		intValue = -1601274563
 	)
-	int field1308;
-	@ObfuscatedName("aw")
+	int field1286;
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 1312326288
+		intValue = 1587381431
+	)
+	int field1287;
+	@ObfuscatedName("ax")
+	int[] field1278;
+	@ObfuscatedName("ac")
+	int[] field1283;
+	@ObfuscatedName("al")
+	int[] field1290;
+	@ObfuscatedName("ay")
+	int[] field1275;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -632961439
 	)
 	int field1292;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("aa")
 	@ObfuscatedGetter(
-		intValue = -1997778039
+		intValue = 1194897524
 	)
-	int field1309;
+	int field1285;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 1230032791
+	)
+	int field1294;
 
 	@ObfuscatedSignature(
-		descriptor = "([Lvl;)V"
+		descriptor = "([Lvv;)V"
 	)
 	LoginScreenAnimation(IndexedSprite[] var1) {
-		this.field1296 = new int[256];
-		this.field1293 = 0;
-		this.field1302 = 0;
-		this.field1303 = 0;
-		this.field1308 = 0;
+		this.field1280 = new int[256];
+		this.field1281 = 0;
+		this.field1286 = 0;
+		this.field1287 = 0;
 		this.field1292 = 0;
-		this.field1309 = 0;
+		this.field1285 = 0;
+		this.field1294 = 0;
 		this.sprites = var1;
 		this.initColors();
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-579665568"
+		garbageValue = "410645251"
 	)
 	@Export("initColors")
 	void initColors() {
-		this.field1299 = new int[256];
+		this.field1289 = new int[256];
 
 		int var1;
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1299[var1] = var1 * 262144;
+			this.field1289[var1] = var1 * 262144;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1299[var1 + 64] = var1 * 1024 + 16711680;
+			this.field1289[var1 + 64] = var1 * 1024 + 16711680;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1299[var1 + 128] = var1 * 4 + 16776960;
+			this.field1289[var1 + 128] = var1 * 4 + 16776960;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1299[var1 + 192] = 16777215;
+			this.field1289[var1 + 192] = 16777215;
 		}
 
-		this.field1300 = new int[256];
+		this.field1291 = new int[256];
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1300[var1] = var1 * 1024;
-		}
-
-		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1300[var1 + 64] = var1 * 4 + 65280;
+			this.field1291[var1] = var1 * 1024;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1300[var1 + 128] = var1 * 262144 + 65535;
+			this.field1291[var1 + 64] = var1 * 4 + 65280;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1300[var1 + 192] = 16777215;
-		}
-
-		this.field1301 = new int[256];
-
-		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1301[var1] = var1 * 4;
+			this.field1291[var1 + 128] = var1 * 262144 + 65535;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1301[var1 + 64] = var1 * 262144 + 255;
+			this.field1291[var1 + 192] = 16777215;
+		}
+
+		this.field1288 = new int[256];
+
+		for (var1 = 0; var1 < 64; ++var1) {
+			this.field1288[var1] = var1 * 4;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1301[var1 + 128] = var1 * 1024 + 16711935;
+			this.field1288[var1 + 64] = var1 * 262144 + 255;
 		}
 
 		for (var1 = 0; var1 < 64; ++var1) {
-			this.field1301[var1 + 192] = 16777215;
+			this.field1288[var1 + 128] = var1 * 1024 + 16711935;
 		}
 
-		this.field1298 = new int[256];
-		this.field1308 = 0;
-		this.field1291 = new int[32768];
-		this.field1297 = new int[32768];
-		this.method2484((IndexedSprite)null);
-		this.field1304 = new int[32768];
-		this.field1305 = new int[32768];
-	}
+		for (var1 = 0; var1 < 64; ++var1) {
+			this.field1288[var1 + 192] = 16777215;
+		}
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-13"
-	)
-	void method2473() {
-		this.field1299 = null;
-		this.field1300 = null;
-		this.field1301 = null;
-		this.field1298 = null;
-		this.field1291 = null;
-		this.field1297 = null;
-		this.field1304 = null;
-		this.field1305 = null;
-		this.field1308 = 0;
+		this.field1282 = new int[256];
 		this.field1292 = 0;
+		this.field1290 = new int[32768];
+		this.field1275 = new int[32768];
+		this.method2543((IndexedSprite)null);
+		this.field1278 = new int[32768];
+		this.field1283 = new int[32768];
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "53"
+		descriptor = "(I)V",
+		garbageValue = "-1515385056"
+	)
+	void method2566() {
+		this.field1289 = null;
+		this.field1291 = null;
+		this.field1288 = null;
+		this.field1282 = null;
+		this.field1290 = null;
+		this.field1275 = null;
+		this.field1278 = null;
+		this.field1283 = null;
+		this.field1292 = 0;
+		this.field1285 = 0;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "1588657219"
 	)
 	@Export("draw")
 	void draw(int var1, int var2) {
-		if (this.field1304 == null) {
+		if (this.field1278 == null) {
 			this.initColors();
 		}
 
-		if (this.field1309 == 0) {
-			this.field1309 = var2;
+		if (this.field1294 == 0) {
+			this.field1294 = var2;
 		}
 
-		int var3 = var2 - this.field1309;
+		int var3 = var2 - this.field1294;
 		if (var3 >= 256) {
 			var3 = 0;
 		}
 
-		this.field1309 = var2;
+		this.field1294 = var2;
 		if (var3 > 0) {
-			this.method2470(var3);
+			this.method2538(var3);
 		}
 
-		this.method2475(var1);
+		this.method2540(var1);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "17895424"
+		garbageValue = "13162537"
 	)
-	final void method2470(int var1) {
-		this.field1308 += 128 * var1;
+	final void method2538(int var1) {
+		this.field1292 += 128 * var1;
 		int var2;
-		if (this.field1308 > this.field1291.length) {
-			this.field1308 -= this.field1291.length;
+		if (this.field1292 > this.field1290.length) {
+			this.field1292 -= this.field1290.length;
 			var2 = (int)(Math.random() * 12.0D);
-			this.method2484(this.sprites[var2]);
+			this.method2543(this.sprites[var2]);
 		}
 
 		var2 = 0;
@@ -215,12 +222,12 @@ public class LoginScreenAnimation {
 
 		int var6;
 		for (int var5 = 0; var5 < var4; ++var5) {
-			var6 = this.field1304[var3 + var2] - this.field1291[var2 + this.field1308 & this.field1291.length - 1] * var1 / 6;
+			var6 = this.field1278[var2 + var3] - this.field1290[var2 + this.field1292 & this.field1290.length - 1] * var1 / 6;
 			if (var6 < 0) {
 				var6 = 0;
 			}
 
-			this.field1304[var2++] = var6;
+			this.field1278[var2++] = var6;
 		}
 
 		byte var15 = 10;
@@ -234,42 +241,42 @@ public class LoginScreenAnimation {
 			for (int var9 = 0; var9 < 128; ++var9) {
 				var10 = (int)(Math.random() * 100.0D);
 				if (var10 < 50 && var9 > var15 && var9 < var6) {
-					this.field1304[var9 + var8] = 255;
+					this.field1278[var9 + var8] = 255;
 				} else {
-					this.field1304[var8 + var9] = 0;
+					this.field1278[var8 + var9] = 0;
 				}
 			}
 		}
 
-		if (this.field1302 * 16 > 0) {
-			this.field1302 = this.field1302 * 16 - var1 * 4;
+		if (this.field1286 * 16 > 0) {
+			this.field1286 = this.field1286 * 16 - var1 * 4;
 		}
 
-		if (this.field1303 * 16 > 0) {
-			this.field1303 = this.field1303 * 16 - var1 * 4;
+		if (this.field1287 * 16 > 0) {
+			this.field1287 = this.field1287 * 16 - var1 * 4;
 		}
 
-		if (this.field1302 * 16 == 0 && this.field1303 * 16 == 0) {
+		if (this.field1286 * 16 == 0 && this.field1287 * 16 == 0) {
 			var7 = (int)(Math.random() * (double)(2000 / var1));
 			if (var7 == 0) {
-				this.field1302 = 1024;
+				this.field1286 = 1024;
 			}
 
 			if (var7 == 1) {
-				this.field1303 = 1024;
+				this.field1287 = 1024;
 			}
 		}
 
 		for (var7 = 0; var7 < 256 - var1; ++var7) {
-			this.field1296[var7] = this.field1296[var7 + var1];
+			this.field1280[var7] = this.field1280[var7 + var1];
 		}
 
 		for (var7 = 256 - var1; var7 < 256; ++var7) {
-			this.field1296[var7] = (int)(Math.sin((double)this.field1293 / 14.0D) * 16.0D + Math.sin((double)this.field1293 / 15.0D) * 14.0D + Math.sin((double)this.field1293 / 16.0D) * 12.0D);
-			++this.field1293;
+			this.field1280[var7] = (int)(Math.sin((double)this.field1281 / 14.0D) * 16.0D + Math.sin((double)this.field1281 / 15.0D) * 14.0D + Math.sin((double)this.field1281 / 16.0D) * 12.0D);
+			++this.field1281;
 		}
 
-		this.field1292 = this.field1292 * 10000 + var1 * 10000;
+		this.field1285 = this.field1285 * 10000 + var1 * 100;
 		var7 = ((Client.cycle & 1) + var1) / 2;
 		if (var7 > 0) {
 			short var16 = 128;
@@ -279,13 +286,13 @@ public class LoginScreenAnimation {
 			int var11;
 			int var12;
 			int var13;
-			for (var11 = 0; var11 < this.field1292 * 100; ++var11) {
+			for (var11 = 0; var11 < this.field1285 * 10000; ++var11) {
 				var12 = (int)(Math.random() * (double)var10) + var17;
 				var13 = (int)(Math.random() * (double)var16) + var16;
-				this.field1304[var12 + (var13 << 7)] = 192;
+				this.field1278[var12 + (var13 << 7)] = 192;
 			}
 
-			this.field1292 = 0;
+			this.field1285 = 0;
 
 			int var14;
 			for (var11 = 0; var11 < 256; ++var11) {
@@ -294,15 +301,15 @@ public class LoginScreenAnimation {
 
 				for (var14 = -var7; var14 < 128; ++var14) {
 					if (var14 + var7 < 128) {
-						var12 += this.field1304[var14 + var13 + var7];
+						var12 += this.field1278[var13 + var14 + var7];
 					}
 
 					if (var14 - (var7 + 1) >= 0) {
-						var12 -= this.field1304[var14 + var13 - (var7 + 1)];
+						var12 -= this.field1278[var13 + var14 - (var7 + 1)];
 					}
 
 					if (var14 >= 0) {
-						this.field1305[var14 + var13] = var12 / (var7 * 2 + 1);
+						this.field1283[var14 + var13] = var12 / (var7 * 2 + 1);
 					}
 				}
 			}
@@ -312,16 +319,16 @@ public class LoginScreenAnimation {
 
 				for (var13 = -var7; var13 < 256; ++var13) {
 					var14 = var13 * 128;
-					if (var13 + var7 < 256) {
-						var12 += this.field1305[var7 * 128 + var11 + var14];
+					if (var7 + var13 < 256) {
+						var12 += this.field1283[var11 + var14 + var7 * 128];
 					}
 
 					if (var13 - (var7 + 1) >= 0) {
-						var12 -= this.field1305[var11 + var14 - (var7 + 1) * 128];
+						var12 -= this.field1283[var14 + var11 - (var7 + 1) * 128];
 					}
 
 					if (var13 >= 0) {
-						this.field1304[var11 + var14] = var12 / (var7 * 2 + 1);
+						this.field1278[var11 + var14] = var12 / (var7 * 2 + 1);
 					}
 				}
 			}
@@ -329,66 +336,66 @@ public class LoginScreenAnimation {
 
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)I",
-		garbageValue = "13"
+		descriptor = "(IIII)I",
+		garbageValue = "-1490646676"
 	)
-	final int method2474(int var1, int var2, int var3) {
+	final int method2539(int var1, int var2, int var3) {
 		int var4 = 256 - var3;
 		return (var3 * (var2 & 65280) + var4 * (var1 & 65280) & 16711680) + (var4 * (var1 & 16711935) + var3 * (var2 & 16711935) & -16711936) >> 8;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "5"
+		descriptor = "(II)V",
+		garbageValue = "1146996789"
 	)
-	final void method2475(int var1) {
-		int var2 = this.field1298.length;
-		if (this.field1302 * 16 > 0) {
-			this.method2482(this.field1302 * 16, this.field1300);
-		} else if (this.field1303 * 16 > 0) {
-			this.method2482(this.field1303 * 16, this.field1301);
+	final void method2540(int var1) {
+		int var2 = this.field1282.length;
+		if (this.field1286 * 16 > 0) {
+			this.method2541(this.field1286 * 16, this.field1291);
+		} else if (this.field1287 * 16 > 0) {
+			this.method2541(this.field1287 * 16, this.field1288);
 		} else {
 			for (int var3 = 0; var3 < var2; ++var3) {
-				this.field1298[var3] = this.field1299[var3];
+				this.field1282[var3] = this.field1289[var3];
 			}
 		}
 
-		this.method2477(var1);
+		this.method2542(var1);
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I[IB)V",
-		garbageValue = "-53"
+		descriptor = "(I[II)V",
+		garbageValue = "1700924358"
 	)
-	final void method2482(int var1, int[] var2) {
-		int var3 = this.field1298.length;
+	final void method2541(int var1, int[] var2) {
+		int var3 = this.field1282.length;
 
 		for (int var4 = 0; var4 < var3; ++var4) {
 			if (var1 > 768) {
-				this.field1298[var4] = this.method2474(this.field1299[var4], var2[var4], 1024 - var1);
+				this.field1282[var4] = this.method2539(this.field1289[var4], var2[var4], 1024 - var1);
 			} else if (var1 > 256) {
-				this.field1298[var4] = var2[var4];
+				this.field1282[var4] = var2[var4];
 			} else {
-				this.field1298[var4] = this.method2474(var2[var4], this.field1299[var4], 256 - var1);
+				this.field1282[var4] = this.method2539(var2[var4], this.field1289[var4], 256 - var1);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "27"
+		descriptor = "(II)V",
+		garbageValue = "-1393612384"
 	)
-	final void method2477(int var1) {
+	final void method2542(int var1) {
 		int var2 = 0;
 
 		for (int var3 = 1; var3 < 255; ++var3) {
-			int var4 = (256 - var3) * this.field1296[var3] / 256;
+			int var4 = (256 - var3) * this.field1280[var3] / 256;
 			int var5 = var4 + var1;
 			int var6 = 0;
 			int var7 = 128;
@@ -397,22 +404,22 @@ public class LoginScreenAnimation {
 				var5 = 0;
 			}
 
-			if (var5 + 128 >= WorldMapSprite.rasterProvider.width) {
-				var7 = WorldMapSprite.rasterProvider.width - var5;
+			if (var5 + 128 >= class434.rasterProvider.width) {
+				var7 = class434.rasterProvider.width - var5;
 			}
 
-			int var8 = var5 + (var3 + 8) * WorldMapSprite.rasterProvider.width;
+			int var8 = var5 + (var3 + 8) * class434.rasterProvider.width;
 			var2 += var6;
 
 			for (int var9 = var6; var9 < var7; ++var9) {
-				int var10 = this.field1304[var2++];
+				int var10 = this.field1278[var2++];
 				int var11 = var8 % Rasterizer2D.Rasterizer2D_width;
 				if (var10 != 0 && var11 >= Rasterizer2D.Rasterizer2D_xClipStart && var11 < Rasterizer2D.Rasterizer2D_xClipEnd) {
 					int var12 = var10;
 					int var13 = 256 - var10;
-					var10 = this.field1298[var10];
-					int var14 = WorldMapSprite.rasterProvider.pixels[var8];
-					WorldMapSprite.rasterProvider.pixels[var8++] = -16777216 | ((var10 & 16711935) * var12 + (var14 & 16711935) * var13 & -16711936) + (var12 * (var10 & 65280) + var13 * (var14 & 65280) & 16711680) >> 8;
+					var10 = this.field1282[var10];
+					int var14 = class434.rasterProvider.pixels[var8];
+					class434.rasterProvider.pixels[var8++] = -16777216 | (var12 * (var10 & 65280) + var13 * (var14 & 65280) & 16711680) + ((var14 & 16711935) * var13 + (var10 & 16711935) * var12 & -16711936) >> 8;
 				} else {
 					++var8;
 				}
@@ -423,21 +430,21 @@ public class LoginScreenAnimation {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvl;I)V",
-		garbageValue = "384780420"
+		descriptor = "(Lvv;I)V",
+		garbageValue = "641317882"
 	)
-	final void method2484(IndexedSprite var1) {
+	final void method2543(IndexedSprite var1) {
 		int var2;
-		for (var2 = 0; var2 < this.field1291.length; ++var2) {
-			this.field1291[var2] = 0;
+		for (var2 = 0; var2 < this.field1290.length; ++var2) {
+			this.field1290[var2] = 0;
 		}
 
 		int var3;
 		for (var2 = 0; var2 < 5000; ++var2) {
 			var3 = (int)(Math.random() * 128.0D * 256.0D);
-			this.field1291[var3] = (int)(Math.random() * 256.0D);
+			this.field1290[var3] = (int)(Math.random() * 256.0D);
 		}
 
 		int var4;
@@ -446,25 +453,25 @@ public class LoginScreenAnimation {
 			for (var3 = 1; var3 < 255; ++var3) {
 				for (var4 = 1; var4 < 127; ++var4) {
 					var5 = var4 + (var3 << 7);
-					this.field1297[var5] = (this.field1291[var5 - 128] + this.field1291[var5 + 1] + this.field1291[var5 + 128] + this.field1291[var5 - 1]) / 4;
+					this.field1275[var5] = (this.field1290[var5 - 128] + this.field1290[var5 + 1] + this.field1290[var5 + 128] + this.field1290[var5 - 1]) / 4;
 				}
 			}
 
-			int[] var8 = this.field1291;
-			this.field1291 = this.field1297;
-			this.field1297 = var8;
+			int[] var8 = this.field1290;
+			this.field1290 = this.field1275;
+			this.field1275 = var8;
 		}
 
 		if (var1 != null) {
 			var2 = 0;
 
-			for (var3 = 0; var3 < var1.subHeight * -1758859088; ++var3) {
+			for (var3 = 0; var3 < var1.subHeight; ++var3) {
 				for (var4 = 0; var4 < var1.subWidth; ++var4) {
 					if (var1.pixels[var2++] != 0) {
 						var5 = var4 + var1.xOffset + 16;
 						int var6 = var3 + var1.yOffset + 16;
 						int var7 = var5 + (var6 << 7);
-						this.field1291[var7] = 0;
+						this.field1290[var7] = 0;
 					}
 				}
 			}
@@ -472,135 +479,105 @@ public class LoginScreenAnimation {
 
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lej;",
-		garbageValue = "-7"
+		descriptor = "(Lok;Lok;ZII)V",
+		garbageValue = "1328682198"
 	)
-	static AttackOption[] method2502() {
-		return new AttackOption[]{AttackOption.field1390, AttackOption.AttackOption_hidden, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1385};
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "([BI)Ldm;",
-		garbageValue = "493582871"
-	)
-	@Export("newScript")
-	static Script newScript(byte[] var0) {
-		Script var1 = new Script();
-		Buffer var2 = new Buffer(var0);
-		var2.offset = var2.array.length - 2;
-		int var3 = var2.readUnsignedShort();
-		int var4 = var2.array.length - 2 - var3 - 12;
-		var2.offset = var4;
-		int var5 = var2.readInt();
-		var1.localIntCount = var2.readUnsignedShort();
-		var1.localStringCount = var2.readUnsignedShort();
-		var1.intArgumentCount = var2.readUnsignedShort();
-		var1.stringArgumentCount = var2.readUnsignedShort();
-		int var6 = var2.readUnsignedByte();
-		int var7;
-		int var8;
-		if (var6 > 0) {
-			var1.switches = var1.newIterableNodeHashTable(var6);
-
-			for (var7 = 0; var7 < var6; ++var7) {
-				var8 = var2.readUnsignedShort();
-				IterableNodeHashTable var9 = new IterableNodeHashTable(var8 > 0 ? Skeleton.method4848(var8) : 1);
-				var1.switches[var7] = var9;
-
-				while (var8-- > 0) {
-					int var10 = var2.readInt();
-					int var11 = var2.readInt();
-					var9.put(new IntegerNode(var11), (long)var10);
-				}
+	static void method2563(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
+		if (Login.clearLoginScreen) {
+			if (var3 == 4) {
+				class163.updateLoginIndex(4);
 			}
-		}
 
-		var2.offset = 0;
-		var1.field1019 = var2.readStringCp1252NullTerminatedOrNull();
-		var1.opcodes = new int[var5];
-		var1.intOperands = new int[var5];
-		var1.stringOperands = new String[var5];
-
-		for (var7 = 0; var2.offset < var4; var1.opcodes[var7++] = var8) {
-			var8 = var2.readUnsignedShort();
-			if (var8 == 3) {
-				var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
-			} else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
-				var1.intOperands[var7] = var2.readInt();
-			} else {
-				var1.intOperands[var7] = var2.readUnsignedByte();
-			}
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "55"
-	)
-	public static void method2471() {
-		Iterator var0 = class329.musicSongs.iterator();
-
-		while (var0.hasNext()) {
-			MusicSong var1 = (MusicSong)var0.next();
-			if (var1 != null) {
-				var1.midiPcmStream.clear();
-				var1.midiPcmStream.method6256();
-				var1.midiPcmStream.setPcmStreamVolume(0);
-				var1.midiPcmStream.field3620 = 0;
-				class234.method4497(var1.musicTrackGroupId, var1.musicTrackFileId);
-			}
-		}
-
-		class329.musicSongs.clear();
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "1614622839"
-	)
-	static final String method2500(int var0) {
-		if (var0 < 100000) {
-			return "<col=ffff00>" + var0 + "</col>";
 		} else {
-			return var0 < 10000000 ? "<col=ffffff>" + var0 / 1000 + "K" + "</col>" : "<col=00ff80>" + var0 / 1000000 + "M" + "</col>";
+			if (var3 == 0) {
+				UserComparator8.method2998(var2);
+			} else {
+				class163.updateLoginIndex(var3);
+			}
+
+			Rasterizer2D.Rasterizer2D_clear();
+			byte[] var4 = var0.takeFileByNames("title.jpg", "");
+			Login.leftTitleSprite = class199.readSpritePixelsFromBytes(var4);
+			class189.rightTitleSprite = Login.leftTitleSprite.mirrorHorizontally();
+			int var5 = Client.worldProperties;
+			if ((var5 & class542.field5320.rsOrdinal()) != 0) {
+				ArchiveDiskActionHandler.logoSprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "logo_deadman_mode", "");
+			} else if ((var5 & class542.field5347.rsOrdinal()) != 0) {
+				ArchiveDiskActionHandler.logoSprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "logo_seasonal_mode", "");
+			} else if ((var5 & class542.field5325.rsOrdinal()) != 0) {
+				ArchiveDiskActionHandler.logoSprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "logo_speedrunning", "");
+			} else {
+				ArchiveDiskActionHandler.logoSprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "logo", "");
+			}
+
+			class486.titleboxSprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "titlebox", "");
+			Fonts.titlebuttonSprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton", "");
+			UserComparator9.field1506 = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_large", "");
+			Login.field922 = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "play_now_text", "");
+			ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "titlebutton_wide42,1", "");
+			class261.runesSprite = WorldMapArchiveLoader.getFont(var1, "runes", "");
+			class428.title_muteSprite = WorldMapArchiveLoader.getFont(var1, "title_mute", "");
+			class141.options_buttons_0Sprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,0", "");
+			Login.field945 = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,4", "");
+			Login.options_buttons_2Sprite = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,2", "");
+			class341.field3699 = ModeWhere.SpriteBuffer_getIndexedSpriteByName(var1, "options_radio_buttons,6", "");
+			class522.field5244 = class141.options_buttons_0Sprite.subWidth;
+			HttpRequest.field58 = class141.options_buttons_0Sprite.subHeight;
+			class91.loginScreenRunesAnimation = new LoginScreenAnimation(class261.runesSprite);
+			if (var2) {
+				Login.Login_username = "";
+				Login.Login_password = "";
+				Login.field941 = new String[8];
+				Login.field950 = 0;
+			}
+
+			class6.otpMedium = 0;
+			FillMode.otp = "";
+			Login.rememberUsername = true;
+			Login.worldSelectOpen = false;
+			class47.method900();
+			WorldMapIcon_1.method4578();
+			class147.method3269().method7271(false);
+			Login.clearLoginScreen = true;
+			Login.xPadding = (class74.canvasWidth - 765) / 2;
+			Login.loginBoxX = Login.xPadding + 202;
+			Login.loginBoxCenter = Login.loginBoxX + 180;
+			Login.leftTitleSprite.drawAt(Login.xPadding, 0);
+			class189.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+			ArchiveDiskActionHandler.logoSprite.drawAt(Login.xPadding + 382 - ArchiveDiskActionHandler.logoSprite.subWidth / 2, 18);
 		}
 	}
 
-	@ObfuscatedName("np")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1749406631"
+		descriptor = "(I)Ljava/util/ArrayList;",
+		garbageValue = "2017824549"
 	)
-	static void method2501() {
-		for (InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
-			int var1 = var0.group;
-			if (AsyncRestClient.widgetDefinition.loadInterface(var1)) {
-				boolean var2 = true;
-				Widget[] var3 = AsyncRestClient.widgetDefinition.Widget_interfaceComponents[var1];
+	static ArrayList method2564() {
+		ArrayList var0 = new ArrayList();
+		Iterator var1 = class330.musicSongs.iterator();
 
-				int var4;
-				for (var4 = 0; var4 < var3.length; ++var4) {
-					if (var3[var4] != null) {
-						var2 = var3[var4].isIf3;
-						break;
-					}
-				}
+		while (var1.hasNext()) {
+			MusicSong var2 = (MusicSong)var1.next();
+			var0.add(var2);
+		}
 
-				if (!var2) {
-					var4 = (int)var0.key;
-					Widget var5 = AsyncRestClient.widgetDefinition.method6536(var4);
-					if (var5 != null) {
-						class324.invalidateWidget(var5);
-					}
-				}
-			}
+		return var0;
+	}
+
+	@ObfuscatedName("in")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "1563247861"
+	)
+	static void method2551(int var0, int var1) {
+		if (class105.clientPreferences.getMusicVolume() != 0 && var0 != -1) {
+			ArrayList var2 = new ArrayList();
+			var2.add(new MusicSong(JagNetThread.field4545, var0, 0, class105.clientPreferences.getMusicVolume(), false));
+			FontName.method9220(var2, 0, 0, 0, 0, true);
+			Client.playingJingle = true;
 		}
 
 	}

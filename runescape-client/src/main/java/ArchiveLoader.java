@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
+@ObfuscatedName("dm")
 @Implements("ArchiveLoader")
 public class ArchiveLoader {
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Loz;"
 	)
 	@Export("archive")
 	final Archive archive;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 356148869
+		intValue = 942374317
 	)
 	@Export("groupCount")
 	final int groupCount;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1502899557
+		intValue = -338655735
 	)
 	@Export("loadedCount")
 	int loadedCount;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lot;Ljava/lang/String;)V"
+		descriptor = "(Loz;Ljava/lang/String;)V"
 	)
 	ArchiveLoader(Archive var1, String var2) {
 		this.loadedCount = 0;
@@ -35,17 +35,17 @@ public class ArchiveLoader {
 		this.groupCount = var1.getGroupCount();
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(S)Z",
-		garbageValue = "25073"
+		descriptor = "(I)Z",
+		garbageValue = "-1670769241"
 	)
 	@Export("isLoaded")
 	boolean isLoaded() {
 		this.loadedCount = 0;
 
 		for (int var1 = 0; var1 < this.groupCount; ++var1) {
-			if (!this.archive.method7176(var1) || this.archive.method7187(var1)) {
+			if (!this.archive.method7148(var1) || this.archive.method7138(var1)) {
 				++this.loadedCount;
 			}
 		}
@@ -53,107 +53,90 @@ public class ArchiveLoader {
 		return this.loadedCount >= this.groupCount;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(DDIB)[D",
-		garbageValue = "-88"
+		descriptor = "(Lok;Lok;Lok;I)V",
+		garbageValue = "346869431"
 	)
-	public static double[] method2295(double var0, double var2, int var4) {
-		int var5 = var4 * 2 + 1;
-		double[] var6 = new double[var5];
-		int var7 = -var4;
-
-		for (int var8 = 0; var7 <= var4; ++var8) {
-			var6[var8] = WorldMapIcon_0.method5860((double)var7, var0, var2);
-			++var7;
-		}
-
-		return var6;
+	public static void method2357(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
+		AbstractSocket.SequenceDefinition_archive = var0;
+		class177.SequenceDefinition_animationsArchive = var1;
+		WorldMapLabelSize.SequenceDefinition_skeletonsArchive = var2;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(CLpl;B)C",
-		garbageValue = "106"
+		descriptor = "(I)V",
+		garbageValue = "788851463"
 	)
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if (var0 >= 192 && var0 <= 255) {
-			if (var0 >= 192 && var0 <= 198) {
-				return 'A';
+	static void method2359() {
+		if ((Client.worldProperties & class542.field5342.rsOrdinal()) != 0) {
+			Login.Login_response0 = "";
+			Login.Login_response1 = "This is a <col=00ffff>Beta<col=ffffff> world.";
+			Login.Login_response2 = "Your normal account will not be affected.";
+			Login.Login_response3 = "";
+			class163.updateLoginIndex(1);
+			UserComparator4.focusPasswordWhenUsernameFilled();
+		} else if ((Client.worldProperties & class542.field5319.rsOrdinal()) != 0) {
+			if ((Client.worldProperties & class542.field5337.rsOrdinal()) != 0) {
+				Login.Login_response1 = "This is a <col=ffff00>High Risk <col=ff0000>PvP<col=ffffff> world.";
+				Login.Login_response2 = "Players can attack each other almost everywhere";
+				Login.Login_response3 = "and the Protect Item prayer won't work.";
+			} else {
+				Login.Login_response1 = "This is a <col=ff0000>PvP<col=ffffff> world.";
+				Login.Login_response2 = "Players can attack each other";
+				Login.Login_response3 = "almost everywhere.";
 			}
 
-			if (var0 == 199) {
-				return 'C';
-			}
-
-			if (var0 >= 200 && var0 <= 203) {
-				return 'E';
-			}
-
-			if (var0 >= 204 && var0 <= 207) {
-				return 'I';
-			}
-
-			if (var0 == 209 && var1 != Language.Language_ES) {
-				return 'N';
-			}
-
-			if (var0 >= 210 && var0 <= 214) {
-				return 'O';
-			}
-
-			if (var0 >= 217 && var0 <= 220) {
-				return 'U';
-			}
-
-			if (var0 == 221) {
-				return 'Y';
-			}
-
-			if (var0 == 223) {
-				return 's';
-			}
-
-			if (var0 >= 224 && var0 <= 230) {
-				return 'a';
-			}
-
-			if (var0 == 231) {
-				return 'c';
-			}
-
-			if (var0 >= 232 && var0 <= 235) {
-				return 'e';
-			}
-
-			if (var0 >= 236 && var0 <= 239) {
-				return 'i';
-			}
-
-			if (var0 == 241 && var1 != Language.Language_ES) {
-				return 'n';
-			}
-
-			if (var0 >= 242 && var0 <= 246) {
-				return 'o';
-			}
-
-			if (var0 >= 249 && var0 <= 252) {
-				return 'u';
-			}
-
-			if (var0 == 253 || var0 == 255) {
-				return 'y';
-			}
-		}
-
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
+			Login.Login_response0 = "Warning!";
+			class163.updateLoginIndex(1);
+			UserComparator4.focusPasswordWhenUsernameFilled();
+		} else if ((Client.worldProperties & class542.field5337.rsOrdinal()) != 0) {
+			Login.Login_response1 = "This is a <col=ffff00>High Risk<col=ffffff> world.";
+			Login.Login_response2 = "The Protect Item prayer will";
+			Login.Login_response3 = "not work on this world.";
+			Login.Login_response0 = "Warning!";
+			class163.updateLoginIndex(1);
+			UserComparator4.focusPasswordWhenUsernameFilled();
 		} else {
-			return var0 == 376 ? 'Y' : var0;
+			class155.Login_promptCredentials(false);
 		}
+
+	}
+
+	@ObfuscatedName("mg")
+	@ObfuscatedSignature(
+		descriptor = "([Lnx;IIIZI)V",
+		garbageValue = "-1695472477"
+	)
+	@Export("resizeInterface")
+	static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
+		for (int var5 = 0; var5 < var0.length; ++var5) {
+			Widget var6 = var0[var5];
+			if (var6 != null && var6.parentId == var1) {
+				AbstractWorldMapData.alignWidgetSize(var6, var2, var3, var4);
+				SecureRandomCallable.alignWidgetPosition(var6, var2, var3);
+				if (var6.scrollX > var6.scrollWidth - var6.width) {
+					var6.scrollX = var6.scrollWidth - var6.width;
+				}
+
+				if (var6.scrollX < 0) {
+					var6.scrollX = 0;
+				}
+
+				if (var6.scrollY > var6.scrollHeight - var6.height) {
+					var6.scrollY = var6.scrollHeight - var6.height;
+				}
+
+				if (var6.scrollY < 0) {
+					var6.scrollY = 0;
+				}
+
+				if (var6.type == 0) {
+					class238.revalidateWidgetScroll(var0, var6, var4);
+				}
+			}
+		}
+
 	}
 }

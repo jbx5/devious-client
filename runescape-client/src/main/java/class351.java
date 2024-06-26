@@ -1,125 +1,48 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("nv")
+@ObfuscatedName("nh")
 public class class351 {
-	@ObfuscatedName("aj")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -1228172183
+		intValue = 879717905
 	)
-	@Export("SpriteBuffer_spriteHeight")
-	static int SpriteBuffer_spriteHeight;
+	static int field3753;
 
-	@ObfuscatedName("mi")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(IIIILjava/lang/String;I)V",
-		garbageValue = "-333189835"
+		descriptor = "(ILdg;ZI)I",
+		garbageValue = "-1875344852"
 	)
-	@Export("widgetDefaultMenuAction")
-	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = AsyncRestClient.widgetDefinition.getWidgetChild(var1, var2);
-		if (var5 != null) {
-			if (var5.onOp != null) {
-				ScriptEvent var6 = new ScriptEvent();
-				var6.widget = var5;
-				var6.opIndex = var0;
-				var6.targetName = var4;
-				var6.args = var5.onOp;
-				class371.runScriptEvent(var6);
-			}
-
-			boolean var8 = true;
-			if (var5.contentType > 0) {
-				var8 = GrandExchangeOfferUnitPriceComparator.method7439(var5);
-			}
-
-			if (var8) {
-				if (class141.method3171(class160.getWidgetFlags(var5), var0 - 1)) {
-					PacketBufferNode var7;
-					if (var0 == 1) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 2) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 3) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 4) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 5) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 6) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 7) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 8) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 9) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
-					if (var0 == 10) {
-						var7 = WorldMapElement.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
-						var7.packetBuffer.writeInt(var1);
-						var7.packetBuffer.writeShort(var2);
-						var7.packetBuffer.writeShort(var3);
-						Client.packetWriter.addNode(var7);
-					}
-
+	static int method6525(int var0, Script var1, boolean var2) {
+		Widget var3 = ModeWhere.widgetDefinition.method6519(Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = BoundaryObject.Widget_unpackTargetMask(ClanChannel.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.IF_GETOP) {
+			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var3.dataText;
 				}
+
+				return 1;
+			} else {
+				return 2;
 			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
 		}
 	}
 }

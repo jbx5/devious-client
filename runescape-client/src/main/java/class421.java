@@ -1,51 +1,32 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qe")
+@ObfuscatedName("qy")
 public class class421 {
-	@ObfuscatedName("ak")
-	float field4683;
-	@ObfuscatedName("al")
-	float field4680;
-	@ObfuscatedName("aj")
-	float field4681;
-
-	static {
-		new class421(0.0F, 0.0F, 0.0F);
-		new class421(1.0F, 1.0F, 1.0F);
-		new class421(1.0F, 0.0F, 0.0F);
-		new class421(0.0F, 1.0F, 0.0F);
-		new class421(0.0F, 0.0F, 1.0F);
-	}
-
-	public class421(float var1, float var2, float var3) {
-		this.field4683 = var1;
-		this.field4680 = var2;
-		this.field4681 = var3;
-	}
-
-	class421() {
-	}
-
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lqe;I)Z",
-		garbageValue = "-1603438622"
+		descriptor = "Lok;"
 	)
-	boolean method7798(class421 var1) {
-		return var1.field4683 == this.field4683 && var1.field4680 == this.field4680 && this.field4681 == var1.field4681;
-	}
+	@Export("ParamDefinition_archive")
+	static AbstractArchive ParamDefinition_archive;
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)F",
-		garbageValue = "1133551478"
+		descriptor = "(Ljava/lang/String;ZZI)V",
+		garbageValue = "-1666888379"
 	)
-	final float method7799() {
-		return (float)Math.sqrt((double)(this.field4681 * this.field4681 + this.field4683 * this.field4683 + this.field4680 * this.field4680));
+	@Export("openURL")
+	public static void openURL(String var0, boolean var1, boolean var2) {
+		class323.method6111(var0, var1, "openjs", var2);
 	}
 
-	public String toString() {
-		return this.field4683 + ", " + this.field4680 + ", " + this.field4681;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lfi;",
+		garbageValue = "603068554"
+	)
+	static class136[] method7720() {
+		return new class136[]{class136.field1609, class136.field1601, class136.field1599, class136.field1602, class136.field1600, class136.field1611};
 	}
 }

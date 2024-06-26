@@ -1,18 +1,10 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.applet.Applet;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("qq")
-public final class class427 {
-	@ObfuscatedName("ak")
-	final Object field4713;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -1917926225
-	)
-	int field4714;
-
-	class427(Object var1, int var2) {
-		this.field4713 = var1;
-		this.field4714 = var2;
-	}
+@ObfuscatedName("qm")
+public class class427 extends RuntimeException {
+	@ObfuscatedName("aq")
+	@Export("RunException_applet")
+	public static Applet RunException_applet;
 }

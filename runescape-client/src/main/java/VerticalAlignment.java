@@ -4,35 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ie")
+@ObfuscatedName("hx")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements Enum {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lie;"
+		descriptor = "Lhx;"
 	)
-	field2171(2, 0),
-	@ObfuscatedName("al")
+	field2044(0, 0),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lie;"
+		descriptor = "Lhx;"
 	)
 	@Export("VerticalAlignment_centered")
-	VerticalAlignment_centered(0, 1),
-	@ObfuscatedName("aj")
+	VerticalAlignment_centered(2, 1),
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lie;"
+		descriptor = "Lhx;"
 	)
-	field2169(1, 2);
+	field2043(1, 2);
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -574374745
+		intValue = 1881852725
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1906955675
+		intValue = 1807067017
 	)
 	@Export("id")
 	final int id;
@@ -42,23 +42,25 @@ public enum VerticalAlignment implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1466610076"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+		garbageValue = "-1478826917"
 	)
-	static void method4030() {
-		ParamComposition.updateLoginIndex(24);
-		WorldMapSection2.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
+	@Export("setLoginResponseString")
+	static void setLoginResponseString(String var0, String var1, String var2) {
+		Login.Login_response1 = var0;
+		Login.Login_response2 = var1;
+		Login.Login_response3 = var2;
 	}
 }

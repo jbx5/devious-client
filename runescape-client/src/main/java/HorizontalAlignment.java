@@ -4,35 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hc")
+@ObfuscatedName("hp")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements Enum {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lhc;"
+		descriptor = "Lhp;"
 	)
-	field2105(2, 0),
-	@ObfuscatedName("al")
+	field1976(2, 0),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lhc;"
+		descriptor = "Lhp;"
 	)
 	@Export("HorizontalAlignment_centered")
 	HorizontalAlignment_centered(0, 1),
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lhc;"
+		descriptor = "Lhp;"
 	)
-	field2107(1, 2);
+	field1970(1, 2);
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lgj;"
+	)
+	static ClanChannel field1973;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -2096204705
+		intValue = 1640852387
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 91144155
+		intValue = -1968910549
 	)
 	@Export("id")
 	final int id;
@@ -42,25 +47,28 @@ public enum HorizontalAlignment implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("nm")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)V",
-		garbageValue = "-1950432637"
+		descriptor = "(IZII)V",
+		garbageValue = "-1336022419"
 	)
-	@Export("updateRootInterface")
-	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		if (AsyncRestClient.widgetDefinition.loadInterface(var0)) {
-			class305.updateInterface(AsyncRestClient.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
+	public static final void method3698(int var0, boolean var1, int var2) {
+		if (var0 >= 8000 && var0 <= 48000) {
+			PcmPlayer.field263 = var0;
+			SecureRandomFuture.PcmPlayer_stereo = var1;
+			class379.field4434 = var2;
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 }

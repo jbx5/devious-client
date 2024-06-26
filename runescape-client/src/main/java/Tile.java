@@ -4,145 +4,140 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jz")
+@ObfuscatedName("ki")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("ph")
-	@ObfuscatedGetter(
-		intValue = -896049715
-	)
-	@Export("widgetDragDuration")
-	static int widgetDragDuration;
-	@ObfuscatedName("qj")
+	@ObfuscatedName("ft")
 	@ObfuscatedSignature(
-		descriptor = "Luj;"
+		descriptor = "Loz;"
 	)
-	static class528 field2639;
-	@ObfuscatedName("un")
-	@ObfuscatedGetter(
-		intValue = -1619357703
+	static Archive field2872;
+	@ObfuscatedName("tj")
+	@ObfuscatedSignature(
+		descriptor = "Lgj;"
 	)
-	static int field2641;
-	@ObfuscatedName("ak")
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1506494255
+		intValue = 608241537
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -118489229
+		intValue = -720986189
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1838880061
+		intValue = -2079615869
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 100104241
+		intValue = -608515825
 	)
 	@Export("originalPlane")
 	int originalPlane;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lkg;"
+		descriptor = "Llt;"
 	)
 	@Export("paint")
 	SceneTilePaint paint;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lke;"
+		descriptor = "Llw;"
 	)
 	@Export("model")
 	SceneTileModel model;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lla;"
 	)
 	@Export("boundaryObject")
 	BoundaryObject boundaryObject;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "Lkj;"
+		descriptor = "Llu;"
 	)
 	@Export("wallDecoration")
 	WallDecoration wallDecoration;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Ljm;"
+		descriptor = "Lkk;"
 	)
 	@Export("floorDecoration")
 	FloorDecoration floorDecoration;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Ljh;"
+		descriptor = "Lkb;"
 	)
 	@Export("itemLayer")
 	ItemLayer itemLayer;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 8092243
+		intValue = -1837845291
 	)
 	@Export("gameObjectsCount")
 	int gameObjectsCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Lkf;"
+		descriptor = "[Llp;"
 	)
 	@Export("gameObjects")
 	GameObject[] gameObjects;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ah")
 	@Export("gameObjectEdgeMasks")
 	int[] gameObjectEdgeMasks;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 1261156353
+		intValue = 1687914105
 	)
 	@Export("gameObjectsEdgeMask")
 	int gameObjectsEdgeMask;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 225429201
+		intValue = 336523667
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ac")
 	@Export("drawPrimary")
 	boolean drawPrimary;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@Export("drawSecondary")
 	boolean drawSecondary;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ay")
 	@Export("drawGameObjects")
 	boolean drawGameObjects;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1960205435
+		intValue = 690710773
 	)
 	@Export("drawGameObjectEdges")
 	int drawGameObjectEdges;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -1732174243
+	)
+	int field2873;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 1384418897
+	)
+	int field2849;
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 176877587
+		intValue = -1923980729
 	)
-	int field2660;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = 1016934781
-	)
-	int field2657;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = 2034123681
-	)
-	int field2658;
-	@ObfuscatedName("an")
+	int field2870;
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Ljz;"
+		descriptor = "Lki;"
 	)
 	@Export("linkedBelowTile")
 	Tile linkedBelowTile;
@@ -154,5 +149,76 @@ public final class Tile extends Node {
 		this.originalPlane = this.plane = var1;
 		this.x = var2;
 		this.y = var3;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(CI)B",
+		garbageValue = "-1848754324"
+	)
+	@Export("charToByteCp1252")
+	public static byte charToByteCp1252(char var0) {
+		byte var1;
+		if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
+			var1 = (byte)var0;
+		} else if (var0 == 8364) {
+			var1 = -128;
+		} else if (var0 == 8218) {
+			var1 = -126;
+		} else if (var0 == 402) {
+			var1 = -125;
+		} else if (var0 == 8222) {
+			var1 = -124;
+		} else if (var0 == 8230) {
+			var1 = -123;
+		} else if (var0 == 8224) {
+			var1 = -122;
+		} else if (var0 == 8225) {
+			var1 = -121;
+		} else if (var0 == 710) {
+			var1 = -120;
+		} else if (var0 == 8240) {
+			var1 = -119;
+		} else if (var0 == 352) {
+			var1 = -118;
+		} else if (var0 == 8249) {
+			var1 = -117;
+		} else if (var0 == 338) {
+			var1 = -116;
+		} else if (var0 == 381) {
+			var1 = -114;
+		} else if (var0 == 8216) {
+			var1 = -111;
+		} else if (var0 == 8217) {
+			var1 = -110;
+		} else if (var0 == 8220) {
+			var1 = -109;
+		} else if (var0 == 8221) {
+			var1 = -108;
+		} else if (var0 == 8226) {
+			var1 = -107;
+		} else if (var0 == 8211) {
+			var1 = -106;
+		} else if (var0 == 8212) {
+			var1 = -105;
+		} else if (var0 == 732) {
+			var1 = -104;
+		} else if (var0 == 8482) {
+			var1 = -103;
+		} else if (var0 == 353) {
+			var1 = -102;
+		} else if (var0 == 8250) {
+			var1 = -101;
+		} else if (var0 == 339) {
+			var1 = -100;
+		} else if (var0 == 382) {
+			var1 = -98;
+		} else if (var0 == 376) {
+			var1 = -97;
+		} else {
+			var1 = 63;
+		}
+
+		return var1;
 	}
 }

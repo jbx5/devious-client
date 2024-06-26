@@ -6,424 +6,231 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pe")
+@ObfuscatedName("pl")
 @Implements("ModeWhere")
 public enum ModeWhere implements Enum {
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4608("", 0, new class398[]{class398.field4589, class398.field4590}),
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4625("", 1, new class398[]{class398.field4586, class398.field4589, class398.field4590}),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4609("", 2, new class398[]{class398.field4586, class398.field4587, class398.field4589}),
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4611("", 3, new class398[]{class398.field4586}),
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4612("", 4),
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4613("", 5, new class398[]{class398.field4586, class398.field4589}),
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4614("", 6, new class398[]{class398.field4589}),
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4615("", 8, new class398[]{class398.field4586, class398.field4589}),
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4616("", 9, new class398[]{class398.field4586, class398.field4587}),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4617("", 10, new class398[]{class398.field4586}),
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4618("", 11, new class398[]{class398.field4586}),
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Lpe;"
-	)
-	field4619("", 12, new class398[]{class398.field4586, class398.field4589}),
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lpe;"
+		descriptor = "Lpl;"
 	)
-	field4620("", 13, new class398[]{class398.field4586});
-
-	@ObfuscatedName("jn")
+	field4633("", 0, new class399[]{class399.field4614, class399.field4616}),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+		descriptor = "Lpl;"
 	)
-	@Export("worldView")
-	static WorldView worldView;
+	field4636("", 1, new class399[]{class399.field4615, class399.field4614, class399.field4616}),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4634("", 2, new class399[]{class399.field4615, class399.field4613, class399.field4614}),
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4635("", 3, new class399[]{class399.field4615}),
 	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4632("", 4),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4637("", 5, new class399[]{class399.field4615, class399.field4614}),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4648("", 6, new class399[]{class399.field4614}),
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4647("", 8, new class399[]{class399.field4615, class399.field4614}),
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4639("", 9, new class399[]{class399.field4615, class399.field4613}),
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4641("", 10, new class399[]{class399.field4615}),
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4642("", 11, new class399[]{class399.field4615}),
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4643("", 12, new class399[]{class399.field4615, class399.field4614}),
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lpl;"
+	)
+	field4644("", 13, new class399[]{class399.field4615});
+
+	@ObfuscatedName("ew")
+	@ObfuscatedSignature(
+		descriptor = "Lnc;"
+	)
+	@Export("widgetDefinition")
+	static WidgetDefinition widgetDefinition;
+	@ObfuscatedName("gc")
 	@ObfuscatedGetter(
-		intValue = -478390221
+		intValue = 1699003429
+	)
+	static int field4640;
+	@ObfuscatedName("jz")
+	@Export("regionMapArchives")
+	static byte[][] regionMapArchives;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -855908523
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("ae")
-	final Set field4622;
+	@ObfuscatedName("ax")
+	final Set field4646;
 
 	static {
-		method7485();
+		method7427();
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I[Lpa;)V"
+		descriptor = "(Ljava/lang/String;I[Lph;)V"
 	)
-	ModeWhere(String var3, int var4, class398[] var5) {
-		this.field4622 = new HashSet();
+	ModeWhere(String var3, int var4, class399[] var5) {
+		this.field4646 = new HashSet();
 		this.id = var4;
-		class398[] var6 = var5;
+		class399[] var6 = var5;
 
 		for (int var7 = 0; var7 < var6.length; ++var7) {
-			class398 var8 = var6[var7];
-			this.field4622.add(var8);
+			class399 var8 = var6[var7];
+			this.field4646.add(var8);
 		}
 
 	}
 
 	ModeWhere(String var3, int var4) {
-		this.field4622 = new HashSet();
+		this.field4646 = new HashSet();
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhb;",
-		garbageValue = "-2051908125"
+		descriptor = "(B)[Lpl;",
+		garbageValue = "92"
 	)
-	static class187 method7490() {
-		return class187.field1962;
+	static ModeWhere[] method7427() {
+		return new ModeWhere[]{field4641, field4648, field4639, field4647, field4642, field4633, field4636, field4635, field4637, field4634, field4644, field4632, field4643};
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfm;FFFFFFFFI)V",
-		garbageValue = "-928078191"
+		descriptor = "(II)I",
+		garbageValue = "-1073372179"
 	)
-	static void method7489(class133 var0, float var1, float var2, float var3, float var4, float var5, float var6, float var7, float var8) {
-		if (var0 != null) {
-			float var9 = var4 - var1;
-			if ((double)var9 != 0.0D) {
-				float var10 = var2 - var1;
-				float var11 = var3 - var1;
-				float[] var12 = new float[]{var10 / var9, var11 / var9};
-				var0.field1583 = 0.33333334F == var12[0] && 0.6666667F == var12[1];
-				float var13 = var12[0];
-				float var14 = var12[1];
-				if ((double)var12[0] < 0.0D) {
-					var12[0] = 0.0F;
-				}
-
-				if ((double)var12[1] > 1.0D) {
-					var12[1] = 1.0F;
-				}
-
-				float var15;
-				float var16;
-				float var17;
-				float var18;
-				float var19;
-				if ((double)var12[0] > 1.0D || var12[1] < -1.0F) {
-					var12[1] = 1.0F - var12[1];
-					if (var12[0] < 0.0F) {
-						var12[0] = 0.0F;
-					}
-
-					if (var12[1] < 0.0F) {
-						var12[1] = 0.0F;
-					}
-
-					if (var12[0] > 1.0F || var12[1] > 1.0F) {
-						var15 = (float)(1.0D + (double)var12[1] * ((double)var12[1] - 2.0D) + (double)(var12[0] * (var12[0] - 2.0F + var12[1])));
-						if (var15 + class129.field1541 > 0.0F) {
-							if (var12[0] + class129.field1541 < 1.3333334F) {
-								var16 = var12[0] - 2.0F;
-								var17 = var12[0] - 1.0F;
-								var18 = (float)Math.sqrt((double)(var16 * var16 - var17 * 4.0F * var17));
-								var19 = (var18 + -var16) * 0.5F;
-								if (var12[1] + class129.field1541 > var19) {
-									var12[1] = var19 - class129.field1541;
-								} else {
-									var19 = 0.5F * (-var16 - var18);
-									if (var12[1] < var19 + class129.field1541) {
-										var12[1] = var19 + class129.field1541;
-									}
-								}
-							} else {
-								var12[0] = 1.3333334F - class129.field1541;
-								var12[1] = 0.33333334F - class129.field1541;
-							}
-						}
-					}
-
-					var12[1] = 1.0F - var12[1];
-				}
-
-				if (var12[0] != var13) {
-					var2 = var12[0] * var9 + var1;
-					if ((double)var13 != 0.0D) {
-						var6 = var5 + (var6 - var5) * var12[0] / var13;
-					}
-				}
-
-				if (var14 != var12[1]) {
-					var3 = var12[1] * var9 + var1;
-					if ((double)var14 != 1.0D) {
-						var7 = (float)((double)var8 - (1.0D - (double)var12[1]) * (double)(var8 - var7) / (1.0D - (double)var14));
-					}
-				}
-
-				var0.field1584 = var1;
-				var0.field1585 = var4;
-				var15 = var12[0];
-				var16 = var12[1];
-				var17 = var15 - 0.0F;
-				var18 = var16 - var15;
-				var19 = 1.0F - var16;
-				float var20 = var18 - var17;
-				var0.field1589 = var19 - var18 - var20;
-				var0.field1601 = var20 + var20 + var20;
-				var0.field1587 = var17 + var17 + var17;
-				var0.field1596 = 0.0F;
-				var17 = var6 - var5;
-				var18 = var7 - var6;
-				var19 = var8 - var7;
-				var20 = var18 - var17;
-				var0.field1578 = var19 - var18 - var20;
-				var0.field1592 = var20 + var20 + var20;
-				var0.field1591 = var17 + var17 + var17;
-				var0.field1590 = var5;
-			}
-		}
+	public static int method7432(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lpe;",
-		garbageValue = "52"
+		descriptor = "(Lok;Ljava/lang/String;Ljava/lang/String;I)Lvv;",
+		garbageValue = "1042951824"
 	)
-	static ModeWhere[] method7485() {
-		return new ModeWhere[]{field4620, field4609, field4611, field4614, field4625, field4612, field4615, field4613, field4608, field4618, field4617, field4619, field4616};
-	}
-
-	@ObfuscatedName("jr")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "16363"
-	)
-	static final void method7491() {
-		int var0;
-		int var1;
-		int var2;
-		int var3;
-		int var4;
-		int var5;
-		if (Client.oculusOrbState == 0) {
-			var0 = Interpreter.field899.vmethod8779();
-			var1 = Interpreter.field899.vmethod8773();
-			var2 = Interpreter.field899.vmethod8774();
-			if (class33.oculusOrbFocalPointX - var0 < -500 || class33.oculusOrbFocalPointX - var0 > 500 || class76.oculusOrbFocalPointY - var1 < -500 || class76.oculusOrbFocalPointY - var1 > 500) {
-				class33.oculusOrbFocalPointX = var0;
-				class76.oculusOrbFocalPointY = var1;
-			}
-
-			if (var0 != class33.oculusOrbFocalPointX) {
-				class33.oculusOrbFocalPointX += (var0 - class33.oculusOrbFocalPointX) / 16;
-			}
-
-			if (var1 != class76.oculusOrbFocalPointY) {
-				class76.oculusOrbFocalPointY += (var1 - class76.oculusOrbFocalPointY) / 16;
-			}
-
-			var3 = class33.oculusOrbFocalPointX >> 7;
-			var4 = class76.oculusOrbFocalPointY >> 7;
-			var5 = SoundSystem.getTileHeight(class358.topLevelWorldView, class33.oculusOrbFocalPointX, class76.oculusOrbFocalPointY, var2);
-			int var6 = 0;
-			int var7;
-			if (var3 > 3 && var4 > 3 && var3 < 100 && var4 < 100) {
-				for (var7 = var3 - 4; var7 <= var3 + 4; ++var7) {
-					for (int var8 = var4 - 4; var8 <= var4 + 4; ++var8) {
-						int var9 = var2;
-						if (var2 < 3 && (class358.topLevelWorldView.tileSettings[1][var7][var8] & 2) == 2) {
-							var9 = var2 + 1;
-						}
-
-						int var10 = var5 - class358.topLevelWorldView.tileHeights[var9][var7][var8];
-						if (var10 > var6) {
-							var6 = var10;
-						}
-					}
-				}
-			}
-
-			var7 = var6 * 192;
-			if (var7 > 98048) {
-				var7 = 98048;
-			}
-
-			if (var7 < 32768) {
-				var7 = 32768;
-			}
-
-			if (var7 > Client.field610) {
-				Client.field610 += (var7 - Client.field610) / 24;
-			} else if (var7 < Client.field610) {
-				Client.field610 += (var7 - Client.field610) / 80;
-			}
-
-			TextureProvider.oculusOrbFocalPointZ = SoundSystem.getTileHeight(class358.topLevelWorldView, var0, var1, var2) - Client.camFollowHeight;
-		} else if (Client.oculusOrbState == 1) {
-			class11.method100();
-			short var11 = -1;
-			if (Client.indexCheck.isValidIndexInRange(33)) {
-				var11 = 0;
-			} else if (Client.indexCheck.isValidIndexInRange(49)) {
-				var11 = 1024;
-			}
-
-			if (Client.indexCheck.isValidIndexInRange(48)) {
-				if (var11 == 0) {
-					var11 = 1792;
-				} else if (var11 == 1024) {
-					var11 = 1280;
-				} else {
-					var11 = 1536;
-				}
-			} else if (Client.indexCheck.isValidIndexInRange(50)) {
-				if (var11 == 0) {
-					var11 = 256;
-				} else if (var11 == 1024) {
-					var11 = 768;
-				} else {
-					var11 = 512;
-				}
-			}
-
-			byte var12 = 0;
-			if (Client.indexCheck.isValidIndexInRange(35)) {
-				var12 = -1;
-			} else if (Client.indexCheck.isValidIndexInRange(51)) {
-				var12 = 1;
-			}
-
-			var2 = 0;
-			if (var11 >= 0 || var12 != 0) {
-				var2 = Client.indexCheck.isValidIndexInRange(81) ? Client.oculusOrbSlowedSpeed : Client.oculusOrbNormalSpeed;
-				var2 *= 16;
-				Client.field622 = var11;
-				Client.field623 = var12;
-			}
-
-			if (Client.field621 < var2) {
-				Client.field621 += var2 / 8;
-				if (Client.field621 > var2) {
-					Client.field621 = var2;
-				}
-			} else if (Client.field621 > var2) {
-				Client.field621 = Client.field621 * 9 / 10;
-			}
-
-			if (Client.field621 > 0) {
-				var3 = Client.field621 / 16;
-				if (Client.field622 >= 0) {
-					var0 = Client.field622 - class206.cameraYaw & 2047;
-					var4 = Rasterizer3D.Rasterizer3D_sine[var0];
-					var5 = Rasterizer3D.Rasterizer3D_cosine[var0];
-					class33.oculusOrbFocalPointX += var4 * var3 / 65536;
-					class76.oculusOrbFocalPointY += var3 * var5 / 65536;
-				}
-
-				if (Client.field623 != 0) {
-					TextureProvider.oculusOrbFocalPointZ += var3 * Client.field623;
-					if (TextureProvider.oculusOrbFocalPointZ > 0) {
-						TextureProvider.oculusOrbFocalPointZ = 0;
-					}
-				}
-			} else {
-				Client.field622 = -1;
-				Client.field623 = -1;
-			}
-
-			if (Client.indexCheck.isValidIndexInRange(13)) {
-				ModelData0.method5454();
-			}
-		}
-
-		if (MouseHandler.MouseHandler_currentButton == 4 && class105.mouseCam) {
-			var0 = MouseHandler.MouseHandler_y - Client.mouseCamClickedY;
-			Client.camAngleDX = var0 * 2;
-			Client.mouseCamClickedY = var0 != -1 && var0 != 1 ? (MouseHandler.MouseHandler_y + Client.mouseCamClickedY) / 2 : MouseHandler.MouseHandler_y;
-			var1 = Client.mouseCamClickedX - MouseHandler.MouseHandler_x;
-			Client.camAngleDY = var1 * 2;
-			Client.mouseCamClickedX = var1 != -1 && var1 != 1 ? (MouseHandler.MouseHandler_x + Client.mouseCamClickedX) / 2 : MouseHandler.MouseHandler_x;
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
+			return null;
 		} else {
-			if (Client.indexCheck.isValidIndexInRange(96)) {
-				Client.camAngleDY += (-24 - Client.camAngleDY) / 2;
-			} else if (Client.indexCheck.isValidIndexInRange(97)) {
-				Client.camAngleDY += (24 - Client.camAngleDY) / 2;
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			IndexedSprite var5;
+			if (!FillMode.method3260(var0, var3, var4)) {
+				var5 = null;
 			} else {
-				Client.camAngleDY /= 2;
+				var5 = class159.method3419();
 			}
 
-			if (Client.indexCheck.isValidIndexInRange(98)) {
-				Client.camAngleDX += (12 - Client.camAngleDX) / 2;
-			} else if (Client.indexCheck.isValidIndexInRange(99)) {
-				Client.camAngleDX += (-12 - Client.camAngleDX) / 2;
-			} else {
-				Client.camAngleDX /= 2;
+			return var5;
+		}
+	}
+
+	@ObfuscatedName("mv")
+	@ObfuscatedSignature(
+		descriptor = "(Lnx;IIIIIIB)V",
+		garbageValue = "-16"
+	)
+	static final void method7428(Widget var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (Client.field586) {
+			Client.alternativeScrollbarWidth = 32;
+		} else {
+			Client.alternativeScrollbarWidth = 0;
+		}
+
+		Client.field586 = false;
+		int var7;
+		if (MouseHandler.MouseHandler_currentButton == 1 || !World.mouseCam && MouseHandler.MouseHandler_currentButton == 4) {
+			if (var5 >= var1 && var5 < var1 + 16 && var6 >= var2 && var6 < var2 + 16) {
+				var0.scrollY -= 4;
+				TriBool.invalidateWidget(var0);
+			} else if (var5 >= var1 && var5 < var1 + 16 && var6 >= var3 + var2 - 16 && var6 < var3 + var2) {
+				var0.scrollY += 4;
+				TriBool.invalidateWidget(var0);
+			} else if (var5 >= var1 - Client.alternativeScrollbarWidth && var5 < Client.alternativeScrollbarWidth + var1 + 16 && var6 >= var2 + 16 && var6 < var3 + var2 - 16) {
+				var7 = var3 * (var3 - 32) / var4;
+				if (var7 < 8) {
+					var7 = 8;
+				}
+
+				int var8 = var6 - var2 - 16 - var7 / 2;
+				int var9 = var3 - 32 - var7;
+				var0.scrollY = var8 * (var4 - var3) / var9;
+				TriBool.invalidateWidget(var0);
+				Client.field586 = true;
 			}
-
-			Client.mouseCamClickedY = MouseHandler.MouseHandler_y;
-			Client.mouseCamClickedX = MouseHandler.MouseHandler_x;
 		}
 
-		Client.camAngleY = Client.camAngleDY / 2 + Client.camAngleY & 2047;
-		Client.camAngleX += Client.camAngleDX / 2;
-		if (Client.camAngleX < 128) {
-			Client.camAngleX = 128;
+		if (Client.mouseWheelRotation != 0) {
+			var7 = var0.width;
+			if (var5 >= var1 - var7 && var6 >= var2 && var5 < var1 + 16 && var6 <= var3 + var2) {
+				var0.scrollY += Client.mouseWheelRotation * 45;
+				TriBool.invalidateWidget(var0);
+			}
 		}
 
-		if (Client.camAngleX > 383) {
-			Client.camAngleX = 383;
-		}
+	}
 
+	@ObfuscatedName("om")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1288888161"
+	)
+	static final void method7431() {
+		Client.field707 = Client.cycleCntr;
+		GrandExchangeEvents.field4576 = true;
 	}
 }

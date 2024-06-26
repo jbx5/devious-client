@@ -2,44 +2,45 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jo")
+@ObfuscatedName("ka")
 @Implements("AABB")
 public class AABB {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ji")
+	static int[] field3014;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1998849149
+		intValue = 2047755405
 	)
 	@Export("xMid")
 	int xMid;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -1358064335
+		intValue = 1256249609
 	)
 	@Export("yMid")
 	int yMid;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1315387359
+		intValue = -738662181
 	)
 	@Export("zMid")
 	int zMid;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 34426305
+		intValue = -462676723
 	)
 	@Export("xMidOffset")
 	int xMidOffset;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1261800775
+		intValue = 942113713
 	)
 	@Export("yMidOffset")
 	int yMidOffset;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -92257465
+		intValue = -1574879219
 	)
 	@Export("zMidOffset")
 	int zMidOffset;
@@ -51,26 +52,5 @@ public class AABB {
 		this.xMidOffset = var4;
 		this.yMidOffset = var5;
 		this.zMidOffset = var6;
-	}
-
-	@ObfuscatedName("om")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-79"
-	)
-	static final void method5096(int var0, int var1) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3453()) {
-				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				if (var2.rank == -1) {
-					PacketBufferNode var3 = WorldMapElement.getPacketBufferNode(ClientPacket.field3311, Client.packetWriter.isaacCipher);
-					var3.packetBuffer.writeByte(3 + class432.stringCp1252NullTerminatedByteSize(var2.username.getName()));
-					var3.packetBuffer.writeByte(var0);
-					var3.packetBuffer.writeShort(var1);
-					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName());
-					Client.packetWriter.addNode(var3);
-				}
-			}
-		}
 	}
 }

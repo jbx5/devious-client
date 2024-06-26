@@ -4,217 +4,126 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kr")
+@ObfuscatedName("jx")
 @Implements("WorldMapLabelSize")
 public class WorldMapLabelSize {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("wv")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lkr;"
+		descriptor = "Ljx;"
 	)
 	@Export("WorldMapLabelSize_small")
 	public static final WorldMapLabelSize WorldMapLabelSize_small;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lkr;"
+		descriptor = "Ljx;"
 	)
 	@Export("WorldMapLabelSize_medium")
 	public static final WorldMapLabelSize WorldMapLabelSize_medium;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lkr;"
+		descriptor = "Ljx;"
 	)
 	@Export("WorldMapLabelSize_large")
 	public static final WorldMapLabelSize WorldMapLabelSize_large;
-	@ObfuscatedName("gc")
-	@ObfuscatedGetter(
-		intValue = -298360831
-	)
-	@Export("currentPort")
-	static int currentPort;
-	@ObfuscatedName("nt")
-	@ObfuscatedGetter(
-		intValue = -1507170361
-	)
-	@Export("menuWidth")
-	static int menuWidth;
-	@ObfuscatedName("oz")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lcj;"
+		descriptor = "Lok;"
 	)
-	@Export("tempMenuAction")
-	static MenuAction tempMenuAction;
-	@ObfuscatedName("az")
+	@Export("SequenceDefinition_skeletonsArchive")
+	static AbstractArchive SequenceDefinition_skeletonsArchive;
+	@ObfuscatedName("uw")
 	@ObfuscatedGetter(
-		intValue = 1794501215
+		intValue = 967349357
 	)
-	final int field3044;
-	@ObfuscatedName("af")
+	static int field2541;
+	@ObfuscatedName("ug")
 	@ObfuscatedGetter(
-		intValue = -1291217647
+		intValue = -407252155
 	)
-	final int field3045;
-	@ObfuscatedName("aa")
+	static int field2551;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1813165403
+		intValue = 577264531
 	)
-	final int field3046;
+	final int field2544;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -1296221673
+	)
+	final int field2545;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 159073667
+	)
+	final int field2546;
 
 	static {
 		WorldMapLabelSize_small = new WorldMapLabelSize(1, 0, 4);
-		WorldMapLabelSize_medium = new WorldMapLabelSize(2, 1, 2);
-		WorldMapLabelSize_large = new WorldMapLabelSize(0, 2, 0);
+		WorldMapLabelSize_medium = new WorldMapLabelSize(0, 1, 2);
+		WorldMapLabelSize_large = new WorldMapLabelSize(2, 2, 0);
 	}
 
 	WorldMapLabelSize(int var1, int var2, int var3) {
-		this.field3044 = var1;
-		this.field3045 = var2;
-		this.field3046 = var3;
+		this.field2544 = var1;
+		this.field2545 = var2;
+		this.field2546 = var3;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(FB)Z",
-		garbageValue = "94"
+		descriptor = "(FI)Z",
+		garbageValue = "-848100068"
 	)
-	boolean method5485(float var1) {
-		return var1 >= (float)this.field3046;
+	boolean method4566(float var1) {
+		return var1 >= (float)this.field2546;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lkr;",
-		garbageValue = "57"
+		descriptor = "(I)V",
+		garbageValue = "151913896"
 	)
-	static WorldMapLabelSize[] method5490() {
-		return new WorldMapLabelSize[]{WorldMapLabelSize_small, WorldMapLabelSize_large, WorldMapLabelSize_medium};
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Lpl;I)I",
-		garbageValue = "-2146005653"
-	)
-	@Export("compareStrings")
-	public static int compareStrings(CharSequence var0, CharSequence var1, Language var2) {
-		int var3 = var0.length();
-		int var4 = var1.length();
-		int var5 = 0;
-		int var6 = 0;
-		char var7 = 0;
-		char var8 = 0;
-
-		while (var5 - var7 < var3 || var6 - var8 < var4) {
-			if (var5 - var7 >= var3) {
-				return -1;
-			}
-
-			if (var6 - var8 >= var4) {
-				return 1;
-			}
-
-			char var9;
-			if (var7 != 0) {
-				var9 = var7;
-				boolean var14 = false;
-			} else {
-				var9 = var0.charAt(var5++);
-			}
-
-			char var10;
-			if (var8 != 0) {
-				var10 = var8;
-				boolean var15 = false;
-			} else {
-				var10 = var1.charAt(var6++);
-			}
-
-			var7 = Player.method2406(var9);
-			var8 = Player.method2406(var10);
-			var9 = ArchiveLoader.standardizeChar(var9, var2);
-			var10 = ArchiveLoader.standardizeChar(var10, var2);
-			if (var10 != var9 && Character.toUpperCase(var9) != Character.toUpperCase(var10)) {
-				var9 = Character.toLowerCase(var9);
-				var10 = Character.toLowerCase(var10);
-				if (var10 != var9) {
-					return class329.lowercaseChar(var9, var2) - class329.lowercaseChar(var10, var2);
-				}
-			}
-		}
-
-		int var16 = Math.min(var3, var4);
-
-		char var12;
-		int var17;
-		for (var17 = 0; var17 < var16; ++var17) {
-			if (var2 == Language.Language_FR) {
-				var5 = var3 - 1 - var17;
-				var6 = var4 - 1 - var17;
-			} else {
-				var6 = var17;
-				var5 = var17;
-			}
-
-			char var11 = var0.charAt(var5);
-			var12 = var1.charAt(var6);
-			if (var11 != var12 && Character.toUpperCase(var11) != Character.toUpperCase(var12)) {
-				var11 = Character.toLowerCase(var11);
-				var12 = Character.toLowerCase(var12);
-				if (var12 != var11) {
-					return class329.lowercaseChar(var11, var2) - class329.lowercaseChar(var12, var2);
-				}
-			}
-		}
-
-		var17 = var3 - var4;
-		if (var17 != 0) {
-			return var17;
+	static void method4567() {
+		FillMode.otp.trim();
+		if (FillMode.otp.length() != 6) {
+			VerticalAlignment.setLoginResponseString("", "Please enter a 6-digit PIN.", "");
 		} else {
-			for (int var18 = 0; var18 < var16; ++var18) {
-				var12 = var0.charAt(var18);
-				char var13 = var1.charAt(var18);
-				if (var13 != var12) {
-					return class329.lowercaseChar(var12, var2) - class329.lowercaseChar(var13, var2);
+			class6.otpMedium = Integer.parseInt(FillMode.otp);
+			FillMode.otp = "";
+			class213.setAuthenticationScheme(true);
+			VerticalAlignment.setLoginResponseString("", "Connecting to server...", "");
+			ClanChannelMember.updateGameState(20);
+		}
+	}
+
+	@ObfuscatedName("ic")
+	@ObfuscatedSignature(
+		descriptor = "(Lii;IIIZI)V",
+		garbageValue = "-617654818"
+	)
+	static void method4571(SequenceDefinition var0, int var1, int var2, int var3, boolean var4) {
+		if (Client.soundEffectCount < 50) {
+			if (var0.field2287 != null && var0.field2287.containsKey(var1)) {
+				Sound var5 = (Sound)var0.field2287.get(var1);
+				if (var5 != null) {
+					int var6 = var5.field2148 & 31;
+					if ((var6 <= 0 || class105.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var6 != 0 || class105.clientPreferences.getSoundEffectsVolume() != 0)) {
+						class452.method8354(var5, var2, var3, var4);
+					}
 				}
 			}
-
-			return 0;
 		}
 	}
 
-	@ObfuscatedName("lh")
+	@ObfuscatedName("ir")
 	@ObfuscatedSignature(
-		descriptor = "(Ldt;IIB)V",
-		garbageValue = "-105"
+		descriptor = "(IB)I",
+		garbageValue = "75"
 	)
-	static final void method5493(WorldView var0, int var1, int var2) {
-		class166.updateItemPile2(var0, var0.plane, var1, var2);
-	}
-
-	@ObfuscatedName("op")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)Ldz;",
-		garbageValue = "82"
-	)
-	@Export("openInterface")
-	static final InterfaceParent openInterface(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		TaskHandler.method3581(var1);
-		Widget var4 = AsyncRestClient.widgetDefinition.method6536(var0);
-		class324.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			class324.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		class148.revalidateWidgetScroll(AsyncRestClient.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class7.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			SecureUrlRequester.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
+	static final int method4572(int var0) {
+		return Math.abs(var0 - class337.cameraYaw) > 1024 ? var0 + 2048 * (var0 < class337.cameraYaw ? 1 : -1) : var0;
 	}
 }

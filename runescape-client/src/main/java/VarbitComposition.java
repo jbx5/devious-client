@@ -1,59 +1,58 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("it")
+@ObfuscatedName("hc")
 @Implements("VarbitComposition")
 public class VarbitComposition extends DualNode {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Lok;"
 	)
 	@Export("VarbitDefinition_archive")
-	static AbstractArchive VarbitDefinition_archive;
-	@ObfuscatedName("al")
+	public static AbstractArchive VarbitDefinition_archive;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Llm;"
+		descriptor = "Lmo;"
 	)
 	@Export("VarbitDefinition_cached")
 	static EvictingDualNodeHashTable VarbitDefinition_cached;
-	@ObfuscatedName("aa")
-	static final int[] field2221;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lqb;"
-	)
-	@Export("ItemDefinition_fontPlain11")
-	static Font ItemDefinition_fontPlain11;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("an")
+	static final int[] field2107;
+	@ObfuscatedName("us")
 	@ObfuscatedGetter(
-		intValue = -1882753779
+		intValue = 1654877821
+	)
+	static int field2102;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -403599393
 	)
 	@Export("baseVar")
 	public int baseVar;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1148518977
+		intValue = -957731269
 	)
 	@Export("startBit")
 	public int startBit;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -2059703331
+		intValue = -989672663
 	)
 	@Export("endBit")
 	public int endBit;
 
 	static {
 		VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
-		field2221 = new int[32];
+		field2107 = new int[32];
 		int var0 = 2;
 
 		for (int var1 = 0; var1 < 32; ++var1) {
-			field2221[var1] = var0 - 1;
+			field2107[var1] = var0 - 1;
 			var0 += var0;
 		}
 
@@ -62,10 +61,10 @@ public class VarbitComposition extends DualNode {
 	VarbitComposition() {
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;B)V",
-		garbageValue = "7"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "109"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -79,10 +78,10 @@ public class VarbitComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;IB)V",
-		garbageValue = "1"
+		descriptor = "(Lvp;II)V",
+		garbageValue = "-2018721401"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -94,47 +93,34 @@ public class VarbitComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1954901642"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
+		garbageValue = "1718879795"
 	)
-	public static void method4078() {
-		Arrays.fill(Varps.Varps_temp, 0);
-		Arrays.fill(Varps.Varps_main, 0);
+	@Export("addGameMessage")
+	static void addGameMessage(int var0, String var1, String var2) {
+		ArchiveDiskAction.addChatMessage(var0, var1, var2, (String)null);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ib")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lvc;",
-		garbageValue = "1667279669"
+		descriptor = "(II)V",
+		garbageValue = "1702551401"
 	)
-	static SpritePixels[] method4089() {
-		SpritePixels[] var0 = new SpritePixels[SpriteBufferProperties.SpriteBuffer_spriteCount];
-
-		for (int var1 = 0; var1 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var1) {
-			SpritePixels var2 = var0[var1] = new SpritePixels();
-			var2.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
-			var2.height = class351.SpriteBuffer_spriteHeight;
-			var2.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[var1];
-			var2.yOffset = SpriteBufferProperties.SpriteBuffer_yOffsets[var1];
-			var2.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[var1];
-			var2.subHeight = SpriteBufferProperties.SpriteBuffer_spriteHeights[var1];
-			int var3 = var2.subHeight * var2.subWidth;
-			byte[] var4 = PlayerCompositionColorTextureOverride.SpriteBuffer_pixels[var1];
-			var2.pixels = new int[var3];
-
-			for (int var5 = 0; var5 < var3; ++var5) {
-				var2.pixels[var5] = UrlRequest.SpriteBuffer_spritePalette[var4[var5] & 255];
+	@Export("playSong")
+	static void playSong(int var0) {
+		if (var0 == -1 && !Client.playingJingle) {
+			class137.method3187(0, 0);
+		} else if (var0 != -1 && !class237.method4469(var0) && class105.clientPreferences.getMusicVolume() != 0) {
+			ArrayList var1 = new ArrayList();
+			var1.add(new MusicSong(class199.archive6, var0, 0, class105.clientPreferences.getMusicVolume(), false));
+			if (Client.playingJingle) {
+				class157.method3343(var1, 0, 100, 100, 0);
+			} else {
+				FontName.method9220(var1, 0, 100, 100, 0, false);
 			}
 		}
 
-		SpriteBufferProperties.SpriteBuffer_xOffsets = null;
-		SpriteBufferProperties.SpriteBuffer_yOffsets = null;
-		SpriteBufferProperties.SpriteBuffer_spriteWidths = null;
-		SpriteBufferProperties.SpriteBuffer_spriteHeights = null;
-		UrlRequest.SpriteBuffer_spritePalette = null;
-		PlayerCompositionColorTextureOverride.SpriteBuffer_pixels = null;
-		return var0;
 	}
 }

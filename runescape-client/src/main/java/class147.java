@@ -1,62 +1,45 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("fs")
 public abstract class class147 extends Node {
+	@ObfuscatedName("al")
+	static String[] field1695;
+	@ObfuscatedName("jj")
+	static int[] field1696;
+
 	class147() {
 	}
 
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
+	)
+	abstract void vmethod3528(Buffer var1);
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
+	)
+	abstract void vmethod3530(ClanSettings var1);
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "1738227110"
+		descriptor = "(II)I",
+		garbageValue = "612733654"
 	)
-	abstract void vmethod3486(Buffer var1);
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgc;B)V",
-		garbageValue = "100"
-	)
-	abstract void vmethod3490(ClanSettings var1);
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1112674257"
-	)
-	public static void method3236() {
-		class195.field1851.clear();
+	public static int method3268(int var0) {
+		return class229.Entity_unpackID(ViewportMouse.ViewportMouse_entityTags[var0]);
 	}
 
-	@ObfuscatedName("jd")
+	@ObfuscatedName("pz")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "0"
+		descriptor = "(I)Loe;",
+		garbageValue = "-503099454"
 	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field578 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
-		} else {
-			Client.isResizable = false;
-		}
-
-		if (class534.getWindowedMode() == 1) {
-			class188.client.setMaxCanvasSize(765, 503);
-		} else {
-			class188.client.setMaxCanvasSize(7680, 2160);
-		}
-
-		if (Client.gameState >= 25 && Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class534.getWindowedMode());
-			var1.packetBuffer.writeShort(GameEngine.canvasWidth);
-			var1.packetBuffer.writeShort(DbTable.canvasHeight);
-			Client.packetWriter.addNode(var1);
-		}
-
+	static JagNetThread method3269() {
+		return class233.field2486;
 	}
 }

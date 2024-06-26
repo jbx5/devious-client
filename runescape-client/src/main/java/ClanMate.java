@@ -3,24 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sn")
+@ObfuscatedName("sd")
 @Implements("ClanMate")
 public class ClanMate extends Buddy {
-	@ObfuscatedName("ju")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lvc;"
-	)
-	@Export("compass")
-	static SpritePixels compass;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lsi;"
+		descriptor = "Lsv;"
 	)
 	@Export("friend")
 	TriBool friend;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lsi;"
+		descriptor = "Lsv;"
 	)
 	@Export("ignored")
 	TriBool ignored;
@@ -30,20 +24,20 @@ public class ClanMate extends Buddy {
 		this.ignored = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2010981140"
+		descriptor = "(B)V",
+		garbageValue = "12"
 	)
 	@Export("clearIsFriend")
 	void clearIsFriend() {
 		this.friend = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-610333623"
+		descriptor = "(B)Z",
+		garbageValue = "1"
 	)
 	@Export("isFriend")
 	public final boolean isFriend() {
@@ -54,30 +48,30 @@ public class ClanMate extends Buddy {
 		return this.friend == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1001187460"
+		descriptor = "(B)V",
+		garbageValue = "0"
 	)
 	@Export("fillIsFriend")
 	void fillIsFriend() {
-		this.friend = class33.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.friend = class135.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-41"
+		descriptor = "(I)V",
+		garbageValue = "299521"
 	)
 	@Export("clearIsIgnored")
 	void clearIsIgnored() {
 		this.ignored = TriBool.TriBool_unknown;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1574236452"
+		descriptor = "(S)Z",
+		garbageValue = "-2320"
 	)
 	@Export("isIgnored")
 	public final boolean isIgnored() {
@@ -88,29 +82,22 @@ public class ClanMate extends Buddy {
 		return this.ignored == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-70"
+		descriptor = "(I)V",
+		garbageValue = "197382137"
 	)
 	@Export("fillIsIgnored")
 	void fillIsIgnored() {
-		this.ignored = class33.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+		this.ignored = class135.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lor;Ljava/lang/String;Ljava/lang/String;I)Lvl;",
-		garbageValue = "1245471463"
+		descriptor = "(Lok;IIB)[Lvg;",
+		garbageValue = "1"
 	)
-	@Export("SpriteBuffer_getIndexedSpriteByName")
-	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
-		if (!var0.isValidFileName(var1, var2)) {
-			return null;
-		} else {
-			int var3 = var0.getGroupId(var1);
-			int var4 = var0.getFileId(var3, var2);
-			return GrandExchangeOfferWorldComparator.method7401(var0, var3, var4);
-		}
+	public static SpritePixels[] method8542(AbstractArchive var0, int var1, int var2) {
+		return !FillMode.method3260(var0, var1, var2) ? null : WorldMapRegion.method4809();
 	}
 }

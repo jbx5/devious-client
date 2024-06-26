@@ -4,45 +4,71 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pu")
+@ObfuscatedName("pv")
 @Implements("GrandExchangeOfferNameComparator")
 final class GrandExchangeOfferNameComparator implements Comparator {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(Lpm;Lpm;I)I",
-		garbageValue = "-1795325400"
+		garbageValue = "-1760951308"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
 		return var1.getOfferName().compareTo(var2.getOfferName());
 	}
 
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
 	public int compare(Object var1, Object var2) {
 		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("ak")
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2010055297"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "1502544286"
 	)
-	static void method7382() {
-		Tiles.Tiles_minPlane = 99;
-		class197.Tiles_underlays = new short[4][104][104];
-		Tiles.Tiles_overlays = new short[4][104][104];
-		TilesProjection.Tiles_shapes = new byte[4][104][104];
-		AbstractByteArrayCopier.field3975 = new byte[4][104][104];
-		SongTask.field4795 = new int[4][105][105];
-		class202.Tiles_underlays2 = new byte[4][105][105];
-		class17.field84 = new int[105][105];
-		ParamComposition.Tiles_hue = new int[104];
-		class194.Tiles_saturation = new int[104];
-		Tiles.Tiles_lightness = new int[104];
-		class131.Tiles_hueMultiplier = new int[104];
-		Tiles.field1050 = new int[104];
+	public static String method7325(String var0) {
+		StringBuilder var1 = new StringBuilder(var0.length());
+		int var2 = 0;
+		int var3 = -1;
+
+		for (int var4 = 0; var4 < var0.length(); ++var4) {
+			char var5 = var0.charAt(var4);
+			if (var5 == '<') {
+				var1.append(var0.substring(var2, var4));
+				var3 = var4;
+			} else if (var5 == '>' && var3 != -1) {
+				String var6 = var0.substring(var3 + 1, var4);
+				var3 = -1;
+				if (var6.equals("lt")) {
+					var1.append("<");
+				} else if (var6.equals("gt")) {
+					var1.append(">");
+				} else if (var6.equals("br")) {
+					var1.append("\n");
+				}
+
+				var2 = var4 + 1;
+			}
+		}
+
+		if (var2 < var0.length()) {
+			var1.append(var0.substring(var2, var0.length()));
+		}
+
+		return var1.toString();
+	}
+
+	@ObfuscatedName("km")
+	@ObfuscatedSignature(
+		descriptor = "(Lde;Ldw;IB)V",
+		garbageValue = "98"
+	)
+	static void method7320(WorldView var0, Actor var1, int var2) {
+		Coord var3 = var1.method2488(var0);
+		class426.method7874(var0, var3.x, var3.y, var1.x, var1.y, var2);
 	}
 }

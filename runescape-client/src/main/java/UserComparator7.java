@@ -1,29 +1,13 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import netscape.javascript.JSObject;
 
-@ObfuscatedName("ew")
+@ObfuscatedName("em")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("wd")
-	@ObfuscatedGetter(
-		intValue = -1566429995
-	)
-	@Export("foundItemIndex")
-	static int foundItemIndex;
-	@ObfuscatedName("ug")
-	@ObfuscatedGetter(
-		intValue = -1141587141
-	)
-	static int field1505;
-	@ObfuscatedName("us")
-	@ObfuscatedGetter(
-		intValue = -939137475
-	)
-	static int field1502;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -31,10 +15,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lso;Lso;I)I",
-		garbageValue = "-1564815998"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "396253425"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -49,12 +33,40 @@ public class UserComparator7 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("hi")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "62"
+		descriptor = "(Ldz;B)V",
+		garbageValue = "57"
 	)
-	static void method2966(String var0) {
-		Login.displayName = ClanChannelMember.method3246(var0);
+	static void method3008(class94 var0) {
+		if (Client.field535 != var0) {
+			Client.field535 = var0;
+		}
+	}
+
+	@ObfuscatedName("oe")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "1428864638"
+	)
+	static void method3002(String var0) {
+		AsyncHttpResponse.field81 = var0;
+
+		try {
+			String var1 = class415.client.getParameter(Integer.toString(18));
+			String var2 = class415.client.getParameter(Integer.toString(13));
+			String var3 = var1 + "settings=" + var0 + "; version=1; path=/; domain=" + var2;
+			if (var0.length() == 0) {
+				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
+			} else {
+				var3 = var3 + "; Expires=" + class152.method3299(WorldMapData_1.method4861() + 94608000000L) + "; Max-Age=" + 94608000L;
+			}
+
+			Client var4 = class415.client;
+			String var5 = "document.cookie=\"" + var3 + "\"";
+			JSObject.getWindow(var4).eval(var5);
+		} catch (Throwable var6) {
+		}
+
 	}
 }

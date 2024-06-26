@@ -1,37 +1,41 @@
-import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import netscape.javascript.JSObject;
 
-@ObfuscatedName("ex")
+@ObfuscatedName("ek")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Ltu;"
+		descriptor = "Lth;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lpb;"
+		descriptor = "Lpt;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1651905777
+		intValue = 108964459
 	)
 	@Export("Messages_count")
 	static int Messages_count;
+	@ObfuscatedName("dp")
+	@ObfuscatedSignature(
+		descriptor = "Lvv;"
+	)
+	static IndexedSprite field1449;
 
 	static {
 		Messages_channels = new HashMap();
@@ -40,41 +44,58 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("pu")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-1370850235"
+		descriptor = "(B)V",
+		garbageValue = "0"
 	)
-	static void method2875(String var0) {
-		class432.field4745 = var0;
+	public static void method2916() {
+		class177.field1915.clear();
+	}
 
-		try {
-			String var1 = class188.client.getParameter(Integer.toString(18));
-			String var2 = class188.client.getParameter(Integer.toString(13));
-			String var3 = var1 + "settings=" + var0 + "; version=1; path=/; domain=" + var2;
-			String var5;
-			if (var0.length() == 0) {
-				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
-			} else {
-				String var4 = var3 + "; Expires=";
-				long var6 = class129.method3033() + 94608000000L;
-				Calendar.Calendar_calendar.setTime(new Date(var6));
-				int var8 = Calendar.Calendar_calendar.get(7);
-				int var9 = Calendar.Calendar_calendar.get(5);
-				int var10 = Calendar.Calendar_calendar.get(2);
-				int var11 = Calendar.Calendar_calendar.get(1);
-				int var12 = Calendar.Calendar_calendar.get(11);
-				int var13 = Calendar.Calendar_calendar.get(12);
-				int var14 = Calendar.Calendar_calendar.get(13);
-				var5 = Calendar.DAYS_OF_THE_WEEK[var8 - 1] + ", " + var9 / 10 + var9 % 10 + "-" + Calendar.MONTH_NAMES_ENGLISH_GERMAN[0][var10] + "-" + var11 + " " + var12 / 10 + var12 % 10 + ":" + var13 / 10 + var13 % 10 + ":" + var14 / 10 + var14 % 10 + " GMT";
-				var3 = var4 + var5 + "; Max-Age=" + 94608000L;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-125"
+	)
+	static String method2917() {
+		StringBuilder var0 = new StringBuilder();
+
+		Message var2;
+		for (Iterator var1 = Messages_hashTable.iterator(); var1.hasNext(); var0.append(var2.text).append('\n')) {
+			var2 = (Message)var1.next();
+			if (var2.sender != null && !var2.sender.isEmpty()) {
+				var0.append(var2.sender).append(':');
 			}
-
-			Client var16 = class188.client;
-			var5 = "document.cookie=\"" + var3 + "\"";
-			JSObject.getWindow(var16).eval(var5);
-		} catch (Throwable var15) {
 		}
 
+		return var0.toString();
+	}
+
+	@ObfuscatedName("og")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "32"
+	)
+	@Export("clanKickUser")
+	static final void clanKickUser(String var0) {
+		if (Decimator.friendsChat != null) {
+			PacketBufferNode var1 = class170.getPacketBufferNode(ClientPacket.field3359, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(Actor.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
+		}
+	}
+
+	@ObfuscatedName("oc")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-2136125959"
+	)
+	@Export("Clan_leaveChat")
+	static final void Clan_leaveChat() {
+		PacketBufferNode var0 = class170.getPacketBufferNode(ClientPacket.field3365, Client.packetWriter.isaacCipher);
+		var0.packetBuffer.writeByte(0);
+		Client.packetWriter.addNode(var0);
 	}
 }

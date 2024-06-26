@@ -7,59 +7,59 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("vx")
 @Implements("AbstractRasterProvider")
 public abstract class AbstractRasterProvider {
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("pixels")
 	public int[] pixels;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -463747397
+		intValue = -278390989
 	)
 	@Export("width")
 	public int width;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1871416401
+		intValue = -609996575
 	)
 	@Export("height")
 	public int height;
-	@ObfuscatedName("aa")
-	protected float[] field5423;
+	@ObfuscatedName("an")
+	protected float[] field5439;
 
 	protected AbstractRasterProvider() {
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "-1626560953"
+		garbageValue = "-1877835118"
 	)
 	@Export("drawFull")
 	public abstract void drawFull(int var1, int var2);
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-2075251596"
+		garbageValue = "58963104"
 	)
 	@Export("draw")
 	public abstract void draw(int var1, int var2, int var3, int var4);
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1816482747"
+		garbageValue = "1973864941"
 	)
 	@Export("apply")
 	public final void apply() {
-		Rasterizer2D.method9971(this.pixels, this.width, this.height, this.field5423);
+		Rasterizer2D.method9902(this.pixels, this.width, this.height, this.field5439);
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "84"
+		descriptor = "(ZI)V",
+		garbageValue = "1268085019"
 	)
-	public final void method10058(boolean var1) {
-		this.field5423 = var1 ? new float[this.width * this.height + 1] : null;
+	public final void method9963(boolean var1) {
+		this.field5439 = var1 ? new float[this.height * this.width + 1] : null;
 	}
 }

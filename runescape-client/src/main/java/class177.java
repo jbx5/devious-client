@@ -2,47 +2,45 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gd")
-public class class177 {
-	@ObfuscatedName("fy")
+@ObfuscatedName("gb")
+public class class177 extends DualNode {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lot;"
+		descriptor = "Lmo;"
 	)
-	@Export("archive8")
-	static Archive archive8;
+	@Export("field1915")
+	static EvictingDualNodeHashTable field1915;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	@Export("SequenceDefinition_animationsArchive")
+	static AbstractArchive SequenceDefinition_animationsArchive;
+	@ObfuscatedName("uk")
+	@ObfuscatedSignature(
+		descriptor = "Lcu;"
+	)
+	@Export("decimator")
+	static Decimator decimator;
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "-2000150769"
-	)
-	public static int method3601(CharSequence var0) {
-		return WorldMapSectionType.method5895(var0, 10, true);
+	static {
+		field1915 = new EvictingDualNodeHashTable(64);
 	}
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "664099821"
+		descriptor = "(IIB)I",
+		garbageValue = "13"
 	)
-	public static void method3602() {
-		HitSplatDefinition.HitSplatDefinition_cached.clear();
-		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
-		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
-	}
-
-	@ObfuscatedName("lb")
-	@ObfuscatedSignature(
-		descriptor = "(Ldt;IIIII)Ldk;",
-		garbageValue = "50358831"
-	)
-	static final PendingSpawn method3603(WorldView var0, int var1, int var2, int var3, int var4) {
-		for (PendingSpawn var5 = (PendingSpawn)var0.pendingSpawns.last(); var5 != null; var5 = (PendingSpawn)var0.pendingSpawns.previous()) {
-			if (var5.plane == var1 && var2 == var5.x && var3 == var5.y && var4 == var5.type) {
-				return var5;
-			}
+	static final int method3567(int var0, int var1) {
+		int var2 = class353.method6535(45365 + var0, var1 + 91923, 4) - 128 + (class353.method6535(var0 + 10294, 37821 + var1, 2) - 128 >> 1) + (class353.method6535(var0, var1, 1) - 128 >> 2);
+		var2 = (int)((double)var2 * 0.3D) + 35;
+		if (var2 < 10) {
+			var2 = 10;
+		} else if (var2 > 60) {
+			var2 = 60;
 		}
 
-		return null;
+		return var2;
 	}
 }
