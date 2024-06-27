@@ -1,30 +1,28 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cr")
+@ObfuscatedName("cd")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ldm;"
+		descriptor = "Ldg;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -1297096727
+		intValue = 758237961
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -32,67 +30,38 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/ArrayList;IIIIZB)V",
-		garbageValue = "16"
+		descriptor = "([[[IIIII)V",
+		garbageValue = "702035000"
 	)
-	public static void method1169(ArrayList var0, int var1, int var2, int var3, int var4, boolean var5) {
-		if (!var0.isEmpty()) {
-			class329.field3576.clear();
-			class329.field3581.clear();
-			class148.method3243(var5);
-			if (!var5) {
-				class329.field3579.clear();
-			}
-
-			Iterator var6 = var0.iterator();
-
-			while (var6.hasNext()) {
-				MusicSong var7 = (MusicSong)var6.next();
-				if (var7.musicTrackGroupId != -1 && var7.musicTrackFileId != -1) {
-					if (!var5) {
-						class329.field3579.add(var7);
-					}
-
-					class329.field3576.add(var7);
-				}
-			}
-
-			if (!class329.field3576.isEmpty()) {
-				class146.method3226(var1, var2, var3, var4);
-				class329.field3581.add(new AddRequestTask((SongTask)null));
-				class329.field3581.add(new class445((SongTask)null, class415.field4660, class329.field3586, LoginPacket.field1682));
-				ArrayList var12 = new ArrayList();
-				var12.add(new class440(new FadeInTask((SongTask)null, 0, true, class329.field3580)));
-				if (!class329.musicSongs.isEmpty()) {
-					ArrayList var13 = new ArrayList();
-					var13.add(new DelayFadeTask(new ConcurrentMidiTask((SongTask)null, var12), class329.field3585));
-					ArrayList var9 = new ArrayList();
-					Iterator var10 = class329.musicSongs.iterator();
-
-					while (var10.hasNext()) {
-						MusicSong var11 = (MusicSong)var10.next();
-						var9.add(var11);
-					}
-
-					var13.add(new DelayFadeTask(new FadeOutTask(new class438((SongTask)null, var9), 0, false, class329.field3584), class329.musicPlayerStatus));
-					class329.field3581.add(new ConcurrentMidiTask((SongTask)null, var13));
-				} else {
-					class329.field3581.add(new DelayFadeTask((SongTask)null, class329.field3585));
-					class329.field3581.add(new ConcurrentMidiTask((SongTask)null, var12));
-				}
-
+	static final void method1193(int[][][] var0, int var1, int var2, int var3) {
+		int var4;
+		for (var4 = 0; var4 < 8; ++var4) {
+			for (int var5 = 0; var5 < 8; ++var5) {
+				var0[var1][var4 + var2][var3 + var5] = 0;
 			}
 		}
-	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Lsy;",
-		garbageValue = "99"
-	)
-	static class484[] method1168() {
-		return new class484[]{class484.field4999, class484.field5001, class484.field5000, class484.field5004};
+		if (var2 > 0) {
+			for (var4 = 1; var4 < 8; ++var4) {
+				var0[var1][var2][var3 + var4] = var0[var1][var2 - 1][var3 + var4];
+			}
+		}
+
+		if (var3 > 0) {
+			for (var4 = 1; var4 < 8; ++var4) {
+				var0[var1][var4 + var2][var3] = var0[var1][var4 + var2][var3 - 1];
+			}
+		}
+
+		if (var2 > 0 && var0[var1][var2 - 1][var3] != 0) {
+			var0[var1][var2][var3] = var0[var1][var2 - 1][var3];
+		} else if (var3 > 0 && var0[var1][var2][var3 - 1] != 0) {
+			var0[var1][var2][var3] = var0[var1][var2][var3 - 1];
+		} else if (var2 > 0 && var3 > 0 && var0[var1][var2 - 1][var3 - 1] != 0) {
+			var0[var1][var2][var3] = var0[var1][var2 - 1][var3 - 1];
+		}
+
 	}
 }

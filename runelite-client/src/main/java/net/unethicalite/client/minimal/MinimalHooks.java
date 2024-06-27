@@ -283,7 +283,6 @@ public class MinimalHooks implements Callbacks
 	@Override
 	public void serverTick()
 	{
-
 		this.shouldProcessGameTick = true;
 	}
 
@@ -559,7 +558,7 @@ public class MinimalHooks implements Callbacks
 			// The NPC update event seem to run every server tick,
 			// but having the game tick event after all packets
 			// have been processed is typically more useful.
-			shouldProcessGameTick = true;
+			//shouldProcessGameTick = true;
 		}
 
 		// Replay deferred events, otherwise if two npc

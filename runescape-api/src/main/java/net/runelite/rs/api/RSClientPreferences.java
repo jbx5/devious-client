@@ -94,6 +94,14 @@ public interface RSClientPreferences extends Preferences
 	@Override
 	int getWindowMode();
 
+	@Import("drawDistance")
+	@Override
+	int getDrawDistance();
+
+	@Import("drawDistance")
+	@Override
+	void setDrawDistance(int drawDistance);
+
 	@Import("parameters")
 	@Override
 	Map getParameters();

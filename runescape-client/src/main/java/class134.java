@@ -1,182 +1,111 @@
+import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fr")
-public class class134 implements Enum {
+@ObfuscatedName("fg")
+public class class134 implements Callable {
+	@ObfuscatedName("fo")
+	@ObfuscatedSignature(
+		descriptor = "Lcy;"
+	)
+	@Export("loginState")
+	static LoginState loginState;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lfd;"
+	)
+	final class135 field1571;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lfi;"
+	)
+	final class136 field1574;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lfb;"
+	)
+	final class137 field1570;
 	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lfr;"
-	)
-	static final class134 field1608;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lfr;"
-	)
-	static final class134 field1604;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lfr;"
-	)
-	static final class134 field1605;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lfr;"
-	)
-	static final class134 field1606;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lfr;"
-	)
-	static final class134 field1614;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lfr;"
-	)
-	static final class134 field1615;
-	@ObfuscatedName("et")
 	@ObfuscatedGetter(
-		longValue = -1017482725618925639L
+		intValue = -13995373
 	)
-	static long field1612;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1730610183
+	final int field1569;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lft;"
 	)
-	final int field1603;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 1366100427
-	)
-	final int field1607;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 2042400925
-	)
-	final int field1611;
+	final class142 this$0;
 
-	static {
-		field1608 = new class134(0, 0, (String)null, 0);
-		field1604 = new class134(1, 1, (String)null, 9);
-		field1605 = new class134(2, 2, (String)null, 3);
-		field1606 = new class134(3, 3, (String)null, 6);
-		field1614 = new class134(4, 4, (String)null, 1);
-		field1615 = new class134(5, 5, (String)null, 3);
+	@ObfuscatedSignature(
+		descriptor = "(Lft;Lfd;Lfi;Lfb;I)V"
+	)
+	class134(class142 var1, class135 var2, class136 var3, class137 var4, int var5) {
+		this.this$0 = var1;
+		this.field1571 = var2;
+		this.field1574 = var3;
+		this.field1570 = var4;
+		this.field1569 = var5;
 	}
 
-	class134(int var1, int var2, String var3, int var4) {
-		this.field1603 = var1;
-		this.field1607 = var2;
-		this.field1611 = var4;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-311400525"
-	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field1607;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "10"
-	)
-	int method3102() {
-		return this.field1611;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Liq;",
-		garbageValue = "1"
-	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	public Object call() {
+		this.field1571.method3139();
+		class135[][] var1;
+		if (this.field1574 == class136.field1601) {
+			var1 = this.this$0.field1650;
 		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
+			var1 = this.this$0.field1654;
 		}
+
+		var1[this.field1569][this.field1570.method3178()] = this.field1571;
+		return null;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ldt;[BIII)V",
-		garbageValue = "-106912157"
+		descriptor = "(IIILho;IB)V",
+		garbageValue = "-19"
 	)
-	static final void method3113(WorldView var0, byte[] var1, int var2, int var3) {
-		Buffer var4 = new Buffer(var1);
-		int var5 = -1;
-
-		while (true) {
-			int var6 = var4.readIncrSmallSmart();
-			if (var6 == 0) {
-				return;
-			}
-
-			var5 += var6;
-			int var7 = 0;
-
-			while (true) {
-				int var8 = var4.readUShortSmart();
-				if (var8 == 0) {
-					break;
-				}
-
-				var7 += var8 - 1;
-				int var9 = var7 & 63;
-				int var10 = var7 >> 6 & 63;
-				int var11 = var7 >> 12;
-				int var12 = var4.readUnsignedByte();
-				int var13 = var12 >> 2;
-				int var14 = var12 & 3;
-				int var15 = var10 + var2;
-				int var16 = var3 + var9;
-				if (var15 > 0 && var16 > 0 && var15 < var0.tileHeights[0].length - 2 && var16 < var0.tileHeights[0][0].length - 2) {
-					int var17 = var11;
-					if ((var0.tileSettings[1][var15][var16] & 2) == 2) {
-						var17 = var11 - 1;
-					}
-
-					CollisionMap var18 = null;
-					if (var17 >= 0 && var0.collisionMaps != null) {
-						var18 = var0.collisionMaps[var17];
-					}
-
-					class130.addObjects(var0, var11, var15, var16, var5, var14, var13, var18);
-				}
-			}
+	@Export("createObjectSound")
+	static void createObjectSound(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+		ObjectSound var5 = new ObjectSound();
+		var5.plane = var0;
+		var5.x = var1 * 128;
+		var5.y = var2 * 16384;
+		int var6 = var3.sizeX;
+		int var7 = var3.sizeY;
+		if (var4 == 1 || var4 == 3) {
+			var6 = var3.sizeY;
+			var7 = var3.sizeX;
 		}
+
+		var5.maxX = (var6 + var1) * 128;
+		var5.maxY = (var7 + var2) * 128;
+		var5.soundEffectId = var3.ambientSoundId;
+		var5.field845 = var3.int7 * 128;
+		var5.field846 = Math.max(var3.int8 * 16384 - 128, 0);
+		var5.field849 = var3.int5;
+		var5.field850 = var3.int6;
+		var5.soundEffectIds = var3.soundEffectIds;
+		if (var3.transforms != null) {
+			var5.obj = var3;
+			var5.set();
+		}
+
+		ObjectSound.objectSounds.addFirst(var5);
+		if (var5.soundEffectIds != null) {
+			var5.field840 = var5.field849 + (int)(Math.random() * (double)(var5.field850 - var5.field849));
+		}
+
 	}
 
-	@ObfuscatedName("bj")
+	@ObfuscatedName("hz")
 	@ObfuscatedSignature(
-		descriptor = "(ILdm;ZB)I",
-		garbageValue = "10"
+		descriptor = "(I)Lij;",
+		garbageValue = "784571849"
 	)
-	static int method3112(int var0, Script var1, boolean var2) {
-		if (var0 == 6809) {
-			int var3 = Interpreter.Interpreter_intStack[--class13.Interpreter_intStackSize];
-			ObjectComposition var4 = HitSplatDefinition.getObjectDefinition(var3);
-			Interpreter.Interpreter_stringStack[++class166.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-			return 1;
-		} else {
-			return 2;
-		}
+	static IndexCheck method3133() {
+		return Client.indexCheck;
 	}
 }

@@ -1,75 +1,59 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sz")
-public class class485 implements class490 {
-	@ObfuscatedName("iv")
+@ObfuscatedName("sj")
+public enum class485 implements Enum {
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lsj;"
+	)
+	field5026(2, 1),
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lsj;"
+	)
+	field5027(0, 2),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lsj;"
+	)
+	field5024(3, 3),
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lsj;"
+	)
+	field5028(1, 10);
+
+	@ObfuscatedName("ws")
+	@ObfuscatedSignature(
+		descriptor = "Lpb;"
+	)
+	public static class398 field5030;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -190120109
+		intValue = -1939532321
 	)
-	static int field5007;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Luv;"
+	final int field5025;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -94895125
 	)
-	public final class520 field5008;
+	final int field5029;
 
-	@ObfuscatedSignature(
-		descriptor = "(Luq;)V"
-	)
-	class485(class521 var1) {
-		this.field5008 = var1;
+	class485(int var3, int var4) {
+		this.field5025 = var3;
+		this.field5029 = var4;
 	}
 
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lsa;)V"
+		descriptor = "(I)I",
+		garbageValue = "2071992588"
 	)
-	public class485(class486 var1) {
-		this(new class521(var1));
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-16"
-	)
-	public int method8893(int var1) {
-		return this.field5008.vmethod9382(var1);
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Ldt;[BIIIII)V",
-		garbageValue = "-193301539"
-	)
-	static final void method8896(WorldView var0, byte[] var1, int var2, int var3, int var4, int var5) {
-		int var7;
-		int var8;
-		if (var0.collisionMaps != null) {
-			for (int var6 = 0; var6 < 4; ++var6) {
-				for (var7 = 0; var7 < 64; ++var7) {
-					for (var8 = 0; var8 < 64; ++var8) {
-						if (var7 + var2 > 0 && var7 + var2 < var0.collisionMaps[var6].flags.length && var3 + var8 > 0 && var3 + var8 < var0.collisionMaps[var6].flags[var7 + var2].length) {
-							int[] var10000 = var0.collisionMaps[var6].flags[var7 + var2];
-							var10000[var8 + var3] &= -1073741825;
-						}
-					}
-				}
-			}
-		}
-
-		Buffer var12 = new Buffer(var1);
-
-		for (var7 = 0; var7 < 4; ++var7) {
-			for (var8 = 0; var8 < 64; ++var8) {
-				for (int var9 = 0; var9 < 64; ++var9) {
-					int var10 = var8 + var2;
-					int var11 = var3 + var9;
-					class151.loadTerrain(var0, var12, var7, var10, var11, var10 + var4, var5 + var11, 0);
-				}
-			}
-		}
-
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field5029;
 	}
 }

@@ -52,6 +52,12 @@ public interface RSScriptEvent extends ScriptEvent, RSNode
 	@Import("opIndex")
 	RSScriptEvent setOp(int op);
 
+	@Import("dragTarget")
+	Widget getDragTarget();
+
+	@Import("dragTarget")
+	void setDragTarget(Widget dragTarget);
+
 	@Import("targetName")
 	String getOpbase();
 

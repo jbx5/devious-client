@@ -4,89 +4,89 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ux")
+@ObfuscatedName("uu")
 @Implements("LoginType")
 public class LoginType {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Luu;"
 	)
 	@Export("oldscape")
 	public static final LoginType oldscape;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Luu;"
 	)
-	static final LoginType field5223;
+	static final LoginType field5248;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Luu;"
+	)
+	static final LoginType field5247;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Luu;"
+	)
+	static final LoginType field5257;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Luu;"
+	)
+	static final LoginType field5250;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Luu;"
+	)
+	static final LoginType field5252;
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Luu;"
 	)
-	static final LoginType field5219;
-	@ObfuscatedName("az")
+	static final LoginType field5251;
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Luu;"
 	)
-	static final LoginType field5222;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lux;"
-	)
-	static final LoginType field5228;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lux;"
-	)
-	static final LoginType field5224;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lux;"
-	)
-	static final LoginType field5225;
+	static final LoginType field5254;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Luu;"
 	)
-	static final LoginType field5226;
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lux;"
-	)
-	public static final LoginType field5227;
-	@ObfuscatedName("ao")
+	public static final LoginType field5255;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 781445249
+		intValue = -1512992761
 	)
-	final int field5220;
-	@ObfuscatedName("ah")
-	final String field5229;
+	public final int field5249;
+	@ObfuscatedName("ae")
+	final String field5256;
 
 	static {
-		oldscape = new LoginType(2, 0, "", "");
-		field5223 = new LoginType(6, 1, "", "");
-		field5219 = new LoginType(8, 2, "", "");
-		field5222 = new LoginType(7, 3, "", "");
-		field5228 = new LoginType(4, 4, "", "");
-		field5224 = new LoginType(5, 5, "", "");
-		field5225 = new LoginType(0, 6, "", "");
-		field5226 = new LoginType(1, 7, "", "");
-		field5227 = new LoginType(3, -1, "", "", true, new LoginType[]{oldscape, field5223, field5219, field5228, field5222});
+		oldscape = new LoginType(4, 0, "", "");
+		field5248 = new LoginType(1, 1, "", "");
+		field5247 = new LoginType(7, 2, "", "");
+		field5257 = new LoginType(8, 3, "", "");
+		field5250 = new LoginType(3, 4, "", "");
+		field5252 = new LoginType(0, 5, "", "");
+		field5251 = new LoginType(5, 6, "", "");
+		field5254 = new LoginType(6, 7, "", "");
+		field5255 = new LoginType(2, -1, "", "", true, new LoginType[]{oldscape, field5248, field5247, field5250, field5257});
 	}
 
 	LoginType(int var1, int var2, String var3, String var4) {
-		this.field5220 = var1;
-		this.field5229 = var4;
+		this.field5249 = var1;
+		this.field5256 = var4;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lux;)V"
+		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Luu;)V"
 	)
 	LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
-		this.field5220 = var1;
-		this.field5229 = var4;
+		this.field5249 = var1;
+		this.field5256 = var4;
 	}
 
 	public String toString() {
-		return this.field5229;
+		return this.field5256;
 	}
 }

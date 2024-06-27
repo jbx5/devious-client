@@ -3,21 +3,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jl")
+@ObfuscatedName("lf")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "[Ljd;"
+		descriptor = "[Lkv;"
 	)
 	@Export("frames")
 	Animation[] frames;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lor;Lor;IZ)V",
-		garbageValue = "0"
+		descriptor = "(Lok;Lok;IZ)V"
 	)
-	public Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
+	Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
 		NodeDeque var5 = new NodeDeque();
 		int var6 = var1.getGroupFileCount(var3);
 		this.frames = new Animation[var6];
@@ -36,7 +35,13 @@ public class Frames extends DualNode {
 			}
 
 			if (var10 == null) {
-				byte[] var13 = var2.getFile(var11, 0);
+				byte[] var13;
+				if (var4) {
+					var13 = var2.getFile(0, var11);
+				} else {
+					var13 = var2.getFile(var11, 0);
+				}
+
 				var10 = new Skeleton(var11, var13);
 				var5.addFirst(var10);
 			}
@@ -46,10 +51,10 @@ public class Frames extends DualNode {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-13"
+		descriptor = "(II)Z",
+		garbageValue = "2002337777"
 	)
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
@@ -58,45 +63,11 @@ public class Frames extends DualNode {
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1260593306"
+		descriptor = "(II)Lck;",
+		garbageValue = "-481292712"
 	)
-	static int method5111(int var0, int var1) {
-		FloorOverlayDefinition var3 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		FloorOverlayDefinition var2;
-		if (var3 != null) {
-			var2 = var3;
-		} else {
-			byte[] var4 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var3 = new FloorOverlayDefinition();
-			if (var4 != null) {
-				var3.decode(new Buffer(var4), var0);
-			}
-
-			var3.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var3, (long)var0);
-			var2 = var3;
-		}
-
-		if (var2 == null) {
-			return var1;
-		} else {
-			int var5;
-			int var6;
-			if (var2.secondaryRgb >= 0) {
-				var6 = class185.method3708(var2.secondaryHue, var2.secondarySaturation, var2.secondaryLightness);
-				var5 = ClanChannelMember.method3248(var6, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var5] | -16777216;
-			} else if (var2.texture >= 0) {
-				var6 = ClanChannelMember.method3248(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var6] | -16777216;
-			} else if (var2.primaryRgb == 16711935) {
-				return var1;
-			} else {
-				var6 = class185.method3708(var2.hue, var2.saturation, var2.lightness);
-				var5 = ClanChannelMember.method3248(var6, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var5] | -16777216;
-			}
-		}
+	@Export("Messages_getMessage")
+	static Message Messages_getMessage(int var0) {
+		return (Message)Messages.Messages_hashTable.get((long)var0);
 	}
 }

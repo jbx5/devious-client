@@ -8,10 +8,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tw")
+@ObfuscatedName("tb")
 @Implements("HttpQueryParams")
 public class HttpQueryParams implements HttpPayload {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("queryParameters")
 	final Map queryParameters;
 
@@ -19,30 +19,30 @@ public class HttpQueryParams implements HttpPayload {
 		this.queryParameters = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lsd;",
-		garbageValue = "14"
+		descriptor = "(B)Lsb;",
+		garbageValue = "12"
 	)
 	@Export("getContentType")
 	public HttpContentType getContentType() {
 		return null;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(B)[B",
-		garbageValue = "26"
+		descriptor = "(I)[B",
+		garbageValue = "524737236"
 	)
 	@Export("toBytes")
 	public byte[] toBytes() throws UnsupportedEncodingException {
 		return this.encode().getBytes("UTF-8");
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "-40"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-322858153"
 	)
 	@Export("encode")
 	public String encode() throws UnsupportedEncodingException {
@@ -63,36 +63,5 @@ public class HttpQueryParams implements HttpPayload {
 			var1.insert(0, "?");
 			return var1.toString();
 		}
-	}
-
-	@ObfuscatedName("mt")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lnb;B)Ljava/lang/String;",
-		garbageValue = "2"
-	)
-	static String method8962(String var0, Widget var1) {
-		if (var0.indexOf("%") != -1) {
-			for (int var2 = 1; var2 <= 5; ++var2) {
-				while (true) {
-					int var3 = var0.indexOf("%" + var2);
-					if (var3 == -1) {
-						break;
-					}
-
-					String var4 = var0.substring(0, var3);
-					int var6 = FontName.method9303(var1, var2 - 1);
-					String var5;
-					if (var6 < 999999999) {
-						var5 = Integer.toString(var6);
-					} else {
-						var5 = "*";
-					}
-
-					var0 = var4 + var5 + var0.substring(var3 + 2);
-				}
-			}
-		}
-
-		return var0;
 	}
 }

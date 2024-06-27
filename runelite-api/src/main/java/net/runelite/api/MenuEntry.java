@@ -132,7 +132,13 @@ public interface MenuEntry
 	 * @see NullItemID
 	 */
 	int getItemId();
-	void setItemId(int itemId);
+
+	/**
+	 * Set the item id
+	 * @param itemId
+	 * @return
+	 */
+	MenuEntry setItemId(int itemId);
 
 	/**
 	 * Get the widget this menu entry is on, if this is a menu entry

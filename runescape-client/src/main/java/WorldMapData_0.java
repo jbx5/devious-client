@@ -3,21 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kv")
+@ObfuscatedName("jn")
 @Implements("WorldMapData_0")
 public class WorldMapData_0 extends AbstractWorldMapData {
 	WorldMapData_0() {
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "193303799"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "-49"
 	)
 	@Export("init")
 	void init(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		if (var2 != WorldMapID.field3212.value) {
+		if (var2 != WorldMapID.field2715.value) {
 			throw new IllegalStateException("");
 		} else {
 			super.minPlane = var1.readUnsignedByte();
@@ -31,21 +31,21 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "-1682284620"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "-32"
 	)
 	@Export("readGeography")
 	void readGeography(Buffer var1) {
 		super.planes = Math.min(super.planes, 4);
 		super.floorUnderlayIds = new short[1][64][64];
 		super.floorOverlayIds = new short[super.planes][64][64];
-		super.field3170 = new byte[super.planes][64][64];
-		super.field3181 = new byte[super.planes][64][64];
+		super.field2677 = new byte[super.planes][64][64];
+		super.field2678 = new byte[super.planes][64][64];
 		super.decorations = new WorldMapDecoration[super.planes][64][64][];
 		int var2 = var1.readUnsignedByte();
-		if (var2 != class294.field3209.value) {
+		if (var2 != class261.field2709.value) {
 			throw new IllegalStateException("");
 		} else {
 			int var3 = var1.readUnsignedByte();
@@ -68,7 +68,7 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 			return false;
 		} else {
 			WorldMapData_0 var2 = (WorldMapData_0)var1;
-			return var2.regionX == super.regionX && super.regionY == var2.regionY;
+			return super.regionX == var2.regionX && var2.regionY == super.regionY;
 		}
 	}
 

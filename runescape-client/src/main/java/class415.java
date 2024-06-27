@@ -1,29 +1,38 @@
+import java.util.regex.Pattern;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ph")
-public class class415 {
-	@ObfuscatedName("ak")
+@ObfuscatedName("pw")
+public final class class415 {
+	@ObfuscatedName("br")
+	@Export("client")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Lclient;"
 	)
-	public static AbstractArchive field4660;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "[Lcl;"
-	)
-	@Export("World_worlds")
-	static World[] World_worlds;
+	public static Client client;
+
+	static {
+		Pattern.compile("^\\D*(\\d+)\\D*$");
+	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "11"
+		descriptor = "(CLpe;I)I",
+		garbageValue = "-1294766597"
 	)
-	static void method7750(int var0) {
-		class423.field4693 = var0;
-		class423.field4691 = new class423[var0];
-		AccessFile.field5239 = 0;
+	@Export("lowercaseChar")
+	static int lowercaseChar(char var0, Language var1) {
+		int var2 = var0 << 4;
+		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+			var0 = Character.toLowerCase(var0);
+			var2 = (var0 << 4) + 1;
+		}
+
+		if (var0 == 241 && var1 == Language.Language_ES) {
+			var2 = 1762;
+		}
+
+		return var2;
 	}
 }

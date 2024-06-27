@@ -4,41 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lb")
+@ObfuscatedName("jt")
 @Implements("WorldMapSectionType")
 public enum WorldMapSectionType implements Enum {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llb;"
+		descriptor = "Ljt;"
 	)
 	@Export("WORLDMAPSECTIONTYPE0")
-	WORLDMAPSECTIONTYPE0(3, (byte)0),
-	@ObfuscatedName("al")
+	WORLDMAPSECTIONTYPE0(2, (byte)0),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Llb;"
+		descriptor = "Ljt;"
 	)
 	@Export("WORLDMAPSECTIONTYPE1")
-	WORLDMAPSECTIONTYPE1(0, (byte)1),
-	@ObfuscatedName("aj")
+	WORLDMAPSECTIONTYPE1(1, (byte)1),
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Llb;"
+		descriptor = "Ljt;"
 	)
 	@Export("WORLDMAPSECTIONTYPE2")
-	WORLDMAPSECTIONTYPE2(1, (byte)2),
-	@ObfuscatedName("az")
+	WORLDMAPSECTIONTYPE2(3, (byte)2),
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Llb;"
+		descriptor = "Ljt;"
 	)
 	@Export("WORLDMAPSECTIONTYPE3")
-	WORLDMAPSECTIONTYPE3(2, (byte)3);
+	WORLDMAPSECTIONTYPE3(0, (byte)3);
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("fg")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static Archive field2665;
+	@ObfuscatedName("uy")
 	@ObfuscatedGetter(
-		intValue = 323961761
+		intValue = 561283007
+	)
+	static int field2666;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 754386531
 	)
 	@Export("type")
 	final int type;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@Export("id")
 	final byte id;
 
@@ -47,101 +57,74 @@ public enum WorldMapSectionType implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-311400525"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZB)I",
-		garbageValue = "10"
+		descriptor = "(II)Lut;",
+		garbageValue = "-408274121"
 	)
-	public static int method5895(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-
-			for (int var7 = 0; var7 < var6; ++var7) {
-				char var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == '-') {
-						var3 = true;
-						continue;
-					}
-
-					if (var8 == '+') {
-						continue;
-					}
-				}
-
-				int var10;
-				if (var8 >= '0' && var8 <= '9') {
-					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') {
-					var10 = var8 - '7';
-				} else {
-					if (var8 < 'a' || var8 > 'z') {
-						throw new NumberFormatException();
-					}
-
-					var10 = var8 - 'W';
-				}
-
-				if (var10 >= var1) {
-					throw new NumberFormatException();
-				}
-
-				if (var3) {
-					var10 = -var10;
-				}
-
-				int var9 = var10 + var5 * var1;
-				if (var9 / var1 != var5) {
-					throw new NumberFormatException();
-				}
-
-				var5 = var9;
-				var4 = true;
-			}
-
-			if (!var4) {
-				throw new NumberFormatException();
-			} else {
-				return var5;
-			}
+	@Export("getDbRowType")
+	public static DbRowType getDbRowType(int var0) {
+		DbRowType var1 = (DbRowType)DbRowType.DBRowType_cache.get((long)var0);
+		if (var1 != null) {
+			return var1;
 		} else {
-			throw new IllegalArgumentException("" + var1);
+			byte[] var2 = DbRowType.field5305.takeFile(38, var0);
+			var1 = new DbRowType();
+			if (var2 != null) {
+				var1.method9460(new Buffer(var2));
+			}
+
+			var1.method9459();
+			DbRowType.DBRowType_cache.put(var1, (long)var0);
+			return var1;
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "43"
+		descriptor = "(II)Lha;",
+		garbageValue = "1966297166"
 	)
-	@Export("Login_promptCredentials")
-	static void Login_promptCredentials(boolean var0) {
-		if (!class188.client.containsAccessAndRefreshToken() && !class188.client.otlTokenRequesterInitialized() && !class188.client.containsSessionAndCharacterId()) {
-			Login.Login_response1 = "";
-			Login.Login_response2 = "Enter your username/email & password.";
-			Login.Login_response3 = "";
-			ParamComposition.updateLoginIndex(2);
-			if (var0) {
-				Login.Login_password = "";
+	public static HitSplatDefinition method4961(int var0) {
+		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = HitSplatDefinition.HitSplatDefinition_archive.takeFile(32, var0);
+			var1 = new HitSplatDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
 
-			AsyncHttpResponse.updateToRememberedUsername();
-			ActorSpotAnim.focusPasswordWhenUsernameFilled();
-		} else {
-			ParamComposition.updateLoginIndex(10);
+			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
+	}
+
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "2"
+	)
+	static final void method4962() {
+		if (GrandExchangeEvents.field4576) {
+			for (int var0 = 0; var0 < class511.topLevelWorldView.playerUpdateManager.playerCount; ++var0) {
+				Player var1 = class511.topLevelWorldView.players[class511.topLevelWorldView.playerUpdateManager.playerIndices[var0]];
+				var1.method2412();
+			}
+
+			GrandExchangeEvents.field4576 = false;
+		}
+
 	}
 }

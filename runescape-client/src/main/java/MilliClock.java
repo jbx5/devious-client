@@ -4,126 +4,139 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gp")
+@ObfuscatedName("ib")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
+	@ObfuscatedName("aq")
+	long[] field2370;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 77467019
+	)
+	int field2371;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 691435497
+	)
+	int field2372;
 	@ObfuscatedName("ak")
-	long[] field1906;
-	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 229547495
+		longValue = -4725112427391503235L
 	)
-	int field1903;
-	@ObfuscatedName("aj")
+	long field2374;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1612662661
+		intValue = 1561619897
 	)
-	int field1902;
-	@ObfuscatedName("az")
+	int field2373;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		longValue = -1499200024151752591L
+		intValue = -2128144825
 	)
-	long field1905;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 596736119
-	)
-	int field1904;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -19734087
-	)
-	int field1907;
+	int field2375;
 
-	public MilliClock() {
-		this.field1906 = new long[10];
-		this.field1903 = 256;
-		this.field1902 = 1;
-		this.field1904 = 0;
-		this.field1905 = class129.method3033();
+	MilliClock() {
+		this.field2370 = new long[10];
+		this.field2371 = 256;
+		this.field2372 = 1;
+		this.field2373 = 0;
+		this.field2374 = WorldMapData_1.method4861();
 
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1906[var1] = this.field1905;
+			this.field2370[var1] = this.field2374;
 		}
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1748185955"
+		garbageValue = "-246153511"
 	)
 	@Export("mark")
 	public void mark() {
 		for (int var1 = 0; var1 < 10; ++var1) {
-			this.field1906[var1] = 0L;
+			this.field2370[var1] = 0L;
 		}
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "127"
+		descriptor = "(III)I",
+		garbageValue = "-1597628099"
 	)
 	@Export("wait")
 	public int wait(int var1, int var2) {
-		int var3 = this.field1903;
-		int var4 = this.field1902;
-		this.field1903 = 300;
-		this.field1902 = 1;
-		this.field1905 = class129.method3033();
-		if (0L == this.field1906[this.field1907]) {
-			this.field1903 = var3;
-			this.field1902 = var4;
-		} else if (this.field1905 > this.field1906[this.field1907]) {
-			this.field1903 = (int)((long)(var1 * 2560) / (this.field1905 - this.field1906[this.field1907]));
+		int var3 = this.field2371;
+		int var4 = this.field2372;
+		this.field2371 = 300;
+		this.field2372 = 1;
+		this.field2374 = WorldMapData_1.method4861();
+		if (this.field2370[this.field2375] == 0L) {
+			this.field2371 = var3;
+			this.field2372 = var4;
+		} else if (this.field2374 > this.field2370[this.field2375]) {
+			this.field2371 = (int)((long)(var1 * 2560) / (this.field2374 - this.field2370[this.field2375]));
 		}
 
-		if (this.field1903 < 25) {
-			this.field1903 = 25;
+		if (this.field2371 < 25) {
+			this.field2371 = 25;
 		}
 
-		if (this.field1903 > 256) {
-			this.field1903 = 256;
-			this.field1902 = (int)((long)var1 - (this.field1905 - this.field1906[this.field1907]) / 10L);
+		if (this.field2371 > 256) {
+			this.field2371 = 256;
+			this.field2372 = (int)((long)var1 - (this.field2374 - this.field2370[this.field2375]) / 10L);
 		}
 
-		if (this.field1902 > var1) {
-			this.field1902 = var1;
+		if (this.field2372 > var1) {
+			this.field2372 = var1;
 		}
 
-		this.field1906[this.field1907] = this.field1905;
-		this.field1907 = (this.field1907 + 1) % 10;
+		this.field2370[this.field2375] = this.field2374;
+		this.field2375 = (this.field2375 + 1) % 10;
 		int var5;
-		if (this.field1902 > 1) {
+		if (this.field2372 > 1) {
 			for (var5 = 0; var5 < 10; ++var5) {
-				if (0L != this.field1906[var5]) {
-					this.field1906[var5] += (long)this.field1902;
+				if (this.field2370[var5] != 0L) {
+					this.field2370[var5] += (long)this.field2372;
 				}
 			}
 		}
 
-		if (this.field1902 < var2) {
-			this.field1902 = var2;
+		if (this.field2372 < var2) {
+			this.field2372 = var2;
 		}
 
-		class484.method8889((long)this.field1902);
+		class188.method3688((long)this.field2372);
 
-		for (var5 = 0; this.field1904 < 256; this.field1904 += this.field1903) {
+		for (var5 = 0; this.field2373 < 256; this.field2373 += this.field2371) {
 			++var5;
 		}
 
-		this.field1904 &= 255;
+		this.field2373 &= 255;
 		return var5;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhi;",
-		garbageValue = "336880011"
+		descriptor = "(IB)Lgt;",
+		garbageValue = "1"
 	)
-	public static class183 method3646() {
-		return class183.field1911;
+	@Export("VarpDefinition_get")
+	public static VarpDefinition VarpDefinition_get(int var0) {
+		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
+			var1 = new VarpDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

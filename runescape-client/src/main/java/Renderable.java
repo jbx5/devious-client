@@ -4,12 +4,12 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("kt")
 @Implements("Renderable")
 public abstract class Renderable extends DualNode {
-	@ObfuscatedName("ev")
+	@ObfuscatedName("ej")
 	@ObfuscatedGetter(
-		intValue = 2009823259
+		intValue = 776464435
 	)
 	@Export("height")
 	public int height;
@@ -20,16 +20,16 @@ public abstract class Renderable extends DualNode {
 
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkb;",
-		garbageValue = "-852782106"
+		descriptor = "(I)Llv;",
+		garbageValue = "-543123602"
 	)
 	@Export("getModel")
 	protected Model getModel() {
 		return null;
 	}
 
-	@ObfuscatedName("ef")
-	void vmethod5198(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, long var10) {
+	@ObfuscatedName("eh")
+	void vmethod5778(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, long var10) {
 		Model var12 = this.getModel();
 		if (var12 != null) {
 			this.height = var12.height;
@@ -42,12 +42,12 @@ public abstract class Renderable extends DualNode {
 
 	}
 
-	@ObfuscatedName("jq")
+	@ObfuscatedName("js")
 	@ObfuscatedSignature(
-		descriptor = "(ILql;IIIJ)V"
+		descriptor = "(ILqg;IIIJ)V"
 	)
 	@Export("draw")
-	void draw(int var1, class423 var2, int var3, int var4, int var5, long var6) {
+	void draw(int var1, class424 var2, int var3, int var4, int var5, long var6) {
 		Model var8 = this.getModel();
 		if (var8 != null) {
 			this.height = var8.height;
@@ -56,29 +56,32 @@ public abstract class Renderable extends DualNode {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(Lor;Lor;B)Z",
-		garbageValue = "84"
+		descriptor = "([BIIB)Ljava/lang/String;",
+		garbageValue = "90"
 	)
-	public static boolean method5097(AbstractArchive var0, AbstractArchive var1) {
-		WorldMapElement.WorldMapElement_archive = var1;
-		if (!var0.isFullyLoaded()) {
-			return false;
-		} else {
-			class193.WorldMapElement_count = var0.getGroupFileCount(35);
-			WorldMapElement.WorldMapElement_cached = new WorldMapElement[class193.WorldMapElement_count];
+	@Export("decodeStringCp1252")
+	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
+		char[] var3 = new char[var2];
+		int var4 = 0;
 
-			for (int var2 = 0; var2 < class193.WorldMapElement_count; ++var2) {
-				byte[] var3 = var0.takeFile(35, var2);
-				WorldMapElement.WorldMapElement_cached[var2] = new WorldMapElement(var2);
-				if (var3 != null) {
-					WorldMapElement.WorldMapElement_cached[var2].decode(new Buffer(var3));
-					WorldMapElement.WorldMapElement_cached[var2].method3828();
+		for (int var5 = 0; var5 < var2; ++var5) {
+			int var6 = var0[var5 + var1] & 255;
+			if (var6 != 0) {
+				if (var6 >= 128 && var6 < 160) {
+					char var7 = class413.cp1252AsciiExtension[var6 - 128];
+					if (var7 == 0) {
+						var7 = '?';
+					}
+
+					var6 = var7;
 				}
-			}
 
-			return true;
+				var3[var4++] = (char)var6;
+			}
 		}
+
+		return new String(var3, 0, var4);
 	}
 }
