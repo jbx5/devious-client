@@ -34,6 +34,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.IntPredicate;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -1724,61 +1725,8 @@ public interface Client extends OAuthApi, GameEngine
 	 */
 	NPC getHintArrowNpc();
 
-	/**
-	 * Checks whether animation smoothing is enabled for players.
-	 *
-	 * @return true if player animation smoothing is enabled, false otherwise
-	 */
-	boolean isInterpolatePlayerAnimations();
-
-	/**
-	 * Sets the animation smoothing state for players.
-	 *
-	 * @param interpolate the new smoothing state
-	 */
-	void setInterpolatePlayerAnimations(boolean interpolate);
-
-	/**
-	 * Checks whether animation smoothing is enabled for NPC.
-	 *
-	 * @return true if NPC animation smoothing is enabled, false otherwise
-	 */
-	boolean isInterpolateNpcAnimations();
-
-	/**
-	 * Sets the animation smoothing state for NPCs.
-	 *
-	 * @param interpolate the new smoothing state
-	 */
-	void setInterpolateNpcAnimations(boolean interpolate);
-
-	/**
-	 * Checks whether animation smoothing is enabled for objects.
-	 *
-	 * @return true if object animation smoothing is enabled, false otherwise
-	 */
-	boolean isInterpolateObjectAnimations();
-
-	/**
-	 * Sets the animation smoothing state for objects.
-	 *
-	 * @param interpolate the new smoothing state
-	 */
-	void setInterpolateObjectAnimations(boolean interpolate);
-
-	/**
-	 * Checks whether animation smoothing is enabled for widgets.
-	 *
-	 * @return true if widget animation smoothing is enabled, false otherwise
-	 */
-	boolean isInterpolateWidgetAnimations();
-
-	/**
-	 * Sets the animation smoothing state for widgets.
-	 *
-	 * @param interpolate the new smoothing state
-	 */
-	void setInterpolateWidgetAnimations(boolean interpolate);
+	IntPredicate getAnimationInterpolationFilter();
+	void setAnimationInterpolationFilter(IntPredicate filter);
 
 	/**
 	 * Get the number of client ticks an item has been pressed
