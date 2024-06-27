@@ -774,6 +774,14 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
+	public void showMouseCross(int color)
+	{
+		client.setMouseCrossColor(color);
+		client.setMouseCrossState(0);
+	}
+
+	@Inject
+	@Override
 	public Widget[] getWidgetRoots()
 	{
 		int topGroup = getTopLevelInterfaceId();

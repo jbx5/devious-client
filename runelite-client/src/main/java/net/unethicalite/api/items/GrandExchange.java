@@ -40,7 +40,7 @@ public class GrandExchange
 		Widget setupWindow = Widgets.get(WidgetInfo.GRAND_EXCHANGE_OFFER_CONTAINER);
 		if (Widgets.isVisible(setupWindow))
 		{
-			String text = setupWindow.getChild(18).getText();
+			String text = setupWindow.getChild(20).getText();
 			if (text == null || text.isEmpty())
 			{
 				return View.UNKNOWN;

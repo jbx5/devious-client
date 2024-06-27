@@ -3,58 +3,79 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rs")
+@ObfuscatedName("rq")
 @Implements("ConcurrentMidiTask")
 public class ConcurrentMidiTask extends SongTask {
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lgo;"
-	)
-	static ClanChannel field4800;
-	@ObfuscatedName("ak")
-	ArrayList field4799;
+	@ObfuscatedName("aq")
+	ArrayList field4817;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lre;Ljava/util/ArrayList;)V"
+		descriptor = "(Lro;Ljava/util/ArrayList;)V"
 	)
 	public ConcurrentMidiTask(SongTask var1, ArrayList var2) {
 		super(var1);
-		this.field4799 = var2;
-		super.field4793 = "ConcurrentMidiTask";
+		this.field4817 = var2;
+		super.field4814 = "ConcurrentMidiTask";
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1230726323"
+		descriptor = "(S)Z",
+		garbageValue = "-4307"
 	)
-	public boolean vmethod8329() {
-		for (int var1 = 0; var1 < this.field4799.size(); ++var1) {
-			SongTask var2 = (SongTask)this.field4799.get(var1);
+	public boolean vmethod8276() {
+		for (int var1 = 0; var1 < this.field4817.size(); ++var1) {
+			SongTask var2 = (SongTask)this.field4817.get(var1);
 			if (var2 == null) {
-				this.field4799.remove(var1);
+				this.field4817.remove(var1);
 				--var1;
-			} else if (var2.vmethod8329()) {
-				if (var2.method8301()) {
-					this.method8305(var2.method8319());
-					this.field4799.clear();
+			} else if (var2.vmethod8276()) {
+				if (var2.method8249()) {
+					this.method8253(var2.method8251());
+					this.field4817.clear();
 					return true;
 				}
 
-				if (var2.method8304() != null) {
-					this.field4799.add(var2.method8304());
+				if (var2.method8254() != null) {
+					this.field4817.add(var2.method8254());
 				}
 
-				super.field4798 = var2.field4798;
-				this.field4799.remove(var1);
+				super.field4816 = var2.field4816;
+				this.field4817.remove(var1);
 				--var1;
 			}
 		}
 
-		if (this.field4799.isEmpty()) {
+		if (this.field4817.isEmpty()) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "([BILjava/lang/CharSequence;I)I",
+		garbageValue = "-1012537953"
+	)
+	public static int method8274(byte[] var0, int var1, CharSequence var2) {
+		int var3 = var2.length();
+		int var4 = var1;
+
+		for (int var5 = 0; var5 < var3; ++var5) {
+			char var6 = var2.charAt(var5);
+			if (var6 <= 127) {
+				var0[var4++] = (byte)var6;
+			} else if (var6 <= 2047) {
+				var0[var4++] = (byte)(192 | var6 >> 6);
+				var0[var4++] = (byte)(128 | var6 & '?');
+			} else {
+				var0[var4++] = (byte)(224 | var6 >> '\f');
+				var0[var4++] = (byte)(128 | var6 >> 6 & 63);
+				var0[var4++] = (byte)(128 | var6 & '?');
+			}
+		}
+
+		return var4 - var1;
 	}
 }

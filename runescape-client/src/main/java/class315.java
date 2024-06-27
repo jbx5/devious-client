@@ -1,38 +1,33 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mq")
+@ObfuscatedName("mm")
 public class class315 {
-	@ObfuscatedName("ui")
-	@ObfuscatedGetter(
-		intValue = -1512224128
-	)
-	static int field3269;
+	@ObfuscatedName("aj")
+	@Export("SpriteBuffer_spriteHeights")
+	public static int[] SpriteBuffer_spriteHeights;
 
-	@ObfuscatedName("mo")
+	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)Ljava/lang/String;",
-		garbageValue = "1"
+		descriptor = "(IIIII)V",
+		garbageValue = "696205402"
 	)
-	static final String method6164(int var0, int var1) {
-		int var2 = var1 - var0;
-		if (var2 < -9) {
-			return HttpAuthenticationHeader.colorStartTag(16711680);
-		} else if (var2 < -6) {
-			return HttpAuthenticationHeader.colorStartTag(16723968);
-		} else if (var2 < -3) {
-			return HttpAuthenticationHeader.colorStartTag(16740352);
-		} else if (var2 < 0) {
-			return HttpAuthenticationHeader.colorStartTag(16756736);
-		} else if (var2 > 9) {
-			return HttpAuthenticationHeader.colorStartTag(65280);
-		} else if (var2 > 6) {
-			return HttpAuthenticationHeader.colorStartTag(4259584);
-		} else if (var2 > 3) {
-			return HttpAuthenticationHeader.colorStartTag(8453888);
-		} else {
-			return var2 > 0 ? HttpAuthenticationHeader.colorStartTag(12648192) : HttpAuthenticationHeader.colorStartTag(16776960);
+	static final void method6088(int var0, int var1, int var2, int var3) {
+		Client.field625 = 0;
+		int var4 = (SoundCache.localPlayer.x >> 7) + class511.topLevelWorldView.baseX;
+		int var5 = (SoundCache.localPlayer.y >> 7) + class511.topLevelWorldView.baseY;
+		if (var4 >= 3053 && var4 <= 3156 && var5 >= 3056 && var5 <= 3136) {
+			Client.field625 = 1;
 		}
+
+		if (var4 >= 3072 && var4 <= 3118 && var5 >= 9492 && var5 <= 9535) {
+			Client.field625 = 1;
+		}
+
+		if (Client.field625 == 1 && var4 >= 3139 && var4 <= 3199 && var5 >= 3008 && var5 <= 3062) {
+			Client.field625 = 0;
+		}
+
 	}
 }

@@ -90,6 +90,16 @@ public interface Actor extends Renderable, SceneEntity
 	int getRSInteracting();
 
 	/**
+	 * Gets the previous actor being interacted with.
+	 * If you are no longer interacting with said actor, this is sometimes
+	 * quite useful.
+	 * @return the Actor this Actor was previously interacting with,
+	 * or null if there isn't one
+	 */
+	Actor getLastInteracting();
+
+
+	/**
 	 * Gets the health of the actor in {@link #getHealthScale()} units.
 	 *
 	 * The server does not transmit actors' real health, only this value

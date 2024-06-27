@@ -7,6 +7,7 @@ import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
+import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
 
 public interface RSScene extends Scene
@@ -163,7 +164,13 @@ public interface RSScene extends Scene
 	void setCameraZ2(int cameraZ2);
 
 	@Import("Scene_cameraXTile")
+	int getScreenCenterX();
+
+	@Import("Scene_cameraXTile")
 	void setScreenCenterX(int screenCenterX);
+
+	@Import("Scene_cameraYTile")
+	int getScreenCenterZ();
 
 	@Import("Scene_cameraYTile")
 	void setScreenCenterZ(int screenCenterZ); // <-- This is correct!
@@ -222,9 +229,18 @@ public interface RSScene extends Scene
 	@Import("checkClick")
 	boolean isCheckClick();
 
+	@Import("checkClick")
+	void setCheckClick(boolean checkClick);
+
 	@Import("Scene_offsetOccluder")
 	int getOffsetOccluder();
 
 	@Import("Scene_offsetOccluder")
 	void setOffsetOccluder(int offset);
+
+	@Construct
+	RSIntProjection newIntProjection(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw);
+
+	void setTargetTile(int targetX, int targetY);
+	void hoverTile(int x, int y, int plane);
 }

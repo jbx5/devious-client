@@ -1,46 +1,36 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lh")
+@ObfuscatedName("km")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-	@ObfuscatedName("wn")
-	static List field3203;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 1484412449
-	)
-	static int field3204;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("text")
 	String text;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -2131612803
+		intValue = 265924559
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1333894303
+		intValue = -2136908715
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lkr;"
+		descriptor = "Ljx;"
 	)
 	@Export("size")
 	WorldMapLabelSize size;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IILkr;)V"
+		descriptor = "(Ljava/lang/String;IILjx;)V"
 	)
 	WorldMapLabel(String var1, int var2, int var3, WorldMapLabelSize var4) {
 		this.text = var1;
@@ -49,45 +39,42 @@ public class WorldMapLabel {
 		this.size = var4;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "2026325851"
+		descriptor = "([FIFI)F",
+		garbageValue = "784704657"
 	)
-	public static int method5937(int var0, int var1, int var2) {
-		var2 &= 3;
-		if (var2 == 0) {
-			return var1;
-		} else if (var2 == 1) {
-			return 7 - var0;
-		} else {
-			return var2 == 2 ? 7 - var1 : var0;
+	static float method5003(float[] var0, int var1, float var2) {
+		float var3 = var0[var1];
+
+		for (int var4 = var1 - 1; var4 >= 0; --var4) {
+			var3 = var3 * var2 + var0[var4];
 		}
+
+		return var3;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Lor;II)V",
-		garbageValue = "152083568"
+		descriptor = "(ILdg;ZI)I",
+		garbageValue = "-14417832"
 	)
-	public static void method5938(AbstractArchive var0, int var1) {
-		if (!class329.field3579.isEmpty()) {
-			ArrayList var2 = new ArrayList();
-			Iterator var3 = class329.field3579.iterator();
-
-			while (var3.hasNext()) {
-				MusicSong var4 = (MusicSong)var3.next();
-				var4.field3694 = false;
-				var4.field3687 = false;
-				var4.field3696 = false;
-				var4.field3692 = false;
-				var4.musicTrackArchive = var0;
-				var4.musicTrackVolume = var1;
-				var4.field3688 = 0.0F;
-				var2.add(var4);
-			}
-
-			ScriptFrame.method1169(var2, class329.musicPlayerStatus, class329.field3584, class329.field3585, class329.field3580, false);
+	static int method5004(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.method4383(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.method4385(var3) ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 }

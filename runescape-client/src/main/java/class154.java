@@ -2,114 +2,124 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fi")
+@ObfuscatedName("fx")
 public class class154 extends class147 {
-	@ObfuscatedName("ai")
-	@Export("osName")
-	static String osName;
-	@ObfuscatedName("ak")
-	boolean field1739;
-	@ObfuscatedName("al")
-	byte field1736;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("aq")
+	boolean field1735;
+	@ObfuscatedName("ad")
+	byte field1734;
+	@ObfuscatedName("ag")
 	byte field1737;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
+	byte field1736;
+	@ObfuscatedName("ap")
 	byte field1738;
-	@ObfuscatedName("af")
-	byte field1742;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfu;"
+		descriptor = "Lfn;"
 	)
 	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfu;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class154(class150 var1) {
 		this.this$0 = var1;
 	}
 
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
+	)
+	void vmethod3528(Buffer var1) {
+		this.field1735 = var1.readUnsignedByte() == 1;
+		this.field1734 = var1.readByte();
+		this.field1737 = var1.readByte();
+		this.field1736 = var1.readByte();
+		this.field1738 = var1.readByte();
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
+	)
+	void vmethod3530(ClanSettings var1) {
+		var1.allowGuests = this.field1735;
+		var1.field1766 = this.field1734;
+		var1.field1767 = this.field1737;
+		var1.field1768 = this.field1736;
+		var1.field1769 = this.field1738;
+	}
+
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "1738227110"
+		descriptor = "([BI)Ldg;",
+		garbageValue = "-22186846"
 	)
-	void vmethod3486(Buffer var1) {
-		this.field1739 = var1.readUnsignedByte() == 1;
-		this.field1736 = var1.readByte();
-		this.field1737 = var1.readByte();
-		this.field1738 = var1.readByte();
-		this.field1742 = var1.readByte();
-	}
+	@Export("newScript")
+	static Script newScript(byte[] var0) {
+		Script var1 = new Script();
+		Buffer var2 = new Buffer(var0);
+		var2.offset = var2.array.length - 2;
+		int var3 = var2.readUnsignedShort();
+		int var4 = var2.array.length - 2 - var3 - 12;
+		var2.offset = var4;
+		int var5 = var2.readInt();
+		var1.localIntCount = var2.readUnsignedShort();
+		var1.localStringCount = var2.readUnsignedShort();
+		var1.intArgumentCount = var2.readUnsignedShort();
+		var1.stringArgumentCount = var2.readUnsignedShort();
+		int var6 = var2.readUnsignedByte();
+		int var7;
+		int var8;
+		if (var6 > 0) {
+			var1.switches = var1.newIterableNodeHashTable(var6);
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgc;B)V",
-		garbageValue = "100"
-	)
-	void vmethod3490(ClanSettings var1) {
-		var1.allowGuests = this.field1739;
-		var1.field1767 = this.field1736;
-		var1.field1768 = this.field1737;
-		var1.field1773 = this.field1738;
-		var1.field1770 = this.field1742;
-	}
+			for (var7 = 0; var7 < var6; ++var7) {
+				var8 = var2.readUnsignedShort();
+				IterableNodeHashTable var9 = new IterableNodeHashTable(var8 > 0 ? ModeWhere.method7432(var8) : 1);
+				var1.switches[var7] = var9;
 
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1623442927"
-	)
-	public static int method3288(int var0) {
-		return (var0 & class539.field5291) - 1;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-84"
-	)
-	static void method3294() {
-		if (Login.clearLoginScreen) {
-			Login.titleboxSprite = null;
-			Login.titlebuttonSprite = null;
-			Login.runesSprite = null;
-			InvDefinition.leftTitleSprite = null;
-			Login.rightTitleSprite = null;
-			class91.logoSprite = null;
-			class433.title_muteSprite = null;
-			class397.options_buttons_0Sprite = null;
-			class206.options_buttons_2Sprite = null;
-			class47.worldSelectBackSprites = null;
-			class428.worldSelectFlagSprites = null;
-			ClanChannelMember.worldSelectArrows = null;
-			Skills.worldSelectStars = null;
-			FloorUnderlayDefinition.field2215 = null;
-			class239.loginScreenRunesAnimation.method2473();
-			Skills.method7123(0, 100);
-			JagNetThread var0 = HttpMethod.field32;
-			var0.method7335(true);
-			Login.clearLoginScreen = false;
-		}
-	}
-
-	@ObfuscatedName("py")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1316147536"
-	)
-	static String method3293(String var0) {
-		PlayerType[] var1 = class108.PlayerType_values();
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			PlayerType var3 = var1[var2];
-			if (var3.modIcon != -1 && var0.startsWith(class322.method6186(var3.modIcon))) {
-				var0 = var0.substring(6 + Integer.toString(var3.modIcon).length());
-				break;
+				while (var8-- > 0) {
+					int var10 = var2.readInt();
+					int var11 = var2.readInt();
+					var9.put(new IntegerNode(var11), (long)var10);
+				}
 			}
 		}
 
-		return var0;
+		var2.offset = 0;
+		var1.field1011 = var2.readStringCp1252NullTerminatedOrNull();
+		var1.opcodes = new int[var5];
+		var1.intOperands = new int[var5];
+		var1.stringOperands = new String[var5];
+
+		for (var7 = 0; var2.offset < var4; var1.opcodes[var7++] = var8) {
+			var8 = var2.readUnsignedShort();
+			if (var8 == 3) {
+				var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
+			} else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
+				var1.intOperands[var7] = var2.readInt();
+			} else {
+				var1.intOperands[var7] = var2.readUnsignedByte();
+			}
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)I",
+		garbageValue = "747669371"
+	)
+	public static int method3321(int var0, int var1, int var2) {
+		if (var1 < var0) {
+			throw new IllegalArgumentException("max: " + var1 + " can not be lower than min: " + var0);
+		} else {
+			return Math.max(var0, Math.min(var2, var1));
+		}
 	}
 }

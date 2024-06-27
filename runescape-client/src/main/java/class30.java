@@ -1,46 +1,136 @@
 import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bt")
+@ObfuscatedName("bo")
 public class class30 {
-	@ObfuscatedName("aj")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Lnx;"
 	)
-	public static AbstractArchive field158;
-	@ObfuscatedName("jy")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
+	@Export("scriptActiveWidget")
+	static Widget scriptActiveWidget;
+	@ObfuscatedName("iz")
+	@ObfuscatedGetter(
+		intValue = 1323524365
 	)
-	static WorldView field155;
-	@ObfuscatedName("km")
-	@ObfuscatedSignature(
-		descriptor = "[Lvl;"
-	)
-	static IndexedSprite[] field156;
+	@Export("Players_count")
+	static int Players_count;
+	@ObfuscatedName("jn")
+	static int[] field147;
 
 	static {
 		ImageIO.setUseCache(false);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lmz;",
-		garbageValue = "111"
+		descriptor = "(Lbk;I)V",
+		garbageValue = "1908706038"
 	)
-	@Export("ServerPacket_values")
-	public static ServerPacket[] ServerPacket_values() {
-		return new ServerPacket[]{ServerPacket.CAM_SETANGLE, ServerPacket.UPDATE_INV_CLEAR, ServerPacket.PROJECTILE_SPAWN, ServerPacket.MESSAGE_PRIVATE, ServerPacket.field3404, ServerPacket.field3519, ServerPacket.field3406, ServerPacket.field3467, ServerPacket.field3408, ServerPacket.field3409, ServerPacket.IF_SETSCROLLPOS, ServerPacket.field3411, ServerPacket.IF_SETHIDE, ServerPacket.field3413, ServerPacket.field3414, ServerPacket.CAM_RESET, ServerPacket.field3506, ServerPacket.field3464, ServerPacket.MESSAGE_PRIVATE_ECHO, ServerPacket.field3493, ServerPacket.field3420, ServerPacket.field3421, ServerPacket.UPDATE_FRIENDLIST, ServerPacket.field3423, ServerPacket.field3416, ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED, ServerPacket.DYNAMICOBJECT_SPAWN, ServerPacket.field3427, ServerPacket.LOGOUT_FULL, ServerPacket.UPDATE_INV_FULL, ServerPacket.TRIGGER_ONDIALOG_ABORT, ServerPacket.field3431, ServerPacket.field3432, ServerPacket.field3433, ServerPacket.GRAPHICSOBJECT_SPAWN, ServerPacket.IF_SETANGLE, ServerPacket.field3500, ServerPacket.PLAYER_INFO, ServerPacket.field3438, ServerPacket.field3530, ServerPacket.UPDATE_INV_STOP_TRANSIT, ServerPacket.field3531, ServerPacket.UPDATE_UID192, ServerPacket.field3479, ServerPacket.field3444, ServerPacket.field3445, ServerPacket.field3465, ServerPacket.SYNC_CLIENT_VARCACHE, ServerPacket.UPDATE_INV_PARTIAL, ServerPacket.LOGOUT, ServerPacket.VARP_LARGE, ServerPacket.field3446, ServerPacket.field3410, ServerPacket.field3453, ServerPacket.EVENT_WORLDHOP, ServerPacket.field3455, ServerPacket.field3422, ServerPacket.field3457, ServerPacket.IF_SETCOLOUR, ServerPacket.IF_SETOBJECT, ServerPacket.HINT_ARROW, ServerPacket.REBUILD_REGION, ServerPacket.field3462, ServerPacket.field3503, ServerPacket.CAM_LOOKAT, ServerPacket.field3405, ServerPacket.field3466, ServerPacket.field3403, ServerPacket.field3468, ServerPacket.UPDATE_IGNORELIST, ServerPacket.field3470, ServerPacket.SET_PRIVCHATMODE, ServerPacket.field3472, ServerPacket.field3448, ServerPacket.MINIMAP_TOGGLE, ServerPacket.RESET_CLIENT_VARCACHE, ServerPacket.field3476, ServerPacket.field3477, ServerPacket.field3489, ServerPacket.UPDATE_ZONE_FULL_FOLLOWS, ServerPacket.field3480, ServerPacket.field3486, ServerPacket.field3482, ServerPacket.IF_MOVESUB, ServerPacket.MIDI_SONG, ServerPacket.CHAT_FILTER_SETTINGS, ServerPacket.field3512, ServerPacket.field3487, ServerPacket.UPDATE_STOCKMARKET_SLOT, ServerPacket.field3502, ServerPacket.NPC_INFO_LARGE_VIEWPORT_2, ServerPacket.IF_SETPOSITION, ServerPacket.IF_CLOSESUB, ServerPacket.IF_SETPLAYERHEAD, ServerPacket.field3494, ServerPacket.NPC_SET_SEQUENCE, ServerPacket.UPDATE_REBOOT_TIMER, ServerPacket.REBUILD_NORMAL, ServerPacket.UPDATE_STAT, ServerPacket.IF_SETMODEL, ServerPacket.field3496, ServerPacket.field3501, ServerPacket.NPC_INFO_SMALL_VIEWPORT_1, ServerPacket.PLAYER_SPOTANIM, ServerPacket.VARP_SMALL, ServerPacket.MINIMAP_FLAG_SET, ServerPacket.PING_STATISTICS_REQUEST, ServerPacket.field3507, ServerPacket.field3508, ServerPacket.field3509, ServerPacket.field3504, ServerPacket.field3511, ServerPacket.REFLECTION_CHECKER, ServerPacket.field3419, ServerPacket.field3514, ServerPacket.NPC_SPOTANIM, ServerPacket.RUNCLIENTSCRIPT, ServerPacket.URL_OPEN, ServerPacket.field3518, ServerPacket.field3527, ServerPacket.MESSAGE_FRIENDS_CHAT, ServerPacket.IF_SETNPCHEAD, ServerPacket.field3522, ServerPacket.field3523, ServerPacket.SET_PLAYER_OP, ServerPacket.field3525, ServerPacket.MESSAGE_GAME, ServerPacket.field3521, ServerPacket.field3528, ServerPacket.field3490};
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
+		}
+
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
+		}
+
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("kv")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2122436127"
+		descriptor = "(IIIIIII)V",
+		garbageValue = "249019892"
 	)
-	public static void method445() {
-		DbRowType.DBRowType_cache.clear();
+	static void method446(int var0, int var1, int var2, int var3, int var4, int var5) {
+		NodeDeque var6 = HttpResponse.worldView.groundItems[var0][var1][var2];
+		if (var6 != null) {
+			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
+				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
+					var7.quantity = var5;
+					break;
+				}
+			}
+
+			WorldMapRenderer.updateItemPile(var0, var1, var2);
+		}
+
+	}
+
+	@ObfuscatedName("mu")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "-1948030057"
+	)
+	@Export("drawScrollBar")
+	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+		UrlRequest.scrollBarSprites[0].drawAt(var0, var1);
+		UrlRequest.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field693);
+		int var5 = var3 * (var3 - 32) / var4;
+		if (var5 < 8) {
+			var5 = 8;
+		}
+
+		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field583);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field584);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field584);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var5 + var6 + var1 + 15, 16, Client.field584);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field584);
+	}
+
+	@ObfuscatedName("nb")
+	@ObfuscatedSignature(
+		descriptor = "(Lnx;I)V",
+		garbageValue = "-1265045225"
+	)
+	static final void method451(Widget var0) {
+		int var1 = var0.contentType;
+		if (var1 == 324) {
+			if (Client.field790 == -1) {
+				Client.field790 = var0.spriteId2;
+				Client.field665 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.gender == 1) {
+				var0.spriteId2 = Client.field790;
+			} else {
+				var0.spriteId2 = Client.field665;
+			}
+
+		} else if (var1 == 325) {
+			if (Client.field790 == -1) {
+				Client.field790 = var0.spriteId2;
+				Client.field665 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.gender == 1) {
+				var0.spriteId2 = Client.field665;
+			} else {
+				var0.spriteId2 = Client.field790;
+			}
+
+		} else if (var1 == 327) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 0;
+		} else if (var1 == 328) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 1;
+		}
 	}
 }

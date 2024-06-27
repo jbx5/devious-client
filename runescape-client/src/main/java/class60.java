@@ -3,109 +3,137 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("co")
 public class class60 {
+	@ObfuscatedName("kj")
+	@ObfuscatedGetter(
+		intValue = 1983512085
+	)
+	@Export("cameraZ")
+	static int cameraZ;
 	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lby;"
-	)
-	@Export("pcmPlayerProvider")
-	static class51 pcmPlayerProvider;
-	@ObfuscatedName("ak")
-	byte[] field436;
-	@ObfuscatedName("al")
+	byte[] field413;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 68677859
+		intValue = -1939909553
 	)
-	int field435;
-	@ObfuscatedName("aj")
+	int field410;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1695656625
+		intValue = 1005414431
 	)
-	int field438;
+	int field412;
 
 	class60() {
-		this.field436 = null;
-		this.field435 = 0;
-		this.field438 = 0;
+		this.field413 = null;
+		this.field410 = 0;
+		this.field412 = 0;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "208697388"
+		descriptor = "(IB)I",
+		garbageValue = "9"
 	)
-	int method1158(int var1) {
+	int method1178(int var1) {
 		int var2 = 0;
 
 		int var3;
 		int var4;
-		for (var3 = 0; var1 >= 8 - this.field438; var1 -= var4) {
-			var4 = 8 - this.field438;
+		for (var3 = 0; var1 >= 8 - this.field412; var1 -= var4) {
+			var4 = 8 - this.field412;
 			int var5 = (1 << var4) - 1;
-			var2 += (this.field436[this.field435] >> this.field438 & var5) << var3;
-			this.field438 = 0;
-			++this.field435;
+			var2 += (this.field413[this.field410] >> this.field412 & var5) << var3;
+			this.field412 = 0;
+			++this.field410;
 			var3 += var4;
 		}
 
 		if (var1 > 0) {
 			var4 = (1 << var1) - 1;
-			var2 += (this.field436[this.field435] >> this.field438 & var4) << var3;
-			this.field438 += var1;
+			var2 += (this.field413[this.field410] >> this.field412 & var4) << var3;
+			this.field412 += var1;
 		}
 
 		return var2;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-873724104"
+		garbageValue = "1896393256"
 	)
-	int method1153() {
-		int var1 = this.field436[this.field435] >> this.field438 & 1;
-		++this.field438;
-		this.field435 += this.field438 >> 3;
-		this.field438 &= 7;
+	int method1166() {
+		int var1 = this.field413[this.field410] >> this.field412 & 1;
+		++this.field412;
+		this.field410 += this.field412 >> 3;
+		this.field412 &= 7;
 		return var1;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "([BII)V",
-		garbageValue = "-1030739921"
+		garbageValue = "-2030419149"
 	)
-	void method1151(byte[] var1, int var2) {
-		this.field436 = var1;
-		this.field435 = var2;
-		this.field438 = 0;
+	void method1168(byte[] var1, int var2) {
+		this.field413 = var1;
+		this.field410 = var2;
+		this.field412 = 0;
 	}
 
-	@ObfuscatedName("hl")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-79"
+		descriptor = "(IB)Lie;",
+		garbageValue = "11"
 	)
-	static void method1150(int var0, int var1) {
-		int[] var2 = new int[9];
-
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			int var4 = var3 * 32 + 15 + 128;
-			int var5 = var4 * 3 + 600;
-			int var7 = Rasterizer3D.Rasterizer3D_sine[var4];
-			int var9 = var1 - 334;
-			if (var9 < 0) {
-				var9 = 0;
-			} else if (var9 > 100) {
-				var9 = 100;
+	public static FloorOverlayDefinition method1179(int var0) {
+		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
+			var1 = new FloorOverlayDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2), var0);
 			}
 
-			int var10 = (Client.zoomWidth - Client.zoomHeight) * var9 / 100 + Client.zoomHeight;
-			int var8 = var10 * var5 / 256;
-			var2[var3] = var7 * var8 >> 16;
+			var1.postDecode();
+			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-3016048"
+	)
+	static void method1172() {
+		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var0.stream1 != null) {
+				class238.pcmStreamMixer.removeSubStream(var0.stream1);
+				var0.stream1 = null;
+			}
+
+			if (var0.stream2 != null) {
+				class238.pcmStreamMixer.removeSubStream(var0.stream2);
+				var0.stream2 = null;
+			}
 		}
 
-		class358.topLevelWorldView.scene.method4901(var2, 500, 800, var0 * 334 / var1, 334);
+		ObjectSound.objectSounds.clear();
+	}
+
+	@ObfuscatedName("nm")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIII)V",
+		garbageValue = "-1708397335"
+	)
+	@Export("updateRootInterface")
+	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (ModeWhere.widgetDefinition.loadInterface(var0)) {
+			AsyncHttpResponse.updateInterface(ModeWhere.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
+		}
 	}
 }

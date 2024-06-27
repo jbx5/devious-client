@@ -3,51 +3,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gf")
+@ObfuscatedName("gs")
 public class class156 extends class147 {
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lor;"
-	)
-	@Export("KitDefinition_modelsArchive")
-	public static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("ny")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 154647647
+		intValue = -1095420729
 	)
-	@Export("menuX")
-	static int menuX;
-	@ObfuscatedName("ak")
-	String field1751;
+	@Export("gameCyclesToDo")
+	static int gameCyclesToDo;
+	@ObfuscatedName("aq")
+	String field1750;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfu;"
+		descriptor = "Lfn;"
 	)
 	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfu;)V"
+		descriptor = "(Lfn;)V"
 	)
 	class156(class150 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "1738227110"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
 	)
-	void vmethod3486(Buffer var1) {
-		this.field1751 = var1.readStringCp1252NullTerminated();
+	void vmethod3528(Buffer var1) {
+		this.field1750 = var1.readStringCp1252NullTerminated();
 		var1.readInt();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgc;B)V",
-		garbageValue = "100"
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
 	)
-	void vmethod3490(ClanSettings var1) {
-		var1.name = this.field1751;
+	void vmethod3530(ClanSettings var1) {
+		var1.name = this.field1750;
 	}
 }

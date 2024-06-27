@@ -4,61 +4,61 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rx")
+@ObfuscatedName("ry")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Luu;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1936009871
+		intValue = 1688107139
 	)
-	int field4901;
-	@ObfuscatedName("af")
+	int field4919;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lpq;"
+		descriptor = "Lpd;"
 	)
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lux;)V"
+		descriptor = "(Luu;)V"
 	)
 	public FriendsList(LoginType var1) {
 		super(400);
-		this.field4901 = 1;
+		this.field4919 = 1;
 		this.friendLoginUpdates = new LinkDeque();
 		this.loginType = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lsg;",
-		garbageValue = "-3"
+		descriptor = "(B)Lsk;",
+		garbageValue = "99"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Friend();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lsg;",
-		garbageValue = "1162605348"
+		descriptor = "(II)[Lsk;",
+		garbageValue = "-2040243144"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lvv;ZB)Z",
-		garbageValue = "82"
+		descriptor = "(Lvo;ZI)Z",
+		garbageValue = "-2084160349"
 	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
@@ -70,10 +70,10 @@ public class FriendsList extends UserList {
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;II)V",
-		garbageValue = "859979755"
+		descriptor = "(Lvp;II)V",
+		garbageValue = "-1604577371"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
@@ -137,17 +137,17 @@ public class FriendsList extends UserList {
 					}
 
 					if (var6 != var11.world) {
-						var11.int2 = ++this.field4901 - 1;
+						var11.int2 = ++this.field4919 - 1;
 						if (var11.world == -1 && var6 == 0) {
-							var11.int2 = -(var11.int2 * 2057375033) * 1407439113;
+							var11.int2 = -(var11.int2 * 415892275) * 1329967099;
 						}
 
 						var11.world = var6;
 					}
 
 					var11.rank = var7;
-					var11.field4912 = var9;
-					var11.field4911 = var10;
+					var11.field4932 = var9;
+					var11.field4933 = var10;
 					continue;
 				}
 

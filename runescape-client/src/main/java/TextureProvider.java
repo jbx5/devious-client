@@ -4,57 +4,51 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jj")
+@ObfuscatedName("li")
 @Implements("TextureProvider")
 public class TextureProvider implements TextureLoader {
-	@ObfuscatedName("lb")
-	@ObfuscatedGetter(
-		intValue = -940011597
-	)
-	@Export("oculusOrbFocalPointZ")
-	static int oculusOrbFocalPointZ;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "[Ljw;"
+		descriptor = "[Lkz;"
 	)
 	@Export("textures")
 	Texture[] textures;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lpk;"
+		descriptor = "Lpr;"
 	)
 	@Export("deque")
 	NodeDeque deque;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1600177769
+		intValue = -2028628447
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -173568361
+		intValue = 1041474121
 	)
 	@Export("remaining")
 	int remaining;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@Export("brightness")
 	double brightness;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 560141227
+		intValue = -1163704053
 	)
 	@Export("textureSize")
 	int textureSize;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
+		descriptor = "Lok;"
 	)
 	@Export("archive")
 	AbstractArchive archive;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lor;Lor;IDI)V"
+		descriptor = "(Lok;Lok;IDI)V"
 	)
 	public TextureProvider(AbstractArchive var1, AbstractArchive var2, int var3, double var4, int var6) {
 		this.deque = new NodeDeque();
@@ -81,10 +75,10 @@ public class TextureProvider implements TextureLoader {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "49"
+		descriptor = "(I)I",
+		garbageValue = "1112949135"
 	)
 	@Export("getLoadedPercentage")
 	public int getLoadedPercentage() {
@@ -103,7 +97,7 @@ public class TextureProvider implements TextureLoader {
 
 					for (int var7 = 0; var7 < var6.length; ++var7) {
 						int var8 = var6[var7];
-						if (this.archive.method7231(var8)) {
+						if (this.archive.method7184(var8)) {
 							++var2;
 						}
 					}
@@ -118,17 +112,17 @@ public class TextureProvider implements TextureLoader {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("setBrightness")
 	public void setBrightness(double var1) {
 		this.brightness = var1;
 		this.clear();
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(IB)[I",
-		garbageValue = "116"
+		garbageValue = "1"
 	)
 	@Export("getTexturePixels")
 	public int[] getTexturePixels(int var1) {
@@ -158,39 +152,39 @@ public class TextureProvider implements TextureLoader {
 		return null;
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "238689618"
+		garbageValue = "2019200691"
 	)
 	@Export("getAverageTextureRGB")
 	public int getAverageTextureRGB(int var1) {
 		return this.textures[var1] != null ? this.textures[var1].averageRGB : 0;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "402010172"
+		garbageValue = "-372101735"
 	)
-	public boolean vmethod5456(int var1) {
-		return this.textures[var1].field2618;
+	public boolean vmethod6017(int var1) {
+		return this.textures[var1].field2828;
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "209141119"
+		garbageValue = "-615727832"
 	)
 	@Export("isLowDetail")
 	public boolean isLowDetail(int var1) {
 		return this.textureSize == 64;
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-598476332"
+		descriptor = "(B)V",
+		garbageValue = "48"
 	)
 	@Export("clear")
 	public void clear() {
@@ -204,10 +198,10 @@ public class TextureProvider implements TextureLoader {
 		this.remaining = this.capacity;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-89858524"
+		garbageValue = "-1591756578"
 	)
 	@Export("animate")
 	public void animate(int var1) {
@@ -221,30 +215,65 @@ public class TextureProvider implements TextureLoader {
 
 	}
 
-	@ObfuscatedName("ne")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V",
-		garbageValue = "-1864544323"
+		descriptor = "(Lde;IIIII)V",
+		garbageValue = "-1275756427"
 	)
-	@Export("drawScrollBar")
-	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
-		UrlRequest.scrollBarSprites[0].drawAt(var0, var1);
-		UrlRequest.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field759);
-		int var5 = var3 * (var3 - 32) / var4;
-		if (var5 < 8) {
-			var5 = 8;
+	static final void method5720(WorldView var0, int var1, int var2, int var3, int var4) {
+		int[][][] var5 = var0.tileHeights;
+		int var6 = var0.sizeX - 1;
+		int var7 = var0.sizeY - 1;
+
+		for (int var8 = var2; var8 <= var2 + var4; ++var8) {
+			for (int var9 = var1; var9 <= var3 + var1; ++var9) {
+				if (var9 >= 0 && var9 < var5[0].length - 1 && var8 >= 0 && var8 < var5[0][0].length - 1) {
+					WorldMapScaleHandler.Tiles_underlays2[0][var9][var8] = 127;
+					if (var9 == var1 && var9 > 0) {
+						var5[0][var9][var8] = var5[0][var9 - 1][var8];
+					}
+
+					if (var3 + var1 == var9 && var9 < var6) {
+						var5[0][var9][var8] = var5[0][var9 + 1][var8];
+					}
+
+					if (var8 == var2 && var8 > 0) {
+						var5[0][var9][var8] = var5[0][var9][var8 - 1];
+					}
+
+					if (var8 == var2 + var4 && var8 < var7) {
+						var5[0][var9][var8] = var5[0][var9][var8 + 1];
+					}
+				}
+			}
 		}
 
-		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field608);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field662);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field662);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field662);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field662);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field526);
-		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field526);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var5 + var6 + var1 + 15, 16, Client.field526);
-		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var5 + var6 + var1 + 14, 15, Client.field526);
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lcw;",
+		garbageValue = "3"
+	)
+	@Export("worldListStart")
+	static World worldListStart() {
+		World.World_listCount = 0;
+		return World.getNextWorldListWorld();
+	}
+
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "1299623605"
+	)
+	@Export("isCharPrintable")
+	public static boolean isCharPrintable(char var0) {
+		if (var0 >= ' ' && var0 <= '~') {
+			return true;
+		} else if (var0 >= 160 && var0 <= 255) {
+			return true;
+		} else {
+			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
+		}
 	}
 }

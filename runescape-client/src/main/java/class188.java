@@ -2,88 +2,77 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ht")
-public abstract class class188 {
-	@ObfuscatedName("bb")
-	@Export("client")
+@ObfuscatedName("hm")
+public class class188 extends DualNode {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lclient;"
+		descriptor = "Lmo;"
 	)
-	static Client client;
-	@ObfuscatedName("ci")
+	@Export("field2023")
+	static EvictingDualNodeHashTable field2023;
+	@ObfuscatedName("oo")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lcj;"
 	)
-	@Export("clientLanguage")
-	static Language clientLanguage;
-	@ObfuscatedName("az")
-	String field1965;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lhj;"
-	)
-	final class185 this$0;
+	@Export("tempMenuAction")
+	static MenuAction tempMenuAction;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lhj;Ljava/lang/String;)V"
-	)
-	class188(class185 var1, String var2) {
-		this.this$0 = var1;
-		this.field1965 = var2;
+	static {
+		field2023 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-435761148"
-	)
-	public abstract int vmethod3757();
+	@ObfuscatedName("aq")
+	public static final void method3688(long var0) {
+		if (var0 > 0L) {
+			if (var0 % 10L == 0L) {
+				long var2 = var0 - 1L;
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-2059088308"
-	)
-	public int vmethod3759() {
-		return -1;
+				try {
+					Thread.sleep(var2);
+				} catch (InterruptedException var8) {
+				}
+
+				try {
+					Thread.sleep(1L);
+				} catch (InterruptedException var7) {
+				}
+			} else {
+				try {
+					Thread.sleep(var0);
+				} catch (InterruptedException var6) {
+				}
+			}
+
+		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-2073167750"
+		descriptor = "(IIB)I",
+		garbageValue = "-2"
 	)
-	public String vmethod3764() {
-		return null;
+	static int method3687(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return -1;
+		} else {
+			return var1 >= 0 && var1 < var2.ids.length ? var2.ids[var1] : -1;
+		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("iw")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "3"
+		descriptor = "(Lii;IIIZI)V",
+		garbageValue = "-210290307"
 	)
-	public String method3760() {
-		return this.field1965;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-2086783673"
-	)
-	static final void method3766(String var0) {
-		PacketBufferNode var1 = WorldMapElement.getPacketBufferNode(ClientPacket.field3308, Client.packetWriter.isaacCipher);
-		var1.packetBuffer.writeByte(class432.stringCp1252NullTerminatedByteSize(var0));
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var1);
-	}
-
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "(Lby;S)V",
-		garbageValue = "-28974"
-	)
-	public static final void method3767(class51 var0) {
-		class60.pcmPlayerProvider = var0;
+	static void method3684(SequenceDefinition var0, int var1, int var2, int var3, boolean var4) {
+		if (Client.soundEffectCount < 50) {
+			if (var0.soundEffects != null && var1 < var0.soundEffects.length && var0.soundEffects[var1] != null) {
+				int var5 = var0.soundEffects[var1].field2148 & 31;
+				if ((var5 <= 0 || class105.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var5 != 0 || class105.clientPreferences.getSoundEffectsVolume() != 0)) {
+					class452.method8354(var0.soundEffects[var1], var2, var3, var4);
+				}
+			}
+		}
 	}
 }

@@ -11,21 +11,21 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("ea")
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("requestThread")
 	final Thread requestThread;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("isClosed")
 	volatile boolean isClosed;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("requests")
 	Queue requests;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -468765383
+		intValue = 1686353651
 	)
 	@Export("clientRevision")
 	int clientRevision;
@@ -38,21 +38,21 @@ public abstract class UrlRequester implements Runnable {
 		this.clientRevision = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lea;B)V",
-		garbageValue = "0"
+		descriptor = "(Lez;I)V",
+		garbageValue = "-1132577463"
 	)
 	@Export("openConnection")
 	abstract void openConnection(UrlRequest var1) throws IOException;
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;I)I",
-		garbageValue = "1241609482"
+		descriptor = "(Ljava/net/URLConnection;B)I",
+		garbageValue = "8"
 	)
-	int method2902(URLConnection var1) {
-		int var2 = UrlRequest.field1486;
+	int method2948(URLConnection var1) {
+		int var2 = UrlRequest.field1485;
 		if (var1 != null) {
 			try {
 				if (var1 instanceof HttpURLConnection) {
@@ -65,10 +65,10 @@ public abstract class UrlRequester implements Runnable {
 		return var2;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URLConnection;B)V",
-		garbageValue = "0"
+		garbageValue = "2"
 	)
 	@Export("setDefaultRequestProperties")
 	void setDefaultRequestProperties(URLConnection var1) {
@@ -79,12 +79,12 @@ public abstract class UrlRequester implements Runnable {
 		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.clientRevision);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;Lea;I)V",
-		garbageValue = "-626926202"
+		descriptor = "(Ljava/net/URLConnection;Lez;B)V",
+		garbageValue = "-7"
 	)
-	void method2909(URLConnection var1, UrlRequest var2) {
+	void method2943(URLConnection var1, UrlRequest var2) {
 		DataInputStream var3 = null;
 
 		try {
@@ -96,38 +96,39 @@ public abstract class UrlRequester implements Runnable {
 				var3.readFully(var4);
 			} else {
 				var4 = new byte[0];
-				byte[] var6 = GrandExchangeOfferOwnWorldComparator.ByteArrayPool_getArray(5000);
+				byte[] var6 = WorldMapEvent.ByteArrayPool_getArrayBool(5000, false);
+				byte[] var7 = var6;
 
-				for (int var7 = var3.read(var6); var7 > -1; var7 = var3.read(var6)) {
-					byte[] var8 = new byte[var4.length + var7];
-					System.arraycopy(var4, 0, var8, 0, var4.length);
-					System.arraycopy(var6, 0, var8, var4.length, var7);
-					var4 = var8;
+				for (int var8 = var3.read(var6); var8 > -1; var8 = var3.read(var7)) {
+					byte[] var9 = new byte[var4.length + var8];
+					System.arraycopy(var4, 0, var9, 0, var4.length);
+					System.arraycopy(var7, 0, var9, var4.length, var8);
+					var4 = var9;
 				}
 
-				class182.ByteArrayPool_release(var6);
+				Player.ByteArrayPool_release(var7);
 			}
 
 			var2.response0 = var4;
-		} catch (IOException var14) {
+		} catch (IOException var15) {
 			var2.response0 = null;
 		} finally {
-			var2.field1489 = this.method2902(var1);
+			var2.field1482 = this.method2948(var1);
 		}
 
 		if (var3 != null) {
 			try {
 				var3.close();
-			} catch (IOException var13) {
+			} catch (IOException var14) {
 			}
 		}
 
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;I)Lea;",
-		garbageValue = "1539080567"
+		descriptor = "(Ljava/net/URL;I)Lez;",
+		garbageValue = "728263238"
 	)
 	@Export("request")
 	public UrlRequest request(URL var1) {
@@ -139,10 +140,10 @@ public abstract class UrlRequester implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "734198043"
+		garbageValue = "-575124742"
 	)
 	@Export("close")
 	public void close() {
@@ -176,43 +177,19 @@ public abstract class UrlRequester implements Runnable {
 
 				this.openConnection(var1);
 			} catch (Exception var7) {
-				BufferedSink.RunException_sendStackTrace((String)null, var7);
+				FriendsChat.RunException_sendStackTrace((String)null, var7);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("mm")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lqz;",
-		garbageValue = "46"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
+		garbageValue = "1129295286"
 	)
-	public static class422 method2921() {
-		synchronized(class422.field4690) {
-			if (class422.field4686 == 0) {
-				return new class422();
-			} else {
-				class422.field4690[--class422.field4686].method7815();
-				return class422.field4690[class422.field4686];
-			}
-		}
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(Lor;II)V",
-		garbageValue = "-1643803525"
-	)
-	static void method2917(AbstractArchive var0, int var1) {
-		if ((var1 & class541.field5326.rsOrdinal()) != 0) {
-			class91.logoSprite = ClanMate.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
-		} else if ((var1 & class541.field5327.rsOrdinal()) != 0) {
-			class91.logoSprite = ClanMate.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
-		} else if ((var1 & class541.field5300.rsOrdinal()) != 0) {
-			class91.logoSprite = ClanMate.SpriteBuffer_getIndexedSpriteByName(var0, "logo_speedrunning", "");
-		} else {
-			class91.logoSprite = ClanMate.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
-		}
-
+	@Export("insertMenuItemNoShift")
+	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
+		WorldMapArea.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false, -1);
 	}
 }

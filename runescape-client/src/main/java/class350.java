@@ -1,19 +1,24 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("nu")
 public class class350 {
-	@ObfuscatedName("uw")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1480863765
+		intValue = 1896478877
 	)
-	static int field3738;
-	@ObfuscatedName("vv")
-	@ObfuscatedSignature(
-		descriptor = "Ltf;"
+	public int field3752;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = -624927999
 	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
+	public int field3751;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -309459477
+	)
+	public int field3750;
+
+	class350() {
+	}
 }

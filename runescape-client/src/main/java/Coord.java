@@ -1,34 +1,33 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nj")
+@ObfuscatedName("nl")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1559901275
+		intValue = 194034093
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -10786693
+		intValue = 1492035379
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1268210065
+		intValue = 1884235445
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnj;)V"
+		descriptor = "(Lnl;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane;
@@ -53,20 +52,20 @@ public class Coord {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "81"
+		garbageValue = "4"
 	)
 	@Export("packed")
 	public int packed() {
-		return ApproximateRouteStrategy.method1197(this.plane, this.x, this.y);
+		return method6460(this.plane, this.x, this.y);
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lnj;B)Z",
-		garbageValue = "-91"
+		descriptor = "(Lnl;I)Z",
+		garbageValue = "794880841"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
@@ -79,10 +78,10 @@ public class Coord {
 		}
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "-99434783"
+		garbageValue = "-1664964664"
 	)
 	@Export("toString")
 	String toString(String var1) {
@@ -105,72 +104,66 @@ public class Coord {
 		return this.toString(",");
 	}
 
-	@ObfuscatedName("ku")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIII)V",
-		garbageValue = "-535769687"
+		descriptor = "(IIII)I",
+		garbageValue = "911272682"
 	)
-	static void method6523(int var0, int var1, int var2, int var3, int var4) {
-		NodeDeque var5 = ModeWhere.worldView.groundItems[var0][var1][var2];
-		if (var5 != null) {
-			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
-				if ((var3 & 32767) == var6.id && var4 == var6.quantity) {
-					var6.remove();
-					break;
-				}
-			}
-
-			if (var5.last() == null) {
-				ModeWhere.worldView.groundItems[var0][var1][var2] = null;
-			}
-
-			class349.updateItemPile(var0, var1, var2);
-		}
-
+	public static int method6460(int var0, int var1, int var2) {
+		return var0 << 28 | var1 << 14 | var2;
 	}
 
-	@ObfuscatedName("nx")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1104055563"
+		descriptor = "(II)I",
+		garbageValue = "-701103374"
 	)
-	@Export("setMusicVolume")
-	static final void setMusicVolume(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 255);
-		if (var0 != class459.clientPreferences.getMusicVolume()) {
-			label61: {
-				if (class459.clientPreferences.getMusicVolume() == 0) {
-					boolean var1 = !class329.field3579.isEmpty();
-					if (var1) {
-						WorldMapLabel.method5938(GameObject.archive6, var0);
-						Client.playingJingle = false;
-						break label61;
-					}
-				}
+	public static int method6469(int var0) {
+		return var0 >> 28 & 3;
+	}
 
-				if (var0 == 0) {
-					Skills.method7123(0, 0);
-					Client.playingJingle = false;
-				} else if (!class329.musicSongs.isEmpty()) {
-					Iterator var3 = class329.musicSongs.iterator();
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "91"
+	)
+	public static int method6468(int var0) {
+		return var0 >> 14 & 16383;
+	}
 
-					while (var3.hasNext()) {
-						MusicSong var2 = (MusicSong)var3.next();
-						if (var2 != null) {
-							var2.musicTrackVolume = var0;
-						}
-					}
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-665658663"
+	)
+	public static int method6474(int var0) {
+		return var0 & 16383;
+	}
 
-					MusicSong var4 = (MusicSong)class329.musicSongs.get(0);
-					if (var4 != null && var4.midiPcmStream != null && var4.midiPcmStream.isReady() && !var4.field3696) {
-						var4.midiPcmStream.setPcmStreamVolume(var0);
-						var4.field3688 = (float)var0;
-					}
-				}
-			}
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "38"
+	)
+	public static int method6483(int var0) {
+		return var0 >> 3;
+	}
 
-			class459.clientPreferences.updateMusicVolume(var0);
-		}
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-24"
+	)
+	public static int method6467(int var0) {
+		return var0 << 3;
+	}
 
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "826326374"
+	)
+	public static int method6489(int var0) {
+		return var0 << 3;
 	}
 }

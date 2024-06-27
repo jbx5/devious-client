@@ -4,30 +4,18 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hq")
+@ObfuscatedName("gx")
 @Implements("InvDefinition")
 public class InvDefinition extends DualNode {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lor;"
-	)
-	@Export("InvDefinition_archive")
-	public static AbstractArchive InvDefinition_archive;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Llm;"
+		descriptor = "Lmo;"
 	)
 	@Export("InvDefinition_cached")
 	static EvictingDualNodeHashTable InvDefinition_cached;
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lvc;"
-	)
-	@Export("leftTitleSprite")
-	static SpritePixels leftTitleSprite;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1319222005
+		intValue = 142521319
 	)
 	@Export("size")
 	public int size;
@@ -40,10 +28,10 @@ public class InvDefinition extends DualNode {
 		this.size = 0;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;I)V",
-		garbageValue = "-481213061"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "0"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -57,10 +45,10 @@ public class InvDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lua;II)V",
-		garbageValue = "-1344869318"
+		descriptor = "(Lvp;IS)V",
+		garbageValue = "-28230"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -70,42 +58,29 @@ public class InvDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Lmr;I)V",
-		garbageValue = "-1586498254"
-	)
-	public static void method3790(class335 var0) {
-		if (!class329.field3582.contains(var0)) {
-			class329.field3582.add(var0);
+	@ObfuscatedName("ns")
+	static final void method3555(double var0) {
+		Rasterizer3D.method5248(var0);
+		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(var0);
+		if (VertexNormal.worldMap != null) {
+			VertexNormal.worldMap.method9066();
 		}
 
+		ItemComposition.ItemDefinition_cachedSprites.clear();
+		class105.clientPreferences.updateBrightness(var0);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("pl")
 	@ObfuscatedSignature(
-		descriptor = "(Lor;B)V",
-		garbageValue = "12"
+		descriptor = "(IB)Luh;",
+		garbageValue = "-82"
 	)
-	public static void method3783(AbstractArchive var0) {
-		VarpDefinition.VarpDefinition_archive = var0;
-		VarpDefinition.field2003 = VarpDefinition.VarpDefinition_archive.getGroupFileCount(16);
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lnb;I)I",
-		garbageValue = "1055878957"
-	)
-	static int method3791(Widget var0) {
-		if (var0.type != 11) {
-			--class166.Interpreter_stringStackSize;
-			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = -1;
-			return 1;
-		} else {
-			String var1 = Interpreter.Interpreter_stringStack[--class166.Interpreter_stringStackSize];
-			Interpreter.Interpreter_intStack[++class13.Interpreter_intStackSize - 1] = var0.method6932(var1);
-			return 1;
+	static DbTable method3556(int var0) {
+		DbTable var1 = (DbTable)Client.archive11.get((long)var0);
+		if (var1 == null) {
+			var1 = new DbTable(AbstractWorldMapData.field2675, var0);
 		}
+
+		return var1;
 	}
 }

@@ -1,131 +1,130 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iu")
-public class class227 {
+@ObfuscatedName("im")
+public abstract class class227 {
 	@ObfuscatedName("ak")
+	String field2432;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Liu;"
+		descriptor = "Lif;"
 	)
-	static final class227 field2438;
-	@ObfuscatedName("al")
+	final class224 this$0;
+
 	@ObfuscatedSignature(
-		descriptor = "Liu;"
+		descriptor = "(Lif;Ljava/lang/String;)V"
 	)
-	static final class227 field2436;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	static final class227 field2448;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	static final class227 field2440;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2447;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	static final class227 field2437;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2441;
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2442;
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2443;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2444;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2445;
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Liu;"
-	)
-	public static final class227 field2446;
+	class227(class224 var1, String var2) {
+		this.this$0 = var1;
+		this.field2432 = var2;
+	}
+
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Liu;"
+		descriptor = "(B)I",
+		garbageValue = "6"
 	)
-	static final class227 field2439;
+	public abstract int vmethod4325();
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-311136091"
+	)
+	public int vmethod4324() {
+		return -1;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "-22"
+	)
+	public String vmethod4323() {
+		return null;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-82230177"
+	)
+	public String method4322() {
+		return this.field2432;
+	}
+
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Liu;"
+		descriptor = "(IIIIB)V",
+		garbageValue = "-63"
 	)
-	static final class227 field2435;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 1134406591
-	)
-	public final int field2449;
+	static void method4321(int var0, int var1, int var2, int var3) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
+				int var5 = 0;
+				if (var1 > var4.maxX * 16384) {
+					var5 += var1 - var4.maxX * 16384;
+				} else if (var1 < var4.x * 16384) {
+					var5 += var4.x * 16384 - var1;
+				}
 
-	static {
-		field2438 = new class227(0);
-		field2436 = new class227(1);
-		field2448 = new class227(2);
-		field2440 = new class227(3);
-		field2447 = new class227(4, class213.field2183);
-		field2437 = new class227(5);
-		field2441 = new class227(6, class213.field2184);
-		field2442 = new class227(7, class213.field2186);
-		field2443 = new class227(8, class213.field2182);
-		field2444 = new class227(9, class213.field2185);
-		field2445 = new class227(10, class213.field2188);
-		field2446 = new class227(11, class213.field2181);
-		field2439 = new class227(12);
-		field2435 = new class227(13);
-	}
+				if (var2 > var4.maxY * 16384) {
+					var5 += var2 - var4.maxY * 16384;
+				} else if (var2 < var4.y * 128) {
+					var5 += var4.y * 128 - var2;
+				}
 
-	class227(int var1) {
-		this(var1, (class213)null);
-	}
+				var5 = Math.max(var5 - 64, 0);
+				if (var5 < var4.field845 && class105.clientPreferences.getAreaSoundEffectsVolume() != 0 && var0 == var4.plane) {
+					float var6 = var4.field846 < var4.field845 ? Math.min(Math.max((float)(var4.field845 - var5) / (float)(var4.field845 - var4.field846), 0.0F), 1.0F) : 1.0F;
+					int var7 = (int)(var6 * (float)class105.clientPreferences.getAreaSoundEffectsVolume());
+					if (var4.stream1 == null) {
+						if (var4.soundEffectId >= 0) {
+							SoundEffect var8 = SoundEffect.readSoundEffect(class424.field4703, var4.soundEffectId, 0);
+							if (var8 != null) {
+								RawSound var9 = var8.toRawSound().resample(class177.decimator);
+								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var9, 100, var7);
+								var10.setNumLoops(-1);
+								class238.pcmStreamMixer.addSubStream(var10);
+								var4.stream1 = var10;
+							}
+						}
+					} else {
+						var4.stream1.method911(var7);
+					}
 
-	@ObfuscatedSignature(
-		descriptor = "(ILig;)V"
-	)
-	class227(int var1, class213 var2) {
-		this.field2449 = var1;
-	}
+					if (var4.stream2 == null) {
+						if (var4.soundEffectIds != null && (var4.field840 -= var3) <= 0) {
+							int var12 = (int)(Math.random() * (double)var4.soundEffectIds.length);
+							SoundEffect var13 = SoundEffect.readSoundEffect(class424.field4703, var4.soundEffectIds[var12], 0);
+							if (var13 != null) {
+								RawSound var14 = var13.toRawSound().resample(class177.decimator);
+								RawPcmStream var11 = RawPcmStream.createRawPcmStream(var14, 100, var7);
+								var11.setNumLoops(0);
+								class238.pcmStreamMixer.addSubStream(var11);
+								var4.stream2 = var11;
+								var4.field840 = var4.field849 + (int)(Math.random() * (double)(var4.field850 - var4.field849));
+							}
+						}
+					} else {
+						var4.stream2.method911(var7);
+						if (!var4.stream2.hasNext()) {
+							var4.stream2 = null;
+						}
+					}
+				} else {
+					if (var4.stream1 != null) {
+						class238.pcmStreamMixer.removeSubStream(var4.stream1);
+						var4.stream1 = null;
+					}
 
-	@ObfuscatedName("mw")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-587894165"
-	)
-	@Export("formatItemStacks")
-	static final String formatItemStacks(int var0) {
-		String var1 = Integer.toString(var0);
-
-		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
-			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
+					if (var4.stream2 != null) {
+						class238.pcmStreamMixer.removeSubStream(var4.stream2);
+						var4.stream2 = null;
+					}
+				}
+			}
 		}
 
-		if (var1.length() > 9) {
-			return " " + HttpAuthenticationHeader.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
-		} else {
-			return var1.length() > 6 ? " " + HttpAuthenticationHeader.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + HttpAuthenticationHeader.colorStartTag(16776960) + var1 + "</col>";
-		}
 	}
 }

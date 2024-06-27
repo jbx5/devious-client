@@ -1,47 +1,45 @@
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sr")
+@ObfuscatedName("sa")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("outputStream")
 	OutputStream outputStream;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1983328937
+		intValue = -1436308289
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -2082251661
+		intValue = -1018166095
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1075813443
+		intValue = 454352641
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@Export("exception")
 	IOException exception;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@Export("closed")
 	boolean closed;
 
@@ -56,10 +54,10 @@ public class BufferedSink implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "17"
+		descriptor = "(I)Z",
+		garbageValue = "-1561049768"
 	)
 	@Export("isClosed")
 	boolean isClosed() {
@@ -81,10 +79,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "-2147483643"
+		garbageValue = "-1922659046"
 	)
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
@@ -121,10 +119,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1194566833"
+		garbageValue = "-992116662"
 	)
 	@Export("close")
 	void close() {
@@ -198,48 +196,5 @@ public class BufferedSink implements Runnable {
 			}
 		} while(!this.isClosed());
 
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;I)V",
-		garbageValue = "752768456"
-	)
-	@Export("RunException_sendStackTrace")
-	public static void RunException_sendStackTrace(String var0, Throwable var1) {
-		if (var1 != null) {
-			var1.printStackTrace();
-		} else {
-			try {
-				String var2 = "";
-				if (var1 != null) {
-					var2 = class140.method3139(var1);
-				}
-
-				if (var0 != null) {
-					if (var1 != null) {
-						var2 = var2 + " | ";
-					}
-
-					var2 = var2 + var0;
-				}
-
-				System.out.println("Error: " + var2);
-				var2 = var2.replace(':', '.');
-				var2 = var2.replace('@', '_');
-				var2 = var2.replace('&', '_');
-				var2 = var2.replace('#', '_');
-				if (RunException.RunException_applet == null) {
-					return;
-				}
-
-				URL var3 = new URL(RunException.RunException_applet.getCodeBase(), "clienterror.ws?cv=" + class534.RunException_revision + "&cs=" + RunException.field5495 + "&u=" + GZipDecompressor.field5486 + "&v1=" + TaskHandler.javaVendor + "&v2=" + TaskHandler.javaVersion + "&ct=" + WorldMapIcon_0.field3144 + "&e=" + var2);
-				DataInputStream var4 = new DataInputStream(var3.openStream());
-				var4.read();
-				var4.close();
-			} catch (Exception var5) {
-			}
-
-		}
 	}
 }

@@ -1,54 +1,50 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tc")
+@ObfuscatedName("ty")
 @Implements("FontName")
 public class FontName {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_plain11")
 	public static final FontName FontName_plain11;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_plain12")
 	public static final FontName FontName_plain12;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_bold12")
 	public static final FontName FontName_bold12;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_verdana11")
 	public static final FontName FontName_verdana11;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_verdana13")
 	public static final FontName FontName_verdana13;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Ltc;"
+		descriptor = "Lty;"
 	)
 	@Export("FontName_verdana15")
 	public static final FontName FontName_verdana15;
-	@ObfuscatedName("cy")
-	@ObfuscatedGetter(
-		intValue = 264957019
-	)
-	static int field5196;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@Export("name")
 	String name;
 
@@ -65,197 +61,112 @@ public class FontName {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1804378646"
+		descriptor = "(B)[Lty;",
+		garbageValue = "93"
 	)
-	public static int method9302(int var0, int var1) {
-		int var2;
-		for (var2 = 1; var1 > 1; var1 >>= 1) {
-			if ((var1 & 1) != 0) {
-				var2 = var0 * var2;
-			}
-
-			var0 *= var0;
-		}
-
-		if (var1 == 1) {
-			return var0 * var2;
-		} else {
-			return var2;
-		}
+	public static FontName[] method9217() {
+		return new FontName[]{FontName_bold12, FontName_plain11, FontName_verdana13, FontName_verdana11, FontName_plain12, FontName_verdana15};
 	}
 
-	@ObfuscatedName("kx")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIII)Z",
-		garbageValue = "1305902891"
+		descriptor = "(Ljava/util/ArrayList;IIIIZI)V",
+		garbageValue = "1418695647"
 	)
-	static boolean method9301(int var0, int var1, int var2, int var3, int var4, int var5) {
-		return class59.method1147(ModeWhere.worldView.plane, var0, var1, var2, var3, var4, var5);
-	}
+	public static void method9220(ArrayList var0, int var1, int var2, int var3, int var4, boolean var5) {
+		if (!var0.isEmpty()) {
+			class330.field3587.clear();
+			class330.field3581.clear();
+			MusicSong var7;
+			if (var5) {
+				Iterator var12 = class330.musicSongs.iterator();
 
-	@ObfuscatedName("ns")
-	@ObfuscatedSignature(
-		descriptor = "(Lnb;IB)I",
-		garbageValue = "101"
-	)
-	static final int method9303(Widget var0, int var1) {
-		if (var0.cs1Instructions != null && var1 < var0.cs1Instructions.length) {
-			try {
-				int[] var2 = var0.cs1Instructions[var1];
-				int var3 = 0;
-				int var4 = 0;
-				byte var5 = 0;
-
+				label65:
 				while (true) {
-					int var6 = var2[var4++];
-					int var7 = 0;
-					byte var8 = 0;
-					if (var6 == 0) {
-						return var3;
-					}
-
-					if (var6 == 1) {
-						var7 = Client.currentLevels[var2[var4++]];
-					}
-
-					if (var6 == 2) {
-						var7 = Client.levels[var2[var4++]];
-					}
-
-					if (var6 == 3) {
-						var7 = Client.experience[var2[var4++]];
-					}
-
-					int var9;
-					Widget var10;
-					int var11;
-					int var12;
-					if (var6 == 4) {
-						var9 = var2[var4++] << 16;
-						var9 += var2[var4++];
-						var10 = AsyncRestClient.widgetDefinition.method6536(var9);
-						var11 = var2[var4++];
-						if (var11 != -1 && (!KeyHandler.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
-							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
-								if (var11 + 1 == var10.itemIds[var12]) {
-									var7 += var10.itemQuantities[var12];
-								}
-							}
-						}
-					}
-
-					if (var6 == 5) {
-						var7 = Varps.Varps_main[var2[var4++]];
-					}
-
-					if (var6 == 6) {
-						var7 = Skills.Skills_experienceTable[Client.levels[var2[var4++]] - 1];
-					}
-
-					if (var6 == 7) {
-						var7 = Varps.Varps_main[var2[var4++]] * 100 / 46875;
-					}
-
-					if (var6 == 8) {
-						var7 = class17.localPlayer.combatLevel;
-					}
-
-					if (var6 == 9) {
-						for (var9 = 0; var9 < 25; ++var9) {
-							if (Skills.Skills_enabled[var9]) {
-								var7 += Client.levels[var9];
-							}
-						}
-					}
-
-					if (var6 == 10) {
-						var9 = var2[var4++] << 16;
-						var9 += var2[var4++];
-						var10 = AsyncRestClient.widgetDefinition.method6536(var9);
-						var11 = var2[var4++];
-						if (var11 != -1 && (!KeyHandler.ItemDefinition_get(var11).isMembersOnly || Client.isMembersWorld)) {
-							for (var12 = 0; var12 < var10.itemIds.length; ++var12) {
-								if (var11 + 1 == var10.itemIds[var12]) {
-									var7 = 999999999;
-									break;
-								}
-							}
-						}
-					}
-
-					if (var6 == 11) {
-						var7 = Client.runEnergy;
-					}
-
-					if (var6 == 12) {
-						var7 = Client.weight;
-					}
-
-					if (var6 == 13) {
-						var9 = Varps.Varps_main[var2[var4++]];
-						int var13 = var2[var4++];
-						var7 = (var9 & 1 << var13) != 0 ? 1 : 0;
-					}
-
-					if (var6 == 14) {
-						var9 = var2[var4++];
-						var7 = ClientPacket.getVarbit(var9);
-					}
-
-					if (var6 == 15) {
-						var8 = 1;
-					}
-
-					if (var6 == 16) {
-						var8 = 2;
-					}
-
-					if (var6 == 17) {
-						var8 = 3;
-					}
-
-					if (var6 == 18) {
-						var7 = (class17.localPlayer.x >> 7) + class358.topLevelWorldView.baseX;
-					}
-
-					if (var6 == 19) {
-						var7 = (class17.localPlayer.y >> 7) + class358.topLevelWorldView.baseY;
-					}
-
-					if (var6 == 20) {
-						var7 = var2[var4++];
-					}
-
-					if (var8 == 0) {
-						if (var5 == 0) {
-							var3 += var7;
+					do {
+						if (!var12.hasNext()) {
+							class330.musicSongs.clear();
+							break label65;
 						}
 
-						if (var5 == 1) {
-							var3 -= var7;
-						}
+						var7 = (MusicSong)var12.next();
+					} while(var7 == null);
 
-						if (var5 == 2 && var7 != 0) {
-							var3 /= var7;
-						}
+					var7.midiPcmStream.clear();
+					var7.midiPcmStream.method6190();
+					var7.midiPcmStream.setPcmStreamVolume(0);
+					var7.midiPcmStream.field3627 = 0;
+					int var13 = var7.musicTrackGroupId;
+					int var9 = var7.musicTrackFileId;
+					Iterator var10 = class330.field3588.iterator();
 
-						if (var5 == 3) {
-							var3 *= var7;
-						}
-
-						var5 = 0;
-					} else {
-						var5 = var8;
+					while (var10.hasNext()) {
+						class336 var11 = (class336)var10.next();
+						var11.vmethod6382(var13, var9);
 					}
 				}
-			} catch (Exception var14) {
-				return -1;
+			} else {
+				for (int var6 = 0; var6 < class330.musicSongs.size(); ++var6) {
+					var7 = (MusicSong)class330.musicSongs.get(var6);
+					if (var7 == null) {
+						class330.musicSongs.remove(var6);
+						--var6;
+					} else if (var7.field3712) {
+						if (var7.midiPcmStream.field3627 > 0) {
+							--var7.midiPcmStream.field3627;
+						}
+
+						var7.midiPcmStream.clear();
+						var7.midiPcmStream.method6190();
+						var7.midiPcmStream.setPcmStreamVolume(0);
+						class330.musicSongs.remove(var6);
+						--var6;
+					} else {
+						var7.field3712 = true;
+					}
+				}
 			}
-		} else {
-			return -2;
+
+			class131.method3071(var0, var5);
+			if (!class330.field3587.isEmpty()) {
+				class33.method476(var1, var2, var3, var4);
+				class330.field3581.add(new AddRequestTask((SongTask)null));
+				class330.field3581.add(new class446((SongTask)null, class330.field3583, class330.field3579, class330.field3591));
+				ArrayList var15 = new ArrayList();
+				var15.add(new class441(new FadeInTask((SongTask)null, 0, true, class330.field3586)));
+				if (!class330.musicSongs.isEmpty()) {
+					ArrayList var14 = new ArrayList();
+					var14.add(new DelayFadeTask(new ConcurrentMidiTask((SongTask)null, var15), class330.field3590));
+					ArrayList var8 = LoginScreenAnimation.method2564();
+					var14.add(new DelayFadeTask(new FadeOutTask(new class439((SongTask)null, var8), 0, false, class330.field3589), class330.musicPlayerStatus));
+					class330.field3581.add(new ConcurrentMidiTask((SongTask)null, var14));
+				} else {
+					class330.field3581.add(new DelayFadeTask((SongTask)null, class330.field3590));
+					class330.field3581.add(new ConcurrentMidiTask((SongTask)null, var15));
+				}
+
+			}
 		}
+	}
+
+	@ObfuscatedName("pb")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "-1361976443"
+	)
+	static String method9219(String var0) {
+		PlayerType[] var1 = class136.PlayerType_values();
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			PlayerType var3 = var1[var2];
+			if (var3.modIcon != -1 && var0.startsWith(class385.method7175(var3.modIcon))) {
+				var0 = var0.substring(6 + Integer.toString(var3.modIcon).length());
+				break;
+			}
+		}
+
+		return var0;
 	}
 }

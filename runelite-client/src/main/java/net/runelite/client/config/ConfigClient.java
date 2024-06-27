@@ -49,15 +49,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-
 @Slf4j
 public class ConfigClient
 {
@@ -133,27 +124,33 @@ public class ConfigClient
 			@Override
 			public void onResponse(Call call, Response response)
 			{
-				if (response.code() != 200)
+				try (response)
 				{
-					String body = "bad response";
-					try
+					if (response.code() != 200)
 					{
-						body = response.body().string();
-					}
-					catch (IOException ignored)
-					{
-					}
+						String body = "bad response";
+						try
+						{
+							body = response.body().string();
+						}
+						catch (IOException ignored)
+						{
+						}
 
-					log.warn("failed to synchronize some of {}/{} configuration values: {}",
-						patch.getEdit().size(), patch.getUnset().size(), body);
+						log.warn("failed to synchronize some of {}/{} configuration values: {}",
+							patch.getEdit().size(), patch.getUnset().size(), body);
+						future.complete(null);
+					}
+					else
+					{
+						log.debug("Synchronized {}/{} configuration values",
+							patch.getEdit().size(), patch.getUnset().size());
+					}
 				}
-				else
+				catch (Exception ex)
 				{
-					log.debug("Synchronized {}/{} configuration values",
-						patch.getEdit().size(), patch.getUnset().size());
+					future.completeExceptionally(ex);
 				}
-				response.close();
-				future.complete(null);
 			}
 		});
 

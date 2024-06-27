@@ -4,129 +4,129 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dt")
+@ObfuscatedName("de")
 @Implements("WorldView")
 public class WorldView {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1413982259
+		intValue = 2142034745
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Ljy;"
+		descriptor = "Lkq;"
 	)
 	@Export("scene")
 	public Scene scene;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "[Lir;"
+		descriptor = "[Lip;"
 	)
 	@Export("collisionMaps")
 	CollisionMap[] collisionMaps;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1305902891
+		intValue = -1735177445
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1392129955
+		intValue = 1019381583
 	)
 	@Export("sizeX")
 	int sizeX;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1595806771
+		intValue = 1628317125
 	)
 	@Export("sizeY")
 	int sizeY;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1010690991
+		intValue = 998139683
 	)
 	@Export("baseX")
 	int baseX;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -854149623
+		intValue = -1484949025
 	)
 	@Export("baseY")
 	int baseY;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ab")
 	@Export("tileLastDrawnActor")
 	int[][] tileLastDrawnActor;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ai")
 	@Export("tileHeights")
 	int[][][] tileHeights;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@Export("tileSettings")
 	byte[][][] tileSettings;
-	@ObfuscatedName("av")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Lde;"
+		descriptor = "[Ldb;"
 	)
 	@Export("players")
 	Player[] players;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Led;"
+		descriptor = "Leh;"
 	)
 	@Export("playerUpdateManager")
 	PlayerUpdateManager playerUpdateManager;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "[Ldv;"
+		descriptor = "[Ldx;"
 	)
 	@Export("npcs")
 	NPC[] npcs;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1962706385
+		intValue = -959579827
 	)
 	@Export("npcCount")
 	int npcCount;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ac")
 	@Export("npcIndices")
 	int[] npcIndices;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "[Lst;"
+		descriptor = "[Lso;"
 	)
 	@Export("worldEntities")
 	WorldEntity[] worldEntities;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -1011567785
+		intValue = 1124408595
 	)
 	@Export("worldEntityCount")
 	int worldEntityCount;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ao")
 	@Export("worldEntityIndices")
 	int[] worldEntityIndices;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "[[[Lpk;"
+		descriptor = "[[[Lpr;"
 	)
 	@Export("groundItems")
 	NodeDeque[][][] groundItems;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lpk;"
+		descriptor = "Lpr;"
 	)
 	@Export("pendingSpawns")
 	NodeDeque pendingSpawns;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lpk;"
+		descriptor = "Lpr;"
 	)
 	@Export("projectiles")
 	NodeDeque projectiles;
-	@ObfuscatedName("an")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lpk;"
+		descriptor = "Lpr;"
 	)
 	@Export("graphicsObjects")
 	NodeDeque graphicsObjects;
@@ -157,19 +157,19 @@ public class WorldView {
 		this.scene = new Scene(var1, 4, var2, var3, var4, this.tileHeights);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-799077622"
+		descriptor = "(B)Z",
+		garbageValue = "74"
 	)
-	boolean method2634() {
+	boolean method2676() {
 		return this.id == -1;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "841220988"
+		garbageValue = "-843666588"
 	)
 	@Export("clear")
 	void clear() {
@@ -209,12 +209,12 @@ public class WorldView {
 
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "66"
+		descriptor = "(I)V",
+		garbageValue = "-370890653"
 	)
-	void method2640() {
+	void method2680() {
 		int var1;
 		for (var1 = 0; var1 < 2048; ++var1) {
 			this.players[var1] = null;
@@ -230,30 +230,17 @@ public class WorldView {
 
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("lh")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1128508700"
+		descriptor = "(IIIII)V",
+		garbageValue = "-1942851204"
 	)
-	static void method2642() {
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-121"
-	)
-	static boolean method2633(char var0) {
-		for (int var1 = 0; var1 < "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".length(); ++var1) {
-			if (var0 == "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"ï¿½$%^&*()-_=+[{]};:'@#~,<.>/?\\| ".charAt(var1)) {
-				return true;
+	static final void method2684(int var0, int var1, int var2, int var3) {
+		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
+			if (Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
+				Client.field722[var4] = true;
 			}
 		}
 
-		return false;
 	}
 }

@@ -7,22 +7,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oa")
+@ObfuscatedName("oj")
 @Implements("GrandExchangeEvents")
 public class GrandExchangeEvents {
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("GrandExchangeEvents_ageComparator")
 	public static Comparator GrandExchangeEvents_ageComparator;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ag")
 	@Export("GrandExchangeEvents_priceComparator")
 	public static Comparator GrandExchangeEvents_priceComparator;
-	@ObfuscatedName("az")
+	@ObfuscatedName("ak")
 	@Export("GrandExchangeEvents_nameComparator")
 	public static Comparator GrandExchangeEvents_nameComparator;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ap")
 	@Export("GrandExchangeEvents_quantityComparator")
 	public static Comparator GrandExchangeEvents_quantityComparator;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ti")
+	static boolean field4576;
+	@ObfuscatedName("aq")
 	@Export("events")
 	public final List events;
 
@@ -35,7 +37,7 @@ public class GrandExchangeEvents {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lua;Z)V",
+		descriptor = "(Lvp;Z)V",
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
@@ -57,10 +59,10 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Comparator;ZB)V",
-		garbageValue = "11"
+		descriptor = "(Ljava/util/Comparator;ZI)V",
+		garbageValue = "2054074819"
 	)
 	@Export("sort")
 	public void sort(Comparator var1, boolean var2) {
@@ -72,13 +74,12 @@ public class GrandExchangeEvents {
 
 	}
 
-	@ObfuscatedName("on")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "107"
+		descriptor = "(II)I",
+		garbageValue = "-309605685"
 	)
-	static final void method7359() {
-		Client.field731 = Client.cycleCntr;
-		class238.field2539 = true;
+	public static int method7311(int var0) {
+		return (var0 & class540.field5312) - 1;
 	}
 }

@@ -1,31 +1,27 @@
-import net.runelite.mapping.Export;
+import java.io.File;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ei")
+@ObfuscatedName("eg")
 public class class104 {
-	@ObfuscatedName("fe")
-	@ObfuscatedSignature(
-		descriptor = "Lot;"
+	@ObfuscatedName("um")
+	@ObfuscatedGetter(
+		intValue = 1988012483
 	)
-	@Export("archive13")
-	static Archive archive13;
+	static int field1354;
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lvh;",
-		garbageValue = "-2117418260"
+		descriptor = "(Ljava/io/File;I)V",
+		garbageValue = "1486315429"
 	)
-	public static PrivateChatMode method2727(int var0) {
-		PrivateChatMode[] var1 = FloorUnderlayDefinition.method4062();
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			PrivateChatMode var3 = var1[var2];
-			if (var0 == var3.field5482) {
-				return var3;
-			}
+	static void method2770(File var0) {
+		FileSystem.FileSystem_cacheDir = var0;
+		if (!FileSystem.FileSystem_cacheDir.exists()) {
+			throw new RuntimeException("");
+		} else {
+			FileSystem.FileSystem_hasPermissions = true;
 		}
-
-		return null;
 	}
 }
