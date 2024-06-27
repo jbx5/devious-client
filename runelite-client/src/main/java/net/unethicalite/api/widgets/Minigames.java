@@ -11,7 +11,6 @@ import net.unethicalite.api.commons.Predicates;
 import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.game.GameThread;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 import net.unethicalite.api.game.Skills;
 import net.unethicalite.api.game.Vars;
 import net.unethicalite.api.game.Worlds;
@@ -30,6 +29,7 @@ public class Minigames
 {
 	private static final Supplier<Widget> MINIGAMES_TAB_BUTTON = () -> Widgets.get(707, 6);
 	private static final Supplier<Widget> MINIGAMES_DESTINATION = () -> Widgets.get(76, 11);
+	private static final Supplier<Widget> MINIGAMES_TELEPORT_BUTTON = () -> Widgets.get(160, 30);
 
 	private static final Set<Quest> NMZ_QUESTS = Set.of(
 		Quest.THE_ASCENT_OF_ARCEUUS,
@@ -85,7 +85,7 @@ public class Minigames
 			return;
 		}
 
-		Widget minigamesTeleportButton = Widgets.get(WidgetInfo.MINIGAME_TELEPORT_BUTTON);
+		Widget minigamesTeleportButton = MINIGAMES_TELEPORT_BUTTON.get();
 		List<Integer> teleportGraphics = List.of(800, 802, 803, 804);
 		if (isOpen() && minigamesTeleportButton != null)
 		{
@@ -135,7 +135,7 @@ public class Minigames
 
 	public static boolean isOpen()
 	{
-		return Widgets.isVisible(Widgets.get(WidgetInfo.MINIGAME_TELEPORT_BUTTON));
+		return Widgets.isVisible(MINIGAMES_TELEPORT_BUTTON.get());
 	}
 
 	public static boolean isTabOpen()
