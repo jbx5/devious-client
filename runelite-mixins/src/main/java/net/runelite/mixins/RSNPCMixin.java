@@ -151,7 +151,7 @@ public abstract class RSNPCMixin implements RSNPC
 	@SuppressWarnings("InfiniteRecursion")
 	public RSModel copy$getModel()
 	{
-		if (!client.isInterpolateNpcAnimations()
+		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation())
 			|| this.getAnimation() == AnimationID.HELLHOUND_DEFENCE
 			|| this.getAnimation() == 8270
 			|| this.getAnimation() == 8271
