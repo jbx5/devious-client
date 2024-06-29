@@ -1,9 +1,11 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("jb")
-public enum class238 implements Enum {
+@Implements("MoveSpeed")
+public enum MoveSpeed implements Enum {
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "Ljb;"
@@ -54,7 +56,7 @@ public enum class238 implements Enum {
 	@ObfuscatedSignature(
 		descriptor = "[Ljb;"
 	)
-	static class238[] field2508 = class193.method3759();
+	static MoveSpeed[] field2508 = class193.moveSpeeds();
 	@ObfuscatedName("tp")
 	@ObfuscatedSignature(
 		descriptor = "Lby;"
@@ -62,17 +64,19 @@ public enum class238 implements Enum {
 	@Export("pcmStreamMixer")
 	static PcmStreamMixer pcmStreamMixer;
 	@ObfuscatedName("ai")
-	public final byte field2515;
+	@Export("id")
+	public final byte id;
 	@ObfuscatedName("ae")
-	public final float field2517;
+	@Export("moveSpeed")
+	public final float moveSpeed;
 
 	static {
 		class562.method10144();
 	}
 
-	class238(byte var3, float var4) {
-		this.field2515 = var3;
-		this.field2517 = var4;
+	MoveSpeed(byte var3, float var4) {
+		this.id = var3;
+		this.moveSpeed = var4;
 	}
 
 	@ObfuscatedName("aq")
@@ -82,7 +86,7 @@ public enum class238 implements Enum {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field2515;
+		return this.id;
 	}
 
 	@ObfuscatedName("jw")

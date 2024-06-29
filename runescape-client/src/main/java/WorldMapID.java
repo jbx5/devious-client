@@ -87,7 +87,7 @@ public class WorldMapID {
 						var0.npcIndices[++var0.npcCount - 1] = var20;
 						var21.npcCycle = Client.cycle;
 						var9 = var2.readBits(3);
-						var21.method2703(var9, class238.field2519);
+						var21.method2703(var9, MoveSpeed.field2519);
 						var10 = var2.readBits(1);
 						if (var10 == 1) {
 							Client.npcIndices[++Client.npcCount - 1] = var20;
@@ -97,12 +97,12 @@ public class WorldMapID {
 						var21.npcCycle = Client.cycle;
 						if (var2.readBits(1) == 1) {
 							var9 = var2.readBits(3);
-							var21.method2703(var9, class238.field2509);
+							var21.method2703(var9, MoveSpeed.field2509);
 							var10 = var2.readBits(3);
-							var21.method2703(var10, class238.field2509);
+							var21.method2703(var10, MoveSpeed.field2509);
 						} else {
 							var9 = var2.readBits(3);
-							var21.method2703(var9, class238.field2520);
+							var21.method2703(var9, MoveSpeed.field2520);
 						}
 
 						var9 = var2.readBits(1);

@@ -335,12 +335,13 @@ public class class213 {
 		descriptor = "(BI)Ljb;",
 		garbageValue = "-1669252935"
 	)
-	public static class238 method4167(byte var0) {
-		class238[] var1 = class238.field2508;
+	@Export("getMoveSpeedWithId")
+	public static MoveSpeed getMoveSpeedWithId(byte var0) {
+		MoveSpeed[] var1 = MoveSpeed.field2508;
 
 		for (int var2 = 0; var2 < var1.length; ++var2) {
-			class238 var3 = var1[var2];
-			if (var0 == var3.field2515) {
+			MoveSpeed var3 = var1[var2];
+			if (var0 == var3.id) {
 				return var3;
 			}
 		}

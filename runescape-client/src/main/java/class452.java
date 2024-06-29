@@ -101,8 +101,8 @@ public class class452 {
 					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
 					int var9 = var7 * var5 + var4 * var8 >> 11;
 					int var10 = var8 * var5 - var7 * var4 >> 11;
-					int var11 = StudioGame.field4084.vmethod8670() + var9 >> 7;
-					int var12 = StudioGame.field4084.vmethod8671() - var10 >> 7;
+					int var11 = StudioGame.entity.getX() + var9 >> 7;
+					int var12 = StudioGame.entity.getY() - var10 >> 7;
 					PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.MINIMAP_CLICK, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeShortLE(var12 + class511.topLevelWorldView.baseY);

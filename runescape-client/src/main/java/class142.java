@@ -198,7 +198,7 @@ public class class142 extends DualNode {
 		garbageValue = "776450665"
 	)
 	public void method3211(int var1, class132 var2, int var3, int var4) {
-		class424 var5 = class175.method3560();
+		TransformationMatrix var5 = class175.method3560();
 		this.method3208(var5, var3, var2, var1);
 		this.method3230(var5, var3, var2, var1);
 		this.method3209(var5, var3, var2, var1);
@@ -211,7 +211,7 @@ public class class142 extends DualNode {
 		descriptor = "(Lqg;ILfv;II)V",
 		garbageValue = "1416708693"
 	)
-	void method3208(class424 var1, int var2, class132 var3, int var4) {
+	void method3208(TransformationMatrix var1, int var2, class132 var3, int var4) {
 		float[] var5 = var3.method3082(this.field1652);
 		float var6 = var5[0];
 		float var7 = var5[1];
@@ -243,13 +243,13 @@ public class class142 extends DualNode {
 		var12.method7737(var19);
 		var12.method7737(var17);
 		var12.method7737(var18);
-		class424 var13;
-		synchronized(class424.field4704) {
-			if (class424.field4706 == 0) {
-				var13 = new class424();
+		TransformationMatrix var13;
+		synchronized(TransformationMatrix.field4704) {
+			if (TransformationMatrix.field4706 == 0) {
+				var13 = new TransformationMatrix();
 			} else {
-				class424.field4704[--class424.field4706].method7789();
-				var13 = class424.field4704[class424.field4706];
+				TransformationMatrix.field4704[--TransformationMatrix.field4706].method7789();
+				var13 = TransformationMatrix.field4704[TransformationMatrix.field4706];
 			}
 		}
 
@@ -267,7 +267,7 @@ public class class142 extends DualNode {
 		descriptor = "(Lqg;ILfv;II)V",
 		garbageValue = "800913854"
 	)
-	void method3209(class424 var1, int var2, class132 var3, int var4) {
+	void method3209(TransformationMatrix var1, int var2, class132 var3, int var4) {
 		float[] var5 = var3.method3080(this.field1652);
 		float var6 = var5[0];
 		float var7 = var5[1];
@@ -299,7 +299,7 @@ public class class142 extends DualNode {
 		descriptor = "(Lqg;ILfv;II)V",
 		garbageValue = "603613831"
 	)
-	void method3230(class424 var1, int var2, class132 var3, int var4) {
+	void method3230(TransformationMatrix var1, int var2, class132 var3, int var4) {
 		float[] var5 = var3.method3120(this.field1652);
 		float var6 = var5[0];
 		float var7 = var5[1];
@@ -321,13 +321,13 @@ public class class142 extends DualNode {
 			}
 		}
 
-		class424 var14;
-		synchronized(class424.field4704) {
-			if (class424.field4706 == 0) {
-				var14 = new class424();
+		TransformationMatrix var14;
+		synchronized(TransformationMatrix.field4704) {
+			if (TransformationMatrix.field4706 == 0) {
+				var14 = new TransformationMatrix();
 			} else {
-				class424.field4704[--class424.field4706].method7789();
-				var14 = class424.field4704[class424.field4706];
+				TransformationMatrix.field4704[--TransformationMatrix.field4706].method7789();
+				var14 = TransformationMatrix.field4704[TransformationMatrix.field4706];
 			}
 		}
 

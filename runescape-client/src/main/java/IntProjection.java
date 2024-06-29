@@ -165,14 +165,14 @@ public class IntProjection extends Projection {
 			}
 
 			if (var2.triangleTextureId != null) {
-				SceneTileModel.field3063[var6] = var7;
-				SceneTileModel.field3075[var6] = var10;
-				SceneTileModel.field3076[var6] = var9;
+				SceneTileModel.triangleTexturesX[var6] = var7;
+				SceneTileModel.triangleTexturesY[var6] = var10;
+				SceneTileModel.triangleTexturesZ[var6] = var9;
 			}
 
-			SceneTileModel.field3065[var6] = Rasterizer3D.getClipMidX() + var7 * Rasterizer3D.get3dZoom() / var9;
-			SceneTileModel.field3073[var6] = Rasterizer3D.getClipMidY() + var10 * Rasterizer3D.get3dZoom() / var9;
-			SceneTileModel.field3072[var6] = class386.method7177(var9);
+			SceneTileModel.verticesX[var6] = Rasterizer3D.getClipMidX() + var7 * Rasterizer3D.get3dZoom() / var9;
+			SceneTileModel.verticesY[var6] = Rasterizer3D.getClipMidY() + var10 * Rasterizer3D.get3dZoom() / var9;
+			SceneTileModel.verticesZ[var6] = class386.method7177(var9);
 		}
 
 		this.drawSceneTileModel(var1, var2, var3, var4);

@@ -25,7 +25,7 @@ public class class327 {
 				SoundEffect var12 = Client.soundEffects[var0];
 				if (var12 == null) {
 					Object var10000 = null;
-					var12 = SoundEffect.readSoundEffect(class424.soundEffectsArchive, Client.soundEffectIds[var0], 0);
+					var12 = SoundEffect.readSoundEffect(TransformationMatrix.soundEffectsArchive, Client.soundEffectIds[var0], 0);
 					if (var12 == null) {
 						continue;
 					}
@@ -60,7 +60,7 @@ public class class327 {
 						RawSound var3 = var12.toRawSound().resample(class177.decimator);
 						RawPcmStream var4 = RawPcmStream.createRawPcmStream(var3, 100, var13);
 						var4.setNumLoops(Client.queuedSoundEffectLoops[var0] - 1);
-						class238.pcmStreamMixer.addSubStream(var4);
+						MoveSpeed.pcmStreamMixer.addSubStream(var4);
 					}
 
 					Client.queuedSoundEffectDelays[var0] = -100;

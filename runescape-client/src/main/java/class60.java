@@ -112,12 +112,12 @@ public class class60 {
 	static void method1172() {
 		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
 			if (var0.stream1 != null) {
-				class238.pcmStreamMixer.removeSubStream(var0.stream1);
+				MoveSpeed.pcmStreamMixer.removeSubStream(var0.stream1);
 				var0.stream1 = null;
 			}
 
 			if (var0.stream2 != null) {
-				class238.pcmStreamMixer.removeSubStream(var0.stream2);
+				MoveSpeed.pcmStreamMixer.removeSubStream(var0.stream2);
 				var0.stream2 = null;
 			}
 		}

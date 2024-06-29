@@ -536,7 +536,7 @@ public final class Player extends Actor {
 		descriptor = "(Lde;IILjb;B)V",
 		garbageValue = "14"
 	)
-	final void method2437(WorldView var1, int var2, int var3, class238 var4) {
+	final void method2437(WorldView var1, int var2, int var3, MoveSpeed var4) {
 		if (super.sequence != -1 && class353.SequenceDefinition_get(super.sequence).field2283 == 1) {
 			super.sequence = -1;
 		}
@@ -544,9 +544,9 @@ public final class Player extends Actor {
 		this.method2485();
 		if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
 			if (super.pathX[0] >= 0 && super.pathX[0] < 104 && super.pathY[0] >= 0 && super.pathY[0] < 104) {
-				if (var4 == class238.field2509) {
+				if (var4 == MoveSpeed.field2509) {
 					Player var5 = this;
-					class238 var6 = class238.field2509;
+					MoveSpeed var6 = MoveSpeed.field2509;
 					int var7 = super.pathX[0];
 					int var8 = super.pathY[0];
 					int var9 = this.transformedSize();
@@ -592,7 +592,7 @@ public final class Player extends Actor {
 		descriptor = "(IILjb;B)V",
 		garbageValue = "-20"
 	)
-	final void method2418(int var1, int var2, class238 var3) {
+	final void method2418(int var1, int var2, MoveSpeed var3) {
 		if (super.pathLength < 9) {
 			++super.pathLength;
 		}

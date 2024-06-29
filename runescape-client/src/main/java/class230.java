@@ -121,7 +121,7 @@ public class class230 extends Node {
 							var1.orientation = 0;
 						}
 
-						class238 var7 = var1.pathTraversed[var1.pathLength - 1];
+						MoveSpeed var7 = var1.pathTraversed[var1.pathLength - 1];
 						if (var5 - var15 <= 256 && var5 - var15 >= -256 && var6 - var4 <= 256 && var6 - var4 >= -256) {
 							var8 = var1.orientation - var1.rotation & 2047;
 							if (var8 > 1024) {
@@ -180,9 +180,9 @@ public class class230 extends Node {
 								}
 							}
 
-							if (var7 == class238.field2509) {
+							if (var7 == MoveSpeed.field2509) {
 								var10 <<= 1;
-							} else if (var7 == class238.field2520) {
+							} else if (var7 == MoveSpeed.field2520) {
 								var10 >>= 1;
 							}
 

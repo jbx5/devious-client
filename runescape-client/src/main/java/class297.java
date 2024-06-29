@@ -12,7 +12,8 @@ public class class297 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("an")
-	void vmethod5953(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12) {
+	@Export("drawAlphaBlendedGraphics")
+	void drawAlphaBlendedGraphics(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12) {
 		int var13 = var5 - var4;
 		int var14 = var2 - var1;
 		int var15 = var6 - var4;
@@ -45,7 +46,7 @@ public class class297 extends AbstractRasterizer {
 			int var23 = (var17 * var16 - var18 * var14 << 8) / var22;
 			int var24 = (var18 * var13 - var17 * var15 << 8) / var22;
 			int[] var25 = super.field2905.Rasterizer3D_rowOffsets;
-			int var26 = super.field2905.field3199;
+			int var26 = super.field2905.clipY;
 			if (var1 <= var2 && var1 <= var3) {
 				if (var1 < var26) {
 					if (var2 > var26) {
@@ -537,7 +538,7 @@ public class class297 extends AbstractRasterizer {
 		}
 
 		int[] var14 = super.field2905.Rasterizer3D_rowOffsets;
-		int var15 = super.field2905.field3199;
+		int var15 = super.field2905.clipY;
 		if (var1 <= var2 && var1 <= var3) {
 			if (var1 < var15) {
 				if (var2 > var15) {
@@ -576,14 +577,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var5 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var5 >> 14);
 									var6 += var13;
 									var5 += var12;
 									var1 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14);
 							var6 += var13;
 							var4 += var11;
 							var1 += Rasterizer2D.Rasterizer2D_width;
@@ -602,14 +603,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var6 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var6 >> 14);
 									var6 += var13;
 									var5 += var12;
 									var1 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14);
 							var6 += var13;
 							var4 += var11;
 							var1 += Rasterizer2D.Rasterizer2D_width;
@@ -643,14 +644,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14);
 									var6 += var12;
 									var4 += var11;
 									var1 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var4 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var4 >> 14);
 							var5 += var13;
 							var4 += var11;
 							var1 += Rasterizer2D.Rasterizer2D_width;
@@ -669,14 +670,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14);
 									var6 += var12;
 									var4 += var11;
 									var1 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var5 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var5 >> 14);
 							var5 += var13;
 							var4 += var11;
 							var1 += Rasterizer2D.Rasterizer2D_width;
@@ -722,14 +723,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var6 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var6 >> 14);
 									var4 += var11;
 									var6 += var13;
 									var2 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14);
 							var4 += var11;
 							var5 += var12;
 							var2 += Rasterizer2D.Rasterizer2D_width;
@@ -748,14 +749,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var4 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var4 >> 14);
 									var4 += var11;
 									var6 += var13;
 									var2 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14);
 							var4 += var11;
 							var5 += var12;
 							var2 += Rasterizer2D.Rasterizer2D_width;
@@ -789,14 +790,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14);
 									var4 += var13;
 									var5 += var12;
 									var2 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var5 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var5 >> 14);
 							var6 += var11;
 							var5 += var12;
 							var2 += Rasterizer2D.Rasterizer2D_width;
@@ -815,14 +816,14 @@ public class class297 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14);
+									this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14);
 									var4 += var13;
 									var5 += var12;
 									var2 += Rasterizer2D.Rasterizer2D_width;
 								}
 							}
 
-							this.method5920(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var6 >> 14);
+							this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var6 >> 14);
 							var6 += var11;
 							var5 += var12;
 							var2 += Rasterizer2D.Rasterizer2D_width;
@@ -867,14 +868,14 @@ public class class297 extends AbstractRasterizer {
 									return;
 								}
 
-								this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var4 >> 14);
+								this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var4 >> 14);
 								var5 += var12;
 								var4 += var11;
 								var3 += Rasterizer2D.Rasterizer2D_width;
 							}
 						}
 
-						this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14);
+						this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14);
 						var5 += var12;
 						var6 += var13;
 						var3 += Rasterizer2D.Rasterizer2D_width;
@@ -893,14 +894,14 @@ public class class297 extends AbstractRasterizer {
 									return;
 								}
 
-								this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var5 >> 14);
+								this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var5 >> 14);
 								var5 += var12;
 								var4 += var11;
 								var3 += Rasterizer2D.Rasterizer2D_width;
 							}
 						}
 
-						this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14);
+						this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14);
 						var5 += var12;
 						var6 += var13;
 						var3 += Rasterizer2D.Rasterizer2D_width;
@@ -934,14 +935,14 @@ public class class297 extends AbstractRasterizer {
 									return;
 								}
 
-								this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14);
+								this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14);
 								var5 += var11;
 								var6 += var13;
 								var3 += Rasterizer2D.Rasterizer2D_width;
 							}
 						}
 
-						this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var6 >> 14);
+						this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var6 >> 14);
 						var4 += var12;
 						var6 += var13;
 						var3 += Rasterizer2D.Rasterizer2D_width;
@@ -960,14 +961,14 @@ public class class297 extends AbstractRasterizer {
 									return;
 								}
 
-								this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14);
+								this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14);
 								var5 += var11;
 								var6 += var13;
 								var3 += Rasterizer2D.Rasterizer2D_width;
 							}
 						}
 
-						this.method5920(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var4 >> 14);
+						this.applyColorFilterToPixelsInRange(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var4 >> 14);
 						var4 += var12;
 						var6 += var13;
 						var3 += Rasterizer2D.Rasterizer2D_width;
@@ -978,12 +979,13 @@ public class class297 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("av")
-	void vmethod5961(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
+	@Export("drawGradientTriangle")
+	void drawGradientTriangle(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
 		int[] var23 = super.field2905.Rasterizer3D_textureLoader.getTexturePixels(var22);
 		int var24;
 		if (var23 == null) {
 			var24 = super.field2905.Rasterizer3D_textureLoader.getAverageTextureRGB(var22);
-			this.vmethod5953(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
+			this.drawAlphaBlendedGraphics(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
 		} else {
 			super.field2897 = super.field2905.Rasterizer3D_textureLoader.isLowDetail(var22);
 			super.field2900 = super.field2905.Rasterizer3D_textureLoader.vmethod6017(var22);
@@ -1012,7 +1014,7 @@ public class class297 extends AbstractRasterizer {
 			if (var33 != 0) {
 				int var34 = (var28 * var27 - var29 * var25 << 9) / var33;
 				int var35 = (var29 * var24 - var28 * var26 << 9) / var33;
-				int var36 = super.field2905.field3184;
+				int var36 = super.field2905.zoom;
 				var14 = var13 - var14;
 				var17 = var16 - var17;
 				var20 = var19 - var20;
@@ -1029,7 +1031,7 @@ public class class297 extends AbstractRasterizer {
 				int var44 = (int)(((long)(var18 * var20 - var17 * var21) << 3 << 14) / (long)var36);
 				int var45 = (int)(((long)(var21 * var14 - var15 * var20) << 14) / (long)var36);
 				int[] var46 = super.field2905.Rasterizer3D_rowOffsets;
-				int var47 = super.field2905.field3199;
+				int var47 = super.field2905.clipY;
 				int var48;
 				if (var1 <= var2 && var1 <= var3) {
 					if (var1 < var47) {
@@ -1057,7 +1059,7 @@ public class class297 extends AbstractRasterizer {
 								var2 = 0;
 							}
 
-							var48 = var1 - super.field2905.field3197;
+							var48 = var1 - super.field2905.clipMidY;
 							var37 += var39 * var48;
 							var40 += var42 * var48;
 							var43 += var45 * var48;
@@ -1075,7 +1077,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var32;
 											var5 += var31;
 											var10 += var35;
@@ -1086,7 +1088,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1109,7 +1111,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var32;
 											var5 += var31;
 											var10 += var35;
@@ -1120,7 +1122,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1145,7 +1147,7 @@ public class class297 extends AbstractRasterizer {
 								var3 = 0;
 							}
 
-							var48 = var1 - super.field2905.field3197;
+							var48 = var1 - super.field2905.clipMidY;
 							var37 += var39 * var48;
 							var40 += var42 * var48;
 							var43 += var45 * var48;
@@ -1163,7 +1165,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var31;
 											var4 += var30;
 											var10 += var35;
@@ -1174,7 +1176,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var5 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1197,7 +1199,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var31;
 											var4 += var30;
 											var10 += var35;
@@ -1208,7 +1210,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var5 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1246,7 +1248,7 @@ public class class297 extends AbstractRasterizer {
 								var3 = 0;
 							}
 
-							var48 = var2 - super.field2905.field3197;
+							var48 = var2 - super.field2905.clipMidY;
 							var37 += var39 * var48;
 							var40 += var42 * var48;
 							var43 += var45 * var48;
@@ -1264,7 +1266,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var30;
 											var6 += var32;
 											var11 += var35;
@@ -1275,7 +1277,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var4 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -1298,7 +1300,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var30;
 											var6 += var32;
 											var11 += var35;
@@ -1309,7 +1311,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var4 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -1334,7 +1336,7 @@ public class class297 extends AbstractRasterizer {
 								var1 = 0;
 							}
 
-							var48 = var2 - super.field2905.field3197;
+							var48 = var2 - super.field2905.clipMidY;
 							var37 += var39 * var48;
 							var40 += var42 * var48;
 							var43 += var45 * var48;
@@ -1352,7 +1354,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var32;
 											var5 += var31;
 											var11 += var35;
@@ -1363,7 +1365,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -1386,7 +1388,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var32;
 											var5 += var31;
 											var11 += var35;
@@ -1397,7 +1399,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -1434,7 +1436,7 @@ public class class297 extends AbstractRasterizer {
 							var1 = 0;
 						}
 
-						var48 = var3 - super.field2905.field3197;
+						var48 = var3 - super.field2905.clipMidY;
 						var37 += var39 * var48;
 						var40 += var42 * var48;
 						var43 += var45 * var48;
@@ -1452,7 +1454,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var31;
 										var4 += var30;
 										var12 += var35;
@@ -1463,7 +1465,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var5 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -1486,7 +1488,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var31;
 										var4 += var30;
 										var12 += var35;
@@ -1497,7 +1499,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var5 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -1522,7 +1524,7 @@ public class class297 extends AbstractRasterizer {
 							var2 = 0;
 						}
 
-						var48 = var3 - super.field2905.field3197;
+						var48 = var3 - super.field2905.clipMidY;
 						var37 += var39 * var48;
 						var40 += var42 * var48;
 						var43 += var45 * var48;
@@ -1540,7 +1542,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var30;
 										var6 += var32;
 										var12 += var35;
@@ -1551,7 +1553,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var4 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -1574,7 +1576,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var30;
 										var6 += var32;
 										var12 += var35;
@@ -1585,7 +1587,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5933(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.processPixelsToArray(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var4 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -1602,12 +1604,13 @@ public class class297 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("ab")
-	void vmethod5968(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
+	@Export("textureMapPolygons")
+	void textureMapPolygons(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
 		int[] var23 = super.field2905.Rasterizer3D_textureLoader.getTexturePixels(var22);
 		int var24;
 		if (var23 == null) {
 			var24 = super.field2905.Rasterizer3D_textureLoader.getAverageTextureRGB(var22);
-			this.vmethod5953(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
+			this.drawAlphaBlendedGraphics(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
 		} else {
 			super.field2897 = super.field2905.Rasterizer3D_textureLoader.isLowDetail(var22);
 			super.field2900 = super.field2905.Rasterizer3D_textureLoader.vmethod6017(var22);
@@ -1636,7 +1639,7 @@ public class class297 extends AbstractRasterizer {
 			if (var33 != 0) {
 				int var34 = (var28 * var27 - var29 * var25 << 9) / var33;
 				int var35 = (var29 * var24 - var28 * var26 << 9) / var33;
-				int var36 = super.field2905.field3184;
+				int var36 = super.field2905.zoom;
 				var14 = var13 - var14;
 				var17 = var16 - var17;
 				var20 = var19 - var20;
@@ -1653,8 +1656,8 @@ public class class297 extends AbstractRasterizer {
 				int var44 = (int)(((long)(var18 * var20 - var17 * var21) << 14) / (long)var36);
 				int var45 = (int)(((long)(var21 * var14 - var15 * var20) << 14) / (long)var36);
 				int[] var46 = super.field2905.Rasterizer3D_rowOffsets;
-				int var47 = super.field2905.field3199;
-				int var48 = super.field2905.field3197;
+				int var47 = super.field2905.clipY;
+				int var48 = super.field2905.clipMidY;
 				int var49;
 				if (var1 <= var2 && var1 <= var3) {
 					if (var1 < var47) {
@@ -1700,7 +1703,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var32;
 											var5 += var31;
 											var10 += var35;
@@ -1711,7 +1714,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1734,7 +1737,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var32;
 											var5 += var31;
 											var10 += var35;
@@ -1745,7 +1748,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1788,7 +1791,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var6 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var31;
 											var4 += var30;
 											var10 += var35;
@@ -1799,7 +1802,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var4 >> 14, var5 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var5 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1822,7 +1825,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var6 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 											var6 += var31;
 											var4 += var30;
 											var10 += var35;
@@ -1833,7 +1836,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var1, var5 >> 14, var4 >> 14, var10, var34, var37, var40, var43, var38, var41, var44);
 									var5 += var32;
 									var4 += var30;
 									var10 += var35;
@@ -1889,7 +1892,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var30;
 											var6 += var32;
 											var11 += var35;
@@ -1900,7 +1903,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var4 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -1923,7 +1926,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var30;
 											var6 += var32;
 											var11 += var35;
@@ -1934,7 +1937,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var4 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -1977,7 +1980,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var4 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var32;
 											var5 += var31;
 											var11 += var35;
@@ -1988,7 +1991,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var6 >> 14, var5 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -2011,7 +2014,7 @@ public class class297 extends AbstractRasterizer {
 												return;
 											}
 
-											this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+											this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var4 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 											var4 += var32;
 											var5 += var31;
 											var11 += var35;
@@ -2022,7 +2025,7 @@ public class class297 extends AbstractRasterizer {
 										}
 									}
 
-									this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
+									this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var2, var5 >> 14, var6 >> 14, var11, var34, var37, var40, var43, var38, var41, var44);
 									var6 += var30;
 									var5 += var31;
 									var11 += var35;
@@ -2077,7 +2080,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var31;
 										var4 += var30;
 										var12 += var35;
@@ -2088,7 +2091,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var5 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -2111,7 +2114,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var31;
 										var4 += var30;
 										var12 += var35;
@@ -2122,7 +2125,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var5 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -2165,7 +2168,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var5 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var30;
 										var6 += var32;
 										var12 += var35;
@@ -2176,7 +2179,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var4 >> 14, var6 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var4 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -2199,7 +2202,7 @@ public class class297 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+										this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var5 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 										var5 += var30;
 										var6 += var32;
 										var12 += var35;
@@ -2210,7 +2213,7 @@ public class class297 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5921(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
+								this.drawPixels(Rasterizer2D.Rasterizer2D_pixels, var23, 0, 0, var3, var6 >> 14, var4 >> 14, var12, var34, var37, var40, var43, var38, var41, var44);
 								var4 += var31;
 								var6 += var32;
 								var12 += var35;
@@ -2229,9 +2232,9 @@ public class class297 extends AbstractRasterizer {
 	@ObfuscatedName("bq")
 	@Export("Rasterizer3D_vertAlpha")
 	final void Rasterizer3D_vertAlpha(int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-		if (super.field2905.field3192) {
-			if (var6 > super.field2905.field3198) {
-				var6 = super.field2905.field3198;
+		if (super.field2905.clipping) {
+			if (var6 > super.field2905.clipX) {
+				var6 = super.field2905.clipX;
 			}
 
 			if (var5 < 0) {
@@ -2249,7 +2252,7 @@ public class class297 extends AbstractRasterizer {
 			if (super.field2905.rasterGouraudLowRes) {
 				var4 = var6 - var5 >> 2;
 				var8 <<= 2;
-				if (super.field2905.field3186 == 0) {
+				if (super.field2905.currentFaceAlpha == 0) {
 					if (var4 > 0) {
 						do {
 							var9 = (var7 & (var7 >> 31 & 1) - 1) >> 8;
@@ -2274,8 +2277,8 @@ public class class297 extends AbstractRasterizer {
 						} while(var4 > 0);
 					}
 				} else {
-					var9 = super.field2905.field3186;
-					var10 = 256 - super.field2905.field3186;
+					var9 = super.field2905.currentFaceAlpha;
+					var10 = 256 - super.field2905.currentFaceAlpha;
 					if (var4 > 0) {
 						do {
 							var11 = (var7 & (var7 >> 31 & 1) - 1) >> 8;
@@ -2310,7 +2313,7 @@ public class class297 extends AbstractRasterizer {
 
 			} else {
 				var4 = var6 - var5;
-				if (super.field2905.field3186 == 0) {
+				if (super.field2905.currentFaceAlpha == 0) {
 					do {
 						var9 = (var7 & (var7 >> 31 & 1) - 1) >> 8;
 						var1[var2++] = super.field2901[var9];
@@ -2318,8 +2321,8 @@ public class class297 extends AbstractRasterizer {
 						--var4;
 					} while(var4 > 0);
 				} else {
-					var9 = super.field2905.field3186;
-					var10 = 256 - super.field2905.field3186;
+					var9 = super.field2905.currentFaceAlpha;
+					var10 = 256 - super.field2905.currentFaceAlpha;
 
 					do {
 						var11 = (var7 & (var7 >> 31 & 1) - 1) >> 8;
@@ -2337,10 +2340,11 @@ public class class297 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("bd")
-	void method5920(int[] var1, int var2, int var3, int var4, int var5, int var6) {
-		if (super.field2905.field3192) {
-			if (var6 > super.field2905.field3198) {
-				var6 = super.field2905.field3198;
+	@Export("applyColorFilterToPixelsInRange")
+	void applyColorFilterToPixelsInRange(int[] var1, int var2, int var3, int var4, int var5, int var6) {
+		if (super.field2905.clipping) {
+			if (var6 > super.field2905.clipX) {
+				var6 = super.field2905.clipX;
 			}
 
 			if (var5 < 0) {
@@ -2351,8 +2355,8 @@ public class class297 extends AbstractRasterizer {
 		if (var5 < var6) {
 			var2 += var5;
 			var4 = var6 - var5 >> 2;
-			if (super.field2905.field3186 != 0) {
-				if (super.field2905.field3186 == 254) {
+			if (super.field2905.currentFaceAlpha != 0) {
+				if (super.field2905.currentFaceAlpha == 254) {
 					while (true) {
 						--var4;
 						if (var4 < 0) {
@@ -2374,8 +2378,8 @@ public class class297 extends AbstractRasterizer {
 						var1[var2++] = var1[var2];
 					}
 				} else {
-					int var7 = super.field2905.field3186;
-					int var8 = 256 - super.field2905.field3186;
+					int var7 = super.field2905.currentFaceAlpha;
+					int var8 = 256 - super.field2905.currentFaceAlpha;
 					var3 = ((var3 & 16711935) * var8 >> 8 & 16711935) + (var8 * (var3 & 65280) >> 8 & 65280);
 
 					while (true) {
@@ -2431,10 +2435,11 @@ public class class297 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("bz")
-	void method5933(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
-		if (super.field2905.field3192) {
-			if (var7 > super.field2905.field3198) {
-				var7 = super.field2905.field3198;
+	@Export("processPixelsToArray")
+	void processPixelsToArray(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
+		if (super.field2905.clipping) {
+			if (var7 > super.field2905.clipX) {
+				var7 = super.field2905.clipX;
 			}
 
 			if (var6 < 0) {
@@ -2456,7 +2461,7 @@ public class class297 extends AbstractRasterizer {
 			int var23;
 			int var24;
 			if (super.field2897) {
-				var24 = var6 - super.field2905.field3196;
+				var24 = var6 - super.field2905.clipMidX;
 				var10 += (var13 >> 3) * var24;
 				var11 += var24 * (var14 >> 3);
 				var12 += (var15 >> 3) * var24;
@@ -2651,7 +2656,7 @@ public class class297 extends AbstractRasterizer {
 					}
 				}
 			} else {
-				var24 = var6 - super.field2905.field3196;
+				var24 = var6 - super.field2905.clipMidX;
 				var10 += (var13 >> 3) * var24;
 				var11 += var24 * (var14 >> 3);
 				var12 += (var15 >> 3) * var24;
@@ -2851,10 +2856,11 @@ public class class297 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("bk")
-	void method5921(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
-		if (super.field2905.field3192) {
-			if (var7 > super.field2905.field3198) {
-				var7 = super.field2905.field3198;
+	@Export("drawPixels")
+	void drawPixels(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15) {
+		if (super.field2905.clipping) {
+			if (var7 > super.field2905.clipX) {
+				var7 = super.field2905.clipX;
 			}
 
 			if (var6 < 0) {
@@ -2875,7 +2881,7 @@ public class class297 extends AbstractRasterizer {
 			int var23;
 			int var24;
 			if (super.field2897) {
-				var24 = var6 - super.field2905.field3196;
+				var24 = var6 - super.field2905.clipMidX;
 				var10 += var13 * var24;
 				var11 += var24 * var14;
 				var12 += var24 * var15;
@@ -3018,7 +3024,7 @@ public class class297 extends AbstractRasterizer {
 					}
 				}
 			} else {
-				var24 = var6 - super.field2905.field3196;
+				var24 = var6 - super.field2905.clipMidX;
 				var10 += var13 * var24;
 				var11 += var24 * var14;
 				var12 += var24 * var15;

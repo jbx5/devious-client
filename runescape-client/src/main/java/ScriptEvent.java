@@ -201,14 +201,14 @@ public class ScriptEvent extends Node {
 				WorldEntity var23 = class511.topLevelWorldView.worldEntities[var7];
 				if (var23 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
-						var10000 = var23.field4974;
+						var10000 = var23.directionsX;
 						var10000[var9] -= var5;
-						var10000 = var23.field4965;
+						var10000 = var23.directionsY;
 						var10000[var9] -= var6;
 					}
 
-					var23.field4967 -= var5 * 128;
-					var23.field4969 -= var6 * 128;
+					var23.x -= var5 * 128;
+					var23.y -= var6 * 128;
 				}
 			}
 

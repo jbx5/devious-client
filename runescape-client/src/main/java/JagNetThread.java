@@ -787,7 +787,7 @@ public class JagNetThread {
 					var3.scrollHeight = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
 					TriBool.invalidateWidget(var3);
 					if (var4 != -1 && var3.type == 0) {
-						class238.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var4 >> 16], var3, false);
+						MoveSpeed.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var4 >> 16], var3, false);
 					}
 
 					return 1;

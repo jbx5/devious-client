@@ -124,7 +124,8 @@ public final class GameObject {
 		descriptor = "(Lde;Lug;B)V",
 		garbageValue = "-76"
 	)
-	static void method6030(WorldView var0, PacketBuffer var1) {
+	@Export("updateWorldEntitiesFromPacketBuffer")
+	static void updateWorldEntitiesFromPacketBuffer(WorldView var0, PacketBuffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if (var2 < var0.worldEntityCount) {
 			throw new RuntimeException("dang");
@@ -145,14 +146,14 @@ public final class GameObject {
 					var0.worldEntityIndices[++var0.worldEntityCount - 1] = var4;
 					byte var7 = var1.readByte();
 					byte var13 = var1.readByte();
-					var12.field4964 = var1.readUnsignedShort();
-					class238 var14 = class213.method4167((byte)var1.readUnsignedByte());
-					class234 var15 = class150.method3284(var12.field4964, var12.field4970);
+					var12.rotationAngle = var1.readUnsignedShort();
+					MoveSpeed var14 = class213.getMoveSpeedWithId((byte)var1.readUnsignedByte());
+					class234 var15 = class150.method3284(var12.rotationAngle, var12.currentRotationAngle);
 					int var11 = Math.min(var15.method4447(), 128);
-					var12.field4963 = var11 / Client.field732;
-					var12.field4968 = var11 % Client.field732;
+					var12.movementSpeed = var11 / Client.field732;
+					var12.remainingMovementSteps = var11 % Client.field732;
 					if (var7 != 0 || var13 != 0) {
-						var12.method8684(var7 + var12.field4974[0], var13 + var12.field4965[0], var14);
+						var12.move(var7 + var12.directionsX[0], var13 + var12.directionsY[0], var14);
 					}
 				}
 			}
@@ -168,8 +169,8 @@ public final class GameObject {
 				var0.worldEntities[var3] = var8;
 				int var9 = var1.readUnsignedByte();
 				int var10 = var1.readUnsignedByte();
-				var8.method8679(var9, var10);
-				var8.field4970 = var1.readUnsignedShort();
+				var8.setPosition(var9, var10);
+				var8.currentRotationAngle = var1.readUnsignedShort();
 				var1.readUnsignedShort();
 			}
 

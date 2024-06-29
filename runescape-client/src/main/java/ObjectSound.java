@@ -139,7 +139,7 @@ public final class ObjectSound extends Node {
 		}
 
 		if (var1 != this.soundEffectId && this.stream1 != null) {
-			class238.pcmStreamMixer.removeSubStream(this.stream1);
+			MoveSpeed.pcmStreamMixer.removeSubStream(this.stream1);
 			this.stream1 = null;
 		}
 

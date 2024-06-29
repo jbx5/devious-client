@@ -165,7 +165,7 @@ public final class NPC extends Actor {
 		descriptor = "(ILjb;B)V",
 		garbageValue = "31"
 	)
-	final void method2703(int var1, class238 var2) {
+	final void method2703(int var1, MoveSpeed var2) {
 		int var3 = super.pathX[0];
 		int var4 = super.pathY[0];
 		if (var1 == 0) {
@@ -249,7 +249,7 @@ public final class NPC extends Actor {
 
 				super.pathX[0] = var1;
 				super.pathY[0] = var2;
-				super.pathTraversed[0] = class238.field2519;
+				super.pathTraversed[0] = MoveSpeed.field2519;
 				return;
 			}
 		}

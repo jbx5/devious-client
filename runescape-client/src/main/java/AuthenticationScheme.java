@@ -223,7 +223,7 @@ public enum AuthenticationScheme implements Enum {
 			TriBool.invalidateWidget(var4);
 			class415.client.alignWidget(var4);
 			if (var3 != -1 && var4.type == 0) {
-				class238.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
+				MoveSpeed.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
 			}
 
 			return 1;
@@ -236,7 +236,7 @@ public enum AuthenticationScheme implements Enum {
 			TriBool.invalidateWidget(var4);
 			class415.client.alignWidget(var4);
 			if (var3 != -1 && var4.type == 0) {
-				class238.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
+				MoveSpeed.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var3 >> 16], var4, false);
 			}
 
 			return 1;

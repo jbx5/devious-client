@@ -30,7 +30,7 @@ public class PlayerUpdateManager {
 	@ObfuscatedSignature(
 		descriptor = "[Ljb;"
 	)
-	class238[] field1406;
+	MoveSpeed[] field1406;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "[Lvp;"
@@ -83,7 +83,7 @@ public class PlayerUpdateManager {
 	)
 	PlayerUpdateManager(WorldView var1) {
 		this.field1405 = new byte[2048];
-		this.field1406 = new class238[2048];
+		this.field1406 = new MoveSpeed[2048];
 		this.field1407 = new Buffer[2048];
 		this.playerCount = 0;
 		this.playerIndices = new int[2048];
@@ -391,7 +391,7 @@ public class PlayerUpdateManager {
 					++var8;
 				}
 
-				if (var2 == Client.localPlayerIndex && this.worldView.method2676() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
+				if (var2 == Client.localPlayerIndex && this.worldView.isTopLevelWorldView() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
 					var5.resetPath(var7, var8);
 					var5.field1144 = false;
 				} else if (var3) {
@@ -453,7 +453,7 @@ public class PlayerUpdateManager {
 					var8 += 2;
 				}
 
-				if (var2 == Client.localPlayerIndex && this.worldView.method2676() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
+				if (var2 == Client.localPlayerIndex && this.worldView.isTopLevelWorldView() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
 					var5.resetPath(var7, var8);
 					var5.field1144 = false;
 				} else if (var3) {
@@ -486,7 +486,7 @@ public class PlayerUpdateManager {
 
 					var11 = var9 + var5.pathX[0];
 					var12 = var10 + var5.pathY[0];
-					if (var2 == Client.localPlayerIndex && this.worldView.method2676() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
+					if (var2 == Client.localPlayerIndex && this.worldView.isTopLevelWorldView() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
 						var5.resetPath(var11, var12);
 						var5.field1144 = false;
 					} else if (var3) {
@@ -499,7 +499,7 @@ public class PlayerUpdateManager {
 					}
 
 					var5.plane = (byte)(var8 + var5.plane & 3);
-					if (var2 == Client.localPlayerIndex && this.worldView.method2676()) {
+					if (var2 == Client.localPlayerIndex && this.worldView.isTopLevelWorldView()) {
 						this.worldView.plane = var5.plane;
 					}
 
@@ -510,7 +510,7 @@ public class PlayerUpdateManager {
 					var10 = Coord.method6474(var7);
 					var11 = (this.worldView.baseX + var9 + var5.pathX[0] & 16383) - this.worldView.baseX;
 					var12 = (this.worldView.baseY + var10 + var5.pathY[0] & 16383) - this.worldView.baseY;
-					if (var2 == Client.localPlayerIndex && this.worldView.method2676() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
+					if (var2 == Client.localPlayerIndex && this.worldView.isTopLevelWorldView() && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
 						var5.resetPath(var11, var12);
 						var5.field1144 = false;
 					} else if (var3) {
@@ -523,7 +523,7 @@ public class PlayerUpdateManager {
 					}
 
 					var5.plane = (byte)(var8 + var5.plane & 3);
-					if (var2 == Client.localPlayerIndex && this.worldView.method2676()) {
+					if (var2 == Client.localPlayerIndex && this.worldView.isTopLevelWorldView()) {
 						this.worldView.plane = var5.plane;
 					}
 
@@ -677,9 +677,9 @@ public class PlayerUpdateManager {
 		garbageValue = "-311624259"
 	)
 	final void method2833(PacketBuffer var1, int var2, Player var3, int var4) {
-		byte var5 = class238.field2512.field2515;
+		byte var5 = MoveSpeed.field2512.id;
 		if ((var4 & 2048) != 0) {
-			this.field1406[var2] = (class238)class210.findEnumerated(class193.method3759(), var1.readByteSub());
+			this.field1406[var2] = (MoveSpeed)class210.findEnumerated(class193.moveSpeeds(), var1.readByteSub());
 		}
 
 		if ((var4 & 256) != 0) {
@@ -959,9 +959,9 @@ public class PlayerUpdateManager {
 			if (var5 == 127) {
 				var3.resetPath(var3.tileX, var3.tileY);
 			} else {
-				class238 var27;
-				if (var5 != class238.field2512.field2515) {
-					var27 = (class238)class210.findEnumerated(class193.method3759(), var5);
+				MoveSpeed var27;
+				if (var5 != MoveSpeed.field2512.id) {
+					var27 = (MoveSpeed)class210.findEnumerated(class193.moveSpeeds(), var5);
 				} else {
 					var27 = this.field1406[var2];
 				}

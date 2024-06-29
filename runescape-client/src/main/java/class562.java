@@ -23,11 +23,11 @@ public class class562 {
 	)
 	static String method10144() {
 		StringBuilder var0 = new StringBuilder();
-		class238[] var1 = class238.field2508;
+		MoveSpeed[] var1 = MoveSpeed.field2508;
 
 		for (int var2 = 0; var2 < var1.length; ++var2) {
-			class238 var3 = var1[var2];
-			var0.append(var3.field2515);
+			MoveSpeed var3 = var1[var2];
+			var0.append(var3.id);
 			var0.append(", ");
 		}
 

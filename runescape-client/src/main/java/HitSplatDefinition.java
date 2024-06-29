@@ -453,14 +453,14 @@ public class HitSplatDefinition extends DualNode {
 			int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
 			int var13 = Rasterizer2D.Rasterizer2D_width;
 			int var14 = Rasterizer2D.Rasterizer2D_height;
-			float[] var15 = Rasterizer2D.field5435;
+			float[] var15 = Rasterizer2D.Rasterizer2D_brightness;
 			int[] var16 = new int[4];
 			Rasterizer2D.Rasterizer2D_getClipArray(var16);
 			var8 = new SpritePixels(36, 32);
 			Rasterizer3D.method5259(var8.pixels, 36, 32, (float[])null);
 			Rasterizer2D.Rasterizer2D_clear();
 			Rasterizer3D.resetRasterClipping();
-			Rasterizer3D.method5307(16, 16);
+			Rasterizer3D.setCustomClipBounds(16, 16);
 			Rasterizer3D.clips.rasterGouraudLowRes = false;
 			if (var9.placeholderTemplate != -1) {
 				var21.drawTransBgAt(0, 0);

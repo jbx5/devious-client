@@ -20,36 +20,36 @@ public class class132 {
 	@ObfuscatedSignature(
 		descriptor = "[Lqg;"
 	)
-	final class424[] field1556;
+	final TransformationMatrix[] field1556;
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "[Lqg;"
 	)
-	class424[] field1549;
+	TransformationMatrix[] field1549;
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "[Lqg;"
 	)
-	class424[] field1550;
+	TransformationMatrix[] field1550;
 	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "Lqg;"
 	)
-	class424 field1551;
+	TransformationMatrix field1551;
 	@ObfuscatedName("av")
 	boolean field1552;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Lqg;"
 	)
-	class424 field1555;
+	TransformationMatrix field1555;
 	@ObfuscatedName("ai")
 	boolean field1559;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Lqg;"
 	)
-	class424 field1545;
+	TransformationMatrix field1545;
 	@ObfuscatedName("au")
 	float[][] field1548;
 	@ObfuscatedName("ah")
@@ -61,19 +61,19 @@ public class class132 {
 		descriptor = "(ILvp;Z)V"
 	)
 	public class132(int var1, Buffer var2, boolean var3) {
-		this.field1551 = new class424();
+		this.field1551 = new TransformationMatrix();
 		this.field1552 = true;
-		this.field1555 = new class424();
+		this.field1555 = new TransformationMatrix();
 		this.field1559 = true;
-		this.field1545 = new class424();
+		this.field1545 = new TransformationMatrix();
 		this.field1546 = var2.readShort();
-		this.field1556 = new class424[var1];
-		this.field1549 = new class424[this.field1556.length];
-		this.field1550 = new class424[this.field1556.length];
+		this.field1556 = new TransformationMatrix[var1];
+		this.field1549 = new TransformationMatrix[this.field1556.length];
+		this.field1550 = new TransformationMatrix[this.field1556.length];
 		this.field1547 = new float[this.field1556.length][3];
 
 		for (int var4 = 0; var4 < this.field1556.length; ++var4) {
-			this.field1556[var4] = new class424(var2, var3);
+			this.field1556[var4] = new TransformationMatrix(var2, var3);
 			this.field1547[var4][0] = var2.method9565();
 			this.field1547[var4][1] = var2.method9565();
 			this.field1547[var4][2] = var2.method9565();
@@ -91,20 +91,20 @@ public class class132 {
 		this.field1548 = new float[this.field1556.length][3];
 		this.field1557 = new float[this.field1556.length][3];
 		this.field1558 = new float[this.field1556.length][3];
-		class424 var1;
-		synchronized(class424.field4704) {
-			if (class424.field4706 == 0) {
-				var1 = new class424();
+		TransformationMatrix var1;
+		synchronized(TransformationMatrix.field4704) {
+			if (TransformationMatrix.field4706 == 0) {
+				var1 = new TransformationMatrix();
 			} else {
-				class424.field4704[--class424.field4706].method7789();
-				var1 = class424.field4704[class424.field4706];
+				TransformationMatrix.field4704[--TransformationMatrix.field4706].method7789();
+				var1 = TransformationMatrix.field4704[TransformationMatrix.field4706];
 			}
 		}
 
-		class424 var2 = var1;
+		TransformationMatrix var2 = var1;
 
 		for (int var5 = 0; var5 < this.field1556.length; ++var5) {
-			class424 var4 = this.method3075(var5);
+			TransformationMatrix var4 = this.method3075(var5);
 			var2.method7809(var4);
 			var2.method7790();
 			this.field1548[var5] = var2.method7779();
@@ -122,7 +122,7 @@ public class class132 {
 		descriptor = "(IB)Lqg;",
 		garbageValue = "69"
 	)
-	class424 method3075(int var1) {
+	TransformationMatrix method3075(int var1) {
 		return this.field1556[var1];
 	}
 
@@ -131,13 +131,13 @@ public class class132 {
 		descriptor = "(II)Lqg;",
 		garbageValue = "829200770"
 	)
-	class424 method3116(int var1) {
+	TransformationMatrix method3116(int var1) {
 		if (this.field1549[var1] == null) {
-			this.field1549[var1] = new class424(this.method3075(var1));
+			this.field1549[var1] = new TransformationMatrix(this.method3075(var1));
 			if (this.field1554 != null) {
 				this.field1549[var1].method7785(this.field1554.method3116(var1));
 			} else {
-				this.field1549[var1].method7785(class424.field4707);
+				this.field1549[var1].method7785(TransformationMatrix.field4707);
 			}
 		}
 
@@ -149,9 +149,9 @@ public class class132 {
 		descriptor = "(IB)Lqg;",
 		garbageValue = "0"
 	)
-	class424 method3079(int var1) {
+	TransformationMatrix method3079(int var1) {
 		if (this.field1550[var1] == null) {
-			this.field1550[var1] = new class424(this.method3116(var1));
+			this.field1550[var1] = new TransformationMatrix(this.method3116(var1));
 			this.field1550[var1].method7790();
 		}
 
@@ -163,7 +163,7 @@ public class class132 {
 		descriptor = "(Lqg;B)V",
 		garbageValue = "54"
 	)
-	void method3078(class424 var1) {
+	void method3078(TransformationMatrix var1) {
 		this.field1551.method7809(var1);
 		this.field1552 = true;
 		this.field1559 = true;
@@ -174,7 +174,7 @@ public class class132 {
 		descriptor = "(B)Lqg;",
 		garbageValue = "104"
 	)
-	class424 method3095() {
+	TransformationMatrix method3095() {
 		return this.field1551;
 	}
 
@@ -183,7 +183,7 @@ public class class132 {
 		descriptor = "(I)Lqg;",
 		garbageValue = "1080468653"
 	)
-	class424 method3117() {
+	TransformationMatrix method3117() {
 		if (this.field1552) {
 			this.field1555.method7809(this.method3095());
 			if (this.field1554 != null) {
@@ -201,7 +201,7 @@ public class class132 {
 		descriptor = "(II)Lqg;",
 		garbageValue = "-2053259314"
 	)
-	public class424 method3093(int var1) {
+	public TransformationMatrix method3093(int var1) {
 		if (this.field1559) {
 			this.field1545.method7809(this.method3079(var1));
 			this.field1545.method7785(this.method3117());

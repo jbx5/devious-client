@@ -51,9 +51,9 @@ public class FaceNormal {
 		garbageValue = "-822815307"
 	)
 	static void method5685(int var0) {
-		class424.field4705 = var0;
-		class424.field4704 = new class424[var0];
-		class424.field4706 = 0;
+		TransformationMatrix.field4705 = var0;
+		TransformationMatrix.field4704 = new TransformationMatrix[var0];
+		TransformationMatrix.field4706 = 0;
 	}
 
 	@ObfuscatedName("ap")

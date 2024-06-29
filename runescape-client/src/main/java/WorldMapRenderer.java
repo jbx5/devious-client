@@ -199,7 +199,7 @@ public final class WorldMapRenderer {
 		int[] var9 = Rasterizer2D.Rasterizer2D_pixels;
 		int var10 = Rasterizer2D.Rasterizer2D_width;
 		int var11 = Rasterizer2D.Rasterizer2D_height;
-		float[] var12 = Rasterizer2D.field5435;
+		float[] var12 = Rasterizer2D.Rasterizer2D_brightness;
 		int[] var13 = new int[4];
 		Rasterizer2D.Rasterizer2D_getClipArray(var13);
 		WorldMapRectangle var14 = this.createWorldMapRectangle(var1, var2, var3, var4);

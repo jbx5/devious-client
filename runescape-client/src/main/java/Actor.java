@@ -6,7 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dw")
 @Implements("Actor")
-public abstract class Actor extends Renderable implements class67 {
+public abstract class Actor extends Renderable implements Entity {
 	@ObfuscatedName("an")
 	@Export("isWalking")
 	boolean isWalking;
@@ -360,7 +360,7 @@ public abstract class Actor extends Renderable implements class67 {
 		descriptor = "[Ljb;"
 	)
 	@Export("pathTraversed")
-	class238[] pathTraversed;
+	MoveSpeed[] pathTraversed;
 	@ObfuscatedName("ei")
 	@ObfuscatedGetter(
 		intValue = -703076279
@@ -433,7 +433,7 @@ public abstract class Actor extends Renderable implements class67 {
 		this.pathLength = 0;
 		this.pathX = new int[10];
 		this.pathY = new int[10];
-		this.pathTraversed = new class238[10];
+		this.pathTraversed = new MoveSpeed[10];
 		this.field1264 = 0;
 		this.field1265 = 0;
 		this.field1266 = -1;
@@ -444,7 +444,8 @@ public abstract class Actor extends Renderable implements class67 {
 		descriptor = "(I)I",
 		garbageValue = "-1094315846"
 	)
-	public int vmethod8670() {
+	@Export("getX")
+	public int getX() {
 		return this.x;
 	}
 
@@ -453,7 +454,8 @@ public abstract class Actor extends Renderable implements class67 {
 		descriptor = "(I)I",
 		garbageValue = "-1560683435"
 	)
-	public int vmethod8671() {
+	@Export("getY")
+	public int getY() {
 		return this.y;
 	}
 
@@ -462,7 +464,8 @@ public abstract class Actor extends Renderable implements class67 {
 		descriptor = "(I)I",
 		garbageValue = "1219894600"
 	)
-	public int vmethod8672() {
+	@Export("getPlane")
+	public int getPlane() {
 		return class511.topLevelWorldView.plane;
 	}
 
@@ -776,20 +779,20 @@ public abstract class Actor extends Renderable implements class67 {
 	)
 	Coord method2488(WorldView var1) {
 		if (var1 == class511.topLevelWorldView) {
-			return new Coord(this.vmethod8672(), this.vmethod8670(), this.vmethod8671());
+			return new Coord(this.getPlane(), this.getX(), this.getY());
 		} else {
 			WorldEntity var2 = class511.topLevelWorldView.worldEntities[var1.id];
 			if (var2 == null) {
-				return new Coord(this.vmethod8672(), this.vmethod8670(), this.vmethod8671());
+				return new Coord(this.getPlane(), this.getX(), this.getY());
 			} else {
-				int var3 = var2.vmethod8670();
-				int var4 = var2.vmethod8671();
-				int var5 = var2.vmethod8672();
+				int var3 = var2.getX();
+				int var4 = var2.getY();
+				int var5 = var2.getPlane();
 				int var6 = var2.worldView.sizeX / 2 * 128;
 				int var7 = var2.worldView.sizeY / 2 * 128;
-				int var8 = this.vmethod8670() - var6;
-				int var9 = this.vmethod8671() - var7;
-				double var10 = (double)(-var2.field4970) * 3.141592653589793D / 1024.0D;
+				int var8 = this.getX() - var6;
+				int var9 = this.getY() - var7;
+				double var10 = (double)(-var2.currentRotationAngle) * 3.141592653589793D / 1024.0D;
 				double var12 = Math.cos(var10);
 				double var14 = Math.sin(var10);
 				int var16 = var3 + (int)((double)var8 * var12 - var14 * (double)var9);

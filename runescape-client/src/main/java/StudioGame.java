@@ -48,7 +48,8 @@ public enum StudioGame implements Enum {
 	@ObfuscatedSignature(
 		descriptor = "Lcp;"
 	)
-	static class67 field4084;
+	@Export("entity")
+	static Entity entity;
 	@ObfuscatedName("aj")
 	@Export("name")
 	public final String name;

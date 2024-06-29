@@ -23,7 +23,7 @@ public class class393 {
 			Client.meslayerContinueWidget = null;
 		}
 
-		class238.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
+		MoveSpeed.revalidateWidgetScroll(ModeWhere.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
 		class7.runWidgetOnLoadListener(var1);
 		if (Client.rootInterface != -1) {
 			BuddyRankComparator.runIntfCloseListeners(Client.rootInterface, 1);

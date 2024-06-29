@@ -6,7 +6,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("so")
 @Implements("WorldEntity")
-public class WorldEntity implements class67 {
+public class WorldEntity implements Entity {
 	@ObfuscatedName("fe")
 	@ObfuscatedSignature(
 		descriptor = "Loz;"
@@ -17,42 +17,50 @@ public class WorldEntity implements class67 {
 	@ObfuscatedGetter(
 		intValue = -718963057
 	)
-	int field4966;
+	@Export("plane")
+	int plane;
 	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
 		intValue = 1090116467
 	)
-	public int field4964;
+	@Export("rotationAngle")
+	public int rotationAngle;
 	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
 		intValue = 663953355
 	)
-	public int field4963;
+	@Export("movementSpeed")
+	public int movementSpeed;
 	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
 		intValue = 953925525
 	)
-	public int field4968;
+	@Export("remainingMovementSteps")
+	public int remainingMovementSteps;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
 		intValue = -323233339
 	)
-	public int field4967;
+	@Export("x")
+	public int x;
 	@ObfuscatedName("an")
 	@ObfuscatedGetter(
 		intValue = 255992747
 	)
-	public int field4973;
+	@Export("tileHeight")
+	public int tileHeight;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = 1530400209
 	)
-	public int field4969;
+	@Export("y")
+	public int y;
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(
 		intValue = -293479555
 	)
-	public int field4970;
+	@Export("currentRotationAngle")
+	public int currentRotationAngle;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "Lde;"
@@ -63,30 +71,34 @@ public class WorldEntity implements class67 {
 	@ObfuscatedGetter(
 		intValue = 579113171
 	)
-	int field4972;
+	@Export("steps")
+	int steps;
 	@ObfuscatedName("ae")
-	public int[] field4974;
+	@Export("directionsX")
+	public int[] directionsX;
 	@ObfuscatedName("au")
-	public int[] field4965;
+	@Export("directionsY")
+	public int[] directionsY;
 	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
 		descriptor = "[Ljb;"
 	)
-	class238[] field4975;
+	@Export("moveSpeeds")
+	MoveSpeed[] moveSpeeds;
 
 	public WorldEntity(int var1, int var2, int var3, int var4) {
-		this.field4966 = 0;
-		this.field4964 = 0;
-		this.field4963 = 2;
-		this.field4968 = 0;
-		this.field4967 = -1;
-		this.field4973 = -1;
-		this.field4969 = -1;
-		this.field4970 = 0;
-		this.field4972 = 0;
-		this.field4974 = new int[10];
-		this.field4965 = new int[10];
-		this.field4975 = new class238[10];
+		this.plane = 0;
+		this.rotationAngle = 0;
+		this.movementSpeed = 2;
+		this.remainingMovementSteps = 0;
+		this.x = -1;
+		this.tileHeight = -1;
+		this.y = -1;
+		this.currentRotationAngle = 0;
+		this.steps = 0;
+		this.directionsX = new int[10];
+		this.directionsY = new int[10];
+		this.moveSpeeds = new MoveSpeed[10];
 		this.worldView = new WorldView(var1, var2, var3, var4);
 	}
 
@@ -95,8 +107,9 @@ public class WorldEntity implements class67 {
 		descriptor = "(I)I",
 		garbageValue = "-1094315846"
 	)
-	public int vmethod8670() {
-		return this.field4967;
+	@Export("getX")
+	public int getX() {
+		return this.x;
 	}
 
 	@ObfuscatedName("ad")
@@ -104,8 +117,9 @@ public class WorldEntity implements class67 {
 		descriptor = "(I)I",
 		garbageValue = "-1560683435"
 	)
-	public int vmethod8671() {
-		return this.field4969;
+	@Export("getY")
+	public int getY() {
+		return this.y;
 	}
 
 	@ObfuscatedName("ag")
@@ -113,8 +127,9 @@ public class WorldEntity implements class67 {
 		descriptor = "(I)I",
 		garbageValue = "1219894600"
 	)
-	public int vmethod8672() {
-		return this.field4966;
+	@Export("getPlane")
+	public int getPlane() {
+		return this.plane;
 	}
 
 	@ObfuscatedName("ah")
@@ -122,7 +137,8 @@ public class WorldEntity implements class67 {
 		descriptor = "(I)V",
 		garbageValue = "-286093061"
 	)
-	public void method8669() {
+	@Export("initScenePlane")
+	public void initScenePlane() {
 		this.worldView.scene.Scene_plane = this.worldView.plane;
 	}
 
@@ -131,15 +147,16 @@ public class WorldEntity implements class67 {
 		descriptor = "(IILjb;I)V",
 		garbageValue = "2140785958"
 	)
-	public final void method8684(int var1, int var2, class238 var3) {
+	@Export("move")
+	public final void move(int var1, int var2, MoveSpeed var3) {
 		if (var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104) {
-			if (this.field4974[0] >= 0 && this.field4974[0] < 104 && this.field4965[0] >= 0 && this.field4965[0] < 104) {
-				this.method8674(var1, var2, var3);
+			if (this.directionsX[0] >= 0 && this.directionsX[0] < 104 && this.directionsY[0] >= 0 && this.directionsY[0] < 104) {
+				this.updatePosition(var1, var2, var3);
 			} else {
-				this.method8679(var1, var2);
+				this.setPosition(var1, var2);
 			}
 		} else {
-			this.method8679(var1, var2);
+			this.setPosition(var1, var2);
 		}
 
 	}
@@ -149,13 +166,14 @@ public class WorldEntity implements class67 {
 		descriptor = "(III)V",
 		garbageValue = "1231397915"
 	)
-	public void method8679(int var1, int var2) {
-		this.field4972 = 0;
-		this.field4974[0] = var1;
-		this.field4965[0] = var2;
+	@Export("setPosition")
+	public void setPosition(int var1, int var2) {
+		this.steps = 0;
+		this.directionsX[0] = var1;
+		this.directionsY[0] = var2;
 		byte var3 = 1;
-		this.field4967 = var3 * 64 + this.field4974[0] * 128;
-		this.field4969 = var3 * 64 + this.field4965[0] * 128;
+		this.x = var3 * 64 + this.directionsX[0] * 128;
+		this.y = var3 * 64 + this.directionsY[0] * 128;
 	}
 
 	@ObfuscatedName("ac")
@@ -163,20 +181,21 @@ public class WorldEntity implements class67 {
 		descriptor = "(IILjb;I)V",
 		garbageValue = "1637705653"
 	)
-	final void method8674(int var1, int var2, class238 var3) {
-		if (this.field4972 < 9) {
-			++this.field4972;
+	@Export("updatePosition")
+	final void updatePosition(int var1, int var2, MoveSpeed var3) {
+		if (this.steps < 9) {
+			++this.steps;
 		}
 
-		for (int var4 = this.field4972; var4 > 0; --var4) {
-			this.field4974[var4] = this.field4974[var4 - 1];
-			this.field4965[var4] = this.field4965[var4 - 1];
-			this.field4975[var4] = this.field4975[var4 - 1];
+		for (int var4 = this.steps; var4 > 0; --var4) {
+			this.directionsX[var4] = this.directionsX[var4 - 1];
+			this.directionsY[var4] = this.directionsY[var4 - 1];
+			this.moveSpeeds[var4] = this.moveSpeeds[var4 - 1];
 		}
 
-		this.field4974[0] = var1;
-		this.field4965[0] = var2;
-		this.field4975[0] = var3;
+		this.directionsX[0] = var1;
+		this.directionsY[0] = var2;
+		this.moveSpeeds[0] = var3;
 	}
 
 	@ObfuscatedName("al")
@@ -184,76 +203,77 @@ public class WorldEntity implements class67 {
 		descriptor = "(S)V",
 		garbageValue = "18238"
 	)
-	public final void method8673() {
-		int var1 = this.field4964 - this.field4970 & 2047;
+	@Export("updateMovement")
+	public final void updateMovement() {
+		int var1 = this.rotationAngle - this.currentRotationAngle & 2047;
 		if (var1 != 0) {
 			boolean var2 = true;
 			boolean var3 = true;
 			int var4 = var1 > 1024 ? -1 : 1;
-			this.field4970 += var4 * (this.field4968 > 0 ? 1 + this.field4963 : this.field4963);
-			--this.field4968;
-			if (var1 < this.field4963 || var1 > 2048 - this.field4963) {
-				this.field4970 = this.field4964;
+			this.currentRotationAngle += var4 * (this.remainingMovementSteps > 0 ? 1 + this.movementSpeed : this.movementSpeed);
+			--this.remainingMovementSteps;
+			if (var1 < this.movementSpeed || var1 > 2048 - this.movementSpeed) {
+				this.currentRotationAngle = this.rotationAngle;
 			}
 
-			this.field4970 &= 2047;
+			this.currentRotationAngle &= 2047;
 		}
 
-		if (this.field4972 == 0) {
-			this.method8679(this.field4974[0], this.field4965[0]);
+		if (this.steps == 0) {
+			this.setPosition(this.directionsX[0], this.directionsY[0]);
 		} else {
-			int var10 = this.field4967;
-			int var11 = this.field4969;
+			int var10 = this.x;
+			int var11 = this.y;
 			byte var12 = 1;
-			int var5 = this.field4974[this.field4972 - 1] * 128 + var12 * 128 / 2;
-			int var6 = this.field4965[this.field4972 - 1] * 128 + var12 * 128 / 2;
-			class238 var7 = this.field4975[this.field4972 - 1];
-			int var8 = (int)(Math.ceil((double)var7.field2517) * 128.0D);
+			int var5 = this.directionsX[this.steps - 1] * 128 + var12 * 128 / 2;
+			int var6 = this.directionsY[this.steps - 1] * 128 + var12 * 128 / 2;
+			MoveSpeed var7 = this.moveSpeeds[this.steps - 1];
+			int var8 = (int)(Math.ceil((double)var7.moveSpeed) * 128.0D);
 			if (var5 - var10 <= var8 && var5 - var10 >= -var8 && var6 - var11 <= var8 && var6 - var11 >= -var8) {
 				byte var9 = 4;
-				if (this.field4972 > 2) {
+				if (this.steps > 2) {
 					var9 = 6;
 				}
 
-				if (this.field4972 > 3) {
+				if (this.steps > 3) {
 					var9 = 8;
 				}
 
-				int var13 = (int)(var7.field2517 * (float)var9);
+				int var13 = (int)(var7.moveSpeed * (float)var9);
 				if (var5 != var10 || var6 != var11) {
 					if (var10 < var5) {
-						this.field4967 += var13;
-						if (this.field4967 > var5) {
-							this.field4967 = var5;
+						this.x += var13;
+						if (this.x > var5) {
+							this.x = var5;
 						}
 					} else if (var10 > var5) {
-						this.field4967 -= var13;
-						if (this.field4967 < var5) {
-							this.field4967 = var5;
+						this.x -= var13;
+						if (this.x < var5) {
+							this.x = var5;
 						}
 					}
 
 					if (var11 < var6) {
-						this.field4969 += var13;
-						if (this.field4969 > var6) {
-							this.field4969 = var6;
+						this.y += var13;
+						if (this.y > var6) {
+							this.y = var6;
 						}
 					} else if (var11 > var6) {
-						this.field4969 -= var13;
-						if (this.field4969 < var6) {
-							this.field4969 = var6;
+						this.y -= var13;
+						if (this.y < var6) {
+							this.y = var6;
 						}
 					}
 				}
 
-				if (var5 == this.field4967 && var6 == this.field4969) {
-					--this.field4972;
+				if (var5 == this.x && var6 == this.y) {
+					--this.steps;
 				}
 
 			} else {
-				this.field4967 = var5;
-				this.field4969 = var6;
-				--this.field4972;
+				this.x = var5;
+				this.y = var6;
+				--this.steps;
 			}
 		}
 	}
