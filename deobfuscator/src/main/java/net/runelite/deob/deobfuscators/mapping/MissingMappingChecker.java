@@ -28,6 +28,7 @@ import com.google.common.base.Stopwatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
@@ -83,6 +84,16 @@ public class MissingMappingChecker implements Runnable
 
 			if (!mapping.getMap().containsKey(namedCF))
 			{
+				if (namedCF.getName().equals("FillMode"))
+				{
+					Field targetFillModeField = (Field) mapping.getMap().entrySet().stream().filter(e -> e.getKey().toString().equals("static LFillMode; FillMode.SOLID")).map(Map.Entry::getValue).findFirst().orElse(null);
+					if (targetFillModeField != null)
+					{
+						mapping.map(null, namedCF, targetFillModeField.getClassFile());
+						logger.info("Mapped missing class: {} to: {}", namedCF, targetFillModeField.getClassFile());
+						continue;
+					}
+				}
 				mapping.map(null, namedCF, targetCF);
 				logger.info("Mapped missing class: {} to: {}", namedCF, targetCF);
 			}
