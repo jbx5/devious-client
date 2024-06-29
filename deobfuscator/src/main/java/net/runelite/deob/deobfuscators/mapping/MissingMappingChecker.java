@@ -30,6 +30,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import net.runelite.asm.Annotation;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -102,6 +103,26 @@ public class MissingMappingChecker implements Runnable
 		// Fix missing named fields and methods mapping
 		for (ClassFile namedCF : namedGroup)
 		{
+			// Fix duplicate/incorrect named field exports
+			// this is so it does not duplicate field names which is difficult to change manually
+			// this for example happened with viewportTempX and viewportTempY where viewportTempY was annotated viewportTempX by human error and the mapper causing it to duplicate
+			// the export should match the field name
+			List<Field> namedFields = namedCF.getFields();
+			for (Field nf : namedFields)
+			{
+				if (nf.getAnnotations() != null && !nf.getAnnotations().isEmpty() && nf.getAnnotations().containsKey(DeobAnnotations.EXPORT))
+				{
+					Annotation exportAnnotation = nf.getAnnotations().get(DeobAnnotations.EXPORT);
+					String exportAnnotationValueString = exportAnnotation.getValueString();
+					if (!exportAnnotationValueString.equals(nf.getName()))
+					{
+						logger.error("Incorrect export annotation value: {} != {} field: {} changing to: {}", exportAnnotationValueString, nf.getName(), nf, nf.getName());
+						exportAnnotation.setElement(nf.getName());
+					}
+				}
+			}
+			//
+
 			ClassFile targetCF = (ClassFile) mapping.getMap().get(namedCF);
 			if (targetCF != null)
 			{
@@ -122,6 +143,7 @@ public class MissingMappingChecker implements Runnable
 				}
 			}
 		}
+
 		logger.info("Took: {}", stopwatch);
 	}
 
