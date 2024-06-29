@@ -77,7 +77,7 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 	@Inject
 	public void onAnimCycleCountChanged(int idx)
 	{
-		if (client.isInterpolateObjectAnimations() && this.getId() != ObjectID.WATER_WHEEL_26671)
+		if (client.getAnimationInterpolationFilter() != null && this.getAnimation() != null && client.getAnimationInterpolationFilter().test(this.getAnimation().getId()) && this.getId() != ObjectID.WATER_WHEEL_26671)
 		{
 			// sets the packed anim frame with the frame cycle
 			int objectFrameCycle = client.getGameCycle() - getAnimCycle();
