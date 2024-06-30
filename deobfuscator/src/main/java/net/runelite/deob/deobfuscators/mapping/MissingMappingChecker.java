@@ -144,6 +144,27 @@ public class MissingMappingChecker implements Runnable
 			}
 		}
 
+		// Fix updateLoginState mapping
+		Method namedUpdateLoginState = namedGroup.findStaticMethod("updateLoginState");
+		Field targetStaticLoginState = (Field) mapping.getMap().entrySet().stream().filter(e -> e.getKey().toString().contains("static LLoginState;")).map(Map.Entry::getValue).findFirst().orElse(null);
+		if (namedUpdateLoginState != null && targetStaticLoginState != null)
+		{
+			for (ClassFile targetCF : targetGroup)
+			{
+				Method targetUpdateLoginState = targetCF.getMethods().stream()
+					.filter(m -> m.isStatic() && !mapping.getMap().containsValue(m) && m.getDescriptor().toString().equals("(L" + targetStaticLoginState.getClassFile().getName() + ";)V"))
+					.findFirst()
+					.orElse(null);
+
+				if (targetUpdateLoginState != null)
+				{
+					mapping.map(null, namedUpdateLoginState, targetUpdateLoginState);
+					logger.info("Mapped missing method: {} to: {}", namedUpdateLoginState, targetUpdateLoginState);
+					break;
+				}
+			}
+		}
+
 		logger.info("Took: {}", stopwatch);
 	}
 
