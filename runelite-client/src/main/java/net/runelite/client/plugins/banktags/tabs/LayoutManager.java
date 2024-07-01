@@ -294,7 +294,7 @@ public class LayoutManager
 			}
 			else
 			{
-				int quantityType = client.getVarbitValue(Varbits.BANK_QUANTITY_TYPE);
+				int quantityType = client.getVarbitValue(Varbits.BANK_QUANTITY_MODE);
 				int requestQty = client.getVarbitValue(Varbits.BANK_REQUESTEDQUANTITY);
 				// ~script2759
 				String suffix;
