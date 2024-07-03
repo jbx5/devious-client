@@ -824,7 +824,14 @@ public class ConfigManager
 
 				log.debug("Setting default configuration value for {}.{} to {}", group.value(), item.keyName(), defaultValue);
 
-				setConfiguration(group.value(), item.keyName(), valueString);
+				if (Strings.isNullOrEmpty(valueString))
+				{
+					unsetConfiguration(group.value(), item.keyName());
+				}
+				else
+				{
+					setConfiguration(group.value(), item.keyName(), valueString);
+				}
 			}
 		}
 	}
