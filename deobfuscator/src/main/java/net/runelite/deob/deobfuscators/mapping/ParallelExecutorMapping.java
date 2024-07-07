@@ -339,6 +339,11 @@ public class ParallelExecutorMapping
 		return m;
 	}
 
+	public Multimap<Object, Mapping> getMapInstance()
+	{
+		return map;
+	}
+
 	private void belongs(Object o, ClassGroup to)
 	{
 		if (o instanceof Field)

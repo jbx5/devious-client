@@ -65,7 +65,7 @@ public class UpdateMappings
 		mapper.run();
 		ParallelExecutorMapping mapping = mapper.getMapping();
 
-		new BufferRenameTransformer(mapping).transform(group2);
+		new BufferRenameTransformer(mapping, group1).transform(group2);
 		new MissingMappingChecker(mapping, group1, group2).run();
 
 		AnnotationMapper amapper = new AnnotationMapper(group1, group2, mapping);
