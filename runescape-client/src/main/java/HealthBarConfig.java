@@ -4,8 +4,8 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dl")
-@Implements("HealthBar")
-public class HealthBar extends Node {
+@Implements("HealthBarConfig")
+public class HealthBarConfig extends Node {
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lhy;"
@@ -22,7 +22,7 @@ public class HealthBar extends Node {
 	@ObfuscatedSignature(
 		descriptor = "(Lhy;)V"
 	)
-	HealthBar(HealthBarDefinition var1) {
+	HealthBarConfig(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}

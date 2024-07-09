@@ -112,45 +112,45 @@ public class WorldMapAreaData extends WorldMapArea {
 		if (MouseHandler.MouseHandler_lastButton == 1 || !World.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
 			int var3 = Login.xPadding + 280;
 			if (MouseHandler.MouseHandler_lastPressedX >= var3 && MouseHandler.MouseHandler_lastPressedX <= var3 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(0, 0);
+				HealthBarConfig.changeWorldSelectSorting(0, 0);
 				return;
 			}
 
 			if (MouseHandler.MouseHandler_lastPressedX >= var3 + 15 && MouseHandler.MouseHandler_lastPressedX <= var3 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(0, 1);
+				HealthBarConfig.changeWorldSelectSorting(0, 1);
 				return;
 			}
 
 			int var4 = Login.xPadding + 390;
 			if (MouseHandler.MouseHandler_lastPressedX >= var4 && MouseHandler.MouseHandler_lastPressedX <= var4 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(1, 0);
+				HealthBarConfig.changeWorldSelectSorting(1, 0);
 				return;
 			}
 
 			if (MouseHandler.MouseHandler_lastPressedX >= var4 + 15 && MouseHandler.MouseHandler_lastPressedX <= var4 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(1, 1);
+				HealthBarConfig.changeWorldSelectSorting(1, 1);
 				return;
 			}
 
 			int var5 = Login.xPadding + 500;
 			if (MouseHandler.MouseHandler_lastPressedX >= var5 && MouseHandler.MouseHandler_lastPressedX <= var5 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(2, 0);
+				HealthBarConfig.changeWorldSelectSorting(2, 0);
 				return;
 			}
 
 			if (MouseHandler.MouseHandler_lastPressedX >= var5 + 15 && MouseHandler.MouseHandler_lastPressedX <= var5 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(2, 1);
+				HealthBarConfig.changeWorldSelectSorting(2, 1);
 				return;
 			}
 
 			int var6 = Login.xPadding + 610;
 			if (MouseHandler.MouseHandler_lastPressedX >= var6 && MouseHandler.MouseHandler_lastPressedX <= var6 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(3, 0);
+				HealthBarConfig.changeWorldSelectSorting(3, 0);
 				return;
 			}
 
 			if (MouseHandler.MouseHandler_lastPressedX >= var6 + 15 && MouseHandler.MouseHandler_lastPressedX <= var6 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBar.changeWorldSelectSorting(3, 1);
+				HealthBarConfig.changeWorldSelectSorting(3, 1);
 				return;
 			}
 
