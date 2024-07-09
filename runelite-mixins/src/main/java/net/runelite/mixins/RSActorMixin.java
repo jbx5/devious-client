@@ -59,7 +59,7 @@ import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSActor;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSHealthBar;
+import net.runelite.rs.api.RSHealthBarConfig;
 import net.runelite.rs.api.RSHealthBarDefinition;
 import net.runelite.rs.api.RSHealthBarUpdate;
 import net.runelite.rs.api.RSIterableNodeDeque;
@@ -151,9 +151,9 @@ public abstract class RSActorMixin implements RSActor
 		{
 			RSNode current = healthBars.getCurrent();
 			RSNode next = current.getNext();
-			if (next instanceof RSHealthBar)
+			if (next instanceof RSHealthBarConfig)
 			{
-				RSHealthBar wrapper = (RSHealthBar) next;
+				RSHealthBarConfig wrapper = (RSHealthBarConfig) next;
 				RSIterableNodeDeque updates = wrapper.getUpdates();
 
 				RSNode currentUpdate = updates.getCurrent();
@@ -177,9 +177,9 @@ public abstract class RSActorMixin implements RSActor
 		{
 			RSNode current = healthBars.getCurrent();
 			RSNode next = current.getNext();
-			if (next instanceof RSHealthBar)
+			if (next instanceof RSHealthBarConfig)
 			{
-				RSHealthBar wrapper = (RSHealthBar) next;
+				RSHealthBarConfig wrapper = (RSHealthBarConfig) next;
 				RSHealthBarDefinition definition = wrapper.getDefinition();
 				return definition.getHealthScale();
 			}

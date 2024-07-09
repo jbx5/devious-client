@@ -1,6 +1,6 @@
 package net.runelite.mixins;
 
-import net.runelite.api.events.PostHealthBar;
+import net.runelite.api.events.PostHealthBarConfig;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
@@ -19,8 +19,8 @@ public abstract class RSHealthBarDefinitionMixin implements RSHealthBarDefinitio
 	@Inject
 	public void onRead(RSBuffer buffer)
 	{
-		PostHealthBar postHealthBar = new PostHealthBar();
-		postHealthBar.setHealthBar(this);
+		PostHealthBarConfig postHealthBar = new PostHealthBarConfig();
+		postHealthBar.setHealthBarConfig(this);
 		client.getCallbacks().post(postHealthBar);
 	}
 }

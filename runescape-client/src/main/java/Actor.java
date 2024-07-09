@@ -591,13 +591,13 @@ public abstract class Actor extends Renderable implements class67 {
 		}
 
 		var8 = var7;
-		HealthBar var14 = null;
-		HealthBar var10 = null;
+		HealthBarConfig var14 = null;
+		HealthBarConfig var10 = null;
 		int var11 = var7.int2;
 		int var12 = 0;
 
-		HealthBar var13;
-		for (var13 = (HealthBar)this.healthBars.last(); var13 != null; var13 = (HealthBar)this.healthBars.previous()) {
+		HealthBarConfig var13;
+		for (var13 = (HealthBarConfig)this.healthBars.last(); var13 != null; var13 = (HealthBarConfig)this.healthBars.previous()) {
 			++var12;
 			if (var13.definition.field1941 == var8.field1941) {
 				var13.put(var2 + var4, var5, var6, var3);
@@ -615,7 +615,7 @@ public abstract class Actor extends Renderable implements class67 {
 		}
 
 		if (var10 != null || var12 < 4) {
-			var13 = new HealthBar(var8);
+			var13 = new HealthBarConfig(var8);
 			if (var14 == null) {
 				this.healthBars.addLast(var13);
 			} else {
@@ -655,7 +655,7 @@ public abstract class Actor extends Renderable implements class67 {
 
 		var3 = var2;
 
-		for (HealthBar var5 = (HealthBar)this.healthBars.last(); var5 != null; var5 = (HealthBar)this.healthBars.previous()) {
+		for (HealthBarConfig var5 = (HealthBarConfig)this.healthBars.last(); var5 != null; var5 = (HealthBarConfig)this.healthBars.previous()) {
 			if (var3 == var5.definition) {
 				var5.remove();
 				return;

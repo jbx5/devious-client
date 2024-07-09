@@ -144,7 +144,7 @@ public class UserComparator10 extends AbstractUserComparator {
 			if (!var1.healthBars.method7494()) {
 				GrandExchangeOfferNameComparator.method7320(var0, var1, var1.vmethod2708() + 15);
 
-				for (HealthBar var11 = (HealthBar)var1.healthBars.last(); var11 != null; var11 = (HealthBar)var1.healthBars.previous()) {
+				for (HealthBarConfig var11 = (HealthBarConfig)var1.healthBars.last(); var11 != null; var11 = (HealthBarConfig)var1.healthBars.previous()) {
 					HealthBarUpdate var12 = var11.get(Client.cycle);
 					if (var12 == null) {
 						if (var11.isEmpty()) {
