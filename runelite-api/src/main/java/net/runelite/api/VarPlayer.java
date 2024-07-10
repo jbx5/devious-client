@@ -273,6 +273,20 @@ public enum VarPlayer
 	BUFF_BAR_WC_GROUP_BONUS(4007),
 
 	/**
+	 * The amount of ammo in Dizana's quiver's inventory slot.
+	 * 0 means the quiver is empty.
+	 * @see #DIZANAS_QUIVER_ITEM_ID
+	 */
+	DIZANAS_QUIVER_ITEM_COUNT(4141),
+
+	/**
+	 * The item ID of the ammo in Dizana's quiver inventory slot.
+	 * -1 means the quiver is empty.
+	 * @see #DIZANAS_QUIVER_ITEM_COUNT
+	 */
+	DIZANAS_QUIVER_ITEM_ID(4142),
+
+	/**
 	 * Tutorial island progression
 	 */
 	TUTORIAL_ISLAND_PROGRESSION(281)
