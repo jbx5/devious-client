@@ -72,7 +72,7 @@ public class Varps {
 	)
 	static void method6456() {
 		if (Client.field535 == class94.field1157) {
-			class424.field4703 = class221.newArchive(class385.field4516.field4518, false, true, true, false);
+			class424.soundEffectsArchive = class221.newArchive(class385.field4516.field4518, false, true, true, false);
 			class199.archive6 = class221.newArchive(class385.field4519.field4518, true, true, true, false);
 			class7.archive8 = class221.newArchive(class385.field4500.field4518, false, true, true, false);
 			WorldMapSection1.archive10 = class221.newArchive(class385.field4506.field4518, false, true, true, false);
@@ -86,7 +86,7 @@ public class Varps {
 			byte var39;
 			if (class94.field1151 == Client.field535) {
 				var39 = 0;
-				var0 = var39 + class424.field4703.percentage() * 53 / 100;
+				var0 = var39 + class424.soundEffectsArchive.percentage() * 53 / 100;
 				var0 += class199.archive6.percentage() * 5 / 100;
 				var0 += class7.archive8.percentage() * 36 / 100;
 				var0 += WorldMapSection1.archive10.percentage() / 100;
@@ -99,7 +99,7 @@ public class Varps {
 					}
 
 				} else {
-					UserComparator10.method3025(class424.field4703, "Sound FX");
+					UserComparator10.method3025(class424.soundEffectsArchive, "Sound FX");
 					UserComparator10.method3025(class199.archive6, "Music Tracks");
 					UserComparator10.method3025(class7.archive8, "Sprites");
 					UserComparator10.method3025(class239.field2524, "Music Samples");
@@ -165,7 +165,7 @@ public class Varps {
 						}
 
 						Projectile.pcmPlayer1.setStream(var35);
-						ArchiveDiskActionHandler.method7122(Tile.field2872, class239.field2524, class424.field4703, var42);
+						ArchiveDiskActionHandler.method7122(Tile.field2872, class239.field2524, class424.soundEffectsArchive, var42);
 						class177.decimator = new Decimator(22050, PcmPlayer.field263);
 						Login.method2185(60, "Prepared sound engine");
 						UserComparator7.method3008(class94.field1154);

@@ -157,23 +157,21 @@ public abstract class SoundEffectMixin implements RSClient
 	public void playSoundEffect(int id, int volume)
 	{
 		assert client.isClientThread() : "playSoundEffect must be called on client thread";
-		RSSoundEffect soundEffect = getTrack(getIndexCache4(), id, 0);
-		if (soundEffect == null)
+		RSSoundEffect soundEffect = getTrack(getSoundEffectsIndexCache(), id, 0);
+		if (soundEffect != null)
 		{
-			return;
+			// If the current volume is not muted, use it instead
+			final int soundEffectVolume = client.getPreferences().getSoundEffectVolume();
+			if (soundEffectVolume != SoundEffectVolume.MUTED)
+			{
+				volume = soundEffectVolume;
+			}
+
+			RSRawSound rawAudioNode = soundEffect.toRawAudioNode().applyResampler(getSoundEffectResampler());
+			RSRawPcmStream rawPcmStream = createRawPcmStream(rawAudioNode, 100, volume);
+			rawPcmStream.setNumLoops(1);
+
+			getSoundEffectAudioQueue().addSubStream((RSPcmStream) rawPcmStream);
 		}
-
-		// If the current volume is not muted, use it instead
-		final int soundEffectVolume = client.getPreferences().getSoundEffectVolume();
-		if (soundEffectVolume != SoundEffectVolume.MUTED)
-		{
-			volume = soundEffectVolume;
-		}
-
-		RSRawSound rawAudioNode = soundEffect.toRawAudioNode().applyResampler(getSoundEffectResampler());
-		RSRawPcmStream rawPcmStream = createRawPcmStream(rawAudioNode, 100, volume);
-		rawPcmStream.setNumLoops(1);
-
-		getSoundEffectAudioQueue().addSubStream((RSPcmStream) rawPcmStream);
 	}
 }
