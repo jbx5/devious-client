@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -29,7 +30,8 @@ public final class class424 {
 	@ObfuscatedSignature(
 		descriptor = "Loz;"
 	)
-	static Archive field4703;
+	@Export("soundEffectsArchive")
+	static Archive soundEffectsArchive;
 	@ObfuscatedName("ap")
 	public float[] field4709;
 

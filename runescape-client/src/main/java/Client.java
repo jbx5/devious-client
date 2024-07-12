@@ -2698,14 +2698,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var32.packetBuffer.writeIntIME(ChatChannel.archive13.hash);
 					var32.packetBuffer.writeIntIME(class7.archive8.hash);
 					var32.packetBuffer.writeIntIME(WorldMapSection1.archive10.hash);
-					var32.packetBuffer.writeIntLE(class424.field4703.hash);
+					var32.packetBuffer.writeIntLE(class424.soundEffectsArchive.hash);
 					var32.packetBuffer.writeIntLE(Tile.field2872.hash);
 				} else {
 					var32.packetBuffer.writeInt(class239.field2524.hash);
 					var32.packetBuffer.writeIntLE(ChatChannel.archive13.hash);
 					var32.packetBuffer.writeIntLE(class157.archive9.hash);
 					var32.packetBuffer.writeIntME(class498.field5069.hash);
-					var32.packetBuffer.writeInt(class424.field4703.hash);
+					var32.packetBuffer.writeInt(class424.soundEffectsArchive.hash);
 					var32.packetBuffer.writeIntME(PlayerComposition.field3785.hash);
 					var32.packetBuffer.writeIntME(LoginPacket.field1684.hash);
 					var32.packetBuffer.writeIntLE(0);

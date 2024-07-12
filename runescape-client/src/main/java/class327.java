@@ -25,7 +25,7 @@ public class class327 {
 				SoundEffect var12 = Client.soundEffects[var0];
 				if (var12 == null) {
 					Object var10000 = null;
-					var12 = SoundEffect.readSoundEffect(class424.field4703, Client.soundEffectIds[var0], 0);
+					var12 = SoundEffect.readSoundEffect(class424.soundEffectsArchive, Client.soundEffectIds[var0], 0);
 					if (var12 == null) {
 						continue;
 					}

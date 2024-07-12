@@ -234,8 +234,8 @@ public final class PendingSpawn extends Node {
 			ObjectSound.field856.clearFiles();
 		}
 
-		if (class424.field4703 != null) {
-			class424.field4703.clearFiles();
+		if (class424.soundEffectsArchive != null) {
+			class424.soundEffectsArchive.clearFiles();
 		}
 
 		if (JagNetThread.field4545 != null) {
