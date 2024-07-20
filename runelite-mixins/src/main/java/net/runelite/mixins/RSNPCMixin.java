@@ -25,9 +25,7 @@
 package net.runelite.mixins;
 
 import net.runelite.api.ActorSpotAnim;
-import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
-import net.runelite.api.NpcID;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.NpcChanged;
@@ -151,16 +149,7 @@ public abstract class RSNPCMixin implements RSNPC
 	@SuppressWarnings("InfiniteRecursion")
 	public RSModel copy$getModel()
 	{
-		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation())
-			|| this.getAnimation() == AnimationID.HELLHOUND_DEFENCE
-			|| this.getAnimation() == 8270
-			|| this.getAnimation() == 8271
-			|| this.getPoseAnimation() == 5583
-			|| this.getId() == NpcID.WYRM && this.getAnimation() == AnimationID.IDLE
-			|| this.getId() == NpcID.TREE_SPIRIT && this.getAnimation() == AnimationID.IDLE
-			|| this.getId() == NpcID.TREE_SPIRIT_6380 && this.getAnimation() == AnimationID.IDLE
-			|| this.getId() == NpcID.TREE_SPIRIT_HARD && this.getAnimation() == AnimationID.IDLE
-		)
+		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation()))
 		{
 			return copy$getModel();
 		}

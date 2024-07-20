@@ -235,7 +235,7 @@ public abstract class RSPlayerMixin implements RSPlayer
 	@Replace("getModel")
 	public RSModel copy$getModel()
 	{
-		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation()) || this.getPoseAnimation() == 244)
+		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation()))
 		{
 			return copy$getModel();
 		}
