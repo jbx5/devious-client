@@ -80,7 +80,7 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 		{
 			// sets the packed anim frame with the frame cycle
 			int objectFrameCycle = client.getGameCycle() - getAnimCycle();
-			setAnimFrame(Integer.MIN_VALUE | objectFrameCycle << 16 | getAnimFrame());
+			setAnimFrame(Integer.MIN_VALUE | Math.max(objectFrameCycle - 1, 0) << 16 | getAnimFrame());
 		}
 	}
 
