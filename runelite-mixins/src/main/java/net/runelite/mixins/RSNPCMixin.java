@@ -25,9 +25,7 @@
 package net.runelite.mixins;
 
 import net.runelite.api.ActorSpotAnim;
-import net.runelite.api.AnimationID;
 import net.runelite.api.NPCComposition;
-import net.runelite.api.NpcID;
 import net.runelite.api.Perspective;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.NpcChanged;
@@ -151,16 +149,7 @@ public abstract class RSNPCMixin implements RSNPC
 	@SuppressWarnings("InfiniteRecursion")
 	public RSModel copy$getModel()
 	{
-		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation())
-			|| this.getAnimation() == AnimationID.HELLHOUND_DEFENCE
-			|| this.getAnimation() == 8270
-			|| this.getAnimation() == 8271
-			|| this.getPoseAnimation() == 5583
-			|| this.getId() == NpcID.WYRM && this.getAnimation() == AnimationID.IDLE
-			|| this.getId() == NpcID.TREE_SPIRIT && this.getAnimation() == AnimationID.IDLE
-			|| this.getId() == NpcID.TREE_SPIRIT_6380 && this.getAnimation() == AnimationID.IDLE
-			|| this.getId() == NpcID.TREE_SPIRIT_HARD && this.getAnimation() == AnimationID.IDLE
-		)
+		if (client.getAnimationInterpolationFilter() == null || !client.getAnimationInterpolationFilter().test(this.getAnimation()))
 		{
 			return copy$getModel();
 		}
@@ -171,9 +160,9 @@ public abstract class RSNPCMixin implements RSNPC
 		{
 			// combine the frames with the frame cycle so we can access this information in the sequence methods
 			// without having to change method calls
-			setActionFrame(Integer.MIN_VALUE | getActionFrameCycle() << 16 | actionFrame);
-			setPoseFrame(Integer.MIN_VALUE | getPoseFrameCycle() << 16 | poseFrame);
-			setSpotAnimFrame(Integer.MIN_VALUE | getSpotAnimationFrameCycle() << 16 | spotAnimFrame);
+			setActionFrame(Integer.MIN_VALUE | Math.max(getActionFrameCycle() - 1, 0) << 16 | actionFrame);
+			setPoseFrame(Integer.MIN_VALUE | Math.max(getPoseFrameCycle() - 1, 0) << 16 | poseFrame);
+			setSpotAnimFrame(Integer.MIN_VALUE | Math.max(getSpotAnimationFrameCycle() - 1, 0) << 16 | spotAnimFrame);
 			Iterator iter = getSpotAnims().iterator();
 			while (iter.hasNext())
 			{
@@ -181,7 +170,7 @@ public abstract class RSNPCMixin implements RSNPC
 				int frame = actorSpotAnim.getFrame();
 				if (frame != -1)
 				{
-					actorSpotAnim.setFrame(Integer.MIN_VALUE | actorSpotAnim.getCycle() << 16 | frame);
+					actorSpotAnim.setFrame(Integer.MIN_VALUE | Math.max(actorSpotAnim.getCycle() - 1, 0) << 16 | frame);
 				}
 			}
 			return copy$getModel();

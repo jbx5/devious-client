@@ -619,7 +619,7 @@ public abstract class RSWidgetMixin implements RSWidget
 	{
 		if (frame != -1 && client.getAnimationInterpolationFilter() != null && client.getAnimationInterpolationFilter().test(sequence.getId()))
 		{
-			frame = frame | getModelFrameCycle() << 16 | Integer.MIN_VALUE;
+			frame = frame | Math.max(getModelFrameCycle() - 1, 0) << 16 | Integer.MIN_VALUE;
 		}
 		return copy$getModel(widgetDefinition, sequence, frame, alternate, playerComposition, npcOverrides);
 	}

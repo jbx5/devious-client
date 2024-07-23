@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2023, jocopa3
+ * Copyright (c) 2024, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,19 +23,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.events;
 
-object ProjectVersions {
-    const val launcherVersion = "1.0.0"
-    const val rlVersion = "1.10.35"
+import java.util.Collections;
+import java.util.Map;
+import lombok.NonNull;
+import lombok.Value;
 
-    const val openosrsVersion = "4.31.2"
+/**
+ * An event pluginhub plugins can use to send data to each other.
+ */
+@Value
+public class PluginMessage
+{
+	/**
+	 * Event namespace. This should usually be a unique string representing your plugin name eg. "tombs-of-amascut"
+	 */
+	String namespace;
+	/**
+	 * Event name. This should represent what the event is for, eg "points".
+	 */
+	String name;
+	/**
+	 * Event data.
+	 */
+	Map<String, Object> data;
 
-    const val rsversion = 223
-    const val cacheversion = 165
+	public PluginMessage(@NonNull String namespace, @NonNull String name)
+	{
+		this(namespace, name, Collections.emptyMap());
+	}
 
-    const val lombokVersion = "1.18.30"
-
-    const val flatLafVersion = "3.2.5-rl4"
-
-    const val unethicaliteVersion = "1.0.20-EXPERIMENTAL"
+	public PluginMessage(@NonNull String namespace, @NonNull String name, @NonNull Map<String, Object> data)
+	{
+		this.namespace = namespace;
+		this.name = name;
+		this.data = data;
+	}
 }
