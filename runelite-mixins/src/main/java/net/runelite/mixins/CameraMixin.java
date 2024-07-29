@@ -333,4 +333,21 @@ public abstract class CameraMixin implements RSClient
 	{
 		return this.getTopLevelWorldView().getScene().getCameraZ2();
 	}
+
+	@Inject
+	private static boolean cameraShakeDisabled;
+
+	@Inject
+	@Override
+	public boolean isCameraShakeDisabled()
+	{
+		return cameraShakeDisabled;
+	}
+
+	@Inject
+	@Override
+	public void setCameraShakeDisabled(boolean disabled)
+	{
+		cameraShakeDisabled = disabled;
+	}
 }
