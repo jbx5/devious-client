@@ -103,7 +103,7 @@ public final class SpritePixels extends Rasterizer2D {
 	@ObfuscatedName("ak")
 	@Export("setRaster")
 	public void setRaster() {
-		Rasterizer2D.method9902(this.pixels, this.subWidth, this.subHeight, (float[])null);
+		Rasterizer2D.Rasterizer2D_init(this.pixels, this.subWidth, this.subHeight, (float[])null);
 	}
 
 	@ObfuscatedName("ap")

@@ -62,9 +62,9 @@ public class class241 implements Comparator {
 			int var22 = var1 - var16;
 			int var23 = var7 + var1 - var16;
 			int var24 = var15 + var7 + var1;
-			Rasterizer3D.method5326(var17, var18, var19);
+			Rasterizer3D.setClipping(var17, var18, var19);
 			Rasterizer3D.rasterFlat(var21, var22, var23, var17, var18, var19, 0.0F, 0.0F, 0.0F, var4);
-			Rasterizer3D.method5326(var17, var19, var20);
+			Rasterizer3D.setClipping(var17, var19, var20);
 			Rasterizer3D.rasterFlat(var21, var23, var24, var17, var19, var20, 0.0F, 0.0F, 0.0F, var4);
 		}
 	}

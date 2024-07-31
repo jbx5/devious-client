@@ -307,7 +307,7 @@ public class WorldMapDecoration {
 											}
 
 											if ((var42.isStackable == 1 || var10.itemQuantity != 1) && var10.itemQuantity != -1) {
-												var41 = NpcOverrides.colorStartTag(16748608) + var41 + "</col>" + " " + 'x' + class238.formatItemStacks(var10.itemQuantity);
+												var41 = NpcOverrides.colorStartTag(16748608) + var41 + "</col>" + " " + 'x' + MoveSpeed.formatItemStacks(var10.itemQuantity);
 											}
 										}
 
@@ -449,7 +449,7 @@ public class WorldMapDecoration {
 												}
 											}
 
-											Rasterizer3D.method5307(var10.width / 2 + var12, var10.height / 2 + var13);
+											Rasterizer3D.setCustomClipBounds(var10.width / 2 + var12, var10.height / 2 + var13);
 											var23 = Rasterizer3D.Rasterizer3D_sine[var10.modelAngleX] * var10.modelZoom >> 16;
 											var24 = Rasterizer3D.Rasterizer3D_cosine[var10.modelAngleX] * var10.modelZoom >> 16;
 											if (var38 != null) {
@@ -465,7 +465,7 @@ public class WorldMapDecoration {
 												}
 											}
 
-											Rasterizer3D.method5262();
+											Rasterizer3D.setClipBounds();
 										} else {
 											Font var29;
 											if (var10.type == 8 && var10 == GrandExchangeOfferOwnWorldComparator.field466 && Client.field500 == Client.field662) {

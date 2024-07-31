@@ -162,7 +162,8 @@ public class WorldView {
 		descriptor = "(B)Z",
 		garbageValue = "74"
 	)
-	boolean method2676() {
+	@Export("isTopLevelWorldView")
+	boolean isTopLevelWorldView() {
 		return this.id == -1;
 	}
 

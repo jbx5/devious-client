@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
@@ -11,7 +12,8 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("an")
-	void vmethod5953(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12) {
+	@Export("drawAlphaBlendedGraphics")
+	void drawAlphaBlendedGraphics(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12) {
 		int var13 = var5 - var4;
 		int var14 = var2 - var1;
 		int var15 = var6 - var4;
@@ -48,7 +50,7 @@ public class class299 extends AbstractRasterizer {
 			float var27 = (var19 * (float)var16 - var20 * (float)var14) / (float)var24;
 			float var28 = (var20 * (float)var13 - var19 * (float)var15) / (float)var24;
 			int[] var29 = super.field2905.Rasterizer3D_rowOffsets;
-			int var30 = super.field2905.field3199;
+			int var30 = super.field2905.clipY;
 			if (var1 <= var2 && var1 <= var3) {
 				if (var1 < var30) {
 					if (var2 > var30) {
@@ -589,7 +591,7 @@ public class class299 extends AbstractRasterizer {
 			float var21 = (var15 * (float)var14 - var16 * (float)var12) / (float)var20;
 			float var22 = (var16 * (float)var11 - var15 * (float)var13) / (float)var20;
 			int[] var23 = super.field2905.Rasterizer3D_rowOffsets;
-			int var24 = super.field2905.field3199;
+			int var24 = super.field2905.clipY;
 			if (var1 <= var2 && var1 <= var3) {
 				if (var1 < var24) {
 					if (var2 > var24) {
@@ -630,7 +632,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var5 >> 14, var7, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var5 >> 14, var7, var21);
 										var6 += var19;
 										var5 += var17;
 										var1 += Rasterizer2D.Rasterizer2D_width;
@@ -638,7 +640,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14, var7, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14, var7, var21);
 								var6 += var19;
 								var4 += var18;
 								var1 += Rasterizer2D.Rasterizer2D_width;
@@ -658,7 +660,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var6 >> 14, var7, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var6 >> 14, var7, var21);
 										var6 += var19;
 										var5 += var17;
 										var1 += Rasterizer2D.Rasterizer2D_width;
@@ -666,7 +668,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14, var7, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14, var7, var21);
 								var6 += var19;
 								var4 += var18;
 								var1 += Rasterizer2D.Rasterizer2D_width;
@@ -702,7 +704,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14, var7, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var6 >> 14, var4 >> 14, var7, var21);
 										var6 += var17;
 										var4 += var18;
 										var1 += Rasterizer2D.Rasterizer2D_width;
@@ -710,7 +712,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var4 >> 14, var7, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var5 >> 14, var4 >> 14, var7, var21);
 								var5 += var19;
 								var4 += var18;
 								var1 += Rasterizer2D.Rasterizer2D_width;
@@ -730,7 +732,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14, var7, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var6 >> 14, var7, var21);
 										var6 += var17;
 										var4 += var18;
 										var1 += Rasterizer2D.Rasterizer2D_width;
@@ -738,7 +740,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var5 >> 14, var7, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var1, var10, 0, var4 >> 14, var5 >> 14, var7, var21);
 								var5 += var19;
 								var4 += var18;
 								var1 += Rasterizer2D.Rasterizer2D_width;
@@ -787,7 +789,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var6 >> 14, var8, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var6 >> 14, var8, var21);
 										var4 += var18;
 										var6 += var19;
 										var2 += Rasterizer2D.Rasterizer2D_width;
@@ -795,7 +797,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14, var8, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14, var8, var21);
 								var4 += var18;
 								var5 += var17;
 								var2 += Rasterizer2D.Rasterizer2D_width;
@@ -815,7 +817,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var4 >> 14, var8, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var4 >> 14, var8, var21);
 										var4 += var18;
 										var6 += var19;
 										var2 += Rasterizer2D.Rasterizer2D_width;
@@ -823,7 +825,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14, var8, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14, var8, var21);
 								var4 += var18;
 								var5 += var17;
 								var2 += Rasterizer2D.Rasterizer2D_width;
@@ -859,7 +861,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14, var8, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var4 >> 14, var5 >> 14, var8, var21);
 										var4 += var19;
 										var5 += var17;
 										var2 += Rasterizer2D.Rasterizer2D_width;
@@ -867,7 +869,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var5 >> 14, var8, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var6 >> 14, var5 >> 14, var8, var21);
 								var6 += var18;
 								var5 += var17;
 								var2 += Rasterizer2D.Rasterizer2D_width;
@@ -887,7 +889,7 @@ public class class299 extends AbstractRasterizer {
 											return;
 										}
 
-										this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14, var8, var21);
+										this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var4 >> 14, var8, var21);
 										var4 += var19;
 										var5 += var17;
 										var2 += Rasterizer2D.Rasterizer2D_width;
@@ -895,7 +897,7 @@ public class class299 extends AbstractRasterizer {
 									}
 								}
 
-								this.method5960(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var6 >> 14, var8, var21);
+								this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var2, var10, 0, var5 >> 14, var6 >> 14, var8, var21);
 								var6 += var18;
 								var5 += var17;
 								var2 += Rasterizer2D.Rasterizer2D_width;
@@ -943,7 +945,7 @@ public class class299 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var4 >> 14, var9, var21);
+									this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var4 >> 14, var9, var21);
 									var5 += var17;
 									var4 += var18;
 									var3 += Rasterizer2D.Rasterizer2D_width;
@@ -951,7 +953,7 @@ public class class299 extends AbstractRasterizer {
 								}
 							}
 
-							this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14, var9, var21);
+							this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14, var9, var21);
 							var5 += var17;
 							var6 += var19;
 							var3 += Rasterizer2D.Rasterizer2D_width;
@@ -971,7 +973,7 @@ public class class299 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var5 >> 14, var9, var21);
+									this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var5 >> 14, var9, var21);
 									var5 += var17;
 									var4 += var18;
 									var3 += Rasterizer2D.Rasterizer2D_width;
@@ -979,7 +981,7 @@ public class class299 extends AbstractRasterizer {
 								}
 							}
 
-							this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14, var9, var21);
+							this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14, var9, var21);
 							var5 += var17;
 							var6 += var19;
 							var3 += Rasterizer2D.Rasterizer2D_width;
@@ -1015,7 +1017,7 @@ public class class299 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14, var9, var21);
+									this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var5 >> 14, var6 >> 14, var9, var21);
 									var5 += var18;
 									var6 += var19;
 									var3 += Rasterizer2D.Rasterizer2D_width;
@@ -1023,7 +1025,7 @@ public class class299 extends AbstractRasterizer {
 								}
 							}
 
-							this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var6 >> 14, var9, var21);
+							this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var4 >> 14, var6 >> 14, var9, var21);
 							var4 += var17;
 							var6 += var19;
 							var3 += Rasterizer2D.Rasterizer2D_width;
@@ -1043,7 +1045,7 @@ public class class299 extends AbstractRasterizer {
 										return;
 									}
 
-									this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14, var9, var21);
+									this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var5 >> 14, var9, var21);
 									var5 += var18;
 									var6 += var19;
 									var3 += Rasterizer2D.Rasterizer2D_width;
@@ -1051,7 +1053,7 @@ public class class299 extends AbstractRasterizer {
 								}
 							}
 
-							this.method5960(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var4 >> 14, var9, var21);
+							this.copyPixelsWithAlphaBlending(Rasterizer2D.Rasterizer2D_pixels, var3, var10, 0, var6 >> 14, var4 >> 14, var9, var21);
 							var4 += var17;
 							var6 += var19;
 							var3 += Rasterizer2D.Rasterizer2D_width;
@@ -1064,12 +1066,13 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("av")
-	void vmethod5961(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
+	@Export("drawGradientTriangle")
+	void drawGradientTriangle(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
 		int[] var23 = super.field2905.Rasterizer3D_textureLoader.getTexturePixels(var22);
 		int var24;
 		if (var23 == null) {
 			var24 = super.field2905.Rasterizer3D_textureLoader.getAverageTextureRGB(var22);
-			this.vmethod5953(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
+			this.drawAlphaBlendedGraphics(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
 		} else {
 			super.field2897 = super.field2905.Rasterizer3D_textureLoader.isLowDetail(var22);
 			super.field2900 = super.field2905.Rasterizer3D_textureLoader.vmethod6017(var22);
@@ -1102,7 +1105,7 @@ public class class299 extends AbstractRasterizer {
 				float var37 = var9 - var7;
 				float var38 = (var36 * (float)var27 - var37 * (float)var25) / (float)var33;
 				float var39 = (var37 * (float)var24 - var36 * (float)var26) / (float)var33;
-				int var40 = super.field2905.field3184;
+				int var40 = super.field2905.zoom;
 				var14 = var13 - var14;
 				var17 = var16 - var17;
 				var20 = var19 - var20;
@@ -1119,7 +1122,7 @@ public class class299 extends AbstractRasterizer {
 				int var48 = (int)(((long)(var18 * var20 - var17 * var21) << 3 << 14) / (long)var40);
 				int var49 = (int)(((long)(var21 * var14 - var15 * var20) << 14) / (long)var40);
 				int[] var50 = super.field2905.Rasterizer3D_rowOffsets;
-				int var51 = super.field2905.field3199;
+				int var51 = super.field2905.clipY;
 				int var52;
 				if (var1 <= var2 && var1 <= var3) {
 					if (var1 < var51) {
@@ -1149,7 +1152,7 @@ public class class299 extends AbstractRasterizer {
 								var2 = 0;
 							}
 
-							var52 = var1 - super.field2905.field3197;
+							var52 = var1 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -1242,7 +1245,7 @@ public class class299 extends AbstractRasterizer {
 								var3 = 0;
 							}
 
-							var52 = var1 - super.field2905.field3197;
+							var52 = var1 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -1349,7 +1352,7 @@ public class class299 extends AbstractRasterizer {
 								var3 = 0;
 							}
 
-							var52 = var2 - super.field2905.field3197;
+							var52 = var2 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -1442,7 +1445,7 @@ public class class299 extends AbstractRasterizer {
 								var1 = 0;
 							}
 
-							var52 = var2 - super.field2905.field3197;
+							var52 = var2 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -1548,7 +1551,7 @@ public class class299 extends AbstractRasterizer {
 							var1 = 0;
 						}
 
-						var52 = var3 - super.field2905.field3197;
+						var52 = var3 - super.field2905.clipMidY;
 						var41 += var43 * var52;
 						var44 += var46 * var52;
 						var47 += var49 * var52;
@@ -1641,7 +1644,7 @@ public class class299 extends AbstractRasterizer {
 							var2 = 0;
 						}
 
-						var52 = var3 - super.field2905.field3197;
+						var52 = var3 - super.field2905.clipMidY;
 						var41 += var43 * var52;
 						var44 += var46 * var52;
 						var47 += var49 * var52;
@@ -1725,12 +1728,13 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("ab")
-	void vmethod5968(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
+	@Export("textureMapPolygons")
+	void textureMapPolygons(int var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8, float var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20, int var21, int var22) {
 		int[] var23 = super.field2905.Rasterizer3D_textureLoader.getTexturePixels(var22);
 		int var24;
 		if (var23 == null) {
 			var24 = super.field2905.Rasterizer3D_textureLoader.getAverageTextureRGB(var22);
-			this.vmethod5953(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
+			this.drawAlphaBlendedGraphics(var1, var2, var3, var4, var5, var6, var7, var8, var9, AbstractRasterizer.method5403(var24, var10), AbstractRasterizer.method5403(var24, var11), AbstractRasterizer.method5403(var24, var12));
 		} else {
 			super.field2897 = super.field2905.Rasterizer3D_textureLoader.isLowDetail(var22);
 			super.field2900 = super.field2905.Rasterizer3D_textureLoader.vmethod6017(var22);
@@ -1763,7 +1767,7 @@ public class class299 extends AbstractRasterizer {
 				float var37 = var9 - var7;
 				float var38 = (var36 * (float)var27 - var37 * (float)var25) / (float)var33;
 				float var39 = (var37 * (float)var24 - var36 * (float)var26) / (float)var33;
-				int var40 = super.field2905.field3184;
+				int var40 = super.field2905.zoom;
 				var14 = var13 - var14;
 				var17 = var16 - var17;
 				var20 = var19 - var20;
@@ -1780,7 +1784,7 @@ public class class299 extends AbstractRasterizer {
 				int var48 = (int)(((long)(var18 * var20 - var17 * var21) << 14) / (long)var40);
 				int var49 = (int)(((long)(var21 * var14 - var15 * var20) << 14) / (long)var40);
 				int[] var50 = super.field2905.Rasterizer3D_rowOffsets;
-				int var51 = super.field2905.field3199;
+				int var51 = super.field2905.clipY;
 				int var52;
 				if (var1 <= var2 && var1 <= var3) {
 					if (var1 < var51) {
@@ -1810,7 +1814,7 @@ public class class299 extends AbstractRasterizer {
 								var2 = 0;
 							}
 
-							var52 = var1 - super.field2905.field3197;
+							var52 = var1 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -1903,7 +1907,7 @@ public class class299 extends AbstractRasterizer {
 								var3 = 0;
 							}
 
-							var52 = var1 - super.field2905.field3197;
+							var52 = var1 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -2010,7 +2014,7 @@ public class class299 extends AbstractRasterizer {
 								var3 = 0;
 							}
 
-							var52 = var2 - super.field2905.field3197;
+							var52 = var2 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -2103,7 +2107,7 @@ public class class299 extends AbstractRasterizer {
 								var1 = 0;
 							}
 
-							var52 = var2 - super.field2905.field3197;
+							var52 = var2 - super.field2905.clipMidY;
 							var41 += var43 * var52;
 							var44 += var46 * var52;
 							var47 += var49 * var52;
@@ -2209,7 +2213,7 @@ public class class299 extends AbstractRasterizer {
 							var1 = 0;
 						}
 
-						var52 = var3 - super.field2905.field3197;
+						var52 = var3 - super.field2905.clipMidY;
 						var41 += var43 * var52;
 						var44 += var46 * var52;
 						var47 += var49 * var52;
@@ -2302,7 +2306,7 @@ public class class299 extends AbstractRasterizer {
 							var2 = 0;
 						}
 
-						var52 = var3 - super.field2905.field3197;
+						var52 = var3 - super.field2905.clipMidY;
 						var41 += var43 * var52;
 						var44 += var46 * var52;
 						var47 += var49 * var52;
@@ -2387,7 +2391,7 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("bq")
 	final void method5954(int[] var1, float[] var2, int var3, int var4, float var5) {
-		int var6 = method5975(var2[var3], var5) ? 1 : 0;
+		int var6 = varTwoIsGreaterAsOne(var2[var3], var5) ? 1 : 0;
 		int var7 = 1 - var6;
 		var1[var3] = var7 * var1[var3] + var6 * var4;
 		var2[var3] = (float)var6 * var5 + (float)var7 * var2[var3];
@@ -2395,7 +2399,7 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("bd")
 	final void method5955(int[] var1, float[] var2, int var3, int var4, float var5) {
-		if (method5975(var2[var3], var5)) {
+		if (varTwoIsGreaterAsOne(var2[var3], var5)) {
 			int var6 = (var4 & (var4 >> 31 & 1) - 1) >> 8;
 			var1[var3] = super.field2901[var6];
 			var2[var3] = var5;
@@ -2405,7 +2409,7 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("bz")
 	final void method5956(int[] var1, float[] var2, int var3, int var4, int var5, float var6) {
-		if (method5975(var2[var3], var6)) {
+		if (varTwoIsGreaterAsOne(var2[var3], var6)) {
 			int var7 = var1[var3];
 			var1[var3] = ((var7 & 16711935) * var5 >> 8 & 16711935) + var4 + (var5 * (var7 & 65280) >> 8 & 65280);
 		}
@@ -2414,7 +2418,7 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("bk")
 	final void method5957(int[] var1, float[] var2, int var3, int var4, int var5, int var6, float var7) {
-		if (method5975(var2[var3], var7)) {
+		if (varTwoIsGreaterAsOne(var2[var3], var7)) {
 			int var8 = (var4 & (var4 >> 31 & 1) - 1) >> 8;
 			int var9 = super.field2901[var8];
 			var9 = ((var9 & 65280) * var6 >> 8 & 65280) + ((var9 & 16711935) * var6 >> 8 & 16711935);
@@ -2426,9 +2430,9 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("br")
 	final void method5958(int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, float var9, float var10) {
-		if (super.field2905.field3192) {
-			if (var6 > super.field2905.field3198) {
-				var6 = super.field2905.field3198;
+		if (super.field2905.clipping) {
+			if (var6 > super.field2905.clipX) {
+				var6 = super.field2905.clipX;
 			}
 
 			if (var5 < 0) {
@@ -2445,22 +2449,22 @@ public class class299 extends AbstractRasterizer {
 			if (super.field2905.rasterGouraudLowRes) {
 				var4 = var6 - var5 >> 2;
 				var8 <<= 2;
-				if (super.field2905.field3186 == 0) {
+				if (super.field2905.currentFaceAlpha == 0) {
 					if (var4 > 0) {
 						do {
 							var11 = (var7 & (var7 >> 31 & 1) - 1) >> 8;
 							var3 = super.field2901[var11];
 							var7 += var8;
-							this.method5954(var1, Rasterizer2D.field5435, var2, var3, var9);
+							this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9);
 							var9 += var10;
 							++var2;
-							this.method5954(var1, Rasterizer2D.field5435, var2, var3, var9);
+							this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9);
 							var9 += var10;
 							++var2;
-							this.method5954(var1, Rasterizer2D.field5435, var2, var3, var9);
+							this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9);
 							var9 += var10;
 							++var2;
-							this.method5954(var1, Rasterizer2D.field5435, var2, var3, var9);
+							this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9);
 							var9 += var10;
 							++var2;
 							--var4;
@@ -2473,15 +2477,15 @@ public class class299 extends AbstractRasterizer {
 						var3 = super.field2901[var11];
 
 						do {
-							this.method5954(var1, Rasterizer2D.field5435, var2, var3, var9);
+							this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9);
 							var9 += var10;
 							++var2;
 							--var4;
 						} while(var4 > 0);
 					}
 				} else {
-					var11 = super.field2905.field3186;
-					var12 = 256 - super.field2905.field3186;
+					var11 = super.field2905.currentFaceAlpha;
+					var12 = 256 - super.field2905.currentFaceAlpha;
 					int var13;
 					if (var4 > 0) {
 						do {
@@ -2489,16 +2493,16 @@ public class class299 extends AbstractRasterizer {
 							var3 = super.field2901[var13];
 							var7 += var8;
 							var3 = ((var3 & 16711935) * var12 >> 8 & 16711935) + (var12 * (var3 & 65280) >> 8 & 65280);
-							this.method5956(var1, Rasterizer2D.field5435, var2, var3, var11, var9);
+							this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var11, var9);
 							++var2;
 							var9 += var10;
-							this.method5956(var1, Rasterizer2D.field5435, var2, var3, var11, var9);
+							this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var11, var9);
 							++var2;
 							var9 += var10;
-							this.method5956(var1, Rasterizer2D.field5435, var2, var3, var11, var9);
+							this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var11, var9);
 							++var2;
 							var9 += var10;
-							this.method5956(var1, Rasterizer2D.field5435, var2, var3, var11, var9);
+							this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var11, var9);
 							++var2;
 							var9 += var10;
 							--var4;
@@ -2512,7 +2516,7 @@ public class class299 extends AbstractRasterizer {
 						var3 = ((var3 & 16711935) * var12 >> 8 & 16711935) + (var12 * (var3 & 65280) >> 8 & 65280);
 
 						do {
-							this.method5956(var1, Rasterizer2D.field5435, var2, var3, var11, var9);
+							this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var11, var9);
 							++var2;
 							var9 += var10;
 							--var4;
@@ -2522,20 +2526,20 @@ public class class299 extends AbstractRasterizer {
 
 			} else {
 				var4 = var6 - var5;
-				if (super.field2905.field3186 == 0) {
+				if (super.field2905.currentFaceAlpha == 0) {
 					do {
-						this.method5955(var1, Rasterizer2D.field5435, var2, var7, var9);
+						this.method5955(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var7, var9);
 						var9 += var10;
 						++var2;
 						var7 += var8;
 						--var4;
 					} while(var4 > 0);
 				} else {
-					var11 = super.field2905.field3186;
-					var12 = 256 - super.field2905.field3186;
+					var11 = super.field2905.currentFaceAlpha;
+					var12 = 256 - super.field2905.currentFaceAlpha;
 
 					do {
-						this.method5957(var1, Rasterizer2D.field5435, var2, var3, var11, var12, var9);
+						this.method5957(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var11, var12, var9);
 						var9 += var10;
 						++var2;
 						var7 += var8;
@@ -2548,10 +2552,11 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("bf")
-	final void method5960(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8) {
-		if (super.field2905.field3192) {
-			if (var6 > super.field2905.field3198) {
-				var6 = super.field2905.field3198;
+	@Export("copyPixelsWithAlphaBlending")
+	final void copyPixelsWithAlphaBlending(int[] var1, int var2, int var3, int var4, int var5, int var6, float var7, float var8) {
+		if (super.field2905.clipping) {
+			if (var6 > super.field2905.clipX) {
+				var6 = super.field2905.clipX;
 			}
 
 			if (var5 < 0) {
@@ -2563,8 +2568,8 @@ public class class299 extends AbstractRasterizer {
 			var2 += var5;
 			var4 = var6 - var5 >> 2;
 			var7 += var8 * (float)var5;
-			if (super.field2905.field3186 != 0) {
-				if (super.field2905.field3186 == 254) {
+			if (super.field2905.currentFaceAlpha != 0) {
+				if (super.field2905.currentFaceAlpha == 254) {
 					while (true) {
 						--var4;
 						if (var4 < 0) {
@@ -2586,8 +2591,8 @@ public class class299 extends AbstractRasterizer {
 						var1[var2++] = var1[var2];
 					}
 				} else {
-					int var9 = super.field2905.field3186;
-					int var10 = 256 - super.field2905.field3186;
+					int var9 = super.field2905.currentFaceAlpha;
+					int var10 = 256 - super.field2905.currentFaceAlpha;
 					var3 = ((var3 & 16711935) * var10 >> 8 & 16711935) + (var10 * (var3 & 65280) >> 8 & 65280);
 
 					while (true) {
@@ -2601,22 +2606,22 @@ public class class299 extends AbstractRasterizer {
 									return;
 								}
 
-								this.method5956(var1, Rasterizer2D.field5435, var2, var3, var9, var7);
+								this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9, var7);
 								++var2;
 								var7 += var8;
 							}
 						}
 
-						this.method5956(var1, Rasterizer2D.field5435, var2, var3, var9, var7);
+						this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9, var7);
 						++var2;
 						var7 += var8;
-						this.method5956(var1, Rasterizer2D.field5435, var2, var3, var9, var7);
+						this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9, var7);
 						++var2;
 						var7 += var8;
-						this.method5956(var1, Rasterizer2D.field5435, var2, var3, var9, var7);
+						this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9, var7);
 						++var2;
 						var7 += var8;
-						this.method5956(var1, Rasterizer2D.field5435, var2, var3, var9, var7);
+						this.method5956(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var9, var7);
 						++var2;
 						var7 += var8;
 					}
@@ -2633,22 +2638,22 @@ public class class299 extends AbstractRasterizer {
 								return;
 							}
 
-							this.method5954(var1, Rasterizer2D.field5435, var2, var3, var7);
+							this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var7);
 							var7 += var8;
 							++var2;
 						}
 					}
 
-					this.method5954(var1, Rasterizer2D.field5435, var2, var3, var7);
+					this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var7);
 					var7 += var8;
 					++var2;
-					this.method5954(var1, Rasterizer2D.field5435, var2, var3, var7);
+					this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var7);
 					var7 += var8;
 					++var2;
-					this.method5954(var1, Rasterizer2D.field5435, var2, var3, var7);
+					this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var7);
 					var7 += var8;
 					++var2;
-					this.method5954(var1, Rasterizer2D.field5435, var2, var3, var7);
+					this.method5954(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var3, var7);
 					var7 += var8;
 					++var2;
 				}
@@ -2658,9 +2663,9 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("cu")
 	final void method5967(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, float var10, float var11, int var12, int var13, int var14, int var15, int var16, int var17) {
-		if (super.field2905.field3192) {
-			if (var7 > super.field2905.field3198) {
-				var7 = super.field2905.field3198;
+		if (super.field2905.clipping) {
+			if (var7 > super.field2905.clipX) {
+				var7 = super.field2905.clipX;
 			}
 
 			if (var6 < 0) {
@@ -2683,7 +2688,7 @@ public class class299 extends AbstractRasterizer {
 			int var25;
 			int var26;
 			if (super.field2897) {
-				var26 = var6 - super.field2905.field3196;
+				var26 = var6 - super.field2905.clipMidX;
 				var12 += (var15 >> 3) * var26;
 				var13 += var26 * (var16 >> 3);
 				var14 += var26 * (var17 >> 3);
@@ -2726,35 +2731,35 @@ public class class299 extends AbstractRasterizer {
 				if (super.field2900) {
 					if (var20 > 0) {
 						do {
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var10000 = var3 + var19;
 							var10 += var11;
@@ -2788,7 +2793,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -2798,35 +2803,35 @@ public class class299 extends AbstractRasterizer {
 				} else {
 					if (var20 > 0) {
 						do {
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var10000 = var3 + var19;
 							var10 += var11;
@@ -2860,7 +2865,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -2869,7 +2874,7 @@ public class class299 extends AbstractRasterizer {
 					}
 				}
 			} else {
-				var26 = var6 - super.field2905.field3196;
+				var26 = var6 - super.field2905.clipMidX;
 				var12 += (var15 >> 3) * var26;
 				var13 += var26 * (var16 >> 3);
 				var14 += var26 * (var17 >> 3);
@@ -2912,35 +2917,35 @@ public class class299 extends AbstractRasterizer {
 				if (super.field2900) {
 					if (var20 > 0) {
 						do {
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var10000 = var3 + var19;
 							var10 += var11;
@@ -2974,7 +2979,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -2984,35 +2989,35 @@ public class class299 extends AbstractRasterizer {
 				} else {
 					if (var20 > 0) {
 						do {
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var10000 = var3 + var19;
 							var10 += var11;
@@ -3046,7 +3051,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3061,9 +3066,9 @@ public class class299 extends AbstractRasterizer {
 
 	@ObfuscatedName("cn")
 	final void method5999(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, float var10, float var11, int var12, int var13, int var14, int var15, int var16, int var17) {
-		if (super.field2905.field3192) {
-			if (var7 > super.field2905.field3198) {
-				var7 = super.field2905.field3198;
+		if (super.field2905.clipping) {
+			if (var7 > super.field2905.clipX) {
+				var7 = super.field2905.clipX;
 			}
 
 			if (var6 < 0) {
@@ -3085,7 +3090,7 @@ public class class299 extends AbstractRasterizer {
 			int var25;
 			int var26;
 			if (super.field2897) {
-				var26 = var6 - super.field2905.field3196;
+				var26 = var6 - super.field2905.clipMidX;
 				var12 += var26 * var15;
 				var13 += var26 * var16;
 				var14 += var17 * var26;
@@ -3118,35 +3123,35 @@ public class class299 extends AbstractRasterizer {
 				if (super.field2900) {
 					if (var20 > 0) {
 						do {
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3159,7 +3164,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5991(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							blendColors(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3169,35 +3174,35 @@ public class class299 extends AbstractRasterizer {
 				} else {
 					if (var20 > 0) {
 						do {
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3210,7 +3215,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5964(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							updatePixelColorBasedOnOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3219,7 +3224,7 @@ public class class299 extends AbstractRasterizer {
 					}
 				}
 			} else {
-				var26 = var6 - super.field2905.field3196;
+				var26 = var6 - super.field2905.clipMidX;
 				var12 += var26 * var15;
 				var13 += var26 * var16;
 				var14 += var17 * var26;
@@ -3252,35 +3257,35 @@ public class class299 extends AbstractRasterizer {
 				if (super.field2900) {
 					if (var20 > 0) {
 						do {
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3293,7 +3298,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5965(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilterWithOpacity(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3303,35 +3308,35 @@ public class class299 extends AbstractRasterizer {
 				} else {
 					if (var20 > 0) {
 						do {
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3344,7 +3349,7 @@ public class class299 extends AbstractRasterizer {
 					var20 = var7 - var6 & 7;
 					if (var20 > 0) {
 						do {
-							method5969(var1, Rasterizer2D.field5435, var2, var5, var18, var3, var10);
+							applyColorFilter(var1, Rasterizer2D.Rasterizer2D_brightness, var2, var5, var18, var3, var10);
 							++var5;
 							var3 += var19;
 							var10 += var11;
@@ -3358,13 +3363,15 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("cf")
-	static final boolean method5975(float var0, float var1) {
+	@Export("varTwoIsGreaterAsOne")
+	static final boolean varTwoIsGreaterAsOne(float var0, float var1) {
 		return var1 > var0;
 	}
 
 	@ObfuscatedName("cv")
-	static final void method5991(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
-		if (method5975(var1[var3], var6)) {
+	@Export("blendColors")
+	static final void blendColors(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
+		if (varTwoIsGreaterAsOne(var1[var3], var6)) {
 			int var7 = var2[(var5 & 4032) + (var5 >>> 26)];
 			var0[var3] = (var4 * (var7 & 65280) & 16711680) + ((var7 & 16711935) * var4 & -16711936) >> 8;
 			var1[var3] = var6;
@@ -3373,10 +3380,11 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("cl")
-	static final void method5964(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
+	@Export("updatePixelColorBasedOnOpacity")
+	static final void updatePixelColorBasedOnOpacity(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
 		int var7 = var2[(var5 & 4032) + (var5 >>> 26)];
 		if (var7 != 0) {
-			if (method5975(var1[var3], var6)) {
+			if (varTwoIsGreaterAsOne(var1[var3], var6)) {
 				var0[var3] = (var4 * (var7 & 65280) & 16711680) + ((var7 & 16711935) * var4 & -16711936) >> 8;
 				var1[var3] = var6;
 			}
@@ -3385,8 +3393,9 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("cm")
-	static final void method5965(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
-		if (method5975(var1[var3], var6)) {
+	@Export("applyColorFilterWithOpacity")
+	static final void applyColorFilterWithOpacity(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
+		if (varTwoIsGreaterAsOne(var1[var3], var6)) {
 			int var7 = var2[(var5 >>> 25) + (var5 & 16256)];
 			var0[var3] = (var4 * (var7 & 65280) & 16711680) + ((var7 & 16711935) * var4 & -16711936) >> 8;
 			var1[var3] = var6;
@@ -3395,10 +3404,11 @@ public class class299 extends AbstractRasterizer {
 	}
 
 	@ObfuscatedName("cg")
-	static final void method5969(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
+	@Export("applyColorFilter")
+	static final void applyColorFilter(int[] var0, float[] var1, int[] var2, int var3, int var4, int var5, float var6) {
 		int var7 = var2[(var5 >>> 25) + (var5 & 16256)];
 		if (var7 != 0) {
-			if (method5975(var1[var3], var6)) {
+			if (varTwoIsGreaterAsOne(var1[var3], var6)) {
 				var0[var3] = (var4 * (var7 & 65280) & 16711680) + ((var7 & 16711935) * var4 & -16711936) >> 8;
 				var1[var3] = var6;
 			}

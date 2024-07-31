@@ -47,7 +47,7 @@ public abstract class Renderable extends DualNode {
 		descriptor = "(ILqg;IIIJ)V"
 	)
 	@Export("draw")
-	void draw(int var1, class424 var2, int var3, int var4, int var5, long var6) {
+	void draw(int var1, TransformationMatrix var2, int var3, int var4, int var5, long var6) {
 		Model var8 = this.getModel();
 		if (var8 != null) {
 			this.height = var8.height;

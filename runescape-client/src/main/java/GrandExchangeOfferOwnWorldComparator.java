@@ -104,7 +104,7 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 	)
 	static void method1227() {
 		if (VertexNormal.worldMap != null) {
-			VertexNormal.worldMap.method9011(class511.topLevelWorldView.plane, (StudioGame.field4084.vmethod8670() >> 7) + class511.topLevelWorldView.baseX, (StudioGame.field4084.vmethod8671() >> 7) + class511.topLevelWorldView.baseY, false);
+			VertexNormal.worldMap.method9011(class511.topLevelWorldView.plane, (StudioGame.entity.getX() >> 7) + class511.topLevelWorldView.baseX, (StudioGame.entity.getY() >> 7) + class511.topLevelWorldView.baseY, false);
 			VertexNormal.worldMap.loadCache();
 		}
 

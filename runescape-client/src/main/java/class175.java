@@ -29,13 +29,13 @@ public class class175 extends DualNode {
 		descriptor = "(I)Lqg;",
 		garbageValue = "-1682414796"
 	)
-	public static class424 method3560() {
-		synchronized(class424.field4704) {
-			if (class424.field4706 == 0) {
-				return new class424();
+	public static TransformationMatrix method3560() {
+		synchronized(TransformationMatrix.field4704) {
+			if (TransformationMatrix.field4706 == 0) {
+				return new TransformationMatrix();
 			} else {
-				class424.field4704[--class424.field4706].method7789();
-				return class424.field4704[class424.field4706];
+				TransformationMatrix.field4704[--TransformationMatrix.field4706].method7789();
+				return TransformationMatrix.field4704[TransformationMatrix.field4706];
 			}
 		}
 	}

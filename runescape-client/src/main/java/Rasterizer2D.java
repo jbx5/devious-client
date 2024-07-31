@@ -16,7 +16,8 @@ public class Rasterizer2D extends DualNode {
 	@Export("Rasterizer2D_height")
 	public static int Rasterizer2D_height;
 	@ObfuscatedName("bt")
-	public static float[] field5435;
+	@Export("Rasterizer2D_brightness")
+	public static float[] Rasterizer2D_brightness;
 	@ObfuscatedName("be")
 	@Export("Rasterizer2D_yClipStart")
 	public static int Rasterizer2D_yClipStart;
@@ -41,11 +42,12 @@ public class Rasterizer2D extends DualNode {
 	}
 
 	@ObfuscatedName("ea")
-	protected static void method9902(int[] var0, int var1, int var2, float[] var3) {
+	@Export("Rasterizer2D_init")
+	protected static void Rasterizer2D_init(int[] var0, int var1, int var2, float[] var3) {
 		Rasterizer2D_pixels = var0;
 		Rasterizer2D_width = var1;
 		Rasterizer2D_height = var2;
-		field5435 = var3;
+		Rasterizer2D_brightness = var3;
 		Rasterizer2D_setClip(0, 0, var1, var2);
 	}
 
@@ -141,7 +143,7 @@ public class Rasterizer2D extends DualNode {
 		for (var1 += 7; var0 < var1; Rasterizer2D_pixels[var0++] = 0) {
 		}
 
-		method9906();
+		clearBrightness();
 	}
 
 	@ObfuscatedName("ec")
@@ -841,27 +843,28 @@ public class Rasterizer2D extends DualNode {
 	}
 
 	@ObfuscatedName("fe")
-	public static void method9906() {
-		if (field5435 != null) {
+	@Export("clearBrightness")
+	public static void clearBrightness() {
+		if (Rasterizer2D_brightness != null) {
 			int var0;
 			int var1;
 			int var2;
 			if (Rasterizer2D_xClipStart == 0 && Rasterizer2D_xClipEnd == Rasterizer2D_width && Rasterizer2D_yClipStart == 0 && Rasterizer2D_yClipEnd == Rasterizer2D_height) {
-				var0 = field5435.length;
+				var0 = Rasterizer2D_brightness.length;
 				var1 = var0 - (var0 & 7);
 
-				for (var2 = 0; var2 < var1; field5435[var2++] = 0.0F) {
-					field5435[var2++] = 0.0F;
-					field5435[var2++] = 0.0F;
-					field5435[var2++] = 0.0F;
-					field5435[var2++] = 0.0F;
-					field5435[var2++] = 0.0F;
-					field5435[var2++] = 0.0F;
-					field5435[var2++] = 0.0F;
+				for (var2 = 0; var2 < var1; Rasterizer2D_brightness[var2++] = 0.0F) {
+					Rasterizer2D_brightness[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
 				}
 
 				while (var2 < var0) {
-					field5435[var2++] = 0.0F;
+					Rasterizer2D_brightness[var2++] = 0.0F;
 				}
 			} else {
 				var0 = Rasterizer2D_xClipEnd - Rasterizer2D_xClipStart;
@@ -879,21 +882,21 @@ public class Rasterizer2D extends DualNode {
 
 						do {
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							--var6;
 						} while(var6 > 0);
 					}
@@ -903,7 +906,7 @@ public class Rasterizer2D extends DualNode {
 
 						do {
 							++var0;
-							field5435[var0] = 0.0F;
+							Rasterizer2D_brightness[var0] = 0.0F;
 							--var6;
 						} while(var6 > 0);
 					}
@@ -916,13 +919,14 @@ public class Rasterizer2D extends DualNode {
 	}
 
 	@ObfuscatedName("fl")
-	public static void method9907() {
-		if (field5435 != null) {
-			int var0 = field5435.length;
+	@Export("adjustBrightness")
+	public static void adjustBrightness() {
+		if (Rasterizer2D_brightness != null) {
+			int var0 = Rasterizer2D_brightness.length;
 
 			for (int var1 = 0; var1 < var0; ++var1) {
-				if (var1 % Rasterizer2D_width < Rasterizer2D_width / 2 && field5435[var1] > 0.0F) {
-					float var3 = field5435[var1];
+				if (var1 % Rasterizer2D_width < Rasterizer2D_width / 2 && Rasterizer2D_brightness[var1] > 0.0F) {
+					float var3 = Rasterizer2D_brightness[var1];
 					float var4 = 75.0F;
 					float var5 = 10000.0F;
 					float var6 = 750000.0F / (10000.0F - 9925.0F * var3);

@@ -51,14 +51,14 @@ public abstract class Projection {
 		float var26 = class386.method7177(var14);
 		float var27 = class386.method7177(var15);
 		float var28 = class386.method7177(var16);
-		Rasterizer3D.clips.field3186 = 0;
+		Rasterizer3D.clips.currentFaceAlpha = 0;
 		int var29;
 		int var30;
 		if ((var20 - var24) * (var21 - var23) - (var19 - var23) * (var22 - var24) > 0) {
-			Rasterizer3D.clips.field3192 = false;
+			Rasterizer3D.clips.clipping = false;
 			var29 = Rasterizer3D.method5258();
 			if (var21 < 0 || var23 < 0 || var19 < 0 || var21 > var29 || var23 > var29 || var19 > var29) {
-				Rasterizer3D.clips.field3192 = true;
+				Rasterizer3D.clips.clipping = true;
 			}
 
 			if (var1.checkClick && Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var22, var24, var20, var21, var23, var19)) {
@@ -72,9 +72,9 @@ public abstract class Projection {
 				}
 			} else if (!Scene.Scene_isLowDetail) {
 				if (var2.isFlat) {
-					Rasterizer3D.method5268(var22, var24, var20, var21, var23, var19, var27, var28, var26, var2.neColor, var2.nwColor, var2.seColor, var5, var6, var8, var9, var10, var12, var13, var14, var16, var2.texture);
+					Rasterizer3D.rasterTextureWithColors(var22, var24, var20, var21, var23, var19, var27, var28, var26, var2.neColor, var2.nwColor, var2.seColor, var5, var6, var8, var9, var10, var12, var13, var14, var16, var2.texture);
 				} else {
-					Rasterizer3D.method5268(var22, var24, var20, var21, var23, var19, var27, var28, var26, var2.neColor, var2.nwColor, var2.seColor, var7, var8, var6, var11, var12, var10, var15, var16, var14, var2.texture);
+					Rasterizer3D.rasterTextureWithColors(var22, var24, var20, var21, var23, var19, var27, var28, var26, var2.neColor, var2.nwColor, var2.seColor, var7, var8, var6, var11, var12, var10, var15, var16, var14, var2.texture);
 				}
 			} else {
 				var30 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture);
@@ -83,10 +83,10 @@ public abstract class Projection {
 		}
 
 		if ((var24 - var20) * (var17 - var19) - (var23 - var19) * (var18 - var20) > 0) {
-			Rasterizer3D.clips.field3192 = false;
+			Rasterizer3D.clips.clipping = false;
 			var29 = Rasterizer3D.method5258();
 			if (var17 < 0 || var19 < 0 || var23 < 0 || var17 > var29 || var19 > var29 || var23 > var29) {
-				Rasterizer3D.clips.field3192 = true;
+				Rasterizer3D.clips.clipping = true;
 			}
 
 			if (var1.checkClick && Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var18, var20, var24, var17, var19, var23)) {
@@ -99,7 +99,7 @@ public abstract class Projection {
 					Rasterizer3D.rasterGouraud(var18, var20, var24, var17, var19, var23, var25, var26, var28, var2.swColor, var2.seColor, var2.nwColor);
 				}
 			} else if (!Scene.Scene_isLowDetail) {
-				Rasterizer3D.method5268(var18, var20, var24, var17, var19, var23, var25, var26, var28, var2.swColor, var2.seColor, var2.nwColor, var5, var6, var8, var9, var10, var12, var13, var14, var16, var2.texture);
+				Rasterizer3D.rasterTextureWithColors(var18, var20, var24, var17, var19, var23, var25, var26, var28, var2.swColor, var2.seColor, var2.nwColor, var5, var6, var8, var9, var10, var12, var13, var14, var16, var2.texture);
 			} else {
 				var30 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture);
 				Rasterizer3D.rasterGouraud(var18, var20, var24, var17, var19, var23, var25, var26, var28, Scene.method5643(var30, var2.swColor), Scene.method5643(var30, var2.seColor), Scene.method5643(var30, var2.nwColor));
@@ -115,27 +115,27 @@ public abstract class Projection {
 	)
 	@Export("drawSceneTileModel")
 	void drawSceneTileModel(Scene var1, SceneTileModel var2, int var3, int var4) {
-		Rasterizer3D.clips.field3186 = 0;
+		Rasterizer3D.clips.currentFaceAlpha = 0;
 		int var5 = var2.faceX.length;
 
 		for (int var6 = 0; var6 < var5; ++var6) {
 			int var7 = var2.faceX[var6];
 			int var8 = var2.faceY[var6];
 			int var9 = var2.faceZ[var6];
-			int var10 = SceneTileModel.field3065[var7];
-			int var11 = SceneTileModel.field3065[var8];
-			int var12 = SceneTileModel.field3065[var9];
-			int var13 = SceneTileModel.field3073[var7];
-			int var14 = SceneTileModel.field3073[var8];
-			int var15 = SceneTileModel.field3073[var9];
-			float var16 = SceneTileModel.field3072[var7];
-			float var17 = SceneTileModel.field3072[var8];
-			float var18 = SceneTileModel.field3072[var9];
+			int var10 = SceneTileModel.verticesX[var7];
+			int var11 = SceneTileModel.verticesX[var8];
+			int var12 = SceneTileModel.verticesX[var9];
+			int var13 = SceneTileModel.verticesY[var7];
+			int var14 = SceneTileModel.verticesY[var8];
+			int var15 = SceneTileModel.verticesY[var9];
+			float var16 = SceneTileModel.verticesZ[var7];
+			float var17 = SceneTileModel.verticesZ[var8];
+			float var18 = SceneTileModel.verticesZ[var9];
 			if ((var10 - var11) * (var15 - var14) - (var13 - var14) * (var12 - var11) > 0) {
-				Rasterizer3D.clips.field3192 = false;
+				Rasterizer3D.clips.clipping = false;
 				int var19 = Rasterizer3D.method5258();
 				if (var10 < 0 || var11 < 0 || var12 < 0 || var10 > var19 || var11 > var19 || var12 > var19) {
-					Rasterizer3D.clips.field3192 = true;
+					Rasterizer3D.clips.clipping = true;
 				}
 
 				if (var1.checkClick && Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var13, var14, var15, var10, var11, var12)) {
@@ -146,9 +146,9 @@ public abstract class Projection {
 				if (var2.triangleTextureId != null && var2.triangleTextureId[var6] != -1) {
 					if (!Scene.Scene_isLowDetail) {
 						if (var2.isFlat) {
-							Rasterizer3D.method5268(var13, var14, var15, var10, var11, var12, var16, var17, var18, var2.triangleColorA[var6], var2.triangleColorB[var6], var2.triangleColorC[var6], SceneTileModel.field3063[0], SceneTileModel.field3063[1], SceneTileModel.field3063[3], SceneTileModel.field3075[0], SceneTileModel.field3075[1], SceneTileModel.field3075[3], SceneTileModel.field3076[0], SceneTileModel.field3076[1], SceneTileModel.field3076[3], var2.triangleTextureId[var6]);
+							Rasterizer3D.rasterTextureWithColors(var13, var14, var15, var10, var11, var12, var16, var17, var18, var2.triangleColorA[var6], var2.triangleColorB[var6], var2.triangleColorC[var6], SceneTileModel.triangleTexturesX[0], SceneTileModel.triangleTexturesX[1], SceneTileModel.triangleTexturesX[3], SceneTileModel.triangleTexturesY[0], SceneTileModel.triangleTexturesY[1], SceneTileModel.triangleTexturesY[3], SceneTileModel.triangleTexturesZ[0], SceneTileModel.triangleTexturesZ[1], SceneTileModel.triangleTexturesZ[3], var2.triangleTextureId[var6]);
 						} else {
-							Rasterizer3D.method5268(var13, var14, var15, var10, var11, var12, var16, var17, var18, var2.triangleColorA[var6], var2.triangleColorB[var6], var2.triangleColorC[var6], SceneTileModel.field3063[var7], SceneTileModel.field3063[var8], SceneTileModel.field3063[var9], SceneTileModel.field3075[var7], SceneTileModel.field3075[var8], SceneTileModel.field3075[var9], SceneTileModel.field3076[var7], SceneTileModel.field3076[var8], SceneTileModel.field3076[var9], var2.triangleTextureId[var6]);
+							Rasterizer3D.rasterTextureWithColors(var13, var14, var15, var10, var11, var12, var16, var17, var18, var2.triangleColorA[var6], var2.triangleColorB[var6], var2.triangleColorC[var6], SceneTileModel.triangleTexturesX[var7], SceneTileModel.triangleTexturesX[var8], SceneTileModel.triangleTexturesX[var9], SceneTileModel.triangleTexturesY[var7], SceneTileModel.triangleTexturesY[var8], SceneTileModel.triangleTexturesY[var9], SceneTileModel.triangleTexturesZ[var7], SceneTileModel.triangleTexturesZ[var8], SceneTileModel.triangleTexturesZ[var9], var2.triangleTextureId[var6]);
 						}
 					} else {
 						int var20 = Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.triangleTextureId[var6]);

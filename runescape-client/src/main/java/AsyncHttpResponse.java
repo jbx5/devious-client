@@ -153,7 +153,7 @@ public class AsyncHttpResponse {
 					if (var9.method6995(ModeWhere.widgetDefinition, ByteArrayPool.urlRequester)) {
 						if (var9.method6949()) {
 							TriBool.invalidateWidget(var9);
-							class238.revalidateWidgetScroll(var9.children, var9, true);
+							MoveSpeed.revalidateWidgetScroll(var9.children, var9, true);
 							var9.method6920().method4120().method4244(3, var9.method6920().method4132());
 						}
 

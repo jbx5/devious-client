@@ -60,7 +60,7 @@ public class InvDefinition extends DualNode {
 
 	@ObfuscatedName("ns")
 	static final void method3555(double var0) {
-		Rasterizer3D.method5248(var0);
+		Rasterizer3D.buildPalette(var0);
 		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).setBrightness(var0);
 		if (VertexNormal.worldMap != null) {
 			VertexNormal.worldMap.method9066();

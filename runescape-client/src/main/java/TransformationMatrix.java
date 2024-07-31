@@ -1,16 +1,18 @@
 import java.util.Arrays;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("qg")
-public final class class424 {
+@Implements("TransformationMatrix")
+public final class TransformationMatrix {
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "[Lqg;"
 	)
-	public static class424[] field4704;
+	public static TransformationMatrix[] field4704;
 	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
 		intValue = -1373796869
@@ -25,7 +27,7 @@ public final class class424 {
 	@ObfuscatedSignature(
 		descriptor = "Lqg;"
 	)
-	public static final class424 field4707;
+	public static final TransformationMatrix field4707;
 	@ObfuscatedName("fw")
 	@ObfuscatedSignature(
 		descriptor = "Loz;"
@@ -36,12 +38,12 @@ public final class class424 {
 	public float[] field4709;
 
 	static {
-		field4704 = new class424[0];
+		field4704 = new TransformationMatrix[0];
 		FaceNormal.method5685(100);
-		field4707 = new class424();
+		field4707 = new TransformationMatrix();
 	}
 
-	public class424() {
+	public TransformationMatrix() {
 		this.field4709 = new float[16];
 		this.method7789();
 	}
@@ -49,7 +51,7 @@ public final class class424 {
 	@ObfuscatedSignature(
 		descriptor = "(Lqg;)V"
 	)
-	public class424(class424 var1) {
+	public TransformationMatrix(TransformationMatrix var1) {
 		this.field4709 = new float[16];
 		this.method7809(var1);
 	}
@@ -57,7 +59,7 @@ public final class class424 {
 	@ObfuscatedSignature(
 		descriptor = "(Lvp;Z)V"
 	)
-	public class424(Buffer var1, boolean var2) {
+	public TransformationMatrix(Buffer var1, boolean var2) {
 		this.field4709 = new float[16];
 		this.method7777(var1, var2);
 	}
@@ -212,7 +214,7 @@ public final class class424 {
 		descriptor = "(Lqg;B)V",
 		garbageValue = "70"
 	)
-	public void method7809(class424 var1) {
+	public void method7809(TransformationMatrix var1) {
 		System.arraycopy(var1.field4709, 0, this.field4709, 0, 16);
 	}
 
@@ -242,7 +244,7 @@ public final class class424 {
 		descriptor = "(Lqg;I)V",
 		garbageValue = "-746584732"
 	)
-	public void method7782(class424 var1) {
+	public void method7782(TransformationMatrix var1) {
 		for (int var2 = 0; var2 < this.field4709.length; ++var2) {
 			float[] var10000 = this.field4709;
 			var10000[var2] += var1.field4709[var2];
@@ -255,7 +257,7 @@ public final class class424 {
 		descriptor = "(Lqg;I)V",
 		garbageValue = "-578486569"
 	)
-	public void method7785(class424 var1) {
+	public void method7785(TransformationMatrix var1) {
 		float var2 = this.field4709[0] * var1.field4709[0] + this.field4709[1] * var1.field4709[4] + var1.field4709[8] * this.field4709[2] + this.field4709[3] * var1.field4709[12];
 		float var3 = this.field4709[3] * var1.field4709[13] + var1.field4709[5] * this.field4709[1] + var1.field4709[1] * this.field4709[0] + var1.field4709[9] * this.field4709[2];
 		float var4 = var1.field4709[2] * this.field4709[0] + this.field4709[1] * var1.field4709[6] + this.field4709[2] * var1.field4709[10] + var1.field4709[14] * this.field4709[3];
@@ -456,7 +458,8 @@ public final class class424 {
 		descriptor = "(FFF[FB)V",
 		garbageValue = "36"
 	)
-	public void method7792(float var1, float var2, float var3, float[] var4) {
+	@Export("transformPoint")
+	public void transformPoint(float var1, float var2, float var3, float[] var4) {
 		var4[0] = this.field4709[12] + var3 * this.field4709[8] + var1 * this.field4709[0] + this.field4709[4] * var2;
 		var4[1] = this.field4709[13] + this.field4709[9] * var3 + this.field4709[5] * var2 + var1 * this.field4709[1];
 		var4[2] = this.field4709[14] + var3 * this.field4709[10] + var2 * this.field4709[6] + this.field4709[2] * var1;
@@ -542,10 +545,10 @@ public final class class424 {
 	}
 
 	public boolean equals(Object var1) {
-		if (!(var1 instanceof class424)) {
+		if (!(var1 instanceof TransformationMatrix)) {
 			return false;
 		} else {
-			class424 var2 = (class424)var1;
+			TransformationMatrix var2 = (TransformationMatrix)var1;
 
 			for (int var3 = 0; var3 < 16; ++var3) {
 				if (this.field4709[var3] != var2.field4709[var3]) {

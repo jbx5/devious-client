@@ -64,7 +64,7 @@ public class class169 extends class147 {
 	@Export("drawEntities")
 	static final void drawEntities(int var0, int var1, int var2, int var3) {
 		++Client.viewportDrawCount;
-		class511.topLevelWorldView.scene.field2966 = Client.cycle;
+		class511.topLevelWorldView.scene.cycle = Client.cycle;
 		if (SoundCache.localPlayer.x >> 7 == Client.destinationX && SoundCache.localPlayer.y >> 7 == Client.destinationY) {
 			Client.destinationX = 0;
 		}
@@ -79,7 +79,7 @@ public class class169 extends class147 {
 			class341.addPlayerToScene(var5, Client.combatTargetPlayerIndex, false);
 		}
 
-		class238.addNpcsToScene(class511.topLevelWorldView, true);
+		MoveSpeed.addNpcsToScene(class511.topLevelWorldView, true);
 		WorldView var6 = class511.topLevelWorldView;
 		int var7 = var6.playerUpdateManager.playerCount;
 		int[] var8 = var6.playerUpdateManager.playerIndices;
@@ -91,24 +91,24 @@ public class class169 extends class147 {
 			}
 		}
 
-		class238.addNpcsToScene(class511.topLevelWorldView, false);
+		MoveSpeed.addNpcsToScene(class511.topLevelWorldView, false);
 		WorldView var30 = class511.topLevelWorldView;
 
 		int var12;
 		for (int var31 = 0; var31 < var30.worldEntityCount; ++var31) {
 			WorldEntity var32 = var30.worldEntities[var30.worldEntityIndices[var31]];
 			if (var32 != null) {
-				var32.field4973 = getTileHeight(var30, var32.field4967, var32.field4969, var30.plane);
-				var32.worldView.scene.field2966 = Client.cycle;
-				var32.method8669();
-				var30.scene.drawEntity(var30.plane, var32.field4967, var32.field4969, var32.field4973, 60, var32.worldView.scene, var32.field4970, 0L, false);
+				var32.tileHeight = getTileHeight(var30, var32.x, var32.y, var30.plane);
+				var32.worldView.scene.cycle = Client.cycle;
+				var32.initScenePlane();
+				var30.scene.drawEntity(var30.plane, var32.x, var32.y, var32.tileHeight, 60, var32.worldView.scene, var32.currentRotationAngle, 0L, false);
 				ClanChannel.method3505(var32.worldView);
 				WorldView var35 = var32.worldView;
 				if (Client.combatTargetPlayerIndex >= 0 && var35.players[Client.combatTargetPlayerIndex] != null) {
 					class341.addPlayerToScene(var35, Client.combatTargetPlayerIndex, false);
 				}
 
-				class238.addNpcsToScene(var32.worldView, true);
+				MoveSpeed.addNpcsToScene(var32.worldView, true);
 				WorldView var36 = var32.worldView;
 				var12 = var36.playerUpdateManager.playerCount;
 				int[] var37 = var36.playerUpdateManager.playerIndices;
@@ -119,7 +119,7 @@ public class class169 extends class147 {
 					}
 				}
 
-				class238.addNpcsToScene(var32.worldView, false);
+				MoveSpeed.addNpcsToScene(var32.worldView, false);
 				WorldMapSection1.method5042(var32.worldView);
 				WorldView var38 = var32.worldView;
 
@@ -165,7 +165,7 @@ public class class169 extends class147 {
 		var3 = Client.viewportHeight;
 		Rasterizer2D.Rasterizer2D_setClip(var0, var1, var0 + var2, var3 + var1);
 		Rasterizer3D.resetRasterClipping();
-		Rasterizer2D.method9906();
+		Rasterizer2D.clearBrightness();
 		var9 = Client.camAngleX;
 		if (Client.field605 / 256 > var9) {
 			var9 = Client.field605 / 256;
@@ -199,8 +199,8 @@ public class class169 extends class147 {
 			} else {
 				label485: {
 					var19 = 3;
-					var20 = StudioGame.field4084.vmethod8670() >> 7;
-					var21 = StudioGame.field4084.vmethod8671() >> 7;
+					var20 = StudioGame.entity.getX() >> 7;
+					var21 = StudioGame.entity.getY() >> 7;
 					if (Language.cameraPitch < 310) {
 						if (Client.oculusOrbState == 1) {
 							var22 = class371.oculusOrbFocalPointX >> 7;
@@ -390,14 +390,14 @@ public class class169 extends class147 {
 		class157.method3347();
 		var25 = Rasterizer3D.get3dZoom();
 		Rasterizer3D.method5325(class415.client.field187);
-		Rasterizer3D.clips.field3184 = Client.viewportZoom;
+		Rasterizer3D.clips.zoom = Client.viewportZoom;
 		class511.topLevelWorldView.scene.draw(class47.cameraX, class328.cameraY, class60.cameraZ, Language.cameraPitch, class337.cameraYaw, var17);
 		Rasterizer3D.method5325(false);
 		if (Client.z) {
-			Rasterizer2D.method9907();
+			Rasterizer2D.adjustBrightness();
 		}
 
-		Rasterizer3D.clips.field3184 = var25;
+		Rasterizer3D.clips.zoom = var25;
 		class157.method3347();
 		class511.topLevelWorldView.scene.setViewportWalking();
 

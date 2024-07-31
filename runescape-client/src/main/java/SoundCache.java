@@ -190,12 +190,12 @@ public class SoundCache {
 			for (ObjectSound var13 = (ObjectSound)ObjectSound.objectSounds.last(); var13 != null; var13 = (ObjectSound)ObjectSound.objectSounds.previous()) {
 				if (var0 == var13.plane && var13.x * 16384 == var1 && var2 == var13.y * 128 && var7 == var13.maxX * 16384 && var8 == var13.maxY * 16384 && var9 == var13.soundEffectId && var10 == var13.field845 && var11 == var13.field846) {
 					if (var13.stream1 != null) {
-						class238.pcmStreamMixer.removeSubStream(var13.stream1);
+						MoveSpeed.pcmStreamMixer.removeSubStream(var13.stream1);
 						var13.stream1 = null;
 					}
 
 					if (var13.stream2 != null) {
-						class238.pcmStreamMixer.removeSubStream(var13.stream2);
+						MoveSpeed.pcmStreamMixer.removeSubStream(var13.stream2);
 						var13.stream2 = null;
 					}
 

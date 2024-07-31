@@ -72,7 +72,7 @@ public class Varps {
 	)
 	static void method6456() {
 		if (Client.field535 == class94.field1157) {
-			class424.soundEffectsArchive = class221.newArchive(class385.field4516.field4518, false, true, true, false);
+			TransformationMatrix.soundEffectsArchive = class221.newArchive(class385.field4516.field4518, false, true, true, false);
 			class199.archive6 = class221.newArchive(class385.field4519.field4518, true, true, true, false);
 			class7.archive8 = class221.newArchive(class385.field4500.field4518, false, true, true, false);
 			WorldMapSection1.archive10 = class221.newArchive(class385.field4506.field4518, false, true, true, false);
@@ -86,7 +86,7 @@ public class Varps {
 			byte var39;
 			if (class94.field1151 == Client.field535) {
 				var39 = 0;
-				var0 = var39 + class424.soundEffectsArchive.percentage() * 53 / 100;
+				var0 = var39 + TransformationMatrix.soundEffectsArchive.percentage() * 53 / 100;
 				var0 += class199.archive6.percentage() * 5 / 100;
 				var0 += class7.archive8.percentage() * 36 / 100;
 				var0 += WorldMapSection1.archive10.percentage() / 100;
@@ -99,7 +99,7 @@ public class Varps {
 					}
 
 				} else {
-					UserComparator10.method3025(class424.soundEffectsArchive, "Sound FX");
+					UserComparator10.method3025(TransformationMatrix.soundEffectsArchive, "Sound FX");
 					UserComparator10.method3025(class199.archive6, "Music Tracks");
 					UserComparator10.method3025(class7.archive8, "Sprites");
 					UserComparator10.method3025(class239.field2524, "Music Samples");
@@ -153,9 +153,9 @@ public class Varps {
 						}
 
 						Projectile.pcmPlayer1 = var30;
-						class238.pcmStreamMixer = new PcmStreamMixer();
+						MoveSpeed.pcmStreamMixer = new PcmStreamMixer();
 						PcmStreamMixer var35 = new PcmStreamMixer();
-						var35.addSubStream(class238.pcmStreamMixer);
+						var35.addSubStream(MoveSpeed.pcmStreamMixer);
 
 						for (var33 = 0; var33 < 3; ++var33) {
 							MidiPcmStream var37 = new MidiPcmStream(Projectile.pcmPlayer1);
@@ -165,7 +165,7 @@ public class Varps {
 						}
 
 						Projectile.pcmPlayer1.setStream(var35);
-						ArchiveDiskActionHandler.method7122(Tile.field2872, class239.field2524, class424.soundEffectsArchive, var42);
+						ArchiveDiskActionHandler.method7122(Tile.field2872, class239.field2524, TransformationMatrix.soundEffectsArchive, var42);
 						class177.decimator = new Decimator(22050, PcmPlayer.field263);
 						Login.method2185(60, "Prepared sound engine");
 						UserComparator7.method3008(class94.field1154);
@@ -508,8 +508,8 @@ public class Varps {
 							Login.method2185(70, "Loading textures - " + "0%");
 						} else {
 							class105.textureProvider = new TextureProvider(class195.field2052, class7.archive8, 20, class105.clientPreferences.getBrightness(), Client.isLowDetail ? 64 : 128);
-							Rasterizer3D.method5309(class105.textureProvider);
-							Rasterizer3D.method5248(class105.clientPreferences.getBrightness());
+							Rasterizer3D.setTextureLoader(class105.textureProvider);
+							Rasterizer3D.buildPalette(class105.clientPreferences.getBrightness());
 							UserComparator7.method3008(class94.field1150);
 						}
 					} else if (Client.field535 == class94.field1150) {

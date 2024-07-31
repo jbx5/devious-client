@@ -51,7 +51,7 @@ public abstract class AbstractRasterProvider {
 	)
 	@Export("apply")
 	public final void apply() {
-		Rasterizer2D.method9902(this.pixels, this.width, this.height, this.field5439);
+		Rasterizer2D.Rasterizer2D_init(this.pixels, this.width, this.height, this.field5439);
 	}
 
 	@ObfuscatedName("ax")

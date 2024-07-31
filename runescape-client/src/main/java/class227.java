@@ -80,12 +80,12 @@ public abstract class class227 {
 					int var7 = (int)(var6 * (float)class105.clientPreferences.getAreaSoundEffectsVolume());
 					if (var4.stream1 == null) {
 						if (var4.soundEffectId >= 0) {
-							SoundEffect var8 = SoundEffect.readSoundEffect(class424.soundEffectsArchive, var4.soundEffectId, 0);
+							SoundEffect var8 = SoundEffect.readSoundEffect(TransformationMatrix.soundEffectsArchive, var4.soundEffectId, 0);
 							if (var8 != null) {
 								RawSound var9 = var8.toRawSound().resample(class177.decimator);
 								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var9, 100, var7);
 								var10.setNumLoops(-1);
-								class238.pcmStreamMixer.addSubStream(var10);
+								MoveSpeed.pcmStreamMixer.addSubStream(var10);
 								var4.stream1 = var10;
 							}
 						}
@@ -96,12 +96,12 @@ public abstract class class227 {
 					if (var4.stream2 == null) {
 						if (var4.soundEffectIds != null && (var4.field840 -= var3) <= 0) {
 							int var12 = (int)(Math.random() * (double)var4.soundEffectIds.length);
-							SoundEffect var13 = SoundEffect.readSoundEffect(class424.soundEffectsArchive, var4.soundEffectIds[var12], 0);
+							SoundEffect var13 = SoundEffect.readSoundEffect(TransformationMatrix.soundEffectsArchive, var4.soundEffectIds[var12], 0);
 							if (var13 != null) {
 								RawSound var14 = var13.toRawSound().resample(class177.decimator);
 								RawPcmStream var11 = RawPcmStream.createRawPcmStream(var14, 100, var7);
 								var11.setNumLoops(0);
-								class238.pcmStreamMixer.addSubStream(var11);
+								MoveSpeed.pcmStreamMixer.addSubStream(var11);
 								var4.stream2 = var11;
 								var4.field840 = var4.field849 + (int)(Math.random() * (double)(var4.field850 - var4.field849));
 							}
@@ -114,12 +114,12 @@ public abstract class class227 {
 					}
 				} else {
 					if (var4.stream1 != null) {
-						class238.pcmStreamMixer.removeSubStream(var4.stream1);
+						MoveSpeed.pcmStreamMixer.removeSubStream(var4.stream1);
 						var4.stream1 = null;
 					}
 
 					if (var4.stream2 != null) {
-						class238.pcmStreamMixer.removeSubStream(var4.stream2);
+						MoveSpeed.pcmStreamMixer.removeSubStream(var4.stream2);
 						var4.stream2 = null;
 					}
 				}

@@ -133,7 +133,7 @@ public class ArchiveLoader {
 				}
 
 				if (var6.type == 0) {
-					class238.revalidateWidgetScroll(var0, var6, var4);
+					MoveSpeed.revalidateWidgetScroll(var0, var6, var4);
 				}
 			}
 		}

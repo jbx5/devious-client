@@ -29,7 +29,8 @@ public class Scene extends Renderable {
 	@Export("worldViewId")
 	final int worldViewId;
 	@ObfuscatedName("ag")
-	public int field2966;
+	@Export("cycle")
+	public int cycle;
 	@ObfuscatedName("ak")
 	@Export("planes")
 	int planes;
@@ -2520,25 +2521,25 @@ public class Scene extends Renderable {
 		var12.method7861((float)((double)(-var2) * 0.0030679615D));
 		var12.method7871((float)((double)(-var3) * 0.0030679615D));
 		var12.method7864((float)var7, (float)var8, (float)var9);
-		class424 var13 = new class424();
+		TransformationMatrix var13 = new TransformationMatrix();
 		var13.method7788(var12);
 		var13.method7790();
-		int var14 = this.field2966 % 300;
+		int var14 = this.cycle % 300;
 		float var15 = (float)var14 / 300.0F * 6.283F;
 		float var16 = (float)Math.sin((double)var15);
 		float var17 = (float)Math.cos((double)var15);
 		float var18 = var16 * 3.14159F / 100.0F;
 		float var19 = var17 * 3.14159F / 100.0F;
 		class418 var20 = new class418();
-		class424 var21 = new class424();
+		TransformationMatrix var21 = new TransformationMatrix();
 		var20.field4681 = new class423((float)((double)var1 * 0.0030679615D), var18, var19);
 		var20.field4682 = new class422((float)var4, (float)var5, (float)var6);
-		class424 var22 = new class424();
+		TransformationMatrix var22 = new TransformationMatrix();
 		var22.method7786(var20);
 		var22.method7790();
 		class418 var23 = new class418();
 		var23.field4682 = new class422((float)(-(this.xSize * 64)), 0.0F, (float)(-(this.ySize * 64)));
-		class424 var24 = new class424();
+		TransformationMatrix var24 = new TransformationMatrix();
 		var24.method7786(var23);
 		var21.method7791(1.0F, 1.0F, 1.0F, 1.0F);
 		var24.method7785(var21);

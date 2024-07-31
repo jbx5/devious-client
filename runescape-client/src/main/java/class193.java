@@ -25,8 +25,9 @@ public class class193 extends DualNode {
 		descriptor = "(B)[Ljb;",
 		garbageValue = "92"
 	)
-	public static class238[] method3759() {
-		return new class238[]{class238.field2511, class238.field2520, class238.field2513, class238.field2519, class238.field2509, class238.field2507, class238.field2512, class238.field2516, class238.field2510};
+	@Export("moveSpeeds")
+	public static MoveSpeed[] moveSpeeds() {
+		return new MoveSpeed[]{MoveSpeed.field2511, MoveSpeed.field2520, MoveSpeed.field2513, MoveSpeed.field2519, MoveSpeed.field2509, MoveSpeed.field2507, MoveSpeed.field2512, MoveSpeed.field2516, MoveSpeed.field2510};
 	}
 
 	@ObfuscatedName("av")
