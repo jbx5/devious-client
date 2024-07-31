@@ -81849,5 +81849,35 @@
     "action": "Go-through",
     "objectId": 41326,
     "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1787,
+      "y": 3592,
+      "plane": 0
+    },
+    "destination": {
+      "x": 1787,
+      "y": 3592,
+      "plane": 1
+    },
+    "action": "Climb-up",
+    "objectId": 11794,
+    "requirements": {}
+  },
+  {
+    "source": {
+      "x": 1787,
+      "y": 3592,
+      "plane": 1
+    },
+    "destination": {
+      "x": 1787,
+      "y": 3592,
+      "plane": 0
+    },
+    "action": "Climb-down",
+    "objectId": 11802,
+    "requirements": {}
   }
 ]
