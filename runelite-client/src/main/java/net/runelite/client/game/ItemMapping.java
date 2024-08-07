@@ -120,6 +120,20 @@ import static net.runelite.api.ItemID.BLACK_DEFENDER_L;
 import static net.runelite.api.ItemID.BLACK_MASK;
 import static net.runelite.api.ItemID.BLADE_OF_SAELDOR;
 import static net.runelite.api.ItemID.BLADE_OF_SAELDOR_INACTIVE;
+import static net.runelite.api.ItemID.BLAZING_BLOWPIPE;
+import static net.runelite.api.ItemID.BLAZING_BLOWPIPE_EMPTY;
+import static net.runelite.api.ItemID.BLOOD_MOON_CHESTPLATE;
+import static net.runelite.api.ItemID.BLOOD_MOON_CHESTPLATE_29043;
+import static net.runelite.api.ItemID.BLOOD_MOON_HELM;
+import static net.runelite.api.ItemID.BLOOD_MOON_HELM_29047;
+import static net.runelite.api.ItemID.BLOOD_MOON_TASSETS;
+import static net.runelite.api.ItemID.BLOOD_MOON_TASSETS_29045;
+import static net.runelite.api.ItemID.BLUE_MOON_CHESTPLATE;
+import static net.runelite.api.ItemID.BLUE_MOON_CHESTPLATE_29037;
+import static net.runelite.api.ItemID.BLUE_MOON_HELM;
+import static net.runelite.api.ItemID.BLUE_MOON_HELM_29041;
+import static net.runelite.api.ItemID.BLUE_MOON_TASSETS;
+import static net.runelite.api.ItemID.BLUE_MOON_TASSETS_29039;
 import static net.runelite.api.ItemID.BONECRUSHER_NECKLACE;
 import static net.runelite.api.ItemID.BOOK_OF_BALANCE_OR;
 import static net.runelite.api.ItemID.BOOK_OF_DARKNESS_OR;
@@ -215,6 +229,8 @@ import static net.runelite.api.ItemID.DHAROKS_PLATELEGS_100;
 import static net.runelite.api.ItemID.DHAROKS_PLATELEGS_25;
 import static net.runelite.api.ItemID.DHAROKS_PLATELEGS_50;
 import static net.runelite.api.ItemID.DHAROKS_PLATELEGS_75;
+import static net.runelite.api.ItemID.DINHS_BLAZING_BULWARK;
+import static net.runelite.api.ItemID.DINHS_BULWARK;
 import static net.runelite.api.ItemID.DRAGONBONE_NECKLACE;
 import static net.runelite.api.ItemID.DRAGONFIRE_SHIELD;
 import static net.runelite.api.ItemID.DRAGONFIRE_SHIELD_11284;
@@ -304,6 +320,13 @@ import static net.runelite.api.ItemID.DRAGON_SWORD;
 import static net.runelite.api.ItemID.DRAGON_SWORD_CR;
 import static net.runelite.api.ItemID.DRAGON_WARHAMMER;
 import static net.runelite.api.ItemID.DRAGON_WARHAMMER_CR;
+import static net.runelite.api.ItemID.ECHO_BOOTS;
+import static net.runelite.api.ItemID.ECLIPSE_MOON_CHESTPLATE;
+import static net.runelite.api.ItemID.ECLIPSE_MOON_CHESTPLATE_29031;
+import static net.runelite.api.ItemID.ECLIPSE_MOON_HELM;
+import static net.runelite.api.ItemID.ECLIPSE_MOON_HELM_29035;
+import static net.runelite.api.ItemID.ECLIPSE_MOON_TASSETS;
+import static net.runelite.api.ItemID.ECLIPSE_MOON_TASSETS_29033;
 import static net.runelite.api.ItemID.ELDER_CHAOS_HOOD;
 import static net.runelite.api.ItemID.ELDER_CHAOS_HOOD_OR;
 import static net.runelite.api.ItemID.ELDER_CHAOS_ROBE;
@@ -400,6 +423,7 @@ import static net.runelite.api.ItemID.GRANITE_MAUL;
 import static net.runelite.api.ItemID.GRANITE_MAUL_12848;
 import static net.runelite.api.ItemID.GRANITE_RING;
 import static net.runelite.api.ItemID.GRANITE_RING_I;
+import static net.runelite.api.ItemID.GUARDIAN_BOOTS;
 import static net.runelite.api.ItemID.GUTHANS_CHAINSKIRT;
 import static net.runelite.api.ItemID.GUTHANS_CHAINSKIRT_100;
 import static net.runelite.api.ItemID.GUTHANS_CHAINSKIRT_25;
@@ -546,6 +570,8 @@ import static net.runelite.api.ItemID.RING_OF_ENDURANCE;
 import static net.runelite.api.ItemID.RING_OF_ENDURANCE_UNCHARGED_24844;
 import static net.runelite.api.ItemID.RING_OF_SUFFERING;
 import static net.runelite.api.ItemID.RING_OF_SUFFERING_I;
+import static net.runelite.api.ItemID.RING_OF_THE_ELEMENTS;
+import static net.runelite.api.ItemID.RING_OF_THE_ELEMENTS_26818;
 import static net.runelite.api.ItemID.RING_OF_THE_GODS;
 import static net.runelite.api.ItemID.RING_OF_THE_GODS_I;
 import static net.runelite.api.ItemID.RING_OF_WEALTH;
@@ -619,6 +645,8 @@ import static net.runelite.api.ItemID.TOME_OF_FIRE;
 import static net.runelite.api.ItemID.TOME_OF_FIRE_EMPTY;
 import static net.runelite.api.ItemID.TOME_OF_WATER;
 import static net.runelite.api.ItemID.TOME_OF_WATER_EMPTY;
+import static net.runelite.api.ItemID.TONALZTICS_OF_RALOS;
+import static net.runelite.api.ItemID.TONALZTICS_OF_RALOS_UNCHARGED;
 import static net.runelite.api.ItemID.TORAGS_HAMMERS;
 import static net.runelite.api.ItemID.TORAGS_HAMMERS_100;
 import static net.runelite.api.ItemID.TORAGS_HAMMERS_25;
@@ -652,6 +680,8 @@ import static net.runelite.api.ItemID.TOXIC_BLOWPIPE_EMPTY;
 import static net.runelite.api.ItemID.TOXIC_STAFF_OF_THE_DEAD;
 import static net.runelite.api.ItemID.TOXIC_STAFF_UNCHARGED;
 import static net.runelite.api.ItemID.TRAILBLAZER_GRACEFUL_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.TRAILBLAZER_RELOADED_BLOWPIPE_ORNAMENT_KIT;
+import static net.runelite.api.ItemID.TRAILBLAZER_RELOADED_BULWARK_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TRAILBLAZER_TOOL_ORNAMENT_KIT;
 import static net.runelite.api.ItemID.TREASONOUS_RING;
 import static net.runelite.api.ItemID.TREASONOUS_RING_I;
@@ -874,6 +904,9 @@ public enum ItemMapping
 	ITEM_ELDER_CHAOS_HOOD(ELDER_CHAOS_HOOD, ELDER_CHAOS_HOOD_OR),
 	ITEM_ELDER_CHAOS_TOP(ELDER_CHAOS_TOP, ELDER_CHAOS_TOP_OR),
 	ITEM_ELDER_CHAOS_ROBE(ELDER_CHAOS_ROBE, ELDER_CHAOS_ROBE_OR),
+	ITEM_TRAILBLAZER_RELOADED_BLOWPIPE_ORNAMENT_KIT(TRAILBLAZER_RELOADED_BLOWPIPE_ORNAMENT_KIT, BLAZING_BLOWPIPE, BLAZING_BLOWPIPE_EMPTY),
+	ITEM_DINHS_BULWARK(DINHS_BULWARK, DINHS_BLAZING_BULWARK),
+	ITEM_TRAILBLAZER_RELOADED_BULWARK_ORNAMENT_KIT(TRAILBLAZER_RELOADED_BULWARK_ORNAMENT_KIT, DINHS_BLAZING_BULWARK),
 
 	// Ensouled heads
 	ITEM_ENSOULED_GOBLIN_HEAD(ENSOULED_GOBLIN_HEAD_13448, ENSOULED_GOBLIN_HEAD),
@@ -927,6 +960,7 @@ public enum ItemMapping
 	ITEM_SKILLS_NECKLACE(SKILLS_NECKLACE, SKILLS_NECKLACE1, SKILLS_NECKLACE2, SKILLS_NECKLACE3, SKILLS_NECKLACE5),
 	ITEM_RING_OF_DUELING(RING_OF_DUELING8, RING_OF_DUELING1, RING_OF_DUELING2, RING_OF_DUELING3, RING_OF_DUELING4, RING_OF_DUELING5, RING_OF_DUELING6, RING_OF_DUELING7),
 	ITEM_GAMES_NECKLACE(GAMES_NECKLACE8, GAMES_NECKLACE1, GAMES_NECKLACE2, GAMES_NECKLACE3, GAMES_NECKLACE4, GAMES_NECKLACE5, GAMES_NECKLACE6, GAMES_NECKLACE7),
+	ITEM_RING_OF_THE_ELEMENTS(RING_OF_THE_ELEMENTS, RING_OF_THE_ELEMENTS_26818),
 
 	// Degradable/charged weaponry/armour
 	ITEM_ABYSSAL_WHIP(ABYSSAL_WHIP, VOLCANIC_ABYSSAL_WHIP, FROZEN_ABYSSAL_WHIP, ABYSSAL_WHIP_OR),
@@ -935,7 +969,7 @@ public enum ItemMapping
 	ITEM_TRIDENT_OF_THE_SEAS_E(UNCHARGED_TRIDENT_E, TRIDENT_OF_THE_SEAS_E),
 	ITEM_TRIDENT_OF_THE_SWAMP(UNCHARGED_TOXIC_TRIDENT, TRIDENT_OF_THE_SWAMP),
 	ITEM_TRIDENT_OF_THE_SWAMP_E(UNCHARGED_TOXIC_TRIDENT_E, TRIDENT_OF_THE_SWAMP_E),
-	ITEM_TOXIC_BLOWPIPE(TOXIC_BLOWPIPE_EMPTY, TOXIC_BLOWPIPE),
+	ITEM_TOXIC_BLOWPIPE(TOXIC_BLOWPIPE_EMPTY, TOXIC_BLOWPIPE, BLAZING_BLOWPIPE_EMPTY, BLAZING_BLOWPIPE),
 	ITEM_TOXIC_STAFF_OFF_THE_DEAD(TOXIC_STAFF_UNCHARGED, TOXIC_STAFF_OF_THE_DEAD),
 	ITEM_SERPENTINE_HELM(SERPENTINE_HELM_UNCHARGED, SERPENTINE_HELM, TANZANITE_HELM_UNCHARGED, TANZANITE_HELM, MAGMA_HELM_UNCHARGED, MAGMA_HELM),
 	ITEM_DRAGONFIRE_SHIELD(DRAGONFIRE_SHIELD_11284, DRAGONFIRE_SHIELD),
@@ -957,6 +991,19 @@ public enum ItemMapping
 	ITEM_TUMEKENS_SHADOW(TUMEKENS_SHADOW_UNCHARGED, TUMEKENS_SHADOW),
 	ITEM_PHARAOHS_SCEPTRE(PHARAOHS_SCEPTRE_UNCHARGED, true, 1L, PHARAOHS_SCEPTRE),
 	ITEM_VENATOR_BOW(VENATOR_BOW_UNCHARGED, VENATOR_BOW),
+	ITEM_TONALZTICS_OF_RALOS(TONALZTICS_OF_RALOS_UNCHARGED, TONALZTICS_OF_RALOS),
+	ITEM_GUARDIAN_BOOTS(GUARDIAN_BOOTS, ECHO_BOOTS),
+
+	// Lunar Chest armour
+	ITEM_BLUE_MOON_HELM(BLUE_MOON_HELM, BLUE_MOON_HELM_29041),
+	ITEM_BLUE_MOON_CHESTPLATE(BLUE_MOON_CHESTPLATE, BLUE_MOON_CHESTPLATE_29037),
+	ITEM_BLUE_MOON_TASSETS(BLUE_MOON_TASSETS, BLUE_MOON_TASSETS_29039),
+	ITEM_ECLIPSE_MOON_HELM(ECLIPSE_MOON_HELM, ECLIPSE_MOON_HELM_29035),
+	ITEM_ECLIPSE_MOON_CHESTPLATE(ECLIPSE_MOON_CHESTPLATE, ECLIPSE_MOON_CHESTPLATE_29031),
+	ITEM_ECLIPSE_MOON_TASSETS(ECLIPSE_MOON_TASSETS, ECLIPSE_MOON_TASSETS_29033),
+	ITEM_BLOOD_MOON_HELM(BLOOD_MOON_HELM, BLOOD_MOON_HELM_29047),
+	ITEM_BLOOD_MOON_CHESTPLATE(BLOOD_MOON_CHESTPLATE, BLOOD_MOON_CHESTPLATE_29043),
+	ITEM_BLOOD_MOON_TASSETS(BLOOD_MOON_TASSETS, BLOOD_MOON_TASSETS_29045),
 
 	// Tombs of Amascut gear
 	ITEM_ELIDINIS_WARD(ELIDINIS_WARD, ELIDINIS_WARD_F, ELIDINIS_WARD_OR),

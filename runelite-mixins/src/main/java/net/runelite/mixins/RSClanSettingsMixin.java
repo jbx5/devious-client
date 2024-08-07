@@ -98,101 +98,207 @@ public abstract class RSClanSettingsMixin implements RSClanSettings
 		assert client.isClientThread() : "titleForRank must be called on client thread";
 
 		int title;
-		if (clanRank == ClanRank.JMOD)
+		switch (clanRank.getRank())
 		{
-			title = -5;
-		}
-		else if (clanRank == ClanRank.OWNER)
-		{
-			title = -4;
-		}
-		else if (clanRank == ClanRank.DEPUTY_OWNER)
-		{
-			title = -3;
-		}
-		else if (clanRank == ClanRank.ADMINISTRATOR)
-		{
-			title = -2;
-		}
-		else if (clanRank == ClanRank.GUEST)
-		{
-			title = -1;
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_1)
-		{
-			title = getTitle(1, 0, 9);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_2)
-		{
-			title = getTitle(1, 10, 19);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_3)
-		{
-			title = getTitle(1, 20, 29);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_4)
-		{
-			title = getTitle(2, 0, 9);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_5)
-		{
-			title = getTitle(2, 10, 19);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_6)
-		{
-			title = getTitle(2, 20, 29);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_7)
-		{
-			title = getTitle(3, 0, 9);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_8)
-		{
-			title = getTitle(3, 10, 19);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_9)
-		{
-			title = getTitle(3, 20, 29);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_10)
-		{
-			title = getTitle(4, 0, 9);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_11)
-		{
-			title = getTitle(4, 10, 19);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_12)
-		{
-			title = getTitle(4, 20, 29);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_13)
-		{
-			title = getTitle(5, 0, 9);
-		}
-		else if (clanRank == ClanRank.CLAN_RANK_14)
-		{
-			title = getTitle(5, 10, 19);
-		}
-		else
-		{
-			throw new IllegalStateException("Unexpected value: " + clanRank);
+			case -1:
+				title = -1;
+				break;
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 11:
+			case 12:
+			case 13:
+			case 14:
+			case 15:
+			case 16:
+			case 17:
+			case 18:
+			case 19:
+			case 21:
+			case 22:
+			case 23:
+			case 24:
+			case 25:
+			case 26:
+			case 27:
+			case 28:
+			case 29:
+			case 31:
+			case 32:
+			case 33:
+			case 34:
+			case 35:
+			case 36:
+			case 37:
+			case 38:
+			case 39:
+			case 41:
+			case 42:
+			case 43:
+			case 44:
+			case 45:
+			case 46:
+			case 47:
+			case 48:
+			case 49:
+			case 51:
+			case 52:
+			case 53:
+			case 54:
+			case 55:
+			case 56:
+			case 57:
+			case 58:
+			case 59:
+			case 61:
+			case 62:
+			case 63:
+			case 64:
+			case 65:
+			case 66:
+			case 67:
+			case 68:
+			case 69:
+			case 71:
+			case 72:
+			case 73:
+			case 74:
+			case 75:
+			case 76:
+			case 77:
+			case 78:
+			case 79:
+			case 81:
+			case 82:
+			case 83:
+			case 84:
+			case 85:
+			case 86:
+			case 87:
+			case 88:
+			case 89:
+			case 91:
+			case 92:
+			case 93:
+			case 94:
+			case 106:
+			case 107:
+			case 108:
+			case 109:
+			case 111:
+			case 112:
+			case 113:
+			case 114:
+			case 116:
+			case 117:
+			case 118:
+			case 119:
+			case 121:
+			case 122:
+			case 123:
+			default:
+				title = this.getTitle(1, 0, 9);
+				break;
+			case 10:
+				title = this.getTitle(1, 10, 19);
+				break;
+			case 20:
+				title = this.getTitle(1, 20, 29);
+				break;
+			case 30:
+				title = this.getTitle(2, 0, 9);
+				break;
+			case 40:
+				title = this.getTitle(2, 10, 19);
+				break;
+			case 50:
+				title = this.getTitle(2, 20, 29);
+				break;
+			case 60:
+				title = this.getTitle(3, 0, 9);
+				break;
+			case 70:
+				title = this.getTitle(3, 10, 19);
+				break;
+			case 80:
+				title = this.getTitle(3, 20, 29);
+				break;
+			case 90:
+				title = this.getTitle(4, 0, 9);
+				break;
+			case 95:
+				title = this.getTitle(5, 20, 29);
+				break;
+			case 96:
+				title = this.getTitle(102, 0, 9);
+				break;
+			case 97:
+				title = this.getTitle(102, 10, 19);
+				break;
+			case 98:
+				title = this.getTitle(102, 20, 29);
+				break;
+			case 99:
+				title = this.getTitle(103, 0, 9);
+				break;
+			case 100:
+				title = -2;
+				break;
+			case 101:
+				title = this.getTitle(103, 10, 19);
+				break;
+			case 102:
+				title = this.getTitle(103, 20, 29);
+				break;
+			case 103:
+				title = this.getTitle(104, 0, 9);
+				break;
+			case 104:
+				title = this.getTitle(104, 10, 19);
+				break;
+			case 105:
+				title = this.getTitle(4, 10, 19);
+				break;
+			case 110:
+				title = this.getTitle(4, 20, 29);
+				break;
+			case 115:
+				title = this.getTitle(5, 0, 9);
+				break;
+			case 120:
+				title = this.getTitle(5, 10, 19);
+				break;
+			case 124:
+				title = this.getTitle(104, 20, 29);
+				break;
+			case 125:
+				title = -3;
+				break;
+			case 126:
+				title = -4;
+				break;
+			case 127:
+				title = -5;
 		}
 
 		if (title == 1023)
 		{
 			return null;
 		}
-
-		EnumComposition rsEnum = client.getEnum(3797);
-		String titleName = rsEnum.getStringValue(title);
-
-		if (titleName.isEmpty())
+		else
 		{
-			return null;
+			EnumComposition rsEnum = client.getEnum(3797);
+			String titleName = rsEnum.getStringValue(title);
+			return !titleName.isEmpty() ? new ClanTitle(title, titleName) : null;
 		}
-
-		return new ClanTitle(title, titleName);
 	}
 
 	@Inject
