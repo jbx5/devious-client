@@ -2513,7 +2513,7 @@ public abstract class RSClientMixin implements RSClient
 		if (len > 0)
 		{
 			int type = getMenuOpcodes()[len - 1];
-			return type == MenuAction.RUNELITE_OVERLAY.getId() || type == MenuAction.RUNELITE_OVERLAY_CONFIG.getId() || type == MenuAction.RUNELITE_INFOBOX.getId();
+			return type == MenuAction.RUNELITE_OVERLAY.getId() || type == MenuAction.RUNELITE_OVERLAY_CONFIG.getId() || type == MenuAction.RUNELITE_INFOBOX.getId() || type == MenuAction.RUNELITE_LOW_PRIORITY.getId();
 		}
 
 		return false;
