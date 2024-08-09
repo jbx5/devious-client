@@ -307,6 +307,10 @@ public enum MenuAction
 	 */
 	RUNELITE_SUBMENU(1505),
 	/**
+	 * Like {@link #RUNELITE}, except clicking always forces the menu open.
+	 */
+	RUNELITE_LOW_PRIORITY(1506),
+	/**
 	 * Menu action triggered by following a player.
 	 */
 	FOLLOW(2046),
