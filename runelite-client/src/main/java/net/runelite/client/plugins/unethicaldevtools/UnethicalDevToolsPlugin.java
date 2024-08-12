@@ -18,9 +18,12 @@ import net.runelite.api.events.DialogProcessed;
 import net.runelite.api.events.Draw;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.WidgetClosed;
+import net.runelite.api.events.WidgetLoaded;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.PacketBufferNode;
 import net.runelite.api.packets.ServerPacket;
+import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
@@ -161,7 +164,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 		Map<String, TileObject> objectOptions = new HashMap<>(3);
 		for (MenuEntry entry : e.getMenuEntries())
 		{
-			if (entry.getOption().equals("Walk here"))
+			if (entry.getType().equals(MenuAction.WALK))
 			{
 				validTile = true;
 			}
@@ -193,7 +196,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 						{
 							return;
 						}
-						sourceTile = clickPoint.getWorldLocation();
+						sourceTile = WorldPoint.fromLocalInstance(client, clickPoint.getLocalLocation());
 						selectingSource = false;
 						selectingObject = true;
 					});
@@ -227,7 +230,7 @@ public class UnethicalDevToolsPlugin extends Plugin
 						}
 						TransportDto transport = new TransportDto(
 							sourceTile,
-							clickPoint.getWorldLocation(),
+							WorldPoint.fromLocalInstance(client, clickPoint.getLocalLocation()),
 							transportObject.getKey(),
 							transportObject.getValue(),
 							new Requirements()
@@ -499,6 +502,28 @@ public class UnethicalDevToolsPlugin extends Plugin
 				for (StackTraceElement element: entry.getValue ())
 					System.out.println ("\t" + element);
 			}
+		}
+	}
+
+	@Subscribe
+	private void onWidgetLoaded(WidgetLoaded widgetLoaded)
+	{
+		if (widgetLoaded.getGroupId() == WidgetInfo.WORLD_MAP_VIEW.getGroupId())
+		{
+			overlayManager.remove(regionOverlay);
+			regionOverlay.swapLayer();
+			overlayManager.add(regionOverlay);
+		}
+	}
+
+	@Subscribe
+	private void onWidgetClosed(WidgetClosed widgetClosed)
+	{
+		if (widgetClosed.getGroupId() == WidgetInfo.WORLD_MAP_VIEW.getGroupId())
+		{
+			overlayManager.remove(regionOverlay);
+			regionOverlay.swapLayer();
+			overlayManager.add(regionOverlay);
 		}
 	}
 }
