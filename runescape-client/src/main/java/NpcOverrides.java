@@ -85,7 +85,8 @@ public class NpcOverrides {
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZIB)I",
 		garbageValue = "93"
 	)
-	static final int method4911(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8) {
-		return Client.isMenuOpen ? -1 : Client.field650.method10263(var0, var1, var2, var3, var4, var5, var6, var7, var8);
+	@Export("insertMenuItem")
+	static final int insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8) {
+		return Client.isMenuOpen ? -1 : Client.menu.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, var7, var8);
 	}
 }

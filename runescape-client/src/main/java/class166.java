@@ -183,7 +183,7 @@ public class class166 extends class148 {
 		Rasterizer3D.clips.zoom = Client.viewportZoom;
 		int var22 = class354.entity.getX();
 		int var23 = class354.entity.getY();
-		ConcurrentMidiTask.topLevelWorldView.scene.method4052(class433.cameraX, RestClientThreadFactory.cameraY, WorldMapSection0.cameraZ, UserComparator6.cameraPitch, class264.cameraYaw, var13, var22, var23, Client.isCameraLocked);
+		ConcurrentMidiTask.topLevelWorldView.scene.draw(class433.cameraX, RestClientThreadFactory.cameraY, WorldMapSection0.cameraZ, UserComparator6.cameraPitch, class264.cameraYaw, var13, var22, var23, Client.isCameraLocked);
 		Rasterizer3D.method3727(false);
 		if (Client.z) {
 			Rasterizer2D.adjustBrightness();

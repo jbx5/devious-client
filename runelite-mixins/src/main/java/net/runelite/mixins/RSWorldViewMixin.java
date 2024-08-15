@@ -12,7 +12,6 @@ import net.runelite.api.events.PlayerDespawned;
 import net.runelite.api.events.PlayerSpawned;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
-import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
@@ -104,18 +103,18 @@ public abstract class RSWorldViewMixin implements RSWorldView
 	}
 
 	@Inject
-	public RSPlayer[] oldPlayers;
+	public RSPlayer[] oldPlayers = new RSPlayer[2048];
 
-	@MethodHook("<init>")
+	/*@MethodHook("<init>")
 	@Inject
 	public void rl$init(int var1, int var2, int var3, int var4)
 	{
 		this.oldPlayers = new RSPlayer[2048];
-	}
+	}*/
 
 
-	@FieldHook("players")
-	@Inject
+	//@FieldHook("players")
+	//@Inject
 	public void cachedPlayersChanged(int idx)
 	{
 		if (idx >= 0 && idx < this.getPlayers().length)

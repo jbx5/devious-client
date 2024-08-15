@@ -116,16 +116,16 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 		RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) client.getClickedMenuEntry();
 		if (menuEntry == null)
 		{
-			for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
+			for (int i = client.getMenu().getMenuOptionCount() - 1; i >= 0; --i)
 			{
-				if (client.getMenuOpcodes()[i] == opcode
-						&& client.getMenuIdentifiers()[i] == id
-						&& client.getMenuArguments1()[i] == param0
-						&& client.getMenuArguments2()[i] == param1
-						&& client.getMenuItemIds()[i] == itemId
-					        && client.getMenuWorldViewIds()[i] == worldViewId
-						&& option.equals(client.getMenuOptions()[i])
-						&& target.equals(client.getMenuTargets()[i])
+				if (client.getMenu().getMenuOpcodes()[i] == opcode
+						&& client.getMenu().getMenuIdentifiers()[i] == id
+						&& client.getMenu().getMenuArguments1()[i] == param0
+						&& client.getMenu().getMenuArguments2()[i] == param1
+						&& client.getMenu().getMenuItemIds()[i] == itemId
+					        && client.getMenu().getMenuWorldViewIds()[i] == worldViewId
+						&& option.equals(client.getMenu().getMenuOptions()[i])
+						&& target.equals(client.getMenu().getMenuTargets()[i])
 				)
 				{
 					menuEntry = rl$menuEntries[i];
@@ -160,15 +160,15 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 				i = 0;
 			}
 
-			client.getMenuOpcodes()[i] = opcode;
-			client.getMenuIdentifiers()[i] = id;
-			client.getMenuOptions()[i] = option;
-			client.getMenuTargets()[i] = target;
-			client.getMenuArguments1()[i] = param0;
-			client.getMenuArguments2()[i] = param1;
-			client.getMenuItemIds()[i] = itemId;
-			client.getMenuWorldViewIds()[i] = worldViewId;
-			client.getMenuForceLeftClick()[i] = false;
+			client.getMenu().getMenuOpcodes()[i] = opcode;
+			client.getMenu().getMenuIdentifiers()[i] = id;
+			client.getMenu().getMenuOptions()[i] = option;
+			client.getMenu().getMenuTargets()[i] = target;
+			client.getMenu().getMenuArguments1()[i] = param0;
+			client.getMenu().getMenuArguments2()[i] = param1;
+			client.getMenu().getMenuItemIds()[i] = itemId;
+			client.getMenu().getMenuWorldViewIds()[i] = worldViewId;
+			client.getMenu().getMenuForceLeftClick()[i] = false;
 			menuEntry = rl$menuEntries[i];
 
 			if (menuEntry == null)

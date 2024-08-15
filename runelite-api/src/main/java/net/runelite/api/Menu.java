@@ -37,6 +37,12 @@ public interface Menu
 	MenuEntry createMenuEntry(int idx);
 
 	/**
+	 * Create a new menu entry
+	 * @return the newly created menu entry
+	 */
+	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick);
+
+	/**
 	 * Gets the current mini menu entries.
 	 *
 	 * @return array of menu entries
@@ -86,4 +92,19 @@ public interface Menu
 	 * @return the menu height
 	 */
 	int getMenuHeight();
+
+	/**
+	 * Sort menu entries
+	 *
+	 * @param left
+	 * @param right
+	 */
+	void sortMenuEntries(int left, int right);
+
+	/**
+	 * Swap menu entries
+	 *
+	 * @param var0
+	 */
+	void swapMenuEntries(int var0);
 }

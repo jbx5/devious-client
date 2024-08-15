@@ -61,7 +61,7 @@ public enum HorizontalAlignment implements Enum {
 	)
 	public static void method4908() {
 		HitSplatDefinition.HitSplatDefinition_cached.clear();
-		HitSplatDefinition.field2704.clear();
+		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
 		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
 	}
 

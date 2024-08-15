@@ -214,7 +214,7 @@ public class class149 extends class148 {
 			switch(var0) {
 			case 2:
 				class130.setLoginResponseString(Strings.field4122, Strings.field4355, Strings.field4377);
-				class532.method9434(6);
+				class532.updateLoginIndex(6);
 				break;
 			case 3:
 				class130.setLoginResponseString("", "Error connecting to server.", "");

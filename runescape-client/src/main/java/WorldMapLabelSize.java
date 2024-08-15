@@ -140,7 +140,7 @@ public class WorldMapLabelSize {
 		Client.rebootTimer = 0;
 		Client.logoutTimer = 0;
 		Client.hintArrowType = 0;
-		Client.field650.field5518 = 0;
+		Client.menu.menuOptionsCount = 0;
 		Client.isMenuOpen = false;
 		WorldMapRenderer.method5788(0);
 		Messages.Messages_channels.clear();
@@ -197,7 +197,7 @@ public class WorldMapLabelSize {
 		Client.rootInterface = -1;
 		Client.interfaceParents = new NodeHashTable(8);
 		Client.meslayerContinueWidget = null;
-		Client.field650.field5518 = 0;
+		Client.menu.menuOptionsCount = 0;
 		Client.isMenuOpen = false;
 		Client.playerAppearance.method6605((int[])null, (int[])null, new int[]{0, 0, 0, 0, 0}, 0, -1);
 
@@ -243,7 +243,7 @@ public class WorldMapLabelSize {
 		if (var0 < 0) {
 			return false;
 		} else {
-			int var1 = Client.field650.field5521[var0];
+			int var1 = Client.menu.menuOpcodes[var0];
 			if (var1 >= 2000) {
 				var1 -= 2000;
 			}

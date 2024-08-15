@@ -25,7 +25,8 @@ public class Scene extends Renderable {
 	@ObfuscatedName("cr")
 	static final int[] field2044;
 	@ObfuscatedName("ab")
-	final int field2028;
+	@Export("worldViewId")
+	final int worldViewId;
 	@ObfuscatedName("an")
 	@Export("cycle")
 	public int cycle;
@@ -200,8 +201,7 @@ public class Scene extends Renderable {
 	@ObfuscatedName("cd")
 	final int field2051;
 	@ObfuscatedName("ca")
-	@Export("worldViewId")
-	final int worldViewId;
+	final int field2062;
 	@ObfuscatedName("dv")
 	BitSet field2063;
 	@ObfuscatedName("da")
@@ -278,7 +278,7 @@ public class Scene extends Renderable {
 		this.tileHeights = var7;
 		this.Scene_offsetOccluder = var5;
 		this.field2003 = var6;
-		this.field2028 = var1;
+		this.worldViewId = var1;
 		if (var1 != -1) {
 			this.field2055 = 0;
 			this.field2075 = null;
@@ -286,7 +286,7 @@ public class Scene extends Renderable {
 			this.field2059 = 0;
 			this.field2060 = 0;
 			this.field2051 = 0;
-			this.worldViewId = 0;
+			this.field2062 = 0;
 			this.field2063 = null;
 			this.field2064 = null;
 			this.field2065 = 0;
@@ -299,9 +299,9 @@ public class Scene extends Renderable {
 			this.field2059 = 1048352;
 			this.field2060 = 32761;
 			this.field2051 = 181;
-			this.worldViewId = 9644832;
-			this.field2063 = new BitSet(this.worldViewId);
-			this.field2064 = new BitSet(this.worldViewId);
+			this.field2062 = 9644832;
+			this.field2063 = new BitSet(this.field2062);
+			this.field2064 = new BitSet(this.field2062);
 			this.field2065 = 1071648;
 			this.field2066 = 33489;
 			this.field2022 = 183;
@@ -1357,7 +1357,8 @@ public class Scene extends Renderable {
 	}
 
 	@ObfuscatedName("co")
-	public void method4052(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9) {
+	@Export("draw")
+	public void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9) {
 		if (var1 < 0) {
 			var1 = 0;
 		} else if (var1 >= this.xSize * 128) {
@@ -1386,16 +1387,17 @@ public class Scene extends Renderable {
 		this.field2019 = var8 / 128;
 		this.Scene_plane = var6;
 		IntProjection var10 = new IntProjection(var1, var2, var3, var4, var5, var7, var8);
-		this.method4019(var10, var9);
+		this.updateVisibleTilesAndOccluders(var10, var9);
 	}
 
 	@ObfuscatedName("cn")
 	@ObfuscatedSignature(
 		descriptor = "(Lhb;Z)V"
 	)
-	void method4019(Projection var1, boolean var2) {
+	@Export("updateVisibleTilesAndOccluders")
+	void updateVisibleTilesAndOccluders(Projection var1, boolean var2) {
 		++this.Scene_drawnCount;
-		boolean var3 = this.field2028 == -1;
+		boolean var3 = this.worldViewId == -1;
 		this.field2020 = !var2 && this.field2003 != class173.field1824 ? this.field2018 : this.Scene_cameraXTile;
 		this.field2067 = !var2 && this.field2003 != class173.field1824 ? this.field2019 : this.Scene_cameraYTile;
 		if (var3) {
@@ -2614,7 +2616,7 @@ public class Scene extends Renderable {
 		this.field2018 = (int)var25.method7881((float)var12, 0.0F, (float)var13) / 128;
 		this.field2019 = (int)var25.method7937((float)var12, 0.0F, (float)var13) / 128;
 		TilesProjection var28 = new TilesProjection(var27);
-		this.method4019(var28, var14);
+		this.updateVisibleTilesAndOccluders(var28, var14);
 	}
 
 	@ObfuscatedName("ce")

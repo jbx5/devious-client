@@ -154,10 +154,10 @@ public class class7 {
 							}
 
 							if (!KeyHandler.field107 && Client.isItemSelected == 1) {
-								NpcOverrides.method4911("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(65535) + var23.name, 1, var19, var15, var17, -1, false, var20);
+								NpcOverrides.insertMenuItem("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(65535) + var23.name, 1, var19, var15, var17, -1, false, var20);
 							} else if (Client.isSpellSelected) {
 								if (!KeyHandler.field107 && (UserComparator3.selectedSpellFlags & 4) == 4) {
-									NpcOverrides.method4911(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(65535) + var23.name, 2, var19, var15, var17, -1, false, var20);
+									NpcOverrides.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(65535) + var23.name, 2, var19, var15, var17, -1, false, var20);
 								}
 							} else {
 								String[] var39 = var23.actions;
@@ -185,12 +185,12 @@ public class class7 {
 												var27 = 1001;
 											}
 
-											NpcOverrides.method4911(var39[var26], TransformationMatrix.colorStartTag(65535) + var23.name, var27, var19, var15, var17, -1, false, var20);
+											NpcOverrides.insertMenuItem(var39[var26], TransformationMatrix.colorStartTag(65535) + var23.name, var27, var19, var15, var17, -1, false, var20);
 										}
 									}
 								}
 
-								NpcOverrides.method4911("Examine", TransformationMatrix.colorStartTag(65535) + var23.name, 1002, var23.id, var15, var17, -1, false, var20);
+								NpcOverrides.insertMenuItem("Examine", TransformationMatrix.colorStartTag(65535) + var23.name, 1002, var23.id, var15, var17, -1, false, var20);
 							}
 						}
 
@@ -208,7 +208,7 @@ public class class7 {
 								for (var32 = 0; var32 < var21.npcCount; ++var32) {
 									var40 = var21.npcs[var21.npcIndices[var32]];
 									if (var40 != null && var35 != var40 && var40.definition.size == 1 && var35.x == var40.x && var35.y == var40.y) {
-										class153.method3393(var40, var21.npcIndices[var32], var15, var17, var20);
+										class153.addNpcToMenu(var40, var21.npcIndices[var32], var15, var17, var20);
 									}
 								}
 
@@ -223,7 +223,7 @@ public class class7 {
 								}
 							}
 
-							class153.method3393(var35, var19, var15, var17, var20);
+							class153.addNpcToMenu(var35, var19, var15, var17, var20);
 						}
 
 						if (var18 == 0) {
@@ -236,7 +236,7 @@ public class class7 {
 								for (var32 = 0; var32 < var21.npcCount; ++var32) {
 									var40 = var21.npcs[var21.npcIndices[var32]];
 									if (var40 != null && var40.definition.size == 1 && var36.x == var40.x && var36.y == var40.y) {
-										class153.method3393(var40, var21.npcIndices[var32], var15, var17, var20);
+										class153.addNpcToMenu(var40, var21.npcIndices[var32], var15, var17, var20);
 									}
 								}
 
@@ -265,10 +265,10 @@ public class class7 {
 								for (TileItem var38 = (TileItem)var37.first(); var38 != null; var38 = (TileItem)var37.next()) {
 									ItemComposition var42 = Player.ItemDefinition_get(var38.id);
 									if (!ClientPreferences.field1299 && Client.isItemSelected == 1) {
-										NpcOverrides.method4911("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16748608) + var42.name, 16, var38.id, var15, var17, -1, false, var20);
+										NpcOverrides.insertMenuItem("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16748608) + var42.name, 16, var38.id, var15, var17, -1, false, var20);
 									} else if (Client.isSpellSelected) {
 										if (!ClientPreferences.field1299 && (UserComparator3.selectedSpellFlags & 1) == 1) {
-											NpcOverrides.method4911(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16748608) + var42.name, 17, var38.id, var15, var17, -1, false, var20);
+											NpcOverrides.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16748608) + var42.name, 17, var38.id, var15, var17, -1, false, var20);
 										}
 									} else {
 										String[] var34 = var42.groundActions;
@@ -297,14 +297,14 @@ public class class7 {
 														var28 = 22;
 													}
 
-													NpcOverrides.method4911(var34[var43], TransformationMatrix.colorStartTag(16748608) + var42.name, var28, var38.id, var15, var17, -1, false, var20);
+													NpcOverrides.insertMenuItem(var34[var43], TransformationMatrix.colorStartTag(16748608) + var42.name, var28, var38.id, var15, var17, -1, false, var20);
 												} else if (var43 == 2) {
-													NpcOverrides.method4911("Take", TransformationMatrix.colorStartTag(16748608) + var42.name, 20, var38.id, var15, var17, -1, false, var20);
+													NpcOverrides.insertMenuItem("Take", TransformationMatrix.colorStartTag(16748608) + var42.name, 20, var38.id, var15, var17, -1, false, var20);
 												}
 											}
 										}
 
-										NpcOverrides.method4911("Examine", TransformationMatrix.colorStartTag(16748608) + var42.name, 1004, var38.id, var15, var17, -1, false, var20);
+										NpcOverrides.insertMenuItem("Examine", TransformationMatrix.colorStartTag(16748608) + var42.name, 1004, var38.id, var15, var17, -1, false, var20);
 									}
 								}
 							}

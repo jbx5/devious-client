@@ -12,7 +12,8 @@ public class class246 extends DualNode {
 	@Export("field2100")
 	static EvictingDualNodeHashTable field2100;
 	@ObfuscatedName("gt")
-	static String field2617;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 
 	static {
 		field2100 = new EvictingDualNodeHashTable(64);

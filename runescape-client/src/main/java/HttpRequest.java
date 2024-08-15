@@ -406,7 +406,7 @@ public class HttpRequest {
 			Login.Login_response1 = "";
 			Login.Login_response2 = "Enter your username/email & password.";
 			Login.Login_response3 = "";
-			class532.method9434(2);
+			class532.updateLoginIndex(2);
 			if (var0) {
 				Login.Login_password = "";
 			}
@@ -414,7 +414,7 @@ public class HttpRequest {
 			class131.method3176();
 			class33.focusPasswordWhenUsernameFilled();
 		} else {
-			class532.method9434(10);
+			class532.updateLoginIndex(10);
 		}
 	}
 }

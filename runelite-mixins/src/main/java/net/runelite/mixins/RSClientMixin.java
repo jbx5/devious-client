@@ -86,7 +86,6 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GrandExchangeOfferChanged;
 import net.runelite.api.events.GrandExchangeSearched;
 import net.runelite.api.events.ItemSpawned;
-import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOpened;
 import net.runelite.api.events.MenuShouldLeftClick;
 import net.runelite.api.events.PlayerMenuOptionsChanged;
@@ -306,9 +305,6 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	private static ArrayList<Widget> hiddenWidgets = new ArrayList<>();
 
-	@Inject
-	private static final RSRuneLiteMenuEntry[] rl$menuEntries = new RSRuneLiteMenuEntry[500];
-
 	/**
 	 * Sub-menu
 	 */
@@ -365,7 +361,7 @@ public abstract class RSClientMixin implements RSClient
 		MenuEntry toRet = null;
 		if (clickedIdx != -1)
 		{
-			toRet = rl$menuEntries[clickedIdx];
+			toRet = this.getMenu().getRl$menuEntries()[clickedIdx];
 			clickedIdx = -1;
 		}
 		return toRet;
@@ -445,9 +441,6 @@ public abstract class RSClientMixin implements RSClient
 	/**
 	 * End of sub-menu
 	 */
-
-	@Inject
-	private static int tmpMenuOptionsCount;
 
 	@Inject
 	private static final Map<Integer, byte[]> customClientScripts = new HashMap<>();
@@ -937,6 +930,11 @@ public abstract class RSClientMixin implements RSClient
 		setChatCycle(getCycleCntr());
 	}
 
+	/**
+	 * RSRuneLiteMenuEntry methods used by injector
+	 *
+	 * DO NOT REMOVE
+	 */
 	@Inject
 	public static RSRuneLiteMenuEntry newBareRuneliteMenuEntry()
 	{
@@ -950,173 +948,82 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+	public static RSRuneLiteMenuEntry[] rl$menuEntries;
+
+	/**
+	 * Deprecated menu entry
+	 */
+
+	@Inject
 	@Override
 	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick)
 	{
-		RSRuneLiteMenuEntry menuEntry = newBareRuneliteMenuEntry();
-
-		menuEntry.setOption(option);
-		menuEntry.setTarget(target);
-		menuEntry.setIdentifier(identifier);
-		menuEntry.setType(MenuAction.of(opcode));
-		menuEntry.setParam0(param1);
-		menuEntry.setParam1(param2);
-		menuEntry.setParent(null);
-		menuEntry.setConsumer(null);
-		menuEntry.setForceLeftClick(forceLeftClick);
-		menuEntry.setItemId(itemId);
-
-		return menuEntry;
+		return this.getMenu().createMenuEntry(option, target, identifier, opcode, param1, param2, itemId, forceLeftClick);
 	}
 
 	@Inject
 	@Override
 	public MenuEntry createMenuEntry(int idx)
 	{
-		if (client.getMenuOptionCount() >= 500)
-		{
-			throw new IllegalStateException();
-		}
-		else
-		{
-			if (idx < 0)
-			{
-				idx = client.getMenuOptionCount() + idx + 1;
-				if (idx < 0)
-				{
-					throw new IllegalArgumentException();
-				}
-			}
-
-			RSRuneLiteMenuEntry menuEntry;
-			if (idx < client.getMenuOptionCount())
-			{
-				RSRuneLiteMenuEntry tmpEntry = rl$menuEntries[client.getMenuOptionCount()];
-				if (tmpEntry == null)
-				{
-					tmpEntry = rl$menuEntries[client.getMenuOptionCount()] = newRuneliteMenuEntry(client.getMenuOptionCount());
-				}
-
-				for (int i = client.getMenuOptionCount(); i > idx; rl$menuEntries[i].setIdx(i--))
-				{
-					client.getMenuOptions()[i] = client.getMenuOptions()[i - 1];
-					client.getMenuTargets()[i] = client.getMenuTargets()[i - 1];
-					client.getMenuIdentifiers()[i] = client.getMenuIdentifiers()[i - 1];
-					client.getMenuOpcodes()[i] = client.getMenuOpcodes()[i - 1];
-					client.getMenuArguments1()[i] = client.getMenuArguments1()[i - 1];
-					client.getMenuArguments2()[i] = client.getMenuArguments2()[i - 1];
-					client.getMenuItemIds()[i] = client.getMenuItemIds()[i - 1];
-					client.getMenuWorldViewIds()[i] = client.getMenuWorldViewIds()[i - 1];
-					client.getMenuForceLeftClick()[i] = client.getMenuForceLeftClick()[i - 1];
-
-					rl$menuEntries[i] = rl$menuEntries[i - 1];
-				}
-
-				client.setMenuOptionCount(client.getMenuOptionCount() + 1);
-				tmpMenuOptionsCount = client.getMenuOptionCount();
-
-				menuEntry = tmpEntry;
-				rl$menuEntries[idx] = tmpEntry;
-
-				tmpEntry.setIdx(idx);
-			}
-			else
-			{
-				if (idx != client.getMenuOptionCount())
-				{
-					throw new IllegalArgumentException();
-				}
-
-				menuEntry = rl$menuEntries[client.getMenuOptionCount()];
-
-				if (menuEntry == null)
-				{
-					menuEntry = rl$menuEntries[client.getMenuOptionCount()] = newRuneliteMenuEntry(client.getMenuOptionCount());
-				}
-
-				client.setMenuOptionCount(client.getMenuOptionCount() + 1);
-				tmpMenuOptionsCount = client.getMenuOptionCount();
-			}
-
-			menuEntry.setOption("");
-			menuEntry.setTarget("");
-			menuEntry.setIdentifier(0);
-			menuEntry.setType(MenuAction.RUNELITE);
-			menuEntry.setParam0(0);
-			menuEntry.setParam1(0);
-			menuEntry.setItemId(-1);
-			menuEntry.setWorldViewId(-1);
-			menuEntry.setParent(null);
-			menuEntry.setConsumer(null);
-
-			return menuEntry;
-		}
+		return this.getMenu().createMenuEntry(idx);
 	}
 
 	@Inject
 	@Override
 	public MenuEntry[] getMenuEntries()
 	{
-		RSRuneLiteMenuEntry[] menuEntries = Arrays.copyOf(rl$menuEntries, client.getMenuOptionCount());
-
-		for (RSRuneLiteMenuEntry menuEntry : menuEntries)
-		{
-			if (menuEntry.getOption() == null)
-			{
-				menuEntry.setOption("null");
-			}
-
-			if (menuEntry.getTarget() == null)
-			{
-				menuEntry.setTarget("null");
-			}
-		}
-
-		return menuEntries;
+		return this.getMenu().getMenuEntries();
 	}
 
 	@Inject
 	@Override
 	public void setMenuEntries(MenuEntry[] menuEntries)
 	{
-		boolean var2 = false;
-
-		if (client.getTempMenuAction() != null && client.getMenuOptionCount() > 0)
-		{
-			var2 = client.getTempMenuAction().getOpcode() == client.getMenuOpcodes()[client.getMenuOptionCount() - 1] &&
-				client.getTempMenuAction().getIdentifier() == client.getMenuIdentifiers()[client.getMenuOptionCount() - 1] &&
-				client.getTempMenuAction().getOption().equals(client.getMenuOptions()[client.getMenuOptionCount() - 1]) &&
-				client.getTempMenuAction().getTarget().equals(client.getMenuTargets()[client.getMenuOptionCount() - 1]) &&
-				client.getTempMenuAction().getParam0() == client.getMenuArguments1()[client.getMenuOptionCount() - 1] &&
-				client.getTempMenuAction().getParam1() == client.getMenuArguments2()[client.getMenuOptionCount() - 1] &&
-				client.getTempMenuAction().getItemId() == client.getMenuItemIds()[client.getMenuOptionCount() - 1] &&
-				client.getTempMenuAction().getWorldViewId() == client.getMenuWorldViewIds()[client.getMenuOptionCount() - 1];
-		}
-
-		for (int i = 0; i < menuEntries.length; ++i)
-		{
-			RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) menuEntries[i];
-			if (menuEntry.getIdx() != i)
-			{
-				sortMenuEntries(menuEntry.getIdx(), i);
-			}
-		}
-
-		client.setMenuOptionCount(menuEntries.length);
-		tmpMenuOptionsCount = menuEntries.length;
-
-		if (var2 && client.getMenuOptionCount() > 0)
-		{
-			client.getTempMenuAction().setOpcode(client.getMenuOpcodes()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setIdentifier(client.getMenuIdentifiers()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setOption(client.getMenuOptions()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setTarget(client.getMenuTargets()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setParam0(client.getMenuArguments1()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setParam1(client.getMenuArguments2()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setItemId(client.getMenuItemIds()[client.getMenuOptionCount() - 1]);
-			client.getTempMenuAction().setWorldViewId(client.getMenuWorldViewIds()[client.getMenuOptionCount() - 1]);
-		}
+		this.getMenu().setMenuEntries(menuEntries);
 	}
+
+	@Inject
+	@Override
+	public int getMenuOptionCount()
+	{
+		return this.getMenu().getMenuOptionCount();
+	}
+
+	@Inject
+	@Override
+	public void setMenuOptionCount(int count)
+	{
+		this.getMenu().setMenuOptionCount(count);
+	}
+
+	@Inject
+	@Override
+	public int getMenuX()
+	{
+		return this.getMenu().getMenuX();
+	}
+
+	@Inject
+	@Override
+	public int getMenuY()
+	{
+		return this.getMenu().getMenuY();
+	}
+
+	@Inject
+	@Override
+	public int getMenuWidth()
+	{
+		return this.getMenu().getMenuWidth();
+	}
+
+	@Inject
+	@Override
+	public int getMenuHeight()
+	{
+		return this.getMenu().getMenuHeight();
+	}
+	/*--------------------------------------------------------------------------------------*/
 
 	@Copy("menu")
 	@Replace("menu")
@@ -1130,9 +1037,9 @@ public abstract class RSClientMixin implements RSClient
 			var1 = true;
 			for (var2 = 0; var2 < client.getMenuOptionCount() - 1; ++var2)
 			{
-				if (client.getMenuOpcodes()[var2] < 1000 && client.getMenuOpcodes()[var2 + 1] > 1000)
+				if (client.getMenu().getMenuOpcodes()[var2] < 1000 && client.getMenu().getMenuOpcodes()[var2 + 1] > 1000)
 				{
-					sortMenuEntries(var2, var2 + 1);
+					this.getMenu().sortMenuEntries(var2, var2 + 1);
 					var1 = false;
 				}
 			}
@@ -1262,14 +1169,14 @@ public abstract class RSClientMixin implements RSClient
 					int var15;
 					if (var7 != -1 && var7 >= 0)
 					{
-						var8 = client.getMenuArguments1()[var7];
-						var15 = client.getMenuArguments2()[var7];
-						var16 = client.getMenuOpcodes()[var7];
-						var11 = client.getMenuIdentifiers()[var7];
-						var12 = client.getMenuItemIds()[var7];
-						var18 = client.getMenuWorldViewIds()[var7];
-						String var13 = client.getMenuOptions()[var7];
-						String var14 = client.getMenuTargets()[var7];
+						var8 = client.getMenu().getMenuArguments1()[var7];
+						var15 = client.getMenu().getMenuArguments2()[var7];
+						var16 = client.getMenu().getMenuOpcodes()[var7];
+						var11 = client.getMenu().getMenuIdentifiers()[var7];
+						var12 = client.getMenu().getMenuItemIds()[var7];
+						var18 = client.getMenu().getMenuWorldViewIds()[var7];
+						String var13 = client.getMenu().getMenuOptions()[var7];
+						String var14 = client.getMenu().getMenuTargets()[var7];
 						client.sendMenuAction(var8, var15, var16, var11, var12, var18, var13, var14, client.getMouseLastPressedX(), client.getMouseLastPressedY());
 					}
 
@@ -1303,14 +1210,14 @@ public abstract class RSClientMixin implements RSClient
 
 				if ((var19 == 1 || !client.isMouseCam() && var19 == 4) && client.getMenuOptionCount() > 0 && var2 >= 0)
 				{
-					var4 = client.getMenuArguments1()[var2];
-					var5 = client.getMenuArguments2()[var2];
-					var20 = client.getMenuOpcodes()[var2];
-					var7 = client.getMenuIdentifiers()[var2];
-					var8 = client.getMenuItemIds()[var2];
-					var18 = client.getMenuWorldViewIds()[var2];
-					String var9 = client.getMenuOptions()[var2];
-					String var10 = client.getMenuTargets()[var2];
+					var4 = client.getMenu().getMenuArguments1()[var2];
+					var5 = client.getMenu().getMenuArguments2()[var2];
+					var20 = client.getMenu().getMenuOpcodes()[var2];
+					var7 = client.getMenu().getMenuIdentifiers()[var2];
+					var8 = client.getMenu().getMenuItemIds()[var2];
+					var18 = client.getMenu().getMenuWorldViewIds()[var2];
+					String var9 = client.getMenu().getMenuOptions()[var2];
+					String var10 = client.getMenu().getMenuTargets()[var2];
 					client.sendMenuAction(var4, var5, var20, var7, var8, var18, var9, var10, client.getMouseLastPressedX(), client.getMouseLastPressedY());
 				}
 
@@ -1318,133 +1225,6 @@ public abstract class RSClientMixin implements RSClient
 				{
 					this.openMenu(client.getMouseLastPressedX(), client.getMouseLastPressedY());
 				}
-			}
-		}
-	}
-
-	@Inject
-	public static void sortMenuEntries(int left, int right)
-	{
-		String menuOption = client.getMenuOptions()[left];
-		client.getMenuOptions()[left] = client.getMenuOptions()[right];
-		client.getMenuOptions()[right] = menuOption;
-
-		String menuTarget = client.getMenuTargets()[left];
-		client.getMenuTargets()[left] = client.getMenuTargets()[right];
-		client.getMenuTargets()[right] = menuTarget;
-
-		int menuIdentifier = client.getMenuIdentifiers()[left];
-		client.getMenuIdentifiers()[left] = client.getMenuIdentifiers()[right];
-		client.getMenuIdentifiers()[right] = menuIdentifier;
-
-		int menuOpcode = client.getMenuOpcodes()[left];
-		client.getMenuOpcodes()[left] = client.getMenuOpcodes()[right];
-		client.getMenuOpcodes()[right] = menuOpcode;
-
-		int menuArguments1 = client.getMenuArguments1()[left];
-		client.getMenuArguments1()[left] = client.getMenuArguments1()[right];
-		client.getMenuArguments1()[right] = menuArguments1;
-
-		int menuArgument2 = client.getMenuArguments2()[left];
-		client.getMenuArguments2()[left] = client.getMenuArguments2()[right];
-		client.getMenuArguments2()[right] = menuArgument2;
-
-		int itemId = client.getMenuItemIds()[left];
-		client.getMenuItemIds()[left] = client.getMenuItemIds()[right];
-		client.getMenuItemIds()[right] = itemId;
-
-		int worldViewId = client.getMenuWorldViewIds()[left];
-		client.getMenuWorldViewIds()[left] = client.getMenuWorldViewIds()[right];
-		client.getMenuWorldViewIds()[right] = worldViewId;
-
-		boolean menuForceLeftClick = client.getMenuForceLeftClick()[left];
-		client.getMenuForceLeftClick()[left] = client.getMenuForceLeftClick()[right];
-		client.getMenuForceLeftClick()[right] = menuForceLeftClick;
-
-		RSRuneLiteMenuEntry var2 = rl$menuEntries[left];
-		rl$menuEntries[left] = rl$menuEntries[right];
-		rl$menuEntries[right] = var2;
-
-		rl$menuEntries[left].setIdx(left);
-		rl$menuEntries[right].setIdx(right);
-	}
-
-	@Inject
-	public static void swapMenuEntries(int var0)
-	{
-		RSRuneLiteMenuEntry var1 = rl$menuEntries[var0];
-		RSRuneLiteMenuEntry var2 = rl$menuEntries[var0 + 1];
-
-		assert var1.getIdx() == var0;
-		assert var2.getIdx() == var0 + 1;
-
-		rl$menuEntries[var0] = var2;
-		rl$menuEntries[var0 + 1] = var1;
-
-		var1.setIdx(var0 + 1);
-		var2.setIdx(var0);
-	}
-
-	@FieldHook("menuOptionsCount")
-	@Inject
-	public static void onMenuOptionsChanged(int idx)
-	{
-		int tmpOptionsCount = tmpMenuOptionsCount;
-		int optionCount = client.getMenuOptionCount();
-
-		tmpMenuOptionsCount = optionCount;
-
-		if (optionCount < tmpOptionsCount)
-		{
-			for (int i = optionCount; i < tmpOptionsCount; ++i)
-			{
-				RSRuneLiteMenuEntry entry = rl$menuEntries[i];
-				if (entry == null)
-				{
-					rl$logger.error("about to crash: opcnt:{} tmpopcnt:{} i:{}", optionCount, tmpOptionsCount, i);
-				}
-				rl$menuEntries[i].setParent(null);
-				rl$menuEntries[i].setConsumer(null);
-			}
-		}
-		else if (optionCount == tmpOptionsCount + 1)
-		{
-			if (client.getMenuOptions()[tmpOptionsCount] == null)
-			{
-				client.getMenuOptions()[tmpOptionsCount] = "null";
-			}
-
-			if (client.getMenuTargets()[tmpOptionsCount] == null)
-			{
-				client.getMenuTargets()[tmpOptionsCount] = "null";
-			}
-
-			if (rl$menuEntries[tmpOptionsCount] == null)
-			{
-				rl$menuEntries[tmpOptionsCount] = newRuneliteMenuEntry(tmpOptionsCount);
-			}
-			else
-			{
-				rl$menuEntries[tmpOptionsCount].setConsumer(null);
-				rl$menuEntries[tmpOptionsCount].setParent(null);
-			}
-
-			MenuEntryAdded menuEntryAdded = new MenuEntryAdded(
-				rl$menuEntries[tmpOptionsCount]
-			);
-
-			client.getCallbacks().post(menuEntryAdded);
-
-			if (menuEntryAdded.isModified() && client.getMenuOptionCount() == optionCount)
-			{
-				client.getMenuOptions()[tmpOptionsCount] = menuEntryAdded.getOption();
-				client.getMenuTargets()[tmpOptionsCount] = menuEntryAdded.getTarget();
-				client.getMenuIdentifiers()[tmpOptionsCount] = menuEntryAdded.getIdentifier();
-				client.getMenuOpcodes()[tmpOptionsCount] = menuEntryAdded.getType();
-				client.getMenuArguments1()[tmpOptionsCount] = menuEntryAdded.getActionParam0();
-				client.getMenuArguments2()[tmpOptionsCount] = menuEntryAdded.getActionParam1();
-				client.getMenuForceLeftClick()[tmpOptionsCount] = menuEntryAdded.isForceLeftClick();
-				client.getMenuItemIds()[tmpOptionsCount] = menuEntryAdded.getItemId();
 			}
 		}
 	}
@@ -2029,6 +1809,13 @@ public abstract class RSClientMixin implements RSClient
 		return null;
 	}
 
+	@Inject
+	@Override
+	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int argument3, boolean forceLeftClick)
+	{
+		client.rsInsertMenuItem(action, target, opcode, identifier, argument1, argument2, argument3, forceLeftClick, client.getTopLevelWorldView().getId());
+	}
+
 	@Override
 	@Inject
 	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int itemId, int x, int y)
@@ -2099,7 +1886,7 @@ public abstract class RSClientMixin implements RSClient
 				s = s + " " + tempMenuEntry.getTarget();
 			}
 
-			if (tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU || tempMenuEntry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
+			if (tempMenuEntry.getType() == MenuAction.RUNELITE || tempMenuEntry.getType() == MenuAction.RUNELITE_WIDGET)
 			{
 				s = s + " <col=ffffff><gt>";
 			}
@@ -2130,10 +1917,10 @@ public abstract class RSClientMixin implements RSClient
 			var6 = 0;
 		}
 
-		client.setMenuX(var5);
-		client.setMenuY(var6);
-		client.setMenuWidth(tempWidth);
-		client.setMenuHeight(realCount * 15 + 22);
+		client.getMenu().setMenuX(var5);
+		client.getMenu().setMenuY(var6);
+		client.getMenu().setMenuWidth(tempWidth);
+		client.getMenu().setMenuHeight(realCount * 15 + 22);
 		client.getTopLevelWorldView().getScene().menuOpen(client.getPlane(), x - client.getViewportXOffset(), y - client.getViewportYOffset(), false);
 		client.setMenuOpen(true);
 
@@ -2509,10 +2296,10 @@ public abstract class RSClientMixin implements RSClient
 			return true;
 		}
 
-		int len = getMenuOptionCount();
+		int len = this.getMenu().getMenuOptionCount();
 		if (len > 0)
 		{
-			int type = getMenuOpcodes()[len - 1];
+			int type = this.getMenu().getMenuOpcodes()[len - 1];
 			return type == MenuAction.RUNELITE_OVERLAY.getId() || type == MenuAction.RUNELITE_OVERLAY_CONFIG.getId() || type == MenuAction.RUNELITE_INFOBOX.getId() || type == MenuAction.RUNELITE_LOW_PRIORITY.getId();
 		}
 

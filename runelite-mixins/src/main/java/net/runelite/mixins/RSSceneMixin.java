@@ -120,7 +120,7 @@ public abstract class RSSceneMixin implements RSScene
 	private static byte[][][] rl$tileShapes;
 
 	@Replace("draw")
-	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane)
+	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane, int var7, int var8, boolean var9)
 	{
 		int maxX = getMaxX();
 		int maxZ = getMaxZ();
@@ -171,14 +171,16 @@ public abstract class RSSceneMixin implements RSScene
 		this.setCameraZ2(cameraZ);
 		this.setScreenCenterX(cameraX / Perspective.LOCAL_TILE_SIZE);
 		this.setScreenCenterZ(cameraZ / Perspective.LOCAL_TILE_SIZE);
+		// add new set field since rev 224
+		// add new set field since rev 224
 		this.setScenePlane(plane);
-		RSIntProjection projection = newIntProjection(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw);
-		this.updateVisibleTilesAndOccluders((RSProjection) projection);
+		RSIntProjection projection = newIntProjection(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, var7, var8);
+		this.updateVisibleTilesAndOccluders((RSProjection) projection, var9);
 	}
 
 	@Replace("updateVisibleTilesAndOccluders")
 	@Inject
-	void updateVisibleTilesAndOccluders(RSProjection intProjection)
+	void updateVisibleTilesAndOccluders(RSProjection intProjection, boolean var2)
 	{
 		final boolean isGpu = client.isGpu();
 		final boolean checkClick = this.isCheckClick();

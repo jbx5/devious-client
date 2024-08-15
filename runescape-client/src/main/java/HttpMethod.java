@@ -132,7 +132,7 @@ public class HttpMethod implements Enum {
 		} else {
 			FadeOutTask.otpMedium = Integer.parseInt(class135.otp);
 			class135.otp = "";
-			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.field1651 : AuthenticationScheme.field1654;
+			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
 			class130.setLoginResponseString("", "Connecting to server...", "");
 			UserComparator3.updateGameState(20);
 		}

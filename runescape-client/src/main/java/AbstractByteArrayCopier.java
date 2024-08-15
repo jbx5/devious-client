@@ -167,7 +167,7 @@ public abstract class AbstractByteArrayCopier {
 
 									var10 = class248.loginBoxCenter + 80;
 									if (var23 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var38 >= var11 - 20 && var38 <= var11 + 20) {
-										class532.method9434(0);
+										class532.updateLoginIndex(0);
 									}
 									break;
 								}
@@ -175,7 +175,7 @@ public abstract class AbstractByteArrayCopier {
 								if (var24.field2930 == 84) {
 									HttpRequest.Login_promptCredentials(false);
 								} else if (var24.field2930 == 13) {
-									class532.method9434(0);
+									class532.updateLoginIndex(0);
 								}
 							}
 						} else {
@@ -230,7 +230,7 @@ public abstract class AbstractByteArrayCopier {
 
 								var41 = Login.loginBoxX + 180 + 80;
 								if (var23 == 1 && var37 >= var41 - 75 && var37 <= var41 + 75 && var38 >= var40 - 20 && var38 <= var40 + 20) {
-									class532.method9434(0);
+									class532.updateLoginIndex(0);
 									Login.Login_username = "";
 									Login.Login_password = "";
 									FadeOutTask.otpMedium = 0;
@@ -293,7 +293,7 @@ public abstract class AbstractByteArrayCopier {
 																Login.Login_username = Login.Login_username + var24.field2931;
 															}
 														} else {
-															class532.method9434(0);
+															class532.updateLoginIndex(0);
 															Login.Login_username = "";
 															Login.Login_password = "";
 															FadeOutTask.otpMedium = 0;
@@ -367,7 +367,7 @@ public abstract class AbstractByteArrayCopier {
 											++var48;
 										}
 
-										class532.method9434(3);
+										class532.updateLoginIndex(3);
 										return;
 									} catch (UnsupportedFlavorException var35) {
 									} catch (IOException var36) {
@@ -415,7 +415,7 @@ public abstract class AbstractByteArrayCopier {
 
 										var10 = Login.loginBoxX + 180 + 80;
 										if (var23 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var38 >= var11 - 20 && var38 <= var11 + 20) {
-											class532.method9434(0);
+											class532.updateLoginIndex(0);
 											Login.Login_username = "";
 											Login.Login_password = "";
 											FadeOutTask.otpMedium = 0;
@@ -433,7 +433,7 @@ public abstract class AbstractByteArrayCopier {
 											}
 
 											if (var24.field2930 == 13) {
-												class532.method9434(0);
+												class532.updateLoginIndex(0);
 												Login.Login_username = "";
 												Login.Login_password = "";
 												FadeOutTask.otpMedium = 0;
@@ -641,7 +641,7 @@ public abstract class AbstractByteArrayCopier {
 												if (var23 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var38 >= var11 - 20 && var38 <= var11 + 20) {
 													SequenceDefinition.openURL(class329.method6181("secure", true) + "m=dob/set_dob.ws", true, false);
 													class130.setLoginResponseString("", "Page has opened in the browser.", "");
-													class532.method9434(6);
+													class532.updateLoginIndex(6);
 													return;
 												}
 
@@ -656,7 +656,7 @@ public abstract class AbstractByteArrayCopier {
 											if (var23 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var38 >= var11 - 20 && var38 <= var11 + 20) {
 												SequenceDefinition.openURL("https://www.jagex.com/terms/privacy", true, false);
 												class130.setLoginResponseString("", "Page has opened in the browser.", "");
-												class532.method9434(6);
+												class532.updateLoginIndex(6);
 												return;
 											}
 
@@ -735,7 +735,7 @@ public abstract class AbstractByteArrayCopier {
 											if (var23 == 1 && var37 >= var41 - 75 && var37 <= var41 + 75 && var38 >= var40 - 20 && var38 <= var40 + 20) {
 												SequenceDefinition.openURL(var32, true, false);
 												class130.setLoginResponseString("", "Page has opened in the browser.", "");
-												class532.method9434(6);
+												class532.updateLoginIndex(6);
 												return;
 											}
 
@@ -756,7 +756,7 @@ public abstract class AbstractByteArrayCopier {
 											if (var23 == 1 && var37 >= var10 - 75 && var37 <= var10 + 75 && var38 >= var11 - 20 && var38 <= var11 + 20) {
 												SequenceDefinition.openURL(class329.method6181("secure", true) + "m=dob/set_dob.ws", true, false);
 												class130.setLoginResponseString("", "Page has opened in the browser.", "");
-												class532.method9434(6);
+												class532.updateLoginIndex(6);
 												return;
 											}
 

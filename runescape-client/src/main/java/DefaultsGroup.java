@@ -38,15 +38,16 @@ public class DefaultsGroup {
 		descriptor = "(I)V",
 		garbageValue = "1839552253"
 	)
-	static void method8854() {
-		Client.field650.field5518 = 0;
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		Client.menu.menuOptionsCount = 0;
 		Client.isMenuOpen = false;
-		Client.field650.field5527[0] = -1;
-		Client.field650.field5525[0] = "Cancel";
-		Client.field650.field5522[0] = "";
-		Client.field650.field5521[0] = 1006;
-		Client.field650.field5528[0] = false;
-		Client.field650.field5526[0] = null;
-		Client.field650.field5518 = 1;
+		Client.menu.menuWorldViewIds[0] = -1;
+		Client.menu.menuActions[0] = "Cancel";
+		Client.menu.menuTargets[0] = "";
+		Client.menu.menuOpcodes[0] = 1006;
+		Client.menu.menuShiftClick[0] = false;
+		Client.menu.subMenus[0] = null;
+		Client.menu.menuOptionsCount = 1;
 	}
 }

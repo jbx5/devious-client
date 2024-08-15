@@ -701,7 +701,7 @@ public class PlayerComposition {
 			return false;
 		} else {
 			ItemComposition var1 = this.method6575(this.equipment[0]);
-			return var1.maleModel2 != class264.field2898.field2901 && var1.ambient != class264.field2898.field2901;
+			return var1.maleModel1 != class264.field2898.field2901 && var1.maleModel2 != class264.field2898.field2901;
 		}
 	}
 
@@ -722,13 +722,13 @@ public class PlayerComposition {
 	)
 	public void method6590(int var1) {
 		ItemComposition var2 = Player.ItemDefinition_get(var1);
-		this.equipment[var2.maleModel1] = this.field3750 + var1;
-		if (var2.maleModel2 != -1) {
-			this.equipment[var2.maleModel2] = 0;
+		this.equipment[var2.maleModel] = this.field3750 + var1;
+		if (var2.maleModel1 != -1) {
+			this.equipment[var2.maleModel1] = 0;
 		}
 
-		if (var2.ambient != -1) {
-			this.equipment[var2.ambient] = 0;
+		if (var2.maleModel2 != -1) {
+			this.equipment[var2.maleModel2] = 0;
 		}
 
 		this.method6586();

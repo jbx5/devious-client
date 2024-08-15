@@ -276,40 +276,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("containsBounds")
 	boolean containsBounds(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7);
 
-	@Import("menuOptionsCount")
-	@Override
-	int getMenuOptionCount();
-
-	@Import("menuOptionsCount")
-	@Override
-	void setMenuOptionCount(int menuOptionCount);
-
 	@Import("tempMenuAction")
 	RSMenuAction getTempMenuAction();
-
-	@Import("menuActions")
-	String[] getMenuOptions();
-
-	@Import("menuTargets")
-	String[] getMenuTargets();
-
-	@Import("menuIdentifiers")
-	int[] getMenuIdentifiers();
-
-	@Import("menuOpcodes")
-	int[] getMenuOpcodes();
-
-	@Import("menuArguments1")
-	int[] getMenuArguments1();
-
-	@Import("menuArguments2")
-	int[] getMenuArguments2();
-
-	@Import("menuItemIds")
-	int[] getMenuItemIds();
-
-	@Import("menuShiftClick")
-	boolean[] getMenuForceLeftClick();
 
 	@Import("World_worlds")
 	@Override
@@ -980,7 +948,11 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("getEnum")
 	RSEnumComposition getRsEnum(int id);
 
-	@Import("menuX")
+	@Import("menu")
+	@Override
+	RSMenu getMenu();
+
+	/*@Import("menuX")
 	int getMenuX();
 
 	@Import("menuY")
@@ -1002,7 +974,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setMenuHeight(int h);
 
 	@Import("menuWidth")
-	void setMenuWidth(int w);
+	void setMenuWidth(int w);*/
 
 	@Import("fontBold12")
 	RSFont getFontBold12();
@@ -1115,10 +1087,7 @@ public interface RSClient extends RSGameEngine, Client
 	int getItemCount();
 
 	@Import("insertMenuItem")
-	void rsInsertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int argument3, boolean forceLeftClick, int worldViewId);
-
-	@Import("invalidateWidgetsUnder")
-	void invalidateWidgetsUnder(int var0, int var1, int var2, int var3);
+	int rsInsertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick, int worldViewId);
 
 	@Import("selectedSpellWidget")
 	@Override
@@ -1638,9 +1607,6 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("worldView")
 	RSWorldView getWorldView();
-
-	@Import("menuWorldViewIds")
-	int[] getMenuWorldViewIds();
 
 	/**
 	 * Jagex launcher credentials

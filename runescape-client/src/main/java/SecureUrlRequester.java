@@ -160,6 +160,6 @@ public class SecureUrlRequester extends UrlRequester {
 	)
 	@Export("insertMenuItemNoShift")
 	public static final int insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		return NpcOverrides.method4911(var0, var1, var2, var3, var4, var5, -1, false, -1);
+		return NpcOverrides.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false, -1);
 	}
 }

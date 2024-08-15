@@ -274,7 +274,7 @@ public abstract class UrlRequester implements Runnable {
 	)
 	public static void method2983() {
 		HealthBarDefinition.HealthBarDefinition_cached.clear();
-		HealthBarDefinition.HitSplatDefinition_cachedSprites.clear();
+		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
 	}
 
 	@ObfuscatedName("ny")

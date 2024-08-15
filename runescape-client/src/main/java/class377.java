@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 
@@ -7,5 +8,6 @@ public class class377 {
 	@ObfuscatedGetter(
 		intValue = -763235303
 	)
-	static int field4065;
+	@Export("Players_count")
+	static int Players_count;
 }

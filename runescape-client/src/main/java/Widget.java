@@ -1350,8 +1350,8 @@ public class Widget extends Node {
 				case 4:
 					ItemComposition var15 = Player.ItemDefinition_get(var8);
 					var12 = var15.getModelData(10);
-					var13 += var15.maleModel;
-					var14 += var15.field2838;
+					var13 += var15.ambient;
+					var14 += var15.contrast;
 				case 5:
 				default:
 					break;

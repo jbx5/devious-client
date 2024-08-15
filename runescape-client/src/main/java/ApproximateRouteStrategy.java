@@ -51,7 +51,7 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 			Login.Login_response1 = "This is a <col=00ffff>Beta<col=ffffff> world.";
 			Login.Login_response2 = "Your normal account will not be affected.";
 			Login.Login_response3 = "";
-			class532.method9434(1);
+			class532.updateLoginIndex(1);
 			class33.focusPasswordWhenUsernameFilled();
 		} else if ((Client.worldProperties & class543.field5355.rsOrdinal()) != 0) {
 			if ((Client.worldProperties & class543.field5338.rsOrdinal()) != 0) {
@@ -65,14 +65,14 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 			}
 
 			Login.Login_response0 = "Warning!";
-			class532.method9434(1);
+			class532.updateLoginIndex(1);
 			class33.focusPasswordWhenUsernameFilled();
 		} else if ((Client.worldProperties & class543.field5338.rsOrdinal()) != 0) {
 			Login.Login_response1 = "This is a <col=ffff00>High Risk<col=ffffff> world.";
 			Login.Login_response2 = "The Protect Item prayer will";
 			Login.Login_response3 = "not work on this world.";
 			Login.Login_response0 = "Warning!";
-			class532.method9434(1);
+			class532.updateLoginIndex(1);
 			class33.focusPasswordWhenUsernameFilled();
 		} else {
 			HttpRequest.Login_promptCredentials(false);

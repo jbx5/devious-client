@@ -397,6 +397,6 @@ public final class NPC extends Actor {
 		garbageValue = "-124"
 	)
 	static final int method2813(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-		return NpcOverrides.method4911(var0, var1, var2, var3, var4, var5, var6, false, -1);
+		return NpcOverrides.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false, -1);
 	}
 }

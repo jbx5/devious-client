@@ -52,8 +52,8 @@ public class BuddyRankComparator extends AbstractUserComparator {
 	static RouteStrategy method3097(int var0, int var1) {
 		Client.field741.approxDestinationX = var0;
 		Client.field741.approxDestinationY = var1;
-		Client.field741.approxDestinationSizeY = 1;
 		Client.field741.approxDestinationSizeX = 1;
+		Client.field741.approxDestinationSizeY = 1;
 		return Client.field741;
 	}
 }

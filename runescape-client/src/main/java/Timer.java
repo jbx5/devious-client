@@ -278,7 +278,7 @@ public class Timer {
 			if (Client.chatEffects == 0) {
 				int var17 = 16776960;
 				if (Client.overheadTextColors[var10] < 6) {
-					var17 = Client.menuArguments1[Client.overheadTextColors[var10]];
+					var17 = Client.field687[Client.overheadTextColors[var10]];
 				}
 
 				if (Client.overheadTextColors[var10] == 6) {

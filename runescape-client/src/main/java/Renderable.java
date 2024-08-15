@@ -68,13 +68,13 @@ public abstract class Renderable extends DualNode {
 	)
 	static void method4139(int var0) {
 		class7.tempMenuAction = new MenuAction();
-		class7.tempMenuAction.param0 = Client.field650.field5517[var0];
-		class7.tempMenuAction.param1 = Client.field650.field5520[var0];
-		class7.tempMenuAction.opcode = Client.field650.field5521[var0];
-		class7.tempMenuAction.identifier = Client.field650.field5519[var0];
-		class7.tempMenuAction.itemId = Client.field650.field5523[var0];
-		class7.tempMenuAction.action = Client.field650.field5525[var0];
-		class7.tempMenuAction.field888 = Client.field650.field5522[var0];
-		class7.tempMenuAction.worldViewId = Client.field650.field5527[var0];
+		class7.tempMenuAction.param0 = Client.menu.menuArguments1[var0];
+		class7.tempMenuAction.param1 = Client.menu.menuArguments2[var0];
+		class7.tempMenuAction.opcode = Client.menu.menuOpcodes[var0];
+		class7.tempMenuAction.identifier = Client.menu.menuIdentifiers[var0];
+		class7.tempMenuAction.itemId = Client.menu.menuItemIds[var0];
+		class7.tempMenuAction.action = Client.menu.menuActions[var0];
+		class7.tempMenuAction.target = Client.menu.menuTargets[var0];
+		class7.tempMenuAction.worldViewId = Client.menu.menuWorldViewIds[var0];
 	}
 }

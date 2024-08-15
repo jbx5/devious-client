@@ -79,7 +79,8 @@ final class class532 implements class531 {
 		descriptor = "(IB)V",
 		garbageValue = "-112"
 	)
-	static void method9434(int var0) {
+	@Export("updateLoginIndex")
+	static void updateLoginIndex(int var0) {
 		if (var0 != Login.loginIndex) {
 			Login.loginIndex = var0;
 		}

@@ -72,7 +72,7 @@ public class Buddy extends User {
 		garbageValue = "-1990026525"
 	)
 	static void method8736(String var0, String var1, String var2) {
-		class532.method9434(7);
+		class532.updateLoginIndex(7);
 		class130.setLoginResponseString(var0, var1, var2);
 	}
 }

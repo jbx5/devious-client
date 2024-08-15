@@ -19,7 +19,7 @@ public class class453 {
 	)
 	static final void method8429(MenuAction var0, int var1, int var2) {
 		if (var0 != null) {
-			GrandExchangeEvents.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.worldViewId, var0.action, var0.field888, var1, var2);
+			GrandExchangeEvents.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.worldViewId, var0.action, var0.target, var1, var2);
 		}
 
 	}

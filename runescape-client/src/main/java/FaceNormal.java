@@ -98,7 +98,7 @@ public class FaceNormal {
 							var3 = NPC.method2813(var2, var0.dataText, var4, var17 + 1, var0.childIndex, var0.id, var0.itemId);
 						} else {
 							var4 = 57;
-							var3 = NpcOverrides.method4911(var2, var0.dataText, var4, var17 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry, -1);
+							var3 = NpcOverrides.insertMenuItem(var2, var0.dataText, var4, var17 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry, -1);
 						}
 
 						if (var0.field3873 != null && var17 < var0.field3873.length && var0.field3873[var17] != null) {
@@ -122,12 +122,12 @@ public class FaceNormal {
 										}
 
 										boolean var12 = true;
-										if (var12 && var3 >= 0 && var3 < Client.field650.field5526.length) {
-											if (Client.field650.field5526[var3] == null) {
-												Client.field650.field5526[var3] = new class567(false);
+										if (var12 && var3 >= 0 && var3 < Client.menu.subMenus.length) {
+											if (Client.menu.subMenus[var3] == null) {
+												Client.menu.subMenus[var3] = new Menu(false);
 											}
 
-											Client.field650.field5526[var3].method10263(var8, "", var4, var7, var9, var10, var11, false, -1);
+											Client.menu.subMenus[var3].insertMenuItem(var8, "", var4, var7, var9, var10, var11, false, -1);
 										}
 									}
 								}

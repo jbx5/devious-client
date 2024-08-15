@@ -138,7 +138,7 @@ public class MouseRecorder implements Runnable {
 		garbageValue = "-1071160896"
 	)
 	static void method2427(int var0) {
-		class532.method9434(14);
+		class532.updateLoginIndex(14);
 		Login.Login_banType = var0;
 	}
 }

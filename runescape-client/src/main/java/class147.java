@@ -78,6 +78,6 @@ public class class147 extends class148 {
 		garbageValue = "-1079471212"
 	)
 	static final int method3334() {
-		return Client.field650.field5518 - 1;
+		return Client.menu.menuOptionsCount - 1;
 	}
 }

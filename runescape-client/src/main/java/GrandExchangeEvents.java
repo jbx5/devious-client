@@ -309,7 +309,7 @@ public class GrandExchangeEvents {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var25 = class218.getPacketBufferNode(ClientPacket.field3292, Client.packetWriter.isaacCipher);
-				var25.packetBuffer.writeShortLE(class377.field4065);
+				var25.packetBuffer.writeShortLE(class377.Players_count);
 				var25.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var25.packetBuffer.writeShortAddLE(var0 + var11);
 				var25.packetBuffer.writeInt(ConcurrentMidiTask.field4799);
@@ -336,7 +336,7 @@ public class GrandExchangeEvents {
 				var25.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var25.packetBuffer.writeIntLE(ConcurrentMidiTask.field4799);
 				var25.packetBuffer.writeShortAdd(var0 + var11);
-				var25.packetBuffer.writeShort(class377.field4065);
+				var25.packetBuffer.writeShort(class377.Players_count);
 				var25.packetBuffer.writeShortLE(UrlRequester.field1463);
 				Client.packetWriter.addNode(var25);
 			}
@@ -391,7 +391,7 @@ public class GrandExchangeEvents {
 					var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var21.packetBuffer.writeIntLE(ConcurrentMidiTask.field4799);
 					var21.packetBuffer.writeShort(var3);
-					var21.packetBuffer.writeShortAdd(class377.field4065);
+					var21.packetBuffer.writeShortAdd(class377.Players_count);
 					Client.packetWriter.addNode(var21);
 				}
 			}
@@ -522,7 +522,7 @@ public class GrandExchangeEvents {
 						var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var21.packetBuffer.writeShortAddLE(var3);
 						var21.packetBuffer.writeIntLE(ConcurrentMidiTask.field4799);
-						var21.packetBuffer.writeShortAddLE(class377.field4065);
+						var21.packetBuffer.writeShortAddLE(class377.Players_count);
 						Client.packetWriter.addNode(var21);
 					}
 				}

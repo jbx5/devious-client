@@ -74,7 +74,7 @@ public class InterfaceParent extends Node {
 		class138.logOut();
 		switch(var0) {
 		case 1:
-			class532.method9434(24);
+			class532.updateLoginIndex(24);
 			class130.setLoginResponseString("", "You were disconnected from the server.", "");
 			break;
 		case 2:

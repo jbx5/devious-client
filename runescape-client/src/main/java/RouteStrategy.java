@@ -26,14 +26,14 @@ public abstract class RouteStrategy {
 	@ObfuscatedGetter(
 		intValue = 339389041
 	)
-	@Export("approxDestinationSizeY")
-	public int approxDestinationSizeY;
+	@Export("approxDestinationSizeX")
+	public int approxDestinationSizeX;
 	@ObfuscatedName("au")
 	@ObfuscatedGetter(
 		intValue = -542422187
 	)
-	@Export("approxDestinationSizeX")
-	public int approxDestinationSizeX;
+	@Export("approxDestinationSizeY")
+	public int approxDestinationSizeY;
 
 	protected RouteStrategy() {
 	}

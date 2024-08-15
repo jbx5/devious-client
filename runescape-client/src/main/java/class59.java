@@ -332,7 +332,7 @@ public class class59 {
 					}
 
 					if (class546.field5371 >= 222) {
-						var7.method2752(var9 + ClientPreferences.field1285, var10 + class28.Players_count, var8 == 1);
+						var7.method2752(var9 + ClientPreferences.field1285, var10 + class28.field132, var8 == 1);
 						continue;
 					}
 
@@ -544,7 +544,7 @@ public class class59 {
 
 			AttackOption[] var3;
 			if (var4 == 18) {
-				var3 = new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1364, AttackOption.field1365, AttackOption.field1366, AttackOption.AttackOption_hidden};
+				var3 = new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1364, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1366, AttackOption.AttackOption_hidden};
 				Client.playerAttackOption = (AttackOption)class134.findEnumerated(var3, var2);
 				if (Client.playerAttackOption == null) {
 					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
@@ -560,7 +560,7 @@ public class class59 {
 			}
 
 			if (var4 == 22) {
-				var3 = new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1364, AttackOption.field1365, AttackOption.field1366, AttackOption.AttackOption_hidden};
+				var3 = new AttackOption[]{AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.field1364, AttackOption.AttackOption_alwaysRightClick, AttackOption.field1366, AttackOption.AttackOption_hidden};
 				Client.npcAttackOption = (AttackOption)class134.findEnumerated(var3, var2);
 				if (Client.npcAttackOption == null) {
 					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;

@@ -1,6 +1,7 @@
 package net.runelite.rs.api;
 
 import java.util.function.Consumer;
+import net.runelite.api.Menu;
 import net.runelite.api.MenuEntry;
 
 public interface RSRuneLiteMenuEntry extends MenuEntry
@@ -10,4 +11,6 @@ public interface RSRuneLiteMenuEntry extends MenuEntry
 
 	int getIdx();
 	void setIdx(int idx);
+
+	Menu getMenu();
 }

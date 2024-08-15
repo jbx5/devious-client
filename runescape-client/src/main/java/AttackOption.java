@@ -17,7 +17,8 @@ public enum AttackOption implements Enum {
 	@ObfuscatedSignature(
 		descriptor = "Len;"
 	)
-	field1365(1),
+	@Export("AttackOption_alwaysRightClick")
+	AttackOption_alwaysRightClick(1),
 	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "Len;"

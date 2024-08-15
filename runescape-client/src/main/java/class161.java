@@ -83,14 +83,14 @@ public class class161 extends class164 {
 	static void method3518(AbstractArchive var0, AbstractArchive var1, boolean var2, int var3) {
 		if (Login.clearLoginScreen) {
 			if (var3 == 4) {
-				class532.method9434(4);
+				class532.updateLoginIndex(4);
 			}
 
 		} else {
 			if (var3 == 0) {
 				Client.updateLoginStatusUsernameRemembered(var2);
 			} else {
-				class532.method9434(var3);
+				class532.updateLoginIndex(var3);
 			}
 
 			Rasterizer2D.Rasterizer2D_clear();

@@ -246,15 +246,15 @@ public enum WorldMapSectionType implements Enum {
 						return 1;
 					} else if (var0 == 4214) {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.ItemDefinition_get(var3).maleModel1;
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.ItemDefinition_get(var3).maleModel;
 						return 1;
 					} else if (var0 == 4215) {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.ItemDefinition_get(var3).maleModel2;
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.ItemDefinition_get(var3).maleModel1;
 						return 1;
 					} else if (var0 == 4216) {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.ItemDefinition_get(var3).ambient;
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Player.ItemDefinition_get(var3).maleModel2;
 						return 1;
 					} else if (var0 == 4217) {
 						var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];

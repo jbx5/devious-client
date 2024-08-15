@@ -40,44 +40,44 @@ public class class266 extends Node {
 		descriptor = "(Lvw;B)V",
 		garbageValue = "-89"
 	)
-	static final void method5348(class567 var0) {
+	static final void method5348(Menu var0) {
 		boolean var1 = false;
 
 		while (!var1) {
 			var1 = true;
 
-			for (int var2 = 0; var2 < var0.field5518 - 1; ++var2) {
-				if (var0.field5521[var2] < 1000 && var0.field5521[var2 + 1] > 1000) {
-					String var3 = var0.field5522[var2];
-					var0.field5522[var2] = var0.field5522[var2 + 1];
-					var0.field5522[var2 + 1] = var3;
-					String var4 = var0.field5525[var2];
-					var0.field5525[var2] = var0.field5525[var2 + 1];
-					var0.field5525[var2 + 1] = var4;
-					class567 var5 = var0.field5526[var2];
-					var0.field5526[var2] = var0.field5526[var2 + 1];
-					var0.field5526[var2 + 1] = var5;
-					int var6 = var0.field5521[var2];
-					var0.field5521[var2] = var0.field5521[var2 + 1];
-					var0.field5521[var2 + 1] = var6;
-					var6 = var0.field5517[var2];
-					var0.field5517[var2] = var0.field5517[var2 + 1];
-					var0.field5517[var2 + 1] = var6;
-					var6 = var0.field5520[var2];
-					var0.field5520[var2] = var0.field5520[var2 + 1];
-					var0.field5520[var2 + 1] = var6;
-					var6 = var0.field5519[var2];
-					var0.field5519[var2] = var0.field5519[var2 + 1];
-					var0.field5519[var2 + 1] = var6;
-					var6 = var0.field5523[var2];
-					var0.field5523[var2] = var0.field5523[var2 + 1];
-					var0.field5523[var2 + 1] = var6;
-					var6 = var0.field5527[var2];
-					var0.field5527[var2] = var0.field5527[var2 + 1];
-					var0.field5527[var2 + 1] = var6;
-					boolean var7 = var0.field5528[var2];
-					var0.field5528[var2] = var0.field5528[var2 + 1];
-					var0.field5528[var2 + 1] = var7;
+			for (int var2 = 0; var2 < var0.menuOptionsCount - 1; ++var2) {
+				if (var0.menuOpcodes[var2] < 1000 && var0.menuOpcodes[var2 + 1] > 1000) {
+					String var3 = var0.menuTargets[var2];
+					var0.menuTargets[var2] = var0.menuTargets[var2 + 1];
+					var0.menuTargets[var2 + 1] = var3;
+					String var4 = var0.menuActions[var2];
+					var0.menuActions[var2] = var0.menuActions[var2 + 1];
+					var0.menuActions[var2 + 1] = var4;
+					Menu var5 = var0.subMenus[var2];
+					var0.subMenus[var2] = var0.subMenus[var2 + 1];
+					var0.subMenus[var2 + 1] = var5;
+					int var6 = var0.menuOpcodes[var2];
+					var0.menuOpcodes[var2] = var0.menuOpcodes[var2 + 1];
+					var0.menuOpcodes[var2 + 1] = var6;
+					var6 = var0.menuArguments1[var2];
+					var0.menuArguments1[var2] = var0.menuArguments1[var2 + 1];
+					var0.menuArguments1[var2 + 1] = var6;
+					var6 = var0.menuArguments2[var2];
+					var0.menuArguments2[var2] = var0.menuArguments2[var2 + 1];
+					var0.menuArguments2[var2 + 1] = var6;
+					var6 = var0.menuIdentifiers[var2];
+					var0.menuIdentifiers[var2] = var0.menuIdentifiers[var2 + 1];
+					var0.menuIdentifiers[var2 + 1] = var6;
+					var6 = var0.menuItemIds[var2];
+					var0.menuItemIds[var2] = var0.menuItemIds[var2 + 1];
+					var0.menuItemIds[var2 + 1] = var6;
+					var6 = var0.menuWorldViewIds[var2];
+					var0.menuWorldViewIds[var2] = var0.menuWorldViewIds[var2 + 1];
+					var0.menuWorldViewIds[var2 + 1] = var6;
+					boolean var7 = var0.menuShiftClick[var2];
+					var0.menuShiftClick[var2] = var0.menuShiftClick[var2 + 1];
+					var0.menuShiftClick[var2 + 1] = var7;
 					var1 = false;
 				}
 			}

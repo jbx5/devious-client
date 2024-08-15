@@ -53,7 +53,7 @@ public class class270 {
 					Client.widgetClickY = var2;
 					class535.widgetDragDuration = 0;
 					Client.isDraggingWidget = false;
-					int var6 = Client.field650.field5518 - 1;
+					int var6 = Client.menu.menuOptionsCount - 1;
 					if (var6 != -1) {
 						Renderable.method4139(var6);
 					}

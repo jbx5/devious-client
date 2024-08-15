@@ -125,20 +125,20 @@ public class ItemComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = -1030629591
 	)
-	@Export("maleModel1")
-	public int maleModel1;
+	@Export("maleModel")
+	public int maleModel;
 	@ObfuscatedName("bh")
 	@ObfuscatedGetter(
 		intValue = 991738269
 	)
-	@Export("maleModel2")
-	public int maleModel2;
+	@Export("maleModel1")
+	public int maleModel1;
 	@ObfuscatedName("bx")
 	@ObfuscatedGetter(
 		intValue = -68046891
 	)
-	@Export("ambient")
-	public int ambient;
+	@Export("maleModel2")
+	public int maleModel2;
 	@ObfuscatedName("bv")
 	@Export("isMembersOnly")
 	public boolean isMembersOnly;
@@ -264,13 +264,14 @@ public class ItemComposition extends DualNode {
 	@ObfuscatedGetter(
 		intValue = 2059123331
 	)
-	@Export("maleModel")
-	public int maleModel;
+	@Export("ambient")
+	public int ambient;
 	@ObfuscatedName("cg")
 	@ObfuscatedGetter(
 		intValue = 709950291
 	)
-	public int field2838;
+	@Export("contrast")
+	public int contrast;
 	@ObfuscatedName("cp")
 	@ObfuscatedGetter(
 		intValue = -1939194631
@@ -333,9 +334,9 @@ public class ItemComposition extends DualNode {
 		this.offsetY2d = 0;
 		this.isStackable = 0;
 		this.price = 1;
+		this.maleModel = -1;
 		this.maleModel1 = -1;
 		this.maleModel2 = -1;
-		this.ambient = -1;
 		this.isMembersOnly = false;
 		this.groundActions = new String[]{null, null, "Take", null, null};
 		this.inventoryActions = new String[]{null, null, null, null, "Drop"};
@@ -358,8 +359,8 @@ public class ItemComposition extends DualNode {
 		this.resizeX = 128;
 		this.resizeY = 128;
 		this.resizeZ = 128;
-		this.maleModel = 0;
-		this.field2838 = 0;
+		this.ambient = 0;
+		this.contrast = 0;
 		this.team = 0;
 		this.field2786 = 0;
 		this.isTradable = false;
@@ -435,9 +436,9 @@ public class ItemComposition extends DualNode {
 		} else if (var2 == 12) {
 			this.price = var1.readInt();
 		} else if (var2 == 13) {
-			this.maleModel1 = var1.readUnsignedByte();
+			this.maleModel = var1.readUnsignedByte();
 		} else if (var2 == 14) {
-			this.maleModel2 = var1.readUnsignedByte();
+			this.maleModel1 = var1.readUnsignedByte();
 		} else if (var2 == 16) {
 			this.isMembersOnly = true;
 		} else if (var2 == 23) {
@@ -451,7 +452,7 @@ public class ItemComposition extends DualNode {
 		} else if (var2 == 26) {
 			this.maleHeadModel2 = var1.readUnsignedShort();
 		} else if (var2 == 27) {
-			this.ambient = var1.readUnsignedByte();
+			this.maleModel2 = var1.readUnsignedByte();
 		} else if (var2 >= 30 && var2 < 35) {
 			this.groundActions[var2 - 30] = var1.readStringCp1252NullTerminated();
 			if (this.groundActions[var2 - 30].equalsIgnoreCase("Hidden")) {
@@ -543,9 +544,9 @@ public class ItemComposition extends DualNode {
 			} else if (var2 == 112) {
 				this.resizeZ = var1.readUnsignedShort();
 			} else if (var2 == 113) {
-				this.maleModel = var1.readByte();
+				this.ambient = var1.readByte();
 			} else if (var2 == 114) {
-				this.field2838 = var1.readByte() * 5;
+				this.contrast = var1.readByte() * 5;
 			} else if (var2 == 115) {
 				this.team = var1.readUnsignedByte();
 			} else if (var2 == 139) {
@@ -610,9 +611,9 @@ public class ItemComposition extends DualNode {
 		this.examine = var2.examine;
 		this.isMembersOnly = var2.isMembersOnly;
 		this.isStackable = var2.isStackable;
+		this.maleModel = var2.maleModel;
 		this.maleModel1 = var2.maleModel1;
 		this.maleModel2 = var2.maleModel2;
-		this.ambient = var2.ambient;
 		this.femaleModel = var2.femaleModel;
 		this.femaleModel1 = var2.femaleModel1;
 		this.femaleModel2 = var2.femaleModel2;
@@ -762,7 +763,7 @@ public class ItemComposition extends DualNode {
 					}
 				}
 
-				var5 = var6.toModel(this.maleModel + 64, this.field2838 + 768, -50, -10, -50);
+				var5 = var6.toModel(this.ambient + 64, this.contrast + 768, -50, -10, -50);
 				var5.isSingleTile = true;
 				ItemDefinition_cachedModels.put(var5, (long)this.id);
 				return var5;

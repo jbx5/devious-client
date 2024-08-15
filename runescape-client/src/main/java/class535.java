@@ -208,7 +208,7 @@ public class class535 implements Enum {
 		garbageValue = "1326717592"
 	)
 	static void method9464() {
-		class532.method9434(24);
+		class532.updateLoginIndex(24);
 		class130.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 }

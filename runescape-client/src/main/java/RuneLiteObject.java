@@ -25,7 +25,7 @@ public class RuneLiteObject extends GraphicsObject {
 			if (active) {
 				super.frame = 0;
 				super.frameCycle = 0;
-				HttpResponse.worldView.graphicsObjects.addFirst(this);
+				class328.worldView.graphicsObjects.addFirst(this);
 			} else {
 				remove();
 			}

@@ -29,8 +29,8 @@ public class HealthBarDefinition extends DualNode {
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
 	)
-	@Export("HitSplatDefinition_cachedSprites")
-	static EvictingDualNodeHashTable HitSplatDefinition_cachedSprites;
+	@Export("HealthBarDefinition_cachedSprites")
+	static EvictingDualNodeHashTable HealthBarDefinition_cachedSprites;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
 		intValue = -851216971
@@ -92,7 +92,7 @@ public class HealthBarDefinition extends DualNode {
 
 	static {
 		HealthBarDefinition_cached = new EvictingDualNodeHashTable(64);
-		HitSplatDefinition_cachedSprites = new EvictingDualNodeHashTable(64);
+		HealthBarDefinition_cachedSprites = new EvictingDualNodeHashTable(64);
 	}
 
 	public HealthBarDefinition() {
@@ -167,13 +167,13 @@ public class HealthBarDefinition extends DualNode {
 		if (this.frontSpriteID < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.frontSpriteID);
+			SpritePixels var1 = (SpritePixels) HealthBarDefinition_cachedSprites.get((long)this.frontSpriteID);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class195.SpriteBuffer_getSprite(field2518, this.frontSpriteID, 0);
 				if (var1 != null) {
-					HitSplatDefinition_cachedSprites.put(var1, (long)this.frontSpriteID);
+					HealthBarDefinition_cachedSprites.put(var1, (long)this.frontSpriteID);
 				}
 
 				return var1;
@@ -191,13 +191,13 @@ public class HealthBarDefinition extends DualNode {
 		if (this.backSpriteID < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.backSpriteID);
+			SpritePixels var1 = (SpritePixels) HealthBarDefinition_cachedSprites.get((long)this.backSpriteID);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class195.SpriteBuffer_getSprite(field2518, this.backSpriteID, 0);
 				if (var1 != null) {
-					HitSplatDefinition_cachedSprites.put(var1, (long)this.backSpriteID);
+					HealthBarDefinition_cachedSprites.put(var1, (long)this.backSpriteID);
 				}
 
 				return var1;

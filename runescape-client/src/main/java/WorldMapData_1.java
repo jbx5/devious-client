@@ -192,7 +192,7 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 	@Export("addPlayerToMenu")
 	static final void addPlayerToMenu(Player var0, int var1, int var2, int var3, int var4) {
 		if (var0.index != Client.localPlayerIndex) {
-			if (Client.field650.field5518 < 400) {
+			if (Client.menu.menuOptionsCount < 400) {
 				String var5;
 				if (var0.skillLevel == 0) {
 					var5 = var0.actions[0] + var0.username + var0.actions[1] + WorldView.method2734(var0.combatLevel, class253.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
@@ -202,10 +202,10 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 
 				int var6;
 				if (Client.isItemSelected == 1) {
-					NpcOverrides.method4911("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16777215) + var5, 14, var1, var2, var3, -1, false, var4);
+					NpcOverrides.insertMenuItem("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16777215) + var5, 14, var1, var2, var3, -1, false, var4);
 				} else if (Client.isSpellSelected) {
 					if ((UserComparator3.selectedSpellFlags & 8) == 8) {
-						NpcOverrides.method4911(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16777215) + var5, 15, var1, var2, var3, -1, false, var4);
+						NpcOverrides.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16777215) + var5, 15, var1, var2, var3, -1, false, var4);
 					}
 				} else {
 					for (var6 = 7; var6 >= 0; --var6) {
@@ -216,7 +216,7 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 									continue;
 								}
 
-								if (AttackOption.field1365 == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > class253.localPlayer.combatLevel) {
+								if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > class253.localPlayer.combatLevel) {
 									var7 = 2000;
 								}
 
@@ -234,15 +234,15 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 							}
 
 							boolean var8 = false;
-							int var9 = Client.field638[var6] + var7;
-							NpcOverrides.method4911(Client.playerMenuActions[var6], TransformationMatrix.colorStartTag(16777215) + var5, var9, var1, var2, var3, -1, false, var4);
+							int var9 = Client.playerMenuOpcodes[var6] + var7;
+							NpcOverrides.insertMenuItem(Client.playerMenuActions[var6], TransformationMatrix.colorStartTag(16777215) + var5, var9, var1, var2, var3, -1, false, var4);
 						}
 					}
 				}
 
-				for (var6 = 0; var6 < Client.field650.field5518; ++var6) {
-					if (Client.field650.field5521[var6] == 23) {
-						Client.field650.field5522[var6] = TransformationMatrix.colorStartTag(16777215) + var5;
+				for (var6 = 0; var6 < Client.menu.menuOptionsCount; ++var6) {
+					if (Client.menu.menuOpcodes[var6] == 23) {
+						Client.menu.menuTargets[var6] = TransformationMatrix.colorStartTag(16777215) + var5;
 						break;
 					}
 				}

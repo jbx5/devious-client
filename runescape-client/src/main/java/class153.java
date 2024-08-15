@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -76,9 +77,10 @@ public class class153 extends class148 {
 		descriptor = "(Ldd;IIIII)V",
 		garbageValue = "-996010726"
 	)
-	static final void method3393(NPC var0, int var1, int var2, int var3, int var4) {
+	@Export("addNpcToMenu")
+	static final void addNpcToMenu(NPC var0, int var1, int var2, int var3, int var4) {
 		NPCComposition var5 = var0.definition;
-		if (Client.field650.field5518 < 400) {
+		if (Client.menu.menuOptionsCount < 400) {
 			if (var5.transforms != null) {
 				var5 = var5.transform();
 			}
@@ -118,14 +120,14 @@ public class class153 extends class148 {
 						}
 
 						if (var5.lowPriorityFollowerOps && Client.followerOpsLowPriority) {
-							NpcOverrides.method4911("Examine", TransformationMatrix.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
+							NpcOverrides.insertMenuItem("Examine", TransformationMatrix.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
 						}
 
 						if (!class105.field1355 && Client.isItemSelected == 1) {
-							NpcOverrides.method4911("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16776960) + var6, 7, var1, var2, var3, -1, false, var4);
+							NpcOverrides.insertMenuItem("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16776960) + var6, 7, var1, var2, var3, -1, false, var4);
 						} else if (Client.isSpellSelected) {
 							if (!class105.field1355 && (UserComparator3.selectedSpellFlags & 2) == 2) {
-								NpcOverrides.method4911(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16776960) + var6, 8, var1, var2, var3, -1, false, var4);
+								NpcOverrides.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16776960) + var6, 8, var1, var2, var3, -1, false, var4);
 							}
 						} else {
 							var7 = var5.lowPriorityFollowerOps && Client.followerOpsLowPriority ? 2000 : 0;
@@ -155,7 +157,7 @@ public class class153 extends class148 {
 											var10 = var7 + 13;
 										}
 
-										NpcOverrides.method4911(var8[var12], TransformationMatrix.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
+										NpcOverrides.insertMenuItem(var8[var12], TransformationMatrix.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
 									}
 								}
 							}
@@ -165,7 +167,7 @@ public class class153 extends class148 {
 									if (!class105.field1355 && var0.method2749(var12) && var8[var12] != null && var8[var12].equalsIgnoreCase("Attack")) {
 										short var13 = 0;
 										if (AttackOption.AttackOption_hidden != Client.npcAttackOption) {
-											if (AttackOption.field1365 == Client.npcAttackOption || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var5.combatLevel > class253.localPlayer.combatLevel) {
+											if (AttackOption.AttackOption_alwaysRightClick == Client.npcAttackOption || Client.npcAttackOption == AttackOption.AttackOption_dependsOnCombatLevels && var5.combatLevel > class253.localPlayer.combatLevel) {
 												var13 = 2000;
 											}
 
@@ -190,14 +192,14 @@ public class class153 extends class148 {
 												var10 = var13 + 13;
 											}
 
-											NpcOverrides.method4911(var8[var12], TransformationMatrix.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
+											NpcOverrides.insertMenuItem(var8[var12], TransformationMatrix.colorStartTag(16776960) + var6, var10, var1, var2, var3, -1, false, var4);
 										}
 									}
 								}
 							}
 
 							if (!var5.lowPriorityFollowerOps || !Client.followerOpsLowPriority) {
-								NpcOverrides.method4911("Examine", TransformationMatrix.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
+								NpcOverrides.insertMenuItem("Examine", TransformationMatrix.colorStartTag(16776960) + var6, 1003, var1, var2, var3, -1, false, var4);
 							}
 						}
 
