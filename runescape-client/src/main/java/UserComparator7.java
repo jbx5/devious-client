@@ -2,12 +2,11 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import netscape.javascript.JSObject;
 
-@ObfuscatedName("em")
+@ObfuscatedName("ez")
 @Implements("UserComparator7")
 public class UserComparator7 extends AbstractUserComparator {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -15,10 +14,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;Lsh;I)I",
-		garbageValue = "396253425"
+		descriptor = "(Lsc;Lsc;I)I",
+		garbageValue = "1686620148"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -31,42 +30,5 @@ public class UserComparator7 extends AbstractUserComparator {
 
 	public int compare(Object var1, Object var2) {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
-	}
-
-	@ObfuscatedName("hi")
-	@ObfuscatedSignature(
-		descriptor = "(Ldz;B)V",
-		garbageValue = "57"
-	)
-	static void method3008(class94 var0) {
-		if (Client.field535 != var0) {
-			Client.field535 = var0;
-		}
-	}
-
-	@ObfuscatedName("oe")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1428864638"
-	)
-	static void method3002(String var0) {
-		AsyncHttpResponse.field81 = var0;
-
-		try {
-			String var1 = class415.client.getParameter(Integer.toString(18));
-			String var2 = class415.client.getParameter(Integer.toString(13));
-			String var3 = var1 + "settings=" + var0 + "; version=1; path=/; domain=" + var2;
-			if (var0.length() == 0) {
-				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
-			} else {
-				var3 = var3 + "; Expires=" + class152.method3299(WorldMapData_1.method4861() + 94608000000L) + "; Max-Age=" + 94608000L;
-			}
-
-			Client var4 = class415.client;
-			String var5 = "document.cookie=\"" + var3 + "\"";
-			JSObject.getWindow(var4).eval(var5);
-		} catch (Throwable var6) {
-		}
-
 	}
 }

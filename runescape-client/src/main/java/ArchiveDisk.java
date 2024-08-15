@@ -6,33 +6,33 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sq")
+@ObfuscatedName("si")
 @Implements("ArchiveDisk")
 public final class ArchiveDisk {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@Export("ArchiveDisk_buffer")
 	static byte[] ArchiveDisk_buffer;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Luv;"
 	)
 	@Export("datFile")
 	BufferedFile datFile;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Luv;"
 	)
 	@Export("idxFile")
 	BufferedFile idxFile;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 9731805
+		intValue = -1217716605
 	)
 	@Export("archive")
 	int archive;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -198935251
+		intValue = 1177946241
 	)
 	@Export("maxEntrySize")
 	int maxEntrySize;
@@ -42,7 +42,7 @@ public final class ArchiveDisk {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(ILuf;Luf;I)V"
+		descriptor = "(ILuv;Luv;I)V"
 	)
 	public ArchiveDisk(int var1, BufferedFile var2, BufferedFile var3, int var4) {
 		this.datFile = null;
@@ -54,10 +54,10 @@ public final class ArchiveDisk {
 		this.maxEntrySize = var4;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(II)[B",
-		garbageValue = "-2126771329"
+		garbageValue = "-983212036"
 	)
 	@Export("read")
 	public byte[] read(int var1) {
@@ -148,10 +148,10 @@ public final class ArchiveDisk {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I[BII)Z",
-		garbageValue = "2138176512"
+		garbageValue = "1201549617"
 	)
 	@Export("write")
 	public boolean write(int var1, byte[] var2, int var3) {
@@ -169,10 +169,10 @@ public final class ArchiveDisk {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(I[BIZI)Z",
-		garbageValue = "1289120042"
+		descriptor = "(I[BIZB)Z",
+		garbageValue = "-99"
 	)
 	@Export("write0")
 	boolean write0(int var1, byte[] var2, int var3, boolean var4) {
@@ -213,18 +213,18 @@ public final class ArchiveDisk {
 
 				while (true) {
 					if (var7 < var3) {
-						label170: {
+						label172: {
 							int var9 = 0;
 							int var10;
 							if (var4) {
-								this.datFile.seek(520L * (long)var6);
+								this.datFile.seek((long)var6 * 520L);
 								int var11;
 								int var12;
 								if (var1 > 65535) {
 									try {
 										this.datFile.read(ArchiveDisk_buffer, 0, 10);
 									} catch (EOFException var17) {
-										break label170;
+										break label172;
 									}
 
 									var10 = ((ArchiveDisk_buffer[1] & 255) << 16) + ((ArchiveDisk_buffer[0] & 255) << 24) + (ArchiveDisk_buffer[3] & 255) + ((ArchiveDisk_buffer[2] & 255) << 8);
@@ -235,7 +235,7 @@ public final class ArchiveDisk {
 									try {
 										this.datFile.read(ArchiveDisk_buffer, 0, 8);
 									} catch (EOFException var16) {
-										break label170;
+										break label172;
 									}
 
 									var10 = (ArchiveDisk_buffer[1] & 255) + ((ArchiveDisk_buffer[0] & 255) << 8);
@@ -304,7 +304,7 @@ public final class ArchiveDisk {
 								ArchiveDisk_buffer[5] = (byte)(var9 >> 8);
 								ArchiveDisk_buffer[6] = (byte)var9;
 								ArchiveDisk_buffer[7] = (byte)this.archive;
-								this.datFile.seek((long)var6 * 520L);
+								this.datFile.seek(520L * (long)var6);
 								this.datFile.write(ArchiveDisk_buffer, 0, 8);
 								var10 = var3 - var7;
 								if (var10 > 512) {
@@ -332,5 +332,24 @@ public final class ArchiveDisk {
 
 	public String toString() {
 		return "" + this.archive;
+	}
+
+	@ObfuscatedName("iq")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V",
+		garbageValue = "757602534"
+	)
+	@Export("queueSoundEffect")
+	static void queueSoundEffect(int var0, int var1, int var2) {
+		if (TileItem.clientPreferences.getSoundEffectsVolume() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
+			Client.soundEffectIds[Client.soundEffectCount] = var0;
+			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var1;
+			Client.queuedSoundEffectDelays[Client.soundEffectCount] = var2;
+			Client.soundEffects[Client.soundEffectCount] = null;
+			Client.soundLocations[Client.soundEffectCount] = 0;
+			Client.field756[Client.soundEffectCount] = 0;
+			++Client.soundEffectCount;
+		}
+
 	}
 }

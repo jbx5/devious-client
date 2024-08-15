@@ -1,90 +1,95 @@
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ss")
-public abstract class class487 extends class306 implements class554 {
-	@ObfuscatedSignature(
-		descriptor = "(Lof;Lpe;I)V"
+@ObfuscatedName("sj")
+public class class487 implements class492 {
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		longValue = -7444871008356671971L
 	)
-	protected class487(StudioGame var1, Language var2, int var3) {
-		super(var1, var2, var3);
+	static long field5014;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Luw;"
+	)
+	public final class522 field5016;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lui;)V"
+	)
+	class487(class523 var1) {
+		this.field5016 = var1;
 	}
 
-	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lsm;",
-		garbageValue = "-114111951"
+		descriptor = "(Lsg;)V"
 	)
-	protected abstract class489 vmethod9367(int var1);
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1524861563"
-	)
-	public int method8799() {
-		return super.field3247;
+	public class487(class488 var1) {
+		this(new class523(var1));
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/Object;",
-		garbageValue = "-2090068814"
+		descriptor = "(IB)I",
+		garbageValue = "1"
 	)
-	public Object vmethod9874(int var1) {
-		class489 var2 = this.vmethod9367(var1);
-		return var2 != null && var2.method8820() ? var2.method8821() : null;
+	public int method8865(int var1) {
+		return this.field5016.vmethod9333(var1);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)Lvt;",
-		garbageValue = "-683314488"
+		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
+		garbageValue = "550336594"
 	)
-	public class555 method8802(Buffer var1) {
-		int var2 = var1.readUnsignedShort();
-		class489 var3 = this.vmethod9367(var2);
-		class555 var4 = new class555(var2);
-		Class var5 = var3.field5037.field5291;
-		if (var5 == Integer.class) {
-			var4.field5429 = var1.readInt();
-		} else if (var5 == Long.class) {
-			var4.field5429 = var1.readLong();
-		} else if (var5 == String.class) {
-			var4.field5429 = var1.readStringCp1252NullCircumfixed();
-		} else {
-			if (!class550.class.isAssignableFrom(var5)) {
-				throw new IllegalStateException();
-			}
+	public static String method8869(CharSequence var0) {
+		int var1 = var0.length();
+		StringBuilder var2 = new StringBuilder(var1);
 
-			try {
-				class550 var6 = (class550)var5.newInstance();
-				var6.method9850(var1);
-				var4.field5429 = var6;
-			} catch (InstantiationException var7) {
-			} catch (IllegalAccessException var8) {
+		for (int var3 = 0; var3 < var1; ++var3) {
+			char var4 = var0.charAt(var3);
+			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
+				if (var4 == ' ') {
+					var2.append('+');
+				} else {
+					byte var5 = GrandExchangeOfferNameComparator.charToByteCp1252(var4);
+					var2.append('%');
+					int var6 = var5 >> 4 & 15;
+					if (var6 >= 10) {
+						var2.append((char)(var6 + 55));
+					} else {
+						var2.append((char)(var6 + 48));
+					}
+
+					var6 = var5 & 15;
+					if (var6 >= 10) {
+						var2.append((char)(var6 + 55));
+					} else {
+						var2.append((char)(var6 + 48));
+					}
+				}
+			} else {
+				var2.append(var4);
 			}
 		}
 
-		return var4;
+		return var2.toString();
 	}
 
-	@ObfuscatedName("hx")
+	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-22"
+		descriptor = "([BIIB)I",
+		garbageValue = "21"
 	)
-	static int method8812() {
-		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
-			int var0 = 0;
+	public static int method8868(byte[] var0, int var1, int var2) {
+		int var3 = -1;
 
-			for (int var1 = 0; var1 <= Client.archiveLoadersDone; ++var1) {
-				var0 += ((ArchiveLoader)Client.archiveLoaders.get(var1)).loadedCount;
-			}
-
-			return var0 * 10000 / Client.field574;
-		} else {
-			return 10000;
+		for (int var4 = var1; var4 < var2; ++var4) {
+			var3 = var3 >>> 8 ^ Buffer.field5384[(var3 ^ var0[var4]) & 255];
 		}
+
+		var3 = ~var3;
+		return var3;
 	}
 }

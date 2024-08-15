@@ -4,48 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kw")
+@ObfuscatedName("lq")
 @Implements("WorldMapSection1")
 public class WorldMapSection1 implements WorldMapSection {
-	@ObfuscatedName("fb")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	@Export("archive10")
-	static Archive archive10;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 502415749
+		intValue = -2051699771
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 1809402251
+		intValue = -802576077
 	)
 	@Export("planes")
 	int planes;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1715220047
+		intValue = 1092564535
 	)
 	@Export("regionStartX")
 	int regionStartX;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1345453013
+		intValue = -624922437
 	)
 	@Export("regionStartY")
 	int regionStartY;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 407425227
+		intValue = -1035647709
 	)
 	@Export("regionEndX")
 	int regionEndX;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1317582751
+		intValue = -260647645
 	)
 	@Export("regionEndY")
 	int regionEndY;
@@ -53,10 +47,10 @@ public class WorldMapSection1 implements WorldMapSection {
 	WorldMapSection1() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)V",
-		garbageValue = "1568670940"
+		descriptor = "(Lku;I)V",
+		garbageValue = "1421552299"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -78,34 +72,34 @@ public class WorldMapSection1 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)Z",
-		garbageValue = "115"
+		descriptor = "(IIII)Z",
+		garbageValue = "1107005253"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
-		if (var1 >= this.minPlane && var1 < this.planes + this.minPlane) {
+		if (var1 >= this.minPlane && var1 < this.minPlane + this.planes) {
 			return var2 >> 6 == this.regionStartX && var3 >> 6 == this.regionStartY;
 		} else {
 			return false;
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "-898385408"
+		descriptor = "(IIB)Z",
+		garbageValue = "34"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >> 6 == this.regionEndX && var2 >> 6 == this.regionEndY;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)[I",
-		garbageValue = "-35"
+		garbageValue = "63"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -117,10 +111,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lnl;",
-		garbageValue = "-55064754"
+		descriptor = "(III)Lnv;",
+		garbageValue = "-554690101"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -133,10 +127,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)V",
-		garbageValue = "301668137"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-597206269"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -149,146 +143,36 @@ public class WorldMapSection1 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "26437"
+		descriptor = "(I)V",
+		garbageValue = "1668939625"
 	)
 	@Export("postRead")
 	void postRead() {
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ps")
 	@ObfuscatedSignature(
-		descriptor = "(Lde;Lvp;IIIIIII)V",
-		garbageValue = "-1270068304"
+		descriptor = "(II)V",
+		garbageValue = "525676400"
 	)
-	@Export("loadTerrain")
-	static final void loadTerrain(WorldView var0, Buffer var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		int[][][] var8 = var0.tileHeights;
-		byte[][][] var9 = var0.tileSettings;
-		int var10;
-		if (var2 >= 0 && var2 < 4 && var3 >= 0 && var3 < var8[0].length - 1 && var4 >= 0 && var4 < var8[0][0].length - 1) {
-			var9[var2][var3][var4] = 0;
-
-			while (true) {
-				var10 = var1.readUnsignedShort();
-				if (var10 == 0) {
-					if (var2 == 0) {
-						var8[0][var3][var4] = -class177.method3567(var5 + 932731, 556238 + var6) * 8;
-					} else {
-						var8[var2][var3][var4] = var8[var2 - 1][var3][var4] - 240;
-					}
-					break;
-				}
-
-				if (var10 == 1) {
-					int var11 = var1.readUnsignedByte();
-					if (var11 == 1) {
-						var11 = 0;
-					}
-
-					if (var2 == 0) {
-						var8[0][var3][var4] = -var11 * 8;
-					} else {
-						var8[var2][var3][var4] = var8[var2 - 1][var3][var4] - var11 * 8;
-					}
-					break;
-				}
-
-				if (var10 <= 49) {
-					Tiles.Tiles_overlays[var2][var3][var4] = (short)var1.readShort();
-					Tiles.Tiles_shapes[var2][var3][var4] = (byte)((var10 - 2) / 4);
-					class356.field3810[var2][var3][var4] = (byte)(var10 - 2 + var7 & 3);
-				} else if (var10 <= 81) {
-					var9[var2][var3][var4] = (byte)(var10 - 49);
-				} else {
-					Tiles.Tiles_underlays[var2][var3][var4] = (short)(var10 - 81);
-				}
-			}
-		} else {
-			while (true) {
-				var10 = var1.readUnsignedShort();
-				if (var10 == 0) {
-					break;
-				}
-
-				if (var10 == 1) {
-					var1.readUnsignedByte();
-					break;
-				}
-
-				if (var10 <= 49) {
-					var1.readShort();
-				}
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ja")
-	@ObfuscatedSignature(
-		descriptor = "(Lde;B)V",
-		garbageValue = "-9"
-	)
-	static final void method5042(WorldView var0) {
-		for (Projectile var1 = (Projectile)var0.projectiles.last(); var1 != null; var1 = (Projectile)var0.projectiles.previous()) {
-			if (var0.plane == var1.plane && Client.cycle <= var1.cycleEnd) {
-				if (Client.cycle >= var1.cycleStart) {
-					NPC var2;
-					int var3;
-					Player var4;
-					if (!var1.isMoving && var1.field975 != 0) {
-						if (var1.field975 > 0) {
-							var2 = HttpResponse.worldView.npcs[var1.field975 - 1];
-							if (var2 != null && 0 <= var2.x && var2.x < 13312 && 0 <= var2.y && var2.y < 13312) {
-								var1.sourceX = var2.x;
-								var1.sourceY = var2.y;
-								var1.setDestination(var1.field968, var1.field985, var1.field970, Client.cycle);
-							}
-						} else {
-							var3 = -var1.field975 - 1;
-							if (var3 == Client.localPlayerIndex) {
-								var4 = SoundCache.localPlayer;
-							} else {
-								var4 = HttpResponse.worldView.players[var3];
-							}
-
-							if (var4 != null && 0 <= var4.x && var4.x < 13312 && 0 <= var4.y && var4.y < 13312) {
-								var1.sourceX = var4.x;
-								var1.sourceY = var4.y;
-								var1.setDestination(var1.field968, var1.field985, var1.field970, Client.cycle);
-							}
-						}
-					}
-
-					if (var1.targetIndex > 0) {
-						var2 = var0.npcs[var1.targetIndex - 1];
-						if (var2 != null && 0 <= var2.x && var2.x < 13312 && 0 <= var2.y && var2.y < 13312) {
-							var1.setDestination(var2.x, var2.y, class169.getTileHeight(var0, var2.x, var2.y, var1.plane) - var1.endHeight, Client.cycle);
-						}
-					}
-
-					if (var1.targetIndex < 0) {
-						var3 = -var1.targetIndex - 1;
-						if (var3 == Client.localPlayerIndex) {
-							var4 = SoundCache.localPlayer;
-						} else {
-							var4 = var0.players[var3];
-						}
-
-						if (var4 != null && 0 <= var4.x && var4.x < 13312 && 0 <= var4.y && var4.y < 13312) {
-							var1.setDestination(var4.x, var4.y, class169.getTileHeight(var0, var4.x, var4.y, var1.plane) - var1.endHeight, Client.cycle);
-						}
-					}
-
-					var1.advance(Client.graphicsCycle);
-					var0.scene.drawEntity(var0.plane, (int)var1.x, (int)var1.y, (int)var1.z, 60, var1, var1.yaw, -1L, false);
-				}
+	static void method5973(int var0) {
+		SequenceDefinition var1 = class182.SequenceDefinition_get(var0);
+		if (var1.isCachedModelIdSet()) {
+			int var3 = var1.SequenceDefinition_cachedModelId;
+			class142 var4 = WidgetDefinition.method6556(var3);
+			int var2;
+			if (var4 == null) {
+				var2 = 2;
 			} else {
-				var1.remove();
+				var2 = var4.method3288() ? 0 : 1;
 			}
-		}
 
+			if (var2 == 2) {
+				Client.field795.add(var1.SequenceDefinition_cachedModelId);
+			}
+
+		}
 	}
 }

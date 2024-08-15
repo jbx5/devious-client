@@ -1,19 +1,13 @@
 import java.util.Comparator;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eq")
+@ObfuscatedName("ev")
 @Implements("UserComparator4")
 public class UserComparator4 implements Comparator {
-	@ObfuscatedName("wi")
-	static Iterator field1489;
-	@ObfuscatedName("ak")
-	@Export("SpriteBuffer_xOffsets")
-	public static int[] SpriteBuffer_xOffsets;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -21,10 +15,10 @@ public class UserComparator4 implements Comparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;Lsh;I)I",
-		garbageValue = "-1868614741"
+		descriptor = "(Lsc;Lsc;I)I",
+		garbageValue = "2136379575"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(Buddy var1, Buddy var2) {
@@ -39,49 +33,64 @@ public class UserComparator4 implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-92"
+		descriptor = "(III)I",
+		garbageValue = "-170057928"
 	)
-	@Export("focusPasswordWhenUsernameFilled")
-	static void focusPasswordWhenUsernameFilled() {
-		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-			Login.currentLoginField = 1;
-		} else {
-			Login.currentLoginField = 0;
-		}
-
-	}
-
-	@ObfuscatedName("lz")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-999803974"
-	)
-	static final void method2994() {
-		int var0 = class105.menuX;
-		int var1 = UserComparator9.menuY;
-		int var2 = class330.menuWidth;
-		int var3 = IntProjection.menuHeight;
-		int var4 = 6116423;
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, var4);
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0 + 1, var1 + 1, var2 - 2, 16, 0);
-		Rasterizer2D.Rasterizer2D_drawRectangle(var0 + 1, var1 + 18, var2 - 2, var3 - 19, 0);
-		ParamComposition.fontBold12.draw("Choose Option", var0 + 3, var1 + 14, var4, -1);
-		int var5 = MouseHandler.MouseHandler_x;
-		int var6 = MouseHandler.MouseHandler_y;
-
-		for (int var7 = 0; var7 < Client.menuOptionsCount; ++var7) {
-			int var8 = var1 + (Client.menuOptionsCount - 1 - var7) * 15 + 31;
-			int var9 = 16777215;
-			if (var5 > var0 && var5 < var0 + var2 && var6 > var8 - 13 && var6 < var8 + 3) {
-				var9 = 16776960;
+	static int method3043(int var0, int var1) {
+		if (var0 == -2) {
+			return 12345678;
+		} else if (var0 == -1) {
+			if (var1 < 0) {
+				var1 = 0;
+			} else if (var1 > 127) {
+				var1 = 127;
 			}
 
-			ParamComposition.fontBold12.draw(WorldMapIcon_1.method4580(var7), var0 + 3, var8, var9, 0);
+			var1 = 127 - var1;
+			return var1;
+		} else {
+			var1 = (var0 & 127) * var1 / 128;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
+			}
+
+			return (var0 & 65408) + var1;
+		}
+	}
+
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "(Ldt;S)V",
+		garbageValue = "15598"
+	)
+	static final void method3044(Actor var0) {
+		boolean var1 = var0.field1236 == Client.cycle || var0.sequence == -1 || var0.sequenceDelay != 0;
+		if (!var1) {
+			SequenceDefinition var2 = class182.SequenceDefinition_get(var0.sequence);
+			if (var2 != null && !var2.isCachedModelIdSet()) {
+				var1 = var0.sequenceFrameCycle + 1 > var2.frameLengths[var0.sequenceFrame];
+			} else {
+				var1 = true;
+			}
 		}
 
-		WorldView.method2684(class105.menuX, UserComparator9.menuY, class330.menuWidth, IntProjection.menuHeight);
+		if (var1) {
+			int var8 = var0.field1236 - var0.spotAnimation;
+			int var3 = Client.cycle - var0.spotAnimation;
+			int var4 = var0.field1231 * 128 + var0.field1183 * 64;
+			int var5 = var0.field1233 * 128 + var0.field1183 * 64;
+			int var6 = var0.field1232 * 128 + var0.field1183 * 64;
+			int var7 = var0.field1234 * 128 + var0.field1183 * 64;
+			var0.x = (var3 * var6 + var4 * (var8 - var3)) / var8;
+			var0.y = (var3 * var7 + var5 * (var8 - var3)) / var8;
+		}
+
+		var0.field1253 = 0;
+		var0.orientation = var0.field1237;
+		var0.rotation = var0.orientation;
 	}
 }

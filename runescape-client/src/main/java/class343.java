@@ -1,44 +1,50 @@
-import java.util.BitSet;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Comparator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ni")
-public class class343 extends Node {
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -650466251
+@ObfuscatedName("nk")
+public class class343 implements Comparator {
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "Lvc;"
 	)
-	int field3719;
-	@ObfuscatedName("ad")
-	BitSet field3721;
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("tk")
+	@ObfuscatedSignature(
+		descriptor = "Lcl;"
+	)
+	@Export("decimator")
+	static Decimator decimator;
 
-	class343(int var1) {
-		this.field3719 = var1;
-		this.field3721 = new BitSet(128);
+	class343() {
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(ILsq;Loz;S)V",
-		garbageValue = "-26919"
+		descriptor = "(Lmt;Lmt;I)I",
+		garbageValue = "1469322675"
 	)
-	static void method6442(int var0, ArchiveDisk var1, Archive var2) {
-		byte[] var3 = null;
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-			for (ArchiveDiskAction var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.last(); var5 != null; var5 = (ArchiveDiskAction)ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.previous()) {
-				if ((long)var0 == var5.key && var1 == var5.archiveDisk && var5.type == 0) {
-					var3 = var5.data;
-					break;
-				}
-			}
-		}
+	int method6475(class336 var1, class336 var2) {
+		return var1.field3625 - var2.field3625;
+	}
 
-		if (var3 != null) {
-			var2.load(var1, var0, var3, true);
-		} else {
-			byte[] var4 = var1.read(var0);
-			var2.load(var1, var0, var4, true);
-		}
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	public int compare(Object var1, Object var2) {
+		return this.method6475((class336)var1, (class336)var2);
+	}
+
+	@ObfuscatedName("gi")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ltb;",
+		garbageValue = "-745799041"
+	)
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return class219.worldMap;
 	}
 }

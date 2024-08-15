@@ -5,256 +5,232 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("kk")
 @Implements("IndexCheck")
 public class IndexCheck implements class29 {
-	@ObfuscatedName("aq")
-	char[] field2461;
-	@ObfuscatedName("ad")
-	int[] field2448;
-	@ObfuscatedName("ag")
-	public int[] field2457;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = -625491541
-	)
-	public int field2450;
-	@ObfuscatedName("ap")
-	int[] field2451;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = 1718960357
-	)
-	int field2452;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = -413767025
-	)
-	int field2453;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = -1980467025
-	)
-	int field2456;
 	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 1889891679
-	)
-	int field2455;
-	@ObfuscatedName("ai")
-	boolean[] field2449;
-	@ObfuscatedName("ae")
-	boolean[] field2454;
+	char[] field2923;
+	@ObfuscatedName("ay")
+	int[] field2929;
+	@ObfuscatedName("an")
+	public int[] field2920;
 	@ObfuscatedName("au")
-	boolean[] field2458;
-	@ObfuscatedName("ah")
-	public char field2459;
-	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -243119895
+		intValue = 756319555
 	)
-	public int field2460;
+	public int field2918;
+	@ObfuscatedName("ax")
+	int[] field2922;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = 445544175
+	)
+	int field2919;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1461761705
+	)
+	int field2924;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = 115267651
+	)
+	int field2925;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = -899621997
+	)
+	int field2921;
+	@ObfuscatedName("ad")
+	boolean[] field2927;
+	@ObfuscatedName("aq")
+	boolean[] field2928;
+	@ObfuscatedName("al")
+	boolean[] field2926;
+	@ObfuscatedName("aj")
+	public char field2931;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 1358943087
+	)
+	public int field2930;
 
 	public IndexCheck() {
-		this.field2461 = new char[128];
-		this.field2448 = new int[128];
-		this.field2457 = new int[128];
-		this.field2450 = 0;
-		this.field2451 = new int[128];
-		this.field2452 = 0;
-		this.field2453 = 0;
-		this.field2456 = 0;
-		this.field2455 = 0;
-		this.field2449 = new boolean[112];
-		this.field2454 = new boolean[112];
-		this.field2458 = new boolean[112];
+		this.field2923 = new char[128];
+		this.field2929 = new int[128];
+		this.field2920 = new int[128];
+		this.field2918 = 0;
+		this.field2922 = new int[128];
+		this.field2919 = 0;
+		this.field2924 = 0;
+		this.field2925 = 0;
+		this.field2921 = 0;
+		this.field2927 = new boolean[112];
+		this.field2928 = new boolean[112];
+		this.field2926 = new boolean[112];
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1607404438"
-	)
-	public boolean vmethod4396(int var1) {
-		this.method4379(var1);
-		this.field2449[var1] = true;
-		this.field2454[var1] = true;
-		this.field2458[var1] = false;
-		this.field2457[++this.field2450 - 1] = var1;
-		return true;
-	}
-
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(IB)Z",
-		garbageValue = "20"
+		garbageValue = "-80"
 	)
-	public boolean vmethod4375(int var1) {
-		this.field2449[var1] = false;
-		this.field2454[var1] = false;
-		this.field2458[var1] = true;
-		this.field2451[++this.field2452 - 1] = var1;
+	public boolean vmethod5350(int var1) {
+		this.method5352(var1);
+		this.field2927[var1] = true;
+		this.field2928[var1] = true;
+		this.field2926[var1] = false;
+		this.field2920[++this.field2918 - 1] = var1;
 		return true;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-502375958"
+		descriptor = "(II)Z",
+		garbageValue = "-1050737787"
 	)
-	public boolean vmethod4378(char var1) {
-		int var2 = this.field2456 + 1 & 127;
-		if (var2 != this.field2453) {
-			this.field2448[this.field2456] = -1;
-			this.field2461[this.field2456] = var1;
-			this.field2456 = var2;
-		}
-
-		return false;
+	public boolean vmethod5351(int var1) {
+		this.field2927[var1] = false;
+		this.field2928[var1] = false;
+		this.field2926[var1] = true;
+		this.field2922[++this.field2919 - 1] = var1;
+		return true;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(ZS)Z",
-		garbageValue = "13173"
+		descriptor = "(CI)Z",
+		garbageValue = "-772262998"
 	)
-	public boolean vmethod4380(boolean var1) {
+	public boolean vmethod5378(char var1) {
+		int var2 = this.field2925 + 1 & 127;
+		if (var2 != this.field2924) {
+			this.field2929[this.field2925] = -1;
+			this.field2923[this.field2925] = var1;
+			this.field2925 = var2;
+		}
+
 		return false;
 	}
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1195175196"
+		descriptor = "(ZI)Z",
+		garbageValue = "-1863708161"
 	)
-	void method4379(int var1) {
-		int var2 = this.field2456 + 1 & 127;
-		if (var2 != this.field2453) {
-			this.field2448[this.field2456] = var1;
-			this.field2461[this.field2456] = 0;
-			this.field2456 = var2;
+	public boolean vmethod5354(boolean var1) {
+		return false;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "-74"
+	)
+	void method5352(int var1) {
+		int var2 = this.field2925 + 1 & 127;
+		if (var2 != this.field2924) {
+			this.field2929[this.field2925] = var1;
+			this.field2923[this.field2925] = 0;
+			this.field2925 = var2;
 		}
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "-124"
+		garbageValue = "-20"
 	)
-	public void method4406() {
-		this.field2453 = this.field2455;
-		this.field2455 = this.field2456;
-		this.field2450 = 0;
-		this.field2452 = 0;
-		Arrays.fill(this.field2454, false);
-		Arrays.fill(this.field2458, false);
+	public void method5371() {
+		this.field2924 = this.field2921;
+		this.field2921 = this.field2925;
+		this.field2918 = 0;
+		this.field2919 = 0;
+		Arrays.fill(this.field2928, false);
+		Arrays.fill(this.field2926, false);
 	}
 
-	@ObfuscatedName("az")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "32"
+		descriptor = "(I)Z",
+		garbageValue = "-810494332"
 	)
-	public final boolean method4382() {
-		if (this.field2453 == this.field2455) {
+	public final boolean method5375() {
+		if (this.field2924 == this.field2921) {
 			return false;
 		} else {
-			this.field2460 = this.field2448[this.field2453];
-			this.field2459 = this.field2461[this.field2453];
-			this.field2453 = this.field2453 + 1 & 127;
+			this.field2930 = this.field2929[this.field2924];
+			this.field2931 = this.field2923[this.field2924];
+			this.field2924 = this.field2924 + 1 & 127;
 			return true;
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-2082579801"
+		descriptor = "(IB)Z",
+		garbageValue = "74"
 	)
-	public boolean method4383(int var1) {
-		return var1 >= 0 && var1 < 112 ? this.field2454[var1] : false;
+	public boolean method5357(int var1) {
+		return var1 >= 0 && var1 < 112 ? this.field2928[var1] : false;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-95509134"
+		descriptor = "(IB)Z",
+		garbageValue = "59"
 	)
 	@Export("isValidIndexInRange")
 	public boolean isValidIndexInRange(int var1) {
-		return var1 >= 0 && var1 < 112 ? this.field2449[var1] : false;
+		return var1 >= 0 && var1 < 112 ? this.field2927[var1] : false;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1504943769"
+		descriptor = "(IB)Z",
+		garbageValue = "101"
 	)
-	public boolean method4385(int var1) {
-		return var1 >= 0 && var1 < 112 ? this.field2458[var1] : false;
+	public boolean method5373(int var1) {
+		return var1 >= 0 && var1 < 112 ? this.field2926[var1] : false;
 	}
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)[I",
-		garbageValue = "-1345585805"
-	)
-	public int[] method4386() {
-		int[] var1 = new int[this.field2450];
-
-		for (int var2 = 0; var2 < this.field2450; ++var2) {
-			var1[var2] = this.field2457[var2];
-		}
-
-		return var1;
-	}
-
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(B)[I",
-		garbageValue = "3"
+		garbageValue = "18"
 	)
-	public int[] method4387() {
-		int[] var1 = new int[this.field2452];
+	public int[] method5349() {
+		int[] var1 = new int[this.field2918];
 
-		for (int var2 = 0; var2 < this.field2452; ++var2) {
-			var1[var2] = this.field2451[var2];
+		for (int var2 = 0; var2 < this.field2918; ++var2) {
+			var1[var2] = this.field2920[var2];
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-633889102"
+		descriptor = "(I)[I",
+		garbageValue = "-1899947386"
 	)
-	static final int method4392(int var0, int var1) {
-		if (var0 == -1) {
-			return 12345678;
-		} else {
-			var1 = (var0 & 127) * var1 / 128;
-			if (var1 < 2) {
-				var1 = 2;
-			} else if (var1 > 126) {
-				var1 = 126;
-			}
+	public int[] method5367() {
+		int[] var1 = new int[this.field2919];
 
-			return (var0 & 65408) + var1;
+		for (int var2 = 0; var2 < this.field2919; ++var2) {
+			var1[var2] = this.field2922[var2];
 		}
+
+		return var1;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IB)V",
-		garbageValue = "30"
+		descriptor = "(S)[Lmy;",
+		garbageValue = "31859"
 	)
-	static final void method4409(String var0, int var1) {
-		PacketBufferNode var2 = class170.getPacketBufferNode(ClientPacket.field3342, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeByte(Actor.stringCp1252NullTerminatedByteSize(var0) + 1);
-		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		var2.packetBuffer.writeByte(var1);
-		Client.packetWriter.addNode(var2);
+	public static class322[] method5385() {
+		return new class322[]{class322.field3367, class322.field3364, class322.field3363, class322.field3361, class322.field3365, class322.field3362, class322.field3368, class322.field3371, class322.field3369, class322.field3370, class322.field3366};
 	}
 }

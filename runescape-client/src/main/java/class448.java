@@ -1,42 +1,93 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Random;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("rh")
+@ObfuscatedName("ra")
 public class class448 {
 	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 41907731
-	)
-	static int field4826;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -1046301915
-	)
-	int field4825;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -1581170185
-	)
-	int field4823;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -994741757
-	)
-	int field4824;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = 1086262149
-	)
-	int field4822;
+	@Export("writeRandomDat")
+	public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
+		if (var2 == var0) {
+			if (var3 == var1) {
+				return;
+			}
 
-	public String toString() {
-		boolean var1 = true;
-		int var2 = 10 - Integer.toString(this.field4825).length();
-		int var3 = 10 - Integer.toString(this.field4824).length();
-		int var4 = 10 - Integer.toString(this.field4823).length();
-		String var5 = "          ".substring(10 - var2);
-		String var6 = "          ".substring(10 - var3);
-		String var7 = "          ".substring(10 - var4);
-		return "    Size: " + this.field4825 + var5 + "Created: " + this.field4823 + var7 + "Total used: " + this.field4824 + var6 + "Max-In-Use: " + this.field4822;
+			if (var3 > var1 && var3 < var4 + var1) {
+				--var4;
+				var1 += var4;
+				var3 += var4;
+				var4 = var1 - var4;
+
+				for (var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+					var2[var3--] = var0[var1--];
+				}
+
+				for (var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) {
+				}
+
+				return;
+			}
+		}
+
+		var4 += var1;
+
+		for (var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) {
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+			var2[var3++] = var0[var1++];
+		}
+
+		for (var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) {
+		}
+
+	}
+
+	@ObfuscatedName("ad")
+	@Export("clearIntArray")
+	public static void clearIntArray(int[] var0, int var1, int var2) {
+		for (var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) {
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+			var0[var1++] = 0;
+		}
+
+		for (var2 += 7; var1 < var2; var0[var1++] = 0) {
+		}
+
+	}
+
+	@ObfuscatedName("aq")
+	public static void method8355(int[] var0, int var1, int var2, int var3) {
+		if (var2 == 0 && var3 == 0) {
+			var2 = (int)(Math.random() * 2.147483647E9D);
+			var3 = (int)(Math.random() * 2.147483647E9D);
+		}
+
+		long var4 = (long)var2 << 32 | (long)var3;
+		Random var6 = new Random(var4);
+
+		for (int var7 = var1 - 1; var7 > 0; --var7) {
+			int var8 = var6.nextInt(var7 + 1);
+			if (var7 != var8) {
+				int var9 = var0[var7];
+				var0[var7] = var0[var8];
+				var0[var8] = var9;
+			}
+		}
+
 	}
 }

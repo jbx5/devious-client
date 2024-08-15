@@ -3,21 +3,27 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rn")
+@ObfuscatedName("sp")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("aq")
-	boolean field4932;
-	@ObfuscatedName("ad")
-	boolean field4933;
+	@ObfuscatedName("dw")
+	@ObfuscatedSignature(
+		descriptor = "Lds;"
+	)
+	@Export("mouseRecorder")
+	static MouseRecorder mouseRecorder;
+	@ObfuscatedName("ab")
+	boolean field4911;
+	@ObfuscatedName("ay")
+	boolean field4912;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lrn;B)I",
-		garbageValue = "28"
+		descriptor = "(Lsp;I)I",
+		garbageValue = "2101139269"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -29,23 +35,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4932 && !var1.field4932) {
+		} else if (this.field4911 && !var1.field4911) {
 			return -1;
-		} else if (!this.field4932 && var1.field4932) {
+		} else if (!this.field4911 && var1.field4911) {
 			return 1;
-		} else if (this.field4933 && !var1.field4933) {
+		} else if (this.field4912 && !var1.field4912) {
 			return -1;
-		} else if (!this.field4933 && var1.field4933) {
+		} else if (!this.field4912 && var1.field4912) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lsk;B)I",
-		garbageValue = "-93"
+		descriptor = "(Lsz;I)I",
+		garbageValue = "1336181307"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -54,5 +60,14 @@ public class Friend extends Buddy {
 
 	public int compareTo(Object var1) {
 		return this.compareToFriend((Friend)var1);
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-777303227"
+	)
+	public static void method8589() {
+		DbTableType.DBTableType_cache.clear();
 	}
 }

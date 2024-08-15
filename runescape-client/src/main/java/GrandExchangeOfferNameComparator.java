@@ -4,13 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pv")
+@ObfuscatedName("pd")
 @Implements("GrandExchangeOfferNameComparator")
 final class GrandExchangeOfferNameComparator implements Comparator {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lpm;Lpm;I)I",
-		garbageValue = "-1760951308"
+		descriptor = "(Lpx;Lpx;I)I",
+		garbageValue = "-400839181"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -25,50 +25,130 @@ final class GrandExchangeOfferNameComparator implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1502544286"
+		descriptor = "(CB)B",
+		garbageValue = "1"
 	)
-	public static String method7325(String var0) {
-		StringBuilder var1 = new StringBuilder(var0.length());
-		int var2 = 0;
-		int var3 = -1;
+	@Export("charToByteCp1252")
+	public static byte charToByteCp1252(char var0) {
+		byte var1;
+		if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
+			var1 = (byte)var0;
+		} else if (var0 == 8364) {
+			var1 = -128;
+		} else if (var0 == 8218) {
+			var1 = -126;
+		} else if (var0 == 402) {
+			var1 = -125;
+		} else if (var0 == 8222) {
+			var1 = -124;
+		} else if (var0 == 8230) {
+			var1 = -123;
+		} else if (var0 == 8224) {
+			var1 = -122;
+		} else if (var0 == 8225) {
+			var1 = -121;
+		} else if (var0 == 710) {
+			var1 = -120;
+		} else if (var0 == 8240) {
+			var1 = -119;
+		} else if (var0 == 352) {
+			var1 = -118;
+		} else if (var0 == 8249) {
+			var1 = -117;
+		} else if (var0 == 338) {
+			var1 = -116;
+		} else if (var0 == 381) {
+			var1 = -114;
+		} else if (var0 == 8216) {
+			var1 = -111;
+		} else if (var0 == 8217) {
+			var1 = -110;
+		} else if (var0 == 8220) {
+			var1 = -109;
+		} else if (var0 == 8221) {
+			var1 = -108;
+		} else if (var0 == 8226) {
+			var1 = -107;
+		} else if (var0 == 8211) {
+			var1 = -106;
+		} else if (var0 == 8212) {
+			var1 = -105;
+		} else if (var0 == 732) {
+			var1 = -104;
+		} else if (var0 == 8482) {
+			var1 = -103;
+		} else if (var0 == 353) {
+			var1 = -102;
+		} else if (var0 == 8250) {
+			var1 = -101;
+		} else if (var0 == 339) {
+			var1 = -100;
+		} else if (var0 == 382) {
+			var1 = -98;
+		} else if (var0 == 376) {
+			var1 = -97;
+		} else {
+			var1 = 63;
+		}
 
-		for (int var4 = 0; var4 < var0.length(); ++var4) {
-			char var5 = var0.charAt(var4);
-			if (var5 == '<') {
-				var1.append(var0.substring(var2, var4));
-				var3 = var4;
-			} else if (var5 == '>' && var3 != -1) {
-				String var6 = var0.substring(var3 + 1, var4);
-				var3 = -1;
-				if (var6.equals("lt")) {
-					var1.append("<");
-				} else if (var6.equals("gt")) {
-					var1.append(">");
-				} else if (var6.equals("br")) {
-					var1.append("\n");
+		return var1;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(IZS)[B",
+		garbageValue = "1023"
+	)
+	@Export("ByteArrayPool_getArrayBool")
+	public static byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
+		synchronized(ByteArrayPool.field4822) {
+			byte[] var3;
+			if ((var0 == 100 || var0 < 100 && var1) && ByteArrayPool.ByteArrayPool_smallCount > 0) {
+				var3 = ByteArrayPool.ByteArrayPool_small[--ByteArrayPool.ByteArrayPool_smallCount];
+				ByteArrayPool.ByteArrayPool_small[ByteArrayPool.ByteArrayPool_smallCount] = null;
+				return var3;
+			}
+
+			if ((var0 == 5000 || var0 < 5000 && var1) && ByteArrayPool.ByteArrayPool_mediumCount > 0) {
+				var3 = ByteArrayPool.ByteArrayPool_medium[--ByteArrayPool.ByteArrayPool_mediumCount];
+				ByteArrayPool.ByteArrayPool_medium[ByteArrayPool.ByteArrayPool_mediumCount] = null;
+				return var3;
+			}
+
+			if ((var0 == 10000 || var0 < 10000 && var1) && ByteArrayPool.ByteArrayPool_largeCount > 0) {
+				var3 = ByteArrayPool.ByteArrayPool_large[--ByteArrayPool.ByteArrayPool_largeCount];
+				ByteArrayPool.ByteArrayPool_large[ByteArrayPool.ByteArrayPool_largeCount] = null;
+				return var3;
+			}
+
+			if ((var0 == 30000 || var0 < 30000 && var1) && ByteArrayPool.field4830 > 0) {
+				var3 = ByteArrayPool.field4814[--ByteArrayPool.field4830];
+				ByteArrayPool.field4814[ByteArrayPool.field4830] = null;
+				return var3;
+			}
+
+			int var6;
+			if (MoveSpeed.ByteArrayPool_arrays != null) {
+				for (var6 = 0; var6 < KitDefinition.ByteArrayPool_alternativeSizes.length; ++var6) {
+					if ((KitDefinition.ByteArrayPool_alternativeSizes[var6] == var0 || var0 < KitDefinition.ByteArrayPool_alternativeSizes[var6] && var1) && ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6] > 0) {
+						byte[] var4 = MoveSpeed.ByteArrayPool_arrays[var6][--ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6]];
+						MoveSpeed.ByteArrayPool_arrays[var6][ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6]] = null;
+						return var4;
+					}
 				}
+			}
 
-				var2 = var4 + 1;
+			if (var1 && KitDefinition.ByteArrayPool_alternativeSizes != null) {
+				for (var6 = 0; var6 < KitDefinition.ByteArrayPool_alternativeSizes.length; ++var6) {
+					if (var0 <= KitDefinition.ByteArrayPool_alternativeSizes[var6] && ByteArrayPool.ByteArrayPool_altSizeArrayCounts[var6] < MoveSpeed.ByteArrayPool_arrays[var6].length) {
+						return new byte[KitDefinition.ByteArrayPool_alternativeSizes[var6]];
+					}
+				}
 			}
 		}
 
-		if (var2 < var0.length()) {
-			var1.append(var0.substring(var2, var0.length()));
-		}
-
-		return var1.toString();
-	}
-
-	@ObfuscatedName("km")
-	@ObfuscatedSignature(
-		descriptor = "(Lde;Ldw;IB)V",
-		garbageValue = "98"
-	)
-	static void method7320(WorldView var0, Actor var1, int var2) {
-		Coord var3 = var1.method2488(var0);
-		class426.worldToScreen(var0, var3.x, var3.y, var1.x, var1.y, var2);
+		return new byte[var0];
 	}
 }

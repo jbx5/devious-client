@@ -3,53 +3,64 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ff")
+@ObfuscatedName("fn")
 public class class130 {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("au")
+	public static final float field1517;
+	@ObfuscatedName("ax")
+	public static final float field1516;
+	@ObfuscatedName("ao")
+	static float[] field1522;
+	@ObfuscatedName("am")
+	static float[] field1518;
+	@ObfuscatedName("ie")
 	@ObfuscatedGetter(
-		intValue = -408274121
+		longValue = -975036129438334281L
 	)
-	@Export("Interpreter_intStackSize")
-	static int Interpreter_intStackSize;
-	@ObfuscatedName("aq")
+	static long field1520;
+	@ObfuscatedName("lr")
 	@ObfuscatedGetter(
-		intValue = -345198087
+		intValue = -427800679
 	)
-	int field1526;
-	@ObfuscatedName("ad")
-	float field1527;
-	@ObfuscatedName("ag")
-	float field1528;
-	@ObfuscatedName("ak")
-	float field1529;
-	@ObfuscatedName("ap")
-	float field1535;
-	@ObfuscatedName("an")
-	float field1531;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lff;"
-	)
-	class130 field1532;
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
 
-	class130() {
-		this.field1528 = Float.MAX_VALUE;
-		this.field1529 = Float.MAX_VALUE;
-		this.field1535 = Float.MAX_VALUE;
-		this.field1531 = Float.MAX_VALUE;
+	static {
+		field1517 = Math.ulp(1.0F);
+		field1516 = field1517 * 2.0F;
+		field1522 = new float[4];
+		field1518 = new float[5];
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;II)V",
-		garbageValue = "-115750084"
+		descriptor = "(ZZI)Lvb;",
+		garbageValue = "692215717"
 	)
-	void method3052(Buffer var1, int var2) {
-		this.field1526 = var1.readShort();
-		this.field1527 = var1.method9565();
-		this.field1528 = var1.method9565();
-		this.field1529 = var1.method9565();
-		this.field1535 = var1.method9565();
-		this.field1531 = var1.method9565();
+	static IndexedSprite method3116(boolean var0, boolean var1) {
+		return var0 ? (var1 ? Login.field902 : class421.options_buttons_2Sprite) : (var1 ? Login.field907 : class423.options_buttons_0Sprite);
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+		garbageValue = "-1181687975"
+	)
+	@Export("setLoginResponseString")
+	static void setLoginResponseString(String var0, String var1, String var2) {
+		Login.Login_response1 = var0;
+		Login.Login_response2 = var1;
+		Login.Login_response3 = var2;
+	}
+
+	@ObfuscatedName("hs")
+	@ObfuscatedSignature(
+		descriptor = "(Loj;Ljava/lang/String;B)V",
+		garbageValue = "-31"
+	)
+	static void method3131(Archive var0, String var1) {
+		ArchiveLoader var2 = new ArchiveLoader(var0, var1);
+		Client.archiveLoaders.add(var2);
+		Client.field799 += var2.groupCount;
 	}
 }

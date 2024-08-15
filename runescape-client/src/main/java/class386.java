@@ -2,209 +2,156 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oh")
-public class class386 extends DualNode {
-	@ObfuscatedName("is")
+@ObfuscatedName("op")
+public class class386 {
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lsp;"
+		descriptor = "Lop;"
 	)
-	static AbstractSocket field4521;
+	static final class386 field4485;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4463;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4462;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4465;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4466;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4467;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4468;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4476;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4470;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4478;
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "Lop;"
 	)
-	Archive field4523;
-	@ObfuscatedName("ad")
+	public static final class386 field4464;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4473;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4474;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4475;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4471;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4477;
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4483;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4479;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4480;
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4481;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4482;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4472;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lop;"
+	)
+	public static final class386 field4484;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -2065166421
+		intValue = -643389893
 	)
-	int field4524;
-	@ObfuscatedName("ag")
-	byte field4522;
+	public final int field4469;
 
-	class386() {
+	static {
+		field4485 = new class386(255);
+		field4463 = new class386(0);
+		field4462 = new class386(1);
+		field4465 = new class386(2);
+		field4466 = new class386(3);
+		field4467 = new class386(4);
+		field4468 = new class386(5);
+		field4476 = new class386(6);
+		field4470 = new class386(7);
+		field4478 = new class386(8);
+		field4464 = new class386(9);
+		field4473 = new class386(10);
+		field4474 = new class386(11);
+		field4475 = new class386(12);
+		field4471 = new class386(13);
+		field4477 = new class386(14);
+		field4483 = new class386(15);
+		field4479 = new class386(17);
+		field4480 = new class386(18);
+		field4481 = new class386(19);
+		field4482 = new class386(20);
+		field4472 = new class386(21);
+		field4484 = new class386(22);
 	}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "-704186007"
-	)
-	static final float method7177(int var0) {
-		float var1 = 10075.0F - (float)var0;
-		return (var1 * 1.0075567F - 75.56675F) / var1;
-	}
-
-	@ObfuscatedName("jf")
-	@ObfuscatedSignature(
-		descriptor = "(Ldw;B)V",
-		garbageValue = "111"
-	)
-	static final void method7176(Actor var0) {
-		var0.isWalking = false;
-		if (var0.movementSequence != -1) {
-			SequenceDefinition var1 = class353.SequenceDefinition_get(var0.movementSequence);
-			if (var1 != null) {
-				if (!var1.isCachedModelIdSet() && var1.frameIds != null) {
-					++var0.movementFrameCycle;
-					if (var0.movementFrame < var1.frameIds.length && var0.movementFrameCycle > var1.frameLengths[var0.movementFrame]) {
-						var0.movementFrameCycle = 1;
-						++var0.movementFrame;
-						class188.method3684(var1, var0.movementFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-					}
-
-					if (var0.movementFrame >= var1.frameIds.length) {
-						if (var1.frameCount > 0) {
-							var0.movementFrame -= var1.frameCount;
-							if (var1.field2304) {
-								++var0.field1234;
-							}
-
-							if (var0.movementFrame < 0 || var0.movementFrame >= var1.frameIds.length || var1.field2304 && var0.field1234 >= var1.field2280) {
-								var0.movementFrameCycle = 0;
-								var0.movementFrame = 0;
-								var0.field1234 = 0;
-							}
-						} else {
-							var0.movementFrameCycle = 0;
-							var0.movementFrame = 0;
-						}
-
-						class188.method3684(var1, var0.movementFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-					}
-				} else if (var1.isCachedModelIdSet()) {
-					++var0.movementFrame;
-					int var2 = var1.method4059();
-					if (var0.movementFrame < var2) {
-						WorldMapLabelSize.method4571(var1, var0.movementFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-					} else {
-						if (var1.frameCount > 0) {
-							var0.movementFrame -= var1.frameCount;
-							if (var1.field2304) {
-								++var0.field1234;
-							}
-
-							if (var0.movementFrame < 0 || var0.movementFrame >= var2 || var1.field2304 && var0.field1234 >= var1.field2280) {
-								var0.movementFrame = 0;
-								var0.movementFrameCycle = 0;
-								var0.field1234 = 0;
-							}
-						} else {
-							var0.movementFrameCycle = 0;
-							var0.movementFrame = 0;
-						}
-
-						WorldMapLabelSize.method4571(var1, var0.movementFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-					}
-				} else {
-					var0.movementSequence = -1;
-				}
-			} else {
-				var0.movementSequence = -1;
-			}
-		}
-
-		IterableNodeHashTableIterator var7 = new IterableNodeHashTableIterator(var0.method2482());
-
-		int var3;
-		for (ActorSpotAnim var6 = (ActorSpotAnim)var7.method9230(); var6 != null; var6 = (ActorSpotAnim)var7.next()) {
-			if (var6.spotAnimation != -1 && Client.cycle >= var6.field4981) {
-				var3 = class178.SpotAnimationDefinition_get(var6.spotAnimation).sequence;
-				if (var3 == -1) {
-					var6.remove();
-					--var0.graphicsCount;
-				} else {
-					var6.spotAnimationFrame = Math.max(var6.spotAnimationFrame, 0);
-					SequenceDefinition var4 = class353.SequenceDefinition_get(var3);
-					if (var4.frameIds != null && !var4.isCachedModelIdSet()) {
-						++var6.spotAnimationFrameCycle;
-						if (var6.spotAnimationFrame < var4.frameIds.length && var6.spotAnimationFrameCycle > var4.frameLengths[var6.spotAnimationFrame]) {
-							var6.spotAnimationFrameCycle = 1;
-							++var6.spotAnimationFrame;
-							class188.method3684(var4, var6.spotAnimationFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-						}
-
-						if (var6.spotAnimationFrame >= var4.frameIds.length) {
-							var6.remove();
-							--var0.graphicsCount;
-						}
-					} else if (var4.isCachedModelIdSet()) {
-						++var6.spotAnimationFrame;
-						int var5 = var4.method4059();
-						if (var6.spotAnimationFrame < var5) {
-							WorldMapLabelSize.method4571(var4, var6.spotAnimationFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-						} else {
-							var6.remove();
-							--var0.graphicsCount;
-						}
-					} else {
-						var6.remove();
-						--var0.graphicsCount;
-					}
-				}
-			}
-		}
-
-		SequenceDefinition var8;
-		if (var0.sequence != -1 && var0.sequenceDelay <= 1) {
-			var8 = class353.SequenceDefinition_get(var0.sequence);
-			if (var8.field2303 == 1 && var0.field1265 > 0 && var0.spotAnimation <= Client.cycle && var0.field1260 < Client.cycle) {
-				var0.sequenceDelay = 1;
-				return;
-			}
-		}
-
-		if (var0.sequence != -1 && var0.sequenceDelay == 0) {
-			var8 = class353.SequenceDefinition_get(var0.sequence);
-			if (var8 != null) {
-				if (!var8.isCachedModelIdSet() && var8.frameIds != null) {
-					++var0.sequenceFrameCycle;
-					if (var0.sequenceFrame < var8.frameIds.length && var0.sequenceFrameCycle > var8.frameLengths[var0.sequenceFrame]) {
-						var0.sequenceFrameCycle = 1;
-						++var0.sequenceFrame;
-						class188.method3684(var8, var0.sequenceFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-					}
-
-					if (var0.sequenceFrame >= var8.frameIds.length) {
-						var0.sequenceFrame -= var8.frameCount;
-						++var0.field1214;
-						if (var0.field1214 >= var8.field2280) {
-							var0.sequence = -1;
-						} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var8.frameIds.length) {
-							class188.method3684(var8, var0.sequenceFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-						} else {
-							var0.sequence = -1;
-						}
-					}
-
-					var0.isWalking = var8.field2297;
-				} else if (var8.isCachedModelIdSet()) {
-					++var0.sequenceFrame;
-					var3 = var8.method4059();
-					if (var0.sequenceFrame < var3) {
-						WorldMapLabelSize.method4571(var8, var0.sequenceFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-					} else {
-						var0.sequenceFrame -= var8.frameCount;
-						++var0.field1214;
-						if (var0.field1214 >= var8.field2280) {
-							var0.sequence = -1;
-						} else if (var0.sequenceFrame >= 0 && var0.sequenceFrame < var3) {
-							WorldMapLabelSize.method4571(var8, var0.sequenceFrame, var0.x, var0.y, SoundCache.localPlayer == var0);
-						} else {
-							var0.sequence = -1;
-						}
-					}
-				} else {
-					var0.sequence = -1;
-				}
-			} else {
-				var0.sequence = -1;
-			}
-		}
-
-		if (var0.sequenceDelay > 0) {
-			--var0.sequenceDelay;
-		}
-
+	class386(int var1) {
+		this.field4469 = var1;
 	}
 }

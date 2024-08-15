@@ -3,20 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lf")
+@ObfuscatedName("hp")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "[Lkv;"
+		descriptor = "[Lgv;"
 	)
 	@Export("frames")
 	Animation[] frames;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lok;Lok;IZ)V"
+		descriptor = "(Lob;Lob;IZ)V",
+		garbageValue = "0"
 	)
-	Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
+	public Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
 		NodeDeque var5 = new NodeDeque();
 		int var6 = var1.getGroupFileCount(var3);
 		this.frames = new Animation[var6];
@@ -35,13 +36,7 @@ public class Frames extends DualNode {
 			}
 
 			if (var10 == null) {
-				byte[] var13;
-				if (var4) {
-					var13 = var2.getFile(0, var11);
-				} else {
-					var13 = var2.getFile(var11, 0);
-				}
-
+				byte[] var13 = var2.getFile(var11, 0);
 				var10 = new Skeleton(var11, var13);
 				var5.addFirst(var10);
 			}
@@ -51,23 +46,22 @@ public class Frames extends DualNode {
 
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "2002337777"
+		garbageValue = "-2016791332"
 	)
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
 		return this.frames[var1].hasAlphaTransform;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lck;",
-		garbageValue = "-481292712"
+		descriptor = "(I)V",
+		garbageValue = "-2037953303"
 	)
-	@Export("Messages_getMessage")
-	static Message Messages_getMessage(int var0) {
-		return (Message)Messages.Messages_hashTable.get((long)var0);
+	public static void method4144() {
+		class248.field2022.clear();
 	}
 }

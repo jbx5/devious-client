@@ -1,55 +1,47 @@
+import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qo")
+@ObfuscatedName("qm")
 public class class422 {
-	@ObfuscatedName("gp")
-	@Export("accessToken")
-	static String accessToken;
-	@ObfuscatedName("aq")
-	float field4695;
-	@ObfuscatedName("ad")
-	float field4692;
-	@ObfuscatedName("ag")
-	float field4693;
-
-	static {
-		new class422(0.0F, 0.0F, 0.0F);
-		new class422(1.0F, 1.0F, 1.0F);
-		new class422(1.0F, 0.0F, 0.0F);
-		new class422(0.0F, 1.0F, 0.0F);
-		new class422(0.0F, 0.0F, 1.0F);
-	}
-
-	public class422(float var1, float var2, float var3) {
-		this.field4695 = var1;
-		this.field4692 = var2;
-		this.field4693 = var3;
-	}
-
-	class422() {
-	}
-
-	@ObfuscatedName("aq")
+	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
-		descriptor = "(Lqo;I)Z",
-		garbageValue = "-581172975"
+		descriptor = "(IB)Ljava/lang/Object;",
+		garbageValue = "-33"
 	)
-	boolean method7724(class422 var1) {
-		return this.field4695 == var1.field4695 && this.field4692 == var1.field4692 && var1.field4693 == this.field4693;
+	static Object method7815(int var0) {
+		return SoundCache.method833((class535)class134.findEnumerated(class535.method9458(), var0));
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ig")
 	@ObfuscatedSignature(
-		descriptor = "(I)F",
-		garbageValue = "1694682556"
+		descriptor = "(II)V",
+		garbageValue = "480859890"
 	)
-	final float method7723() {
-		return (float)Math.sqrt((double)(this.field4693 * this.field4693 + this.field4695 * this.field4695 + this.field4692 * this.field4692));
-	}
+	@Export("playSong")
+	static void playSong(int var0) {
+		if (var0 == -1 && !Client.playingJingle) {
+			class92.method2440(0, 0);
+		} else if (var0 != -1) {
+			boolean var1;
+			if (class332.field3565.isEmpty()) {
+				var1 = false;
+			} else {
+				MusicSong var2 = (MusicSong)class332.field3565.get(0);
+				var1 = var2 != null && var0 == var2.musicTrackGroupId;
+			}
 
-	public String toString() {
-		return this.field4695 + ", " + this.field4692 + ", " + this.field4693;
+			if (!var1 && TileItem.clientPreferences.getMusicVolume() != 0) {
+				ArrayList var3 = new ArrayList();
+				var3.add(new MusicSong(class33.archive6, var0, 0, TileItem.clientPreferences.getMusicVolume(), false));
+				if (Client.playingJingle) {
+					class223.method4719(var3, 0, 100, 100, 0);
+				} else {
+					class53.method1051(var3, 0, 100, 100, 0, false);
+				}
+			}
+		}
+
 	}
 }

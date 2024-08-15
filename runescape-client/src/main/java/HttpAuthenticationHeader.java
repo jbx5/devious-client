@@ -3,22 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rr")
+@ObfuscatedName("rb")
 @Implements("HttpAuthenticationHeader")
 public class HttpAuthenticationHeader {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lrr;"
+		descriptor = "Lrb;"
 	)
 	@Export("BASIC")
 	static final HttpAuthenticationHeader BASIC;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lrr;"
+		descriptor = "Lrb;"
 	)
 	@Export("BEARER")
 	static final HttpAuthenticationHeader BEARER;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@Export("key")
 	final String key;
 
@@ -31,10 +31,10 @@ public class HttpAuthenticationHeader {
 		this.key = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "193474009"
+		descriptor = "(S)Ljava/lang/String;",
+		garbageValue = "1291"
 	)
 	@Export("getKey")
 	String getKey() {

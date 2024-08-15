@@ -3,105 +3,118 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("es")
+@ObfuscatedName("et")
 public class class105 {
-	@ObfuscatedName("wh")
-	@ObfuscatedSignature(
-		descriptor = "Ldq;"
+	@ObfuscatedName("dn")
+	static boolean field1355;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1668832143
 	)
-	@Export("clientPreferences")
-	static ClientPreferences clientPreferences;
+	int field1356;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = -809279291
+	)
+	int field1363;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 1766423523
+	)
+	int field1357;
 	@ObfuscatedName("au")
-	public static short[][] field1371;
-	@ObfuscatedName("do")
-	@ObfuscatedSignature(
-		descriptor = "[Lvv;"
-	)
-	@Export("worldSelectFlagSprites")
-	static IndexedSprite[] worldSelectFlagSprites;
-	@ObfuscatedName("mn")
-	@ObfuscatedSignature(
-		descriptor = "Lli;"
-	)
-	@Export("textureProvider")
-	static TextureProvider textureProvider;
-	@ObfuscatedName("ny")
 	@ObfuscatedGetter(
-		intValue = 336627821
+		intValue = -1709525437
 	)
-	@Export("menuX")
-	static int menuX;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 480813799
-	)
-	int field1368;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = 712505425
-	)
-	int field1367;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -1216371257
-	)
-	int field1373;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = -1154260291
-	)
-	int field1369;
+	int field1358;
 
 	class105(int var1, int var2, int var3, int var4) {
-		this.field1368 = var1;
-		this.field1367 = var2;
-		this.field1373 = var3;
-		this.field1369 = var4;
+		this.field1356 = var1;
+		this.field1363 = var2;
+		this.field1357 = var3;
+		this.field1358 = var4;
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "977908339"
-	)
-	int method2772() {
-		return this.field1368;
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1345596466"
-	)
-	int method2777() {
-		return this.field1367;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "2472"
-	)
-	int method2779() {
-		return this.field1373;
-	}
-
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "46"
+		garbageValue = "48"
 	)
-	int method2776() {
-		return this.field1369;
+	int method2832() {
+		return this.field1356;
 	}
 
-	@ObfuscatedName("ng")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "0"
+		descriptor = "(I)I",
+		garbageValue = "1436624632"
 	)
-	static final void method2785(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		clientPreferences.updateSoundEffectVolume(var0);
+	int method2825() {
+		return this.field1363;
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "1660646598"
+	)
+	int method2826() {
+		return this.field1357;
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1467247541"
+	)
+	int method2827() {
+		return this.field1358;
+	}
+
+	@ObfuscatedName("no")
+	@ObfuscatedSignature(
+		descriptor = "([Lnq;IB)V",
+		garbageValue = "127"
+	)
+	@Export("runComponentCloseListeners")
+	static final void runComponentCloseListeners(Widget[] var0, int var1) {
+		for (int var2 = 0; var2 < var0.length; ++var2) {
+			Widget var3 = var0[var2];
+			if (var3 != null) {
+				if (var3.type == 0) {
+					if (var3.children != null) {
+						runComponentCloseListeners(var3.children, var1);
+					}
+
+					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+					if (var4 != null) {
+						HealthBarUpdate.runIntfCloseListeners(var4.group, var1);
+					}
+				}
+
+				ScriptEvent var5;
+				if (var1 == 0 && var3.onDialogAbort != null) {
+					var5 = new ScriptEvent();
+					var5.widget = var3;
+					var5.args = var3.onDialogAbort;
+					class421.runScriptEvent(var5);
+				}
+
+				if (var1 == 1 && var3.onSubChange != null) {
+					if (var3.childIndex >= 0) {
+						Widget var6 = FloorUnderlayDefinition.widgetDefinition.method6544(var3.id);
+						if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) {
+							continue;
+						}
+					}
+
+					var5 = new ScriptEvent();
+					var5.widget = var3;
+					var5.args = var3.onSubChange;
+					class421.runScriptEvent(var5);
+				}
+			}
+		}
+
 	}
 }

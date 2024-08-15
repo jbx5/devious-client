@@ -6,29 +6,29 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kl")
+@ObfuscatedName("ll")
 @Implements("WorldMapAreaData")
 public class WorldMapAreaData extends WorldMapArea {
-	@ObfuscatedName("az")
-	HashSet field2744;
-	@ObfuscatedName("ax")
-	HashSet field2745;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("as")
+	HashSet field3220;
+	@ObfuscatedName("aw")
+	HashSet field3221;
+	@ObfuscatedName("af")
 	@Export("iconList")
 	List iconList;
 
 	WorldMapAreaData() {
 	}
 
-	@ObfuscatedName("cx")
+	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;Lvp;IZI)V",
-		garbageValue = "-580518776"
+		descriptor = "(Lvg;Lvg;IZB)V",
+		garbageValue = "11"
 	)
-	void method5100(Buffer var1, Buffer var2, int var3, boolean var4) {
-		this.method4649(var1, var3);
+	void method6041(Buffer var1, Buffer var2, int var3, boolean var4) {
+		this.method5607(var1, var3);
 		int var5 = var2.readUnsignedShort();
-		this.field2744 = new HashSet(var5);
+		this.field3220 = new HashSet(var5);
 
 		int var6;
 		for (var6 = 0; var6 < var5; ++var6) {
@@ -40,11 +40,11 @@ public class WorldMapAreaData extends WorldMapArea {
 				continue;
 			}
 
-			this.field2744.add(var7);
+			this.field3220.add(var7);
 		}
 
 		var6 = var2.readUnsignedShort();
-		this.field2745 = new HashSet(var6);
+		this.field3221 = new HashSet(var6);
 
 		for (int var10 = 0; var10 < var6; ++var10) {
 			WorldMapData_1 var8 = new WorldMapData_1();
@@ -55,16 +55,16 @@ public class WorldMapAreaData extends WorldMapArea {
 				continue;
 			}
 
-			this.field2745.add(var8);
+			this.field3221.add(var8);
 		}
 
 		this.initIconsList(var2, var4);
 	}
 
-	@ObfuscatedName("ca")
+	@ObfuscatedName("cs")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;ZI)V",
-		garbageValue = "-242900480"
+		descriptor = "(Lvg;ZS)V",
+		garbageValue = "18463"
 	)
 	@Export("initIconsList")
 	void initIconsList(Buffer var1, boolean var2) {
@@ -72,7 +72,7 @@ public class WorldMapAreaData extends WorldMapArea {
 		int var3 = var1.readUnsignedShort();
 
 		for (int var4 = 0; var4 < var3; ++var4) {
-			int var5 = var1.readNullableLargeSmart();
+			int var5 = var1.readShortLE();
 			Coord var6 = new Coord(var1.readInt());
 			boolean var7 = var1.readUnsignedByte() == 1;
 			if (var2 || !var7) {
@@ -82,111 +82,64 @@ public class WorldMapAreaData extends WorldMapArea {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lbs;I)V",
-		garbageValue = "2079882661"
+		descriptor = "(IZI)Ljava/lang/String;",
+		garbageValue = "1053822388"
 	)
-	static void method5107(GameEngine var0) {
-		IndexCheck var1 = Client.indexCheck;
-		IndexCheck var2 = var1;
+	@Export("intToString")
+	public static String intToString(int var0, boolean var1) {
+		if (var1 && var0 >= 0) {
+			int var3 = var0;
+			String var2;
+			if (var1 && var0 >= 0) {
+				int var4 = 2;
 
-		while (var2.method4382()) {
-			if (var2.field2460 == 13) {
-				Login.worldSelectOpen = false;
-				Login.leftTitleSprite.drawAt(Login.xPadding, 0);
-				class189.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
-				ArchiveDiskActionHandler.logoSprite.drawAt(Login.xPadding + 382 - ArchiveDiskActionHandler.logoSprite.subWidth / 2, 18);
-				return;
-			}
-
-			if (var2.field2460 == 96) {
-				if (Login.worldSelectPage > 0 && class31.worldSelectLeftSprite != null) {
-					--Login.worldSelectPage;
+				for (int var5 = var0 / 10; var5 != 0; ++var4) {
+					var5 /= 10;
 				}
-			} else if (var2.field2460 == 97 && Login.worldSelectPage < Login.worldSelectPagesCount && Calendar.worldSelectRightSprite != null) {
-				++Login.worldSelectPage;
+
+				char[] var6 = new char[var4];
+				var6[0] = '+';
+
+				for (int var7 = var4 - 1; var7 > 0; --var7) {
+					int var8 = var3;
+					var3 /= 10;
+					int var9 = var8 - var3 * 10;
+					if (var9 >= 10) {
+						var6[var7] = (char)(var9 + 87);
+					} else {
+						var6[var7] = (char)(var9 + 48);
+					}
+				}
+
+				var2 = new String(var6);
+			} else {
+				var2 = Integer.toString(var0, 10);
 			}
+
+			return var2;
+		} else {
+			return Integer.toString(var0);
 		}
+	}
 
-		if (MouseHandler.MouseHandler_lastButton == 1 || !World.mouseCam && MouseHandler.MouseHandler_lastButton == 4) {
-			int var3 = Login.xPadding + 280;
-			if (MouseHandler.MouseHandler_lastPressedX >= var3 && MouseHandler.MouseHandler_lastPressedX <= var3 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(0, 0);
-				return;
-			}
-
-			if (MouseHandler.MouseHandler_lastPressedX >= var3 + 15 && MouseHandler.MouseHandler_lastPressedX <= var3 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(0, 1);
-				return;
-			}
-
-			int var4 = Login.xPadding + 390;
-			if (MouseHandler.MouseHandler_lastPressedX >= var4 && MouseHandler.MouseHandler_lastPressedX <= var4 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(1, 0);
-				return;
-			}
-
-			if (MouseHandler.MouseHandler_lastPressedX >= var4 + 15 && MouseHandler.MouseHandler_lastPressedX <= var4 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(1, 1);
-				return;
-			}
-
-			int var5 = Login.xPadding + 500;
-			if (MouseHandler.MouseHandler_lastPressedX >= var5 && MouseHandler.MouseHandler_lastPressedX <= var5 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(2, 0);
-				return;
-			}
-
-			if (MouseHandler.MouseHandler_lastPressedX >= var5 + 15 && MouseHandler.MouseHandler_lastPressedX <= var5 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(2, 1);
-				return;
-			}
-
-			int var6 = Login.xPadding + 610;
-			if (MouseHandler.MouseHandler_lastPressedX >= var6 && MouseHandler.MouseHandler_lastPressedX <= var6 + 14 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(3, 0);
-				return;
-			}
-
-			if (MouseHandler.MouseHandler_lastPressedX >= var6 + 15 && MouseHandler.MouseHandler_lastPressedX <= var6 + 80 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedY <= 18) {
-				HealthBarConfig.changeWorldSelectSorting(3, 1);
-				return;
-			}
-
-			if (MouseHandler.MouseHandler_lastPressedX >= Login.xPadding + 708 && MouseHandler.MouseHandler_lastPressedY >= 4 && MouseHandler.MouseHandler_lastPressedX <= Login.xPadding + 708 + 50 && MouseHandler.MouseHandler_lastPressedY <= 20) {
-				Login.worldSelectOpen = false;
-				Login.leftTitleSprite.drawAt(Login.xPadding, 0);
-				class189.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
-				ArchiveDiskActionHandler.logoSprite.drawAt(Login.xPadding + 382 - ArchiveDiskActionHandler.logoSprite.subWidth / 2, 18);
-				return;
-			}
-
-			if (Login.hoveredWorldIndex != -1) {
-				World var7 = class357.World_worlds[Login.hoveredWorldIndex];
-				boolean var8 = NpcOverrides.method3699(Client.worldProperties, class542.field5331);
-				boolean var9 = var7.isDeadman();
-				class4.field9 = var9;
-				var7.field819 = var9 ? "beta" : var7.field819;
-				ScriptEvent.changeWorld(var7);
-				Login.worldSelectOpen = false;
-				Login.leftTitleSprite.drawAt(Login.xPadding, 0);
-				class189.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
-				ArchiveDiskActionHandler.logoSprite.drawAt(Login.xPadding + 382 - ArchiveDiskActionHandler.logoSprite.subWidth / 2, 18);
-				if (var9 != var8) {
-					class36.method708();
+	@ObfuscatedName("kp")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIB)V",
+		garbageValue = "-114"
+	)
+	static void method6038(int var0, int var1, int var2, int var3, int var4, int var5) {
+		NodeDeque var6 = class328.worldView.groundItems[var0][var1][var2];
+		if (var6 != null) {
+			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
+				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
+					var7.quantity = var5;
+					break;
 				}
-
-				return;
 			}
 
-			if (Login.worldSelectPage > 0 && class31.worldSelectLeftSprite != null && MouseHandler.MouseHandler_lastPressedX >= 0 && MouseHandler.MouseHandler_lastPressedX <= class31.worldSelectLeftSprite.subWidth && MouseHandler.MouseHandler_lastPressedY >= class1.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class1.canvasHeight / 2 + 50) {
-				--Login.worldSelectPage;
-			}
-
-			if (Login.worldSelectPage < Login.worldSelectPagesCount && Calendar.worldSelectRightSprite != null && MouseHandler.MouseHandler_lastPressedX >= class74.canvasWidth - Calendar.worldSelectRightSprite.subWidth - 5 && MouseHandler.MouseHandler_lastPressedX <= class74.canvasWidth && MouseHandler.MouseHandler_lastPressedY >= class1.canvasHeight / 2 - 50 && MouseHandler.MouseHandler_lastPressedY <= class1.canvasHeight / 2 + 50) {
-				++Login.worldSelectPage;
-			}
+			HitSplatDefinition.updateItemPile(var0, var1, var2);
 		}
 
 	}

@@ -1,74 +1,44 @@
 import java.math.BigInteger;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cx")
+@ObfuscatedName("cd")
 public class class76 {
-	@ObfuscatedName("aq")
-	static final BigInteger field913;
-	@ObfuscatedName("ad")
-	static final BigInteger field912;
 	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 1059024585
-	)
-	@Export("ItemDefinition_fileCount")
-	public static int ItemDefinition_fileCount;
-	@ObfuscatedName("dm")
-	@ObfuscatedSignature(
-		descriptor = "[Lvv;"
-	)
-	@Export("worldSelectArrows")
-	static IndexedSprite[] worldSelectArrows;
-	@ObfuscatedName("jd")
-	@Export("regions")
-	static int[] regions;
+	static final BigInteger field898;
+	@ObfuscatedName("ay")
+	static final BigInteger field897;
 
 	static {
-		field913 = new BigInteger("10001", 16);
-		field912 = new BigInteger("90e0c0abb9cf2e1b90eb2b513fda79227a748db8db248d3870e090f51444087e037fe20a8594ab814a245e880415de0ee45fb4614eeed6f8dfd15b66b1e0a7a699b86524b50183e7f2ff789cdd0c05aca8b25d6cb395d02b11b5e613b7405d26b63b56e5149871dafb73278f21f440d021aa9a85f333de26f329d52d9d565cdf", 16);
+		field898 = new BigInteger("10001", 16);
+		field897 = new BigInteger("be87f077fe2eba53f76a85efd5af6d75d6c5ce60fba4ddff63f6b24f1ec713743f00b8d9684ea1ae49618de0a51b3021978e743064399fe8d3b6cd07287d209c493659d5fa9a6f7ba83bc4305eef9194c15acd93fc2754399ae9d470c92b171854176cb695ff290e4d0f52a9e2a9789f9f10cb7863296941508db340ebf14c4b", 16);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("mi")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lhb;",
-		garbageValue = "-108"
+		descriptor = "(IIIIIIIIB)V",
+		garbageValue = "-19"
 	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class416.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (FloorUnderlayDefinition.widgetDefinition.loadInterface(var0)) {
+			class335.field3622 = null;
+			UrlRequest.drawInterface(FloorUnderlayDefinition.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			if (class335.field3622 != null) {
+				UrlRequest.drawInterface(class335.field3622, -1412584499, var1, var2, var3, var4, ClanChannelMember.field1685, class161.field1769, var7);
+				class335.field3622 = null;
 			}
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(Lcw;Lcw;IZIZI)I",
-		garbageValue = "1128301581"
-	)
-	static int method2162(World var0, World var1, int var2, boolean var3, int var4, boolean var5) {
-		int var6 = ModelData0.compareWorlds(var0, var1, var2, var3);
-		if (var6 != 0) {
-			return var3 ? -var6 : var6;
-		} else if (var4 == -1) {
-			return 0;
 		} else {
-			int var7 = ModelData0.compareWorlds(var0, var1, var4, var5);
-			return var5 ? -var7 : var7;
+			if (var7 != -1) {
+				Client.validRootWidgets[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) {
+					Client.validRootWidgets[var8] = true;
+				}
+			}
+
 		}
 	}
 }

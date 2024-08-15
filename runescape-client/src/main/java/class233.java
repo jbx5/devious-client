@@ -1,114 +1,75 @@
-import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iz")
-public class class233 {
-	@ObfuscatedName("wq")
-	@ObfuscatedSignature(
-		descriptor = "Loe;"
-	)
-	static JagNetThread field2486;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2477;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2476;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2478;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2484;
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2479;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2480;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	static final class233 field2481;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "[Liz;"
-	)
-	static final class233[] field2485;
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = -1780844367
-	)
-	final int field2482;
+@ObfuscatedName("ic")
+public class class233 extends DualNode {
 	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1921123689
+	@ObfuscatedSignature(
+		descriptor = "Lms;"
 	)
-	final int field2483;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = -120925093
+	@Export("field1864")
+	public static EvictingDualNodeHashTable field1864;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lob;"
 	)
-	final int field2475;
+	public static AbstractArchive field2460;
+	@ObfuscatedName("gn")
+	@ObfuscatedGetter(
+		intValue = -1196354929
+	)
+	static int field2459;
 
 	static {
-		field2477 = new class233(0, 8, 8);
-		field2476 = new class233(5, 16, 16);
-		field2478 = new class233(3, 32, 32);
-		field2484 = new class233(2, 48, 48);
-		field2479 = new class233(1, 64, 64);
-		field2480 = new class233(4, 96, 96);
-		field2481 = new class233(6, 128, 128);
-		field2485 = Actor.method2477();
-		Arrays.sort(field2485, new class241());
+		field1864 = new EvictingDualNodeHashTable(64);
 	}
 
-	class233(int var1, int var2, int var3) {
-		this.field2482 = var1;
-		this.field2483 = var2;
-		this.field2475 = var3;
-	}
-
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "124"
+		descriptor = "(II)V",
+		garbageValue = "-1351435281"
 	)
-	int method4441() {
-		return this.field2483 * this.field2475;
+	static void method4787(int var0) {
 	}
 
-	@ObfuscatedName("bb")
+	@ObfuscatedName("ku")
 	@ObfuscatedSignature(
-		descriptor = "(Lnx;IS)V",
-		garbageValue = "303"
+		descriptor = "(Ldy;Ldg;B)V",
+		garbageValue = "-53"
 	)
-	public static void method4446(Widget var0, int var1) {
-		ItemComposition var2 = class164.ItemDefinition_get(var1);
-		var0.field3838.equipment[var2.maleModel] = var1 + 512;
-		if (var2.maleModel1 != -1) {
-			var0.field3838.equipment[var2.maleModel1] = 0;
+	static final void method4786(WorldView var0, PendingSpawn var1) {
+		Scene var2 = var0.scene;
+		long var3 = 0L;
+		int var5 = -1;
+		int var6 = 0;
+		int var7 = 0;
+		if (var1.type == 0) {
+			var3 = var2.getBoundaryObjectTag(var1.plane, var1.x, var1.y);
 		}
 
-		if (var2.maleModel2 != -1) {
-			var0.field3838.equipment[var2.maleModel2] = 0;
+		if (var1.type == 1) {
+			var3 = var2.getWallDecorationTag(var1.plane, var1.x, var1.y);
 		}
 
-		var0.field3838.method6538();
+		if (var1.type == 2) {
+			var3 = var2.getGameObjectTag(var1.plane, var1.x, var1.y);
+		}
+
+		if (var1.type == 3) {
+			var3 = var2.getFloorDecorationTag(var1.plane, var1.x, var1.y);
+		}
+
+		if (0L != var3) {
+			int var8 = var2.getObjectFlags(var1.plane, var1.x, var1.y, var3);
+			var5 = class513.Entity_unpackID(var3);
+			var6 = var8 & 31;
+			var7 = var8 >> 6 & 3;
+		}
+
+		var1.objectId = var5;
+		var1.field1170 = var6;
+		var1.field1169 = var7;
 	}
 }

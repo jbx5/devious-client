@@ -3,137 +3,139 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("co")
+@ObfuscatedName("cj")
 public class class60 {
-	@ObfuscatedName("kj")
-	@ObfuscatedGetter(
-		intValue = 1983512085
-	)
-	@Export("cameraZ")
-	static int cameraZ;
 	@ObfuscatedName("aq")
-	byte[] field413;
-	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -1939909553
+		intValue = -1520784715
 	)
-	int field410;
-	@ObfuscatedName("ag")
+	static int field410;
+	@ObfuscatedName("es")
+	@ObfuscatedSignature(
+		descriptor = "Lsx;"
+	)
+	@Export("js5Socket")
+	static AbstractSocket js5Socket;
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "Loj;"
+	)
+	@Export("archive4")
+	static Archive archive4;
+	@ObfuscatedName("jd")
+	@Export("xteaKeys")
+	static int[][] xteaKeys;
+	@ObfuscatedName("ab")
+	byte[] field415;
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 1005414431
+		intValue = 1348167997
 	)
-	int field412;
+	int field409;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -108224639
+	)
+	int field413;
 
 	class60() {
-		this.field413 = null;
-		this.field410 = 0;
-		this.field412 = 0;
+		this.field415 = null;
+		this.field409 = 0;
+		this.field413 = 0;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "9"
+		descriptor = "(IS)I",
+		garbageValue = "31565"
 	)
-	int method1178(int var1) {
+	int method1146(int var1) {
 		int var2 = 0;
 
 		int var3;
 		int var4;
-		for (var3 = 0; var1 >= 8 - this.field412; var1 -= var4) {
-			var4 = 8 - this.field412;
+		for (var3 = 0; var1 >= 8 - this.field413; var1 -= var4) {
+			var4 = 8 - this.field413;
 			int var5 = (1 << var4) - 1;
-			var2 += (this.field413[this.field410] >> this.field412 & var5) << var3;
-			this.field412 = 0;
-			++this.field410;
+			var2 += (this.field415[this.field409] >> this.field413 & var5) << var3;
+			this.field413 = 0;
+			++this.field409;
 			var3 += var4;
 		}
 
 		if (var1 > 0) {
 			var4 = (1 << var1) - 1;
-			var2 += (this.field413[this.field410] >> this.field412 & var4) << var3;
-			this.field412 += var1;
+			var2 += (this.field415[this.field409] >> this.field413 & var4) << var3;
+			this.field413 += var1;
 		}
 
 		return var2;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1896393256"
+		garbageValue = "517243491"
 	)
-	int method1166() {
-		int var1 = this.field413[this.field410] >> this.field412 & 1;
-		++this.field412;
-		this.field410 += this.field412 >> 3;
-		this.field412 &= 7;
+	int method1138() {
+		int var1 = this.field415[this.field409] >> this.field413 & 1;
+		++this.field413;
+		this.field409 += this.field413 >> 3;
+		this.field413 &= 7;
 		return var1;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "([BII)V",
-		garbageValue = "-2030419149"
+		garbageValue = "-1822811820"
 	)
-	void method1168(byte[] var1, int var2) {
-		this.field413 = var1;
-		this.field410 = var2;
-		this.field412 = 0;
+	void method1139(byte[] var1, int var2) {
+		this.field415 = var1;
+		this.field409 = var2;
+		this.field413 = 0;
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lie;",
-		garbageValue = "11"
-	)
-	public static FloorOverlayDefinition method1179(int var0) {
-		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
-			var1 = new FloorOverlayDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2), var0);
-			}
-
-			var1.postDecode();
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("aq")
+	@ObfuscatedName("nq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-3016048"
+		garbageValue = "648783722"
 	)
-	static void method1172() {
-		for (ObjectSound var0 = (ObjectSound)ObjectSound.objectSounds.last(); var0 != null; var0 = (ObjectSound)ObjectSound.objectSounds.previous()) {
-			if (var0.stream1 != null) {
-				MoveSpeed.pcmStreamMixer.removeSubStream(var0.stream1);
-				var0.stream1 = null;
-			}
+	static final void method1145() {
+		PacketBufferNode var0 = class218.getPacketBufferNode(ClientPacket.field3261, Client.packetWriter.isaacCipher);
+		Client.packetWriter.addNode(var0);
+		Interpreter.field857 = true;
 
-			if (var0.stream2 != null) {
-				MoveSpeed.pcmStreamMixer.removeSubStream(var0.stream2);
-				var0.stream2 = null;
+		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+			if (var1.type == 0 || var1.type == 3) {
+				class59.closeInterface(var1, true);
 			}
 		}
 
-		ObjectSound.objectSounds.clear();
+		if (Client.meslayerContinueWidget != null) {
+			class416.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
+		}
+
+		Interpreter.field857 = false;
 	}
 
-	@ObfuscatedName("nm")
+	@ObfuscatedName("px")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIII)V",
-		garbageValue = "-1708397335"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "1732088746"
 	)
-	@Export("updateRootInterface")
-	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
-		if (ModeWhere.widgetDefinition.loadInterface(var0)) {
-			AsyncHttpResponse.updateInterface(ModeWhere.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
+	static String method1147(String var0) {
+		PlayerType[] var1 = class345.PlayerType_values();
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			PlayerType var3 = var1[var2];
+			if (var3.modIcon != -1 && var0.startsWith(class152.method3376(var3.modIcon))) {
+				var0 = var0.substring(6 + Integer.toString(var3.modIcon).length());
+				break;
+			}
 		}
+
+		return var0;
 	}
 }

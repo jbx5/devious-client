@@ -4,36 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lm")
+@ObfuscatedName("hd")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("wp")
+	@ObfuscatedName("km")
 	@ObfuscatedSignature(
-		descriptor = "Ltw;"
+		descriptor = "[Lvc;"
 	)
-	@Export("worldMap")
-	static WorldMap worldMap;
-	@ObfuscatedName("aq")
+	@Export("headIconPrayerSprites")
+	static SpritePixels[] headIconPrayerSprites;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -34813589
+		intValue = -1360818691
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 1220267967
+		intValue = 480284201
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 143019549
+		intValue = -1452093495
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 214699869
+		intValue = -492910779
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,34 +42,12 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Llm;)V"
+		descriptor = "(Lhd;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
 		this.y = var1.y;
 		this.z = var1.z;
 		this.magnitude = var1.magnitude;
-	}
-
-	@ObfuscatedName("hd")
-	@ObfuscatedSignature(
-		descriptor = "(Lmb;I)V",
-		garbageValue = "860894148"
-	)
-	static void method5914(PacketBufferNode var0) {
-		var0.packetBuffer.writeIntLE(WorldMapSectionType.field2665.hash);
-		var0.packetBuffer.writeIntLE(JagNetThread.field4545.hash);
-		var0.packetBuffer.writeIntME(class195.field2052.hash);
-		var0.packetBuffer.writeInt(ApproximateRouteStrategy.archive2.hash);
-		var0.packetBuffer.writeIntIME(LoginPacket.field1684.hash);
-		var0.packetBuffer.writeIntLE(VarpDefinition.field1881.hash);
-		var0.packetBuffer.writeIntME(PlayerComposition.field3785.hash);
-		var0.packetBuffer.writeIntME(class157.archive9.hash);
-		var0.packetBuffer.writeIntME(WorldEntity.archive12.hash);
-		var0.packetBuffer.writeInt(0);
-		var0.packetBuffer.writeIntIME(class151.field1715.hash);
-		var0.packetBuffer.writeInt(class498.field5069.hash);
-		var0.packetBuffer.writeIntIME(LoginScreenAnimation.archive4.hash);
-		var0.packetBuffer.writeIntME(LoginState.field497.hash);
 	}
 }

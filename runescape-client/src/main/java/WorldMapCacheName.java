@@ -2,70 +2,96 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("kf")
+@ObfuscatedName("lg")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lkf;"
+		descriptor = "Llg;"
 	)
-	public static final WorldMapCacheName field2740;
-	@ObfuscatedName("ad")
+	public static final WorldMapCacheName field3214;
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lkf;"
+		descriptor = "Llg;"
 	)
-	public static final WorldMapCacheName field2738;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lkf;"
-	)
-	public static final WorldMapCacheName field2739;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lkf;"
-	)
-	static final WorldMapCacheName field2742;
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lkf;"
-	)
-	public static final WorldMapCacheName field2741;
+	public static final WorldMapCacheName field3211;
 	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Llg;"
+	)
+	public static final WorldMapCacheName field3213;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Llg;"
+	)
+	static final WorldMapCacheName field3215;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Llg;"
+	)
+	public static final WorldMapCacheName field3212;
+	@ObfuscatedName("wv")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("ao")
 	@Export("name")
 	public final String name;
 
 	static {
-		field2740 = new WorldMapCacheName("details");
-		field2738 = new WorldMapCacheName("compositemap");
-		field2739 = new WorldMapCacheName("compositetexture");
-		field2742 = new WorldMapCacheName("area");
-		field2741 = new WorldMapCacheName("labels");
+		field3214 = new WorldMapCacheName("details");
+		field3211 = new WorldMapCacheName("compositemap");
+		field3213 = new WorldMapCacheName("compositetexture");
+		field3215 = new WorldMapCacheName("area");
+		field3212 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lgx;",
-		garbageValue = "-1032055852"
+		descriptor = "(Lbl;B)V",
+		garbageValue = "88"
 	)
-	@Export("getInvDefinition")
-	public static InvDefinition getInvDefinition(int var0) {
-		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	public static final void method6020(class51 var0) {
+		Login.pcmPlayerProvider = var0;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(ILdp;ZB)I",
+		garbageValue = "113"
+	)
+	static int method6019(int var0, Script var1, boolean var2) {
+		Widget var3 = FloorUnderlayDefinition.widgetDefinition.method6544(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
+		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = InvDefinition.Widget_unpackTargetMask(SpriteMask.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.IF_GETOP) {
+			if (var0 == ScriptOpcodes.IF_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
+
+				return 1;
+			} else {
+				return 2;
+			}
 		} else {
-			byte[] var2 = class292.InvDefinition_archive.takeFile(5, var0);
-			var1 = new InvDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = "";
 			}
 
-			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
-			return var1;
+			return 1;
 		}
 	}
 }

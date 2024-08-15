@@ -1,189 +1,130 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.io.File;
+import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
 
-@ObfuscatedName("gr")
-public class class160 extends class163 {
-	@ObfuscatedName("aq")
+@ObfuscatedName("gk")
+public class class160 extends class164 {
+	@ObfuscatedName("ab")
+	String field1758;
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -704237327
+		intValue = 1536282783
 	)
-	int field1793;
-	@ObfuscatedName("ad")
-	byte field1791;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 458286077
-	)
-	int field1790;
-	@ObfuscatedName("ak")
-	String field1792;
+	int field1759;
+	@ObfuscatedName("an")
+	byte field1760;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgi;"
+		descriptor = "Lgl;"
 	)
-	final class164 this$0;
+	final class165 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;)V"
+		descriptor = "(Lgl;)V"
 	)
-	class160(class164 var1) {
+	class160(class165 var1) {
 		this.this$0 = var1;
-		this.field1793 = -1;
+		this.field1758 = null;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)V",
-		garbageValue = "-1435141567"
+		descriptor = "(Lvg;B)V",
+		garbageValue = "-40"
 	)
-	void vmethod3524(Buffer var1) {
-		var1.readUnsignedByte();
-		this.field1793 = var1.readUnsignedShort();
-		this.field1791 = var1.readByte();
-		this.field1790 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1792 = var1.readStringCp1252NullTerminated();
-		var1.readUnsignedByte();
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Lgj;I)V",
-		garbageValue = "902480534"
-	)
-	void vmethod3523(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1793);
-		var2.rank = this.field1791;
-		var2.world = this.field1790;
-		var2.username = new Username(this.field1792);
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(Lok;B)V",
-		garbageValue = "104"
-	)
-	public static void method3426(AbstractArchive var0) {
-		FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Lvp;II)V",
-		garbageValue = "39216562"
-	)
-	@Export("readReflectionCheck")
-	public static void readReflectionCheck(Buffer var0, int var1) {
-		ReflectionCheck var2 = new ReflectionCheck();
-		var2.size = var0.readUnsignedByte();
-		var2.id = var0.readInt();
-		var2.operations = new int[var2.size];
-		var2.creationErrors = new int[var2.size];
-		var2.fields = new Field[var2.size];
-		var2.intReplaceValues = new int[var2.size];
-		var2.methods = new Method[var2.size];
-		var2.arguments = new byte[var2.size][][];
-
-		for (int var3 = 0; var3 < var2.size; ++var3) {
-			try {
-				int var4 = var0.readUnsignedByte();
-				String var5;
-				String var6;
-				int var7;
-				if (var4 != 0 && var4 != 1 && var4 != 2) {
-					if (var4 == 3 || var4 == 4) {
-						var5 = var0.readStringCp1252NullTerminated();
-						var6 = var0.readStringCp1252NullTerminated();
-						var7 = var0.readUnsignedByte();
-						String[] var8 = new String[var7];
-
-						for (int var9 = 0; var9 < var7; ++var9) {
-							var8[var9] = var0.readStringCp1252NullTerminated();
-						}
-
-						String var20 = var0.readStringCp1252NullTerminated();
-						byte[][] var10 = new byte[var7][];
-						int var12;
-						if (var4 == 3) {
-							for (int var11 = 0; var11 < var7; ++var11) {
-								var12 = var0.readInt();
-								var10[var11] = new byte[var12];
-								var0.readBytes(var10[var11], 0, var12);
-							}
-						}
-
-						var2.operations[var3] = var4;
-						Class[] var21 = new Class[var7];
-
-						for (var12 = 0; var12 < var7; ++var12) {
-							var21[var12] = UserComparator6.loadClassFromDescriptor(var8[var12]);
-						}
-
-						Class var22 = UserComparator6.loadClassFromDescriptor(var20);
-						if (UserComparator6.loadClassFromDescriptor(var5).getClassLoader() == null) {
-							throw new SecurityException();
-						}
-
-						Method[] var13 = UserComparator6.loadClassFromDescriptor(var5).getDeclaredMethods();
-						Method[] var14 = var13;
-
-						for (int var15 = 0; var15 < var14.length; ++var15) {
-							Method var16 = var14[var15];
-							if (Reflection.getMethodName(var16).equals(var6)) {
-								Class[] var17 = Reflection.getParameterTypes(var16);
-								if (var17.length == var21.length) {
-									boolean var18 = true;
-
-									for (int var19 = 0; var19 < var21.length; ++var19) {
-										if (var17[var19] != var21[var19]) {
-											var18 = false;
-											break;
-										}
-									}
-
-									if (var18 && var22 == var16.getReturnType()) {
-										var2.methods[var3] = var16;
-									}
-								}
-							}
-						}
-
-						var2.arguments[var3] = var10;
-					}
-				} else {
-					var5 = var0.readStringCp1252NullTerminated();
-					var6 = var0.readStringCp1252NullTerminated();
-					var7 = 0;
-					if (var4 == 1) {
-						var7 = var0.readInt();
-					}
-
-					var2.operations[var3] = var4;
-					var2.intReplaceValues[var3] = var7;
-					if (UserComparator6.loadClassFromDescriptor(var5).getClassLoader() == null) {
-						throw new SecurityException();
-					}
-
-					var2.fields[var3] = Reflection.findField(UserComparator6.loadClassFromDescriptor(var5), var6);
-				}
-			} catch (ClassNotFoundException var24) {
-				var2.creationErrors[var3] = -1;
-			} catch (SecurityException var25) {
-				var2.creationErrors[var3] = -2;
-			} catch (NullPointerException var26) {
-				var2.creationErrors[var3] = -3;
-			} catch (Exception var27) {
-				var2.creationErrors[var3] = -4;
-			} catch (Throwable var28) {
-				var2.creationErrors[var3] = -5;
-			}
+	void vmethod3611(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			var1.readLong();
 		}
 
-		class36.reflectionChecks.addFirst(var2);
+		this.field1758 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1759 = var1.readUnsignedShort();
+		this.field1760 = var1.readByte();
+		var1.readLong();
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lgx;I)V",
+		garbageValue = "-357446960"
+	)
+	void vmethod3612(ClanChannel var1) {
+		ClanChannelMember var2 = new ClanChannelMember();
+		var2.username = new Username(this.field1758);
+		var2.world = this.field1759;
+		var2.rank = this.field1760;
+		var1.addMember(var2);
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljv;",
+		garbageValue = "-244594155"
+	)
+	public static FloorUnderlayDefinition method3505(int var0) {
+		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
+			var1 = new FloorUnderlayDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2), var0);
+			}
+
+			var1.postDecode();
+			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;S)Ljava/io/File;",
+		garbageValue = "32557"
+	)
+	@Export("getFile")
+	static File getFile(String var0) {
+		if (!FileSystem.FileSystem_hasPermissions) {
+			throw new RuntimeException("");
+		} else {
+			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
+			if (var1 != null) {
+				return var1;
+			} else {
+				File var2 = new File(HttpRequestTask.FileSystem_cacheDir, var0);
+				RandomAccessFile var3 = null;
+
+				try {
+					File var4 = new File(var2.getParent());
+					if (!var4.exists()) {
+						throw new RuntimeException("");
+					} else {
+						var3 = new RandomAccessFile(var2, "rw");
+						int var5 = var3.read();
+						var3.seek(0L);
+						var3.write(var5);
+						var3.seek(0L);
+						var3.close();
+						FileSystem.FileSystem_cacheFiles.put(var0, var2);
+						return var2;
+					}
+				} catch (Exception var8) {
+					try {
+						if (var3 != null) {
+							var3.close();
+							var3 = null;
+						}
+					} catch (Exception var7) {
+					}
+
+					throw new RuntimeException();
+				}
+			}
+		}
 	}
 }

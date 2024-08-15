@@ -1,51 +1,54 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jh")
+@ObfuscatedName("kj")
 @Implements("WorldMapIcon_1")
 public class WorldMapIcon_1 extends AbstractWorldMapIcon {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("hr")
+	static SecureRandom field3044;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1450931479
+		intValue = 291747763
 	)
 	@Export("objectDefId")
 	final int objectDefId;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Ljc;"
+		descriptor = "Lkv;"
 	)
 	@Export("region")
 	final WorldMapRegion region;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -448614677
+		intValue = 511247127
 	)
 	@Export("element")
 	int element;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lkm;"
+		descriptor = "Llk;"
 	)
 	@Export("label")
 	WorldMapLabel label;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -229828633
+		intValue = 2054761841
 	)
 	@Export("subWidth")
 	int subWidth;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1283382419
+		intValue = 1788164067
 	)
 	@Export("subHeight")
 	int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnl;Lnl;ILjc;)V"
+		descriptor = "(Lnv;Lnv;ILkv;)V"
 	)
 	WorldMapIcon_1(Coord var1, Coord var2, int var3, WorldMapRegion var4) {
 		super(var1, var2);
@@ -54,16 +57,16 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 		this.init();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-232242674"
+		garbageValue = "-1224680378"
 	)
 	@Export("init")
 	void init() {
-		this.element = HttpRequest.getObjectDefinition(this.objectDefId).transform().mapIconId;
-		this.label = this.region.createMapLabel(class165.WorldMapElement_get(this.element));
-		WorldMapElement var1 = class165.WorldMapElement_get(this.getElement());
+		this.element = class222.getObjectDefinition(this.objectDefId).transform().mapIconId;
+		this.label = this.region.createMapLabel(class104.WorldMapElement_get(this.element));
+		WorldMapElement var1 = class104.WorldMapElement_get(this.getElement());
 		SpritePixels var2 = var1.getSpriteBool(false);
 		if (var2 != null) {
 			this.subWidth = var2.subWidth;
@@ -75,65 +78,43 @@ public class WorldMapIcon_1 extends AbstractWorldMapIcon {
 
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "45"
+		garbageValue = "0"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkm;",
-		garbageValue = "-1023557554"
+		descriptor = "(I)Llk;",
+		garbageValue = "-1430269717"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-2127260294"
+		descriptor = "(B)I",
+		garbageValue = "-48"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1490832213"
+		descriptor = "(S)I",
+		garbageValue = "16609"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "403847596"
-	)
-	public static void method4578() {
-		class330.field3585.clear();
-	}
-
-	@ObfuscatedName("ms")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "1183965945"
-	)
-	static String method4580(int var0) {
-		if (var0 < 0) {
-			return "";
-		} else {
-			return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
-		}
 	}
 }

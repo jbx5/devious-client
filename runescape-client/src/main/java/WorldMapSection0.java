@@ -4,97 +4,96 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jl")
+@ObfuscatedName("lv")
 @Implements("WorldMapSection0")
 public class WorldMapSection0 implements WorldMapSection {
-	@ObfuscatedName("bk")
-	static String field2656;
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "Lqa;"
-	)
-	static Bounds field2657;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ks")
 	@ObfuscatedGetter(
-		intValue = -1200076691
+		intValue = 1651679029
+	)
+	@Export("cameraZ")
+	static int cameraZ;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1796215389
 	)
 	@Export("oldZ")
 	int oldZ;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -218939471
+		intValue = -288122705
 	)
 	@Export("newZ")
 	int newZ;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 760931579
+		intValue = 476713003
 	)
 	@Export("oldX")
 	int oldX;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -329528349
+		intValue = -365977569
 	)
 	@Export("oldY")
 	int oldY;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -998317303
+		intValue = -2136261203
 	)
 	@Export("newX")
 	int newX;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 40711577
+		intValue = -192131773
 	)
 	@Export("newY")
 	int newY;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1186226363
+		intValue = 767041357
 	)
 	@Export("oldChunkXLow")
 	int oldChunkXLow;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -650038491
+		intValue = 1374436349
 	)
 	@Export("oldChunkYLow")
 	int oldChunkYLow;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1340854329
+		intValue = -620977797
 	)
 	@Export("oldChunkXHigh")
 	int oldChunkXHigh;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -422996183
+		intValue = 1116515397
 	)
 	@Export("oldChunkYHigh")
 	int oldChunkYHigh;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -663064165
+		intValue = 1158608889
 	)
 	@Export("newChunkXLow")
 	int newChunkXLow;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1256569709
+		intValue = 1127882075
 	)
 	@Export("newChunkYLow")
 	int newChunkYLow;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 374574747
+		intValue = -882481913
 	)
 	@Export("newChunkXHigh")
 	int newChunkXHigh;
-	@ObfuscatedName("az")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 2104035971
+		intValue = -440899155
 	)
 	@Export("newChunkYHigh")
 	int newChunkYHigh;
@@ -102,10 +101,10 @@ public class WorldMapSection0 implements WorldMapSection {
 	WorldMapSection0() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljm;I)V",
-		garbageValue = "1568670940"
+		descriptor = "(Lku;I)V",
+		garbageValue = "1421552299"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -127,10 +126,10 @@ public class WorldMapSection0 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)Z",
-		garbageValue = "115"
+		descriptor = "(IIII)Z",
+		garbageValue = "1107005253"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
@@ -141,20 +140,20 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "-898385408"
+		descriptor = "(IIB)Z",
+		garbageValue = "34"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >= (this.newX << 6) + (this.newChunkXLow << 3) && var1 <= (this.newX << 6) + (this.newChunkXHigh << 3) + 7 && var2 >= (this.newY << 6) + (this.newChunkYLow << 3) && var2 <= (this.newY << 6) + (this.newChunkYHigh << 3) + 7;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)[I",
-		garbageValue = "-35"
+		garbageValue = "63"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -166,10 +165,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lnl;",
-		garbageValue = "-55064754"
+		descriptor = "(III)Lnv;",
+		garbageValue = "-554690101"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -182,10 +181,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)V",
-		garbageValue = "301668137"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-597206269"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -206,87 +205,43 @@ public class WorldMapSection0 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-628373235"
+		descriptor = "(B)V",
+		garbageValue = "-99"
 	)
 	@Export("postRead")
 	void postRead() {
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("my")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;II[BII)I",
-		garbageValue = "-1039324313"
+		descriptor = "(Ljava/lang/String;Lnq;I)Ljava/lang/String;",
+		garbageValue = "-1065325825"
 	)
-	@Export("encodeStringCp1252")
-	public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
-		int var5 = var2 - var1;
+	static String method5891(String var0, Widget var1) {
+		if (var0.indexOf("%") != -1) {
+			for (int var2 = 1; var2 <= 5; ++var2) {
+				while (true) {
+					int var3 = var0.indexOf("%" + var2);
+					if (var3 == -1) {
+						break;
+					}
 
-		for (int var6 = 0; var6 < var5; ++var6) {
-			char var7 = var0.charAt(var6 + var1);
-			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
-				var3[var6 + var4] = (byte)var7;
-			} else if (var7 == 8364) {
-				var3[var6 + var4] = -128;
-			} else if (var7 == 8218) {
-				var3[var6 + var4] = -126;
-			} else if (var7 == 402) {
-				var3[var6 + var4] = -125;
-			} else if (var7 == 8222) {
-				var3[var6 + var4] = -124;
-			} else if (var7 == 8230) {
-				var3[var6 + var4] = -123;
-			} else if (var7 == 8224) {
-				var3[var6 + var4] = -122;
-			} else if (var7 == 8225) {
-				var3[var6 + var4] = -121;
-			} else if (var7 == 710) {
-				var3[var6 + var4] = -120;
-			} else if (var7 == 8240) {
-				var3[var6 + var4] = -119;
-			} else if (var7 == 352) {
-				var3[var6 + var4] = -118;
-			} else if (var7 == 8249) {
-				var3[var6 + var4] = -117;
-			} else if (var7 == 338) {
-				var3[var6 + var4] = -116;
-			} else if (var7 == 381) {
-				var3[var6 + var4] = -114;
-			} else if (var7 == 8216) {
-				var3[var6 + var4] = -111;
-			} else if (var7 == 8217) {
-				var3[var6 + var4] = -110;
-			} else if (var7 == 8220) {
-				var3[var6 + var4] = -109;
-			} else if (var7 == 8221) {
-				var3[var6 + var4] = -108;
-			} else if (var7 == 8226) {
-				var3[var6 + var4] = -107;
-			} else if (var7 == 8211) {
-				var3[var6 + var4] = -106;
-			} else if (var7 == 8212) {
-				var3[var6 + var4] = -105;
-			} else if (var7 == 732) {
-				var3[var6 + var4] = -104;
-			} else if (var7 == 8482) {
-				var3[var6 + var4] = -103;
-			} else if (var7 == 353) {
-				var3[var6 + var4] = -102;
-			} else if (var7 == 8250) {
-				var3[var6 + var4] = -101;
-			} else if (var7 == 339) {
-				var3[var6 + var4] = -100;
-			} else if (var7 == 382) {
-				var3[var6 + var4] = -98;
-			} else if (var7 == 376) {
-				var3[var6 + var4] = -97;
-			} else {
-				var3[var6 + var4] = 63;
+					String var4 = var0.substring(0, var3);
+					int var6 = FloorDecoration.method3719(var1, var2 - 1);
+					String var5;
+					if (var6 < 999999999) {
+						var5 = Integer.toString(var6);
+					} else {
+						var5 = "*";
+					}
+
+					var0 = var4 + var5 + var0.substring(var3 + 2);
+				}
 			}
 		}
 
-		return var5;
+		return var0;
 	}
 }

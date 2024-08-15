@@ -1,38 +1,64 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tm")
-public abstract class class511 extends class512 {
-	@ObfuscatedName("jc")
-	@ObfuscatedSignature(
-		descriptor = "Lde;"
+@ObfuscatedName("tt")
+public class class511 extends class513 {
+	@ObfuscatedName("ax")
+	@ObfuscatedGetter(
+		intValue = -1380122005
 	)
-	@Export("topLevelWorldView")
-	static WorldView topLevelWorldView;
+	public static int field5136;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -667451573
+	)
+	int field5135;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 1823935137
+	)
+	int field5134;
 
-	class511(int var1, int var2) {
-		super(var1, var2);
+	public class511(int var1, int var2, int var3, int var4) {
+		super(var3, var4);
+		this.field5135 = 0;
+		this.field5134 = 0;
+		this.field5135 = var1;
+		this.field5134 = var2;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "2083196394"
+		garbageValue = "-1631406843"
 	)
-	public abstract int vmethod8962();
+	public int method9024() {
+		double var1 = this.method9044();
+		return (int)Math.round((double)this.field5135 + var1 * (double)(this.field5134 - this.field5135));
+	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "599491827"
+		descriptor = "(II)Luj;",
+		garbageValue = "-1812894118"
 	)
-	public abstract int vmethod8963();
+	@Export("getDbTableType")
+	public static DbTableType getDbTableType(int var0) {
+		DbTableType var1 = (DbTableType)DbTableType.DBTableType_cache.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = DbTableType.field5307.takeFile(39, var0);
+			var1 = new DbTableType();
+			if (var2 != null) {
+				var1.method9483(new Buffer(var2));
+			}
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1194956978"
-	)
-	public abstract int vmethod8964();
+			var1.method9490();
+			DbTableType.DBTableType_cache.put(var1, (long)var0);
+			return var1;
+		}
+	}
 }

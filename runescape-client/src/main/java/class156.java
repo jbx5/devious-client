@@ -1,47 +1,54 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gs")
-public class class156 extends class147 {
-	@ObfuscatedName("aj")
+@ObfuscatedName("gb")
+public class class156 extends class164 {
+	@ObfuscatedName("ts")
 	@ObfuscatedGetter(
-		intValue = -1095420729
+		intValue = 1107518997
 	)
-	@Export("gameCyclesToDo")
-	static int gameCyclesToDo;
-	@ObfuscatedName("aq")
-	String field1750;
+	static int field1721;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1057912303
+	)
+	int field1722;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lgl;"
 	)
-	final class150 this$0;
+	final class165 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lgl;)V"
 	)
-	class156(class150 var1) {
+	class156(class165 var1) {
 		this.this$0 = var1;
+		this.field1722 = -1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "(Lvg;B)V",
+		garbageValue = "-40"
 	)
-	void vmethod3528(Buffer var1) {
-		this.field1750 = var1.readStringCp1252NullTerminated();
-		var1.readInt();
+	void vmethod3611(Buffer var1) {
+		this.field1722 = var1.readUnsignedShort();
+		var1.readUnsignedByte();
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			var1.readLong();
+		}
+
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
+		descriptor = "(Lgx;I)V",
+		garbageValue = "-357446960"
 	)
-	void vmethod3530(ClanSettings var1) {
-		var1.name = this.field1750;
+	void vmethod3612(ClanChannel var1) {
+		var1.removeMember(this.field1722);
 	}
 }

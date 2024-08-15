@@ -3,78 +3,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ur")
-public class class529 extends class487 implements class308 {
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	final AbstractArchive field5279;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Llx;"
-	)
-	final DemotingHashTable field5278;
-	@ObfuscatedName("ak")
+@ObfuscatedName("ug")
+class class529 implements Iterator {
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -575168409
+		intValue = 294796963
 	)
-	final int field5280;
+	int field5282;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Luf;"
+	)
+	final class530 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lof;ILpe;Lok;)V"
+		descriptor = "(Luf;)V"
 	)
-	public class529(StudioGame var1, int var2, Language var3, AbstractArchive var4) {
-		super(var1, var3, var4 != null ? var4.getGroupFileCount(var2) : 0);
-		this.field5278 = new DemotingHashTable(64);
-		this.field5279 = var4;
-		this.field5280 = var2;
+	class529(class530 var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lsm;",
-		garbageValue = "-114111951"
-	)
-	protected class489 vmethod9367(int var1) {
-		synchronized(this.field5278) {
-			class488 var2 = (class488)this.field5278.get((long)var1);
-			if (var2 == null) {
-				var2 = this.method9368(var1);
-				this.field5278.method6040(var2, (long)var1);
-			}
-
-			return var2;
-		}
+	public Object next() {
+		int var1 = ++this.field5282 - 1;
+		class489 var2 = (class489)this.this$0.field5283.get((long)var1);
+		return var2 != null ? var2 : this.this$0.method9409(var1);
 	}
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lsi;",
-		garbageValue = "0"
-	)
-	class488 method9368(int var1) {
-		byte[] var2 = this.field5279.takeFile(this.field5280, var1);
-		class488 var3 = new class488(var1);
-		if (var2 != null) {
-			var3.method8818(new Buffer(var2));
-		}
-
-		return var3;
+	public void remove() {
+		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "156"
-	)
-	public void method9369() {
-		synchronized(this.field5278) {
-			this.field5278.clear();
-		}
-	}
-
-	public Iterator iterator() {
-		return new class528(this);
+	public boolean hasNext() {
+		return this.field5282 < this.this$0.method8882();
 	}
 }

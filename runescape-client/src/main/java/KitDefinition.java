@@ -4,52 +4,55 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hq")
+@ObfuscatedName("jr")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lob;"
 	)
 	@Export("KitDefinition_archive")
 	public static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lob;"
 	)
 	@Export("KitDefinition_modelsArchive")
 	public static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lmo;"
+		descriptor = "Lms;"
 	)
 	@Export("KitDefinition_cached")
-	public static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("ap")
+	static EvictingDualNodeHashTable KitDefinition_cached;
+	@ObfuscatedName("ah")
+	@Export("ByteArrayPool_alternativeSizes")
+	static int[] ByteArrayPool_alternativeSizes;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 413166461
+		intValue = 1914905283
 	)
 	@Export("bodypartID")
-	public int bodypartID;
-	@ObfuscatedName("an")
+	int bodypartID;
+	@ObfuscatedName("ao")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -63,10 +66,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)V",
-		garbageValue = "463832260"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-1971894971"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -80,10 +83,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;IB)V",
-		garbageValue = "1"
+		descriptor = "(Lvg;II)V",
+		garbageValue = "274363254"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -126,10 +129,23 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(III)Z",
+		garbageValue = "-1352222285"
+	)
+	public boolean method4827(int var1, int var2) {
+		if (var2 == 1) {
+			return var1 + 7 == this.bodypartID;
+		} else {
+			return this.bodypartID == var1;
+		}
+	}
+
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "2042180474"
+		garbageValue = "-1813167689"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -148,10 +164,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkr;",
-		garbageValue = "-1455217912"
+		descriptor = "(B)Lgm;",
+		garbageValue = "6"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -188,12 +204,12 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-44"
+		descriptor = "(I)Z",
+		garbageValue = "-1057770776"
 	)
-	public boolean method3625() {
+	public boolean method4839() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
@@ -205,10 +221,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lkr;",
-		garbageValue = "948604691"
+		descriptor = "(B)Lgm;",
+		garbageValue = "62"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -238,12 +254,77 @@ public class KitDefinition extends DualNode {
 		return var5;
 	}
 
-	@ObfuscatedName("mt")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIB)V",
-		garbageValue = "53"
+		descriptor = "(Lob;B)V",
+		garbageValue = "0"
 	)
-	static final void method3632(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-		WorldMapArea.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false, -1);
+	public static void method4850(AbstractArchive var0) {
+		ParamComposition.ParamDefinition_archive = var0;
+	}
+
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lfe;",
+		garbageValue = "1409302933"
+	)
+	static class136 method4853(int var0) {
+		class136 var1 = (class136)class134.findEnumerated(Huffman.method7100(), var0);
+		if (var1 == null) {
+			var1 = class136.field1596;
+		}
+
+		return var1;
+	}
+
+	@ObfuscatedName("gr")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lte;",
+		garbageValue = "-164931231"
+	)
+	@Export("getPlatformInfo")
+	static PlatformInfo getPlatformInfo() {
+		return WorldMapElement.platformInfo;
+	}
+
+	@ObfuscatedName("ji")
+	@ObfuscatedSignature(
+		descriptor = "(Ldy;IZS)V",
+		garbageValue = "-23371"
+	)
+	@Export("addPlayerToScene")
+	static void addPlayerToScene(WorldView var0, int var1, boolean var2) {
+		Player var3 = var0.players[var1];
+		if (var3 != null && var3.isVisible() && !var3.isHidden) {
+			var3.isUnanimated = false;
+			if ((Client.isLowDetail && var0.playerUpdateManager.playerCount > 50 || var0.playerUpdateManager.playerCount > 200) && var2 && var3.idleSequence == var3.movementSequence) {
+				var3.isUnanimated = true;
+			}
+
+			int var4 = var3.x >> 7;
+			int var5 = var3.y >> 7;
+			if (0 <= var4 && var4 < 104 && 0 <= var5 && var5 < 104) {
+				long var6 = class218.calculateTag(0, 0, 0, false, var3.index, var0.id);
+				if (var3.model0 != null && Client.cycle >= var3.animationCycleStart && Client.cycle < var3.animationCycleEnd) {
+					var3.isUnanimated = false;
+					var3.tileHeight = class162.getTileHeight(var0, var3.x, var3.y, var0.plane);
+					var3.playerCycle = Client.cycle;
+					var0.scene.addNullableObject(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3, var3.rotation, var6, var3.minX, var3.minY, var3.maxX, var3.maxY);
+				} else {
+					if ((var3.x & 127) == 64 && (var3.y & 127) == 64) {
+						if (var0.tileLastDrawnActor[var4][var5] == Client.viewportDrawCount) {
+							return;
+						}
+
+						var0.tileLastDrawnActor[var4][var5] = Client.viewportDrawCount;
+					}
+
+					var3.tileHeight = class162.getTileHeight(var0, var3.x, var3.y, var0.plane);
+					var3.playerCycle = Client.cycle;
+					var0.scene.drawEntity(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3, var3.rotation, var6, var3.isWalking);
+				}
+			}
+		}
+
 	}
 }

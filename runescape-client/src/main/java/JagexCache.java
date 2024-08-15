@@ -5,38 +5,38 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ic")
+@ObfuscatedName("in")
 @Implements("JagexCache")
 public class JagexCache {
-	@ObfuscatedName("ak")
-	static File field2357;
 	@ObfuscatedName("au")
+	static File field2357;
+	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -1090388895
+	)
+	static int field2352;
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Luv;"
 	)
 	@Export("JagexCache_randomDat")
 	public static BufferedFile JagexCache_randomDat;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Luv;"
 	)
 	@Export("JagexCache_dat2File")
 	public static BufferedFile JagexCache_dat2File;
-	@ObfuscatedName("az")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Luv;"
 	)
 	@Export("JagexCache_idx255File")
 	public static BufferedFile JagexCache_idx255File;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -191524709
-	)
-	@Export("cacheGamebuild")
-	static int cacheGamebuild;
-	@ObfuscatedName("aw")
-	@Export("osName")
-	static String osName;
+	@ObfuscatedName("ah")
+	static String[] field2359;
+	@ObfuscatedName("cg")
+	static String field2360;
 
 	static {
 		JagexCache_randomDat = null;

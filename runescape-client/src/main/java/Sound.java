@@ -1,92 +1,75 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hg")
+@ObfuscatedName("jt")
 @Implements("Sound")
 public class Sound {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 443044167
+		intValue = 1441315811
 	)
-	public int field2150;
-	@ObfuscatedName("ad")
+	public int field2725;
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -363435057
+		intValue = -1389220479
 	)
-	public int field2147;
-	@ObfuscatedName("ag")
+	public int field2724;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1233321151
+		intValue = 789342773
 	)
-	public int field2148;
-	@ObfuscatedName("ak")
+	public int field2727;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1599145757
+		intValue = 874354341
 	)
-	public int field2149;
+	public int field2726;
 
 	Sound(int var1, int var2, int var3, int var4) {
-		this.field2150 = 0;
-		this.field2147 = 0;
-		this.field2148 = 0;
-		this.field2149 = 0;
-		this.field2150 = var1;
-		this.field2147 = var2;
-		this.field2148 = var3;
-		this.field2149 = var4;
+		this.field2725 = 0;
+		this.field2724 = 0;
+		this.field2727 = 0;
+		this.field2726 = 0;
+		this.field2725 = var1;
+		this.field2724 = var2;
+		this.field2727 = var3;
+		this.field2726 = var4;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)I",
-		garbageValue = "-118"
+		descriptor = "(CI)Z",
+		garbageValue = "-397214552"
 	)
-	static int method3909(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
+	@Export("isDigit")
+	public static boolean isDigit(char var0) {
+		return var0 >= '0' && var0 <= '9';
 	}
 
-	@ObfuscatedName("mp")
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "(III)Ljava/lang/String;",
-		garbageValue = "1047946300"
+		descriptor = "(ILdp;ZI)I",
+		garbageValue = "-442569072"
 	)
-	static final String method3908(int var0, int var1) {
-		int var2 = var1 - var0;
-		if (var2 < -9) {
-			return NpcOverrides.colorStartTag(16711680);
-		} else if (var2 < -6) {
-			return NpcOverrides.colorStartTag(16723968);
-		} else if (var2 < -3) {
-			return NpcOverrides.colorStartTag(16740352);
-		} else if (var2 < 0) {
-			return NpcOverrides.colorStartTag(16756736);
-		} else if (var2 > 9) {
-			return NpcOverrides.colorStartTag(65280);
-		} else if (var2 > 6) {
-			return NpcOverrides.colorStartTag(4259584);
-		} else if (var2 > 3) {
-			return NpcOverrides.colorStartTag(8453888);
+	static int method5108(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.indexCheck.method5357(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.indexCheck.method5373(var3) ? 1 : 0;
+			return 1;
 		} else {
-			return var2 > 0 ? NpcOverrides.colorStartTag(12648192) : NpcOverrides.colorStartTag(16776960);
+			return 2;
 		}
 	}
 }

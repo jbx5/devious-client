@@ -1,76 +1,39 @@
-import java.util.ArrayList;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gq")
-public class class157 extends class147 {
-	@ObfuscatedName("fv")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	@Export("archive9")
-	static Archive archive9;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -1680782365
-	)
-	int field1754;
-	@ObfuscatedName("ad")
-	String field1752;
+@ObfuscatedName("gp")
+public class class157 extends class148 {
+	@ObfuscatedName("ab")
+	String field1723;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lfy;"
 	)
-	final class150 this$0;
+	final class151 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lfy;)V"
 	)
-	class157(class150 var1) {
+	class157(class151 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-1070155477"
 	)
-	void vmethod3528(Buffer var1) {
-		this.field1754 = var1.readInt();
-		this.field1752 = var1.readStringCp1252NullTerminated();
+	void vmethod3619(Buffer var1) {
+		this.field1723 = var1.readStringCp1252NullTerminated();
+		var1.readInt();
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
+		descriptor = "(Lgg;I)V",
+		garbageValue = "1070728869"
 	)
-	void vmethod3530(ClanSettings var1) {
-		var1.method3367(this.field1754, this.field1752);
-	}
-
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/ArrayList;IIIIB)V",
-		garbageValue = "94"
-	)
-	public static void method3343(ArrayList var0, int var1, int var2, int var3, int var4) {
-		class330.field3585.clear();
-		class330.field3585.addAll(var0);
-		class33.method476(var1, var2, var3, var4);
-	}
-
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1254433407"
-	)
-	static final void method3347() {
-		if (Projectile.pcmPlayer1 != null) {
-			Projectile.pcmPlayer1.run();
-		}
-
+	void vmethod3621(ClanSettings var1) {
+		var1.name = this.field1723;
 	}
 }

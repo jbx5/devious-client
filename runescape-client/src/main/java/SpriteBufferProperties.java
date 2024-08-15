@@ -2,35 +2,30 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("vh")
+@ObfuscatedName("og")
 @Implements("SpriteBufferProperties")
 public class SpriteBufferProperties {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -1853843341
-	)
-	@Export("SpriteBuffer_spriteCount")
-	public static int SpriteBuffer_spriteCount;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = 432701269
+		intValue = -1366375317
 	)
 	@Export("SpriteBuffer_spriteWidth")
 	public static int SpriteBuffer_spriteWidth;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 596356767
+	@ObfuscatedName("rc")
+	@ObfuscatedSignature(
+		descriptor = "Lvp;"
 	)
-	@Export("SpriteBuffer_spriteHeight")
-	public static int SpriteBuffer_spriteHeight;
-	@ObfuscatedName("an")
-	@Export("SpriteBuffer_spriteWidths")
-	public static int[] SpriteBuffer_spriteWidths;
-	@ObfuscatedName("av")
-	@Export("SpriteBuffer_spritePalette")
-	public static int[] SpriteBuffer_spritePalette;
-	@ObfuscatedName("ab")
-	@Export("SpriteBuffer_pixels")
-	public static byte[][] SpriteBuffer_pixels;
+	@Export("privateChatMode")
+	static PrivateChatMode privateChatMode;
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "98"
+	)
+	public static int method7142(int var0) {
+		return class535.method9466(ViewportMouse.ViewportMouse_entityTags[var0]);
+	}
 }

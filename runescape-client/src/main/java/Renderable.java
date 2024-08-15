@@ -4,12 +4,17 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kt")
+@ObfuscatedName("hs")
 @Implements("Renderable")
 public abstract class Renderable extends DualNode {
-	@ObfuscatedName("ej")
+	@ObfuscatedName("tf")
 	@ObfuscatedGetter(
-		intValue = 776464435
+		intValue = 1365206445
+	)
+	static int field2086;
+	@ObfuscatedName("eo")
+	@ObfuscatedGetter(
+		intValue = -1850611625
 	)
 	@Export("height")
 	public int height;
@@ -18,33 +23,33 @@ public abstract class Renderable extends DualNode {
 		this.height = 1000;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llv;",
-		garbageValue = "-543123602"
+		descriptor = "(I)Lhr;",
+		garbageValue = "-1547633874"
 	)
 	@Export("getModel")
 	protected Model getModel() {
 		return null;
 	}
 
-	@ObfuscatedName("eh")
-	void vmethod5778(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, long var10) {
-		Model var12 = this.getModel();
-		if (var12 != null) {
-			this.height = var12.height;
-			int var13 = Rasterizer3D.Rasterizer3D_sine[var2];
-			int var14 = Rasterizer3D.Rasterizer3D_cosine[var2];
-			int var15 = Rasterizer3D.Rasterizer3D_sine[var3];
-			int var16 = Rasterizer3D.Rasterizer3D_cosine[var3];
-			var12.draw(var1, var13, var14, var15, var16, var4 - var7, var5 - var8, var6 - var9, var10);
+	@ObfuscatedName("ej")
+	void vmethod4224(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, long var10, int var12, int var13, boolean var14) {
+		Model var15 = this.getModel();
+		if (var15 != null) {
+			this.height = var15.height;
+			int var16 = Rasterizer3D.Rasterizer3D_sine[var2];
+			int var17 = Rasterizer3D.Rasterizer3D_cosine[var2];
+			int var18 = Rasterizer3D.Rasterizer3D_sine[var3];
+			int var19 = Rasterizer3D.Rasterizer3D_cosine[var3];
+			var15.draw(var1, var16, var17, var18, var19, var4 - var7, var5 - var8, var6 - var9, var10);
 		}
 
 	}
 
-	@ObfuscatedName("js")
+	@ObfuscatedName("ja")
 	@ObfuscatedSignature(
-		descriptor = "(ILqg;IIIJ)V"
+		descriptor = "(ILqy;IIIJ)V"
 	)
 	@Export("draw")
 	void draw(int var1, TransformationMatrix var2, int var3, int var4, int var5, long var6) {
@@ -56,32 +61,20 @@ public abstract class Renderable extends DualNode {
 
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("nn")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "90"
+		descriptor = "(II)V",
+		garbageValue = "1421073958"
 	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class413.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
-					}
-
-					var6 = var7;
-				}
-
-				var3[var4++] = (char)var6;
-			}
-		}
-
-		return new String(var3, 0, var4);
+	static void method4139(int var0) {
+		class7.tempMenuAction = new MenuAction();
+		class7.tempMenuAction.param0 = Client.field650.field5517[var0];
+		class7.tempMenuAction.param1 = Client.field650.field5520[var0];
+		class7.tempMenuAction.opcode = Client.field650.field5521[var0];
+		class7.tempMenuAction.identifier = Client.field650.field5519[var0];
+		class7.tempMenuAction.itemId = Client.field650.field5523[var0];
+		class7.tempMenuAction.action = Client.field650.field5525[var0];
+		class7.tempMenuAction.field888 = Client.field650.field5522[var0];
+		class7.tempMenuAction.worldViewId = Client.field650.field5527[var0];
 	}
 }

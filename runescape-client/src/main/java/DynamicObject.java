@@ -4,72 +4,78 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dr")
+@ObfuscatedName("dj")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("by")
+	@Export("client")
 	@ObfuscatedSignature(
-		descriptor = "Lde;"
+		descriptor = "Lclient;"
+	)
+	public static Client client;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Ldy;"
 	)
 	@Export("worldView")
 	final WorldView worldView;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 1563928111
+		intValue = -1525575171
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1437264679
+		intValue = 1122655813
 	)
 	@Export("type")
 	final int type;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 2076222903
+		intValue = -1582123371
 	)
 	@Export("orientation")
 	final int orientation;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -129198571
+		intValue = -1518726997
 	)
 	@Export("plane")
 	final int plane;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1080493665
+		intValue = 156798943
 	)
 	@Export("x")
 	final int x;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 289855771
+		intValue = -1107102909
 	)
 	@Export("y")
 	final int y;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lii;"
+		descriptor = "Lkr;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -405582099
+		intValue = 1437847093
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 302909337
+		intValue = 355630901
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lde;IIIIIIIZLkt;)V"
+		descriptor = "(Ldy;IIIIIIIZLhs;)V"
 	)
 	DynamicObject(WorldView var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, Renderable var10) {
 		this.worldView = var1;
@@ -80,7 +86,7 @@ public class DynamicObject extends Renderable {
 		this.x = var6;
 		this.y = var7;
 		if (var8 != -1) {
-			this.sequenceDefinition = class353.SequenceDefinition_get(var8);
+			this.sequenceDefinition = class182.SequenceDefinition_get(var8);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
 			if (this.sequenceDefinition.restartMode == 0 && var10 instanceof DynamicObject) {
@@ -97,21 +103,21 @@ public class DynamicObject extends Renderable {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4059());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method5307());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llv;",
-		garbageValue = "-543123602"
+		descriptor = "(I)Lhr;",
+		garbageValue = "-1547633874"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		ObjectComposition var1 = HttpRequest.getObjectDefinition(this.id);
+		ObjectComposition var1 = class222.getObjectDefinition(this.id);
 		if (var1.transforms != null) {
 			var1 = var1.transform();
 		}
@@ -134,7 +140,7 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = this.worldView.tileHeights[this.plane];
-			int var9 = var8[var5][var7] + var8[var4][var7] + var8[var5][var6] + var8[var4][var6] >> 2;
+			int var9 = var8[var5][var7] + var8[var5][var6] + var8[var4][var6] + var8[var4][var7] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			if (this.sequenceDefinition != null) {
@@ -144,11 +150,11 @@ public class DynamicObject extends Renderable {
 				}
 
 				if (!this.sequenceDefinition.isCachedModelIdSet()) {
-					label61: {
+					label60: {
 						do {
 							while (true) {
 								if (var12 <= this.sequenceDefinition.frameLengths[this.frame]) {
-									break label61;
+									break label60;
 								}
 
 								var12 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -158,14 +164,14 @@ public class DynamicObject extends Renderable {
 									break;
 								}
 
-								class188.method3684(this.sequenceDefinition, this.frame, var10, var11, false);
+								class142.method3293(this.sequenceDefinition, this.frame, var10, var11, false);
 							}
 						} while(this.frame >= 0 && this.frame < this.sequenceDefinition.frameIds.length);
 
 						this.sequenceDefinition = null;
 					}
 				} else {
-					int var13 = this.sequenceDefinition.method4059();
+					int var13 = this.sequenceDefinition.method5307();
 					this.frame += var12;
 					var12 = 0;
 					if (this.frame >= var13) {
@@ -176,7 +182,7 @@ public class DynamicObject extends Renderable {
 					}
 
 					if (this.sequenceDefinition != null) {
-						WorldMapLabelSize.method4571(this.sequenceDefinition, this.frame, var10, var11, false);
+						class139.method3253(this.sequenceDefinition, this.frame, var10, var11, false);
 					}
 				}
 
@@ -184,89 +190,6 @@ public class DynamicObject extends Renderable {
 			}
 
 			return var1.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
-		}
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lqi;",
-		garbageValue = "72"
-	)
-	public static class423 method2270() {
-		synchronized(class423.field4701) {
-			if (class423.field4698 == 0) {
-				return new class423();
-			} else {
-				class423.field4701[--class423.field4698].method7762();
-				return class423.field4701[class423.field4698];
-			}
-		}
-	}
-
-	@ObfuscatedName("mb")
-	@ObfuscatedSignature(
-		descriptor = "(Ldb;IIIII)V",
-		garbageValue = "2048531961"
-	)
-	@Export("addPlayerToMenu")
-	static final void addPlayerToMenu(Player var0, int var1, int var2, int var3, int var4) {
-		if (var0.index != Client.localPlayerIndex) {
-			if (Client.menuOptionsCount < 400) {
-				String var5;
-				if (var0.skillLevel == 0) {
-					var5 = var0.actions[0] + var0.username + var0.actions[1] + Sound.method3908(var0.combatLevel, SoundCache.localPlayer.combatLevel) + " " + " (" + "level-" + var0.combatLevel + ")" + var0.actions[2];
-				} else {
-					var5 = var0.actions[0] + var0.username + var0.actions[1] + " " + " (" + "skill-" + var0.skillLevel + ")" + var0.actions[2];
-				}
-
-				int var6;
-				if (Client.isItemSelected == 1) {
-					WorldMapArea.insertMenuItem("Use", Client.field642 + " " + "->" + " " + NpcOverrides.colorStartTag(16777215) + var5, 14, var1, var2, var3, -1, false, var4);
-				} else if (Client.isSpellSelected) {
-					if ((class92.selectedSpellFlags & 8) == 8) {
-						WorldMapArea.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + NpcOverrides.colorStartTag(16777215) + var5, 15, var1, var2, var3, -1, false, var4);
-					}
-				} else {
-					for (var6 = 7; var6 >= 0; --var6) {
-						if (Client.playerMenuActions[var6] != null) {
-							short var7 = 0;
-							if (Client.playerMenuActions[var6].equalsIgnoreCase("Attack")) {
-								if (Client.playerAttackOption == AttackOption.AttackOption_hidden) {
-									continue;
-								}
-
-								if (AttackOption.AttackOption_alwaysRightClick == Client.playerAttackOption || AttackOption.AttackOption_dependsOnCombatLevels == Client.playerAttackOption && var0.combatLevel > SoundCache.localPlayer.combatLevel) {
-									var7 = 2000;
-								}
-
-								if (SoundCache.localPlayer.team != 0 && var0.team != 0) {
-									if (var0.team == SoundCache.localPlayer.team) {
-										var7 = 2000;
-									} else {
-										var7 = 0;
-									}
-								} else if (AttackOption.field1384 == Client.playerAttackOption && var0.isClanMember()) {
-									var7 = 2000;
-								}
-							} else if (Client.playerOptionsPriorities[var6]) {
-								var7 = 2000;
-							}
-
-							boolean var8 = false;
-							int var9 = Client.playerMenuOpcodes[var6] + var7;
-							WorldMapArea.insertMenuItem(Client.playerMenuActions[var6], NpcOverrides.colorStartTag(16777215) + var5, var9, var1, var2, var3, -1, false, var4);
-						}
-					}
-				}
-
-				for (var6 = 0; var6 < Client.menuOptionsCount; ++var6) {
-					if (Client.menuOpcodes[var6] == 23) {
-						Client.menuTargets[var6] = NpcOverrides.colorStartTag(16777215) + var5;
-						break;
-					}
-				}
-
-			}
 		}
 	}
 }
