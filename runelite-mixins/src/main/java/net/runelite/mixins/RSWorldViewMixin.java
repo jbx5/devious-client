@@ -113,10 +113,15 @@ public abstract class RSWorldViewMixin implements RSWorldView
 	}*/
 
 
-	//@FieldHook("players")
-	//@Inject
+	@FieldHook("players")
+	@Inject
 	public void cachedPlayersChanged(int idx)
 	{
+		if (oldPlayers == null)
+		{
+			oldPlayers = new RSPlayer[2048];
+		}
+
 		if (idx >= 0 && idx < this.getPlayers().length)
 		{
 			RSPlayer player = this.getPlayers()[idx];

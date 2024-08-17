@@ -947,9 +947,6 @@ public abstract class RSClientMixin implements RSClient
 		throw new NotImplementedException();
 	}
 
-	@Inject
-	public static RSRuneLiteMenuEntry[] rl$menuEntries;
-
 	/**
 	 * Deprecated menu entry
 	 */
