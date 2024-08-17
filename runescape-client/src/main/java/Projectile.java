@@ -341,7 +341,7 @@ public final class Projectile extends Renderable {
 		int var7;
 		if (!Client.isInInstance) {
 			int var3 = var1.readUnsignedShortLE();
-			var1.method9853();
+			var1.readSignedShort();
 			var2 = var1.readUnsignedShortAdd();
 			var4 = var1.readUnsignedShort();
 			class60.xteaKeys = new int[var4][4];

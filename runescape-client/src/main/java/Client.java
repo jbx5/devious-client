@@ -4379,7 +4379,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (ServerPacket.field3511 == var1.serverPacket) {
-					var20 = var3.readSignedShort();
+					var20 = var3.readShortLE();
 					var5 = var3.method9651();
 					var6 = var3.readInt();
 					var76 = FloorUnderlayDefinition.widgetDefinition.method6544(var6);
@@ -4713,7 +4713,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var14 = var3.readUnsignedByteSub() * 4;
 					var16 = var3.readUnsignedShortAdd();
 					var26 = var3.readUnsignedShort();
-					var61 = var3.readShortSmart();
+					var61 = var3.method9613();
 					var6 = var3.method9653();
 					var20 = var6 >> 16;
 					var5 = var6 >> 8 & 255;
@@ -5337,7 +5337,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				if (ServerPacket.field3400 == var1.serverPacket) {
 					var20 = var3.readUnsignedIntME();
-					var5 = var3.method9853();
+					var5 = var3.readSignedShort();
 					var21 = FloorUnderlayDefinition.widgetDefinition.method6544(var20);
 					if (var5 != var21.sequenceId || var5 == -1) {
 						var21.sequenceId = var5;

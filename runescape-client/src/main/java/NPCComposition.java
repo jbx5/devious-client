@@ -420,7 +420,7 @@ public class NPCComposition extends DualNode {
 						this.headIconArchiveIds[var6] = -1;
 						this.headIconSpriteIndex[var6] = -1;
 					} else {
-						this.headIconArchiveIds[var6] = var1.readShortLE();
+						this.headIconArchiveIds[var6] = var1.readNullableLargeSmart();
 						this.headIconSpriteIndex[var6] = (short)var1.readShortSmartSub();
 					}
 				}

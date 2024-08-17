@@ -242,7 +242,7 @@ public final class Occluder {
 
 				for (var10 = 0; var10 < 8; ++var10) {
 					if ((var7 & 1 << var10) != 0) {
-						var8[var10] = var2.readShortLE();
+						var8[var10] = var2.readNullableLargeSmart();
 						var9[var10] = (short)var2.readShortSmartSub();
 					} else {
 						var8[var10] = -1;

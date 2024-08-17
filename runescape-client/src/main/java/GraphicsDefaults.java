@@ -98,17 +98,17 @@ public class GraphicsDefaults {
 				var3.readMedium();
 				break;
 			case 2:
-				this.field5005 = var3.readShortLE();
-				this.field4996 = var3.readShortLE();
-				this.field4997 = var3.readShortLE();
-				this.field4998 = var3.readShortLE();
-				this.field4995 = var3.readShortLE();
-				this.field5000 = var3.readShortLE();
-				this.field4999 = var3.readShortLE();
-				this.field5002 = var3.readShortLE();
-				this.field5003 = var3.readShortLE();
-				this.field5001 = var3.readShortLE();
-				this.field5004 = var3.readShortLE();
+				this.field5005 = var3.readNullableLargeSmart();
+				this.field4996 = var3.readNullableLargeSmart();
+				this.field4997 = var3.readNullableLargeSmart();
+				this.field4998 = var3.readNullableLargeSmart();
+				this.field4995 = var3.readNullableLargeSmart();
+				this.field5000 = var3.readNullableLargeSmart();
+				this.field4999 = var3.readNullableLargeSmart();
+				this.field5002 = var3.readNullableLargeSmart();
+				this.field5003 = var3.readNullableLargeSmart();
+				this.field5001 = var3.readNullableLargeSmart();
+				this.field5004 = var3.readNullableLargeSmart();
 			}
 		}
 	}

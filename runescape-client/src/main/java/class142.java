@@ -94,7 +94,7 @@ public class class142 extends DualNode {
 				var15 = class135.field1589;
 			}
 
-			var9 = var1.readNullableLargeSmart();
+			var9 = var1.readShortSmart();
 			class136 var17 = KitDefinition.method4853(var1.readUnsignedByte());
 			class134 var18 = new class134();
 			var18.method3216(var1, var2);
