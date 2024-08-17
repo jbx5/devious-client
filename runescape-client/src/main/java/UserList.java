@@ -345,7 +345,7 @@ public abstract class UserList {
 		garbageValue = "-998274099"
 	)
 	static final void method8670(String var0) {
-		PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.field3337, Client.packetWriter.isaacCipher);
+		PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 		var1.packetBuffer.writeByte(class526.stringCp1252NullTerminatedByteSize(var0));
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var1);

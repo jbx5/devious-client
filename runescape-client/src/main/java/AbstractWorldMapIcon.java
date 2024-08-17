@@ -210,7 +210,7 @@ public abstract class AbstractWorldMapIcon {
 			}
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = class218.getPacketBufferNode(ClientPacket.field3281, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = class218.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(SpriteBufferProperties.privateChatMode.field5540);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -226,7 +226,7 @@ public abstract class AbstractWorldMapIcon {
 				Interpreter.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-				var6 = class218.getPacketBufferNode(ClientPacket.field3324, Client.packetWriter.isaacCipher);
+				var6 = class218.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(class526.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -300,7 +300,7 @@ public abstract class AbstractWorldMapIcon {
 							class230.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[class230.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[class230.Interpreter_stringStackSize + 1];
-							var12 = class218.getPacketBufferNode(ClientPacket.field3351, Client.packetWriter.isaacCipher);
+							var12 = class218.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);

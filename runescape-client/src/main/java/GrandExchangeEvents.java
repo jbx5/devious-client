@@ -149,7 +149,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var21 = class218.getPacketBufferNode(ClientPacket.field3330, Client.packetWriter.isaacCipher);
+					var21 = class218.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
 					var21.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var21.packetBuffer.writeShortAddLE(var3);
 					Client.packetWriter.addNode(var21);
@@ -166,7 +166,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var21 = class218.getPacketBufferNode(ClientPacket.field3325, Client.packetWriter.isaacCipher);
+					var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
 					var21.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var21.packetBuffer.writeShortAdd(var3);
 					Client.packetWriter.addNode(var21);
@@ -182,7 +182,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var21 = class218.getPacketBufferNode(ClientPacket.field3302, Client.packetWriter.isaacCipher);
+					var21 = class218.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
 					var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var21.packetBuffer.writeShort(var3);
 					Client.packetWriter.addNode(var21);
@@ -197,7 +197,7 @@ public class GrandExchangeEvents {
 			Widget var22;
 			PacketBufferNode var25;
 			if (var2 == 28) {
-				var25 = class218.getPacketBufferNode(ClientPacket.field3329, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeInt(var1);
 				Client.packetWriter.addNode(var25);
 				var22 = FloorUnderlayDefinition.widgetDefinition.method6544(var1);
@@ -223,7 +223,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3320, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var25.packetBuffer.writeShort(var0 + var11);
 				var25.packetBuffer.writeShortLE(var3);
@@ -238,7 +238,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3296, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var25.packetBuffer.writeShortAddLE(var12 + var1);
 				var25.packetBuffer.writeShortAddLE(var0 + var11);
@@ -251,7 +251,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossY = var9;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3310, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeShortAddLE(var3);
 				Client.packetWriter.addNode(var25);
 			}
@@ -263,7 +263,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3313, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeShort(var3);
 				var25.packetBuffer.writeShort(var12 + var1);
 				var25.packetBuffer.writeShort(var0 + var11);
@@ -276,7 +276,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossY = var9;
 				Client.mouseCrossColor = 2;
 				Client.mouseCrossState = 0;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3309, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeShort(var12 + var1);
 				var25.packetBuffer.writeShortAddLE(var3);
 				var25.packetBuffer.writeShortLE(var0 + var11);
@@ -290,7 +290,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3311, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeShort(var12 + var1);
 				var25.packetBuffer.writeShortLE(Client.selectedSpellItemId);
 				var25.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
@@ -348,7 +348,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3289, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var25.packetBuffer.writeShortLE(var3);
 				var25.packetBuffer.writeShortAddLE(var0 + var11);
@@ -370,7 +370,7 @@ public class GrandExchangeEvents {
 					}
 
 					if (var23 != null) {
-						var19 = class218.getPacketBufferNode(ClientPacket.field3280, Client.packetWriter.isaacCipher);
+						var19 = class218.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
 						var19.packetBuffer.writeShortAdd(var23.id);
 						Client.packetWriter.addNode(var19);
 					}
@@ -403,7 +403,7 @@ public class GrandExchangeEvents {
 				Client.mouseCrossState = 0;
 				Client.destinationX = var0;
 				Client.destinationY = var1;
-				var25 = class218.getPacketBufferNode(ClientPacket.field3299, Client.packetWriter.isaacCipher);
+				var25 = class218.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
 				var25.packetBuffer.writeShortAddLE(var3);
 				var25.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var25.packetBuffer.writeShortLE(var12 + var1);
@@ -420,7 +420,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var21 = class218.getPacketBufferNode(ClientPacket.field3276, Client.packetWriter.isaacCipher);
+					var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
 					var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var21.packetBuffer.writeShort(var3);
 					Client.packetWriter.addNode(var21);
@@ -455,7 +455,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3341, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortLE(var3);
 						var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var21);
@@ -463,7 +463,7 @@ public class GrandExchangeEvents {
 				}
 
 				if (var2 == 29) {
-					var25 = class218.getPacketBufferNode(ClientPacket.field3329, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeInt(var1);
 					Client.packetWriter.addNode(var25);
 					var22 = FloorUnderlayDefinition.widgetDefinition.method6544(var1);
@@ -485,7 +485,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3272, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortLE(var3);
 						var21.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var21);
@@ -501,7 +501,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3358, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var21.packetBuffer.writeShortLE(var3);
 						Client.packetWriter.addNode(var21);
@@ -536,7 +536,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3259, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortAdd(var3);
 						var21.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var21);
@@ -552,7 +552,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3282, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var21.packetBuffer.writeShortAddLE(var3);
 						Client.packetWriter.addNode(var21);
@@ -568,7 +568,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3293, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var21.packetBuffer.writeShortAdd(var3);
 						Client.packetWriter.addNode(var21);
@@ -582,7 +582,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var25 = class218.getPacketBufferNode(ClientPacket.field3317, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
 					var25.packetBuffer.writeIntME(MenuAction.selectedSpellWidget);
 					var25.packetBuffer.writeShortAddLE(Client.selectedSpellItemId);
@@ -602,7 +602,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3352, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortAdd(var3);
 						var21.packetBuffer.writeShort(Client.selectedSpellChildIndex);
 						var21.packetBuffer.writeShortLE(Client.selectedSpellItemId);
@@ -619,7 +619,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var25 = class218.getPacketBufferNode(ClientPacket.field3269, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 					var25.packetBuffer.writeShortLE(var3);
 					var25.packetBuffer.writeShortAddLE(var12 + var1);
@@ -640,7 +640,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var25 = class218.getPacketBufferNode(ClientPacket.field3279, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeShortAdd(var12 + var1);
 					var25.packetBuffer.writeShortAddLE(var3);
 					var25.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -657,7 +657,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3264, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var21.packetBuffer.writeShortLE(var3);
 						Client.packetWriter.addNode(var21);
@@ -671,7 +671,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var25 = class218.getPacketBufferNode(ClientPacket.field3322, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeShortAddLE(var0 + var11);
 					var25.packetBuffer.writeShort(var12 + var1);
 					var25.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -688,7 +688,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3275, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortAdd(var3);
 						var21.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var21);
@@ -707,7 +707,7 @@ public class GrandExchangeEvents {
 							class421.runScriptEvent(var27);
 						}
 
-						var21 = class218.getPacketBufferNode(ClientPacket.field3318, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 						var21.packetBuffer.writeShort(Client.selectedSpellChildIndex);
 						var21.packetBuffer.writeShortLE(var0);
@@ -727,7 +727,7 @@ public class GrandExchangeEvents {
 						}
 
 						if (var20) {
-							var19 = class218.getPacketBufferNode(ClientPacket.field3329, Client.packetWriter.isaacCipher);
+							var19 = class218.getPacketBufferNode(ClientPacket.WIDGET_TYPE, Client.packetWriter.isaacCipher);
 							var19.packetBuffer.writeInt(var1);
 							Client.packetWriter.addNode(var19);
 						}
@@ -743,7 +743,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3319, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShort(var3);
 						var21.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
 						var21.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
@@ -760,7 +760,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var25 = class218.getPacketBufferNode(ClientPacket.field3353, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeShortAdd(var3);
 					var25.packetBuffer.writeShortLE(var0 + var11);
 					var25.packetBuffer.writeShort(var12 + var1);
@@ -775,7 +775,7 @@ public class GrandExchangeEvents {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var25 = class218.getPacketBufferNode(ClientPacket.field3300, Client.packetWriter.isaacCipher);
+					var25 = class218.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
 					var25.packetBuffer.writeShortAddLE(var0 + var11);
 					var25.packetBuffer.writeShortAddLE(var12 + var1);
 					var25.packetBuffer.writeShortAddLE(var3);
@@ -792,7 +792,7 @@ public class GrandExchangeEvents {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var21 = class218.getPacketBufferNode(ClientPacket.field3332, Client.packetWriter.isaacCipher);
+						var21 = class218.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
 						var21.packetBuffer.writeShortAddLE(var3);
 						var21.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						Client.packetWriter.addNode(var21);

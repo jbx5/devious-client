@@ -135,7 +135,7 @@ public class class209 extends class224 {
 			}
 		}
 
-		PacketBufferNode var7 = class218.getPacketBufferNode(ClientPacket.field3278, Client.packetWriter.isaacCipher);
+		PacketBufferNode var7 = class218.getPacketBufferNode(ClientPacket.DOCHEAT, Client.packetWriter.isaacCipher);
 		var7.packetBuffer.writeByte(var0.length() + 1);
 		var7.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var7);

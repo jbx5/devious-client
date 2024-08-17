@@ -2882,7 +2882,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 							}
 
 							if (packetWriter != null && packetWriter.isaacCipher != null) {
-								var30 = class218.getPacketBufferNode(ClientPacket.field3333, packetWriter.isaacCipher);
+								var30 = class218.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, packetWriter.isaacCipher);
 								var30.packetBuffer.writeByte(LoginPacket.getWindowedMode());
 								var30.packetBuffer.writeShort(NPC.canvasWidth);
 								var30.packetBuffer.writeShort(ApproximateRouteStrategy.canvasHeight);
@@ -2944,7 +2944,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				int var2;
 				PacketBufferNode var18;
 				while (class161.method3517()) {
-					var18 = class218.getPacketBufferNode(ClientPacket.field3270, packetWriter.isaacCipher);
+					var18 = class218.getPacketBufferNode(ClientPacket.REFLECTION_CHECK_REPLY, packetWriter.isaacCipher);
 					var18.packetBuffer.writeByte(0);
 					var2 = var18.packetBuffer.offset;
 					class238.performReflectionCheck(var18.packetBuffer);
@@ -2953,7 +2953,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (timer.field4839) {
-					var18 = class218.getPacketBufferNode(ClientPacket.field3273, packetWriter.isaacCipher);
+					var18 = class218.getPacketBufferNode(ClientPacket.LOGIN_TIMINGS, packetWriter.isaacCipher);
 					var18.packetBuffer.writeByte(0);
 					var2 = var18.packetBuffer.offset;
 					timer.write(var18.packetBuffer);
@@ -3097,7 +3097,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					var5 = (int)var20;
-					PacketBufferNode var22 = class218.getPacketBufferNode(ClientPacket.field3294, packetWriter.isaacCipher);
+					PacketBufferNode var22 = class218.getPacketBufferNode(ClientPacket.EVENT_MOUSE_CLICK, packetWriter.isaacCipher);
 					var22.packetBuffer.writeShort((MouseHandler.MouseHandler_lastButton == 2 ? 1 : 0) + (var5 << 1));
 					var22.packetBuffer.writeShort(var4);
 					var22.packetBuffer.writeShort(var3);
@@ -3111,7 +3111,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				if (indexCheck.field2918 > 0) {
-					var18 = class218.getPacketBufferNode(ClientPacket.field3355, packetWriter.isaacCipher);
+					var18 = class218.getPacketBufferNode(ClientPacket.EVENT_KEYBOARD, packetWriter.isaacCipher);
 					var18.packetBuffer.writeShort(0);
 					var2 = var18.packetBuffer.offset;
 					long var23 = RouteStrategy.method5439();
@@ -3142,7 +3142,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (field606 && field777 <= 0) {
 					field777 = 20;
 					field606 = false;
-					var18 = class218.getPacketBufferNode(ClientPacket.field3345, packetWriter.isaacCipher);
+					var18 = class218.getPacketBufferNode(ClientPacket.EVENT_CAMERA_POSITION, packetWriter.isaacCipher);
 					var18.packetBuffer.writeShortAddLE(camAngleY);
 					var18.packetBuffer.writeShort(camAngleX);
 					packetWriter.addNode(var18);
@@ -3150,14 +3150,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				if (class327.hasFocus && !hadFocus) {
 					hadFocus = true;
-					var18 = class218.getPacketBufferNode(ClientPacket.field3308, packetWriter.isaacCipher);
+					var18 = class218.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, packetWriter.isaacCipher);
 					var18.packetBuffer.writeByte(1);
 					packetWriter.addNode(var18);
 				}
 
 				if (!class327.hasFocus && hadFocus) {
 					hadFocus = false;
-					var18 = class218.getPacketBufferNode(ClientPacket.field3308, packetWriter.isaacCipher);
+					var18 = class218.getPacketBufferNode(ClientPacket.EVENT_APPLET_FOCUS, packetWriter.isaacCipher);
 					var18.packetBuffer.writeByte(0);
 					packetWriter.addNode(var18);
 				}
@@ -3406,7 +3406,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																			if (!var38) {
 																				var11 = var33.baseX;
 																				var12 = var33.baseY;
-																				PacketBufferNode var13 = class218.getPacketBufferNode(ClientPacket.field3285, packetWriter.isaacCipher);
+																				PacketBufferNode var13 = class218.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher);
 																				var13.packetBuffer.writeByte(5);
 																				var13.packetBuffer.writeByte(indexCheck.isValidIndexInRange(82) ? (indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
 																				var13.packetBuffer.writeShortLE(var12 + var61.baseY);
@@ -3428,7 +3428,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																	if (!var38 && ConcurrentMidiTask.topLevelWorldView.scene.shouldSendWalk()) {
 																		var7 = ConcurrentMidiTask.topLevelWorldView.scene.baseX;
 																		var8 = ConcurrentMidiTask.topLevelWorldView.scene.baseY;
-																		PacketBufferNode var62 = class218.getPacketBufferNode(ClientPacket.field3285, packetWriter.isaacCipher);
+																		PacketBufferNode var62 = class218.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher);
 																		var62.packetBuffer.writeByte(5);
 																		var62.packetBuffer.writeByte(indexCheck.isValidIndexInRange(82) ? (indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
 																		var62.packetBuffer.writeShortLE(var8 + ConcurrentMidiTask.topLevelWorldView.baseY);
@@ -3687,7 +3687,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																	if (var7 > 15000 && var9 > 15000) {
 																		logoutTimer = 250;
 																		WorldMapRenderer.method5788(14500);
-																		var65 = class218.getPacketBufferNode(ClientPacket.field3286, packetWriter.isaacCipher);
+																		var65 = class218.getPacketBufferNode(ClientPacket.EVENT_MOUSE_IDLE, packetWriter.isaacCipher);
 																		packetWriter.addNode(var65);
 																	}
 
@@ -3695,7 +3695,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 																	HealthBarDefinition.method4865();
 																	++packetWriter.pendingWrites;
 																	if (packetWriter.pendingWrites > 50) {
-																		var65 = class218.getPacketBufferNode(ClientPacket.field3288, packetWriter.isaacCipher);
+																		var65 = class218.getPacketBufferNode(ClientPacket.NO_TIMEOUT, packetWriter.isaacCipher);
 																		packetWriter.addNode(var65);
 																	}
 
@@ -4048,7 +4048,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3444 == var1.serverPacket) {
+				if (ServerPacket.VARP_LARGE == var1.serverPacket) {
 					var20 = var3.readUnsignedShortAddLE();
 					var5 = var3.readUnsignedIntLE();
 					Varps.Varps_temp[var20] = var5;
@@ -4064,7 +4064,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				int var7;
 				int var8;
-				if (ServerPacket.field3416 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_STAT == var1.serverPacket) {
 					UrlRequester.method3003();
 					var20 = var3.readInt();
 					var5 = var3.readUnsignedByteAdd();
@@ -4086,7 +4086,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3490 == var1.serverPacket) {
+				if (ServerPacket.HINT_ARROW == var1.serverPacket) {
 					hintArrowType = var3.readUnsignedByte();
 					if (hintArrowType == 1) {
 						hintArrowNpcIndex = var3.readUnsignedShort();
@@ -4149,7 +4149,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				boolean var67;
 				String var69;
-				if (ServerPacket.field3483 == var1.serverPacket) {
+				if (ServerPacket.MESSAGE_GAME == var1.serverPacket) {
 					var20 = var3.readUShortSmart();
 					var67 = var3.readUnsignedByte() == 1;
 					var69 = "";
@@ -4170,7 +4170,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3450 == var1.serverPacket) {
+				if (ServerPacket.CAM_RESET == var1.serverPacket) {
 					field765 = false;
 					isCameraLocked = false;
 					field759 = false;
@@ -4219,7 +4219,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3489 == var1.serverPacket) {
+				if (ServerPacket.CAM_LOOKAT == var1.serverPacket) {
 					isCameraLocked = true;
 					field765 = false;
 					field760 = true;
@@ -4279,7 +4279,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3455 == var1.serverPacket) {
+				if (ServerPacket.REBUILD_NORMAL == var1.serverPacket) {
 					Projectile.loadRegions(false, var1.packetBuffer);
 					var1.serverPacket = null;
 					return true;
@@ -4299,7 +4299,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3472 == var1.serverPacket) {
+				if (ServerPacket.MINIMAP_FLAG_SET == var1.serverPacket) {
 					destinationX = var3.readUnsignedByte();
 					if (destinationX == 255) {
 						destinationX = 0;
@@ -4315,7 +4315,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				Widget var21;
-				if (ServerPacket.field3454 == var1.serverPacket) {
+				if (ServerPacket.IF_SETNPCHEAD == var1.serverPacket) {
 					var20 = var3.readUnsignedIntLE();
 					var5 = var3.readUnsignedShortAddLE();
 					var21 = FloorUnderlayDefinition.widgetDefinition.method6544(var20);
@@ -4329,7 +4329,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3414 == var1.serverPacket) {
+				if (ServerPacket.IF_CLOSESUB == var1.serverPacket) {
 					var20 = var3.readInt();
 					InterfaceParent var89 = (InterfaceParent)interfaceParents.get((long)var20);
 					if (var89 != null) {
@@ -4358,7 +4358,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				int var9;
 				int var10;
 				int var61;
-				if (ServerPacket.field3441 == var1.serverPacket) {
+				if (ServerPacket.GRAPHICSOBJECT_SPAWN == var1.serverPacket) {
 					var10 = var3.readUnsignedByte();
 					var9 = var3.readUnsignedShortAddLE();
 					var61 = var3.readUnsignedShortLE();
@@ -4378,7 +4378,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3511 == var1.serverPacket) {
+				if (ServerPacket.IF_SETPOSITION == var1.serverPacket) {
 					var20 = var3.readShortLE();
 					var5 = var3.method9651();
 					var6 = var3.readInt();
@@ -4399,7 +4399,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3406 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_INV_FULL == var1.serverPacket) {
 					var20 = var3.readInt();
 					var5 = var3.readUnsignedShort();
 					if (var20 < -70000) {
@@ -4447,7 +4447,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3467 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_INV_PARTIAL == var1.serverPacket) {
 					var20 = var3.readInt();
 					var5 = var3.readUnsignedShort();
 					if (var20 < -70000) {
@@ -4491,7 +4491,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return this.method1217(var1, 2);
 				}
 
-				if (ServerPacket.field3417 == var1.serverPacket) {
+				if (ServerPacket.SYNC_CLIENT_VARCACHE == var1.serverPacket) {
 					for (var20 = 0; var20 < Varps.Varps_main.length; ++var20) {
 						if (Varps.Varps_main[var20] != Varps.Varps_temp[var20]) {
 							Varps.Varps_main[var20] = Varps.Varps_temp[var20];
@@ -4526,7 +4526,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3442 == var1.serverPacket) {
+				if (ServerPacket.NPC_SET_SEQUENCE == var1.serverPacket) {
 					var6 = var3.readUnsignedByteAdd();
 					var20 = var3.readUnsignedShortAdd();
 					var5 = var3.readUnsignedShortAdd();
@@ -4658,14 +4658,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3393 == var1.serverPacket) {
+				if (ServerPacket.CHAT_FILTER_SETTINGS == var1.serverPacket) {
 					tradeChatMode = var3.readUnsignedByteSub();
 					publicChatMode = var3.readUnsignedByteAdd();
 					var1.serverPacket = null;
 					return true;
 				}
 
-				if (ServerPacket.field3381 == var1.serverPacket) {
+				if (ServerPacket.RESET_CLIENT_VARCACHE == var1.serverPacket) {
 					for (var20 = 0; var20 < VarpDefinition.field2453; ++var20) {
 						VarpDefinition var88 = GrandExchangeOffer.VarpDefinition_get(var20);
 						if (var88 != null) {
@@ -4681,7 +4681,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				NPC var73;
-				if (ServerPacket.field3496 == var1.serverPacket) {
+				if (ServerPacket.NPC_SPOTANIM == var1.serverPacket) {
 					var7 = var3.readUnsignedByte();
 					var20 = var3.readUnsignedShortAddLE();
 					var73 = class328.worldView.npcs[var20];
@@ -4705,7 +4705,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				int var26;
 				byte var58;
 				byte var59;
-				if (ServerPacket.field3486 == var1.serverPacket) {
+				if (ServerPacket.PROJECTILE_SPAWN == var1.serverPacket) {
 					var13 = var3.readUnsignedByteNeg() * 4;
 					var58 = var3.readByte();
 					var18 = var3.readUnsignedShortLE();
@@ -4737,7 +4737,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3446 == var1.serverPacket) {
+				if (ServerPacket.CAM_SETANGLE == var1.serverPacket) {
 					isCameraLocked = true;
 					field765 = false;
 					field760 = false;
@@ -4790,13 +4790,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3485 == var1.serverPacket) {
+				if (ServerPacket.REFLECTION_CHECKER == var1.serverPacket) {
 					FriendsList.readReflectionCheck(var3, var1.serverPacketLength);
 					var1.serverPacket = null;
 					return true;
 				}
 
-				if (ServerPacket.field3487 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED == var1.serverPacket) {
 					class499.field5058 = var3.readUnsignedByte();
 					field582 = var3.readUnsignedByteSub();
 					class167.field1798 = var3.readUnsignedByteSub();
@@ -4811,7 +4811,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3412 == var1.serverPacket) {
+				if (ServerPacket.LOGOUT == var1.serverPacket) {
 					var20 = var3.readUnsignedByte();
 					InterfaceParent.forceDisconnect(var20);
 					var1.serverPacket = null;
@@ -4819,7 +4819,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				String var51;
-				if (ServerPacket.field3399 == var1.serverPacket) {
+				if (ServerPacket.MESSAGE_PRIVATE_ECHO == var1.serverPacket) {
 					var51 = var3.readStringCp1252NullTerminated();
 					var24 = AbstractFont.escapeBrackets(Skeleton.method3886(BufferedNetSocket.method8811(var3)));
 					class269.addGameMessage(6, var51, var24);
@@ -4843,7 +4843,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3507 == var1.serverPacket) {
+				if (ServerPacket.URL_OPEN == var1.serverPacket) {
 					byte[] var53 = new byte[var1.serverPacketLength];
 					var3.method9581(var53, 0, var53.length);
 					Buffer var84 = new Buffer(var53);
@@ -4853,7 +4853,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3421 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_FRIENDLIST == var1.serverPacket) {
 					class277.friendSystem.readUpdate(var3, var1.serverPacketLength);
 					field503 = cycleCntr;
 					var1.serverPacket = null;
@@ -4920,7 +4920,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				long var31;
 				long var34;
 				String var36;
-				if (ServerPacket.field3425 == var1.serverPacket) {
+				if (ServerPacket.MESSAGE_PRIVATE == var1.serverPacket) {
 					var51 = var3.readStringCp1252NullTerminated();
 					var27 = var3.readLong();
 					var29 = (long)var3.readUnsignedShort();
@@ -4961,7 +4961,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3392 == var1.serverPacket) {
+				if (ServerPacket.IF_SETOBJECT == var1.serverPacket) {
 					var20 = var3.readUnsignedShortAddLE();
 					if (var20 == 65535) {
 						var20 = -1;
@@ -5038,7 +5038,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3405 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_UID192 == var1.serverPacket) {
 					var3.offset += 28;
 					if (var3.checkCrc()) {
 						ObjectComposition.method5163(var3, var3.offset - 28);
@@ -5052,7 +5052,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return this.method1217(var1, 1);
 				}
 
-				if (ServerPacket.field3411 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_REBOOT_TIMER == var1.serverPacket) {
 					rebootTimer = var3.readUnsignedShort() * 30;
 					field706 = cycleCntr;
 					var1.serverPacket = null;
@@ -5066,7 +5066,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3499 == var1.serverPacket) {
+				if (ServerPacket.LOGOUT_FULL == var1.serverPacket) {
 					class138.logOut();
 					var1.serverPacket = null;
 					return false;
@@ -5096,7 +5096,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3403 == var1.serverPacket) {
+				if (ServerPacket.MESSAGE_FRIENDS_CHAT == var1.serverPacket) {
 					var66 = var3.readByte();
 					var24 = var3.readStringCp1252NullTerminated();
 					long var37 = (long)var3.readUnsignedShort();
@@ -5200,7 +5200,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3460 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_INV_STOP_TRANSIT == var1.serverPacket) {
 					var20 = var3.readUnsignedShort();
 					class271.method5434(var20);
 					changedItemContainers[++field572 - 1 & 31] = var20 & 32767;
@@ -5262,7 +5262,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3475 == var1.serverPacket) {
+				if (ServerPacket.NPC_INFO_LARGE_VIEWPORT_2 == var1.serverPacket) {
 					Occluder.updateNpcs(class328.worldView, false, var3);
 					var1.serverPacket = null;
 					return true;
@@ -5276,7 +5276,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3468 == var1.serverPacket) {
+				if (ServerPacket.IF_SETHIDE == var1.serverPacket) {
 					var86 = var3.readUnsignedByteAdd() == 1;
 					var5 = var3.readUnsignedIntLE();
 					var21 = FloorUnderlayDefinition.widgetDefinition.method6544(var5);
@@ -5289,7 +5289,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3413 == var1.serverPacket) {
+				if (ServerPacket.MIDI_SONG == var1.serverPacket) {
 					var20 = var3.readUnsignedShortAddLE();
 					if (var20 == 65535) {
 						var20 = -1;
@@ -5379,7 +5379,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3504 == var1.serverPacket) {
+				if (ServerPacket.IF_SETCOLOUR == var1.serverPacket) {
 					var20 = var3.readInt();
 					var5 = var3.readUnsignedShortLE();
 					var6 = var5 >> 10 & 31;
@@ -5397,7 +5397,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				Widget var77;
-				if (ServerPacket.field3466 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_INV_CLEAR == var1.serverPacket) {
 					var20 = var3.readInt();
 					var77 = FloorUnderlayDefinition.widgetDefinition.method6544(var20);
 
@@ -5458,7 +5458,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				}
 
 				Widget var22;
-				if (ServerPacket.field3506 == var1.serverPacket) {
+				if (ServerPacket.IF_SETANGLE == var1.serverPacket) {
 					var20 = var3.readUnsignedIntLE();
 					var5 = var3.readUnsignedShortAddLE();
 					var6 = var3.readUnsignedShort();
@@ -5475,7 +5475,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3420 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_ZONE_FULL_FOLLOWS == var1.serverPacket) {
 					class499.field5058 = var3.readUnsignedByteAdd();
 					class167.field1798 = var3.readUnsignedByteNeg();
 					field582 = var3.readUnsignedByteSub();
@@ -5546,20 +5546,20 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3431 == var1.serverPacket) {
+				if (ServerPacket.PLAYER_INFO == var1.serverPacket) {
 					class328.worldView.playerUpdateManager.method2866(var3, var1.serverPacketLength);
 					class223.method4720();
 					var1.serverPacket = null;
 					return true;
 				}
 
-				if (ServerPacket.field3408 == var1.serverPacket) {
+				if (ServerPacket.MINIMAP_TOGGLE == var1.serverPacket) {
 					minimapState = var3.readUnsignedByte();
 					var1.serverPacket = null;
 					return true;
 				}
 
-				if (ServerPacket.field3418 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_STOCKMARKET_SLOT == var1.serverPacket) {
 					var20 = var3.readUnsignedByte();
 					if (var3.readUnsignedByte() == 0) {
 						grandExchangeOffers[var20] = new GrandExchangeOffer();
@@ -5643,7 +5643,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3398 == var1.serverPacket) {
+				if (ServerPacket.DYNAMICOBJECT_SPAWN == var1.serverPacket) {
 					var9 = var3.readUnsignedByteNeg();
 					var10 = var9 >> 2;
 					var61 = var9 & 3;
@@ -5683,7 +5683,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3434 == var1.serverPacket) {
+				if (ServerPacket.RUNCLIENTSCRIPT == var1.serverPacket) {
 					var51 = var3.readStringCp1252NullTerminated();
 					Object[] var78 = new Object[var51.length() + 1];
 
@@ -5703,7 +5703,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3459 == var1.serverPacket) {
+				if (ServerPacket.SET_PLAYER_OP == var1.serverPacket) {
 					var20 = var3.readUnsignedByteNeg();
 					var5 = var3.readUnsignedByte();
 					var69 = var3.readStringCp1252NullTerminated();
@@ -5720,11 +5720,11 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3409 == var1.serverPacket) {
+				if (ServerPacket.PING_STATISTICS_REQUEST == var1.serverPacket) {
 					var20 = var3.readInt();
 					var5 = var3.readInt();
 					var6 = class376.getGcDuration();
-					PacketBufferNode var74 = class218.getPacketBufferNode(ClientPacket.field3274, packetWriter.isaacCipher);
+					PacketBufferNode var74 = class218.getPacketBufferNode(ClientPacket.PING_STATISTICS, packetWriter.isaacCipher);
 					var74.packetBuffer.writeIntME(var20);
 					var74.packetBuffer.writeIntIME(var5);
 					var74.packetBuffer.writeByte(GameEngine.fps);
@@ -5770,7 +5770,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return this.method1723(var1);
 				}
 
-				if (ServerPacket.field3452 == var1.serverPacket) {
+				if (ServerPacket.VARP_SMALL == var1.serverPacket) {
 					var66 = var3.readByte();
 					var5 = var3.readUnsignedShort();
 					Varps.Varps_temp[var5] = var66;
@@ -5784,7 +5784,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3503 == var1.serverPacket) {
+				if (ServerPacket.IF_SETPLAYERHEAD == var1.serverPacket) {
 					var20 = var3.readUnsignedIntIME();
 					var77 = FloorUnderlayDefinition.widgetDefinition.method6544(var20);
 					var77.modelType = 3;
@@ -5806,7 +5806,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3426 == var1.serverPacket) {
+				if (ServerPacket.UPDATE_IGNORELIST == var1.serverPacket) {
 					class277.friendSystem.ignoreList.read(var3, var1.serverPacketLength);
 					Decimator.FriendSystem_invalidateIgnoreds();
 					field503 = cycleCntr;
@@ -5862,13 +5862,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3382 == var1.serverPacket) {
+				if (ServerPacket.REBUILD_REGION == var1.serverPacket) {
 					Projectile.loadRegions(true, var1.packetBuffer);
 					var1.serverPacket = null;
 					return true;
 				}
 
-				if (ServerPacket.field3451 == var1.serverPacket) {
+				if (ServerPacket.CAM_MOVETO == var1.serverPacket) {
 					isCameraLocked = true;
 					field765 = false;
 					field759 = true;
@@ -5895,7 +5895,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3478 == var1.serverPacket) {
+				if (ServerPacket.IF_SETSCROLLPOS == var1.serverPacket) {
 					var20 = var3.readUnsignedIntME();
 					var5 = var3.readUnsignedShortAddLE();
 					var21 = FloorUnderlayDefinition.widgetDefinition.method6544(var20);
@@ -5918,7 +5918,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3453 == var1.serverPacket) {
+				if (ServerPacket.EVENT_WORLDHOP == var1.serverPacket) {
 					World var50 = new World();
 					var50.host = var3.readStringCp1252NullTerminated();
 					var50.id = var3.readUnsignedShort();
@@ -5945,7 +5945,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3495 == var1.serverPacket) {
+				if (ServerPacket.SET_PRIVCHATMODE == var1.serverPacket) {
 					SpriteBufferProperties.privateChatMode = class541.method9525(var3.readUnsignedByte());
 					var1.serverPacket = null;
 					return true;
@@ -6019,7 +6019,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3385 == var1.serverPacket) {
+				if (ServerPacket.PLAYER_SPOTANIM == var1.serverPacket) {
 					var5 = var3.readUnsignedShort();
 					var6 = var3.readInt();
 					var7 = var3.readUnsignedByteAdd();
@@ -6039,13 +6039,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3477 == var1.serverPacket) {
+				if (ServerPacket.NPC_INFO_SMALL_VIEWPORT_1 == var1.serverPacket) {
 					Occluder.updateNpcs(class328.worldView, true, var3);
 					var1.serverPacket = null;
 					return true;
 				}
 
-				if (ServerPacket.field3448 == var1.serverPacket) {
+				if (ServerPacket.IF_MOVESUB == var1.serverPacket) {
 					var20 = var3.readUnsignedIntLE();
 					var5 = var3.readUnsignedIntLE();
 					InterfaceParent var68 = (InterfaceParent)interfaceParents.get((long)var20);
@@ -6108,7 +6108,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3445 == var1.serverPacket) {
+				if (ServerPacket.TRIGGER_ONDIALOG_ABORT == var1.serverPacket) {
 					if (rootInterface != -1) {
 						HealthBarUpdate.runIntfCloseListeners(rootInterface, 0);
 					}
@@ -6117,7 +6117,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3402 == var1.serverPacket) {
+				if (ServerPacket.IF_SETMODEL == var1.serverPacket) {
 					var20 = var3.readUnsignedIntME();
 					var5 = var3.readUnsignedShort();
 					var21 = FloorUnderlayDefinition.widgetDefinition.method6544(var20);
@@ -6317,7 +6317,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					}
 
 					if (draggedOnWidget != null && class358.method6669(clickedWidget) != null) {
-						PacketBufferNode var9 = class218.getPacketBufferNode(ClientPacket.field3339, packetWriter.isaacCipher);
+						PacketBufferNode var9 = class218.getPacketBufferNode(ClientPacket.OPHELDD, packetWriter.isaacCipher);
 						var9.packetBuffer.writeIntME(draggedOnWidget.id);
 						var9.packetBuffer.writeShortAdd(draggedOnWidget.childIndex);
 						var9.packetBuffer.writeShort(draggedOnWidget.itemId);

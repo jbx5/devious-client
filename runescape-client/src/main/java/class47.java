@@ -254,7 +254,7 @@ public class class47 {
 				ObjectComposition.ObjectDefinition_cachedModelData.clear();
 				PacketBufferNode var19;
 				if (DynamicObject.client.hasFrame()) {
-					var19 = class218.getPacketBufferNode(ClientPacket.field3307, Client.packetWriter.isaacCipher);
+					var19 = class218.getPacketBufferNode(ClientPacket.DETECT_MODIFIED_CLIENT, Client.packetWriter.isaacCipher);
 					var19.packetBuffer.writeInt(1057001181);
 					Client.packetWriter.addNode(var19);
 				}

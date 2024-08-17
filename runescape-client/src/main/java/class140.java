@@ -30,7 +30,7 @@ public class class140 {
 					int var10 = var8 * var5 - var7 * var4 >> 11;
 					int var11 = class354.entity.getX() + var9 >> 7;
 					int var12 = class354.entity.getY() - var10 >> 7;
-					PacketBufferNode var13 = class218.getPacketBufferNode(ClientPacket.field3326, Client.packetWriter.isaacCipher);
+					PacketBufferNode var13 = class218.getPacketBufferNode(ClientPacket.MINIMAP_CLICK, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
 					var13.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
 					var13.packetBuffer.writeShortLE(var12 + ConcurrentMidiTask.topLevelWorldView.baseY);

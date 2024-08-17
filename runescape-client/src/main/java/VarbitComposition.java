@@ -115,7 +115,7 @@ public class VarbitComposition extends DualNode {
 		}
 
 		if (Client.gameState >= 25 && Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.field3333, Client.packetWriter.isaacCipher);
+			PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var1.packetBuffer.writeByte(LoginPacket.getWindowedMode());
 			var1.packetBuffer.writeShort(NPC.canvasWidth);
 			var1.packetBuffer.writeShort(ApproximateRouteStrategy.canvasHeight);

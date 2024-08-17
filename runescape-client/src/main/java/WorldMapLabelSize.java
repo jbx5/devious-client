@@ -214,7 +214,7 @@ public class WorldMapLabelSize {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var3 = class218.getPacketBufferNode(ClientPacket.field3333, Client.packetWriter.isaacCipher);
+			PacketBufferNode var3 = class218.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var3.packetBuffer.writeByte(LoginPacket.getWindowedMode());
 			var3.packetBuffer.writeShort(NPC.canvasWidth);
 			var3.packetBuffer.writeShort(ApproximateRouteStrategy.canvasHeight);

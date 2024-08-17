@@ -114,7 +114,7 @@ public class HttpRequestTask implements Callable {
 				if (var9) {
 					PacketBufferNode var12;
 					if (var0 == 1) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3327, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -122,7 +122,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 2) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3342, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -130,7 +130,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 3) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3347, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -138,7 +138,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 4) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3301, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -146,7 +146,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 5) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3277, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -154,7 +154,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 6) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3268, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -162,7 +162,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 7) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3271, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -170,7 +170,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 8) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3334, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -178,7 +178,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 9) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3291, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);
@@ -186,7 +186,7 @@ public class HttpRequestTask implements Callable {
 					}
 
 					if (var0 == 10) {
-						var12 = class218.getPacketBufferNode(ClientPacket.field3349, Client.packetWriter.isaacCipher);
+						var12 = class218.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher);
 						var12.packetBuffer.writeInt(var1);
 						var12.packetBuffer.writeShort(var2);
 						var12.packetBuffer.writeShort(var3);

@@ -123,7 +123,7 @@ public class AsyncHttpResponse {
 		garbageValue = "505827625"
 	)
 	static void method247() {
-		Client.packetWriter.addNode(class218.getPacketBufferNode(ClientPacket.field3344, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(class218.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

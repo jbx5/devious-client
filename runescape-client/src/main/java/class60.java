@@ -102,7 +102,7 @@ public class class60 {
 		garbageValue = "648783722"
 	)
 	static final void method1145() {
-		PacketBufferNode var0 = class218.getPacketBufferNode(ClientPacket.field3261, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = class218.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field857 = true;
 
