@@ -238,8 +238,8 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setOtp(String otp);
 
-	@Import("setAuthenticationScheme")
-	void setAuthenticationScheme(boolean otp);
+	//@Import("setAuthenticationScheme")
+	//void setAuthenticationScheme(boolean otp);
 
 	@Import("setLoginResponseString")
 	void setLoginResponseString(String var0, String var1, String var2);

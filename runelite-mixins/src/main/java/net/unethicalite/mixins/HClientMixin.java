@@ -313,7 +313,7 @@ public abstract class HClientMixin implements RSClient
 	public void login(boolean otp)
 	{
 		client.setLoginResponseString("", "Connecting to server...", "");
-		client.setAuthenticationScheme(otp);
+		//client.setAuthenticationScheme(otp);
 		client.setRSGameState(GameState.LOGGING_IN.getState());
 	}
 }
