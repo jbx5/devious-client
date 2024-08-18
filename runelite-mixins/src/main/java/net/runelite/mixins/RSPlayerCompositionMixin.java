@@ -20,11 +20,11 @@ public abstract class RSPlayerCompositionMixin implements RSPlayerComposition
 	public int getEquipmentId(KitType type)
 	{
 		int id = getEquipmentIds()[type.getIndex()];
-		if (id < 512)
+		if (id < 2048)
 		{
 			return -1; // not an item
 		}
-		return id - 512;
+		return id - 2048;
 	}
 
 	@Inject
