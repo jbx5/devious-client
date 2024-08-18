@@ -4,66 +4,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("la")
+@ObfuscatedName("hu")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("lw")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 48501363
-	)
-	@Export("oculusOrbFocalPointZ")
-	static int oculusOrbFocalPointZ;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 813042761
+		intValue = -28800837
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -35525971
+		intValue = -1972820805
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1279477689
+		intValue = 762408535
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1427307041
+		intValue = 807272083
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1529712313
+		intValue = 391570297
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lhs;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lhs;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		longValue = 7437302260060701101L
+		longValue = -5494974717742791213L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 696972967
+		intValue = 974700247
 	)
 	@Export("flags")
 	int flags;
@@ -73,31 +67,45 @@ public final class BoundaryObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(IB)I",
-		garbageValue = "101"
+		garbageValue = "-4"
 	)
-	@Export("Widget_unpackTargetMask")
-	public static int Widget_unpackTargetMask(int var0) {
-		return var0 >> 11 & 63;
+	public static int method4470(int var0) {
+		return WorldMapLabelSize.method5531(ViewportMouse.ViewportMouse_entityTags[var0]);
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ck")
 	@ObfuscatedSignature(
-		descriptor = "(Lok;IB)Lvv;",
-		garbageValue = "3"
+		descriptor = "([BI)[B",
+		garbageValue = "264973536"
 	)
-	public static IndexedSprite method6014(AbstractArchive var0, int var1) {
-		byte[] var3 = var0.takeFileFlat(var1);
-		boolean var2;
-		if (var3 == null) {
-			var2 = false;
+	@Export("decompressBytes")
+	static final byte[] decompressBytes(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		int var2 = var1.readUnsignedByte();
+		int var3 = var1.readInt();
+		if (var3 < 0 || AbstractArchive.field4509 != 0 && var3 > AbstractArchive.field4509) {
+			throw new RuntimeException();
+		} else if (var2 == 0) {
+			byte[] var6 = new byte[var3];
+			var1.readBytes(var6, 0, var3);
+			return var6;
 		} else {
-			DefaultsGroup.SpriteBuffer_decode(var3);
-			var2 = true;
-		}
+			int var4 = var1.readInt();
+			if (var4 >= 0 && (AbstractArchive.field4509 == 0 || var4 <= AbstractArchive.field4509)) {
+				byte[] var5 = new byte[var4];
+				if (var2 == 1) {
+					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
+				} else {
+					AbstractArchive.gzipDecompressor.decompress(var1, var5);
+				}
 
-		return !var2 ? null : class159.method3419();
+				return var5;
+			} else {
+				throw new RuntimeException();
+			}
+		}
 	}
 }

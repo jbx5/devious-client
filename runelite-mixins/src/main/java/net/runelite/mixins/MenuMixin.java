@@ -24,316 +24,409 @@
  */
 package net.runelite.mixins;
 
+import java.util.Arrays;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
-import net.runelite.api.events.WidgetPressed;
+import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSFont;
-import net.runelite.rs.api.RSMenuAction;
+import net.runelite.rs.api.RSMenu;
 import net.runelite.rs.api.RSRuneLiteMenuEntry;
 
-@Mixin(RSClient.class)
-public abstract class MenuMixin implements RSClient
+@Mixin(RSMenu.class)
+public abstract class MenuMixin implements RSMenu
 {
-	private static final int MENU_BORDER_OUTER_2010 = 0x6D6A5B;
-	private static final int MENU_BORDER_INNER_2010 = 0x524A3D;
-	private static final int MENU_PADDING_2010 = 0x2B2622;
-	private static final int MENU_BACKGROUND_2010 = 0x2B271C;
-	private static final int MENU_TEXT_2010 = 0xC6B895;
-	private static final int MENU_HEADER_GRADIENT_TOP_2010 = 0x322E22;
-	private static final int MENU_HEADER_GRADIENT_BOTTOM_2010 = 0x090A04;
-	private static final int ORIGINAL_BG = 0x5D5447;
-
 	@Shadow("client")
 	private static RSClient client;
 
-	@Shadow("tempMenuAction")
-	private static RSMenuAction tempMenuAction;
+	@Inject
+	private RSRuneLiteMenuEntry[] rl$menuEntries;
 
 	@Inject
-	void initSubmenu(int x, int y)
-	{
-		if (client.getSubmenuIdx() != -1)
-		{
-			RSRuneLiteMenuEntry rootEntry = (RSRuneLiteMenuEntry) client.getMenuEntries()[client.getSubmenuIdx()];
-			String s = rootEntry.getOption();
-			if (!rootEntry.getTarget().isEmpty())
-			{
-				s = s + " " + rootEntry.getTarget();
-			}
+	private int rl$menuEntriesSize;
 
-			if (rootEntry.getType() == MenuAction.RUNELITE_SUBMENU || rootEntry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
-			{
-				s = s + " <col=ffffff><gt>";
-			}
-			int tempWidth = client.getFontBold12().getTextWidth(s);
-			int realCount = 0;
-
-			for (MenuEntry me : client.getMenuEntries())
-			{
-				if (me.getParent() == null) continue;
-				if (((RSRuneLiteMenuEntry)me.getParent()).getIdx() == rootEntry.getIdx())
-				{
-					realCount++;
-					tempWidth = Math.max(client.getFontBold12().getTextWidth(
-							(me.getTarget().length() > 0 ? me.getOption() + " " + me.getTarget() : me.getOption())
-					), tempWidth);
-				}
-			}
-			tempWidth += 8;
-			int var4 = realCount * 15 + 22;
-			int var5 = x/* - tempWidth / 2*/;
-			if (var5 + tempWidth > client.getCanvasWidth())
-			{
-				//var5 = client.getCanvasWidth() - tempWidth;
-				var5 = x - tempWidth - getMenuWidth();
-			}
-
-			if (var5 < 0)
-			{
-				var5 = 0;
-			}
-
-			int var6 = y;
-			if (var4 + y > client.getCanvasHeight())
-			{
-				var6 = client.getCanvasHeight() - var4;
-			}
-
-			if (var6 < 0)
-			{
-				var6 = 0;
-			}
-
-			client.setSubmenuX(var5);
-			client.setSubmenuY(var6);
-			client.setSubmenuWidth(tempWidth);
-			client.setSubmenuHeight(realCount * 15 + 22);
-
-			client.setSubmenuScroll(0);
-			client.setSubmenuScrollMax(0);
-			if (var4 > this.getCanvasHeight())
-			{
-				client.setSubmenuScrollMax(var4 - this.getCanvasHeight() + 14 / 15);
-			}
-		}
-	}
+	@MethodHook(value = "<init>", end = true)
 	@Inject
-	private void draw2010MenuNest(MenuEntry parent, int x, int y, int w, int h, int scroll, int alpha)
+	public void init(boolean var1)
 	{
-		// Outside border
-		rasterizerDrawHorizontalLineAlpha(x + 2, y, w - 4, MENU_BORDER_OUTER_2010, alpha);
-		rasterizerDrawHorizontalLineAlpha(x + 2, y + h - 1, w - 4, MENU_BORDER_OUTER_2010, alpha);
-		rasterizerDrawVerticalLineAlpha(x, y + 2, h - 4, MENU_BORDER_OUTER_2010, alpha);
-		rasterizerDrawVerticalLineAlpha(x + w - 1, y + 2, h - 4, MENU_BORDER_OUTER_2010, alpha);
-
-		// Padding
-		rasterizerDrawRectangleAlpha(x + 1, y + 5, w - 2, h - 6, MENU_PADDING_2010, alpha);
-		rasterizerDrawHorizontalLineAlpha(x + 1, y + 17, w - 2, MENU_PADDING_2010, alpha);
-		rasterizerDrawCircleAlpha(x + 2, y + h - 3, 0, MENU_PADDING_2010, alpha);
-		rasterizerDrawCircleAlpha(x + w - 3, y + h - 3, 0, MENU_PADDING_2010, alpha);
-
-		// Header
-		rasterizerDrawGradientAlpha(x + 2, y + 1, w - 4, 16, MENU_HEADER_GRADIENT_TOP_2010, MENU_HEADER_GRADIENT_BOTTOM_2010, alpha, alpha);
-		rasterizerFillRectangleAlpha(x + 1, y + 1, 2, 4, MENU_PADDING_2010, alpha);
-		rasterizerFillRectangleAlpha(x + w - 3, y + 1, 2, 4, MENU_PADDING_2010, alpha);
-
-		// Inside border
-		rasterizerDrawHorizontalLineAlpha(x + 2, y + 18, w - 4, MENU_BORDER_INNER_2010, alpha);
-		rasterizerDrawHorizontalLineAlpha(x + 3, y + h - 3, w - 6, MENU_BORDER_INNER_2010, alpha);
-		rasterizerDrawVerticalLineAlpha(x + 2, y + 18, h - 21, MENU_BORDER_INNER_2010, alpha);
-		rasterizerDrawVerticalLineAlpha(x + w - 3, y + 18, h - 21, MENU_BORDER_INNER_2010, alpha);
-
-		// Options background
-		rasterizerFillRectangleAlpha(x + 3, y + 19, w - 6, h - 22, MENU_BACKGROUND_2010, alpha);
-
-		// Corner insets
-		rasterizerDrawCircleAlpha(x + 1, y + 1, 0, MENU_BORDER_OUTER_2010, alpha);
-		rasterizerDrawCircleAlpha(x + w - 2, y + 1, 0, MENU_BORDER_OUTER_2010, alpha);
-		rasterizerDrawCircleAlpha(x + 1, y + h - 2, 0, MENU_BORDER_OUTER_2010, alpha);
-		rasterizerDrawCircleAlpha(x + w - 2, y + h - 2, 0, MENU_BORDER_OUTER_2010, alpha);
-
-		RSFont font = getFontBold12();
-		String option = parent == null ? "Choose Option" : parent.getTarget();
-		font.drawTextLeftAligned(option, x + 3, y + 14, MENU_TEXT_2010, -1);
-
-		MenuEntry[] entries = getMenuEntries();
-
-		int mouseX = getMouseX();
-		int mouseY = getMouseY();
-		int realCount = 0;
-		for (int i = 0; i < entries.length; i++)
-		{
-			if (entries[i].getParent() == parent)
-			{
-				realCount++;
-			}
-		}
-		int realIdx = 0;
-		for (int i = 0; i < entries.length; i++)
-		{
-			MenuEntry entry = entries[i];
-			if (entry.getParent() == parent && realCount - 1 - realIdx >= scroll)
-			{
-				int rowY = y + (realCount - 1 - realIdx - scroll) * 15 + 31;
-				realIdx++;
-				String s = entry.getOption();
-				if (!entry.getTarget().isEmpty())
-				{
-					s = s + " " + entry.getTarget();
-				}
-
-				if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
-				{
-					s = s + " <col=ffffff><gt>";
-				}
-
-				font.drawTextLeftAligned(s, x + 3, rowY, MENU_TEXT_2010, -1);
-				if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
-				{
-					rasterizerFillRectangleAlpha(x + 3, rowY - 12, w - 6, 15, 0xffffff, 80);
-					if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
-					{
-						setSubmenuIdx(i);
-						initSubmenu(x + w, rowY - 31);
-					}
-				}
-				if (client.getSubmenuIdx() == i)
-				{
-					this.draw2010MenuNest(entry, getSubmenuX(), getSubmenuY(), getSubmenuWidth(), getSubmenuHeight(), getSubmenuScroll(), alpha);
-				}
-			}
-		}
-		client.invalidateWidgetsUnder(x, y, w, h);
+		int var2 = var1 ? 500 : 64;
+		rl$menuEntriesSize = var2;
+		rl$menuEntries = new RSRuneLiteMenuEntry[var2];
 	}
+
 	@Inject
 	@Override
-	public void draw2010Menu(int alpha)
+	public RSRuneLiteMenuEntry[] getRl$menuEntries()
 	{
-		int x = getMenuX();
-		int y = getMenuY();
-		int w = getMenuWidth();
-		int h = getMenuHeight();
-
-		draw2010MenuNest(null, x, y, w, h, getMenuScroll(), alpha);
-
+		return rl$menuEntries;
 	}
 
 	@Inject
-	private void drawOriginalMenuNest(MenuEntry parent, int x, int y, int w, int h, int scroll, int alpha)
+	@Override
+	public void setRl$menuEntries(RSRuneLiteMenuEntry[] entries)
 	{
-		if (alpha != 255)
+		this.rl$menuEntries = entries;
+	}
+
+	@Inject
+	private int tmpMenuOptionsCount;
+
+	@Inject
+	@Override
+	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick)
+	{
+		//RSRuneLiteMenuEntry menuEntry = newBareRuneliteMenuEntry();
+		RSRuneLiteMenuEntry menuEntry = newRSRuneLiteMenuEntry(this, getMenuOptionCount());
+
+		menuEntry.setOption(option);
+		menuEntry.setTarget(target);
+		menuEntry.setIdentifier(identifier);
+		menuEntry.setType(MenuAction.of(opcode));
+		menuEntry.setParam0(param1);
+		menuEntry.setParam1(param2);
+		menuEntry.setParent(null);
+		menuEntry.setWorldViewId(-1);
+		menuEntry.setConsumer(null);
+		menuEntry.setForceLeftClick(forceLeftClick);
+		menuEntry.setItemId(itemId);
+
+		return menuEntry;
+	}
+
+	@Inject
+	@Override
+	public MenuEntry createMenuEntry(int idx)
+	{
+		if (this.getMenuOptionCount() >= 500)
 		{
-			rasterizerFillRectangleAlpha(x, y, w, h, ORIGINAL_BG, alpha);
-			rasterizerFillRectangleAlpha(x + 1, y + 1, w - 2, 16, 0, alpha);
-			rasterizerDrawRectangleAlpha(x + 1, y + 18, w - 2, h - 19, 0, alpha);
+			throw new IllegalStateException();
 		}
 		else
 		{
-			rasterizerFillRectangle(x, y, w, h, ORIGINAL_BG);
-			rasterizerFillRectangle(x + 1, y + 1, w - 2, 16, 0);
-			rasterizerDrawRectangle(x + 1, y + 18, w - 2, h - 19, 0);
-		}
-
-		RSFont font = getFontBold12();
-		String option = parent == null ? "Choose Option" : parent.getTarget();
-		font.drawTextLeftAligned(option, x + 3, y + 14, ORIGINAL_BG, -1);
-
-		MenuEntry[] entries = getMenuEntries();
-
-		int mouseX = getMouseX();
-		int mouseY = getMouseY();
-		int realCount = 0;
-		for (int i = 0; i < entries.length; i++)
-		{
-			if (entries[i].getParent() == parent)
+			if (idx < 0)
 			{
-				realCount++;
-			}
-		}
-		int realIdx = 0;
-		for (int i = 0; i < entries.length; i++)
-		{
-			MenuEntry entry = entries[i];
-			if (entry.getParent() == parent && realCount - 1 - realIdx >= scroll)
-			{
-				int rowY = y + (realCount - 1 - realIdx - scroll) * 15 + 31;
-				realIdx++;
-				String s = entry.getOption();
-				if (!entry.getTarget().isEmpty())
+				idx = this.getMenuOptionCount() + idx + 1;
+				if (idx < 0)
 				{
-					s = s + " " + entry.getTarget();
-				}
-
-				if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
-				{
-					s = s + " <col=ffffff><gt>";
-				}
-				int highlight = 0xFFFFFF;
-				if (mouseX > x && mouseX < w + x && mouseY > rowY - 13 && mouseY < rowY + 3)
-				{
-					highlight = 0xFFFF00;
-					if (entry.getType() == MenuAction.RUNELITE_SUBMENU || entry.getType() == MenuAction.RUNELITE_SUBMENU_WIDGET)
-					{
-						setSubmenuIdx(i);
-						initSubmenu(x + w, rowY - 31);
-					}
-				}
-				font.drawTextLeftAligned(s, x + 3, rowY, highlight, 0);
-				if (client.getSubmenuIdx() == i)
-				{
-					this.drawOriginalMenuNest(entry, getSubmenuX(), getSubmenuY(), getSubmenuWidth(), getSubmenuHeight(), getSubmenuScroll(), alpha);
+					throw new IllegalArgumentException();
 				}
 			}
+
+			RSRuneLiteMenuEntry menuEntry;
+			if (idx < this.getMenuOptionCount())
+			{
+				RSRuneLiteMenuEntry tmpEntry = rl$menuEntries[this.getMenuOptionCount()];
+				if (tmpEntry == null)
+				{
+					tmpEntry = rl$menuEntries[this.getMenuOptionCount()] = newRSRuneLiteMenuEntry(this, getMenuOptionCount());
+				}
+
+				for (int i = this.getMenuOptionCount(); i > idx; rl$menuEntries[i].setIdx(i--))
+				{
+					this.getMenuOptions()[i] = this.getMenuOptions()[i - 1];
+					this.getMenuTargets()[i] = this.getMenuTargets()[i - 1];
+					this.getMenuIdentifiers()[i] = this.getMenuIdentifiers()[i - 1];
+					this.getMenuOpcodes()[i] = this.getMenuOpcodes()[i - 1];
+					this.getMenuArguments1()[i] = this.getMenuArguments1()[i - 1];
+					this.getMenuArguments2()[i] = this.getMenuArguments2()[i - 1];
+					this.getMenuItemIds()[i] = this.getMenuItemIds()[i - 1];
+					this.getMenuWorldViewIds()[i] = this.getMenuWorldViewIds()[i - 1];
+					this.getMenuForceLeftClick()[i] = this.getMenuForceLeftClick()[i - 1];
+
+					rl$menuEntries[i] = rl$menuEntries[i - 1];
+				}
+
+				this.setMenuOptionCount(this.getMenuOptionCount() + 1);
+				tmpMenuOptionsCount = this.getMenuOptionCount();
+
+				menuEntry = tmpEntry;
+				rl$menuEntries[idx] = tmpEntry;
+
+				tmpEntry.setIdx(idx);
+			}
+			else
+			{
+				if (idx != this.getMenuOptionCount())
+				{
+					throw new IllegalArgumentException();
+				}
+
+				menuEntry = rl$menuEntries[this.getMenuOptionCount()];
+
+				if (menuEntry == null)
+				{
+					menuEntry = rl$menuEntries[this.getMenuOptionCount()] = newRSRuneLiteMenuEntry(this, getMenuOptionCount());
+				}
+
+				this.setMenuOptionCount(this.getMenuOptionCount() + 1);
+				tmpMenuOptionsCount = this.getMenuOptionCount();
+			}
+
+			menuEntry.setOption("");
+			menuEntry.setTarget("");
+			menuEntry.setIdentifier(0);
+			menuEntry.setType(MenuAction.RUNELITE);
+			menuEntry.setParam0(0);
+			menuEntry.setParam1(0);
+			menuEntry.setItemId(-1);
+			menuEntry.setWorldViewId(-1);
+			menuEntry.setParent(null);
+			menuEntry.setConsumer(null);
+
+			return menuEntry;
 		}
-		client.invalidateWidgetsUnder(x, y, w, h);
 	}
 
 	@Inject
 	@Override
-	public void drawOriginalMenu(int alpha)
+	public void removeMenuEntry(MenuEntry var1)
 	{
-		int x = getMenuX();
-		int y = getMenuY();
-		int w = getMenuWidth();
-		int h = getMenuHeight();
-		drawOriginalMenuNest(null, x, y, w, h, getMenuScroll(), alpha);
-	}
-
-	@Inject
-	@FieldHook("tempMenuAction")
-	public static void onTempMenuActionChanged(int idx)
-	{
-		if (tempMenuAction != null)
+		RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) var1;
+		int idx = menuEntry.getIdx();
+		if (menuEntry.getMenu() != this)
 		{
-			client.getCallbacks().post(new WidgetPressed());
+			throw new IllegalArgumentException("entry doesn't belong to menu");
 		}
-	}
-
-	@Inject
-	@Override
-	public void setTempMenuEntry(MenuEntry entry)
-	{
-		if (entry == null || tempMenuAction == null)
+		else
 		{
-			return;
-		}
+			assert idx >= 0 && idx < getMenuOptionCount();
 
-		tempMenuAction.setOption(entry.getOption());
-		tempMenuAction.setOpcode(entry.getType().getId());
-		tempMenuAction.setIdentifier(entry.getIdentifier());
-		tempMenuAction.setParam0(entry.getParam0());
-		tempMenuAction.setParam1(entry.getParam1());
+			for (int i = idx; i < this.getMenuOptionCount() - 1; rl$menuEntries[i].setIdx(i++))
+			{
+				this.getMenuOptions()[i] = this.getMenuOptions()[i + 1];
+				this.getMenuTargets()[i] = this.getMenuTargets()[i + 1];
+				this.getMenuIdentifiers()[i] = this.getMenuIdentifiers()[i + 1];
+				this.getMenuOpcodes()[i] = this.getMenuOpcodes()[i + 1];
+				this.getMenuArguments1()[i] = this.getMenuArguments1()[i + 1];
+				this.getMenuArguments2()[i] = this.getMenuArguments2()[i + 1];
+				this.getMenuItemIds()[i] = this.getMenuItemIds()[i + 1];
+				this.getMenuWorldViewIds()[i] = this.getMenuWorldViewIds()[i + 1];
+				this.getMenuForceLeftClick()[i] = this.getMenuForceLeftClick()[i + 1];
+
+				rl$menuEntries[i] = rl$menuEntries[i + 1];
+			}
+
+			menuEntry.setIdx(getMenuOptionCount() - 1);
+			rl$menuEntries[getMenuOptionCount() - 1] = menuEntry;
+			this.setMenuOptionCount(getMenuOptionCount() - 1);
+			tmpMenuOptionsCount = getMenuOptionCount();
+		}
 	}
 
 	@Inject
 	@Override
-	public void menuAction(int p0, int p1, MenuAction action, int id, int itemId, String option, String target)
+	public MenuEntry[] getMenuEntries()
 	{
-		client.sendMenuAction(p0, p1, action.getId(), id, itemId, client.getTopLevelWorldView().getId(), option, target, -1, -1);
+		RSRuneLiteMenuEntry[] menuEntries = Arrays.copyOf(rl$menuEntries, this.getMenuOptionCount());
+
+		for (RSRuneLiteMenuEntry menuEntry : menuEntries)
+		{
+			if (menuEntry.getOption() == null)
+			{
+				menuEntry.setOption("null");
+			}
+
+			if (menuEntry.getTarget() == null)
+			{
+				menuEntry.setTarget("null");
+			}
+		}
+
+		return menuEntries;
+	}
+
+	@Inject
+	@Override
+	public void setMenuEntries(MenuEntry[] menuEntries)
+	{
+		boolean var2 = false;
+
+		if (client.getTempMenuAction() != null && this.getMenuOptionCount() > 0)
+		{
+			var2 = client.getTempMenuAction().getOpcode() == this.getMenuOpcodes()[this.getMenuOptionCount() - 1] &&
+				client.getTempMenuAction().getIdentifier() == this.getMenuIdentifiers()[this.getMenuOptionCount() - 1] &&
+				client.getTempMenuAction().getOption().equals(this.getMenuOptions()[this.getMenuOptionCount() - 1]) &&
+				client.getTempMenuAction().getTarget().equals(this.getMenuTargets()[this.getMenuOptionCount() - 1]) &&
+				client.getTempMenuAction().getParam0() == this.getMenuArguments1()[this.getMenuOptionCount() - 1] &&
+				client.getTempMenuAction().getParam1() == this.getMenuArguments2()[this.getMenuOptionCount() - 1] &&
+				client.getTempMenuAction().getItemId() == this.getMenuItemIds()[this.getMenuOptionCount() - 1] &&
+				client.getTempMenuAction().getWorldViewId() == this.getMenuWorldViewIds()[this.getMenuOptionCount() - 1];
+		}
+
+		for (int i = 0; i < menuEntries.length; ++i)
+		{
+			RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) menuEntries[i];
+			if (menuEntry.getIdx() != i)
+			{
+				sortMenuEntries(menuEntry.getIdx(), i);
+			}
+		}
+
+		this.setMenuOptionCount(menuEntries.length);
+		tmpMenuOptionsCount = menuEntries.length;
+
+		if (var2 && this.getMenuOptionCount() > 0)
+		{
+			client.getTempMenuAction().setOpcode(this.getMenuOpcodes()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setIdentifier(this.getMenuIdentifiers()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setOption(this.getMenuOptions()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setTarget(this.getMenuTargets()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setParam0(this.getMenuArguments1()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setParam1(this.getMenuArguments2()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setItemId(this.getMenuItemIds()[this.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setWorldViewId(this.getMenuWorldViewIds()[this.getMenuOptionCount() - 1]);
+		}
+	}
+
+	@Inject
+	@Override
+	public void sortMenuEntries(int left, int right)
+	{
+		String menuOption = this.getMenuOptions()[left];
+		this.getMenuOptions()[left] = this.getMenuOptions()[right];
+		this.getMenuOptions()[right] = menuOption;
+
+		String menuTarget = this.getMenuTargets()[left];
+		this.getMenuTargets()[left] = this.getMenuTargets()[right];
+		this.getMenuTargets()[right] = menuTarget;
+
+		int menuIdentifier = this.getMenuIdentifiers()[left];
+		this.getMenuIdentifiers()[left] = this.getMenuIdentifiers()[right];
+		this.getMenuIdentifiers()[right] = menuIdentifier;
+
+		int menuOpcode = this.getMenuOpcodes()[left];
+		this.getMenuOpcodes()[left] = this.getMenuOpcodes()[right];
+		this.getMenuOpcodes()[right] = menuOpcode;
+
+		int menuArguments1 = this.getMenuArguments1()[left];
+		this.getMenuArguments1()[left] = this.getMenuArguments1()[right];
+		this.getMenuArguments1()[right] = menuArguments1;
+
+		int menuArgument2 = this.getMenuArguments2()[left];
+		this.getMenuArguments2()[left] = this.getMenuArguments2()[right];
+		this.getMenuArguments2()[right] = menuArgument2;
+
+		int itemId = this.getMenuItemIds()[left];
+		this.getMenuItemIds()[left] = this.getMenuItemIds()[right];
+		this.getMenuItemIds()[right] = itemId;
+
+		int worldViewId = this.getMenuWorldViewIds()[left];
+		this.getMenuWorldViewIds()[left] = this.getMenuWorldViewIds()[right];
+		this.getMenuWorldViewIds()[right] = worldViewId;
+
+		boolean menuForceLeftClick = this.getMenuForceLeftClick()[left];
+		this.getMenuForceLeftClick()[left] = this.getMenuForceLeftClick()[right];
+		this.getMenuForceLeftClick()[right] = menuForceLeftClick;
+
+		RSRuneLiteMenuEntry var2 = rl$menuEntries[left];
+		rl$menuEntries[left] = rl$menuEntries[right];
+		rl$menuEntries[right] = var2;
+
+		rl$menuEntries[left].setIdx(left);
+		rl$menuEntries[right].setIdx(right);
+	}
+
+	@Inject
+	@Override
+	public void swapMenuEntries(int var0)
+	{
+		RSRuneLiteMenuEntry var1 = rl$menuEntries[var0];
+		RSRuneLiteMenuEntry var2 = rl$menuEntries[var0 + 1];
+
+		assert var1.getIdx() == var0;
+		assert var2.getIdx() == var0 + 1;
+
+		rl$menuEntries[var0] = var2;
+		rl$menuEntries[var0 + 1] = var1;
+
+		var1.setIdx(var0 + 1);
+		var2.setIdx(var0);
+	}
+
+	@Replace("insertMenuItem")
+	public final int insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick, int worldViewId)
+	{
+		if (this.getMenuOptionCount() < this.getMenuOptions().length)
+		{
+			this.getMenuOptions()[this.getMenuOptionCount()] = action;
+			this.getMenuTargets()[this.getMenuOptionCount()] = target;
+			this.getMenuOpcodes()[this.getMenuOptionCount()] = opcode;
+			this.getMenuIdentifiers()[this.getMenuOptionCount()] = identifier;
+			this.getMenuArguments1()[this.getMenuOptionCount()] = argument1;
+			this.getMenuArguments2()[this.getMenuOptionCount()] = argument2;
+			this.getMenuItemIds()[this.getMenuOptionCount()] = itemId;
+			this.getMenuWorldViewIds()[this.getMenuOptionCount()] = worldViewId;
+			this.getMenuForceLeftClick()[this.getMenuOptionCount()] = forceLeftClick;
+			this.getSubMenus()[this.getMenuOptionCount()] = null;
+
+			setMenuOptionCount(getMenuOptionCount() + 1);
+			onMenuOptionsChanged(-1);
+			return getMenuOptionCount() - 1;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
+	@FieldHook("menuOptionsCount")
+	@Inject
+	public final void onMenuOptionsChanged(int idx)
+	{
+		int tmpOptionsCount = tmpMenuOptionsCount;
+		int optionCount = this.getMenuOptionCount();
+		this.tmpMenuOptionsCount = optionCount;
+
+		if (optionCount < tmpOptionsCount)
+		{
+			for (int i = optionCount; i < tmpOptionsCount; ++i)
+			{
+				this.rl$menuEntries[i].setParent(null);
+				this.rl$menuEntries[i].setConsumer(null);
+			}
+		}
+		else if (optionCount == tmpOptionsCount + 1)
+		{
+			if (this.getMenuOptions()[tmpOptionsCount] == null)
+			{
+				this.getMenuOptions()[tmpOptionsCount] = "null";
+			}
+
+			if (this.getMenuTargets()[tmpOptionsCount] == null)
+			{
+				this.getMenuTargets()[tmpOptionsCount] = "null";
+			}
+
+			RSRuneLiteMenuEntry entry = this.rl$menuEntries[tmpOptionsCount];
+			if (entry == null)
+			{
+				entry = this.rl$menuEntries[tmpOptionsCount] = newRSRuneLiteMenuEntry(this, tmpOptionsCount);
+			}
+			else
+			{
+				entry.setParent(null);
+				entry.setConsumer(null);
+			}
+
+			MenuEntryAdded menuEntryAdded = new MenuEntryAdded(entry);
+			client.getCallbacks().post(menuEntryAdded);
+
+			if (menuEntryAdded.isModified() && this.getMenuOptionCount() == optionCount)
+			{
+				this.getMenuOptions()[tmpOptionsCount] = menuEntryAdded.getOption();
+				this.getMenuTargets()[tmpOptionsCount] = menuEntryAdded.getTarget();
+				this.getMenuIdentifiers()[tmpOptionsCount] = menuEntryAdded.getIdentifier();
+				this.getMenuOpcodes()[tmpOptionsCount] = menuEntryAdded.getType();
+				this.getMenuArguments1()[tmpOptionsCount] = menuEntryAdded.getActionParam0();
+				this.getMenuArguments2()[tmpOptionsCount] = menuEntryAdded.getActionParam1();
+				this.getMenuForceLeftClick()[tmpOptionsCount] = menuEntryAdded.isForceLeftClick();
+				this.getMenuItemIds()[tmpOptionsCount] = menuEntryAdded.getItemId();
+			}
+		}
 	}
 }

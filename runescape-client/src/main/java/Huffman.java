@@ -3,16 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("on")
+@ObfuscatedName("nh")
 @Implements("Huffman")
 public class Huffman {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ae")
+	@Export("Tiles_saturation")
+	static int[] Tiles_saturation;
+	@ObfuscatedName("jb")
+	static int[] field3961;
+	@ObfuscatedName("ab")
 	@Export("masks")
 	int[] masks;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@Export("bits")
 	byte[] bits;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@Export("keys")
 	int[] keys;
 
@@ -41,7 +46,7 @@ public class Huffman {
 
 					for (var10 = var6 - 1; var10 >= 1; --var10) {
 						var11 = var3[var10];
-						if (var8 != var11) {
+						if (var11 != var8) {
 							break;
 						}
 
@@ -99,10 +104,10 @@ public class Huffman {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "([BII[BII)I",
-		garbageValue = "1220192808"
+		garbageValue = "-766239876"
 	)
 	@Export("compress")
 	int compress(byte[] var1, int var2, int var3, byte[] var4, int var5) {
@@ -120,7 +125,7 @@ public class Huffman {
 			int var11 = var7 >> 3;
 			int var12 = var7 & 7;
 			var6 &= -var12 >> 31;
-			int var13 = (var10 + var12 - 1 >> 3) + var11;
+			int var13 = (var12 + var10 - 1 >> 3) + var11;
 			var12 += 24;
 			var4[var11] = (byte)(var6 |= var9 >>> var12);
 			if (var11 < var13) {
@@ -150,10 +155,10 @@ public class Huffman {
 		return (var7 + 7 >> 3) - var5;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "([BI[BIII)I",
-		garbageValue = "610105332"
+		descriptor = "([BI[BIIB)I",
+		garbageValue = "2"
 	)
 	@Export("decompress")
 	int decompress(byte[] var1, int var2, byte[] var3, int var4, int var5) {
@@ -292,5 +297,38 @@ public class Huffman {
 
 			return var7 + 1 - var2;
 		}
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lfe;",
+		garbageValue = "-1048760083"
+	)
+	static class136[] method7100() {
+		return new class136[]{class136.field1596, class136.field1599, class136.field1592, class136.field1594, class136.field1595, class136.field1597, class136.field1598, class136.field1601, class136.field1600, class136.field1610, class136.field1602, class136.field1603, class136.field1593, class136.field1605, class136.field1606, class136.field1607, class136.field1608};
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lci;",
+		garbageValue = "205179140"
+	)
+	@Export("Messages_getMessage")
+	static Message Messages_getMessage(int var0) {
+		return (Message)Messages.Messages_hashTable.get((long)var0);
+	}
+
+	@ObfuscatedName("pg")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lub;",
+		garbageValue = "-714286073"
+	)
+	static DbTable method7106(int var0) {
+		DbTable var1 = (DbTable)Client.archive11.get((long)var0);
+		if (var1 == null) {
+			var1 = new DbTable(class249.field2637, var0);
+		}
+
+		return var1;
 	}
 }

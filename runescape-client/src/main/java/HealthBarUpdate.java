@@ -4,33 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dh")
+@ObfuscatedName("du")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-	@ObfuscatedName("as")
-	@Export("osNameLowercase")
-	public static String osNameLowercase;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -2015000729
+		intValue = 1198672751
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -1494090523
+		intValue = -2085578993
 	)
 	@Export("health")
 	int health;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -71484607
+		intValue = 1298372681
 	)
 	@Export("health2")
 	int health2;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1704684721
+		intValue = -1615322527
 	)
 	@Export("cycleOffset")
 	int cycleOffset;
@@ -42,10 +39,10 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIB)V",
-		garbageValue = "7"
+		garbageValue = "-33"
 	)
 	@Export("set")
 	void set(int var1, int var2, int var3, int var4) {
@@ -55,113 +52,30 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Z",
-		garbageValue = "-324766040"
+		descriptor = "(III)I",
+		garbageValue = "2099517514"
 	)
-	@Export("isNumber")
-	public static boolean isNumber(CharSequence var0) {
-		boolean var2 = false;
-		boolean var3 = false;
-		int var4 = 0;
-		int var5 = var0.length();
-		int var6 = 0;
-
-		boolean var1;
-		while (true) {
-			if (var6 >= var5) {
-				var1 = var3;
-				break;
-			}
-
-			label84: {
-				char var7 = var0.charAt(var6);
-				if (var6 == 0) {
-					if (var7 == '-') {
-						var2 = true;
-						break label84;
-					}
-
-					if (var7 == '+') {
-						break label84;
-					}
-				}
-
-				int var9;
-				if (var7 >= '0' && var7 <= '9') {
-					var9 = var7 - '0';
-				} else if (var7 >= 'A' && var7 <= 'Z') {
-					var9 = var7 - '7';
-				} else {
-					if (var7 < 'a' || var7 > 'z') {
-						var1 = false;
-						break;
-					}
-
-					var9 = var7 - 'W';
-				}
-
-				if (var9 >= 10) {
-					var1 = false;
-					break;
-				}
-
-				if (var2) {
-					var9 = -var9;
-				}
-
-				int var8 = var9 + var4 * 10;
-				if (var4 != var8 / 10) {
-					var1 = false;
-					break;
-				}
-
-				var4 = var8;
-				var3 = true;
-			}
-
-			++var6;
+	public static int method2581(int var0, int var1) {
+		int var2;
+		for (var2 = 0; var1 > 0; --var1) {
+			var2 = var2 << 1 | var0 & 1;
+			var0 >>>= 1;
 		}
 
-		return var1;
+		return var2;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("nd")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1040978209"
+		descriptor = "(III)V",
+		garbageValue = "-1962568100"
 	)
-	static void method2528() {
-		Messages.Messages_channels.clear();
-		Messages.Messages_hashTable.clear();
-		Messages.Messages_queue.clear();
-		Messages.Messages_count = 0;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-591091524"
-	)
-	static final int method2533(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
+	@Export("runIntfCloseListeners")
+	static final void runIntfCloseListeners(int var0, int var1) {
+		if (FloorUnderlayDefinition.widgetDefinition.loadInterface(var0)) {
+			class105.runComponentCloseListeners(FloorUnderlayDefinition.widgetDefinition.Widget_interfaceComponents[var0], var1);
 		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
 	}
 }

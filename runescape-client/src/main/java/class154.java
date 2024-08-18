@@ -1,125 +1,68 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fx")
-public class class154 extends class147 {
-	@ObfuscatedName("aq")
-	boolean field1735;
-	@ObfuscatedName("ad")
-	byte field1734;
-	@ObfuscatedName("ag")
-	byte field1737;
-	@ObfuscatedName("ak")
-	byte field1736;
-	@ObfuscatedName("ap")
-	byte field1738;
+@ObfuscatedName("fp")
+public class class154 extends class164 {
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 1396660329
+	)
+	int field1710;
+	@ObfuscatedName("ay")
+	byte field1707;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 57929379
+	)
+	int field1708;
+	@ObfuscatedName("au")
+	String field1711;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lgl;"
 	)
-	final class150 this$0;
+	final class165 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lgl;)V"
 	)
-	class154(class150 var1) {
+	class154(class165 var1) {
 		this.this$0 = var1;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
-	)
-	void vmethod3528(Buffer var1) {
-		this.field1735 = var1.readUnsignedByte() == 1;
-		this.field1734 = var1.readByte();
-		this.field1737 = var1.readByte();
-		this.field1736 = var1.readByte();
-		this.field1738 = var1.readByte();
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
-	)
-	void vmethod3530(ClanSettings var1) {
-		var1.allowGuests = this.field1735;
-		var1.field1766 = this.field1734;
-		var1.field1767 = this.field1737;
-		var1.field1768 = this.field1736;
-		var1.field1769 = this.field1738;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "([BI)Ldg;",
-		garbageValue = "-22186846"
-	)
-	@Export("newScript")
-	static Script newScript(byte[] var0) {
-		Script var1 = new Script();
-		Buffer var2 = new Buffer(var0);
-		var2.offset = var2.array.length - 2;
-		int var3 = var2.readUnsignedShort();
-		int var4 = var2.array.length - 2 - var3 - 12;
-		var2.offset = var4;
-		int var5 = var2.readInt();
-		var1.localIntCount = var2.readUnsignedShort();
-		var1.localStringCount = var2.readUnsignedShort();
-		var1.intArgumentCount = var2.readUnsignedShort();
-		var1.stringArgumentCount = var2.readUnsignedShort();
-		int var6 = var2.readUnsignedByte();
-		int var7;
-		int var8;
-		if (var6 > 0) {
-			var1.switches = var1.newIterableNodeHashTable(var6);
-
-			for (var7 = 0; var7 < var6; ++var7) {
-				var8 = var2.readUnsignedShort();
-				IterableNodeHashTable var9 = new IterableNodeHashTable(var8 > 0 ? ModeWhere.method7432(var8) : 1);
-				var1.switches[var7] = var9;
-
-				while (var8-- > 0) {
-					int var10 = var2.readInt();
-					int var11 = var2.readInt();
-					var9.put(new IntegerNode(var11), (long)var10);
-				}
-			}
-		}
-
-		var2.offset = 0;
-		var1.field1011 = var2.readStringCp1252NullTerminatedOrNull();
-		var1.opcodes = new int[var5];
-		var1.intOperands = new int[var5];
-		var1.stringOperands = new String[var5];
-
-		for (var7 = 0; var2.offset < var4; var1.opcodes[var7++] = var8) {
-			var8 = var2.readUnsignedShort();
-			if (var8 == 3) {
-				var1.stringOperands[var7] = var2.readStringCp1252NullTerminated();
-			} else if (var8 < 100 && var8 != 21 && var8 != 38 && var8 != 39) {
-				var1.intOperands[var7] = var2.readInt();
-			} else {
-				var1.intOperands[var7] = var2.readUnsignedByte();
-			}
-		}
-
-		return var1;
+		this.field1710 = -1;
 	}
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "747669371"
+		descriptor = "(Lvg;B)V",
+		garbageValue = "-40"
 	)
-	public static int method3321(int var0, int var1, int var2) {
-		if (var1 < var0) {
-			throw new IllegalArgumentException("max: " + var1 + " can not be lower than min: " + var0);
-		} else {
-			return Math.max(var0, Math.min(var2, var1));
-		}
+	void vmethod3611(Buffer var1) {
+		this.field1710 = var1.readUnsignedShort();
+		this.field1707 = var1.readByte();
+		this.field1708 = var1.readUnsignedShort();
+		var1.readLong();
+		this.field1711 = var1.readStringCp1252NullTerminated();
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lgx;I)V",
+		garbageValue = "-357446960"
+	)
+	void vmethod3612(ClanChannel var1) {
+		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1710);
+		var2.rank = this.field1707;
+		var2.world = this.field1708;
+		var2.username = new Username(this.field1711);
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1979740784"
+	)
+	public static void method3401() {
+		ParamComposition.ParamDefinition_cached.clear();
 	}
 }

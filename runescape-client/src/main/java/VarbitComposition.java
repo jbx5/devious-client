@@ -1,73 +1,74 @@
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hc")
+@ObfuscatedName("jz")
 @Implements("VarbitComposition")
 public class VarbitComposition extends DualNode {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lob;"
 	)
 	@Export("VarbitDefinition_archive")
 	public static AbstractArchive VarbitDefinition_archive;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lmo;"
+		descriptor = "Lms;"
 	)
 	@Export("VarbitDefinition_cached")
-	static EvictingDualNodeHashTable VarbitDefinition_cached;
-	@ObfuscatedName("an")
-	static final int[] field2107;
-	@ObfuscatedName("us")
-	@ObfuscatedGetter(
-		intValue = 1654877821
+	public static EvictingDualNodeHashTable VarbitDefinition_cached;
+	@ObfuscatedName("ao")
+	static final int[] field2686;
+	@ObfuscatedName("fq")
+	@ObfuscatedSignature(
+		descriptor = "Loj;"
 	)
-	static int field2102;
-	@ObfuscatedName("ag")
+	static Archive field2680;
+	@ObfuscatedName("gw")
 	@ObfuscatedGetter(
-		intValue = -403599393
+		intValue = 479906515
+	)
+	static int field2687;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -30861727
 	)
 	@Export("baseVar")
 	public int baseVar;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -957731269
+		intValue = 96028407
 	)
 	@Export("startBit")
 	public int startBit;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -989672663
+		intValue = -320928113
 	)
 	@Export("endBit")
 	public int endBit;
 
 	static {
 		VarbitDefinition_cached = new EvictingDualNodeHashTable(64);
-		field2107 = new int[32];
+		field2686 = new int[32];
 		int var0 = 2;
 
 		for (int var1 = 0; var1 < 32; ++var1) {
-			field2107[var1] = var0 - 1;
+			field2686[var1] = var0 - 1;
 			var0 += var0;
 		}
 
 	}
 
-	VarbitComposition() {
-	}
-
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "109"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "1854809717"
 	)
 	@Export("decode")
-	void decode(Buffer var1) {
+	public void decode(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
@@ -78,10 +79,10 @@ public class VarbitComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;II)V",
-		garbageValue = "-2018721401"
+		descriptor = "(Lvg;II)V",
+		garbageValue = "2047575353"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -93,33 +94,32 @@ public class VarbitComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "1718879795"
-	)
-	@Export("addGameMessage")
-	static void addGameMessage(int var0, String var1, String var2) {
-		ArchiveDiskAction.addChatMessage(var0, var1, var2, (String)null);
-	}
-
-	@ObfuscatedName("ib")
+	@ObfuscatedName("ja")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1702551401"
+		garbageValue = "1793928479"
 	)
-	@Export("playSong")
-	static void playSong(int var0) {
-		if (var0 == -1 && !Client.playingJingle) {
-			class137.method3187(0, 0);
-		} else if (var0 != -1 && !class237.method4469(var0) && class105.clientPreferences.getMusicVolume() != 0) {
-			ArrayList var1 = new ArrayList();
-			var1.add(new MusicSong(class199.archive6, var0, 0, class105.clientPreferences.getMusicVolume(), false));
-			if (Client.playingJingle) {
-				class157.method3343(var1, 0, 100, 100, 0);
-			} else {
-				FontName.method9220(var1, 0, 100, 100, 0, false);
-			}
+	@Export("setWindowedMode")
+	static void setWindowedMode(int var0) {
+		Client.field724 = 0L;
+		if (var0 >= 2) {
+			Client.isResizable = true;
+		} else {
+			Client.isResizable = false;
+		}
+
+		if (LoginPacket.getWindowedMode() == 1) {
+			DynamicObject.client.setMaxCanvasSize(765, 503);
+		} else {
+			DynamicObject.client.setMaxCanvasSize(7680, 2160);
+		}
+
+		if (Client.gameState >= 25 && Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
+			PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(LoginPacket.getWindowedMode());
+			var1.packetBuffer.writeShort(NPC.canvasWidth);
+			var1.packetBuffer.writeShort(ApproximateRouteStrategy.canvasHeight);
+			Client.packetWriter.addNode(var1);
 		}
 
 	}

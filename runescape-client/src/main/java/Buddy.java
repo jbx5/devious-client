@@ -4,24 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sh")
+@ObfuscatedName("sc")
 @Implements("Buddy")
 public class Buddy extends User {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("qc")
+	@ObfuscatedSignature(
+		descriptor = "Lsj;"
+	)
+	static class487 field4934;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -608742771
+		intValue = -822428629
 	)
 	@Export("world")
 	public int world;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1329967099
+		intValue = 1265531865
 	)
 	@Export("int2")
 	public int int2;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -430063719
+		intValue = 1519908463
 	)
 	@Export("rank")
 	public int rank;
@@ -30,10 +35,10 @@ public class Buddy extends User {
 		this.world = -1;
 	}
 
-	@ObfuscatedName("bl")
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "915293638"
+		garbageValue = "896785790"
 	)
 	@Export("set")
 	void set(int var1, int var2) {
@@ -41,23 +46,33 @@ public class Buddy extends User {
 		this.int2 = var2;
 	}
 
-	@ObfuscatedName("bc")
+	@ObfuscatedName("bq")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-439898435"
+		descriptor = "(B)I",
+		garbageValue = "56"
 	)
 	@Export("getWorld")
 	public int getWorld() {
 		return this.world;
 	}
 
-	@ObfuscatedName("bv")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "723509877"
+		descriptor = "(B)Z",
+		garbageValue = "60"
 	)
 	@Export("hasWorld")
 	public boolean hasWorld() {
 		return this.world > 0;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+		garbageValue = "-1990026525"
+	)
+	static void method8736(String var0, String var1, String var2) {
+		class532.updateLoginIndex(7);
+		class130.setLoginResponseString(var0, var1, var2);
 	}
 }

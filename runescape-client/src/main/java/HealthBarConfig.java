@@ -1,36 +1,37 @@
+import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dl")
+@ObfuscatedName("dz")
 @Implements("HealthBarConfig")
 public class HealthBarConfig extends Node {
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lhy;"
+		descriptor = "Ljd;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lpi;"
+		descriptor = "Lpf;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhy;)V"
+		descriptor = "(Ljd;)V"
 	)
 	HealthBarConfig(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "-91"
+		descriptor = "(IIIII)V",
+		garbageValue = "-776005364"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -63,10 +64,10 @@ public class HealthBarConfig extends Node {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldh;",
-		garbageValue = "-1106798823"
+		descriptor = "(II)Ldu;",
+		garbageValue = "704930333"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -77,7 +78,7 @@ public class HealthBarConfig extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
+			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -88,39 +89,75 @@ public class HealthBarConfig extends Node {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "97"
+		garbageValue = "122"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7494();
+		return this.updates.method7575();
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1657967277"
+		descriptor = "(IIII)I",
+		garbageValue = "1645586642"
 	)
-	@Export("changeWorldSelectSorting")
-	static void changeWorldSelectSorting(int var0, int var1) {
-		int[] var2 = new int[4];
-		int[] var3 = new int[4];
-		var2[0] = var0;
-		var3[0] = var1;
-		int var4 = 1;
+	public static int method2744(int var0, int var1, int var2) {
+		int var3 = GameObject.method4490(var2 - var1 + 1);
+		var3 <<= var1;
+		return var0 & ~var3;
+	}
 
-		for (int var5 = 0; var5 < 4; ++var5) {
-			if (World.World_sortOption1[var5] != var0) {
-				var2[var4] = World.World_sortOption1[var5];
-				var3[var4] = World.World_sortOption2[var5];
-				++var4;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Date;B)Z",
+		garbageValue = "117"
+	)
+	static boolean method2743(Date var0) {
+		java.util.Calendar var1 = java.util.Calendar.getInstance();
+		var1.set(1, var1.get(1) - 13);
+		var1.set(5, var1.get(5) + 1);
+		var1.set(11, 0);
+		var1.set(12, 0);
+		var1.set(13, 0);
+		var1.set(14, 0);
+		Date var2 = var1.getTime();
+		return var0.before(var2);
+	}
+
+	@ObfuscatedName("mr")
+	@ObfuscatedSignature(
+		descriptor = "(Lnq;I)Z",
+		garbageValue = "-1574031166"
+	)
+	@Export("runCs1")
+	static final boolean runCs1(Widget var0) {
+		if (var0.cs1Comparisons == null) {
+			return false;
+		} else {
+			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
+				int var2 = FloorDecoration.method3719(var0, var1);
+				int var3 = var0.cs1ComparisonValues[var1];
+				if (var0.cs1Comparisons[var1] == 2) {
+					if (var2 >= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 3) {
+					if (var2 <= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 4) {
+					if (var3 == var2) {
+						return false;
+					}
+				} else if (var2 != var3) {
+					return false;
+				}
 			}
-		}
 
-		World.World_sortOption1 = var2;
-		World.World_sortOption2 = var3;
-		AbstractWorldMapData.sortWorlds(class357.World_worlds, 0, class357.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+			return true;
+		}
 	}
 }

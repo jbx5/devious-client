@@ -3,75 +3,84 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jb")
+@ObfuscatedName("ko")
 @Implements("MoveSpeed")
 public enum MoveSpeed implements Enum {
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2512((byte)-1, 0.0F),
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2520((byte)0, 0.5F),
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2519((byte)1, 1.0F),
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2509((byte)2, 2.0F),
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2510((byte)3, 1.5F),
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2511((byte)4, 2.5F),
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2516((byte)5, 3.0F),
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "Ljb;"
-	)
-	field2513((byte)6, 3.5F),
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Ljb;"
+		descriptor = "Lko;"
 	)
-	field2507((byte)7, 4.0F);
-
+	field2982((byte)-1, 0.0F),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lko;"
+	)
+	field2987((byte)0, 0.5F),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lko;"
+	)
+	field2983((byte)1, 1.0F),
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "[Ljb;"
+		descriptor = "Lko;"
 	)
-	static MoveSpeed[] field2508 = class193.moveSpeeds();
-	@ObfuscatedName("tp")
+	field2984((byte)2, 2.0F),
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lby;"
+		descriptor = "Lko;"
 	)
-	@Export("pcmStreamMixer")
-	static PcmStreamMixer pcmStreamMixer;
-	@ObfuscatedName("ai")
+	field2985((byte)3, 1.5F),
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lko;"
+	)
+	field2986((byte)4, 2.5F),
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lko;"
+	)
+	field2991((byte)5, 3.0F),
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lko;"
+	)
+	field2981((byte)6, 3.5F),
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lko;"
+	)
+	field2988((byte)7, 4.0F);
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "[Lko;"
+	)
+	public static MoveSpeed[] field2992;
+	@ObfuscatedName("av")
+	@Export("ByteArrayPool_arrays")
+	static byte[][][] ByteArrayPool_arrays;
+	@ObfuscatedName("ad")
 	@Export("id")
 	public final byte id;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@Export("moveSpeed")
 	public final float moveSpeed;
 
 	static {
-		class562.method10144();
+		MoveSpeed[] var0 = new MoveSpeed[]{field2986, field2988, field2991, field2982, field2983, field2987, field2984, field2985, field2981};
+		field2992 = var0;
+		StringBuilder var4 = new StringBuilder();
+		MoveSpeed[] var1 = field2992;
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			MoveSpeed var3 = var1[var2];
+			var4.append(var3.id);
+			var4.append(", ");
+		}
+
+		String var5 = var4.toString();
+		var5.substring(0, var5.length() - 2);
 	}
 
 	MoveSpeed(byte var3, float var4) {
@@ -79,86 +88,28 @@ public enum MoveSpeed implements Enum {
 		this.moveSpeed = var4;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2071992588"
+		descriptor = "(B)I",
+		garbageValue = "111"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("jw")
+	@ObfuscatedName("ir")
 	@ObfuscatedSignature(
-		descriptor = "(Lde;ZI)V",
-		garbageValue = "2064026790"
+		descriptor = "(Ldy;I)V",
+		garbageValue = "1394066603"
 	)
-	@Export("addNpcsToScene")
-	static final void addNpcsToScene(WorldView var0, boolean var1) {
-		for (int var2 = 0; var2 < var0.npcCount; ++var2) {
-			NPC var3 = var0.npcs[var0.npcIndices[var2]];
-			if (var3 != null && var3.isVisible() && var3.definition.isVisible == var1 && var3.definition.transformIsVisible()) {
-				int var4 = var3.x >> 7;
-				int var5 = var3.y >> 7;
-				if (var4 >= 0 && var4 < var0.sizeX && var5 >= 0 && var5 < var0.sizeY) {
-					if (var3.field1194 == 1 && (var3.x & 127) == 64 && (var3.y & 127) == 64) {
-						if (var0.tileLastDrawnActor[var4][var5] == Client.viewportDrawCount) {
-							continue;
-						}
-
-						var0.tileLastDrawnActor[var4][var5] = Client.viewportDrawCount;
-					}
-
-					long var6 = FileSystem.calculateTag(0, 0, 1, !var3.definition.isInteractable, var0.npcIndices[var2], var0.id);
-					var3.playerCycle = Client.cycle;
-					var0.scene.drawEntity(var0.plane, var3.x, var3.y, class169.getTileHeight(var0, var3.field1194 * 64 - 64 + var3.x, var3.field1194 * 64 - 64 + var3.y, var0.plane), var3.field1194 * 64 - 64 + 60, var3, var3.rotation, var6, var3.isWalking);
-				}
+	static void method5484(WorldView var0) {
+		for (int var1 = 0; var1 < var0.worldEntityCount; ++var1) {
+			int var2 = var0.worldEntityIndices[var1];
+			WorldEntity var3 = var0.worldEntities[var2];
+			if (var3 != null) {
+				var3.updateMovement();
 			}
-		}
-
-	}
-
-	@ObfuscatedName("mx")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "1905415221"
-	)
-	@Export("formatItemStacks")
-	static final String formatItemStacks(int var0) {
-		String var1 = Integer.toString(var0);
-
-		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
-			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
-		}
-
-		if (var1.length() > 9) {
-			return " " + NpcOverrides.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
-		} else {
-			return var1.length() > 6 ? " " + NpcOverrides.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + NpcOverrides.colorStartTag(16776960) + var1 + "</col>";
-		}
-	}
-
-	@ObfuscatedName("mk")
-	@ObfuscatedSignature(
-		descriptor = "([Lnx;Lnx;ZI)V",
-		garbageValue = "-1942820533"
-	)
-	@Export("revalidateWidgetScroll")
-	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
-		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
-		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
-		ArchiveLoader.resizeInterface(var0, var1.id, var3, var4, var2);
-		if (var1.children != null) {
-			ArchiveLoader.resizeInterface(var1.children, var1.id, var3, var4, var2);
-		}
-
-		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
-		if (var5 != null) {
-			ClanChannel.method3488(var5.group, var3, var4, var2);
-		}
-
-		if (var1.contentType == 1337) {
 		}
 
 	}

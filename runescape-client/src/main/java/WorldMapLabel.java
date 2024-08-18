@@ -4,33 +4,33 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("km")
+@ObfuscatedName("lk")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@Export("text")
 	String text;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 265924559
+		intValue = 1236599607
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -2136908715
+		intValue = 1970746255
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Ljx;"
+		descriptor = "Lkc;"
 	)
 	@Export("size")
 	WorldMapLabelSize size;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IILjx;)V"
+		descriptor = "(Ljava/lang/String;IILkc;)V"
 	)
 	WorldMapLabel(String var1, int var2, int var3, WorldMapLabelSize var4) {
 		this.text = var1;
@@ -39,40 +39,32 @@ public class WorldMapLabel {
 		this.size = var4;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("cu")
 	@ObfuscatedSignature(
-		descriptor = "([FIFI)F",
-		garbageValue = "784704657"
+		descriptor = "(ILdp;ZI)I",
+		garbageValue = "1163149745"
 	)
-	static float method5003(float[] var0, int var1, float var2) {
-		float var3 = var0[var1];
-
-		for (int var4 = var1 - 1; var4 >= 0; --var4) {
-			var3 = var3 * var2 + var0[var4];
-		}
-
-		return var3;
-	}
-
-	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-		descriptor = "(ILdg;ZI)I",
-		garbageValue = "-14417832"
-	)
-	static int method5004(int var0, Script var1, boolean var2) {
+	static int method5961(int var0, Script var1, boolean var2) {
 		int var3;
-		if (var0 == 3500) {
-			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
+		int var4;
+		if (var0 == 8000) {
+			--Interpreter.Interpreter_intStackSize;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_arrayLengths[var3];
+			AttackOption.method2842(Interpreter.Interpreter_arrays[var3], new int[var4], 0, var4 - 1);
 			return 1;
-		} else if (var0 == 3501) {
-			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.method4383(var3) ? 1 : 0;
-			return 1;
-		} else if (var0 == 3502) {
-			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.method4385(var3) ? 1 : 0;
-			return 1;
+		} else if (var0 == 8001) {
+			Interpreter.Interpreter_intStackSize -= 3;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+			int var6 = Interpreter.Interpreter_arrayLengths[var3];
+			if (var6 <= 1) {
+				return 1;
+			} else {
+				class448.method8355(Interpreter.Interpreter_arrays[var3], var6, var4, var5);
+				return 1;
+			}
 		} else {
 			return 2;
 		}

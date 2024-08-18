@@ -4,25 +4,31 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cd")
+@ObfuscatedName("cq")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("tv")
 	@ObfuscatedSignature(
-		descriptor = "Ldg;"
+		descriptor = "Lbr;"
+	)
+	@Export("pcmStreamMixer")
+	static PcmStreamMixer pcmStreamMixer;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Ldp;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 758237961
+		intValue = 407874701
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -30,38 +36,21 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "([[[IIIII)V",
-		garbageValue = "702035000"
+		descriptor = "(II)Loz;",
+		garbageValue = "-600768983"
 	)
-	static final void method1193(int[][][] var0, int var1, int var2, int var3) {
-		int var4;
-		for (var4 = 0; var4 < 8; ++var4) {
-			for (int var5 = 0; var5 < 8; ++var5) {
-				var0[var1][var4 + var2][var3 + var5] = 0;
+	public static GameBuild method1158(int var0) {
+		GameBuild[] var1 = class145.method3323();
+
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			GameBuild var3 = var1[var2];
+			if (var0 == var3.buildId) {
+				return var3;
 			}
 		}
 
-		if (var2 > 0) {
-			for (var4 = 1; var4 < 8; ++var4) {
-				var0[var1][var2][var3 + var4] = var0[var1][var2 - 1][var3 + var4];
-			}
-		}
-
-		if (var3 > 0) {
-			for (var4 = 1; var4 < 8; ++var4) {
-				var0[var1][var4 + var2][var3] = var0[var1][var4 + var2][var3 - 1];
-			}
-		}
-
-		if (var2 > 0 && var0[var1][var2 - 1][var3] != 0) {
-			var0[var1][var2][var3] = var0[var1][var2 - 1][var3];
-		} else if (var3 > 0 && var0[var1][var2][var3 - 1] != 0) {
-			var0[var1][var2][var3] = var0[var1][var2][var3 - 1];
-		} else if (var2 > 0 && var3 > 0 && var0[var1][var2 - 1][var3 - 1] != 0) {
-			var0[var1][var2][var3] = var0[var1][var2 - 1][var3 - 1];
-		}
-
+		return null;
 	}
 }

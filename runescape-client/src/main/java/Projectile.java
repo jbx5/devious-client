@@ -4,161 +4,155 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("df")
+@ObfuscatedName("dv")
 @Implements("Projectile")
 public final class Projectile extends Renderable {
-	@ObfuscatedName("cu")
+	@ObfuscatedName("fn")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Loj;"
 	)
-	@Export("loginType")
-	static LoginType loginType;
-	@ObfuscatedName("tw")
-	@ObfuscatedSignature(
-		descriptor = "Lbv;"
-	)
-	@Export("pcmPlayer1")
-	static PcmPlayer pcmPlayer1;
-	@ObfuscatedName("aq")
+	@Export("soundEffectsArchive")
+	static Archive soundEffectsArchive;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -504466887
+		intValue = 1751068693
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -1766816905
+		intValue = 811825783
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1772430645
+		intValue = 437475431
 	)
 	@Export("sourceX")
 	int sourceX;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1782025733
+		intValue = -2024600239
 	)
 	@Export("sourceY")
 	int sourceY;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1045611613
+		intValue = 235136663
 	)
 	@Export("sourceZ")
 	int sourceZ;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1690959867
+		intValue = 984010753
 	)
 	@Export("endHeight")
 	int endHeight;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -935780375
+		intValue = 1708183315
 	)
-	int field968;
-	@ObfuscatedName("av")
+	int field945;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1926569083
+		intValue = -344170065
 	)
-	int field985;
-	@ObfuscatedName("ab")
+	int field964;
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 429044921
+		intValue = -524617913
 	)
-	int field970;
-	@ObfuscatedName("ai")
+	int field975;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -135221413
+		intValue = 1363781743
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1039953437
+		intValue = 1101245703
 	)
 	@Export("cycleEnd")
 	int cycleEnd;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 563603713
+		intValue = 375351981
 	)
 	@Export("slope")
 	int slope;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 864895171
+		intValue = 1831083141
 	)
 	@Export("startHeight")
 	int startHeight;
-	@ObfuscatedName("az")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1613876837
+		intValue = 977794367
 	)
-	int field975;
-	@ObfuscatedName("ax")
+	int field957;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1863287717
+		intValue = -280727141
 	)
 	@Export("targetIndex")
 	int targetIndex;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("af")
 	@Export("isMoving")
 	boolean isMoving;
-	@ObfuscatedName("al")
+	@ObfuscatedName("aa")
 	@Export("x")
 	double x;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ah")
 	@Export("y")
 	double y;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ag")
 	@Export("z")
 	double z;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("av")
 	@Export("speedX")
 	double speedX;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ar")
 	@Export("speedY")
 	double speedY;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ap")
 	@Export("speed")
 	double speed;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ak")
 	@Export("speedZ")
 	double speedZ;
-	@ObfuscatedName("af")
+	@ObfuscatedName("ai")
 	@Export("accelerationZ")
 	double accelerationZ;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -418607101
+		intValue = -1756009483
 	)
 	@Export("yaw")
 	int yaw;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = -1052283447
+		intValue = 2069338675
 	)
 	@Export("pitch")
 	int pitch;
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "Lii;"
+		descriptor = "Lkr;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bz")
 	@ObfuscatedGetter(
-		intValue = 1315368611
+		intValue = 1014959227
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("be")
+	@ObfuscatedName("bj")
 	@ObfuscatedGetter(
-		intValue = -232988127
+		intValue = 1193144355
 	)
 	@Export("frameCycle")
 	int frameCycle;
@@ -179,9 +173,9 @@ public final class Projectile extends Renderable {
 		this.targetIndex = var10;
 		this.endHeight = var11;
 		this.isMoving = false;
-		int var12 = class178.SpotAnimationDefinition_get(this.id).sequence;
+		int var12 = AbstractWorldMapIcon.SpotAnimationDefinition_get(this.id).sequence;
 		if (var12 != -1) {
-			this.sequenceDefinition = class353.SequenceDefinition_get(var12);
+			this.sequenceDefinition = class182.SequenceDefinition_get(var12);
 		} else {
 			this.sequenceDefinition = null;
 		}
@@ -190,51 +184,51 @@ public final class Projectile extends Renderable {
 
 	Projectile(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12) {
 		this(var1, var2, var3, var4, var5, var6, var7, var8, var9, var11, var12);
-		this.field975 = var10;
+		this.field957 = var10;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-1354303074"
+		descriptor = "(IIIIB)V",
+		garbageValue = "125"
 	)
 	@Export("setDestination")
 	final void setDestination(int var1, int var2, int var3, int var4) {
-		this.field968 = var1;
-		this.field985 = var2;
-		this.field970 = var3;
+		this.field945 = var1;
+		this.field964 = var2;
+		this.field975 = var3;
 		double var5;
 		if (!this.isMoving) {
-			var5 = (double)(this.field968 - this.sourceX);
-			double var7 = (double)(this.field985 - this.sourceY);
+			var5 = (double)(this.field945 - this.sourceX);
+			double var7 = (double)(this.field964 - this.sourceY);
 			double var9 = Math.sqrt(var5 * var5 + var7 * var7);
-			this.x = (double)this.startHeight * var5 / var9 + (double)this.sourceX;
-			this.y = var7 * (double)this.startHeight / var9 + (double)this.sourceY;
+			this.x = (double)this.sourceX + (double)this.startHeight * var5 / var9;
+			this.y = (double)this.startHeight * var7 / var9 + (double)this.sourceY;
 			this.z = (double)this.sourceZ;
 		}
 
 		var5 = (double)(this.cycleEnd + 1 - var4);
-		this.speedX = ((double)this.field968 - this.x) / var5;
-		this.speedY = ((double)this.field985 - this.y) / var5;
-		this.speed = Math.sqrt(this.speedY * this.speedY + this.speedX * this.speedX);
+		this.speedX = ((double)this.field945 - this.x) / var5;
+		this.speedY = ((double)this.field964 - this.y) / var5;
+		this.speed = Math.sqrt(this.speedX * this.speedX + this.speedY * this.speedY);
 		if (!this.isMoving) {
-			this.speedZ = -this.speed * Math.tan((double)this.slope * 0.02454369D);
+			this.speedZ = -this.speed * Math.tan(0.02454369D * (double)this.slope);
 		}
 
-		this.accelerationZ = 2.0D * ((double)this.field970 - this.z - this.speedZ * var5) / (var5 * var5);
+		this.accelerationZ = 2.0D * ((double)this.field975 - this.z - var5 * this.speedZ) / (var5 * var5);
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-2141951542"
+		garbageValue = "1135745174"
 	)
 	@Export("advance")
 	final void advance(int var1) {
 		this.isMoving = true;
-		this.x += this.speedX * (double)var1;
+		this.x += (double)var1 * this.speedX;
 		this.y += (double)var1 * this.speedY;
-		this.z += (double)var1 * this.speedZ + (double)var1 * 0.5D * this.accelerationZ * (double)var1;
+		this.z += this.speedZ * (double)var1 + (double)var1 * 0.5D * this.accelerationZ * (double)var1;
 		this.speedZ += (double)var1 * this.accelerationZ;
 		this.yaw = (int)(Math.atan2(this.speedX, this.speedY) * 325.949D) + 1024 & 2047;
 		this.pitch = (int)(Math.atan2(this.speedZ, this.speed) * 325.949D) & 2047;
@@ -260,7 +254,7 @@ public final class Projectile extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				int var2 = this.sequenceDefinition.method4059();
+				int var2 = this.sequenceDefinition.method5307();
 				if (this.frame >= var2) {
 					this.frame = var2 - this.sequenceDefinition.frameCount;
 				}
@@ -269,14 +263,14 @@ public final class Projectile extends Renderable {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)Llv;",
-		garbageValue = "-543123602"
+		descriptor = "(I)Lhr;",
+		garbageValue = "-1547633874"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = class178.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = AbstractWorldMapIcon.SpotAnimationDefinition_get(this.id);
 		Model var2 = var1.getModel(this.frame);
 		if (var2 == null) {
 			return null;
@@ -286,13 +280,166 @@ public final class Projectile extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ldu;I)V",
-		garbageValue = "-300330513"
+		descriptor = "(I)V",
+		garbageValue = "-2065029307"
 	)
-	@Export("runScriptEvent")
-	public static void runScriptEvent(ScriptEvent var0) {
-		Varps.runScript(var0, 500000, 475000);
+	public static void method2268() {
+		class239.field2007.clear();
+	}
+
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "(Lnq;II)V",
+		garbageValue = "-1315355362"
+	)
+	@Export("Widget_setKeyIgnoreHeld")
+	static final void Widget_setKeyIgnoreHeld(Widget var0, int var1) {
+		if (var0.field3879 == null) {
+			throw new RuntimeException();
+		} else {
+			if (var0.field3951 == null) {
+				var0.field3951 = new int[var0.field3879.length];
+			}
+
+			var0.field3951[var1] = Integer.MAX_VALUE;
+		}
+	}
+
+	@ObfuscatedName("hy")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1778726258"
+	)
+	static void method2254() {
+		class343.compass = null;
+		FileSystem.redHintArrowSprite = null;
+		BufferedSource.mapSceneSprites = null;
+		SecureRandomFuture.headIconPkSprites = null;
+		VertexNormal.headIconPrayerSprites = null;
+		class218.headIconHintSprites = null;
+		TileItem.mapDotSprites = null;
+		MusicSong.crossSprites = null;
+		class269.field2960 = null;
+		class129.scrollBarSprites = null;
+		BufferedFile.field5281 = null;
+	}
+
+	@ObfuscatedName("km")
+	@ObfuscatedSignature(
+		descriptor = "(ZLvs;B)V",
+		garbageValue = "-52"
+	)
+	@Export("loadRegions")
+	static final void loadRegions(boolean var0, PacketBuffer var1) {
+		Client.isInInstance = var0;
+		int var2;
+		int var4;
+		int var5;
+		int var6;
+		int var7;
+		if (!Client.isInInstance) {
+			int var3 = var1.readUnsignedShortLE();
+			var1.readSignedShort();
+			var2 = var1.readUnsignedShortAdd();
+			var4 = var1.readUnsignedShort();
+			class60.xteaKeys = new int[var4][4];
+
+			for (var5 = 0; var5 < var4; ++var5) {
+				for (var6 = 0; var6 < 4; ++var6) {
+					class60.xteaKeys[var5][var6] = var1.readInt();
+				}
+			}
+
+			class92.regions = new int[var4];
+			WorldMapRectangle.regionMapArchiveIds = new int[var4];
+			Interpreter.regionLandArchiveIds = new int[var4];
+			Canvas.regionLandArchives = new byte[var4][];
+			Skeleton.regionMapArchives = new byte[var4][];
+			var4 = 0;
+
+			for (var5 = (var2 - 6) / 8; var5 <= (var2 + 6) / 8; ++var5) {
+				for (var6 = (var3 - 6) / 8; var6 <= (var3 + 6) / 8; ++var6) {
+					var7 = var6 + (var5 << 8);
+					class92.regions[var4] = var7;
+					WorldMapRectangle.regionMapArchiveIds[var4] = ClientPreferences.archive9.getGroupId("m" + var5 + "_" + var6);
+					Interpreter.regionLandArchiveIds[var4] = ClientPreferences.archive9.getGroupId("l" + var5 + "_" + var6);
+					++var4;
+				}
+			}
+
+			Canvas.method294(var2, var3, true);
+		} else {
+			var2 = var1.readUnsignedShortAdd();
+			boolean var15 = var1.readUnsignedByteAdd() == 1;
+			var4 = var1.readUnsignedShortAdd();
+			var5 = var1.readUnsignedShort();
+			var1.importIndex();
+
+			int var8;
+			int var9;
+			for (var6 = 0; var6 < 4; ++var6) {
+				for (var7 = 0; var7 < 13; ++var7) {
+					for (var8 = 0; var8 < 13; ++var8) {
+						var9 = var1.readBits(1);
+						if (var9 == 1) {
+							Client.instanceChunkTemplates[var6][var7][var8] = var1.readBits(26);
+						} else {
+							Client.instanceChunkTemplates[var6][var7][var8] = -1;
+						}
+					}
+				}
+			}
+
+			var1.exportIndex();
+			class60.xteaKeys = new int[var5][4];
+
+			for (var6 = 0; var6 < var5; ++var6) {
+				for (var7 = 0; var7 < 4; ++var7) {
+					class60.xteaKeys[var6][var7] = var1.readInt();
+				}
+			}
+
+			class92.regions = new int[var5];
+			WorldMapRectangle.regionMapArchiveIds = new int[var5];
+			Interpreter.regionLandArchiveIds = new int[var5];
+			Canvas.regionLandArchives = new byte[var5][];
+			Skeleton.regionMapArchives = new byte[var5][];
+			var5 = 0;
+
+			for (var6 = 0; var6 < 4; ++var6) {
+				for (var7 = 0; var7 < 13; ++var7) {
+					for (var8 = 0; var8 < 13; ++var8) {
+						var9 = Client.instanceChunkTemplates[var6][var7][var8];
+						if (var9 != -1) {
+							int var10 = var9 >> 14 & 1023;
+							int var11 = var9 >> 3 & 2047;
+							int var12 = (var10 / 8 << 8) + var11 / 8;
+
+							int var13;
+							for (var13 = 0; var13 < var5; ++var13) {
+								if (class92.regions[var13] == var12) {
+									var12 = -1;
+									break;
+								}
+							}
+
+							if (var12 != -1) {
+								class92.regions[var5] = var12;
+								var13 = var12 >> 8 & 255;
+								int var14 = var12 & 255;
+								WorldMapRectangle.regionMapArchiveIds[var5] = ClientPreferences.archive9.getGroupId("m" + var13 + "_" + var14);
+								Interpreter.regionLandArchiveIds[var5] = ClientPreferences.archive9.getGroupId("l" + var13 + "_" + var14);
+								++var5;
+							}
+						}
+					}
+				}
+			}
+
+			Canvas.method294(var4, var2, !var15);
+		}
+
 	}
 }

@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.io.EOFException;
 import java.io.IOException;
 import net.runelite.mapping.Export;
@@ -6,72 +7,79 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uf")
+@ObfuscatedName("uv")
 @Implements("BufferedFile")
 public class BufferedFile {
-	@ObfuscatedName("ad")
+	@ObfuscatedName("bh")
+	static Image field5280;
+	@ObfuscatedName("kk")
 	@ObfuscatedSignature(
-		descriptor = "Lus;"
+		descriptor = "[Lvb;"
+	)
+	static IndexedSprite[] field5281;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lum;"
 	)
 	@Export("accessFile")
 	AccessFile accessFile;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@Export("readBuffer")
 	byte[] readBuffer;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		longValue = 8128475648297205287L
+		longValue = -8677045507621820509L
 	)
 	@Export("readBufferOffset")
 	long readBufferOffset;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 723509877
+		intValue = 375425769
 	)
 	@Export("readBufferLength")
 	int readBufferLength;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@Export("writeBuffer")
 	byte[] writeBuffer;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		longValue = -3075363468947746217L
+		longValue = 1857297531961596637L
 	)
 	@Export("writeBufferOffset")
 	long writeBufferOffset;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 2105706187
+		intValue = -1369974193
 	)
 	@Export("writeBufferLength")
 	int writeBufferLength;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		longValue = 4168692518325958791L
+		longValue = -5548070381148018721L
 	)
 	@Export("offset")
 	long offset;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		longValue = 124927601552937745L
+		longValue = -7937418277592130769L
 	)
 	@Export("fileLength")
 	long fileLength;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		longValue = -499123905742165831L
+		longValue = 1014057439217453929L
 	)
 	@Export("length")
 	long length;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		longValue = -1194310706701037253L
+		longValue = -2919519752114175231L
 	)
 	@Export("fileOffset")
 	long fileOffset;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lus;II)V"
+		descriptor = "(Lum;II)V"
 	)
 	public BufferedFile(AccessFile var1, int var2, int var3) throws IOException {
 		this.readBufferOffset = -1L;
@@ -84,10 +92,10 @@ public class BufferedFile {
 		this.offset = 0L;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1289986653"
+		garbageValue = "2058421128"
 	)
 	@Export("close")
 	public void close() throws IOException {
@@ -95,7 +103,7 @@ public class BufferedFile {
 		this.accessFile.close();
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@Export("seek")
 	public void seek(long var1) throws IOException {
 		if (var1 < 0L) {
@@ -105,30 +113,30 @@ public class BufferedFile {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)J",
-		garbageValue = "137485477"
+		garbageValue = "-1309950893"
 	)
 	@Export("length")
 	public long length() {
 		return this.length;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "([BB)V",
-		garbageValue = "96"
+		garbageValue = "23"
 	)
 	@Export("readFully")
 	public void readFully(byte[] var1) throws IOException {
 		this.read(var1, 0, var1.length);
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)V",
-		garbageValue = "-1722455428"
+		descriptor = "([BIIB)V",
+		garbageValue = "79"
 	)
 	@Export("read")
 	public void read(byte[] var1, int var2, int var3) throws IOException {
@@ -137,7 +145,7 @@ public class BufferedFile {
 				throw new ArrayIndexOutOfBoundsException(var3 + var2 - var1.length);
 			}
 
-			if (-1L != this.writeBufferOffset && this.offset >= this.writeBufferOffset && this.offset + (long)var3 <= this.writeBufferOffset + (long)this.writeBufferLength) {
+			if (this.writeBufferOffset != -1L && this.offset >= this.writeBufferOffset && this.offset + (long)var3 <= (long)this.writeBufferLength + this.writeBufferOffset) {
 				System.arraycopy(this.writeBuffer, (int)(this.offset - this.writeBufferOffset), var1, var2, var3);
 				this.offset += (long)var3;
 				return;
@@ -146,7 +154,7 @@ public class BufferedFile {
 			long var4 = this.offset;
 			int var7 = var3;
 			int var8;
-			if (this.offset >= this.readBufferOffset && this.offset < this.readBufferOffset + (long)this.readBufferLength) {
+			if (this.offset >= this.readBufferOffset && this.offset < (long)this.readBufferLength + this.readBufferOffset) {
 				var8 = (int)((long)this.readBufferLength - (this.offset - this.readBufferOffset));
 				if (var8 > var3) {
 					var8 = var3;
@@ -184,7 +192,7 @@ public class BufferedFile {
 				this.offset += (long)var8;
 			}
 
-			if (-1L != this.writeBufferOffset) {
+			if (this.writeBufferOffset != -1L) {
 				if (this.writeBufferOffset > this.offset && var3 > 0) {
 					var8 = var2 + (int)(this.writeBufferOffset - this.offset);
 					if (var8 > var3 + var2) {
@@ -200,15 +208,15 @@ public class BufferedFile {
 
 				long var13 = -1L;
 				long var10 = -1L;
-				if (this.writeBufferOffset >= var4 && this.writeBufferOffset < var4 + (long)var7) {
+				if (this.writeBufferOffset >= var4 && this.writeBufferOffset < (long)var7 + var4) {
 					var13 = this.writeBufferOffset;
-				} else if (var4 >= this.writeBufferOffset && var4 < this.writeBufferOffset + (long)this.writeBufferLength) {
+				} else if (var4 >= this.writeBufferOffset && var4 < (long)this.writeBufferLength + this.writeBufferOffset) {
 					var13 = var4;
 				}
 
-				if (this.writeBufferOffset + (long)this.writeBufferLength > var4 && this.writeBufferOffset + (long)this.writeBufferLength <= (long)var7 + var4) {
+				if ((long)this.writeBufferLength + this.writeBufferOffset > var4 && (long)this.writeBufferLength + this.writeBufferOffset <= var4 + (long)var7) {
 					var10 = (long)this.writeBufferLength + this.writeBufferOffset;
-				} else if (var4 + (long)var7 > this.writeBufferOffset && (long)var7 + var4 <= this.writeBufferOffset + (long)this.writeBufferLength) {
+				} else if (var4 + (long)var7 > this.writeBufferOffset && (long)var7 + var4 <= (long)this.writeBufferLength + this.writeBufferOffset) {
 					var10 = (long)var7 + var4;
 				}
 
@@ -231,10 +239,10 @@ public class BufferedFile {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1084514641"
+		garbageValue = "-289121793"
 	)
 	@Export("load")
 	void load() throws IOException {
@@ -261,23 +269,23 @@ public class BufferedFile {
 
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "-211310691"
+		garbageValue = "1607319483"
 	)
 	@Export("write")
 	public void write(byte[] var1, int var2, int var3) throws IOException {
 		try {
 			if ((long)var3 + this.offset > this.length) {
-				this.length = (long)var3 + this.offset;
+				this.length = this.offset + (long)var3;
 			}
 
 			if (this.writeBufferOffset != -1L && (this.offset < this.writeBufferOffset || this.offset > this.writeBufferOffset + (long)this.writeBufferLength)) {
 				this.flush();
 			}
 
-			if (this.writeBufferOffset != -1L && (long)var3 + this.offset > (long)this.writeBuffer.length + this.writeBufferOffset) {
+			if (this.writeBufferOffset != -1L && this.offset + (long)var3 > this.writeBufferOffset + (long)this.writeBuffer.length) {
 				int var4 = (int)((long)this.writeBuffer.length - (this.offset - this.writeBufferOffset));
 				System.arraycopy(var1, var2, this.writeBuffer, (int)(this.offset - this.writeBufferOffset), var4);
 				this.offset += (long)var4;
@@ -289,7 +297,7 @@ public class BufferedFile {
 
 			if (var3 <= this.writeBuffer.length) {
 				if (var3 > 0) {
-					if (this.writeBufferOffset == -1L) {
+					if (-1L == this.writeBufferOffset) {
 						this.writeBufferOffset = this.offset;
 					}
 
@@ -301,7 +309,7 @@ public class BufferedFile {
 
 				}
 			} else {
-				if (this.fileOffset != this.offset) {
+				if (this.offset != this.fileOffset) {
 					this.accessFile.seek(this.offset);
 					this.fileOffset = this.offset;
 				}
@@ -320,15 +328,15 @@ public class BufferedFile {
 					var9 = this.readBufferOffset;
 				}
 
-				if (this.offset + (long)var3 > this.readBufferOffset && this.offset + (long)var3 <= this.readBufferOffset + (long)this.readBufferLength) {
+				if (this.offset + (long)var3 > this.readBufferOffset && this.offset + (long)var3 <= (long)this.readBufferLength + this.readBufferOffset) {
 					var6 = (long)var3 + this.offset;
-				} else if ((long)this.readBufferLength + this.readBufferOffset > this.offset && (long)this.readBufferLength + this.readBufferOffset <= (long)var3 + this.offset) {
+				} else if (this.readBufferOffset + (long)this.readBufferLength > this.offset && this.readBufferOffset + (long)this.readBufferLength <= (long)var3 + this.offset) {
 					var6 = (long)this.readBufferLength + this.readBufferOffset;
 				}
 
 				if (var9 > -1L && var6 > var9) {
 					int var8 = (int)(var6 - var9);
-					System.arraycopy(var1, (int)((long)var2 + var9 - this.offset), this.readBuffer, (int)(var9 - this.readBufferOffset), var8);
+					System.arraycopy(var1, (int)(var9 + (long)var2 - this.offset), this.readBuffer, (int)(var9 - this.readBufferOffset), var8);
 				}
 
 				this.offset += (long)var3;
@@ -339,37 +347,37 @@ public class BufferedFile {
 		}
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "21"
+		garbageValue = "32"
 	)
 	@Export("flush")
 	void flush() throws IOException {
 		if (this.writeBufferOffset != -1L) {
-			if (this.writeBufferOffset != this.fileOffset) {
+			if (this.fileOffset != this.writeBufferOffset) {
 				this.accessFile.seek(this.writeBufferOffset);
 				this.fileOffset = this.writeBufferOffset;
 			}
 
 			this.accessFile.write(this.writeBuffer, 0, this.writeBufferLength);
-			this.fileOffset += (long)(this.writeBufferLength * 2011049699) * 2105706187L;
+			this.fileOffset += (long)(this.writeBufferLength * 1362427055) * -1369974193L;
 			if (this.fileOffset > this.fileLength) {
 				this.fileLength = this.fileOffset;
 			}
 
 			long var1 = -1L;
 			long var3 = -1L;
-			if (this.writeBufferOffset >= this.readBufferOffset && this.writeBufferOffset < (long)this.readBufferLength + this.readBufferOffset) {
+			if (this.writeBufferOffset >= this.readBufferOffset && this.writeBufferOffset < this.readBufferOffset + (long)this.readBufferLength) {
 				var1 = this.writeBufferOffset;
 			} else if (this.readBufferOffset >= this.writeBufferOffset && this.readBufferOffset < this.writeBufferOffset + (long)this.writeBufferLength) {
 				var1 = this.readBufferOffset;
 			}
 
-			if ((long)this.writeBufferLength + this.writeBufferOffset > this.readBufferOffset && this.writeBufferOffset + (long)this.writeBufferLength <= (long)this.readBufferLength + this.readBufferOffset) {
+			if (this.writeBufferOffset + (long)this.writeBufferLength > this.readBufferOffset && (long)this.writeBufferLength + this.writeBufferOffset <= this.readBufferOffset + (long)this.readBufferLength) {
 				var3 = (long)this.writeBufferLength + this.writeBufferOffset;
-			} else if ((long)this.readBufferLength + this.readBufferOffset > this.writeBufferOffset && (long)this.readBufferLength + this.readBufferOffset <= (long)this.writeBufferLength + this.writeBufferOffset) {
-				var3 = this.readBufferOffset + (long)this.readBufferLength;
+			} else if (this.readBufferOffset + (long)this.readBufferLength > this.writeBufferOffset && (long)this.readBufferLength + this.readBufferOffset <= this.writeBufferOffset + (long)this.writeBufferLength) {
+				var3 = (long)this.readBufferLength + this.readBufferOffset;
 			}
 
 			if (var1 > -1L && var3 > var1) {
@@ -381,14 +389,5 @@ public class BufferedFile {
 			this.writeBufferLength = 0;
 		}
 
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "23"
-	)
-	public static int method9360(int var0) {
-		return var0 != 0 && var0 != 1 ? -1 : 0;
 	}
 }

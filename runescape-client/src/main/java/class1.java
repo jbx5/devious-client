@@ -1,114 +1,69 @@
 import java.util.concurrent.Callable;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ad")
+@ObfuscatedName("ay")
 public class class1 implements Callable {
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -836714351
-	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ql")
 	@ObfuscatedSignature(
-		descriptor = "Lvp;"
+		descriptor = "Luf;"
 	)
-	final Buffer field0;
-	@ObfuscatedName("ad")
+	static class530 field2;
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lak;"
+		descriptor = "Lvg;"
 	)
-	final class3 field2;
+	final Buffer field3;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lau;"
+	)
+	final class3 field1;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lav;"
+		descriptor = "Lac;"
 	)
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lav;Lvp;Lak;)V"
+		descriptor = "(Lac;Lvg;Lau;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
-		this.field0 = var2;
-		this.field2 = var3;
+		this.field3 = var2;
+		this.field1 = var3;
 	}
 
 	public Object call() {
-		return this.field2.vmethod14(this.field0);
+		return this.field1.vmethod11(this.field3);
 	}
 
-	@ObfuscatedName("bu")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(ILdg;ZB)I",
-		garbageValue = "80"
+		descriptor = "(Lob;Lob;B)V",
+		garbageValue = "1"
 	)
-	static int method7(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.GETWINDOWMODE) {
-			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = GrandExchangeOfferOwnWorldComparator.getWindowedMode();
-			return 1;
-		} else {
-			int var3;
-			if (var0 == ScriptOpcodes.SETWINDOWMODE) {
-				var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					class225.setWindowedMode(var3);
-				}
-
-				return 1;
-			} else if (var0 == ScriptOpcodes.GETDEFAULTWINDOWMODE) {
-				Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = class105.clientPreferences.getWindowMode();
-				return 1;
-			} else if (var0 != ScriptOpcodes.SETDEFAULTWINDOWMODE) {
-				if (var0 == 5310) {
-					--class130.Interpreter_intStackSize;
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-				if (var3 == 1 || var3 == 2) {
-					class105.clientPreferences.updateWindowMode(var3);
-				}
-
-				return 1;
-			}
-		}
+	public static void method9(AbstractArchive var0, AbstractArchive var1) {
+		KitDefinition.KitDefinition_archive = var0;
+		KitDefinition.KitDefinition_modelsArchive = var1;
+		class211.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
 	}
 
-	@ObfuscatedName("cv")
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "(ILdg;ZI)I",
-		garbageValue = "-1745935264"
+		descriptor = "([BII)I",
+		garbageValue = "-2084614252"
 	)
-	static int method10(int var0, Script var1, boolean var2) {
-		int var3;
-		int var4;
-		if (var0 == 8000) {
-			--class130.Interpreter_intStackSize;
-			var3 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-			var4 = Interpreter.Interpreter_arrayLengths[var3];
-			class171.method3529(Interpreter.Interpreter_arrays[var3], new int[var4], 0, var4 - 1);
-			return 1;
-		} else if (var0 == 8001) {
-			class130.Interpreter_intStackSize -= 3;
-			var3 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-			var4 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
-			int var5 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 2];
-			int var6 = Interpreter.Interpreter_arrayLengths[var3];
-			if (var6 <= 1) {
-				return 1;
-			} else {
-				class447.method8289(Interpreter.Interpreter_arrays[var3], var6, var4, var5);
-				return 1;
-			}
-		} else {
-			return 2;
-		}
+	public static int method7(byte[] var0, int var1) {
+		return class487.method8868(var0, 0, var1);
+	}
+
+	@ObfuscatedName("pw")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lor;",
+		garbageValue = "-13"
+	)
+	static JagNetThread method8() {
+		return SecureRandomFuture.field980;
 	}
 }

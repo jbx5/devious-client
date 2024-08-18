@@ -2,31 +2,22 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qy")
+@ObfuscatedName("qz")
 public class class421 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lvb;"
 	)
-	@Export("ParamDefinition_archive")
-	static AbstractArchive ParamDefinition_archive;
+	@Export("options_buttons_2Sprite")
+	static IndexedSprite options_buttons_2Sprite;
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZZI)V",
-		garbageValue = "-1666888379"
+		descriptor = "(Ldc;I)V",
+		garbageValue = "1429065701"
 	)
-	@Export("openURL")
-	public static void openURL(String var0, boolean var1, boolean var2) {
-		class323.method6111(var0, var1, "openjs", var2);
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lfi;",
-		garbageValue = "603068554"
-	)
-	static class136[] method7720() {
-		return new class136[]{class136.field1609, class136.field1601, class136.field1599, class136.field1602, class136.field1600, class136.field1611};
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		class535.runScript(var0, 500000, 475000);
 	}
 }

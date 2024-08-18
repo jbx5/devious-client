@@ -4,134 +4,142 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("de")
+@ObfuscatedName("dy")
 @Implements("WorldView")
 public class WorldView {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ef")
+	@ObfuscatedSignature(
+		descriptor = "Loj;"
+	)
+	static Archive field1305;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 2142034745
+		intValue = 1918244811
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lkq;"
+		descriptor = "Lhf;"
 	)
 	@Export("scene")
 	public Scene scene;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "[Lip;"
+		descriptor = "[Lkd;"
 	)
 	@Export("collisionMaps")
 	CollisionMap[] collisionMaps;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1735177445
+		intValue = -208768165
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1019381583
+		intValue = 1169251995
 	)
 	@Export("sizeX")
 	int sizeX;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1628317125
+		intValue = 1481398255
 	)
 	@Export("sizeY")
 	int sizeY;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 998139683
+		intValue = 171461951
 	)
 	@Export("baseX")
 	int baseX;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1484949025
+		intValue = 617581699
 	)
 	@Export("baseY")
 	int baseY;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@Export("tileLastDrawnActor")
 	int[][] tileLastDrawnActor;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@Export("tileHeights")
 	int[][][] tileHeights;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aq")
 	@Export("tileSettings")
 	byte[][][] tileSettings;
-	@ObfuscatedName("au")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "[Ldb;"
+		descriptor = "[Ldw;"
 	)
 	@Export("players")
 	Player[] players;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Leh;"
+		descriptor = "Leo;"
 	)
 	@Export("playerUpdateManager")
 	PlayerUpdateManager playerUpdateManager;
-	@ObfuscatedName("az")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "[Ldx;"
+		descriptor = "[Ldd;"
 	)
 	@Export("npcs")
 	NPC[] npcs;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -959579827
+		intValue = -1220558653
 	)
 	@Export("npcCount")
 	int npcCount;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("af")
 	@Export("npcIndices")
 	int[] npcIndices;
-	@ObfuscatedName("al")
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "[Lso;"
+		descriptor = "[Lsv;"
 	)
 	@Export("worldEntities")
 	WorldEntity[] worldEntities;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = 1124408595
+		intValue = -1644830975
 	)
 	@Export("worldEntityCount")
 	int worldEntityCount;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ag")
 	@Export("worldEntityIndices")
 	int[] worldEntityIndices;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
 		descriptor = "[[[Lpr;"
 	)
 	@Export("groundItems")
 	NodeDeque[][][] groundItems;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Lpr;"
 	)
 	@Export("pendingSpawns")
 	NodeDeque pendingSpawns;
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "Lpr;"
 	)
 	@Export("projectiles")
 	NodeDeque projectiles;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lpr;"
 	)
 	@Export("graphicsObjects")
 	NodeDeque graphicsObjects;
 
-	public WorldView(int var1, int var2, int var3, int var4) {
+	@ObfuscatedSignature(
+		descriptor = "(IIIILgj;)V"
+	)
+	public WorldView(int var1, int var2, int var3, int var4, class173 var5) {
 		this.collisionMaps = new CollisionMap[4];
 		this.players = new Player[2048];
 		this.playerUpdateManager = new PlayerUpdateManager(this);
@@ -150,27 +158,27 @@ public class WorldView {
 		this.tileSettings = new byte[4][var2][var3];
 		this.tileLastDrawnActor = new int[var2][var3];
 
-		for (int var5 = 0; var5 < 4; ++var5) {
-			this.collisionMaps[var5] = new CollisionMap(var2, var3);
+		for (int var6 = 0; var6 < 4; ++var6) {
+			this.collisionMaps[var6] = new CollisionMap(var2, var3);
 		}
 
-		this.scene = new Scene(var1, 4, var2, var3, var4, this.tileHeights);
+		this.scene = new Scene(var1, 4, var2, var3, var4, var5, this.tileHeights);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "74"
+		garbageValue = "-93"
 	)
 	@Export("isTopLevelWorldView")
 	boolean isTopLevelWorldView() {
 		return this.id == -1;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-843666588"
+		descriptor = "(B)V",
+		garbageValue = "0"
 	)
 	@Export("clear")
 	void clear() {
@@ -210,12 +218,12 @@ public class WorldView {
 
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-370890653"
+		garbageValue = "1199563977"
 	)
-	void method2680() {
+	void method2726() {
 		int var1;
 		for (var1 = 0; var1 < 2048; ++var1) {
 			this.players[var1] = null;
@@ -231,17 +239,110 @@ public class WorldView {
 
 	}
 
-	@ObfuscatedName("lh")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-1942851204"
+		descriptor = "(I)V",
+		garbageValue = "460893304"
 	)
-	static final void method2684(int var0, int var1, int var2, int var3) {
-		for (int var4 = 0; var4 < Client.rootWidgetCount; ++var4) {
-			if (Client.rootWidgetWidths[var4] + Client.rootWidgetXs[var4] > var0 && Client.rootWidgetXs[var4] < var0 + var2 && Client.rootWidgetHeights[var4] + Client.rootWidgetYs[var4] > var1 && Client.rootWidgetYs[var4] < var3 + var1) {
-				Client.field722[var4] = true;
+	public static void method2731() {
+		InvDefinition.InvDefinition_cached.clear();
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "([BI)V",
+		garbageValue = "1913220207"
+	)
+	@Export("SpriteBuffer_decode")
+	public static void SpriteBuffer_decode(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		var1.offset = var0.length - 2;
+		class563.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		class149.SpriteBuffer_xOffsets = new int[class563.SpriteBuffer_spriteCount];
+		class563.SpriteBuffer_yOffsets = new int[class563.SpriteBuffer_spriteCount];
+		class563.SpriteBuffer_spriteWidths = new int[class563.SpriteBuffer_spriteCount];
+		class372.SpriteBuffer_spriteHeights = new int[class563.SpriteBuffer_spriteCount];
+		class563.SpriteBuffer_pixels = new byte[class563.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - class563.SpriteBuffer_spriteCount * 8;
+		SpriteBufferProperties.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		class563.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
+		int var2 = (var1.readUnsignedByte() & 255) + 1;
+
+		int var3;
+		for (var3 = 0; var3 < class563.SpriteBuffer_spriteCount; ++var3) {
+			class149.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < class563.SpriteBuffer_spriteCount; ++var3) {
+			class563.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < class563.SpriteBuffer_spriteCount; ++var3) {
+			class563.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < class563.SpriteBuffer_spriteCount; ++var3) {
+			class372.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+		}
+
+		var1.offset = var0.length - 7 - class563.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		RouteStrategy.SpriteBuffer_spritePalette = new int[var2];
+
+		for (var3 = 1; var3 < var2; ++var3) {
+			RouteStrategy.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (RouteStrategy.SpriteBuffer_spritePalette[var3] == 0) {
+				RouteStrategy.SpriteBuffer_spritePalette[var3] = 1;
 			}
 		}
 
+		var1.offset = 0;
+
+		for (var3 = 0; var3 < class563.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = class563.SpriteBuffer_spriteWidths[var3];
+			int var5 = class372.SpriteBuffer_spriteHeights[var3];
+			int var6 = var5 * var4;
+			byte[] var7 = new byte[var6];
+			class563.SpriteBuffer_pixels[var3] = var7;
+			int var8 = var1.readUnsignedByte();
+			int var9;
+			if (var8 == 0) {
+				for (var9 = 0; var9 < var6; ++var9) {
+					var7[var9] = var1.readByte();
+				}
+			} else if (var8 == 1) {
+				for (var9 = 0; var9 < var4; ++var9) {
+					for (int var10 = 0; var10 < var5; ++var10) {
+						var7[var9 + var4 * var10] = var1.readByte();
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("mg")
+	@ObfuscatedSignature(
+		descriptor = "(III)Ljava/lang/String;",
+		garbageValue = "-1879159437"
+	)
+	static final String method2734(int var0, int var1) {
+		int var2 = var1 - var0;
+		if (var2 < -9) {
+			return TransformationMatrix.colorStartTag(16711680);
+		} else if (var2 < -6) {
+			return TransformationMatrix.colorStartTag(16723968);
+		} else if (var2 < -3) {
+			return TransformationMatrix.colorStartTag(16740352);
+		} else if (var2 < 0) {
+			return TransformationMatrix.colorStartTag(16756736);
+		} else if (var2 > 9) {
+			return TransformationMatrix.colorStartTag(65280);
+		} else if (var2 > 6) {
+			return TransformationMatrix.colorStartTag(4259584);
+		} else if (var2 > 3) {
+			return TransformationMatrix.colorStartTag(8453888);
+		} else {
+			return var2 > 0 ? TransformationMatrix.colorStartTag(12648192) : TransformationMatrix.colorStartTag(16776960);
+		}
 	}
 }

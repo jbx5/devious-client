@@ -1,14 +1,19 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ey")
+@ObfuscatedName("ea")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("kn")
+	@ObfuscatedGetter(
+		intValue = -1622474891
+	)
+	@Export("cameraPitch")
+	static int cameraPitch;
+	@ObfuscatedName("ab")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -16,10 +21,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lsh;Lsh;I)I",
-		garbageValue = "1402807579"
+		descriptor = "(Lsc;Lsc;B)I",
+		garbageValue = "112"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -34,45 +39,43 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;",
-		garbageValue = "268468568"
-	)
-	@Export("loadClassFromDescriptor")
-	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
-		if (var0.equals("B")) {
-			return Byte.TYPE;
-		} else if (var0.equals("I")) {
-			return Integer.TYPE;
-		} else if (var0.equals("S")) {
-			return Short.TYPE;
-		} else if (var0.equals("J")) {
-			return Long.TYPE;
-		} else if (var0.equals("Z")) {
-			return Boolean.TYPE;
-		} else if (var0.equals("F")) {
-			return Float.TYPE;
-		} else if (var0.equals("D")) {
-			return Double.TYPE;
-		} else if (var0.equals("C")) {
-			return Character.TYPE;
-		} else {
-			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
-		}
-	}
-
-	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-		descriptor = "(ILdg;ZB)I",
+		descriptor = "(IIIIB)V",
 		garbageValue = "10"
 	)
-	static int method3045(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.LOGOUT) {
-			Client.logoutTimer = 250;
-			return 1;
-		} else {
-			return 2;
+	static void method3100(int var0, int var1, int var2, int var3) {
+		class332.musicPlayerStatus = var0;
+		class332.field3568 = var1;
+		class332.field3570 = var2;
+		class332.field3567 = var3;
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;II)V",
+		garbageValue = "-2061956312"
+	)
+	static final void method3099(String var0, int var1) {
+		PacketBufferNode var2 = class218.getPacketBufferNode(ClientPacket.field3306, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(class526.stringCp1252NullTerminatedByteSize(var0) + 1);
+		var2.packetBuffer.writeByteSub(var1);
+		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+		Client.packetWriter.addNode(var2);
+	}
+
+	@ObfuscatedName("oz")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "10"
+	)
+	@Export("Clan_joinChat")
+	static final void Clan_joinChat(String var0) {
+		if (!var0.equals("")) {
+			PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.field3335, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(class526.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
 		}
 	}
 }

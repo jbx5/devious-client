@@ -1,40 +1,31 @@
-import java.util.Comparator;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rf")
-class class460 implements Comparator {
-	// $FF: synthetic field
+@ObfuscatedName("rj")
+public class class460 {
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lrb;"
+		descriptor = "Lrj;"
 	)
-	final class461 this$0;
+	public static final class460 field4876;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lrj;"
+	)
+	static final class460 field4875;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = -451385769
+	)
+	final int field4877;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lrb;)V"
-	)
-	class460(class461 var1) {
-		this.this$0 = var1;
+	static {
+		field4876 = new class460(0);
+		field4875 = new class460(1);
 	}
 
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(Lre;Lre;I)I",
-		garbageValue = "-2141911533"
-	)
-	int method8414(class462 var1, class462 var2) {
-		if (var1.field4907 > var2.field4907) {
-			return 1;
-		} else {
-			return var1.field4907 < var2.field4907 ? -1 : 0;
-		}
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.method8414((class462)var1, (class462)var2);
+	class460(int var1) {
+		this.field4877 = var1;
 	}
 }

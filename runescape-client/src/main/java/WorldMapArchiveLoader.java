@@ -4,30 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tp")
+@ObfuscatedName("tc")
 @Implements("WorldMapArchiveLoader")
 public class WorldMapArchiveLoader {
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@Export("cacheName")
 	String cacheName;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lob;"
 	)
 	@Export("archive")
 	AbstractArchive archive;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -854808799
+		intValue = -312752747
 	)
 	@Export("percentLoaded")
 	int percentLoaded;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@Export("loaded")
 	boolean loaded;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lok;)V"
+		descriptor = "(Lob;)V"
 	)
 	WorldMapArchiveLoader(AbstractArchive var1) {
 		this.percentLoaded = 0;
@@ -35,10 +35,10 @@ public class WorldMapArchiveLoader {
 		this.archive = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-524005317"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "-125"
 	)
 	@Export("reset")
 	void reset(String var1) {
@@ -52,10 +52,10 @@ public class WorldMapArchiveLoader {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-14"
+		descriptor = "(I)I",
+		garbageValue = "436510201"
 	)
 	@Export("load")
 	int load() {
@@ -64,7 +64,7 @@ public class WorldMapArchiveLoader {
 			this.loaded = true;
 		} else {
 			if (this.percentLoaded < 33) {
-				if (!this.archive.tryLoadFileByNames(WorldMapCacheName.field2738.name, this.cacheName)) {
+				if (!this.archive.tryLoadFileByNames(WorldMapCacheName.field3211.name, this.cacheName)) {
 					return this.percentLoaded;
 				}
 
@@ -72,7 +72,7 @@ public class WorldMapArchiveLoader {
 			}
 
 			if (this.percentLoaded == 33) {
-				if (this.archive.isValidFileName(WorldMapCacheName.field2739.name, this.cacheName) && !this.archive.tryLoadFileByNames(WorldMapCacheName.field2739.name, this.cacheName)) {
+				if (this.archive.isValidFileName(WorldMapCacheName.field3213.name, this.cacheName) && !this.archive.tryLoadFileByNames(WorldMapCacheName.field3213.name, this.cacheName)) {
 					return this.percentLoaded;
 				}
 
@@ -80,7 +80,7 @@ public class WorldMapArchiveLoader {
 			}
 
 			if (this.percentLoaded == 66) {
-				if (!this.archive.tryLoadFileByNames(this.cacheName, WorldMapCacheName.field2741.name)) {
+				if (!this.archive.tryLoadFileByNames(this.cacheName, WorldMapCacheName.field3212.name)) {
 					return this.percentLoaded;
 				}
 
@@ -92,61 +92,23 @@ public class WorldMapArchiveLoader {
 		return this.percentLoaded;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1504653592"
+		garbageValue = "676903831"
 	)
 	@Export("isLoaded")
 	boolean isLoaded() {
 		return this.loaded;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1155216193"
+		descriptor = "(B)I",
+		garbageValue = "20"
 	)
 	@Export("getPercentLoaded")
 	int getPercentLoaded() {
 		return this.percentLoaded;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Lok;Ljava/lang/String;Ljava/lang/String;I)[Lvv;",
-		garbageValue = "1107623391"
-	)
-	@Export("getFont")
-	public static IndexedSprite[] getFont(AbstractArchive var0, String var1, String var2) {
-		if (!var0.isValidFileName(var1, var2)) {
-			return null;
-		} else {
-			int var3 = var0.getGroupId(var1);
-			int var4 = var0.getFileId(var3, var2);
-			IndexedSprite[] var5;
-			if (!class146.method3260(var0, var3, var4)) {
-				var5 = null;
-			} else {
-				IndexedSprite[] var7 = new IndexedSprite[SpriteBufferProperties.SpriteBuffer_spriteCount];
-
-				for (int var8 = 0; var8 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var8) {
-					IndexedSprite var9 = var7[var8] = new IndexedSprite();
-					var9.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
-					var9.height = SpriteBufferProperties.SpriteBuffer_spriteHeight;
-					var9.xOffset = UserComparator4.SpriteBuffer_xOffsets[var8];
-					var9.yOffset = LoginPacket.SpriteBuffer_yOffsets[var8];
-					var9.subWidth = SpriteBufferProperties.SpriteBuffer_spriteWidths[var8];
-					var9.subHeight = class315.SpriteBuffer_spriteHeights[var8];
-					var9.palette = SpriteBufferProperties.SpriteBuffer_spritePalette;
-					var9.pixels = SpriteBufferProperties.SpriteBuffer_pixels[var8];
-				}
-
-				Calendar.method7029();
-				var5 = var7;
-			}
-
-			return var5;
-		}
 	}
 }

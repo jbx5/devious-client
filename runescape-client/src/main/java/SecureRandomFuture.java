@@ -7,22 +7,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
+@ObfuscatedName("da")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("an")
-	@Export("PcmPlayer_stereo")
-	public static boolean PcmPlayer_stereo;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("kt")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "[Lvc;"
 	)
-	@Export("ItemDefinition_modelArchive")
-	static AbstractArchive ItemDefinition_modelArchive;
-	@ObfuscatedName("aq")
+	@Export("headIconPkSprites")
+	static SpritePixels[] headIconPkSprites;
+	@ObfuscatedName("ve")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
+	)
+	static JagNetThread field980;
+	@ObfuscatedName("ab")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@Export("future")
 	Future future;
 
@@ -31,10 +33,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-847803201"
+		garbageValue = "-1268555170"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -42,164 +44,43 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-390046423"
+		garbageValue = "1632139022"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/security/SecureRandom;",
-		garbageValue = "128"
+		descriptor = "(B)Ljava/security/SecureRandom;",
+		garbageValue = "-67"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
 		} catch (Exception var2) {
-			return class401.method7407();
+			return HealthBarDefinition.method4857();
 		}
 	}
 
-	@ObfuscatedName("nr")
+	@ObfuscatedName("pe")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-66"
+		descriptor = "(IB)Lub;",
+		garbageValue = "-86"
 	)
-	@Export("changeGameOptions")
-	static final void changeGameOptions(int var0) {
-		class31.method462();
-		class237.method4496();
-		int var1 = MilliClock.VarpDefinition_get(var0).type;
-		if (var1 != 0) {
-			int var2 = Varps.Varps_main[var0];
-			if (var1 == 1) {
-				if (var2 == 1) {
-					InvDefinition.method3555(0.9D);
-				}
-
-				if (var2 == 2) {
-					InvDefinition.method3555(0.8D);
-				}
-
-				if (var2 == 3) {
-					InvDefinition.method3555(0.7D);
-				}
-
-				if (var2 == 4) {
-					InvDefinition.method3555(0.6D);
-				}
-			}
-
-			if (var1 == 3) {
-				if (var2 == 0) {
-					Script.setMusicVolume(255);
-				}
-
-				if (var2 == 1) {
-					Script.setMusicVolume(192);
-				}
-
-				if (var2 == 2) {
-					Script.setMusicVolume(128);
-				}
-
-				if (var2 == 3) {
-					Script.setMusicVolume(64);
-				}
-
-				if (var2 == 4) {
-					Script.setMusicVolume(0);
-				}
-			}
-
-			if (var1 == 4) {
-				if (var2 == 0) {
-					class105.method2785(127);
-				}
-
-				if (var2 == 1) {
-					class105.method2785(96);
-				}
-
-				if (var2 == 2) {
-					class105.method2785(64);
-				}
-
-				if (var2 == 3) {
-					class105.method2785(32);
-				}
-
-				if (var2 == 4) {
-					class105.method2785(0);
-				}
-			}
-
-			if (var1 == 5) {
-				Client.leftClickOpensMenu = var2 == 1;
-			}
-
-			if (var1 == 6) {
-				Client.chatEffects = var2;
-			}
-
-			if (var1 == 9) {
-			}
-
-			if (var1 == 10) {
-				if (var2 == 0) {
-					class148.method3278(127);
-				}
-
-				if (var2 == 1) {
-					class148.method3278(96);
-				}
-
-				if (var2 == 2) {
-					class148.method3278(64);
-				}
-
-				if (var2 == 3) {
-					class148.method3278(32);
-				}
-
-				if (var2 == 4) {
-					class148.method3278(0);
-				}
-			}
-
-			if (var1 == 17) {
-				Client.followerIndex = var2 & 65535;
-			}
-
-			if (var1 == 18) {
-				AttackOption[] var3 = new AttackOption[]{AttackOption.AttackOption_alwaysRightClick, AttackOption.field1384, AttackOption.field1385, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden};
-				Client.playerAttackOption = (AttackOption)class210.findEnumerated(var3, var2);
-				if (Client.playerAttackOption == null) {
-					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-				}
-			}
-
-			if (var1 == 19) {
-				if (var2 == -1) {
-					Client.combatTargetPlayerIndex = -1;
-				} else {
-					Client.combatTargetPlayerIndex = var2 & 2047;
-				}
-			}
-
-			if (var1 == 22) {
-				Client.npcAttackOption = (AttackOption)class210.findEnumerated(class142.method3233(), var2);
-				if (Client.npcAttackOption == null) {
-					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
-				}
-			}
-
+	@Export("getDbTable")
+	static DbTable getDbTable(int var0) {
+		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
+		if (var1 == null) {
+			var1 = new DbTable(class249.field2637, class512.method9041(var0), class229.method4771(var0));
+			Client.DBTableIndex_cache.put(var1, (long)var0);
 		}
+
+		return var1;
 	}
 }

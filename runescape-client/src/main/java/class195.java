@@ -2,43 +2,38 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hn")
-public class class195 extends DualNode {
-	@ObfuscatedName("aq")
+@ObfuscatedName("hg")
+public class class195 {
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lmo;"
+		descriptor = "(Lob;III)Lvc;",
+		garbageValue = "-1629405083"
 	)
-	@Export("field2022")
-	public static EvictingDualNodeHashTable field2022;
-	@ObfuscatedName("fi")
-	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	static Archive field2052;
-
-	static {
-		field2022 = new EvictingDualNodeHashTable(64);
+	@Export("SpriteBuffer_getSprite")
+	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
+		return !class415.method7697(var0, var1, var2) ? null : class335.method6428();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldg;",
-		garbageValue = "-1503991204"
+		descriptor = "(Ljava/lang/String;B)I",
+		garbageValue = "2"
 	)
-	@Export("getScript")
-	static Script getScript(int var0) {
-		Script var1 = (Script)Script.Script_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static int method4210(String var0) {
+		if (var0.equals("centre")) {
+			return 1;
 		} else {
-			byte[] var2 = WorldEntity.archive12.takeFile(var0, 0);
-			if (var2 == null) {
-				return null;
-			} else {
-				var1 = class154.newScript(var2);
-				Script.Script_cached.put(var1, (long)var0);
-				return var1;
-			}
+			return !var0.equals("bottom") && !var0.equals("right") ? 0 : 2;
 		}
+	}
+
+	@ObfuscatedName("nu")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "33"
+	)
+	static final void method4206(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 127);
+		TileItem.clientPreferences.updateSoundEffectVolume(var0);
 	}
 }

@@ -7,31 +7,28 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ik")
+@ObfuscatedName("ig")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("aq")
-	@Export("javaVendor")
-	public static String javaVendor;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@Export("javaVersion")
 	public static String javaVersion;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Lik;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Lik;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -39,11 +36,11 @@ public class TaskHandler implements Runnable {
 		this.current = null;
 		this.task = null;
 		this.isClosed = false;
-		javaVendor = "Unknown";
+		class137.javaVendor = "Unknown";
 		javaVersion = "1.6";
 
 		try {
-			javaVendor = System.getProperty("java.vendor");
+			class137.javaVendor = System.getProperty("java.vendor");
 			javaVersion = System.getProperty("java.version");
 		} catch (Exception var2) {
 		}
@@ -55,10 +52,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "996855504"
+		descriptor = "(B)V",
+		garbageValue = "46"
 	)
 	@Export("close")
 	public final void close() {
@@ -74,10 +71,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lig;",
-		garbageValue = "-232109491"
+		descriptor = "(IIILjava/lang/Object;I)Lik;",
+		garbageValue = "1940410187"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -98,20 +95,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)Lig;",
-		garbageValue = "-2017313228"
+		descriptor = "(Ljava/lang/String;II)Lik;",
+		garbageValue = "-418581900"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lig;",
-		garbageValue = "991114056"
+		descriptor = "(Ljava/lang/Runnable;II)Lik;",
+		garbageValue = "2016641896"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -166,206 +163,118 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1792326283"
+		descriptor = "(II)I",
+		garbageValue = "1390157951"
 	)
-	@Export("itemContainerSetItem")
-	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var4 == null) {
-			var4 = new ItemContainer();
-			ItemContainer.itemContainers.put(var4, (long)var0);
-		}
-
-		if (var4.ids.length <= var1) {
-			int[] var5 = new int[var1 + 1];
-			int[] var6 = new int[var1 + 1];
-
-			int var7;
-			for (var7 = 0; var7 < var4.ids.length; ++var7) {
-				var5[var7] = var4.ids[var7];
-				var6[var7] = var4.quantities[var7];
-			}
-
-			for (var7 = var4.ids.length; var7 < var1; ++var7) {
-				var5[var7] = -1;
-				var6[var7] = 0;
-			}
-
-			var4.ids = var5;
-			var4.quantities = var6;
-		}
-
-		var4.ids[var1] = var2;
-		var4.quantities[var1] = var3;
+	public static int method4570(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
+		var0 = var0 + (var0 >>> 4) & 252645135;
+		var0 += var0 >>> 8;
+		var0 += var0 >>> 16;
+		return var0 & 255;
 	}
 
-	@ObfuscatedName("ha")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1403501364"
+		descriptor = "(Ldy;[BIIIIIIIIIS)V",
+		garbageValue = "229"
 	)
-	@Export("getLoginError")
-	static void getLoginError(int var0) {
-		int var1 = Login.loginIndex;
-		if (var0 == -3) {
-			VerticalAlignment.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-		} else if (var0 == -2) {
-			VerticalAlignment.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-		} else if (var0 == -1) {
-			VerticalAlignment.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-		} else if (var0 == 3) {
-			class163.updateLoginIndex(3);
-			Login.field932 = 1;
-		} else if (var0 == 4) {
-			class163.updateLoginIndex(14);
-			Login.Login_banType = 0;
-		} else if (var0 == 5) {
-			Login.field932 = 2;
-			VerticalAlignment.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
-		} else if (var0 == 68) {
-			if (!Client.field675) {
-				Client.field675 = true;
-				class36.method708();
-				return;
+	static final void method4571(WorldView var0, byte[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+		CollisionMap[] var11 = var0.collisionMaps;
+		int var13;
+		if (var11 != null) {
+			for (int var12 = 0; var12 < 8; ++var12) {
+				for (var13 = 0; var13 < 8; ++var13) {
+					if (var3 + var12 > 0 && var3 + var12 < var11[var2].flags.length && var13 + var4 > 0 && var13 + var4 < var11[var2].flags[var3 + var12].length) {
+						int[] var10000 = var11[var2].flags[var3 + var12];
+						var10000[var4 + var13] &= -1073741825;
+					}
+				}
 			}
+		}
 
-			VerticalAlignment.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (!Client.onMobile && var0 == 6) {
-			VerticalAlignment.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (var0 == 7) {
-			VerticalAlignment.setLoginResponseString("This world is full.", "Please use a different world.", "");
-		} else if (var0 == 8) {
-			VerticalAlignment.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-		} else if (var0 == 9) {
-			VerticalAlignment.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-		} else if (var0 == 10) {
-			VerticalAlignment.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-		} else if (var0 == 11) {
-			VerticalAlignment.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-		} else if (var0 == 12) {
-			VerticalAlignment.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-		} else if (var0 == 13) {
-			VerticalAlignment.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-		} else if (var0 == 14) {
-			VerticalAlignment.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 16) {
-			VerticalAlignment.setLoginResponseString("Too many login attempts.", "You can use the Jagex Launcher to continue playing.", "Press the button below to download it now.");
-			class163.updateLoginIndex(33);
-		} else if (var0 == 17) {
-			VerticalAlignment.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
-		} else if (var0 == 18) {
-			class163.updateLoginIndex(14);
-			Login.Login_banType = 1;
-		} else if (var0 == 19) {
-			VerticalAlignment.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-		} else if (var0 == 20) {
-			VerticalAlignment.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-		} else if (var0 == 22) {
-			VerticalAlignment.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-		} else if (var0 == 23) {
-			VerticalAlignment.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 24) {
-			VerticalAlignment.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-		} else if (var0 == 25) {
-			VerticalAlignment.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-		} else if (var0 == 26) {
-			VerticalAlignment.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-		} else if (var0 == 27) {
-			VerticalAlignment.setLoginResponseString("", "Service unavailable.", "");
-		} else if (var0 == 31) {
-			VerticalAlignment.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-		} else if (var0 == 32) {
-			class163.updateLoginIndex(14);
-			Login.Login_banType = 2;
-		} else if (var0 == 37) {
-			VerticalAlignment.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-		} else if (var0 == 38) {
-			VerticalAlignment.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-		} else if (var0 == 74) {
-			VerticalAlignment.setLoginResponseString("This world is running a", "closed beta. Please", "use a different world.");
-		} else if (var0 == 55) {
-			class163.updateLoginIndex(8);
+		Buffer var25 = new Buffer(var1);
+
+		for (var13 = 0; var13 < 4; ++var13) {
+			for (int var14 = 0; var14 < 64; ++var14) {
+				for (int var15 = 0; var15 < 64; ++var15) {
+					if (var5 == var13 && var14 >= var6 && var14 < var6 + 8 && var15 >= var7 && var15 < var7 + 8) {
+						int var16 = var3 + ObjectSound.method2012(var14 & 7, var15 & 7, var8);
+						int var19 = var14 & 7;
+						int var20 = var15 & 7;
+						int var21 = var8 & 3;
+						int var18;
+						if (var21 == 0) {
+							var18 = var20;
+						} else if (var21 == 1) {
+							var18 = 7 - var19;
+						} else if (var21 == 2) {
+							var18 = 7 - var20;
+						} else {
+							var18 = var19;
+						}
+
+						int var22 = var18 + var4;
+						int var23 = var3 + (var14 & 7) + var9;
+						int var24 = var10 + (var15 & 7) + var4;
+						class238.loadTerrain(var0, var25, var2, var16, var22, var23, var24, var8);
+					} else {
+						class238.loadTerrain(var0, var25, 0, -1, -1, 0, 0, 0);
+					}
+				}
+			}
+		}
+
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)I",
+		garbageValue = "-64"
+	)
+	public static int method4565(int var0, int var1, int var2) {
+		if (var1 < var0) {
+			throw new IllegalArgumentException("max: " + var1 + " can not be lower than min: " + var0);
 		} else {
-			if (var0 == 56) {
-				VerticalAlignment.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-				ClanChannelMember.updateGameState(11);
-				return;
-			}
-
-			if (var0 == 57) {
-				VerticalAlignment.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-				ClanChannelMember.updateGameState(11);
-				return;
-			}
-
-			if (var0 == 61) {
-				VerticalAlignment.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
-				class163.updateLoginIndex(7);
-			} else {
-				if (var0 == 62) {
-					ClanChannelMember.updateGameState(10);
-					class163.updateLoginIndex(9);
-					VerticalAlignment.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
-					return;
-				}
-
-				if (var0 == 63) {
-					ClanChannelMember.updateGameState(10);
-					class163.updateLoginIndex(9);
-					VerticalAlignment.setLoginResponseString("You were signed out.", "Please sign in again.", "");
-					return;
-				}
-
-				if (var0 == 65 || var0 == 67) {
-					ClanChannelMember.updateGameState(10);
-					class163.updateLoginIndex(9);
-					VerticalAlignment.setLoginResponseString("Failed to login.", "Please try again.", "");
-					return;
-				}
-
-				if (var0 == 71) {
-					ClanChannelMember.updateGameState(10);
-					class163.updateLoginIndex(7);
-					VerticalAlignment.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
-				} else if (var0 == 73) {
-					ClanChannelMember.updateGameState(10);
-					class163.updateLoginIndex(6);
-					VerticalAlignment.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
-				} else if (var0 == 72) {
-					ClanChannelMember.updateGameState(10);
-					class163.updateLoginIndex(32);
-				} else {
-					VerticalAlignment.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
-				}
-			}
+			return Math.max(var0, Math.min(var2, var1));
 		}
-
-		ClanChannelMember.updateGameState(10);
-		int var4 = Login.loginIndex;
-		boolean var5 = var4 != var1;
-		if (!var5 && Client.field676.method9855()) {
-			class163.updateLoginIndex(9);
-		}
-
 	}
 
-	@ObfuscatedName("op")
+	@ObfuscatedName("kc")
 	@ObfuscatedSignature(
-		descriptor = "(Lnx;IIII)V",
-		garbageValue = "269553664"
+		descriptor = "(Ldy;IIIIIIIIIIB)V",
+		garbageValue = "39"
 	)
-	static final void method4179(Widget var0, int var1, int var2, int var3) {
-		SpriteMask var4 = var0.method6943(ModeWhere.widgetDefinition, false);
-		if (var4 != null) {
-			if (Client.minimapState < 3) {
-				World.compass.drawRotatedMaskedCenteredAround(var1, var2, var4.width, var4.height, 25, 25, Client.camAngleY, 256, var4.xStarts, var4.xWidths);
-			} else {
-				Rasterizer2D.Rasterizer2D_fillMaskedRectangle(var1, var2, 0, var4.xStarts, var4.xWidths);
-			}
+	static void method4572(WorldView var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+		NodeDeque var11 = var0.pendingSpawns;
+		PendingSpawn var12 = null;
 
+		for (PendingSpawn var13 = (PendingSpawn)var11.last(); var13 != null; var13 = (PendingSpawn)var11.previous()) {
+			if (var13.plane == var1 && var2 == var13.x && var3 == var13.y && var4 == var13.type) {
+				var12 = var13;
+				break;
+			}
 		}
+
+		if (var12 == null) {
+			var12 = new PendingSpawn();
+			var12.plane = var1;
+			var12.type = var4;
+			var12.x = var2;
+			var12.y = var3;
+			var12.field1174 = -1;
+			class233.method4786(var0, var12);
+			var11.addFirst(var12);
+		}
+
+		var12.field1171 = var5;
+		var12.field1176 = var6;
+		var12.field1172 = var7;
+		var12.delay = var9;
+		var12.hitpoints = var10;
+		var12.method2518(var8);
 	}
 }

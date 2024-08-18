@@ -3,81 +3,82 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gc")
-public class class162 extends class147 {
-	@ObfuscatedName("aq")
+@ObfuscatedName("gz")
+public class class162 extends class148 {
+	@ObfuscatedName("wo")
 	@ObfuscatedGetter(
-		longValue = 90337108135687261L
+		intValue = 1747484211
 	)
-	long field1800;
-	@ObfuscatedName("ad")
-	String field1799;
-	@ObfuscatedName("ag")
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1253382525
+		intValue = -629620383
 	)
-	int field1801;
+	int field1773;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lfy;"
 	)
-	final class150 this$0;
+	final class151 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lfy;)V"
 	)
-	class162(class150 var1) {
+	class162(class151 var1) {
 		this.this$0 = var1;
-		this.field1800 = -1L;
-		this.field1799 = null;
-		this.field1801 = 0;
+		this.field1773 = -1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-1070155477"
 	)
-	void vmethod3528(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1800 = var1.readLong();
+	void vmethod3619(Buffer var1) {
+		this.field1773 = var1.readUnsignedShort();
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(Lgg;I)V",
+		garbageValue = "1070728869"
+	)
+	void vmethod3621(ClanSettings var1) {
+		var1.method3446(this.field1773);
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-256997390"
+	)
+	public static void method3526() {
+		class246.field2100.clear();
+	}
+
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(Ldy;IIII)I",
+		garbageValue = "1284755731"
+	)
+	@Export("getTileHeight")
+	static final int getTileHeight(WorldView var0, int var1, int var2, int var3) {
+		int var4 = var1 >> 7;
+		int var5 = var2 >> 7;
+		if (var4 >= 0 && var5 >= 0 && var4 < var0.tileSettings[0].length && var5 < var0.tileSettings[0][0].length) {
+			int var6 = var3;
+			if (var3 < 3 && (var0.tileSettings[1][var4][var5] & 2) == 2) {
+				var6 = var3 + 1;
+			}
+
+			int var7 = var1 & 127;
+			int var8 = var2 & 127;
+			int var9 = var7 * var0.tileHeights[var6][var4 + 1][var5] + var0.tileHeights[var6][var4][var5] * (128 - var7) >> 7;
+			int var10 = var7 * var0.tileHeights[var6][var4 + 1][var5 + 1] + var0.tileHeights[var6][var4][var5 + 1] * (128 - var7) >> 7;
+			return var9 * (128 - var8) + var8 * var10 >> 7;
+		} else {
+			return 0;
 		}
-
-		this.field1799 = var1.readStringCp1252NullTerminatedOrNull();
-		this.field1801 = var1.readUnsignedShort();
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
-	)
-	void vmethod3530(ClanSettings var1) {
-		var1.method3378(this.field1800, this.field1799, this.field1801);
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "96"
-	)
-	@Export("getVarbit")
-	public static int getVarbit(int var0) {
-		VarbitComposition var1 = ItemContainer.method2361(var0);
-		int var2 = var1.baseVar;
-		int var3 = var1.startBit;
-		int var4 = var1.endBit;
-		int var5 = Varps.Varps_masks[var4 - var3];
-		return Varps.Varps_main[var2] >> var3 & var5;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-586745974"
-	)
-	public static int method3436(int var0) {
-		return var0 >>> 12;
 	}
 }

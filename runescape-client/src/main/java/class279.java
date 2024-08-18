@@ -1,142 +1,117 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kj")
+@ObfuscatedName("kn")
 public class class279 {
-	@ObfuscatedName("ju")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "[Lfv;"
+		descriptor = "(Ljava/lang/CharSequence;IZI)I",
+		garbageValue = "1323776401"
 	)
-	class132[] field2893;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 1044726639
-	)
-	int field2896;
+	public static int method5525(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
 
-	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)V"
-	)
-	class279(Buffer var1, int var2) {
-		this.field2893 = new class132[var2];
-		this.field2896 = var1.readUnsignedByte();
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
 
-		for (int var3 = 0; var3 < this.field2893.length; ++var3) {
-			class132 var4 = new class132(this.field2896, var1, false);
-			this.field2893[var3] = var4;
-		}
-
-		this.method5344();
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1610691806"
-	)
-	void method5344() {
-		class132[] var1 = this.field2893;
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			class132 var3 = var1[var2];
-			if (var3.field1546 >= 0) {
-				var3.field1554 = this.field2893[var3.field1546];
-			}
-		}
-
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "630666373"
-	)
-	public int method5356() {
-		return this.field2893.length;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lfv;",
-		garbageValue = "-733880039"
-	)
-	class132 method5343(int var1) {
-		return var1 >= this.method5356() ? null : this.field2893[var1];
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Lfv;",
-		garbageValue = "-68"
-	)
-	class132[] method5342() {
-		return this.field2893;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(Lft;IB)V",
-		garbageValue = "99"
-	)
-	void method5345(class142 var1, int var2) {
-		this.method5346(var1, var2, (boolean[])null, false);
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(Lft;I[ZZI)V",
-		garbageValue = "-297669474"
-	)
-	void method5346(class142 var1, int var2, boolean[] var3, boolean var4) {
-		int var5 = var1.method3205();
-		int var6 = 0;
-		class132[] var7 = this.method5342();
-
-		for (int var8 = 0; var8 < var7.length; ++var8) {
-			class132 var9 = var7[var8];
-			if (var3 == null || var4 == var3[var6]) {
-				var1.method3211(var2, var9, var6, var5);
-			}
-
-			++var6;
-		}
-
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(S)[Lof;",
-		garbageValue = "19113"
-	)
-	public static StudioGame[] method5358() {
-		return new StudioGame[]{StudioGame.runescape, StudioGame.stellardawn, StudioGame.game4, StudioGame.game5, StudioGame.oldscape, StudioGame.game3};
-	}
-
-	@ObfuscatedName("kc")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIB)V",
-		garbageValue = "69"
-	)
-	static void method5357(int var0, int var1, int var2, int var3, int var4) {
-		NodeDeque var5 = HttpResponse.worldView.groundItems[var0][var1][var2];
-		if (var5 != null) {
-			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
-				if ((var3 & 32767) == var6.id && var4 == var6.quantity) {
-					var6.remove();
-					break;
+					if (var8 == '+') {
+						continue;
+					}
 				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var5 * var1 + var10;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
 			}
 
-			if (var5.last() == null) {
-				HttpResponse.worldView.groundItems[var0][var1][var2] = null;
+			if (!var4) {
+				throw new NumberFormatException();
+			} else {
+				return var5;
 			}
+		} else {
+			throw new IllegalArgumentException("" + var1);
+		}
+	}
 
-			WorldMapRenderer.updateItemPile(var0, var1, var2);
+	@ObfuscatedName("lm")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;B)V",
+		garbageValue = "1"
+	)
+	static void method5526(int var0, String var1) {
+		int var2 = class253.localPlayer.worldView.playerUpdateManager.playerCount;
+		int[] var3 = class253.localPlayer.worldView.playerUpdateManager.playerIndices;
+		boolean var4 = false;
+		Username var5 = new Username(var1, ObjectSound.loginType);
+
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = class253.localPlayer.worldView.players[var3[var6]];
+			if (var7 != null && var7 != class253.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = class218.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteAdd(0);
+					var8.packetBuffer.writeShortAdd(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = class218.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByteSub(0);
+					var8.packetBuffer.writeShort(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = class218.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByte(0);
+					var8.packetBuffer.writeShortLE(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = class218.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByte(0);
+					var8.packetBuffer.writeShortAdd(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				}
+
+				var4 = true;
+				break;
+			}
+		}
+
+		if (!var4) {
+			class269.addGameMessage(4, "", "Unable to find " + var1);
 		}
 
 	}

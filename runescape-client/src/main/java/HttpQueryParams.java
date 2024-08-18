@@ -8,10 +8,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tb")
+@ObfuscatedName("tl")
 @Implements("HttpQueryParams")
 public class HttpQueryParams implements HttpPayload {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@Export("queryParameters")
 	final Map queryParameters;
 
@@ -19,30 +19,30 @@ public class HttpQueryParams implements HttpPayload {
 		this.queryParameters = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lsb;",
-		garbageValue = "12"
+		descriptor = "(I)Lsw;",
+		garbageValue = "1599165377"
 	)
 	@Export("getContentType")
 	public HttpContentType getContentType() {
 		return null;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(I)[B",
-		garbageValue = "524737236"
+		garbageValue = "-2134421183"
 	)
 	@Export("toBytes")
 	public byte[] toBytes() throws UnsupportedEncodingException {
 		return this.encode().getBytes("UTF-8");
 	}
 
-	@ObfuscatedName("ai")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-322858153"
+		garbageValue = "-1741996527"
 	)
 	@Export("encode")
 	public String encode() throws UnsupportedEncodingException {
@@ -63,5 +63,14 @@ public class HttpQueryParams implements HttpPayload {
 			var1.insert(0, "?");
 			return var1.toString();
 		}
+	}
+
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Ldo;",
+		garbageValue = "220296546"
+	)
+	static class92[] method8925() {
+		return new class92[]{class92.field1103, class92.field1099, class92.field1105, class92.field1101, class92.field1102, class92.field1104};
 	}
 }

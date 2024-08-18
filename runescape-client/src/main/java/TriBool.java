@@ -3,24 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sv")
+@ObfuscatedName("sm")
 @Implements("TriBool")
 public class TriBool {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lsv;"
+		descriptor = "Lsm;"
 	)
 	@Export("TriBool_unknown")
 	public static final TriBool TriBool_unknown;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lsv;"
+		descriptor = "Lsm;"
 	)
 	@Export("TriBool_true")
 	public static final TriBool TriBool_true;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lsv;"
+		descriptor = "Lsm;"
 	)
 	@Export("TriBool_false")
 	public static final TriBool TriBool_false;
@@ -32,18 +32,5 @@ public class TriBool {
 	}
 
 	TriBool() {
-	}
-
-	@ObfuscatedName("nu")
-	@ObfuscatedSignature(
-		descriptor = "(Lnx;I)V",
-		garbageValue = "-1273536850"
-	)
-	@Export("invalidateWidget")
-	public static void invalidateWidget(Widget var0) {
-		if (var0 != null && var0.cycle == Client.field720) {
-			Client.validRootWidgets[var0.rootIndex] = true;
-		}
-
 	}
 }

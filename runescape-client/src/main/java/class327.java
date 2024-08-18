@@ -1,112 +1,120 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.HashMap;
+import java.util.TimeZone;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mx")
-public class class327 {
-	@ObfuscatedName("ul")
-	@ObfuscatedGetter(
-		intValue = 2065572541
-	)
-	static int field3558;
+@ObfuscatedName("mp")
+public final class class327 {
+	@ObfuscatedName("an")
+	static final HashMap field3537;
+	@ObfuscatedName("ba")
+	@Export("hasFocus")
+	protected static boolean hasFocus;
 
-	@ObfuscatedName("ik")
+	static {
+		field3537 = new HashMap();
+		TimeZone var0;
+		synchronized(field3537) {
+			TimeZone var2 = (TimeZone)field3537.get("Europe/London");
+			if (var2 == null) {
+				var2 = TimeZone.getTimeZone("Europe/London");
+				field3537.put("Europe/London", var2);
+			}
+
+			var0 = var2;
+		}
+
+		java.util.Calendar.getInstance(var0);
+	}
+
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-62"
+		descriptor = "(Ljava/lang/CharSequence;II[BII)I",
+		garbageValue = "1806911928"
 	)
-	static final void method6128() {
-		int var1;
-		for (int var0 = 0; var0 < Client.soundEffectCount; ++var0) {
-			int var10002 = Client.queuedSoundEffectDelays[var0]--;
-			if (Client.queuedSoundEffectDelays[var0] >= -10) {
-				SoundEffect var12 = Client.soundEffects[var0];
-				if (var12 == null) {
-					Object var10000 = null;
-					var12 = SoundEffect.readSoundEffect(TransformationMatrix.soundEffectsArchive, Client.soundEffectIds[var0], 0);
-					if (var12 == null) {
-						continue;
-					}
+	@Export("encodeStringCp1252")
+	public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
+		int var5 = var2 - var1;
 
-					int[] var18 = Client.queuedSoundEffectDelays;
-					var18[var0] += var12.calculateDelay();
-					Client.soundEffects[var0] = var12;
-				}
-
-				if (Client.queuedSoundEffectDelays[var0] < 0) {
-					int var13;
-					if (Client.soundLocations[var0] != 0) {
-						int var14 = (Client.soundLocations[var0] & 255) * 128;
-						int var15 = Client.soundLocations[var0] >> 16 & 255;
-						int var5 = Math.abs(class376.method7084(var15) - SoundCache.localPlayer.x);
-						int var6 = Client.soundLocations[var0] >> 8 & 255;
-						int var7 = Math.abs(class376.method7084(var6) - SoundCache.localPlayer.y);
-						int var8 = Math.max(var5 + var7 - 128, 0);
-						int var9 = Math.max(((Client.field668[var0] & 31) - 1) * 128, 0);
-						if (var8 >= var14) {
-							Client.queuedSoundEffectDelays[var0] = -100;
-							continue;
-						}
-
-						float var10 = var9 < var14 ? Math.min(Math.max((float)(var14 - var8) / (float)(var14 - var9), 0.0F), 1.0F) : 1.0F;
-						var13 = (int)(var10 * (float)class105.clientPreferences.getAreaSoundEffectsVolume());
-					} else {
-						var13 = class105.clientPreferences.getSoundEffectsVolume();
-					}
-
-					if (var13 > 0) {
-						RawSound var3 = var12.toRawSound().resample(class177.decimator);
-						RawPcmStream var4 = RawPcmStream.createRawPcmStream(var3, 100, var13);
-						var4.setNumLoops(Client.queuedSoundEffectLoops[var0] - 1);
-						MoveSpeed.pcmStreamMixer.addSubStream(var4);
-					}
-
-					Client.queuedSoundEffectDelays[var0] = -100;
-				}
+		for (int var6 = 0; var6 < var5; ++var6) {
+			char var7 = var0.charAt(var6 + var1);
+			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
+				var3[var6 + var4] = (byte)var7;
+			} else if (var7 == 8364) {
+				var3[var6 + var4] = -128;
+			} else if (var7 == 8218) {
+				var3[var6 + var4] = -126;
+			} else if (var7 == 402) {
+				var3[var6 + var4] = -125;
+			} else if (var7 == 8222) {
+				var3[var6 + var4] = -124;
+			} else if (var7 == 8230) {
+				var3[var6 + var4] = -123;
+			} else if (var7 == 8224) {
+				var3[var6 + var4] = -122;
+			} else if (var7 == 8225) {
+				var3[var6 + var4] = -121;
+			} else if (var7 == 710) {
+				var3[var6 + var4] = -120;
+			} else if (var7 == 8240) {
+				var3[var6 + var4] = -119;
+			} else if (var7 == 352) {
+				var3[var6 + var4] = -118;
+			} else if (var7 == 8249) {
+				var3[var6 + var4] = -117;
+			} else if (var7 == 338) {
+				var3[var6 + var4] = -116;
+			} else if (var7 == 381) {
+				var3[var6 + var4] = -114;
+			} else if (var7 == 8216) {
+				var3[var6 + var4] = -111;
+			} else if (var7 == 8217) {
+				var3[var6 + var4] = -110;
+			} else if (var7 == 8220) {
+				var3[var6 + var4] = -109;
+			} else if (var7 == 8221) {
+				var3[var6 + var4] = -108;
+			} else if (var7 == 8226) {
+				var3[var6 + var4] = -107;
+			} else if (var7 == 8211) {
+				var3[var6 + var4] = -106;
+			} else if (var7 == 8212) {
+				var3[var6 + var4] = -105;
+			} else if (var7 == 732) {
+				var3[var6 + var4] = -104;
+			} else if (var7 == 8482) {
+				var3[var6 + var4] = -103;
+			} else if (var7 == 353) {
+				var3[var6 + var4] = -102;
+			} else if (var7 == 8250) {
+				var3[var6 + var4] = -101;
+			} else if (var7 == 339) {
+				var3[var6 + var4] = -100;
+			} else if (var7 == 382) {
+				var3[var6 + var4] = -98;
+			} else if (var7 == 376) {
+				var3[var6 + var4] = -97;
 			} else {
-				--Client.soundEffectCount;
-
-				for (var1 = var0; var1 < Client.soundEffectCount; ++var1) {
-					Client.soundEffectIds[var1] = Client.soundEffectIds[var1 + 1];
-					Client.soundEffects[var1] = Client.soundEffects[var1 + 1];
-					Client.queuedSoundEffectLoops[var1] = Client.queuedSoundEffectLoops[var1 + 1];
-					Client.queuedSoundEffectDelays[var1] = Client.queuedSoundEffectDelays[var1 + 1];
-					Client.soundLocations[var1] = Client.soundLocations[var1 + 1];
-					Client.field668[var1] = Client.field668[var1 + 1];
-				}
-
-				--var0;
+				var3[var6 + var4] = 63;
 			}
 		}
 
-		if (Client.playingJingle && !ClanChannel.method3506()) {
-			if (class105.clientPreferences.getMusicVolume() != 0 && class243.method4563()) {
-				Archive var11 = class199.archive6;
-				var1 = class105.clientPreferences.getMusicVolume();
-				if (!class330.field3585.isEmpty()) {
-					ArrayList var2 = new ArrayList();
-					Iterator var16 = class330.field3585.iterator();
+		return var5;
+	}
 
-					while (var16.hasNext()) {
-						MusicSong var17 = (MusicSong)var16.next();
-						var17.field3710 = false;
-						var17.field3709 = false;
-						var17.field3715 = false;
-						var17.field3712 = false;
-						var17.musicTrackArchive = var11;
-						var17.musicTrackVolume = var1;
-						var17.field3704 = 0.0F;
-						var2.add(var17);
-					}
-
-					FontName.method9220(var2, class330.musicPlayerStatus, class330.field3589, class330.field3590, class330.field3586, false);
-				}
-			}
-
-			Client.playingJingle = false;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(IZII)V",
+		garbageValue = "1116126630"
+	)
+	public static final void method6176(int var0, boolean var1, int var2) {
+		if (var0 >= 8000 && var0 <= 48000) {
+			class511.field5136 = var0;
+			HttpContentType.PcmPlayer_stereo = var1;
+			PcmPlayer.field256 = var2;
+		} else {
+			throw new IllegalArgumentException();
 		}
-
 	}
 }

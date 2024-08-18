@@ -24,10 +24,10 @@
  */
 package net.runelite.api;
 
-import net.runelite.api.widgets.Widget;
-
-import javax.annotation.Nullable;
 import java.util.function.Consumer;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.runelite.api.widgets.Widget;
 
 /**
  * A menu entry in a right-click menu.
@@ -100,6 +100,12 @@ public interface MenuEntry
 	MenuEntry onClick(Consumer<MenuEntry> callback);
 
 	/**
+	 * Get the callback called when the menu option is clicked
+	 * @return
+	 */
+	Consumer<MenuEntry> onClick();
+
+	/**
 	 * Set the parent for the menu entry. This makes this menu entry part of the sub-menu off of the parent.
 	 * @param parent
 	 * @return
@@ -168,6 +174,27 @@ public interface MenuEntry
 	 */
 	@Nullable
 	Actor getActor();
+
+	/**
+	 * Get the submenu for this menu entry.
+	 * @return the submenu, or null if one doesn't exist
+	 * @see #createSubMenu()
+	 */
+	@Nullable
+	Menu getSubMenu();
+
+	/**
+	 * Create a new submenu for this menu entry.
+	 * This will erase any previous submenu.
+	 * @return the new submenu
+	 */
+	@Nonnull
+	Menu createSubMenu();
+
+	/**
+	 * Remove the submenu from this menu entry.
+	 */
+	void deleteSubMenu();
 
 	@Deprecated
 	int getOpcode();

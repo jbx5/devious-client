@@ -1,31 +1,29 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qf")
+@ObfuscatedName("qg")
 public class class434 {
-	@ObfuscatedName("bw")
-	@ObfuscatedSignature(
-		descriptor = "Lvx;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("aq")
-	public char field4763;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1045908995
+		intValue = 1304685955
 	)
-	public int field4766;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 1046258857
-	)
-	public int field4764;
+	int field4743;
 
-	class434() {
-		this.field4766 = 0;
-		this.field4764 = 0;
+	@ObfuscatedSignature(
+		descriptor = "(IZ)V",
+		garbageValue = "1"
+	)
+	class434(int var1, boolean var2) {
+		this.field4743 = var1;
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "2024160359"
+	)
+	public int method8151() {
+		return this.field4743;
 	}
 }

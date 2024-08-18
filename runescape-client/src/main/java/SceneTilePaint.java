@@ -4,45 +4,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lt")
+@ObfuscatedName("hv")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1673746339
+		intValue = -73287099
 	)
 	@Export("swColor")
 	int swColor;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -860148807
+		intValue = -1513255117
 	)
 	@Export("seColor")
 	int seColor;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1168172891
+		intValue = -1244038431
 	)
 	@Export("neColor")
 	int neColor;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 716391559
+		intValue = 544911691
 	)
 	@Export("nwColor")
 	int nwColor;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -233451403
+		intValue = 1432633353
 	)
 	@Export("texture")
 	int texture;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@Export("isFlat")
 	boolean isFlat;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -448594561
+		intValue = -426460639
 	)
 	@Export("rgb")
 	int rgb;
@@ -58,56 +58,35 @@ public final class SceneTilePaint {
 		this.isFlat = var7;
 	}
 
-	@ObfuscatedName("ln")
+	@ObfuscatedName("it")
 	@ObfuscatedSignature(
-		descriptor = "(Lde;IIII)V",
-		garbageValue = "464797774"
+		descriptor = "(Ldy;I)V",
+		garbageValue = "-1884695961"
 	)
-	@Export("updateItemPile2")
-	static final void updateItemPile2(WorldView var0, int var1, int var2, int var3) {
-		NodeDeque var4 = var0.groundItems[var1][var2][var3];
-		if (var4 == null) {
-			var0.scene.removeGroundItemPile(var1, var2, var3);
-		} else {
-			long var5 = -99999999L;
-			TileItem var7 = null;
+	static final void method4377(WorldView var0) {
+		int[] var1 = var0.playerUpdateManager.playerIndices;
 
-			TileItem var8;
-			for (var8 = (TileItem)var4.last(); var8 != null; var8 = (TileItem)var4.previous()) {
-				ItemComposition var9 = class164.ItemDefinition_get(var8.id);
-				long var13 = (long)var9.price;
-				if (var9.isStackable == 1) {
-					var13 *= var8.quantity < Integer.MAX_VALUE ? (long)(var8.quantity + 1) : (long)var8.quantity;
+		int var2;
+		for (var2 = 0; var2 < var0.playerUpdateManager.playerCount; ++var2) {
+			Player var5 = var0.players[var1[var2]];
+			if (var5 != null && var5.overheadTextCyclesRemaining > 0) {
+				--var5.overheadTextCyclesRemaining;
+				if (var5.overheadTextCyclesRemaining == 0) {
+					var5.overheadText = null;
 				}
-
-				if (var13 > var5) {
-					var5 = var13;
-					var7 = var8;
-				}
-			}
-
-			if (var7 == null) {
-				var0.scene.removeGroundItemPile(var1, var2, var3);
-			} else {
-				var4.addLast(var7);
-				TileItem var15 = null;
-				TileItem var10 = null;
-
-				for (var8 = (TileItem)var4.last(); var8 != null; var8 = (TileItem)var4.previous()) {
-					if (var7.id != var8.id) {
-						if (var15 == null) {
-							var15 = var8;
-						}
-
-						if (var8.id != var15.id && var10 == null) {
-							var10 = var8;
-						}
-					}
-				}
-
-				long var11 = FileSystem.calculateTag(var2, var3, 3, false, 0, var0.id);
-				var0.scene.newGroundItemPile(var1, var2, var3, class169.getTileHeight(var0, class376.method7084(var2), class376.method7084(var3), var1), var7, var11, var15, var10);
 			}
 		}
+
+		for (var2 = 0; var2 < var0.npcCount; ++var2) {
+			int var3 = var0.npcIndices[var2];
+			NPC var4 = var0.npcs[var3];
+			if (var4 != null && var4.overheadTextCyclesRemaining > 0) {
+				--var4.overheadTextCyclesRemaining;
+				if (var4.overheadTextCyclesRemaining == 0) {
+					var4.overheadText = null;
+				}
+			}
+		}
+
 	}
 }

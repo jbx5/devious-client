@@ -30,6 +30,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import net.runelite.api.Actor;
+import net.runelite.api.Menu;
 import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
@@ -190,11 +191,18 @@ public class TestMenuEntry implements MenuEntry
 	}
 
 	@Override
-	public MenuEntry setParent(MenuEntry parent)
+	public Consumer<MenuEntry> onClick()
 	{
-		return this;
+		return null;
 	}
 
+	@Override
+	public MenuEntry setParent(MenuEntry parent)
+	{
+		return null;
+	}
+
+	@Nullable
 	@Override
 	public MenuEntry getParent()
 	{
@@ -294,5 +302,23 @@ public class TestMenuEntry implements MenuEntry
 	public Actor getActor()
 	{
 		return actor;
+	}
+
+	@Override
+	public Menu getSubMenu()
+	{
+		return null;
+	}
+
+	@Override
+	public Menu createSubMenu()
+	{
+		return null;
+	}
+
+	@Override
+	public void deleteSubMenu()
+	{
+
 	}
 }

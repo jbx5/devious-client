@@ -4,32 +4,18 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dn")
+@ObfuscatedName("dl")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("dk")
-	static boolean field1030;
-	@ObfuscatedName("fl")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
-	)
-	@Export("archive13")
-	static Archive archive13;
-	@ObfuscatedName("rk")
-	@ObfuscatedSignature(
-		descriptor = "Liv;"
-	)
-	@Export("mouseWheel")
-	static MouseWheel mouseWheel;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "[Lck;"
+		descriptor = "[Lci;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -89644527
+		intValue = 363542449
 	)
 	@Export("count")
 	int count;
@@ -38,10 +24,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)Lck;",
-		garbageValue = "-11369"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lci;",
+		garbageValue = "-86"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -69,23 +55,28 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lck;",
-		garbageValue = "650895180"
+		descriptor = "(II)Lci;",
+		garbageValue = "824021132"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "85"
+		garbageValue = "2"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
+	}
+
+	@ObfuscatedName("ab")
+	static double method2316(double var0) {
+		return Math.exp(var0 * -var0 / 2.0D) / Math.sqrt(6.283185307179586D);
 	}
 }

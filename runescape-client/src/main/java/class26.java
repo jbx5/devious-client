@@ -3,14 +3,14 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import netscape.javascript.JSObject;
 
-@ObfuscatedName("bt")
+@ObfuscatedName("bg")
 public class class26 {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;[Ljava/lang/Object;B)Ljava/lang/Object;",
-		garbageValue = "-72"
+		descriptor = "(Ljava/applet/Applet;Ljava/lang/String;I)V",
+		garbageValue = "-917994659"
 	)
-	public static Object method389(Applet var0, String var1, Object[] var2) throws Throwable {
-		return JSObject.getWindow(var0).call(var1, var2);
+	public static void method359(Applet var0, String var1) throws Throwable {
+		JSObject.getWindow(var0).eval(var1);
 	}
 }

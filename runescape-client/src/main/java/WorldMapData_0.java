@@ -3,27 +3,33 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jn")
+@ObfuscatedName("ks")
 @Implements("WorldMapData_0")
 public class WorldMapData_0 extends AbstractWorldMapData {
+	@ObfuscatedName("cz")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static GameBuild field3013;
+
 	WorldMapData_0() {
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "-49"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-1827475756"
 	)
 	@Export("init")
 	void init(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
-		if (var2 != WorldMapID.field2715.value) {
+		if (var2 != WorldMapID.field3192.value) {
 			throw new IllegalStateException("");
 		} else {
 			super.minPlane = var1.readUnsignedByte();
 			super.planes = var1.readUnsignedByte();
-			super.regionXLow = var1.readUnsignedShort() * 4096;
-			super.regionYLow = var1.readUnsignedShort() * 64;
+			super.regionXLow = var1.readUnsignedShort() * 64;
+			super.regionYLow = var1.readUnsignedShort() * 4096;
 			super.regionX = var1.readUnsignedShort();
 			super.regionY = var1.readUnsignedShort();
 			super.groupId = var1.readNullableLargeSmart();
@@ -31,21 +37,21 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 		}
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "-32"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-2033952891"
 	)
 	@Export("readGeography")
 	void readGeography(Buffer var1) {
 		super.planes = Math.min(super.planes, 4);
 		super.floorUnderlayIds = new short[1][64][64];
 		super.floorOverlayIds = new short[super.planes][64][64];
-		super.field2677 = new byte[super.planes][64][64];
-		super.field2678 = new byte[super.planes][64][64];
+		super.field3158 = new byte[super.planes][64][64];
+		super.field3159 = new byte[super.planes][64][64];
 		super.decorations = new WorldMapDecoration[super.planes][64][64][];
 		int var2 = var1.readUnsignedByte();
-		if (var2 != class261.field2709.value) {
+		if (var2 != class297.field3187.value) {
 			throw new IllegalStateException("");
 		} else {
 			int var3 = var1.readUnsignedByte();
@@ -63,16 +69,16 @@ public class WorldMapData_0 extends AbstractWorldMapData {
 		}
 	}
 
+	public int hashCode() {
+		return super.regionX | super.regionY << 8;
+	}
+
 	public boolean equals(Object var1) {
 		if (!(var1 instanceof WorldMapData_0)) {
 			return false;
 		} else {
 			WorldMapData_0 var2 = (WorldMapData_0)var1;
-			return super.regionX == var2.regionX && var2.regionY == super.regionY;
+			return super.regionX == var2.regionX && super.regionY == var2.regionY;
 		}
-	}
-
-	public int hashCode() {
-		return super.regionX | super.regionY << 8;
 	}
 }

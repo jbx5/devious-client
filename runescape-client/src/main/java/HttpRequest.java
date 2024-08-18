@@ -1,14 +1,6 @@
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InvalidClassException;
-import java.io.ObjectInputStream;
-import java.io.OptionalDataException;
-import java.io.StreamCorruptedException;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.ProtocolException;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
@@ -17,91 +9,90 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.Reflection;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ae")
+@ObfuscatedName("aq")
 @Implements("HttpRequest")
 public class HttpRequest {
-	@ObfuscatedName("cr")
-	@ObfuscatedGetter(
-		intValue = -1828915477
-	)
-	static int field58;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@Export("connection")
 	final HttpsURLConnection connection;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lrw;"
+		descriptor = "Lrf;"
 	)
 	@Export("httpHeaders")
 	final HttpHeaders httpHeaders;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lai;"
+		descriptor = "Lad;"
 	)
-	final HttpMethod field53;
-	@ObfuscatedName("ak")
+	final HttpMethod field42;
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lsr;"
+		descriptor = "Ltu;"
 	)
 	@Export("httpPayload")
 	HttpPayload httpPayload;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@Export("requestInitialized")
 	boolean requestInitialized;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@Export("followRedirects")
 	boolean followRedirects;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 347953321
+		intValue = -2061184109
 	)
 	@Export("connectionTimeout")
 	int connectionTimeout;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;Lai;Lrw;Z)V"
+		descriptor = "(Ljava/net/URL;Lad;Lrf;Z)V"
 	)
 	public HttpRequest(URL var1, HttpMethod var2, HttpHeaders var3, boolean var4) throws IOException {
 		this.requestInitialized = false;
 		this.followRedirects = false;
 		this.connectionTimeout = 300000;
-		if (!var2.method66()) {
+		if (!var2.method65()) {
 			throw new UnsupportedEncodingException("Unsupported request method used " + var2.getName());
 		} else {
 			this.connection = (HttpsURLConnection)var1.openConnection();
 			if (!var4) {
-				this.connection.setSSLSocketFactory(SecureRandomSSLSocketFactory.method197());
+				HttpsURLConnection var5 = this.connection;
+				if (SecureRandomSSLSocketFactory.INSTANCE == null) {
+					SecureRandomSSLSocketFactory.INSTANCE = new SecureRandomSSLSocketFactory();
+				}
+
+				SecureRandomSSLSocketFactory var6 = SecureRandomSSLSocketFactory.INSTANCE;
+				var5.setSSLSocketFactory(var6);
 			}
 
-			this.field53 = var2;
+			this.field42 = var2;
 			this.httpHeaders = var3 != null ? var3 : new HttpHeaders();
 		}
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;Lai;Z)V"
+		descriptor = "(Ljava/net/URL;Lad;Z)V"
 	)
 	public HttpRequest(URL var1, HttpMethod var2, boolean var3) throws IOException {
 		this(var1, var2, new HttpHeaders(), var3);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lrw;",
-		garbageValue = "1"
+		descriptor = "(I)Lrf;",
+		garbageValue = "-2032785583"
 	)
 	@Export("getHeaders")
 	public HttpHeaders getHeaders() {
 		return this.httpHeaders;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lsr;I)V",
-		garbageValue = "-713727113"
+		descriptor = "(Ltu;I)V",
+		garbageValue = "973352063"
 	)
 	@Export("setPayload")
 	public void setPayload(HttpPayload var1) {
@@ -121,17 +112,17 @@ public class HttpRequest {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "653231409"
+		garbageValue = "185119612"
 	)
 	@Export("initializeRequest")
 	void initializeRequest() throws ProtocolException {
 		if (!this.requestInitialized) {
-			this.connection.setRequestMethod(this.field53.getName());
+			this.connection.setRequestMethod(this.field42.getName());
 			this.httpHeaders.setRequestProperties(this.connection);
-			if (this.field53.method68() && this.httpPayload != null) {
+			if (this.field42.method73() && this.httpPayload != null) {
 				this.connection.setDoOutput(true);
 				ByteArrayOutputStream var1 = new ByteArrayOutputStream();
 
@@ -156,10 +147,10 @@ public class HttpRequest {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-202873158"
+		garbageValue = "-2077114146"
 	)
 	@Export("connect")
 	boolean connect() throws IOException {
@@ -171,10 +162,10 @@ public class HttpRequest {
 		return this.connection.getResponseCode() == -1;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(B)Las;",
-		garbageValue = "-1"
+		descriptor = "(I)Lar;",
+		garbageValue = "248044064"
 	)
 	@Export("getResponse")
 	HttpResponse getResponse() {
@@ -200,355 +191,230 @@ public class HttpRequest {
 		return var3;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lho;",
-		garbageValue = "2071485688"
+		descriptor = "(Lob;II)Lma;",
+		garbageValue = "-1758540243"
 	)
-	@Export("getObjectDefinition")
-	public static ObjectComposition getObjectDefinition(int var0) {
-		ObjectComposition var1 = (ObjectComposition)ObjectComposition.ObjectDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = ObjectComposition.ObjectDefinition_archive.takeFile(6, var0);
-			var1 = new ObjectComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode();
-			if (var1.isSolid) {
-				var1.interactType = 0;
-				var1.boolean1 = false;
-			}
-
-			ObjectComposition.ObjectDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
+	@Export("updateExternalPlayer")
+	static MusicPatch updateExternalPlayer(AbstractArchive var0, int var1) {
+		byte[] var2 = var0.takeFileFlat(var1);
+		return var2 == null ? null : new MusicPatch(var2);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lug;I)V",
-		garbageValue = "-1281612379"
+		descriptor = "(Lfb;FB)F",
+		garbageValue = "17"
 	)
-	@Export("performReflectionCheck")
-	public static void performReflectionCheck(PacketBuffer var0) {
-		ReflectionCheck var1 = (ReflectionCheck)class36.reflectionChecks.last();
-		if (var1 != null) {
-			int var2 = var0.offset;
-			var0.writeInt(var1.id);
-
-			for (int var3 = 0; var3 < var1.size; ++var3) {
-				if (var1.creationErrors[var3] != 0) {
-					var0.writeByte(var1.creationErrors[var3]);
-				} else {
-					try {
-						int var4 = var1.operations[var3];
-						Field var5;
-						int var6;
-						if (var4 == 0) {
-							var5 = var1.fields[var3];
-							var6 = Reflection.getInt(var5, (Object)null);
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						} else if (var4 == 1) {
-							var5 = var1.fields[var3];
-							Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]);
-							var0.writeByte(0);
-						} else if (var4 == 2) {
-							var5 = var1.fields[var3];
-							var6 = var5.getModifiers();
-							var0.writeByte(0);
-							var0.writeInt(var6);
-						}
-
-						Method var25;
-						if (var4 != 3) {
-							if (var4 == 4) {
-								var25 = var1.methods[var3];
-								var6 = var25.getModifiers();
-								var0.writeByte(0);
-								var0.writeInt(var6);
-							}
-						} else {
-							var25 = var1.methods[var3];
-							byte[][] var10 = var1.arguments[var3];
-							Object[] var7 = new Object[var10.length];
-
-							for (int var8 = 0; var8 < var10.length; ++var8) {
-								ObjectInputStream var9 = new ObjectInputStream(new ByteArrayInputStream(var10[var8]));
-								var7[var8] = var9.readObject();
-							}
-
-							Object var11 = Reflection.invoke(var25, (Object)null, var7);
-							if (var11 == null) {
-								var0.writeByte(0);
-							} else if (var11 instanceof Number) {
-								var0.writeByte(1);
-								var0.writeLong(((Number)var11).longValue());
-							} else if (var11 instanceof String) {
-								var0.writeByte(2);
-								var0.writeStringCp1252NullTerminated((String)var11);
-							} else {
-								var0.writeByte(4);
-							}
-						}
-					} catch (ClassNotFoundException var13) {
-						var0.writeByte(-10);
-					} catch (InvalidClassException var14) {
-						var0.writeByte(-11);
-					} catch (StreamCorruptedException var15) {
-						var0.writeByte(-12);
-					} catch (OptionalDataException var16) {
-						var0.writeByte(-13);
-					} catch (IllegalAccessException var17) {
-						var0.writeByte(-14);
-					} catch (IllegalArgumentException var18) {
-						var0.writeByte(-15);
-					} catch (InvocationTargetException var19) {
-						var0.writeByte(-16);
-					} catch (SecurityException var20) {
-						var0.writeByte(-17);
-					} catch (IOException var21) {
-						var0.writeByte(-18);
-					} catch (NullPointerException var22) {
-						var0.writeByte(-19);
-					} catch (Exception var23) {
-						var0.writeByte(-20);
-					} catch (Throwable var24) {
-						var0.writeByte(-21);
-					}
-				}
-			}
-
-			var0.writeCrc(var2);
-			var1.remove();
-		}
-	}
-
-	@ObfuscatedName("bx")
-	@ObfuscatedSignature(
-		descriptor = "(ILdg;ZI)I",
-		garbageValue = "1862488722"
-	)
-	static int method98(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.CHAT_GETFILTER_PUBLIC) {
-			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.publicChatMode;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CHAT_SETFILTER) {
-			class130.Interpreter_intStackSize -= 3;
-			Client.publicChatMode = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-			class522.privateChatMode = class6.method40(Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1]);
-			if (class522.privateChatMode == null) {
-				class522.privateChatMode = PrivateChatMode.field5501;
-			}
-
-			Client.tradeChatMode = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = class170.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
-			var13.packetBuffer.writeByte(Client.publicChatMode);
-			var13.packetBuffer.writeByte(class522.privateChatMode.field5503);
-			var13.packetBuffer.writeByte(Client.tradeChatMode);
-			Client.packetWriter.addNode(var13);
-			return 1;
-		} else {
-			PacketBufferNode var6;
-			int var7;
-			String var8;
-			int var9;
-			if (var0 == ScriptOpcodes.CHAT_SENDABUSEREPORT) {
-				var8 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-				class130.Interpreter_intStackSize -= 2;
-				var7 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-				var9 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
-				var6 = class170.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
-				var6.packetBuffer.writeByte(Actor.stringCp1252NullTerminatedByteSize(var8) + 2);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
-				var6.packetBuffer.writeByte(var7 - 1);
-				var6.packetBuffer.writeByte(var9);
-				Client.packetWriter.addNode(var6);
-				return 1;
+	static float method98(class134 var0, float var1) {
+		if (var0 != null && var0.method3194() != 0) {
+			if (var1 < (float)var0.field1561[0].field1507) {
+				return var0.field1559 == class132.field1540 ? var0.field1561[0].field1501 : ItemContainer.method2395(var0, var1, true);
+			} else if (var1 > (float)var0.field1561[var0.method3194() - 1].field1507) {
+				return var0.field1560 == class132.field1540 ? var0.field1561[var0.method3194() - 1].field1501 : ItemContainer.method2395(var0, var1, false);
+			} else if (var0.field1573) {
+				return var0.field1561[0].field1501;
 			} else {
-				int var3;
-				Message var5;
-				if (var0 == ScriptOpcodes.CHAT_GETHISTORY_BYTYPEANDLINE) {
-					class130.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-					var7 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
-					var5 = class91.Messages_getByChannelAndID(var3, var7);
-					if (var5 != null) {
-						Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var5.count;
-						Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var5.cycle;
-						Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
-						Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
-						Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
-						Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
+				class129 var2 = var0.method3201(var1);
+				boolean var3 = false;
+				boolean var4 = false;
+				if (var2 == null) {
+					return 0.0F;
+				} else {
+					float var5;
+					float var6;
+					float var7;
+					if ((double)var2.field1504 == 0.0D && 0.0D == (double)var2.field1505) {
+						var3 = true;
+					} else if (var2.field1504 == Float.MAX_VALUE && var2.field1505 == Float.MAX_VALUE) {
+						var4 = true;
+					} else if (var2.field1500 != null) {
+						if (var0.field1569) {
+							var5 = (float)var2.field1507;
+							float var9 = var2.field1501;
+							var6 = var2.field1504 * 0.33333334F + var5;
+							float var10 = var9 + var2.field1505 * 0.33333334F;
+							float var8 = (float)var2.field1500.field1507;
+							float var12 = var2.field1500.field1501;
+							var7 = var8 - 0.33333334F * var2.field1500.field1502;
+							float var11 = var12 - var2.field1500.field1503 * 0.33333334F;
+							if (var0.field1578) {
+								float var15 = var10;
+								float var16 = var11;
+								if (var0 != null) {
+									float var17 = var8 - var5;
+									if ((double)var17 != 0.0D) {
+										float var18 = var6 - var5;
+										float var19 = var7 - var5;
+										float[] var20 = new float[]{var18 / var17, var19 / var17};
+										var0.field1562 = var20[0] == 0.33333334F && var20[1] == 0.6666667F;
+										float var21 = var20[0];
+										float var22 = var20[1];
+										if ((double)var20[0] < 0.0D) {
+											var20[0] = 0.0F;
+										}
+
+										if ((double)var20[1] > 1.0D) {
+											var20[1] = 1.0F;
+										}
+
+										if ((double)var20[0] > 1.0D || var20[1] < -1.0F) {
+											var20[1] = 1.0F - var20[1];
+											if (var20[0] < 0.0F) {
+												var20[0] = 0.0F;
+											}
+
+											if (var20[1] < 0.0F) {
+												var20[1] = 0.0F;
+											}
+
+											if (var20[0] > 1.0F || var20[1] > 1.0F) {
+												float var23 = (float)((double)var20[1] * ((double)var20[1] - 2.0D) + (double)((var20[1] + (var20[0] - 2.0F)) * var20[0]) + 1.0D);
+												if (var23 + class130.field1517 > 0.0F) {
+													if (var20[0] + class130.field1517 < 1.3333334F) {
+														float var24 = var20[0] - 2.0F;
+														float var25 = var20[0] - 1.0F;
+														float var26 = (float)Math.sqrt((double)(var24 * var24 - var25 * var25 * 4.0F));
+														float var27 = (var26 + -var24) * 0.5F;
+														if (var20[1] + class130.field1517 > var27) {
+															var20[1] = var27 - class130.field1517;
+														} else {
+															var27 = (-var24 - var26) * 0.5F;
+															if (var20[1] < class130.field1517 + var27) {
+																var20[1] = var27 + class130.field1517;
+															}
+														}
+													} else {
+														var20[0] = 1.3333334F - class130.field1517;
+														var20[1] = 0.33333334F - class130.field1517;
+													}
+												}
+											}
+
+											var20[1] = 1.0F - var20[1];
+										}
+
+										if (var21 != var20[0]) {
+											float var10000 = var5 + var17 * var20[0];
+											if ((double)var21 != 0.0D) {
+												var15 = (var10 - var9) * var20[0] / var21 + var9;
+											}
+										}
+
+										if (var22 != var20[1]) {
+											float var14 = var17 * var20[1] + var5;
+											if ((double)var22 != 1.0D) {
+												var16 = (float)((double)var12 - (double)(var12 - var11) * (1.0D - (double)var20[1]) / (1.0D - (double)var22));
+											}
+										}
+
+										var0.field1563 = var5;
+										var0.field1558 = var8;
+										HttpRequestTask.method268(0.0F, var20[0], var20[1], 1.0F, var0);
+										class27.method387(var9, var15, var16, var12, var0);
+									}
+								}
+							} else {
+								WorldMapData_1.method5847(var0, var5, var6, var7, var8, var9, var10, var11, var12);
+							}
+
+							var0.field1569 = false;
+						}
 					} else {
-						Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = -1;
-						Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
+						var3 = true;
 					}
 
-					return 1;
-				} else {
-					Message var4;
-					if (var0 == ScriptOpcodes.CHAT_GETHISTORY_BYUID) {
-						var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-						var4 = Frames.Messages_getMessage(var3);
-						if (var4 != null) {
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var4.type;
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var4.cycle;
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
+					if (var3) {
+						return var2.field1501;
+					} else if (var4) {
+						return var1 != (float)var2.field1507 && var2.field1500 != null ? var2.field1500.field1501 : var2.field1501;
+					} else if (var0.field1578) {
+						if (var0 == null) {
+							var5 = 0.0F;
 						} else {
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = -1;
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
+							if (var1 == var0.field1563) {
+								var6 = 0.0F;
+							} else if (var1 == var0.field1558) {
+								var6 = 1.0F;
+							} else {
+								var6 = (var1 - var0.field1563) / (var0.field1558 - var0.field1563);
+							}
+
+							if (var0.field1562) {
+								var7 = var6;
+							} else {
+								class130.field1522[3] = var0.field1568;
+								class130.field1522[2] = var0.field1567;
+								class130.field1522[1] = var0.field1557;
+								class130.field1522[0] = var0.field1571 - var6;
+								class130.field1518[0] = 0.0F;
+								class130.field1518[1] = 0.0F;
+								class130.field1518[2] = 0.0F;
+								class130.field1518[3] = 0.0F;
+								class130.field1518[4] = 0.0F;
+								int var28 = class400.method7482(class130.field1522, 3, 0.0F, true, 1.0F, true, class130.field1518);
+								if (var28 == 1) {
+									var7 = class130.field1518[0];
+								} else {
+									var7 = 0.0F;
+								}
+							}
+
+							var5 = ((var0.field1564 + var0.field1572 * var7) * var7 + var0.field1570) * var7 + var0.field1574;
 						}
 
-						return 1;
-					} else if (var0 == ScriptOpcodes.CHAT_GETFILTER_PRIVATE) {
-						if (class522.privateChatMode == null) {
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = -1;
-						} else {
-							Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = class522.privateChatMode.field5503;
-						}
-
-						return 1;
+						return var5;
 					} else {
-						PacketBufferNode var12;
-						if (var0 == ScriptOpcodes.CHAT_SENDPUBLIC) {
-							var8 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-							var7 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-							var12 = WorldEntity.method8675(var7, var8, BuddyRankComparator.clientLanguage, -1);
-							Client.packetWriter.addNode(var12);
-							return 1;
-						} else if (var0 == ScriptOpcodes.CHAT_SENDPRIVATE) {
-							class337.Interpreter_stringStackSize -= 2;
-							var8 = Interpreter.Interpreter_stringStack[class337.Interpreter_stringStackSize];
-							String var11 = Interpreter.Interpreter_stringStack[class337.Interpreter_stringStackSize + 1];
-							var12 = class170.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
-							var12.packetBuffer.writeShort(0);
-							int var10 = var12.packetBuffer.offset;
-							var12.packetBuffer.writeStringCp1252NullTerminated(var8);
-							class225.method4305(var12.packetBuffer, var11);
-							var12.packetBuffer.writeLengthShort(var12.packetBuffer.offset - var10);
-							Client.packetWriter.addNode(var12);
-							return 1;
-						} else if (var0 == ScriptOpcodes.CHAT_SENDCLAN) {
-							var8 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-							class130.Interpreter_intStackSize -= 2;
-							var7 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-							var9 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
-							var6 = WorldEntity.method8675(var7, var8, BuddyRankComparator.clientLanguage, var9);
-							Client.packetWriter.addNode(var6);
-							return 1;
-						} else if (var0 != ScriptOpcodes.CHAT_PLAYERNAME) {
-							if (var0 == ScriptOpcodes.CHAT_GETFILTER_TRADE) {
-								Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.tradeChatMode;
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYLENGTH) {
-								var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = class53.Messages_getHistorySize(var3);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETNEXTUID) {
-								var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = class36.Messages_getLastChatID(var3);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETPREVUID) {
-								var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = class74.method2159(var3);
-								return 1;
-							} else if (var0 == ScriptOpcodes.DOCHEAT) {
-								var8 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-								class164.doCheat(var8);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_SETMESSAGEFILTER) {
-								Client.field736 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize].toLowerCase().trim();
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETMESSAGEFILTER) {
-								Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = Client.field736;
-								return 1;
-							} else if (var0 == ScriptOpcodes.WRITECONSOLE) {
-								var8 = Interpreter.Interpreter_stringStack[--class337.Interpreter_stringStackSize];
-								System.out.println(var8);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYEX_BYTYPEANDLINE) {
-								class130.Interpreter_intStackSize -= 2;
-								var3 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
-								var7 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
-								var5 = class91.Messages_getByChannelAndID(var3, var7);
-								if (var5 != null) {
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var5.count;
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var5.cycle;
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-								} else {
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = -1;
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-								}
-
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYEX_BYUID) {
-								var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
-								var4 = Frames.Messages_getMessage(var3);
-								if (var4 != null) {
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var4.type;
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var4.cycle;
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-								} else {
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = -1;
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = 0;
-								}
-
-								return 1;
-							} else {
-								return 2;
-							}
+						if (var0 == null) {
+							var5 = 0.0F;
 						} else {
-							if (SoundCache.localPlayer != null && SoundCache.localPlayer.username != null) {
-								var8 = SoundCache.localPlayer.username.getName();
-							} else {
-								var8 = "";
-							}
-
-							Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var8;
-							return 1;
+							var6 = var1 - var0.field1563;
+							var5 = var0.field1568 + (var0.field1567 + (var0.field1557 + var6 * var0.field1571) * var6) * var6;
 						}
+
+						return var5;
 					}
 				}
 			}
+		} else {
+			return 0.0F;
+		}
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(Lob;Lob;ZLqe;I)V",
+		garbageValue = "2129803029"
+	)
+	public static void method84(AbstractArchive var0, AbstractArchive var1, boolean var2, Font var3) {
+		ItemComposition.ItemDefinition_archive = var0;
+		ItemComposition.ItemDefinition_modelArchive = var1;
+		class241.ItemDefinition_inMembersWorld = var2;
+		ItemComposition.ItemDefinition_fileCount = ItemComposition.ItemDefinition_archive.getGroupFileCount(10);
+		class510.ItemDefinition_fontPlain11 = var3;
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)V",
+		garbageValue = "2"
+	)
+	@Export("Login_promptCredentials")
+	static void Login_promptCredentials(boolean var0) {
+		if (!DynamicObject.client.containsAccessAndRefreshToken() && !DynamicObject.client.otlTokenRequesterInitialized() && !DynamicObject.client.containsSessionAndCharacterId()) {
+			Login.Login_response1 = "";
+			Login.Login_response2 = "Enter your username/email & password.";
+			Login.Login_response3 = "";
+			class532.updateLoginIndex(2);
+			if (var0) {
+				Login.Login_password = "";
+			}
+
+			class131.method3176();
+			class33.focusPasswordWhenUsernameFilled();
+		} else {
+			class532.updateLoginIndex(10);
 		}
 	}
 }

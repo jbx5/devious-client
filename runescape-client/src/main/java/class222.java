@@ -1,253 +1,118 @@
-import java.io.IOException;
 import java.net.URL;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.json.JSONObject;
 
-@ObfuscatedName("in")
+@ObfuscatedName("is")
 public class class222 {
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lin;"
-	)
-	static final class222 field2393;
-	@ObfuscatedName("aq")
-	String field2388;
-	@ObfuscatedName("ad")
-	String field2394;
-	@ObfuscatedName("ag")
-	String field2381;
-	@ObfuscatedName("ak")
-	String field2382;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ud")
 	@ObfuscatedGetter(
-		longValue = 5566748389036813035L
+		intValue = -1808540979
 	)
-	long field2383;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Lax;"
-	)
-	AsyncRestClient field2384;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lao;"
-	)
-	AsyncHttpResponse field2385;
-	@ObfuscatedName("av")
-	final int field2386;
-	@ObfuscatedName("ab")
-	final int field2387;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = 1131252391
-	)
-	int field2391;
+	static int field2417;
+	@ObfuscatedName("au")
+	public String field2415;
 	@ObfuscatedName("ax")
+	public float[] field2413;
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 1825791855
+		intValue = -980791297
 	)
-	int field2389;
+	public int field2410;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -724036295
+	)
+	public int field2416;
 	@ObfuscatedName("ac")
-	String field2392;
-	@ObfuscatedName("ay")
-	boolean field2380;
-
-	static {
-		field2393 = new class222();
-	}
-
-	class222() {
-		this.field2388 = "";
-		this.field2394 = "";
-		this.field2381 = "";
-		this.field2382 = "";
-		this.field2383 = -1L;
-		this.field2386 = 1;
-		this.field2387 = 2;
-		this.field2391 = 1;
-		this.field2389 = 0;
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;I)V",
-		garbageValue = "2051417236"
+	@ObfuscatedGetter(
+		intValue = 792535049
 	)
-	public void method4244(int var1, String var2) {
-		this.field2389 = var1;
-		this.field2392 = var2;
-	}
-
-	@ObfuscatedName("ag")
+	public int field2409;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-1200789998"
+		descriptor = "Lii;"
 	)
-	public void method4268(boolean var1) {
-		this.field2380 = var1;
-		this.field2384 = new AsyncRestClient("crmsession", 1, 1);
-	}
+	final class221 this$0;
 
-	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "1863245478"
+		descriptor = "(Lii;)V"
 	)
-	void method4265(String var1, String var2, String var3) {
-		if (this.field2391 != 2) {
-			this.field2388 = var1;
-			this.field2394 = var2;
-			this.field2381 = var3;
-			if (!this.field2388.endsWith("/")) {
-				this.field2388 = this.field2388 + "/";
-			}
-
-			if (!this.field2394.equals("")) {
-				String var4 = this.field2388;
-				var4 = var4 + "session/open/" + this.field2394;
-				if (this.field2381.equals("")) {
-				}
-
-				var4 = var4 + "?userHash=" + this.field2381;
-
-				try {
-					this.field2385 = this.method4251(var4);
-					this.field2383 = WorldMapData_1.method4861();
-				} catch (IOException var6) {
-					this.field2385 = null;
-					this.field2394 = "";
-					this.field2381 = "";
-				}
-
-			}
-		}
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "101"
-	)
-	public void method4247() {
-		if (this.field2385 == null) {
-			if (!this.field2382.isEmpty() && this.field2391 == 1) {
-				long var1 = WorldMapData_1.method4861();
-				long var3 = var1 - this.field2383;
-				String var5 = this.field2388;
-				var5 = var5 + "session/close/" + this.field2394 + "/" + this.field2382;
-				if (this.field2381.isEmpty()) {
-					var5 = var5 + "?sessionDuration=" + var3;
-				} else {
-					var5 = var5 + "?userHash=" + this.field2381 + "&sessionDuration=" + var3;
-				}
-
-				try {
-					this.field2385 = this.method4251(var5);
-				} catch (IOException var7) {
-					this.field2391 = 1;
-				}
-			}
-
-		}
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1098012235"
-	)
-	public void method4248() {
-		if (this.field2384 != null) {
-			this.field2384.shutdown();
-		}
-
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-81"
-	)
-	void method4266() {
-		if (!this.field2382.isEmpty()) {
-			String var1 = "";
-			switch(this.field2389) {
-			case 1:
-				var1 = "events/click";
-				break;
-			case 2:
-				var1 = "events/dismissed";
-				break;
-			case 3:
-				var1 = "events/impression";
-			}
-
-			if (!this.field2392.isEmpty()) {
-				String var2 = this.field2388;
-				var2 = var2 + var1 + "/" + this.field2394 + "/" + this.field2382 + "/" + this.field2392 + "?userHash=" + this.field2381;
-
-				try {
-					this.field2385 = this.method4251(var2);
-				} catch (IOException var4) {
-					this.field2391 = 1;
-				}
-
-				this.field2391 = 1;
-				this.field2389 = 0;
-			}
-		}
-	}
-
-	@ObfuscatedName("av")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "8"
-	)
-	public void method4261() {
-		if (this.field2385 != null && this.field2385.hasFinished()) {
-			if (this.field2385.hasFinished() && this.field2385.await().getResponseCode() == 200 && this.field2382.isEmpty()) {
-				String var1 = this.field2385.await().getResponseBody();
-				if (var1.isEmpty()) {
-					return;
-				}
-
-				this.field2382 = var1;
-			}
-
-			if (this.field2389 != 0) {
-				this.method4266();
-			}
-
-		}
+	class222(class221 var1) {
+		this.this$0 = var1;
+		this.field2413 = new float[4];
+		this.field2410 = 1;
+		this.field2416 = 1;
+		this.field2409 = 0;
 	}
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Z",
-		garbageValue = "-1205574720"
+		descriptor = "(I)Z",
+		garbageValue = "-312231483"
 	)
-	public boolean method4250(String var1) {
-		this.method4244(2, var1);
-		return true;
-	}
-
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Lao;",
-		garbageValue = "-576200562"
-	)
-	AsyncHttpResponse method4251(String var1) throws IOException {
-		URL var2 = new URL(var1);
-		HttpRequest var3 = new HttpRequest(var2, HttpMethod.POST, this.field2380);
-
+	@Export("loadWorlds")
+	static boolean loadWorlds() {
 		try {
-			JSONObject var4 = new JSONObject();
-			var3.setPayload(new HttpJsonRequestBody(var4));
-		} catch (Exception var5) {
+			if (SoundCache.World_request == null) {
+				SoundCache.World_request = Canvas.urlRequester.request(new URL(JagexCache.field2360));
+			} else if (SoundCache.World_request.isDone()) {
+				byte[] var0 = SoundCache.World_request.getResponse();
+				Buffer var1 = new Buffer(var0);
+				var1.readInt();
+				World.World_count = var1.readUnsignedShort();
+				class319.World_worlds = new World[World.World_count];
+
+				World var3;
+				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) {
+					var3 = class319.World_worlds[var2] = new World();
+					var3.id = var1.readUnsignedShort();
+					var3.properties = var1.readInt();
+					var3.host = var1.readStringCp1252NullTerminated();
+					var3.activity = var1.readStringCp1252NullTerminated();
+					var3.location = var1.readUnsignedByte();
+					var3.population = var1.readShort();
+				}
+
+				JagNetThread.sortWorlds(class319.World_worlds, 0, class319.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
+				SoundCache.World_request = null;
+				return true;
+			}
+		} catch (Exception var4) {
+			var4.printStackTrace();
+			SoundCache.World_request = null;
 		}
 
-		return this.field2384.submitRequest(var3);
+		return false;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lkt;",
+		garbageValue = "1777900743"
+	)
+	@Export("getObjectDefinition")
+	public static ObjectComposition getObjectDefinition(int var0) {
+		ObjectComposition var1 = (ObjectComposition)ObjectComposition.ObjectDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = ObjectComposition.ObjectDefinition_archive.takeFile(6, var0);
+			var1 = new ObjectComposition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
+
+			var1.postDecode();
+			if (var1.isSolid) {
+				var1.interactType = 0;
+				var1.boolean1 = false;
+			}
+
+			ObjectComposition.ObjectDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

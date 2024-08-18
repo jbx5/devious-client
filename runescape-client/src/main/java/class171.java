@@ -1,102 +1,237 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gf")
-public class class171 extends class147 {
-	@ObfuscatedName("su")
-	@Export("ClanChat_inClanChat")
-	static boolean ClanChat_inClanChat;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1118752625
-	)
-	int field1840;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		longValue = 2806569176464727727L
-	)
-	long field1841;
+@ObfuscatedName("gi")
+public class class171 extends class164 {
+	@ObfuscatedName("ab")
+	String field1817;
+	@ObfuscatedName("ay")
+	byte field1816;
+	@ObfuscatedName("an")
+	byte field1818;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lgl;"
 	)
-	final class150 this$0;
+	final class165 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lgl;)V"
 	)
-	class171(class150 var1) {
+	class171(class165 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "(Lvg;B)V",
+		garbageValue = "-40"
 	)
-	void vmethod3528(Buffer var1) {
-		this.field1840 = var1.readInt();
-		this.field1841 = var1.readLong();
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
-	)
-	void vmethod3530(ClanSettings var1) {
-		var1.method3366(this.field1840, this.field1841);
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IZIZI)V",
-		garbageValue = "181214809"
-	)
-	@Export("sortWorldList")
-	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-		if (class357.World_worlds != null) {
-			PlatformInfo.doWorldSorting(0, class357.World_worlds.length - 1, var0, var1, var2, var3);
+	void vmethod3611(Buffer var1) {
+		this.field1817 = var1.readStringCp1252NullTerminatedOrNull();
+		if (this.field1817 != null) {
+			var1.readUnsignedByte();
+			this.field1816 = var1.readByte();
+			this.field1818 = var1.readByte();
 		}
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "([I[IIIB)V",
-		garbageValue = "0"
+		descriptor = "(Lgx;I)V",
+		garbageValue = "-357446960"
 	)
-	public static void method3529(int[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			int var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
-			int var8 = var6 == Integer.MAX_VALUE ? 0 : 1;
+	void vmethod3612(ClanChannel var1) {
+		var1.name = this.field1817;
+		if (this.field1817 != null) {
+			var1.field1804 = this.field1816;
+			var1.field1806 = this.field1818;
+		}
 
-			for (int var9 = var2; var9 < var3; ++var9) {
-				if (var0[var9] < (var9 & var8) + var6) {
-					int var10 = var0[var9];
-					var0[var9] = var0[var5];
-					var0[var5] = var10;
-					int var11 = var1[var9];
-					var1[var9] = var1[var5];
-					var1[var5++] = var11;
+	}
+
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)I",
+		garbageValue = "40"
+	)
+	static int method3614(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else if (var1 == -1) {
+			return 0;
+		} else {
+			int var3 = 0;
+
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4];
 				}
 			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			method3529(var0, var1, var2, var5 - 1);
-			method3529(var0, var1, var5 + 1, var3);
+			return var3;
+		}
+	}
+
+	@ObfuscatedName("hj")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "963812052"
+	)
+	@Export("clear")
+	static final void clear() {
+		Projectile.method2268();
+		ObjectComposition.method5149();
+		class230.field1915.clear();
+		DbRowType.DBRowType_cache.clear();
+		Friend.method8589();
+		EnumComposition.EnumDefinition_cached.clear();
+		class376.method7162();
+		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
+		UrlRequester.method2983();
+		HorizontalAlignment.method4908();
+		class36.method669();
+		InvDefinition.method4765();
+		WorldView.method2731();
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
+		PlayerUpdateManager.method2893();
+		class221.method4700();
+		AuthenticationScheme.method3309();
+		ItemComposition.ItemDefinition_cached.clear();
+		ItemComposition.ItemDefinition_cachedModels.clear();
+		ItemComposition.ItemDefinition_cachedSprites.clear();
+		class154.method3401();
+		SequenceDefinition.SequenceDefinition_cached.clear();
+		SequenceDefinition.SequenceDefinition_cachedFrames.clear();
+		SequenceDefinition.SequenceDefinition_cachedModel.clear();
+		SpotAnimationDefinition.SpotAnimationDefinition_cached.clear();
+		SpotAnimationDefinition.SpotAnimationDefinition_cachedModels.clear();
+		StructComposition.StructDefinition_cached.clear();
+		class229.method4772();
+		if (class1.field2 != null) {
+			class1.field2.method9408();
+		}
+
+		if (class373.field4034 != null) {
+			class373.field4034.method9408();
+		}
+
+		class162.method3526();
+		Frames.method4144();
+		VarcInt.VarcInt_cached.clear();
+		class233.field1864.clear();
+		class335.method6430();
+		WorldMapSectionType.method5915();
+		class255.field1909.clear();
+		VarpDefinition.VarpDefinition_cached.clear();
+		class252.field2136.clear();
+		Client.DBTableIndex_cache.clear();
+		Client.archive11.clear();
+		PlayerComposition.PlayerAppearance_cachedModels.clear();
+		PlayerComposition.field3753.clearFiles();
+		PlayerComposition.field3755 = 0;
+		if (FloorUnderlayDefinition.widgetDefinition != null) {
+			FloorUnderlayDefinition.widgetDefinition.method6548();
+		}
+
+		if (Rasterizer3D.clips.Rasterizer3D_textureLoader != null) {
+			((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).clear();
+		}
+
+		IntProjection.method3820();
+		Client.field790.clearFiles();
+		if (WorldView.field1305 != null) {
+			WorldView.field1305.clearFiles();
+		}
+
+		if (LoginScreenAnimation.field1281 != null) {
+			LoginScreenAnimation.field1281.clearFiles();
+		}
+
+		if (ReflectionCheck.archive10 != null) {
+			ReflectionCheck.archive10.clearFiles();
+		}
+
+		if (RestClientThreadFactory.archive12 != null) {
+			RestClientThreadFactory.archive12.clearFiles();
+		}
+
+		if (SoundSystem.archive2 != null) {
+			SoundSystem.archive2.clearFiles();
+		}
+
+		if (class249.field2637 != null) {
+			class249.field2637.clearFiles();
+		}
+
+		if (ClientPacket.field3331 != null) {
+			ClientPacket.field3331.clearFiles();
+		}
+
+		if (Actor.archive13 != null) {
+			Actor.archive13.clearFiles();
+		}
+
+		if (class60.archive4 != null) {
+			class60.archive4.clearFiles();
+		}
+
+		if (class6.field11 != null) {
+			class6.field11.clearFiles();
+		}
+
+		if (Projectile.soundEffectsArchive != null) {
+			Projectile.soundEffectsArchive.clearFiles();
+		}
+
+		if (Occluder.field2111 != null) {
+			Occluder.field2111.clearFiles();
+		}
+
+		if (ClientPreferences.archive9 != null) {
+			ClientPreferences.archive9.clearFiles();
+		}
+
+		if (class33.archive6 != null) {
+			class33.archive6.clearFiles();
+		}
+
+		if (KeyHandler.field100 != null) {
+			KeyHandler.field100.clearFiles();
+		}
+
+		if (class167.field1796 != null) {
+			class167.field1796.clearFiles();
+		}
+
+		if (class59.archive8 != null) {
+			class59.archive8.clearFiles();
+		}
+
+		if (Tile.field1936 != null) {
+			Tile.field1936.clearFiles();
+		}
+
+		if (class424.field4678 != null) {
+			class424.field4678.clearFiles();
+		}
+
+		if (FriendsChat.field4909 != null) {
+			FriendsChat.field4909.clearFiles();
+		}
+
+		if (class33.field152 != null) {
+			class33.field152.clearFiles();
+		}
+
+		if (VarbitComposition.field2680 != null) {
+			VarbitComposition.field2680.clearFiles();
 		}
 
 	}

@@ -1,60 +1,139 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fq")
-public class class151 extends class147 {
-	@ObfuscatedName("fk")
+@ObfuscatedName("fy")
+public class class151 {
+	@ObfuscatedName("dn")
 	@ObfuscatedSignature(
-		descriptor = "Loz;"
+		descriptor = "[Lvb;"
 	)
-	static Archive field1715;
-	@ObfuscatedName("aq")
+	@Export("worldSelectArrows")
+	static IndexedSprite[] worldSelectArrows;
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 278243013
+		longValue = -4632075478010266477L
 	)
-	int field1712;
-	@ObfuscatedName("ad")
-	byte field1716;
-	// $FF: synthetic field
+	long field1690;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 1212255819
+	)
+	public int field1687;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lpf;"
 	)
-	final class150 this$0;
+	IterableNodeDeque field1688;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lvg;)V"
 	)
-	class151(class150 var1) {
-		this.this$0 = var1;
-		this.field1712 = -1;
+	public class151(Buffer var1) {
+		this.field1687 = -1;
+		this.field1688 = new IterableNodeDeque();
+		this.method3367(var1);
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-2082403000"
 	)
-	void vmethod3528(Buffer var1) {
-		this.field1712 = var1.readUnsignedShort();
-		this.field1716 = var1.readByte();
+	void method3367(Buffer var1) {
+		this.field1690 = var1.readLong();
+		this.field1687 = var1.readInt();
+
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 3) {
+				var3 = new class170(this);
+			} else if (var2 == 1) {
+				var3 = new LoginPacket(this);
+			} else if (var2 == 13) {
+				var3 = new class163(this);
+			} else if (var2 == 4) {
+				var3 = new class155(this);
+			} else if (var2 == 6) {
+				var3 = new class162(this);
+			} else if (var2 == 5) {
+				var3 = new class147(this);
+			} else if (var2 == 2) {
+				var3 = new class152(this);
+			} else if (var2 == 7) {
+				var3 = new class145(this);
+			} else if (var2 == 14) {
+				var3 = new class149(this);
+			} else if (var2 == 8) {
+				var3 = new class166(this);
+			} else if (var2 == 9) {
+				var3 = new class172(this);
+			} else if (var2 == 10) {
+				var3 = new class158(this);
+			} else if (var2 == 11) {
+				var3 = new class153(this);
+			} else if (var2 == 12) {
+				var3 = new class157(this);
+			} else {
+				if (var2 != 15) {
+					throw new RuntimeException("");
+				}
+
+				var3 = new class167(this);
+			}
+
+			((class148)var3).vmethod3619(var1);
+			this.field1688.addFirst((Node)var3);
+		}
+
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
+		descriptor = "(Lgg;B)V",
+		garbageValue = "-19"
 	)
-	void vmethod3530(ClanSettings var1) {
-		var1.method3360(this.field1712, this.field1716);
+	public void method3370(ClanSettings var1) {
+		if (var1.field1733 == this.field1690 && this.field1687 == var1.field1734) {
+			for (class148 var2 = (class148)this.field1688.last(); var2 != null; var2 = (class148)this.field1688.previous()) {
+				var2.vmethod3621(var1);
+			}
+
+			++var1.field1734;
+		} else {
+			throw new RuntimeException("");
+		}
 	}
 
-	@ObfuscatedName("it")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "57"
+		descriptor = "(II)Z",
+		garbageValue = "-1216454944"
 	)
-	static final int method3293(int var0) {
-		return Math.min(Math.max(var0, 128), 383);
+	public static boolean method3375(int var0) {
+		return (var0 >> 20 & 1) != 0;
+	}
+
+	@ObfuscatedName("lf")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIB)V",
+		garbageValue = "-45"
+	)
+	static void method3371(int var0, int var1, int var2, int var3) {
+		Widget var4 = FloorUnderlayDefinition.widgetDefinition.getWidgetChild(var0, var1);
+		if (var4 != null && var4.onTargetEnter != null) {
+			ScriptEvent var5 = new ScriptEvent();
+			var5.widget = var4;
+			var5.args = var4.onTargetEnter;
+			class421.runScriptEvent(var5);
+		}
+
+		Client.selectedSpellItemId = var3;
+		Client.isSpellSelected = true;
+		MenuAction.selectedSpellWidget = var0;
+		Client.selectedSpellChildIndex = var1;
+		UserComparator3.selectedSpellFlags = var2;
+		class416.invalidateWidget(var4);
 	}
 }

@@ -1,24 +1,12 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nu")
-public class class350 {
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1896478877
+@ObfuscatedName("ne")
+public interface class350 {
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "523602495"
 	)
-	public int field3752;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -624927999
-	)
-	public int field3751;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -309459477
-	)
-	public int field3750;
-
-	class350() {
-	}
+	void vmethod6542();
 }

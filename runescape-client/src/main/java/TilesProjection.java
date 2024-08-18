@@ -1,59 +1,42 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kx")
+@ObfuscatedName("hn")
 @Implements("TilesProjection")
 public class TilesProjection extends Projection {
-	@ObfuscatedName("as")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("worldMapEvent")
-	static WorldMapEvent worldMapEvent;
-	@ObfuscatedName("cl")
-	@ObfuscatedSignature(
-		descriptor = "Loi;"
-	)
-	static GameBuild field3003;
-	@ObfuscatedName("ee")
-	@ObfuscatedGetter(
-		longValue = 8680667411493769319L
-	)
-	static long field3005;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lqg;"
+		descriptor = "Lqy;"
 	)
 	@Export("transformationMatrix")
 	TransformationMatrix transformationMatrix;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@Export("projection")
 	float[] projection;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqg;)V"
+		descriptor = "(Lqy;)V"
 	)
 	TilesProjection(TransformationMatrix var1) {
 		this.projection = new float[3];
 		this.transformationMatrix = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lkt;IIIIJ)V"
+		descriptor = "(Lhs;IIIIJ)V"
 	)
 	@Export("draw")
 	void draw(Renderable var1, int var2, int var3, int var4, int var5, long var6) {
 		var1.draw(var2, this.transformationMatrix, var3, var4, var5, var6);
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lkq;Llt;IIII)V",
-		garbageValue = "1938115394"
+		descriptor = "(Lhf;Lhv;IIII)V",
+		garbageValue = "-347958206"
 	)
 	@Export("drawTileUnderlay")
 	void drawTileUnderlay(Scene var1, SceneTilePaint var2, int var3, int var4, int var5) {
@@ -88,10 +71,10 @@ public class TilesProjection extends Projection {
 		this.drawSceneTilePaint(var1, var2, var4, var5, var7, var11, var10, var6, var14, var15, var16, var17, var9, var8, var13, var12);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lkq;Llw;IIB)V",
-		garbageValue = "112"
+		descriptor = "(Lhf;Lhc;III)V",
+		garbageValue = "2088156522"
 	)
 	@Export("drawTileOverlay")
 	void drawTileOverlay(Scene var1, SceneTileModel var2, int var3, int var4) {
@@ -114,9 +97,48 @@ public class TilesProjection extends Projection {
 			var9 |= 1;
 			SceneTileModel.verticesX[var6] = Rasterizer3D.getClipMidX() + var7 * Rasterizer3D.get3dZoom() / var9;
 			SceneTileModel.verticesY[var6] = Rasterizer3D.getClipMidY() + var8 * Rasterizer3D.get3dZoom() / var9;
-			SceneTileModel.verticesZ[var6] = class386.method7177(var9);
+			SceneTileModel.verticesZ[var6] = NPC.method2815(var9);
 		}
 
 		this.drawSceneTileModel(var1, var2, var3, var4);
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-1141040"
+	)
+	static final boolean method4124(int var0) {
+		return var0 == 14 || var0 == 15 || var0 >= 44 && var0 <= 51;
+	}
+
+	@ObfuscatedName("iw")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1831454595"
+	)
+	static final void method4123() {
+		class524.method9344(class394.field4556, class219.field2387, class426.field4703);
+		JagNetThread.method7359(class276.field3004, TextureProvider.field2118);
+		if (class433.cameraX == class394.field4556 && RestClientThreadFactory.cameraY == class219.field2387 && WorldMapSection0.cameraZ == class426.field4703 && UserComparator6.cameraPitch == class276.field3004 && class264.cameraYaw == TextureProvider.field2118) {
+			Client.field765 = false;
+			Client.isCameraLocked = false;
+			Client.field759 = false;
+			Client.field760 = false;
+			class156.field1721 = 0;
+			class222.field2417 = 0;
+			Language.field4602 = 0;
+			NPCComposition.field2613 = 0;
+			Message.field461 = 0;
+			FriendSystem.field827 = 0;
+			LoginState.field500 = 0;
+			class166.field1793 = 0;
+			class329.field3545 = 0;
+			Renderable.field2086 = 0;
+			Client.field762 = null;
+			Client.field615 = null;
+			Client.field517 = null;
+		}
+
 	}
 }

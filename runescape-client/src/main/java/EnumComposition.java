@@ -1,55 +1,46 @@
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hw")
+@ObfuscatedName("jq")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	@Export("EnumDefinition_archive")
-	public static AbstractArchive EnumDefinition_archive;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lmo;"
+		descriptor = "Lms;"
 	)
 	@Export("EnumDefinition_cached")
 	public static EvictingDualNodeHashTable EnumDefinition_cached;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@Export("inputType")
 	public char inputType;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@Export("outputType")
 	public char outputType;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = -1142953375
+		intValue = -1651979163
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 1660847733
+		intValue = -630931315
 	)
 	@Export("outputCount")
 	public int outputCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ac")
 	@Export("keys")
 	public int[] keys;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@Export("intVals")
 	public int[] intVals;
-	@ObfuscatedName("ai")
+	@ObfuscatedName("ad")
 	@Export("strVals")
 	public String[] strVals;
 
@@ -62,10 +53,10 @@ public class EnumComposition extends DualNode {
 		this.outputCount = 0;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;I)V",
-		garbageValue = "-369750776"
+		descriptor = "(Lvg;B)V",
+		garbageValue = "-101"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -79,10 +70,10 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;II)V",
-		garbageValue = "722630389"
+		descriptor = "(Lvg;II)V",
+		garbageValue = "1503105002"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -119,86 +110,185 @@ public class EnumComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "2014550387"
+		garbageValue = "-1574102526"
 	)
 	@Export("size")
 	public int size() {
 		return this.outputCount;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-78"
+		descriptor = "(ILdp;ZI)I",
+		garbageValue = "-853024556"
 	)
-	public static void method3678() {
-		class188.field2023.clear();
+	static int method4895(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 
-	@ObfuscatedName("ba")
+	@ObfuscatedName("jv")
 	@ObfuscatedSignature(
-		descriptor = "(ILnx;IIIII[FI)Lnx;",
-		garbageValue = "1937006233"
+		descriptor = "(I)V",
+		garbageValue = "1244753161"
 	)
-	static Widget method3679(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
-		Widget var8 = new Widget();
-		var8.type = var0;
-		var8.parentId = var1.id;
-		var8.childIndex = var2;
-		var8.isIf3 = true;
-		var8.xAlignment = var3;
-		var8.yAlignment = var4;
-		var8.widthAlignment = var5;
-		var8.heightAlignment = var6;
-		var8.rawX = (int)((float)var1.width * var7[0]);
-		var8.rawY = (int)(var7[1] * (float)var1.height);
-		var8.rawWidth = (int)(var7[2] * (float)var1.width);
-		var8.rawHeight = (int)((float)var1.height * var7[3]);
-		return var8;
+	static void method4884() {
+		for (class266 var0 = (class266)Client.field712.last(); var0 != null; var0 = (class266)Client.field712.previous()) {
+			var0.remove();
+		}
+
 	}
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("kk")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1971455703"
+		descriptor = "(IIIIII)V",
+		garbageValue = "-1030277393"
 	)
-	@Export("getGcDuration")
-	protected static int getGcDuration() {
-		int var0 = 0;
-		if (class541.garbageCollector == null || !class541.garbageCollector.isValid()) {
-			try {
-				Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+	@Export("drawObject")
+	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
+		Scene var5 = ConcurrentMidiTask.topLevelWorldView.scene;
+		long var6 = var5.getBoundaryObjectTag(var0, var1, var2);
+		int var8;
+		int var9;
+		int var10;
+		int var11;
+		int var13;
+		int var14;
+		if (0L != var6) {
+			var8 = var5.getObjectFlags(var0, var1, var2, var6);
+			var9 = var8 >> 6 & 3;
+			var10 = var8 & 31;
+			var11 = var3;
+			if (class402.method7489(var6)) {
+				var11 = var4;
+			}
 
-				while (var1.hasNext()) {
-					GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
-					if (var2.isValid()) {
-						class541.garbageCollector = var2;
-						GameEngine.garbageCollectorLastCheckTimeMs = -1L;
-						GameEngine.garbageCollectorLastCollectionTime = -1L;
+			int[] var12 = class91.sceneMinimapSprite.pixels;
+			var13 = var1 * 4 + (103 - var2) * 2048 + 24624;
+			var14 = class513.Entity_unpackID(var6);
+			ObjectComposition var15 = class222.getObjectDefinition(var14);
+			if (var15.mapSceneId != -1) {
+				IndexedSprite var16 = BufferedSource.mapSceneSprites[var15.mapSceneId];
+				if (var16 != null) {
+					int var17 = (var15.sizeX * 4 - var16.subWidth) / 2;
+					int var18 = (var15.sizeY * 4 - var16.subHeight * -1220193712) / 2;
+					var16.drawAt(var1 * 4 + var17 + 48, (104 - var2 - var15.sizeY) * 4 + var18 + 48);
+				}
+			} else {
+				if (var10 == 0 || var10 == 2) {
+					if (var9 == 0) {
+						var12[var13] = var11;
+						var12[var13 + 512] = var11;
+						var12[var13 + 1024] = var11;
+						var12[var13 + 1536] = var11;
+					} else if (var9 == 1) {
+						var12[var13] = var11;
+						var12[var13 + 1] = var11;
+						var12[var13 + 2] = var11;
+						var12[var13 + 3] = var11;
+					} else if (var9 == 2) {
+						var12[var13 + 3] = var11;
+						var12[var13 + 512 + 3] = var11;
+						var12[var13 + 1024 + 3] = var11;
+						var12[var13 + 1536 + 3] = var11;
+					} else if (var9 == 3) {
+						var12[var13 + 1536] = var11;
+						var12[var13 + 1536 + 1] = var11;
+						var12[var13 + 1536 + 2] = var11;
+						var12[var13 + 1536 + 3] = var11;
 					}
 				}
-			} catch (Throwable var11) {
-			}
-		}
 
-		if (class541.garbageCollector != null) {
-			long var9 = WorldMapData_1.method4861();
-			long var3 = class541.garbageCollector.getCollectionTime();
-			if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
-				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
-				long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
-				if (0L != var7) {
-					var0 = (int)(var5 * 100L / var7);
+				if (var10 == 3) {
+					if (var9 == 0) {
+						var12[var13] = var11;
+					} else if (var9 == 1) {
+						var12[var13 + 3] = var11;
+					} else if (var9 == 2) {
+						var12[var13 + 1536 + 3] = var11;
+					} else if (var9 == 3) {
+						var12[var13 + 1536] = var11;
+					}
+				}
+
+				if (var10 == 2) {
+					if (var9 == 3) {
+						var12[var13] = var11;
+						var12[var13 + 512] = var11;
+						var12[var13 + 1024] = var11;
+						var12[var13 + 1536] = var11;
+					} else if (var9 == 0) {
+						var12[var13] = var11;
+						var12[var13 + 1] = var11;
+						var12[var13 + 2] = var11;
+						var12[var13 + 3] = var11;
+					} else if (var9 == 1) {
+						var12[var13 + 3] = var11;
+						var12[var13 + 512 + 3] = var11;
+						var12[var13 + 1024 + 3] = var11;
+						var12[var13 + 1536 + 3] = var11;
+					} else if (var9 == 2) {
+						var12[var13 + 1536] = var11;
+						var12[var13 + 1536 + 1] = var11;
+						var12[var13 + 1536 + 2] = var11;
+						var12[var13 + 1536 + 3] = var11;
+					}
 				}
 			}
-
-			GameEngine.garbageCollectorLastCollectionTime = var3;
-			GameEngine.garbageCollectorLastCheckTimeMs = var9;
 		}
 
-		return var0;
+		var6 = var5.getGameObjectTag(var0, var1, var2);
+		if (0L != var6) {
+			var8 = var5.getObjectFlags(var0, var1, var2, var6);
+			var9 = var8 >> 6 & 3;
+			var10 = var8 & 31;
+			var11 = class513.Entity_unpackID(var6);
+			ObjectComposition var25 = class222.getObjectDefinition(var11);
+			int var20;
+			if (var25.mapSceneId != -1) {
+				IndexedSprite var21 = BufferedSource.mapSceneSprites[var25.mapSceneId];
+				if (var21 != null) {
+					var14 = (var25.sizeX * 4 - var21.subWidth) / 2;
+					var20 = (var25.sizeY * 4 - var21.subHeight * -1220193712) / 2;
+					var21.drawAt(var14 + var1 * 4 + 48, var20 + (104 - var2 - var25.sizeY) * 4 + 48);
+				}
+			} else if (var10 == 9) {
+				var13 = 15658734;
+				if (class402.method7489(var6)) {
+					var13 = 15597568;
+				}
+
+				int[] var19 = class91.sceneMinimapSprite.pixels;
+				var20 = var1 * 4 + (103 - var2) * 2048 + 24624;
+				if (var9 != 0 && var9 != 2) {
+					var19[var20] = var13;
+					var19[var20 + 1 + 512] = var13;
+					var19[var20 + 1024 + 2] = var13;
+					var19[var20 + 1536 + 3] = var13;
+				} else {
+					var19[var20 + 1536] = var13;
+					var19[var20 + 1 + 1024] = var13;
+					var19[var20 + 512 + 2] = var13;
+					var19[var20 + 3] = var13;
+				}
+			}
+		}
+
+		var6 = var5.getFloorDecorationTag(var0, var1, var2);
+		if (0L != var6) {
+			var8 = class513.Entity_unpackID(var6);
+			ObjectComposition var22 = class222.getObjectDefinition(var8);
+			if (var22.mapSceneId != -1) {
+				IndexedSprite var23 = BufferedSource.mapSceneSprites[var22.mapSceneId];
+				if (var23 != null) {
+					var11 = (var22.sizeX * 4 - var23.subWidth) / 2;
+					int var24 = (var22.sizeY * 4 - var23.subHeight * -1220193712) / 2;
+					var23.drawAt(var1 * 4 + var11 + 48, var24 + (104 - var2 - var22.sizeY) * 4 + 48);
+				}
+			}
+		}
+
 	}
 }

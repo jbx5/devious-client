@@ -1,5 +1,5 @@
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("le")
-public interface class307 {
+@ObfuscatedName("lp")
+public interface class307 extends class309 {
 }

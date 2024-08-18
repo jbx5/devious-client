@@ -1,76 +1,64 @@
-import java.util.Date;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fo")
-public class class152 extends class147 {
-	@ObfuscatedName("dv")
-	static boolean field1724;
-	@ObfuscatedName("aq")
+@ObfuscatedName("fh")
+public class class152 extends class148 {
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 243421889
+		intValue = 1930113479
 	)
-	int field1721;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -1954655977
-	)
-	int field1718;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 919033843
-	)
-	int field1719;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = 814487451
-	)
-	int field1717;
+	int field1699;
+	@ObfuscatedName("ay")
+	byte field1697;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfn;"
+		descriptor = "Lfy;"
 	)
-	final class150 this$0;
+	final class151 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfn;)V"
+		descriptor = "(Lfy;)V"
 	)
-	class152(class150 var1) {
+	class152(class151 var1) {
 		this.this$0 = var1;
+		this.field1699 = -1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lvp;B)V",
-		garbageValue = "118"
+		descriptor = "(Lvg;I)V",
+		garbageValue = "-1070155477"
 	)
-	void vmethod3528(Buffer var1) {
-		this.field1721 = var1.readInt();
-		this.field1717 = var1.readInt();
-		this.field1718 = var1.readUnsignedByte();
-		this.field1719 = var1.readUnsignedByte();
+	void vmethod3619(Buffer var1) {
+		this.field1699 = var1.readUnsignedShort();
+		this.field1697 = var1.readByte();
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lgk;B)V",
-		garbageValue = "3"
+		descriptor = "(Lgg;I)V",
+		garbageValue = "1070728869"
 	)
-	void vmethod3530(ClanSettings var1) {
-		var1.method3365(this.field1721, this.field1717, this.field1718, this.field1719);
+	void vmethod3621(ClanSettings var1) {
+		var1.method3486(this.field1699, this.field1697);
 	}
 
-	@ObfuscatedName("aq")
-	public static String method3299(long var0) {
-		Calendar.Calendar_calendar.setTime(new Date(var0));
-		int var2 = Calendar.Calendar_calendar.get(7);
-		int var3 = Calendar.Calendar_calendar.get(5);
-		int var4 = Calendar.Calendar_calendar.get(2);
-		int var5 = Calendar.Calendar_calendar.get(1);
-		int var6 = Calendar.Calendar_calendar.get(11);
-		int var7 = Calendar.Calendar_calendar.get(12);
-		int var8 = Calendar.Calendar_calendar.get(13);
-		return Calendar.DAYS_OF_THE_WEEK[var2 - 1] + ", " + var3 / 10 + var3 % 10 + "-" + Calendar.MONTH_NAMES_ENGLISH_GERMAN[0][var4] + "-" + var5 + " " + var6 / 10 + var6 % 10 + ":" + var7 / 10 + var7 % 10 + ":" + var8 / 10 + var8 % 10 + " GMT";
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "-28"
+	)
+	static String method3376(int var0) {
+		return "<img=" + var0 + ">";
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)Lvc;",
+		garbageValue = "1754526402"
+	)
+	static SpritePixels method3383(int var0, int var1, int var2) {
+		return (SpritePixels)WorldMapRegion.WorldMapRegion_cachedSprites.get(MenuAction.method2179(var0, var1, var2));
 	}
 }

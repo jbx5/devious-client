@@ -1,27 +1,26 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rt")
+@ObfuscatedName("rv")
 public class class453 {
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 331279603
-	)
-	public static int field4867;
-
-	@ObfuscatedName("kx")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lde;IIIIB)Ldy;",
-		garbageValue = "-15"
+		descriptor = "(ILuq;B)Z",
+		garbageValue = "0"
 	)
-	static final PendingSpawn method8355(WorldView var0, int var1, int var2, int var3, int var4) {
-		for (PendingSpawn var5 = (PendingSpawn)var0.pendingSpawns.last(); var5 != null; var5 = (PendingSpawn)var0.pendingSpawns.previous()) {
-			if (var5.plane == var1 && var2 == var5.x && var3 == var5.y && var4 == var5.type) {
-				return var5;
-			}
+	public static boolean method8428(int var0, class543 var1) {
+		return (var0 & var1.rsOrdinal()) != 0;
+	}
+
+	@ObfuscatedName("ls")
+	@ObfuscatedSignature(
+		descriptor = "(Lcv;III)V",
+		garbageValue = "-890822604"
+	)
+	static final void method8429(MenuAction var0, int var1, int var2) {
+		if (var0 != null) {
+			GrandExchangeEvents.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.worldViewId, var0.action, var0.target, var1, var2);
 		}
 
-		return null;
 	}
 }

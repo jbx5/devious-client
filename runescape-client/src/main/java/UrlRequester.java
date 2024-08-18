@@ -11,21 +11,26 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("ex")
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ox")
+	@ObfuscatedGetter(
+		intValue = 1656515977
+	)
+	static int field1463;
+	@ObfuscatedName("ab")
 	@Export("requestThread")
 	final Thread requestThread;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@Export("isClosed")
 	volatile boolean isClosed;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@Export("requests")
 	Queue requests;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 1686353651
+		intValue = -1560107605
 	)
 	@Export("clientRevision")
 	int clientRevision;
@@ -38,21 +43,21 @@ public abstract class UrlRequester implements Runnable {
 		this.clientRevision = var1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Lez;I)V",
-		garbageValue = "-1132577463"
+		descriptor = "(Lee;I)V",
+		garbageValue = "-1836234627"
 	)
 	@Export("openConnection")
 	abstract void openConnection(UrlRequest var1) throws IOException;
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URLConnection;B)I",
-		garbageValue = "8"
+		garbageValue = "-30"
 	)
-	int method2948(URLConnection var1) {
-		int var2 = UrlRequest.field1485;
+	int method2986(URLConnection var1) {
+		int var2 = UrlRequest.field1472;
 		if (var1 != null) {
 			try {
 				if (var1 instanceof HttpURLConnection) {
@@ -65,10 +70,10 @@ public abstract class UrlRequester implements Runnable {
 		return var2;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URLConnection;B)V",
-		garbageValue = "2"
+		garbageValue = "-15"
 	)
 	@Export("setDefaultRequestProperties")
 	void setDefaultRequestProperties(URLConnection var1) {
@@ -79,12 +84,12 @@ public abstract class UrlRequester implements Runnable {
 		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.clientRevision);
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;Lez;B)V",
-		garbageValue = "-7"
+		descriptor = "(Ljava/net/URLConnection;Lee;I)V",
+		garbageValue = "1214448253"
 	)
-	void method2943(URLConnection var1, UrlRequest var2) {
+	void method2982(URLConnection var1, UrlRequest var2) {
 		DataInputStream var3 = null;
 
 		try {
@@ -96,7 +101,7 @@ public abstract class UrlRequester implements Runnable {
 				var3.readFully(var4);
 			} else {
 				var4 = new byte[0];
-				byte[] var6 = WorldMapEvent.ByteArrayPool_getArrayBool(5000, false);
+				byte[] var6 = GrandExchangeOfferNameComparator.ByteArrayPool_getArrayBool(5000, false);
 				byte[] var7 = var6;
 
 				for (int var8 = var3.read(var6); var8 > -1; var8 = var3.read(var7)) {
@@ -106,14 +111,14 @@ public abstract class UrlRequester implements Runnable {
 					var4 = var9;
 				}
 
-				Player.ByteArrayPool_release(var7);
+				Canvas.ByteArrayPool_release(var7);
 			}
 
 			var2.response0 = var4;
 		} catch (IOException var15) {
 			var2.response0 = null;
 		} finally {
-			var2.field1482 = this.method2948(var1);
+			var2.field1470 = this.method2986(var1);
 		}
 
 		if (var3 != null) {
@@ -125,10 +130,10 @@ public abstract class UrlRequester implements Runnable {
 
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;I)Lez;",
-		garbageValue = "728263238"
+		descriptor = "(Ljava/net/URL;I)Lee;",
+		garbageValue = "269465597"
 	)
 	@Export("request")
 	public UrlRequest request(URL var1) {
@@ -140,10 +145,10 @@ public abstract class UrlRequester implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-575124742"
+		garbageValue = "-377170796"
 	)
 	@Export("close")
 	public void close() {
@@ -177,19 +182,130 @@ public abstract class UrlRequester implements Runnable {
 
 				this.openConnection(var1);
 			} catch (Exception var7) {
-				FriendsChat.RunException_sendStackTrace((String)null, var7);
+				Script.RunException_sendStackTrace((String)null, var7);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("mm")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)V",
-		garbageValue = "1129295286"
+		descriptor = "(CB)C",
+		garbageValue = "-114"
 	)
-	@Export("insertMenuItemNoShift")
-	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		WorldMapArea.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false, -1);
+	public static char method3004(char var0) {
+		switch(var0) {
+		case ' ':
+		case '-':
+		case '_':
+		case ' ':
+			return '_';
+		case '#':
+		case '[':
+		case ']':
+			return var0;
+		case 'À':
+		case 'Á':
+		case 'Â':
+		case 'Ã':
+		case 'Ä':
+		case 'à':
+		case 'á':
+		case 'â':
+		case 'ã':
+		case 'ä':
+			return 'a';
+		case 'Ç':
+		case 'ç':
+			return 'c';
+		case 'È':
+		case 'É':
+		case 'Ê':
+		case 'Ë':
+		case 'è':
+		case 'é':
+		case 'ê':
+		case 'ë':
+			return 'e';
+		case 'Í':
+		case 'Î':
+		case 'Ï':
+		case 'í':
+		case 'î':
+		case 'ï':
+			return 'i';
+		case 'Ñ':
+		case 'ñ':
+			return 'n';
+		case 'Ò':
+		case 'Ó':
+		case 'Ô':
+		case 'Õ':
+		case 'Ö':
+		case 'ò':
+		case 'ó':
+		case 'ô':
+		case 'õ':
+		case 'ö':
+			return 'o';
+		case 'Ù':
+		case 'Ú':
+		case 'Û':
+		case 'Ü':
+		case 'ù':
+		case 'ú':
+		case 'û':
+		case 'ü':
+			return 'u';
+		case 'ß':
+			return 'b';
+		case 'ÿ':
+		case 'Ÿ':
+			return 'y';
+		default:
+			return Character.toLowerCase(var0);
+		}
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1377672590"
+	)
+	public static void method2983() {
+		HealthBarDefinition.HealthBarDefinition_cached.clear();
+		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear();
+	}
+
+	@ObfuscatedName("ny")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-962340945"
+	)
+	static void method3003() {
+		for (InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
+			int var1 = var0.group;
+			if (FloorUnderlayDefinition.widgetDefinition.loadInterface(var1)) {
+				boolean var2 = true;
+				Widget[] var3 = FloorUnderlayDefinition.widgetDefinition.Widget_interfaceComponents[var1];
+
+				int var4;
+				for (var4 = 0; var4 < var3.length; ++var4) {
+					if (var3[var4] != null) {
+						var2 = var3[var4].isIf3;
+						break;
+					}
+				}
+
+				if (!var2) {
+					var4 = (int)var0.key;
+					Widget var5 = FloorUnderlayDefinition.widgetDefinition.method6544(var4);
+					if (var5 != null) {
+						class416.invalidateWidget(var5);
+					}
+				}
+			}
+		}
+
 	}
 }

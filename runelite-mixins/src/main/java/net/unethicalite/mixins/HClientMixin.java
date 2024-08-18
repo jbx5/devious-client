@@ -24,7 +24,6 @@ import net.runelite.rs.api.RSPacketBuffer;
 import net.runelite.rs.api.RSPacketWriter;
 import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSRenderable;
-import net.runelite.rs.api.RSRuneLiteMenuEntry;
 import net.runelite.rs.api.RSServerPacket;
 import net.runelite.rs.api.RSTile;
 import net.unethicalite.api.events.ExperienceGained;
@@ -51,8 +50,6 @@ public abstract class HClientMixin implements RSClient
 	public static HashMap<Integer, RSItemComposition> itemDefCache = new HashMap<>();
 	@Shadow("client")
 	private static RSClient client;
-	@Shadow("rl$menuEntries")
-	private static RSRuneLiteMenuEntry[] rl$menuEntries;
 	@Shadow("printMenuActions")
 	private static boolean printMenuActions;
 	@Inject
@@ -313,7 +310,7 @@ public abstract class HClientMixin implements RSClient
 	public void login(boolean otp)
 	{
 		client.setLoginResponseString("", "Connecting to server...", "");
-		client.setAuthenticationScheme(otp);
+		//client.setAuthenticationScheme(otp);
 		client.setRSGameState(GameState.LOGGING_IN.getState());
 	}
 }

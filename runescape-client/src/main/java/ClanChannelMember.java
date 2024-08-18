@@ -4,21 +4,26 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
+@ObfuscatedName("fl")
 @Implements("ClanChannelMember")
 public class ClanChannelMember {
-	@ObfuscatedName("aq")
+	@ObfuscatedName("pr")
+	@ObfuscatedGetter(
+		intValue = 1389733547
+	)
+	static int field1685;
+	@ObfuscatedName("ab")
 	@Export("rank")
 	public byte rank;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -1991639177
+		intValue = 1845021349
 	)
 	@Export("world")
 	public int world;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lvo;"
+		descriptor = "Lvf;"
 	)
 	@Export("username")
 	public Username username;
@@ -26,112 +31,170 @@ public class ClanChannelMember {
 	ClanChannelMember() {
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("hd")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "34"
+		descriptor = "(II)V",
+		garbageValue = "-2109061131"
 	)
-	public static void method3280() {
-		synchronized(MouseHandler.MouseHandler_instance) {
-			MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
-			MouseHandler.MouseHandler_x = MouseHandler.MouseHandler_xVolatile;
-			MouseHandler.MouseHandler_y = MouseHandler.MouseHandler_yVolatile;
-			MouseHandler.MouseHandler_millis = MouseHandler.MouseHandler_lastMovedVolatile;
-			MouseHandler.MouseHandler_lastButton = MouseHandler.MouseHandler_lastButtonVolatile;
-			MouseHandler.MouseHandler_lastPressedX = MouseHandler.MouseHandler_lastPressedXVolatile;
-			MouseHandler.MouseHandler_lastPressedY = MouseHandler.MouseHandler_lastPressedYVolatile;
-			MouseHandler.MouseHandler_lastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillisVolatile;
-			MouseHandler.MouseHandler_lastButtonVolatile = 0;
-		}
-	}
-
-	@ObfuscatedName("hm")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "113"
-	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 30) {
-				Client.field740.method4349();
+	@Export("getLoginError")
+	static void getLoginError(int var0) {
+		int var1 = class255.method5032();
+		if (var0 == -3) {
+			class130.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
+		} else if (var0 == -2) {
+			class130.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
+		} else if (var0 == -1) {
+			class130.setLoginResponseString("No response from server.", "Please try using a different world.", "");
+		} else if (var0 == 3) {
+			class532.updateLoginIndex(3);
+			Login.field941 = 1;
+		} else if (var0 == 4) {
+			MouseRecorder.method2427(0);
+		} else if (var0 == 5) {
+			Login.field941 = 2;
+			class130.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
+		} else if (var0 == 68) {
+			if (!Client.field515) {
+				Client.field515 = true;
+				class273.method5468();
+				return;
 			}
 
-			if (Client.gameState == 0) {
-				class415.client.method595();
+			class130.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
+		} else if (!Client.onMobile && var0 == 6) {
+			class130.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
+		} else if (var0 == 7) {
+			class130.setLoginResponseString("This world is full.", "Please use a different world.", "");
+		} else if (var0 == 8) {
+			class130.setLoginResponseString("Unable to connect.", "Login server offline.", "");
+		} else if (var0 == 9) {
+			class130.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
+		} else if (var0 == 10) {
+			class130.setLoginResponseString("Unable to connect.", "Bad session id.", "");
+		} else if (var0 == 11) {
+			class130.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
+		} else if (var0 == 12) {
+			class130.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
+		} else if (var0 == 13) {
+			class130.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
+		} else if (var0 == 14) {
+			class130.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
+		} else if (var0 == 16) {
+			class130.setLoginResponseString("Too many login attempts.", "You can use the Jagex Launcher to continue playing.", "Press the button below to download it now.");
+			class532.updateLoginIndex(33);
+		} else if (var0 == 17) {
+			class130.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
+		} else if (var0 == 18) {
+			MouseRecorder.method2427(1);
+		} else if (var0 == 19) {
+			class130.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
+		} else if (var0 == 20) {
+			class130.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
+		} else if (var0 == 22) {
+			class130.setLoginResponseString("Malformed login packet.", "Please try again.", "");
+		} else if (var0 == 23) {
+			class130.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
+		} else if (var0 == 24) {
+			class130.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
+		} else if (var0 == 25) {
+			class130.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
+		} else if (var0 == 26) {
+			class130.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
+		} else if (var0 == 27) {
+			class130.setLoginResponseString("", "Service unavailable.", "");
+		} else if (var0 == 31) {
+			class130.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
+		} else if (var0 == 32) {
+			MouseRecorder.method2427(2);
+		} else if (var0 == 37) {
+			class130.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
+		} else if (var0 == 38) {
+			class130.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
+		} else if (var0 == 74) {
+			class130.setLoginResponseString("This world is running a", "closed beta. Please", "use a different world.");
+		} else if (var0 == 55) {
+			class532.updateLoginIndex(8);
+		} else {
+			if (var0 == 56) {
+				class130.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
+				UserComparator3.updateGameState(11);
+				return;
 			}
 
-			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class28.updateLoginState(LoginState.SHUTDOWN_PREVIOUS_CONNECTION);
-				Client.field539 = 0;
-				Client.field560 = 0;
-				Client.timer.method8334(var0);
-				if (var0 != 20) {
-					class213.setAuthenticationScheme(false);
-				}
+			if (var0 == 57) {
+				class130.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
+				UserComparator3.updateGameState(11);
+				return;
 			}
 
-			if (var0 != 20 && var0 != 40 && class386.field4521 != null) {
-				class386.field4521.close();
-				class386.field4521 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field575 = 0;
-				Client.field778 = 0;
-				Client.field755 = 1;
-				Client.field573 = 0;
-				Client.field534 = 1;
-			}
-
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					int var3 = Client.gameState == 11 ? 4 : 0;
-					LoginScreenAnimation.method2563(WorldMapSection1.archive10, class7.archive8, false, var3);
-				} else if (var0 == 11) {
-					LoginScreenAnimation.method2563(WorldMapSection1.archive10, class7.archive8, false, 4);
-				} else if (var0 == 50) {
-					VerticalAlignment.setLoginResponseString("", "Updating date of birth...", "");
-					LoginScreenAnimation.method2563(WorldMapSection1.archive10, class7.archive8, false, 7);
-				} else if (var0 != 0 && Login.clearLoginScreen) {
-					class486.titleboxSprite = null;
-					Fonts.titlebuttonSprite = null;
-					class261.runesSprite = null;
-					Login.leftTitleSprite = null;
-					class189.rightTitleSprite = null;
-					ArchiveDiskActionHandler.logoSprite = null;
-					class428.title_muteSprite = null;
-					class141.options_buttons_0Sprite = null;
-					Login.options_buttons_2Sprite = null;
-					class562.worldSelectBackSprites = null;
-					class105.worldSelectFlagSprites = null;
-					class76.worldSelectArrows = null;
-					GrandExchangeOfferUnitPriceComparator.worldSelectStars = null;
-					Messages.field1449 = null;
-					class91.loginScreenRunesAnimation.method2566();
-					class137.method3187(0, 100);
-					class147.method3269().method7271(true);
-					Login.clearLoginScreen = false;
-				}
+			if (var0 == 61) {
+				class130.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
+				class532.updateLoginIndex(7);
 			} else {
-				boolean var1 = class105.clientPreferences.getEULA() >= Client.field637;
-				int var2 = var1 ? 0 : 12;
-				LoginScreenAnimation.method2563(WorldMapSection1.archive10, class7.archive8, true, var2);
-			}
+				if (var0 == 62) {
+					UserComparator3.updateGameState(10);
+					class532.updateLoginIndex(9);
+					class130.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
+					return;
+				}
 
-			Client.gameState = var0;
+				if (var0 == 63) {
+					UserComparator3.updateGameState(10);
+					class532.updateLoginIndex(9);
+					class130.setLoginResponseString("You were signed out.", "Please sign in again.", "");
+					return;
+				}
+
+				if (var0 == 65 || var0 == 67) {
+					UserComparator3.updateGameState(10);
+					class532.updateLoginIndex(9);
+					class130.setLoginResponseString("Failed to login.", "Please try again.", "");
+					return;
+				}
+
+				if (var0 == 71) {
+					UserComparator3.updateGameState(10);
+					class532.updateLoginIndex(7);
+					class130.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
+				} else if (var0 == 73) {
+					UserComparator3.updateGameState(10);
+					class532.updateLoginIndex(6);
+					class130.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
+				} else if (var0 == 72) {
+					UserComparator3.updateGameState(10);
+					class532.updateLoginIndex(32);
+				} else {
+					class130.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+				}
+			}
 		}
+
+		UserComparator3.updateGameState(10);
+		boolean var2 = var1 != class255.method5032();
+		if (!var2 && Client.field545.method9903()) {
+			class532.updateLoginIndex(9);
+		}
+
 	}
 
-	@ObfuscatedName("jr")
+	@ObfuscatedName("he")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-37"
+		descriptor = "(I)V",
+		garbageValue = "-1982015454"
 	)
-	static void method3281() {
-		for (class230 var0 = (class230)Client.field717.last(); var0 != null; var0 = (class230)Client.field717.previous()) {
-			var0.remove();
+	static final void method3363() {
+		if (class132.pcmPlayer1 != null) {
+			class132.pcmPlayer1.run();
 		}
 
+	}
+
+	@ObfuscatedName("lu")
+	@ObfuscatedSignature(
+		descriptor = "(Ldy;IIB)V",
+		garbageValue = "50"
+	)
+	static final void method3364(WorldView var0, int var1, int var2) {
+		WorldMapSectionType.updateItemPile2(var0, var0.plane, var1, var2);
 	}
 }
