@@ -106,7 +106,7 @@ public class GroundItemPackets
 		packetBufferNode.getPacketBuffer().writeShortAdd(groundItemId);
 		packetBufferNode.getPacketBuffer().writeShortLE(worldPointX);
 		packetBufferNode.getPacketBuffer().writeIntLE(sourceWidgetId);
-		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : );
+		packetBufferNode.getPacketBuffer().writeByte(ctrlDown ? 1 : 0);
 		return packetBufferNode;
 	}
 
