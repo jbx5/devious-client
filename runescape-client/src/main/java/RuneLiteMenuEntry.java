@@ -38,28 +38,6 @@ public class RuneLiteMenuEntry implements MenuEntry {
 		this.idx = idx;
 	}
 
-	private MenuEntry parent;
-
-	@Override
-	public MenuEntry setParent(MenuEntry parent)
-	{
-		if (parent == this)
-		{
-			throw new IllegalArgumentException("cannot set parent to self");
-		}
-		else
-		{
-			this.parent = (MenuEntry) parent;
-			return this;
-		}
-	}
-
-	@Override
-	public MenuEntry getParent()
-	{
-		return parent;
-	}
-
 	@Override
 	public String getOption() {
 		return this.menu.menuActions[this.idx];
@@ -216,6 +194,13 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	}
 
 	@Override
+	public MenuEntry onClick(Consumer<MenuEntry> callback)
+	{
+		this.consumer = callback;
+		return this;
+	}
+
+	@Override
 	public Consumer<MenuEntry> onClick()
 	{
 		return this.consumer;
@@ -247,12 +232,6 @@ public class RuneLiteMenuEntry implements MenuEntry {
 	public MenuEntry setWorldViewId(int worldViewId)
 	{
 		this.menu.menuWorldViewIds[this.idx] = worldViewId;
-		return this;
-	}
-
-	@Override
-	public MenuEntry onClick(Consumer consumer) {
-		this.consumer = consumer;
 		return this;
 	}
 

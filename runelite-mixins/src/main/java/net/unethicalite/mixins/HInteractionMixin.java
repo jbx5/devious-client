@@ -125,7 +125,7 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 						&& target.equals(client.getMenu().getMenuTargets()[i])
 				)
 				{
-					menuEntry = client.getMenu().getRl$menuEntries()[i];
+					menuEntry = (RSRuneLiteMenuEntry) client.getMenu().getMenuEntries()[i];
 					break;
 				}
 			}
@@ -166,11 +166,11 @@ public abstract class HInteractionMixin extends RSClientMixin implements RSClien
 			client.getMenu().getMenuItemIds()[i] = itemId;
 			client.getMenu().getMenuWorldViewIds()[i] = worldViewId;
 			client.getMenu().getMenuForceLeftClick()[i] = false;
-			menuEntry = client.getMenu().getRl$menuEntries()[i];
+			menuEntry = (RSRuneLiteMenuEntry) client.getMenu().getMenuEntries()[i];
 
 			if (menuEntry == null)
 			{
-				menuEntry = client.getMenu().getRl$menuEntries()[i] = client.getMenu().newRSRuneLiteMenuEntry(client.getMenu(), i);
+				menuEntry = (RSRuneLiteMenuEntry) (client.getMenu().getMenuEntries()[i] = client.getMenu().newRSRuneLiteMenuEntry(client.getMenu(), i));
 			}
 		}
 

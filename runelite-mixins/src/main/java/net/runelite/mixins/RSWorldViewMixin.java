@@ -103,7 +103,7 @@ public abstract class RSWorldViewMixin implements RSWorldView
 	}
 
 	@Inject
-	public RSPlayer[] oldPlayers = new RSPlayer[2048];
+	public RSPlayer[] oldPlayers;
 
 	/*@MethodHook("<init>")
 	@Inject

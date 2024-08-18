@@ -6157,7 +6157,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 	)
 	@Export("menu")
 	final void menu() {
-		class266.method5348(menu);
+		class266.sortMenuEntries(menu);
 		if (clickedWidget == null) {
 			int var1 = MouseHandler.MouseHandler_lastButton;
 			if (isMenuOpen) {

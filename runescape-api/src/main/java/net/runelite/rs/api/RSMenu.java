@@ -73,10 +73,6 @@ public interface RSMenu extends Menu
 	@Import("insertMenuItem")
 	int rsInsertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick, int worldViewId);
 
-	RSRuneLiteMenuEntry[] getRl$menuEntries();
-
-	void setRl$menuEntries(RSRuneLiteMenuEntry[] entries);
-
 	@Import("invalidateWidgetsUnder")
 	void invalidateWidgetsUnder();
 
