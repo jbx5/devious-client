@@ -8,6 +8,9 @@ import net.runelite.rs.api.RSPlayerComposition;
 @Mixin(RSPlayerComposition.class)
 public abstract class RSPlayerCompositionMixin implements RSPlayerComposition
 {
+	private static final int ITEM_OFFSET = 2048;
+	private static final int KIT_OFFSET = 256;
+
 	@Inject
 	@Override
 	public boolean isFemale()
@@ -20,11 +23,11 @@ public abstract class RSPlayerCompositionMixin implements RSPlayerComposition
 	public int getEquipmentId(KitType type)
 	{
 		int id = getEquipmentIds()[type.getIndex()];
-		if (id < 512)
+		if (id < ITEM_OFFSET)
 		{
 			return -1; // not an item
 		}
-		return id - 512;
+		return id - ITEM_OFFSET;
 	}
 
 	@Inject
@@ -32,10 +35,10 @@ public abstract class RSPlayerCompositionMixin implements RSPlayerComposition
 	public int getKitId(KitType type)
 	{
 		int id = getEquipmentIds()[type.getIndex()];
-		if (id < 256 || id >= 512)
+		if (id < KIT_OFFSET || id >= ITEM_OFFSET)
 		{
 			return -1; // not a kit
 		}
-		return id - 256;
+		return id - KIT_OFFSET;
 	}
 }
