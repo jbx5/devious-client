@@ -60,20 +60,6 @@ public abstract class MenuMixin implements RSMenu
 	}
 
 	@Inject
-	@Override
-	public RSRuneLiteMenuEntry[] getRl$menuEntries()
-	{
-		return rl$menuEntries;
-	}
-
-	@Inject
-	@Override
-	public void setRl$menuEntries(RSRuneLiteMenuEntry[] entries)
-	{
-		this.rl$menuEntries = entries;
-	}
-
-	@Inject
 	private int tmpMenuOptionsCount;
 
 	@Inject
@@ -89,7 +75,6 @@ public abstract class MenuMixin implements RSMenu
 		menuEntry.setType(MenuAction.of(opcode));
 		menuEntry.setParam0(param1);
 		menuEntry.setParam1(param2);
-		menuEntry.setParent(null);
 		menuEntry.setWorldViewId(-1);
 		menuEntry.setConsumer(null);
 		menuEntry.setForceLeftClick(forceLeftClick);
@@ -138,6 +123,8 @@ public abstract class MenuMixin implements RSMenu
 					this.getMenuWorldViewIds()[i] = this.getMenuWorldViewIds()[i - 1];
 					this.getMenuForceLeftClick()[i] = this.getMenuForceLeftClick()[i - 1];
 
+					this.getSubMenus()[i] = this.getSubMenus()[i - 1];
+
 					rl$menuEntries[i] = rl$menuEntries[i - 1];
 				}
 
@@ -175,7 +162,6 @@ public abstract class MenuMixin implements RSMenu
 			menuEntry.setParam1(0);
 			menuEntry.setItemId(-1);
 			menuEntry.setWorldViewId(-1);
-			menuEntry.setParent(null);
 			menuEntry.setConsumer(null);
 
 			return menuEntry;
@@ -299,6 +285,10 @@ public abstract class MenuMixin implements RSMenu
 		this.getMenuIdentifiers()[left] = this.getMenuIdentifiers()[right];
 		this.getMenuIdentifiers()[right] = menuIdentifier;
 
+		RSMenu submenu = this.getSubMenus()[left];
+		this.getSubMenus()[left] = this.getSubMenus()[right];
+		this.getSubMenus()[right] = submenu;
+
 		int menuOpcode = this.getMenuOpcodes()[left];
 		this.getMenuOpcodes()[left] = this.getMenuOpcodes()[right];
 		this.getMenuOpcodes()[right] = menuOpcode;
@@ -386,7 +376,6 @@ public abstract class MenuMixin implements RSMenu
 		{
 			for (int i = optionCount; i < tmpOptionsCount; ++i)
 			{
-				this.rl$menuEntries[i].setParent(null);
 				this.rl$menuEntries[i].setConsumer(null);
 			}
 		}
@@ -409,7 +398,6 @@ public abstract class MenuMixin implements RSMenu
 			}
 			else
 			{
-				entry.setParent(null);
 				entry.setConsumer(null);
 			}
 

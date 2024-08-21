@@ -1,3 +1,4 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -40,7 +41,8 @@ public class class266 extends Node {
 		descriptor = "(Lvw;B)V",
 		garbageValue = "-89"
 	)
-	static final void method5348(Menu var0) {
+	@Export("sortMenuEntries")
+	static final void sortMenuEntries(Menu var0) {
 		boolean var1 = false;
 
 		while (!var1) {
