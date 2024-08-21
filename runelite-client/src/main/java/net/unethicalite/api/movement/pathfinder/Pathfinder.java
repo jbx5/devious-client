@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Item;
 import net.runelite.api.ItemID;
+import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
 import net.unethicalite.api.items.Equipment;
@@ -147,11 +148,39 @@ public class Pathfinder implements Callable<List<WorldPoint>>
 		{
 			addNeighbor(node, new WorldPoint(x + 1, y + 1, plane));
 		}
-
-		for (Transport transport : transports.getOrDefault(node.position, new ArrayList<>()))
+		WorldPoint trueSource = node.position;
+		boolean inInstancedRegion = Static.getClient().isInInstancedRegion();
+		if (inInstancedRegion)
 		{
-			addNeighbor(node, transport.getDestination());
+			trueSource = getTrueWorldPoint(trueSource);
 		}
+		for (Transport transport : transports.getOrDefault(trueSource, new ArrayList<>()))
+		{
+			WorldPoint destination =
+				WorldPoint.toLocalInstance(Static.getClient(), transport.getDestination()).stream().findFirst().orElse(transport.getDestination());
+			addNeighbor(node, destination);
+		}
+	}
+
+	private WorldPoint getTrueWorldPoint(WorldPoint point)
+	{
+		try
+		{
+			LocalPoint localPoint = LocalPoint.fromWorld(Static.getClient(), point);
+			if (localPoint == null)
+			{
+				return point;
+			}
+			return WorldPoint.fromLocalInstance(
+				Static.getClient(),
+				localPoint
+			);
+		}
+		catch (Exception e)
+		{
+			log.warn("Failed to get true world point for {}", point, e);
+		}
+		return point;
 	}
 
 	private void addNeighbor(Node node, WorldPoint neighbor)

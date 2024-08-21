@@ -608,6 +608,10 @@ public class TransportLoader
             {
                 npc.interact(actions);
             }
+            else
+            {
+                Movement.walk(source);
+            }
         });
     }
 
@@ -624,6 +628,10 @@ public class TransportLoader
             if (npc != null)
             {
                 npc.interact(actions);
+            }
+            else
+            {
+                Movement.walk(source);
             }
         });
     }
@@ -656,6 +664,10 @@ public class TransportLoader
             if (npc != null)
             {
                 npc.interact(0);
+            }
+            else
+            {
+                Movement.walk(source);
             }
         });
     }
@@ -692,7 +704,9 @@ public class TransportLoader
     {
         return new Transport(source, destination, Integer.MAX_VALUE, 0, () ->
         {
-            TileObject first = TileObjects.getFirstAt(source, objId);
+            WorldPoint localSource =
+                WorldPoint.toLocalInstance(Static.getClient(), source).stream().findFirst().orElse(source);
+            TileObject first = TileObjects.getFirstAt(localSource, objId);
             if (first != null)
             {
                 log.debug("Transport found {}", first.getWorldLocation());
@@ -700,9 +714,9 @@ public class TransportLoader
                 return;
             }
 
-            log.debug("Transport not found {}, {}", source, objId);
-            TileObjects.getSurrounding(source, 5, x -> x.getId() == objId).stream()
-                    .min(Comparator.comparingInt(o -> o.distanceTo(source)))
+            log.debug("Transport not found {}, {}", localSource, objId);
+            TileObjects.getSurrounding(localSource, 5, x -> x.getId() == objId).stream()
+                    .min(Comparator.comparingInt(o -> o.distanceTo(localSource)))
                     .ifPresent(obj -> obj.interact(actions));
         }, requirements);
     }

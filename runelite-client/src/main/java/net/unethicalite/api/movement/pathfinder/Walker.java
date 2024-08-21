@@ -279,11 +279,11 @@ public class Walker
                 break;
             }
 
-            WorldPoint a = path.get(i);
-            WorldPoint b = path.get(i + 1);
+            WorldPoint a = getTrueWorldPoint(path.get(i));
+            WorldPoint b = getTrueWorldPoint(path.get(i + 1));
 
-            Tile tileA = Tiles.getAt(a);
-            Tile tileB = Tiles.getAt(b);
+            Tile tileA = Tiles.getAt(path.get(i));
+            Tile tileB = Tiles.getAt(path.get(i + 1));
 
             if (a.distanceTo(b) > 1
                     || (tileA != null && tileB != null && !Reachable.isWalkable(b)))
@@ -645,5 +645,26 @@ public class Walker
     {
         List<WorldPoint> pathTo = start.pathTo(Static.getClient(), destination);
         return pathTo != null && pathTo.contains(destination);
+    }
+
+    private static WorldPoint getTrueWorldPoint(WorldPoint point)
+    {
+        try
+        {
+            LocalPoint localPoint = LocalPoint.fromWorld(Static.getClient(), point);
+            if (localPoint == null)
+            {
+                return point;
+            }
+            return WorldPoint.fromLocalInstance(
+                Static.getClient(),
+                localPoint
+            );
+        }
+        catch (Exception e)
+        {
+            log.warn("Failed to get true world point for {}", point, e);
+        }
+        return point;
     }
 }

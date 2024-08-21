@@ -63,14 +63,23 @@ public class DrawUtils
 
 		for (Transport transport : transports)
 		{
-			OverlayUtil.fillTile(graphics2D, client, transport.getSource(), TRANSPORT_COLOR);
-			Point center = Perspective.tileCenter(client, transport.getSource());
+			WorldPoint instanceSource = transport.getSource();
+			WorldPoint instanceDestination = transport.getDestination();
+
+			if (client.isInInstancedRegion())
+			{
+				instanceSource = WorldPoint.toLocalInstance(client, instanceSource).stream().findFirst().orElse(instanceSource);
+				instanceDestination = WorldPoint.toLocalInstance(client, instanceDestination).stream().findFirst().orElse(instanceDestination);
+			}
+
+			OverlayUtil.fillTile(graphics2D, client, instanceSource, TRANSPORT_COLOR);
+			Point center = Perspective.tileCenter(client, instanceSource);
 			if (center == null)
 			{
 				continue;
 			}
 
-			Point linkCenter = Perspective.tileCenter(client, transport.getDestination());
+			Point linkCenter = Perspective.tileCenter(client, instanceDestination);
 			if (linkCenter == null)
 			{
 				continue;

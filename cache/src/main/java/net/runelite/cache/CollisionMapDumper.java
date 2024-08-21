@@ -164,7 +164,7 @@ public class CollisionMapDumper
 		Options options = new Options();
 		options.addOption(Option.builder().longOpt("cachedir").hasArg().required().build());
 		options.addOption(Option.builder().longOpt("xteapath").hasArg().required().build());
-		options.addOption(Option.builder().longOpt("outputdir").hasArg().required().build());
+		options.addOption(Option.builder().longOpt("outputdir").hasArg().build());
 
 		CommandLineParser parser = new DefaultParser();
 		CommandLine cmd;
