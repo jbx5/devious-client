@@ -8,9 +8,6 @@ import net.runelite.rs.api.RSPlayerComposition;
 @Mixin(RSPlayerComposition.class)
 public abstract class RSPlayerCompositionMixin implements RSPlayerComposition
 {
-	private static final int ITEM_OFFSET = 2048;
-	private static final int KIT_OFFSET = 256;
-
 	@Inject
 	@Override
 	public boolean isFemale()
