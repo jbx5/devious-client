@@ -120,7 +120,7 @@ public abstract class RSSceneMixin implements RSScene
 	private static byte[][][] rl$tileShapes;
 
 	@Replace("draw")
-	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane, int var7, int var8, boolean var9)
+	void drawScene(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int plane, int entityX, int entityY, boolean isCameraLocked)
 	{
 		int maxX = getMaxX();
 		int maxZ = getMaxZ();
@@ -171,16 +171,16 @@ public abstract class RSSceneMixin implements RSScene
 		this.setCameraZ2(cameraZ);
 		this.setScreenCenterX(cameraX / Perspective.LOCAL_TILE_SIZE);
 		this.setScreenCenterZ(cameraZ / Perspective.LOCAL_TILE_SIZE);
-		// add new set field since rev 224
-		// add new set field since rev 224
+		this.setEntityX(entityX / Perspective.LOCAL_TILE_SIZE);
+		this.setEntityY(entityY / Perspective.LOCAL_TILE_SIZE);
 		this.setScenePlane(plane);
-		RSIntProjection projection = newIntProjection(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, var7, var8);
-		this.updateVisibleTilesAndOccluders((RSProjection) projection, var9);
+		RSIntProjection projection = newIntProjection(cameraX, cameraY, cameraZ, cameraPitch, cameraYaw, entityX, entityY);
+		this.updateVisibleTilesAndOccluders((RSProjection) projection, isCameraLocked);
 	}
 
 	@Replace("updateVisibleTilesAndOccluders")
 	@Inject
-	void updateVisibleTilesAndOccluders(RSProjection intProjection, boolean var2)
+	void updateVisibleTilesAndOccluders(RSProjection intProjection, boolean isCameraLocked)
 	{
 		final boolean isGpu = client.isGpu();
 		final boolean checkClick = this.isCheckClick();

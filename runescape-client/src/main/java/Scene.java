@@ -111,9 +111,11 @@ public class Scene extends Renderable {
 	@Export("Scene_cameraYTile")
 	int Scene_cameraYTile;
 	@ObfuscatedName("bh")
-	int field2018;
+	@Export("Scene_entityX")
+	int Scene_entityX;
 	@ObfuscatedName("bx")
-	int field2019;
+	@Export("Scene_entityY")
+	int Scene_entityY;
 	@ObfuscatedName("bv")
 	int field2020;
 	@ObfuscatedName("bu")
@@ -1383,8 +1385,8 @@ public class Scene extends Renderable {
 		this.Scene_cameraZ = var3;
 		this.Scene_cameraXTile = var1 / 128;
 		this.Scene_cameraYTile = var3 / 128;
-		this.field2018 = var7 / 128;
-		this.field2019 = var8 / 128;
+		this.Scene_entityX = var7 / 128;
+		this.Scene_entityY = var8 / 128;
 		this.Scene_plane = var6;
 		IntProjection var10 = new IntProjection(var1, var2, var3, var4, var5, var7, var8);
 		this.updateVisibleTilesAndOccluders(var10, var9);
@@ -1398,8 +1400,8 @@ public class Scene extends Renderable {
 	void updateVisibleTilesAndOccluders(Projection var1, boolean var2) {
 		++this.Scene_drawnCount;
 		boolean var3 = this.worldViewId == -1;
-		this.field2020 = !var2 && this.field2003 != class173.field1824 ? this.field2018 : this.Scene_cameraXTile;
-		this.field2067 = !var2 && this.field2003 != class173.field1824 ? this.field2019 : this.Scene_cameraYTile;
+		this.field2020 = !var2 && this.field2003 != class173.field1824 ? this.Scene_entityX : this.Scene_cameraXTile;
+		this.field2067 = !var2 && this.field2003 != class173.field1824 ? this.Scene_entityY : this.Scene_cameraYTile;
 		if (var3) {
 			this.Scene_cameraXTileMin = this.field2020 - this.Scene_offsetOccluder;
 			if (this.Scene_cameraXTileMin < 0) {
@@ -2613,8 +2615,8 @@ public class Scene extends Renderable {
 		this.Scene_cameraZ = (int)var25.method7937((float)var7, (float)var8, (float)var9);
 		this.Scene_cameraXTile = this.Scene_cameraX / 128;
 		this.Scene_cameraYTile = this.Scene_cameraZ / 128;
-		this.field2018 = (int)var25.method7881((float)var12, 0.0F, (float)var13) / 128;
-		this.field2019 = (int)var25.method7937((float)var12, 0.0F, (float)var13) / 128;
+		this.Scene_entityX = (int)var25.method7881((float)var12, 0.0F, (float)var13) / 128;
+		this.Scene_entityY = (int)var25.method7937((float)var12, 0.0F, (float)var13) / 128;
 		TilesProjection var28 = new TilesProjection(var27);
 		this.updateVisibleTilesAndOccluders(var28, var14);
 	}
