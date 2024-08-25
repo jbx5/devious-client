@@ -181,7 +181,7 @@ public class CollisionMapDumper
 
 		final String cacheDirectory = cmd.getOptionValue("cachedir");
 		final String xteaJSONPath = cmd.getOptionValue("xteapath");
-		final String outputDirectory = cmd.getOptionValue("outputdir");
+		final String outputDirectory = cmd.getOptionValue("outputdir") + "/regions";
 
 		XteaKeyManager xteaKeyManager = new XteaKeyManager();
 		try (FileInputStream fin = new FileInputStream(xteaJSONPath))
@@ -202,7 +202,7 @@ public class CollisionMapDumper
 
 			int total = regions.size();
 
-			ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+			ExecutorService executor = Executors.newFixedThreadPool(6);
 			List<Future<Void>> futures = new ArrayList<>();
 
 			for (Region region : regions)
@@ -261,6 +261,10 @@ public class CollisionMapDumper
 	{
 		Region neighbor = regionLoader.findRegionForRegionCoordinates(region.getRegionX() + dx, region.getRegionY() + dy);
 		if (neighbor == null)
+		{
+			return;
+		}
+		if (region == neighbor)
 		{
 			return;
 		}
@@ -469,6 +473,12 @@ public class CollisionMapDumper
 						// Remaining objects
 						if (type == 22 || (type >= 9 && type <= 11) || (type >= 12 && type <= 21))
 						{
+							// Some hidden objects (like herbiboar tracks) have no object models, but were counted as
+							// being blocked in the collision map. We should skip these.
+							if (object.getObjectModels() == null)
+							{
+								continue;
+							}
 							if (object.getInteractType() != 0 && (object.getWallOrDoor() == 1 || (type >= 10 && type <= 21)))
 							{
 								if (exclusion != null)
@@ -645,7 +655,6 @@ public class CollisionMapDumper
 
 		DESERT_MINING_CAMP_PRISON_DOOR_2689(2689),
 
-		DRAYNOR_MANOR_BASEMENT_DOOR_44603(44603, FlagMap.TILE_DEFAULT),
 		DRAYNOR_MANOR_LARGE_DOOR_134(134),
 		DRAYNOR_MANOR_LARGE_DOOR_135(135),
 
