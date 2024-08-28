@@ -316,6 +316,8 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	private int clickedIdx = -1;
 	@Inject
+	private int clickedSubIdx = -1;
+	@Inject
 	private int submenuX = 0;
 	@Inject
 	private int submenuY = 0;
@@ -362,13 +364,23 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public MenuEntry getClickedMenuEntry()
 	{
-		MenuEntry toRet = null;
-		if (clickedIdx != -1)
+		if (clickedIdx == -1)
 		{
-			toRet = menu.getMenuEntries()[clickedIdx];
-			clickedIdx = -1;
+			return null;
 		}
-		return toRet;
+
+		MenuEntry entry;
+		if (clickedSubIdx != -1)
+		{
+			entry = menu.getMenuEntries()[clickedIdx].getSubMenu().getMenuEntries()[clickedSubIdx];
+		}
+		else
+		{
+			entry = menu.getMenuEntries()[clickedIdx];
+		}
+		clickedIdx = -1;
+		clickedSubIdx = -1;
+		return entry;
 	}
 	@Inject
 	@Override
@@ -1031,16 +1043,16 @@ public abstract class RSClientMixin implements RSClient
 	final void menu()
 	{
 		boolean var1 = false;
-		int var2;
-		int var5;
+		//int var2;
+		//int var5;
 		while (!var1)
 		{
 			var1 = true;
-			for (var2 = 0; var2 < menu.getMenuOptionCount() - 1; ++var2)
+			for (int i = 0; i < menu.getMenuOptionCount() - 1; ++i)
 			{
-				if (menu.getMenuOpcodes()[var2] < 1000 && menu.getMenuOpcodes()[var2 + 1] > 1000)
+				if (menu.getMenuOpcodes()[i] < 1000 && menu.getMenuOpcodes()[i + 1] > 1000)
 				{
-					menu.sortMenuEntries(var2, var2 + 1);
+					menu.sortMenuEntries(i, i + 1);
 					var1 = false;
 				}
 			}
@@ -1052,35 +1064,29 @@ public abstract class RSClientMixin implements RSClient
 
 		if (client.getDraggedWidget() == null)
 		{
-			int var19 = client.getMouseLastButton();
-			int var4;
-			int var7;
-			int var8;
-			int var20;
-			int var18;
+			int mouseLastButton = client.getMouseLastButton();
 			if (client.isMenuOpen())
 			{
-				int var3;
-				if (var19 != 1 && (client.isMouseCam() || var19 != 4))
+				if (mouseLastButton != 1 && (client.isMouseCam() || mouseLastButton != 4))
 				{
-					var2 = client.getMouseX();
-					var3 = client.getMouseY();
+					int mouseX = client.getMouseX();
+					int mouseY = client.getMouseY();
 					//this checks if the mouse is contained in the menu area
-					boolean regmenuContainsMouse = (var2 >= client.getMenuX() - 10 && var2 <= client.getMenuX() + client.getMenuWidth() + 10 && var3 >= client.getMenuY() - 10 && var3 <= client.getMenuY() + client.getMenuHeight() + 10);
-					boolean submenuContainsMouse = (var2 >= client.getSubmenuX() - 10 && var2 <= client.getSubmenuX() + client.getSubmenuWidth() + 10 && var3 >= client.getSubmenuY() - 10 && var3 <= client.getSubmenuY() + client.getSubmenuHeight() + 10);
+					boolean regmenuContainsMouse = (mouseX >= client.getMenuX() - 10 && mouseX <= client.getMenuX() + client.getMenuWidth() + 10 && mouseY >= client.getMenuY() - 10 && mouseY <= client.getMenuY() + client.getMenuHeight() + 10);
+					boolean submenuContainsMouse = (mouseX >= client.getSubmenuX() - 10 && mouseX <= client.getSubmenuX() + client.getSubmenuWidth() + 10 && mouseY >= client.getSubmenuY() - 10 && mouseY <= client.getSubmenuY() + client.getSubmenuHeight() + 10);
 					if (!regmenuContainsMouse && !submenuContainsMouse)
 					{
 						client.setMenuOpen(false);
 						client.setSubmenuIdx(-1);
-						for (var8 = 0; var8 < client.getRootWidgetCount(); ++var8)
+						for (int i = 0; i < client.getRootWidgetCount(); ++i)
 						{
-							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] >  client.getMenuX() && client.getWidgetPositionsX()[var8] <  client.getMenuX() +  client.getMenuWidth() && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > client.getMenuY() && client.getWidgetPositionsY()[var8] < client.getMenuY() + client.getMenuHeight())
+							if (client.getWidgetWidths()[i] + client.getWidgetPositionsX()[i] >  client.getMenuX() && client.getWidgetPositionsX()[i] <  client.getMenuX() +  client.getMenuWidth() && client.getWidgetPositionsY()[i] + client.getWidgetHeights()[i] > client.getMenuY() && client.getWidgetPositionsY()[i] < client.getMenuY() + client.getMenuHeight())
 							{
-								client.getValidRootWidgets()[var8] = true;
+								client.getValidRootWidgets()[i] = true;
 							}
-							if (client.getWidgetWidths()[var8] + client.getWidgetPositionsX()[var8] > client.getSubmenuX() && client.getWidgetPositionsX()[var8] < client.getSubmenuX() + client.getMenuWidth() && client.getWidgetPositionsY()[var8] + client.getWidgetHeights()[var8] > client.getSubmenuY() && client.getWidgetPositionsY()[var8] < client.getSubmenuY() + client.getSubmenuHeight())
+							if (client.getWidgetWidths()[i] + client.getWidgetPositionsX()[i] > client.getSubmenuX() && client.getWidgetPositionsX()[i] < client.getSubmenuX() + client.getMenuWidth() && client.getWidgetPositionsY()[i] + client.getWidgetHeights()[i] > client.getSubmenuY() && client.getWidgetPositionsY()[i] < client.getSubmenuY() + client.getSubmenuHeight())
 							{
-								client.getValidRootWidgets()[var8] = true;
+								client.getValidRootWidgets()[i] = true;
 							}
 						}
 					}
@@ -1119,107 +1125,70 @@ public abstract class RSClientMixin implements RSClient
 					}
 				}
 
-				if (var19 == 1 || !client.isMouseCam() && var19 == 4)
+				if (mouseLastButton == 1 || !client.isMouseCam() && mouseLastButton == 4)
 				{
-					var7 = -1;
-
 					// Regular
-					for (var8 = 0; var8 < menu.getMenuOptionCount(); var8++)
+					outer:
+					for (int i = 0; i < menu.getMenuOptionCount(); i++)
 					{
-						int rowY = (menu.getMenuOptionCount() - 1 - var8 - client.getMenuScroll()) * 15 + client.getMenuY() + 31;
+						int rowY = (menu.getMenuOptionCount() - 1 - i - client.getMenuScroll()) * 15 + client.getMenuY() + 31;
 						if (client.getMouseLastPressedX() > client.getMenuX() && client.getMouseLastPressedX() < client.getMenuWidth() + client.getMenuX() && client.getMouseLastPressedY() > rowY - 13 && client.getMouseLastPressedY() < rowY + 3)
 						{
-							var7 = var8;
+							MenuEntry entry = menu.getMenuEntries()[i];
+							clickedIdx = i;
+							client.sendMenuAction(entry.getParam0(), entry.getParam1(), entry.getOpcode(), entry.getIdentifier(), entry.getItemId(), entry.getWorldViewId(), entry.getOption(), entry.getTarget(), client.getMouseLastPressedX(), client.getMouseLastPressedY());
+							break;
 						}
 
 						// Sub entries
-						if (menu.getSubMenus()[var8] != null)
+						if (menu.getSubMenus()[i] != null)
 						{
-							MenuEntry[] subEntries = menu.getSubMenus()[var8].getMenuEntries();
+							MenuEntry[] subEntries = menu.getSubMenus()[i].getMenuEntries();
 							for (int j = 0; j < subEntries.length; j++)
 							{
 								int rowYSub = (subEntries.length - 1 - j - client.getSubmenuScroll()) * 15 + client.getSubmenuY() + 31;
 								if (client.getMouseLastPressedX() > client.getSubmenuX() && client.getMouseLastPressedX() < client.getSubmenuWidth() + client.getSubmenuX() && client.getMouseLastPressedY() > rowYSub - 13 && client.getMouseLastPressedY() < rowYSub + 3)
 								{
-									var7 = var8;
-
 									RSRuneLiteMenuEntry subEntry = (RSRuneLiteMenuEntry) subEntries[j];
-									if (subEntry.getConsumer() != null)
-									{
-										try
-										{
-											subEntry.getConsumer().accept(subEntry);
-										}
-										catch (Exception e)
-										{
-											client.getLogger().warn("", e);
-										}
-									}
+									clickedIdx = i;
+									clickedSubIdx = j;
+									client.sendMenuAction(subEntry.getParam0(), subEntry.getParam1(), subEntry.getOpcode(), subEntry.getIdentifier(), subEntry.getItemId(), subEntry.getWorldViewId(), subEntry.getOption(), subEntry.getTarget(), client.getMouseLastPressedX(), client.getMouseLastPressedY());
+									break outer;
 								}
 							}
 						}
 					}
 
-					clickedIdx = var7;
-					int var11;
-					int var12;
-					int var16;
-					int var15;
-					if (var7 != -1 && var7 >= 0)
-					{
-						var8 = menu.getMenuArguments1()[var7];
-						var15 = menu.getMenuArguments2()[var7];
-						var16 = menu.getMenuOpcodes()[var7];
-						var11 = menu.getMenuIdentifiers()[var7];
-						var12 = menu.getMenuItemIds()[var7];
-						var18 = menu.getMenuWorldViewIds()[var7];
-						String var13 = menu.getMenuOptions()[var7];
-						String var14 = menu.getMenuTargets()[var7];
-						client.sendMenuAction(var8, var15, var16, var11, var12, var18, var13, var14, client.getMouseLastPressedX(), client.getMouseLastPressedY());
-					}
-
 					client.setMenuOpen(false);
-//					var8 = client.getMenuX();
-//					var15 = client.getMenuY();
-//					var16 = client.getMenuWidth();
-//					var11 = client.getMenuHeight();
+					client.setSubmenuIdx(-1);
 
-					for (var12 = 0; var12 < client.getRootWidgetCount(); ++var12)
+					for (int i = 0; i < client.getRootWidgetCount(); ++i)
 					{
-						if (client.getWidgetWidths()[var12] + client.getWidgetPositionsX()[var12] > client.getMenuX() && client.getWidgetPositionsX()[var12] < client.getMenuX() + client.getMenuWidth() && client.getWidgetHeights()[var12] + client.getWidgetPositionsY()[var12] > client.getMenuY() && client.getWidgetPositionsY()[var12] < client.getMenuY() +  client.getMenuHeight())
+						if (client.getWidgetWidths()[i] + client.getWidgetPositionsX()[i] > client.getMenuX() && client.getWidgetPositionsX()[i] < client.getMenuX() + client.getMenuWidth() && client.getWidgetHeights()[i] + client.getWidgetPositionsY()[i] > client.getMenuY() && client.getWidgetPositionsY()[i] < client.getMenuY() +  client.getMenuHeight())
 						{
-							client.getValidRootWidgets()[var12] = true;
+							client.getValidRootWidgets()[i] = true;
 						}
-						else if (client.getSubmenuIdx() != -1 && (client.getWidgetWidths()[var12] + client.getWidgetPositionsX()[var12] > client.getSubmenuX() && client.getWidgetPositionsX()[var12] < client.getSubmenuX() + client.getSubmenuWidth() && client.getWidgetHeights()[var12] + client.getWidgetPositionsY()[var12] > client.getSubmenuY() && client.getWidgetPositionsY()[var12] < client.getSubmenuY() + client.getSubmenuHeight()))
+						else if (client.getSubmenuIdx() != -1 && (client.getWidgetWidths()[i] + client.getWidgetPositionsX()[i] > client.getSubmenuX() && client.getWidgetPositionsX()[i] < client.getSubmenuX() + client.getSubmenuWidth() && client.getWidgetHeights()[i] + client.getWidgetPositionsY()[i] > client.getSubmenuY() && client.getWidgetPositionsY()[i] < client.getSubmenuY() + client.getSubmenuHeight()))
 						{
-							client.getValidRootWidgets()[var12] = true;
+							client.getValidRootWidgets()[i] = true;
 						}
 					}
-					client.setSubmenuIdx(-1);
 				}
 			}
 			else
 			{
-				var2 = menu.getMenuOptionCount() - 1;
-				if ((var19 == 1 || !client.isMouseCam() && var19 == 4) && copy$shouldLeftClickOpenMenu())
+				int idx = menu.getMenuOptionCount() - 1;
+				if ((mouseLastButton == 1 || !client.isMouseCam() && mouseLastButton == 4) && copy$shouldLeftClickOpenMenu())
 				{
-					var19 = 2;
+					mouseLastButton = 2;
 				}
 
-				if ((var19 == 1 || !client.isMouseCam() && var19 == 4) && menu.getMenuOptionCount() > 0 && var2 >= 0)
+				if ((mouseLastButton == 1 || !client.isMouseCam() && mouseLastButton == 4) && menu.getMenuOptionCount() > 0 && idx >= 0)
 				{
-					var4 = menu.getMenuArguments1()[var2];
-					var5 = menu.getMenuArguments2()[var2];
-					var20 = menu.getMenuOpcodes()[var2];
-					var7 = menu.getMenuIdentifiers()[var2];
-					var8 = menu.getMenuItemIds()[var2];
-					var18 = menu.getMenuWorldViewIds()[var2];
-					String var9 = menu.getMenuOptions()[var2];
-					String var10 = menu.getMenuTargets()[var2];
-					client.sendMenuAction(var4, var5, var20, var7, var8, var18, var9, var10, client.getMouseLastPressedX(), client.getMouseLastPressedY());
+					client.sendMenuAction(menu.getMenuArguments1()[idx], menu.getMenuArguments2()[idx], menu.getMenuOpcodes()[idx], menu.getMenuIdentifiers()[idx], menu.getMenuItemIds()[idx], menu.getMenuWorldViewIds()[idx], menu.getMenuOptions()[idx], menu.getMenuTargets()[idx], client.getMouseLastPressedX(), client.getMouseLastPressedY());
 				}
 
-				if (var19 == 2 && menu.getMenuOptionCount() > 0)
+				if (mouseLastButton == 2 && menu.getMenuOptionCount() > 0)
 				{
 					this.openMenu(client.getMouseLastPressedX(), client.getMouseLastPressedY());
 				}
