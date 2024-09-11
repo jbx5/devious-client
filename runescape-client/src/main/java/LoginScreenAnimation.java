@@ -464,7 +464,7 @@ public class LoginScreenAnimation {
 		garbageValue = "9"
 	)
 	static final void method2731() {
-		PacketBufferNode var0 = class141.getPacketBufferNode(ClientPacket.field3335, Client.packetWriter.isaacCipher);
+		PacketBufferNode var0 = class141.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
 		Client.packetWriter.addNode(var0);
 		Interpreter.field886 = true;
 

@@ -87,7 +87,7 @@ class class531 implements Iterator {
 	)
 	@Export("resumePauseWidget")
 	static void resumePauseWidget(int var0, int var1) {
-		PacketBufferNode var2 = class141.getPacketBufferNode(ClientPacket.field3400, Client.packetWriter.isaacCipher);
+		PacketBufferNode var2 = class141.getPacketBufferNode(ClientPacket.RESUME_PAUSEBUTTON, Client.packetWriter.isaacCipher);
 		var2.packetBuffer.writeShortAdd(var1);
 		var2.packetBuffer.writeIntIME(var0);
 		Client.packetWriter.addNode(var2);

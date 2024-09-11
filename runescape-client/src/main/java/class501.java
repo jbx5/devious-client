@@ -352,7 +352,7 @@ public class class501 {
 		}
 
 		if (Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.field3357, Client.packetWriter.isaacCipher);
+			PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
 			var3.packetBuffer.writeByte(Script.getWindowedMode());
 			var3.packetBuffer.writeShort(class154.canvasWidth);
 			var3.packetBuffer.writeShort(UrlRequester.canvasHeight);

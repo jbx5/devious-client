@@ -113,7 +113,7 @@ public class WorldMapAreaData extends WorldMapArea {
 					var15 = TaskHandler.method4455(var7);
 				}
 
-				PacketBufferNode var13 = class141.getPacketBufferNode(ClientPacket.field3398, Client.packetWriter.isaacCipher);
+				PacketBufferNode var13 = class141.getPacketBufferNode(ClientPacket.RESUME_COUNTDIALOG, Client.packetWriter.isaacCipher);
 				var13.packetBuffer.writeInt(var15);
 				Client.packetWriter.addNode(var13);
 				return 1;
@@ -121,14 +121,14 @@ public class WorldMapAreaData extends WorldMapArea {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-					var11 = class141.getPacketBufferNode(ClientPacket.field3342, Client.packetWriter.isaacCipher);
+					var11 = class141.getPacketBufferNode(ClientPacket.RESUME_NAMEDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
 					return 1;
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-					var11 = class141.getPacketBufferNode(ClientPacket.field3319, Client.packetWriter.isaacCipher);
+					var11 = class141.getPacketBufferNode(ClientPacket.RESUME_STRINGDIALOG, Client.packetWriter.isaacCipher);
 					var11.packetBuffer.writeByte(var7.length() + 1);
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7);
 					Client.packetWriter.addNode(var11);
@@ -172,7 +172,7 @@ public class WorldMapAreaData extends WorldMapArea {
 						return 1;
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-						var11 = class141.getPacketBufferNode(ClientPacket.field3378, Client.packetWriter.isaacCipher);
+						var11 = class141.getPacketBufferNode(ClientPacket.RESUME_OBJDIALOG, Client.packetWriter.isaacCipher);
 						var11.packetBuffer.writeShort(var3);
 						Client.packetWriter.addNode(var11);
 						return 1;

@@ -160,7 +160,7 @@ public class FriendSystem {
 				} else if (this.isIgnored(var2)) {
 					class419.method8013("Please remove " + var1 + " from your ignore list first");
 				} else {
-					PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.field3399, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(class536.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -226,7 +226,7 @@ public class FriendSystem {
 			if (var2.hasCleanName()) {
 				if (this.friendsList.removeByUsername(var2)) {
 					Client.field714 = Client.cycleCntr;
-					PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.field3353, Client.packetWriter.isaacCipher);
+					PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.FRIEND_DELUSER, Client.packetWriter.isaacCipher);
 					var3.packetBuffer.writeByte(class536.stringCp1252NullTerminatedByteSize(var1));
 					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
 					Client.packetWriter.addNode(var3);
@@ -250,7 +250,7 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var3)) {
 					Client.field714 = Client.cycleCntr;
 					if (var2) {
-						PacketBufferNode var4 = class141.getPacketBufferNode(ClientPacket.field3313, Client.packetWriter.isaacCipher);
+						PacketBufferNode var4 = class141.getPacketBufferNode(ClientPacket.IGNORE_DELUSER, Client.packetWriter.isaacCipher);
 						var4.packetBuffer.writeByte(class536.stringCp1252NullTerminatedByteSize(var1));
 						var4.packetBuffer.writeStringCp1252NullTerminated(var1);
 						Client.packetWriter.addNode(var4);
