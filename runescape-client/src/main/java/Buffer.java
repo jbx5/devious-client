@@ -996,7 +996,8 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "442242276"
 	)
-	public int method9971() {
+	@Export("readShortLE")
+	public int readShortLE() {
 		this.offset += 2;
 		int var1 = ((this.array[this.offset - 1] & 255) << 8) + (this.array[this.offset - 2] & 255);
 		if (var1 > 32767) {
@@ -1011,8 +1012,7 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "552059702"
 	)
-	@Export("readShortLE")
-	public int readShortLE() {
+	public int method9972() {
 		this.offset += 2;
 		int var1 = (this.array[this.offset - 1] - 128 & 255) + ((this.array[this.offset - 2] & 255) << 8);
 		if (var1 > 32767) {

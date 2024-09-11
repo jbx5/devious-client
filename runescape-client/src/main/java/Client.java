@@ -4352,9 +4352,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 
 				Widget var7;
 				if (ServerPacket.field3520 == var1.serverPacket) {
-					var71 = var3.method9971();
+					var71 = var3.readShortLE();
 					var5 = var3.readUnsignedIntIME();
-					var6 = var3.readShortLE();
+					var6 = var3.method9972();
 					var7 = TaskHandler.widgetDefinition.method6841(var5);
 					if (var6 != var7.rawX || var71 != var7.rawY || var7.xAlignment != 0 || var7.yAlignment != 0) {
 						var7.rawX = var6;
@@ -4454,7 +4454,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (ServerPacket.field3547 == var1.serverPacket) {
 					var71 = var3.readUnsignedIntME();
 					var5 = var3.readUnsignedShort();
-					short var70 = (short)var3.readShortLE();
+					short var70 = (short)var3.method9972();
 					var22 = var3.readUnsignedByteAdd();
 					var62 = class162.worldView.npcs[var5];
 					if (var62 != null) {
