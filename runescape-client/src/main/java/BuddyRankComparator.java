@@ -1,12 +1,25 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ef")
+@ObfuscatedName("ec")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("fu")
+	@ObfuscatedSignature(
+		descriptor = "Lof;"
+	)
+	@Export("archive13")
+	static Archive archive13;
+	@ObfuscatedName("gb")
+	@ObfuscatedGetter(
+		intValue = -598722495
+	)
+	@Export("currentPort")
+	static int currentPort;
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +27,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lsc;Lsc;I)I",
-		garbageValue = "-1496538344"
+		descriptor = "(Lsq;Lsq;I)I",
+		garbageValue = "-1850862971"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,28 +45,32 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1582841826"
+		descriptor = "(Lpo;III)[Lvv;",
+		garbageValue = "-558925023"
 	)
-	static final int method3089(int var0, int var1) {
-		int var2 = var0 + var1 * 57;
-		var2 ^= var2 << 13;
-		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
-		return var3 >> 19 & 255;
+	public static SpritePixels[] method3234(AbstractArchive var0, int var1, int var2) {
+		return !HttpJsonRequestBody.method9207(var0, var1, var2) ? null : class543.method9848();
 	}
 
-	@ObfuscatedName("lk")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)Lkl;",
-		garbageValue = "91"
+		descriptor = "(B)V",
+		garbageValue = "57"
 	)
-	static RouteStrategy method3097(int var0, int var1) {
-		Client.field741.approxDestinationX = var0;
-		Client.field741.approxDestinationY = var1;
-		Client.field741.approxDestinationSizeX = 1;
-		Client.field741.approxDestinationSizeY = 1;
-		return Client.field741;
+	public static void method3233() {
+		try {
+			JagexCache.JagexCache_dat2File.close();
+
+			for (int var0 = 0; var0 < class179.field1883; ++var0) {
+				class215.JagexCache_idxFiles[var0].close();
+			}
+
+			JagexCache.JagexCache_idx255File.close();
+			JagexCache.JagexCache_randomDat.close();
+		} catch (Exception var2) {
+		}
+
 	}
 }

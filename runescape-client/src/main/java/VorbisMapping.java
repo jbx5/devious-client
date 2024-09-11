@@ -1,38 +1,38 @@
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 
-@ObfuscatedName("by")
+@ObfuscatedName("be")
 @Implements("VorbisMapping")
 public class VorbisMapping {
-	@ObfuscatedName("ab")
-	int field333;
-	@ObfuscatedName("ay")
-	int field332;
-	@ObfuscatedName("an")
-	int[] field334;
-	@ObfuscatedName("au")
-	int[] field335;
+	@ObfuscatedName("ac")
+	int field338;
+	@ObfuscatedName("ae")
+	int field339;
+	@ObfuscatedName("ag")
+	int[] field340;
+	@ObfuscatedName("am")
+	int[] field341;
 
 	VorbisMapping() {
-		class60 var1 = VorbisSample.field352;
-		var1.method1146(16);
-		this.field333 = var1.method1138() != 0 ? var1.method1146(4) + 1 : 1;
-		if (var1.method1138() != 0) {
-			var1.method1146(8);
+		class60 var1 = VorbisSample.field364;
+		var1.method1190(16);
+		this.field338 = var1.method1191() != 0 ? var1.method1190(4) + 1 : 1;
+		if (var1.method1191() != 0) {
+			var1.method1190(8);
 		}
 
-		var1.method1146(2);
-		if (this.field333 > 1) {
-			this.field332 = var1.method1146(4);
+		var1.method1190(2);
+		if (this.field338 > 1) {
+			this.field339 = var1.method1190(4);
 		}
 
-		this.field334 = new int[this.field333];
-		this.field335 = new int[this.field333];
+		this.field340 = new int[this.field338];
+		this.field341 = new int[this.field338];
 
-		for (int var2 = 0; var2 < this.field333; ++var2) {
-			var1.method1146(8);
-			this.field334[var2] = var1.method1146(8);
-			this.field335[var2] = var1.method1146(8);
+		for (int var2 = 0; var2 < this.field338; ++var2) {
+			var1.method1190(8);
+			this.field340[var2] = var1.method1190(8);
+			this.field341[var2] = var1.method1190(8);
 		}
 
 	}

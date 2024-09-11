@@ -4,697 +4,627 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mc")
+@ObfuscatedName("mz")
 @Implements("ClientPacket")
-public class ClientPacket implements class320 {
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket EVENT_WINDOW_SETTING;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPPLAYER3;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3306;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket IF_BUTTON10;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket RESUME_OBJDIALOG;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	static final ClientPacket field3263;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPPLAYER8;
+public class ClientPacket implements class322 {
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	static final ClientPacket field3287;
+	public static final ClientPacket field3389;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3266;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	static final ClientPacket field3346;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPPLAYER5;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPOBJ4;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket REFLECTION_CHECK_REPLY;
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket IF_BUTTON7;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPPLAYER2;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket LOGIN_TIMINGS;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPNPC2;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPNPC5;
+	public static final ClientPacket field3308;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket NO_TIMEOUT;
-	@ObfuscatedName("av")
+	public static final ClientPacket field3309;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3359;
-	@ObfuscatedName("ar")
+	public static final ClientPacket field3310;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket IF_BUTTON5;
-	@ObfuscatedName("ap")
+	public static final ClientPacket field3311;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPLOC3;
-	@ObfuscatedName("ak")
+	public static final ClientPacket field3376;
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket IF_BUTTON9;
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket CHAT_SETFILTER;
+	public static final ClientPacket field3391;
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPNPC1;
+	public static final ClientPacket field3386;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	static final ClientPacket field3352;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3371;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3388;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3318;
+	@ObfuscatedName("ah")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3357;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3317;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3366;
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket EVENT_MOUSE_CLICK;
-	@ObfuscatedName("bg")
+	public static final ClientPacket field3322;
+	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket CHAT_SENDABUSEREPORT;
-	@ObfuscatedName("bz")
+	public static final ClientPacket field3323;
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket MOVE_GAMECLICK;
-	@ObfuscatedName("bj")
+	public static final ClientPacket field3324;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket EVENT_MOUSE_IDLE;
-	@ObfuscatedName("bc")
+	public static final ClientPacket field3325;
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket PING_STATISTICS;
-	@ObfuscatedName("bo")
+	public static final ClientPacket field3326;
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPHELDD;
-	@ObfuscatedName("bm")
+	public static final ClientPacket field3327;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPLOC4;
-	@ObfuscatedName("bd")
+	public static final ClientPacket field3370;
+	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3290;
-	@ObfuscatedName("bh")
+	public static final ClientPacket field3382;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket RESUME_COUNTDIALOG;
-	@ObfuscatedName("bx")
+	public static final ClientPacket field3330;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3292;
-	@ObfuscatedName("bv")
+	public static final ClientPacket field3331;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3304;
-	@ObfuscatedName("bu")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3260;
-	@ObfuscatedName("bp")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3295;
-	@ObfuscatedName("br")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPLOC1;
-	@ObfuscatedName("bf")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3297;
-	@ObfuscatedName("bq")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	static final ClientPacket field3298;
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPOBJ3;
-	@ObfuscatedName("bi")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPLOC5;
-	@ObfuscatedName("be")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket IF_BUTTON4;
-	@ObfuscatedName("ba")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3303;
+	public static final ClientPacket field3313;
 	@ObfuscatedName("bn")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket IGNORE_DELUSER;
-	@ObfuscatedName("bw")
+	public static final ClientPacket field3333;
+	@ObfuscatedName("bh")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket IF_BUTTON3;
-	@ObfuscatedName("bk")
+	public static final ClientPacket field3334;
+	@ObfuscatedName("bd")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPPLAYER4;
-	@ObfuscatedName("bs")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket DOCHEAT;
-	@ObfuscatedName("bb")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket DETECT_MODIFIED_CLIENT;
-	@ObfuscatedName("by")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket EVENT_APPLET_FOCUS;
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket FREECAM_EXIT;
-	@ObfuscatedName("cx")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPLOCE;
-	@ObfuscatedName("cu")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPOBJT;
-	@ObfuscatedName("cz")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket RESUME_PAUSEBUTTON;
-	@ObfuscatedName("cm")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPOBJ1;
-	@ObfuscatedName("ct")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3314;
-	@ObfuscatedName("cl")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3315;
-	@ObfuscatedName("cb")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket RESUME_NAMEDIALOG;
-	@ObfuscatedName("cr")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPLOCT;
-	@ObfuscatedName("cj")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket IF_BUTTONT;
-	@ObfuscatedName("cg")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPNPCT;
-	@ObfuscatedName("cp")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPOBJ5;
-	@ObfuscatedName("cq")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3321;
-	@ObfuscatedName("ci")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPLOC2;
-	@ObfuscatedName("co")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3305;
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPPLAYER7;
-	@ObfuscatedName("cy")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3283;
-	@ObfuscatedName("ce")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3265;
-	@ObfuscatedName("cf")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket IF_BUTTON1;
-	@ObfuscatedName("cc")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket CLAN_KICKUSER;
-	@ObfuscatedName("cs")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket WIDGET_TYPE;
-	@ObfuscatedName("cw")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket OPNPC4;
-	@ObfuscatedName("ck")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket CLOSE_MODAL;
-	@ObfuscatedName("ch")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3284;
-	@ObfuscatedName("cv")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	static final ClientPacket field3267;
-	@ObfuscatedName("cd")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket IF_BUTTON8;
-	@ObfuscatedName("ca")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
 	public static final ClientPacket field3335;
-	@ObfuscatedName("dv")
+	@ObfuscatedName("bx")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket FRIEND_DELUSER;
-	@ObfuscatedName("da")
+	public static final ClientPacket field3336;
+	@ObfuscatedName("bf")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket FRIEND_ADDUSER;
-	@ObfuscatedName("dp")
+	public static final ClientPacket field3337;
+	@ObfuscatedName("bm")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket RESUME_STRINGDIALOG;
-	@ObfuscatedName("dj")
+	public static final ClientPacket field3338;
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket MINIMAP_CLICK;
-	@ObfuscatedName("dl")
+	public static final ClientPacket field3345;
+	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3340;
-	@ObfuscatedName("de")
+	public static final ClientPacket field3346;
+	@ObfuscatedName("ba")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPNPC3;
-	@ObfuscatedName("df")
+	public static final ClientPacket field3341;
+	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket IF_BUTTON2;
-	@ObfuscatedName("dn")
+	public static final ClientPacket field3342;
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
 	public static final ClientPacket field3343;
-	@ObfuscatedName("dx")
+	@ObfuscatedName("by")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPPLAYER6;
-	@ObfuscatedName("dm")
+	public static final ClientPacket field3344;
+	@ObfuscatedName("bb")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket EVENT_CAMERA_POSITION;
-	@ObfuscatedName("di")
+	public static final ClientPacket field3349;
+	@ObfuscatedName("bi")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket field3350;
-	@ObfuscatedName("dc")
+	public static final ClientPacket field3387;
+	@ObfuscatedName("bg")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket IF_BUTTON6;
-	@ObfuscatedName("ds")
+	static final ClientPacket field3347;
+	@ObfuscatedName("bl")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
 	public static final ClientPacket field3348;
-	@ObfuscatedName("dh")
+	@ObfuscatedName("bz")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPNPCE;
-	@ObfuscatedName("do")
+	public static final ClientPacket field3405;
+	@ObfuscatedName("bu")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPOBJE;
-	@ObfuscatedName("dw")
+	public static final ClientPacket field3314;
+	@ObfuscatedName("br")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket CHAT_SENDPRIVATE;
-	@ObfuscatedName("dq")
+	public static final ClientPacket field3351;
+	@ObfuscatedName("bo")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPPLAYERT;
-	@ObfuscatedName("dr")
+	public static final ClientPacket field3316;
+	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPOBJ2;
-	@ObfuscatedName("dg")
+	public static final ClientPacket field3353;
+	@ObfuscatedName("bt")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
 	public static final ClientPacket field3354;
+	@ObfuscatedName("bq")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3339;
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3362;
+	@ObfuscatedName("be")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3332;
+	@ObfuscatedName("bc")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3340;
+	@ObfuscatedName("cn")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3355;
+	@ObfuscatedName("ch")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	static final ClientPacket field3360;
+	@ObfuscatedName("cf")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3361;
+	@ObfuscatedName("cu")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3350;
+	@ObfuscatedName("cm")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3363;
+	@ObfuscatedName("cj")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3364;
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3365;
+	@ObfuscatedName("ci")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3369;
+	@ObfuscatedName("cy")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3367;
+	@ObfuscatedName("co")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3315;
+	@ObfuscatedName("cv")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3358;
+	@ObfuscatedName("cg")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3329;
+	@ObfuscatedName("ct")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3328;
+	@ObfuscatedName("cq")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3372;
+	@ObfuscatedName("cc")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3373;
+	@ObfuscatedName("cz")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3374;
+	@ObfuscatedName("cw")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3375;
+	@ObfuscatedName("cr")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3359;
+	@ObfuscatedName("cl")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3377;
+	@ObfuscatedName("ca")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3378;
+	@ObfuscatedName("cs")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3379;
+	@ObfuscatedName("cp")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3380;
+	@ObfuscatedName("cb")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3381;
+	@ObfuscatedName("cd")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3319;
+	@ObfuscatedName("ce")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3383;
+	@ObfuscatedName("ck")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3384;
+	@ObfuscatedName("dp")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3385;
+	@ObfuscatedName("df")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3402;
+	@ObfuscatedName("dv")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3396;
 	@ObfuscatedName("dt")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket EVENT_KEYBOARD;
-	@ObfuscatedName("du")
-	@ObfuscatedSignature(
-		descriptor = "Lmc;"
-	)
-	public static final ClientPacket field3356;
+	public static final ClientPacket field3321;
 	@ObfuscatedName("dk")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
-	public static final ClientPacket OPPLAYER1;
-	@ObfuscatedName("fr")
+	public static final ClientPacket field3320;
+	@ObfuscatedName("dl")
 	@ObfuscatedSignature(
-		descriptor = "Loj;"
+		descriptor = "Lmz;"
 	)
-	static Archive field3331;
+	public static final ClientPacket field3390;
 	@ObfuscatedName("db")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3368;
+	@ObfuscatedName("dc")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3392;
+	@ObfuscatedName("dw")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	static final ClientPacket field3393;
+	@ObfuscatedName("de")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3394;
+	@ObfuscatedName("dx")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3395;
+	@ObfuscatedName("dj")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3312;
+	@ObfuscatedName("do")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3397;
+	@ObfuscatedName("dh")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3398;
+	@ObfuscatedName("dm")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3399;
+	@ObfuscatedName("dq")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3400;
+	@ObfuscatedName("di")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3401;
+	@ObfuscatedName("da")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3356;
+	@ObfuscatedName("dz")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3403;
+	@ObfuscatedName("dg")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	static final ClientPacket field3404;
+	@ObfuscatedName("dr")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3307;
+	@ObfuscatedName("dy")
+	@ObfuscatedSignature(
+		descriptor = "Lmz;"
+	)
+	public static final ClientPacket field3406;
+	@ObfuscatedName("ds")
 	@ObfuscatedGetter(
-		intValue = -63361197
+		intValue = 497668497
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("dy")
+	@ObfuscatedName("dn")
 	@ObfuscatedGetter(
-		intValue = -2054646611
+		intValue = -725600405
 	)
 	@Export("length")
 	final int length;
 
 	static {
-		EVENT_WINDOW_SETTING = new ClientPacket(0, 5);
-		OPPLAYER3 = new ClientPacket(1, 3);
-		field3306 = new ClientPacket(2, -1);
-		IF_BUTTON10 = new ClientPacket(3, 8);
-		RESUME_OBJDIALOG = new ClientPacket(4, 2);
-		field3263 = new ClientPacket(5, 7);
-		OPPLAYER8 = new ClientPacket(6, 3);
-		field3287 = new ClientPacket(7, 2);
-		field3266 = new ClientPacket(8, 4);
-		field3346 = new ClientPacket(9, -1);
-		OPPLAYER5 = new ClientPacket(10, 3);
-		OPOBJ4 = new ClientPacket(11, 7);
-		REFLECTION_CHECK_REPLY = new ClientPacket(12, -1);
-		IF_BUTTON7 = new ClientPacket(13, 8);
-		OPPLAYER2 = new ClientPacket(14, 3);
-		LOGIN_TIMINGS = new ClientPacket(15, -1);
-		OPNPC2 = new ClientPacket(16, 3);
-		OPNPC5 = new ClientPacket(17, 3);
-		NO_TIMEOUT = new ClientPacket(18, 0);
-		field3359 = new ClientPacket(19, 2);
-		IF_BUTTON5 = new ClientPacket(20, 8);
-		OPLOC3 = new ClientPacket(21, 7);
-		IF_BUTTON9 = new ClientPacket(22, 8);
-		CHAT_SETFILTER = new ClientPacket(23, 3);
-		OPNPC1 = new ClientPacket(24, 3);
-		EVENT_MOUSE_CLICK = new ClientPacket(25, 6);
-		CHAT_SENDABUSEREPORT = new ClientPacket(26, -1);
-		MOVE_GAMECLICK = new ClientPacket(27, -1);
-		EVENT_MOUSE_IDLE = new ClientPacket(28, 0);
-		PING_STATISTICS = new ClientPacket(29, 10);
-		OPHELDD = new ClientPacket(30, 16);
-		OPLOC4 = new ClientPacket(31, 7);
-		field3290 = new ClientPacket(32, -1);
-		RESUME_COUNTDIALOG = new ClientPacket(33, 4);
-		field3292 = new ClientPacket(34, 15);
-		field3304 = new ClientPacket(35, 9);
-		field3260 = new ClientPacket(36, 11);
-		field3295 = new ClientPacket(37, 11);
-		OPLOC1 = new ClientPacket(38, 7);
-		field3297 = new ClientPacket(39, 15);
-		field3298 = new ClientPacket(40, -1);
-		OPOBJ3 = new ClientPacket(41, 7);
-		OPLOC5 = new ClientPacket(42, 7);
-		IF_BUTTON4 = new ClientPacket(43, 8);
-		field3303 = new ClientPacket(44, 1);
-		IGNORE_DELUSER = new ClientPacket(45, -1);
-		IF_BUTTON3 = new ClientPacket(46, 8);
-		OPPLAYER4 = new ClientPacket(47, 3);
-		DOCHEAT = new ClientPacket(48, -1);
-		DETECT_MODIFIED_CLIENT = new ClientPacket(49, 4);
-		EVENT_APPLET_FOCUS = new ClientPacket(50, 1);
-		FREECAM_EXIT = new ClientPacket(51, 0);
-		OPLOCE = new ClientPacket(52, 2);
-		OPOBJT = new ClientPacket(53, 15);
-		RESUME_PAUSEBUTTON = new ClientPacket(54, 6);
-		OPOBJ1 = new ClientPacket(55, 7);
-		field3314 = new ClientPacket(56, -1);
-		field3315 = new ClientPacket(57, -2);
-		RESUME_NAMEDIALOG = new ClientPacket(58, -1);
-		OPLOCT = new ClientPacket(59, 15);
-		IF_BUTTONT = new ClientPacket(60, 16);
-		OPNPCT = new ClientPacket(61, 11);
-		OPOBJ5 = new ClientPacket(62, 7);
-		field3321 = new ClientPacket(63, 0);
-		OPLOC2 = new ClientPacket(64, 7);
-		field3305 = new ClientPacket(65, 22);
-		OPPLAYER7 = new ClientPacket(66, 3);
-		field3283 = new ClientPacket(67, -1);
-		field3265 = new ClientPacket(68, 4);
-		IF_BUTTON1 = new ClientPacket(69, 8);
-		CLAN_KICKUSER = new ClientPacket(70, -1);
-		WIDGET_TYPE = new ClientPacket(71, 4);
-		OPNPC4 = new ClientPacket(72, 3);
-		CLOSE_MODAL = new ClientPacket(73, 0);
-		field3284 = new ClientPacket(74, -1);
-		field3267 = new ClientPacket(75, 2);
-		IF_BUTTON8 = new ClientPacket(76, 8);
-		field3335 = new ClientPacket(77, -1);
-		FRIEND_DELUSER = new ClientPacket(78, -1);
-		FRIEND_ADDUSER = new ClientPacket(79, -1);
-		RESUME_STRINGDIALOG = new ClientPacket(80, -1);
-		MINIMAP_CLICK = new ClientPacket(81, -1);
-		field3340 = new ClientPacket(82, -1);
-		OPNPC3 = new ClientPacket(83, 3);
-		IF_BUTTON2 = new ClientPacket(84, 8);
-		field3343 = new ClientPacket(85, -1);
-		OPPLAYER6 = new ClientPacket(86, 3);
-		EVENT_CAMERA_POSITION = new ClientPacket(87, 4);
-		field3350 = new ClientPacket(88, 10);
-		IF_BUTTON6 = new ClientPacket(89, 8);
-		field3348 = new ClientPacket(90, 13);
-		OPNPCE = new ClientPacket(91, 2);
-		OPOBJE = new ClientPacket(92, 6);
-		CHAT_SENDPRIVATE = new ClientPacket(93, -2);
-		OPPLAYERT = new ClientPacket(94, 11);
-		OPOBJ2 = new ClientPacket(95, 7);
-		field3354 = new ClientPacket(96, 1);
-		EVENT_KEYBOARD = new ClientPacket(97, -2);
-		field3356 = new ClientPacket(98, 26);
-		OPPLAYER1 = new ClientPacket(99, 3);
+		field3389 = new ClientPacket(0, 0);
+		field3308 = new ClientPacket(1, -1);
+		field3309 = new ClientPacket(2, 8);
+		field3310 = new ClientPacket(3, 8);
+		field3311 = new ClientPacket(4, 7);
+		field3376 = new ClientPacket(5, 1);
+		field3391 = new ClientPacket(6, 7);
+		field3386 = new ClientPacket(7, 8);
+		field3352 = new ClientPacket(8, -1);
+		field3371 = new ClientPacket(9, -1);
+		field3388 = new ClientPacket(10, 3);
+		field3318 = new ClientPacket(11, 8);
+		field3357 = new ClientPacket(12, 5);
+		field3317 = new ClientPacket(13, 3);
+		field3366 = new ClientPacket(14, 16);
+		field3322 = new ClientPacket(15, 15);
+		field3323 = new ClientPacket(16, 7);
+		field3324 = new ClientPacket(17, 2);
+		field3325 = new ClientPacket(18, 4);
+		field3326 = new ClientPacket(19, 6);
+		field3327 = new ClientPacket(20, 3);
+		field3370 = new ClientPacket(21, 8);
+		field3382 = new ClientPacket(22, 10);
+		field3330 = new ClientPacket(23, 8);
+		field3331 = new ClientPacket(24, 3);
+		field3313 = new ClientPacket(25, -1);
+		field3333 = new ClientPacket(26, -1);
+		field3334 = new ClientPacket(27, -2);
+		field3335 = new ClientPacket(28, 0);
+		field3336 = new ClientPacket(29, 0);
+		field3337 = new ClientPacket(30, 7);
+		field3338 = new ClientPacket(31, -1);
+		field3345 = new ClientPacket(32, 9);
+		field3346 = new ClientPacket(33, 11);
+		field3341 = new ClientPacket(34, 13);
+		field3342 = new ClientPacket(35, -1);
+		field3343 = new ClientPacket(36, 10);
+		field3344 = new ClientPacket(37, 16);
+		field3349 = new ClientPacket(38, -1);
+		field3387 = new ClientPacket(39, 6);
+		field3347 = new ClientPacket(40, -1);
+		field3348 = new ClientPacket(41, 7);
+		field3405 = new ClientPacket(42, 7);
+		field3314 = new ClientPacket(43, 7);
+		field3351 = new ClientPacket(44, 3);
+		field3316 = new ClientPacket(45, -1);
+		field3353 = new ClientPacket(46, -1);
+		field3354 = new ClientPacket(47, 3);
+		field3339 = new ClientPacket(48, -1);
+		field3362 = new ClientPacket(49, 8);
+		field3332 = new ClientPacket(50, 0);
+		field3340 = new ClientPacket(51, 3);
+		field3355 = new ClientPacket(52, 3);
+		field3360 = new ClientPacket(53, 2);
+		field3361 = new ClientPacket(54, 8);
+		field3350 = new ClientPacket(55, 11);
+		field3363 = new ClientPacket(56, 3);
+		field3364 = new ClientPacket(57, -2);
+		field3365 = new ClientPacket(58, 4);
+		field3369 = new ClientPacket(59, 15);
+		field3367 = new ClientPacket(60, -1);
+		field3315 = new ClientPacket(61, -1);
+		field3358 = new ClientPacket(62, 8);
+		field3329 = new ClientPacket(63, -1);
+		field3328 = new ClientPacket(64, 3);
+		field3372 = new ClientPacket(65, 11);
+		field3373 = new ClientPacket(66, 11);
+		field3374 = new ClientPacket(67, 4);
+		field3375 = new ClientPacket(68, 1);
+		field3359 = new ClientPacket(69, 15);
+		field3377 = new ClientPacket(70, 2);
+		field3378 = new ClientPacket(71, 2);
+		field3379 = new ClientPacket(72, -2);
+		field3380 = new ClientPacket(73, 8);
+		field3381 = new ClientPacket(74, -1);
+		field3319 = new ClientPacket(75, -1);
+		field3383 = new ClientPacket(76, 3);
+		field3384 = new ClientPacket(77, 7);
+		field3385 = new ClientPacket(78, 1);
+		field3402 = new ClientPacket(79, 3);
+		field3396 = new ClientPacket(80, -1);
+		field3321 = new ClientPacket(81, 4);
+		field3320 = new ClientPacket(82, -1);
+		field3390 = new ClientPacket(83, 3);
+		field3368 = new ClientPacket(84, 0);
+		field3392 = new ClientPacket(85, 7);
+		field3393 = new ClientPacket(86, 2);
+		field3394 = new ClientPacket(87, 26);
+		field3395 = new ClientPacket(88, 3);
+		field3312 = new ClientPacket(89, 15);
+		field3397 = new ClientPacket(90, 7);
+		field3398 = new ClientPacket(91, 4);
+		field3399 = new ClientPacket(92, -1);
+		field3400 = new ClientPacket(93, 6);
+		field3401 = new ClientPacket(94, 4);
+		field3356 = new ClientPacket(95, 22);
+		field3403 = new ClientPacket(96, -1);
+		field3404 = new ClientPacket(97, 7);
+		field3307 = new ClientPacket(98, -1);
+		field3406 = new ClientPacket(99, 2);
 	}
 
 	ClientPacket(int var1, int var2) {
 		this.id = var1;
 		this.length = var2;
-	}
-
-	@ObfuscatedName("bz")
-	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;I)V",
-		garbageValue = "-2039867117"
-	)
-	static void method6153(int var0, String var1) {
-		Login.Login_loadingText = var1;
-		Login.Login_loadingPercent = var0;
-	}
-
-	@ObfuscatedName("jj")
-	@ObfuscatedSignature(
-		descriptor = "(Lkh;B)V",
-		garbageValue = "36"
-	)
-	static void method6154(class266 var0) {
-		if (var0 != null && var0.field2915 != null) {
-			if (var0.field2915.childIndex >= 0) {
-				Widget var1 = FloorUnderlayDefinition.widgetDefinition.method6544(var0.field2915.parentId);
-				if (var1 == null || var1.children == null || var1.children.length == 0 || var0.field2915.childIndex >= var1.children.length || var0.field2915 != var1.children[var0.field2915.childIndex]) {
-					return;
-				}
-			}
-
-			if (var0.field2915.type == 11 && var0.field2914 == 0) {
-				if (var0.field2915.method6959(var0.field2912, var0.field2913, 0, 0)) {
-					var0.field2915.method7043().method4551().method4622(1, var0.field2915.method7043().method4521());
-					switch(var0.field2915.method6963()) {
-					case 0:
-						SequenceDefinition.openURL(var0.field2915.method6965(), true, false);
-						break;
-					case 1:
-						if (class155.method3410(SpriteMask.getWidgetFlags(var0.field2915))) {
-							int[] var4 = var0.field2915.method7060();
-							if (var4 != null) {
-								PacketBufferNode var2 = class218.getPacketBufferNode(field3305, Client.packetWriter.isaacCipher);
-								var2.packetBuffer.writeShortLE(var0.field2915.childIndex);
-								var2.packetBuffer.writeInt(var4[1]);
-								var2.packetBuffer.writeIntIME(var0.field2915.method6964());
-								var2.packetBuffer.writeIntME(var4[0]);
-								var2.packetBuffer.writeIntLE(var0.field2915.id);
-								var2.packetBuffer.writeIntLE(var4[2]);
-								Client.packetWriter.addNode(var2);
-							}
-						}
-					}
-				}
-			} else if (var0.field2915.type == 12) {
-				class358 var3 = var0.field2915.method6971();
-				if (var3 != null && var3.method6692()) {
-					switch(var0.field2914) {
-					case 0:
-						Client.field735.method5318(var0.field2915);
-						var3.method6640(true);
-						var3.method6679(var0.field2912, var0.field2913, Client.indexCheck.isValidIndexInRange(82), Client.indexCheck.isValidIndexInRange(81));
-						break;
-					case 1:
-						var3.method6680(var0.field2912, var0.field2913);
-					}
-				}
-			}
-
-		}
 	}
 }

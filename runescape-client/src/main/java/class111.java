@@ -1,119 +1,64 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("em")
-public class class111 {
-	@ObfuscatedName("ab")
+@ObfuscatedName("ex")
+final class class111 implements class352 {
+	@ObfuscatedName("jp")
+	static int[] field1427;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lny;"
 	)
-	static final class111 field1427;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1413;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1428;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1415;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1416;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1417;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1418;
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1412;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1425;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1429;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1422;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1414;
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1424;
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	@Export("field1390")
-	static final class111 field1390;
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1426;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lem;"
-	)
-	static final class111 field1420;
-	@ObfuscatedName("bb")
-	static String field1419;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = 255545649
-	)
-	int field1423;
+	final Widget val$cc;
 
-	static {
-		field1427 = new class111(0);
-		field1413 = new class111(1);
-		field1428 = new class111(2);
-		field1415 = new class111(3);
-		field1416 = new class111(4);
-		field1417 = new class111(5);
-		field1418 = new class111(6);
-		field1412 = new class111(7);
-		field1425 = new class111(8);
-		field1429 = new class111(9);
-		field1422 = new class111(10);
-		field1414 = new class111(11);
-		field1424 = new class111(12);
-		field1390 = new class111(13);
-		field1426 = new class111(14);
-		field1420 = new class111(15);
+	@ObfuscatedSignature(
+		descriptor = "(Lny;)V"
+	)
+	class111(Widget var1) {
+		this.val$cc = var1;
 	}
 
-	class111(int var1) {
-		this.field1423 = var1;
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "89"
+	)
+	public void vmethod6836() {
+		if (this.val$cc != null && this.val$cc.method7271().field3786 != null) {
+			ScriptEvent var1 = new ScriptEvent();
+			var1.method2511(this.val$cc);
+			var1.setArgs(this.val$cc.method7271().field3786);
+			class195.method4014().addFirst(var1);
+		}
+
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1274550337"
+	)
+	static void method2994() {
+		class442.Tiles_underlays = null;
+		AbstractByteArrayCopier.Tiles_overlays = null;
+		UserComparator2.Tiles_shapes = null;
+		Tiles.field1065 = null;
+		SoundSystem.field294 = null;
+		TriBool.Tiles_underlays2 = null;
+		class512.field5171 = null;
+		class328.Tiles_hue = null;
+		HealthBarConfig.Tiles_saturation = null;
+		Tiles.Tiles_lightness = null;
+		class77.Tiles_hueMultiplier = null;
+		Tiles.field1056 = null;
+	}
+
+	@ObfuscatedName("aa")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lfo;",
+		garbageValue = "-1270007656"
+	)
+	static class145 method2990(int var0) {
+		return UserComparator6.method3243(var0) != 0 ? null : GameEngine.method658(var0);
 	}
 }

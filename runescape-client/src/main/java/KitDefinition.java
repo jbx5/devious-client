@@ -3,56 +3,65 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("jr")
+@ObfuscatedName("hr")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("KitDefinition_archive")
 	public static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("KitDefinition_modelsArchive")
 	public static AbstractArchive KitDefinition_modelsArchive;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -2082710201
+	)
+	@Export("KitDefinition_fileCount")
+	public static int KitDefinition_fileCount;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("KitDefinition_cached")
-	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("ah")
-	@Export("ByteArrayPool_alternativeSizes")
-	static int[] ByteArrayPool_alternativeSizes;
+	public static EvictingDualNodeHashTable KitDefinition_cached;
+	@ObfuscatedName("ay")
+	@Export("osNameLowercase")
+	public static String osNameLowercase;
+	@ObfuscatedName("bb")
+	protected static String field1940;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1914905283
+		intValue = 1607755959
 	)
 	@Export("bodypartID")
 	int bodypartID;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("au")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("al")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -66,10 +75,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-1971894971"
+		descriptor = "(Lvf;I)V",
+		garbageValue = "919408233"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -83,10 +92,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;II)V",
-		garbageValue = "274363254"
+		descriptor = "(Lvf;IB)V",
+		garbageValue = "-22"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -129,23 +138,23 @@ public class KitDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-1352222285"
+		garbageValue = "-560651389"
 	)
-	public boolean method4827(int var1, int var2) {
+	public boolean method3866(int var1, int var2) {
 		if (var2 == 1) {
-			return var1 + 7 == this.bodypartID;
+			return this.bodypartID == var1 + 7;
 		} else {
 			return this.bodypartID == var1;
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1813167689"
+		garbageValue = "-1152299255"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -164,10 +173,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lgm;",
-		garbageValue = "6"
+		descriptor = "(B)Ljv;",
+		garbageValue = "-18"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -204,12 +213,12 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1057770776"
+		garbageValue = "-861896719"
 	)
-	public boolean method4839() {
+	public boolean method3869() {
 		boolean var1 = true;
 
 		for (int var2 = 0; var2 < 5; ++var2) {
@@ -221,10 +230,10 @@ public class KitDefinition extends DualNode {
 		return var1;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lgm;",
-		garbageValue = "62"
+		descriptor = "(I)Ljv;",
+		garbageValue = "-862604109"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -254,77 +263,84 @@ public class KitDefinition extends DualNode {
 		return var5;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lob;B)V",
-		garbageValue = "0"
+		descriptor = "(Lpo;I)V",
+		garbageValue = "438379091"
 	)
-	public static void method4850(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
+	public static void method3872(AbstractArchive var0) {
+		FloorUnderlayDefinition.FloorUnderlayDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfe;",
-		garbageValue = "1409302933"
+		descriptor = "(CB)Z",
+		garbageValue = "35"
 	)
-	static class136 method4853(int var0) {
-		class136 var1 = (class136)class134.findEnumerated(Huffman.method7100(), var0);
-		if (var1 == null) {
-			var1 = class136.field1596;
-		}
+	public static boolean method3889(char var0) {
+		if ((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
+			if (var0 != 0) {
+				char[] var1 = class416.cp1252AsciiExtension;
 
-		return var1;
-	}
-
-	@ObfuscatedName("gr")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lte;",
-		garbageValue = "-164931231"
-	)
-	@Export("getPlatformInfo")
-	static PlatformInfo getPlatformInfo() {
-		return WorldMapElement.platformInfo;
-	}
-
-	@ObfuscatedName("ji")
-	@ObfuscatedSignature(
-		descriptor = "(Ldy;IZS)V",
-		garbageValue = "-23371"
-	)
-	@Export("addPlayerToScene")
-	static void addPlayerToScene(WorldView var0, int var1, boolean var2) {
-		Player var3 = var0.players[var1];
-		if (var3 != null && var3.isVisible() && !var3.isHidden) {
-			var3.isUnanimated = false;
-			if ((Client.isLowDetail && var0.playerUpdateManager.playerCount > 50 || var0.playerUpdateManager.playerCount > 200) && var2 && var3.idleSequence == var3.movementSequence) {
-				var3.isUnanimated = true;
-			}
-
-			int var4 = var3.x >> 7;
-			int var5 = var3.y >> 7;
-			if (0 <= var4 && var4 < 104 && 0 <= var5 && var5 < 104) {
-				long var6 = class218.calculateTag(0, 0, 0, false, var3.index, var0.id);
-				if (var3.model0 != null && Client.cycle >= var3.animationCycleStart && Client.cycle < var3.animationCycleEnd) {
-					var3.isUnanimated = false;
-					var3.tileHeight = class162.getTileHeight(var0, var3.x, var3.y, var0.plane);
-					var3.playerCycle = Client.cycle;
-					var0.scene.addNullableObject(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3, var3.rotation, var6, var3.minX, var3.minY, var3.maxX, var3.maxY);
-				} else {
-					if ((var3.x & 127) == 64 && (var3.y & 127) == 64) {
-						if (var0.tileLastDrawnActor[var4][var5] == Client.viewportDrawCount) {
-							return;
-						}
-
-						var0.tileLastDrawnActor[var4][var5] = Client.viewportDrawCount;
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					char var3 = var1[var2];
+					if (var0 == var3) {
+						return true;
 					}
-
-					var3.tileHeight = class162.getTileHeight(var0, var3.x, var3.y, var0.plane);
-					var3.playerCycle = Client.cycle;
-					var0.scene.drawEntity(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3, var3.rotation, var6, var3.isWalking);
 				}
 			}
+
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;B)Ljava/lang/Class;",
+		garbageValue = "65"
+	)
+	@Export("loadClassFromDescriptor")
+	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
+		if (var0.equals("B")) {
+			return Byte.TYPE;
+		} else if (var0.equals("I")) {
+			return Integer.TYPE;
+		} else if (var0.equals("S")) {
+			return Short.TYPE;
+		} else if (var0.equals("J")) {
+			return Long.TYPE;
+		} else if (var0.equals("Z")) {
+			return Boolean.TYPE;
+		} else if (var0.equals("F")) {
+			return Float.TYPE;
+		} else if (var0.equals("D")) {
+			return Double.TYPE;
+		} else if (var0.equals("C")) {
+			return Character.TYPE;
+		} else {
+			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
+		}
+	}
+
+	@ObfuscatedName("bx")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "245120677"
+	)
+	protected static final void method3891() {
+		class354.clock.mark();
+
+		int var0;
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.graphicsTickTimes[var0] = 0L;
 		}
 
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.clientTickTimes[var0] = 0L;
+		}
+
+		GameEngine.gameCyclesToDo = 0;
 	}
 }

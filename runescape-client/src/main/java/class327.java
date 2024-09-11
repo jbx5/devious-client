@@ -1,120 +1,93 @@
-import java.util.HashMap;
-import java.util.TimeZone;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mp")
-public final class class327 {
-	@ObfuscatedName("an")
-	static final HashMap field3537;
-	@ObfuscatedName("ba")
-	@Export("hasFocus")
-	protected static boolean hasFocus;
+@ObfuscatedName("mk")
+public class class327 implements class322 {
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3585;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3581;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3574;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3573;
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3572;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3577;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	public static final class327 field3578;
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	static final class327 field3579;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "[Lmk;"
+	)
+	static final class327[] field3582;
+	@ObfuscatedName("et")
+	@ObfuscatedSignature(
+		descriptor = "Lof;"
+	)
+	@Export("archive4")
+	static Archive archive4;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 959878177
+	)
+	public final int field3575;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -1090980179
+	)
+	public final int field3576;
 
 	static {
-		field3537 = new HashMap();
-		TimeZone var0;
-		synchronized(field3537) {
-			TimeZone var2 = (TimeZone)field3537.get("Europe/London");
-			if (var2 == null) {
-				var2 = TimeZone.getTimeZone("Europe/London");
-				field3537.put("Europe/London", var2);
-			}
+		field3585 = new class327(14, 0);
+		field3581 = new class327(15, 20);
+		field3574 = new class327(16, -2);
+		field3573 = new class327(18, -2);
+		field3572 = new class327(19, -2);
+		field3577 = new class327(20, 58);
+		field3578 = new class327(21, 37);
+		field3579 = new class327(27, 0);
+		field3582 = new class327[32];
+		class327[] var0 = new class327[]{field3572, field3573, field3585, field3574, field3579, field3581, field3578, field3577};
+		class327[] var1 = var0;
 
-			var0 = var2;
+		for (int var2 = 0; var2 < var1.length; ++var2) {
+			field3582[var1[var2].field3575] = var1[var2];
 		}
 
-		java.util.Calendar.getInstance(var0);
 	}
 
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;II[BII)I",
-		garbageValue = "1806911928"
-	)
-	@Export("encodeStringCp1252")
-	public static int encodeStringCp1252(CharSequence var0, int var1, int var2, byte[] var3, int var4) {
-		int var5 = var2 - var1;
-
-		for (int var6 = 0; var6 < var5; ++var6) {
-			char var7 = var0.charAt(var6 + var1);
-			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
-				var3[var6 + var4] = (byte)var7;
-			} else if (var7 == 8364) {
-				var3[var6 + var4] = -128;
-			} else if (var7 == 8218) {
-				var3[var6 + var4] = -126;
-			} else if (var7 == 402) {
-				var3[var6 + var4] = -125;
-			} else if (var7 == 8222) {
-				var3[var6 + var4] = -124;
-			} else if (var7 == 8230) {
-				var3[var6 + var4] = -123;
-			} else if (var7 == 8224) {
-				var3[var6 + var4] = -122;
-			} else if (var7 == 8225) {
-				var3[var6 + var4] = -121;
-			} else if (var7 == 710) {
-				var3[var6 + var4] = -120;
-			} else if (var7 == 8240) {
-				var3[var6 + var4] = -119;
-			} else if (var7 == 352) {
-				var3[var6 + var4] = -118;
-			} else if (var7 == 8249) {
-				var3[var6 + var4] = -117;
-			} else if (var7 == 338) {
-				var3[var6 + var4] = -116;
-			} else if (var7 == 381) {
-				var3[var6 + var4] = -114;
-			} else if (var7 == 8216) {
-				var3[var6 + var4] = -111;
-			} else if (var7 == 8217) {
-				var3[var6 + var4] = -110;
-			} else if (var7 == 8220) {
-				var3[var6 + var4] = -109;
-			} else if (var7 == 8221) {
-				var3[var6 + var4] = -108;
-			} else if (var7 == 8226) {
-				var3[var6 + var4] = -107;
-			} else if (var7 == 8211) {
-				var3[var6 + var4] = -106;
-			} else if (var7 == 8212) {
-				var3[var6 + var4] = -105;
-			} else if (var7 == 732) {
-				var3[var6 + var4] = -104;
-			} else if (var7 == 8482) {
-				var3[var6 + var4] = -103;
-			} else if (var7 == 353) {
-				var3[var6 + var4] = -102;
-			} else if (var7 == 8250) {
-				var3[var6 + var4] = -101;
-			} else if (var7 == 339) {
-				var3[var6 + var4] = -100;
-			} else if (var7 == 382) {
-				var3[var6 + var4] = -98;
-			} else if (var7 == 376) {
-				var3[var6 + var4] = -97;
-			} else {
-				var3[var6 + var4] = 63;
-			}
-		}
-
-		return var5;
-	}
-
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(IZII)V",
-		garbageValue = "1116126630"
-	)
-	public static final void method6176(int var0, boolean var1, int var2) {
-		if (var0 >= 8000 && var0 <= 48000) {
-			class511.field5136 = var0;
-			HttpContentType.PcmPlayer_stereo = var1;
-			PcmPlayer.field256 = var2;
-		} else {
-			throw new IllegalArgumentException();
-		}
+	class327(int var1, int var2) {
+		this.field3575 = var1;
+		this.field3576 = var2;
 	}
 }

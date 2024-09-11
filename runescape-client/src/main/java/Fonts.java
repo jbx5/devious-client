@@ -1,30 +1,33 @@
 import java.util.HashMap;
+import java.util.concurrent.ThreadPoolExecutor;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tz")
+@ObfuscatedName("tc")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("at")
+	static ThreadPoolExecutor field5251;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lob;Lob;)V"
+		descriptor = "(Lpo;Lpo;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
@@ -32,10 +35,10 @@ public class Fonts {
 		this.map = new HashMap();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "([Lto;B)Ljava/util/HashMap;",
-		garbageValue = "31"
+		descriptor = "([Ltw;B)Ljava/util/HashMap;",
+		garbageValue = "1"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
@@ -56,7 +59,24 @@ public class Fonts {
 				} else {
 					int var10 = var7.getGroupId(var9);
 					int var11 = var7.getFileId(var10, "");
-					var6 = MouseHandler.method658(var7, var8, var10, var11);
+					Font var12;
+					if (!HttpJsonRequestBody.method9207(var7, var10, var11)) {
+						var12 = null;
+					} else {
+						byte[] var14 = var8.takeFile(var10, var11);
+						Font var13;
+						if (var14 == null) {
+							var13 = null;
+						} else {
+							Font var15 = new Font(var14, HttpAuthenticationHeader.SpriteBuffer_xOffsets, Login.SpriteBuffer_yOffsets, GrandExchangeEvents.SpriteBuffer_spriteWidths, ModelData0.SpriteBuffer_spriteHeights, SpriteBufferProperties.SpriteBuffer_spritePalette, MusicPatchPcmStream.SpriteBuffer_pixels);
+							class151.method3492();
+							var13 = var15;
+						}
+
+						var12 = var13;
+					}
+
+					var6 = var12;
 				}
 
 				if (var6 != null) {

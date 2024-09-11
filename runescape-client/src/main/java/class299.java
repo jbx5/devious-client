@@ -1,63 +1,33 @@
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lz")
+@ObfuscatedName("lx")
 public class class299 {
-	@ObfuscatedName("bf")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lvo;"
+		descriptor = "Llx;"
 	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-
-	@ObfuscatedName("mn")
+	static final class299 field3232;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lnq;IIZB)V",
-		garbageValue = "0"
+		descriptor = "Llx;"
 	)
-	@Export("alignWidgetSize")
-	static void alignWidgetSize(Widget var0, int var1, int var2, boolean var3) {
-		int var4 = var0.width;
-		int var5 = var0.height;
-		if (var0.widthAlignment == 0) {
-			var0.width = var0.rawWidth;
-		} else if (var0.widthAlignment == 1) {
-			var0.width = var1 - var0.rawWidth;
-		} else if (var0.widthAlignment == 2) {
-			var0.width = var0.rawWidth * var1 >> 14;
-		}
+	static final class299 field3227;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -1922922687
+	)
+	@Export("value")
+	final int value;
 
-		if (var0.heightAlignment == 0) {
-			var0.height = var0.rawHeight;
-		} else if (var0.heightAlignment == 1) {
-			var0.height = var2 - var0.rawHeight;
-		} else if (var0.heightAlignment == 2) {
-			var0.height = var2 * var0.rawHeight >> 14;
-		}
+	static {
+		field3232 = new class299(0);
+		field3227 = new class299(1);
+	}
 
-		if (var0.widthAlignment == 4) {
-			var0.width = var0.height * var0.field3820 / var0.field3821;
-		}
-
-		if (var0.heightAlignment == 4) {
-			var0.height = var0.field3821 * var0.width / var0.field3820;
-		}
-
-		if (var0.contentType == 1337) {
-			Client.viewportWidget = var0;
-		}
-
-		if (var0.type == 12) {
-			var0.method6971().method6645(var0.width, var0.height);
-		}
-
-		if (var3 && var0.onResize != null && (var4 != var0.width || var5 != var0.height)) {
-			ScriptEvent var6 = new ScriptEvent();
-			var6.widget = var0;
-			var6.args = var0.onResize;
-			Client.scriptEvents.addFirst(var6);
-		}
-
+	class299(int var1) {
+		this.value = var1;
 	}
 }

@@ -4,86 +4,90 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sv")
+@ObfuscatedName("su")
 @Implements("WorldEntity")
 public class WorldEntity implements Entity {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 952063911
+		intValue = 171277605
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1602664997
+		intValue = -1236389361
+	)
+	public int field5006;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 187174063
 	)
 	@Export("rotationAngle")
 	public int rotationAngle;
-	@ObfuscatedName("an")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1809855475
+		intValue = -604114995
 	)
 	@Export("movementSpeed")
 	public int movementSpeed;
-	@ObfuscatedName("au")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 141059653
+		intValue = 562800021
 	)
 	@Export("remainingMovementSteps")
 	public int remainingMovementSteps;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1658531309
+		intValue = -962238781
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1879734865
+		intValue = -1729802843
 	)
 	@Export("tileHeight")
 	public int tileHeight;
-	@ObfuscatedName("am")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1974017269
+		intValue = -1958743463
 	)
 	@Export("y")
 	public int y;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1392776237
+		intValue = 1295026153
 	)
 	@Export("currentRotationAngle")
 	public int currentRotationAngle;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Ldy;"
+		descriptor = "Ldd;"
 	)
-	@Export("worldView")
-	public WorldView worldView;
-	@ObfuscatedName("ad")
+	public WorldView field5007;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 1642487981
+		intValue = -553403479
 	)
 	@Export("steps")
 	int steps;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ad")
 	@Export("directionsX")
 	public int[] directionsX;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@Export("directionsY")
 	public int[] directionsY;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "[Lko;"
+		descriptor = "[Lkk;"
 	)
 	@Export("moveSpeeds")
 	MoveSpeed[] moveSpeeds;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIILgj;)V"
+		descriptor = "(ILdd;)V"
 	)
-	public WorldEntity(int var1, int var2, int var3, int var4, class173 var5) {
+	public WorldEntity(int var1, WorldView var2) {
 		this.plane = 0;
 		this.rotationAngle = 0;
 		this.movementSpeed = 2;
@@ -96,53 +100,53 @@ public class WorldEntity implements Entity {
 		this.directionsX = new int[10];
 		this.directionsY = new int[10];
 		this.moveSpeeds = new MoveSpeed[10];
-		this.worldView = new WorldView(var1, var2, var3, var4, var5);
+		this.field5007 = var2;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-184820238"
+		garbageValue = "2084253353"
 	)
 	@Export("getX")
 	public int getX() {
 		return this.x;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "0"
+		descriptor = "(S)I",
+		garbageValue = "18679"
 	)
 	@Export("getY")
 	public int getY() {
 		return this.y;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1980644711"
+		garbageValue = "371855163"
 	)
 	@Export("getPlane")
 	public int getPlane() {
 		return this.plane;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "8"
+		garbageValue = "-92"
 	)
 	@Export("initScenePlane")
 	public void initScenePlane() {
-		this.worldView.scene.Scene_plane = this.worldView.plane;
+		this.field5007.scene.Scene_plane = this.field5007.plane;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(IILko;I)V",
-		garbageValue = "1670158766"
+		descriptor = "(IILkk;I)V",
+		garbageValue = "-236634947"
 	)
 	@Export("move")
 	public final void move(int var1, int var2, MoveSpeed var3) {
@@ -158,10 +162,10 @@ public class WorldEntity implements Entity {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "1437847093"
+		garbageValue = "1522724135"
 	)
 	@Export("setPosition")
 	public void setPosition(int var1, int var2) {
@@ -169,14 +173,14 @@ public class WorldEntity implements Entity {
 		this.directionsX[0] = var1;
 		this.directionsY[0] = var2;
 		byte var3 = 1;
-		this.x = var3 * 64 + this.directionsX[0] * 128;
-		this.y = this.directionsY[0] * 128 + var3 * 64;
+		this.x = this.directionsX[0] * 128 + var3 * 64;
+		this.y = var3 * 64 + this.directionsY[0] * 128;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IILko;S)V",
-		garbageValue = "128"
+		descriptor = "(IILkk;I)V",
+		garbageValue = "-2118276083"
 	)
 	@Export("updatePosition")
 	final void updatePosition(int var1, int var2, MoveSpeed var3) {
@@ -195,10 +199,10 @@ public class WorldEntity implements Entity {
 		this.moveSpeeds[0] = var3;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "4"
+		descriptor = "(I)V",
+		garbageValue = "88744644"
 	)
 	@Export("updateMovement")
 	public final void updateMovement() {
@@ -207,7 +211,7 @@ public class WorldEntity implements Entity {
 			boolean var2 = true;
 			boolean var3 = true;
 			int var4 = var1 > 1024 ? -1 : 1;
-			this.currentRotationAngle += (this.remainingMovementSteps > 0 ? 1 + this.movementSpeed : this.movementSpeed) * var4;
+			this.currentRotationAngle += var4 * (this.remainingMovementSteps > 0 ? this.movementSpeed + 1 : this.movementSpeed);
 			--this.remainingMovementSteps;
 			if (var1 < this.movementSpeed || var1 > 2048 - this.movementSpeed) {
 				this.currentRotationAngle = this.rotationAngle;
@@ -237,7 +241,7 @@ public class WorldEntity implements Entity {
 				}
 
 				int var13 = (int)((float)var9 * var7.moveSpeed);
-				if (var5 != var10 || var11 != var6) {
+				if (var5 != var10 || var6 != var11) {
 					if (var10 < var5) {
 						this.x += var13;
 						if (this.x > var5) {

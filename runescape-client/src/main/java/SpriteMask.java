@@ -4,30 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nm")
+@ObfuscatedName("nl")
 @Implements("SpriteMask")
 public class SpriteMask extends DualNode {
-	@ObfuscatedName("vc")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		longValue = -452167066215132521L
-	)
-	static long field3697;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -2129642777
+		intValue = 1964693849
 	)
 	@Export("width")
 	public final int width;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1891020969
+		intValue = -1729230849
 	)
 	@Export("height")
 	public final int height;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@Export("xWidths")
 	public final int[] xWidths;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@Export("xStarts")
 	public final int[] xStarts;
 
@@ -38,10 +33,10 @@ public class SpriteMask extends DualNode {
 		this.xStarts = var4;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-1813707489"
+		garbageValue = "-137163805"
 	)
 	@Export("contains")
 	public boolean contains(int var1, int var2) {
@@ -53,60 +48,5 @@ public class SpriteMask extends DualNode {
 		}
 
 		return false;
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1579469893"
-	)
-	static int method6497(int var0, int var1) {
-		FloorOverlayDefinition var2 = HealthBarDefinition.method4870(var0);
-		if (var2 == null) {
-			return var1;
-		} else {
-			int var3;
-			int var4;
-			if (var2.secondaryRgb >= 0) {
-				var3 = class358.method6931(var2.secondaryHue, var2.secondarySaturation, var2.secondaryLightness);
-				var4 = UserComparator4.method3043(var3, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var4] | -16777216;
-			} else if (var2.texture >= 0) {
-				var3 = UserComparator4.method3043(Rasterizer3D.clips.Rasterizer3D_textureLoader.getAverageTextureRGB(var2.texture), 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var3] | -16777216;
-			} else if (var2.primaryRgb == 16711935) {
-				return var1;
-			} else {
-				var3 = class358.method6931(var2.hue, var2.saturation, var2.lightness);
-				var4 = UserComparator4.method3043(var3, 96);
-				return Rasterizer3D.Rasterizer3D_colorPalette[var4] | -16777216;
-			}
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lvg;J)V"
-	)
-	static void method6493(Buffer var0, long var1) {
-		var1 /= 10L;
-		if (var1 < 0L) {
-			var1 = 0L;
-		} else if (var1 > 65535L) {
-			var1 = 65535L;
-		}
-
-		var0.writeShort((int)var1);
-	}
-
-	@ObfuscatedName("oa")
-	@ObfuscatedSignature(
-		descriptor = "(Lnq;I)I",
-		garbageValue = "1458516118"
-	)
-	@Export("getWidgetFlags")
-	static int getWidgetFlags(Widget var0) {
-		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32));
-		return var1 != null ? var1.integer : var0.flags;
 	}
 }

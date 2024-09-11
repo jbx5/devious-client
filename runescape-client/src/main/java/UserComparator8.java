@@ -1,15 +1,26 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
+@ObfuscatedName("ey")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("wv")
+	@ObfuscatedSignature(
+		descriptor = "Ltu;"
+	)
+	@Export("worldMap")
+	static WorldMap worldMap;
+	@ObfuscatedName("al")
+	@ObfuscatedSignature(
+		descriptor = "Lvt;"
+	)
+	@Export("logoSprite")
+	static IndexedSprite logoSprite;
+	@ObfuscatedName("ja")
+	static byte[][] field1516;
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -17,10 +28,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lsc;Lsc;I)I",
-		garbageValue = "-1084832970"
+		descriptor = "(Lsq;Lsq;I)I",
+		garbageValue = "1738260536"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -39,91 +50,71 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljm;",
-		garbageValue = "-1939442594"
+		descriptor = "(Ljava/lang/String;II)V",
+		garbageValue = "-1904455651"
 	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static final void method3186(String var0, int var1) {
+		PacketBufferNode var2 = class141.getPacketBufferNode(ClientPacket.field3371, Client.packetWriter.isaacCipher);
+		var2.packetBuffer.writeByte(class536.stringCp1252NullTerminatedByteSize(var0) + 1);
+		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
+		var2.packetBuffer.writeByteAdd(var1);
+		Client.packetWriter.addNode(var2);
+	}
+
+	@ObfuscatedName("kw")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIIIIIIILdi;I)V",
+		garbageValue = "-1934721450"
+	)
+	static void method3185(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, Player var13) {
+		ObjectComposition var14 = class273.getObjectDefinition(var6);
+		int var15;
+		int var16;
+		if (var4 != 1 && var4 != 3) {
+			var15 = var14.sizeX;
+			var16 = var14.sizeY;
 		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			var15 = var14.sizeY;
+			var16 = var14.sizeX;
+		}
+
+		int var17 = (var15 >> 1) + var1;
+		int var18 = (var15 + 1 >> 1) + var1;
+		int var19 = (var16 >> 1) + var2;
+		int var20 = var2 + (var16 + 1 >> 1);
+		int[][] var21 = class162.worldView.tileHeights[var0];
+		int var22 = var21[var17][var20] + var21[var18][var19] + var21[var17][var19] + var21[var18][var20] >> 2;
+		int var23 = (var1 << 7) + (var15 << 6);
+		int var24 = (var2 << 7) + (var16 << 6);
+		Model var25 = var14.getModel(var3, var4, var21, var23, var22, var24);
+		if (var25 != null) {
+			class165.method3680(class162.worldView, var0, var1, var2, var5, -1, 0, 0, 31, var7 + 1, var8 + 1);
+			var13.animationCycleStart = var7 + Client.cycle;
+			var13.animationCycleEnd = var8 + Client.cycle;
+			var13.model0 = var25;
+			var13.field1152 = var1 * 128 + var15 * 64;
+			var13.field1150 = var2 * 128 + var16 * 64;
+			var13.tileHeight2 = var22;
+			int var26;
+			if (var9 > var11) {
+				var26 = var9;
+				var9 = var11;
+				var11 = var26;
 			}
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "([I[IB)V",
-		garbageValue = "-42"
-	)
-	public static void method3049(int[] var0, int[] var1) {
-		if (var0 != null && var1 != null) {
-			KitDefinition.ByteArrayPool_alternativeSizes = var0;
-			ByteArrayPool.ByteArrayPool_altSizeArrayCounts = new int[var0.length];
-			MoveSpeed.ByteArrayPool_arrays = new byte[var0.length][][];
-
-			for (int var2 = 0; var2 < KitDefinition.ByteArrayPool_alternativeSizes.length; ++var2) {
-				MoveSpeed.ByteArrayPool_arrays[var2] = new byte[var1[var2]][];
-				ByteArrayPool.field4832.add(var0[var2]);
+			if (var10 > var12) {
+				var26 = var10;
+				var10 = var12;
+				var12 = var26;
 			}
 
-			Collections.sort(ByteArrayPool.field4832);
-		} else {
-			KitDefinition.ByteArrayPool_alternativeSizes = null;
-			ByteArrayPool.ByteArrayPool_altSizeArrayCounts = null;
-			MoveSpeed.ByteArrayPool_arrays = null;
-			ByteArrayPool.field4832.clear();
-			ByteArrayPool.field4832.add(100);
-			ByteArrayPool.field4832.add(5000);
-			ByteArrayPool.field4832.add(10000);
-			ByteArrayPool.field4832.add(30000);
+			var13.minX = var9 + var1;
+			var13.maxX = var11 + var1;
+			var13.minY = var10 + var2;
+			var13.maxY = var2 + var12;
 		}
-	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lob;IB)V",
-		garbageValue = "30"
-	)
-	public static void method3052(AbstractArchive var0, int var1) {
-		if (!class332.field3565.isEmpty()) {
-			ArrayList var2 = new ArrayList();
-			Iterator var3 = class332.field3565.iterator();
-
-			while (var3.hasNext()) {
-				MusicSong var4 = (MusicSong)var3.next();
-				var4.field3679 = false;
-				var4.field3678 = false;
-				var4.field3680 = false;
-				var4.field3681 = false;
-				var4.musicTrackArchive = var0;
-				var4.musicTrackVolume = var1;
-				var4.field3676 = 0.0F;
-				var2.add(var4);
-			}
-
-			class53.method1051(var2, class332.musicPlayerStatus, class332.field3568, class332.field3570, class332.field3567, false);
-		}
-	}
-
-	@ObfuscatedName("lo")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1738622705"
-	)
-	static final boolean method3046() {
-		return Client.isMenuOpen;
 	}
 }

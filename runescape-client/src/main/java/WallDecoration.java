@@ -1,75 +1,76 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hz")
+@ObfuscatedName("kg")
 @Implements("WallDecoration")
 public final class WallDecoration {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1015679727
+		intValue = 1674495999
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1329778125
+		intValue = -365844928
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -291940047
-	)
-	@Export("xOffset")
-	int xOffset;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = -2059362611
+		intValue = -1988077953
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -221612035
+		intValue = 1744270061
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 2078493373
+		intValue = -1905786199
 	)
 	@Export("orientation2")
 	int orientation2;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1898507483
+		intValue = 1050358309
+	)
+	@Export("xOffset")
+	int xOffset;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = 640285173
 	)
 	@Export("yOffset")
 	int yOffset;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lhs;"
+		descriptor = "Lju;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lhs;"
+		descriptor = "Lju;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		longValue = 1381089231700164173L
+		longValue = -4784704960526427281L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = 214280365
+		intValue = 1357024307
 	)
 	@Export("flags")
 	int flags;
@@ -77,5 +78,57 @@ public final class WallDecoration {
 	WallDecoration() {
 		this.tag = 0L;
 		this.flags = 0;
+	}
+
+	@ObfuscatedName("cj")
+	@ObfuscatedSignature(
+		descriptor = "(Lux;I)Ljava/lang/Object;",
+		garbageValue = "-1960008918"
+	)
+	static Object method5536(class537 var0) {
+		if (var0 == null) {
+			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+		} else {
+			switch(var0.field5330) {
+			case 1:
+				return Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
+			case 2:
+				return Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+			default:
+				throw new IllegalStateException("popValueOfType() failure - unsupported type");
+			}
+		}
+	}
+
+	@ObfuscatedName("or")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "954419119"
+	)
+	static final void method5537() {
+		Iterator var0 = Client.topLevelWorldView.iterator();
+
+		while (var0.hasNext()) {
+			WorldView var1 = (WorldView)var0.next();
+
+			for (int var2 = 0; var2 < Client.field717.playerCount; ++var2) {
+				Player var3 = var1.players[Client.field717.playerIndices[var2]];
+				if (var3 != null) {
+					var3.clearIsFriend();
+				}
+			}
+		}
+
+		var0 = Messages.Messages_hashTable.iterator();
+
+		while (var0.hasNext()) {
+			Message var4 = (Message)var0.next();
+			var4.clearIsFromFriend();
+		}
+
+		if (class168.friendsChat != null) {
+			class168.friendsChat.clearFriends();
+		}
+
 	}
 }

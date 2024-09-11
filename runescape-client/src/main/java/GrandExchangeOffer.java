@@ -4,39 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pc")
+@ObfuscatedName("pj")
 @Implements("GrandExchangeOffer")
 public class GrandExchangeOffer {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@Export("state")
 	byte state;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -642298157
+		intValue = -1153673121
 	)
 	@Export("id")
 	public int id;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -2101804471
+		intValue = -1825403129
 	)
 	@Export("unitPrice")
 	public int unitPrice;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 2118971907
+		intValue = -198478463
 	)
 	@Export("totalQuantity")
 	public int totalQuantity;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1407557
+		intValue = 2120300859
 	)
 	@Export("currentQuantity")
 	public int currentQuantity;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1183135431
+		intValue = -1073487467
 	)
 	@Export("currentPrice")
 	public int currentPrice;
@@ -45,7 +45,7 @@ public class GrandExchangeOffer {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;Z)V",
+		descriptor = "(Lvf;Z)V",
 		garbageValue = "0"
 	)
 	public GrandExchangeOffer(Buffer var1, boolean var2) {
@@ -57,20 +57,20 @@ public class GrandExchangeOffer {
 		this.currentPrice = var1.readInt();
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-4"
+		garbageValue = "-47"
 	)
 	@Export("status")
 	public int status() {
 		return this.state & 7;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1987738313"
+		descriptor = "(B)I",
+		garbageValue = "56"
 	)
 	@Export("type")
 	public int type() {
@@ -80,19 +80,19 @@ public class GrandExchangeOffer {
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "126"
+		garbageValue = "88"
 	)
-	void method7432(int var1) {
+	void method7702(int var1) {
 		this.state &= -8;
 		this.state = (byte)(this.state | var1 & 7);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-113"
+		descriptor = "(II)V",
+		garbageValue = "-656070241"
 	)
-	void method7434(int var1) {
+	void method7703(int var1) {
 		this.state &= -9;
 		if (var1 == 1) {
 			this.state = (byte)(this.state | 8);
@@ -100,43 +100,87 @@ public class GrandExchangeOffer {
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ip")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lih;",
-		garbageValue = "-1930219150"
+		descriptor = "(I)V",
+		garbageValue = "814269094"
 	)
-	@Export("VarpDefinition_get")
-	public static VarpDefinition VarpDefinition_get(int var0) {
-		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static final void method7712() {
+		if (HealthBarConfig.pcmPlayer1 != null) {
+			HealthBarConfig.pcmPlayer1.run();
+		}
+
+	}
+
+	@ObfuscatedName("lm")
+	@ObfuscatedSignature(
+		descriptor = "(Ldd;Lva;B)V",
+		garbageValue = "-19"
+	)
+	static final void method7697(WorldView var0, PacketBuffer var1) {
+		var1.importIndex();
+		int var2 = var1.readBits(8);
+		int var3;
+		if (var2 < var0.field1366) {
+			for (var3 = var2; var3 < var0.field1366; ++var3) {
+				Client.defaultRotations[++Client.field525 - 1] = var0.npcIndices[var3];
+			}
+		}
+
+		if (var2 > var0.field1366) {
+			throw new RuntimeException("");
 		} else {
-			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
-			var1 = new VarpDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+			var0.field1366 = 0;
+
+			for (var3 = 0; var3 < var2; ++var3) {
+				int var4 = var0.npcIndices[var3];
+				NPC var5 = var0.field1361[var4];
+				int var6 = var1.readBits(1);
+				if (var6 == 0) {
+					var0.npcIndices[++var0.field1366 - 1] = var4;
+					var5.field1282 = Client.cycle;
+				} else {
+					int var7 = var1.readBits(2);
+					if (var7 == 0) {
+						var0.npcIndices[++var0.field1366 - 1] = var4;
+						var5.field1282 = Client.cycle;
+						Client.npcIndices[++Client.npcCount - 1] = var4;
+					} else {
+						int var8;
+						int var9;
+						if (var7 == 1) {
+							var0.npcIndices[++var0.field1366 - 1] = var4;
+							var5.field1282 = Client.cycle;
+							var8 = var1.readBits(3);
+							var5.method2877(var8, MoveSpeed.field3036);
+							var9 = var1.readBits(1);
+							if (var9 == 1) {
+								Client.npcIndices[++Client.npcCount - 1] = var4;
+							}
+						} else if (var7 == 2) {
+							var0.npcIndices[++var0.field1366 - 1] = var4;
+							var5.field1282 = Client.cycle;
+							if (var1.readBits(1) == 1) {
+								var8 = var1.readBits(3);
+								var5.method2877(var8, MoveSpeed.field3039);
+								var9 = var1.readBits(3);
+								var5.method2877(var9, MoveSpeed.field3039);
+							} else {
+								var8 = var1.readBits(3);
+								var5.method2877(var8, MoveSpeed.field3037);
+							}
+
+							var8 = var1.readBits(1);
+							if (var8 == 1) {
+								Client.npcIndices[++Client.npcCount - 1] = var4;
+							}
+						} else if (var7 == 3) {
+							Client.defaultRotations[++Client.field525 - 1] = var4;
+						}
+					}
+				}
 			}
 
-			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
-			return var1;
 		}
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1169649230"
-	)
-	public static int method7446(int var0) {
-		return var0 != 0 && var0 != 1 ? -1 : 0;
-	}
-
-	@ObfuscatedName("is")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "101"
-	)
-	static final int method7429(int var0) {
-		return Math.abs(var0 - class264.cameraYaw) > 1024 ? var0 + (var0 < class264.cameraYaw ? 1 : -1) * 2048 : var0;
 	}
 }

@@ -1,90 +1,90 @@
-import java.io.File;
 import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("eq")
+@ObfuscatedName("el")
 @Implements("PacketWriter")
 public class PacketWriter {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsx;"
+		descriptor = "Lsk;"
 	)
 	@Export("socket")
 	AbstractSocket socket;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "Lpr;"
 	)
 	@Export("packetBufferNodes")
 	IterableNodeDeque packetBufferNodes;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1780254277
+		intValue = 422496079
 	)
 	@Export("bufferSize")
 	int bufferSize;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lvg;"
+		descriptor = "Lvf;"
 	)
 	@Export("buffer")
 	Buffer buffer;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lvu;"
+		descriptor = "Lvd;"
 	)
 	@Export("isaacCipher")
 	public IsaacCipher isaacCipher;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lvs;"
+		descriptor = "Lva;"
 	)
 	@Export("packetBuffer")
 	PacketBuffer packetBuffer;
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "Lml;"
+		descriptor = "Lmj;"
 	)
 	@Export("serverPacket")
 	ServerPacket serverPacket;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 414239573
+		intValue = -735417501
 	)
 	@Export("serverPacketLength")
 	int serverPacketLength;
-	@ObfuscatedName("ae")
-	boolean field1452;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("au")
+	boolean field1484;
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 1393121097
+		intValue = 888815997
 	)
-	int field1453;
-	@ObfuscatedName("aq")
+	int field1489;
+	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -1277978583
+		intValue = 749185065
 	)
 	@Export("pendingWrites")
 	int pendingWrites;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lml;"
+		descriptor = "Lmj;"
 	)
-	ServerPacket field1455;
-	@ObfuscatedName("aj")
+	ServerPacket field1492;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lml;"
+		descriptor = "Lmj;"
 	)
-	ServerPacket field1448;
-	@ObfuscatedName("as")
+	ServerPacket field1488;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lml;"
+		descriptor = "Lmj;"
 	)
-	ServerPacket field1444;
+	ServerPacket field1493;
 
 	PacketWriter() {
 		this.packetBufferNodes = new IterableNodeDeque();
@@ -93,15 +93,15 @@ public class PacketWriter {
 		this.packetBuffer = new PacketBuffer(40000);
 		this.serverPacket = null;
 		this.serverPacketLength = 0;
-		this.field1452 = true;
-		this.field1453 = 0;
+		this.field1484 = true;
+		this.field1489 = 0;
 		this.pendingWrites = 0;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-58595112"
+		garbageValue = "364411903"
 	)
 	@Export("clearBuffer")
 	final void clearBuffer() {
@@ -109,10 +109,10 @@ public class PacketWriter {
 		this.bufferSize = 0;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1979538498"
+		garbageValue = "799617295"
 	)
 	@Export("flush")
 	final void flush() throws IOException {
@@ -137,10 +137,10 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lmf;I)V",
-		garbageValue = "2114456816"
+		descriptor = "(Lmq;I)V",
+		garbageValue = "1810676977"
 	)
 	@Export("addNode")
 	public final void addNode(PacketBufferNode var1) {
@@ -150,10 +150,10 @@ public class PacketWriter {
 		this.bufferSize += var1.index;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lsx;I)V",
-		garbageValue = "-1807591513"
+		descriptor = "(Lsk;I)V",
+		garbageValue = "702526911"
 	)
 	@Export("setSocket")
 	void setSocket(AbstractSocket var1) {
@@ -163,7 +163,7 @@ public class PacketWriter {
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-80816886"
+		garbageValue = "455731516"
 	)
 	@Export("close")
 	void close() {
@@ -174,64 +174,192 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-64550408"
+		garbageValue = "-1804750267"
 	)
 	@Export("removeSocket")
 	void removeSocket() {
 		this.socket = null;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lsx;",
-		garbageValue = "-1533368825"
+		descriptor = "(I)Lsk;",
+		garbageValue = "1302537932"
 	)
 	@Export("getSocket")
 	AbstractSocket getSocket() {
 		return this.socket;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZB)Lum;",
-		garbageValue = "-57"
+		descriptor = "(ILsl;Lof;B)V",
+		garbageValue = "1"
 	)
-	@Export("getPreferencesFile")
-	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
-		File var3 = new File(class423.cacheDir, "preferences" + var0 + ".dat");
-		if (var3.exists()) {
-			try {
-				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
-				return var10;
-			} catch (IOException var9) {
+	static void method3121(int var0, ArchiveDisk var1, Archive var2) {
+		ArchiveDiskAction var3 = new ArchiveDiskAction();
+		var3.type = 1;
+		var3.key = (long)var0;
+		var3.archiveDisk = var1;
+		var3.archive = var2;
+		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
+			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
+		}
+
+		synchronized(ArchiveDiskActionHandler.field4494) {
+			if (ArchiveDiskActionHandler.field4496 == 0) {
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread = new Thread(new ArchiveDiskActionHandler());
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setDaemon(true);
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.start();
+				ArchiveDiskActionHandler.ArchiveDiskActionHandler_thread.setPriority(5);
+			}
+
+			ArchiveDiskActionHandler.field4496 = 600;
+		}
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(ILdt;ZB)I",
+		garbageValue = "-55"
+	)
+	static int method3110(int var0, Script var1, boolean var2) {
+		int var4;
+		int var9;
+		if (var0 == ScriptOpcodes.CC_CREATE) {
+			class320.Interpreter_intStackSize -= 3;
+			var9 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
+			int var11 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 2];
+			if (var4 == 0) {
+				throw new RuntimeException();
+			} else {
+				Widget var6 = TaskHandler.widgetDefinition.method6841(var9);
+				if (var6.children == null) {
+					var6.children = new Widget[var11 + 1];
+				}
+
+				if (var6.children.length <= var11) {
+					Widget[] var7 = new Widget[var11 + 1];
+
+					for (int var8 = 0; var8 < var6.children.length; ++var8) {
+						var7[var8] = var6.children[var8];
+					}
+
+					var6.children = var7;
+				}
+
+				if (var11 > 0 && var6.children[var11 - 1] == null) {
+					throw new RuntimeException("" + (var11 - 1));
+				} else {
+					Widget var12 = new Widget();
+					var12.type = var4;
+					var12.parentId = var12.id = var6.id;
+					var12.childIndex = var11;
+					var12.isIf3 = true;
+					if (var4 == 12) {
+						var12.method7267();
+						var12.method7268().method7189(new class110(var12));
+						var12.method7268().method7000(new class111(var12));
+					}
+
+					var6.children[var11] = var12;
+					if (var2) {
+						Interpreter.scriptDotWidget = var12;
+					} else {
+						class464.scriptActiveWidget = var12;
+					}
+
+					SecureRandomCallable.invalidateWidget(var6);
+					return 1;
+				}
+			}
+		} else {
+			Widget var3;
+			if (var0 == ScriptOpcodes.CC_DELETE) {
+				var3 = var2 ? Interpreter.scriptDotWidget : class464.scriptActiveWidget;
+				Widget var10 = TaskHandler.widgetDefinition.method6841(var3.id);
+				var10.children[var3.childIndex] = null;
+				SecureRandomCallable.invalidateWidget(var10);
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_DELETEALL) {
+				var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+				var3.children = null;
+				SecureRandomCallable.invalidateWidget(var3);
+				return 1;
+			} else if (var0 != ScriptOpcodes.CC_FIND) {
+				if (var0 == ScriptOpcodes.IF_FIND) {
+					var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+					if (var3 != null) {
+						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 1;
+						if (var2) {
+							Interpreter.scriptDotWidget = var3;
+						} else {
+							class464.scriptActiveWidget = var3;
+						}
+					} else {
+						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+					}
+
+					return 1;
+				} else {
+					return 2;
+				}
+			} else {
+				class320.Interpreter_intStackSize -= 2;
+				var9 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
+				var4 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
+				Widget var5 = TaskHandler.widgetDefinition.getWidgetChild(var9, var4);
+				if (var5 != null && var4 != -1) {
+					Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 1;
+					if (var2) {
+						Interpreter.scriptDotWidget = var5;
+					} else {
+						class464.scriptActiveWidget = var5;
+					}
+				} else {
+					Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
 			}
 		}
+	}
 
-		String var4 = "";
-		if (class532.cacheGamebuild == 33) {
-			var4 = "_rc";
-		} else if (class532.cacheGamebuild == 34) {
-			var4 = "_wip";
-		}
-
-		File var5 = new File(WorldMapLabelSize.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
-		AccessFile var6;
-		if (!var2 && var5.exists()) {
-			try {
-				var6 = new AccessFile(var5, "rw", 10000L);
-				return var6;
-			} catch (IOException var8) {
+	@ObfuscatedName("ne")
+	@ObfuscatedSignature(
+		descriptor = "(Lny;I)Z",
+		garbageValue = "-72720997"
+	)
+	@Export("runCs1")
+	static final boolean runCs1(Widget var0) {
+		if (var0.cs1Comparisons == null) {
+			return false;
+		} else {
+			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
+				int var2 = ClientPreferences.method2777(var0, var1);
+				int var3 = var0.cs1ComparisonValues[var1];
+				if (var0.cs1Comparisons[var1] == 2) {
+					if (var2 >= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 3) {
+					if (var2 <= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 4) {
+					if (var3 == var2) {
+						return false;
+					}
+				} else if (var3 != var2) {
+					return false;
+				}
 			}
-		}
 
-		try {
-			var6 = new AccessFile(var3, "rw", 10000L);
-			return var6;
-		} catch (IOException var7) {
-			throw new RuntimeException();
+			return true;
 		}
 	}
 }

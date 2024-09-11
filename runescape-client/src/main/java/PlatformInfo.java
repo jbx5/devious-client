@@ -7,130 +7,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("te")
+@ObfuscatedName("tq")
 @Implements("PlatformInfo")
-public class PlatformInfo extends Node implements class115 {
-	@ObfuscatedName("bd")
+public class PlatformInfo extends Node implements class117 {
+	@ObfuscatedName("bs")
 	@ObfuscatedGetter(
-		intValue = 1314936807
+		intValue = 1616682233
 	)
 	@Export("os")
 	public int os;
-	@ObfuscatedName("bh")
+	@ObfuscatedName("bw")
 	@Export("arch64")
 	boolean arch64;
-	@ObfuscatedName("bx")
+	@ObfuscatedName("ba")
 	@ObfuscatedGetter(
-		intValue = 1111569501
+		intValue = -1949441307
 	)
 	@Export("osVersion")
 	int osVersion;
-	@ObfuscatedName("bv")
+	@ObfuscatedName("bj")
 	@ObfuscatedGetter(
-		intValue = 116426327
+		intValue = 1769428713
 	)
 	@Export("vendor")
 	int vendor;
-	@ObfuscatedName("bu")
+	@ObfuscatedName("bp")
 	@ObfuscatedGetter(
-		intValue = 2051483645
+		intValue = 373119321
 	)
 	@Export("javaMajor")
 	int javaMajor;
-	@ObfuscatedName("bp")
+	@ObfuscatedName("by")
 	@ObfuscatedGetter(
-		intValue = -706448811
+		intValue = -183899291
 	)
 	@Export("javaMinor")
 	int javaMinor;
-	@ObfuscatedName("br")
+	@ObfuscatedName("bb")
 	@ObfuscatedGetter(
-		intValue = 611204877
+		intValue = -16770381
 	)
 	@Export("javaPatch")
 	int javaPatch;
-	@ObfuscatedName("bf")
+	@ObfuscatedName("bi")
 	@Export("field4524")
 	boolean field4524;
-	@ObfuscatedName("bq")
+	@ObfuscatedName("bg")
 	@ObfuscatedGetter(
-		intValue = 664067877
+		intValue = 207390371
 	)
 	@Export("maxMemory")
 	int maxMemory;
-	@ObfuscatedName("bt")
+	@ObfuscatedName("bl")
 	@ObfuscatedGetter(
-		intValue = -757261103
+		intValue = 1709552185
 	)
 	@Export("cpuCores")
 	int cpuCores;
-	@ObfuscatedName("be")
+	@ObfuscatedName("bu")
 	@ObfuscatedGetter(
-		intValue = 1667643679
+		intValue = -803732151
 	)
 	@Export("field5105")
 	int field5105;
-	@ObfuscatedName("ba")
+	@ObfuscatedName("br")
 	@ObfuscatedGetter(
-		intValue = -257385959
+		intValue = 1470888797
 	)
 	@Export("clockSpeed")
 	int clockSpeed;
-	@ObfuscatedName("bn")
+	@ObfuscatedName("bo")
 	@Export("field4536")
 	String field4536;
-	@ObfuscatedName("bw")
+	@ObfuscatedName("bv")
 	@Export("field4541")
 	String field4541;
-	@ObfuscatedName("bk")
+	@ObfuscatedName("bt")
 	@Export("field5103")
 	String field5103;
-	@ObfuscatedName("bs")
+	@ObfuscatedName("bq")
 	@Export("field5110")
 	String field5110;
-	@ObfuscatedName("bb")
+	@ObfuscatedName("bk")
 	@ObfuscatedGetter(
-		intValue = 766199745
+		intValue = 704870187
 	)
 	@Export("field4512")
 	int field4512;
-	@ObfuscatedName("by")
+	@ObfuscatedName("be")
 	@ObfuscatedGetter(
-		intValue = 389040327
+		intValue = -1111471375
 	)
 	@Export("field5112")
 	int field5112;
-	@ObfuscatedName("bl")
+	@ObfuscatedName("bc")
 	@ObfuscatedGetter(
-		intValue = 1847549525
+		intValue = 1982836533
 	)
 	@Export("field5089")
 	int field5089;
-	@ObfuscatedName("cx")
+	@ObfuscatedName("cn")
 	@ObfuscatedGetter(
-		intValue = 704160349
+		intValue = -451292239
 	)
 	@Export("field5114")
 	int field5114;
-	@ObfuscatedName("cu")
+	@ObfuscatedName("ch")
 	@Export("field4537")
 	String field4537;
-	@ObfuscatedName("cz")
+	@ObfuscatedName("cf")
 	@Export("field5116")
 	String field5116;
-	@ObfuscatedName("cm")
+	@ObfuscatedName("cu")
 	@Export("field4539")
 	int[] field4539;
-	@ObfuscatedName("ct")
+	@ObfuscatedName("cm")
 	@ObfuscatedGetter(
-		intValue = -908314161
+		intValue = 1280989209
 	)
 	@Export("field4540")
 	int field4540;
-	@ObfuscatedName("cl")
+	@ObfuscatedName("cj")
 	@Export("field5119")
 	String field5119;
-	@ObfuscatedName("cb")
+	@ObfuscatedName("cx")
 	@Export("field5120")
 	String field5120;
 
@@ -164,10 +164,10 @@ public class PlatformInfo extends Node implements class115 {
 		this.field5120 = var26;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-1533702667"
+		descriptor = "(Lvf;B)V",
+		garbageValue = "34"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
@@ -204,45 +204,29 @@ public class PlatformInfo extends Node implements class115 {
 		var1.writeStringCp1252NullCircumfixed(this.field5120);
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "1920"
+		descriptor = "(I)I",
+		garbageValue = "1063033303"
 	)
 	@Export("size")
 	public int size() {
 		byte var1 = 39;
-		String var4 = this.field4536;
-		int var3 = var4.length() + 2;
-		int var26 = var1 + var3;
-		String var7 = this.field4541;
-		int var6 = var7.length() + 2;
-		var26 += var6;
-		String var10 = this.field5103;
-		int var9 = var10.length() + 2;
-		var26 += var9;
-		String var13 = this.field5110;
-		int var12 = var13.length() + 2;
-		var26 += var12;
-		String var16 = this.field4537;
-		int var15 = var16.length() + 2;
-		var26 += var15;
-		String var19 = this.field5116;
-		int var18 = var19.length() + 2;
-		var26 += var18;
-		String var22 = this.field5119;
-		int var21 = var22.length() + 2;
-		var26 += var21;
-		String var25 = this.field5120;
-		int var24 = var25.length() + 2;
-		var26 += var24;
-		return var26;
+		int var2 = var1 + class328.method6420(this.field4536);
+		var2 += class328.method6420(this.field4541);
+		var2 += class328.method6420(this.field5103);
+		var2 += class328.method6420(this.field5110);
+		var2 += class328.method6420(this.field4537);
+		var2 += class328.method6420(this.field5116);
+		var2 += class328.method6420(this.field5119);
+		var2 += class328.method6420(this.field5120);
+		return var2;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "163409448"
+		garbageValue = "361208752"
 	)
 	@Export("getDeviceId")
 	public String getDeviceId(int var1) {
@@ -262,13 +246,15 @@ public class PlatformInfo extends Node implements class115 {
 			return "Unknown";
 		}
 
+		BufferedReader var4 = null;
+
 		try {
-			Process var4 = Runtime.getRuntime().exec(var2);
-			BufferedReader var5 = new BufferedReader(new InputStreamReader(var4.getInputStream()));
+			Process var5 = Runtime.getRuntime().exec(var2);
+			var4 = new BufferedReader(new InputStreamReader(var5.getInputStream()));
 			StringBuilder var6 = new StringBuilder();
 
 			String var7;
-			while ((var7 = var5.readLine()) != null) {
+			while ((var7 = var4.readLine()) != null) {
 				var6.append(var7 + "\n");
 			}
 
@@ -292,7 +278,15 @@ public class PlatformInfo extends Node implements class115 {
 					var3 = "12345678-0000-0000-0000-123456789012";
 				}
 			}
-		} catch (IOException var9) {
+		} catch (Exception var17) {
+		} finally {
+			try {
+				if (var4 != null) {
+					var4.close();
+				}
+			} catch (IOException var16) {
+			}
+
 		}
 
 		return var3;

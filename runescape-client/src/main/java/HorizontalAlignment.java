@@ -4,37 +4,52 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ji")
+@ObfuscatedName("hg")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements Enum {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lji;"
+		descriptor = "Lhg;"
 	)
-	field2554(1, 0),
-	@ObfuscatedName("ay")
+	field1984(1, 0),
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lji;"
+		descriptor = "Lhg;"
 	)
 	@Export("HorizontalAlignment_centered")
-	HorizontalAlignment_centered(0, 1),
-	@ObfuscatedName("an")
+	HorizontalAlignment_centered(2, 1),
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lji;"
+		descriptor = "Lhg;"
 	)
-	field2551(2, 2);
+	field1985(0, 2);
 
-	@ObfuscatedName("al")
-	public static short[][] field2553;
-	@ObfuscatedName("au")
+	@ObfuscatedName("dj")
+	@ObfuscatedSignature(
+		descriptor = "Lvt;"
+	)
+	@Export("worldSelectRightSprite")
+	static IndexedSprite worldSelectRightSprite;
+	@ObfuscatedName("fe")
+	@ObfuscatedSignature(
+		descriptor = "Lof;"
+	)
+	@Export("archive6")
+	static Archive archive6;
+	@ObfuscatedName("uu")
 	@ObfuscatedGetter(
-		intValue = 165487207
+		intValue = 306709445
+	)
+	static int field1989;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = -1047412351
 	)
 	@Export("value")
 	public final int value;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1638844297
+		intValue = -1120544733
 	)
 	@Export("id")
 	final int id;
@@ -44,70 +59,80 @@ public enum HorizontalAlignment implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "111"
+		descriptor = "(I)I",
+		garbageValue = "-350930589"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "32"
+		descriptor = "(Lpo;Lpo;I)V",
+		garbageValue = "227743359"
 	)
-	public static void method4908() {
-		HitSplatDefinition.HitSplatDefinition_cached.clear();
-		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
-		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
+	public static void method3957(AbstractArchive var0, AbstractArchive var1) {
+		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0;
+		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1;
 	}
 
-	@ObfuscatedName("jd")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZI)V",
-		garbageValue = "-1327065074"
+		descriptor = "(Lpo;II)V",
+		garbageValue = "-1780316495"
 	)
-	@Export("drawLoadingMessage")
-	static final void drawLoadingMessage(String var0, boolean var1) {
-		if (Client.showLoadingMessages) {
-			byte var2 = 4;
-			int var3 = var2 + 6;
-			int var4 = var2 + 6;
-			int var5 = GrandExchangeOfferUnitPriceComparator.fontPlain12.lineWidth(var0, 250);
-			int var6 = GrandExchangeOfferUnitPriceComparator.fontPlain12.lineCount(var0, 250) * 13;
-			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var6 + var2 + var2, 0);
-			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var2 + var5 + var2, var2 + var2 + var6, 16777215);
-			GrandExchangeOfferUnitPriceComparator.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-			int var7 = var3 - var2;
-			int var8 = var4 - var2;
-			int var9 = var2 + var5 + var2;
-			int var10 = var6 + var2 + var2;
+	static void method3960(AbstractArchive var0, int var1) {
+		if ((var1 & class545.field5393.rsOrdinal()) != 0) {
+			UserComparator8.logoSprite = Buddy.SpriteBuffer_getIndexedSpriteByName(var0, "logo_deadman_mode", "");
+		} else if ((var1 & class545.field5376.rsOrdinal()) != 0) {
+			UserComparator8.logoSprite = Buddy.SpriteBuffer_getIndexedSpriteByName(var0, "logo_seasonal_mode", "");
+		} else if ((var1 & class545.field5372.rsOrdinal()) != 0) {
+			UserComparator8.logoSprite = Buddy.SpriteBuffer_getIndexedSpriteByName(var0, "logo_speedrunning", "");
+		} else {
+			UserComparator8.logoSprite = Buddy.SpriteBuffer_getIndexedSpriteByName(var0, "logo", "");
+		}
 
-			int var11;
-			for (var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
-				if (Client.rootWidgetWidths[var11] + Client.rootWidgetXs[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetYs[var11] + Client.rootWidgetHeights[var11] > var8 && Client.rootWidgetYs[var11] < var8 + var10) {
-					Client.validRootWidgets[var11] = true;
-				}
-			}
+	}
 
-			if (var1) {
-				class299.rasterProvider.drawFull(0, 0);
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIII)Z",
+		garbageValue = "-1891253869"
+	)
+	static final boolean method3958(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		int var7 = ViewportMouse.ViewportMouse_y + var6;
+		if (var7 < var0 && var7 < var1 && var7 < var2) {
+			return false;
+		} else {
+			var7 = ViewportMouse.ViewportMouse_y - var6;
+			if (var7 > var0 && var7 > var1 && var7 > var2) {
+				return false;
 			} else {
-				var11 = var3;
-				int var12 = var4;
-				int var13 = var5;
-				int var14 = var6;
-
-				for (int var15 = 0; var15 < Client.rootWidgetCount; ++var15) {
-					if (Client.rootWidgetWidths[var15] + Client.rootWidgetXs[var15] > var11 && Client.rootWidgetXs[var15] < var11 + var13 && Client.rootWidgetHeights[var15] + Client.rootWidgetYs[var15] > var12 && Client.rootWidgetYs[var15] < var14 + var12) {
-						Client.field685[var15] = true;
-					}
+				var7 = ViewportMouse.ViewportMouse_x + var6;
+				if (var7 < var3 && var7 < var4 && var7 < var5) {
+					return false;
+				} else {
+					var7 = ViewportMouse.ViewportMouse_x - var6;
+					return var7 <= var3 || var7 <= var4 || var7 <= var5;
 				}
 			}
+		}
+	}
 
+	@ObfuscatedName("bk")
+	@ObfuscatedSignature(
+		descriptor = "(ILdt;ZB)I",
+		garbageValue = "-97"
+	)
+	static int method3953(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = MidiPcmStream.method6507() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 }

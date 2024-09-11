@@ -3,27 +3,23 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("fl")
+@ObfuscatedName("fy")
 @Implements("ClanChannelMember")
 public class ClanChannelMember {
-	@ObfuscatedName("pr")
-	@ObfuscatedGetter(
-		intValue = 1389733547
-	)
-	static int field1685;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@Export("rank")
 	public byte rank;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 1845021349
+		intValue = -1520253821
 	)
 	@Export("world")
 	public int world;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lvf;"
+		descriptor = "Lwf;"
 	)
 	@Export("username")
 	public Username username;
@@ -31,170 +27,244 @@ public class ClanChannelMember {
 	ClanChannelMember() {
 	}
 
-	@ObfuscatedName("hd")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2109061131"
+		descriptor = "(IIIII)V",
+		garbageValue = "585324631"
 	)
-	@Export("getLoginError")
-	static void getLoginError(int var0) {
-		int var1 = class255.method5032();
-		if (var0 == -3) {
-			class130.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-		} else if (var0 == -2) {
-			class130.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-		} else if (var0 == -1) {
-			class130.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-		} else if (var0 == 3) {
-			class532.updateLoginIndex(3);
-			Login.field941 = 1;
-		} else if (var0 == 4) {
-			MouseRecorder.method2427(0);
-		} else if (var0 == 5) {
-			Login.field941 = 2;
-			class130.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
-		} else if (var0 == 68) {
-			if (!Client.field515) {
-				Client.field515 = true;
-				class273.method5468();
-				return;
-			}
-
-			class130.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (!Client.onMobile && var0 == 6) {
-			class130.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
-		} else if (var0 == 7) {
-			class130.setLoginResponseString("This world is full.", "Please use a different world.", "");
-		} else if (var0 == 8) {
-			class130.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-		} else if (var0 == 9) {
-			class130.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-		} else if (var0 == 10) {
-			class130.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-		} else if (var0 == 11) {
-			class130.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-		} else if (var0 == 12) {
-			class130.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-		} else if (var0 == 13) {
-			class130.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-		} else if (var0 == 14) {
-			class130.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 16) {
-			class130.setLoginResponseString("Too many login attempts.", "You can use the Jagex Launcher to continue playing.", "Press the button below to download it now.");
-			class532.updateLoginIndex(33);
-		} else if (var0 == 17) {
-			class130.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
-		} else if (var0 == 18) {
-			MouseRecorder.method2427(1);
-		} else if (var0 == 19) {
-			class130.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-		} else if (var0 == 20) {
-			class130.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-		} else if (var0 == 22) {
-			class130.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-		} else if (var0 == 23) {
-			class130.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-		} else if (var0 == 24) {
-			class130.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-		} else if (var0 == 25) {
-			class130.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-		} else if (var0 == 26) {
-			class130.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-		} else if (var0 == 27) {
-			class130.setLoginResponseString("", "Service unavailable.", "");
-		} else if (var0 == 31) {
-			class130.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-		} else if (var0 == 32) {
-			MouseRecorder.method2427(2);
-		} else if (var0 == 37) {
-			class130.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-		} else if (var0 == 38) {
-			class130.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-		} else if (var0 == 74) {
-			class130.setLoginResponseString("This world is running a", "closed beta. Please", "use a different world.");
-		} else if (var0 == 55) {
-			class532.updateLoginIndex(8);
-		} else {
-			if (var0 == 56) {
-				class130.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-				UserComparator3.updateGameState(11);
-				return;
-			}
-
-			if (var0 == 57) {
-				class130.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-				UserComparator3.updateGameState(11);
-				return;
-			}
-
-			if (var0 == 61) {
-				class130.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
-				class532.updateLoginIndex(7);
-			} else {
-				if (var0 == 62) {
-					UserComparator3.updateGameState(10);
-					class532.updateLoginIndex(9);
-					class130.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
-					return;
+	static void method3493(int var0, int var1, int var2, int var3) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
+				int var5 = 0;
+				if (var1 > var4.maxX * 128) {
+					var5 += var1 - var4.maxX * 128;
+				} else if (var1 < var4.x * 16384) {
+					var5 += var4.x * 16384 - var1;
 				}
 
-				if (var0 == 63) {
-					UserComparator3.updateGameState(10);
-					class532.updateLoginIndex(9);
-					class130.setLoginResponseString("You were signed out.", "Please sign in again.", "");
-					return;
+				if (var2 > var4.maxY * 128) {
+					var5 += var2 - var4.maxY * 128;
+				} else if (var2 < var4.y * 16384) {
+					var5 += var4.y * 16384 - var2;
 				}
 
-				if (var0 == 65 || var0 == 67) {
-					UserComparator3.updateGameState(10);
-					class532.updateLoginIndex(9);
-					class130.setLoginResponseString("Failed to login.", "Please try again.", "");
-					return;
-				}
+				var5 = Math.max(var5 - 64, 0);
+				if (var5 < var4.field857 && class461.clientPreferences.getAreaSoundEffectsVolume() != 0 && var0 == var4.plane) {
+					float var6 = var4.field864 < var4.field857 ? Math.min(Math.max((float)(var4.field857 - var5) / (float)(var4.field857 - var4.field864), 0.0F), 1.0F) : 1.0F;
+					int var7 = (int)(var6 * (float)class461.clientPreferences.getAreaSoundEffectsVolume());
+					if (var4.stream1 == null) {
+						if (var4.soundEffectId >= 0) {
+							SoundEffect var8 = SoundEffect.readSoundEffect(class60.soundEffectsArchive, var4.soundEffectId, 0);
+							if (var8 != null) {
+								RawSound var9 = var8.toRawSound().resample(DevicePcmPlayerProvider.decimator);
+								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var9, 100, var7);
+								var10.setNumLoops(-1);
+								GameEngine.pcmStreamMixer.addSubStream(var10);
+								var4.stream1 = var10;
+							}
+						}
+					} else {
+						var4.stream1.method905(var7);
+					}
 
-				if (var0 == 71) {
-					UserComparator3.updateGameState(10);
-					class532.updateLoginIndex(7);
-					class130.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
-				} else if (var0 == 73) {
-					UserComparator3.updateGameState(10);
-					class532.updateLoginIndex(6);
-					class130.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
-				} else if (var0 == 72) {
-					UserComparator3.updateGameState(10);
-					class532.updateLoginIndex(32);
+					if (var4.stream2 == null) {
+						if (var4.soundEffectIds != null && (var4.field860 -= var3) <= 0) {
+							int var12 = (int)(Math.random() * (double)var4.soundEffectIds.length);
+							SoundEffect var13 = SoundEffect.readSoundEffect(class60.soundEffectsArchive, var4.soundEffectIds[var12], 0);
+							if (var13 != null) {
+								RawSound var14 = var13.toRawSound().resample(DevicePcmPlayerProvider.decimator);
+								RawPcmStream var11 = RawPcmStream.createRawPcmStream(var14, 100, var7);
+								var11.setNumLoops(0);
+								GameEngine.pcmStreamMixer.addSubStream(var11);
+								var4.stream2 = var11;
+								var4.field860 = var4.field861 + (int)(Math.random() * (double)(var4.field862 - var4.field861));
+							}
+						}
+					} else {
+						var4.stream2.method905(var7);
+						if (!var4.stream2.hasNext()) {
+							var4.stream2 = null;
+						}
+					}
 				} else {
-					class130.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+					if (var4.stream1 != null) {
+						GameEngine.pcmStreamMixer.removeSubStream(var4.stream1);
+						var4.stream1 = null;
+					}
+
+					if (var4.stream2 != null) {
+						GameEngine.pcmStreamMixer.removeSubStream(var4.stream2);
+						var4.stream2 = null;
+					}
 				}
 			}
 		}
 
-		UserComparator3.updateGameState(10);
-		boolean var2 = var1 != class255.method5032();
-		if (!var2 && Client.field545.method9903()) {
-			class532.updateLoginIndex(9);
-		}
-
 	}
 
-	@ObfuscatedName("he")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1982015454"
+		descriptor = "(ILdt;ZI)I",
+		garbageValue = "-1927259741"
 	)
-	static final void method3363() {
-		if (class132.pcmPlayer1 != null) {
-			class132.pcmPlayer1.run();
+	static int method3494(int var0, Script var1, boolean var2) {
+		boolean var3 = true;
+		Widget var4;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var4 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			var3 = false;
+		} else {
+			var4 = var2 ? Interpreter.scriptDotWidget : class464.scriptActiveWidget;
 		}
 
-	}
+		int var11;
+		if (var0 == ScriptOpcodes.CC_SETOP) {
+			var11 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] - 1;
+			if (var11 >= 0 && var11 <= 9) {
+				var4.setAction(var11, Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize]);
+				return 1;
+			} else {
+				--class465.Interpreter_stringStackSize;
+				return 1;
+			}
+		} else {
+			int var6;
+			if (var0 == ScriptOpcodes.CC_SETDRAGGABLE) {
+				class320.Interpreter_intStackSize -= 2;
+				var11 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
+				var6 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
+				var4.parent = TaskHandler.widgetDefinition.getWidgetChild(var11, var6);
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETDRAGGABLEBEHAVIOR) {
+				var4.isScrollBar = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] == 1;
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETDRAGDEADZONE) {
+				var4.dragZoneSize = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETDRAGDEADTIME) {
+				var4.dragThreshold = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETOPBASE) {
+				var4.dataText = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_SETTARGETVERB) {
+				var4.spellActionName = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
+				return 1;
+			} else if (var0 == ScriptOpcodes.CC_CLEAROPS) {
+				var4.actions = null;
+				var4.field3898 = null;
+				return 1;
+			} else if (var0 == 1308) {
+				var4.prioritizeMenuEntry = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] == 1;
+				return 1;
+			} else if (var0 == 1309) {
+				--class320.Interpreter_intStackSize;
+				return 1;
+			} else if (var0 == 1310) {
+				var11 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] - 1;
+				if (var11 >= 0 && var11 <= 9 && var4.field3898 != null) {
+					var4.field3898[var11] = null;
+					return 1;
+				} else {
+					return 1;
+				}
+			} else if (var0 == 1311) {
+				var11 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] - 1;
+				var6 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] - 1;
+				if (var6 >= 0 && var6 <= 9 && var11 >= 0) {
+					var4.method7365(var6, var11, Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize]);
+					return 1;
+				} else {
+					throw new RuntimeException();
+				}
+			} else if (var0 == 1312) {
+				var11 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+				if (var11 == -1) {
+					var4.field3968 = 4;
+				} else if (var11 >= 1 && var11 <= 10) {
+					var4.field3968 = var11 - 1;
+				}
 
-	@ObfuscatedName("lu")
-	@ObfuscatedSignature(
-		descriptor = "(Ldy;IIB)V",
-		garbageValue = "50"
-	)
-	static final void method3364(WorldView var0, int var1, int var2) {
-		WorldMapSectionType.updateItemPile2(var0, var0.plane, var1, var2);
+				return 1;
+			} else {
+				int var7;
+				byte[] var8;
+				if (var0 != ScriptOpcodes.CC_SETOPKEY) {
+					byte var5;
+					if (var0 == ScriptOpcodes.CC_SETOPTKEY) {
+						class320.Interpreter_intStackSize -= 2;
+						var5 = 10;
+						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize]};
+						byte[] var9 = new byte[]{(byte)Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1]};
+						Tiles.Widget_setKey(var4, var5, var8, var9);
+						return 1;
+					} else if (var0 == ScriptOpcodes.CC_SETOPKEYRATE) {
+						class320.Interpreter_intStackSize -= 3;
+						var11 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize] - 1;
+						var6 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
+						var7 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 2];
+						if (var11 >= 0 && var11 <= 9) {
+							class92.Widget_setKeyRate(var4, var11, var6, var7);
+							return 1;
+						} else {
+							throw new RuntimeException();
+						}
+					} else if (var0 == ScriptOpcodes.CC_SETOPTKEYRATE) {
+						var5 = 10;
+						var6 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+						var7 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+						class92.Widget_setKeyRate(var4, var5, var6, var7);
+						return 1;
+					} else if (var0 == ScriptOpcodes.CC_SETOPKEYIGNOREHELD) {
+						--class320.Interpreter_intStackSize;
+						var11 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize] - 1;
+						if (var11 >= 0 && var11 <= 9) {
+							WorldView.Widget_setKeyIgnoreHeld(var4, var11);
+							return 1;
+						} else {
+							throw new RuntimeException();
+						}
+					} else if (var0 == ScriptOpcodes.CC_SETOPTKEYIGNOREHELD) {
+						var5 = 10;
+						WorldView.Widget_setKeyIgnoreHeld(var4, var5);
+						return 1;
+					} else {
+						return 2;
+					}
+				} else {
+					byte[] var10 = null;
+					var8 = null;
+					if (var3) {
+						class320.Interpreter_intStackSize -= 10;
+
+						for (var7 = 0; var7 < 10 && Interpreter.Interpreter_intStack[var7 + class320.Interpreter_intStackSize] >= 0; var7 += 2) {
+						}
+
+						if (var7 > 0) {
+							var10 = new byte[var7 / 2];
+							var8 = new byte[var7 / 2];
+
+							for (var7 -= 2; var7 >= 0; var7 -= 2) {
+								var10[var7 / 2] = (byte)Interpreter.Interpreter_intStack[var7 + class320.Interpreter_intStackSize];
+								var8[var7 / 2] = (byte)Interpreter.Interpreter_intStack[var7 + class320.Interpreter_intStackSize + 1];
+							}
+						}
+					} else {
+						class320.Interpreter_intStackSize -= 2;
+						var10 = new byte[]{(byte)Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize]};
+						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1]};
+					}
+
+					var7 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize] - 1;
+					if (var7 >= 0 && var7 <= 9) {
+						Tiles.Widget_setKey(var4, var7, var10, var8);
+						return 1;
+					} else {
+						throw new RuntimeException();
+					}
+				}
+			}
+		}
 	}
 }

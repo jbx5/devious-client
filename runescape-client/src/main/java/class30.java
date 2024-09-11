@@ -1,58 +1,69 @@
 import javax.imageio.ImageIO;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("bo")
+@ObfuscatedName("bf")
 public class class30 {
-	@ObfuscatedName("ij")
+	@ObfuscatedName("gl")
 	@ObfuscatedGetter(
-		intValue = -1296447463
+		intValue = 662621097
 	)
-	static int field136;
+	@Export("worldPort")
+	static int worldPort;
+	@ObfuscatedName("if")
+	@ObfuscatedSignature(
+		descriptor = "Lsk;"
+	)
+	static AbstractSocket field141;
 
 	static {
 		ImageIO.setUseCache(false);
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(ILdp;ZI)I",
-		garbageValue = "-653880728"
+		descriptor = "(S)V",
+		garbageValue = "255"
 	)
-	static int method421(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class238.scriptDotWidget : class428.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemId;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
-			if (var3.itemId != -1) {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.itemQuantity;
-			} else {
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-			}
+	public static void method448() {
+		class179.field1915.clear();
+	}
 
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETID) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.childIndex;
-			return 1;
-		} else if (var0 == 1707) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.method6960() ? 1 : 0;
-			return 1;
-		} else if (var0 == 1708) {
-			return AbstractSocket.method8789(var3);
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "435011510"
+	)
+	public static void method445() {
+		class204.field1909.clear();
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1795528755"
+	)
+	static void method450() {
+		Login.Login_username = Login.Login_username.trim();
+		if (Login.Login_username.length() == 0) {
+			Login.setLoginResponseString("", "Please enter your username/email address.", "");
+		} else if (Login.Login_password.length() == 0) {
+			Login.setLoginResponseString("", "Please enter your password.", "");
 		} else {
-			return var0 == 1709 ? StructComposition.method5054(var3) : 2;
+			Login.setLoginResponseString("", "Connecting to server...", "");
+			class162.method3646(false);
+			class464.updateGameState(20);
 		}
 	}
 
-	@ObfuscatedName("ow")
+	@ObfuscatedName("ih")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "93"
+		descriptor = "(II)I",
+		garbageValue = "810306685"
 	)
-	static final void method418() {
-		Client.field503 = Client.cycleCntr;
+	static final int method447(int var0) {
+		return Math.min(Math.max(var0, 128), 383);
 	}
 }

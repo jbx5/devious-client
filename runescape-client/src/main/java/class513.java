@@ -1,64 +1,35 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tf")
-public abstract class class513 {
+@ObfuscatedName("ty")
+public class class513 extends class515 {
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1774109329
+		intValue = -1601532897
 	)
-	int field5139;
+	int field5175;
 	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1395718219
+		intValue = 1761213211
 	)
-	int field5140;
-	@ObfuscatedName("ad")
-	double field5141;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 1128149071
-	)
-	int field5142;
+	int field5176;
 
-	class513(int var1, int var2) {
-		this.field5139 = 0;
-		this.field5140 = 0;
-		this.field5141 = 0.0D;
-		this.field5142 = 0;
-		this.field5139 = var1;
-		this.field5140 = 0;
-		this.field5142 = var2 >= 0 && var2 <= 27 ? var2 : 0;
-		this.field5141 = class359.method6934(this.field5140, this.field5139, this.field5142);
+	public class513(int var1, int var2, int var3, int var4) {
+		super(var3, var4);
+		this.field5175 = 0;
+		this.field5176 = 0;
+		this.field5175 = var1;
+		this.field5176 = var2;
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1959507309"
+		descriptor = "(S)I",
+		garbageValue = "253"
 	)
-	public void method9043() {
-		if (this.field5140 < this.field5139) {
-			++this.field5140;
-			this.field5141 = class359.method6934(this.field5140, this.field5139, this.field5142);
-		}
-
-	}
-
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "(B)D",
-		garbageValue = "29"
-	)
-	double method9044() {
-		return this.field5141;
-	}
-
-	@ObfuscatedName("am")
-	@Export("Entity_unpackID")
-	public static int Entity_unpackID(long var0) {
-		return (int)(var0 >>> 17 & 4294967295L);
+	public int method9306() {
+		double var1 = this.method9323();
+		return (int)Math.round(var1 * (double)(this.field5176 - this.field5175) + (double)this.field5175);
 	}
 }

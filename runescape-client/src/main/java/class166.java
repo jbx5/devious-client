@@ -1,241 +1,172 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("gu")
-public class class166 extends class148 {
-	@ObfuscatedName("tt")
-	@ObfuscatedGetter(
-		intValue = 1028545603
-	)
-	static int field1793;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1049969155
-	)
-	int field1790;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = -654544907
-	)
-	int field1788;
-	// $FF: synthetic field
+public abstract class class166 extends Node {
+	@ObfuscatedName("sm")
 	@ObfuscatedSignature(
-		descriptor = "Lfy;"
+		descriptor = "Lgm;"
 	)
-	final class151 this$0;
+	@Export("guestClanChannel")
+	static ClanChannel guestClanChannel;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lfy;)V"
-	)
-	class166(class151 var1) {
-		this.this$0 = var1;
+	class166() {
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-1070155477"
+		descriptor = "(Lvf;B)V",
+		garbageValue = "0"
 	)
-	void vmethod3619(Buffer var1) {
-		this.field1790 = var1.readInt();
-		this.field1788 = var1.readInt();
+	abstract void vmethod3761(Buffer var1);
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lgm;I)V",
+		garbageValue = "-1593238865"
+	)
+	abstract void vmethod3762(ClanChannel var1);
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lvf;Lui;I)Lui;",
+		garbageValue = "2074110219"
+	)
+	@Export("readStringIntParameters")
+	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+		int var2 = var0.readUnsignedByte();
+		int var3;
+		if (var1 == null) {
+			var3 = class7.method47(var2);
+			var1 = new IterableNodeHashTable(var3);
+		}
+
+		for (var3 = 0; var3 < var2; ++var3) {
+			boolean var4 = var0.readUnsignedByte() == 1;
+			int var5 = var0.readMedium();
+			Object var6;
+			if (var4) {
+				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+			} else {
+				var6 = new IntegerNode(var0.readInt());
+			}
+
+			var1.put((Node)var6, (long)var5);
+		}
+
+		return var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("kq")
 	@ObfuscatedSignature(
-		descriptor = "(Lgg;I)V",
-		garbageValue = "1070728869"
+		descriptor = "(IIIIIIIIIIIIIII)V",
+		garbageValue = "985406620"
 	)
-	void vmethod3621(ClanSettings var1) {
-		var1.method3451(this.field1790, this.field1788);
+	static void method3692(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
+		var1 = var1 * 128 + 64;
+		var2 = var2 * 128 + 64;
+		var3 = var3 * 128 + 64;
+		var4 = var4 * 128 + 64;
+		Projectile var14 = new Projectile(var6, var0, var1, var2, VarcInt.getTileHeight(class162.worldView, var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
+		var14.setDestination(var3, var4, VarcInt.getTileHeight(class162.worldView, var3, var4, var0) - var8, var9 + Client.cycle);
+		class162.worldView.projectiles.addFirst(var14);
 	}
 
-	@ObfuscatedName("bo")
+	@ObfuscatedName("lx")
 	@ObfuscatedSignature(
-		descriptor = "(Lbb;B)V",
-		garbageValue = "-36"
+		descriptor = "(Ldd;Lva;B)V",
+		garbageValue = "48"
 	)
-	@Export("PcmStream_disable")
-	static final void PcmStream_disable(PcmStream var0) {
-		var0.active = false;
-		if (var0.sound != null) {
-			var0.sound.position = 0;
-		}
+	static void method3682(WorldView var0, PacketBuffer var1) {
+		int var2 = var1.readUnsignedShort();
+		WorldEntity var3 = var0.field1364[var2];
+		WorldView var4 = var3.field5007;
+		var4.baseX = var1.readUnsignedShort();
+		var4.baseY = var1.readUnsignedShort();
+		int var5 = var4.sizeX / 8;
+		int var6 = var4.sizeY / 8;
+		int var7 = var1.readUnsignedShort();
+		var1.importIndex();
 
-		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
-			PcmStream_disable(var1);
-		}
-
-	}
-
-	@ObfuscatedName("je")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-95712584"
-	)
-	@Export("drawEntities")
-	static final void drawEntities(int var0, int var1, int var2, int var3) {
-		++Client.viewportDrawCount;
-		ConcurrentMidiTask.topLevelWorldView.scene.cycle = Client.cycle;
-		SoundCache.method843();
-		WorldView var4 = ConcurrentMidiTask.topLevelWorldView;
-		if (Client.renderSelf) {
-			KitDefinition.addPlayerToScene(var4, Client.localPlayerIndex, false);
-		}
-
-		class87.method2400(ConcurrentMidiTask.topLevelWorldView);
-		class170.addNpcsToScene(ConcurrentMidiTask.topLevelWorldView, true);
-		class211.method4557(ConcurrentMidiTask.topLevelWorldView);
-		class170.addNpcsToScene(ConcurrentMidiTask.topLevelWorldView, false);
-		ClientPreferences.method2705(ConcurrentMidiTask.topLevelWorldView);
-		class87.method2407(ConcurrentMidiTask.topLevelWorldView);
-		PcmPlayer.method801(ConcurrentMidiTask.topLevelWorldView);
-		class59.setViewportShape(var0, var1, var2, var3, true);
-		var0 = Client.viewportOffsetX;
-		var1 = Client.viewportOffsetY;
-		var2 = Client.viewportWidth;
-		var3 = Client.viewportHeight;
-		Rasterizer2D.Rasterizer2D_setClip(var0, var1, var0 + var2, var3 + var1);
-		Rasterizer3D.resetRasterClipping();
-		Rasterizer2D.clearBrightness();
-		int var5 = Client.camAngleX;
-		if (Client.field501 / 256 > var5) {
-			var5 = Client.field501 / 256;
-		}
-
-		if (Client.field764[4] && Client.field768[4] + 128 > var5) {
-			var5 = Client.field768[4] + 128;
-		}
-
-		int var6 = Client.camAngleY & 2047;
-		int var7 = class130.oculusOrbFocalPointX;
-		int var8 = Actor.oculusOrbFocalPointZ;
-		int var9 = class499.oculusOrbFocalPointY;
-		int var12 = var5 * 3 + 600;
-		Skeleton.method3882(var7, var8, var9, var5, var6, var12, var3);
-		int var13;
-		if (!Client.isCameraLocked) {
-			var13 = class330.method6206();
-		} else {
-			var13 = class359.method6933();
-		}
-
-		int var14 = class433.cameraX;
-		int var15 = RestClientThreadFactory.cameraY;
-		int var16 = WorldMapSection0.cameraZ;
-		int var17 = UserComparator6.cameraPitch;
-		int var18 = class264.cameraYaw;
-
-		int var19;
-		int var20;
-		for (var19 = 0; var19 < 5; ++var19) {
-			if (Client.field764[var19]) {
-				var20 = (int)(Math.random() * (double)(Client.field508[var19] * 2 + 1) - (double)Client.field508[var19] + Math.sin((double)Client.field769[var19] / 100.0D * (double)Client.field770[var19]) * (double)Client.field768[var19]);
-				if (var19 == 0) {
-					class433.cameraX += var20;
-				}
-
-				if (var19 == 1) {
-					RestClientThreadFactory.cameraY += var20;
-				}
-
-				if (var19 == 2) {
-					WorldMapSection0.cameraZ += var20;
-				}
-
-				if (var19 == 3) {
-					class264.cameraYaw = var20 + class264.cameraYaw & 2047;
-				}
-
-				if (var19 == 4) {
-					UserComparator6.cameraPitch += var20;
-					if (UserComparator6.cameraPitch < 128) {
-						UserComparator6.cameraPitch = 128;
-					}
-
-					if (UserComparator6.cameraPitch > 383) {
-						UserComparator6.cameraPitch = 383;
+		int var8;
+		int var9;
+		int var10;
+		int var11;
+		for (var8 = 0; var8 < 4; ++var8) {
+			for (var9 = 0; var9 < var5; ++var9) {
+				for (var10 = 0; var10 < var6; ++var10) {
+					var11 = var1.readBits(1);
+					if (var11 == 1) {
+						Client.field591[var8][var9][var10] = var1.readBits(26);
+					} else {
+						Client.field591[var8][var9][var10] = -1;
 					}
 				}
 			}
 		}
 
-		var19 = MouseHandler.MouseHandler_x;
-		var20 = MouseHandler.MouseHandler_y;
-		if (MouseHandler.MouseHandler_lastButton != 0) {
-			var19 = MouseHandler.MouseHandler_lastPressedX;
-			var20 = MouseHandler.MouseHandler_lastPressedY;
-		}
+		var1.exportIndex();
+		GraphicsObject.field914 = new int[var7][4];
 
-		if (var19 >= var0 && var19 < var0 + var2 && var20 >= var1 && var20 < var3 + var1) {
-			class141.method3257(var19 - var0, var20 - var1);
-		} else {
-			LoginPacket.method3325();
-		}
-
-		ClanChannelMember.method3363();
-		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, 0);
-		ClanChannelMember.method3363();
-		int var21 = Rasterizer3D.get3dZoom();
-		Rasterizer3D.method3727(DynamicObject.client.field177);
-		Rasterizer3D.clips.zoom = Client.viewportZoom;
-		int var22 = class354.entity.getX();
-		int var23 = class354.entity.getY();
-		ConcurrentMidiTask.topLevelWorldView.scene.draw(class433.cameraX, RestClientThreadFactory.cameraY, WorldMapSection0.cameraZ, UserComparator6.cameraPitch, class264.cameraYaw, var13, var22, var23, Client.isCameraLocked);
-		Rasterizer3D.method3727(false);
-		if (Client.z) {
-			Rasterizer2D.adjustBrightness();
-		}
-
-		Rasterizer3D.clips.zoom = var21;
-		ClanChannelMember.method3363();
-		ConcurrentMidiTask.topLevelWorldView.scene.setViewportWalking();
-
-		int var24;
-		WorldEntity var28;
-		for (var24 = 0; var24 < ConcurrentMidiTask.topLevelWorldView.worldEntityCount; ++var24) {
-			var28 = ConcurrentMidiTask.topLevelWorldView.worldEntities[ConcurrentMidiTask.topLevelWorldView.worldEntityIndices[var24]];
-			if (var28 != null) {
-				var28.worldView.scene.setViewportWalking();
+		for (var8 = 0; var8 < var7; ++var8) {
+			for (var9 = 0; var9 < 4; ++var9) {
+				GraphicsObject.field914[var8][var9] = var1.readInt();
 			}
 		}
 
-		Timer.method8412(ConcurrentMidiTask.topLevelWorldView, var0, var1, var2, var3);
+		class142.field1664 = new int[var7];
+		class111.field1427 = new int[var7];
+		class462.field4932 = new int[var7];
+		HttpRequest.field47 = new byte[var7][];
+		UserComparator8.field1516 = new byte[var7][];
+		var7 = 0;
 
-		for (var24 = 0; var24 < ConcurrentMidiTask.topLevelWorldView.worldEntityCount; ++var24) {
-			var28 = ConcurrentMidiTask.topLevelWorldView.worldEntities[ConcurrentMidiTask.topLevelWorldView.worldEntityIndices[var24]];
-			if (var28 != null) {
-				Timer.method8412(var28.worldView, var0, var1, var2, var3);
+		for (var8 = 0; var8 < 4; ++var8) {
+			for (var9 = 0; var9 < var5; ++var9) {
+				for (var10 = 0; var10 < var6; ++var10) {
+					var11 = Client.field591[var8][var9][var10];
+					if (var11 != -1) {
+						int var12 = var11 >> 14 & 1023;
+						int var13 = var11 >> 3 & 2047;
+						int var14 = (var12 / 8 << 8) + var13 / 8;
+
+						int var15;
+						for (var15 = 0; var15 < var7; ++var15) {
+							if (class142.field1664[var15] == var14) {
+								var14 = -1;
+								break;
+							}
+						}
+
+						if (var14 != -1) {
+							class142.field1664[var7] = var14;
+							var15 = var14 >> 8 & 255;
+							int var16 = var14 & 255;
+							class111.field1427[var7] = Bounds.archive9.getGroupId("m" + var15 + "_" + var16);
+							class462.field4932[var7] = Bounds.archive9.getGroupId("l" + var15 + "_" + var16);
+							++var7;
+						}
+					}
+				}
 			}
 		}
 
-		WorldView var27 = ConcurrentMidiTask.topLevelWorldView;
-		if (Client.hintArrowType == 2) {
-			int var25 = Client.hintArrowSubX * 64 + (Client.hintArrowX - var27.baseX << 7);
-			int var26 = Client.hintArrowSubY * 64 + (Client.hintArrowY - var27.baseY << 7);
-			class87.worldToScreen(var27, var25, var26, var25, var26, Client.hintArrowHeight * 2);
-			if (Client.viewportTempX > -1 && Client.cycle % 20 < 10) {
-				class218.headIconHintSprites[0].drawTransBgAt(var0 + Client.viewportTempX - 12, Client.viewportTempY + var1 - 28);
-			}
-		}
+		class464.updateGameState(25);
+		Client.field612 = true;
+		class382.field4458 = var4;
+		VarbitComposition.method4074(var4);
+	}
 
-		((TextureProvider)Rasterizer3D.clips.Rasterizer3D_textureLoader).animate(Client.graphicsCycle);
-		ClanSettings.method3478();
-		class433.cameraX = var14;
-		RestClientThreadFactory.cameraY = var15;
-		WorldMapSection0.cameraZ = var16;
-		UserComparator6.cameraPitch = var17;
-		class264.cameraYaw = var18;
-		if (Client.isLoading && SecureRandomFuture.field980.method7375(true, false) == 0) {
-			Client.isLoading = false;
+	@ObfuscatedName("pg")
+	@ObfuscatedSignature(
+		descriptor = "(Lcw;I)V",
+		garbageValue = "-2021507668"
+	)
+	@Export("updateLoginState")
+	static void updateLoginState(LoginState var0) {
+		if (HttpRequestTask.loginState != var0) {
+			HttpRequestTask.loginState = var0;
 		}
-
-		if (Client.isLoading) {
-			Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var3, 0);
-			HorizontalAlignment.drawLoadingMessage("Loading - please wait.", false);
-		}
-
 	}
 }

@@ -4,37 +4,37 @@ import java.security.NoSuchAlgorithmException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ao")
+@ObfuscatedName("aq")
 public class class5 implements class2 {
-	@ObfuscatedName("ab")
-	final MessageDigest field8;
+	@ObfuscatedName("ac")
+	final MessageDigest field6;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lae;)V"
+		descriptor = "(Lau;)V"
 	)
 	class5(class8 var1) {
-		this.field8 = this.method20();
+		this.field6 = this.method20();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	boolean method16(int var1, String var2, long var3) {
-		byte[] var5 = this.method22(var2, var3);
+		byte[] var5 = this.method23(var2, var3);
 		return method17(var5) >= var1;
 	}
 
-	@ObfuscatedName("au")
-	byte[] method22(String var1, long var2) {
+	@ObfuscatedName("am")
+	byte[] method23(String var1, long var2) {
 		StringBuilder var4 = new StringBuilder();
 		var4.append(var1).append(Long.toHexString(var2));
-		this.field8.reset();
+		this.field6.reset();
 
 		try {
-			this.field8.update(var4.toString().getBytes("UTF-8"));
+			this.field6.update(var4.toString().getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException var6) {
 			var6.printStackTrace();
 		}
 
-		return this.field8.digest();
+		return this.field6.digest();
 	}
 
 	@ObfuscatedName("ax")
@@ -47,14 +47,14 @@ public class class5 implements class2 {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	static int method17(byte[] var0) {
 		int var1 = 0;
 		byte[] var2 = var0;
 
 		for (int var3 = 0; var3 < var2.length; ++var3) {
 			byte var4 = var2[var3];
-			int var5 = method19(var4);
+			int var5 = method18(var4);
 			var1 += var5;
 			if (var5 != 8) {
 				break;
@@ -64,8 +64,8 @@ public class class5 implements class2 {
 		return var1;
 	}
 
-	@ObfuscatedName("an")
-	static int method19(byte var0) {
+	@ObfuscatedName("ag")
+	static int method18(byte var0) {
 		int var1 = 0;
 		if (var0 == 0) {
 			var1 = 8;

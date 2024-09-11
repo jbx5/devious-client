@@ -4,110 +4,111 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("nw")
+@ObfuscatedName("na")
 @Implements("WidgetDefinition")
 public class WidgetDefinition {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("widgetArchive")
 	AbstractArchive widgetArchive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
-	AbstractArchive field3711;
-	@ObfuscatedName("an")
+	AbstractArchive field3757;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
-	AbstractArchive field3716;
-	@ObfuscatedName("au")
+	AbstractArchive field3758;
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
-	AbstractArchive field3712;
+	AbstractArchive field3759;
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
-	AbstractArchive field3706;
-	@ObfuscatedName("ao")
+	AbstractArchive field3760;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "[[Lnq;"
+		descriptor = "[[Lny;"
 	)
 	@Export("Widget_interfaceComponents")
 	public Widget[][] Widget_interfaceComponents;
-	@ObfuscatedName("ac")
-	Map field3714;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("at")
+	Map field3762;
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("Widget_cachedSprites")
 	EvictingDualNodeHashTable Widget_cachedSprites;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("Widget_cachedModels")
 	EvictingDualNodeHashTable Widget_cachedModels;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("Widget_cachedFonts")
 	EvictingDualNodeHashTable Widget_cachedFonts;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("Widget_cachedSpriteMasks")
 	EvictingDualNodeHashTable Widget_cachedSpriteMasks;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lrz;"
+		descriptor = "Lry;"
 	)
-	class462 field3717;
-	@ObfuscatedName("as")
+	class464 field3767;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lrz;"
+		descriptor = "Lry;"
 	)
-	class462 field3718;
+	class464 field3768;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lob;Lob;Lob;Lob;Lob;)V"
+		descriptor = "(Lpo;Lpo;Lpo;Lpo;Lpo;)V"
 	)
 	public WidgetDefinition(AbstractArchive var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4, AbstractArchive var5) {
-		this.field3714 = new HashMap();
+		this.field3762 = new HashMap();
 		this.Widget_cachedSprites = new EvictingDualNodeHashTable(200);
 		this.Widget_cachedModels = new EvictingDualNodeHashTable(50);
 		this.Widget_cachedFonts = new EvictingDualNodeHashTable(20);
 		this.Widget_cachedSpriteMasks = new EvictingDualNodeHashTable(8);
-		this.field3717 = new class462(10, class460.field4876);
-		this.field3718 = new class462(10, class460.field4876);
+		this.field3767 = new class464(10, class462.field4931);
+		this.field3768 = new class464(10, class462.field4931);
 		int var6 = 0;
 		if (var1 != null) {
 			this.widgetArchive = var1;
-			this.field3716 = var2;
-			this.field3712 = var3;
-			this.field3706 = var4;
-			this.field3711 = var5;
+			this.field3758 = var2;
+			this.field3759 = var3;
+			this.field3760 = var4;
+			this.field3757 = var5;
 			var6 = this.widgetArchive.getGroupCount();
 		}
 
 		this.Widget_interfaceComponents = new Widget[var6][];
-		Calendar.field3972 = new boolean[var6];
+		class337.field3676 = new boolean[var6];
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lnq;",
-		garbageValue = "-78"
+		descriptor = "(II)Lny;",
+		garbageValue = "-1816408445"
 	)
-	public Widget method6544(int var1) {
+	public Widget method6841(int var1) {
 		int var2 = var1 >> 16;
 		int var3 = var1 & 65535;
 		if (this.Widget_interfaceComponents[var2] == null || this.Widget_interfaceComponents[var2][var3] == null) {
@@ -120,14 +121,14 @@ public class WidgetDefinition {
 		return this.Widget_interfaceComponents[var2][var3];
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)Lnq;",
-		garbageValue = "48"
+		descriptor = "(III)Lny;",
+		garbageValue = "1569081104"
 	)
 	@Export("getWidgetChild")
 	public Widget getWidgetChild(int var1, int var2) {
-		Widget var3 = this.method6544(var1);
+		Widget var3 = this.method6841(var1);
 		if (var2 == -1) {
 			return var3;
 		} else {
@@ -135,21 +136,21 @@ public class WidgetDefinition {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1228916395"
+		descriptor = "(IB)Z",
+		garbageValue = "32"
 	)
 	@Export("loadInterface")
 	public boolean loadInterface(int var1) {
-		if (Calendar.field3972[var1]) {
+		if (class337.field3676[var1]) {
 			return true;
 		} else if (!this.widgetArchive.tryLoadGroup(var1)) {
 			return false;
 		} else {
 			int var2 = this.widgetArchive.getGroupFileCount(var1);
 			if (var2 == 0) {
-				Calendar.field3972[var1] = true;
+				class337.field3676[var1] = true;
 				return true;
 			} else {
 				if (this.Widget_interfaceComponents[var1] == null) {
@@ -168,31 +169,31 @@ public class WidgetDefinition {
 								this.Widget_interfaceComponents[var1][var3].decodeLegacy(new Buffer(var4));
 							}
 
-							if (this.field3711 != null) {
-								byte[] var5 = this.field3711.takeFile(var1, var3);
+							if (this.field3757 != null) {
+								byte[] var5 = this.field3757.takeFile(var1, var3);
 								if (var5 != null && var5.length > 0) {
-									this.Widget_interfaceComponents[var1][var3].method6943(new Buffer(var5));
-									this.field3714.put(this.Widget_interfaceComponents[var1][var3].field3804, var1);
+									this.Widget_interfaceComponents[var1][var3].method7333(new Buffer(var5));
+									this.field3762.put(this.Widget_interfaceComponents[var1][var3].field3853, var1);
 								}
 							}
 						}
 					}
 				}
 
-				Calendar.field3972[var1] = true;
+				class337.field3676[var1] = true;
 				return true;
 			}
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "978393306"
+		descriptor = "(IB)V",
+		garbageValue = "58"
 	)
-	public void method6547(int var1) {
+	public void method6855(int var1) {
 		if (var1 != -1) {
-			if (Calendar.field3972[var1]) {
+			if (class337.field3676[var1]) {
 				this.widgetArchive.clearFilesGroup(var1);
 				if (this.Widget_interfaceComponents[var1] != null) {
 					for (int var2 = 0; var2 < this.Widget_interfaceComponents[var1].length; ++var2) {
@@ -202,7 +203,7 @@ public class WidgetDefinition {
 					}
 
 					this.Widget_interfaceComponents[var1] = null;
-					Calendar.field3972[var1] = false;
+					class337.field3676[var1] = false;
 				}
 			}
 		}
@@ -210,41 +211,169 @@ public class WidgetDefinition {
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1975438551"
+		descriptor = "(B)V",
+		garbageValue = "15"
 	)
-	public void method6548() {
+	public void method6845() {
 		this.Widget_cachedSprites.clear();
 		this.Widget_cachedModels.clear();
 		this.Widget_cachedFonts.clear();
 		this.Widget_cachedSpriteMasks.clear();
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfq;",
-		garbageValue = "1509204341"
+		descriptor = "(ILdt;ZB)I",
+		garbageValue = "-68"
 	)
-	public static class142 method6556(int var0) {
-		class142 var1 = (class142)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
-		if (var1 != null) {
-			return var1;
+	static int method6853(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 >= 2000) {
+			var0 -= 1000;
+			var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
 		} else {
-			var1 = ObjectComposition.method5131(SequenceDefinition.SequenceDefinition_animationsArchive, class164.SequenceDefinition_skeletonsArchive, var0, false);
-			if (var1 != null) {
-				SequenceDefinition.SequenceDefinition_cachedModel.put(var1, (long)var0);
+			var3 = var2 ? Interpreter.scriptDotWidget : class464.scriptActiveWidget;
+		}
+
+		String var4 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
+		int[] var5 = null;
+		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') {
+			int var6 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+			if (var6 > 0) {
+				for (var5 = new int[var6]; var6-- > 0; var5[var6] = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]) {
+				}
 			}
 
-			return var1;
+			var4 = var4.substring(0, var4.length() - 1);
 		}
+
+		Object[] var9 = new Object[var4.length() + 1];
+
+		int var7;
+		for (var7 = var9.length - 1; var7 >= 1; --var7) {
+			if (var4.charAt(var7 - 1) == 's') {
+				var9[var7] = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
+			} else {
+				var9[var7] = new Integer(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			}
+		}
+
+		var7 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+		if (var7 != -1) {
+			var9[0] = new Integer(var7);
+		} else {
+			var9 = null;
+		}
+
+		if (var0 == ScriptOpcodes.CC_SETONCLICK) {
+			var3.onClick = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONHOLD) {
+			var3.onHold = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONRELEASE) {
+			var3.onRelease = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEOVER) {
+			var3.onMouseOver = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSELEAVE) {
+			var3.onMouseLeave = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONDRAG) {
+			var3.onDrag = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONTARGETLEAVE) {
+			var3.onTargetLeave = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONVARTRANSMIT) {
+			var3.onVarTransmit = var9;
+			var3.varTransmitTriggers = var5;
+		} else if (var0 == ScriptOpcodes.CC_SETONTIMER) {
+			var3.onTimer = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONOP) {
+			var3.onOp = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONDRAGCOMPLETE) {
+			var3.onDragComplete = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLICKREPEAT) {
+			var3.onClickRepeat = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMOUSEREPEAT) {
+			var3.onMouseRepeat = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONINVTRANSMIT) {
+			var3.onInvTransmit = var9;
+			var3.invTransmitTriggers = var5;
+		} else if (var0 == ScriptOpcodes.CC_SETONSTATTRANSMIT) {
+			var3.onStatTransmit = var9;
+			var3.statTransmitTriggers = var5;
+		} else if (var0 == ScriptOpcodes.CC_SETONTARGETENTER) {
+			var3.onTargetEnter = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONSCROLLWHEEL) {
+			var3.onScroll = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCHATTRANSMIT) {
+			var3.onChatTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONKEY) {
+			var3.onKey = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONFRIENDTRANSMIT) {
+			var3.onFriendTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANTRANSMIT) {
+			var3.onClanTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONMISCTRANSMIT) {
+			var3.onMiscTransmit = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONDIALOGABORT) {
+			var3.onDialogAbort = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONSUBCHANGE) {
+			var3.onSubChange = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONSTOCKTRANSMIT) {
+			var3.onStockTransmit = var9;
+		} else if (var0 == 1426) {
+			var3.field3963 = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONRESIZE) {
+			var3.onResize = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANSETTINGSTRANSMIT) {
+			var3.field3970 = var9;
+		} else if (var0 == ScriptOpcodes.CC_SETONCLANCHANNELTRANSMIT) {
+			var3.field3971 = var9;
+		} else if (var0 == 1430) {
+			var3.field3966 = var9;
+		} else if (var0 == 1431) {
+			var3.field3967 = var9;
+		} else if (var0 == 1434) {
+			var3.field3905 = var9;
+		} else if (var0 == 1435) {
+			var3.field3982 = var9;
+		} else {
+			if (var0 < 1436 || var0 > 1439) {
+				return 2;
+			}
+
+			class358 var8 = var3.method7271();
+			if (var8 != null) {
+				if (var0 == 1436) {
+					var8.field3787 = var9;
+				} else if (var0 == 1437) {
+					var8.field3784 = var9;
+				} else if (var0 == 1438) {
+					var8.field3788 = var9;
+				} else if (var0 == 1439) {
+					var8.field3786 = var9;
+				}
+			}
+		}
+
+		var3.hasListener = true;
+		return 1;
 	}
 
-	@ObfuscatedName("jn")
+	@ObfuscatedName("ko")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lpr;",
-		garbageValue = "1111421761"
+		descriptor = "(IIIIIII)V",
+		garbageValue = "1366828095"
 	)
-	public static NodeDeque method6561() {
-		return Client.scriptEvents;
+	static void method6851(int var0, int var1, int var2, int var3, int var4, int var5) {
+		NodeDeque var6 = class162.worldView.field1367[var0][var1][var2];
+		if (var6 != null) {
+			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
+				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
+					var7.quantity = var5;
+					break;
+				}
+			}
+
+			class537.method9776(var0, var1, var2);
+		}
+
 	}
 }

@@ -7,12 +7,9 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("el")
+@ObfuscatedName("eb")
 @Implements("SecureUrlRequester")
 public class SecureUrlRequester extends UrlRequester {
-	@ObfuscatedName("gl")
-	@Export("accessToken")
-	static String accessToken;
 	@ObfuscatedName("ax")
 	@Export("secureHttps")
 	final boolean secureHttps;
@@ -22,10 +19,10 @@ public class SecureUrlRequester extends UrlRequester {
 		this.secureHttps = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lee;I)V",
-		garbageValue = "-1836234627"
+		descriptor = "(Lek;I)V",
+		garbageValue = "2145007281"
 	)
 	@Export("openConnection")
 	void openConnection(UrlRequest var1) throws IOException {
@@ -38,12 +35,12 @@ public class SecureUrlRequester extends UrlRequester {
 				try {
 					label131: {
 						var9 = true;
-						String var3 = var1.field1473.getProtocol();
+						String var3 = var1.field1502.getProtocol();
 						if (var3.equals("http")) {
 							var2 = this.openHttpConnection(var1);
 						} else {
 							if (!var3.equals("https")) {
-								var1.field1470 = UrlRequest.field1472;
+								var1.field1504 = UrlRequest.field1503;
 								var9 = false;
 								break label131;
 							}
@@ -51,12 +48,12 @@ public class SecureUrlRequester extends UrlRequester {
 							var2 = this.openHttpsConnection(var1);
 						}
 
-						this.method2982(var2, var1);
+						this.method3134(var2, var1);
 						var9 = false;
 						break label136;
 					}
 				} catch (IOException var10) {
-					var1.field1470 = UrlRequest.field1472;
+					var1.field1504 = UrlRequest.field1503;
 					var9 = false;
 					break label128;
 				} finally {
@@ -92,26 +89,26 @@ public class SecureUrlRequester extends UrlRequester {
 
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lee;I)Ljava/net/URLConnection;",
-		garbageValue = "1987557843"
+		descriptor = "(Lek;I)Ljava/net/URLConnection;",
+		garbageValue = "373156715"
 	)
 	@Export("openHttpConnection")
 	URLConnection openHttpConnection(UrlRequest var1) throws IOException {
-		URLConnection var2 = var1.field1473.openConnection();
+		URLConnection var2 = var1.field1502.openConnection();
 		this.setDefaultRequestProperties(var2);
 		return var2;
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lee;I)Ljava/net/URLConnection;",
-		garbageValue = "-2113577919"
+		descriptor = "(Lek;I)Ljava/net/URLConnection;",
+		garbageValue = "-1357287561"
 	)
 	@Export("openHttpsConnection")
 	URLConnection openHttpsConnection(UrlRequest var1) throws IOException {
-		HttpsURLConnection var2 = (HttpsURLConnection)var1.field1473.openConnection();
+		HttpsURLConnection var2 = (HttpsURLConnection)var1.field1502.openConnection();
 		if (!this.secureHttps) {
 			if (SecureRandomSSLSocketFactory.INSTANCE == null) {
 				SecureRandomSSLSocketFactory.INSTANCE = new SecureRandomSSLSocketFactory();
@@ -125,41 +122,12 @@ public class SecureUrlRequester extends UrlRequester {
 		return var2;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-39"
+		descriptor = "(IIIII)I",
+		garbageValue = "965500672"
 	)
-	static void method3018() {
-		if (Login.clearLoginScreen) {
-			Login.titleboxSprite = null;
-			WorldMapEvent.titlebuttonSprite = null;
-			class328.runesSprite = null;
-			class368.leftTitleSprite = null;
-			AttackOption.rightTitleSprite = null;
-			FillMode.logoSprite = null;
-			Login.title_muteSprite = null;
-			class423.options_buttons_0Sprite = null;
-			class421.options_buttons_2Sprite = null;
-			class163.worldSelectBackSprites = null;
-			Interpreter.worldSelectFlagSprites = null;
-			class151.worldSelectArrows = null;
-			class414.worldSelectStars = null;
-			LoginScreenAnimation.field1282 = null;
-			class27.loginScreenRunesAnimation.method2584();
-			class92.method2440(0, 100);
-			class1.method8().method7360(true);
-			Login.clearLoginScreen = false;
-		}
-	}
-
-	@ObfuscatedName("lc")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIII)I",
-		garbageValue = "955390231"
-	)
-	@Export("insertMenuItemNoShift")
-	public static final int insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		return NpcOverrides.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false, -1);
+	static final int method3160(int var0, int var1, int var2, int var3) {
+		return var2 * var1 - var3 * var0 >> 16;
 	}
 }

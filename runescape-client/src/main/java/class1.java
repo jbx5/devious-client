@@ -1,69 +1,75 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.Callable;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ay")
+@ObfuscatedName("ae")
 public class class1 implements Callable {
-	@ObfuscatedName("ql")
+	@ObfuscatedName("be")
+	@Export("client")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Lclient;"
 	)
-	static class530 field2;
-	@ObfuscatedName("ab")
+	static Client client;
+	@ObfuscatedName("tp")
+	@ObfuscatedGetter(
+		intValue = 1938284921
+	)
+	static int field3;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lvg;"
+		descriptor = "Lvf;"
 	)
-	final Buffer field3;
-	@ObfuscatedName("ay")
+	final Buffer field1;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lau;"
+		descriptor = "Lam;"
 	)
-	final class3 field1;
+	final class3 field0;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lac;"
+		descriptor = "Lat;"
 	)
 	final class7 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lac;Lvg;Lau;)V"
+		descriptor = "(Lat;Lvf;Lam;)V"
 	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
-		this.field3 = var2;
-		this.field1 = var3;
+		this.field1 = var2;
+		this.field0 = var3;
 	}
 
 	public Object call() {
-		return this.field1.vmethod11(this.field3);
+		return this.field0.vmethod9(this.field1);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lob;Lob;B)V",
-		garbageValue = "1"
+		descriptor = "(Ljava/util/ArrayList;ZI)V",
+		garbageValue = "408900827"
 	)
-	public static void method9(AbstractArchive var0, AbstractArchive var1) {
-		KitDefinition.KitDefinition_archive = var0;
-		KitDefinition.KitDefinition_modelsArchive = var1;
-		class211.KitDefinition_fileCount = KitDefinition.KitDefinition_archive.getGroupFileCount(3);
-	}
+	static void method6(ArrayList var0, boolean var1) {
+		if (!var1) {
+			class334.field3619.clear();
+		}
 
-	@ObfuscatedName("bt")
-	@ObfuscatedSignature(
-		descriptor = "([BII)I",
-		garbageValue = "-2084614252"
-	)
-	public static int method7(byte[] var0, int var1) {
-		return class487.method8868(var0, 0, var1);
-	}
+		Iterator var2 = var0.iterator();
 
-	@ObfuscatedName("pw")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lor;",
-		garbageValue = "-13"
-	)
-	static JagNetThread method8() {
-		return SecureRandomFuture.field980;
+		while (var2.hasNext()) {
+			MusicSong var3 = (MusicSong)var2.next();
+			if (var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+				if (!var1) {
+					class334.field3619.add(var3);
+				}
+
+				class334.field3621.add(var3);
+			}
+		}
+
 	}
 }

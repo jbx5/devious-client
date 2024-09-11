@@ -1,47 +1,37 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("hx")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("ParamDefinition_archive")
 	static AbstractArchive ParamDefinition_archive;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("ParamDefinition_cached")
 	static EvictingDualNodeHashTable ParamDefinition_cached;
-	@ObfuscatedName("bw")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
-	@ObfuscatedName("wu")
-	@ObfuscatedGetter(
-		intValue = 1373938993
-	)
-	@Export("foundItemIndex")
-	static int foundItemIndex;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@Export("type")
 	char type;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1044884677
+		intValue = -788953933
 	)
 	@Export("defaultInt")
 	public int defaultInt;
 	@ObfuscatedName("ax")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@Export("autoDisable")
 	boolean autoDisable;
 
@@ -53,19 +43,19 @@ public class ParamComposition extends DualNode {
 		this.autoDisable = true;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-237053825"
+		garbageValue = "-1761220261"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-1692066918"
+		descriptor = "(Lvf;I)V",
+		garbageValue = "-1076864158"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -81,8 +71,8 @@ public class ParamComposition extends DualNode {
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;IB)V",
-		garbageValue = "2"
+		descriptor = "(Lvf;II)V",
+		garbageValue = "-1765669651"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -94,7 +84,7 @@ public class ParamComposition extends DualNode {
 			}
 
 			if (var5 >= 128 && var5 < 160) {
-				char var6 = class414.cp1252AsciiExtension[var5 - 128];
+				char var6 = class416.cp1252AsciiExtension[var5 - 128];
 				if (var6 == 0) {
 					var6 = '?';
 				}
@@ -114,22 +104,26 @@ public class ParamComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-13"
+		garbageValue = "-106"
 	)
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1594286423"
+		descriptor = "(ZI)V",
+		garbageValue = "-1555968902"
 	)
-	public static boolean method5049(int var0) {
-		return (var0 & 1) != 0;
+	public static void method4098(boolean var0) {
+		if (var0 != class191.ItemDefinition_inMembersWorld) {
+			ObjectComposition.method4194();
+			class191.ItemDefinition_inMembersWorld = var0;
+		}
+
 	}
 }

@@ -3,24 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uj")
+@ObfuscatedName("un")
 @Implements("DbTableType")
 public class DbTableType extends DualNode {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
-	public static AbstractArchive field5307;
-	@ObfuscatedName("ay")
+	public static AbstractArchive field5348;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("DBTableType_cache")
-	static EvictingDualNodeHashTable DBTableType_cache;
-	@ObfuscatedName("an")
+	public static EvictingDualNodeHashTable DBTableType_cache;
+	@ObfuscatedName("ag")
 	@Export("types")
 	public int[][] types;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@Export("defaultValues")
 	public Object[][] defaultValues;
 
@@ -31,28 +31,28 @@ public class DbTableType extends DualNode {
 	DbTableType() {
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "238724368"
+		descriptor = "(Lvf;B)V",
+		garbageValue = "-39"
 	)
-	void method9483(Buffer var1) {
+	void method9794(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method9484(var1, var2);
+			this.method9795(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;IB)V",
-		garbageValue = "-77"
+		descriptor = "(Lvf;II)V",
+		garbageValue = "852231286"
 	)
-	void method9484(Buffer var1, int var2) {
+	void method9795(Buffer var1, int var2) {
 		if (var2 == 1) {
 			int var3 = var1.readUnsignedByte();
 			if (this.types == null) {
@@ -74,30 +74,18 @@ public class DbTableType extends DualNode {
 						this.defaultValues = new Object[this.types.length][];
 					}
 
-					Object[][] var17 = this.defaultValues;
-					int var11 = var1.readUShortSmart();
-					Object[] var12 = new Object[var7.length * var11];
-
-					for (int var13 = 0; var13 < var11; ++var13) {
-						for (int var14 = 0; var14 < var7.length; ++var14) {
-							int var15 = var14 + var7.length * var13;
-							class535 var16 = class418.method7757(var7[var14]);
-							var12[var15] = var16.method9461(var1);
-						}
-					}
-
-					var17[var5] = var12;
+					this.defaultValues[var5] = class330.method6427(var1, var7);
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1287080455"
+		garbageValue = "-1056183933"
 	)
-	void method9490() {
+	void method9796() {
 	}
 }

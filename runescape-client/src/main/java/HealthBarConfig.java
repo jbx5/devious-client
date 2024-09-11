@@ -1,37 +1,45 @@
-import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("eg")
 @Implements("HealthBarConfig")
 public class HealthBarConfig extends Node {
-	@ObfuscatedName("an")
+	@ObfuscatedName("au")
+	@Export("Tiles_saturation")
+	static int[] Tiles_saturation;
+	@ObfuscatedName("ts")
 	@ObfuscatedSignature(
-		descriptor = "Ljd;"
+		descriptor = "Lbz;"
+	)
+	@Export("pcmPlayer1")
+	static PcmPlayer pcmPlayer1;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lhk;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "Lpr;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljd;)V"
+		descriptor = "(Lhk;)V"
 	)
 	HealthBarConfig(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-776005364"
+		garbageValue = "-793429886"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -64,10 +72,10 @@ public class HealthBarConfig extends Node {
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ldu;",
-		garbageValue = "704930333"
+		descriptor = "(IB)Lds;",
+		garbageValue = "3"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -78,7 +86,7 @@ public class HealthBarConfig extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -89,75 +97,13 @@ public class HealthBarConfig extends Node {
 		}
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "122"
+		garbageValue = "-108"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7575();
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "1645586642"
-	)
-	public static int method2744(int var0, int var1, int var2) {
-		int var3 = GameObject.method4490(var2 - var1 + 1);
-		var3 <<= var1;
-		return var0 & ~var3;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Date;B)Z",
-		garbageValue = "117"
-	)
-	static boolean method2743(Date var0) {
-		java.util.Calendar var1 = java.util.Calendar.getInstance();
-		var1.set(1, var1.get(1) - 13);
-		var1.set(5, var1.get(5) + 1);
-		var1.set(11, 0);
-		var1.set(12, 0);
-		var1.set(13, 0);
-		var1.set(14, 0);
-		Date var2 = var1.getTime();
-		return var0.before(var2);
-	}
-
-	@ObfuscatedName("mr")
-	@ObfuscatedSignature(
-		descriptor = "(Lnq;I)Z",
-		garbageValue = "-1574031166"
-	)
-	@Export("runCs1")
-	static final boolean runCs1(Widget var0) {
-		if (var0.cs1Comparisons == null) {
-			return false;
-		} else {
-			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
-				int var2 = FloorDecoration.method3719(var0, var1);
-				int var3 = var0.cs1ComparisonValues[var1];
-				if (var0.cs1Comparisons[var1] == 2) {
-					if (var2 >= var3) {
-						return false;
-					}
-				} else if (var0.cs1Comparisons[var1] == 3) {
-					if (var2 <= var3) {
-						return false;
-					}
-				} else if (var0.cs1Comparisons[var1] == 4) {
-					if (var3 == var2) {
-						return false;
-					}
-				} else if (var2 != var3) {
-					return false;
-				}
-			}
-
-			return true;
-		}
+		return this.updates.method7843();
 	}
 }

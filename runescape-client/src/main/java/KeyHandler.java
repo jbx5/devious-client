@@ -12,123 +12,143 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("az")
+@ObfuscatedName("ak")
 @Implements("KeyHandler")
 public class KeyHandler implements KeyListener, FocusListener {
 	@ObfuscatedName("dx")
-	static boolean field107;
-	@ObfuscatedName("fg")
+	static boolean field109;
+	@ObfuscatedName("eq")
 	@ObfuscatedSignature(
-		descriptor = "Loj;"
+		descriptor = "Lof;"
 	)
-	static Archive field100;
-	@ObfuscatedName("ay")
-	Collection field101;
-	@ObfuscatedName("an")
-	Collection field102;
-	@ObfuscatedName("au")
+	static Archive field110;
+	@ObfuscatedName("fs")
 	@ObfuscatedSignature(
-		descriptor = "[Lbc;"
+		descriptor = "Lof;"
 	)
-	class29[] field103;
+	static Archive field112;
+	@ObfuscatedName("iz")
+	@ObfuscatedGetter(
+		intValue = 910204495
+	)
+	static int field111;
+	@ObfuscatedName("ae")
+	Collection field113;
+	@ObfuscatedName("ag")
+	Collection field104;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "[Lbx;"
+	)
+	class29[] field107;
 	@ObfuscatedName("ax")
 	@Export("KeyHandler_pressedKeys")
 	boolean[] KeyHandler_pressedKeys;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 330789229
+		intValue = -2021664831
 	)
 	@Export("KeyHandler_idleCycles")
 	volatile int KeyHandler_idleCycles;
 
 	KeyHandler() {
-		this.field103 = new class29[3];
+		this.field107 = new class29[3];
 		this.KeyHandler_pressedKeys = new boolean[112];
 		this.KeyHandler_idleCycles = 0;
-		this.field101 = new ArrayList(100);
-		this.field102 = new ArrayList(100);
+		this.field113 = new ArrayList(100);
+		this.field104 = new ArrayList(100);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lbc;II)V",
-		garbageValue = "-787978590"
+		descriptor = "(Lbx;IB)V",
+		garbageValue = "3"
 	)
-	void method327(class29 var1, int var2) {
-		this.field103[var2] = var1;
+	void method361(class29 var1, int var2) {
+		this.field107[var2] = var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1781336901"
+		garbageValue = "1451554368"
 	)
-	int method322() {
+	public int method369() {
 		return this.KeyHandler_idleCycles;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "1908942297"
+		descriptor = "(Ljava/awt/Component;B)V",
+		garbageValue = "-54"
 	)
-	void method323(Component var1) {
+	void method365(Component var1) {
 		var1.setFocusTraversalKeysEnabled(false);
 		var1.addKeyListener(this);
 		var1.addFocusListener(this);
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/awt/Component;I)V",
-		garbageValue = "-210406039"
+		descriptor = "(Ljava/awt/Component;B)V",
+		garbageValue = "34"
 	)
-	synchronized void method324(Component var1) {
+	synchronized void method341(Component var1) {
 		var1.removeKeyListener(this);
 		var1.removeFocusListener(this);
 		synchronized(this) {
-			this.field101.add(new class33(4, 0));
+			this.field113.add(new class33(4, 0));
 		}
 	}
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-77955646"
+		descriptor = "(S)V",
+		garbageValue = "128"
 	)
-	void method354() {
+	void method342() {
 		++this.KeyHandler_idleCycles;
-		this.method336();
-		Iterator var1 = this.field102.iterator();
+		this.method344();
+		Iterator var1 = this.field104.iterator();
 
 		while (var1.hasNext()) {
 			class33 var2 = (class33)var1.next();
 
-			for (int var3 = 0; var3 < this.field103.length && !var2.method451(this.field103[var3]); ++var3) {
+			for (int var3 = 0; var3 < this.field107.length && !var2.method474(this.field107[var3]); ++var3) {
 			}
 		}
 
-		this.field102.clear();
+		this.field104.clear();
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1965760681"
+		garbageValue = "-1343573175"
 	)
-	synchronized void method336() {
-		Collection var1 = this.field102;
-		this.field102 = this.field101;
-		this.field101 = var1;
+	synchronized void method344() {
+		Collection var1 = this.field104;
+		this.field104 = this.field113;
+		this.field113 = var1;
+	}
+
+	public final synchronized void focusLost(FocusEvent var1) {
+		for (int var2 = 0; var2 < 112; ++var2) {
+			if (this.KeyHandler_pressedKeys[var2]) {
+				this.KeyHandler_pressedKeys[var2] = false;
+				this.field113.add(new class33(2, var2));
+			}
+		}
+
+		this.field113.add(new class33(4, 0));
 	}
 
 	public final synchronized void keyPressed(KeyEvent var1) {
 		int var2 = var1.getKeyCode();
-		if (var2 >= 0 && var2 < class104.method2822()) {
+		if (var2 >= 0 && var2 < AbstractWorldMapData.method6187()) {
 			int var3 = class28.KeyHandler_keyCodes[var2];
 			var2 = var3;
-			boolean var4 = (var3 & 128) != 0;
-			if (var4) {
+			if (class59.method1181(var3)) {
 				var2 = -1;
 			}
 		} else {
@@ -141,7 +161,7 @@ public class KeyHandler implements KeyListener, FocusListener {
 			}
 
 			this.KeyHandler_pressedKeys[var2] = true;
-			this.field101.add(new class33(1, var2));
+			this.field113.add(new class33(1, var2));
 		}
 
 		var1.consume();
@@ -149,158 +169,107 @@ public class KeyHandler implements KeyListener, FocusListener {
 
 	public final synchronized void keyReleased(KeyEvent var1) {
 		int var2 = var1.getKeyCode();
-		if (var2 >= 0 && var2 < class104.method2822()) {
-			int var3 = class28.KeyHandler_keyCodes[var2];
-			var2 = var3 & -129;
+		if (var2 >= 0 && var2 < AbstractWorldMapData.method6187()) {
+			var2 = UserComparator6.method3239(var2) & -129;
 		} else {
 			var2 = -1;
 		}
 
 		if (var2 >= 0) {
 			this.KeyHandler_pressedKeys[var2] = false;
-			this.field101.add(new class33(2, var2));
+			this.field113.add(new class33(2, var2));
+		}
+
+		var1.consume();
+	}
+
+	public final synchronized void keyTyped(KeyEvent var1) {
+		char var2 = var1.getKeyChar();
+		if (var2 != 0 && var2 != '\uffff' && KitDefinition.method3889(var2)) {
+			this.field113.add(new class33(3, var2));
 		}
 
 		var1.consume();
 	}
 
 	public final synchronized void focusGained(FocusEvent var1) {
-		this.field101.add(new class33(4, 1));
+		this.field113.add(new class33(4, 1));
 	}
 
-	public final synchronized void focusLost(FocusEvent var1) {
-		for (int var2 = 0; var2 < 112; ++var2) {
-			if (this.KeyHandler_pressedKeys[var2]) {
-				this.KeyHandler_pressedKeys[var2] = false;
-				this.field101.add(new class33(2, var2));
-			}
-		}
-
-		this.field101.add(new class33(4, 0));
-	}
-
-	public final synchronized void keyTyped(KeyEvent var1) {
-		char var2 = var1.getKeyChar();
-		if (var2 != 0 && var2 != '\uffff') {
-			boolean var3;
-			if ((var2 <= 0 || var2 >= 128) && (var2 < 160 || var2 > 255)) {
-				label50: {
-					if (var2 != 0) {
-						char[] var4 = class414.cp1252AsciiExtension;
-
-						for (int var5 = 0; var5 < var4.length; ++var5) {
-							char var6 = var4[var5];
-							if (var6 == var2) {
-								var3 = true;
-								break label50;
-							}
-						}
-					}
-
-					var3 = false;
-				}
-			} else {
-				var3 = true;
-			}
-
-			if (var3) {
-				this.field101.add(new class33(3, var2));
-			}
-		}
-
-		var1.consume();
-	}
-
-	@ObfuscatedName("ay")
-	static final void method356(long var0) {
-		try {
-			Thread.sleep(var0);
-		} catch (InterruptedException var3) {
-		}
-
-	}
-
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ik")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)[B",
-		garbageValue = "884261769"
+		descriptor = "(I)V",
+		garbageValue = "1036155435"
 	)
-	static byte[] method357(String var0) {
-		boolean var1 = true;
-		boolean var2 = true;
-		int var3 = "pattern".length();
-		int var4 = 0;
-		byte[] var5 = new byte[8];
-
-		while (true) {
-			int var6 = var3 + var4;
-			if (var6 >= var0.length()) {
-				return null;
-			}
-
-			char var7 = var0.charAt(var6);
-			if (var7 == ':') {
-				if (var4 == 0) {
-					return null;
-				}
-
-				byte[] var8 = new byte[var4];
-				System.arraycopy(var5, 0, var8, 0, var4);
-				return var8;
-			}
-
-			if (var5.length == var4) {
-				return null;
-			}
-
-			if (var7 >= '0' && var7 <= '9') {
-				var7 = (char)(var7 - '0');
-			} else {
-				if (var7 < 'a' || var7 > 'z') {
-					return null;
-				}
-
-				var7 = (char)(var7 - 'W');
-			}
-
-			var5[var4++] = (byte)var7;
+	static final void method340() {
+		if (Client.field756 != ClientPreferences.field1341.plane) {
+			Client.field756 = ClientPreferences.field1341.plane;
+			WorldMapSection0.method6138(ClientPreferences.field1341.plane);
 		}
+
 	}
 
-	@ObfuscatedName("mo")
+	@ObfuscatedName("im")
 	@ObfuscatedSignature(
-		descriptor = "(Lnq;III)V",
-		garbageValue = "-427264897"
+		descriptor = "(III)V",
+		garbageValue = "657978114"
 	)
-	@Export("alignWidgetPosition")
-	static void alignWidgetPosition(Widget var0, int var1, int var2) {
-		if (var0.xAlignment == 0) {
-			var0.x = var0.rawX;
-		} else if (var0.xAlignment == 1) {
-			var0.x = var0.rawX + (var1 - var0.width) / 2;
-		} else if (var0.xAlignment == 2) {
-			var0.x = var1 - var0.width - var0.rawX;
-		} else if (var0.xAlignment == 3) {
-			var0.x = var0.rawX * var1 >> 14;
-		} else if (var0.xAlignment == 4) {
-			var0.x = (var1 - var0.width) / 2 + (var0.rawX * var1 >> 14);
-		} else {
-			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
+	static final void method374(int var0, int var1) {
+		if (var0 < 128) {
+			var0 = 128;
+		} else if (var0 > 383) {
+			var0 = 383;
 		}
 
-		if (var0.yAlignment == 0) {
-			var0.y = var0.rawY;
-		} else if (var0.yAlignment == 1) {
-			var0.y = (var2 - var0.height) / 2 + var0.rawY;
-		} else if (var0.yAlignment == 2) {
-			var0.y = var2 - var0.height - var0.rawY;
-		} else if (var0.yAlignment == 3) {
-			var0.y = var2 * var0.rawY >> 14;
-		} else if (var0.yAlignment == 4) {
-			var0.y = (var2 - var0.height) / 2 + (var2 * var0.rawY >> 14);
-		} else {
-			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
+		if (class463.cameraPitch < var0) {
+			class463.cameraPitch = (var0 - class463.cameraPitch) * class224.field2411 / 1000 + class463.cameraPitch + HttpMethod.field29;
+			if (class463.cameraPitch > var0) {
+				class463.cameraPitch = var0;
+			}
+		} else if (class463.cameraPitch > var0) {
+			class463.cameraPitch -= (class463.cameraPitch - var0) * class224.field2411 / 1000 + HttpMethod.field29;
+			if (class463.cameraPitch < var0) {
+				class463.cameraPitch = var0;
+			}
 		}
 
+		var1 &= 2047;
+		int var2 = var1 - class267.cameraYaw;
+		if (var2 > 1024) {
+			var2 -= 2048;
+		} else if (var2 < -1024) {
+			var2 += 2048;
+		}
+
+		if (var2 > 0) {
+			class267.cameraYaw = class267.cameraYaw + HttpMethod.field29 + var2 * class224.field2411 / 1000;
+			class267.cameraYaw &= 2047;
+		} else if (var2 < 0) {
+			class267.cameraYaw -= HttpMethod.field29 + -var2 * class224.field2411 / 1000;
+			class267.cameraYaw &= 2047;
+		}
+
+		int var3 = var1 - class267.cameraYaw;
+		if (var3 > 1024) {
+			var3 -= 2048;
+		} else if (var3 < -1024) {
+			var3 += 2048;
+		}
+
+		if (var3 < 0 && var2 > 0 || var3 > 0 && var2 < 0) {
+			class267.cameraYaw = var1;
+		}
+
+	}
+
+	@ObfuscatedName("mm")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZI)V",
+		garbageValue = "2045319622"
+	)
+	static final void method373(int var0, int var1, int var2, boolean var3) {
+		if (TaskHandler.widgetDefinition.loadInterface(var0)) {
+			class383.resizeInterface(TaskHandler.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3);
+		}
 	}
 }

@@ -4,16 +4,15 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ea")
+@ObfuscatedName("et")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("kn")
+	@ObfuscatedName("lq")
 	@ObfuscatedGetter(
-		intValue = -1622474891
+		intValue = 367799447
 	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("ab")
+	static int field1544;
+	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -21,10 +20,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lsc;Lsc;B)I",
-		garbageValue = "112"
+		descriptor = "(Lsq;Lsq;I)I",
+		garbageValue = "2143857721"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -39,43 +38,117 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "10"
+		descriptor = "(II)I",
+		garbageValue = "-996746712"
 	)
-	static void method3100(int var0, int var1, int var2, int var3) {
-		class332.musicPlayerStatus = var0;
-		class332.field3568 = var1;
-		class332.field3570 = var2;
-		class332.field3567 = var3;
+	static int method3239(int var0) {
+		return class28.KeyHandler_keyCodes[var0];
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)V",
-		garbageValue = "-2061956312"
+		descriptor = "(Lfr;FZB)F",
+		garbageValue = "-106"
 	)
-	static final void method3099(String var0, int var1) {
-		PacketBufferNode var2 = class218.getPacketBufferNode(ClientPacket.field3306, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeByte(class526.stringCp1252NullTerminatedByteSize(var0) + 1);
-		var2.packetBuffer.writeByteSub(var1);
-		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		Client.packetWriter.addNode(var2);
+	static float method3242(class137 var0, float var1, boolean var2) {
+		float var3 = 0.0F;
+		if (var0 != null && var0.method3328() != 0) {
+			float var4 = (float)var0.field1607[0].field1554;
+			float var5 = (float)var0.field1607[var0.method3328() - 1].field1554;
+			float var6 = var5 - var4;
+			if (var6 == 0.0F) {
+				return var0.field1607[0].field1555;
+			} else {
+				float var7 = 0.0F;
+				if (var1 > var5) {
+					var7 = (var1 - var5) / var6;
+				} else {
+					var7 = (var1 - var4) / var6;
+				}
+
+				float var8 = (float)((int)var7);
+				float var9 = Math.abs(var7 - var8);
+				float var10 = var6 * var9;
+				var8 = Math.abs(var8 + 1.0F);
+				float var11 = var8 / 2.0F;
+				float var12 = (float)((int)var11);
+				var9 = var11 - var12;
+				float var13;
+				float var14;
+				if (var2) {
+					if (var0.field1605 == class135.field1591) {
+						if (var9 != 0.0F) {
+							var10 += var4;
+						} else {
+							var10 = var5 - var10;
+						}
+					} else if (var0.field1605 != class135.field1588 && var0.field1605 != class135.field1594) {
+						if (var0.field1605 == class135.field1587) {
+							var10 = var4 - var1;
+							var13 = var0.field1607[0].field1556;
+							var14 = var0.field1607[0].field1557;
+							var3 = var0.field1607[0].field1555;
+							if (0.0F != var13) {
+								var3 -= var14 * var10 / var13;
+							}
+
+							return var3;
+						}
+					} else {
+						var10 = var5 - var10;
+					}
+				} else if (var0.field1606 == class135.field1591) {
+					if (0.0F != var9) {
+						var10 = var5 - var10;
+					} else {
+						var10 += var4;
+					}
+				} else if (var0.field1606 != class135.field1588 && var0.field1606 != class135.field1594) {
+					if (var0.field1606 == class135.field1587) {
+						var10 = var1 - var5;
+						var13 = var0.field1607[var0.method3328() - 1].field1558;
+						var14 = var0.field1607[var0.method3328() - 1].field1559;
+						var3 = var0.field1607[var0.method3328() - 1].field1555;
+						if (0.0F != var13) {
+							var3 += var14 * var10 / var13;
+						}
+
+						return var3;
+					}
+				} else {
+					var10 += var4;
+				}
+
+				var3 = DynamicObject.method2401(var0, var10);
+				float var15;
+				if (var2 && var0.field1605 == class135.field1594) {
+					var15 = var0.field1607[var0.method3328() - 1].field1555 - var0.field1607[0].field1555;
+					var3 -= var15 * var8;
+				} else if (!var2 && var0.field1606 == class135.field1594) {
+					var15 = var0.field1607[var0.method3328() - 1].field1555 - var0.field1607[0].field1555;
+					var3 += var15 * var8;
+				}
+
+				return var3;
+			}
+		} else {
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("oz")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "10"
+		descriptor = "(IB)I",
+		garbageValue = "-59"
 	)
-	@Export("Clan_joinChat")
-	static final void Clan_joinChat(String var0) {
-		if (!var0.equals("")) {
-			PacketBufferNode var1 = class218.getPacketBufferNode(ClientPacket.field3335, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class526.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
+	public static int method3243(int var0) {
+		class145 var1 = GameEngine.method658(var0);
+		if (var1 == null) {
+			return 2;
+		} else {
+			return var1.method3396() ? 0 : 1;
 		}
 	}
 }

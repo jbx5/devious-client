@@ -1,201 +1,176 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("gh")
-public class class167 extends class148 {
-	@ObfuscatedName("as")
+@ObfuscatedName("gj")
+public class class167 {
+	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = 829046439
+		intValue = -1847636365
 	)
-	static int field1795;
-	@ObfuscatedName("fx")
+	@Export("ItemDefinition_fileCount")
+	public static int ItemDefinition_fileCount;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		longValue = -8778605944052578383L
+	)
+	long field1818;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		longValue = 3924644622254876697L
+	)
+	public long field1814;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Loj;"
+		descriptor = "Lpr;"
 	)
-	static Archive field1796;
-	@ObfuscatedName("jv")
-	@ObfuscatedGetter(
-		intValue = 1420449803
-	)
-	static int field1798;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 1310549299
-	)
-	int field1794;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lfy;"
-	)
-	final class151 this$0;
+	IterableNodeDeque field1815;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfy;)V"
+		descriptor = "(Lvf;)V"
 	)
-	class167(class151 var1) {
-		this.this$0 = var1;
-		this.field1794 = -1;
+	public class167(Buffer var1) {
+		this.field1814 = -1L;
+		this.field1815 = new IterableNodeDeque();
+		this.method3694(var1);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-1070155477"
+		descriptor = "(Lvf;I)V",
+		garbageValue = "556675772"
 	)
-	void vmethod3619(Buffer var1) {
-		this.field1794 = var1.readUnsignedShort();
-	}
+	void method3694(Buffer var1) {
+		this.field1818 = var1.readLong();
+		this.field1814 = var1.readLong();
 
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lgg;I)V",
-		garbageValue = "1070728869"
-	)
-	void vmethod3621(ClanSettings var1) {
-		var1.method3448(this.field1794);
-	}
-
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZI)Z",
-		garbageValue = "-928968775"
-	)
-	static boolean method3573(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-
-			for (int var7 = 0; var7 < var6; ++var7) {
-				char var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == '-') {
-						var3 = true;
-						continue;
-					}
-
-					if (var8 == '+') {
-						continue;
-					}
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 1) {
+				var3 = new class162(this);
+			} else if (var2 == 4) {
+				var3 = new class173(this);
+			} else if (var2 == 3) {
+				var3 = new class158(this);
+			} else if (var2 == 2) {
+				var3 = new class156(this);
+			} else {
+				if (var2 != 5) {
+					throw new RuntimeException("");
 				}
 
-				int var10;
-				if (var8 >= '0' && var8 <= '9') {
-					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') {
-					var10 = var8 - '7';
-				} else {
-					if (var8 < 'a' || var8 > 'z') {
-						return false;
-					}
-
-					var10 = var8 - 'W';
-				}
-
-				if (var10 >= var1) {
-					return false;
-				}
-
-				if (var3) {
-					var10 = -var10;
-				}
-
-				int var9 = var5 * var1 + var10;
-				if (var9 / var1 != var5) {
-					return false;
-				}
-
-				var5 = var9;
-				var4 = true;
+				var3 = new class163(this);
 			}
 
-			return var4;
+			((class166)var3).vmethod3761(var1);
+			this.field1815.addFirst((Node)var3);
+		}
+
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lgm;I)V",
+		garbageValue = "146526489"
+	)
+	public void method3696(ClanChannel var1) {
+		if (var1.key == this.field1818 && this.field1814 == var1.field1837) {
+			for (class166 var2 = (class166)this.field1815.last(); var2 != null; var2 = (class166)this.field1815.previous()) {
+				var2.vmethod3762(var1);
+			}
+
+			++var1.field1837;
 		} else {
-			throw new IllegalArgumentException("" + var1);
+			throw new RuntimeException("");
 		}
 	}
 
-	@ObfuscatedName("bz")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(ILdp;ZI)I",
-		garbageValue = "410078605"
+		descriptor = "(CLpx;B)C",
+		garbageValue = "111"
 	)
-	static int method3572(int var0, Script var1, boolean var2) {
-		int var3;
-		int var6;
-		int var9;
-		if (var0 == ScriptOpcodes.ENUM_STRING) {
-			Interpreter.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-			EnumComposition var10 = UserComparator9.getEnum(var3);
-			if (var10.outputType != 's') {
+	@Export("standardizeChar")
+	static char standardizeChar(char var0, Language var1) {
+		if (var0 >= 192 && var0 <= 255) {
+			if (var0 >= 192 && var0 <= 198) {
+				return 'A';
 			}
 
-			for (var6 = 0; var6 < var10.outputCount; ++var6) {
-				if (var9 == var10.keys[var6]) {
-					Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var10.strVals[var6];
-					var10 = null;
-					break;
-				}
+			if (var0 == 199) {
+				return 'C';
 			}
 
-			if (var10 != null) {
-				Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var10.defaultStr;
+			if (var0 >= 200 && var0 <= 203) {
+				return 'E';
 			}
 
-			return 1;
-		} else if (var0 != ScriptOpcodes.ENUM) {
-			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
-				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				EnumComposition var4 = UserComparator9.getEnum(var3);
-				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.size();
-				return 1;
-			} else {
-				return 2;
+			if (var0 >= 204 && var0 <= 207) {
+				return 'I';
 			}
+
+			if (var0 == 209 && var1 != Language.Language_ES) {
+				return 'N';
+			}
+
+			if (var0 >= 210 && var0 <= 214) {
+				return 'O';
+			}
+
+			if (var0 >= 217 && var0 <= 220) {
+				return 'U';
+			}
+
+			if (var0 == 221) {
+				return 'Y';
+			}
+
+			if (var0 == 223) {
+				return 's';
+			}
+
+			if (var0 >= 224 && var0 <= 230) {
+				return 'a';
+			}
+
+			if (var0 == 231) {
+				return 'c';
+			}
+
+			if (var0 >= 232 && var0 <= 235) {
+				return 'e';
+			}
+
+			if (var0 >= 236 && var0 <= 239) {
+				return 'i';
+			}
+
+			if (var0 == 241 && var1 != Language.Language_ES) {
+				return 'n';
+			}
+
+			if (var0 >= 242 && var0 <= 246) {
+				return 'o';
+			}
+
+			if (var0 >= 249 && var0 <= 252) {
+				return 'u';
+			}
+
+			if (var0 == 253 || var0 == 255) {
+				return 'y';
+			}
+		}
+
+		if (var0 == 338) {
+			return 'O';
+		} else if (var0 == 339) {
+			return 'o';
+		} else if (var0 == 376) {
+			return 'Y';
 		} else {
-			Interpreter.Interpreter_intStackSize -= 4;
-			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-			int var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
-			var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
-			EnumComposition var7 = UserComparator9.getEnum(var5);
-			if (var3 == var7.inputType && var9 == var7.outputType) {
-				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
-					if (var6 == var7.keys[var8]) {
-						if (var9 == 115) {
-							Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var7.strVals[var8];
-						} else {
-							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.intVals[var8];
-						}
-
-						var7 = null;
-						break;
-					}
-				}
-
-				if (var7 != null) {
-					if (var9 == 115) {
-						Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var7.defaultStr;
-					} else {
-						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.defaultInt;
-					}
-				}
-
-				return 1;
-			} else {
-				if (var9 == 115) {
-					Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = "null";
-				} else {
-					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
-			}
+			return var0;
 		}
 	}
 }

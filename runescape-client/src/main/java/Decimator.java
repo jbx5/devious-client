@@ -3,23 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("cl")
+@ObfuscatedName("cj")
 @Implements("Decimator")
 public class Decimator {
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -244562385
+		intValue = -442594109
 	)
 	@Export("inputRate")
 	int inputRate;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1706385727
+		intValue = -1843473643
 	)
 	@Export("outputRate")
 	int outputRate;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@Export("table")
 	int[][] table;
 
@@ -47,12 +48,12 @@ public class Decimator {
 			for (int var7 = 0; var7 < var1; ++var7) {
 				int[] var8 = this.table[var7];
 				double var9 = (double)var7 / (double)var1 + 6.0D;
-				int var11 = (int)Math.floor(1.0D + (var9 - 7.0D));
+				int var11 = (int)Math.floor(var9 - 7.0D + 1.0D);
 				if (var11 < 0) {
 					var11 = 0;
 				}
 
-				int var12 = (int)Math.ceil(var9 + 7.0D);
+				int var12 = (int)Math.ceil(7.0D + var9);
 				if (var12 > 14) {
 					var12 = 14;
 				}
@@ -65,22 +66,22 @@ public class Decimator {
 					}
 
 					var17 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var11 - var9));
-					var8[var11] = (int)Math.floor(65536.0D * var17 + 0.5D);
+					var8[var11] = (int)Math.floor(0.5D + 65536.0D * var17);
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "([BB)[B",
-		garbageValue = "-18"
+		descriptor = "([BI)[B",
+		garbageValue = "834215207"
 	)
 	@Export("resample")
 	byte[] resample(byte[] var1) {
 		if (this.table != null) {
-			int var2 = (int)((long)var1.length * (long)this.outputRate / (long)this.inputRate) + 14;
+			int var2 = (int)((long)this.outputRate * (long)var1.length / (long)this.inputRate) + 14;
 			int[] var3 = new int[var2];
 			int var4 = 0;
 			int var5 = 0;
@@ -92,7 +93,7 @@ public class Decimator {
 
 				int var9;
 				for (var9 = 0; var9 < 14; ++var9) {
-					var3[var4 + var9] += var7 * var8[var9];
+					var3[var9 + var4] += var7 * var8[var9];
 				}
 
 				var5 += this.outputRate;
@@ -118,24 +119,24 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-1735305768"
+		garbageValue = "1326024724"
 	)
 	@Export("scaleRate")
 	int scaleRate(int var1) {
 		if (this.table != null) {
-			var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate);
+			var1 = (int)((long)this.outputRate * (long)var1 / (long)this.inputRate);
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "1028545603"
+		garbageValue = "1670289500"
 	)
 	@Export("scalePosition")
 	int scalePosition(int var1) {
@@ -146,143 +147,133 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(DDIS)[D",
-		garbageValue = "-4116"
+		descriptor = "(ILdt;ZI)I",
+		garbageValue = "-170321056"
 	)
-	public static double[] method1088(double var0, double var2, int var4) {
-		int var5 = var4 * 2 + 1;
-		double[] var6 = new double[var5];
-		int var7 = -var4;
-
-		for (int var8 = 0; var7 <= var4; ++var8) {
-			var6[var8] = class326.method6175((double)var7, var0, var2);
-			++var7;
+	static int method1146(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : class464.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETX) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.x;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETY) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.y;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETWIDTH) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.width;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETHEIGHT) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.height;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETHIDE) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CC_GETLAYER) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.parentId;
+			return 1;
+		} else {
+			return 2;
 		}
-
-		return var6;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "2030676330"
-	)
-	public static int method1099(int var0) {
-		return class497.field5035[var0 & 16383];
 	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-1405637639"
+		descriptor = "(ILdt;ZI)I",
+		garbageValue = "-221225379"
 	)
-	static final int method1084(int var0, int var1, int var2) {
-		if (var2 > 179) {
-			var1 /= 2;
-		}
-
-		if (var2 > 192) {
-			var1 /= 2;
-		}
-
-		if (var2 > 217) {
-			var1 /= 2;
-		}
-
-		if (var2 > 243) {
-			var1 /= 2;
-		}
-
-		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
-		return var3;
-	}
-
-	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(Ldy;B)V",
-		garbageValue = "0"
-	)
-	static final void method1096(WorldView var0) {
-		for (PendingSpawn var1 = (PendingSpawn)var0.pendingSpawns.last(); var1 != null; var1 = (PendingSpawn)var0.pendingSpawns.previous()) {
-			if (var1.hitpoints > 0) {
-				--var1.hitpoints;
-			}
-
-			boolean var2;
-			int var3;
-			int var4;
-			ObjectComposition var5;
-			if (var1.hitpoints == 0) {
-				if (var1.objectId >= 0) {
-					var3 = var1.objectId;
-					var4 = var1.field1170;
-					var5 = class222.getObjectDefinition(var3);
-					if (var4 == 11) {
-						var4 = 10;
-					}
-
-					if (var4 >= 5 && var4 <= 8) {
-						var4 = 4;
-					}
-
-					var2 = var5.method5114(var4);
-					if (!var2) {
-						continue;
-					}
-				}
-
-				class142.addPendingSpawnToScene(var0, var1.plane, var1.type, var1.x, var1.y, var1.objectId, var1.field1169, var1.field1170, var1.field1174);
-				var1.remove();
+	static int method1161(int var0, Script var1, boolean var2) {
+		Widget var3;
+		if (var0 == ScriptOpcodes.IF_GETINVOBJECT) {
+			var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.itemId;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETINVCOUNT) {
+			var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			if (var3.itemId != -1) {
+				Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.itemQuantity;
 			} else {
-				if (var1.delay > 0) {
-					--var1.delay;
-				}
+				Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+			}
 
-				if (var1.delay == 0 && var1.x >= 1 && var1.y >= 1 && var1.x <= 102 && var1.y <= 102) {
-					if (var1.field1171 >= 0) {
-						var3 = var1.field1171;
-						var4 = var1.field1176;
-						var5 = class222.getObjectDefinition(var3);
-						if (var4 == 11) {
-							var4 = 10;
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_HASSUB) {
+			int var5 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+			InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var5);
+			if (var4 != null) {
+				Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 1;
+			} else {
+				Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+			}
+
+			return 1;
+		} else if (var0 == ScriptOpcodes.IF_GETTOP) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = Client.rootInterface;
+			return 1;
+		} else if (var0 == 2707) {
+			var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var3.method7257() ? 1 : 0;
+			return 1;
+		} else if (var0 == 2708) {
+			var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			return FileSystem.method4500(var3);
+		} else if (var0 == 2709) {
+			var3 = TaskHandler.widgetDefinition.method6841(Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize]);
+			return GrandExchangeOfferUnitPriceComparator.method7722(var3);
+		} else {
+			return 2;
+		}
+	}
+
+	@ObfuscatedName("js")
+	@ObfuscatedSignature(
+		descriptor = "(Ldd;IZS)V",
+		garbageValue = "-15984"
+	)
+	@Export("addPlayerToScene")
+	static void addPlayerToScene(WorldView var0, int var1, boolean var2) {
+		Player var3 = var0.players[var1];
+		if (var3 != null && var3.isVisible() && !var3.isHidden) {
+			int var4 = var3.plane;
+			var3.isUnanimated = false;
+			if ((Client.isLowDetail && Client.field717.playerCount > 50 || Client.field717.playerCount > 200) && var2 && var3.movementSequence == var3.idleSequence) {
+				var3.isUnanimated = true;
+			}
+
+			int var5 = var3.x >> 7;
+			int var6 = var3.y >> 7;
+			if (0 <= var5 && var5 < 104 && 0 <= var6 && var6 < 104) {
+				long var7 = class273.calculateTag(0, 0, 0, false, var3.index, var0.id);
+				if (var3.model0 != null && Client.cycle >= var3.animationCycleStart && Client.cycle < var3.animationCycleEnd) {
+					var3.isUnanimated = false;
+					var3.tileHeight = VarcInt.getTileHeight(var0, var3.x, var3.y, var4);
+					var3.playerCycle = Client.cycle;
+					var0.scene.addNullableObject(var4, var3.x, var3.y, var3.tileHeight, 60, var3, var3.rotation, var7, var3.minX, var3.minY, var3.maxX, var3.maxY);
+				} else {
+					if ((var3.x & 127) == 64 && (var3.y & 127) == 64) {
+						if (var0.tileLastDrawnActor[var5][var6] == Client.viewportDrawCount) {
+							return;
 						}
 
-						if (var4 >= 5 && var4 <= 8) {
-							var4 = 4;
-						}
-
-						var2 = var5.method5114(var4);
-						if (!var2) {
-							continue;
-						}
+						var0.tileLastDrawnActor[var5][var6] = Client.viewportDrawCount;
 					}
 
-					class142.addPendingSpawnToScene(var0, var1.plane, var1.type, var1.x, var1.y, var1.field1171, var1.field1172, var1.field1176, var1.field1174);
-					var1.delay = -1;
-					if (var1.objectId == var1.field1171 && var1.objectId == -1) {
-						var1.remove();
-					} else if (var1.objectId == var1.field1171 && var1.field1172 == var1.field1169 && var1.field1176 == var1.field1170) {
-						var1.remove();
-					}
+					var3.tileHeight = VarcInt.getTileHeight(var0, var3.x, var3.y, var4);
+					var3.playerCycle = Client.cycle;
+					var0.scene.drawEntity(var4, var3.x, var3.y, var3.tileHeight, 60, var3, var3.rotation, var7, var3.isWalking);
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ol")
+	@ObfuscatedName("ob")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-501938286"
+		garbageValue = "610335137"
 	)
-	@Export("FriendSystem_invalidateIgnoreds")
-	static final void FriendSystem_invalidateIgnoreds() {
-		SecureRandomCallable.method2373();
-		if (HttpRequestTask.friendsChat != null) {
-			HttpRequestTask.friendsChat.invalidateIgnoreds();
-		}
-
+	static final void method1158() {
+		Client.field716 = Client.cycleCntr;
+		class6.field13 = true;
 	}
 }

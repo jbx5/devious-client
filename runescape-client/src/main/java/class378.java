@@ -1,43 +1,58 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.io.File;
+import java.io.IOException;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ov")
+@ObfuscatedName("oh")
 public class class378 {
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 34657635
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-6"
 	)
-	static final int field4084;
-	@ObfuscatedName("an")
-	@ObfuscatedGetter(
-		intValue = -1359370049
-	)
-	static final int field4070;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 568057545
-	)
-	static final int field4085;
-
-	static {
-		short var0 = 2048;
-		field4084 = var0;
-		var0 = 2048;
-		field4070 = var0;
-		Coord.method6531(field4084);
-		Coord.method6531(field4070);
-		var0 = 6400;
-		field4085 = var0;
-		Coord.method6512(field4085);
+	public static void method7438() {
+		class190.field2023.clear();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "101"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZB)Lud;",
+		garbageValue = "73"
 	)
-	public static int method7167(int var0) {
-		return var0 * 128 + 64;
+	@Export("getPreferencesFile")
+	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
+		File var3 = new File(class177.cacheDir, "preferences" + var0 + ".dat");
+		if (var3.exists()) {
+			try {
+				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
+				return var10;
+			} catch (IOException var9) {
+			}
+		}
+
+		String var4 = "";
+		if (class489.cacheGamebuild == 33) {
+			var4 = "_rc";
+		} else if (class489.cacheGamebuild == 34) {
+			var4 = "_wip";
+		}
+
+		File var5 = new File(JagexCache.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
+		AccessFile var6;
+		if (!var2 && var5.exists()) {
+			try {
+				var6 = new AccessFile(var5, "rw", 10000L);
+				return var6;
+			} catch (IOException var8) {
+			}
+		}
+
+		try {
+			var6 = new AccessFile(var3, "rw", 10000L);
+			return var6;
+		} catch (IOException var7) {
+			throw new RuntimeException();
+		}
 	}
 }

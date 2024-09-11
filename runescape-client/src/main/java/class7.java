@@ -1,319 +1,266 @@
+import java.util.Iterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ac")
+@ObfuscatedName("at")
 public class class7 {
-	@ObfuscatedName("np")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lcv;"
+		descriptor = "Lvt;"
 	)
-	@Export("tempMenuAction")
-	static MenuAction tempMenuAction;
-	@ObfuscatedName("ab")
-	ExecutorService field14;
-	@ObfuscatedName("ay")
-	Future field15;
-	@ObfuscatedName("an")
+	static IndexedSprite field20;
+	@ObfuscatedName("jf")
+	@Export("regionMapArchiveIds")
+	static int[] regionMapArchiveIds;
+	@ObfuscatedName("ow")
 	@ObfuscatedSignature(
-		descriptor = "Lvg;"
+		descriptor = "Lny;"
 	)
-	final Buffer field16;
-	@ObfuscatedName("au")
+	static Widget field22;
+	@ObfuscatedName("tu")
+	@ObfuscatedGetter(
+		intValue = -693941039
+	)
+	static int field21;
+	@ObfuscatedName("ac")
+	ExecutorService field19;
+	@ObfuscatedName("ae")
+	Future field16;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lau;"
+		descriptor = "Lvf;"
 	)
-	final class3 field20;
+	final Buffer field15;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lam;"
+	)
+	final class3 field18;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;Lau;)V"
+		descriptor = "(Lvf;Lam;)V"
 	)
 	public class7(Buffer var1, class3 var2) {
-		this.field14 = Executors.newSingleThreadExecutor();
-		this.field16 = var1;
-		this.field20 = var2;
-		this.method44();
+		this.field19 = Executors.newSingleThreadExecutor();
+		this.field15 = var1;
+		this.field18 = var2;
+		this.method48();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "49"
+		garbageValue = "6"
 	)
-	public boolean method51() {
-		return this.field15.isDone();
+	public boolean method45() {
+		return this.field16.isDone();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1578100423"
+		garbageValue = "-221908306"
 	)
-	public void method42() {
-		this.field14.shutdown();
-		this.field14 = null;
+	public void method46() {
+		this.field19.shutdown();
+		this.field19 = null;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lvg;",
-		garbageValue = "-1930502010"
+		descriptor = "(I)Lvf;",
+		garbageValue = "-2061747506"
 	)
-	public Buffer method43() {
+	public Buffer method58() {
 		try {
-			return (Buffer)this.field15.get();
+			return (Buffer)this.field16.get();
 		} catch (Exception var2) {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "2024551694"
+		garbageValue = "1981636544"
 	)
-	void method44() {
-		this.field15 = this.field14.submit(new class1(this, this.field16, this.field20));
+	void method48() {
+		this.field16 = this.field19.submit(new class1(this, this.field15, this.field18));
 	}
 
-	@ObfuscatedName("mx")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "44"
+		descriptor = "(III)I",
+		garbageValue = "312256174"
 	)
-	@Export("addSceneMenuOptions")
-	static final void addSceneMenuOptions(int var0, int var1, int var2, int var3) {
-		if (Client.isItemSelected == 0 && !Client.isSpellSelected) {
-			SecureUrlRequester.insertMenuItemNoShift("Walk here", "", 23, 0, var0 - var2, var1 - var3);
+	@Export("ItemContainer_getCount")
+	static int ItemContainer_getCount(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else {
+			return var1 >= 0 && var1 < var2.quantities.length ? var2.quantities[var1] : 0;
+		}
+	}
+
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;II)I",
+		garbageValue = "-1045579467"
+	)
+	public static int method59(CharSequence var0, int var1) {
+		return class149.method3466(var0, var1, true);
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1885288890"
+	)
+	public static int method47(int var0) {
+		--var0;
+		var0 |= var0 >>> 1;
+		var0 |= var0 >>> 2;
+		var0 |= var0 >>> 4;
+		var0 |= var0 >>> 8;
+		var0 |= var0 >>> 16;
+		return var0 + 1;
+	}
+
+	@ObfuscatedName("cm")
+	@ObfuscatedSignature(
+		descriptor = "(ILnm;ZI)V",
+		garbageValue = "-2131307483"
+	)
+	static void method56(int var0, Coord var1, boolean var2) {
+		WorldMapArea var3 = class147.getWorldMap().getMapArea(var0);
+		int var4 = AddRequestTask.localPlayer.plane;
+		int var5 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.field1341.baseX;
+		int var6 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.field1341.baseY;
+		Coord var7 = new Coord(var4, var5, var6);
+		class147.getWorldMap().method9400(var3, var7, var1, var2);
+	}
+
+	@ObfuscatedName("jf")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1530919932"
+	)
+	static void method52() {
+		Iterator var0 = Client.topLevelWorldView.iterator();
+
+		while (var0.hasNext()) {
+			WorldView var1 = (WorldView)var0.next();
+
+			for (int var2 = 0; var2 < var1.field1365; ++var2) {
+				int var3 = var1.worldEntityIndices[var2];
+				WorldEntity var4 = var1.field1364[var3];
+				if (var4 != null) {
+					var4.updateMovement();
+				}
+			}
 		}
 
-		long var4 = -1L;
-		int var6 = 0;
-		long var7 = -1L;
-		int var9 = 0;
+	}
 
-		while (true) {
-			int var11 = ViewportMouse.ViewportMouse_entityCount;
-			if (var9 >= var11) {
-				if (-1L != var4) {
-					var9 = (int)(var4 >>> 0 & 127L);
-					var11 = AttackOption.method2841(var4);
-					Player var12 = ConcurrentMidiTask.topLevelWorldView.players[Client.combatTargetPlayerIndex];
-					WorldMapData_1.addPlayerToMenu(var12, Client.combatTargetPlayerIndex, var9, var11, var6);
-				}
-
-				return;
-			}
-
-			long var29 = ClanSettings.method3498(var9);
-			if (var29 != var7) {
-				var7 = var29;
-				long var16 = ViewportMouse.ViewportMouse_entityTags[var9];
-				int var15 = (int)(var16 >>> 0 & 127L);
-				var15 = var15;
-				int var31 = AttackOption.method2841(ViewportMouse.ViewportMouse_entityTags[var9]);
-				int var17 = var31;
-				int var18 = BoundaryObject.method4470(var9);
-				int var19 = class287.method5868(var9);
-				int var20 = SpriteBufferProperties.method7142(var9);
-				if (var20 == 2047) {
-					var20 = -1;
-				}
-
-				WorldView var21 = null;
-				if (var20 >= 0 && ConcurrentMidiTask.topLevelWorldView.worldEntities[var20] != null) {
-					var21 = ConcurrentMidiTask.topLevelWorldView.worldEntities[var20].worldView;
-				} else if (var20 == -1) {
-					var21 = ConcurrentMidiTask.topLevelWorldView;
-				}
-
-				if (var21 != null) {
-					label413: {
-						int var22 = var21.plane;
-						int var26;
-						if (var18 == 2 && var21.scene.getObjectFlags(var22, var15, var31, var29) >= 0) {
-							ObjectComposition var23 = class222.getObjectDefinition(var19);
-							if (var23.transforms != null) {
-								var23 = var23.transform();
+	@ObfuscatedName("jq")
+	@ObfuscatedSignature(
+		descriptor = "(Ldd;B)V",
+		garbageValue = "-81"
+	)
+	static final void method55(WorldView var0) {
+		for (Projectile var1 = (Projectile)var0.projectiles.last(); var1 != null; var1 = (Projectile)var0.projectiles.previous()) {
+			if (var0.plane == var1.plane && Client.cycle <= var1.cycleEnd) {
+				if (Client.cycle >= var1.cycleStart) {
+					NPC var2;
+					int var3;
+					Player var4;
+					if (!var1.isMoving && var1.field1016 != 0) {
+						if (var1.field1016 > 0) {
+							var2 = class162.worldView.field1361[var1.field1016 - 1];
+							if (var2 != null && 0 <= var2.x && var2.x < 13312 && 0 <= var2.y && var2.y < 13312) {
+								var1.sourceX = var2.x;
+								var1.sourceY = var2.y;
+								var1.setDestination(var1.field999, var1.field994, var1.field996, Client.cycle);
 							}
-
-							if (var23 == null) {
-								break label413;
-							}
-
-							PendingSpawn var24 = null;
-
-							for (PendingSpawn var25 = (PendingSpawn)var21.pendingSpawns.last(); var25 != null; var25 = (PendingSpawn)var21.pendingSpawns.previous()) {
-								if (var22 == var25.plane && var15 == var25.x && var17 == var25.y && var19 == var25.field1171) {
-									var24 = var25;
-									break;
-								}
-							}
-
-							if (!KeyHandler.field107 && Client.isItemSelected == 1) {
-								NpcOverrides.insertMenuItem("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(65535) + var23.name, 1, var19, var15, var17, -1, false, var20);
-							} else if (Client.isSpellSelected) {
-								if (!KeyHandler.field107 && (UserComparator3.selectedSpellFlags & 4) == 4) {
-									NpcOverrides.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(65535) + var23.name, 2, var19, var15, var17, -1, false, var20);
-								}
+						} else {
+							var3 = -var1.field1016 - 1;
+							if (var3 == Client.localPlayerIndex) {
+								var4 = AddRequestTask.localPlayer;
 							} else {
-								String[] var39 = var23.actions;
-								if (var39 != null) {
-									for (var26 = 4; var26 >= 0; --var26) {
-										if (!KeyHandler.field107 && (var24 == null || var24.method2514(var26)) && var39[var26] != null) {
-											short var27 = 0;
-											if (var26 == 0) {
-												var27 = 3;
-											}
-
-											if (var26 == 1) {
-												var27 = 4;
-											}
-
-											if (var26 == 2) {
-												var27 = 5;
-											}
-
-											if (var26 == 3) {
-												var27 = 6;
-											}
-
-											if (var26 == 4) {
-												var27 = 1001;
-											}
-
-											NpcOverrides.insertMenuItem(var39[var26], TransformationMatrix.colorStartTag(65535) + var23.name, var27, var19, var15, var17, -1, false, var20);
-										}
-									}
-								}
-
-								NpcOverrides.insertMenuItem("Examine", TransformationMatrix.colorStartTag(65535) + var23.name, 1002, var23.id, var15, var17, -1, false, var20);
-							}
-						}
-
-						int var32;
-						Player var33;
-						NPC var40;
-						int[] var41;
-						if (var18 == 1) {
-							NPC var35 = var21.npcs[var19];
-							if (var35 == null) {
-								break label413;
+								var4 = class162.worldView.players[var3];
 							}
 
-							if (var35.definition.size == 1 && (var35.x & 127) == 64 && (var35.y & 127) == 64) {
-								for (var32 = 0; var32 < var21.npcCount; ++var32) {
-									var40 = var21.npcs[var21.npcIndices[var32]];
-									if (var40 != null && var35 != var40 && var40.definition.size == 1 && var35.x == var40.x && var35.y == var40.y) {
-										class153.addNpcToMenu(var40, var21.npcIndices[var32], var15, var17, var20);
-									}
-								}
-
-								var32 = var21.playerUpdateManager.playerCount;
-								var41 = var21.playerUpdateManager.playerIndices;
-
-								for (var26 = 0; var26 < var32; ++var26) {
-									var33 = var21.players[var41[var26]];
-									if (var33 != null && var35.x == var33.x && var33.y == var35.y) {
-										WorldMapData_1.addPlayerToMenu(var33, var41[var26], var15, var17, var20);
-									}
-								}
-							}
-
-							class153.addNpcToMenu(var35, var19, var15, var17, var20);
-						}
-
-						if (var18 == 0) {
-							Player var36 = var21.players[var19];
-							if (var36 == null) {
-								break label413;
-							}
-
-							if ((var36.x & 127) == 64 && (var36.y & 127) == 64) {
-								for (var32 = 0; var32 < var21.npcCount; ++var32) {
-									var40 = var21.npcs[var21.npcIndices[var32]];
-									if (var40 != null && var40.definition.size == 1 && var36.x == var40.x && var36.y == var40.y) {
-										class153.addNpcToMenu(var40, var21.npcIndices[var32], var15, var17, var20);
-									}
-								}
-
-								var32 = var21.playerUpdateManager.playerCount;
-								var41 = var21.playerUpdateManager.playerIndices;
-
-								for (var26 = 0; var26 < var32; ++var26) {
-									var33 = var21.players[var41[var26]];
-									if (var33 != null && var36 != var33 && var33.x == var36.x && var33.y == var36.y) {
-										WorldMapData_1.addPlayerToMenu(var33, var41[var26], var15, var17, var20);
-									}
-								}
-							}
-
-							if (var19 != Client.combatTargetPlayerIndex) {
-								WorldMapData_1.addPlayerToMenu(var36, var19, var15, var17, var20);
-							} else {
-								var4 = var29;
-								var6 = var20;
-							}
-						}
-
-						if (var18 == 3) {
-							NodeDeque var37 = var21.groundItems[var22][var15][var17];
-							if (var37 != null) {
-								for (TileItem var38 = (TileItem)var37.first(); var38 != null; var38 = (TileItem)var37.next()) {
-									ItemComposition var42 = Player.ItemDefinition_get(var38.id);
-									if (!ClientPreferences.field1299 && Client.isItemSelected == 1) {
-										NpcOverrides.insertMenuItem("Use", Client.field659 + " " + "->" + " " + TransformationMatrix.colorStartTag(16748608) + var42.name, 16, var38.id, var15, var17, -1, false, var20);
-									} else if (Client.isSpellSelected) {
-										if (!ClientPreferences.field1299 && (UserComparator3.selectedSpellFlags & 1) == 1) {
-											NpcOverrides.insertMenuItem(Client.selectedSpellActionName, Client.selectedSpellName + " " + "->" + " " + TransformationMatrix.colorStartTag(16748608) + var42.name, 17, var38.id, var15, var17, -1, false, var20);
-										}
-									} else {
-										String[] var34 = var42.groundActions;
-
-										for (int var43 = 4; var43 >= 0; --var43) {
-											if (!ClientPreferences.field1299 && var38.method2843(var43)) {
-												if (var34 != null && var34[var43] != null) {
-													byte var28 = 0;
-													if (var43 == 0) {
-														var28 = 18;
-													}
-
-													if (var43 == 1) {
-														var28 = 19;
-													}
-
-													if (var43 == 2) {
-														var28 = 20;
-													}
-
-													if (var43 == 3) {
-														var28 = 21;
-													}
-
-													if (var43 == 4) {
-														var28 = 22;
-													}
-
-													NpcOverrides.insertMenuItem(var34[var43], TransformationMatrix.colorStartTag(16748608) + var42.name, var28, var38.id, var15, var17, -1, false, var20);
-												} else if (var43 == 2) {
-													NpcOverrides.insertMenuItem("Take", TransformationMatrix.colorStartTag(16748608) + var42.name, 20, var38.id, var15, var17, -1, false, var20);
-												}
-											}
-										}
-
-										NpcOverrides.insertMenuItem("Examine", TransformationMatrix.colorStartTag(16748608) + var42.name, 1004, var38.id, var15, var17, -1, false, var20);
-									}
-								}
+							if (var4 != null && 0 <= var4.x && var4.x < 13312 && 0 <= var4.y && var4.y < 13312) {
+								var1.sourceX = var4.x;
+								var1.sourceY = var4.y;
+								var1.setDestination(var1.field999, var1.field994, var1.field996, Client.cycle);
 							}
 						}
 					}
+
+					if (var1.targetIndex > 0) {
+						var2 = var0.field1361[var1.targetIndex - 1];
+						if (var2 != null && 0 <= var2.x && var2.x < 13312 && 0 <= var2.y && var2.y < 13312) {
+							var1.setDestination(var2.x, var2.y, VarcInt.getTileHeight(var0, var2.x, var2.y, var1.plane) - var1.endHeight, Client.cycle);
+						}
+					}
+
+					if (var1.targetIndex < 0) {
+						var3 = -var1.targetIndex - 1;
+						if (var3 == Client.localPlayerIndex) {
+							var4 = AddRequestTask.localPlayer;
+						} else {
+							var4 = var0.players[var3];
+						}
+
+						if (var4 != null && 0 <= var4.x && var4.x < 13312 && 0 <= var4.y && var4.y < 13312) {
+							var1.setDestination(var4.x, var4.y, VarcInt.getTileHeight(var0, var4.x, var4.y, var1.plane) - var1.endHeight, Client.cycle);
+						}
+					}
+
+					var1.advance(Client.graphicsCycle);
+					var0.scene.drawEntity(var0.plane, (int)var1.x, (int)var1.y, (int)var1.z, 60, var1, var1.yaw, -1L, false);
+				}
+			} else {
+				var1.remove();
+			}
+		}
+
+	}
+
+	@ObfuscatedName("kn")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "-1085091910"
+	)
+	static final void method57(int var0, int var1, int var2, int var3) {
+		GraphicsObject.method2291();
+	}
+
+	@ObfuscatedName("og")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1216632137"
+	)
+	static final void method53() {
+		Iterator var0 = Client.topLevelWorldView.iterator();
+
+		while (var0.hasNext()) {
+			WorldView var1 = (WorldView)var0.next();
+
+			for (int var2 = 0; var2 < Client.field717.playerCount; ++var2) {
+				Player var3 = ClientPreferences.field1341.players[Client.field717.playerIndices[var2]];
+				if (var3 != null) {
+					var3.clearIsInFriendsChat();
 				}
 			}
-
-			++var9;
 		}
+
 	}
 }

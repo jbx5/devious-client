@@ -3,22 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("js")
+@ObfuscatedName("he")
 @Implements("VarcInt")
 public class VarcInt extends DualNode {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Lpo;"
 	)
 	@Export("VarcInt_archive")
-	public static AbstractArchive VarcInt_archive;
-	@ObfuscatedName("ay")
+	static AbstractArchive VarcInt_archive;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lml;"
 	)
 	@Export("VarcInt_cached")
-	public static EvictingDualNodeHashTable VarcInt_cached;
-	@ObfuscatedName("an")
+	static EvictingDualNodeHashTable VarcInt_cached;
+	@ObfuscatedName("ag")
 	@Export("persist")
 	public boolean persist;
 
@@ -26,65 +26,92 @@ public class VarcInt extends DualNode {
 		VarcInt_cached = new EvictingDualNodeHashTable(64);
 	}
 
-	public VarcInt() {
+	VarcInt() {
 		this.persist = false;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;S)V",
-		garbageValue = "-14009"
+		descriptor = "(Lvf;B)V",
+		garbageValue = "74"
 	)
-	public void method4815(Buffer var1) {
+	void method3849(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method4816(var1, var2);
+			this.method3847(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;II)V",
-		garbageValue = "-187876998"
+		descriptor = "(Lvf;II)V",
+		garbageValue = "-2038457994"
 	)
-	void method4816(Buffer var1, int var2) {
+	void method3847(Buffer var1, int var2) {
 		if (var2 == 2) {
 			this.persist = true;
 		}
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lfj;",
-		garbageValue = "-115"
+		descriptor = "(Lpo;I)V",
+		garbageValue = "-2102809336"
 	)
-	static class143[] method4823() {
-		return new class143[]{class143.field1650, class143.field1640, class143.field1645, class143.field1642, class143.field1643, class143.field1644, class143.field1641, class143.field1646, class143.field1647};
+	public static void method3860(AbstractArchive var0) {
+		VarbitComposition.VarbitDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("oi")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1443728713"
+		descriptor = "(IB)Lhu;",
+		garbageValue = "-41"
 	)
-	static final void method4817(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : class47.guestClanChannel;
-		if (var2 != null && var1 >= 0 && var1 < var2.method3577()) {
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName();
-				PacketBufferNode var5 = class218.getPacketBufferNode(ClientPacket.field3343, Client.packetWriter.isaacCipher);
-				var5.packetBuffer.writeByte(3 + class526.stringCp1252NullTerminatedByteSize(var4));
-				var5.packetBuffer.writeByte(var0);
-				var5.packetBuffer.writeShort(var1);
-				var5.packetBuffer.writeStringCp1252NullTerminated(var4);
-				Client.packetWriter.addNode(var5);
+	@Export("SpotAnimationDefinition_get")
+	public static SpotAnimationDefinition SpotAnimationDefinition_get(int var0) {
+		SpotAnimationDefinition var1 = (SpotAnimationDefinition)SpotAnimationDefinition.SpotAnimationDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = SpotAnimationDefinition.SpotAnimationDefinition_archive.takeFile(13, var0);
+			var1 = new SpotAnimationDefinition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
+
+			SpotAnimationDefinition.SpotAnimationDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ki")
+	@ObfuscatedSignature(
+		descriptor = "(Ldd;IIII)I",
+		garbageValue = "1364598893"
+	)
+	@Export("getTileHeight")
+	static final int getTileHeight(WorldView var0, int var1, int var2, int var3) {
+		int var4 = var1 >> 7;
+		int var5 = var2 >> 7;
+		if (var4 >= 0 && var5 >= 0 && var4 < var0.tileSettings[0].length && var5 < var0.tileSettings[0][0].length) {
+			int var6 = var3;
+			if (var3 < 3 && (var0.tileSettings[1][var4][var5] & 2) == 2) {
+				var6 = var3 + 1;
+			}
+
+			int var7 = var1 & 127;
+			int var8 = var2 & 127;
+			int var9 = var0.tileHeights[var6][var4 + 1][var5] * var7 + var0.tileHeights[var6][var4][var5] * (128 - var7) >> 7;
+			int var10 = var0.tileHeights[var6][var4][var5 + 1] * (128 - var7) + var7 * var0.tileHeights[var6][var4 + 1][var5 + 1] >> 7;
+			return var10 * var8 + var9 * (128 - var8) >> 7;
+		} else {
+			return 0;
 		}
 	}
 }

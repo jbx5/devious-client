@@ -4,27 +4,22 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("da")
+@ObfuscatedName("dv")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "[Lvc;"
+	@ObfuscatedName("gp")
+	@ObfuscatedGetter(
+		intValue = 1805236159
 	)
-	@Export("headIconPkSprites")
-	static SpritePixels[] headIconPkSprites;
-	@ObfuscatedName("ve")
-	@ObfuscatedSignature(
-		descriptor = "Lor;"
-	)
-	static JagNetThread field980;
-	@ObfuscatedName("ab")
+	static int field1019;
+	@ObfuscatedName("ac")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("future")
 	Future future;
 
@@ -33,10 +28,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1268555170"
+		garbageValue = "-1928656312"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -44,43 +39,107 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1632139022"
+		garbageValue = "-1034908456"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/security/SecureRandom;",
-		garbageValue = "-67"
+		descriptor = "(I)Ljava/security/SecureRandom;",
+		garbageValue = "844691753"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
-		} catch (Exception var2) {
-			return HealthBarDefinition.method4857();
+		} catch (Exception var4) {
+			SecureRandom var3 = new SecureRandom();
+			var3.nextInt();
+			return var3;
 		}
 	}
 
-	@ObfuscatedName("pe")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lub;",
-		garbageValue = "-86"
+		descriptor = "(IZIZI)V",
+		garbageValue = "1677590448"
 	)
-	@Export("getDbTable")
-	static DbTable getDbTable(int var0) {
-		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
-		if (var1 == null) {
-			var1 = new DbTable(class249.field2637, class512.method9041(var0), class229.method4771(var0));
-			Client.DBTableIndex_cache.put(var1, (long)var0);
+	@Export("sortWorldList")
+	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
+		if (SoundSystem.World_worlds != null) {
+			class332.doWorldSorting(0, SoundSystem.World_worlds.length - 1, var0, var1, var2, var3);
 		}
 
-		return var1;
+	}
+
+	@ObfuscatedName("jz")
+	@ObfuscatedSignature(
+		descriptor = "(Ldd;I)V",
+		garbageValue = "253417057"
+	)
+	static void method2379(WorldView var0) {
+		int var1 = 0;
+
+		for (int var2 = 0; var2 < var0.field1365; ++var2) {
+			WorldEntity var3 = var0.field1364[var0.worldEntityIndices[var2]];
+			if (var3 != null) {
+				boolean var4 = var3.field5007.id == HealthBarUpdate.field1304;
+				if (!var4) {
+					boolean var5 = var1 < Client.field811;
+					if (!var5) {
+						continue;
+					}
+
+					++var1;
+				}
+
+				var3.tileHeight = VarcInt.getTileHeight(var0, var3.x, var3.y, var0.plane);
+				var3.field5007.scene.cycle = Client.cycle;
+				var3.initScenePlane();
+				var0.scene.drawEntity(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3.field5007.scene, var3.currentRotationAngle, 0L, false);
+				IgnoreList.method8786(var3.field5007);
+				WorldView var10 = var3.field5007;
+				if (Client.combatTargetPlayerIndex >= 0 && var10.players[Client.combatTargetPlayerIndex] != null) {
+					Decimator.addPlayerToScene(var10, Client.combatTargetPlayerIndex, false);
+				}
+
+				class132.method3254(var3.field5007, true);
+				WorldView var6 = var3.field5007;
+				int var7 = Client.field717.playerCount;
+				int[] var8 = Client.field717.playerIndices;
+
+				for (int var9 = 0; var9 < var7; ++var9) {
+					if (var8[var9] != Client.combatTargetPlayerIndex && var8[var9] != Client.localPlayerIndex) {
+						Decimator.addPlayerToScene(var6, var8[var9], true);
+					}
+				}
+
+				class132.method3254(var3.field5007, false);
+				class7.method55(var3.field5007);
+				WorldView var11 = var3.field5007;
+
+				for (GraphicsObject var12 = (GraphicsObject)var11.field1362.last(); var12 != null; var12 = (GraphicsObject)var11.field1362.previous()) {
+					if (var12.plane == var11.plane && !var12.isFinished) {
+						if (Client.cycle >= var12.cycleStart) {
+							var12.advance(Client.graphicsCycle);
+							if (var12.isFinished) {
+								var12.remove();
+							} else {
+								var11.scene.drawEntity(var12.plane, var12.x, var12.y, var12.z, 60, var12, 0, -1L, false);
+							}
+						}
+					} else {
+						var12.remove();
+					}
+				}
+			}
+		}
+
 	}
 }

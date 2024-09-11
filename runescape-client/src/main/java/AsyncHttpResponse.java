@@ -1,16 +1,31 @@
+import java.security.SecureRandom;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ag")
+@ObfuscatedName("ao")
 @Implements("AsyncHttpResponse")
 public class AsyncHttpResponse {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("hq")
+	static SecureRandom field69;
+	@ObfuscatedName("ir")
+	@ObfuscatedSignature(
+		descriptor = "Len;"
+	)
+	@Export("urlRequester")
+	static UrlRequester urlRequester;
+	@ObfuscatedName("la")
+	@ObfuscatedGetter(
+		intValue = 1706389661
+	)
+	static int field72;
+	@ObfuscatedName("ac")
 	@Export("responseFuture")
 	Future responseFuture;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("errorMessage")
 	String errorMessage;
 
@@ -19,15 +34,15 @@ public class AsyncHttpResponse {
 	}
 
 	AsyncHttpResponse(String var1) {
-		this.method256(var1);
+		this.method262(var1);
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "1550082118"
+		garbageValue = "1479568883"
 	)
-	void method256(String var1) {
+	void method262(String var1) {
 		if (var1 == null) {
 			var1 = "";
 		}
@@ -40,30 +55,30 @@ public class AsyncHttpResponse {
 
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1820204641"
+		garbageValue = "-825021831"
 	)
 	@Export("getErrorMessage")
 	public final String getErrorMessage() {
 		return this.errorMessage;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "732720951"
+		descriptor = "(B)Z",
+		garbageValue = "-122"
 	)
 	@Export("hasError")
 	public boolean hasError() {
 		return this.errorMessage != null || this.responseFuture == null;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-15"
+		descriptor = "(I)Z",
+		garbageValue = "-1083611987"
 	)
 	@Export("hasFinished")
 	public final boolean hasFinished() {
@@ -72,8 +87,8 @@ public class AsyncHttpResponse {
 
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lar;",
-		garbageValue = "-1964874553"
+		descriptor = "(I)Lay;",
+		garbageValue = "-510817823"
 	)
 	@Export("await")
 	public final HttpResponse await() {
@@ -87,43 +102,49 @@ public class AsyncHttpResponse {
 			} catch (Exception var3) {
 				String var2 = "Error retrieving REST request reply";
 				System.err.println(var2 + "\r\n" + var3);
-				this.method256(var2);
+				this.method262(var2);
 				return new HttpResponse(var2);
 			}
 		}
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lit;",
-		garbageValue = "-2033952891"
+		descriptor = "(FFFFLfr;I)V",
+		garbageValue = "1889687141"
 	)
-	public static class219 method265() {
-		return class219.field2375;
+	static void method276(float var0, float var1, float var2, float var3, class137 var4) {
+		float var5 = var1 - var0;
+		float var6 = var2 - var1;
+		float var7 = var3 - var2;
+		float var8 = var6 - var5;
+		var4.field1614 = var7 - var6 - var8;
+		var4.field1613 = var8 + var8 + var8;
+		var4.field1612 = var5 + var5 + var5;
+		var4.field1623 = var0;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("mv")
 	@ObfuscatedSignature(
-		descriptor = "(Lnq;IIIB)V",
-		garbageValue = "21"
+		descriptor = "([Lny;Lny;ZI)V",
+		garbageValue = "392960591"
 	)
-	@Export("Widget_setKeyRate")
-	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
-		if (var0.field3881 == null) {
-			throw new RuntimeException();
-		} else {
-			var0.field3881[var1] = var2;
-			var0.field3832[var1] = var3;
+	@Export("revalidateWidgetScroll")
+	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
+		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
+		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
+		class383.resizeInterface(var0, var1.id, var3, var4, var2);
+		if (var1.children != null) {
+			class383.resizeInterface(var1.children, var1.id, var3, var4, var2);
 		}
-	}
 
-	@ObfuscatedName("pt")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "505827625"
-	)
-	static void method247() {
-		Client.packetWriter.addNode(class218.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
-		Client.oculusOrbState = 0;
+		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
+		if (var5 != null) {
+			KeyHandler.method373(var5.group, var3, var4, var2);
+		}
+
+		if (var1.contentType == 1337) {
+		}
+
 	}
 }

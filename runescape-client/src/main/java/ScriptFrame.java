@@ -4,31 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cq")
+@ObfuscatedName("cg")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("tv")
+	@ObfuscatedName("fo")
 	@ObfuscatedSignature(
-		descriptor = "Lbr;"
+		descriptor = "Lof;"
 	)
-	@Export("pcmStreamMixer")
-	static PcmStreamMixer pcmStreamMixer;
-	@ObfuscatedName("ab")
+	static Archive field460;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Ldp;"
+		descriptor = "Ldt;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 407874701
+		intValue = -2038646995
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -36,21 +35,19 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("bv")
 	@ObfuscatedSignature(
-		descriptor = "(II)Loz;",
-		garbageValue = "-600768983"
+		descriptor = "(ILdt;ZB)I",
+		garbageValue = "-42"
 	)
-	public static GameBuild method1158(int var0) {
-		GameBuild[] var1 = class145.method3323();
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			GameBuild var3 = var1[var2];
-			if (var0 == var3.buildId) {
-				return var3;
-			}
+	static int method1215(int var0, Script var1, boolean var2) {
+		if (var0 == 6809) {
+			int var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+			ObjectComposition var4 = class273.getObjectDefinition(var3);
+			Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+			return 1;
+		} else {
+			return 2;
 		}
-
-		return null;
 	}
 }

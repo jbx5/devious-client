@@ -3,81 +3,81 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rm")
+@ObfuscatedName("ri")
 @Implements("SongTask")
 public abstract class SongTask {
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lrm;"
+		descriptor = "Lri;"
 	)
 	@Export("songTask")
 	SongTask songTask;
-	@ObfuscatedName("au")
-	String field4791;
-	@ObfuscatedName("ax")
-	String field4796;
-	@ObfuscatedName("ao")
-	boolean field4793;
 	@ObfuscatedName("am")
-	boolean field4792;
+	String field4842;
+	@ObfuscatedName("ax")
+	String field4843;
+	@ObfuscatedName("aq")
+	boolean field4845;
+	@ObfuscatedName("af")
+	boolean field4841;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lrm;)V"
+		descriptor = "(Lri;)V"
 	)
 	SongTask(SongTask var1) {
 		this.songTask = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "734274820"
+		garbageValue = "-1411718299"
 	)
-	public abstract boolean vmethod8342();
+	public abstract boolean vmethod8618();
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(S)Z",
-		garbageValue = "16106"
+		garbageValue = "4118"
 	)
-	public boolean method8321() {
-		return this.field4793;
+	public boolean method8599() {
+		return this.field4845;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1423401620"
+		descriptor = "(B)Z",
+		garbageValue = "42"
 	)
-	public boolean method8322() {
-		return this.field4792;
+	public boolean method8600() {
+		return this.field4841;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1316397400"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "90"
 	)
-	public String method8326() {
-		return "Error in task: " + this.field4796 + ", Error message: " + this.field4791;
+	public String method8601() {
+		return "Error in task: " + this.field4843 + ", Error message: " + this.field4842;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lri;",
+		garbageValue = "1819465791"
+	)
+	public SongTask method8597() {
+		return this.songTask;
 	}
 
 	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lrm;",
-		garbageValue = "-826738891"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-65735155"
 	)
-	public SongTask method8328() {
-		return this.songTask;
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-107"
-	)
-	void method8325(String var1) {
-		this.field4793 = true;
-		this.field4791 = var1;
+	void method8609(String var1) {
+		this.field4845 = true;
+		this.field4842 = var1;
 	}
 }
