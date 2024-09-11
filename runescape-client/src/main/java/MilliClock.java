@@ -146,9 +146,9 @@ public class MilliClock extends Clock {
 					int var12 = ClanSettings.entity.getY() - var10 >> 7;
 					PacketBufferNode var13 = class141.getPacketBufferNode(ClientPacket.field3403, Client.packetWriter.isaacCipher);
 					var13.packetBuffer.writeByte(18);
-					var13.packetBuffer.writeShort(var12 + ClientPreferences.field1341.baseY);
+					var13.packetBuffer.writeShort(var12 + ClientPreferences.topLevelWorldView.baseY);
 					var13.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? (Client.indexCheck.isValidIndexInRange(81) ? 2 : 1) : 0);
-					var13.packetBuffer.writeShortAdd(var11 + ClientPreferences.field1341.baseX);
+					var13.packetBuffer.writeShortAdd(var11 + ClientPreferences.topLevelWorldView.baseX);
 					var13.packetBuffer.writeByte(var4);
 					var13.packetBuffer.writeByte(var5);
 					var13.packetBuffer.writeShort(Client.camAngleY);

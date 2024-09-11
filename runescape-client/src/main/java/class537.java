@@ -228,8 +228,9 @@ public class class537 implements Enum {
 		descriptor = "(IIII)V",
 		garbageValue = "1722508326"
 	)
-	static final void method9776(int var0, int var1, int var2) {
-		Messages.method3104(class162.worldView, var0, var1, var2);
+	@Export("updateItemPile")
+	static final void updateItemPile(int var0, int var1, int var2) {
+		Messages.updateItemPile2(class162.worldView, var0, var1, var2);
 	}
 
 	@ObfuscatedName("mn")
@@ -275,7 +276,7 @@ public class class537 implements Enum {
 	)
 	public static void method9777(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = class141.getPacketBufferNode(ClientPacket.field3345, Client.packetWriter.isaacCipher);
-		var4.packetBuffer.writeIntLE(var3 ? Client.field550 : 0);
+		var4.packetBuffer.writeIntLE(var3 ? Client.revision : 0);
 		var4.packetBuffer.writeByteAdd(var2);
 		var4.packetBuffer.writeShortLE(var0);
 		var4.packetBuffer.writeShortLE(var1);

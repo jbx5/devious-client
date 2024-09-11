@@ -156,14 +156,14 @@ public enum class146 implements Enum {
 		garbageValue = "1227018075"
 	)
 	static final void method3428() {
-		Iterator var0 = Client.topLevelWorldView.iterator();
+		Iterator var0 = Client.worldViewManager.iterator();
 
 		while (var0.hasNext()) {
 			WorldView var1 = (WorldView)var0.next();
 
-			for (int var2 = 0; var2 < var1.field1366; ++var2) {
+			for (int var2 = 0; var2 < var1.npcCount; ++var2) {
 				int var3 = var1.npcIndices[var2];
-				NPC var4 = var1.field1361[var3];
+				NPC var4 = var1.npcs[var3];
 				if (var4 != null) {
 					class425.updateActorSequence(var1, var4, var4.definition.size);
 				}

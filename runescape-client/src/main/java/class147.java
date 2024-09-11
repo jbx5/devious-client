@@ -9,7 +9,8 @@ public class class147 extends class150 {
 	@ObfuscatedGetter(
 		intValue = 1943108661
 	)
-	static int field1698;
+	@Export("oculusOrbFocalPointZ")
+	static int oculusOrbFocalPointZ;
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
 		intValue = -996029239

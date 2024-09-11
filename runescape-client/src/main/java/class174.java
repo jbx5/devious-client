@@ -96,27 +96,28 @@ public class class174 extends class150 {
 		descriptor = "(Ldd;Lva;ZB)V",
 		garbageValue = "57"
 	)
-	static void method3780(WorldView var0, PacketBuffer var1, boolean var2) {
+	@Export("updateWorldEntitiesFromPacketBuffer")
+	static void updateWorldEntitiesFromPacketBuffer(WorldView var0, PacketBuffer var1, boolean var2) {
 		int var3 = var1.readUnsignedByte();
-		if (var3 < var0.field1365) {
+		if (var3 < var0.worldEntityCount) {
 			throw new RuntimeException("dang");
-		} else if (var3 > var0.field1365) {
+		} else if (var3 > var0.worldEntityCount) {
 			throw new RuntimeException("dang!");
 		} else {
-			var0.field1365 = 0;
+			var0.worldEntityCount = 0;
 
 			int var4;
 			int var5;
 			label74:
 			for (var4 = 0; var4 < var3; ++var4) {
 				var5 = var0.worldEntityIndices[var4];
-				WorldEntity var18 = var0.field1364[var5];
+				WorldEntity var18 = var0.worldEntities[var5];
 				boolean var7 = var1.readUnsignedByte() == 1;
 				if (!var7) {
-					Client.topLevelWorldView.method2613(var18.field5007);
-					var0.field1364[var5] = null;
+					Client.worldViewManager.method2613(var18.worldView);
+					var0.worldEntities[var5] = null;
 				} else {
-					var0.worldEntityIndices[++var0.field1365 - 1] = var5;
+					var0.worldEntityIndices[++var0.worldEntityCount - 1] = var5;
 					var18.field5006 = var2 ? var1.readByte() : 1;
 					byte var8 = var1.readByte();
 					byte var19 = var1.readByte();
@@ -153,14 +154,14 @@ public class class174 extends class150 {
 
 			while (var1.method9879(Client.packetWriter.serverPacketLength) >= 10) {
 				var4 = var1.readUnsignedShort();
-				var0.worldEntityIndices[++var0.field1365 - 1] = var4;
+				var0.worldEntityIndices[++var0.worldEntityCount - 1] = var4;
 				var5 = var1.readUnsignedByte();
 				int var6 = var1.readUnsignedByte();
 				int var25 = var5 * 8;
 				int var26 = var6 * 8;
-				WorldView var9 = Client.topLevelWorldView.method2615(var4, var25, var26, class461.clientPreferences.getDrawDistance(), class232.field2471);
+				WorldView var9 = Client.worldViewManager.method2615(var4, var25, var26, class461.clientPreferences.getDrawDistance(), class232.field2471);
 				WorldEntity var10 = new WorldEntity(var4, var9);
-				var0.field1364[var4] = var10;
+				var0.worldEntities[var4] = var10;
 				int var27 = var1.readUnsignedByte();
 				int var12 = var1.readUnsignedByte();
 				var10.setPosition(var27, var12);

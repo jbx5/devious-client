@@ -70,7 +70,7 @@ public class ArchiveLoader {
 		garbageValue = "-234431369"
 	)
 	static void method2478(int var0, int var1, int var2, int var3, int var4) {
-		NodeDeque var5 = class162.worldView.field1367[var0][var1][var2];
+		NodeDeque var5 = class162.worldView.groundItems[var0][var1][var2];
 		if (var5 != null) {
 			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
 				if ((var3 & 32767) == var6.id && var4 == var6.quantity) {
@@ -80,10 +80,10 @@ public class ArchiveLoader {
 			}
 
 			if (var5.last() == null) {
-				class162.worldView.field1367[var0][var1][var2] = null;
+				class162.worldView.groundItems[var0][var1][var2] = null;
 			}
 
-			class537.method9776(var0, var1, var2);
+			class537.updateItemPile(var0, var1, var2);
 		}
 
 	}
@@ -118,7 +118,7 @@ public class ArchiveLoader {
 				int var12;
 				for (var8 = 0; var8 < 104; ++var8) {
 					for (var16 = 0; var16 < 104; ++var16) {
-						NodeDeque var14 = ClientPreferences.field1341.field1367[ClientPreferences.field1341.plane][var8][var16];
+						NodeDeque var14 = ClientPreferences.topLevelWorldView.groundItems[ClientPreferences.topLevelWorldView.plane][var8][var16];
 						if (var14 != null) {
 							var11 = var8 * 4 + 2 - ClanSettings.entity.getX() / 32;
 							var12 = var16 * 4 + 2 - ClanSettings.entity.getY() / 32;
@@ -127,8 +127,8 @@ public class ArchiveLoader {
 					}
 				}
 
-				for (var8 = 0; var8 < ClientPreferences.field1341.field1366; ++var8) {
-					NPC var9 = ClientPreferences.field1341.field1361[ClientPreferences.field1341.npcIndices[var8]];
+				for (var8 = 0; var8 < ClientPreferences.topLevelWorldView.npcCount; ++var8) {
+					NPC var9 = ClientPreferences.topLevelWorldView.npcs[ClientPreferences.topLevelWorldView.npcIndices[var8]];
 					if (var9 != null && var9.isVisible()) {
 						NPCComposition var18 = var9.definition;
 						if (var18 != null && var18.transforms != null) {
@@ -143,11 +143,11 @@ public class ArchiveLoader {
 					}
 				}
 
-				var8 = Client.field717.playerCount;
-				int[] var17 = Client.field717.playerIndices;
+				var8 = Client.playerUpdateManager.playerCount;
+				int[] var17 = Client.playerUpdateManager.playerIndices;
 
 				for (var10 = 0; var10 < var8; ++var10) {
-					Player var15 = ClientPreferences.field1341.players[var17[var10]];
+					Player var15 = ClientPreferences.topLevelWorldView.players[var17[var10]];
 					if (var15 != null && var15.isVisible() && !var15.isHidden && var15 != AddRequestTask.localPlayer) {
 						var12 = var15.x / 32 - ClanSettings.entity.getX() / 32;
 						int var13 = var15.y / 32 - ClanSettings.entity.getY() / 32;
@@ -166,8 +166,8 @@ public class ArchiveLoader {
 				}
 
 				if (Client.hintArrowType != 0 && Client.cycle % 20 < 10) {
-					if (Client.hintArrowType == 1 && Client.hintArrowNpcIndex >= 0 && Client.hintArrowNpcIndex < ClientPreferences.field1341.field1361.length) {
-						NPC var19 = ClientPreferences.field1341.field1361[Client.hintArrowNpcIndex];
+					if (Client.hintArrowType == 1 && Client.hintArrowNpcIndex >= 0 && Client.hintArrowNpcIndex < ClientPreferences.topLevelWorldView.npcs.length) {
+						NPC var19 = ClientPreferences.topLevelWorldView.npcs[Client.hintArrowNpcIndex];
 						if (var19 != null) {
 							var11 = var19.x / 32 - ClanSettings.entity.getX() / 32;
 							var12 = var19.y / 32 - ClanSettings.entity.getY() / 32;
@@ -176,13 +176,13 @@ public class ArchiveLoader {
 					}
 
 					if (Client.hintArrowType == 2) {
-						var10 = Client.hintArrowX * 4 - ClientPreferences.field1341.baseX * 4 + 2 - ClanSettings.entity.getX() / 32;
-						var11 = Client.hintArrowY * 4 - ClientPreferences.field1341.baseY * 4 + 2 - ClanSettings.entity.getY() / 32;
+						var10 = Client.hintArrowX * 4 - ClientPreferences.topLevelWorldView.baseX * 4 + 2 - ClanSettings.entity.getX() / 32;
+						var11 = Client.hintArrowY * 4 - ClientPreferences.topLevelWorldView.baseY * 4 + 2 - ClanSettings.entity.getY() / 32;
 						class164.worldToMinimap(var1, var2, var10, var11, class160.mapDotSprites[1], var4);
 					}
 
-					if (Client.hintArrowType == 10 && Client.hintArrowPlayerIndex >= 0 && Client.hintArrowPlayerIndex < ClientPreferences.field1341.players.length) {
-						Player var20 = ClientPreferences.field1341.players[Client.hintArrowPlayerIndex];
+					if (Client.hintArrowType == 10 && Client.hintArrowPlayerIndex >= 0 && Client.hintArrowPlayerIndex < ClientPreferences.topLevelWorldView.players.length) {
+						Player var20 = ClientPreferences.topLevelWorldView.players[Client.hintArrowPlayerIndex];
 						if (var20 != null) {
 							var11 = var20.x / 32 - ClanSettings.entity.getX() / 32;
 							var12 = var20.y / 32 - ClanSettings.entity.getY() / 32;

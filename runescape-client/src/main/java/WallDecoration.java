@@ -106,13 +106,13 @@ public final class WallDecoration {
 		garbageValue = "954419119"
 	)
 	static final void method5537() {
-		Iterator var0 = Client.topLevelWorldView.iterator();
+		Iterator var0 = Client.worldViewManager.iterator();
 
 		while (var0.hasNext()) {
 			WorldView var1 = (WorldView)var0.next();
 
-			for (int var2 = 0; var2 < Client.field717.playerCount; ++var2) {
-				Player var3 = var1.players[Client.field717.playerIndices[var2]];
+			for (int var2 = 0; var2 < Client.playerUpdateManager.playerCount; ++var2) {
+				Player var3 = var1.players[Client.playerUpdateManager.playerIndices[var2]];
 				if (var3 != null) {
 					var3.clearIsFriend();
 				}

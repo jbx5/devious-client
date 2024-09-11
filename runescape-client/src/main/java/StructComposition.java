@@ -132,7 +132,7 @@ public class StructComposition extends DualNode {
 	)
 	static final int method4114() {
 		if (class461.clientPreferences.isRoofsHidden()) {
-			return ClientPreferences.field1341.plane;
+			return ClientPreferences.topLevelWorldView.plane;
 		} else {
 			int var0 = 3;
 			int var1 = ClanSettings.entity.getX() >> 7;
@@ -142,8 +142,8 @@ public class StructComposition extends DualNode {
 					int var3;
 					int var4;
 					if (Client.oculusOrbState == 1) {
-						var3 = UserComparator6.field1544 >> 7;
-						var4 = AsyncHttpResponse.field72 >> 7;
+						var3 = UserComparator6.oculusOrbFocalPointX >> 7;
+						var4 = AsyncHttpResponse.oculusOrbFocalPointY >> 7;
 					} else {
 						var3 = var1;
 						var4 = var2;
@@ -153,8 +153,8 @@ public class StructComposition extends DualNode {
 					int var6 = class33.cameraZ >> 7;
 					if (var5 >= 0 && 104 > var5 && var6 >= 0 && 104 > var6) {
 						if (var3 >= 0 && 104 > var3 && var4 >= 0 && 104 > var4) {
-							if ((ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][var5][var6] & 4) != 0) {
-								var0 = ClientPreferences.field1341.plane;
+							if ((ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][var5][var6] & 4) != 0) {
+								var0 = ClientPreferences.topLevelWorldView.plane;
 							}
 
 							int var7;
@@ -188,8 +188,8 @@ public class StructComposition extends DualNode {
 										--var5;
 									}
 
-									if ((ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][var5][var6] & 4) != 0) {
-										var0 = ClientPreferences.field1341.plane;
+									if ((ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][var5][var6] & 4) != 0) {
+										var0 = ClientPreferences.topLevelWorldView.plane;
 									}
 
 									var10 += var9;
@@ -201,8 +201,8 @@ public class StructComposition extends DualNode {
 											--var6;
 										}
 
-										if ((ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][var5][var6] & 4) != 0) {
-											var0 = ClientPreferences.field1341.plane;
+										if ((ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][var5][var6] & 4) != 0) {
+											var0 = ClientPreferences.topLevelWorldView.plane;
 										}
 									}
 								}
@@ -218,8 +218,8 @@ public class StructComposition extends DualNode {
 											--var6;
 										}
 
-										if ((ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][var5][var6] & 4) != 0) {
-											var0 = ClientPreferences.field1341.plane;
+										if ((ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][var5][var6] & 4) != 0) {
+											var0 = ClientPreferences.topLevelWorldView.plane;
 										}
 
 										var10 += var9;
@@ -231,8 +231,8 @@ public class StructComposition extends DualNode {
 												--var5;
 											}
 
-											if ((ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][var5][var6] & 4) != 0) {
-												var0 = ClientPreferences.field1341.plane;
+											if ((ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][var5][var6] & 4) != 0) {
+												var0 = ClientPreferences.topLevelWorldView.plane;
 											}
 										}
 									}
@@ -241,21 +241,21 @@ public class StructComposition extends DualNode {
 							}
 						}
 
-						return ClientPreferences.field1341.plane;
+						return ClientPreferences.topLevelWorldView.plane;
 					}
 
-					return ClientPreferences.field1341.plane;
+					return ClientPreferences.topLevelWorldView.plane;
 				}
 			}
 
 			if (var1 >= 0 && 104 > var1 && var2 >= 0 && 104 > var2) {
-				if ((ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][var1][var2] & 4) != 0) {
-					var0 = ClientPreferences.field1341.plane;
+				if ((ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][var1][var2] & 4) != 0) {
+					var0 = ClientPreferences.topLevelWorldView.plane;
 				}
 
 				return var0;
 			} else {
-				return ClientPreferences.field1341.plane;
+				return ClientPreferences.topLevelWorldView.plane;
 			}
 		}
 	}

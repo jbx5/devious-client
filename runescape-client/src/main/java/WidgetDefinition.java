@@ -363,7 +363,7 @@ public class WidgetDefinition {
 		garbageValue = "1366828095"
 	)
 	static void method6851(int var0, int var1, int var2, int var3, int var4, int var5) {
-		NodeDeque var6 = class162.worldView.field1367[var0][var1][var2];
+		NodeDeque var6 = class162.worldView.groundItems[var0][var1][var2];
 		if (var6 != null) {
 			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
 				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
@@ -372,7 +372,7 @@ public class WidgetDefinition {
 				}
 			}
 
-			class537.method9776(var0, var1, var2);
+			class537.updateItemPile(var0, var1, var2);
 		}
 
 	}

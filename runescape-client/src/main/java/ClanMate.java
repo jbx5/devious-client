@@ -111,8 +111,8 @@ public class ClanMate extends Buddy {
 				}
 			}
 
-			int var76 = Client.field717.playerCount;
-			int[] var8 = Client.field717.playerIndices;
+			int var76 = Client.playerUpdateManager.playerCount;
+			int[] var8 = Client.playerUpdateManager.playerIndices;
 			boolean var9 = var2 < var76;
 			int var10 = -2;
 			if (var1.overheadText != null && (!var9 || !var1.field1275 && (Client.publicChatMode == 4 || !var1.field1279 && (Client.publicChatMode == 0 || Client.publicChatMode == 3 || Client.publicChatMode == 1 && ((Player)var1).isFriend())))) {
@@ -147,7 +147,7 @@ public class ClanMate extends Buddy {
 						}
 					} else {
 						HealthBarDefinition var13 = var11.definition;
-						SpritePixels var80 = var13.method3899();
+						SpritePixels var80 = var13.getBackSprite();
 						SpritePixels var86 = var13.getFrontSprite();
 						var82 = 0;
 						if (var80 != null && var86 != null) {

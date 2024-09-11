@@ -121,36 +121,36 @@ public class GrandExchangeOffer {
 		var1.importIndex();
 		int var2 = var1.readBits(8);
 		int var3;
-		if (var2 < var0.field1366) {
-			for (var3 = var2; var3 < var0.field1366; ++var3) {
-				Client.defaultRotations[++Client.field525 - 1] = var0.npcIndices[var3];
+		if (var2 < var0.npcCount) {
+			for (var3 = var2; var3 < var0.npcCount; ++var3) {
+				Client.field526[++Client.field525 - 1] = var0.npcIndices[var3];
 			}
 		}
 
-		if (var2 > var0.field1366) {
+		if (var2 > var0.npcCount) {
 			throw new RuntimeException("");
 		} else {
-			var0.field1366 = 0;
+			var0.npcCount = 0;
 
 			for (var3 = 0; var3 < var2; ++var3) {
 				int var4 = var0.npcIndices[var3];
-				NPC var5 = var0.field1361[var4];
+				NPC var5 = var0.npcs[var4];
 				int var6 = var1.readBits(1);
 				if (var6 == 0) {
-					var0.npcIndices[++var0.field1366 - 1] = var4;
-					var5.field1282 = Client.cycle;
+					var0.npcIndices[++var0.npcCount - 1] = var4;
+					var5.npcCycle = Client.cycle;
 				} else {
 					int var7 = var1.readBits(2);
 					if (var7 == 0) {
-						var0.npcIndices[++var0.field1366 - 1] = var4;
-						var5.field1282 = Client.cycle;
+						var0.npcIndices[++var0.npcCount - 1] = var4;
+						var5.npcCycle = Client.cycle;
 						Client.npcIndices[++Client.npcCount - 1] = var4;
 					} else {
 						int var8;
 						int var9;
 						if (var7 == 1) {
-							var0.npcIndices[++var0.field1366 - 1] = var4;
-							var5.field1282 = Client.cycle;
+							var0.npcIndices[++var0.npcCount - 1] = var4;
+							var5.npcCycle = Client.cycle;
 							var8 = var1.readBits(3);
 							var5.method2877(var8, MoveSpeed.field3036);
 							var9 = var1.readBits(1);
@@ -158,8 +158,8 @@ public class GrandExchangeOffer {
 								Client.npcIndices[++Client.npcCount - 1] = var4;
 							}
 						} else if (var7 == 2) {
-							var0.npcIndices[++var0.field1366 - 1] = var4;
-							var5.field1282 = Client.cycle;
+							var0.npcIndices[++var0.npcCount - 1] = var4;
+							var5.npcCycle = Client.cycle;
 							if (var1.readBits(1) == 1) {
 								var8 = var1.readBits(3);
 								var5.method2877(var8, MoveSpeed.field3039);
@@ -175,7 +175,7 @@ public class GrandExchangeOffer {
 								Client.npcIndices[++Client.npcCount - 1] = var4;
 							}
 						} else if (var7 == 3) {
-							Client.defaultRotations[++Client.field525 - 1] = var4;
+							Client.field526[++Client.field525 - 1] = var4;
 						}
 					}
 				}

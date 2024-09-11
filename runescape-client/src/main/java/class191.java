@@ -133,7 +133,7 @@ public class class191 extends DualNode {
 				var14[var9] = var13 * var12 >> 16;
 			}
 
-			ClientPreferences.field1341.scene.method4944(var14, 500, 800, var2 * 334 / var3, 334);
+			ClientPreferences.topLevelWorldView.scene.method4944(var14, 500, 800, var2 * 334 / var3, 334);
 		}
 
 		Client.viewportOffsetX = var0;

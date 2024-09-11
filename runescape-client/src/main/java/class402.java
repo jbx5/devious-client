@@ -195,10 +195,10 @@ public class class402 {
 		garbageValue = "1564355311"
 	)
 	static final void method7745() {
-		for (PendingSpawn var0 = (PendingSpawn)ClientPreferences.field1341.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)ClientPreferences.field1341.pendingSpawns.previous()) {
+		for (PendingSpawn var0 = (PendingSpawn)ClientPreferences.topLevelWorldView.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)ClientPreferences.topLevelWorldView.pendingSpawns.previous()) {
 			if (var0.hitpoints == -1) {
 				var0.delay = 0;
-				class254.method5223(ClientPreferences.field1341, var0);
+				class254.method5223(ClientPreferences.topLevelWorldView, var0);
 			} else {
 				var0.remove();
 			}

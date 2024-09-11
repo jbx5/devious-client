@@ -273,8 +273,8 @@ public final class class329 {
 								class324.method6405(class95.field1177);
 							}
 						} else if (class95.field1177 == Client.field603) {
-							ClientPreferences.field1341 = Client.topLevelWorldView.method2614(104, 104, class461.clientPreferences.getDrawDistance());
-							class162.worldView = ClientPreferences.field1341;
+							ClientPreferences.topLevelWorldView = Client.worldViewManager.method2614(104, 104, class461.clientPreferences.getDrawDistance());
+							class162.worldView = ClientPreferences.topLevelWorldView;
 							Tiles.sceneMinimapSprite = new SpritePixels(512, 512);
 							class150.method3480(30, "Starting game engine...");
 							class324.method6405(class95.field1176);

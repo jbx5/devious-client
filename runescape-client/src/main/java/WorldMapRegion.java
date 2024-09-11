@@ -291,7 +291,8 @@ public class WorldMapRegion {
 	@ObfuscatedSignature(
 		descriptor = "(ILlo;[Lvt;Lpo;Lpo;D)V"
 	)
-	void method5887(int var1, WorldMapScaleHandler var2, IndexedSprite[] var3, AbstractArchive var4, AbstractArchive var5, double var6) {
+	@Export("drawTile")
+	void drawTile(int var1, WorldMapScaleHandler var2, IndexedSprite[] var3, AbstractArchive var4, AbstractArchive var5, double var6) {
 		this.pixelsPerTile = var1;
 		if (this.worldMapData_0 != null || !this.worldMapData1List.isEmpty()) {
 			int var9 = this.regionX;

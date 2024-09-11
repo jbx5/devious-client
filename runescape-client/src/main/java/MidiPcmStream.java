@@ -188,7 +188,8 @@ public class MidiPcmStream extends PcmStream {
 		descriptor = "(Lnk;Lpo;Lbo;I)Z",
 		garbageValue = "-384564894"
 	)
-	public boolean method6539(MusicTrack var1, AbstractArchive var2, SoundCache var3) {
+	@Export("updateExternalPlayer")
+	public boolean updateExternalPlayer(MusicTrack var1, AbstractArchive var2, SoundCache var3) {
 		synchronized(this.player) {
 			boolean var5 = true;
 			synchronized(this.priorityQueue) {

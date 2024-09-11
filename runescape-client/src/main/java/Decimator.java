@@ -236,7 +236,7 @@ public class Decimator {
 		if (var3 != null && var3.isVisible() && !var3.isHidden) {
 			int var4 = var3.plane;
 			var3.isUnanimated = false;
-			if ((Client.isLowDetail && Client.field717.playerCount > 50 || Client.field717.playerCount > 200) && var2 && var3.movementSequence == var3.idleSequence) {
+			if ((Client.isLowDetail && Client.playerUpdateManager.playerCount > 50 || Client.playerUpdateManager.playerCount > 200) && var2 && var3.movementSequence == var3.idleSequence) {
 				var3.isUnanimated = true;
 			}
 

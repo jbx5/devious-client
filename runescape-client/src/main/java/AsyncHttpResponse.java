@@ -21,7 +21,8 @@ public class AsyncHttpResponse {
 	@ObfuscatedGetter(
 		intValue = 1706389661
 	)
-	static int field72;
+	@Export("oculusOrbFocalPointY")
+	static int oculusOrbFocalPointY;
 	@ObfuscatedName("ac")
 	@Export("responseFuture")
 	Future responseFuture;

@@ -272,8 +272,7 @@ public abstract class Actor extends Renderable implements Entity {
 	@ObfuscatedGetter(
 		intValue = -139175881
 	)
-	@Export("npcCycle")
-	int npcCycle;
+	int field1276;
 	@ObfuscatedName("db")
 	@ObfuscatedGetter(
 		intValue = 223119945
@@ -304,7 +303,8 @@ public abstract class Actor extends Renderable implements Entity {
 	@ObfuscatedGetter(
 		intValue = -28643081
 	)
-	int field1282;
+	@Export("npcCycle")
+	int npcCycle;
 	@ObfuscatedName("do")
 	@ObfuscatedGetter(
 		intValue = 20342703
@@ -426,7 +426,7 @@ public abstract class Actor extends Renderable implements Entity {
 		this.field1272 = 0;
 		this.spotAnimations = new IterableNodeHashTable(4);
 		this.graphicsCount = 0;
-		this.field1282 = 0;
+		this.npcCycle = 0;
 		this.defaultHeight = 200;
 		this.field1284 = -1;
 		this.field1258 = -1;
@@ -468,7 +468,7 @@ public abstract class Actor extends Renderable implements Entity {
 	)
 	@Export("getPlane")
 	public int getPlane() {
-		return ClientPreferences.field1341.plane;
+		return ClientPreferences.topLevelWorldView.plane;
 	}
 
 	@ObfuscatedName("bx")
@@ -762,18 +762,18 @@ public abstract class Actor extends Renderable implements Entity {
 		garbageValue = "931998056"
 	)
 	Coord method2646(WorldView var1) {
-		if (var1 == ClientPreferences.field1341) {
+		if (var1 == ClientPreferences.topLevelWorldView) {
 			return new Coord(this.getPlane(), this.getX(), this.getY());
 		} else {
-			WorldEntity var2 = ClientPreferences.field1341.field1364[var1.id];
+			WorldEntity var2 = ClientPreferences.topLevelWorldView.worldEntities[var1.id];
 			if (var2 == null) {
 				return new Coord(this.getPlane(), this.getX(), this.getY());
 			} else {
 				int var3 = var2.getX();
 				int var4 = var2.getY();
 				int var5 = var2.getPlane();
-				int var6 = var2.field5007.sizeX / 2 * 128;
-				int var7 = var2.field5007.sizeY / 2 * 128;
+				int var6 = var2.worldView.sizeX / 2 * 128;
+				int var7 = var2.worldView.sizeY / 2 * 128;
 				int var8 = this.getX() - var6;
 				int var9 = this.getY() - var7;
 				double var10 = (double)(-var2.currentRotationAngle) * 3.141592653589793D / 1024.0D;

@@ -300,8 +300,8 @@ public class class501 {
 		Client.destinationY = 0;
 		Client.playerAttackOption = AttackOption.AttackOption_hidden;
 		Client.npcAttackOption = AttackOption.AttackOption_hidden;
-		Client.topLevelWorldView.clear();
-		Client.field717.method3008();
+		Client.worldViewManager.clear();
+		Client.playerUpdateManager.method3008();
 		class425.friendSystem.clear();
 		if (VarpDefinition.field1888 > 5000) {
 		}

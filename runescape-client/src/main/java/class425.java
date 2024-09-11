@@ -157,7 +157,7 @@ public class class425 {
 					var5 = Client.cycle - var1.spotAnimation;
 					var6 = var1.field1227 * 64 + var1.field1257 * 128;
 					var14 = var1.field1227 * 64 + var1.field1248 * 128;
-					var8 = var1.field1227 * 64 + var1.npcCycle * 128;
+					var8 = var1.field1227 * 64 + var1.field1276 * 128;
 					var9 = var1.field1227 * 64 + var1.field1231 * 128;
 					var1.x = (var5 * var8 + var6 * (var4 - var5)) / var4;
 					var1.y = (var5 * var9 + var14 * (var4 - var5)) / var4;

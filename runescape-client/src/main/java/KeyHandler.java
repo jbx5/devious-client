@@ -31,7 +31,8 @@ public class KeyHandler implements KeyListener, FocusListener {
 	@ObfuscatedGetter(
 		intValue = 910204495
 	)
-	static int field111;
+	@Export("Players_count")
+	static int Players_count;
 	@ObfuscatedName("ae")
 	Collection field113;
 	@ObfuscatedName("ag")
@@ -202,9 +203,9 @@ public class KeyHandler implements KeyListener, FocusListener {
 		garbageValue = "1036155435"
 	)
 	static final void method340() {
-		if (Client.field756 != ClientPreferences.field1341.plane) {
-			Client.field756 = ClientPreferences.field1341.plane;
-			WorldMapSection0.method6138(ClientPreferences.field1341.plane);
+		if (Client.field756 != ClientPreferences.topLevelWorldView.plane) {
+			Client.field756 = ClientPreferences.topLevelWorldView.plane;
+			WorldMapSection0.method6138(ClientPreferences.topLevelWorldView.plane);
 		}
 
 	}

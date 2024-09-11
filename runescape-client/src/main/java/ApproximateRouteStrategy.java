@@ -48,10 +48,10 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 	)
 	static final int method1255() {
 		if (class461.clientPreferences.isRoofsHidden()) {
-			return ClientPreferences.field1341.plane;
+			return ClientPreferences.topLevelWorldView.plane;
 		} else {
-			int var0 = VarcInt.getTileHeight(ClientPreferences.field1341, class301.cameraX, class33.cameraZ, ClientPreferences.field1341.plane);
-			return var0 - ArchiveLoader.cameraY < 800 && (ClientPreferences.field1341.tileSettings[ClientPreferences.field1341.plane][class301.cameraX >> 7][class33.cameraZ >> 7] & 4) != 0 ? ClientPreferences.field1341.plane : 3;
+			int var0 = VarcInt.getTileHeight(ClientPreferences.topLevelWorldView, class301.cameraX, class33.cameraZ, ClientPreferences.topLevelWorldView.plane);
+			return var0 - ArchiveLoader.cameraY < 800 && (ClientPreferences.topLevelWorldView.tileSettings[ClientPreferences.topLevelWorldView.plane][class301.cameraX >> 7][class33.cameraZ >> 7] & 4) != 0 ? ClientPreferences.topLevelWorldView.plane : 3;
 		}
 	}
 }

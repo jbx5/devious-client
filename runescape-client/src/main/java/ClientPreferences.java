@@ -16,7 +16,8 @@ public class ClientPreferences {
 	@ObfuscatedSignature(
 		descriptor = "Ldd;"
 	)
-	static WorldView field1341;
+	@Export("topLevelWorldView")
+	static WorldView topLevelWorldView;
 	@ObfuscatedName("ax")
 	@Export("roofsHidden")
 	boolean roofsHidden;
@@ -538,8 +539,8 @@ public class ClientPreferences {
 	@Export("setDrawDistance")
 	void setDrawDistance(int var1) {
 		this.drawDistance = var1;
-		if (field1341 != null) {
-			field1341.scene.method4930(class461.clientPreferences.getDrawDistance());
+		if (topLevelWorldView != null) {
+			topLevelWorldView.scene.method4930(class461.clientPreferences.getDrawDistance());
 		}
 
 		AsyncRestClient.savePreferences();
@@ -1183,11 +1184,11 @@ public class ClientPreferences {
 					}
 
 					if (var6 == 18) {
-						var7 = (AddRequestTask.localPlayer.x >> 7) + field1341.baseX;
+						var7 = (AddRequestTask.localPlayer.x >> 7) + topLevelWorldView.baseX;
 					}
 
 					if (var6 == 19) {
-						var7 = (AddRequestTask.localPlayer.y >> 7) + field1341.baseY;
+						var7 = (AddRequestTask.localPlayer.y >> 7) + topLevelWorldView.baseY;
 					}
 
 					if (var6 == 20) {

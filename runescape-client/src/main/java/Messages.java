@@ -52,8 +52,9 @@ public class Messages {
 		descriptor = "(Ldd;IIII)V",
 		garbageValue = "1535475848"
 	)
-	static final void method3104(WorldView var0, int var1, int var2, int var3) {
-		NodeDeque var4 = var0.field1367[var1][var2][var3];
+	@Export("updateItemPile2")
+	static final void updateItemPile2(WorldView var0, int var1, int var2, int var3) {
+		NodeDeque var4 = var0.groundItems[var1][var2][var3];
 		if (var4 == null) {
 			var0.scene.removeGroundItemPile(var1, var2, var3);
 		} else {

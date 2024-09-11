@@ -484,8 +484,8 @@ public class GraphicsObject extends Renderable {
 	)
 	static final void method2291() {
 		Client.field728 = 0;
-		int var0 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.field1341.baseX;
-		int var1 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.field1341.baseY;
+		int var0 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.topLevelWorldView.baseX;
+		int var1 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.topLevelWorldView.baseY;
 		if (var0 >= 3053 && var0 <= 3156 && var1 >= 3056 && var1 <= 3136) {
 			Client.field728 = 1;
 		}

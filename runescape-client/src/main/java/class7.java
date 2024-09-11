@@ -140,8 +140,8 @@ public class class7 {
 	static void method56(int var0, Coord var1, boolean var2) {
 		WorldMapArea var3 = class147.getWorldMap().getMapArea(var0);
 		int var4 = AddRequestTask.localPlayer.plane;
-		int var5 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.field1341.baseX;
-		int var6 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.field1341.baseY;
+		int var5 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.topLevelWorldView.baseX;
+		int var6 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.topLevelWorldView.baseY;
 		Coord var7 = new Coord(var4, var5, var6);
 		class147.getWorldMap().method9400(var3, var7, var1, var2);
 	}
@@ -152,14 +152,14 @@ public class class7 {
 		garbageValue = "-1530919932"
 	)
 	static void method52() {
-		Iterator var0 = Client.topLevelWorldView.iterator();
+		Iterator var0 = Client.worldViewManager.iterator();
 
 		while (var0.hasNext()) {
 			WorldView var1 = (WorldView)var0.next();
 
-			for (int var2 = 0; var2 < var1.field1365; ++var2) {
+			for (int var2 = 0; var2 < var1.worldEntityCount; ++var2) {
 				int var3 = var1.worldEntityIndices[var2];
-				WorldEntity var4 = var1.field1364[var3];
+				WorldEntity var4 = var1.worldEntities[var3];
 				if (var4 != null) {
 					var4.updateMovement();
 				}
@@ -182,7 +182,7 @@ public class class7 {
 					Player var4;
 					if (!var1.isMoving && var1.field1016 != 0) {
 						if (var1.field1016 > 0) {
-							var2 = class162.worldView.field1361[var1.field1016 - 1];
+							var2 = class162.worldView.npcs[var1.field1016 - 1];
 							if (var2 != null && 0 <= var2.x && var2.x < 13312 && 0 <= var2.y && var2.y < 13312) {
 								var1.sourceX = var2.x;
 								var1.sourceY = var2.y;
@@ -205,7 +205,7 @@ public class class7 {
 					}
 
 					if (var1.targetIndex > 0) {
-						var2 = var0.field1361[var1.targetIndex - 1];
+						var2 = var0.npcs[var1.targetIndex - 1];
 						if (var2 != null && 0 <= var2.x && var2.x < 13312 && 0 <= var2.y && var2.y < 13312) {
 							var1.setDestination(var2.x, var2.y, VarcInt.getTileHeight(var0, var2.x, var2.y, var1.plane) - var1.endHeight, Client.cycle);
 						}
@@ -249,13 +249,13 @@ public class class7 {
 		garbageValue = "1216632137"
 	)
 	static final void method53() {
-		Iterator var0 = Client.topLevelWorldView.iterator();
+		Iterator var0 = Client.worldViewManager.iterator();
 
 		while (var0.hasNext()) {
 			WorldView var1 = (WorldView)var0.next();
 
-			for (int var2 = 0; var2 < Client.field717.playerCount; ++var2) {
-				Player var3 = ClientPreferences.field1341.players[Client.field717.playerIndices[var2]];
+			for (int var2 = 0; var2 < Client.playerUpdateManager.playerCount; ++var2) {
+				Player var3 = ClientPreferences.topLevelWorldView.players[Client.playerUpdateManager.playerIndices[var2]];
 				if (var3 != null) {
 					var3.clearIsInFriendsChat();
 				}

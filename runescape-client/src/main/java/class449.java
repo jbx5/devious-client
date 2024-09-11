@@ -62,7 +62,7 @@ public class class449 extends SongTask {
 								var3.field3737 = new SoundCache(this.field4851, this.field4850);
 							}
 
-							if (var3.midiPcmStream.method6539(var3.field3731, this.field4849, var3.field3737)) {
+							if (var3.midiPcmStream.updateExternalPlayer(var3.field3731, this.field4849, var3.field3737)) {
 								++var1;
 								var3.field3739 = true;
 								var3.midiPcmStream.method6508();

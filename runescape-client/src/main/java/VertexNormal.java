@@ -121,7 +121,7 @@ public class VertexNormal {
 	static final void method5412(WorldView var0, PacketBuffer var1) {
 		for (int var2 = 0; var2 < Client.npcCount; ++var2) {
 			int var3 = Client.npcIndices[var2];
-			NPC var4 = var0.field1361[var3];
+			NPC var4 = var0.npcs[var3];
 			int var5 = var1.readUnsignedByte();
 			int var6;
 			if ((var5 & 32) != 0) {
@@ -433,7 +433,7 @@ public class VertexNormal {
 			if ((var5 & 4096) != 0) {
 				var4.field1257 = var1.readByteSub();
 				var4.field1248 = var1.readByteAdd();
-				var4.npcCycle = var1.readByte();
+				var4.field1276 = var1.readByte();
 				var4.field1231 = var1.readByteNeg();
 				var4.spotAnimation = var1.readUnsignedShortLE() + Client.cycle;
 				var4.field1233 = var1.readUnsignedShortLE() + Client.cycle;
@@ -442,7 +442,7 @@ public class VertexNormal {
 				var4.field1298 = 0;
 				var4.field1257 += var4.pathX[0];
 				var4.field1248 += var4.pathY[0];
-				var4.npcCycle += var4.pathX[0];
+				var4.field1276 += var4.pathX[0];
 				var4.field1231 += var4.pathY[0];
 			}
 		}

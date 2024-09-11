@@ -191,7 +191,7 @@ public class class139 implements Enum {
 		if (!Client.field773) {
 			var0 = Coord.method6797(DynamicObject.field1049);
 			var1 = Coord.method6797(class1.field3);
-			var2 = VarcInt.getTileHeight(ClientPreferences.field1341, var0, var1, ClientPreferences.field1341.plane) - class7.field21;
+			var2 = VarcInt.getTileHeight(ClientPreferences.topLevelWorldView, var0, var1, ClientPreferences.topLevelWorldView.plane) - class7.field21;
 			Player.method2609(var0, var2, var1);
 		} else if (Client.field776 != null) {
 			class301.cameraX = Client.field776.vmethod9311();
@@ -199,7 +199,7 @@ public class class139 implements Enum {
 			if (Client.field775) {
 				ArchiveLoader.cameraY = Client.field776.vmethod9313();
 			} else {
-				ArchiveLoader.cameraY = VarcInt.getTileHeight(ClientPreferences.field1341, class301.cameraX, class33.cameraZ, ClientPreferences.field1341.plane) - Client.field776.vmethod9313();
+				ArchiveLoader.cameraY = VarcInt.getTileHeight(ClientPreferences.topLevelWorldView, class301.cameraX, class33.cameraZ, ClientPreferences.topLevelWorldView.plane) - Client.field776.vmethod9313();
 			}
 
 			Client.field776.method9322();
@@ -207,8 +207,8 @@ public class class139 implements Enum {
 
 		if (!Client.field774) {
 			var0 = Coord.method6797(HorizontalAlignment.field1989);
-			var1 = Coord.method6797(class28.Players_count);
-			var2 = VarcInt.getTileHeight(ClientPreferences.field1341, var0, var1, ClientPreferences.field1341.plane) - class380.field4133;
+			var1 = Coord.method6797(class28.field1287);
+			var2 = VarcInt.getTileHeight(ClientPreferences.topLevelWorldView, var0, var1, ClientPreferences.topLevelWorldView.plane) - class380.field4133;
 			int var3 = var0 - class301.cameraX;
 			int var4 = var2 - ArchiveLoader.cameraY;
 			int var5 = var1 - class33.cameraZ;

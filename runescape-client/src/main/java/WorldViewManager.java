@@ -1,23 +1,27 @@
 import java.util.Iterator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dg")
-public class class97 implements Iterable {
+@Implements("WorldViewManager")
+public class WorldViewManager implements Iterable {
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Ldd;"
 	)
-	WorldView field1204;
+	@Export("worldView")
+	WorldView worldView;
 	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "Lui;"
 	)
-	final IterableNodeHashTable field1202;
+	@Export("hashTable")
+	final IterableNodeHashTable hashTable;
 
-	class97() {
-		this.field1202 = new IterableNodeHashTable(16);
+	WorldViewManager() {
+		this.hashTable = new IterableNodeHashTable(16);
 	}
 
 	@ObfuscatedName("ac")
@@ -26,9 +30,9 @@ public class class97 implements Iterable {
 		garbageValue = "766479740"
 	)
 	WorldView method2614(int var1, int var2, int var3) {
-		this.field1204 = this.method2615(-1, var1, var2, var3, class232.field2470);
-		this.field1202.put(this.field1204, -1L);
-		return this.field1204;
+		this.worldView = this.method2615(-1, var1, var2, var3, class232.field2470);
+		this.hashTable.put(this.worldView, -1L);
+		return this.worldView;
 	}
 
 	@ObfuscatedName("ae")
@@ -38,7 +42,7 @@ public class class97 implements Iterable {
 	)
 	WorldView method2615(int var1, int var2, int var3, int var4, class232 var5) {
 		WorldView var6 = new WorldView(var1, var2, var3, var4, var5);
-		this.field1202.put(var6, (long)var1);
+		this.hashTable.put(var6, (long)var1);
 		return var6;
 	}
 
@@ -61,12 +65,12 @@ public class class97 implements Iterable {
 	)
 	@Export("clear")
 	void clear() {
-		this.field1204.method2860();
-		this.field1202.clear();
-		this.field1202.put(this.field1204, -1L);
+		this.worldView.method2860();
+		this.hashTable.clear();
+		this.hashTable.put(this.worldView, -1L);
 	}
 
 	public Iterator iterator() {
-		return this.field1202.iterator();
+		return this.hashTable.iterator();
 	}
 }

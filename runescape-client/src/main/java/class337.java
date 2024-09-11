@@ -62,7 +62,7 @@ class class337 implements ThreadFactory {
 		GameEngine.taskHandler = null;
 		class179.clear();
 		class187.method3921();
-		Client.topLevelWorldView.clear();
+		Client.worldViewManager.clear();
 		UserComparator8.worldMap = null;
 		AbstractWorldMapIcon.method6257(0, 0);
 		SoundCache.method889();

@@ -225,7 +225,7 @@ public final class WorldMapRenderer {
 		int var20;
 		for (var19 = var14.x; var19 <= var24; ++var19) {
 			for (var20 = var14.y; var20 <= var18; ++var20) {
-				this.regions[var19][var20].method5887(var16, (WorldMapScaleHandler)this.scaleHandlers.get(var16), this.mapSceneSprites, this.geographyArchive, this.groundArchive, 0.725D);
+				this.regions[var19][var20].drawTile(var16, (WorldMapScaleHandler)this.scaleHandlers.get(var16), this.mapSceneSprites, this.geographyArchive, this.groundArchive, 0.725D);
 			}
 		}
 

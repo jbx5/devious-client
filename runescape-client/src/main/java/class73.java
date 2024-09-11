@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -24,14 +25,16 @@ public class class73 {
 	@ObfuscatedSignature(
 		descriptor = "Lnm;"
 	)
-	Coord field894;
+	@Export("coord")
+	Coord coord;
 	@ObfuscatedName("ax")
 	byte field895;
 	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
 		intValue = 182383155
 	)
-	int field896;
+	@Export("orientation")
+	int orientation;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
 		intValue = 1315619531
@@ -41,33 +44,36 @@ public class class73 {
 	@ObfuscatedGetter(
 		intValue = -841216137
 	)
-	int field891;
+	@Export("targetIndex")
+	int targetIndex;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "Lkk;"
 	)
-	MoveSpeed field899;
+	@Export("pathTraversed")
+	MoveSpeed pathTraversed;
 	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "Lvf;"
 	)
 	Buffer field900;
 	@ObfuscatedName("al")
-	String[] field901;
+	@Export("actions")
+	String[] actions;
 
 	class73(int var1) {
 		this.field902 = new ArrayList(1);
 		this.field892 = -1;
 		this.field898 = 0;
-		this.field894 = new Coord();
-		this.field896 = 0;
+		this.coord = new Coord();
+		this.orientation = 0;
 		this.field897 = -1;
-		this.field891 = -1;
-		this.field901 = new String[3];
+		this.targetIndex = -1;
+		this.actions = new String[3];
 		this.field892 = var1;
 
 		for (int var2 = 0; var2 < 3; ++var2) {
-			this.field901[var2] = "";
+			this.actions[var2] = "";
 		}
 
 	}
@@ -89,11 +95,11 @@ public class class73 {
 	)
 	void method2276(int var1) {
 		this.field898 = var1;
-		this.field896 = 0;
+		this.orientation = 0;
 		this.field897 = -1;
-		this.field891 = -1;
+		this.targetIndex = -1;
 		this.field895 = 0;
-		this.field899 = MoveSpeed.field3036;
+		this.pathTraversed = MoveSpeed.field3036;
 		this.field900 = null;
 	}
 
@@ -127,13 +133,13 @@ public class class73 {
 			var3.read(this.field900);
 		}
 
-		var3.orientation = this.field896;
-		var3.targetIndex = this.field891;
-		var3.pathTraversed[0] = this.field899;
-		var3.plane = this.field894.plane;
+		var3.orientation = this.orientation;
+		var3.targetIndex = this.targetIndex;
+		var3.pathTraversed[0] = this.pathTraversed;
+		var3.plane = this.coord.plane;
 		var3.worldView = var2;
-		var3.actions = this.field901;
-		var3.resetPath(this.field894.x - var2.baseX, this.field894.y - var2.baseY);
+		var3.actions = this.actions;
+		var3.resetPath(this.coord.x - var2.baseX, this.coord.y - var2.baseY);
 		return var3;
 	}
 
@@ -152,7 +158,7 @@ public class class73 {
 		garbageValue = "-1105692368"
 	)
 	void method2204() {
-		this.field898 = this.field894.method6789();
+		this.field898 = this.coord.method6789();
 	}
 
 	@ObfuscatedName("at")
@@ -161,7 +167,7 @@ public class class73 {
 		garbageValue = "-535403897"
 	)
 	void method2205(int var1, int var2) {
-		this.field894.method6790(this.field898, var1, var2);
+		this.coord.method6790(this.field898, var1, var2);
 		this.field898 = -1;
 	}
 
@@ -171,7 +177,7 @@ public class class73 {
 		garbageValue = "-300282592"
 	)
 	int method2206() {
-		return this.field894.plane;
+		return this.coord.plane;
 	}
 
 	@ObfuscatedName("ar")
@@ -180,7 +186,7 @@ public class class73 {
 		garbageValue = "-300605319"
 	)
 	void method2257(int var1) {
-		this.field894.plane = var1;
+		this.coord.plane = var1;
 	}
 
 	@ObfuscatedName("al")
@@ -192,8 +198,8 @@ public class class73 {
 		for (int var2 = 0; var2 < this.field902.size(); ++var2) {
 			Player var3 = (Player)this.field902.get(var2);
 			WorldView var4 = var3.worldView;
-			int var5 = this.field894.x - var4.baseX;
-			int var6 = this.field894.y - var4.baseY;
+			int var5 = this.coord.x - var4.baseX;
+			int var6 = this.coord.y - var4.baseY;
 			MoveSpeed var7 = var1;
 			boolean var8 = true;
 			boolean var9 = true;
@@ -201,7 +207,7 @@ public class class73 {
 				var7 = MoveSpeed.field3038;
 			}
 
-			var3.plane = this.field894.plane;
+			var3.plane = this.coord.plane;
 			if (var7 == MoveSpeed.field3038) {
 				var3.resetPath(var5, var6);
 			} else {
@@ -243,7 +249,7 @@ public class class73 {
 		garbageValue = "255"
 	)
 	void method2253(int var1) {
-		this.field891 = var1;
+		this.targetIndex = var1;
 
 		for (int var2 = 0; var2 < this.field902.size(); ++var2) {
 			((Actor)this.field902.get(var2)).targetIndex = var1;
@@ -415,24 +421,24 @@ public class class73 {
 			Player var10 = (Player)this.field902.get(var9);
 			var10.field1257 = var1;
 			var10.field1248 = var2;
-			var10.npcCycle = var3;
+			var10.field1276 = var3;
 			var10.field1231 = var4;
 			var10.spotAnimation = var5;
 			var10.field1233 = var6;
 			var10.field1291 = var7;
 			if (var8) {
 				WorldView var11 = var10.worldView;
-				int var12 = this.field894.x - var11.baseX;
-				int var13 = this.field894.y - var11.baseY;
+				int var12 = this.coord.x - var11.baseX;
+				int var13 = this.coord.y - var11.baseY;
 				var10.field1257 += var12;
 				var10.field1248 += var13;
-				var10.npcCycle += var12;
+				var10.field1276 += var12;
 				var10.field1231 += var13;
 				var10.pathLength = 0;
 			} else {
 				var10.field1257 += var10.pathX[0];
 				var10.field1248 += var10.pathY[0];
-				var10.npcCycle += var10.pathX[0];
+				var10.field1276 += var10.pathX[0];
 				var10.field1231 += var10.pathY[0];
 				var10.pathLength = 1;
 			}
@@ -448,7 +454,7 @@ public class class73 {
 		garbageValue = "1433910639"
 	)
 	void method2219(String[] var1) {
-		this.field901 = (String[])((String[])Arrays.copyOf(var1, var1.length));
+		this.actions = (String[])((String[])Arrays.copyOf(var1, var1.length));
 
 		for (int var2 = 0; var2 < this.field902.size(); ++var2) {
 			((Player)this.field902.get(var2)).actions = (String[])((String[])Arrays.copyOf(var1, var1.length));

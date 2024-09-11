@@ -81,14 +81,14 @@ public class class190 extends DualNode {
 		garbageValue = "-102"
 	)
 	static final void method3950() {
-		int[] var0 = Client.field717.playerIndices;
-		Iterator var1 = Client.topLevelWorldView.iterator();
+		int[] var0 = Client.playerUpdateManager.playerIndices;
+		Iterator var1 = Client.worldViewManager.iterator();
 
 		while (var1.hasNext()) {
 			WorldView var2 = (WorldView)var1.next();
 
 			int var3;
-			for (var3 = 0; var3 < Client.field717.playerCount; ++var3) {
+			for (var3 = 0; var3 < Client.playerUpdateManager.playerCount; ++var3) {
 				Player var6 = var2.players[var0[var3]];
 				if (var6 != null && var6.overheadTextCyclesRemaining > 0) {
 					--var6.overheadTextCyclesRemaining;
@@ -98,9 +98,9 @@ public class class190 extends DualNode {
 				}
 			}
 
-			for (var3 = 0; var3 < var2.field1366; ++var3) {
+			for (var3 = 0; var3 < var2.npcCount; ++var3) {
 				int var4 = var2.npcIndices[var3];
-				NPC var5 = var2.field1361[var4];
+				NPC var5 = var2.npcs[var4];
 				if (var5 != null && var5.overheadTextCyclesRemaining > 0) {
 					--var5.overheadTextCyclesRemaining;
 					if (var5.overheadTextCyclesRemaining == 0) {

@@ -64,7 +64,8 @@ public class WorldEntity implements Entity {
 	@ObfuscatedSignature(
 		descriptor = "Ldd;"
 	)
-	public WorldView field5007;
+	@Export("worldView")
+	public WorldView worldView;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
 		intValue = -553403479
@@ -100,7 +101,7 @@ public class WorldEntity implements Entity {
 		this.directionsX = new int[10];
 		this.directionsY = new int[10];
 		this.moveSpeeds = new MoveSpeed[10];
-		this.field5007 = var2;
+		this.worldView = var2;
 	}
 
 	@ObfuscatedName("ac")
@@ -140,7 +141,7 @@ public class WorldEntity implements Entity {
 	)
 	@Export("initScenePlane")
 	public void initScenePlane() {
-		this.field5007.scene.Scene_plane = this.field5007.plane;
+		this.worldView.scene.Scene_plane = this.worldView.plane;
 	}
 
 	@ObfuscatedName("ah")

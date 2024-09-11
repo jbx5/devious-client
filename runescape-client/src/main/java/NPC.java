@@ -875,7 +875,7 @@ public final class NPC extends Actor {
 											} else {
 												class53.otpMedium = Integer.parseInt(Language.otp);
 												Language.otp = "";
-												class162.method3646(true);
+												class162.setAuthenticationScheme(true);
 												Login.setLoginResponseString("", "Connecting to server...", "");
 												class464.updateGameState(20);
 											}
@@ -928,7 +928,7 @@ public final class NPC extends Actor {
 													} else {
 														class53.otpMedium = Integer.parseInt(Language.otp);
 														Language.otp = "";
-														class162.method3646(true);
+														class162.setAuthenticationScheme(true);
 														Login.setLoginResponseString("", "Connecting to server...", "");
 														class464.updateGameState(20);
 													}
@@ -1106,7 +1106,7 @@ public final class NPC extends Actor {
 											if (var9.field2991 == 84 || var6 == 1 && var38 >= var11 - 109 && var38 <= var11 + 109 && var39 >= var27 && var39 <= var27 + 68) {
 												Login.setLoginResponseString("", "Connecting to server...", "");
 												Client.field558 = class555.field5467;
-												class162.method3646(false);
+												class162.setAuthenticationScheme(false);
 												class464.updateGameState(20);
 											}
 										} else if (Login.loginIndex == 12) {
@@ -1240,7 +1240,7 @@ public final class NPC extends Actor {
 	)
 	@Export("drawObject")
 	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
-		Scene var5 = ClientPreferences.field1341.scene;
+		Scene var5 = ClientPreferences.topLevelWorldView.scene;
 		long var6 = var5.getBoundaryObjectTag(var0, var1, var2);
 		int var8;
 		int var9;

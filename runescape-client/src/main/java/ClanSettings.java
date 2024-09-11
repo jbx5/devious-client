@@ -872,20 +872,20 @@ public class ClanSettings {
 			class464.updateGameState(25);
 			Client.field772 = true;
 			class328.drawLoadingMessage("Loading - please wait.", true);
-			int var3 = ClientPreferences.field1341.baseX;
-			int var4 = ClientPreferences.field1341.baseY;
-			ClientPreferences.field1341.baseX = (var0 - 6) * 8;
-			ClientPreferences.field1341.baseY = (var1 - 6) * 8;
-			int var5 = ClientPreferences.field1341.baseX - var3;
-			int var6 = ClientPreferences.field1341.baseY - var4;
-			var3 = ClientPreferences.field1341.baseX;
-			var4 = ClientPreferences.field1341.baseY;
+			int var3 = ClientPreferences.topLevelWorldView.baseX;
+			int var4 = ClientPreferences.topLevelWorldView.baseY;
+			ClientPreferences.topLevelWorldView.baseX = (var0 - 6) * 8;
+			ClientPreferences.topLevelWorldView.baseY = (var1 - 6) * 8;
+			int var5 = ClientPreferences.topLevelWorldView.baseX - var3;
+			int var6 = ClientPreferences.topLevelWorldView.baseY - var4;
+			var3 = ClientPreferences.topLevelWorldView.baseX;
+			var4 = ClientPreferences.topLevelWorldView.baseY;
 
 			int var7;
 			int var9;
 			int[] var10000;
 			for (var7 = 0; var7 < 65536; ++var7) {
-				NPC var19 = ClientPreferences.field1341.field1361[var7];
+				NPC var19 = ClientPreferences.topLevelWorldView.npcs[var7];
 				if (var19 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
 						var10000 = var19.pathX;
@@ -898,13 +898,13 @@ public class ClanSettings {
 					var19.y -= var6 * 128;
 					var19.field1257 -= var5;
 					var19.field1248 -= var6;
-					var19.npcCycle -= var5;
+					var19.field1276 -= var5;
 					var19.field1231 -= var6;
 				}
 			}
 
 			for (var7 = 0; var7 < 2048; ++var7) {
-				Player var22 = ClientPreferences.field1341.players[var7];
+				Player var22 = ClientPreferences.topLevelWorldView.players[var7];
 				if (var22 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
 						var10000 = var22.pathX;
@@ -917,13 +917,13 @@ public class ClanSettings {
 					var22.y -= var6 * 128;
 					var22.field1257 -= var5;
 					var22.field1248 -= var6;
-					var22.npcCycle -= var5;
+					var22.field1276 -= var5;
 					var22.field1231 -= var6;
 				}
 			}
 
 			for (var7 = 0; var7 < 2048; ++var7) {
-				WorldEntity var23 = ClientPreferences.field1341.field1364[var7];
+				WorldEntity var23 = ClientPreferences.topLevelWorldView.worldEntities[var7];
 				if (var23 != null) {
 					for (var9 = 0; var9 < 10; ++var9) {
 						var10000 = var23.directionsX;
@@ -963,15 +963,15 @@ public class ClanSettings {
 
 					for (int var17 = 0; var17 < 4; ++var17) {
 						if (0 <= var15 && var15 < 104 && 0 <= var16 && var16 < 104) {
-							ClientPreferences.field1341.field1367[var17][var13][var14] = ClientPreferences.field1341.field1367[var17][var15][var16];
+							ClientPreferences.topLevelWorldView.groundItems[var17][var13][var14] = ClientPreferences.topLevelWorldView.groundItems[var17][var15][var16];
 						} else {
-							ClientPreferences.field1341.field1367[var17][var13][var14] = null;
+							ClientPreferences.topLevelWorldView.groundItems[var17][var13][var14] = null;
 						}
 					}
 				}
 			}
 
-			for (PendingSpawn var18 = (PendingSpawn)ClientPreferences.field1341.pendingSpawns.last(); var18 != null; var18 = (PendingSpawn)ClientPreferences.field1341.pendingSpawns.previous()) {
+			for (PendingSpawn var18 = (PendingSpawn)ClientPreferences.topLevelWorldView.pendingSpawns.last(); var18 != null; var18 = (PendingSpawn)ClientPreferences.topLevelWorldView.pendingSpawns.previous()) {
 				var18.x -= var5;
 				var18.y -= var6;
 				if (var18.x < 0 || 104 <= var18.x || var18.y < 0 || 104 <= var18.y) {
@@ -988,14 +988,14 @@ public class ClanSettings {
 			Client.isCameraLocked = false;
 			class301.cameraX -= var5 << 7;
 			class33.cameraZ -= var6 << 7;
-			UserComparator6.field1544 -= var5 << 7;
-			AsyncHttpResponse.field72 -= var6 << 7;
+			UserComparator6.oculusOrbFocalPointX -= var5 << 7;
+			AsyncHttpResponse.oculusOrbFocalPointY -= var6 << 7;
 			Client.field756 = -1;
-			ClientPreferences.field1341.field1362.clear();
-			ClientPreferences.field1341.projectiles.clear();
+			ClientPreferences.topLevelWorldView.graphicsObjects.clear();
+			ClientPreferences.topLevelWorldView.projectiles.clear();
 
 			for (var14 = 0; var14 < 4; ++var14) {
-				ClientPreferences.field1341.collisionMaps[var14].clear();
+				ClientPreferences.topLevelWorldView.collisionMaps[var14].clear();
 			}
 
 		}

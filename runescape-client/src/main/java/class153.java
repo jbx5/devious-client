@@ -114,7 +114,7 @@ public class class153 {
 			Object var2 = null;
 			var3 = 65536;
 			if (var1.targetIndex < var3) {
-				var2 = var0.field1361[var1.targetIndex];
+				var2 = var0.npcs[var1.targetIndex];
 			} else {
 				var2 = var0.players[var1.targetIndex - var3];
 			}
@@ -136,8 +136,8 @@ public class class153 {
 		if (var1.pathLength == 0 || var1.field1290 > 0) {
 			var8 = -1;
 			if (var1.field1261 != -1 && var1.field1262 != -1) {
-				var3 = Coord.method6797(var1.field1261 - ClientPreferences.field1341.baseX);
-				var4 = Coord.method6797(var1.field1262 - ClientPreferences.field1341.baseY);
+				var3 = Coord.method6797(var1.field1261 - ClientPreferences.topLevelWorldView.baseX);
+				var4 = Coord.method6797(var1.field1262 - ClientPreferences.topLevelWorldView.baseY);
 				var5 = var1.x - var3;
 				int var9 = var1.y - var4;
 				if (var5 != 0 || var9 != 0) {
@@ -203,11 +203,11 @@ public class class153 {
 		boolean var5 = false;
 		int var6 = -1;
 		int var7 = -1;
-		int var8 = Client.field717.playerCount;
-		int[] var9 = Client.field717.playerIndices;
+		int var8 = Client.playerUpdateManager.playerCount;
+		int[] var9 = Client.playerUpdateManager.playerIndices;
 
 		int var10;
-		for (var10 = 0; var10 < var8 + var0.field1366; ++var10) {
+		for (var10 = 0; var10 < var8 + var0.npcCount; ++var10) {
 			Object var23;
 			if (var10 < var8) {
 				var23 = var0.players[var9[var10]];
@@ -222,7 +222,7 @@ public class class153 {
 					continue;
 				}
 			} else {
-				var23 = var0.field1361[var0.npcIndices[var10 - var8]];
+				var23 = var0.npcs[var0.npcIndices[var10 - var8]];
 			}
 
 			ClanMate.drawActor2d(var0, (Actor)var23, var10, var1, var2, var3, var4);

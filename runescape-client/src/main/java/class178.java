@@ -99,7 +99,7 @@ public class class178 extends DualNode {
 
 			try {
 				var2 = Integer.parseInt(var3[1]);
-				ClientPreferences.field1341.scene.method4931(class232.method4634()[var2]);
+				ClientPreferences.topLevelWorldView.scene.method4931(class232.method4634()[var2]);
 			} catch (NumberFormatException var5) {
 				StructComposition.addGameMessage(99, "", String.format("Error setting tile render mode. settilerendermode should be in the format \"::settilerendermode X\" where X is a valid number from 0-1. 0=camera 1=target Value provided: %s", var3[1]));
 			}

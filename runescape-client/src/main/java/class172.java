@@ -109,8 +109,8 @@ public class class172 extends class150 {
 		garbageValue = "-1296225271"
 	)
 	static void method3746(int var0, String var1) {
-		int var2 = Client.field717.playerCount;
-		int[] var3 = Client.field717.playerIndices;
+		int var2 = Client.playerUpdateManager.playerCount;
+		int[] var3 = Client.playerUpdateManager.playerIndices;
 		boolean var4 = false;
 		Username var5 = new Username(var1, class28.loginType);
 

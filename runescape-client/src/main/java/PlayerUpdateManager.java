@@ -12,7 +12,8 @@ public class PlayerUpdateManager {
 	@ObfuscatedSignature(
 		descriptor = "[Lcp;"
 	)
-	final class73[] field1429;
+	@Export("Players_regions")
+	final class73[] Players_regions;
 	@ObfuscatedName("am")
 	final boolean[] field1432;
 	@ObfuscatedName("ax")
@@ -40,16 +41,19 @@ public class PlayerUpdateManager {
 	@ObfuscatedGetter(
 		intValue = -1589110569
 	)
-	int field1436;
+	@Export("Players_emptyIdxCount")
+	int Players_emptyIdxCount;
 	@ObfuscatedName("al")
-	final int[] field1431;
+	@Export("Players_emptyIndices")
+	final int[] Players_emptyIndices;
 	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
 		intValue = -14593931
 	)
 	int field1438;
 	@ObfuscatedName("ah")
-	final int[] field1433;
+	@Export("Players_targetIndices")
+	final int[] Players_targetIndices;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
 		intValue = -370359835
@@ -61,22 +65,22 @@ public class PlayerUpdateManager {
 	final int[] Players_pendingUpdateIndices;
 
 	PlayerUpdateManager() {
-		this.field1429 = new class73[2048];
+		this.Players_regions = new class73[2048];
 		this.field1432 = new boolean[2048];
 		this.field1439 = new MoveSpeed[2048];
 		this.field1430 = new Buffer(new byte[5000]);
 		this.field1428 = new String[3];
 		this.playerCount = 0;
 		this.playerIndices = new int[2048];
-		this.field1436 = 0;
-		this.field1431 = new int[2048];
+		this.Players_emptyIdxCount = 0;
+		this.Players_emptyIndices = new int[2048];
 		this.field1438 = 0;
-		this.field1433 = new int[2048];
+		this.Players_targetIndices = new int[2048];
 		this.Players_pendingUpdateCount = 0;
 		this.Players_pendingUpdateIndices = new int[2048];
 
 		for (int var1 = 0; var1 < 2048; ++var1) {
-			this.field1429[var1] = new class73(var1);
+			this.Players_regions[var1] = new class73(var1);
 		}
 
 	}
@@ -86,22 +90,23 @@ public class PlayerUpdateManager {
 		descriptor = "(Lva;B)V",
 		garbageValue = "47"
 	)
-	final void method2997(PacketBuffer var1) {
+	@Export("updatePlayer")
+	final void updatePlayer(PacketBuffer var1) {
 		this.method3008();
 		var1.importIndex();
 		int var2 = Client.localPlayerIndex;
-		class73 var3 = this.field1429[var2];
+		class73 var3 = this.Players_regions[var2];
 		int var4 = var1.readBits(30);
 		var3.method2276(-1);
-		var3.field894.method6783(var4);
+		var3.coord.method6783(var4);
 		var3.field895 = 0;
-		Player var5 = var3.method2202(var2, ClientPreferences.field1341);
+		Player var5 = var3.method2202(var2, ClientPreferences.topLevelWorldView);
 		var3.method2200(var5);
-		ClientPreferences.field1341.players[var2] = var5;
+		ClientPreferences.topLevelWorldView.players[var2] = var5;
 		AddRequestTask.localPlayer = var5;
 		this.playerCount = 0;
 		this.playerIndices[++this.playerCount - 1] = var2;
-		this.field1436 = 0;
+		this.Players_emptyIdxCount = 0;
 
 		for (int var6 = 1; var6 < 2048; ++var6) {
 			if (var2 != var6) {
@@ -109,8 +114,8 @@ public class PlayerUpdateManager {
 				int var8 = var7 >> 16;
 				int var9 = var7 >> 8 & 255;
 				int var10 = var7 & 255;
-				this.field1429[var6].method2276(Coord.method6781(var8, var9, var10));
-				this.field1431[++this.field1436 - 1] = var6;
+				this.Players_regions[var6].method2276(Coord.method6781(var8, var9, var10));
+				this.Players_emptyIndices[++this.Players_emptyIdxCount - 1] = var6;
 			}
 		}
 
@@ -151,16 +156,16 @@ public class PlayerUpdateManager {
 		int var5;
 		for (var3 = 0; var3 < this.playerCount; ++var3) {
 			var4 = this.playerIndices[var3];
-			if ((this.field1429[var4].field895 & 1) == 0) {
+			if ((this.Players_regions[var4].field895 & 1) == 0) {
 				if (var2 > 0) {
 					--var2;
-					var10000 = this.field1429[var4];
+					var10000 = this.Players_regions[var4];
 					var10000.field895 = (byte)(var10000.field895 | 2);
 				} else {
 					var5 = var1.readBits(1);
 					if (var5 == 0) {
 						var2 = this.method3000(var1);
-						var10000 = this.field1429[var4];
+						var10000 = this.Players_regions[var4];
 						var10000.field895 = (byte)(var10000.field895 | 2);
 					} else {
 						this.readPlayerUpdate(var1, var4);
@@ -177,16 +182,16 @@ public class PlayerUpdateManager {
 
 			for (var3 = 0; var3 < this.playerCount; ++var3) {
 				var4 = this.playerIndices[var3];
-				if ((this.field1429[var4].field895 & 1) != 0) {
+				if ((this.Players_regions[var4].field895 & 1) != 0) {
 					if (var2 > 0) {
 						--var2;
-						var10000 = this.field1429[var4];
+						var10000 = this.Players_regions[var4];
 						var10000.field895 = (byte)(var10000.field895 | 2);
 					} else {
 						var5 = var1.readBits(1);
 						if (var5 == 0) {
 							var2 = this.method3000(var1);
-							var10000 = this.field1429[var4];
+							var10000 = this.Players_regions[var4];
 							var10000.field895 = (byte)(var10000.field895 | 2);
 						} else {
 							this.readPlayerUpdate(var1, var4);
@@ -201,21 +206,21 @@ public class PlayerUpdateManager {
 			} else {
 				var1.importIndex();
 
-				for (var3 = 0; var3 < this.field1436; ++var3) {
-					var4 = this.field1431[var3];
-					if ((this.field1429[var4].field895 & 1) != 0) {
+				for (var3 = 0; var3 < this.Players_emptyIdxCount; ++var3) {
+					var4 = this.Players_emptyIndices[var3];
+					if ((this.Players_regions[var4].field895 & 1) != 0) {
 						if (var2 > 0) {
 							--var2;
-							var10000 = this.field1429[var4];
+							var10000 = this.Players_regions[var4];
 							var10000.field895 = (byte)(var10000.field895 | 2);
 						} else {
 							var5 = var1.readBits(1);
 							if (var5 == 0) {
 								var2 = this.method3000(var1);
-								var10000 = this.field1429[var4];
+								var10000 = this.Players_regions[var4];
 								var10000.field895 = (byte)(var10000.field895 | 2);
 							} else if (this.method2998(var1, var4)) {
-								var10000 = this.field1429[var4];
+								var10000 = this.Players_regions[var4];
 								var10000.field895 = (byte)(var10000.field895 | 2);
 							}
 						}
@@ -228,21 +233,21 @@ public class PlayerUpdateManager {
 				} else {
 					var1.importIndex();
 
-					for (var3 = 0; var3 < this.field1436; ++var3) {
-						var4 = this.field1431[var3];
-						if ((this.field1429[var4].field895 & 1) == 0) {
+					for (var3 = 0; var3 < this.Players_emptyIdxCount; ++var3) {
+						var4 = this.Players_emptyIndices[var3];
+						if ((this.Players_regions[var4].field895 & 1) == 0) {
 							if (var2 > 0) {
 								--var2;
-								var10000 = this.field1429[var4];
+								var10000 = this.Players_regions[var4];
 								var10000.field895 = (byte)(var10000.field895 | 2);
 							} else {
 								var5 = var1.readBits(1);
 								if (var5 == 0) {
 									var2 = this.method3000(var1);
-									var10000 = this.field1429[var4];
+									var10000 = this.Players_regions[var4];
 									var10000.field895 = (byte)(var10000.field895 | 2);
 								} else if (this.method2998(var1, var4)) {
-									var10000 = this.field1429[var4];
+									var10000 = this.Players_regions[var4];
 									var10000.field895 = (byte)(var10000.field895 | 2);
 								}
 							}
@@ -254,15 +259,15 @@ public class PlayerUpdateManager {
 						throw new RuntimeException();
 					} else {
 						this.playerCount = 0;
-						this.field1436 = 0;
+						this.Players_emptyIdxCount = 0;
 
 						for (var3 = 1; var3 < 2048; ++var3) {
-							var10000 = this.field1429[var3];
+							var10000 = this.Players_regions[var3];
 							var10000.field895 = (byte)(var10000.field895 >> 1);
-							if (this.field1429[var3].method2203()) {
+							if (this.Players_regions[var3].method2203()) {
 								this.playerIndices[++this.playerCount - 1] = var3;
 							} else {
-								this.field1431[++this.field1436 - 1] = var3;
+								this.Players_emptyIndices[++this.Players_emptyIdxCount - 1] = var3;
 							}
 						}
 
@@ -306,7 +311,7 @@ public class PlayerUpdateManager {
 		}
 
 		int var4 = var1.readBits(2);
-		class73 var5 = this.field1429[var2];
+		class73 var5 = this.Players_regions[var2];
 		if (var4 == 0) {
 			if (var3) {
 				this.field1432[var2] = false;
@@ -318,14 +323,14 @@ public class PlayerUpdateManager {
 					this.method2998(var1, var2);
 				}
 
-				this.field1433[++this.field1438 - 1] = var2;
+				this.Players_targetIndices[++this.field1438 - 1] = var2;
 			}
 		} else {
 			int var6;
 			Coord var12;
 			if (var4 == 1) {
 				var6 = var1.readBits(3);
-				var12 = var5.field894;
+				var12 = var5.coord;
 				if (var6 == 0) {
 					--var12.x;
 					--var12.y;
@@ -349,10 +354,10 @@ public class PlayerUpdateManager {
 				}
 
 				this.field1432[var2] = true;
-				this.field1439[var2] = var5.field899;
+				this.field1439[var2] = var5.pathTraversed;
 			} else if (var4 == 2) {
 				var6 = var1.readBits(4);
-				var12 = var5.field894;
+				var12 = var5.coord;
 				if (var6 == 0) {
 					var12.x -= 2;
 					var12.y -= 2;
@@ -400,7 +405,7 @@ public class PlayerUpdateManager {
 				}
 
 				this.field1432[var2] = true;
-				this.field1439[var2] = var5.field899;
+				this.field1439[var2] = var5.pathTraversed;
 			} else {
 				var6 = var1.readBits(1);
 				int var7;
@@ -421,23 +426,23 @@ public class PlayerUpdateManager {
 						var10 -= 32;
 					}
 
-					var11 = var5.field894;
+					var11 = var5.coord;
 					var11.plane = (byte)(var8 + var11.plane & 3);
 					var11.x += var9;
 					var11.y += var10;
 					this.field1432[var2] = true;
-					this.field1439[var2] = var5.field899;
+					this.field1439[var2] = var5.pathTraversed;
 				} else {
 					var7 = var1.readBits(30);
 					var8 = Coord.method6786(var7);
 					var9 = Coord.method6817(var7);
 					var10 = Coord.method6788(var7);
-					var11 = var5.field894;
+					var11 = var5.coord;
 					var11.plane = (byte)(var8 + var11.plane & 3);
 					var11.x = var9 + var11.x & 16383;
 					var11.y = var10 + var11.y & 16383;
 					this.field1432[var2] = true;
-					this.field1439[var2] = var5.field899;
+					this.field1439[var2] = var5.pathTraversed;
 				}
 			}
 		}
@@ -449,7 +454,7 @@ public class PlayerUpdateManager {
 		garbageValue = "2005822368"
 	)
 	boolean method2998(PacketBuffer var1, int var2) {
-		class73 var3 = this.field1429[var2];
+		class73 var3 = this.Players_regions[var2];
 		int var4 = var1.readBits(2);
 		int var5;
 		int var6;
@@ -557,9 +562,9 @@ public class PlayerUpdateManager {
 	)
 	void method3003() {
 		for (int var1 = 0; var1 < this.field1438; ++var1) {
-			int var2 = this.field1433[var1];
-			class73 var3 = this.field1429[var2];
-			Iterator var4 = Client.topLevelWorldView.iterator();
+			int var2 = this.Players_targetIndices[var1];
+			class73 var3 = this.Players_regions[var2];
+			Iterator var4 = Client.worldViewManager.iterator();
 
 			while (var4.hasNext()) {
 				WorldView var5 = (WorldView)var4.next();
@@ -584,9 +589,9 @@ public class PlayerUpdateManager {
 		label68:
 		for (int var1 = 0; var1 < this.playerCount; ++var1) {
 			int var2 = this.playerIndices[var1];
-			class73 var3 = this.field1429[var2];
-			Coord var4 = var3.field894;
-			Iterator var5 = Client.topLevelWorldView.iterator();
+			class73 var3 = this.Players_regions[var2];
+			Coord var4 = var3.coord;
+			Iterator var5 = Client.worldViewManager.iterator();
 
 			while (true) {
 				while (true) {
@@ -647,7 +652,7 @@ public class PlayerUpdateManager {
 		for (int var1 = 0; var1 < this.playerCount; ++var1) {
 			int var2 = this.playerIndices[var1];
 			if (this.field1432[var2]) {
-				class73 var3 = this.field1429[var2];
+				class73 var3 = this.Players_regions[var2];
 				var3.method2197(this.field1439[var2]);
 				this.field1432[var2] = false;
 			}
@@ -661,12 +666,12 @@ public class PlayerUpdateManager {
 		garbageValue = "-1424485394"
 	)
 	void method3032(PacketBuffer var1, int var2, int var3) {
-		class73 var4 = this.field1429[var2];
+		class73 var4 = this.Players_regions[var2];
 		MoveSpeed[] var6;
 		if ((var3 & 256) != 0) {
 			var6 = new MoveSpeed[]{MoveSpeed.field3036, MoveSpeed.field3040, MoveSpeed.field3047, MoveSpeed.field3038, MoveSpeed.field3044, MoveSpeed.field3042, MoveSpeed.field3039, MoveSpeed.field3041, MoveSpeed.field3037};
-			var4.field899 = (MoveSpeed)ArchiveDiskAction.findEnumerated(var6, var1.readByteNeg());
-			this.field1439[var2] = var4.field899;
+			var4.pathTraversed = (MoveSpeed)ArchiveDiskAction.findEnumerated(var6, var1.readByteNeg());
+			this.field1439[var2] = var4.pathTraversed;
 		}
 
 		int var14;
@@ -854,7 +859,7 @@ public class PlayerUpdateManager {
 		this.playerCount = 0;
 
 		for (int var1 = 0; var1 < 2048; ++var1) {
-			this.field1429[var1].method2198();
+			this.Players_regions[var1].method2198();
 		}
 
 	}
@@ -1304,8 +1309,8 @@ public class PlayerUpdateManager {
 												NpcOverrides var33 = null;
 												if (var10.modelType == 6) {
 													var25 = var10.modelId;
-													if (var25 >= 0 && var25 < ClientPreferences.field1341.field1361.length) {
-														NPC var34 = ClientPreferences.field1341.field1361[var25];
+													if (var25 >= 0 && var25 < ClientPreferences.topLevelWorldView.npcs.length) {
+														NPC var34 = ClientPreferences.topLevelWorldView.npcs[var25];
 														if (var34 != null && var34.definition != null) {
 															var45 = var34.definition;
 															if (var45.transforms != null) {
@@ -1330,7 +1335,7 @@ public class PlayerUpdateManager {
 													var26 = var10.modelFrame;
 												}
 
-												var39 = var10.method7245(TaskHandler.widgetDefinition, var35, var26, var36, AddRequestTask.localPlayer.appearance, var45, var33);
+												var39 = var10.getModel(TaskHandler.widgetDefinition, var35, var26, var36, AddRequestTask.localPlayer.appearance, var45, var33);
 												if (var39 == null && Widget.field3987) {
 													SecureRandomCallable.invalidateWidget(var10);
 												}

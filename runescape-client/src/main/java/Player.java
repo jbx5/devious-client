@@ -188,7 +188,7 @@ public final class Player extends Actor {
 		this.isFriendTriBool = TriBool.TriBool_unknown;
 		this.isInFriendsChat = TriBool.TriBool_unknown;
 		this.isInClanChat = TriBool.TriBool_unknown;
-		this.worldView = ClientPreferences.field1341;
+		this.worldView = ClientPreferences.topLevelWorldView;
 		this.field1154 = class548.field5407 < 224 ? 512 : 2048;
 	}
 

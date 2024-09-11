@@ -74,7 +74,7 @@ public final class WorldMapSprite {
 			var6 = var1.readUnsignedShortAddLE();
 			var7 = var1.readUnsignedIntIME();
 			if (var3 >= 0 && var4 >= 0 && var3 < class162.worldView.sizeX && var4 < class162.worldView.sizeY) {
-				var30 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+				var30 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 				WidgetDefinition.method6851(var30, var3, var4, var6, var7, var5);
 			}
 
@@ -93,7 +93,7 @@ public final class WorldMapSprite {
 				var19 = (var30 >> 4 & 7) + class169.field1830;
 				var24 = (var30 & 7) + WorldMapArea.field3102;
 				if (var19 >= 0 && var24 >= 0 && var19 < class162.worldView.sizeX && var24 < class162.worldView.sizeY) {
-					var25 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+					var25 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 					class165.method3680(class162.worldView, var25, var19, var24, var7, var2, var5, var6, var3, 0, -1);
 				}
 
@@ -111,7 +111,7 @@ public final class WorldMapSprite {
 					var24 = var1.readUnsignedByteSub();
 					var25 = var1.readUnsignedIntLE();
 					if (var4 >= 0 && var5 >= 0 && var4 < class162.worldView.sizeX && var5 < class162.worldView.sizeY) {
-						var27 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+						var27 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 						class224.addTileItemToGroundItems(var27, var4, var5, var6, var25, var19, var7, var2, var24, var31);
 					}
 
@@ -123,7 +123,7 @@ public final class WorldMapSprite {
 					var6 = var1.readUnsignedIntIME();
 					var7 = class162.worldView.plane;
 					if (0 <= var4 && var4 < 104 && 0 <= var5 && var5 < 104) {
-						var30 = Client.camAngleDY == -1 ? var7 : Client.camAngleDY;
+						var30 = Client.field596 == -1 ? var7 : Client.field596;
 						ArchiveLoader.method2478(var30, var4, var5, var2, var6);
 					}
 
@@ -136,7 +136,7 @@ public final class WorldMapSprite {
 						var6 = var1.readUnsignedByteNeg();
 						var7 = class162.worldView.plane;
 						if (var3 >= 0 && var4 >= 0 && var3 < class162.worldView.sizeX && var4 < class162.worldView.sizeY) {
-							NodeDeque var8 = class162.worldView.field1367[var7][var3][var4];
+							NodeDeque var8 = class162.worldView.groundItems[var7][var3][var4];
 							if (var8 != null) {
 								for (TileItem var23 = (TileItem)var8.last(); var23 != null; var23 = (TileItem)var8.previous()) {
 									if ((var5 & 32767) == var23.id) {
@@ -147,7 +147,7 @@ public final class WorldMapSprite {
 							}
 
 							if (var3 >= 0 && var4 >= 0 && var3 < class162.worldView.sizeX && var4 < class162.worldView.sizeY) {
-								var19 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+								var19 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 								ItemComposition.method4281(var19, var3, var4, var5, var6);
 							}
 
@@ -183,7 +183,7 @@ public final class WorldMapSprite {
 						}
 
 						if (var17 != null) {
-							int var18 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+							int var18 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 							UserComparator8.method3185(var18, var5, var6, var14, var15, var16, var19, var2, var3, var20, var11, var10, var12, var17);
 						}
 					}
@@ -206,7 +206,7 @@ public final class WorldMapSprite {
 						var13 = var28 + var30;
 						var15 = var29 + var19;
 						if (var30 >= 0 && var19 >= 0 && var30 < class162.worldView.sizeX && var19 < class162.worldView.sizeY && var13 >= 0 && var15 >= 0 && var13 < class162.worldView.sizeX && var15 < class162.worldView.sizeY && var2 != 65535) {
-							var16 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+							var16 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 							class166.method3692(var16, var30, var19, var13, var15, var4, var2, var27, var3, var14, var6, var25, var5, var24);
 						}
 
@@ -219,7 +219,7 @@ public final class WorldMapSprite {
 						var7 = var5 & 3;
 						var30 = Client.field595[var6];
 						if (var3 >= 0 && var4 >= 0 && var3 < class162.worldView.sizeX && var4 < class162.worldView.sizeY) {
-							var19 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+							var19 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 							class165.method3680(class162.worldView, var19, var3, var4, var30, -1, var6, var7, 31, 0, -1);
 						}
 
@@ -255,9 +255,9 @@ public final class WorldMapSprite {
 						if (var3 >= 0 && var4 >= 0 && var3 < class162.worldView.sizeX && var4 < class162.worldView.sizeY) {
 							var3 = Coord.method6797(var3);
 							var4 = Coord.method6797(var4);
-							var30 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+							var30 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 							GraphicsObject var9 = new GraphicsObject(var5, var30, var3, var4, VarcInt.getTileHeight(class162.worldView, var3, var4, var30) - var6, var7, Client.cycle);
-							class162.worldView.field1362.addFirst(var9);
+							class162.worldView.graphicsObjects.addFirst(var9);
 						}
 
 					} else if (class324.field3419 == var0) {
@@ -270,7 +270,7 @@ public final class WorldMapSprite {
 						var30 = (var6 & 7) + WorldMapArea.field3102;
 						var19 = var1.readUnsignedShortLE();
 						if (0 <= var7 && var7 < 103 && 0 <= var30 && var30 < 103) {
-							var24 = Client.camAngleDY == -1 ? class162.worldView.plane : Client.camAngleDY;
+							var24 = Client.field596 == -1 ? class162.worldView.plane : Client.field596;
 							PendingSpawn var21 = StructComposition.method4123(class162.worldView, var24, var7, var30, var5);
 							if (var21 != null) {
 								ObjectComposition var22 = class273.getObjectDefinition(var21.field1215);

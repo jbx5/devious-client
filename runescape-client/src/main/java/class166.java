@@ -80,8 +80,8 @@ public abstract class class166 extends Node {
 	)
 	static void method3682(WorldView var0, PacketBuffer var1) {
 		int var2 = var1.readUnsignedShort();
-		WorldEntity var3 = var0.field1364[var2];
-		WorldView var4 = var3.field5007;
+		WorldEntity var3 = var0.worldEntities[var2];
+		WorldView var4 = var3.worldView;
 		var4.baseX = var1.readUnsignedShort();
 		var4.baseY = var1.readUnsignedShort();
 		int var5 = var4.sizeX / 8;

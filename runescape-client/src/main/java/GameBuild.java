@@ -103,8 +103,8 @@ public class GameBuild {
 			for (var1 = 0; var1 < SecureRandomCallable.regionLandArchives.length; ++var1) {
 				byte[] var17 = FloorOverlayDefinition.regionMapArchives[var1];
 				if (var17 != null) {
-					var3 = (Occluder.regions[var1] >> 8) * 64 - ClientPreferences.field1341.baseX;
-					var4 = (Occluder.regions[var1] & 255) * 64 - ClientPreferences.field1341.baseY;
+					var3 = (Occluder.regions[var1] >> 8) * 64 - ClientPreferences.topLevelWorldView.baseX;
+					var4 = (Occluder.regions[var1] & 255) * 64 - ClientPreferences.topLevelWorldView.baseY;
 					if (Client.isInInstance) {
 						var3 = 10;
 						var4 = 10;
@@ -122,17 +122,17 @@ public class GameBuild {
 				}
 
 				GrandExchangeOffer.method7712();
-				ClientPreferences.field1341.scene.clearTempGameObjects();
+				ClientPreferences.topLevelWorldView.scene.clearTempGameObjects();
 
 				for (var1 = 0; var1 < 4; ++var1) {
-					ClientPreferences.field1341.collisionMaps[var1].clear();
+					ClientPreferences.topLevelWorldView.collisionMaps[var1].clear();
 				}
 
 				int var2;
 				for (var1 = 0; var1 < 4; ++var1) {
 					for (var2 = 0; var2 < 104; ++var2) {
 						for (var3 = 0; var3 < 104; ++var3) {
-							ClientPreferences.field1341.tileSettings[var1][var2][var3] = 0;
+							ClientPreferences.topLevelWorldView.tileSettings[var1][var2][var3] = 0;
 						}
 					}
 				}
@@ -146,22 +146,22 @@ public class GameBuild {
 				if (!Client.isInInstance) {
 					byte[] var16;
 					for (var2 = 0; var2 < var1; ++var2) {
-						var3 = (Occluder.regions[var2] >> 8) * 64 - ClientPreferences.field1341.baseX;
-						var4 = (Occluder.regions[var2] & 255) * 64 - ClientPreferences.field1341.baseY;
+						var3 = (Occluder.regions[var2] >> 8) * 64 - ClientPreferences.topLevelWorldView.baseX;
+						var4 = (Occluder.regions[var2] & 255) * 64 - ClientPreferences.topLevelWorldView.baseY;
 						var16 = SecureRandomCallable.regionLandArchives[var2];
 						if (var16 != null) {
 							GrandExchangeOffer.method7712();
-							class198.method4027(ClientPreferences.field1341, var16, var3, var4, class95.field1191 * 8 - 48, Message.field473 * 8 - 48);
+							class198.method4027(ClientPreferences.topLevelWorldView, var16, var3, var4, class95.field1191 * 8 - 48, Message.field473 * 8 - 48);
 						}
 					}
 
 					for (var2 = 0; var2 < var1; ++var2) {
-						var3 = (Occluder.regions[var2] >> 8) * 64 - ClientPreferences.field1341.baseX;
-						var4 = (Occluder.regions[var2] & 255) * 64 - ClientPreferences.field1341.baseY;
+						var3 = (Occluder.regions[var2] >> 8) * 64 - ClientPreferences.topLevelWorldView.baseX;
+						var4 = (Occluder.regions[var2] & 255) * 64 - ClientPreferences.topLevelWorldView.baseY;
 						var16 = SecureRandomCallable.regionLandArchives[var2];
 						if (var16 == null && Message.field473 < 800) {
 							GrandExchangeOffer.method7712();
-							WorldMapID.method6196(ClientPreferences.field1341, var3, var4, 64, 64);
+							WorldMapID.method6196(ClientPreferences.topLevelWorldView, var3, var4, 64, 64);
 						}
 					}
 
@@ -170,10 +170,10 @@ public class GameBuild {
 					for (var2 = 0; var2 < var1; ++var2) {
 						byte[] var15 = FloorOverlayDefinition.regionMapArchives[var2];
 						if (var15 != null) {
-							var4 = (Occluder.regions[var2] >> 8) * 64 - ClientPreferences.field1341.baseX;
-							var5 = (Occluder.regions[var2] & 255) * 64 - ClientPreferences.field1341.baseY;
+							var4 = (Occluder.regions[var2] >> 8) * 64 - ClientPreferences.topLevelWorldView.baseX;
+							var5 = (Occluder.regions[var2] & 255) * 64 - ClientPreferences.topLevelWorldView.baseY;
 							GrandExchangeOffer.method7712();
-							UserComparator9.method3218(ClientPreferences.field1341, var15, var4, var5);
+							UserComparator9.method3218(ClientPreferences.topLevelWorldView, var15, var4, var5);
 						}
 					}
 				}
@@ -203,7 +203,7 @@ public class GameBuild {
 										if (Occluder.regions[var12] == var11 && SecureRandomCallable.regionLandArchives[var12] != null) {
 											int var13 = (var9 - var3) * 8;
 											int var14 = (var10 - var4) * 8;
-											WorldMapIcon_0.method6097(ClientPreferences.field1341, SecureRandomCallable.regionLandArchives[var12], var2, var3 * 8, var4 * 8, var7, (var9 & 7) * 8, (var10 & 7) * 8, var8, var13, var14);
+											WorldMapIcon_0.method6097(ClientPreferences.topLevelWorldView, SecureRandomCallable.regionLandArchives[var12], var2, var3 * 8, var4 * 8, var7, (var9 & 7) * 8, (var10 & 7) * 8, var8, var13, var14);
 											var18 = true;
 											break;
 										}
@@ -211,7 +211,7 @@ public class GameBuild {
 								}
 
 								if (!var18) {
-									ClientPreferences.method2841(ClientPreferences.field1341.tileHeights, var2, var3 * 8, var4 * 8);
+									ClientPreferences.method2841(ClientPreferences.topLevelWorldView.tileHeights, var2, var3 * 8, var4 * 8);
 								}
 							}
 						}
@@ -221,7 +221,7 @@ public class GameBuild {
 						for (var3 = 0; var3 < 13; ++var3) {
 							var4 = Client.instanceChunkTemplates[0][var2][var3];
 							if (var4 == -1) {
-								WorldMapID.method6196(ClientPreferences.field1341, var2 * 8, var3 * 8, 8, 8);
+								WorldMapID.method6196(ClientPreferences.topLevelWorldView, var2 * 8, var3 * 8, 8, 8);
 							}
 						}
 					}
@@ -243,7 +243,7 @@ public class GameBuild {
 
 									for (var11 = 0; var11 < Occluder.regions.length; ++var11) {
 										if (Occluder.regions[var11] == var10 && FloorOverlayDefinition.regionMapArchives[var11] != null) {
-											Tiles.method2422(ClientPreferences.field1341, FloorOverlayDefinition.regionMapArchives[var11], var2, var3 * 8, var4 * 8, var6, (var8 & 7) * 8, (var9 & 7) * 8, var7);
+											Tiles.method2422(ClientPreferences.topLevelWorldView, FloorOverlayDefinition.regionMapArchives[var11], var2, var3 * 8, var4 * 8, var6, (var8 & 7) * 8, (var9 & 7) * 8, var7);
 											break;
 										}
 									}
@@ -255,26 +255,26 @@ public class GameBuild {
 
 				class271.method5644(true);
 				GrandExchangeOffer.method7712();
-				class33.method479(ClientPreferences.field1341);
+				class33.method479(ClientPreferences.topLevelWorldView);
 				class271.method5644(true);
 				var2 = Tiles.Tiles_minPlane;
-				if (var2 > ClientPreferences.field1341.plane) {
-					var2 = ClientPreferences.field1341.plane;
+				if (var2 > ClientPreferences.topLevelWorldView.plane) {
+					var2 = ClientPreferences.topLevelWorldView.plane;
 				}
 
-				if (var2 < ClientPreferences.field1341.plane - 1) {
-					var2 = ClientPreferences.field1341.plane - 1;
+				if (var2 < ClientPreferences.topLevelWorldView.plane - 1) {
+					var2 = ClientPreferences.topLevelWorldView.plane - 1;
 				}
 
 				if (Client.isLowDetail) {
-					ClientPreferences.field1341.scene.init(Tiles.Tiles_minPlane);
+					ClientPreferences.topLevelWorldView.scene.init(Tiles.Tiles_minPlane);
 				} else {
-					ClientPreferences.field1341.scene.init(0);
+					ClientPreferences.topLevelWorldView.scene.init(0);
 				}
 
 				for (var3 = 0; var3 < 104; ++var3) {
 					for (var4 = 0; var4 < 104; ++var4) {
-						class383.method7450(ClientPreferences.field1341, var3, var4);
+						class383.updateItemPile3(ClientPreferences.topLevelWorldView, var3, var4);
 					}
 				}
 

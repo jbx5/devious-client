@@ -121,9 +121,9 @@ public class ScriptEvent extends Node {
 	static int method2520(int var0, Script var1, boolean var2) {
 		int var3;
 		if (var0 == 6600) {
-			var3 = ClientPreferences.field1341.plane;
-			int var15 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.field1341.baseX;
-			int var8 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.field1341.baseY;
+			var3 = ClientPreferences.topLevelWorldView.plane;
+			int var15 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.topLevelWorldView.baseX;
+			int var8 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.topLevelWorldView.baseY;
 			class147.getWorldMap().method9342(var3, var15, var8, true);
 			return 1;
 		} else {

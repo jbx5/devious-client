@@ -53,7 +53,7 @@ public class class30 {
 			Login.setLoginResponseString("", "Please enter your password.", "");
 		} else {
 			Login.setLoginResponseString("", "Connecting to server...", "");
-			class162.method3646(false);
+			class162.setAuthenticationScheme(false);
 			class464.updateGameState(20);
 		}
 	}

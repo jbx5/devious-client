@@ -1324,7 +1324,8 @@ public class Widget extends Node {
 		descriptor = "(Lna;Lif;IZLnr;Lhn;Lhp;B)Ljm;",
 		garbageValue = "80"
 	)
-	public Model method7245(WidgetDefinition var1, SequenceDefinition var2, int var3, boolean var4, PlayerComposition var5, NPCComposition var6, NpcOverrides var7) {
+	@Export("getModel")
+	public Model getModel(WidgetDefinition var1, SequenceDefinition var2, int var3, boolean var4, PlayerComposition var5, NPCComposition var6, NpcOverrides var7) {
 		field3987 = false;
 		int var8;
 		int var9;

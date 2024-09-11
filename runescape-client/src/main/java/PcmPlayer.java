@@ -551,8 +551,8 @@ public class PcmPlayer {
 	static final void logOut() {
 		Client.packetWriter.close();
 		class179.clear();
-		Client.topLevelWorldView.clear();
-		Client.field717.method3008();
+		Client.worldViewManager.clear();
+		Client.playerUpdateManager.method3008();
 		Client.field679.method5545();
 		System.gc();
 		AbstractWorldMapIcon.method6257(0, 0);

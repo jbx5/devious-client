@@ -51,8 +51,9 @@ public enum class383 implements Enum {
 		descriptor = "(Ldd;III)V",
 		garbageValue = "-1493002373"
 	)
-	static final void method7450(WorldView var0, int var1, int var2) {
-		Messages.method3104(var0, var0.plane, var1, var2);
+	@Export("updateItemPile3")
+	static final void updateItemPile3(WorldView var0, int var1, int var2) {
+		Messages.updateItemPile2(var0, var0.plane, var1, var2);
 	}
 
 	@ObfuscatedName("ms")

@@ -238,7 +238,7 @@ public final class class464 {
 				Client.field555 = 0;
 				Client.timer.method8664(var0);
 				if (var0 != 20) {
-					class162.method3646(false);
+					class162.setAuthenticationScheme(false);
 				}
 			}
 

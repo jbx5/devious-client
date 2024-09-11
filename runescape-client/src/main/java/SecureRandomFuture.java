@@ -86,10 +86,10 @@ public class SecureRandomFuture {
 	static void method2379(WorldView var0) {
 		int var1 = 0;
 
-		for (int var2 = 0; var2 < var0.field1365; ++var2) {
-			WorldEntity var3 = var0.field1364[var0.worldEntityIndices[var2]];
+		for (int var2 = 0; var2 < var0.worldEntityCount; ++var2) {
+			WorldEntity var3 = var0.worldEntities[var0.worldEntityIndices[var2]];
 			if (var3 != null) {
-				boolean var4 = var3.field5007.id == HealthBarUpdate.field1304;
+				boolean var4 = var3.worldView.id == HealthBarUpdate.field1304;
 				if (!var4) {
 					boolean var5 = var1 < Client.field811;
 					if (!var5) {
@@ -100,19 +100,19 @@ public class SecureRandomFuture {
 				}
 
 				var3.tileHeight = VarcInt.getTileHeight(var0, var3.x, var3.y, var0.plane);
-				var3.field5007.scene.cycle = Client.cycle;
+				var3.worldView.scene.cycle = Client.cycle;
 				var3.initScenePlane();
-				var0.scene.drawEntity(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3.field5007.scene, var3.currentRotationAngle, 0L, false);
-				IgnoreList.method8786(var3.field5007);
-				WorldView var10 = var3.field5007;
+				var0.scene.drawEntity(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3.worldView.scene, var3.currentRotationAngle, 0L, false);
+				IgnoreList.method8786(var3.worldView);
+				WorldView var10 = var3.worldView;
 				if (Client.combatTargetPlayerIndex >= 0 && var10.players[Client.combatTargetPlayerIndex] != null) {
 					Decimator.addPlayerToScene(var10, Client.combatTargetPlayerIndex, false);
 				}
 
-				class132.method3254(var3.field5007, true);
-				WorldView var6 = var3.field5007;
-				int var7 = Client.field717.playerCount;
-				int[] var8 = Client.field717.playerIndices;
+				class132.addNpcsToScene(var3.worldView, true);
+				WorldView var6 = var3.worldView;
+				int var7 = Client.playerUpdateManager.playerCount;
+				int[] var8 = Client.playerUpdateManager.playerIndices;
 
 				for (int var9 = 0; var9 < var7; ++var9) {
 					if (var8[var9] != Client.combatTargetPlayerIndex && var8[var9] != Client.localPlayerIndex) {
@@ -120,11 +120,11 @@ public class SecureRandomFuture {
 					}
 				}
 
-				class132.method3254(var3.field5007, false);
-				class7.method55(var3.field5007);
-				WorldView var11 = var3.field5007;
+				class132.addNpcsToScene(var3.worldView, false);
+				class7.method55(var3.worldView);
+				WorldView var11 = var3.worldView;
 
-				for (GraphicsObject var12 = (GraphicsObject)var11.field1362.last(); var12 != null; var12 = (GraphicsObject)var11.field1362.previous()) {
+				for (GraphicsObject var12 = (GraphicsObject)var11.graphicsObjects.last(); var12 != null; var12 = (GraphicsObject)var11.graphicsObjects.previous()) {
 					if (var12.plane == var11.plane && !var12.isFinished) {
 						if (Client.cycle >= var12.cycleStart) {
 							var12.advance(Client.graphicsCycle);

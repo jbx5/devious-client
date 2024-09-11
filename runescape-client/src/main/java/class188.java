@@ -40,19 +40,19 @@ public class class188 extends DualNode {
 
 		int var3;
 		for (var3 = 0; var3 < Client.field525; ++var3) {
-			int var4 = Client.defaultRotations[var3];
-			if (var0.field1361[var4].field1282 != Client.cycle) {
-				var0.field1361[var4].definition = null;
-				var0.field1361[var4] = null;
+			int var4 = Client.field526[var3];
+			if (var0.npcs[var4].npcCycle != Client.cycle) {
+				var0.npcs[var4].definition = null;
+				var0.npcs[var4] = null;
 			}
 		}
 
 		if (var2.offset != Client.packetWriter.serverPacketLength) {
 			throw new RuntimeException(var2.offset + "," + Client.packetWriter.serverPacketLength);
 		} else {
-			for (var3 = 0; var3 < var0.field1366; ++var3) {
-				if (var0.field1361[var0.npcIndices[var3]] == null) {
-					throw new RuntimeException(var3 + "," + var0.field1366);
+			for (var3 = 0; var3 < var0.npcCount; ++var3) {
+				if (var0.npcs[var0.npcIndices[var3]] == null) {
+					throw new RuntimeException(var3 + "," + var0.npcCount);
 				}
 			}
 

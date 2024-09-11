@@ -470,13 +470,13 @@ public class WorldMapAreaData extends WorldMapArea {
 				return;
 			}
 
-			UserComparator6.field1544 = AddRequestTask.localPlayer.x;
-			int var2 = VarcInt.getTileHeight(ClientPreferences.field1341, AddRequestTask.localPlayer.x, AddRequestTask.localPlayer.y, ClientPreferences.field1341.plane) - Client.camFollowHeight;
-			if (var2 < class147.field1698) {
-				class147.field1698 = var2;
+			UserComparator6.oculusOrbFocalPointX = AddRequestTask.localPlayer.x;
+			int var2 = VarcInt.getTileHeight(ClientPreferences.topLevelWorldView, AddRequestTask.localPlayer.x, AddRequestTask.localPlayer.y, ClientPreferences.topLevelWorldView.plane) - Client.camFollowHeight;
+			if (var2 < class147.oculusOrbFocalPointZ) {
+				class147.oculusOrbFocalPointZ = var2;
 			}
 
-			AsyncHttpResponse.field72 = AddRequestTask.localPlayer.y;
+			AsyncHttpResponse.oculusOrbFocalPointY = AddRequestTask.localPlayer.y;
 			Client.field619 = false;
 		}
 

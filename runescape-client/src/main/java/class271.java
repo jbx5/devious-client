@@ -203,12 +203,12 @@ public class class271 {
 
 				WorldEntity var22 = null;
 				WorldView var23 = null;
-				if (var21 >= 0 && ClientPreferences.field1341.field1364[var21] != null) {
-					var22 = ClientPreferences.field1341.field1364[var21];
-					var23 = var22.field5007;
+				if (var21 >= 0 && ClientPreferences.topLevelWorldView.worldEntities[var21] != null) {
+					var22 = ClientPreferences.topLevelWorldView.worldEntities[var21];
+					var23 = var22.worldView;
 				} else if (var21 == -1) {
 					var22 = null;
-					var23 = ClientPreferences.field1341;
+					var23 = ClientPreferences.topLevelWorldView;
 				}
 
 				if (var23 != null) {
@@ -218,11 +218,11 @@ public class class271 {
 					} else if (HealthBarUpdate.field1304 == -1) {
 						var25 = var22.field5006;
 					} else {
-						WorldEntity var26 = ClientPreferences.field1341.field1364[HealthBarUpdate.field1304];
-						WorldView var27 = var26.field5007;
+						WorldEntity var26 = ClientPreferences.topLevelWorldView.worldEntities[HealthBarUpdate.field1304];
+						WorldView var27 = var26.worldView;
 						if (var27.plane == var26.field5006) {
 							if (var21 == -1) {
-								var25 = ClientPreferences.field1341.field1364[HealthBarUpdate.field1304].getPlane();
+								var25 = ClientPreferences.topLevelWorldView.worldEntities[HealthBarUpdate.field1304].getPlane();
 							} else {
 								var25 = var22.field5006;
 							}
@@ -297,21 +297,21 @@ public class class271 {
 						NPC var44;
 						int[] var45;
 						if (var18 == 1) {
-							NPC var38 = var23.field1361[var20];
+							NPC var38 = var23.npcs[var20];
 							if (var38 == null) {
 								continue;
 							}
 
 							if (var38.definition.size == 1 && (var38.x & 127) == 64 && (var38.y & 127) == 64) {
-								for (var34 = 0; var34 < var23.field1366; ++var34) {
-									var44 = var23.field1361[var23.npcIndices[var34]];
+								for (var34 = 0; var34 < var23.npcCount; ++var34) {
+									var44 = var23.npcs[var23.npcIndices[var34]];
 									if (var44 != null && var38 != var44 && var44.definition.size == 1 && var38.x == var44.x && var44.y == var38.y) {
 										DevicePcmPlayerProvider.addNpcToMenu(var44, var23.npcIndices[var34], var15, var17, var21);
 									}
 								}
 
-								var34 = Client.field717.playerCount;
-								var45 = Client.field717.playerIndices;
+								var34 = Client.playerUpdateManager.playerCount;
+								var45 = Client.playerUpdateManager.playerIndices;
 
 								for (var29 = 0; var29 < var34; ++var29) {
 									var35 = var23.players[var45[var29]];
@@ -331,15 +331,15 @@ public class class271 {
 							}
 
 							if ((var40.x & 127) == 64 && (var40.y & 127) == 64) {
-								for (var34 = 0; var34 < var23.field1366; ++var34) {
-									var44 = var23.field1361[var23.npcIndices[var34]];
+								for (var34 = 0; var34 < var23.npcCount; ++var34) {
+									var44 = var23.npcs[var23.npcIndices[var34]];
 									if (var44 != null && var44.definition.size == 1 && var40.x == var44.x && var44.y == var40.y) {
 										DevicePcmPlayerProvider.addNpcToMenu(var44, var23.npcIndices[var34], var15, var17, var21);
 									}
 								}
 
-								var34 = Client.field717.playerCount;
-								var45 = Client.field717.playerIndices;
+								var34 = Client.playerUpdateManager.playerCount;
+								var45 = Client.playerUpdateManager.playerIndices;
 
 								for (var29 = 0; var29 < var34; ++var29) {
 									var35 = var23.players[var45[var29]];
@@ -358,7 +358,7 @@ public class class271 {
 						}
 
 						if (var18 == 3) {
-							NodeDeque var41 = var23.field1367[var25][var15][var17];
+							NodeDeque var41 = var23.groundItems[var25][var15][var17];
 							if (var41 != null) {
 								for (TileItem var42 = (TileItem)var41.first(); var42 != null; var42 = (TileItem)var41.next()) {
 									ItemComposition var46 = MouseRecorder.ItemDefinition_get(var42.id);
@@ -415,7 +415,7 @@ public class class271 {
 		if (-1L != var4) {
 			var9 = class141.method3380(var4);
 			int var10 = UserComparator7.method3190(var4);
-			Player var11 = ClientPreferences.field1341.players[Client.combatTargetPlayerIndex];
+			Player var11 = ClientPreferences.topLevelWorldView.players[Client.combatTargetPlayerIndex];
 			class275.addPlayerToMenu(var11, Client.combatTargetPlayerIndex, var9, var10, var6);
 		}
 

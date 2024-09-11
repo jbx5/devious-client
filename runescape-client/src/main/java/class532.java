@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -6,7 +7,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("uf")
 public class class532 extends class490 implements class312 {
 	@ObfuscatedName("hc")
-	static String field5323;
+	@Export("gameSessionServiceBaseUrl")
+	static String gameSessionServiceBaseUrl;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "Lpo;"

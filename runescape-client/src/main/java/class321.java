@@ -59,9 +59,9 @@ public class class321 {
 			} else {
 				int var5;
 				if (var0 == ScriptOpcodes.COORD) {
-					var3 = ClientPreferences.field1341.plane;
-					var4 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.field1341.baseX;
-					var5 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.field1341.baseY;
+					var3 = ClientPreferences.topLevelWorldView.plane;
+					var4 = (AddRequestTask.localPlayer.x >> 7) + ClientPreferences.topLevelWorldView.baseX;
+					var5 = (AddRequestTask.localPlayer.y >> 7) + ClientPreferences.topLevelWorldView.baseY;
 					Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = Coord.method6781(var3, var4, var5);
 					return 1;
 				} else if (var0 == ScriptOpcodes.COORDX) {

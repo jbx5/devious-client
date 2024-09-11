@@ -113,11 +113,12 @@ public class class162 extends class166 {
 		descriptor = "(ZB)V",
 		garbageValue = "1"
 	)
-	static final void method3646(boolean var0) {
+	@Export("setAuthenticationScheme")
+	static final void setAuthenticationScheme(boolean var0) {
 		if (var0) {
-			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.USERNAME_PASSWORD_REMEMBER : AuthenticationScheme.field1549;
+			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
 		} else {
-			Client.authenticationScheme = class461.clientPreferences.containsKey(Login.Login_username) ? AuthenticationScheme.field1553 : AuthenticationScheme.USERNAME_PASSWORD;
+			Client.authenticationScheme = class461.clientPreferences.containsKey(Login.Login_username) ? AuthenticationScheme.USERNAME_PASSWORD_REMEMBER : AuthenticationScheme.USERNAME_PASSWORD;
 		}
 
 	}

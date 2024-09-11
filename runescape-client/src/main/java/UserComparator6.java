@@ -11,7 +11,8 @@ public class UserComparator6 extends AbstractUserComparator {
 	@ObfuscatedGetter(
 		intValue = 367799447
 	)
-	static int field1544;
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
 	@ObfuscatedName("ac")
 	@Export("reversed")
 	final boolean reversed;

@@ -523,15 +523,15 @@ public class CollisionMap {
 				if (var5 != var4 - 1) {
 					int var6 = DevicePcmPlayerProvider.field88;
 					boolean var7 = false;
-					if (var0.field1361[var5] == null) {
-						var0.field1361[var5] = new NPC();
+					if (var0.npcs[var5] == null) {
+						var0.npcs[var5] = new NPC();
 						var7 = true;
 					}
 
-					NPC var8 = var0.field1361[var5];
+					NPC var8 = var0.npcs[var5];
 					var8.field1380 = var6;
-					var0.npcIndices[++var0.field1366 - 1] = var5;
-					var8.field1282 = Client.cycle;
+					var0.npcIndices[++var0.npcCount - 1] = var5;
+					var8.npcCycle = Client.cycle;
 					int var12 = var2.readBits(1);
 					if (var12 == 1) {
 						Client.npcIndices[++Client.npcCount - 1] = var5;
@@ -557,7 +557,7 @@ public class CollisionMap {
 					}
 
 					var8.definition = class168.getNpcDefinition(var2.readBits(14));
-					int var14 = Client.field657[var2.readBits(3)];
+					int var14 = Client.defaultRotations[var2.readBits(3)];
 					if (var7) {
 						var8.orientation = var8.rotation = var14;
 					}

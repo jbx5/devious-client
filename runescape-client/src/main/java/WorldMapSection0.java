@@ -237,12 +237,12 @@ public class WorldMapSection0 implements WorldMapSection {
 			var4 = (103 - var3) * 2048 + 24628;
 
 			for (var5 = 1; var5 < 103; ++var5) {
-				if ((ClientPreferences.field1341.tileSettings[var0][var5][var3] & 24) == 0) {
-					ClientPreferences.field1341.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
+				if ((ClientPreferences.topLevelWorldView.tileSettings[var0][var5][var3] & 24) == 0) {
+					ClientPreferences.topLevelWorldView.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
 				}
 
-				if (var0 < 3 && (ClientPreferences.field1341.tileSettings[var0 + 1][var5][var3] & 8) != 0) {
-					ClientPreferences.field1341.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
+				if (var0 < 3 && (ClientPreferences.topLevelWorldView.tileSettings[var0 + 1][var5][var3] & 8) != 0) {
+					ClientPreferences.topLevelWorldView.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
 				}
 
 				var4 += 4;
@@ -256,11 +256,11 @@ public class WorldMapSection0 implements WorldMapSection {
 		int var6;
 		for (var5 = 1; var5 < 103; ++var5) {
 			for (var6 = 1; var6 < 103; ++var6) {
-				if ((ClientPreferences.field1341.tileSettings[var0][var6][var5] & 24) == 0) {
+				if ((ClientPreferences.topLevelWorldView.tileSettings[var0][var6][var5] & 24) == 0) {
 					NPC.drawObject(var0, var6, var5, var3, var4);
 				}
 
-				if (var0 < 3 && (ClientPreferences.field1341.tileSettings[var0 + 1][var6][var5] & 8) != 0) {
+				if (var0 < 3 && (ClientPreferences.topLevelWorldView.tileSettings[var0 + 1][var6][var5] & 8) != 0) {
 					NPC.drawObject(var0 + 1, var6, var5, var3, var4);
 				}
 			}
@@ -270,7 +270,7 @@ public class WorldMapSection0 implements WorldMapSection {
 
 		for (var5 = 0; var5 < 104; ++var5) {
 			for (var6 = 0; var6 < 104; ++var6) {
-				long var7 = ClientPreferences.field1341.scene.getFloorDecorationTag(ClientPreferences.field1341.plane, var5, var6);
+				long var7 = ClientPreferences.topLevelWorldView.scene.getFloorDecorationTag(ClientPreferences.topLevelWorldView.plane, var5, var6);
 				if (0L != var7) {
 					int var9 = class213.Entity_unpackID(var7);
 					int var10 = class273.getObjectDefinition(var9).mapIconId;

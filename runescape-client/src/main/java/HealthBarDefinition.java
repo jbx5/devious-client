@@ -186,7 +186,8 @@ public class HealthBarDefinition extends DualNode {
 		descriptor = "(I)Lvv;",
 		garbageValue = "499567492"
 	)
-	public SpritePixels method3899() {
+	@Export("getBackSprite")
+	public SpritePixels getBackSprite() {
 		if (this.backSpriteID < 0) {
 			return null;
 		} else {
@@ -422,10 +423,10 @@ public class HealthBarDefinition extends DualNode {
 			class267.cameraYaw = var4;
 		}
 
-		if (Client.oculusOrbState == 1 && Client.staffModLevel >= 2 && Client.cycle % 50 == 0 && (UserComparator6.field1544 >> 7 != AddRequestTask.localPlayer.x >> 7 || AsyncHttpResponse.field72 >> 7 != AddRequestTask.localPlayer.y >> 7)) {
+		if (Client.oculusOrbState == 1 && Client.staffModLevel >= 2 && Client.cycle % 50 == 0 && (UserComparator6.oculusOrbFocalPointX >> 7 != AddRequestTask.localPlayer.x >> 7 || AsyncHttpResponse.oculusOrbFocalPointY >> 7 != AddRequestTask.localPlayer.y >> 7)) {
 			var12 = AddRequestTask.localPlayer.plane;
-			var13 = (UserComparator6.field1544 >> 7) + ClientPreferences.field1341.baseX;
-			var14 = (AsyncHttpResponse.field72 >> 7) + ClientPreferences.field1341.baseY;
+			var13 = (UserComparator6.oculusOrbFocalPointX >> 7) + ClientPreferences.topLevelWorldView.baseX;
+			var14 = (AsyncHttpResponse.oculusOrbFocalPointY >> 7) + ClientPreferences.topLevelWorldView.baseY;
 			class537.method9777(var13, var14, var12, true);
 		}
 

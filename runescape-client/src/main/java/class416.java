@@ -324,16 +324,16 @@ public class class416 {
 	@Export("menuAction")
 	public static final void menuAction(int var0, int var1, int var2, int var3, int var4, int var5, String var6, String var7, int var8, int var9) {
 		WorldView var10 = null;
-		if (var5 >= 0 && ClientPreferences.field1341.field1364[var5] != null) {
-			var10 = ClientPreferences.field1341.field1364[var5].field5007;
+		if (var5 >= 0 && ClientPreferences.topLevelWorldView.worldEntities[var5] != null) {
+			var10 = ClientPreferences.topLevelWorldView.worldEntities[var5].worldView;
 		} else if (var5 == -1) {
-			var10 = ClientPreferences.field1341;
+			var10 = ClientPreferences.topLevelWorldView;
 		}
 
 		if (var10 != null) {
 			int var11 = var10.baseX;
 			int var12 = var10.baseY;
-			NPC[] var13 = var10.field1361;
+			NPC[] var13 = var10.npcs;
 			Player[] var14 = var10.players;
 			if (var2 >= 2000) {
 				var2 -= 2000;
@@ -376,7 +376,7 @@ public class class416 {
 					var22 = class141.getPacketBufferNode(ClientPacket.field3350, Client.packetWriter.isaacCipher);
 					var22.packetBuffer.writeShortAdd(WorldMapSprite.field3219);
 					var22.packetBuffer.writeByteSub(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-					var22.packetBuffer.writeShortAdd(KeyHandler.field111);
+					var22.packetBuffer.writeShortAdd(KeyHandler.Players_count);
 					var22.packetBuffer.writeShortAddLE(var3);
 					var22.packetBuffer.writeInt(ScriptEvent.field1113);
 					Client.packetWriter.addNode(var22);
@@ -440,7 +440,7 @@ public class class416 {
 				var15 = class141.getPacketBufferNode(ClientPacket.field3322, Client.packetWriter.isaacCipher);
 				var15.packetBuffer.writeShort(var0 + var11);
 				var15.packetBuffer.writeIntLE(ScriptEvent.field1113);
-				var15.packetBuffer.writeShort(KeyHandler.field111);
+				var15.packetBuffer.writeShort(KeyHandler.Players_count);
 				var15.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortLE(WorldMapSprite.field3219);
 				var15.packetBuffer.writeShort(var3);
@@ -450,18 +450,18 @@ public class class416 {
 
 			if (var2 == 23) {
 				if (Client.isMenuOpen) {
-					ClientPreferences.field1341.scene.method4967();
+					ClientPreferences.topLevelWorldView.scene.method4967();
 				} else {
-					ClientPreferences.field1341.scene.menuOpen(ClientPreferences.field1341.plane, var0, var1, true);
+					ClientPreferences.topLevelWorldView.scene.menuOpen(ClientPreferences.topLevelWorldView.plane, var0, var1, true);
 				}
 
-				for (int var18 = 0; var18 < ClientPreferences.field1341.field1365; ++var18) {
-					WorldEntity var23 = ClientPreferences.field1341.field1364[ClientPreferences.field1341.worldEntityIndices[var18]];
+				for (int var18 = 0; var18 < ClientPreferences.topLevelWorldView.worldEntityCount; ++var18) {
+					WorldEntity var23 = ClientPreferences.topLevelWorldView.worldEntities[ClientPreferences.topLevelWorldView.worldEntityIndices[var18]];
 					if (var23 != null) {
 						if (Client.isMenuOpen) {
-							var23.field5007.scene.method4967();
+							var23.worldView.scene.method4967();
 						} else {
-							var23.field5007.scene.menuOpen(var23.field5007.plane, var0, var1, true);
+							var23.worldView.scene.menuOpen(var23.worldView.plane, var0, var1, true);
 						}
 					}
 				}
@@ -557,7 +557,7 @@ public class class416 {
 				var15.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 				var15.packetBuffer.writeShortAdd(var12 + var1);
 				var15.packetBuffer.writeShort(var3);
-				var15.packetBuffer.writeShort(KeyHandler.field111);
+				var15.packetBuffer.writeShort(KeyHandler.Players_count);
 				var15.packetBuffer.writeShortAddLE(var0 + var11);
 				var15.packetBuffer.writeIntLE(ScriptEvent.field1113);
 				var15.packetBuffer.writeShort(WorldMapSprite.field3219);
@@ -983,7 +983,7 @@ public class class416 {
 						var22.packetBuffer.writeIntIME(ScriptEvent.field1113);
 						var22.packetBuffer.writeShortAdd(var3);
 						var22.packetBuffer.writeByte(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-						var22.packetBuffer.writeShortAddLE(KeyHandler.field111);
+						var22.packetBuffer.writeShortAddLE(KeyHandler.Players_count);
 						Client.packetWriter.addNode(var22);
 					}
 				}

@@ -17,7 +17,8 @@ public class class215 extends class230 {
 	)
 	static int field2352;
 	@ObfuscatedName("gy")
-	static String field2349;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
 		intValue = 204902821

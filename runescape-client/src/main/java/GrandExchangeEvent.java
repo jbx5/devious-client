@@ -80,18 +80,18 @@ public class GrandExchangeEvent {
 	@Export("drawEntities")
 	static final void drawEntities(int var0, int var1, int var2, int var3) {
 		++Client.viewportDrawCount;
-		ClientPreferences.field1341.scene.cycle = Client.cycle;
+		ClientPreferences.topLevelWorldView.scene.cycle = Client.cycle;
 		class106.method2957();
-		IgnoreList.method8786(ClientPreferences.field1341);
-		WorldView var4 = ClientPreferences.field1341;
+		IgnoreList.method8786(ClientPreferences.topLevelWorldView);
+		WorldView var4 = ClientPreferences.topLevelWorldView;
 		if (Client.combatTargetPlayerIndex >= 0 && var4.players[Client.combatTargetPlayerIndex] != null) {
 			Decimator.addPlayerToScene(var4, Client.combatTargetPlayerIndex, false);
 		}
 
-		class132.method3254(ClientPreferences.field1341, true);
-		WorldView var5 = ClientPreferences.field1341;
-		int var6 = Client.field717.playerCount;
-		int[] var7 = Client.field717.playerIndices;
+		class132.addNpcsToScene(ClientPreferences.topLevelWorldView, true);
+		WorldView var5 = ClientPreferences.topLevelWorldView;
+		int var6 = Client.playerUpdateManager.playerCount;
+		int[] var7 = Client.playerUpdateManager.playerIndices;
 
 		int var8;
 		for (var8 = 0; var8 < var6; ++var8) {
@@ -100,12 +100,12 @@ public class GrandExchangeEvent {
 			}
 		}
 
-		class132.method3254(ClientPreferences.field1341, false);
-		SecureRandomFuture.method2379(ClientPreferences.field1341);
-		class7.method55(ClientPreferences.field1341);
-		WorldView var30 = ClientPreferences.field1341;
+		class132.addNpcsToScene(ClientPreferences.topLevelWorldView, false);
+		SecureRandomFuture.method2379(ClientPreferences.topLevelWorldView);
+		class7.method55(ClientPreferences.topLevelWorldView);
+		WorldView var30 = ClientPreferences.topLevelWorldView;
 
-		for (GraphicsObject var34 = (GraphicsObject)var30.field1362.last(); var34 != null; var34 = (GraphicsObject)var30.field1362.previous()) {
+		for (GraphicsObject var34 = (GraphicsObject)var30.graphicsObjects.last(); var34 != null; var34 = (GraphicsObject)var30.graphicsObjects.previous()) {
 			if (var30.plane == var34.plane && !var34.isFinished) {
 				if (Client.cycle >= var34.cycleStart) {
 					var34.advance(Client.graphicsCycle);
@@ -138,9 +138,9 @@ public class GrandExchangeEvent {
 		}
 
 		var8 = Client.camAngleY & 2047;
-		int var9 = UserComparator6.field1544;
-		int var10 = class147.field1698;
-		int var11 = AsyncHttpResponse.field72;
+		int var9 = UserComparator6.oculusOrbFocalPointX;
+		int var10 = class147.oculusOrbFocalPointZ;
+		int var11 = AsyncHttpResponse.oculusOrbFocalPointY;
 		int var14 = var31 * 3 + 600;
 		HealthBarDefinition.method3907(var9, var10, var11, var31, var8, var14, var3);
 		int var15;
@@ -221,8 +221,8 @@ public class GrandExchangeEvent {
 		var24 = ClanSettings.entity.getX();
 		int var25 = ClanSettings.entity.getY();
 		class232 var26 = HealthBarUpdate.field1304 == -1 ? class232.field2470 : class232.field2471;
-		ClientPreferences.field1341.scene.method4931(var26);
-		ClientPreferences.field1341.scene.draw(class301.cameraX, ArchiveLoader.cameraY, class33.cameraZ, class463.cameraPitch, class267.cameraYaw, var15, var24, var25, Client.isCameraLocked);
+		ClientPreferences.topLevelWorldView.scene.method4931(var26);
+		ClientPreferences.topLevelWorldView.scene.draw(class301.cameraX, ArchiveLoader.cameraY, class33.cameraZ, class463.cameraPitch, class267.cameraYaw, var15, var24, var25, Client.isCameraLocked);
 		Rasterizer3D.method4803(false);
 		if (Client.z) {
 			Rasterizer2D.adjustBrightness();
@@ -230,27 +230,27 @@ public class GrandExchangeEvent {
 
 		Rasterizer3D.clips.zoom = var23;
 		GrandExchangeOffer.method7712();
-		ClientPreferences.field1341.scene.setViewportWalking();
+		ClientPreferences.topLevelWorldView.scene.setViewportWalking();
 
 		int var27;
 		WorldEntity var33;
-		for (var27 = 0; var27 < ClientPreferences.field1341.field1365; ++var27) {
-			var33 = ClientPreferences.field1341.field1364[ClientPreferences.field1341.worldEntityIndices[var27]];
+		for (var27 = 0; var27 < ClientPreferences.topLevelWorldView.worldEntityCount; ++var27) {
+			var33 = ClientPreferences.topLevelWorldView.worldEntities[ClientPreferences.topLevelWorldView.worldEntityIndices[var27]];
 			if (var33 != null) {
-				var33.field5007.scene.setViewportWalking();
+				var33.worldView.scene.setViewportWalking();
 			}
 		}
 
-		class153.method3503(ClientPreferences.field1341, var0, var1, var2, var3);
+		class153.method3503(ClientPreferences.topLevelWorldView, var0, var1, var2, var3);
 
-		for (var27 = 0; var27 < ClientPreferences.field1341.field1365; ++var27) {
-			var33 = ClientPreferences.field1341.field1364[ClientPreferences.field1341.worldEntityIndices[var27]];
+		for (var27 = 0; var27 < ClientPreferences.topLevelWorldView.worldEntityCount; ++var27) {
+			var33 = ClientPreferences.topLevelWorldView.worldEntities[ClientPreferences.topLevelWorldView.worldEntityIndices[var27]];
 			if (var33 != null) {
-				class153.method3503(var33.field5007, var0, var1, var2, var3);
+				class153.method3503(var33.worldView, var0, var1, var2, var3);
 			}
 		}
 
-		WorldView var32 = ClientPreferences.field1341;
+		WorldView var32 = ClientPreferences.topLevelWorldView;
 		if (Client.hintArrowType == 2) {
 			int var28 = Client.hintArrowSubX * 64 + (Client.hintArrowX - var32.baseX << 7);
 			int var29 = Client.hintArrowSubY * 64 + (Client.hintArrowY - var32.baseY << 7);

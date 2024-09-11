@@ -76,9 +76,9 @@ public enum StudioGame implements Enum {
 		garbageValue = "-698538677"
 	)
 	static final void method7437() {
-		int var0 = Client.field717.playerCount;
-		int[] var1 = Client.field717.playerIndices;
-		Iterator var2 = Client.topLevelWorldView.iterator();
+		int var0 = Client.playerUpdateManager.playerCount;
+		int[] var1 = Client.playerUpdateManager.playerIndices;
+		Iterator var2 = Client.worldViewManager.iterator();
 
 		while (var2.hasNext()) {
 			WorldView var3 = (WorldView)var2.next();

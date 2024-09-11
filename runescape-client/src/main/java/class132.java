@@ -2,6 +2,7 @@ import java.applet.Applet;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
@@ -179,9 +180,10 @@ public class class132 {
 		descriptor = "(Ldd;ZI)V",
 		garbageValue = "-1569831656"
 	)
-	static final void method3254(WorldView var0, boolean var1) {
-		for (int var2 = 0; var2 < var0.field1366; ++var2) {
-			NPC var3 = var0.field1361[var0.npcIndices[var2]];
+	@Export("addNpcsToScene")
+	static final void addNpcsToScene(WorldView var0, boolean var1) {
+		for (int var2 = 0; var2 < var0.npcCount; ++var2) {
+			NPC var3 = var0.npcs[var0.npcIndices[var2]];
 			if (var3 != null && var3.isVisible() && var3.definition.isVisible == var1 && var3.definition.transformIsVisible()) {
 				int var4 = var0.plane;
 				int var5 = var3.x >> 7;

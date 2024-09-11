@@ -60,11 +60,11 @@ public class class224 extends class230 {
 		var10.despawnTime = var7 + Client.serverCycle;
 		var10.ownership = var8;
 		var10.isPrivate = var9;
-		if (class162.worldView.field1367[var0][var1][var2] == null) {
-			class162.worldView.field1367[var0][var1][var2] = new NodeDeque();
+		if (class162.worldView.groundItems[var0][var1][var2] == null) {
+			class162.worldView.groundItems[var0][var1][var2] = new NodeDeque();
 		}
 
-		class162.worldView.field1367[var0][var1][var2].addFirst(var10);
-		class537.method9776(var0, var1, var2);
+		class162.worldView.groundItems[var0][var1][var2].addFirst(var10);
+		class537.updateItemPile(var0, var1, var2);
 	}
 }
