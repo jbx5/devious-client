@@ -16,9 +16,6 @@ public final class IndexedSprite extends Rasterizer2D {
 	@Export("subWidth")
 	public int subWidth;
 	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 1445511424
-	)
 	@Export("subHeight")
 	public int subHeight;
 	@ObfuscatedName("ax")
