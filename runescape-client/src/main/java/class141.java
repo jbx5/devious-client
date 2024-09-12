@@ -1,67 +1,45 @@
-import java.util.concurrent.Callable;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fx")
-class class141 implements Callable {
-	// $FF: synthetic field
+@ObfuscatedName("fs")
+public class class141 implements class131 {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lfq;"
+		descriptor = "(Lmz;Lvd;B)Lmq;",
+		garbageValue = "-50"
 	)
-	final class142 this$0;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lvg;"
-	)
-	final Buffer val$p;
-	// $FF: synthetic field
-	final int val$version;
-
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;Lvg;I)V"
-	)
-	class141(class142 var1, Buffer var2, int var3) {
-		this.this$0 = var1;
-		this.val$p = var2;
-		this.val$version = var3;
-	}
-
-	public Object call() {
-		this.this$0.method3277(this.val$p, this.val$version);
-		return null;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-169100810"
-	)
-	public static final void method3257(int var0, int var1) {
-		ViewportMouse.ViewportMouse_x = var0;
-		ViewportMouse.ViewportMouse_y = var1;
-		ViewportMouse.ViewportMouse_isInViewport = true;
-		ViewportMouse.ViewportMouse_entityCount = 0;
-		ViewportMouse.ViewportMouse_false0 = false;
-	}
-
-	@ObfuscatedName("lp")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1727958977"
-	)
-	static void method3259() {
-		if (Client.isSpellSelected) {
-			Widget var0 = FloorUnderlayDefinition.widgetDefinition.getWidgetChild(MenuAction.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class421.runScriptEvent(var1);
-			}
-
-			Client.selectedSpellItemId = -1;
-			Client.isSpellSelected = false;
-			class416.invalidateWidget(var0);
+	@Export("getPacketBufferNode")
+	public static PacketBufferNode getPacketBufferNode(ClientPacket var0, IsaacCipher var1) {
+		PacketBufferNode var2;
+		if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {
+			var2 = new PacketBufferNode();
+		} else {
+			var2 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
 		}
+
+		var2.clientPacket = var0;
+		var2.clientPacketLength = var0.length;
+		if (var2.clientPacketLength == -1) {
+			var2.packetBuffer = new PacketBuffer(260);
+		} else if (var2.clientPacketLength == -2) {
+			var2.packetBuffer = new PacketBuffer(10000);
+		} else if (var2.clientPacketLength <= 18) {
+			var2.packetBuffer = new PacketBuffer(20);
+		} else if (var2.clientPacketLength <= 98) {
+			var2.packetBuffer = new PacketBuffer(100);
+		} else {
+			var2.packetBuffer = new PacketBuffer(260);
+		}
+
+		var2.packetBuffer.setIsaacCipher(var1);
+		var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
+		var2.index = 0;
+		return var2;
+	}
+
+	@ObfuscatedName("am")
+	public static int method3380(long var0) {
+		return (int)(var0 >>> 0 & 127L);
 	}
 }

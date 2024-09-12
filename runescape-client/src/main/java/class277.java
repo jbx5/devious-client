@@ -1,63 +1,70 @@
-import java.io.IOException;
-import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kq")
-public class class277 implements Comparator {
-	@ObfuscatedName("vk")
+@ObfuscatedName("kb")
+public class class277 {
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lcc;"
+		descriptor = "Lkb;"
 	)
-	@Export("friendSystem")
-	public static FriendSystem friendSystem;
-
-	class277() {
-	}
-
-	@ObfuscatedName("ab")
+	public static final class277 field3053;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lka;Lka;I)I",
-		garbageValue = "580052140"
+		descriptor = "Lkb;"
 	)
-	int method5506(class269 var1, class269 var2) {
-		return var1.method5420() - var2.method5420();
+	public static final class277 field3052;
+
+	static {
+		field3053 = new class277(-1);
+		field3052 = new class277(1);
 	}
 
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.method5506((class269)var1, (class269)var2);
-	}
-
-	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(B)[B",
-		garbageValue = "-41"
+		descriptor = "(I)V",
+		garbageValue = "-1"
 	)
-	public static byte[] method5512() {
-		byte[] var0 = new byte[24];
+	class277(int var1) {
+	}
 
-		try {
-			JagexCache.JagexCache_randomDat.seek(0L);
-			JagexCache.JagexCache_randomDat.readFully(var0);
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(Lvv;IIII)V",
+		garbageValue = "1481455206"
+	)
+	static void method5709(SpritePixels var0, int var1, int var2, int var3) {
+		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
+		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
+		var4.put(var0, var6, var0.pixels.length * 4);
+	}
 
-			int var1;
-			for (var1 = 0; var1 < 24 && var0[var1] == 0; ++var1) {
+	@ObfuscatedName("je")
+	@ObfuscatedSignature(
+		descriptor = "(Ldi;III)V",
+		garbageValue = "-583937703"
+	)
+	@Export("performPlayerAnimation")
+	static void performPlayerAnimation(Player var0, int var1, int var2) {
+		if (var0.sequence == var1 && var1 != -1) {
+			int var3 = HealthBarUpdate.SequenceDefinition_get(var1).restartMode;
+			if (var3 == 1) {
+				var0.sequenceFrame = 0;
+				var0.sequenceFrameCycle = 0;
+				var0.sequenceDelay = var2;
+				var0.field1272 = 0;
 			}
 
-			if (var1 >= 24) {
-				throw new IOException();
+			if (var3 == 2) {
+				var0.field1272 = 0;
 			}
-		} catch (Exception var4) {
-			for (int var2 = 0; var2 < 24; ++var2) {
-				var0[var2] = -1;
-			}
+		} else if (var1 == -1 || var0.sequence == -1 || HealthBarUpdate.SequenceDefinition_get(var1).field2321 >= HealthBarUpdate.SequenceDefinition_get(var0.sequence).field2321) {
+			var0.sequence = var1;
+			var0.sequenceFrame = 0;
+			var0.sequenceFrameCycle = 0;
+			var0.sequenceDelay = var2;
+			var0.field1272 = 0;
+			var0.field1298 = var0.pathLength;
 		}
 
-		return var0;
 	}
 }

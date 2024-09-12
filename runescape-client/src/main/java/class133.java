@@ -1,61 +1,61 @@
-import java.util.concurrent.Callable;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fg")
-public class class133 implements Callable {
-	@ObfuscatedName("ar")
-	@Export("osNameLowercase")
-	public static String osNameLowercase;
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lfb;"
-	)
-	final class134 field1549;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lff;"
-	)
-	final class135 field1550;
-	@ObfuscatedName("an")
-	@ObfuscatedSignature(
-		descriptor = "Lfe;"
-	)
-	final class136 field1551;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 952950779
-	)
-	final int field1552;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lfq;"
-	)
-	final class142 this$0;
+@ObfuscatedName("ft")
+public class class133 {
+	@ObfuscatedName("am")
+	public static final float field1561;
+	@ObfuscatedName("ax")
+	public static final float field1565;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lfq;Lfb;Lff;Lfe;I)V"
-	)
-	class133(class142 var1, class134 var2, class135 var3, class136 var4, int var5) {
-		this.this$0 = var1;
-		this.field1549 = var2;
-		this.field1550 = var3;
-		this.field1551 = var4;
-		this.field1552 = var5;
+	static {
+		field1561 = Math.ulp(1.0F);
+		field1565 = 2.0F * field1561;
 	}
 
-	public Object call() {
-		this.field1549.method3187();
-		class134[][] var1;
-		if (this.field1550 == class135.field1586) {
-			var1 = this.this$0.field1637;
-		} else {
-			var1 = this.this$0.field1630;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lfu;",
+		garbageValue = "-109"
+	)
+	static class139 method3273(int var0) {
+		class139[] var1 = new class139[]{class139.field1638, class139.field1650, class139.field1639, class139.field1656, class139.field1646, class139.field1642, class139.field1637, class139.field1644, class139.field1641, class139.field1645, class139.field1643, class139.field1648, class139.field1649, class139.field1640, class139.field1647, class139.field1652, class139.field1653};
+		class139 var2 = (class139)ArchiveDiskAction.findEnumerated(var1, var0);
+		if (var2 == null) {
+			var2 = class139.field1638;
 		}
 
-		var1[this.field1552][this.field1551.method3243()] = this.field1549;
-		return null;
+		return var2;
+	}
+
+	@ObfuscatedName("cf")
+	@ObfuscatedSignature(
+		descriptor = "(ILdt;ZI)I",
+		garbageValue = "-1298079788"
+	)
+	static int method3274(int var0, Script var1, boolean var2) {
+		int var3;
+		int var4;
+		if (var0 == 8000) {
+			--class320.Interpreter_intStackSize;
+			var3 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_arrayLengths[var3];
+			class132.method3256(Interpreter.Interpreter_arrays[var3], new int[var4], 0, var4 - 1);
+			return 1;
+		} else if (var0 == 8001) {
+			class320.Interpreter_intStackSize -= 3;
+			var3 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
+			var4 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 2];
+			int var6 = Interpreter.Interpreter_arrayLengths[var3];
+			if (var6 <= 1) {
+				return 1;
+			} else {
+				class450.method8628(Interpreter.Interpreter_arrays[var3], var6, var4, var5);
+				return 1;
+			}
+		} else {
+			return 2;
+		}
 	}
 }

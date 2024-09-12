@@ -4,42 +4,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mf")
+@ObfuscatedName("mq")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
 	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "[Lmf;"
+		descriptor = "[Lmq;"
 	)
 	@Export("PacketBufferNode_packetBufferNodes")
-	static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
-	@ObfuscatedName("ao")
+	public static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1425367475
+		intValue = -2143578739
 	)
 	@Export("PacketBufferNode_packetBufferNodeCount")
-	static int PacketBufferNode_packetBufferNodeCount;
-	@ObfuscatedName("ab")
+	public static int PacketBufferNode_packetBufferNodeCount;
+	@ObfuscatedName("cs")
+	@ObfuscatedGetter(
+		intValue = -1837050101
+	)
+	static int field3426;
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lmc;"
+		descriptor = "Lmz;"
 	)
 	@Export("clientPacket")
 	public ClientPacket clientPacket;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 269890789
+		intValue = 2020497499
 	)
 	@Export("clientPacketLength")
 	public int clientPacketLength;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lvs;"
+		descriptor = "Lva;"
 	)
 	@Export("packetBuffer")
 	public PacketBuffer packetBuffer;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -896663127
+		intValue = -1398990059
 	)
 	@Export("index")
 	public int index;
@@ -49,58 +54,15 @@ public class PacketBufferNode extends Node {
 		PacketBufferNode_packetBufferNodeCount = 0;
 	}
 
-	PacketBufferNode() {
-	}
-
-	@ObfuscatedName("an")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-227339760"
+		garbageValue = "1282578056"
 	)
 	@Export("release")
 	public void release() {
 		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode_packetBufferNodes.length) {
 			PacketBufferNode_packetBufferNodes[++PacketBufferNode_packetBufferNodeCount - 1] = this;
-		}
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-93"
-	)
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
-
-		try {
-			var0 = PacketWriter.getPreferencesFile("", ReflectionCheck.field228.name, true);
-			Buffer var1 = TileItem.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
-		}
-
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
-			}
-		} catch (Exception var2) {
-		}
-
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "409318813"
-	)
-	@Export("Messages_getLastChatID")
-	static int Messages_getLastChatID(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
-		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
 		}
 	}
 }

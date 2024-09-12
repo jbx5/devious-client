@@ -236,23 +236,6 @@ public class JSONTokener {
 		}
 	}
 
-	public String nextTo(char var1) throws JSONException {
-		StringBuffer var2 = new StringBuffer();
-
-		while (true) {
-			char var3 = this.next();
-			if (var3 == var1 || var3 == 0 || var3 == '\n' || var3 == '\r') {
-				if (var3 != 0) {
-					this.back();
-				}
-
-				return var2.toString().trim();
-			}
-
-			var2.append(var3);
-		}
-	}
-
 	public char skipTo(char var1) throws JSONException {
 		char var2;
 		try {
@@ -273,6 +256,23 @@ public class JSONTokener {
 
 		this.back();
 		return var2;
+	}
+
+	public String nextTo(char var1) throws JSONException {
+		StringBuffer var2 = new StringBuffer();
+
+		while (true) {
+			char var3 = this.next();
+			if (var3 == var1 || var3 == 0 || var3 == '\n' || var3 == '\r') {
+				if (var3 != 0) {
+					this.back();
+				}
+
+				return var2.toString().trim();
+			}
+
+			var2.append(var3);
+		}
 	}
 
 	public static int dehexchar(char var0) {

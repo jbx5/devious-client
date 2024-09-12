@@ -4,50 +4,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sr")
+@ObfuscatedName("sw")
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsr;"
+		descriptor = "Lsw;"
 	)
-	static final DefaultsGroup field4992;
-	@ObfuscatedName("ay")
+	static final DefaultsGroup field5053;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lsr;"
+		descriptor = "Lsw;"
 	)
-	static final DefaultsGroup field4991;
-	@ObfuscatedName("an")
+	static final DefaultsGroup field5050;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -1770343747
+		intValue = -1172590335
+	)
+	static int field5051;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -350729741
 	)
 	@Export("group")
 	final int group;
 
 	static {
-		field4992 = new DefaultsGroup(1);
-		field4991 = new DefaultsGroup(3);
+		field5053 = new DefaultsGroup(1);
+		field5050 = new DefaultsGroup(3);
 	}
 
 	DefaultsGroup(int var1) {
 		this.group = var1;
-	}
-
-	@ObfuscatedName("lt")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1839552253"
-	)
-	@Export("addCancelMenuEntry")
-	static void addCancelMenuEntry() {
-		Client.menu.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
-		Client.menu.menuWorldViewIds[0] = -1;
-		Client.menu.menuActions[0] = "Cancel";
-		Client.menu.menuTargets[0] = "";
-		Client.menu.menuOpcodes[0] = 1006;
-		Client.menu.menuShiftClick[0] = false;
-		Client.menu.subMenus[0] = null;
-		Client.menu.menuOptionsCount = 1;
 	}
 }

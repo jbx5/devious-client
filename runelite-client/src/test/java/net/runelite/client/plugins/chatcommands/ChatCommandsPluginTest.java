@@ -920,7 +920,7 @@ public class ChatCommandsPluginTest
 	@Test
 	public void testNightmareNoPb()
 	{
-		ChatMessage chatMessage = new ChatMessage(null, GAMEMESSAGE, "", "Your Nightmare kill count is: <col=ff0000>1130</col>", null, 0);
+		ChatMessage chatMessage = new ChatMessage(null, GAMEMESSAGE, "", "Your Nightmare kill count is: <col=ff0000>1,130</col>", null, 0);
 		chatCommandsPlugin.onChatMessage(chatMessage);
 
 		chatMessage = new ChatMessage(null, GAMEMESSAGE, "", "Team size: <col=ff0000>Solo</col> Fight duration: <col=ff0000>10:47</col>. Personal best: 8:44", null, 0);
@@ -1270,6 +1270,25 @@ public class ChatCommandsPluginTest
 		chatCommandsPlugin.onChatMessage(chatMessage);
 
 		verify(configManager).setRSProfileConfiguration("killcount", "guardians of the rift", 167);
+	}
+
+	@Test
+	public void testBirdsEgg()
+	{
+		ChatMessage chatMessage = new ChatMessage(null, GAMEMESSAGE, "", "You have made <col=ff0000>one</col> offering.", null, 0);
+		chatCommandsPlugin.onChatMessage(chatMessage);
+
+		verify(configManager).setRSProfileConfiguration("killcount", "bird's egg offerings", 1);
+
+		chatMessage = new ChatMessage(null, GAMEMESSAGE, "", "You have made <col=ff0000>420</col> offerings.", null, 0);
+		chatCommandsPlugin.onChatMessage(chatMessage);
+
+		verify(configManager).setRSProfileConfiguration("killcount", "bird's egg offerings", 420);
+
+		chatMessage = new ChatMessage(null, GAMEMESSAGE, "", "You have made <col=ff0000>10,000</col> offerings.", null, 0);
+		chatCommandsPlugin.onChatMessage(chatMessage);
+
+		verify(configManager).setRSProfileConfiguration("killcount", "bird's egg offerings", 10_000);
 	}
 
 	@Test

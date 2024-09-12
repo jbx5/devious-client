@@ -10,27 +10,19 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ar")
+@ObfuscatedName("ay")
 @Implements("HttpResponse")
 public class HttpResponse {
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1621894699
-	)
-	static int field78;
-	@ObfuscatedName("gx")
-	@Export("characterId")
-	static String characterId;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1426113819
+		intValue = -458633273
 	)
 	@Export("responseCode")
 	final int responseCode;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("headerFields")
 	final Map headerFields;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@Export("responseBody")
 	final String responseBody;
 
@@ -61,47 +53,55 @@ public class HttpResponse {
 		this.responseBody = var2.toString();
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1166379354"
+		garbageValue = "-1487637611"
 	)
 	@Export("getResponseCode")
 	public int getResponseCode() {
 		return this.responseCode;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/util/Map;",
-		garbageValue = "14403567"
+		garbageValue = "441350129"
 	)
 	@Export("getHeaderFields")
 	public Map getHeaderFields() {
 		return this.headerFields;
 	}
 
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-2067815802"
+		garbageValue = "-2027495018"
 	)
 	@Export("getResponseBody")
 	public String getResponseBody() {
 		return this.responseBody;
 	}
 
-	@ObfuscatedName("hb")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(IZZZZZB)Loj;",
-		garbageValue = "16"
+		descriptor = "(II)Ldt;",
+		garbageValue = "1222515241"
 	)
-	static Archive method278(int var0, boolean var1, boolean var2, boolean var3, boolean var4, boolean var5) {
-		ArchiveDisk var6 = null;
-		if (JagexCache.JagexCache_dat2File != null) {
-			var6 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, ItemContainer.JagexCache_idxFiles[var0], 1000000);
+	@Export("getScript")
+	static Script getScript(int var0) {
+		Script var1 = (Script)Script.Script_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class187.archive12.takeFile(var0, 0);
+			if (var2 == null) {
+				return null;
+			} else {
+				var1 = class160.newScript(var2);
+				Script.Script_cached.put(var1, (long)var0);
+				return var1;
+			}
 		}
-
-		return new Archive(var6, class92.masterDisk, SecureRandomFuture.field980, var0, var1, var2, var3, var4, var5);
 	}
 }

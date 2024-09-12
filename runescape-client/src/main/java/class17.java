@@ -7,31 +7,31 @@ import javax.security.cert.X509Certificate;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ah")
+@ObfuscatedName("ai")
 class class17 implements SSLSession {
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Laj;"
+		descriptor = "Lah;"
 	)
 	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Laj;)V"
+		descriptor = "(Lah;)V"
 	)
 	class17(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
 	}
 
-	public byte[] getId() {
-		throw new UnsupportedOperationException();
-	}
-
-	public long getLastAccessedTime() {
-		throw new UnsupportedOperationException();
-	}
-
 	public int getApplicationBufferSize() {
 		return 0;
+	}
+
+	public long getCreationTime() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Certificate[] getLocalCertificates() {
+		throw new UnsupportedOperationException();
 	}
 
 	public int getPacketBufferSize() {
@@ -43,15 +43,15 @@ class class17 implements SSLSession {
 	}
 
 	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
-		return this.this$1.field48;
+		return this.this$1.field49;
 	}
 
 	public int getPeerPort() {
 		return 0;
 	}
 
-	public Certificate[] getLocalCertificates() {
-		throw new UnsupportedOperationException();
+	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
+		return null;
 	}
 
 	public String getProtocol() {
@@ -70,7 +70,7 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public void invalidate() {
+	public long getLastAccessedTime() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -82,14 +82,6 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public Principal getLocalPrincipal() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
-		return null;
-	}
-
 	public void removeValue(String var1) {
 		throw new UnsupportedOperationException();
 	}
@@ -98,11 +90,19 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
+	public Principal getLocalPrincipal() {
+		throw new UnsupportedOperationException();
+	}
+
+	public byte[] getId() {
+		throw new UnsupportedOperationException();
+	}
+
 	public String getCipherSuite() {
 		throw new UnsupportedOperationException();
 	}
 
-	public long getCreationTime() {
+	public void invalidate() {
 		throw new UnsupportedOperationException();
 	}
 }

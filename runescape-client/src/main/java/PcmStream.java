@@ -3,24 +3,24 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bb")
+@ObfuscatedName("bk")
 @Implements("PcmStream")
 public abstract class PcmStream extends Node {
-	@ObfuscatedName("af")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lbb;"
+		descriptor = "Lbk;"
 	)
 	@Export("after")
 	PcmStream after;
 	@ObfuscatedName("aa")
-	int field329;
-	@ObfuscatedName("ah")
+	int field334;
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lcp;"
+		descriptor = "Lcv;"
 	)
 	@Export("sound")
 	AbstractSound sound;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ao")
 	@Export("active")
 	volatile boolean active;
 
@@ -28,37 +28,37 @@ public abstract class PcmStream extends Node {
 		this.active = true;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "()Lbb;"
+		descriptor = "()Lbk;"
 	)
 	@Export("firstSubStream")
 	protected abstract PcmStream firstSubStream();
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "()Lbb;"
+		descriptor = "()Lbk;"
 	)
 	@Export("nextSubStream")
 	protected abstract PcmStream nextSubStream();
 
-	@ObfuscatedName("ac")
-	protected abstract int vmethod6461();
+	@ObfuscatedName("at")
+	protected abstract int vmethod6731();
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("au")
 	@Export("fill")
 	protected abstract void fill(int[] var1, int var2, int var3);
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("al")
 	@Export("skip")
 	protected abstract void skip(int var1);
 
-	@ObfuscatedName("bv")
-	int vmethod1015() {
+	@ObfuscatedName("bt")
+	int vmethod1054() {
 		return 255;
 	}
 
-	@ObfuscatedName("fy")
+	@ObfuscatedName("ga")
 	@Export("update")
 	final void update(int[] var1, int var2, int var3) {
 		if (this.active) {

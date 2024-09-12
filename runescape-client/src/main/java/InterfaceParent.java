@@ -4,108 +4,94 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("di")
+@ObfuscatedName("dj")
 @Implements("InterfaceParent")
 public class InterfaceParent extends Node {
-	@ObfuscatedName("au")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 881044235
-	)
-	public static int field1059;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 1637987935
-	)
-	static int field1055;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1811013267
+		intValue = -1883588565
 	)
 	@Export("group")
 	int group;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -2070786127
+		intValue = -1659928537
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("an")
-	boolean field1057;
+	@ObfuscatedName("ag")
+	boolean field1095;
 
 	InterfaceParent() {
-		this.field1057 = false;
+		this.field1095 = false;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "1057971079"
+		descriptor = "(Ldo;III)V",
+		garbageValue = "1977275131"
 	)
-	static String method2408(byte[] var0, int var1, int var2) {
-		StringBuilder var3 = new StringBuilder();
-
-		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class415.field4643[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class415.field4643[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class415.field4643[(var6 & 15) << 2 | var7 >>> 6]).append(class415.field4643[var7 & 63]);
-				} else {
-					var3.append(class415.field4643[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class415.field4643[(var5 & 3) << 4]).append("==");
-			}
-		}
-
-		return var3.toString();
-	}
-
-	@ObfuscatedName("hi")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1756730024"
-	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		class138.logOut();
-		switch(var0) {
-		case 1:
-			class532.updateLoginIndex(24);
-			class130.setLoginResponseString("", "You were disconnected from the server.", "");
-			break;
-		case 2:
-			class535.method9464();
-		}
-
-	}
-
-	@ObfuscatedName("oe")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILvc;Lnm;I)V",
-		garbageValue = "1214583396"
-	)
-	@Export("worldToMinimap")
-	static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-		int var6 = var3 * var3 + var2 * var2;
-		if (var6 > 4225 && var6 < 90000) {
-			int var7 = Client.camAngleY & 2047;
-			int var8 = Rasterizer3D.Rasterizer3D_sine[var7];
-			int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
-			int var10 = var9 * var2 + var3 * var8 >> 16;
-			int var11 = var3 * var9 - var8 * var2 >> 16;
-			double var12 = Math.atan2((double)var10, (double)var11);
-			int var14 = var5.width / 2 - 25;
-			int var15 = (int)(Math.sin(var12) * (double)var14);
-			int var16 = (int)(Math.cos(var12) * (double)var14);
-			byte var17 = 20;
-			FileSystem.redHintArrowSprite.method10094(var15 + (var0 + var5.width / 2 - var17 / 2), var5.height / 2 + var1 - var17 / 2 - var16 - 10, var17, var17, 15, 15, var12, 256);
+	@Export("runScript")
+	static void runScript(ScriptEvent var0, int var1, int var2) {
+		Object[] var3 = var0.args;
+		Script var4;
+		if (GrandExchangeOfferUnitPriceComparator.isWorldMapEvent(var0.type)) {
+			class162.worldMapEvent = (WorldMapEvent)var3[0];
+			WorldMapElement var6 = class142.WorldMapElement_get(class162.worldMapEvent.mapElement);
+			var4 = PlayerCompositionColorTextureOverride.getWorldMapScript(var0.type, var6.objectId, var6.category);
 		} else {
-			UrlRequest.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
+			int var5 = (Integer)var3[0];
+			var4 = HttpResponse.getScript(var5);
 		}
 
+		if (var4 != null) {
+			AbstractWorldMapData.runScriptLogic(var0, var4, var1, var2);
+		}
+
+	}
+
+	@ObfuscatedName("jc")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "33"
+	)
+	static boolean method2506() {
+		return (Client.drawPlayerNames & 4) != 0;
+	}
+
+	@ObfuscatedName("mj")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "-659897185"
+	)
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (TaskHandler.widgetDefinition.loadInterface(var0)) {
+			class321.field3302 = null;
+			PlayerUpdateManager.drawInterface(TaskHandler.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7);
+			if (class321.field3302 != null) {
+				PlayerUpdateManager.drawInterface(class321.field3302, -1412584499, var1, var2, var3, var4, class146.field1680, Strings.field4449, var7);
+				class321.field3302 = null;
+			}
+
+		} else {
+			if (var7 != -1) {
+				Client.validRootWidgets[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) {
+					Client.validRootWidgets[var8] = true;
+				}
+			}
+
+		}
+	}
+
+	@ObfuscatedName("ph")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1483868129"
+	)
+	public static boolean method2509() {
+		return Client.staffModLevel >= 2;
 	}
 }

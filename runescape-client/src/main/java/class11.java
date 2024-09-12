@@ -10,23 +10,19 @@ import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
 import org.bouncycastle.crypto.tls.TlsCredentials;
 
-@ObfuscatedName("al")
+@ObfuscatedName("ad")
 class class11 implements TlsAuthentication {
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Las;"
+		descriptor = "Lap;"
 	)
 	final class13 this$2;
 
 	@ObfuscatedSignature(
-		descriptor = "(Las;)V"
+		descriptor = "(Lap;)V"
 	)
 	class11(class13 var1) {
 		this.this$2 = var1;
-	}
-
-	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
-		return null;
 	}
 
 	public void notifyServerCertificate(Certificate var1) throws IOException {
@@ -40,9 +36,13 @@ class class11 implements TlsAuthentication {
 				var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
 			}
 
-			this.this$2.this$1.field48 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
+			this.this$2.this$1.field49 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
 		} catch (CertificateException var7) {
 			throw new IOException(var7);
 		}
+	}
+
+	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
+		return null;
 	}
 }

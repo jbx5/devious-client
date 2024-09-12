@@ -10,14 +10,14 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 
-@ObfuscatedName("aj")
+@ObfuscatedName("ah")
 @Implements("SecureRandomSSLSocket")
 class SecureRandomSSLSocket extends SSLSocket {
-	@ObfuscatedName("ab")
-	Certificate[] field48;
+	@ObfuscatedName("ac")
+	Certificate[] field49;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Laf;"
+		descriptor = "Laz;"
 	)
 	final SecureRandomSSLSocketFactory this$0;
 	// $FF: synthetic field
@@ -26,7 +26,7 @@ class SecureRandomSSLSocket extends SSLSocket {
 	final String val$host;
 
 	@ObfuscatedSignature(
-		descriptor = "(Laf;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
+		descriptor = "(Laz;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
 	)
 	SecureRandomSSLSocket(SecureRandomSSLSocketFactory var1, TlsClientProtocol var2, String var3) {
 		this.this$0 = var1;
@@ -38,18 +38,11 @@ class SecureRandomSSLSocket extends SSLSocket {
 		return this.val$tlsClientProtocol.getInputStream();
 	}
 
-	public void setWantClientAuth(boolean var1) {
+	public String[] getSupportedCipherSuites() {
+		return null;
 	}
 
-	public synchronized void close() throws IOException {
-		this.val$tlsClientProtocol.close();
-	}
-
-	public boolean getEnableSessionCreation() {
-		return false;
-	}
-
-	public void setEnableSessionCreation(boolean var1) {
+	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
 	}
 
 	public String[] getEnabledProtocols() {
@@ -64,12 +57,8 @@ class SecureRandomSSLSocket extends SSLSocket {
 		return new class17(this);
 	}
 
-	public String[] getSupportedProtocols() {
-		return null;
-	}
-
-	public String[] getSupportedCipherSuites() {
-		return null;
+	public OutputStream getOutputStream() throws IOException {
+		return this.val$tlsClientProtocol.getOutputStream();
 	}
 
 	public boolean getUseClientMode() {
@@ -80,33 +69,44 @@ class SecureRandomSSLSocket extends SSLSocket {
 		return false;
 	}
 
-	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	public synchronized void close() throws IOException {
+		this.val$tlsClientProtocol.close();
 	}
 
-	public void setEnabledProtocols(String[] var1) {
+	public void setEnabledCipherSuites(String[] var1) {
 	}
 
 	public void setNeedClientAuth(boolean var1) {
 	}
 
-	public void setUseClientMode(boolean var1) {
-	}
-
-	public void startHandshake() throws IOException {
-		this.val$tlsClientProtocol.connect(new class13(this));
+	public void setWantClientAuth(boolean var1) {
 	}
 
 	public String[] getEnabledCipherSuites() {
 		return null;
 	}
 
+	public boolean getEnableSessionCreation() {
+		return false;
+	}
+
+	public void setEnableSessionCreation(boolean var1) {
+	}
+
+	public void setUseClientMode(boolean var1) {
+	}
+
+	public String[] getSupportedProtocols() {
+		return null;
+	}
+
 	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
 	}
 
-	public void setEnabledCipherSuites(String[] var1) {
+	public void startHandshake() throws IOException {
+		this.val$tlsClientProtocol.connect(new class13(this));
 	}
 
-	public OutputStream getOutputStream() throws IOException {
-		return this.val$tlsClientProtocol.getOutputStream();
+	public void setEnabledProtocols(String[] var1) {
 	}
 }

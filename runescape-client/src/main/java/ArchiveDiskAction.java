@@ -4,27 +4,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oh")
+@ObfuscatedName("ox")
 @Implements("ArchiveDiskAction")
 public class ArchiveDiskAction extends Node {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 1121383543
+		intValue = -138543647
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@Export("data")
 	public byte[] data;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lsi;"
+		descriptor = "Lsl;"
 	)
 	@Export("archiveDisk")
 	public ArchiveDisk archiveDisk;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Loj;"
+		descriptor = "Lof;"
 	)
 	@Export("archive")
 	public Archive archive;
@@ -32,38 +32,22 @@ public class ArchiveDiskAction extends Node {
 	ArchiveDiskAction() {
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "-127"
+		descriptor = "([Lps;II)Lps;",
+		garbageValue = "2025359384"
 	)
-	public static final boolean method7186(char var0) {
-		if (Character.isISOControl(var0)) {
-			return false;
-		} else if (class148.isAlphaNumeric(var0)) {
-			return true;
-		} else {
-			char[] var1 = class526.field5261;
+	@Export("findEnumerated")
+	public static Enum findEnumerated(Enum[] var0, int var1) {
+		Enum[] var2 = var0;
 
-			int var2;
-			char var3;
-			for (var2 = 0; var2 < var1.length; ++var2) {
-				var3 = var1[var2];
-				if (var0 == var3) {
-					return true;
-				}
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			Enum var4 = var2[var3];
+			if (var1 == var4.rsOrdinal()) {
+				return var4;
 			}
-
-			var1 = class526.field5263;
-
-			for (var2 = 0; var2 < var1.length; ++var2) {
-				var3 = var1[var2];
-				if (var0 == var3) {
-					return true;
-				}
-			}
-
-			return false;
 		}
+
+		return null;
 	}
 }

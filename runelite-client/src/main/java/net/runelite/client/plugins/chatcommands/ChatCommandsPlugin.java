@@ -107,7 +107,7 @@ import org.apache.commons.text.WordUtils;
 @Slf4j
 public class ChatCommandsPlugin extends Plugin
 {
-	private static final Pattern KILLCOUNT_PATTERN = Pattern.compile("Your (?<pre>completion count for |subdued |completed )?(?<boss>.+?) (?<post>(?:(?:kill|harvest|lap|completion) )?(?:count )?)is: <col=ff0000>(?<kc>\\d+)</col>");
+	private static final Pattern KILLCOUNT_PATTERN = Pattern.compile("Your (?<pre>completion count for |subdued |completed )?(?<boss>.+?) (?<post>(?:(?:kill|harvest|lap|completion) )?(?:count )?)is: <col=[0-9a-f]{6}>(?<kc>[0-9,]+)</col>");
 	private static final String TEAM_SIZES = "(?<teamsize>\\d+(?:\\+|-\\d+)? players?|Solo)";
 	private static final Pattern RAIDS_PB_PATTERN = Pattern.compile("<col=ef20ff>Congratulations - your raid is complete!</col><br>Team size: <col=ff0000>" + TEAM_SIZES + "</col> Duration:</col> <col=ff0000>(?<pb>[0-9:]+(?:\\.[0-9]+)?)</col> \\(new personal best\\)</col>");
 	private static final Pattern RAIDS_DURATION_PATTERN = Pattern.compile("<col=ef20ff>Congratulations - your raid is complete!</col><br>Team size: <col=ff0000>" + TEAM_SIZES + "</col> Duration:</col> <col=ff0000>[0-9:.]+</col> Personal best: </col><col=ff0000>(?<pb>[0-9:]+(?:\\.[0-9]+)?)</col>");
@@ -124,6 +124,7 @@ public class ChatCommandsPlugin extends Plugin
 	private static final Pattern COLLECTION_LOG_ITEM_PATTERN = Pattern.compile("New item added to your collection log: (.*)");
 	private static final Pattern GUARDIANS_OF_THE_RIFT_PATTERN = Pattern.compile("Amount of Rifts you have closed: <col=ff0000>([0-9,]+)</col>.", Pattern.CASE_INSENSITIVE);
 	private static final Pattern HUNTER_RUMOUR_KC_PATTERN = Pattern.compile("You have completed <col=[0-9a-f]{6}>([0-9,]+)</col> rumours? for the Hunter Guild.");
+	private static final Pattern BIRD_EGG_OFFERING_PATTERN = Pattern.compile("You have made <col=ff0000>(?<kc>[\\d,]+|one)</col> offerings?.");
 
 	private static final String TOTAL_LEVEL_COMMAND_STRING = "!total";
 	private static final String PRICE_COMMAND_STRING = "!price";
@@ -421,7 +422,7 @@ public class ChatCommandsPlugin extends Plugin
 		if (matcher.find())
 		{
 			final String boss = matcher.group("boss");
-			final int kc = Integer.parseInt(matcher.group("kc"));
+			final int kc = Integer.parseInt(matcher.group("kc").replace(",", ""));
 			final String pre = matcher.group("pre");
 			final String post = matcher.group("post");
 
@@ -624,6 +625,17 @@ public class ChatCommandsPlugin extends Plugin
 		{
 			int kc = Integer.parseInt(matcher.group(1));
 			setKc("Guardians of the Rift", kc);
+		}
+
+		matcher = BIRD_EGG_OFFERING_PATTERN.matcher(message);
+		if (matcher.find())
+		{
+			String kcString = matcher.group("kc");
+			int kc = kcString.equals("one")
+				? 1
+				: Integer.parseInt(kcString.replaceAll(",", ""));
+
+			setKc("Bird's egg offerings", kc);
 		}
 	}
 
@@ -2533,6 +2545,12 @@ public class ChatCommandsPlugin extends Plugin
 			case "colosseum":
 			case "fortis colosseum":
 				return "Sol Heredit";
+
+			case "bird egg":
+			case "bird eggs":
+			case "bird's egg":
+			case "bird's eggs":
+				return "Bird's egg offerings";
 
 			default:
 				return WordUtils.capitalize(boss);

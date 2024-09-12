@@ -4,158 +4,147 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("no")
+@ObfuscatedName("nb")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 132730433
+		intValue = 1383258553
 	)
-	int field3652;
-	@ObfuscatedName("ay")
+	int field3711;
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lma;"
+		descriptor = "Lnc;"
 	)
 	@Export("table")
 	MusicPatch table;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lbq;"
+		descriptor = "Lbg;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lmk;"
+		descriptor = "Lmv;"
 	)
-	MusicPatchNode2 field3655;
+	MusicPatchNode2 field3705;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1785827303
+		intValue = 107915439
 	)
-	int field3650;
-	@ObfuscatedName("ao")
-	@ObfuscatedGetter(
-		intValue = 1662510391
-	)
-	int field3657;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -981115785
-	)
-	int field3647;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -1931338823
-	)
-	int field3649;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -1076438447
-	)
-	int field3654;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -1790268709
-	)
-	int field3662;
+	int field3712;
 	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -30834329
+		intValue = 528717609
 	)
-	int field3656;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = 672828565
-	)
-	int field3646;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = 602682667
-	)
-	int field3665;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = 1927625706
-	)
-	int field3659;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = -1580281925
-	)
-	int field3660;
+	int field3706;
 	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -1898545899
+		intValue = 76825659
 	)
-	int field3661;
-	@ObfuscatedName("aa")
+	int field3707;
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 1290670467
+		intValue = 656149513
 	)
-	int field3653;
+	int field3708;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 1533372179
+	)
+	int field3709;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -1635351087
+	)
+	int field3710;
+	@ObfuscatedName("al")
+	@ObfuscatedGetter(
+		intValue = 693097243
+	)
+	int field3701;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = -274726912
+	)
+	int field3720;
 	@ObfuscatedName("ah")
 	@ObfuscatedGetter(
-		intValue = -1059375611
+		intValue = 127781599
 	)
-	int field3663;
-	@ObfuscatedName("ag")
+	int field3713;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 1324390209
+	)
+	int field3714;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1783172009
+	)
+	int field3704;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -184078825
+	)
+	int field3716;
+	@ObfuscatedName("aa")
+	@ObfuscatedGetter(
+		intValue = -1996035633
+	)
+	int field3717;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = -459326909
+	)
+	int field3718;
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lbs;"
+		descriptor = "Lbq;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("av")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -458933961
+		intValue = 601813091
 	)
-	int field3651;
-	@ObfuscatedName("ap")
+	int field3703;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1425788947
+		intValue = 1429130885
 	)
-	int field3666;
+	int field3721;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-39"
+		descriptor = "(I)V",
+		garbageValue = "-1113329963"
 	)
-	void method6470() {
+	void method6754() {
 		this.table = null;
 		this.rawSound = null;
-		this.field3655 = null;
+		this.field3705 = null;
 		this.stream = null;
 	}
 
-	@ObfuscatedName("iy")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Ljt;IIZI)V",
-		garbageValue = "-2125897796"
+		descriptor = "(B)V",
+		garbageValue = "107"
 	)
-	static void method6473(Sound var0, int var1, int var2, boolean var3) {
-		if (var0 != null) {
-			if (var0.field2727 == 0) {
-				if (!var3) {
-					return;
-				}
-
-				Client.soundLocations[Client.soundEffectCount] = 0;
+	static void method6756() {
+		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+			if (class461.clientPreferences.getRememberedUsername() != null) {
+				Login.Login_username = class461.clientPreferences.getRememberedUsername();
+				Client.Login_isUsernameRemembered = true;
 			} else {
-				int var4 = (var1 - 64) / 128;
-				int var5 = (var2 - 64) / 128;
-				Client.soundLocations[Client.soundEffectCount] = (var5 << 8) + var0.field2727 + (var4 << 16);
+				Client.Login_isUsernameRemembered = false;
 			}
 
-			Client.soundEffectIds[Client.soundEffectCount] = var0.field2725;
-			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var0.field2724;
-			Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
-			Client.soundEffects[Client.soundEffectCount] = null;
-			Client.field756[Client.soundEffectCount] = var0.field2726;
-			++Client.soundEffectCount;
 		}
 	}
 }

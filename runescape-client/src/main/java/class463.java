@@ -1,55 +1,54 @@
+import java.util.Comparator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rc")
-public final class class463 implements Comparable {
-	@ObfuscatedName("ab")
-	Object field4889;
-	@ObfuscatedName("ay")
-	Object field4887;
-	@ObfuscatedName("an")
+@ObfuscatedName("rp")
+class class463 implements Comparator {
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		longValue = -1276993000611469905L
+		intValue = -566466219
 	)
-	long field4888;
-	@ObfuscatedName("au")
+	@Export("WorldMapElement_count")
+	public static int WorldMapElement_count;
+	@ObfuscatedName("ko")
 	@ObfuscatedGetter(
-		longValue = -4020752064076746135L
+		intValue = 322327291
 	)
-	long field4886;
+	@Export("cameraPitch")
+	static int cameraPitch;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lry;"
+	)
+	final class464 this$0;
 
-	class463(Object var1, Object var2) {
-		this.field4889 = var1;
-		this.field4887 = var2;
+	@ObfuscatedSignature(
+		descriptor = "(Lry;)V"
+	)
+	class463(class464 var1) {
+		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lrc;B)I",
-		garbageValue = "44"
+		descriptor = "(Lrt;Lrt;I)I",
+		garbageValue = "-1828216664"
 	)
-	int method8515(class463 var1) {
-		if (this.field4886 < var1.field4886) {
-			return -1;
+	int method8746(class465 var1, class465 var2) {
+		if (var1.field4949 > var2.field4949) {
+			return 1;
 		} else {
-			return this.field4886 > var1.field4886 ? 1 : 0;
+			return var1.field4949 < var2.field4949 ? -1 : 0;
 		}
 	}
 
-	public int hashCode() {
-		return this.field4887.hashCode();
+	public int compare(Object var1, Object var2) {
+		return this.method8746((class465)var1, (class465)var2);
 	}
 
 	public boolean equals(Object var1) {
-		if (var1 instanceof class463) {
-			return this.field4887.equals(((class463)var1).field4887);
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	public int compareTo(Object var1) {
-		return this.method8515((class463)var1);
+		return super.equals(var1);
 	}
 }

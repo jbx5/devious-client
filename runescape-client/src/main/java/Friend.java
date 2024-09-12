@@ -3,27 +3,21 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sp")
+@ObfuscatedName("sr")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "Lds;"
-	)
-	@Export("mouseRecorder")
-	static MouseRecorder mouseRecorder;
-	@ObfuscatedName("ab")
-	boolean field4911;
-	@ObfuscatedName("ay")
-	boolean field4912;
+	@ObfuscatedName("ac")
+	boolean field4973;
+	@ObfuscatedName("ae")
+	boolean field4972;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lsp;I)I",
-		garbageValue = "2101139269"
+		descriptor = "(Lsr;I)I",
+		garbageValue = "856756514"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -35,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4911 && !var1.field4911) {
+		} else if (this.field4973 && !var1.field4973) {
 			return -1;
-		} else if (!this.field4911 && var1.field4911) {
+		} else if (!this.field4973 && var1.field4973) {
 			return 1;
-		} else if (this.field4912 && !var1.field4912) {
+		} else if (this.field4972 && !var1.field4972) {
 			return -1;
-		} else if (!this.field4912 && var1.field4912) {
+		} else if (!this.field4972 && var1.field4972) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lsz;I)I",
-		garbageValue = "1336181307"
+		descriptor = "(Lss;S)I",
+		garbageValue = "151"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -60,14 +54,5 @@ public class Friend extends Buddy {
 
 	public int compareTo(Object var1) {
 		return this.compareToFriend((Friend)var1);
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-777303227"
-	)
-	public static void method8589() {
-		DbTableType.DBTableType_cache.clear();
 	}
 }

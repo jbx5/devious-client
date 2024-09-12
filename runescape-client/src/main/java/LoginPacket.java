@@ -4,85 +4,99 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("fi")
 @Implements("LoginPacket")
-public class LoginPacket extends class148 {
-	@ObfuscatedName("bl")
-	@ObfuscatedSignature(
-		descriptor = "Lqw;"
-	)
-	static Bounds field1671;
-	@ObfuscatedName("ab")
+public class LoginPacket extends class150 {
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		longValue = -4327881918697384821L
+		longValue = -6432279982112298727L
 	)
-	long field1666;
-	@ObfuscatedName("ay")
-	String field1668;
+	long field1700;
+	@ObfuscatedName("ae")
+	String field1699;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lfy;"
+		descriptor = "Lfz;"
 	)
-	final class151 this$0;
+	final class153 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfy;)V"
+		descriptor = "(Lfz;)V"
 	)
-	LoginPacket(class151 var1) {
+	LoginPacket(class153 var1) {
 		this.this$0 = var1;
-		this.field1666 = -1L;
-		this.field1668 = null;
+		this.field1700 = -1L;
+		this.field1699 = null;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-1070155477"
+		descriptor = "(Lvf;B)V",
+		garbageValue = "127"
 	)
-	void vmethod3619(Buffer var1) {
+	void vmethod3778(Buffer var1) {
 		if (var1.readUnsignedByte() != 255) {
 			--var1.offset;
-			this.field1666 = var1.readLong();
+			this.field1700 = var1.readLong();
 		}
 
-		this.field1668 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1699 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(Lgg;I)V",
-		garbageValue = "1070728869"
+		descriptor = "(Lgo;B)V",
+		garbageValue = "32"
 	)
-	void vmethod3621(ClanSettings var1) {
-		var1.method3442(this.field1666, this.field1668, 0);
+	void vmethod3771(ClanSettings var1) {
+		var1.method3603(this.field1700, this.field1699, 0);
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "0"
+	)
+	@Export("getVarbit")
+	public static int getVarbit(int var0) {
+		VarbitComposition var2 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
+		VarbitComposition var1;
+		if (var2 != null) {
+			var1 = var2;
+		} else {
+			byte[] var3 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
+			var2 = new VarbitComposition();
+			if (var3 != null) {
+				var2.decode(new Buffer(var3));
+			}
+
+			VarbitComposition.VarbitDefinition_cached.put(var2, (long)var0);
+			var1 = var2;
+		}
+
+		int var7 = var1.baseVar;
+		int var4 = var1.startBit;
+		int var5 = var1.endBit;
+		int var6 = Varps.Varps_masks[var5 - var4];
+		return Varps.Varps_main[var7] >> var4 & var6;
+	}
+
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1820472005"
+		garbageValue = "-1905890702"
 	)
-	public static final void method3325() {
-		ViewportMouse.ViewportMouse_isInViewport = false;
-		ViewportMouse.ViewportMouse_entityCount = 0;
+	public static void method3452() {
+		StructComposition.StructDefinition_cached.clear();
 	}
 
-	@ObfuscatedName("bq")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1419204840"
+		descriptor = "(CI)Z",
+		garbageValue = "16711935"
 	)
-	static int method3331(int var0) {
-		return (int)Math.pow(2.0D, (double)((float)var0 / 256.0F + 7.0F));
-	}
-
-	@ObfuscatedName("ic")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "578945178"
-	)
-	@Export("getWindowedMode")
-	static int getWindowedMode() {
-		return Client.isResizable ? 2 : 1;
+	@Export("isAlphaNumeric")
+	public static boolean isAlphaNumeric(char var0) {
+		return var0 >= '0' && var0 <= '9' || var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

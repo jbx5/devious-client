@@ -3,18 +3,18 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hp")
+@ObfuscatedName("jk")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "[Lgv;"
+		descriptor = "[Ljt;"
 	)
 	@Export("frames")
 	Animation[] frames;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lob;Lob;IZ)V",
+		descriptor = "(Lpo;Lpo;IZ)V",
 		garbageValue = "0"
 	)
 	public Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
@@ -46,22 +46,69 @@ public class Frames extends DualNode {
 
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-2016791332"
+		garbageValue = "466876774"
 	)
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
 		return this.frames[var1].hasAlphaTransform;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2037953303"
+		descriptor = "(FI)F",
+		garbageValue = "-2037103799"
 	)
-	public static void method4144() {
-		class248.field2022.clear();
+	public static final float method5156(float var0) {
+		float var1 = 75.0F;
+		float var2 = 10000.0F;
+		float var3 = 750000.0F / (10000.0F - 9925.0F * var0);
+		return (var3 - 75.0F) / 9925.0F;
+	}
+
+	@ObfuscatedName("oc")
+	@ObfuscatedSignature(
+		descriptor = "(Lny;I)V",
+		garbageValue = "-1208087962"
+	)
+	static final void method5160(Widget var0) {
+		int var1 = var0.contentType;
+		if (var1 == 324) {
+			if (Client.field799 == -1) {
+				Client.field799 = var0.spriteId2;
+				Client.field800 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.gender == 1) {
+				var0.spriteId2 = Client.field799;
+			} else {
+				var0.spriteId2 = Client.field800;
+			}
+
+		} else if (var1 == 325) {
+			if (Client.field799 == -1) {
+				Client.field799 = var0.spriteId2;
+				Client.field800 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.gender == 1) {
+				var0.spriteId2 = Client.field800;
+			} else {
+				var0.spriteId2 = Client.field799;
+			}
+
+		} else if (var1 == 327) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 0;
+		} else if (var1 == 328) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 1;
+		}
 	}
 }

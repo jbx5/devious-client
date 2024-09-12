@@ -1,76 +1,68 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ro")
+@ObfuscatedName("rl")
 public class class442 extends SongTask {
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "[Lja;"
-	)
-	@Export("WorldMapElement_cached")
-	static WorldMapElement[] WorldMapElement_cached;
+	@ObfuscatedName("ae")
+	@Export("Tiles_underlays")
+	static short[][][] Tiles_underlays;
+	@ObfuscatedName("ac")
+	ArrayList field4830;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lrm;)V"
+		descriptor = "(Lri;Ljava/util/ArrayList;)V"
 	)
-	public class442(SongTask var1) {
+	public class442(SongTask var1, ArrayList var2) {
 		super(var1);
-		super.field4796 = "StartSongTask";
+		super.field4843 = "ClearRequestTask";
+		this.field4830 = var2;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "734274820"
+		garbageValue = "-1411718299"
 	)
-	public boolean vmethod8342() {
-		Iterator var1 = class332.musicSongs.iterator();
+	public boolean vmethod8618() {
+		if (this.field4830.isEmpty()) {
+			return true;
+		} else {
+			Iterator var1 = this.field4830.iterator();
 
-		while (var1.hasNext()) {
-			MusicSong var2 = (MusicSong)var1.next();
-			if (var2 != null && !var2.field3679 && var2.midiPcmStream != null) {
+			while (var1.hasNext()) {
+				MusicSong var2 = (MusicSong)var1.next();
+
 				try {
-					var2.midiPcmStream.method6246();
-					var2.midiPcmStream.setPcmStreamVolume(0);
-					if (var2.field3684 != null) {
-						var2.midiPcmStream.setMusicTrack(var2.field3684, var2.musicTrackBoolean);
-					}
+					if (class334.musicSongs.contains(var2)) {
+						if (var2 == null) {
+							class334.musicSongs.remove(var2);
+						} else {
+							if (var2.midiPcmStream.field3637 > 0) {
+								--var2.midiPcmStream.field3637;
+							}
 
-					var2.field3684 = null;
-					var2.field3683 = null;
-					var2.musicTrackArchive = null;
-					var2.field3679 = true;
+							if (var2.midiPcmStream.field3637 == 0) {
+								var2.midiPcmStream.clear();
+								var2.midiPcmStream.method6510();
+								var2.midiPcmStream.setPcmStreamVolume(0);
+							}
+
+							Strings.method7442(var2.musicTrackGroupId, var2.musicTrackFileId);
+							class334.musicSongs.remove(var2);
+						}
+					}
 				} catch (Exception var4) {
-					Script.RunException_sendStackTrace((String)null, var4);
-					this.method8325(var4.getMessage());
+					class171.RunException_sendStackTrace((String)null, var4);
+					this.method8609(var4.getMessage());
+					class334.musicSongs.clear();
 					return true;
 				}
 			}
-		}
 
-		super.field4792 = true;
-		return true;
-	}
-
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "([BI)Lqe;",
-		garbageValue = "1228902219"
-	)
-	static Font method8313(byte[] var0) {
-		if (var0 == null) {
-			return null;
-		} else {
-			Font var1 = new Font(var0, class149.SpriteBuffer_xOffsets, class563.SpriteBuffer_yOffsets, class563.SpriteBuffer_spriteWidths, class372.SpriteBuffer_spriteHeights, RouteStrategy.SpriteBuffer_spritePalette, class563.SpriteBuffer_pixels);
-			class149.SpriteBuffer_xOffsets = null;
-			class563.SpriteBuffer_yOffsets = null;
-			class563.SpriteBuffer_spriteWidths = null;
-			class372.SpriteBuffer_spriteHeights = null;
-			RouteStrategy.SpriteBuffer_spritePalette = null;
-			class563.SpriteBuffer_pixels = null;
-			return var1;
+			return true;
 		}
 	}
 }

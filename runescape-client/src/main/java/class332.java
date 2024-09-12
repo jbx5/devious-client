@@ -1,72 +1,57 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mz")
+@ObfuscatedName("mw")
 public class class332 {
-	@ObfuscatedName("an")
+	@ObfuscatedName("ac")
+	static int[] field3601;
+	@ObfuscatedName("cm")
 	@ObfuscatedSignature(
 		descriptor = "Lob;"
 	)
-	public static AbstractArchive field3572;
-	@ObfuscatedName("au")
-	public static ArrayList field3562;
-	@ObfuscatedName("ax")
-	public static LinkedList field3563;
-	@ObfuscatedName("ao")
-	@Export("musicSongs")
-	public static ArrayList musicSongs;
-	@ObfuscatedName("am")
-	public static ArrayList field3565;
-	@ObfuscatedName("ac")
-	public static ArrayList field3566;
-	@ObfuscatedName("ae")
-	public static final List field3569;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -95479787
-	)
-	@Export("musicPlayerStatus")
-	static int musicPlayerStatus;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 56397263
-	)
-	static int field3568;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = 550690283
-	)
-	static int field3570;
-	@ObfuscatedName("aj")
-	@ObfuscatedGetter(
-		intValue = -1567107183
-	)
-	static int field3567;
+	static StudioGame field3603;
 
 	static {
-		field3562 = null;
-		field3563 = new LinkedList();
-		musicSongs = new ArrayList(3);
-		field3565 = new ArrayList(3);
-		field3566 = new ArrayList();
-		field3569 = new ArrayList();
-		musicPlayerStatus = 0;
-		field3568 = 0;
-		field3570 = 0;
-		field3567 = 0;
+		new Object();
+		field3601 = new int[33];
+		field3601[0] = 0;
+		int var0 = 2;
+
+		for (int var1 = 1; var1 < 33; ++var1) {
+			field3601[var1] = var0 - 1;
+			var0 += var0;
+		}
+
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-81250696"
+		descriptor = "(IIIZIZI)V",
+		garbageValue = "1674298401"
 	)
-	public static boolean method6240(int var0) {
-		return var0 >= WorldMapDecorationType.field3999.id && var0 <= WorldMapDecorationType.field4007.id || var0 == WorldMapDecorationType.field3995.id;
+	@Export("doWorldSorting")
+	static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
+		if (var0 < var1) {
+			int var6 = (var0 + var1) / 2;
+			int var7 = var0;
+			World var8 = SoundSystem.World_worlds[var6];
+			SoundSystem.World_worlds[var6] = SoundSystem.World_worlds[var1];
+			SoundSystem.World_worlds[var1] = var8;
+
+			for (int var9 = var0; var9 < var1; ++var9) {
+				if (class216.method4415(SoundSystem.World_worlds[var9], var8, var2, var3, var4, var5) <= 0) {
+					World var10 = SoundSystem.World_worlds[var9];
+					SoundSystem.World_worlds[var9] = SoundSystem.World_worlds[var7];
+					SoundSystem.World_worlds[var7++] = var10;
+				}
+			}
+
+			SoundSystem.World_worlds[var1] = SoundSystem.World_worlds[var7];
+			SoundSystem.World_worlds[var7] = var8;
+			doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
+			doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
+		}
+
 	}
 }

@@ -3,41 +3,45 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sw")
+@ObfuscatedName("te")
 @Implements("HttpContentType")
 public class HttpContentType {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Lsw;"
+		descriptor = "Lte;"
 	)
 	@Export("APPLICATION_JSON")
 	public static final HttpContentType APPLICATION_JSON;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lsw;"
+		descriptor = "Lte;"
 	)
 	@Export("TEXT_PLAIN")
 	static final HttpContentType TEXT_PLAIN;
-	@ObfuscatedName("ao")
-	@Export("PcmPlayer_stereo")
-	protected static boolean PcmPlayer_stereo;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lte;"
+	)
+	@Export("APPLICATION_X_WWW_FORM_URLENCODED")
+	static final HttpContentType APPLICATION_X_WWW_FORM_URLENCODED;
+	@ObfuscatedName("am")
 	@Export("contentType")
 	String contentType;
 
 	static {
 		APPLICATION_JSON = new HttpContentType("application/json");
 		TEXT_PLAIN = new HttpContentType("text/plain");
+		APPLICATION_X_WWW_FORM_URLENCODED = new HttpContentType("application/x-www-form-urlencoded");
 	}
 
 	HttpContentType(String var1) {
 		this.contentType = var1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "562440901"
+		garbageValue = "1075959671"
 	)
 	@Export("getValue")
 	public String getValue() {

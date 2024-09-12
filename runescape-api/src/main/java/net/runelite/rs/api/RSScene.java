@@ -239,8 +239,20 @@ public interface RSScene extends Scene
 	void setOffsetOccluder(int offset);
 
 	@Construct
-	RSIntProjection newIntProjection(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int var6, int var7);
+	RSIntProjection newIntProjection(int cameraX, int cameraY, int cameraZ, int cameraPitch, int cameraYaw, int entityX, int entityY);
 
 	void setTargetTile(int targetX, int targetY);
 	void hoverTile(int x, int y, int plane);
+
+	@Import("Scene_entityX")
+	int getEntityX();
+
+	@Import("Scene_entityX")
+	void setEntityX(int x);
+
+	@Import("Scene_entityY")
+	int getEntityY();
+
+	@Import("Scene_entityY")
+	void setEntityY(int y);
 }

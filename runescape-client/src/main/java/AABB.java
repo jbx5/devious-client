@@ -3,43 +3,44 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("hx")
+@ObfuscatedName("jn")
 @Implements("AABB")
 public class AABB {
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 442049133
+		intValue = 1368567893
 	)
 	@Export("xMid")
 	int xMid;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -611126407
+		intValue = -1461851909
 	)
 	@Export("yMid")
 	int yMid;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -516130487
+		intValue = -2145173519
 	)
 	@Export("zMid")
 	int zMid;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 801736685
+		intValue = 1947043695
 	)
 	@Export("xMidOffset")
 	int xMidOffset;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -896658503
+		intValue = 247717375
 	)
 	@Export("yMidOffset")
 	int yMidOffset;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 1361964651
+		intValue = 931924417
 	)
 	@Export("zMidOffset")
 	int zMidOffset;
@@ -53,62 +54,38 @@ public class AABB {
 		this.zMidOffset = var6;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Lob;Lob;I)Z",
-		garbageValue = "501818057"
+		descriptor = "(ILdt;ZI)I",
+		garbageValue = "-1789708720"
 	)
-	public static boolean method4126(AbstractArchive var0, AbstractArchive var1) {
-		WorldMapElement.WorldMapElement_archive = var1;
-		if (!var0.isFullyLoaded()) {
-			return false;
-		} else {
-			WorldMapElement.WorldMapElement_count = var0.getGroupFileCount(35);
-			class442.WorldMapElement_cached = new WorldMapElement[WorldMapElement.WorldMapElement_count];
-
-			for (int var2 = 0; var2 < WorldMapElement.WorldMapElement_count; ++var2) {
-				byte[] var3 = var0.takeFile(35, var2);
-				class442.WorldMapElement_cached[var2] = new WorldMapElement(var2);
-				if (var3 != null) {
-					class442.WorldMapElement_cached[var2].decode(new Buffer(var3));
-					class442.WorldMapElement_cached[var2].method4791();
+	static int method5140(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : class464.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = FontName.Widget_unpackTargetMask(class310.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var3.dataText;
 				}
+
+				return 1;
+			} else {
+				return 2;
+			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
 			}
 
-			return true;
+			return 1;
 		}
-	}
-
-	@ObfuscatedName("mf")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "961631308"
-	)
-	@Export("formatItemStacks")
-	static final String formatItemStacks(int var0) {
-		String var1 = Integer.toString(var0);
-
-		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
-			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
-		}
-
-		if (var1.length() > 9) {
-			return " " + TransformationMatrix.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
-		} else {
-			return var1.length() > 6 ? " " + TransformationMatrix.colorStartTag(16777215) + var1.substring(0, var1.length() - 4) + "K" + " " + " (" + var1 + ")" + "</col>" : " " + TransformationMatrix.colorStartTag(16776960) + var1 + "</col>";
-		}
-	}
-
-	@ObfuscatedName("ox")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1667309603"
-	)
-	static final void method4125() {
-		for (int var0 = 0; var0 < ConcurrentMidiTask.topLevelWorldView.playerUpdateManager.playerCount; ++var0) {
-			Player var1 = ConcurrentMidiTask.topLevelWorldView.players[ConcurrentMidiTask.topLevelWorldView.playerUpdateManager.playerIndices[var0]];
-			var1.method2446();
-		}
-
 	}
 }

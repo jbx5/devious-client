@@ -1178,7 +1178,7 @@ public abstract class RSClientMixin implements RSClient
 			else
 			{
 				int idx = menu.getMenuOptionCount() - 1;
-				if ((mouseLastButton == 1 || !client.isMouseCam() && mouseLastButton == 4) && copy$shouldLeftClickOpenMenu())
+				if ((mouseLastButton == 1 || !client.isMouseCam() && mouseLastButton == 4) && copy$shouldLeftClickOpenMenu(menu.getMenuOpcodes()[menu.getMenuOptionCount() - 1], menu.getMenuForceLeftClick()[menu.getMenuOptionCount() - 1]))
 				{
 					mouseLastButton = 2;
 				}
@@ -2237,9 +2237,9 @@ public abstract class RSClientMixin implements RSClient
 	@Copy("shouldLeftClickOpenMenu")
 	@Replace("shouldLeftClickOpenMenu")
 	@SuppressWarnings("InfiniteRecursion")
-	boolean copy$shouldLeftClickOpenMenu()
+	final boolean copy$shouldLeftClickOpenMenu(int menuOpcodes, boolean menuShiftClick)
 	{
-		if (copy$shouldLeftClickOpenMenu())
+		if (copy$shouldLeftClickOpenMenu(menuOpcodes, menuShiftClick))
 		{
 			return true;
 		}

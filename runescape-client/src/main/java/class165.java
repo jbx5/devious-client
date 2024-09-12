@@ -3,123 +3,95 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gl")
-public class class165 {
-	@ObfuscatedName("ab")
+@ObfuscatedName("gx")
+public class class165 extends class150 {
+	@ObfuscatedName("wc")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		longValue = -7709890567496579347L
+		longValue = -1146938620143981425L
 	)
-	long field1787;
-	@ObfuscatedName("ay")
+	long field1810;
+	@ObfuscatedName("ae")
+	String field1808;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		longValue = 5699299738200003005L
+		intValue = -1843206009
 	)
-	public long field1784;
-	@ObfuscatedName("an")
+	int field1807;
+	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "Lfz;"
 	)
-	IterableNodeDeque field1786;
+	final class153 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;)V"
+		descriptor = "(Lfz;)V"
 	)
-	public class165(Buffer var1) {
-		this.field1784 = -1L;
-		this.field1786 = new IterableNodeDeque();
-		this.method3547(var1);
+	class165(class153 var1) {
+		this.this$0 = var1;
+		this.field1810 = -1L;
+		this.field1808 = null;
+		this.field1807 = 0;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lvg;I)V",
-		garbageValue = "-169478463"
+		descriptor = "(Lvf;B)V",
+		garbageValue = "127"
 	)
-	void method3547(Buffer var1) {
-		this.field1787 = var1.readLong();
-		this.field1784 = var1.readLong();
+	void vmethod3778(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1810 = var1.readLong();
+		}
 
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
-			Object var3;
-			if (var2 == 1) {
-				var3 = new class160(this);
-			} else if (var2 == 4) {
-				var3 = new class171(this);
-			} else if (var2 == 3) {
-				var3 = new class156(this);
-			} else if (var2 == 2) {
-				var3 = new class154(this);
-			} else {
-				if (var2 != 5) {
-					throw new RuntimeException("");
-				}
+		this.field1808 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1807 = var1.readUnsignedShort();
+	}
 
-				var3 = new class161(this);
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(Lgo;B)V",
+		garbageValue = "32"
+	)
+	void vmethod3771(ClanSettings var1) {
+		var1.method3603(this.field1810, this.field1808, this.field1807);
+	}
+
+	@ObfuscatedName("lv")
+	@ObfuscatedSignature(
+		descriptor = "(Ldd;IIIIIIIIIII)V",
+		garbageValue = "-1812243666"
+	)
+	static void method3680(WorldView var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10) {
+		NodeDeque var11 = var0.pendingSpawns;
+		PendingSpawn var12 = null;
+
+		for (PendingSpawn var13 = (PendingSpawn)var11.last(); var13 != null; var13 = (PendingSpawn)var11.previous()) {
+			if (var13.plane == var1 && var2 == var13.x && var3 == var13.y && var4 == var13.type) {
+				var12 = var13;
+				break;
 			}
-
-			((class164)var3).vmethod3611(var1);
-			this.field1786.addFirst((Node)var3);
 		}
 
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(Lgx;B)V",
-		garbageValue = "111"
-	)
-	public void method3554(ClanChannel var1) {
-		if (var1.key == this.field1787 && var1.field1803 == this.field1784) {
-			for (class164 var2 = (class164)this.field1786.last(); var2 != null; var2 = (class164)this.field1786.previous()) {
-				var2.vmethod3612(var1);
-			}
-
-			++var1.field1803;
-		} else {
-			throw new RuntimeException("");
-		}
-	}
-
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)I",
-		garbageValue = "-2142008967"
-	)
-	static final int method3549(int var0, int var1, int var2, int var3) {
-		return var0 * var2 + var3 * var1 >> 16;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lvr;",
-		garbageValue = "-634951883"
-	)
-	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{FillMode.field5464, FillMode.SOLID, FillMode.field5461};
-	}
-
-	@ObfuscatedName("me")
-	@ObfuscatedSignature(
-		descriptor = "([Lnq;Lnq;ZI)V",
-		garbageValue = "-1240491780"
-	)
-	@Export("revalidateWidgetScroll")
-	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
-		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth : var1.width;
-		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight : var1.height;
-		class134.resizeInterface(var0, var1.id, var3, var4, var2);
-		if (var1.children != null) {
-			class134.resizeInterface(var1.children, var1.id, var3, var4, var2);
+		if (var12 == null) {
+			var12 = new PendingSpawn();
+			var12.plane = var1;
+			var12.type = var4;
+			var12.x = var2;
+			var12.y = var3;
+			var12.field1221 = -1;
+			class254.method5223(var0, var12);
+			var11.addFirst(var12);
 		}
 
-		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id);
-		if (var5 != null) {
-			ClanChannel.method3594(var5.group, var3, var4, var2);
-		}
-
-		if (var1.contentType == 1337) {
-		}
-
+		var12.field1215 = var5;
+		var12.field1214 = var6;
+		var12.field1212 = var7;
+		var12.delay = var9;
+		var12.hitpoints = var10;
+		var12.method2628(var8);
 	}
 }

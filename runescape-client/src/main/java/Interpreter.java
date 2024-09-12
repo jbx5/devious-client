@@ -5,70 +5,64 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cw")
+@ObfuscatedName("cs")
 @Implements("Interpreter")
 public class Interpreter {
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@Export("Interpreter_intLocals")
 	static int[] Interpreter_intLocals;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ax")
+	@Export("Interpreter_stringLocals")
+	static String[] Interpreter_stringLocals;
+	@ObfuscatedName("aq")
 	@Export("Interpreter_arrayLengths")
 	static int[] Interpreter_arrayLengths;
-	@ObfuscatedName("am")
+	@ObfuscatedName("af")
 	@Export("Interpreter_arrays")
 	static int[][] Interpreter_arrays;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@Export("Interpreter_intStack")
 	static int[] Interpreter_intStack;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 331745613
-	)
-	@Export("Interpreter_intStackSize")
-	static int Interpreter_intStackSize;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
 	@Export("Interpreter_stringStack")
 	static String[] Interpreter_stringStack;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -31753279
+		intValue = -1952627047
 	)
 	@Export("Interpreter_frameDepth")
 	static int Interpreter_frameDepth;
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "[Lcq;"
+		descriptor = "[Lcg;"
 	)
 	@Export("Interpreter_frames")
 	static ScriptFrame[] Interpreter_frames;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lny;"
+	)
+	@Export("scriptDotWidget")
+	static Widget scriptDotWidget;
+	@ObfuscatedName("ao")
 	@Export("Interpreter_calendar")
 	static java.util.Calendar Interpreter_calendar;
-	@ObfuscatedName("av")
+	@ObfuscatedName("as")
 	@Export("Interpreter_MONTHS")
 	static final String[] Interpreter_MONTHS;
-	@ObfuscatedName("ap")
-	static boolean field861;
-	@ObfuscatedName("ak")
-	static boolean field857;
-	@ObfuscatedName("ai")
-	static ArrayList field862;
-	@ObfuscatedName("at")
+	@ObfuscatedName("aj")
+	static boolean field882;
+	@ObfuscatedName("av")
+	static boolean field886;
+	@ObfuscatedName("aw")
+	static ArrayList field870;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -2116681005
+		intValue = 1265042229
 	)
-	static int field863;
-	@ObfuscatedName("bj")
-	static final double field865;
-	@ObfuscatedName("df")
-	@ObfuscatedSignature(
-		descriptor = "[Lvb;"
-	)
-	@Export("worldSelectFlagSprites")
-	static IndexedSprite[] worldSelectFlagSprites;
-	@ObfuscatedName("jr")
-	@Export("regionLandArchiveIds")
-	static int[] regionLandArchiveIds;
+	static int field885;
+	@ObfuscatedName("bd")
+	static final double field890;
 
 	static {
 		Interpreter_arrayLengths = new int[5];
@@ -79,19 +73,40 @@ public class Interpreter {
 		Interpreter_frames = new ScriptFrame[50];
 		Interpreter_calendar = java.util.Calendar.getInstance();
 		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		field861 = false;
-		field857 = false;
-		field862 = new ArrayList();
-		field863 = 0;
-		field865 = Math.log(2.0D);
+		field882 = false;
+		field886 = false;
+		field870 = new ArrayList();
+		field885 = 0;
+		field890 = Math.log(2.0D);
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-247096033"
+		descriptor = "(CLpx;I)I",
+		garbageValue = "-559274097"
 	)
-	public static int method2162(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
+	@Export("lowercaseChar")
+	static int lowercaseChar(char var0, Language var1) {
+		int var2 = var0 << 4;
+		if (Character.isUpperCase(var0) || Character.isTitleCase(var0)) {
+			var0 = Character.toLowerCase(var0);
+			var2 = (var0 << 4) + 1;
+		}
+
+		if (var0 == 241 && var1 == Language.Language_ES) {
+			var2 = 1762;
+		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("ax")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lvo;",
+		garbageValue = "1762386612"
+	)
+	@Export("FillMode_values")
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.SOLID, FillMode.field5494, FillMode.field5496};
 	}
 }

@@ -4,57 +4,45 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ed")
+@ObfuscatedName("ew")
 @Implements("TileItem")
 public final class TileItem extends Renderable {
-	@ObfuscatedName("kr")
-	@ObfuscatedSignature(
-		descriptor = "[Lvc;"
-	)
-	@Export("mapDotSprites")
-	static SpritePixels[] mapDotSprites;
-	@ObfuscatedName("vo")
-	@ObfuscatedSignature(
-		descriptor = "Ldb;"
-	)
-	@Export("clientPreferences")
-	static ClientPreferences clientPreferences;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = -1712066043
+		intValue = -805118597
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 2041724187
+		intValue = 138922953
 	)
 	@Export("quantity")
 	int quantity;
-	@ObfuscatedName("an")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 665099435
+		intValue = -767231565
 	)
 	@Export("visibleTime")
 	int visibleTime;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1428332859
+		intValue = 628045479
 	)
 	@Export("despawnTime")
 	int despawnTime;
 	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = -1917896671
+		intValue = -88066569
 	)
 	@Export("ownership")
 	int ownership;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
 	@Export("isPrivate")
 	boolean isPrivate;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1547851363
+		intValue = -1685310517
 	)
 	@Export("flag")
 	int flag;
@@ -63,22 +51,22 @@ public final class TileItem extends Renderable {
 		this.flag = 31;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "2031190108"
+		garbageValue = "1072468760"
 	)
 	@Export("setFlag")
 	void setFlag(int var1) {
 		this.flag = var1;
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "1579309033"
+		garbageValue = "-1727822"
 	)
-	boolean method2843(int var1) {
+	boolean method2980(int var1) {
 		if (var1 >= 0 && var1 <= 4) {
 			return (this.flag & 1 << var1) != 0;
 		} else {
@@ -86,29 +74,37 @@ public final class TileItem extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhr;",
-		garbageValue = "-1547633874"
+		descriptor = "(B)Ljm;",
+		garbageValue = "-75"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return Player.ItemDefinition_get(this.id).getModel(this.quantity);
+		return MouseRecorder.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
-	@ObfuscatedName("bw")
+	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(ILdp;ZI)I",
-		garbageValue = "-1356856669"
+		descriptor = "(I)[Lvt;",
+		garbageValue = "-1474620512"
 	)
-	static int method2849(int var0, Script var1, boolean var2) {
-		if (var0 == 6809) {
-			int var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			ObjectComposition var4 = class222.getObjectDefinition(var3);
-			Interpreter.Interpreter_stringStack[++class230.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
-			return 1;
-		} else {
-			return 2;
+	public static IndexedSprite[] method2983() {
+		IndexedSprite[] var0 = new IndexedSprite[SpriteBufferProperties.SpriteBuffer_spriteCount];
+
+		for (int var1 = 0; var1 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var1) {
+			IndexedSprite var2 = var0[var1] = new IndexedSprite();
+			var2.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
+			var2.height = SpriteBufferProperties.SpriteBuffer_spriteHeight;
+			var2.xOffset = HttpAuthenticationHeader.SpriteBuffer_xOffsets[var1];
+			var2.yOffset = Login.SpriteBuffer_yOffsets[var1];
+			var2.subWidth = GrandExchangeEvents.SpriteBuffer_spriteWidths[var1];
+			var2.subHeight = ModelData0.SpriteBuffer_spriteHeights[var1] * 1445511424;
+			var2.palette = SpriteBufferProperties.SpriteBuffer_spritePalette;
+			var2.pixels = MusicPatchPcmStream.SpriteBuffer_pixels[var1];
 		}
+
+		class151.method3492();
+		return var0;
 	}
 }
