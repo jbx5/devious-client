@@ -75,6 +75,8 @@ import static net.runelite.api.ItemID.AMULET_OF_GLORY_T1;
 import static net.runelite.api.ItemID.AMULET_OF_GLORY_T2;
 import static net.runelite.api.ItemID.AMULET_OF_GLORY_T3;
 import static net.runelite.api.ItemID.AMULET_OF_GLORY_T5;
+import static net.runelite.api.ItemID.AMULET_OF_RANCOUR;
+import static net.runelite.api.ItemID.AMULET_OF_RANCOUR_S;
 import static net.runelite.api.ItemID.AMULET_OF_TORTURE;
 import static net.runelite.api.ItemID.AMULET_OF_TORTURE_OR;
 import static net.runelite.api.ItemID.AMYLASE_CRYSTAL;
@@ -1035,6 +1037,7 @@ public enum ItemMapping
 	ITEM_TZHAARKETOM_ORNAMENT_KIT(TZHAARKETOM_ORNAMENT_KIT, TZHAARKETOM_T),
 	ITEM_DRAGON_HUNTER_CROSSBOW(DRAGON_HUNTER_CROSSBOW, DRAGON_HUNTER_CROSSBOW_B, DRAGON_HUNTER_CROSSBOW_T),
 	ITEM_VOIDWAKER(VOIDWAKER, VOIDWAKER_DEADMAN),
+	ITEM_AMULET_OF_RANCOUR(AMULET_OF_RANCOUR, AMULET_OF_RANCOUR_S),
 
 	// Slayer helm/black mask
 	ITEM_BLACK_MASK(BLACK_MASK, true, 1L, BLACK_MASK, SLAYER_HELMET),
