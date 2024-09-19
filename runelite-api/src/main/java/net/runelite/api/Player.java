@@ -107,6 +107,13 @@ public interface Player extends Actor
 	int getSkullIcon();
 
 	/**
+	 * Sets the displayed skull icon of the player.
+	 * @param skullIcon The id of the skull icon, or -1 to remove the skull icon.
+	 * @see SkullIcon
+	 */
+	void setSkullIcon(@MagicConstant(valuesFromClass = SkullIcon.class) int skullIcon);
+
+	/**
 	 * This is almost always not what you want
 	 * @return literal 0
 	 */
