@@ -27,14 +27,13 @@ package net.runelite.api.events;
 
 import lombok.Data;
 import net.runelite.api.Player;
-import net.runelite.api.SkullIcon;
 
 @Data
 public class PlayerSkullChanged
 {
 	private final Player player;
 
-	private final SkullIcon oldSkullIcon;
+	private final int oldSkullIcon;
 
-	private final SkullIcon newSkullIcon;
+	private final int newSkullIcon;
 }

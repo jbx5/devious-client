@@ -24,11 +24,14 @@
  */
 package net.runelite.mixins;
 
+import java.awt.Polygon;
+import java.awt.Shape;
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.api.ActorSpotAnim;
 import net.runelite.api.HeadIcon;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
-import net.runelite.api.SkullIcon;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.events.OverheadPrayerChanged;
 import net.runelite.api.events.PlayerChanged;
@@ -46,19 +49,6 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSModel;
 import net.runelite.rs.api.RSPlayer;
 import net.runelite.rs.api.RSUsername;
-
-import java.awt.Polygon;
-import java.awt.Shape;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import static net.runelite.api.SkullIcon.DEAD_MAN_FIVE;
-import static net.runelite.api.SkullIcon.DEAD_MAN_FOUR;
-import static net.runelite.api.SkullIcon.DEAD_MAN_ONE;
-import static net.runelite.api.SkullIcon.DEAD_MAN_THREE;
-import static net.runelite.api.SkullIcon.DEAD_MAN_TWO;
-import static net.runelite.api.SkullIcon.SKULL;
-import static net.runelite.api.SkullIcon.SKULL_FIGHT_PIT;
 
 @Mixin(RSPlayer.class)
 public abstract class RSPlayerMixin implements RSPlayer
@@ -109,31 +99,79 @@ public abstract class RSPlayerMixin implements RSPlayer
 		oldHeadIcon = getRsOverheadIcon();
 	}
 
-	@Inject
+	/*@Inject
 	@Override
 	public HeadIcon getOverheadIcon()
 	{
 		return getHeadIcon(getRsOverheadIcon());
+	}*/
+
+	@Inject
+	@Override
+	public HeadIcon getOverheadIcon()
+	{
+		switch (this.getRsOverheadIcon())
+		{
+			case 0:
+				return HeadIcon.MELEE;
+			case 1:
+				return HeadIcon.RANGED;
+			case 2:
+				return HeadIcon.MAGIC;
+			case 3:
+				return HeadIcon.RETRIBUTION;
+			case 4:
+				return HeadIcon.SMITE;
+			case 5:
+				return HeadIcon.REDEMPTION;
+			case 6:
+				return HeadIcon.RANGE_MAGE;
+			case 7:
+				return HeadIcon.RANGE_MELEE;
+			case 8:
+				return HeadIcon.MAGE_MELEE;
+			case 9:
+				return HeadIcon.RANGE_MAGE_MELEE;
+			case 10:
+				return HeadIcon.WRATH;
+			case 11:
+				return HeadIcon.SOUL_SPLIT;
+			case 12:
+				return HeadIcon.DEFLECT_MELEE;
+			case 13:
+				return HeadIcon.DEFLECT_RANGE;
+			case 14:
+				return HeadIcon.DEFLECT_MAGE;
+			default:
+				return null;
+		}
 	}
 
 	@Inject
 	@FieldHook("headIconPk")
 	public void skullChanged(int idx)
 	{
-		final SkullIcon skullIcon = skullFromInt(getRsSkullIcon());
-		if (getRsSkullIcon() != oldSkullIcon)
+		final int skullIcon = getRsSkullIcon();
+		if (skullIcon != oldSkullIcon)
 		{
 			client.getCallbacks().post(
-				new PlayerSkullChanged(this, skullFromInt(getRsSkullIcon()), skullIcon));
+				new PlayerSkullChanged(this, oldSkullIcon, skullIcon));
 		}
-		oldSkullIcon = getRsSkullIcon();
+		oldSkullIcon = skullIcon;
 	}
 
 	@Inject
 	@Override
-	public SkullIcon getSkullIcon()
+	public int getSkullIcon()
 	{
-		return skullFromInt(getRsSkullIcon());
+		return this.getRsSkullIcon();
+	}
+
+	@Inject
+	@Override
+	public void setSkullIcon(int skullIcon)
+	{
+		this.setRsSkullIcon(skullIcon);
 	}
 
 	@Inject
@@ -145,30 +183,6 @@ public abstract class RSPlayerMixin implements RSPlayer
 		}
 
 		return HeadIcon.values()[overheadIcon];
-	}
-
-	@Inject
-	private SkullIcon skullFromInt(int skull)
-	{
-		switch (skull)
-		{
-			case 0:
-				return SKULL;
-			case 1:
-				return SKULL_FIGHT_PIT;
-			case 8:
-				return DEAD_MAN_FIVE;
-			case 9:
-				return DEAD_MAN_FOUR;
-			case 10:
-				return DEAD_MAN_THREE;
-			case 11:
-				return DEAD_MAN_TWO;
-			case 12:
-				return DEAD_MAN_ONE;
-			default:
-				return null;
-		}
 	}
 
 	@Inject
