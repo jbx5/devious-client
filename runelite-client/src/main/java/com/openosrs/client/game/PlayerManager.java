@@ -8,6 +8,7 @@ import net.runelite.api.ItemComposition;
 import net.runelite.api.ItemID;
 import net.runelite.api.NPC;
 import net.runelite.api.Player;
+import net.runelite.api.SkullIcon;
 import net.runelite.api.WorldType;
 import net.runelite.api.events.AnimationChanged;
 import net.runelite.api.events.PlayerCompositionChanged;
@@ -420,7 +421,7 @@ public class PlayerManager
 
 		if (client.getWorldType().stream().noneMatch(x -> x == WorldType.HIGH_RISK))
 		{
-			if (player.getPlayer().getSkullIcon() == null)
+			if (player.getPlayer().getSkullIcon() == SkullIcon.NONE)
 			{
 				removeEntries(player.getRiskedGear(), player.getPrayerLevel() < 25 ? 3 : 4);
 			}
