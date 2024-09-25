@@ -1,9 +1,11 @@
-# Contributing to runelite
+# Contributing to RuneLite
 
-We'd love for you to contribute to our source code and to make runelite even better than it is
+We'd love for you to contribute to our source code and to make RuneLite even better than it is
 today!
 
-Check out the Developer's Guide on the [wiki](https://github.com/runelite/runelite/wiki) for setup instructions, and general tips and tricks.
+Check out the [Developer Guide](https://github.com/runelite/runelite/wiki/Developer-Guide) for setup instructions, and general tips and tricks.
+
+If you want to make or contribute to a plugin hub plugin, this is *not* the correct guide; instead read the plugin hub development guide, which is linked from the developer guide.
 
 Here are the guidelines we'd like you to follow:
 
@@ -14,7 +16,7 @@ Here are the guidelines we'd like you to follow:
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to contribute to runelite, please join our [Discord](https://discord.gg/r287wN6bkc) server.
+If you have questions about how to contribute to RuneLite, please join our [Discord][discord] server.
 
 ## <a name="issue"></a> Found an Issue?
 
@@ -43,8 +45,10 @@ quickly:
 ### Submitting a Pull Request
 Before you submit your pull request consider the following guidelines:
 
-* Search [GitHub](https://github.com/runelite-extended/runelite/pulls) for an open or closed Pull Request
+* Search [GitHub](https://github.com/runelite/runelite/pulls) for an open or closed Pull Request
   that relates to your submission. You don't want to duplicate effort.
+* If adding a feature or enhancement, we recommend you first [start a discussion for
+  it](https://github.com/runelite/runelite/discussions) before submitting a Pull Request.
 * [Fork](https://help.github.com/articles/fork-a-repo/) this repo.
 * [Clone](https://help.github.com/articles/cloning-a-repository/) your copy.
     ```shell
@@ -52,7 +56,7 @@ Before you submit your pull request consider the following guidelines:
     cd runelite/
     ```
 * After cloning, set a new remote [upstream](https://help.github.com/articles/configuring-a-remote-for-a-fork/) (this helps to keep your fork up to date)
-
+    
     ```shell
     git remote add upstream https://github.com/open-osrs/runelite.git
     ```
@@ -82,7 +86,7 @@ In GitHub, send a pull request to `runelite:master`.
 If we suggest changes, then:
 
 * Make the required updates.
-* Re-run runelite and make sure any and all tests are still passing.
+* Re-run RuneLite and make sure any and all tests are still passing.
 * Commit your changes to your branch (e.g. `my-fix-branch`).
 * Push the changes to your GitHub repository (this will update your Pull Request).
 
