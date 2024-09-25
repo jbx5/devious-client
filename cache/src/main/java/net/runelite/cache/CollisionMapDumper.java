@@ -124,10 +124,11 @@ public class CollisionMapDumper
 	public File writeToFile(String outputDir)
 	{
 		byte[] bytes = toBytes();
-		if (outputDir == null)
+		if (outputDir == null || outputDir.equals("null/regions"))
 		{
 			outputDir = "runelite-client/src/main/resources/regions";
 		}
+		System.out.println("Writing collision map to " + outputDir);
 		File fileLoc = new File(outputDir);
 		if (!fileLoc.isFile())
 		{
