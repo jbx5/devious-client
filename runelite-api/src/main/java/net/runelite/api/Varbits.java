@@ -939,6 +939,10 @@ public final class Varbits
 	 */
 	public static final int COLOSSEUM_DOOM = 9801;
 
+	public static final int BUFF_GOADING_POTION = 11294;
+
+	public static final int BUFF_PRAYER_REGENERATION = 11361;
+
 	/**
 	 * See <a href="https://oldschool.runescape.wiki/w/File:Ernest_the_Chicken_-_Oil_can_map.png">Draynor manor basement</a>
 	 */
