@@ -8,10 +8,10 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSTilesProjection;
+import net.runelite.rs.api.RSFloatProjection;
 
-@Mixin(RSTilesProjection.class)
-public abstract class RSTilesProjectionMixin implements RSTilesProjection
+@Mixin(RSFloatProjection.class)
+public abstract class RSFloatProjectionMixin implements RSFloatProjection
 {
 	@Shadow("client")
 	private static RSClient client;
@@ -34,5 +34,12 @@ public abstract class RSTilesProjectionMixin implements RSTilesProjection
 		{
 			client.getDrawCallbacks().drawSceneTileModel(scene, sceneTileModel, x, z);
 		}
+	}
+
+	@Inject
+	@Override
+	public float[] getProjection()
+	{
+		throw new UnsupportedOperationException("Not implemented yet");
 	}
 }

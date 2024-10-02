@@ -142,7 +142,7 @@ public enum class6 implements Enum {
 		} else if (var0 < 3600) {
 			return class36.method706(var0, var1, var2);
 		} else if (var0 < 3700) {
-			return TilesProjection.method5138(var0, var1, var2);
+			return FloatProjection.method5138(var0, var1, var2);
 		} else if (var0 < 3800) {
 			return WorldMapDecoration.method6190(var0, var1, var2);
 		} else if (var0 < 3900) {

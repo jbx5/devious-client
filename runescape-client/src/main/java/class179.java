@@ -142,7 +142,7 @@ public class class179 extends DualNode {
 			ApproximateRouteStrategy.field477.method9713();
 		}
 
-		TilesProjection.method5136();
+		FloatProjection.method5136();
 		class47.method894();
 		UserComparator10.method3226();
 		class182.field1864.clear();

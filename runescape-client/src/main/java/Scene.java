@@ -2612,7 +2612,7 @@ public class Scene extends Renderable {
 		this.Scene_cameraYTile = this.Scene_cameraZ / 128;
 		this.Scene_entityX = (int)var25.method8141((float)var12, 0.0F, (float)var13) / 128;
 		this.Scene_entityY = (int)var25.method8143((float)var12, 0.0F, (float)var13) / 128;
-		TilesProjection var28 = new TilesProjection(var27);
+		FloatProjection var28 = new FloatProjection(var27);
 		this.updateVisibleTilesAndOccluders(var28, var14);
 	}
 
