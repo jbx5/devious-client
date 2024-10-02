@@ -34,6 +34,7 @@ import net.runelite.api.SceneTileModel;
 import net.runelite.api.SceneTilePaint;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
+import net.runelite.api.WorldView;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.PreMapLoad;
@@ -1487,6 +1488,15 @@ public abstract class RSSceneMixin implements RSScene
 	@Inject
 	public static final void loadRegion()
 	{
-		client.getCallbacks().post(new PreMapLoad(client.getWorldView(), client.getWorldView().getScene()));
+		final WorldView worldView = client.getWorldView();
+		final RSScene scene = (RSScene) worldView.getScene();
+		client.getCallbacks().post(new PreMapLoad(worldView, scene));
+
+		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			drawCallbacks.loadScene(scene);
+			drawCallbacks.loadScene(worldView, scene);
+		}
 	}
 }
