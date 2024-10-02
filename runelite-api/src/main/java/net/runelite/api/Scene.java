@@ -137,7 +137,9 @@ public interface Scene extends Renderable
 	 */
 	void removeGroundObject(int plane, int x, int y);
 
-	void generateHouses();
+	void buildRoofs();
+
+	int[][][] getRoofs();
 
 	void setRoofRemovalMode(int flags);
 
