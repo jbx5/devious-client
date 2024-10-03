@@ -149,7 +149,7 @@ public class DevToolsPlugin extends Plugin
 	private DevToolsButton inventory;
 	private DevToolsButton projectiles;
 	private DevToolsButton location;
-	private DevToolsButton chunkBorders;
+	private DevToolsButton zoneBorders;
 	private DevToolsButton mapSquares;
 	private DevToolsButton loadingLines;
 	private DevToolsButton validMovement;
@@ -167,7 +167,7 @@ public class DevToolsPlugin extends Plugin
 	private DevToolsButton soundEffects;
 	private DevToolsButton scriptInspector;
 	private DevToolsButton inventoryInspector;
-	private DevToolsButton roofs;
+	private DevToolsButton tileFlags;
 	private DevToolsButton shell;
 	private DevToolsButton menus;
 	private DevToolsButton uiDefaultsInspector;
@@ -253,7 +253,7 @@ public class DevToolsPlugin extends Plugin
 		tileLocation = new DevToolsButton("Tile Location");
 		cameraPosition = new DevToolsButton("Camera Position");
 
-		chunkBorders = new DevToolsButton("Chunk Borders");
+		zoneBorders = new DevToolsButton("Zone Borders");
 		mapSquares = new DevToolsButton("Map Squares");
 		loadingLines = new DevToolsButton("Loading Lines");
 
@@ -270,7 +270,7 @@ public class DevToolsPlugin extends Plugin
 		soundEffects = new DevToolsButton("Sound Effects");
 		scriptInspector = new DevToolsButton("Script Inspector");
 		inventoryInspector = new DevToolsButton("Inventory Inspector");
-		roofs = new DevToolsButton("Roofs");
+		tileFlags = new DevToolsButton("Tile flags");
 		shell = new DevToolsButton("Shell");
 		menus = new DevToolsButton("Menus");
 

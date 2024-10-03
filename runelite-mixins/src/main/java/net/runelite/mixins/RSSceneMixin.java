@@ -34,8 +34,10 @@ import net.runelite.api.SceneTileModel;
 import net.runelite.api.SceneTilePaint;
 import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
+import net.runelite.api.WorldView;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
+import net.runelite.api.events.PreMapLoad;
 import net.runelite.api.hooks.DrawCallbacks;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
@@ -1129,6 +1131,13 @@ public abstract class RSSceneMixin implements RSScene
 
 	@Inject
 	@Override
+	public int[][][] getRoofs()
+	{
+		return rl$tiles;
+	}
+
+	@Inject
+	@Override
 	public void setRoofRemovalMode(int roofRemovalMode)
 	{
 		rl$roofRemovalMode = roofRemovalMode;
@@ -1143,7 +1152,7 @@ public abstract class RSSceneMixin implements RSScene
 
 	@Inject
 	@Override
-	public void generateHouses()
+	public void buildRoofs()
 	{
 		rl$tiles = new int[4][104][104];
 		final Tile[][][] tiles = getTiles();
@@ -1473,5 +1482,21 @@ public abstract class RSSceneMixin implements RSScene
 	public void scenePlaneChanged(int idx)
 	{
 		client.getCallbacks().post(new PlaneChanged(getScenePlane()));
+	}
+
+	@MethodHook(value = "loadRegion", end = true)
+	@Inject
+	public static final void loadRegion()
+	{
+		final WorldView worldView = client.getWorldView();
+		final RSScene scene = (RSScene) worldView.getScene();
+		client.getCallbacks().post(new PreMapLoad(worldView, scene));
+
+		final DrawCallbacks drawCallbacks = client.getDrawCallbacks();
+		if (drawCallbacks != null)
+		{
+			drawCallbacks.loadScene(scene);
+			drawCallbacks.loadScene(worldView, scene);
+		}
 	}
 }

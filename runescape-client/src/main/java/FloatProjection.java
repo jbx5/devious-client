@@ -5,8 +5,8 @@ import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
 
 @ObfuscatedName("ja")
-@Implements("TilesProjection")
-public class TilesProjection extends Projection {
+@Implements("FloatProjection")
+public class FloatProjection extends Projection {
 	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
 		descriptor = "Lqf;"
@@ -20,7 +20,7 @@ public class TilesProjection extends Projection {
 	@ObfuscatedSignature(
 		descriptor = "(Lqf;)V"
 	)
-	TilesProjection(TransformationMatrix var1) {
+	FloatProjection(TransformationMatrix var1) {
 		this.projection = new float[3];
 		this.transformationMatrix = var1;
 	}

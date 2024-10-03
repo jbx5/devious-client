@@ -138,4 +138,11 @@ public abstract class RSWorldViewMixin implements RSWorldView
 			}
 		}
 	}
+
+	@Inject
+	@Override
+	public int[] getMapRegions()
+	{
+		return client.getMapRegions();
+	}
 }

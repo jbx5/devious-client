@@ -6,5 +6,6 @@ import net.runelite.mapping.Import;
 public interface RSWorldEntity extends WorldEntity
 {
 	@Import("worldView")
+	@Override
 	RSWorldView getWorldView();
 }
