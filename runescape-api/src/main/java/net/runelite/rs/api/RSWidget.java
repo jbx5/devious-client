@@ -548,6 +548,10 @@ public interface RSWidget extends Widget
 
 	@Import("varTransmitTriggers")
 	@Override
+	int[] getVarTransmitTrigger();
+
+	@Import("varTransmitTriggers")
+	@Override
 	void setVarTransmitTrigger(int[] i);
 
 	@Import("onHold")
