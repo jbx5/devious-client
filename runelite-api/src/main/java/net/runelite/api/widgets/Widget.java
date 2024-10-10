@@ -1023,6 +1023,11 @@ public interface Widget extends Interactable, Identifiable
 	/**
 	 * {@link net.runelite.api.VarPlayer}s that triggers this widgets varTransmitListener
 	 */
+	int[] getVarTransmitTrigger();
+
+	/**
+	 * {@link net.runelite.api.VarPlayer}s that triggers this widgets varTransmitListener
+	 */
 	void setVarTransmitTrigger(int ...trigger);
 
 	/**
