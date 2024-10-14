@@ -1499,4 +1499,11 @@ public abstract class RSSceneMixin implements RSScene
 			drawCallbacks.loadScene(worldView, scene);
 		}
 	}
+
+	@Inject
+	@Override
+	public int[] getMapRegions()
+	{
+		return client.getMapRegions();
+	}
 }
