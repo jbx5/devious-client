@@ -98,7 +98,7 @@ public class ArchiveLoader {
 		garbageValue = "-1294396496"
 	)
 	static void method2534() {
-		Client.packetWriter.addNode(class113.getPacketBufferNode(ClientPacket.field3326, Client.packetWriter.isaacCipher));
+		Client.packetWriter.addNode(class113.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
 		Client.oculusOrbState = 0;
 	}
 }

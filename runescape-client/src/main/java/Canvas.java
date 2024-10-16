@@ -84,7 +84,7 @@ public final class Canvas extends java.awt.Canvas {
 		garbageValue = "1960178698"
 	)
 	static final void method327(String var0) {
-		PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.field3327, Client.packetWriter.isaacCipher);
+		PacketBufferNode var1 = class113.getPacketBufferNode(ClientPacket.FRIEND_ADDUSER, Client.packetWriter.isaacCipher);
 		var1.packetBuffer.writeByte(World.stringCp1252NullTerminatedByteSize(var0));
 		var1.packetBuffer.writeStringCp1252NullTerminated(var0);
 		Client.packetWriter.addNode(var1);

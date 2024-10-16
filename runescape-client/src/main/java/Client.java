@@ -4226,7 +4226,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3523 == var1.serverPacket) {
+				if (ServerPacket.NPC_INFO_LARGE_VIEWPORT_2 == var1.serverPacket) {
 					class420.updateNpcs(class344.worldView, false, var3, 4);
 					var1.serverPacket = null;
 					return true;
@@ -5131,7 +5131,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3520 == var1.serverPacket) {
+				if (ServerPacket.MIDI_SONG == var1.serverPacket) {
 					var21 = var3.readUnsignedShortLE();
 					if (var21 == 65535) {
 						var21 = -1;
@@ -5380,7 +5380,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					return true;
 				}
 
-				if (ServerPacket.field3501 == var1.serverPacket) {
+				if (ServerPacket.NPC_INFO_SMALL_VIEWPORT_1 == var1.serverPacket) {
 					class420.updateNpcs(class344.worldView, true, var3, 4);
 					var1.serverPacket = null;
 					return true;

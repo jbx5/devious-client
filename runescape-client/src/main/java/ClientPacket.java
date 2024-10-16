@@ -356,7 +356,7 @@ public class ClientPacket implements class321 {
 	@ObfuscatedSignature(
 		descriptor = "Lmm;"
 	)
-	public static final ClientPacket field3326;
+	public static final ClientPacket FREECAM_EXIT;
 	@ObfuscatedName("cc")
 	@ObfuscatedSignature(
 		descriptor = "Lmm;"
@@ -426,7 +426,7 @@ public class ClientPacket implements class321 {
 	@ObfuscatedSignature(
 		descriptor = "Lmm;"
 	)
-	public static final ClientPacket field3327;
+	public static final ClientPacket FRIEND_ADDUSER;
 	@ObfuscatedName("dg")
 	@ObfuscatedSignature(
 		descriptor = "Lmm;"
@@ -595,7 +595,7 @@ public class ClientPacket implements class321 {
 		CHAT_SETFILTER = new ClientPacket(66, 3);
 		PING_STATISTICS = new ClientPacket(67, 10);
 		field3394 = new ClientPacket(68, 1);
-		field3326 = new ClientPacket(69, 0);
+		FREECAM_EXIT = new ClientPacket(69, 0);
 		field3381 = new ClientPacket(70, 2);
 		field3382 = new ClientPacket(71, 7);
 		MINIMAP_CLICK = new ClientPacket(72, -1);
@@ -609,7 +609,7 @@ public class ClientPacket implements class321 {
 		OPOBJ4 = new ClientPacket(80, 7);
 		field3392 = new ClientPacket(81, -1);
 		RESUME_OBJDIALOG = new ClientPacket(82, 2);
-		field3327 = new ClientPacket(83, -1);
+		FRIEND_ADDUSER = new ClientPacket(83, -1);
 		OPPLAYER2 = new ClientPacket(84, 3);
 		field3408 = new ClientPacket(85, -1);
 		IGNORE_DELUSER = new ClientPacket(86, -1);

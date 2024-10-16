@@ -336,7 +336,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
 	)
-	public static final ServerPacket field3501;
+	public static final ServerPacket NPC_INFO_SMALL_VIEWPORT_1;
 	@ObfuscatedName("cx")
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
@@ -431,7 +431,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
 	)
-	public static final ServerPacket field3520;
+	public static final ServerPacket MIDI_SONG;
 	@ObfuscatedName("df")
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
@@ -446,7 +446,7 @@ public class ServerPacket {
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
 	)
-	public static final ServerPacket field3523;
+	public static final ServerPacket NPC_INFO_LARGE_VIEWPORT_2;
 	@ObfuscatedName("dl")
 	@ObfuscatedSignature(
 		descriptor = "Lms;"
@@ -806,7 +806,7 @@ public class ServerPacket {
 		field3498 = new ServerPacket(62, 0);
 		PLAYER_INFO = new ServerPacket(63, -2);
 		field3475 = new ServerPacket(64, 7);
-		field3501 = new ServerPacket(65, -2);
+		NPC_INFO_SMALL_VIEWPORT_1 = new ServerPacket(65, -2);
 		field3513 = new ServerPacket(66, 12);
 		field3503 = new ServerPacket(67, 8);
 		LOGOUT_FULL = new ServerPacket(68, 0);
@@ -825,10 +825,10 @@ public class ServerPacket {
 		NPC_SET_SEQUENCE = new ServerPacket(81, 5);
 		SET_PRIVCHATMODE = new ServerPacket(82, 1);
 		NPC_SPOTANIM = new ServerPacket(83, 9);
-		field3520 = new ServerPacket(84, 2);
+		MIDI_SONG = new ServerPacket(84, 2);
 		field3521 = new ServerPacket(85, 0);
 		field3527 = new ServerPacket(86, -1);
-		field3523 = new ServerPacket(87, -2);
+		NPC_INFO_LARGE_VIEWPORT_2 = new ServerPacket(87, -2);
 		field3541 = new ServerPacket(88, -1);
 		field3551 = new ServerPacket(89, 6);
 		field3526 = new ServerPacket(90, -2);
