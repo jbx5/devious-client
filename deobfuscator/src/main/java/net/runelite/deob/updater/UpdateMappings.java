@@ -36,6 +36,7 @@ import net.runelite.deob.deobfuscators.mapping.AnnotationIntegrityChecker;
 import net.runelite.deob.deobfuscators.mapping.AnnotationMapper;
 import net.runelite.deob.deobfuscators.mapping.Mapper;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.deob.deobfuscators.mapping.packets.ModWeathPacketsParser;
 import net.runelite.deob.deobfuscators.transformers.BufferRenameTransformer;
 import net.runelite.deob.deobfuscators.transformers.ClassToPackageTransformer;
 import net.runelite.deob.deobfuscators.transformers.GraphicsObjectTransformer;
@@ -90,6 +91,8 @@ public class UpdateMappings
 
 		AnnotationAdder ad = new AnnotationAdder(group2);
 		ad.run();
+
+		new ModWeathPacketsParser(mapping, group1, group2).run();
 
 		new ScriptOpcodesTransformer().transform(group2);
 		new GraphicsObjectTransformer().transform(group2);
