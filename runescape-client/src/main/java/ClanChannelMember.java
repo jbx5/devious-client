@@ -138,10 +138,10 @@ public class ClanChannelMember {
 					++var34;
 				}
 
-				var30.field5030.method5774(ScriptFrame.getTileHeight(var25, var30.getX(), var30.getY(), var25.plane));
+				var30.worldEntityCoord.setZ(ScriptFrame.getTileHeight(var25, var30.getX(), var30.getY(), var25.plane));
 				var30.worldView.scene.cycle = Client.cycle;
-				var30.updateMovement();
-				var25.scene.drawEntity(var25.plane, var30.getX(), var30.getY(), var30.method9153(), var30.method9148() / 2, var30.worldView.scene, var30.method9147(), 0L, false);
+				var30.initScenePlane();
+				var25.scene.drawEntity(var25.plane, var30.getX(), var30.getY(), var30.getZ(), var30.method9148() / 2, var30.worldView.scene, var30.method9147(), 0L, false);
 				TriBool.method9141(var30.worldView);
 				WorldView var31 = var30.worldView;
 				if (Client.combatTargetPlayerIndex >= 0 && var31.players[Client.combatTargetPlayerIndex] != null) {

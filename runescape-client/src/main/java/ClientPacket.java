@@ -648,7 +648,7 @@ public class ClientPacket implements class321 {
 			var1 = 10;
 		}
 
-		class6.method43(var1);
+		class6.updateLoginIndex(var1);
 		if (var0) {
 			Login.Login_username = "";
 			Login.Login_password = "";

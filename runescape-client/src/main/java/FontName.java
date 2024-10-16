@@ -137,7 +137,7 @@ public class FontName {
 			Login.Login_response1 = "";
 			Login.Login_response2 = "Enter your username/email & password.";
 			Login.Login_response3 = "";
-			class6.method43(2);
+			class6.updateLoginIndex(2);
 			if (var0) {
 				Login.Login_password = "";
 			}
@@ -145,7 +145,7 @@ public class FontName {
 			class362.method7457();
 			class96.focusPasswordWhenUsernameFilled();
 		} else {
-			class6.method43(10);
+			class6.updateLoginIndex(10);
 		}
 	}
 

@@ -214,7 +214,7 @@ public class WorldMapSection1 implements WorldMapSection {
 		for (int var3 = 0; var3 < var2.length; ++var3) {
 			String var4 = var2[var3];
 			if (var4 == null) {
-				class6.method43(7);
+				class6.updateLoginIndex(7);
 				class132.setLoginResponseString("Date not valid.", "Please ensure all characters are populated.", "");
 				return null;
 			}

@@ -28,7 +28,8 @@ public class WorldEntity implements Entity {
 	@ObfuscatedSignature(
 		descriptor = "Lkt;"
 	)
-	public final class274 field5030;
+	@Export("worldEntityCoord")
+	public final WorldEntityCoord worldEntityCoord;
 	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "[Lsb;"
@@ -52,7 +53,7 @@ public class WorldEntity implements Entity {
 	)
 	public WorldEntity(int var1, WorldView var2) {
 		this.plane = 0;
-		this.field5030 = new class274();
+		this.worldEntityCoord = new WorldEntityCoord();
 		this.field5034 = new class481[10];
 		this.field5035 = 0;
 		this.field5036 = new class483();
@@ -73,7 +74,7 @@ public class WorldEntity implements Entity {
 	)
 	@Export("getX")
 	public int getX() {
-		return this.field5030.method5765();
+		return this.worldEntityCoord.getX();
 	}
 
 	@ObfuscatedName("aw")
@@ -83,7 +84,7 @@ public class WorldEntity implements Entity {
 	)
 	@Export("getY")
 	public int getY() {
-		return this.field5030.method5767();
+		return this.worldEntityCoord.getY();
 	}
 
 	@ObfuscatedName("ak")
@@ -101,8 +102,8 @@ public class WorldEntity implements Entity {
 		descriptor = "(I)V",
 		garbageValue = "-1334638951"
 	)
-	@Export("updateMovement")
-	public void updateMovement() {
+	@Export("initScenePlane")
+	public void initScenePlane() {
 		this.worldView.scene.Scene_plane = this.worldView.plane;
 	}
 
@@ -111,8 +112,9 @@ public class WorldEntity implements Entity {
 		descriptor = "(I)I",
 		garbageValue = "818730252"
 	)
-	public int method9153() {
-		return this.field5030.method5786();
+	@Export("getZ")
+	public int getZ() {
+		return this.worldEntityCoord.getZ();
 	}
 
 	@ObfuscatedName("ao")
@@ -121,7 +123,7 @@ public class WorldEntity implements Entity {
 		garbageValue = "327814629"
 	)
 	public int method9147() {
-		return this.field5030.method5781();
+		return this.worldEntityCoord.getCurrentRotationAngle();
 	}
 
 	@ObfuscatedName("af")
@@ -138,7 +140,7 @@ public class WorldEntity implements Entity {
 		descriptor = "(B)Lkt;",
 		garbageValue = "-88"
 	)
-	public class274 method9149() {
+	public WorldEntityCoord method9149() {
 		return this.field5034[0].field5040;
 	}
 
@@ -150,10 +152,10 @@ public class WorldEntity implements Entity {
 	@Export("setPosition")
 	public void setPosition(int var1, int var2) {
 		for (int var3 = 0; var3 < this.field5035; ++var3) {
-			this.field5034[var3].field5040.method5775(var1, var2);
+			this.field5034[var3].field5040.setDirection(var1, var2);
 		}
 
-		this.field5030.method5775(var1, var2);
+		this.worldEntityCoord.setDirection(var1, var2);
 		this.field5036.vmethod9204(var1, var2);
 	}
 
@@ -162,12 +164,12 @@ public class WorldEntity implements Entity {
 		descriptor = "(Lkt;I)V",
 		garbageValue = "-2009040930"
 	)
-	public final void method9151(class274 var1) {
-		int var2 = var1.method5805();
-		int var3 = var1.method5769();
+	public final void method9151(WorldEntityCoord var1) {
+		int var2 = var1.getTileX();
+		int var3 = var1.getTileY();
 		if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
-			int var4 = var1.method5765() - this.field5034[0].field5040.method5765();
-			int var5 = var1.method5767() - this.field5034[0].field5040.method5767();
+			int var4 = var1.getX() - this.field5034[0].field5040.getX();
+			int var5 = var1.getY() - this.field5034[0].field5040.getY();
 			this.method9168(var1, Math.abs(var4), Math.abs(var5));
 		} else {
 			this.method9152(var1);
@@ -180,8 +182,8 @@ public class WorldEntity implements Entity {
 		descriptor = "(Lkt;I)V",
 		garbageValue = "-262959930"
 	)
-	public void method9152(class274 var1) {
-		this.field5030.method5771(var1);
+	public void method9152(WorldEntityCoord var1) {
+		this.worldEntityCoord.method5771(var1);
 		this.field5034[0].field5040.method5771(var1);
 		this.field5035 = 0;
 	}
@@ -191,7 +193,7 @@ public class WorldEntity implements Entity {
 		descriptor = "(Lkt;III)V",
 		garbageValue = "-52492117"
 	)
-	void method9168(class274 var1, int var2, int var3) {
+	void method9168(WorldEntityCoord var1, int var2, int var3) {
 		if (this.field5035 < 9) {
 			++this.field5035;
 		}
@@ -216,11 +218,11 @@ public class WorldEntity implements Entity {
 			this.method9152(this.field5034[0].field5040);
 		} else {
 			if (!this.field5032) {
-				this.field5036.vmethod9203(this.field5030, this.field5034[0], var1);
+				this.field5036.vmethod9203(this.worldEntityCoord, this.field5034[0], var1);
 				this.field5032 = true;
 			}
 
-			if (this.field5036.vmethod9202(this.field5030, var1, this.field5035)) {
+			if (this.field5036.vmethod9202(this.worldEntityCoord, var1, this.field5035)) {
 				--this.field5035;
 				this.field5032 = false;
 			}
@@ -236,8 +238,8 @@ public class WorldEntity implements Entity {
 	public class426 method9155(int var1, int var2) {
 		class422 var3 = new class422();
 		TransformationMatrix var4 = class177.method3843();
-		var3.field4752.method8234(class337.method6771(this.field5030.method5781()), 0.0F, 0.0F);
-		var3.field4753.method8200((float)this.field5030.method5765(), 0.0F, (float)this.field5030.method5767());
+		var3.field4752.method8234(class337.method6771(this.worldEntityCoord.getCurrentRotationAngle()), 0.0F, 0.0F);
+		var3.field4753.method8200((float)this.worldEntityCoord.getX(), 0.0F, (float)this.worldEntityCoord.getY());
 		var1 -= this.worldView.sizeX * 64 + 64;
 		var2 -= this.worldView.sizeY * 64 + 64;
 		var4.method8259(var3);

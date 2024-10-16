@@ -1,35 +1,42 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("kt")
-public class class274 {
+@Implements("WorldEntityCoord")
+public class WorldEntityCoord {
 	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
 		intValue = -465277371
 	)
-	int field3042;
+	@Export("currentRotationAngle")
+	int currentRotationAngle;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = -273358927
 	)
-	int field3043;
+	@Export("x")
+	int x;
 	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
 		intValue = 146341175
 	)
-	int field3044;
+	@Export("y")
+	int y;
 	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
 		intValue = -61048963
 	)
-	int field3045;
+	@Export("z")
+	int z;
 
-	public class274() {
-		this.field3042 = 0;
-		this.field3043 = 0;
-		this.field3044 = 0;
-		this.field3045 = 0;
+	public WorldEntityCoord() {
+		this.currentRotationAngle = 0;
+		this.x = 0;
+		this.y = 0;
+		this.z = 0;
 	}
 
 	@ObfuscatedName("ap")
@@ -37,8 +44,9 @@ public class class274 {
 		descriptor = "(I)I",
 		garbageValue = "227427987"
 	)
-	public int method5765() {
-		return this.field3043;
+	@Export("getX")
+	public int getX() {
+		return this.x;
 	}
 
 	@ObfuscatedName("aw")
@@ -46,8 +54,9 @@ public class class274 {
 		descriptor = "(B)I",
 		garbageValue = "93"
 	)
-	public int method5786() {
-		return this.field3045;
+	@Export("getZ")
+	public int getZ() {
+		return this.z;
 	}
 
 	@ObfuscatedName("ak")
@@ -55,8 +64,9 @@ public class class274 {
 		descriptor = "(I)I",
 		garbageValue = "-488158644"
 	)
-	public int method5767() {
-		return this.field3044;
+	@Export("getY")
+	public int getY() {
+		return this.y;
 	}
 
 	@ObfuscatedName("aj")
@@ -64,8 +74,9 @@ public class class274 {
 		descriptor = "(I)I",
 		garbageValue = "1805207659"
 	)
-	public int method5805() {
-		return this.field3043 >> 7;
+	@Export("getTileX")
+	public int getTileX() {
+		return this.x >> 7;
 	}
 
 	@ObfuscatedName("ai")
@@ -73,8 +84,9 @@ public class class274 {
 		descriptor = "(I)I",
 		garbageValue = "1382275455"
 	)
-	public int method5769() {
-		return this.field3044 >> 7;
+	@Export("getTileY")
+	public int getTileY() {
+		return this.y >> 7;
 	}
 
 	@ObfuscatedName("ay")
@@ -82,8 +94,9 @@ public class class274 {
 		descriptor = "(I)I",
 		garbageValue = "1852061365"
 	)
-	public int method5781() {
-		return this.field3042;
+	@Export("getCurrentRotationAngle")
+	public int getCurrentRotationAngle() {
+		return this.currentRotationAngle;
 	}
 
 	@ObfuscatedName("as")
@@ -91,11 +104,11 @@ public class class274 {
 		descriptor = "(Lkt;I)V",
 		garbageValue = "1443175737"
 	)
-	public void method5771(class274 var1) {
-		this.field3042 = var1.field3042;
-		this.field3043 = var1.field3043;
-		this.field3045 = var1.field3045;
-		this.field3044 = var1.field3044;
+	public void method5771(WorldEntityCoord var1) {
+		this.currentRotationAngle = var1.currentRotationAngle;
+		this.x = var1.x;
+		this.z = var1.z;
+		this.y = var1.y;
 	}
 
 	@ObfuscatedName("ae")
@@ -104,8 +117,8 @@ public class class274 {
 		garbageValue = "1268495425"
 	)
 	public void method5800(int var1, int var2) {
-		this.field3043 = var1;
-		this.field3044 = var2;
+		this.x = var1;
+		this.y = var2;
 	}
 
 	@ObfuscatedName("am")
@@ -114,8 +127,8 @@ public class class274 {
 		garbageValue = "-1760661332"
 	)
 	public void method5790(int var1, int var2) {
-		this.field3043 = Coord.method6853(var1) + 64;
-		this.field3044 = Coord.method6853(var2) + 64;
+		this.x = Coord.method6853(var1) + 64;
+		this.y = Coord.method6853(var2) + 64;
 	}
 
 	@ObfuscatedName("at")
@@ -123,8 +136,9 @@ public class class274 {
 		descriptor = "(IB)V",
 		garbageValue = "91"
 	)
-	public void method5773(int var1) {
-		this.field3042 = var1 & 2047;
+	@Export("setCurrentRotationAngle")
+	public void setCurrentRotationAngle(int var1) {
+		this.currentRotationAngle = var1 & 2047;
 	}
 
 	@ObfuscatedName("au")
@@ -132,8 +146,9 @@ public class class274 {
 		descriptor = "(II)V",
 		garbageValue = "442691643"
 	)
-	public void method5774(int var1) {
-		this.field3045 = var1;
+	@Export("setZ")
+	public void setZ(int var1) {
+		this.z = var1;
 	}
 
 	@ObfuscatedName("an")
@@ -141,9 +156,10 @@ public class class274 {
 		descriptor = "(III)V",
 		garbageValue = "734022073"
 	)
-	public void method5775(int var1, int var2) {
-		this.field3043 += var1;
-		this.field3044 += var2;
+	@Export("setDirection")
+	public void setDirection(int var1, int var2) {
+		this.x += var1;
+		this.y += var2;
 	}
 
 	@ObfuscatedName("ao")
@@ -152,10 +168,10 @@ public class class274 {
 		garbageValue = "1271978253"
 	)
 	public void method5782(int var1, int var2, int var3, int var4) {
-		this.field3043 += var1;
-		this.field3045 += var2;
-		this.field3044 += var3;
-		this.method5773(var4 + this.field3042);
+		this.x += var1;
+		this.z += var2;
+		this.y += var3;
+		this.setCurrentRotationAngle(var4 + this.currentRotationAngle);
 	}
 
 	@ObfuscatedName("ap")

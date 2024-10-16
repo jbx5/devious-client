@@ -80,10 +80,10 @@ public class ViewportMouse {
 		descriptor = "(Lvl;Lkt;III)V",
 		garbageValue = "-638484385"
 	)
-	public static void method5487(Buffer var0, class274 var1, int var2, int var3) {
+	public static void method5487(Buffer var0, WorldEntityCoord var1, int var2, int var3) {
 		var1.method5790(var2, var3);
-		var1.method5774(0);
-		var1.method5773(0);
+		var1.setZ(0);
+		var1.setCurrentRotationAngle(0);
 		byte var4 = var0.readByte();
 		if (var4 != 0) {
 			int var5 = class496.method9322(var0, var4, 0);

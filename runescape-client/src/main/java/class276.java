@@ -154,7 +154,7 @@ public class class276 {
 				Client.destinationX = var0;
 				Client.destinationY = var1;
 				var15 = class113.getPacketBufferNode(ClientPacket.field3332, Client.packetWriter.isaacCipher);
-				var15.packetBuffer.writeShortLE(class378.field4143);
+				var15.packetBuffer.writeShortLE(class378.Players_count);
 				var15.packetBuffer.writeShortAddLE(var0 + var11);
 				var15.packetBuffer.writeShort(var12 + var1);
 				var15.packetBuffer.writeShortAdd(var3);
@@ -247,7 +247,7 @@ public class class276 {
 						var16.packetBuffer.writeInt(LoginState.field498);
 						var16.packetBuffer.writeShortAdd(class142.field1655);
 						var16.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-						var16.packetBuffer.writeShort(class378.field4143);
+						var16.packetBuffer.writeShort(class378.Players_count);
 						Client.packetWriter.addNode(var16);
 					}
 				} else if (var2 == 8) {
@@ -351,7 +351,7 @@ public class class276 {
 							var16 = class113.getPacketBufferNode(ClientPacket.field3318, Client.packetWriter.isaacCipher);
 							var16.packetBuffer.writeShortAddLE(var3);
 							var16.packetBuffer.writeByteAdd(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
-							var16.packetBuffer.writeShort(class378.field4143);
+							var16.packetBuffer.writeShort(class378.Players_count);
 							var16.packetBuffer.writeShort(class142.field1655);
 							var16.packetBuffer.writeIntLE(LoginState.field498);
 							Client.packetWriter.addNode(var16);
@@ -385,7 +385,7 @@ public class class276 {
 						var15.packetBuffer.writeByteNeg(Client.indexCheck.isValidIndexInRange(82) ? 1 : 0);
 						var15.packetBuffer.writeIntME(LoginState.field498);
 						var15.packetBuffer.writeShort(var12 + var1);
-						var15.packetBuffer.writeShortAddLE(class378.field4143);
+						var15.packetBuffer.writeShortAddLE(class378.Players_count);
 						var15.packetBuffer.writeShortAdd(class142.field1655);
 						var15.packetBuffer.writeShort(var0 + var11);
 						Client.packetWriter.addNode(var15);
@@ -474,7 +474,7 @@ public class class276 {
 						if (Client.isMenuOpen) {
 							var10.scene.method5035();
 						} else {
-							var10.scene.method5128(true);
+							var10.scene.menuOpen(true);
 						}
 					} else {
 						PacketBufferNode var19;

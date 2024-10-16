@@ -122,7 +122,8 @@ public class class1 implements Callable {
 		descriptor = "(B)[B",
 		garbageValue = "0"
 	)
-	public static byte[] method4() {
+	@Export("randomDatData2")
+	public static byte[] randomDatData2() {
 		byte[] var0 = new byte[24];
 
 		try {

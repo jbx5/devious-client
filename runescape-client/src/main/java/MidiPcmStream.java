@@ -200,7 +200,7 @@ public class MidiPcmStream extends PcmStream {
 				int var14 = (int)var6.key;
 				MusicPatch var8 = (MusicPatch)this.musicPatches.get((long)var14);
 				if (var8 == null) {
-					var8 = class274.method5779(var2, var14);
+					var8 = WorldEntityCoord.method5779(var2, var14);
 					if (var8 == null) {
 						var5 = false;
 						continue;

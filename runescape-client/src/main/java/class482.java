@@ -11,14 +11,14 @@ public abstract class class482 {
 		descriptor = "(Lkt;Lsb;II)V",
 		garbageValue = "1324696839"
 	)
-	abstract void vmethod9203(class274 var1, class481 var2, int var3);
+	abstract void vmethod9203(WorldEntityCoord var1, class481 var2, int var3);
 
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Lkt;IIB)Z",
 		garbageValue = "30"
 	)
-	abstract boolean vmethod9202(class274 var1, int var2, int var3);
+	abstract boolean vmethod9202(WorldEntityCoord var1, int var2, int var3);
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(

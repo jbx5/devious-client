@@ -143,7 +143,7 @@ public abstract class AbstractByteArrayCopier {
 
 									var10 = DevicePcmPlayerProvider.loginBoxCenter + 80;
 									if (var5 == 1 && var32 >= var10 - 75 && var32 <= var10 + 75 && var33 >= var11 - 20 && var33 <= var11 + 20) {
-										class6.method43(0);
+										class6.updateLoginIndex(0);
 									}
 									break;
 								}
@@ -151,7 +151,7 @@ public abstract class AbstractByteArrayCopier {
 								if (var9.field2988 == 84) {
 									FontName.Login_promptCredentials(false);
 								} else if (var9.field2988 == 13) {
-									class6.method43(0);
+									class6.updateLoginIndex(0);
 								}
 							}
 						} else {
@@ -195,7 +195,7 @@ public abstract class AbstractByteArrayCopier {
 
 								var36 = Login.loginBoxX + 180 + 80;
 								if (var5 == 1 && var32 >= var36 - 75 && var32 <= var36 + 75 && var33 >= var35 - 20 && var33 <= var35 + 20) {
-									class6.method43(0);
+									class6.updateLoginIndex(0);
 									Login.Login_username = "";
 									Login.Login_password = "";
 									class333.otpMedium = 0;
@@ -258,7 +258,7 @@ public abstract class AbstractByteArrayCopier {
 																Login.Login_username = Login.Login_username + var9.field2996;
 															}
 														} else {
-															class6.method43(0);
+															class6.updateLoginIndex(0);
 															Login.Login_username = "";
 															Login.Login_password = "";
 															class333.otpMedium = 0;
@@ -332,7 +332,7 @@ public abstract class AbstractByteArrayCopier {
 											++var18;
 										}
 
-										class6.method43(3);
+										class6.updateLoginIndex(3);
 										return;
 									} catch (UnsupportedFlavorException var30) {
 									} catch (IOException var31) {
@@ -380,7 +380,7 @@ public abstract class AbstractByteArrayCopier {
 
 										var10 = Login.loginBoxX + 180 + 80;
 										if (var5 == 1 && var32 >= var10 - 75 && var32 <= var10 + 75 && var33 >= var11 - 20 && var33 <= var11 + 20) {
-											class6.method43(0);
+											class6.updateLoginIndex(0);
 											Login.Login_username = "";
 											Login.Login_password = "";
 											class333.otpMedium = 0;
@@ -398,7 +398,7 @@ public abstract class AbstractByteArrayCopier {
 											}
 
 											if (var9.field2988 == 13) {
-												class6.method43(0);
+												class6.updateLoginIndex(0);
 												Login.Login_username = "";
 												Login.Login_password = "";
 												class333.otpMedium = 0;
@@ -415,7 +415,7 @@ public abstract class AbstractByteArrayCopier {
 													} else {
 														class333.otpMedium = Integer.parseInt(Huffman.otp);
 														Huffman.otp = "";
-														Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.field1530 : AuthenticationScheme.field1532;
+														Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
 														class132.setLoginResponseString("", "Connecting to server...", "");
 														BuddyRankComparator.updateGameState(20);
 													}
@@ -558,7 +558,7 @@ public abstract class AbstractByteArrayCopier {
 												if (var5 == 1 && var32 >= var10 - 75 && var32 <= var10 + 75 && var33 >= var11 - 20 && var33 <= var11 + 20) {
 													GrandExchangeOfferAgeComparator.openURL(Messages.method3176("secure", true) + "m=dob/set_dob.ws", true, false);
 													class132.setLoginResponseString("", "Page has opened in the browser.", "");
-													class6.method43(6);
+													class6.updateLoginIndex(6);
 													return;
 												}
 
@@ -573,7 +573,7 @@ public abstract class AbstractByteArrayCopier {
 											if (var5 == 1 && var32 >= var10 - 75 && var32 <= var10 + 75 && var33 >= var11 - 20 && var33 <= var11 + 20) {
 												GrandExchangeOfferAgeComparator.openURL("https://www.jagex.com/terms/privacy", true, false);
 												class132.setLoginResponseString("", "Page has opened in the browser.", "");
-												class6.method43(6);
+												class6.updateLoginIndex(6);
 												return;
 											}
 
@@ -652,7 +652,7 @@ public abstract class AbstractByteArrayCopier {
 											if (var5 == 1 && var32 >= var36 - 75 && var32 <= var36 + 75 && var33 >= var35 - 20 && var33 <= var35 + 20) {
 												GrandExchangeOfferAgeComparator.openURL(var29, true, false);
 												class132.setLoginResponseString("", "Page has opened in the browser.", "");
-												class6.method43(6);
+												class6.updateLoginIndex(6);
 												return;
 											}
 
@@ -673,7 +673,7 @@ public abstract class AbstractByteArrayCopier {
 											if (var5 == 1 && var32 >= var10 - 75 && var32 <= var10 + 75 && var33 >= var11 - 20 && var33 <= var11 + 20) {
 												GrandExchangeOfferAgeComparator.openURL(Messages.method3176("secure", true) + "m=dob/set_dob.ws", true, false);
 												class132.setLoginResponseString("", "Page has opened in the browser.", "");
-												class6.method43(6);
+												class6.updateLoginIndex(6);
 												return;
 											}
 

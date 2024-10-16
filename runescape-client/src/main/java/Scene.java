@@ -118,11 +118,9 @@ public class Scene extends Renderable {
 	@Export("Scene_entityY")
 	int Scene_entityY;
 	@ObfuscatedName("bc")
-	@Export("Scene_selectedScreenX")
-	int Scene_selectedScreenX;
+	int field2649;
 	@ObfuscatedName("by")
-	@Export("Scene_selectedScreenY")
-	int Scene_selectedScreenY;
+	int field2652;
 	@ObfuscatedName("br")
 	@ObfuscatedSignature(
 		descriptor = "[Lkf;"
@@ -136,20 +134,25 @@ public class Scene extends Renderable {
 	@Export("Scene_selectedPlane")
 	int Scene_selectedPlane;
 	@ObfuscatedName("bt")
-	int field2677;
+	@Export("Scene_selectedScreenX")
+	int Scene_selectedScreenX;
 	@ObfuscatedName("bs")
-	int field2678;
+	@Export("Scene_selectedScreenY")
+	int Scene_selectedScreenY;
 	@ObfuscatedName("bm")
-	int field2703;
+	@Export("Scene_baseX")
+	int Scene_baseX;
 	@ObfuscatedName("bo")
-	int field2680;
+	@Export("Scene_baseY")
+	int Scene_baseY;
 	@ObfuscatedName("bd")
 	public float field2686;
 	@ObfuscatedName("ba")
 	@Export("baseX")
 	public int baseX;
 	@ObfuscatedName("bw")
-	public int field2683;
+	@Export("baseY")
+	public int baseY;
 	@ObfuscatedName("bi")
 	@Export("viewportWalking")
 	boolean viewportWalking;
@@ -267,13 +270,13 @@ public class Scene extends Renderable {
 		this.gameObjects = new GameObject[100];
 		this.checkClick = false;
 		this.Scene_selectedPlane = 0;
-		this.field2677 = 0;
-		this.field2678 = 0;
-		this.field2703 = -1;
-		this.field2680 = -1;
+		this.Scene_selectedScreenX = 0;
+		this.Scene_selectedScreenY = 0;
+		this.Scene_baseX = -1;
+		this.Scene_baseY = -1;
 		this.field2686 = -1.0F;
 		this.baseX = -1;
-		this.field2683 = -1;
+		this.baseY = -1;
 		this.viewportWalking = false;
 		this.scenePlanesCount = 4;
 		this.Scene_planeOccluderCounts = new int[this.scenePlanesCount];
@@ -1343,20 +1346,21 @@ public class Scene extends Renderable {
 	}
 
 	@ObfuscatedName("cl")
-	public void method5128(boolean var1) {
+	@Export("menuOpen")
+	public void menuOpen(boolean var1) {
 		if (!this.shouldSendWalk() || var1) {
 			this.checkClick = true;
 			this.viewportWalking = var1;
 			this.baseX = -1;
-			this.field2683 = -1;
+			this.baseY = -1;
 		}
 	}
 
 	@ObfuscatedName("cp")
 	public void method5036(int var1, int var2, int var3) {
 		this.Scene_selectedPlane = var1;
-		this.field2677 = var2;
-		this.field2678 = var3;
+		this.Scene_selectedScreenX = var2;
+		this.Scene_selectedScreenY = var3;
 	}
 
 	@ObfuscatedName("cv")
@@ -1374,8 +1378,8 @@ public class Scene extends Renderable {
 	void method5039() {
 		if (this.checkClick) {
 			this.checkClick = false;
-			this.baseX = this.field2703;
-			this.field2683 = this.field2680;
+			this.baseX = this.Scene_baseX;
+			this.baseY = this.Scene_baseY;
 		}
 
 	}
@@ -1427,29 +1431,29 @@ public class Scene extends Renderable {
 	@Export("updateVisibleTilesAndOccluders")
 	void updateVisibleTilesAndOccluders(Projection var1, boolean var2) {
 		++this.Scene_drawnCount;
-		this.field2703 = -1;
-		this.field2680 = -1;
+		this.Scene_baseX = -1;
+		this.Scene_baseY = -1;
 		this.field2686 = -1.0F;
 		boolean var3 = this.worldViewId == -1;
-		this.Scene_selectedScreenX = !var2 && this.field2655 != class232.field2470 ? this.Scene_entityX : this.Scene_cameraXTile;
-		this.Scene_selectedScreenY = !var2 && this.field2655 != class232.field2470 ? this.Scene_entityY : this.Scene_cameraYTile;
+		this.field2649 = !var2 && this.field2655 != class232.field2470 ? this.Scene_entityX : this.Scene_cameraXTile;
+		this.field2652 = !var2 && this.field2655 != class232.field2470 ? this.Scene_entityY : this.Scene_cameraYTile;
 		if (var3) {
-			this.Scene_cameraXTileMin = this.Scene_selectedScreenX - this.Scene_offsetOccluder;
+			this.Scene_cameraXTileMin = this.field2649 - this.Scene_offsetOccluder;
 			if (this.Scene_cameraXTileMin < 0) {
 				this.Scene_cameraXTileMin = 0;
 			}
 
-			this.Scene_cameraYTileMin = this.Scene_selectedScreenY - this.Scene_offsetOccluder;
+			this.Scene_cameraYTileMin = this.field2652 - this.Scene_offsetOccluder;
 			if (this.Scene_cameraYTileMin < 0) {
 				this.Scene_cameraYTileMin = 0;
 			}
 
-			this.Scene_cameraXTileMax = this.Scene_selectedScreenX + this.Scene_offsetOccluder;
+			this.Scene_cameraXTileMax = this.field2649 + this.Scene_offsetOccluder;
 			if (this.Scene_cameraXTileMax > this.xSize) {
 				this.Scene_cameraXTileMax = this.xSize;
 			}
 
-			this.Scene_cameraYTileMax = this.Scene_selectedScreenY + this.Scene_offsetOccluder;
+			this.Scene_cameraYTileMax = this.field2652 + this.Scene_offsetOccluder;
 			if (this.Scene_cameraYTileMax > this.ySize) {
 				this.Scene_cameraYTileMax = this.ySize;
 			}
@@ -1458,13 +1462,13 @@ public class Scene extends Renderable {
 			this.Scene_cameraYTileMin = 0;
 			this.Scene_cameraXTileMax = this.xSize;
 			this.Scene_cameraYTileMax = this.ySize;
-			this.Scene_selectedScreenX = this.xSize / 2;
-			this.Scene_selectedScreenY = this.ySize / 2;
-			this.Scene_offsetOccluder = Math.max(this.Scene_selectedScreenX, this.Scene_selectedScreenY);
+			this.field2649 = this.xSize / 2;
+			this.field2652 = this.ySize / 2;
+			this.Scene_offsetOccluder = Math.max(this.field2649, this.field2652);
 		}
 
-		this.field2656 = this.Scene_cameraXTile - this.Scene_selectedScreenX;
-		this.field2657 = this.Scene_cameraYTile - this.Scene_selectedScreenY;
+		this.field2656 = this.Scene_cameraXTile - this.field2649;
+		this.field2657 = this.Scene_cameraYTile - this.field2652;
 		if (var3) {
 			this.occlude();
 		}
@@ -1566,12 +1570,12 @@ public class Scene extends Renderable {
 			var7 = this.tiles[var6];
 
 			for (var8 = -(var4 + this.Scene_offsetOccluder); var8 <= 0; ++var8) {
-				var9 = var8 + this.Scene_selectedScreenX;
-				var10 = this.Scene_selectedScreenX - var8;
+				var9 = var8 + this.field2649;
+				var10 = this.field2649 - var8;
 				if (var9 >= this.Scene_cameraXTileMin || var10 < this.Scene_cameraXTileMax) {
 					for (var11 = -(var5 + this.Scene_offsetOccluder); var11 <= 0; ++var11) {
-						var12 = var11 + this.Scene_selectedScreenY;
-						var13 = this.Scene_selectedScreenY - var11;
+						var12 = var11 + this.field2652;
+						var13 = this.field2652 - var11;
 						if (var9 >= this.Scene_cameraXTileMin && var9 < this.Scene_cameraXTileMax) {
 							if (var12 >= this.Scene_cameraYTileMin && var12 < this.Scene_cameraYTileMax) {
 								var14 = var7[var9][var12];

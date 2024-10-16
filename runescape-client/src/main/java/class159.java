@@ -58,7 +58,7 @@ public class class159 extends class150 {
 			Login.Login_response1 = "This is a <col=00ffff>Beta<col=ffffff> world.";
 			Login.Login_response2 = "Your normal account will not be affected.";
 			Login.Login_response3 = "";
-			class6.method43(1);
+			class6.updateLoginIndex(1);
 			class96.focusPasswordWhenUsernameFilled();
 		} else if ((Client.worldProperties & class552.field5416.rsOrdinal()) != 0) {
 			if ((Client.worldProperties & class552.field5424.rsOrdinal()) != 0) {
@@ -72,14 +72,14 @@ public class class159 extends class150 {
 			}
 
 			Login.Login_response0 = "Warning!";
-			class6.method43(1);
+			class6.updateLoginIndex(1);
 			class96.focusPasswordWhenUsernameFilled();
 		} else if ((Client.worldProperties & class552.field5424.rsOrdinal()) != 0) {
 			Login.Login_response1 = "This is a <col=ffff00>High Risk<col=ffffff> world.";
 			Login.Login_response2 = "The Protect Item prayer will";
 			Login.Login_response3 = "not work on this world.";
 			Login.Login_response0 = "Warning!";
-			class6.method43(1);
+			class6.updateLoginIndex(1);
 			class96.focusPasswordWhenUsernameFilled();
 		} else {
 			FontName.Login_promptCredentials(false);

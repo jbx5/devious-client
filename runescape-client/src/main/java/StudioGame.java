@@ -45,7 +45,8 @@ public enum StudioGame implements Enum {
 	oldscape("oldscape", "RuneScape 2007", 5);
 
 	@ObfuscatedName("gk")
-	static String field4135;
+	@Export("authServiceBaseUrl")
+	static String authServiceBaseUrl;
 	@ObfuscatedName("jw")
 	@Export("regionLandArchives")
 	static byte[][] regionLandArchives;

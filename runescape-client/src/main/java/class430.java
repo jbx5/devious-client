@@ -33,15 +33,15 @@ public class class430 {
 		descriptor = "(Lkt;Lkt;FLkt;I)V",
 		garbageValue = "396921514"
 	)
-	static void method8358(class274 var0, class274 var1, float var2, class274 var3) {
+	static void method8358(WorldEntityCoord var0, WorldEntityCoord var1, float var2, WorldEntityCoord var3) {
 		var2 = GrandExchangeOfferOwnWorldComparator.method1279(0.0F, 1.0F, var2);
-		int var4 = var1.method5765() - var0.method5765();
-		int var5 = var1.method5767() - var0.method5767();
+		int var4 = var1.getX() - var0.getX();
+		int var5 = var1.getY() - var0.getY();
 		var4 = (int)((float)var4 * var2);
 		var5 = (int)(var2 * (float)var5);
-		var3.method5800(var0.method5765() + var4, var0.method5767() + var5);
-		int var6 = IndexCheck.method5659(var0.method5781(), var1.method5781());
+		var3.method5800(var0.getX() + var4, var0.getY() + var5);
+		int var6 = IndexCheck.method5659(var0.getCurrentRotationAngle(), var1.getCurrentRotationAngle());
 		var6 = (int)((float)var6 * var2);
-		var3.method5773(var0.method5781() + var6);
+		var3.setCurrentRotationAngle(var0.getCurrentRotationAngle() + var6);
 	}
 }

@@ -96,7 +96,7 @@ public enum WorldMapSectionType implements Enum {
 			switch(var0) {
 			case 2:
 				class132.setLoginResponseString(Strings.field4237, Strings.field4198, Strings.field4448);
-				class6.method43(6);
+				class6.updateLoginIndex(6);
 				break;
 			case 3:
 				class132.setLoginResponseString("", "Error connecting to server.", "");

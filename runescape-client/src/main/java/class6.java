@@ -96,7 +96,8 @@ public enum class6 implements Enum {
 		descriptor = "(IB)V",
 		garbageValue = "1"
 	)
-	static void method43(int var0) {
+	@Export("updateLoginIndex")
+	static void updateLoginIndex(int var0) {
 		if (var0 != Login.loginIndex) {
 			Login.loginIndex = var0;
 		}

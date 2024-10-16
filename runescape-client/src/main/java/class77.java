@@ -60,7 +60,7 @@ public class class77 {
 		} else {
 			class333.otpMedium = Integer.parseInt(Huffman.otp);
 			Huffman.otp = "";
-			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.field1530 : AuthenticationScheme.field1532;
+			Client.authenticationScheme = Login.rememberUsername ? AuthenticationScheme.TOKEN_REMEMBER : AuthenticationScheme.TOKEN;
 			class132.setLoginResponseString("", "Connecting to server...", "");
 			BuddyRankComparator.updateGameState(20);
 		}

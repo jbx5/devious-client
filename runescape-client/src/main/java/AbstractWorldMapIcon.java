@@ -237,7 +237,8 @@ public abstract class AbstractWorldMapIcon {
 		descriptor = "(Ldn;Lvm;II)V",
 		garbageValue = "850854382"
 	)
-	static void method6362(WorldView var0, PacketBuffer var1, int var2) {
+	@Export("updateWorldEntitiesFromPacketBuffer")
+	static void updateWorldEntitiesFromPacketBuffer(WorldView var0, PacketBuffer var1, int var2) {
 		int var3 = var1.readUnsignedByte();
 		if (var3 < var0.worldEntityCount) {
 			throw new RuntimeException("dang");
@@ -245,7 +246,7 @@ public abstract class AbstractWorldMapIcon {
 			throw new RuntimeException("dang!");
 		} else {
 			var0.worldEntityCount = 0;
-			class274 var4 = new class274();
+			WorldEntityCoord var4 = new WorldEntityCoord();
 
 			int var5;
 			int var6;
@@ -270,8 +271,8 @@ public abstract class AbstractWorldMapIcon {
 						var16 = var1.readUnsignedShort();
 						SoundSystem.method862((byte)var1.readUnsignedByte());
 						var4.method5790(var9, var18);
-						var4.method5773(var16);
-						if (var4.method5765() != 0 || var4.method5767() != 0) {
+						var4.setCurrentRotationAngle(var16);
+						if (var4.getX() != 0 || var4.getY() != 0) {
 							var14.method9151(var4);
 						}
 					} else if (var2 == 3 && var8 != 1) {
@@ -307,13 +308,13 @@ public abstract class AbstractWorldMapIcon {
 				if (var2 < 3) {
 					var12 = var1.readUnsignedByte();
 					var13 = var1.readUnsignedByte();
-					var11.field5030.method5790(var12, var13);
-					var11.field5030.method5773(var1.readUnsignedShort());
+					var11.worldEntityCoord.method5790(var12, var13);
+					var11.worldEntityCoord.setCurrentRotationAngle(var1.readUnsignedShort());
 					var1.readUnsignedShort();
 				} else if (var2 == 3) {
 					var11.field5031 = var1.readByte();
-					ViewportMouse.method5487(var1, var11.field5030, 0, 0);
-					var11.method9151(var11.field5030);
+					ViewportMouse.method5487(var1, var11.worldEntityCoord, 0, 0);
+					var11.method9151(var11.worldEntityCoord);
 				}
 			}
 

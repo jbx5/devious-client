@@ -13,7 +13,8 @@ public class WorldViewManager implements Iterable {
 	@ObfuscatedSignature(
 		descriptor = "Ldn;"
 	)
-	WorldView field1191;
+	@Export("worldView")
+	WorldView worldView;
 	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "Lum;"
@@ -55,8 +56,8 @@ public class WorldViewManager implements Iterable {
 		garbageValue = "-316680284"
 	)
 	WorldView method2667(int var1, int var2, int var3) {
-		this.field1191 = this.method2684(-1, var1, var2, var3, class232.field2470);
-		return this.field1191;
+		this.worldView = this.method2684(-1, var1, var2, var3, class232.field2470);
+		return this.worldView;
 	}
 
 	@ObfuscatedName("aw")
@@ -92,7 +93,7 @@ public class WorldViewManager implements Iterable {
 		garbageValue = "-1634950082"
 	)
 	public WorldView method2670() {
-		return this.field1191;
+		return this.worldView;
 	}
 
 	@ObfuscatedName("ai")
@@ -167,9 +168,9 @@ public class WorldViewManager implements Iterable {
 		this.field1196.clear();
 		this.field1189 = class492.field5089;
 		this.field1195 = class491.field5083;
-		if (this.field1191 != null) {
-			this.field1191.method2943();
-			this.hashTable.put(this.field1191, -1L);
+		if (this.worldView != null) {
+			this.worldView.method2943();
+			this.hashTable.put(this.worldView, -1L);
 			this.field1193 = 1;
 		}
 

@@ -333,14 +333,14 @@ public class WorldMapElement extends DualNode {
 	static void method3902(AbstractArchive var0, AbstractArchive var1, GraphicsDefaults var2, boolean var3, int var4) {
 		if (Login.clearLoginScreen) {
 			if (var4 == 4) {
-				class6.method43(4);
+				class6.updateLoginIndex(4);
 			}
 
 		} else {
 			if (var4 == 0) {
 				ClientPacket.updateLoginStatusUsernameRemembered(var3);
 			} else {
-				class6.method43(var4);
+				class6.updateLoginIndex(var4);
 			}
 
 			Rasterizer2D.Rasterizer2D_clear();

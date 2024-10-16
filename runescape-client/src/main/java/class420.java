@@ -16,7 +16,8 @@ public class class420 {
 		descriptor = "(Ldn;ZLvm;IB)V",
 		garbageValue = "7"
 	)
-	static final void method8115(WorldView var0, boolean var1, PacketBuffer var2, int var3) {
+	@Export("updateNpcs")
+	static final void updateNpcs(WorldView var0, boolean var1, PacketBuffer var2, int var3) {
 		Client.field637 = 0;
 		Client.npcCount = 0;
 		var2.importIndex();

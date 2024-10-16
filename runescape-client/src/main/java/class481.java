@@ -8,7 +8,7 @@ public class class481 {
 	@ObfuscatedSignature(
 		descriptor = "Lkt;"
 	)
-	final class274 field5040;
+	final WorldEntityCoord field5040;
 	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
 		intValue = -257060097
@@ -16,6 +16,6 @@ public class class481 {
 	int field5041;
 
 	class481() {
-		this.field5040 = new class274();
+		this.field5040 = new WorldEntityCoord();
 	}
 }

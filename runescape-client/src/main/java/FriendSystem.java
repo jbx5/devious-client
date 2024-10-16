@@ -285,7 +285,7 @@ public class FriendSystem {
 		try {
 			var0 = WorldMapSection1.method6333();
 		} catch (ParseException var7) {
-			class6.method43(7);
+			class6.updateLoginIndex(7);
 			class132.setLoginResponseString("Date not valid.", "Please ensure date follows the format", "DD/MM/YYYY and is after 01/01/1900");
 			return false;
 		}
@@ -301,7 +301,7 @@ public class FriendSystem {
 			Date var3 = var4.getTime();
 			boolean var2 = var0.after(var3);
 			if (!var2) {
-				class6.method43(7);
+				class6.updateLoginIndex(7);
 				class132.setLoginResponseString("Date not valid.", "Please ensure date follows the format", "DD/MM/YYYY and is after 01/01/1900");
 				return false;
 			} else {

@@ -82,7 +82,7 @@ public class class357 {
 		if (Client.randomDatData != null) {
 			var5.writeBytes(Client.randomDatData, 0, Client.randomDatData.length);
 		} else {
-			byte[] var19 = class1.method4();
+			byte[] var19 = class1.randomDatData2();
 			var5.writeBytes(var19, 0, var19.length);
 		}
 

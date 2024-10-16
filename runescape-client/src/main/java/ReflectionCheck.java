@@ -80,7 +80,7 @@ public class ReflectionCheck extends Node {
 		garbageValue = "1126256705"
 	)
 	static void method698() {
-		class6.method43(24);
+		class6.updateLoginIndex(24);
 		class132.setLoginResponseString("The game servers are currently being updated.", "Please wait a few minutes and try again.", "");
 	}
 

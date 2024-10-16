@@ -20,12 +20,12 @@ public class class483 extends class482 {
 	@ObfuscatedSignature(
 		descriptor = "Lkt;"
 	)
-	final class274 field5043;
+	final WorldEntityCoord field5043;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "Lkt;"
 	)
-	final class274 field5044;
+	final WorldEntityCoord field5044;
 	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
 		intValue = 902707401
@@ -42,8 +42,8 @@ public class class483 extends class482 {
 	}
 
 	class483() {
-		this.field5043 = new class274();
-		this.field5044 = new class274();
+		this.field5043 = new WorldEntityCoord();
+		this.field5044 = new WorldEntityCoord();
 		this.field5042 = 0;
 		this.field5045 = 0;
 	}
@@ -53,7 +53,7 @@ public class class483 extends class482 {
 		descriptor = "(Lkt;Lsb;II)V",
 		garbageValue = "1324696839"
 	)
-	void vmethod9203(class274 var1, class481 var2, int var3) {
+	void vmethod9203(WorldEntityCoord var1, class481 var2, int var3) {
 		this.field5043.method5771(var1);
 		this.field5044.method5771(var2.field5040);
 		this.field5042 = var3 - 1;
@@ -65,7 +65,7 @@ public class class483 extends class482 {
 		descriptor = "(Lkt;IIB)Z",
 		garbageValue = "30"
 	)
-	boolean vmethod9202(class274 var1, int var2, int var3) {
+	boolean vmethod9202(WorldEntityCoord var1, int var2, int var3) {
 		if (this.field5042 >= this.field5045) {
 			var1.method5771(this.field5044);
 			return true;
@@ -82,7 +82,7 @@ public class class483 extends class482 {
 		garbageValue = "-23944715"
 	)
 	void vmethod9204(int var1, int var2) {
-		this.field5043.method5775(var1, var2);
-		this.field5044.method5775(var1, var2);
+		this.field5043.setDirection(var1, var2);
+		this.field5044.setDirection(var1, var2);
 	}
 }

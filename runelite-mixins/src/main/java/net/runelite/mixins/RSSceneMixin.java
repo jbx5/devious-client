@@ -190,7 +190,7 @@ public abstract class RSSceneMixin implements RSScene
 
 		if (!menuOpen && !checkClick)
 		{
-			this.menuOpen(getScenePlane(), client.getMouseX() - client.getViewportXOffset(), client.getMouseY() - client.getViewportYOffset(), false);
+			this.menuOpen(false);
 		}
 
 		int cameraX = this.getCameraX2();

@@ -87,7 +87,7 @@ public class Interpreter {
 		garbageValue = "-2039454866"
 	)
 	static void method2198(int var0) {
-		class6.method43(14);
+		class6.updateLoginIndex(14);
 		Login.Login_banType = var0;
 	}
 }

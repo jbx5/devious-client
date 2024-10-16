@@ -61,10 +61,10 @@ public abstract class Projection {
 				Rasterizer3D.clips.clipping = true;
 			}
 
-			if (Scene.containsBounds(var1.field2677, var1.field2678, var22, var24, var20, var21, var23, var19)) {
-				var1.field2703 = var3;
-				var1.field2680 = var4;
-				var1.field2686 = WorldMapSprite.method6290(var1.field2677, var1.field2678, var21, var23, var19, var22, var24, var20, var27, var28, var26);
+			if (Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var22, var24, var20, var21, var23, var19)) {
+				var1.Scene_baseX = var3;
+				var1.Scene_baseY = var4;
+				var1.field2686 = WorldMapSprite.method6290(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var21, var23, var19, var22, var24, var20, var27, var28, var26);
 			}
 
 			if (var2.texture == -1) {
@@ -90,10 +90,10 @@ public abstract class Projection {
 				Rasterizer3D.clips.clipping = true;
 			}
 
-			if (Scene.containsBounds(var1.field2677, var1.field2678, var18, var20, var24, var17, var19, var23)) {
-				var1.field2703 = var3;
-				var1.field2680 = var4;
-				var1.field2686 = WorldMapSprite.method6290(var1.field2677, var1.field2678, var17, var19, var23, var18, var20, var24, var25, var26, var28);
+			if (Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var18, var20, var24, var17, var19, var23)) {
+				var1.Scene_baseX = var3;
+				var1.Scene_baseY = var4;
+				var1.field2686 = WorldMapSprite.method6290(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var17, var19, var23, var18, var20, var24, var25, var26, var28);
 			}
 
 			if (var2.texture == -1) {
@@ -140,10 +140,10 @@ public abstract class Projection {
 					Rasterizer3D.clips.clipping = true;
 				}
 
-				if (Scene.containsBounds(var1.field2677, var1.field2678, var13, var14, var15, var10, var11, var12)) {
-					var1.field2703 = var3;
-					var1.field2680 = var4;
-					var1.field2686 = WorldMapSprite.method6290(var1.field2677, var1.field2678, var10, var11, var12, var13, var14, var15, var16, var17, var18);
+				if (Scene.containsBounds(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var13, var14, var15, var10, var11, var12)) {
+					var1.Scene_baseX = var3;
+					var1.Scene_baseY = var4;
+					var1.field2686 = WorldMapSprite.method6290(var1.Scene_selectedScreenX, var1.Scene_selectedScreenY, var10, var11, var12, var13, var14, var15, var16, var17, var18);
 				}
 
 				if (var2.triangleTextureId != null && var2.triangleTextureId[var6] != -1) {

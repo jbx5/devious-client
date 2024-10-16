@@ -117,7 +117,7 @@ public class ScriptEvent extends Node {
 		class389.logOut();
 		switch(var0) {
 		case 1:
-			class6.method43(24);
+			class6.updateLoginIndex(24);
 			class132.setLoginResponseString("", "You were disconnected from the server.", "");
 			break;
 		case 2:
