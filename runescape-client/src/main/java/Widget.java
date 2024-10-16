@@ -121,6 +121,9 @@ public class Widget extends Node {
 	@Export("width")
 	public int width;
 	@ObfuscatedName("bd")
+	@ObfuscatedGetter(
+		intValue = -1662542495
+	)
 	@Export("height")
 	public int height;
 	@ObfuscatedName("ba")
