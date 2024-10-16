@@ -196,7 +196,7 @@ public class UserComparator9 extends AbstractUserComparator {
 
 					} else if (class323.field3427 == var0) {
 						var23 = var1.readUnsignedShortAdd();
-						var24 = var1.readNullableLargeSmart();
+						var24 = var1.method10108();
 						var4 = var1.readUnsignedShortAdd();
 						var25 = var1.readUnsignedShortAddLE();
 						var6 = var1.method10140();

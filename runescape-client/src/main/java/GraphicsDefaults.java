@@ -126,17 +126,17 @@ public class GraphicsDefaults {
 					var3.readMedium();
 					break;
 				case 2:
-					this.field5109 = var3.method10108();
-					this.field5100 = var3.method10108();
-					this.field5101 = var3.method10108();
-					this.field5102 = var3.method10108();
-					this.field5103 = var3.method10108();
-					this.field5104 = var3.method10108();
-					this.field5105 = var3.method10108();
-					this.field5106 = var3.method10108();
-					this.field5114 = var3.method10108();
-					this.field5108 = var3.method10108();
-					this.field5107 = var3.method10108();
+					this.field5109 = var3.readNullableLargeSmart();
+					this.field5100 = var3.readNullableLargeSmart();
+					this.field5101 = var3.readNullableLargeSmart();
+					this.field5102 = var3.readNullableLargeSmart();
+					this.field5103 = var3.readNullableLargeSmart();
+					this.field5104 = var3.readNullableLargeSmart();
+					this.field5105 = var3.readNullableLargeSmart();
+					this.field5106 = var3.readNullableLargeSmart();
+					this.field5114 = var3.readNullableLargeSmart();
+					this.field5108 = var3.readNullableLargeSmart();
+					this.field5107 = var3.readNullableLargeSmart();
 					break;
 				case 3:
 					for (int var5 = 0; var5 < this.field5111.length; ++var5) {

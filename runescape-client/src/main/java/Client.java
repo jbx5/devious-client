@@ -4341,7 +4341,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				if (ServerPacket.field3488 == var1.serverPacket) {
 					var14 = var3.readUnsignedByteNeg() * 4;
 					var61 = var3.readByteAdd();
-					var11 = var3.readNullableLargeSmart();
+					var11 = var3.method10108();
 					var6 = var3.readMedium();
 					var21 = var6 >> 16;
 					var5 = var6 >> 8 & 255;
@@ -5879,7 +5879,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var64 = var3.readUnsignedShort();
 					var14 = var3.readUnsignedByteAdd() * 4;
 					var66 = var3.readUnsignedByte() * 4;
-					int var42 = var3.readNullableLargeSmart();
+					int var42 = var3.method10108();
 					var17 = var3.readUnsignedByteNeg();
 					var6 = var3.method10139();
 					var21 = var6 >> 16;

@@ -408,8 +408,7 @@ public class Buffer extends Node {
 		descriptor = "(B)I",
 		garbageValue = "-21"
 	)
-	@Export("readNullableLargeSmart")
-	public int readNullableLargeSmart() {
+	public int method10108() {
 		this.offset += 3;
 		int var1 = ((this.array[this.offset - 3] & 255) << 16) + (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8);
 		if (var1 > 8388607) {
@@ -614,7 +613,8 @@ public class Buffer extends Node {
 		descriptor = "(I)I",
 		garbageValue = "502659"
 	)
-	public int method10108() {
+	@Export("readNullableLargeSmart")
+	public int readNullableLargeSmart() {
 		if (this.array[this.offset] < 0) {
 			return this.readInt() & Integer.MAX_VALUE;
 		} else {

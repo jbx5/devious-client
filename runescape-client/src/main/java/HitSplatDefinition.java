@@ -171,17 +171,17 @@ public class HitSplatDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
-			this.fontId = var1.method10108();
+			this.fontId = var1.readNullableLargeSmart();
 		} else if (var2 == 2) {
 			this.textColor = var1.readMedium();
 		} else if (var2 == 3) {
-			this.field2152 = var1.method10108();
+			this.field2152 = var1.readNullableLargeSmart();
 		} else if (var2 == 4) {
-			this.field2154 = var1.method10108();
+			this.field2154 = var1.readNullableLargeSmart();
 		} else if (var2 == 5) {
-			this.field2153 = var1.method10108();
+			this.field2153 = var1.readNullableLargeSmart();
 		} else if (var2 == 6) {
-			this.field2161 = var1.method10108();
+			this.field2161 = var1.readNullableLargeSmart();
 		} else if (var2 == 7) {
 			this.field2156 = var1.readShort();
 		} else if (var2 == 8) {

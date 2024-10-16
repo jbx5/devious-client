@@ -866,7 +866,7 @@ public class PlayerComposition {
 
 					for (var9 = 0; var9 < 8; ++var9) {
 						if ((var6 & 1 << var9) != 0) {
-							var7[var9] = var1.method10108();
+							var7[var9] = var1.readNullableLargeSmart();
 							var14[var9] = (short)var1.readShortSmartSub();
 						} else {
 							var7[var9] = -1;
