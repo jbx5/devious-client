@@ -2,255 +2,248 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fb")
+@ObfuscatedName("fw")
 public class class134 {
-	@ObfuscatedName("fj")
-	@ObfuscatedSignature(
-		descriptor = "Lof;"
-	)
-	static Archive field1578;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("cj")
 	@ObfuscatedGetter(
-		intValue = -563736223
+		intValue = -1407412519
 	)
-	public final int field1581;
-	@ObfuscatedName("ae")
+	static int field1573;
+	@ObfuscatedName("js")
+	@ObfuscatedGetter(
+		intValue = 576765921
+	)
+	static int field1572;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 629003935
+	)
+	public final int field1569;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lfb;"
+		descriptor = "Lfw;"
 	)
-	public class134 field1569;
-	@ObfuscatedName("ag")
-	float[][] field1575;
+	public class134 field1574;
+	@ObfuscatedName("ak")
+	float[][] field1559;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "[Lqs;"
+	)
+	final TransformationMatrix[] field1566;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "[Lqs;"
+	)
+	TransformationMatrix[] field1561;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "[Lqs;"
+	)
+	TransformationMatrix[] field1562;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lqs;"
+	)
+	TransformationMatrix field1568;
+	@ObfuscatedName("ae")
+	boolean field1560;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "[Lqf;"
+		descriptor = "Lqs;"
 	)
-	final TransformationMatrix[] field1573;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "[Lqf;"
-	)
-	TransformationMatrix[] field1571;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "[Lqf;"
-	)
-	TransformationMatrix[] field1574;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lqf;"
-	)
-	TransformationMatrix field1585;
+	TransformationMatrix field1565;
 	@ObfuscatedName("at")
-	boolean field1576;
+	boolean field1570;
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lqf;"
+		descriptor = "Lqs;"
 	)
-	TransformationMatrix field1577;
-	@ObfuscatedName("ar")
-	boolean field1572;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lqf;"
-	)
-	TransformationMatrix field1579;
-	@ObfuscatedName("ad")
-	float[][] field1580;
-	@ObfuscatedName("ah")
-	float[][] field1583;
-	@ObfuscatedName("ap")
-	float[][] field1582;
+	TransformationMatrix field1567;
+	@ObfuscatedName("an")
+	float[][] field1575;
+	@ObfuscatedName("ao")
+	float[][] field1563;
+	@ObfuscatedName("af")
+	float[][] field1557;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILvf;Z)V"
+		descriptor = "(ILvl;Z)V"
 	)
 	public class134(int var1, Buffer var2, boolean var3) {
-		this.field1585 = new TransformationMatrix();
-		this.field1576 = true;
-		this.field1577 = new TransformationMatrix();
-		this.field1572 = true;
-		this.field1579 = new TransformationMatrix();
-		this.field1581 = var2.readShort();
-		this.field1573 = new TransformationMatrix[var1];
-		this.field1571 = new TransformationMatrix[this.field1573.length];
-		this.field1574 = new TransformationMatrix[this.field1573.length];
-		this.field1575 = new float[this.field1573.length][3];
+		this.field1568 = new TransformationMatrix();
+		this.field1560 = true;
+		this.field1565 = new TransformationMatrix();
+		this.field1570 = true;
+		this.field1567 = new TransformationMatrix();
+		this.field1569 = var2.readShort();
+		this.field1566 = new TransformationMatrix[var1];
+		this.field1561 = new TransformationMatrix[this.field1566.length];
+		this.field1562 = new TransformationMatrix[this.field1566.length];
+		this.field1559 = new float[this.field1566.length][3];
 
-		for (int var4 = 0; var4 < this.field1573.length; ++var4) {
-			this.field1573[var4] = new TransformationMatrix(var2, var3);
-			this.field1575[var4][0] = var2.method9934();
-			this.field1575[var4][1] = var2.method9934();
-			this.field1575[var4][2] = var2.method9934();
+		for (int var4 = 0; var4 < this.field1566.length; ++var4) {
+			this.field1566[var4] = new TransformationMatrix(var2, var3);
+			this.field1559[var4][0] = var2.method10096();
+			this.field1559[var4][1] = var2.method10096();
+			this.field1559[var4][2] = var2.method10096();
 		}
 
-		this.method3276();
+		this.method3389();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2126074356"
+		descriptor = "(B)V",
+		garbageValue = "7"
 	)
-	void method3276() {
-		this.field1580 = new float[this.field1573.length][3];
-		this.field1583 = new float[this.field1573.length][3];
-		this.field1582 = new float[this.field1573.length][3];
-		TransformationMatrix var1 = class172.method3757();
+	void method3389() {
+		this.field1575 = new float[this.field1566.length][3];
+		this.field1563 = new float[this.field1566.length][3];
+		this.field1557 = new float[this.field1566.length][3];
+		TransformationMatrix var1 = class177.method3843();
 
-		for (int var2 = 0; var2 < this.field1573.length; ++var2) {
-			TransformationMatrix var3 = this.method3285(var2);
-			var1.method8132(var3);
-			var1.method8139();
-			this.field1580[var2] = var1.method8129();
-			this.field1583[var2][0] = var3.field4737[12];
-			this.field1583[var2][1] = var3.field4737[13];
-			this.field1583[var2][2] = var3.field4737[14];
-			this.field1582[var2] = var3.method8145();
+		for (int var2 = 0; var2 < this.field1566.length; ++var2) {
+			TransformationMatrix var3 = this.method3390(var2);
+			var1.method8282(var3);
+			var1.method8263();
+			this.field1575[var2] = var1.method8252();
+			this.field1563[var2][0] = var3.field4783[12];
+			this.field1563[var2][1] = var3.field4783[13];
+			this.field1563[var2][2] = var3.field4783[14];
+			this.field1557[var2] = var3.method8331();
 		}
 
-		var1.method8125();
+		var1.method8284();
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lqs;",
+		garbageValue = "-36"
+	)
+	TransformationMatrix method3390(int var1) {
+		return this.field1566[var1];
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lqs;",
+		garbageValue = "109"
+	)
+	TransformationMatrix method3391(int var1) {
+		if (this.field1561[var1] == null) {
+			this.field1561[var1] = new TransformationMatrix(this.method3390(var1));
+			if (this.field1574 != null) {
+				this.field1561[var1].method8278(this.field1574.method3391(var1));
+			} else {
+				this.field1561[var1].method8278(TransformationMatrix.field4784);
+			}
+		}
+
+		return this.field1561[var1];
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lqs;",
+		garbageValue = "-55"
+	)
+	TransformationMatrix method3392(int var1) {
+		if (this.field1562[var1] == null) {
+			this.field1562[var1] = new TransformationMatrix(this.method3391(var1));
+			this.field1562[var1].method8263();
+		}
+
+		return this.field1562[var1];
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Lqs;I)V",
+		garbageValue = "326549326"
+	)
+	void method3393(TransformationMatrix var1) {
+		this.field1568.method8282(var1);
+		this.field1560 = true;
+		this.field1570 = true;
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lqs;",
+		garbageValue = "-124"
+	)
+	TransformationMatrix method3394() {
+		return this.field1568;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lqs;",
+		garbageValue = "-27"
+	)
+	TransformationMatrix method3395() {
+		if (this.field1560) {
+			this.field1565.method8282(this.method3394());
+			if (this.field1574 != null) {
+				this.field1565.method8278(this.field1574.method3395());
+			}
+
+			this.field1560 = false;
+		}
+
+		return this.field1565;
 	}
 
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lqf;",
-		garbageValue = "1790433551"
+		descriptor = "(II)Lqs;",
+		garbageValue = "853655596"
 	)
-	TransformationMatrix method3285(int var1) {
-		return this.field1573[var1];
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lqf;",
-		garbageValue = "1282771416"
-	)
-	TransformationMatrix method3278(int var1) {
-		if (this.field1571[var1] == null) {
-			this.field1571[var1] = new TransformationMatrix(this.method3285(var1));
-			if (this.field1569 != null) {
-				this.field1571[var1].method8135(this.field1569.method3278(var1));
-			} else {
-				this.field1571[var1].method8135(TransformationMatrix.field4733);
-			}
+	public TransformationMatrix method3396(int var1) {
+		if (this.field1570) {
+			this.field1567.method8282(this.method3392(var1));
+			this.field1567.method8278(this.method3395());
+			this.field1570 = false;
 		}
 
-		return this.field1571[var1];
+		return this.field1567;
 	}
 
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lqf;",
-		garbageValue = "780352272"
+		descriptor = "(II)[F",
+		garbageValue = "-2131036687"
 	)
-	TransformationMatrix method3279(int var1) {
-		if (this.field1574[var1] == null) {
-			this.field1574[var1] = new TransformationMatrix(this.method3278(var1));
-			this.field1574[var1].method8139();
-		}
-
-		return this.field1574[var1];
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lqf;I)V",
-		garbageValue = "-1688333975"
-	)
-	void method3307(TransformationMatrix var1) {
-		this.field1585.method8132(var1);
-		this.field1576 = true;
-		this.field1572 = true;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(B)Lqf;",
-		garbageValue = "35"
-	)
-	TransformationMatrix method3281() {
-		return this.field1585;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lqf;",
-		garbageValue = "-42227819"
-	)
-	TransformationMatrix method3283() {
-		if (this.field1576) {
-			this.field1577.method8132(this.method3281());
-			if (this.field1569 != null) {
-				this.field1577.method8135(this.field1569.method3283());
-			}
-
-			this.field1576 = false;
-		}
-
-		return this.field1577;
+	float[] method3397(int var1) {
+		return this.field1575[var1];
 	}
 
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lqf;",
-		garbageValue = "-67"
+		descriptor = "(II)[F",
+		garbageValue = "-2142082017"
 	)
-	public TransformationMatrix method3282(int var1) {
-		if (this.field1572) {
-			this.field1579.method8132(this.method3279(var1));
-			this.field1579.method8135(this.method3283());
-			this.field1572 = false;
-		}
-
-		return this.field1579;
+	float[] method3398(int var1) {
+		return this.field1563[var1];
 	}
 
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(II)[F",
-		garbageValue = "5452961"
+		garbageValue = "-1743433841"
 	)
-	float[] method3309(int var1) {
-		return this.field1580[var1];
+	float[] method3406(int var1) {
+		return this.field1557[var1];
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IB)[F",
-		garbageValue = "2"
+		descriptor = "(Lpe;B)V",
+		garbageValue = "116"
 	)
-	float[] method3284(int var1) {
-		return this.field1583[var1];
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(II)[F",
-		garbageValue = "1003006583"
-	)
-	float[] method3294(int var1) {
-		return this.field1582[var1];
-	}
-
-	@ObfuscatedName("ml")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-22197"
-	)
-	static void method3310() {
-		if (Client.isSpellSelected) {
-			Widget var0 = TaskHandler.widgetDefinition.getWidgetChild(class36.selectedSpellWidget, Client.selectedSpellChildIndex);
-			if (var0 != null && var0.onTargetLeave != null) {
-				ScriptEvent var1 = new ScriptEvent();
-				var1.widget = var0;
-				var1.args = var0.onTargetLeave;
-				class215.runScriptEvent(var1);
-			}
-
-			Client.selectedSpellItemId = -1;
-			Client.isSpellSelected = false;
-			SecureRandomCallable.invalidateWidget(var0);
-		}
+	public static void method3428(AbstractArchive var0) {
+		VarbitComposition.VarbitDefinition_archive = var0;
 	}
 }

@@ -1,38 +1,35 @@
+import java.io.File;
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ds")
+@ObfuscatedName("de")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-	@ObfuscatedName("ms")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -809297581
-	)
-	static int field1304;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -1662493805
+		intValue = 383832337
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -156689479
+		intValue = -592519003
 	)
 	@Export("health")
 	int health;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -428027423
+		intValue = -147271595
 	)
 	@Export("health2")
 	int health2;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1070811061
+		intValue = 631943229
 	)
 	@Export("cycleOffset")
 	int cycleOffset;
@@ -44,10 +41,10 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-611296192"
+		garbageValue = "371888269"
 	)
 	@Export("set")
 	void set(int var1, int var2, int var3, int var4) {
@@ -57,54 +54,47 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lif;",
-		garbageValue = "-683358200"
+		descriptor = "(B)V",
+		garbageValue = "96"
 	)
-	@Export("SequenceDefinition_get")
-	public static SequenceDefinition SequenceDefinition_get(int var0) {
-		SequenceDefinition var1 = (SequenceDefinition)SequenceDefinition.SequenceDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = SequenceDefinition.SequenceDefinition_archive.takeFile(12, var0);
-			var1 = new SequenceDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+	public static void method2774() {
+		class179.field1915.clear();
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/io/File;Ljava/io/File;I)V",
+		garbageValue = "-1837779746"
+	)
+	static void method2776(File var0, File var1) {
+		try {
+			AccessFile var2 = new AccessFile(class151.field1708, "rw", 10000L);
+			Buffer var3 = new Buffer(500);
+			var3.writeByte(3);
+			var3.writeByte(var1 != null ? 1 : 0);
+			var3.writeCESU8(var0.getPath());
+			if (var1 != null) {
+				var3.writeCESU8("");
 			}
 
-			var1.postDecode();
-			SequenceDefinition.SequenceDefinition_cached.put(var1, (long)var0);
-			return var1;
+			var2.write(var3.array, 0, var3.offset);
+			var2.close();
+		} catch (IOException var4) {
+			var4.printStackTrace();
 		}
+
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-467912855"
+		descriptor = "(I)V",
+		garbageValue = "-1730691614"
 	)
-	@Export("isDigit")
-	public static boolean isDigit(char var0) {
-		return var0 >= '0' && var0 <= '9';
-	}
-
-	@ObfuscatedName("ch")
-	@ObfuscatedSignature(
-		descriptor = "(ILdt;ZB)I",
-		garbageValue = "44"
-	)
-	static int method2693(int var0, Script var1, boolean var2) {
-		if (var0 == 7900) {
-			int var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-			Client.field811 = Math.max(var3, 0);
-			return 1;
-		} else if (var0 == 7901) {
-			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = Client.field811;
-			return 1;
-		} else {
-			return 2;
-		}
+	static final void method2777() {
+		Object var10000 = null;
+		String var0 = "You can't add yourself to your own ignore list";
+		class430.addGameMessage(30, "", var0);
 	}
 }

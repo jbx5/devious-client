@@ -1,45 +1,52 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lw")
+@ObfuscatedName("lt")
 @Implements("WorldMapSection1")
 public class WorldMapSection1 implements WorldMapSection {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1092812609
+		intValue = 1465133883
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 187149017
+		intValue = -1834087449
 	)
 	@Export("planes")
 	int planes;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -703218705
+		intValue = 68177347
 	)
 	@Export("regionStartX")
 	int regionStartX;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 854450517
+		intValue = -1889382961
 	)
 	@Export("regionStartY")
 	int regionStartY;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1859721259
+		intValue = -1646434889
 	)
 	@Export("regionEndX")
 	int regionEndX;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = -2034581861
+		intValue = 919669859
 	)
 	@Export("regionEndY")
 	int regionEndY;
@@ -47,10 +54,10 @@ public class WorldMapSection1 implements WorldMapSection {
 	WorldMapSection1() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lky;I)V",
-		garbageValue = "-1991951399"
+		descriptor = "(Lkp;I)V",
+		garbageValue = "-1801855578"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -72,10 +79,10 @@ public class WorldMapSection1 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)Z",
-		garbageValue = "-644828112"
+		garbageValue = "-1302944886"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
@@ -86,20 +93,20 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "2038421096"
+		descriptor = "(IIB)Z",
+		garbageValue = "-75"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >> 6 == this.regionEndX && var2 >> 6 == this.regionEndY;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)[I",
-		garbageValue = "1"
+		garbageValue = "114"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -111,10 +118,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lnm;",
-		garbageValue = "1877296615"
+		descriptor = "(III)Lnn;",
+		garbageValue = "-246633808"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -127,10 +134,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)V",
-		garbageValue = "814828591"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "2108862730"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -143,12 +150,79 @@ public class WorldMapSection1 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "936557923"
+		descriptor = "(S)V",
+		garbageValue = "7325"
 	)
 	@Export("postRead")
 	void postRead() {
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(Lpe;Lpe;IZB)Lfr;",
+		garbageValue = "0"
+	)
+	public static class145 method6334(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
+		boolean var4 = true;
+		byte[] var5 = var0.getFile(var2 >> 16 & 65535, var2 & 65535);
+		if (var5 == null) {
+			var4 = false;
+			return null;
+		} else {
+			int var6 = (var5[1] & 255) << 8 | var5[2] & 255;
+			byte[] var7;
+			if (var3) {
+				var7 = var1.getFile(0, var6);
+			} else {
+				var7 = var1.getFile(var6, 0);
+			}
+
+			if (var7 == null) {
+				var4 = false;
+			}
+
+			if (!var4) {
+				return null;
+			} else {
+				if (class553.field5448 == null) {
+					class145.field1669 = Runtime.getRuntime().availableProcessors();
+					class553.field5448 = new ThreadPoolExecutor(0, class145.field1669, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(class145.field1669 * 100 + 100), new class142());
+				}
+
+				try {
+					return new class145(var0, var1, var2, var3);
+				} catch (Exception var9) {
+					return null;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/util/Date;",
+		garbageValue = "419822975"
+	)
+	static Date method6333() throws ParseException {
+		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
+		var0.setLenient(false);
+		StringBuilder var1 = new StringBuilder();
+		String[] var2 = Login.field943;
+
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			String var4 = var2[var3];
+			if (var4 == null) {
+				class6.method43(7);
+				class132.setLoginResponseString("Date not valid.", "Please ensure all characters are populated.", "");
+				return null;
+			}
+
+			var1.append(var4);
+		}
+
+		var1.append("12");
+		return var0.parse(var1.toString());
 	}
 }

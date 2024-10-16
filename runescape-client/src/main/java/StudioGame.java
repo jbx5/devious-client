@@ -1,56 +1,60 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ob")
+@ObfuscatedName("oy")
 @Implements("StudioGame")
 public enum StudioGame implements Enum {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Loy;"
 	)
 	@Export("runescape")
 	runescape("runescape", "RuneScape", 0),
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Loy;"
 	)
 	@Export("stellardawn")
 	stellardawn("stellardawn", "Stellar Dawn", 1),
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Loy;"
 	)
 	@Export("game3")
 	game3("game3", "Game 3", 2),
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Loy;"
 	)
 	@Export("game4")
 	game4("game4", "Game 4", 3),
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Loy;"
 	)
 	@Export("game5")
 	game5("game5", "Game 5", 4),
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lob;"
+		descriptor = "Loy;"
 	)
 	@Export("oldscape")
 	oldscape("oldscape", "RuneScape 2007", 5);
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("gk")
+	static String field4135;
+	@ObfuscatedName("jw")
+	@Export("regionLandArchives")
+	static byte[][] regionLandArchives;
+	@ObfuscatedName("as")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -648630575
+		intValue = -110286917
 	)
 	@Export("id")
 	final int id;
@@ -60,35 +64,58 @@ public enum StudioGame implements Enum {
 		this.id = var5;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-350930589"
+		garbageValue = "1837624059"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ic")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-698538677"
+		descriptor = "(IIIB)I",
+		garbageValue = "-111"
 	)
-	static final void method7437() {
-		int var0 = Client.playerUpdateManager.playerCount;
-		int[] var1 = Client.playerUpdateManager.playerIndices;
-		Iterator var2 = Client.worldViewManager.iterator();
+	static final int method7524(int var0, int var1, int var2) {
+		if (var2 > 179) {
+			var1 /= 2;
+		}
 
-		while (var2.hasNext()) {
-			WorldView var3 = (WorldView)var2.next();
+		if (var2 > 192) {
+			var1 /= 2;
+		}
 
-			for (int var4 = 0; var4 < var0; ++var4) {
-				Player var5 = var3.players[var1[var4]];
-				if (var5 != null) {
-					class425.updateActorSequence(var3, var5, 1);
+		if (var2 > 217) {
+			var1 /= 2;
+		}
+
+		if (var2 > 243) {
+			var1 /= 2;
+		}
+
+		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
+		return var3;
+	}
+
+	@ObfuscatedName("jh")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "7992000"
+	)
+	static void method7530(int var0, int var1, int var2, int var3, int var4) {
+		NodeDeque var5 = class344.worldView.groundItems[var0][var1][var2];
+		if (var5 != null) {
+			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
+				if ((var3 & 32767) == var6.id && var4 == var6.quantity) {
+					var6.method3056();
+					break;
 				}
 			}
+
+			class397.updateItemPile(var0, var1, var2);
 		}
 
 	}

@@ -3,30 +3,39 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sy")
+@ObfuscatedName("sg")
 @Implements("TriBool")
 public class TriBool {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lsy;"
+		descriptor = "Lsg;"
 	)
 	@Export("TriBool_unknown")
 	public static final TriBool TriBool_unknown;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lsy;"
+		descriptor = "Lsg;"
 	)
 	@Export("TriBool_true")
 	public static final TriBool TriBool_true;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lsy;"
+		descriptor = "Lsg;"
 	)
 	@Export("TriBool_false")
 	public static final TriBool TriBool_false;
-	@ObfuscatedName("aq")
-	@Export("Tiles_underlays2")
-	static byte[][][] Tiles_underlays2;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lvc;"
+	)
+	@Export("logoSprite")
+	static IndexedSprite logoSprite;
+	@ObfuscatedName("dh")
+	@ObfuscatedSignature(
+		descriptor = "[Lvv;"
+	)
+	@Export("worldSelectBackSprites")
+	static SpritePixels[] worldSelectBackSprites;
 
 	static {
 		TriBool_unknown = new TriBool();
@@ -35,5 +44,17 @@ public class TriBool {
 	}
 
 	TriBool() {
+	}
+
+	@ObfuscatedName("il")
+	@ObfuscatedSignature(
+		descriptor = "(Ldn;B)V",
+		garbageValue = "45"
+	)
+	static void method9141(WorldView var0) {
+		if (Client.renderSelf) {
+			Friend.addPlayerToScene(var0, Client.localPlayerIndex, false);
+		}
+
 	}
 }

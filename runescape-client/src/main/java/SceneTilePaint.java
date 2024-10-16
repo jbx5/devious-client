@@ -1,52 +1,48 @@
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jl")
+@ObfuscatedName("jp")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1682983483
+		intValue = 101319007
 	)
 	@Export("swColor")
 	int swColor;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1385793473
+		intValue = -299037217
 	)
 	@Export("seColor")
 	int seColor;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1447020527
+		intValue = -1442215975
 	)
 	@Export("neColor")
 	int neColor;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1755662469
+		intValue = -180116541
 	)
 	@Export("nwColor")
 	int nwColor;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1870095485
+		intValue = 860316531
 	)
 	@Export("texture")
 	int texture;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@Export("isFlat")
 	boolean isFlat;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1616083007
+		intValue = 1197868651
 	)
 	@Export("rgb")
 	int rgb;
@@ -62,39 +58,14 @@ public final class SceneTilePaint {
 		this.isFlat = var7;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "-403784714"
+		descriptor = "(B)V",
+		garbageValue = "-1"
 	)
-	static long method5415() {
-		try {
-			URL var0 = new URL(class354.method6858("services", false) + "m=accountappeal/login.ws");
-			URLConnection var1 = var0.openConnection();
-			var1.setRequestProperty("connection", "close");
-			var1.setDoInput(true);
-			var1.setDoOutput(true);
-			var1.setConnectTimeout(5000);
-			OutputStreamWriter var2 = new OutputStreamWriter(var1.getOutputStream());
-			var2.write("data1=req");
-			var2.flush();
-			InputStream var3 = var1.getInputStream();
-			Buffer var4 = new Buffer(new byte[1000]);
-
-			do {
-				int var5 = var3.read(var4.array, var4.offset, 1000 - var4.offset);
-				if (var5 == -1) {
-					var4.offset = 0;
-					long var7 = var4.readLong();
-					return var7;
-				}
-
-				var4.offset += var5;
-			} while(var4.offset < 1000);
-
-			return 0L;
-		} catch (Exception var9) {
-			return 0L;
-		}
+	static final void method5490() {
+		Object var10000 = null;
+		String var0 = "Your ignore list is full. Max of 100 for free users, and 400 for members";
+		class430.addGameMessage(30, "", var0);
 	}
 }

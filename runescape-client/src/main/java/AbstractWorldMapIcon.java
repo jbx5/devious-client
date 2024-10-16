@@ -1,83 +1,81 @@
-import java.util.ArrayList;
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ly")
+@ObfuscatedName("lx")
 @Implements("AbstractWorldMapIcon")
 public abstract class AbstractWorldMapIcon {
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lnm;"
+		descriptor = "Lnn;"
 	)
 	@Export("coord2")
 	public final Coord coord2;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lnm;"
+		descriptor = "Lnn;"
 	)
 	@Export("coord1")
 	public final Coord coord1;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 546900797
+		intValue = 1255984963
 	)
 	@Export("screenX")
 	int screenX;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -2045810419
+		intValue = 105958947
 	)
 	@Export("screenY")
 	int screenY;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lnm;Lnm;)V"
+		descriptor = "(Lnn;Lnn;)V"
 	)
 	AbstractWorldMapIcon(Coord var1, Coord var2) {
 		this.coord1 = var1;
 		this.coord2 = var2;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1570517373"
+		garbageValue = "-755905144"
 	)
 	@Export("getElement")
 	public abstract int getElement();
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lls;",
-		garbageValue = "43"
+		descriptor = "(S)Llp;",
+		garbageValue = "3125"
 	)
 	@Export("getLabel")
 	abstract WorldMapLabel getLabel();
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-288166594"
+		garbageValue = "-2116199203"
 	)
 	@Export("getSubWidth")
 	abstract int getSubWidth();
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1390628388"
+		garbageValue = "1767515"
 	)
 	@Export("getSubHeight")
 	abstract int getSubHeight();
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "-576384506"
+		descriptor = "(IIB)Z",
+		garbageValue = "0"
 	)
 	@Export("fitsScreen")
 	boolean fitsScreen(int var1, int var2) {
@@ -88,27 +86,27 @@ public abstract class AbstractWorldMapIcon {
 		}
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-48"
+		garbageValue = "-29"
 	)
 	@Export("hasValidElement")
 	boolean hasValidElement() {
 		return this.getElement() >= 0;
 	}
 
-	@ObfuscatedName("av")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-2039535952"
+		garbageValue = "-607271768"
 	)
 	@Export("elementFitsScreen")
 	boolean elementFitsScreen(int var1, int var2) {
 		if (!this.hasValidElement()) {
 			return false;
 		} else {
-			WorldMapElement var3 = class142.WorldMapElement_get(this.getElement());
+			WorldMapElement var3 = AsyncRestClient.WorldMapElement_get(this.getElement());
 			int var4 = this.getSubWidth();
 			int var5 = this.getSubHeight();
 			switch(var3.horizontalAlignment.value) {
@@ -132,17 +130,16 @@ public abstract class AbstractWorldMapIcon {
 
 			switch(var3.verticalAlignment.value) {
 			case 0:
-				if (var2 >= this.screenY - var5 / 2 && var2 <= var5 / 2 + this.screenY) {
-					break;
-				}
-
-				return false;
-			case 1:
 				if (var2 > this.screenY - var5 && var2 <= this.screenY) {
 					break;
 				}
 
 				return false;
+			case 1:
+				if (var2 < this.screenY - var5 / 2 || var2 > var5 / 2 + this.screenY) {
+					return false;
+				}
+				break;
 			case 2:
 				if (var2 < this.screenY || var2 >= var5 + this.screenY) {
 					return false;
@@ -153,10 +150,10 @@ public abstract class AbstractWorldMapIcon {
 		}
 	}
 
-	@ObfuscatedName("aw")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)Z",
-		garbageValue = "-10"
+		garbageValue = "73"
 	)
 	@Export("labelFitsScreen")
 	boolean labelFitsScreen(int var1, int var2) {
@@ -170,48 +167,156 @@ public abstract class AbstractWorldMapIcon {
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;I)V",
-		garbageValue = "1919190771"
+		descriptor = "(Ljava/lang/CharSequence;IZI)I",
+		garbageValue = "1112315754"
 	)
-	public static void method6255(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
-	}
+	static int method6363(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
 
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "64"
-	)
-	public static void method6257(int var0, int var1) {
-		class433.method8269(var0, var1, 0, 0);
-		class334.field3619.clear();
-		class334.field3620.clear();
-		if (class334.musicSongs.isEmpty() || var0 == 0 && var1 == 0) {
-			class60.method1192();
-		} else {
-			class334.field3620.add(new DelayFadeTask((SongTask)null, class334.musicPlayerStatus));
-			class334.field3620.add(new FadeOutTask((SongTask)null, 0, false, class334.field3614));
-			ArrayList var3 = new ArrayList();
-			Iterator var4 = class334.musicSongs.iterator();
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
 
-			while (var4.hasNext()) {
-				MusicSong var5 = (MusicSong)var4.next();
-				var3.add(var5);
+					if (var8 == '+') {
+						continue;
+					}
+				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						throw new NumberFormatException();
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					throw new NumberFormatException();
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var10 + var5 * var1;
+				if (var9 / var1 != var5) {
+					throw new NumberFormatException();
+				}
+
+				var5 = var9;
+				var4 = true;
 			}
 
-			class334.field3620.add(new class442((SongTask)null, var3));
+			if (!var4) {
+				throw new NumberFormatException();
+			} else {
+				return var5;
+			}
+		} else {
+			throw new IllegalArgumentException("" + var1);
 		}
-
 	}
 
-	@ObfuscatedName("jd")
+	@ObfuscatedName("kt")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1172208687"
+		descriptor = "(Ldn;Lvm;II)V",
+		garbageValue = "850854382"
 	)
-	static boolean method6237() {
-		return (Client.drawPlayerNames & 8) != 0;
+	static void method6362(WorldView var0, PacketBuffer var1, int var2) {
+		int var3 = var1.readUnsignedByte();
+		if (var3 < var0.worldEntityCount) {
+			throw new RuntimeException("dang");
+		} else if (var3 > var0.worldEntityCount) {
+			throw new RuntimeException("dang!");
+		} else {
+			var0.worldEntityCount = 0;
+			class274 var4 = new class274();
+
+			int var5;
+			int var6;
+			int var8;
+			int var12;
+			int var13;
+			for (var5 = 0; var5 < var3; ++var5) {
+				var6 = var0.worldEntityIndices[var5];
+				WorldEntity var14 = var0.worldEntities[var6];
+				var8 = var1.readUnsignedByte();
+				if (var8 == 0) {
+					Client.worldViewManager.method2700(var14.worldView);
+					var0.worldEntities[var6] = null;
+				} else {
+					var0.worldEntityIndices[++var0.worldEntityCount - 1] = var6;
+					byte var9;
+					int var16;
+					if (var2 < 3) {
+						var14.field5031 = var2 == 1 ? 1 : var1.readByte();
+						var9 = var1.readByte();
+						byte var18 = var1.readByte();
+						var16 = var1.readUnsignedShort();
+						SoundSystem.method862((byte)var1.readUnsignedByte());
+						var4.method5790(var9, var18);
+						var4.method5773(var16);
+						if (var4.method5765() != 0 || var4.method5767() != 0) {
+							var14.method9151(var4);
+						}
+					} else if (var2 == 3 && var8 != 1) {
+						var4.method5771(var14.method9149());
+						var9 = var1.readByte();
+						if (var9 != 0) {
+							int var15 = class496.method9322(var1, var9, 0);
+							var16 = class496.method9322(var1, var9, 2);
+							var12 = class496.method9322(var1, var9, 4);
+							var13 = class496.method9322(var1, var9, 6);
+							var4.method5782(var15, var16, var12, var13);
+						}
+
+						if (var8 == 2) {
+							var14.method9151(var4);
+						} else {
+							var14.method9152(var4);
+						}
+					}
+				}
+			}
+
+			while (var1.method10028(Client.packetWriter.serverPacketLength) >= 10) {
+				var5 = var1.readUnsignedShort();
+				var0.worldEntityIndices[++var0.worldEntityCount - 1] = var5;
+				var6 = var1.readUnsignedByte();
+				int var7 = var1.readUnsignedByte();
+				var8 = var6 * 8;
+				int var17 = var7 * 8;
+				WorldView var10 = Client.worldViewManager.method2684(var5, var8, var17, TaskHandler.clientPreferences.getDrawDistance(), class232.field2471);
+				WorldEntity var11 = new WorldEntity(var5, var10);
+				var0.worldEntities[var5] = var11;
+				if (var2 < 3) {
+					var12 = var1.readUnsignedByte();
+					var13 = var1.readUnsignedByte();
+					var11.field5030.method5790(var12, var13);
+					var11.field5030.method5773(var1.readUnsignedShort());
+					var1.readUnsignedShort();
+				} else if (var2 == 3) {
+					var11.field5031 = var1.readByte();
+					ViewportMouse.method5487(var1, var11.field5030, 0, 0);
+					var11.method9151(var11.field5030);
+				}
+			}
+
+		}
 	}
 }

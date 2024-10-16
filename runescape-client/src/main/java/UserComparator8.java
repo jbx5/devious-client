@@ -1,26 +1,13 @@
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ey")
+@ObfuscatedName("eu")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("wv")
-	@ObfuscatedSignature(
-		descriptor = "Ltu;"
-	)
-	@Export("worldMap")
-	static WorldMap worldMap;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lvt;"
-	)
-	@Export("logoSprite")
-	static IndexedSprite logoSprite;
-	@ObfuscatedName("ja")
-	static byte[][] field1516;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -28,10 +15,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lsq;Lsq;I)I",
-		garbageValue = "1738260536"
+		descriptor = "(Lsv;Lsv;I)I",
+		garbageValue = "-1338620044"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -50,70 +37,65 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;II)V",
-		garbageValue = "-1904455651"
+		descriptor = "(III)I",
+		garbageValue = "620347953"
 	)
-	static final void method3186(String var0, int var1) {
-		PacketBufferNode var2 = class141.getPacketBufferNode(ClientPacket.field3371, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeByte(class536.stringCp1252NullTerminatedByteSize(var0) + 1);
-		var2.packetBuffer.writeStringCp1252NullTerminated(var0);
-		var2.packetBuffer.writeByteAdd(var1);
-		Client.packetWriter.addNode(var2);
+	static int method3269(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var2 == null) {
+			return 0;
+		} else if (var1 == -1) {
+			return 0;
+		} else {
+			int var3 = 0;
+
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) {
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4];
+				}
+			}
+
+			return var3;
+		}
 	}
 
-	@ObfuscatedName("kw")
+	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIIIIILdi;I)V",
-		garbageValue = "-1934721450"
+		descriptor = "(CB)Z",
+		garbageValue = "0"
 	)
-	static void method3185(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, Player var13) {
-		ObjectComposition var14 = class273.getObjectDefinition(var6);
-		int var15;
-		int var16;
-		if (var4 != 1 && var4 != 3) {
-			var15 = var14.sizeX;
-			var16 = var14.sizeY;
+	@Export("isCharPrintable")
+	public static boolean isCharPrintable(char var0) {
+		if (var0 >= ' ' && var0 <= '~') {
+			return true;
+		} else if (var0 >= 160 && var0 <= 255) {
+			return true;
 		} else {
-			var15 = var14.sizeY;
-			var16 = var14.sizeX;
+			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
 		}
+	}
 
-		int var17 = (var15 >> 1) + var1;
-		int var18 = (var15 + 1 >> 1) + var1;
-		int var19 = (var16 >> 1) + var2;
-		int var20 = var2 + (var16 + 1 >> 1);
-		int[][] var21 = class162.worldView.tileHeights[var0];
-		int var22 = var21[var17][var20] + var21[var18][var19] + var21[var17][var19] + var21[var18][var20] >> 2;
-		int var23 = (var1 << 7) + (var15 << 6);
-		int var24 = (var2 << 7) + (var16 << 6);
-		Model var25 = var14.getModel(var3, var4, var21, var23, var22, var24);
-		if (var25 != null) {
-			class165.method3680(class162.worldView, var0, var1, var2, var5, -1, 0, 0, 31, var7 + 1, var8 + 1);
-			var13.animationCycleStart = var7 + Client.cycle;
-			var13.animationCycleEnd = var8 + Client.cycle;
-			var13.model0 = var25;
-			var13.field1152 = var1 * 128 + var15 * 64;
-			var13.field1150 = var2 * 128 + var16 * 64;
-			var13.tileHeight2 = var22;
-			int var26;
-			if (var9 > var11) {
-				var26 = var9;
-				var9 = var11;
-				var11 = var26;
+	@ObfuscatedName("ih")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "152435199"
+	)
+	static final void method3277() {
+		int var0 = Client.playerUpdateManager.playerCount;
+		int[] var1 = Client.playerUpdateManager.playerIndices;
+		Iterator var2 = Client.worldViewManager.iterator();
+
+		while (var2.hasNext()) {
+			WorldView var3 = (WorldView)var2.next();
+
+			for (int var4 = 0; var4 < var0; ++var4) {
+				Player var5 = var3.players[var1[var4]];
+				if (var5 != null) {
+					Skeleton.updateActorSequence(var3, var5, 1);
+				}
 			}
-
-			if (var10 > var12) {
-				var26 = var10;
-				var10 = var12;
-				var12 = var26;
-			}
-
-			var13.minX = var9 + var1;
-			var13.maxX = var11 + var1;
-			var13.minY = var10 + var2;
-			var13.maxY = var2 + var12;
 		}
 
 	}

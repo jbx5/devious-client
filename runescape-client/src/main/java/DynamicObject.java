@@ -3,79 +3,79 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("dk")
+@ObfuscatedName("dr")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("tf")
-	@ObfuscatedGetter(
-		intValue = -570521507
-	)
-	static int field1049;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("te")
 	@ObfuscatedSignature(
-		descriptor = "Ldd;"
+		descriptor = "Lbm;"
+	)
+	@Export("pcmPlayer1")
+	static PcmPlayer pcmPlayer1;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Ldn;"
 	)
 	@Export("worldView")
 	final WorldView worldView;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1229616605
+		intValue = 2044875447
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1106917505
+		intValue = -1565534601
 	)
 	@Export("type")
 	final int type;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -229054585
+		intValue = 1790019807
 	)
 	@Export("orientation")
 	final int orientation;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -279200905
+		intValue = -1816491519
 	)
 	@Export("plane")
 	final int plane;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 378589425
+		intValue = 2057600999
 	)
 	@Export("x")
 	final int x;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -1588561167
+		intValue = -1834683989
 	)
 	@Export("y")
 	final int y;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lif;"
+		descriptor = "Liu;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = -1034526735
+		intValue = -97130721
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -1815809313
+		intValue = -1010418003
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ldd;IIIIIIIZLju;)V"
+		descriptor = "(Ldn;IIIIIIIZLjv;)V"
 	)
 	DynamicObject(WorldView var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, Renderable var10) {
 		this.worldView = var1;
@@ -86,12 +86,12 @@ public class DynamicObject extends Renderable {
 		this.x = var6;
 		this.y = var7;
 		if (var8 != -1) {
-			this.sequenceDefinition = HealthBarUpdate.SequenceDefinition_get(var8);
+			this.sequenceDefinition = Widget.SequenceDefinition_get(var8);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
 			if (this.sequenceDefinition.restartMode == 0 && var10 instanceof DynamicObject) {
 				DynamicObject var11 = (DynamicObject)var10;
-				if (var11.sequenceDefinition == this.sequenceDefinition) {
+				if (this.sequenceDefinition == var11.sequenceDefinition) {
 					this.frame = var11.frame;
 					this.cycleStart = var11.cycleStart;
 					return;
@@ -103,21 +103,21 @@ public class DynamicObject extends Renderable {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4368());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method4367());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljm;",
-		garbageValue = "-75"
+		descriptor = "(I)Ljy;",
+		garbageValue = "1885718735"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		ObjectComposition var1 = class273.getObjectDefinition(this.id);
+		ObjectComposition var1 = UrlRequest.getObjectDefinition(this.id);
 		if (var1.transforms != null) {
 			var1 = var1.transform();
 		}
@@ -140,7 +140,7 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = this.worldView.tileHeights[this.plane];
-			int var9 = var8[var5][var7] + var8[var5][var6] + var8[var4][var6] + var8[var4][var7] >> 2;
+			int var9 = var8[var4][var6] + var8[var5][var6] + var8[var4][var7] + var8[var5][var7] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			if (this.sequenceDefinition != null) {
@@ -164,14 +164,14 @@ public class DynamicObject extends Renderable {
 									break;
 								}
 
-								class93.method2538(this.sequenceDefinition, this.frame, var10, var11, false);
+								WorldMapSection0.method6223(this.sequenceDefinition, this.frame, var10, var11, false);
 							}
 						} while(this.frame >= 0 && this.frame < this.sequenceDefinition.frameIds.length);
 
 						this.sequenceDefinition = null;
 					}
 				} else {
-					int var13 = this.sequenceDefinition.method4368();
+					int var13 = this.sequenceDefinition.method4367();
 					this.frame += var12;
 					var12 = 0;
 					if (this.frame >= var13) {
@@ -182,7 +182,7 @@ public class DynamicObject extends Renderable {
 					}
 
 					if (this.sequenceDefinition != null) {
-						Canvas.method318(this.sequenceDefinition, this.frame, var10, var11, false);
+						WorldMapSection0.method6223(this.sequenceDefinition, this.frame, var10, var11, false);
 					}
 				}
 
@@ -193,355 +193,557 @@ public class DynamicObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;FS)F",
-		garbageValue = "30655"
+		descriptor = "(Lvl;Lum;I)Lum;",
+		garbageValue = "-1109744675"
 	)
-	static float method2401(class137 var0, float var1) {
-		if (var0 != null && var0.method3328() != 0) {
-			if (var1 < (float)var0.field1607[0].field1554) {
-				return var0.field1605 == class135.field1590 ? var0.field1607[0].field1555 : UserComparator6.method3242(var0, var1, true);
-			} else if (var1 > (float)var0.field1607[var0.method3328() - 1].field1554) {
-				return var0.field1606 == class135.field1590 ? var0.field1607[var0.method3328() - 1].field1555 : UserComparator6.method3242(var0, var1, false);
-			} else if (var0.field1604) {
-				return var0.field1607[0].field1555;
+	@Export("readStringIntParameters")
+	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
+		int var2 = var0.readUnsignedByte();
+		int var3;
+		if (var1 == null) {
+			var3 = ClientPreferences.method2941(var2);
+			var1 = new IterableNodeHashTable(var3);
+		}
+
+		for (var3 = 0; var3 < var2; ++var3) {
+			boolean var4 = var0.readUnsignedByte() == 1;
+			int var5 = var0.readMedium();
+			Object var6;
+			if (var4) {
+				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
 			} else {
-				class132 var2 = var0.method3327(var1);
-				boolean var3 = false;
-				boolean var4 = false;
-				if (var2 == null) {
-					return 0.0F;
-				} else {
-					if (0.0F == var2.field1558 && 0.0F == var2.field1559) {
-						var3 = true;
-					} else if (Float.MAX_VALUE == var2.field1558 && Float.MAX_VALUE == var2.field1559) {
-						var4 = true;
-					} else if (var2.field1560 != null) {
-						if (var0.field1619) {
-							float var5 = (float)var2.field1554;
-							float var9 = var2.field1555;
-							float var6 = var5 + var2.field1558 * 0.33333334F;
-							float var10 = var9 + var2.field1559 * 0.33333334F;
-							float var8 = (float)var2.field1560.field1554;
-							float var12 = var2.field1560.field1555;
-							float var7 = var8 - var2.field1560.field1556 * 0.33333334F;
-							float var11 = var12 - var2.field1560.field1557 * 0.33333334F;
-							float var15;
-							float var16;
-							float var17;
-							float var18;
-							float var19;
-							if (var0.field1618) {
-								var15 = var10;
-								var16 = var11;
-								if (var0 != null) {
-									var17 = var8 - var5;
-									if (0.0F != var17) {
-										var18 = var6 - var5;
-										var19 = var7 - var5;
-										float[] var23 = new float[]{var18 / var17, var19 / var17};
-										var0.field1603 = 0.33333334F == var23[0] && 0.6666667F == var23[1];
-										float var21 = var23[0];
-										float var22 = var23[1];
-										if (var23[0] < 0.0F) {
-											var23[0] = 0.0F;
-										}
+				var6 = new IntegerNode(var0.readInt());
+			}
 
-										if (var23[1] > 1.0F) {
-											var23[1] = 1.0F;
-										}
+			var1.put((Node)var6, (long)var5);
+		}
 
-										if (var23[0] > 1.0F || var23[1] < -1.0F) {
-											class310.method6339(var23);
-										}
+		return var1;
+	}
 
-										float var10000;
-										if (var21 != var23[0]) {
-											var10000 = var5 + var17 * var23[0];
-											if (0.0F != var21) {
-												var15 = var9 + (var10 - var9) * var23[0] / var21;
-											}
-										}
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Ldn;IIIII)V",
+		garbageValue = "2129246771"
+	)
+	static final void method2455(WorldView var0, int var1, int var2, int var3, int var4) {
+		int[][][] var5 = var0.tileHeights;
+		int var6 = var0.sizeX - 1;
+		int var7 = var0.sizeY - 1;
 
-										if (var23[1] != var22) {
-											var10000 = var5 + var23[1] * var17;
-											if (1.0F != var22) {
-												var16 = var12 - (1.0F - var23[1]) * (var12 - var11) / (1.0F - var22);
-											}
-										}
-
-										var0.field1609 = var5;
-										var0.field1610 = var8;
-										AsyncHttpResponse.method276(0.0F, var23[0], var23[1], 1.0F, var0);
-										class149.method3468(var9, var15, var16, var12, var0);
-									}
-								}
-							} else if (var0 != null) {
-								var0.field1609 = var5;
-								float var13 = var8 - var5;
-								float var14 = var12 - var9;
-								var15 = var6 - var5;
-								var16 = 0.0F;
-								var17 = 0.0F;
-								if (var15 != 0.0F) {
-									var16 = (var10 - var9) / var15;
-								}
-
-								var15 = var8 - var7;
-								if (var15 != 0.0F) {
-									var17 = (var12 - var11) / var15;
-								}
-
-								var18 = 1.0F / (var13 * var13);
-								var19 = var16 * var13;
-								float var20 = var17 * var13;
-								var0.field1623 = (var19 + var20 - var14 - var14) * var18 / var13;
-								var0.field1612 = var18 * (var14 + var14 + var14 - var19 - var19 - var20);
-								var0.field1613 = var16;
-								var0.field1614 = var9;
-							}
-
-							var0.field1619 = false;
-						}
-					} else {
-						var3 = true;
+		for (int var8 = var2; var8 <= var2 + var4; ++var8) {
+			for (int var9 = var1; var9 <= var3 + var1; ++var9) {
+				if (var9 >= 0 && var9 < var5[0].length - 1 && var8 >= 0 && var8 < var5[0][0].length - 1) {
+					Tiles.Tiles_underlays2[0][var9][var8] = 127;
+					if (var9 == var1 && var9 > 0) {
+						var5[0][var9][var8] = var5[0][var9 - 1][var8];
 					}
 
-					if (var3) {
-						return var2.field1555;
-					} else if (var4) {
-						return (float)var2.field1554 != var1 && var2.field1560 != null ? var2.field1560.field1555 : var2.field1555;
-					} else {
-						return var0.field1618 ? class357.method6875(var0, var1) : ChatChannel.method2420(var0, var1);
+					if (var3 + var1 == var9 && var9 < var6) {
+						var5[0][var9][var8] = var5[0][var9 + 1][var8];
+					}
+
+					if (var8 == var2 && var8 > 0) {
+						var5[0][var9][var8] = var5[0][var9][var8 - 1];
+					}
+
+					if (var8 == var2 + var4 && var8 < var7) {
+						var5[0][var9][var8] = var5[0][var9][var8 + 1];
 					}
 				}
 			}
+		}
+
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(Lng;I)I",
+		garbageValue = "-1674143797"
+	)
+	static int method2461(Widget var0) {
+		if (var0.type != 11) {
+			--class208.Interpreter_stringStackSize;
+			Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = -1;
+			return 1;
 		} else {
-			return 0.0F;
+			String var1 = Interpreter.Interpreter_stringStack[--class208.Interpreter_stringStackSize];
+			Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = var0.method7355(var1);
+			return 1;
 		}
 	}
 
-	@ObfuscatedName("bp")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(ILdt;ZS)I",
-		garbageValue = "19894"
+		descriptor = "(Lqi;Lqi;Lqi;I)V",
+		garbageValue = "-508354921"
 	)
-	static int method2398(int var0, Script var1, boolean var2) {
-		if (var0 == ScriptOpcodes.CHAT_GETFILTER_PUBLIC) {
-			Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = Client.publicChatMode;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CHAT_SETFILTER) {
-			class320.Interpreter_intStackSize -= 3;
-			Client.publicChatMode = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
-			class160.privateChatMode = ChatChannel.method2411(Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1]);
-			if (class160.privateChatMode == null) {
-				class160.privateChatMode = PrivateChatMode.field5569;
+	@Export("drawTitle")
+	static void drawTitle(Font var0, Font var1, Font var2) {
+		Login.xPadding = (HttpRequestTask.canvasWidth - 765) / 2;
+		Login.loginBoxX = Login.xPadding + 202;
+		DevicePcmPlayerProvider.loginBoxCenter = Login.loginBoxX + 180;
+		if (Login.worldSelectOpen) {
+			HitSplatDefinition.method4211(var0, var1);
+		} else {
+			IntHashTable.leftTitleSprite.drawAt(Login.xPadding, 0);
+			class544.rightTitleSprite.drawAt(Login.xPadding + 382, 0);
+			TriBool.logoSprite.drawAt(Login.xPadding + 382 - TriBool.logoSprite.subWidth / 2, 18);
+			int var4;
+			if (Client.gameState == 0 || Client.gameState == 5) {
+				byte var3 = 20;
+				var0.drawCentered("RuneScape is loading - please wait...", Login.loginBoxX + 180, 245 - var3, 16777215, -1);
+				var4 = 253 - var3;
+				Rasterizer2D.Rasterizer2D_drawRectangle(Login.loginBoxX + 180 - 152, var4, 304, 34, 9179409);
+				Rasterizer2D.Rasterizer2D_drawRectangle(Login.loginBoxX + 180 - 151, var4 + 1, 302, 32, 0);
+				Rasterizer2D.Rasterizer2D_fillRectangle(Login.loginBoxX + 180 - 150, var4 + 2, Login.Login_loadingPercent * 3, 30, 9179409);
+				Rasterizer2D.Rasterizer2D_fillRectangle(Login.loginBoxX + 180 - 150 + Login.Login_loadingPercent * 3, var4 + 2, 300 - Login.Login_loadingPercent * 3, 30, 0);
+				var0.drawCentered(Login.Login_loadingText, Login.loginBoxX + 180, 276 - var3, 16777215, -1);
 			}
 
-			Client.tradeChatMode = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = class141.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
-			var13.packetBuffer.writeByte(Client.publicChatMode);
-			var13.packetBuffer.writeByte(class160.privateChatMode.field5567);
-			var13.packetBuffer.writeByte(Client.tradeChatMode);
-			Client.packetWriter.addNode(var13);
-			return 1;
-		} else {
-			PacketBufferNode var6;
-			int var7;
-			String var8;
-			int var9;
-			if (var0 == ScriptOpcodes.CHAT_SENDABUSEREPORT) {
-				var8 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-				class320.Interpreter_intStackSize -= 2;
-				var7 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
-				var9 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
-				var6 = class141.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
-				var6.packetBuffer.writeByte(class536.stringCp1252NullTerminatedByteSize(var8) + 2);
-				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
-				var6.packetBuffer.writeByte(var7 - 1);
-				var6.packetBuffer.writeByte(var9);
-				Client.packetWriter.addNode(var6);
-				return 1;
-			} else {
-				int var3;
-				Message var5;
-				if (var0 == ScriptOpcodes.CHAT_GETHISTORY_BYTYPEANDLINE) {
-					class320.Interpreter_intStackSize -= 2;
-					var3 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
-					var7 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
-					var5 = MouseRecorder.Messages_getByChannelAndID(var3, var7);
-					if (var5 != null) {
-						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var5.count;
-						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var5.cycle;
-						Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
-						Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
-						Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
-						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
-					} else {
-						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = -1;
-						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-						Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-						Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+			String var5;
+			String var6;
+			String var7;
+			short var17;
+			int var18;
+			short var19;
+			if (Client.gameState == 20) {
+				class230.titleboxSprite.drawAt(Login.loginBoxX + 180 - class230.titleboxSprite.subWidth / 2, 271 - class230.titleboxSprite.subHeight / 2);
+				var17 = 201;
+				var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16776960, 0);
+				var18 = var17 + 15;
+				var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16776960, 0);
+				var18 += 15;
+				var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16776960, 0);
+				var18 += 15;
+				var18 += 7;
+				if (Login.loginIndex != 4 && Login.loginIndex != 10) {
+					var0.draw("Login: ", Login.loginBoxX + 180 - 110, var18, 16777215, 0);
+					var19 = 200;
+					var5 = TaskHandler.clientPreferences.isUsernameHidden() ? ViewportMouse.method5473(Login.Login_username) : Login.Login_username;
+
+					for (var6 = var5; var0.stringWidth(var6) > var19; var6 = var6.substring(0, var6.length() - 1)) {
 					}
 
-					return 1;
+					var0.draw(AbstractFont.escapeBrackets(var6), Login.loginBoxX + 180 - 70, var18, 16777215, 0);
+					var18 += 15;
+
+					for (var7 = ViewportMouse.method5473(Login.Login_password); var0.stringWidth(var7) > var19; var7 = var7.substring(1)) {
+					}
+
+					var0.draw("Password: " + var7, Login.loginBoxX + 180 - 108, var18, 16777215, 0);
+					var18 += 15;
+				}
+			}
+
+			if (Client.gameState == 10 || Client.gameState == 11 || Client.gameState == 50) {
+				class230.titleboxSprite.drawAt(Login.loginBoxX, 171);
+				short var12;
+				if (Login.loginIndex == 0) {
+					var17 = 251;
+					var0.drawCentered("Welcome to RuneScape", Login.loginBoxX + 180, var17, 16776960, 0);
+					var18 = var17 + 30;
+					var4 = Login.loginBoxX + 180 - 80;
+					var12 = 291;
+					SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+					var0.drawLines("New User", var4 - 73, var12 - 20, 144, 40, 16777215, 0, 1, 1, 0);
+					var4 = Login.loginBoxX + 180 + 80;
+					SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+					var0.drawLines("Existing User", var4 - 73, var12 - 20, 144, 40, 16777215, 0, 1, 1, 0);
+				} else if (Login.loginIndex == 1) {
+					var0.drawCentered(Login.Login_response0, Login.loginBoxX + 180, 201, 16776960, 0);
+					var17 = 236;
+					var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16777215, 0);
+					var18 = var17 + 15;
+					var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16777215, 0);
+					var18 += 15;
+					var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16777215, 0);
+					var18 += 15;
+					var4 = Login.loginBoxX + 180 - 80;
+					var12 = 321;
+					SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+					var0.drawCentered("Continue", var4, var12 + 5, 16777215, 0);
+					var4 = Login.loginBoxX + 180 + 80;
+					SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+					var0.drawCentered("Cancel", var4, var12 + 5, 16777215, 0);
+				} else if (Login.loginIndex == 2) {
+					var17 = 201;
+					var0.drawCentered(Login.Login_response1, DevicePcmPlayerProvider.loginBoxCenter, var17, 16776960, 0);
+					var18 = var17 + 15;
+					var0.drawCentered(Login.Login_response2, DevicePcmPlayerProvider.loginBoxCenter, var18, 16776960, 0);
+					var18 += 15;
+					var0.drawCentered(Login.Login_response3, DevicePcmPlayerProvider.loginBoxCenter, var18, 16776960, 0);
+					var18 += 15;
+					var18 += 7;
+					var0.draw("Login: ", DevicePcmPlayerProvider.loginBoxCenter - 110, var18, 16777215, 0);
+					var19 = 200;
+					var5 = TaskHandler.clientPreferences.isUsernameHidden() ? ViewportMouse.method5473(Login.Login_username) : Login.Login_username;
+
+					for (var6 = var5; var0.stringWidth(var6) > var19; var6 = var6.substring(1)) {
+					}
+
+					var0.draw(AbstractFont.escapeBrackets(var6) + (Login.currentLoginField == 0 & Client.cycle % 40 < 20 ? class204.colorStartTag(16776960) + "|" : ""), DevicePcmPlayerProvider.loginBoxCenter - 70, var18, 16777215, 0);
+					var18 += 15;
+
+					for (var7 = ViewportMouse.method5473(Login.Login_password); var0.stringWidth(var7) > var19; var7 = var7.substring(1)) {
+					}
+
+					var0.draw("Password: " + var7 + (Login.currentLoginField == 1 & Client.cycle % 40 < 20 ? class204.colorStartTag(16776960) + "|" : ""), DevicePcmPlayerProvider.loginBoxCenter - 108, var18, 16777215, 0);
+					var18 += 15;
+					var17 = 277;
+					int var8 = DevicePcmPlayerProvider.loginBoxCenter + -117;
+					IndexedSprite var9 = class174.method3827(Client.Login_isUsernameRemembered, Login.field956);
+					var9.drawAt(var8, var17);
+					var8 = var8 + var9.subWidth + 5;
+					var1.draw("Remember username", var8, var17 + 13, 16776960, 0);
+					var8 = DevicePcmPlayerProvider.loginBoxCenter + 24;
+					var9 = class174.method3827(TaskHandler.clientPreferences.isUsernameHidden(), Login.field947);
+					var9.drawAt(var8, var17);
+					var8 = var8 + var9.subWidth + 5;
+					var1.draw("Hide username", var8, var17 + 13, 16776960, 0);
+					var18 = var17 + 15;
+					int var10 = DevicePcmPlayerProvider.loginBoxCenter - 80;
+					short var11 = 321;
+					SoundSystem.titlebuttonSprite.drawAt(var10 - 73, var11 - 20);
+					var0.drawCentered("Login", var10, var11 + 5, 16777215, 0);
+					var10 = DevicePcmPlayerProvider.loginBoxCenter + 80;
+					SoundSystem.titlebuttonSprite.drawAt(var10 - 73, var11 - 20);
+					var0.drawCentered("Cancel", var10, var11 + 5, 16777215, 0);
+					var17 = 357;
+					switch(Login.field938) {
+					case 2:
+						Tile.field2584 = "Having trouble logging in?";
+						break;
+					default:
+						Tile.field2584 = "Can't login? Click here.";
+					}
+
+					ScriptFrame.field446 = new Bounds(DevicePcmPlayerProvider.loginBoxCenter, var17, var1.stringWidth(Tile.field2584), 11);
+					class213.field2344 = new Bounds(DevicePcmPlayerProvider.loginBoxCenter, var17, var1.stringWidth("Still having trouble logging in?"), 11);
+					var1.drawCentered(Tile.field2584, DevicePcmPlayerProvider.loginBoxCenter, var17, 16777215, 0);
+				} else if (Login.loginIndex == 3) {
+					var17 = 201;
+					var0.drawCentered("Incorrect username or password.", Login.loginBoxX + 180, var17, 16776960, 0);
+					var18 = var17 + 20;
+					var1.drawCentered("If you have upgraded to a Jagex Account, you", Login.loginBoxX + 180, var18, 16776960, 0);
+					var18 += 20;
+					var1.drawCentered("need to log in using the <u=ffd200><col=ffd200>Jagex Launcher</col></u> instead.", Login.loginBoxX + 180, var18, 16776960, 0);
+					var18 += 15;
+					var4 = Login.loginBoxX + 180;
+					var12 = 276;
+					SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+					var2.drawCentered("Try again", var4, var12 + 5, 16777215, 0);
+					var4 = Login.loginBoxX + 180;
+					var12 = 326;
+					SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+					var2.drawCentered("Forgotten password?", var4, var12 + 5, 16777215, 0);
 				} else {
-					Message var4;
-					if (var0 == ScriptOpcodes.CHAT_GETHISTORY_BYUID) {
-						var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-						var4 = ApproximateRouteStrategy.Messages_getMessage(var3);
-						if (var4 != null) {
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var4.type;
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var4.cycle;
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
+					int var14;
+					short var21;
+					int var22;
+					if (Login.loginIndex == 4) {
+						var0.drawCentered("Authenticator", Login.loginBoxX + 180, 201, 16776960, 0);
+						var17 = 236;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16777215, 0);
+						var18 = var17 + 15;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16777215, 0);
+						var18 += 15;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16777215, 0);
+						var18 += 15;
+						var0.draw("PIN: " + ViewportMouse.method5473(Huffman.otp) + (Client.cycle % 40 < 20 ? class204.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 108, var18, 16777215, 0);
+						var18 -= 8;
+						var0.draw("Trust this computer", Login.loginBoxX + 180 - 9, var18, 16776960, 0);
+						var18 += 15;
+						var0.draw("for 30 days: ", Login.loginBoxX + 180 - 9, var18, 16776960, 0);
+						var4 = Login.loginBoxX + 180 - 9 + var0.stringWidth("for 30 days: ") + 15;
+						var22 = var18 - var0.ascent;
+						IndexedSprite var20;
+						if (Login.rememberUsername) {
+							var20 = UserList.options_buttons_2Sprite;
 						} else {
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = -1;
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+							var20 = class33.options_buttons_0Sprite;
 						}
 
-						return 1;
-					} else if (var0 == ScriptOpcodes.CHAT_GETFILTER_PRIVATE) {
-						if (class160.privateChatMode == null) {
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = -1;
-						} else {
-							Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = class160.privateChatMode.field5567;
+						var20.drawAt(var4, var22);
+						var18 += 15;
+						var14 = Login.loginBoxX + 180 - 80;
+						var21 = 321;
+						SoundSystem.titlebuttonSprite.drawAt(var14 - 73, var21 - 20);
+						var0.drawCentered("Continue", var14, var21 + 5, 16777215, 0);
+						var14 = Login.loginBoxX + 180 + 80;
+						SoundSystem.titlebuttonSprite.drawAt(var14 - 73, var21 - 20);
+						var0.drawCentered("Cancel", var14, var21 + 5, 16777215, 0);
+						var1.drawCentered("Can't login? Click here.", Login.loginBoxX + 180, var21 + 36, 16777215, 0);
+					} else if (Login.loginIndex == 5) {
+						var0.drawCentered("Forgotten your password?", Login.loginBoxX + 180, 201, 16776960, 0);
+						var17 = 221;
+						var2.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 15;
+						var2.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var2.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var18 += 14;
+						var0.draw("Username/email: ", Login.loginBoxX + 180 - 145, var18, 16777215, 0);
+						var19 = 174;
+						var5 = TaskHandler.clientPreferences.isUsernameHidden() ? ViewportMouse.method5473(Login.Login_username) : Login.Login_username;
+
+						for (var6 = var5; var0.stringWidth(var6) > var19; var6 = var6.substring(1)) {
 						}
 
-						return 1;
-					} else {
-						PacketBufferNode var12;
-						if (var0 == ScriptOpcodes.CHAT_SENDPUBLIC) {
-							var8 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-							var7 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-							var12 = class421.method8029(var7, var8, LoginScreenAnimation.clientLanguage, -1);
-							Client.packetWriter.addNode(var12);
-							return 1;
-						} else if (var0 == ScriptOpcodes.CHAT_SENDPRIVATE) {
-							class465.Interpreter_stringStackSize -= 2;
-							var8 = Interpreter.Interpreter_stringStack[class465.Interpreter_stringStackSize];
-							String var11 = Interpreter.Interpreter_stringStack[class465.Interpreter_stringStackSize + 1];
-							var12 = class141.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
-							var12.packetBuffer.writeShort(0);
-							int var10 = var12.packetBuffer.offset;
-							var12.packetBuffer.writeStringCp1252NullTerminated(var8);
-							WorldMapSprite.method6191(var12.packetBuffer, var11);
-							var12.packetBuffer.writeLengthShort(var12.packetBuffer.offset - var10);
-							Client.packetWriter.addNode(var12);
-							return 1;
-						} else if (var0 == ScriptOpcodes.CHAT_SENDCLAN) {
-							var8 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-							class320.Interpreter_intStackSize -= 2;
-							var7 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
-							var9 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
-							var6 = class421.method8029(var7, var8, LoginScreenAnimation.clientLanguage, var9);
-							Client.packetWriter.addNode(var6);
-							return 1;
-						} else if (var0 != ScriptOpcodes.CHAT_PLAYERNAME) {
-							if (var0 == ScriptOpcodes.CHAT_GETFILTER_TRADE) {
-								Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = Client.tradeChatMode;
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYLENGTH) {
-								var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = WorldMapElement.Messages_getHistorySize(var3);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETNEXTUID) {
-								var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = ClanSettings.Messages_getLastChatID(var3);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETPREVUID) {
-								var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-								Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = LoginState.method1282(var3);
-								return 1;
-							} else if (var0 == ScriptOpcodes.DOCHEAT) {
-								var8 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-								class178.doCheat(var8);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_SETMESSAGEFILTER) {
-								Client.field745 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize].toLowerCase().trim();
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETMESSAGEFILTER) {
-								Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = Client.field745;
-								return 1;
-							} else if (var0 == ScriptOpcodes.WRITECONSOLE) {
-								var8 = Interpreter.Interpreter_stringStack[--class465.Interpreter_stringStackSize];
-								System.out.println(var8);
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYEX_BYTYPEANDLINE) {
-								class320.Interpreter_intStackSize -= 2;
-								var3 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize];
-								var7 = Interpreter.Interpreter_intStack[class320.Interpreter_intStackSize + 1];
-								var5 = MouseRecorder.Messages_getByChannelAndID(var3, var7);
-								if (var5 != null) {
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var5.count;
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var5.cycle;
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-								} else {
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = -1;
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-								}
+						var0.draw(AbstractFont.escapeBrackets(var6) + (Client.cycle % 40 < 20 ? class204.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 34, var18, 16777215, 0);
+						var18 += 15;
+						var14 = Login.loginBoxX + 180 - 80;
+						var21 = 321;
+						SoundSystem.titlebuttonSprite.drawAt(var14 - 73, var21 - 20);
+						var0.drawCentered("Recover", var14, var21 + 5, 16777215, 0);
+						var14 = Login.loginBoxX + 180 + 80;
+						SoundSystem.titlebuttonSprite.drawAt(var14 - 73, var21 - 20);
+						var0.drawCentered("Back", var14, var21 + 5, 16777215, 0);
+						var21 = 356;
+						var1.drawCentered("Still having trouble logging in?", DevicePcmPlayerProvider.loginBoxCenter, var21, 268435455, 0);
+					} else if (Login.loginIndex == 6) {
+						var17 = 201;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 15;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var4 = Login.loginBoxX + 180;
+						var12 = 321;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Back", var4, var12 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 7) {
+						if (class417.field4741 && !Client.onMobile) {
+							var17 = 201;
+							var0.drawCentered(Login.Login_response1, DevicePcmPlayerProvider.loginBoxCenter, var17, 16776960, 0);
+							var18 = var17 + 15;
+							var0.drawCentered(Login.Login_response2, DevicePcmPlayerProvider.loginBoxCenter, var18, 16776960, 0);
+							var18 += 15;
+							var0.drawCentered(Login.Login_response3, DevicePcmPlayerProvider.loginBoxCenter, var18, 16776960, 0);
+							var4 = DevicePcmPlayerProvider.loginBoxCenter - 150;
+							var18 += 10;
 
-								return 1;
-							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYEX_BYUID) {
-								var3 = Interpreter.Interpreter_intStack[--class320.Interpreter_intStackSize];
-								var4 = ApproximateRouteStrategy.Messages_getMessage(var3);
-								if (var4 != null) {
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var4.type;
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var4.cycle;
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+							for (var22 = 0; var22 < 8; ++var22) {
+								SoundSystem.titlebuttonSprite.method10558(var4, var18, 30, 40);
+								boolean var15 = var22 == Login.field930 & Client.cycle % 40 < 20;
+								var0.draw((Login.field943[var22] == null ? "" : Login.field943[var22]) + (var15 ? class204.colorStartTag(16776960) + "|" : ""), var4 + 10, var18 + 27, 16777215, 0);
+								if (var22 != 1 && var22 != 3) {
+									var4 += 35;
 								} else {
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = -1;
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
-									Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = "";
-									Interpreter.Interpreter_intStack[++class320.Interpreter_intStackSize - 1] = 0;
+									var4 += 50;
+									var0.draw(AbstractFont.escapeBrackets("/"), var4 - 13, var18 + 27, 16777215, 0);
 								}
-
-								return 1;
-							} else {
-								return 2;
-							}
-						} else {
-							if (AddRequestTask.localPlayer != null && AddRequestTask.localPlayer.username != null) {
-								var8 = AddRequestTask.localPlayer.username.getName();
-							} else {
-								var8 = "";
 							}
 
-							Interpreter.Interpreter_stringStack[++class465.Interpreter_stringStackSize - 1] = var8;
-							return 1;
+							var22 = DevicePcmPlayerProvider.loginBoxCenter - 80;
+							short var23 = 321;
+							SoundSystem.titlebuttonSprite.drawAt(var22 - 73, var23 - 20);
+							var0.drawCentered("Submit", var22, var23 + 5, 16777215, 0);
+							var22 = DevicePcmPlayerProvider.loginBoxCenter + 80;
+							SoundSystem.titlebuttonSprite.drawAt(var22 - 73, var23 - 20);
+							var0.drawCentered("Cancel", var22, var23 + 5, 16777215, 0);
+						} else {
+							var17 = 216;
+							var0.drawCentered("Your date of birth isn't set.", Login.loginBoxX + 180, var17, 16776960, 0);
+							var18 = var17 + 15;
+							var2.drawCentered("Please verify your account status by", Login.loginBoxX + 180, var18, 16776960, 0);
+							var18 += 15;
+							var2.drawCentered("setting your date of birth.", Login.loginBoxX + 180, var18, 16776960, 0);
+							var18 += 15;
+							var4 = Login.loginBoxX + 180 - 80;
+							var12 = 321;
+							SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+							var0.drawCentered("Set Date of Birth", var4, var12 + 5, 16777215, 0);
+							var4 = Login.loginBoxX + 180 + 80;
+							SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+							var0.drawCentered("Back", var4, var12 + 5, 16777215, 0);
 						}
+					} else if (Login.loginIndex == 8) {
+						var17 = 216;
+						var0.drawCentered("Sorry, but your account is not eligible to play.", Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 15;
+						var2.drawCentered("For more information, please take a look at", Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var2.drawCentered("our privacy policy.", Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var4 = Login.loginBoxX + 180 - 80;
+						var12 = 321;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Privacy Policy", var4, var12 + 5, 16777215, 0);
+						var4 = Login.loginBoxX + 180 + 80;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Back", var4, var12 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 9) {
+						var17 = 221;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 25;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 25;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16776960, 0);
+						var4 = Login.loginBoxX + 180;
+						var12 = 311;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Try again", var4, var12 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 10) {
+						var18 = Login.loginBoxX + 180;
+						var19 = 209;
+						var0.drawCentered("Welcome to RuneScape", Login.loginBoxX + 180, var19, 16776960, 0);
+						var4 = var19 + 20;
+						class268.field2981.drawAt(var18 - 109, var4);
+						if (Login.displayName.isEmpty()) {
+							Login.field944.drawAt(var18 - 48, var4 + 18);
+						} else {
+							Login.field944.drawAt(var18 - 48, var4 + 5);
+							var0.drawCentered(Login.displayName, var18, var4 + 68 - 15, 16776960, 0);
+						}
+					} else if (Login.loginIndex == 12) {
+						var18 = DevicePcmPlayerProvider.loginBoxCenter;
+						var19 = 216;
+						var2.drawCentered("Before using this app, please read and accept our", var18, var19, 16777215, 0);
+						var4 = var19 + 17;
+						var2.drawCentered("<col=ffd200>terms of use</col>, <col=ffd200>privacy policy</col>, and <col=ffd200>end user licence</col>", var18, var4, 16777215, 0);
+						var4 += 17;
+						var2.drawCentered("<col=ffd200>agreement (EULA)</col>.", var18, var4, 16777215, 0);
+						var4 += 17;
+						var2.drawCentered("By accepting, you agree to these documents.", var18, var4, 16777215, 0);
+						var18 = DevicePcmPlayerProvider.loginBoxCenter - 80;
+						var19 = 311;
+						SoundSystem.titlebuttonSprite.drawAt(var18 - 73, var19 - 20);
+						var0.drawCentered("Accept", var18, var19 + 5, 16777215, 0);
+						var18 = DevicePcmPlayerProvider.loginBoxCenter + 80;
+						SoundSystem.titlebuttonSprite.drawAt(var18 - 73, var19 - 20);
+						var0.drawCentered("Decline", var18, var19 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 13) {
+						var17 = 231;
+						var2.drawCentered("You must accept our terms of use, privacy policy,", Login.loginBoxX + 180, var17, 16777215, 0);
+						var18 = var17 + 20;
+						var2.drawCentered("and end user licence agreement to continue.", Login.loginBoxX + 180, var18, 16777215, 0);
+						var4 = Login.loginBoxX + 180;
+						var17 = 311;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var17 - 20);
+						var0.drawCentered("Back", var4, var17 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 14) {
+						var17 = 201;
+						String var13 = "";
+						var5 = "";
+						var6 = "";
+						switch(Login.Login_banType) {
+						case 0:
+							var13 = "Your account has been involved";
+							var5 = "in serious rule breaking.";
+							var6 = "";
+							break;
+						case 1:
+							var13 = "Your account has been locked due to";
+							var5 = "suspicious activity.";
+							var6 = "Please recover your account.";
+							break;
+						case 2:
+							var13 = "The unpaid balance on your account needs";
+							var5 = "to be resolved before you can play.";
+							var6 = Strings.field4254;
+							break;
+						default:
+							FontName.Login_promptCredentials(false);
+						}
+
+						var0.drawCentered(var13, Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 20;
+						var0.drawCentered(var5, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 20;
+						var0.drawCentered(var6, Login.loginBoxX + 180, var18, 16776960, 0);
+						var14 = Login.loginBoxX + 180;
+						var21 = 276;
+						SoundSystem.titlebuttonSprite.drawAt(var14 - 73, var21 - 20);
+						if (Login.Login_banType == 1) {
+							var0.drawCentered("Recover Account", var14, var21 + 5, 16777215, 0);
+						} else {
+							var0.drawCentered("View Appeal Options", var14, var21 + 5, 16777215, 0);
+						}
+
+						var14 = Login.loginBoxX + 180;
+						var21 = 326;
+						SoundSystem.titlebuttonSprite.drawAt(var14 - 73, var21 - 20);
+						var0.drawCentered("Back", var14, var21 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 24) {
+						var17 = 221;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16777215, 0);
+						var18 = var17 + 15;
+						var0.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16777215, 0);
+						var18 += 15;
+						var0.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16777215, 0);
+						var18 += 15;
+						var4 = Login.loginBoxX + 180;
+						var12 = 301;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Ok", var4, var12 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 32) {
+						var17 = 216;
+						var0.drawCentered("Your date of birth isn't set.", Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 15;
+						var2.drawCentered("Please verify your account status by", Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var2.drawCentered("setting your date of birth.", Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var4 = Login.loginBoxX + 180 - 80;
+						var12 = 321;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Set Date of Birth", var4, var12 + 5, 16777215, 0);
+						var4 = Login.loginBoxX + 180 + 80;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var0.drawCentered("Back", var4, var12 + 5, 16777215, 0);
+					} else if (Login.loginIndex == 33) {
+						var17 = 201;
+						var0.drawCentered(Login.Login_response1, Login.loginBoxX + 180, var17, 16776960, 0);
+						var18 = var17 + 20;
+						var1.drawCentered(Login.Login_response2, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 20;
+						var1.drawCentered(Login.Login_response3, Login.loginBoxX + 180, var18, 16776960, 0);
+						var18 += 15;
+						var4 = Login.loginBoxX + 180;
+						var12 = 276;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var2.drawCentered("Download Launcher", var4, var12 + 5, 16777215, 0);
+						var4 = Login.loginBoxX + 180;
+						var12 = 326;
+						SoundSystem.titlebuttonSprite.drawAt(var4 - 73, var12 - 20);
+						var2.drawCentered("Back", var4, var12 + 5, 16777215, 0);
 					}
 				}
 			}
+
+			if (Client.gameState >= 10) {
+				int[] var16 = new int[4];
+				Rasterizer2D.Rasterizer2D_getClipArray(var16);
+				Rasterizer2D.Rasterizer2D_setClip(Login.xPadding, 0, Login.xPadding + 765, class268.canvasHeight);
+				Timer.loginScreenRunesAnimation.draw(Login.xPadding - 22, Client.cycle);
+				Timer.loginScreenRunesAnimation.draw(Login.xPadding + 22 + 765 - 128, Client.cycle);
+				Rasterizer2D.Rasterizer2D_setClipArray(var16);
+			}
+
+			DbTableType.title_muteSprite[TaskHandler.clientPreferences.isTitleMusicDisabled() ? 1 : 0].drawAt(Login.xPadding + 765 - 40, 463);
+			if (Client.gameState > 5 && WorldMapCacheName.clientLanguage == Language.Language_EN) {
+				if (class180.field1897 != null) {
+					var18 = Login.xPadding + 5;
+					var19 = 463;
+					byte var25 = 100;
+					byte var24 = 35;
+					class180.field1897.drawAt(var18, var19);
+					var0.drawCentered("World" + " " + Client.worldId, var25 / 2 + var18, var24 / 2 + var19 - 2, 16777215, 0);
+					if (Friend.World_request != null) {
+						var1.drawCentered("Loading...", var25 / 2 + var18, var24 / 2 + var19 + 12, 16777215, 0);
+					} else {
+						var1.drawCentered("Click to switch", var25 / 2 + var18, var24 / 2 + var19 + 12, 16777215, 0);
+					}
+				} else {
+					class180.field1897 = AttackOption.SpriteBuffer_getIndexedSpriteByName(class450.archive8, "sl_button", "");
+				}
+			}
+
 		}
 	}
 }

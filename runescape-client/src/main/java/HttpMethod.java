@@ -4,56 +4,62 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ar")
+@ObfuscatedName("at")
 @Implements("HttpMethod")
 public class HttpMethod implements Enum {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
+		descriptor = "Lat;"
 	)
 	@Export("POST")
 	public static final HttpMethod POST;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
+		descriptor = "Lat;"
 	)
 	@Export("GET")
 	public static final HttpMethod GET;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
+		descriptor = "Lat;"
 	)
 	@Export("PUT")
 	static final HttpMethod PUT;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
+		descriptor = "Lat;"
 	)
 	@Export("PATCH")
 	static final HttpMethod PATCH;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
+		descriptor = "Lat;"
 	)
 	@Export("DELETE")
 	static final HttpMethod DELETE;
-	@ObfuscatedName("uw")
-	@ObfuscatedGetter(
-		intValue = 2028666475
+	@ObfuscatedName("ky")
+	@ObfuscatedSignature(
+		descriptor = "Lvv;"
 	)
-	static int field29;
-	@ObfuscatedName("aq")
+	@Export("compass")
+	static SpritePixels compass;
+	@ObfuscatedName("ur")
 	@ObfuscatedGetter(
-		intValue = -890811729
+		intValue = 1044660289
 	)
-	int field31;
-	@ObfuscatedName("af")
+	static int field34;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = -1041997149
+	)
+	int field35;
+	@ObfuscatedName("as")
 	@Export("name")
 	String name;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
+	boolean field32;
+	@ObfuscatedName("am")
 	boolean field33;
-	@ObfuscatedName("au")
-	boolean field34;
 
 	static {
 		POST = new HttpMethod(0, "POST", true, true);
@@ -64,110 +70,108 @@ public class HttpMethod implements Enum {
 	}
 
 	HttpMethod(int var1, String var2, boolean var3, boolean var4) {
-		this.field31 = var1;
+		this.field35 = var1;
 		this.name = var2;
-		this.field33 = var3;
-		this.field34 = var4;
+		this.field32 = var3;
+		this.field33 = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1934732865"
+	)
+	boolean method70() {
+		return this.field32;
+	}
+
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-350930589"
+		garbageValue = "1837624059"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field31;
+		return this.field35;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1331741957"
-	)
-	boolean method71() {
-		return this.field33;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-2074778080"
+		descriptor = "(S)Ljava/lang/String;",
+		garbageValue = "4007"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(S)Z",
-		garbageValue = "30553"
+		descriptor = "(I)Z",
+		garbageValue = "-1313325334"
 	)
-	boolean method75() {
-		return this.field34;
+	boolean method77() {
+		return this.field33;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "1174068986"
+		descriptor = "(Ljava/lang/CharSequence;IZI)Z",
+		garbageValue = "1177143826"
 	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
-	}
+	static boolean method83(CharSequence var0, int var1, boolean var2) {
+		if (var1 >= 2 && var1 <= 36) {
+			boolean var3 = false;
+			boolean var4 = false;
+			int var5 = 0;
+			int var6 = var0.length();
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[IIIB)V",
-		garbageValue = "0"
-	)
-	@Export("quicksortStringsWithCorrespondingIntegers")
-	static void quicksortStringsWithCorrespondingIntegers(String[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
+			for (int var7 = 0; var7 < var6; ++var7) {
+				char var8 = var0.charAt(var7);
+				if (var7 == 0) {
+					if (var8 == '-') {
+						var3 = true;
+						continue;
+					}
 
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					int var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
+					if (var8 == '+') {
+						continue;
+					}
 				}
+
+				int var10;
+				if (var8 >= '0' && var8 <= '9') {
+					var10 = var8 - '0';
+				} else if (var8 >= 'A' && var8 <= 'Z') {
+					var10 = var8 - '7';
+				} else {
+					if (var8 < 'a' || var8 > 'z') {
+						return false;
+					}
+
+					var10 = var8 - 'W';
+				}
+
+				if (var10 >= var1) {
+					return false;
+				}
+
+				if (var3) {
+					var10 = -var10;
+				}
+
+				int var9 = var10 + var5 * var1;
+				if (var9 / var1 != var5) {
+					return false;
+				}
+
+				var5 = var9;
+				var4 = true;
 			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			quicksortStringsWithCorrespondingIntegers(var0, var1, var2, var5 - 1);
-			quicksortStringsWithCorrespondingIntegers(var0, var1, var5 + 1, var3);
-		}
-
-	}
-
-	@ObfuscatedName("pl")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-727187947"
-	)
-	static void method81(int var0) {
-		SequenceDefinition var1 = HealthBarUpdate.SequenceDefinition_get(var0);
-		if (var1.isCachedModelIdSet()) {
-			if (UserComparator6.method3243(var1.SequenceDefinition_cachedModelId) == 2) {
-				Client.field809.add(var1.SequenceDefinition_cachedModelId);
-			}
-
+			return var4;
+		} else {
+			throw new IllegalArgumentException("" + var1);
 		}
 	}
 }

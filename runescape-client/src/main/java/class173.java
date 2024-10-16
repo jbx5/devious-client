@@ -1,66 +1,73 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gr")
+@ObfuscatedName("go")
 public class class173 extends class166 {
-	@ObfuscatedName("sk")
-	@Export("ClanChat_inClanChat")
-	static boolean ClanChat_inClanChat;
-	@ObfuscatedName("ac")
-	String field1858;
-	@ObfuscatedName("ae")
-	byte field1852;
-	@ObfuscatedName("ag")
-	byte field1854;
+	@ObfuscatedName("ap")
+	String field1859;
+	@ObfuscatedName("aw")
+	byte field1860;
+	@ObfuscatedName("ak")
+	byte field1858;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lgj;"
+		descriptor = "Lgg;"
 	)
 	final class167 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lgj;)V"
+		descriptor = "(Lgg;)V"
 	)
 	class173(class167 var1) {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;B)V",
-		garbageValue = "0"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "-303680000"
 	)
-	void vmethod3761(Buffer var1) {
-		this.field1858 = var1.readStringCp1252NullTerminatedOrNull();
-		if (this.field1858 != null) {
+	void vmethod3816(Buffer var1) {
+		this.field1859 = var1.readStringCp1252NullTerminatedOrNull();
+		if (this.field1859 != null) {
 			var1.readUnsignedByte();
-			this.field1852 = var1.readByte();
-			this.field1854 = var1.readByte();
+			this.field1860 = var1.readByte();
+			this.field1858 = var1.readByte();
 		}
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lgm;I)V",
-		garbageValue = "-1593238865"
+		descriptor = "(Lgw;I)V",
+		garbageValue = "-152326479"
 	)
-	void vmethod3762(ClanChannel var1) {
-		var1.name = this.field1858;
-		if (this.field1858 != null) {
-			var1.field1839 = this.field1852;
-			var1.field1833 = this.field1854;
+	void vmethod3817(ClanChannel var1) {
+		var1.name = this.field1859;
+		if (this.field1859 != null) {
+			var1.field1841 = this.field1860;
+			var1.field1845 = this.field1858;
 		}
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("co")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1659758574"
+		descriptor = "(Lui;I)Ljava/lang/Object;",
+		garbageValue = "-79340727"
 	)
-	public static int method3768(int var0) {
-		return var0 != 0 && var0 != 1 ? -1 : 0;
+	static Object method3818(class544 var0) {
+		if (var0 == null) {
+			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+		} else {
+			switch(var0.field5382) {
+			case 1:
+				return Interpreter.Interpreter_stringStack[--class208.Interpreter_stringStackSize];
+			case 2:
+				return Interpreter.Interpreter_intStack[--class96.Interpreter_intStackSize];
+			default:
+				throw new IllegalStateException("popValueOfType() failure - unsupported type");
+			}
+		}
 	}
 }

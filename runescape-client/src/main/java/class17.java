@@ -7,16 +7,16 @@ import javax.security.cert.X509Certificate;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ai")
+@ObfuscatedName("ag")
 class class17 implements SSLSession {
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lah;"
+		descriptor = "Lao;"
 	)
 	final SecureRandomSSLSocket this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lah;)V"
+		descriptor = "(Lao;)V"
 	)
 	class17(SecureRandomSSLSocket var1) {
 		this.this$1 = var1;
@@ -26,11 +26,11 @@ class class17 implements SSLSession {
 		return 0;
 	}
 
-	public long getCreationTime() {
+	public byte[] getId() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Certificate[] getLocalCertificates() {
+	public long getLastAccessedTime() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -38,24 +38,12 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
-		return null;
-	}
-
-	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
-		return this.this$1.field49;
+	public String getPeerHost() {
+		throw new UnsupportedOperationException();
 	}
 
 	public int getPeerPort() {
 		return 0;
-	}
-
-	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
-		return null;
-	}
-
-	public String getProtocol() {
-		throw new UnsupportedOperationException();
 	}
 
 	public SSLSessionContext getSessionContext() {
@@ -70,7 +58,7 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public long getLastAccessedTime() {
+	public void invalidate() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -86,23 +74,35 @@ class class17 implements SSLSession {
 		throw new UnsupportedOperationException();
 	}
 
-	public String getPeerHost() {
-		throw new UnsupportedOperationException();
-	}
-
 	public Principal getLocalPrincipal() {
 		throw new UnsupportedOperationException();
 	}
 
-	public byte[] getId() {
+	public long getCreationTime() {
+		throw new UnsupportedOperationException();
+	}
+
+	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
+		return null;
+	}
+
+	public String getProtocol() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
+		return null;
+	}
+
+	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
+		return this.this$1.field48;
+	}
+
+	public Certificate[] getLocalCertificates() {
 		throw new UnsupportedOperationException();
 	}
 
 	public String getCipherSuite() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void invalidate() {
 		throw new UnsupportedOperationException();
 	}
 }

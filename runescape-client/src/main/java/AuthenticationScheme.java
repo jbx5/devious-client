@@ -4,54 +4,52 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fv")
+@ObfuscatedName("fu")
 @Implements("AuthenticationScheme")
 public enum AuthenticationScheme implements Enum {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lfu;"
 	)
 	@Export("USERNAME_PASSWORD_REMEMBER")
-	USERNAME_PASSWORD_REMEMBER(0, 0),
-	@ObfuscatedName("ae")
+	USERNAME_PASSWORD_REMEMBER(1, 0),
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lfu;"
 	)
-	@Export("TOKEN_REMEMBER")
-	TOKEN_REMEMBER(2, 1),
-	@ObfuscatedName("ag")
+	field1530(2, 1),
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lfu;"
 	)
 	@Export("USERNAME_PASSWORD")
 	USERNAME_PASSWORD(3, 2),
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lfu;"
 	)
-	@Export("TOKEN")
-	TOKEN(4, 3),
-	@ObfuscatedName("ax")
+	field1532(4, 3),
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lfv;"
+		descriptor = "Lfu;"
 	)
-	field1550(1, 4);
+	field1531(0, 4);
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ve")
 	@ObfuscatedSignature(
-		descriptor = "[Lvt;"
+		descriptor = "Lta;"
 	)
-	@Export("title_muteSprite")
-	static IndexedSprite[] title_muteSprite;
-	@ObfuscatedName("aq")
+	@Export("platformInfo")
+	static PlatformInfo platformInfo;
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 2005023865
+		intValue = -2021800197
 	)
 	@Export("schemeId")
 	public final int schemeId;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1179469489
+		intValue = -2048248869
 	)
 	@Export("packetId")
 	final int packetId;
@@ -61,13 +59,44 @@ public enum AuthenticationScheme implements Enum {
 		this.packetId = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-350930589"
+		garbageValue = "1837624059"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.packetId;
+	}
+
+	@ObfuscatedName("aj")
+	public static int method3355(long var0) {
+		return (int)(var0 >>> 0 & 127L);
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "4"
+	)
+	public static int method3356(int var0) {
+		class145 var2 = (class145)SequenceDefinition.SequenceDefinition_cachedModel.get((long)var0);
+		class145 var1;
+		if (var2 != null) {
+			var1 = var2;
+		} else {
+			var2 = WorldMapSection1.method6334(class219.SequenceDefinition_animationsArchive, class219.SequenceDefinition_skeletonsArchive, var0, false);
+			if (var2 != null) {
+				SequenceDefinition.SequenceDefinition_cachedModel.put(var2, (long)var0);
+			}
+
+			var1 = var2;
+		}
+
+		if (var1 == null) {
+			return 2;
+		} else {
+			return var1.method3508() ? 0 : 1;
+		}
 	}
 }

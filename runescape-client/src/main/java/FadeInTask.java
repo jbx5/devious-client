@@ -3,66 +3,66 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rj")
+@ObfuscatedName("ri")
 @Implements("FadeInTask")
 public class FadeInTask extends SongTask {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lns;"
+		descriptor = "Lno;"
 	)
-	MusicSong field4840;
-	@ObfuscatedName("ae")
+	MusicSong field4880;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -1879131809
+		intValue = -168594113
 	)
-	int field4839;
+	int field4879;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lri;IZI)V"
+		descriptor = "(Lra;IZI)V"
 	)
 	public FadeInTask(SongTask var1, int var2, boolean var3, int var4) {
 		super(var1);
-		this.field4840 = null;
-		this.field4839 = 0;
-		super.field4843 = "FadeInTask";
+		this.field4880 = null;
+		this.field4879 = 0;
+		super.field4881 = "FadeInTask";
 		if (var2 >= 0) {
-			if (var3 && var2 < class334.field3621.size()) {
-				this.field4840 = (MusicSong)class334.field3621.get(var2);
-			} else if (!var3 && var2 < class334.musicSongs.size()) {
-				this.field4840 = (MusicSong)class334.musicSongs.get(var2);
+			if (var3 && var2 < class333.field3625.size()) {
+				this.field4880 = (MusicSong)class333.field3625.get(var2);
+			} else if (!var3 && var2 < class333.musicSongs.size()) {
+				this.field4880 = (MusicSong)class333.musicSongs.get(var2);
 			}
 
-			this.field4839 = var4;
+			this.field4879 = var4;
 		}
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1411718299"
+		garbageValue = "343486624"
 	)
-	public boolean vmethod8618() {
-		if (this.field4840 != null && this.field4840.midiPcmStream != null) {
-			this.field4840.field3734 = true;
+	public boolean vmethod8740() {
+		if (this.field4880 != null && this.field4880.midiPcmStream != null) {
+			this.field4880.field3751 = true;
 
 			try {
-				if (this.field4840.field3730 < (float)this.field4840.musicTrackVolume && this.field4840.midiPcmStream.isReady()) {
-					float var1 = this.field4839 == 0 ? (float)this.field4839 : (float)this.field4840.musicTrackVolume / (float)this.field4839;
-					MusicSong var10000 = this.field4840;
-					var10000.field3730 += var1 == 0.0F ? (float)this.field4840.musicTrackVolume : var1;
-					if (this.field4840.field3730 > (float)this.field4840.musicTrackVolume) {
-						this.field4840.field3730 = (float)this.field4840.musicTrackVolume;
+				if (this.field4880.field3749 < (float)this.field4880.musicTrackVolume && this.field4880.midiPcmStream.isReady()) {
+					float var1 = this.field4879 == 0 ? (float)this.field4879 : (float)this.field4880.musicTrackVolume / (float)this.field4879;
+					MusicSong var10000 = this.field4880;
+					var10000.field3749 += 0.0F == var1 ? (float)this.field4880.musicTrackVolume : var1;
+					if (this.field4880.field3749 > (float)this.field4880.musicTrackVolume) {
+						this.field4880.field3749 = (float)this.field4880.musicTrackVolume;
 					}
 
-					this.field4840.midiPcmStream.setPcmStreamVolume((int)this.field4840.field3730);
+					this.field4880.midiPcmStream.setPcmStreamVolume((int)this.field4880.field3749);
 					return false;
 				}
 			} catch (Exception var3) {
-				this.method8609(var3.getMessage());
+				this.method8725(var3.getMessage());
 				return true;
 			}
 
-			this.field4840.field3734 = false;
+			this.field4880.field3751 = false;
 			return true;
 		} else {
 			return true;

@@ -1,93 +1,95 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lq")
+@ObfuscatedName("lw")
 @Implements("WorldMapSection0")
 public class WorldMapSection0 implements WorldMapSection {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1331055067
+		intValue = -432555287
 	)
 	@Export("oldZ")
 	int oldZ;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -462533521
+		intValue = -1265509527
 	)
 	@Export("newZ")
 	int newZ;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 915525411
+		intValue = 561382393
 	)
 	@Export("oldX")
 	int oldX;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 183671469
+		intValue = 453232819
 	)
 	@Export("oldY")
 	int oldY;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1705926385
+		intValue = 1699514911
 	)
 	@Export("newX")
 	int newX;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 681022681
+		intValue = 800659713
 	)
 	@Export("newY")
 	int newY;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 77127323
+		intValue = -460910995
 	)
 	@Export("oldChunkXLow")
 	int oldChunkXLow;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1272378045
+		intValue = 466620029
 	)
 	@Export("oldChunkYLow")
 	int oldChunkYLow;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 2018777527
+		intValue = 978049819
 	)
 	@Export("oldChunkXHigh")
 	int oldChunkXHigh;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 581490365
+		intValue = -1895387971
 	)
 	@Export("oldChunkYHigh")
 	int oldChunkYHigh;
-	@ObfuscatedName("al")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 273479137
+		intValue = -1591019951
 	)
 	@Export("newChunkXLow")
 	int newChunkXLow;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1859722893
+		intValue = -136889867
 	)
 	@Export("newChunkYLow")
 	int newChunkYLow;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		intValue = 993980911
+		intValue = -1593670785
 	)
 	@Export("newChunkXHigh")
 	int newChunkXHigh;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = -914697121
+		intValue = -180249501
 	)
 	@Export("newChunkYHigh")
 	int newChunkYHigh;
@@ -95,10 +97,10 @@ public class WorldMapSection0 implements WorldMapSection {
 	WorldMapSection0() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lky;I)V",
-		garbageValue = "-1991951399"
+		descriptor = "(Lkp;I)V",
+		garbageValue = "-1801855578"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -120,10 +122,10 @@ public class WorldMapSection0 implements WorldMapSection {
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)Z",
-		garbageValue = "-644828112"
+		garbageValue = "-1302944886"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
@@ -134,20 +136,20 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "2038421096"
+		descriptor = "(IIB)Z",
+		garbageValue = "-75"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >= (this.newX << 6) + (this.newChunkXLow << 3) && var1 <= (this.newX << 6) + (this.newChunkXHigh << 3) + 7 && var2 >= (this.newY << 6) + (this.newChunkYLow << 3) && var2 <= (this.newY << 6) + (this.newChunkYHigh << 3) + 7;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)[I",
-		garbageValue = "1"
+		garbageValue = "114"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -159,10 +161,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lnm;",
-		garbageValue = "1877296615"
+		descriptor = "(III)Lnn;",
+		garbageValue = "-246633808"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -175,10 +177,10 @@ public class WorldMapSection0 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)V",
-		garbageValue = "814828591"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "2108862730"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -199,91 +201,92 @@ public class WorldMapSection0 implements WorldMapSection {
 		this.postRead();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-134830175"
+		garbageValue = "-1587677171"
 	)
 	@Export("postRead")
 	void postRead() {
 	}
 
-	@ObfuscatedName("iu")
+	@ObfuscatedName("cl")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-73440136"
+		descriptor = "(Lng;I)V",
+		garbageValue = "-1334786950"
 	)
-	static final int method6118(int var0) {
-		return Math.abs(var0 - class267.cameraYaw) > 1024 ? 2048 * (var0 < class267.cameraYaw ? 1 : -1) + var0 : var0;
+	static void method6243(Widget var0) {
+		var0.method7324();
+		var0.method7304().method7067(new class110(var0));
+		var0.method7304().method7055(new class111(var0));
 	}
 
-	@ObfuscatedName("kt")
+	@ObfuscatedName("hi")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "639281147"
+		descriptor = "(Liu;IIIZB)V",
+		garbageValue = "1"
 	)
-	static final void method6138(int var0) {
-		int[] var1 = Tiles.sceneMinimapSprite.pixels;
-		int var2 = var1.length;
+	static void method6223(SequenceDefinition var0, int var1, int var2, int var3, boolean var4) {
+		if (Client.soundEffectCount < 50) {
+			if (var0.field2310 != null && var0.field2310.containsKey(var1)) {
+				ArrayList var5 = (ArrayList)var0.field2310.get(var1);
+				if (!var5.isEmpty()) {
+					int var6 = 0;
+					int var8;
+					if (var5.size() > 1) {
+						int var7 = 1 + (int)(Math.random() * 100.0D);
+						var8 = 0;
 
-		int var3;
-		for (var3 = 0; var3 < var2; ++var3) {
-			var1[var3] = 0;
-		}
+						for (Iterator var9 = var5.iterator(); var9.hasNext(); ++var6) {
+							class208 var10 = (class208)var9.next();
+							int var11 = var8;
+							var8 += var10.field2166;
+							if (var11 <= var7 && var7 < var8) {
+								break;
+							}
+						}
 
-		int var4;
-		int var5;
-		for (var3 = 1; var3 < 103; ++var3) {
-			var4 = (103 - var3) * 2048 + 24628;
+						if (var6 >= var5.size()) {
+							return;
+						}
+					}
 
-			for (var5 = 1; var5 < 103; ++var5) {
-				if ((ClientPreferences.topLevelWorldView.tileSettings[var0][var5][var3] & 24) == 0) {
-					ClientPreferences.topLevelWorldView.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
-				}
+					class208 var15 = (class208)var5.get(var6);
+					var8 = var15.field2165 & 31;
+					if ((var8 <= 0 || TaskHandler.clientPreferences.getAreaSoundEffectsVolume() != 0) && (var8 != 0 || TaskHandler.clientPreferences.getSoundEffectsVolume() != 0)) {
+						if (var15 != null) {
+							if (var15.field2165 == 0) {
+								if (!var4) {
+									return;
+								}
 
-				if (var0 < 3 && (ClientPreferences.topLevelWorldView.tileSettings[var0 + 1][var5][var3] & 8) != 0) {
-					ClientPreferences.topLevelWorldView.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3);
-				}
+								Client.soundLocations[Client.soundEffectCount] = 0;
+							} else {
+								int var13 = (var2 - 64) / 128;
+								int var14 = (var3 - 64) / 128;
+								Client.soundLocations[Client.soundEffectCount] = (var14 << 8) + (var13 << 16) + var15.field2165;
+							}
 
-				var4 += 4;
-			}
-		}
+							Client.soundEffectIds[Client.soundEffectCount] = var15.field2171;
+							Client.queuedSoundEffectLoops[Client.soundEffectCount] = var15.field2167;
+							Client.queuedSoundEffectDelays[Client.soundEffectCount] = 0;
+							Client.soundEffects[Client.soundEffectCount] = null;
+							Client.field573[Client.soundEffectCount] = var15.field2169;
+							++Client.soundEffectCount;
+						}
 
-		var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10);
-		var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16;
-		Tiles.sceneMinimapSprite.setRaster();
-
-		int var6;
-		for (var5 = 1; var5 < 103; ++var5) {
-			for (var6 = 1; var6 < 103; ++var6) {
-				if ((ClientPreferences.topLevelWorldView.tileSettings[var0][var6][var5] & 24) == 0) {
-					NPC.drawObject(var0, var6, var5, var3, var4);
-				}
-
-				if (var0 < 3 && (ClientPreferences.topLevelWorldView.tileSettings[var0 + 1][var6][var5] & 8) != 0) {
-					NPC.drawObject(var0 + 1, var6, var5, var3, var4);
-				}
-			}
-		}
-
-		Client.mapIconCount = 0;
-
-		for (var5 = 0; var5 < 104; ++var5) {
-			for (var6 = 0; var6 < 104; ++var6) {
-				long var7 = ClientPreferences.topLevelWorldView.scene.getFloorDecorationTag(ClientPreferences.topLevelWorldView.plane, var5, var6);
-				if (0L != var7) {
-					int var9 = class213.Entity_unpackID(var7);
-					int var10 = class273.getObjectDefinition(var9).mapIconId;
-					if (var10 >= 0 && class142.WorldMapElement_get(var10).field1909) {
-						Client.mapIcons[Client.mapIconCount] = class142.WorldMapElement_get(var10).getSpriteBool(false);
-						Client.mapIconXs[Client.mapIconCount] = var5;
-						Client.mapIconYs[Client.mapIconCount] = var6;
-						++Client.mapIconCount;
 					}
 				}
 			}
 		}
+	}
 
-		class310.rasterProvider.apply();
+	@ObfuscatedName("jm")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "2108574366"
+	)
+	static final void method6229(int var0, int var1, int var2, int var3) {
+		AbstractUserComparator.method9037();
 	}
 }

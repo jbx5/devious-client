@@ -4,279 +4,255 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("su")
+@ObfuscatedName("so")
 @Implements("WorldEntity")
 public class WorldEntity implements Entity {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 171277605
+		intValue = -250587611
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -1236389361
+		intValue = 1642096775
 	)
-	public int field5006;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 187174063
-	)
-	@Export("rotationAngle")
-	public int rotationAngle;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -604114995
-	)
-	@Export("movementSpeed")
-	public int movementSpeed;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = 562800021
-	)
-	@Export("remainingMovementSteps")
-	public int remainingMovementSteps;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = -962238781
-	)
-	@Export("x")
-	public int x;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = -1729802843
-	)
-	@Export("tileHeight")
-	public int tileHeight;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = -1958743463
-	)
-	@Export("y")
-	public int y;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 1295026153
-	)
-	@Export("currentRotationAngle")
-	public int currentRotationAngle;
-	@ObfuscatedName("ar")
+	public int field5031;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Ldd;"
+		descriptor = "Ldn;"
 	)
 	@Export("worldView")
 	public WorldView worldView;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = -553403479
-	)
-	@Export("steps")
-	int steps;
-	@ObfuscatedName("ad")
-	@Export("directionsX")
-	public int[] directionsX;
-	@ObfuscatedName("ah")
-	@Export("directionsY")
-	public int[] directionsY;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "[Lkk;"
+		descriptor = "Lkt;"
 	)
-	@Export("moveSpeeds")
-	MoveSpeed[] moveSpeeds;
+	public final class274 field5030;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "[Lsb;"
+	)
+	class481[] field5034;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 1439610543
+	)
+	int field5035;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lsy;"
+	)
+	class482 field5036;
+	@ObfuscatedName("ae")
+	boolean field5032;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILdd;)V"
+		descriptor = "(ILdn;)V"
 	)
 	public WorldEntity(int var1, WorldView var2) {
 		this.plane = 0;
-		this.rotationAngle = 0;
-		this.movementSpeed = 2;
-		this.remainingMovementSteps = 0;
-		this.x = -1;
-		this.tileHeight = -1;
-		this.y = -1;
-		this.currentRotationAngle = 0;
-		this.steps = 0;
-		this.directionsX = new int[10];
-		this.directionsY = new int[10];
-		this.moveSpeeds = new MoveSpeed[10];
+		this.field5030 = new class274();
+		this.field5034 = new class481[10];
+		this.field5035 = 0;
+		this.field5036 = new class483();
+		this.field5032 = false;
 		this.worldView = var2;
+		this.field5035 = 0;
+
+		for (int var3 = 0; var3 < 10; ++var3) {
+			this.field5034[var3] = new class481();
+		}
+
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2084253353"
+		descriptor = "(B)I",
+		garbageValue = "86"
 	)
 	@Export("getX")
 	public int getX() {
-		return this.x;
+		return this.field5030.method5765();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "18679"
+		descriptor = "(I)I",
+		garbageValue = "-968853557"
 	)
 	@Export("getY")
 	public int getY() {
-		return this.y;
+		return this.field5030.method5767();
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "371855163"
+		descriptor = "(B)I",
+		garbageValue = "-40"
 	)
 	@Export("getPlane")
 	public int getPlane() {
 		return this.plane;
 	}
 
-	@ObfuscatedName("ad")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-92"
+		descriptor = "(I)V",
+		garbageValue = "-1334638951"
 	)
-	@Export("initScenePlane")
-	public void initScenePlane() {
+	@Export("updateMovement")
+	public void updateMovement() {
 		this.worldView.scene.Scene_plane = this.worldView.plane;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(IILkk;I)V",
-		garbageValue = "-236634947"
+		descriptor = "(I)I",
+		garbageValue = "818730252"
 	)
-	@Export("move")
-	public final void move(int var1, int var2, MoveSpeed var3) {
-		if (var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104) {
-			if (this.directionsX[0] >= 0 && this.directionsX[0] < 104 && this.directionsY[0] >= 0 && this.directionsY[0] < 104) {
-				this.updatePosition(var1, var2, var3);
-			} else {
-				this.setPosition(var1, var2);
-			}
-		} else {
-			this.setPosition(var1, var2);
-		}
-
+	public int method9153() {
+		return this.field5030.method5786();
 	}
 
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1522724135"
+		descriptor = "(I)I",
+		garbageValue = "327814629"
 	)
-	@Export("setPosition")
-	public void setPosition(int var1, int var2) {
-		this.steps = 0;
-		this.directionsX[0] = var1;
-		this.directionsY[0] = var2;
-		byte var3 = 1;
-		this.x = this.directionsX[0] * 128 + var3 * 64;
-		this.y = var3 * 64 + this.directionsY[0] * 128;
+	public int method9147() {
+		return this.field5030.method5781();
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1217058965"
+	)
+	public int method9148() {
+		return Math.max(this.worldView.sizeX, this.worldView.sizeY) * 128;
+	}
+
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lkt;",
+		garbageValue = "-88"
+	)
+	public class274 method9149() {
+		return this.field5034[0].field5040;
 	}
 
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "(IILkk;I)V",
-		garbageValue = "-2118276083"
+		descriptor = "(III)V",
+		garbageValue = "636015096"
 	)
-	@Export("updatePosition")
-	final void updatePosition(int var1, int var2, MoveSpeed var3) {
-		if (this.steps < 9) {
-			++this.steps;
+	@Export("setPosition")
+	public void setPosition(int var1, int var2) {
+		for (int var3 = 0; var3 < this.field5035; ++var3) {
+			this.field5034[var3].field5040.method5775(var1, var2);
 		}
 
-		for (int var4 = this.steps; var4 > 0; --var4) {
-			this.directionsX[var4] = this.directionsX[var4 - 1];
-			this.directionsY[var4] = this.directionsY[var4 - 1];
-			this.moveSpeeds[var4] = this.moveSpeeds[var4 - 1];
-		}
-
-		this.directionsX[0] = var1;
-		this.directionsY[0] = var2;
-		this.moveSpeeds[0] = var3;
+		this.field5030.method5775(var1, var2);
+		this.field5036.vmethod9204(var1, var2);
 	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "88744644"
+		descriptor = "(Lkt;I)V",
+		garbageValue = "-2009040930"
 	)
-	@Export("updateMovement")
-	public final void updateMovement() {
-		int var1 = this.rotationAngle - this.currentRotationAngle & 2047;
-		if (var1 != 0) {
-			boolean var2 = true;
-			boolean var3 = true;
-			int var4 = var1 > 1024 ? -1 : 1;
-			this.currentRotationAngle += var4 * (this.remainingMovementSteps > 0 ? this.movementSpeed + 1 : this.movementSpeed);
-			--this.remainingMovementSteps;
-			if (var1 < this.movementSpeed || var1 > 2048 - this.movementSpeed) {
-				this.currentRotationAngle = this.rotationAngle;
-			}
-
-			this.currentRotationAngle &= 2047;
-		}
-
-		if (this.steps == 0) {
-			this.setPosition(this.directionsX[0], this.directionsY[0]);
+	public final void method9151(class274 var1) {
+		int var2 = var1.method5805();
+		int var3 = var1.method5769();
+		if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+			int var4 = var1.method5765() - this.field5034[0].field5040.method5765();
+			int var5 = var1.method5767() - this.field5034[0].field5040.method5767();
+			this.method9168(var1, Math.abs(var4), Math.abs(var5));
 		} else {
-			int var10 = this.x;
-			int var11 = this.y;
-			byte var12 = 1;
-			int var5 = this.directionsX[this.steps - 1] * 128 + var12 * 128 / 2;
-			int var6 = this.directionsY[this.steps - 1] * 128 + var12 * 128 / 2;
-			MoveSpeed var7 = this.moveSpeeds[this.steps - 1];
-			int var8 = (int)(Math.ceil((double)var7.moveSpeed) * 128.0D);
-			if (var5 - var10 <= var8 && var5 - var10 >= -var8 && var6 - var11 <= var8 && var6 - var11 >= -var8) {
-				byte var9 = 4;
-				if (this.steps > 2) {
-					var9 = 6;
-				}
-
-				if (this.steps > 3) {
-					var9 = 8;
-				}
-
-				int var13 = (int)((float)var9 * var7.moveSpeed);
-				if (var5 != var10 || var6 != var11) {
-					if (var10 < var5) {
-						this.x += var13;
-						if (this.x > var5) {
-							this.x = var5;
-						}
-					} else if (var10 > var5) {
-						this.x -= var13;
-						if (this.x < var5) {
-							this.x = var5;
-						}
-					}
-
-					if (var11 < var6) {
-						this.y += var13;
-						if (this.y > var6) {
-							this.y = var6;
-						}
-					} else if (var11 > var6) {
-						this.y -= var13;
-						if (this.y < var6) {
-							this.y = var6;
-						}
-					}
-				}
-
-				if (var5 == this.x && var6 == this.y) {
-					--this.steps;
-				}
-
-			} else {
-				this.x = var5;
-				this.y = var6;
-				--this.steps;
-			}
+			this.method9152(var1);
 		}
+
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Lkt;I)V",
+		garbageValue = "-262959930"
+	)
+	public void method9152(class274 var1) {
+		this.field5030.method5771(var1);
+		this.field5034[0].field5040.method5771(var1);
+		this.field5035 = 0;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lkt;III)V",
+		garbageValue = "-52492117"
+	)
+	void method9168(class274 var1, int var2, int var3) {
+		if (this.field5035 < 9) {
+			++this.field5035;
+		}
+
+		for (int var4 = this.field5035; var4 > 0; --var4) {
+			class481 var5 = this.field5034[var4];
+			this.field5034[var4] = this.field5034[var4 - 1];
+			this.field5034[var4 - 1] = var5;
+		}
+
+		this.field5034[0].field5040.method5771(var1);
+		this.field5034[0].field5041 = Client.cycle;
+	}
+
+	@ObfuscatedName("ac")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "531003044"
+	)
+	public final void method9154(int var1) {
+		if (this.field5035 == 0) {
+			this.method9152(this.field5034[0].field5040);
+		} else {
+			if (!this.field5032) {
+				this.field5036.vmethod9203(this.field5030, this.field5034[0], var1);
+				this.field5032 = true;
+			}
+
+			if (this.field5036.vmethod9202(this.field5030, var1, this.field5035)) {
+				--this.field5035;
+				this.field5032 = false;
+			}
+
+		}
+	}
+
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "(III)Lqt;",
+		garbageValue = "-1618837110"
+	)
+	public class426 method9155(int var1, int var2) {
+		class422 var3 = new class422();
+		TransformationMatrix var4 = class177.method3843();
+		var3.field4752.method8234(class337.method6771(this.field5030.method5781()), 0.0F, 0.0F);
+		var3.field4753.method8200((float)this.field5030.method5765(), 0.0F, (float)this.field5030.method5767());
+		var1 -= this.worldView.sizeX * 64 + 64;
+		var2 -= this.worldView.sizeY * 64 + 64;
+		var4.method8259(var3);
+		var3.method8127();
+		class426 var5 = var4.method8266((float)var1, 0.0F, (float)var2);
+		var4.method8284();
+		return var5;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)F",
+		garbageValue = "1541571974"
+	)
+	static float method9165(int var0, int var1, int var2) {
+		return (float)(var0 - var1) / (float)(var2 - var1);
 	}
 }

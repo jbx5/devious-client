@@ -2,13 +2,17 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fc")
+@ObfuscatedName("fx")
 public class class149 extends class150 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("du")
+	static boolean field1696;
+	@ObfuscatedName("hr")
+	static String field1700;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1567694481
+		intValue = -836247655
 	)
-	int field1703;
+	int field1697;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
 		descriptor = "Lfz;"
@@ -20,139 +24,49 @@ public class class149 extends class150 {
 	)
 	class149(class153 var1) {
 		this.this$0 = var1;
-		this.field1703 = -1;
+		this.field1697 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;B)V",
-		garbageValue = "127"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "-1813719027"
 	)
-	void vmethod3778(Buffer var1) {
-		this.field1703 = var1.readUnsignedShort();
+	void vmethod3822(Buffer var1) {
+		this.field1697 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;B)V",
-		garbageValue = "32"
+		descriptor = "(Lgy;I)V",
+		garbageValue = "-2079483058"
 	)
-	void vmethod3771(ClanSettings var1) {
-		var1.method3582(this.field1703);
+	void vmethod3821(ClanSettings var1) {
+		var1.method3660(this.field1697);
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("hf")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "0"
+		descriptor = "(I)V",
+		garbageValue = "276753757"
 	)
-	public static int method3465(int var0) {
-		return var0 >> 17 & 7;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;IZB)I",
-		garbageValue = "-101"
-	)
-	static int method3466(CharSequence var0, int var1, boolean var2) {
-		if (var1 >= 2 && var1 <= 36) {
-			boolean var3 = false;
-			boolean var4 = false;
-			int var5 = 0;
-			int var6 = var0.length();
-
-			for (int var7 = 0; var7 < var6; ++var7) {
-				char var8 = var0.charAt(var7);
-				if (var7 == 0) {
-					if (var8 == '-') {
-						var3 = true;
-						continue;
-					}
-
-					if (var8 == '+') {
-						continue;
-					}
-				}
-
-				int var10;
-				if (var8 >= '0' && var8 <= '9') {
-					var10 = var8 - '0';
-				} else if (var8 >= 'A' && var8 <= 'Z') {
-					var10 = var8 - '7';
-				} else {
-					if (var8 < 'a' || var8 > 'z') {
-						throw new NumberFormatException();
-					}
-
-					var10 = var8 - 'W';
-				}
-
-				if (var10 >= var1) {
-					throw new NumberFormatException();
-				}
-
-				if (var3) {
-					var10 = -var10;
-				}
-
-				int var9 = var10 + var5 * var1;
-				if (var9 / var1 != var5) {
-					throw new NumberFormatException();
-				}
-
-				var5 = var9;
-				var4 = true;
-			}
-
-			if (!var4) {
-				throw new NumberFormatException();
-			} else {
-				return var5;
-			}
-		} else {
-			throw new IllegalArgumentException("" + var1);
+	static final void method3569() {
+		if (DynamicObject.pcmPlayer1 != null) {
+			DynamicObject.pcmPlayer1.run();
 		}
+
 	}
 
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(FFFFLfr;S)V",
-		garbageValue = "160"
-	)
-	static void method3468(float var0, float var1, float var2, float var3, class137 var4) {
-		float var5 = var1 - var0;
-		float var6 = var2 - var1;
-		float var7 = var3 - var2;
-		float var8 = var6 - var5;
-		var4.field1624 = var7 - var6 - var8;
-		var4.field1608 = var8 + var8 + var8;
-		var4.field1616 = var5 + var5 + var5;
-		var4.field1615 = var0;
-	}
-
-	@ObfuscatedName("nv")
+	@ObfuscatedName("li")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "1243580972"
+		garbageValue = "1794836673"
 	)
-	static boolean method3458(int var0) {
-		for (int var1 = 0; var1 < Client.field514; ++var1) {
-			if (Client.field752[var1] == var0) {
-				return true;
-			}
+	static final boolean method3568(int var0) {
+		if (var0 >= 2000) {
+			var0 -= 2000;
 		}
 
-		return false;
-	}
-
-	@ObfuscatedName("nu")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "357918503"
-	)
-	static final int method3467() {
-		float var0 = 200.0F * ((float)class461.clientPreferences.getBrightness() - 0.5F);
-		return 100 - Math.round(var0);
+		return var0 == 1007;
 	}
 }

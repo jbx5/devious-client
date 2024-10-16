@@ -1,90 +1,66 @@
+import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ij")
+@ObfuscatedName("iw")
 public class class215 extends class230 {
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "[Lua;"
-	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("cg")
+	@ObfuscatedName("ju")
+	@Export("regionLandArchiveIds")
+	static int[] regionLandArchiveIds;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -362540747
+		intValue = -2122351177
 	)
-	static int field2352;
-	@ObfuscatedName("gy")
-	@Export("authServiceBaseUrl")
-	static String authServiceBaseUrl;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 204902821
-	)
-	int field2351;
+	int field2349;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Liy;"
+		descriptor = "Lik;"
 	)
 	final class227 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Liy;Ljava/lang/String;I)V"
+		descriptor = "(Lik;Ljava/lang/String;I)V"
 	)
 	class215(class227 var1, String var2, int var3) {
 		super(var1, var2);
 		this.this$0 = var1;
-		this.field2351 = var3;
+		this.field2349 = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-24"
+		descriptor = "(I)I",
+		garbageValue = "780036752"
 	)
-	public int vmethod4613() {
+	public int vmethod4660() {
 		return 0;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "934706251"
+		garbageValue = "-1828104343"
 	)
-	public int vmethod4621() {
-		return this.field2351;
+	public int vmethod4648() {
+		return this.field2349;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ldo;I)V",
-		garbageValue = "-1831834401"
+		descriptor = "(Ljava/util/Date;I)Z",
+		garbageValue = "620281549"
 	)
-	@Export("runScriptEvent")
-	public static void runScriptEvent(ScriptEvent var0) {
-		InterfaceParent.runScript(var0, 500000, 475000);
-	}
-
-	@ObfuscatedName("ol")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "2094644101"
-	)
-	static final void method4393(int var0, int var1) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3726()) {
-				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				if (var2.rank == -1) {
-					PacketBufferNode var3 = class141.getPacketBufferNode(ClientPacket.field3307, Client.packetWriter.isaacCipher);
-					var3.packetBuffer.writeByte(3 + class536.stringCp1252NullTerminatedByteSize(var2.username.getName()));
-					var3.packetBuffer.writeByte(var0);
-					var3.packetBuffer.writeShort(var1);
-					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName());
-					Client.packetWriter.addNode(var3);
-				}
-			}
-		}
+	static boolean method4423(Date var0) {
+		java.util.Calendar var1 = java.util.Calendar.getInstance();
+		var1.set(1, var1.get(1) - 13);
+		var1.set(5, var1.get(5) + 1);
+		var1.set(11, 0);
+		var1.set(12, 0);
+		var1.set(13, 0);
+		var1.set(14, 0);
+		Date var2 = var1.getTime();
+		return var0.before(var2);
 	}
 }

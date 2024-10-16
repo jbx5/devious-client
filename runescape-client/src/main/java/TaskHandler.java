@@ -7,37 +7,37 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ir")
+@ObfuscatedName("io")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@Export("javaVersion")
 	public static String javaVersion;
-	@ObfuscatedName("ep")
+	@ObfuscatedName("vx")
 	@ObfuscatedSignature(
-		descriptor = "Lna;"
+		descriptor = "Ldi;"
 	)
-	@Export("widgetDefinition")
-	static WidgetDefinition widgetDefinition;
-	@ObfuscatedName("ag")
+	@Export("clientPreferences")
+	static ClientPreferences clientPreferences;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Liz;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lig;"
+		descriptor = "Liz;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -61,10 +61,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-267520593"
+		descriptor = "(B)V",
+		garbageValue = "56"
 	)
 	@Export("close")
 	public final void close() {
@@ -80,10 +80,10 @@ public class TaskHandler implements Runnable {
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lig;",
-		garbageValue = "-1642796188"
+		descriptor = "(IIILjava/lang/Object;I)Liz;",
+		garbageValue = "-565041497"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -104,20 +104,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IB)Lig;",
-		garbageValue = "-14"
+		descriptor = "(Ljava/lang/String;II)Liz;",
+		garbageValue = "423022448"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lig;",
-		garbageValue = "-744752794"
+		descriptor = "(Ljava/lang/Runnable;II)Liz;",
+		garbageValue = "-725588083"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -172,12 +172,74 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ap")
+	public static final int method4504(double var0, double var2, double var4) {
+		double var6 = var4;
+		double var8 = var4;
+		double var10 = var4;
+		if (var2 != 0.0D) {
+			double var12;
+			if (var4 < 0.5D) {
+				var12 = (1.0D + var2) * var4;
+			} else {
+				var12 = var4 + var2 - var4 * var2;
+			}
+
+			double var14 = var4 * 2.0D - var12;
+			double var16 = 0.3333333333333333D + var0;
+			if (var16 > 1.0D) {
+				--var16;
+			}
+
+			double var20 = var0 - 0.3333333333333333D;
+			if (var20 < 0.0D) {
+				++var20;
+			}
+
+			if (6.0D * var16 < 1.0D) {
+				var6 = var14 + var16 * (var12 - var14) * 6.0D;
+			} else if (var16 * 2.0D < 1.0D) {
+				var6 = var12;
+			} else if (var16 * 3.0D < 2.0D) {
+				var6 = (0.6666666666666666D - var16) * (var12 - var14) * 6.0D + var14;
+			} else {
+				var6 = var14;
+			}
+
+			if (6.0D * var0 < 1.0D) {
+				var8 = 6.0D * (var12 - var14) * var0 + var14;
+			} else if (2.0D * var0 < 1.0D) {
+				var8 = var12;
+			} else if (3.0D * var0 < 2.0D) {
+				var8 = var14 + (0.6666666666666666D - var0) * (var12 - var14) * 6.0D;
+			} else {
+				var8 = var14;
+			}
+
+			if (6.0D * var20 < 1.0D) {
+				var10 = var20 * (var12 - var14) * 6.0D + var14;
+			} else if (2.0D * var20 < 1.0D) {
+				var10 = var12;
+			} else if (var20 * 3.0D < 2.0D) {
+				var10 = var14 + 6.0D * (0.6666666666666666D - var20) * (var12 - var14);
+			} else {
+				var10 = var14;
+			}
+		}
+
+		int var22 = (int)(var6 * 256.0D);
+		int var13 = (int)(var8 * 256.0D);
+		int var23 = (int)(256.0D * var10);
+		int var15 = var23 + (var13 << 8) + (var22 << 16);
+		return var15;
+	}
+
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)I",
-		garbageValue = "1473180947"
+		descriptor = "(Lqt;Lqt;I)F",
+		garbageValue = "-163434166"
 	)
-	public static int method4455(CharSequence var0) {
-		return class149.method3466(var0, 10, true);
+	public static final float method4506(class426 var0, class426 var1) {
+		return var0.method8176(var1);
 	}
 }

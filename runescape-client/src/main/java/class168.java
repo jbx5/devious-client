@@ -1,26 +1,21 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gt")
+@ObfuscatedName("gh")
 public class class168 extends class150 {
-	@ObfuscatedName("sc")
-	@ObfuscatedSignature(
-		descriptor = "Lsp;"
-	)
-	@Export("friendsChat")
-	static FriendsChat friendsChat;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("as")
+	static boolean[] field1826;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 2028913985
+		intValue = 1614944343
 	)
-	int field1825;
-	@ObfuscatedName("ae")
+	int field1824;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -460746531
+		intValue = -1144801195
 	)
-	int field1820;
+	int field1823;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
 		descriptor = "Lfz;"
@@ -34,46 +29,53 @@ public class class168 extends class150 {
 		this.this$0 = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;B)V",
-		garbageValue = "127"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "-1813719027"
 	)
-	void vmethod3778(Buffer var1) {
-		this.field1825 = var1.readInt();
-		this.field1820 = var1.readInt();
+	void vmethod3822(Buffer var1) {
+		this.field1824 = var1.readInt();
+		this.field1823 = var1.readInt();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;B)V",
-		garbageValue = "32"
+		descriptor = "(Lgy;I)V",
+		garbageValue = "-2079483058"
 	)
-	void vmethod3771(ClanSettings var1) {
-		var1.method3581(this.field1825, this.field1820);
+	void vmethod3821(ClanSettings var1) {
+		var1.method3668(this.field1824, this.field1823);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("gf")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lhn;",
-		garbageValue = "-35"
+		descriptor = "(B)V",
+		garbageValue = "-118"
 	)
-	@Export("getNpcDefinition")
-	public static NPCComposition getNpcDefinition(int var0) {
-		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
-			var1 = new NPCComposition();
-			var1.id = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
+	static void method3777() {
+		HttpMethod.compass = null;
+		class424.redHintArrowSprite = null;
+		class420.mapSceneSprites = null;
+		class320.headIconPkSprites = null;
+		class539.headIconPrayerSprites = null;
+		LoginState.headIconHintSprites = null;
+		class136.mapDotSprites = null;
+		class278.crossSprites = null;
+		GraphicsObject.field892 = null;
+		class147.scrollBarSprites = null;
+		class491.field5088 = null;
+	}
 
-			var1.postDecode();
-			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
+	@ObfuscatedName("nh")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "541043697"
+	)
+	static final void method3772(int var0) {
+		var0 = Math.max(Math.min(var0, 100), 0);
+		var0 = 100 - var0;
+		float var1 = (float)var0 / 200.0F + 0.5F;
+		FriendSystem.method2071((double)var1);
 	}
 }

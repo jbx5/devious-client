@@ -1,22 +1,21 @@
-import java.util.ArrayList;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dl")
+@ObfuscatedName("dh")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "[Lct;"
+		descriptor = "[Lce;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1477295507
+		intValue = 1084954157
 	)
 	@Export("count")
 	int count;
@@ -25,10 +24,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lct;",
-		garbageValue = "1356260064"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lce;",
+		garbageValue = "-1875669482"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -56,86 +55,93 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lct;",
-		garbageValue = "-1993736604"
+		descriptor = "(IB)Lce;",
+		garbageValue = "-1"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-356178290"
+		garbageValue = "1891302194"
 	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lve;",
-		garbageValue = "19"
+		descriptor = "([BIIB)Z",
+		garbageValue = "-16"
 	)
-	public static PrivateChatMode method2411(int var0) {
-		PrivateChatMode[] var1 = new PrivateChatMode[]{PrivateChatMode.field5566, PrivateChatMode.field5568, PrivateChatMode.field5569};
-		PrivateChatMode[] var2 = var1;
+	static final boolean method2472(byte[] var0, int var1, int var2) {
+		boolean var3 = true;
+		Buffer var4 = new Buffer(var0);
+		int var5 = -1;
 
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			PrivateChatMode var4 = var2[var3];
-			if (var0 == var4.field5567) {
-				return var4;
+		label69:
+		while (true) {
+			int var6 = var4.readIncrSmallSmart();
+			if (var6 == 0) {
+				return var3;
+			}
+
+			var5 += var6;
+			int var7 = 0;
+			boolean var8 = false;
+
+			while (true) {
+				int var9;
+				while (!var8) {
+					var9 = var4.readUShortSmart();
+					if (var9 == 0) {
+						continue label69;
+					}
+
+					var7 += var9 - 1;
+					int var10 = var7 & 63;
+					int var11 = var7 >> 6 & 63;
+					int var12 = var4.readUnsignedByte() >> 2;
+					int var13 = var11 + var1;
+					int var14 = var10 + var2;
+					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) {
+						ObjectComposition var15 = UrlRequest.getObjectDefinition(var5);
+						if (var12 != 22 || !Client.isLowDetail || var15.int1 != 0 || var15.interactType == 1 || var15.boolean2) {
+							if (!var15.needsModelFiles()) {
+								++Client.field571;
+								var3 = false;
+							}
+
+							var8 = true;
+						}
+					}
+				}
+
+				var9 = var4.readUShortSmart();
+				if (var9 == 0) {
+					break;
+				}
+
+				var4.readUnsignedByte();
 			}
 		}
-
-		return null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(Lfr;FI)F",
-		garbageValue = "1227919828"
+		descriptor = "(I)V",
+		garbageValue = "958245222"
 	)
-	static float method2420(class137 var0, float var1) {
-		if (var0 == null) {
-			return 0.0F;
-		} else {
-			float var2 = var1 - var0.field1609;
-			return var0.field1614 + var2 * ((var0.field1612 + var2 * var0.field1623) * var2 + var0.field1613);
-		}
-	}
-
-	@ObfuscatedName("il")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1554749265"
-	)
-	@Export("playSong")
-	static void playSong(int var0) {
-		if (var0 == -1 && !Client.playingJingle) {
-			AbstractWorldMapIcon.method6257(0, 0);
-		} else if (var0 != -1 && !FloorUnderlayDefinition.method4054(var0) && class461.clientPreferences.getMusicVolume() != 0) {
-			ArrayList var1 = new ArrayList();
-			var1.add(new MusicSong(HorizontalAlignment.archive6, var0, 0, class461.clientPreferences.getMusicVolume(), false));
-			if (Client.playingJingle) {
-				WorldMapIcon_1.method5778(var1, 0, 100, 100, 0);
-			} else {
-				class180.method3804(var1, 0, 100, 100, 0, false);
-			}
-		}
-
-	}
-
-	@ObfuscatedName("pn")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
-	)
-	static void method2418() {
-		class461.clientPreferences.updateEULA(Client.field520);
+	public static void method2468() {
+		ObjectComposition.ObjectDefinition_cached.clear();
+		ObjectComposition.ObjectDefinition_cachedModelData.clear();
+		ObjectComposition.ObjectDefinition_cachedEntities.clear();
+		ObjectComposition.ObjectDefinition_cachedModels.clear();
 	}
 }
