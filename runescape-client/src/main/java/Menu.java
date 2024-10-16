@@ -161,8 +161,8 @@ public class Menu {
 		}
 
 		this.menuY = var2;
-		if (this.menuHeight * -334022457 + this.menuY > class268.canvasHeight) {
-			this.menuY = class268.canvasHeight - this.menuHeight * -334022457;
+		if (this.menuHeight + this.menuY > class268.canvasHeight) {
+			this.menuY = class268.canvasHeight - this.menuHeight;
 		}
 
 		if (this.menuY < 0) {
@@ -198,8 +198,8 @@ public class Menu {
 
 		int var3 = var2 + 19;
 		this.menuY = var2;
-		if (this.menuHeight * -334022457 + this.menuY > class268.canvasHeight) {
-			this.menuY = var3 - this.menuHeight * -334022457;
+		if (this.menuHeight + this.menuY > class268.canvasHeight) {
+			this.menuY = var3 - this.menuHeight;
 		}
 
 		if (this.menuY < 0) {
@@ -247,7 +247,7 @@ public class Menu {
 	public final boolean method10809(int var1, int var2) {
 		if (this.field5606 != -1 && this.subMenus[this.field5606] != null && this.subMenus[this.field5606].method10809(var1, var2)) {
 			return true;
-		} else if (var1 >= this.menuX - 10 && var1 <= this.menuX + this.menuWidth + 10 && var2 >= this.menuY - 10 && var2 <= this.menuHeight * -334022457 + this.menuY + 10) {
+		} else if (var1 >= this.menuX - 10 && var1 <= this.menuX + this.menuWidth + 10 && var2 >= this.menuY - 10 && var2 <= this.menuHeight + this.menuY + 10) {
 			int var3 = this.method10766(var1, var2);
 			if (var3 != -1 && var3 != this.field5606) {
 				if (var3 != this.field5616) {
@@ -319,7 +319,7 @@ public class Menu {
 		int var1 = this.menuX;
 		int var2 = this.menuY;
 		int var3 = this.menuWidth;
-		int var4 = this.menuHeight * -334022457;
+		int var4 = this.menuHeight;
 
 		for (int var5 = 0; var5 < Client.rootWidgetCount; ++var5) {
 			if (Client.rootWidgetWidths[var5] + Client.rootWidgetXs[var5] > var1 && Client.rootWidgetXs[var5] < var1 + var3 && Client.rootWidgetHeights[var5] + Client.rootWidgetYs[var5] > var2 && Client.rootWidgetYs[var5] < var2 + var4) {
@@ -379,13 +379,13 @@ public class Menu {
 		int var1 = this.menuX;
 		int var2 = this.menuY;
 		int var3 = 6116423;
-		Rasterizer2D.Rasterizer2D_fillRectangle(var1, var2, this.menuWidth, this.menuHeight * -334022457, var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var1, var2, this.menuWidth, this.menuHeight, var3);
 		if (this.field5617) {
 			Rasterizer2D.Rasterizer2D_fillRectangle(var1 + 1, var2 + 1, this.menuWidth - 2, 16, 0);
-			Rasterizer2D.Rasterizer2D_drawRectangle(var1 + 1, var2 + 18, this.menuWidth - 2, this.menuHeight * -334022457 - 19, 0);
+			Rasterizer2D.Rasterizer2D_drawRectangle(var1 + 1, var2 + 18, this.menuWidth - 2, this.menuHeight - 19, 0);
 			Calendar.fontBold12.draw("Choose Option", var1 + 3, var2 + 14, var3, -1);
 		} else {
-			Rasterizer2D.Rasterizer2D_drawRectangle(var1 + 1, var2 + 1, this.menuWidth - 2, this.menuHeight * -334022457 - 2, 0);
+			Rasterizer2D.Rasterizer2D_drawRectangle(var1 + 1, var2 + 1, this.menuWidth - 2, this.menuHeight - 2, 0);
 		}
 
 		int var4 = MouseHandler.MouseHandler_x;
@@ -418,7 +418,7 @@ public class Menu {
 		var6 = this.menuX;
 		var7 = this.menuY;
 		var8 = this.menuWidth;
-		int var9 = this.menuHeight * -334022457;
+		int var9 = this.menuHeight;
 
 		for (int var10 = 0; var10 < Client.rootWidgetCount; ++var10) {
 			if (Client.rootWidgetWidths[var10] + Client.rootWidgetXs[var10] > var6 && Client.rootWidgetXs[var10] < var6 + var8 && Client.rootWidgetYs[var10] + Client.rootWidgetHeights[var10] > var7 && Client.rootWidgetYs[var10] < var7 + var9) {

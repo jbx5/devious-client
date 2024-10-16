@@ -26,9 +26,9 @@ public class class425 {
 		var8.widthAlignment = var5;
 		var8.heightAlignment = var6;
 		var8.rawX = (int)((float)var1.width * var7[0]);
-		var8.rawY = (int)((float)(var1.height * -1662542495) * var7[1]);
+		var8.rawY = (int)((float)(var1.height) * var7[1]);
 		var8.rawWidth = (int)(var7[2] * (float)var1.width);
-		var8.rawHeight = (int)(var7[3] * (float)(var1.height * -1662542495));
+		var8.rawHeight = (int)(var7[3] * (float)(var1.height));
 		return var8;
 	}
 }

@@ -1936,9 +1936,9 @@ public class Widget extends Node {
 			var1 -= var3;
 			var2 -= var4;
 			int var5 = (int)(this.field3951.method4481()[0] * (float)this.width);
-			int var6 = (int)(this.field3951.method4481()[1] * (float)(this.height * -1662542495));
+			int var6 = (int)(this.field3951.method4481()[1] * (float)(this.height));
 			int var7 = var5 + (int)(this.field3951.method4481()[2] * (float)this.width);
-			int var8 = var6 + (int)(this.field3951.method4481()[3] * (float)(-1662542495 * this.height));
+			int var8 = var6 + (int)(this.field3951.method4481()[3] * (float)(this.height));
 			return var1 >= var5 && var2 >= var6 && var1 < var7 && var2 < var8;
 		} else {
 			return false;

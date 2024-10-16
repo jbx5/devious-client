@@ -465,7 +465,7 @@ public class class145 extends DualNode {
 	@Export("alignWidgetSize")
 	static void alignWidgetSize(Widget var0, int var1, int var2, boolean var3) {
 		int var4 = var0.width;
-		int var5 = var0.height * -1662542495;
+		int var5 = var0.height;
 		if (var0.widthAlignment == 0) {
 			var0.width = var0.rawWidth;
 		} else if (var0.widthAlignment == 1) {
@@ -483,7 +483,7 @@ public class class145 extends DualNode {
 		}
 
 		if (var0.widthAlignment == 4) {
-			var0.width = var0.field4006 * var0.height * -1662542495 / var0.field3970;
+			var0.width = var0.field4006 * var0.height / var0.field3970;
 		}
 
 		if (var0.heightAlignment == 4) {
@@ -495,10 +495,10 @@ public class class145 extends DualNode {
 		}
 
 		if (var0.type == 12) {
-			var0.method7304().method7229(var0.width, var0.height * -1662542495);
+			var0.method7304().method7229(var0.width, var0.height);
 		}
 
-		if (var3 && var0.onResize != null && (var4 != var0.width || var5 != var0.height * -1662542495)) {
+		if (var3 && var0.onResize != null && (var4 != var0.width || var5 != var0.height)) {
 			ScriptEvent var6 = new ScriptEvent();
 			var6.widget = var0;
 			var6.args = var0.onResize;

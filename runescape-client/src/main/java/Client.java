@@ -4891,8 +4891,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 					var5 = var3.readUnsignedShortAdd();
 					var85 = class416.widgetDefinition.method6911(var21);
 					if (var85 != null && var85.type == 0) {
-						if (var5 > var85.scrollHeight - var85.height * -1662542495) {
-							var5 = var85.scrollHeight - var85.height * -1662542495;
+						if (var5 > var85.scrollHeight - var85.height) {
+							var5 = var85.scrollHeight - var85.height;
 						}
 
 						if (var5 < 0) {
@@ -6493,7 +6493,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 			var4 = class268.canvasHeight;
 		} else {
 			var3 = var2.width;
-			var4 = var2.height * -1662542495;
+			var4 = var2.height;
 		}
 
 		class145.alignWidgetSize(var1, var3, var4, false);
@@ -6527,8 +6527,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi, cla
 				var2 = field684;
 			}
 
-			if (clickedWidget.height * -1662542495 + var2 > clickedWidgetParent.height * -1662542495 + field684) {
-				var2 = clickedWidgetParent.height * -1662542495 + field684 - clickedWidget.height * -1662542495;
+			if (clickedWidget.height + var2 > clickedWidgetParent.height + field684) {
+				var2 = clickedWidgetParent.height + field684 - clickedWidget.height;
 			}
 
 			int var3 = var1 - field686;

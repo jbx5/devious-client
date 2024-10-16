@@ -181,8 +181,8 @@ public class class163 extends class166 {
 					var6.scrollX = 0;
 				}
 
-				if (var6.scrollY > var6.scrollHeight - var6.height * -1662542495) {
-					var6.scrollY = var6.scrollHeight - var6.height * -1662542495;
+				if (var6.scrollY > var6.scrollHeight - var6.height) {
+					var6.scrollY = var6.scrollHeight - var6.height;
 				}
 
 				if (var6.scrollY < 0) {

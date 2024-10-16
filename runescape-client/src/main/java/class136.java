@@ -124,7 +124,7 @@ public class class136 implements Callable {
 			return 1;
 		} else if (var0 == ScriptOpcodes.VIEWPORT_GETEFFECTIVESIZE) {
 			if (Client.viewportWidget != null) {
-				UserComparator7.setViewportShape(0, 0, Client.viewportWidget.width, Client.viewportWidget.height * -1662542495, false);
+				UserComparator7.setViewportShape(0, 0, Client.viewportWidget.width, Client.viewportWidget.height, false);
 				Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = Client.viewportWidth;
 				Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = Client.viewportHeight;
 			} else {

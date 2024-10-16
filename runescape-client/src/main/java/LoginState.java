@@ -361,8 +361,8 @@ public class LoginState {
 				}
 
 				var3.scrollY = var16;
-				if (var3.scrollY > var3.scrollHeight - var3.height * -1662542495) {
-					var3.scrollY = var3.scrollHeight - var3.height * -1662542495;
+				if (var3.scrollY > var3.scrollHeight - var3.height) {
+					var3.scrollY = var3.scrollHeight - var3.height;
 				}
 
 				if (var3.scrollY < 0) {

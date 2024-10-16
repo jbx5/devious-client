@@ -53,7 +53,7 @@ class class462 implements Comparator {
 			Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = var3.width;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = var3.height * -1662542495;
+			Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = var3.height;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
 			Interpreter.Interpreter_intStack[++class96.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;

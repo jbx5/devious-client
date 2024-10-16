@@ -444,7 +444,7 @@ public class WorldMapElement extends DualNode {
 					var16 = var26;
 					var17 = var11;
 					var18 = var26 + var9.width;
-					int var19 = var11 + var9.height * -1662542495;
+					int var19 = var11 + var9.height;
 					if (var18 < var26) {
 						var16 = var18;
 						var18 = var26;
@@ -463,7 +463,7 @@ public class WorldMapElement extends DualNode {
 					var15 = var19 < var5 ? var19 : var5;
 				} else {
 					var16 = var26 + var9.width;
-					var17 = var11 + var9.height * -1662542495;
+					var17 = var11 + var9.height;
 					var12 = var26 > var2 ? var26 : var2;
 					var13 = var11 > var3 ? var11 : var3;
 					var14 = var16 < var4 ? var16 : var4;
@@ -543,12 +543,12 @@ public class WorldMapElement extends DualNode {
 						FloorDecoration.checkIfMinimapClicked(var9, var26, var11);
 					} else {
 						if (var9.contentType == 1400) {
-							LoginState.worldMap.onCycle(MouseHandler.MouseHandler_x, MouseHandler.MouseHandler_y, var35, var26, var11, var9.width, var9.height * -1662542495);
+							LoginState.worldMap.onCycle(MouseHandler.MouseHandler_x, MouseHandler.MouseHandler_y, var35, var26, var11, var9.width, var9.height);
 						}
 
 						if (!Client.isMenuOpen && var35) {
 							if (var9.contentType == 1400) {
-								LoginState.worldMap.addElementMenuOptions(var26, var11, var9.width, var9.height * -1662542495, var17, var18);
+								LoginState.worldMap.addElementMenuOptions(var26, var11, var9.width, var9.height, var17, var18);
 							} else {
 								Login.Widget_addToMenu(var9);
 							}
@@ -967,8 +967,8 @@ public class WorldMapElement extends DualNode {
 								WorldMapArchiveLoader.field5242 = var9;
 							}
 
-							if (var9.scrollHeight > var9.height * -1662542495) {
-								AbstractWorldMapData.method6263(var9, var26 + var9.width, var11, var9.height * -1662542495, var9.scrollHeight, MouseHandler.MouseHandler_x, MouseHandler.MouseHandler_y);
+							if (var9.scrollHeight > var9.height) {
+								AbstractWorldMapData.method6263(var9, var26 + var9.width, var11, var9.height, var9.scrollHeight, MouseHandler.MouseHandler_x, MouseHandler.MouseHandler_y);
 							}
 						}
 
