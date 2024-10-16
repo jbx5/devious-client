@@ -1375,7 +1375,8 @@ public class Scene extends Renderable {
 	}
 
 	@ObfuscatedName("cu")
-	void method5039() {
+	@Export("processWalkClick")
+	void processWalkClick() {
 		if (this.checkClick) {
 			this.checkClick = false;
 			this.baseX = this.Scene_baseX;
@@ -1558,7 +1559,7 @@ public class Scene extends Renderable {
 						}
 
 						if (this.tileUpdateCount == 0) {
-							this.method5039();
+							this.processWalkClick();
 							return;
 						}
 					}
@@ -1609,7 +1610,7 @@ public class Scene extends Renderable {
 						}
 
 						if (this.tileUpdateCount == 0) {
-							this.method5039();
+							this.processWalkClick();
 							return;
 						}
 					}
@@ -1617,7 +1618,7 @@ public class Scene extends Renderable {
 			}
 		}
 
-		this.method5039();
+		this.processWalkClick();
 	}
 
 	@ObfuscatedName("cz")

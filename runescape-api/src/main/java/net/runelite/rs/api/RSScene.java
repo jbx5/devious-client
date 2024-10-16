@@ -108,6 +108,9 @@ public interface RSScene extends Scene
 	@Override
 	void setBaseY(int y);
 
+	@Import("processWalkClick")
+	void processWalkClick();
+
 	@Import("viewportWalking")
 	@Override
 	void setViewportWalking(boolean viewportWalking);
