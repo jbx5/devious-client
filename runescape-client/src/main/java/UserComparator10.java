@@ -1,12 +1,18 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
+@ObfuscatedName("ee")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("uu")
+	@ObfuscatedGetter(
+		intValue = -1065479945
+	)
+	static int field1521;
+	@ObfuscatedName("ap")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +20,10 @@ public class UserComparator10 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lsq;Lsq;B)I",
-		garbageValue = "122"
+		descriptor = "(Lsv;Lsv;I)I",
+		garbageValue = "-1983961875"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,67 +38,46 @@ public class UserComparator10 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "439009622"
+		descriptor = "(FFFFLfv;I)V",
+		garbageValue = "663536347"
 	)
-	public static void method3226() {
-		VarcInt.VarcInt_cached.clear();
+	static void method3328(float var0, float var1, float var2, float var3, class137 var4) {
+		float var5 = var1 - var0;
+		float var6 = var2 - var1;
+		float var7 = var3 - var2;
+		float var8 = var6 - var5;
+		var4.field1594 = var7 - var6 - var8;
+		var4.field1606 = var8 + var8 + var8;
+		var4.field1607 = var5 + var5 + var5;
+		var4.field1604 = var0;
 	}
 
-	@ObfuscatedName("lo")
+	@ObfuscatedName("kc")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "-48"
+		descriptor = "(III)V",
+		garbageValue = "1923335530"
 	)
-	static final void method3227(int var0, int var1) {
+	static final void method3329(int var0, int var1) {
 		if (Client.menu.menuOptionsCount >= 2 || Client.isItemSelected != 0 || Client.isSpellSelected) {
 			if (Client.showMouseOverText) {
-				int var2 = class537.method9781();
+				int var2 = MusicPatchPcmStream.method6792();
 				String var3;
 				if (Client.isItemSelected == 1 && Client.menu.menuOptionsCount < 2) {
-					var3 = "Use" + " " + Client.field674 + " " + "->";
+					var3 = "Use" + " " + Client.field659 + " " + "->";
 				} else if (Client.isSpellSelected && Client.menu.menuOptionsCount < 2) {
 					var3 = Client.selectedSpellActionName + " " + Client.selectedSpellName + " " + "->";
 				} else {
-					var3 = Client.menu.method10554(var2);
+					var3 = Client.menu.method10757(var2);
 				}
 
 				if (Client.menu.menuOptionsCount > 2) {
-					var3 = var3 + HttpMethod.colorStartTag(16777215) + " " + '/' + " " + (Client.menu.menuOptionsCount - 2) + " more options";
+					var3 = var3 + class204.colorStartTag(16777215) + " " + '/' + " " + (Client.menu.menuOptionsCount - 2) + " more options";
 				}
 
-				class33.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
+				Calendar.fontBold12.drawRandomAlphaAndSpacing(var3, var0 + 4, var1 + 15, 16777215, 0, Client.cycle / 1000);
 			}
 		}
-	}
-
-	@ObfuscatedName("oe")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)Ldj;",
-		garbageValue = "-1253318947"
-	)
-	@Export("openInterface")
-	static final InterfaceParent openInterface(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		SpotAnimationDefinition.method4048(var1);
-		Widget var4 = TaskHandler.widgetDefinition.method6841(var0);
-		SecureRandomCallable.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			SecureRandomCallable.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		AsyncHttpResponse.revalidateWidgetScroll(TaskHandler.widgetDefinition.Widget_interfaceComponents[var0 >> 16], var4, false);
-		WorldMapEvent.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			class147.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
 	}
 }

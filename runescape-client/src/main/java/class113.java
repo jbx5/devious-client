@@ -3,167 +3,149 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eu")
+@ObfuscatedName("ef")
 public class class113 {
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1454;
-	@ObfuscatedName("ae")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1450;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1444;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1447;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1446;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1443;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1448;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1449;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1442;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1455;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1452;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1453;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1451;
 	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Leu;"
+		descriptor = "Lef;"
+	)
+	static final class113 field1441;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1439;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1442;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1438;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1444;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1452;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1451;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1435;
+	@ObfuscatedName("am")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1443;
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1437;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1445;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1446;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1447;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
 	)
 	@Export("field1390")
 	static final class113 field1390;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Lef;"
+	)
+	static final class113 field1449;
 	@ObfuscatedName("ab")
 	@ObfuscatedSignature(
-		descriptor = "Leu;"
+		descriptor = "Lef;"
 	)
-	static final class113 field1456;
+	static final class113 field1450;
 	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Leu;"
-	)
-	static final class113 field1457;
-	@ObfuscatedName("dw")
-	@ObfuscatedSignature(
-		descriptor = "[Lvt;"
-	)
-	@Export("worldSelectStars")
-	static IndexedSprite[] worldSelectStars;
-	@ObfuscatedName("id")
 	@ObfuscatedGetter(
-		longValue = -7995185437776682059L
+		intValue = 2109334875
 	)
-	static long field1459;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -622240461
-	)
-	int field1458;
+	int field1440;
 
 	static {
-		field1454 = new class113(0);
-		field1450 = new class113(1);
-		field1444 = new class113(2);
-		field1447 = new class113(3);
-		field1446 = new class113(4);
-		field1443 = new class113(5);
-		field1448 = new class113(6);
-		field1449 = new class113(7);
-		field1442 = new class113(8);
-		field1455 = new class113(9);
-		field1452 = new class113(10);
-		field1453 = new class113(11);
-		field1451 = new class113(12);
+		field1441 = new class113(0);
+		field1439 = new class113(1);
+		field1442 = new class113(2);
+		field1438 = new class113(3);
+		field1444 = new class113(4);
+		field1452 = new class113(5);
+		field1451 = new class113(6);
+		field1435 = new class113(7);
+		field1443 = new class113(8);
+		field1437 = new class113(9);
+		field1445 = new class113(10);
+		field1446 = new class113(11);
+		field1447 = new class113(12);
 		field1390 = new class113(13);
-		field1456 = new class113(14);
-		field1457 = new class113(15);
+		field1449 = new class113(14);
+		field1450 = new class113(15);
 	}
 
 	class113(int var1) {
-		this.field1458 = var1;
+		this.field1440 = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1849050817"
+		descriptor = "(Lmm;Lwh;B)Lme;",
+		garbageValue = "23"
 	)
-	public static void method3037() {
-		synchronized(MouseHandler.MouseHandler_instance) {
-			MouseHandler.MouseHandler_currentButton = MouseHandler.MouseHandler_currentButtonVolatile;
-			MouseHandler.MouseHandler_x = MouseHandler.MouseHandler_xVolatile;
-			MouseHandler.MouseHandler_y = MouseHandler.MouseHandler_yVolatile;
-			MouseHandler.MouseHandler_millis = MouseHandler.MouseHandler_lastMovedVolatile;
-			MouseHandler.MouseHandler_lastButton = MouseHandler.MouseHandler_lastButtonVolatile;
-			MouseHandler.MouseHandler_lastPressedX = MouseHandler.MouseHandler_lastPressedXVolatile;
-			MouseHandler.MouseHandler_lastPressedY = MouseHandler.MouseHandler_lastPressedYVolatile;
-			MouseHandler.MouseHandler_lastPressedTimeMillis = MouseHandler.MouseHandler_lastPressedTimeMillisVolatile;
-			MouseHandler.MouseHandler_lastButtonVolatile = 0;
-		}
-	}
-
-	@ObfuscatedName("md")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "54"
-	)
-	static void method3038(int var0, int var1, int var2, int var3) {
-		Widget var4 = TaskHandler.widgetDefinition.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			class215.runScriptEvent(var5);
+	@Export("getPacketBufferNode")
+	public static PacketBufferNode getPacketBufferNode(ClientPacket var0, IsaacCipher var1) {
+		PacketBufferNode var2;
+		if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {
+			var2 = new PacketBufferNode();
+		} else {
+			var2 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
 		}
 
-		Client.selectedSpellItemId = var3;
-		Client.isSpellSelected = true;
-		class36.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		class320.selectedSpellFlags = var2;
-		SecureRandomCallable.invalidateWidget(var4);
+		var2.clientPacket = var0;
+		var2.clientPacketLength = var0.length;
+		if (var2.clientPacketLength == -1) {
+			var2.packetBuffer = new PacketBuffer(260);
+		} else if (var2.clientPacketLength == -2) {
+			var2.packetBuffer = new PacketBuffer(10000);
+		} else if (var2.clientPacketLength <= 18) {
+			var2.packetBuffer = new PacketBuffer(20);
+		} else if (var2.clientPacketLength <= 98) {
+			var2.packetBuffer = new PacketBuffer(100);
+		} else {
+			var2.packetBuffer = new PacketBuffer(260);
+		}
+
+		var2.packetBuffer.setIsaacCipher(var1);
+		var2.packetBuffer.writeByteIsaac(var2.clientPacket.id);
+		var2.index = 0;
+		return var2;
 	}
 }

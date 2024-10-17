@@ -4,147 +4,130 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nb")
+@ObfuscatedName("nx")
 @Implements("MusicPatchNode")
 public class MusicPatchNode extends Node {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1383258553
+		intValue = 31873403
 	)
-	int field3711;
-	@ObfuscatedName("ae")
+	int field3735;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lnc;"
+		descriptor = "Lnp;"
 	)
 	@Export("table")
 	MusicPatch table;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lbg;"
+		descriptor = "Lbt;"
 	)
 	@Export("rawSound")
 	RawSound rawSound;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lmv;"
+		descriptor = "Lmq;"
 	)
-	MusicPatchNode2 field3705;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = 107915439
-	)
-	int field3712;
-	@ObfuscatedName("aq")
-	@ObfuscatedGetter(
-		intValue = 528717609
-	)
-	int field3706;
-	@ObfuscatedName("af")
-	@ObfuscatedGetter(
-		intValue = 76825659
-	)
-	int field3707;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = 656149513
-	)
-	int field3708;
-	@ObfuscatedName("au")
-	@ObfuscatedGetter(
-		intValue = 1533372179
-	)
-	int field3709;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = -1635351087
-	)
-	int field3710;
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		intValue = 693097243
-	)
-	int field3701;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -274726912
-	)
-	int field3720;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 127781599
-	)
-	int field3713;
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 1324390209
-	)
-	int field3714;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1783172009
-	)
-	int field3704;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = -184078825
-	)
-	int field3716;
-	@ObfuscatedName("aa")
-	@ObfuscatedGetter(
-		intValue = -1996035633
-	)
-	int field3717;
+	MusicPatchNode2 field3723;
 	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -459326909
+		intValue = -1553842313
 	)
-	int field3718;
+	int field3732;
+	@ObfuscatedName("ay")
+	@ObfuscatedGetter(
+		intValue = 986016383
+	)
+	int field3725;
+	@ObfuscatedName("as")
+	@ObfuscatedGetter(
+		intValue = 309887859
+	)
+	int field3726;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 1952586833
+	)
+	int field3727;
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1804670005
+	)
+	int field3720;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = 1377577087
+	)
+	int field3739;
+	@ObfuscatedName("au")
+	@ObfuscatedGetter(
+		intValue = 1088488079
+	)
+	int field3730;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 613388073
+	)
+	int field3728;
 	@ObfuscatedName("ao")
+	@ObfuscatedGetter(
+		intValue = -1191073049
+	)
+	int field3737;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = -817688123
+	)
+	int field3733;
+	@ObfuscatedName("ar")
+	@ObfuscatedGetter(
+		intValue = -1980728553
+	)
+	int field3731;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1510705435
+	)
+	int field3724;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = 442245821
+	)
+	int field3736;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 2042615503
+	)
+	int field3729;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lbq;"
+		descriptor = "Lbf;"
 	)
 	@Export("stream")
 	RawPcmStream stream;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedGetter(
-		intValue = 601813091
+		intValue = -1548873295
 	)
-	int field3703;
-	@ObfuscatedName("aj")
+	int field3734;
+	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		intValue = 1429130885
+		intValue = -1872629797
 	)
-	int field3721;
+	int field3740;
 
 	MusicPatchNode() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1113329963"
+		garbageValue = "-1882757236"
 	)
-	void method6754() {
+	void method6816() {
 		this.table = null;
 		this.rawSound = null;
-		this.field3705 = null;
+		this.field3723 = null;
 		this.stream = null;
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "107"
-	)
-	static void method6756() {
-		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
-			if (class461.clientPreferences.getRememberedUsername() != null) {
-				Login.Login_username = class461.clientPreferences.getRememberedUsername();
-				Client.Login_isUsernameRemembered = true;
-			} else {
-				Client.Login_isUsernameRemembered = false;
-			}
-
-		}
 	}
 }

@@ -4,89 +4,94 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kc")
+@ObfuscatedName("kf")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("me")
+	@ObfuscatedSignature(
+		descriptor = "Ljy;"
+	)
+	static Model field2972;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 88485587
+		intValue = -420592395
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -1225505631
+		intValue = -1080639073
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1650171533
+		intValue = 513105251
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1050782949
+		intValue = 1093960855
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lju;"
+		descriptor = "Ljv;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 608450227
+		intValue = 180883073
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = -2069611541
+		intValue = 1663649347
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 1336638479
+		intValue = -1650103875
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 64920415
+		intValue = -1679599593
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = -153684557
+		intValue = -1772771443
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("al")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 619364889
+		intValue = -621100299
 	)
-	int field2955;
-	@ObfuscatedName("ad")
+	int field2958;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1245665253
+		intValue = -814438507
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ao")
 	@ObfuscatedGetter(
-		longValue = -4657194254713557903L
+		longValue = -4002139674731118243L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 876842249
+		intValue = -1681160537
 	)
 	@Export("flags")
 	int flags;

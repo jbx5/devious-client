@@ -1,37 +1,39 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hx")
+@ObfuscatedName("hh")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lpe;"
 	)
 	@Export("ParamDefinition_archive")
-	static AbstractArchive ParamDefinition_archive;
-	@ObfuscatedName("ae")
+	public static AbstractArchive ParamDefinition_archive;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lml;"
+		descriptor = "Lmi;"
 	)
 	@Export("ParamDefinition_cached")
 	static EvictingDualNodeHashTable ParamDefinition_cached;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@Export("type")
 	char type;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -788953933
+		intValue = 1178531021
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@Export("autoDisable")
 	boolean autoDisable;
 
@@ -43,19 +45,19 @@ public class ParamComposition extends DualNode {
 		this.autoDisable = true;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1761220261"
+		garbageValue = "285080216"
 	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)V",
-		garbageValue = "-1076864158"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "1972412507"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -69,10 +71,10 @@ public class ParamComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;II)V",
-		garbageValue = "-1765669651"
+		descriptor = "(Lvl;IB)V",
+		garbageValue = "1"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -84,7 +86,7 @@ public class ParamComposition extends DualNode {
 			}
 
 			if (var5 >= 128 && var5 < 160) {
-				char var6 = class416.cp1252AsciiExtension[var5 - 128];
+				char var6 = class417.cp1252AsciiExtension[var5 - 128];
 				if (var6 == 0) {
 					var6 = '?';
 				}
@@ -104,26 +106,95 @@ public class ParamComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-106"
+		descriptor = "(I)Z",
+		garbageValue = "-1937758721"
 	)
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
-	@ObfuscatedName("ay")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-1555968902"
+		descriptor = "(Ljava/util/ArrayList;IIIIZI)V",
+		garbageValue = "1791078689"
 	)
-	public static void method4098(boolean var0) {
-		if (var0 != class191.ItemDefinition_inMembersWorld) {
-			ObjectComposition.method4194();
-			class191.ItemDefinition_inMembersWorld = var0;
-		}
+	public static void method4154(ArrayList var0, int var1, int var2, int var3, int var4, boolean var5) {
+		if (!var0.isEmpty()) {
+			class333.field3625.clear();
+			class333.field3623.clear();
+			MusicSong var7;
+			if (var5) {
+				Actor.method2730();
+			} else {
+				for (int var6 = 0; var6 < class333.musicSongs.size(); ++var6) {
+					var7 = (MusicSong)class333.musicSongs.get(var6);
+					if (var7 == null) {
+						class333.musicSongs.remove(var6);
+						--var6;
+					} else if (var7.field3752) {
+						if (var7.midiPcmStream.field3647 > 0) {
+							--var7.midiPcmStream.field3647;
+						}
 
+						var7.midiPcmStream.clear();
+						var7.midiPcmStream.method6606();
+						var7.midiPcmStream.setPcmStreamVolume(0);
+						class333.musicSongs.remove(var6);
+						--var6;
+					} else {
+						var7.field3752 = true;
+					}
+				}
+			}
+
+			if (!var5) {
+				class333.field3628.clear();
+			}
+
+			Iterator var12 = var0.iterator();
+
+			while (var12.hasNext()) {
+				var7 = (MusicSong)var12.next();
+				if (var7.musicTrackGroupId != -1 && var7.musicTrackFileId != -1) {
+					if (!var5) {
+						class333.field3628.add(var7);
+					}
+
+					class333.field3625.add(var7);
+				}
+			}
+
+			if (!class333.field3625.isEmpty()) {
+				class333.musicPlayerStatus = var1;
+				class333.field3631 = var2;
+				class333.field3632 = var3;
+				class333.field3633 = var4;
+				class333.field3623.add(new AddRequestTask((SongTask)null));
+				class333.field3623.add(new class450((SongTask)null, class333.field3624, class319.field3303, class333.field3622));
+				ArrayList var14 = new ArrayList();
+				var14.add(new class445(new FadeInTask((SongTask)null, 0, true, class333.field3633)));
+				if (!class333.musicSongs.isEmpty()) {
+					ArrayList var13 = new ArrayList();
+					var13.add(new DelayFadeTask(new ConcurrentMidiTask((SongTask)null, var14), class333.field3632));
+					ArrayList var9 = new ArrayList();
+					Iterator var10 = class333.musicSongs.iterator();
+
+					while (var10.hasNext()) {
+						MusicSong var11 = (MusicSong)var10.next();
+						var9.add(var11);
+					}
+
+					var13.add(new DelayFadeTask(new FadeOutTask(new class443((SongTask)null, var9), 0, false, class333.field3631), class333.musicPlayerStatus));
+					class333.field3623.add(new ConcurrentMidiTask((SongTask)null, var13));
+				} else {
+					class333.field3623.add(new DelayFadeTask((SongTask)null, class333.field3632));
+					class333.field3623.add(new ConcurrentMidiTask((SongTask)null, var14));
+				}
+
+			}
+		}
 	}
 }

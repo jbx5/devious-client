@@ -1,55 +1,47 @@
 import java.util.Iterator;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qm")
+@ObfuscatedName("qe")
 @Implements("AddRequestTask")
 public class AddRequestTask extends SongTask {
-	@ObfuscatedName("mm")
 	@ObfuscatedSignature(
-		descriptor = "Ldi;"
-	)
-	@Export("localPlayer")
-	static Player localPlayer;
-
-	@ObfuscatedSignature(
-		descriptor = "(Lri;)V"
+		descriptor = "(Lra;)V"
 	)
 	public AddRequestTask(SongTask var1) {
 		super(var1);
-		super.field4843 = "AddRequestTask";
+		super.field4881 = "AddRequestTask";
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1411718299"
+		garbageValue = "343486624"
 	)
-	public boolean vmethod8618() {
-		while (!class334.field3621.isEmpty()) {
-			MusicSong var1 = (MusicSong)class334.field3621.peek();
+	public boolean vmethod8740() {
+		while (!class333.field3625.isEmpty()) {
+			MusicSong var1 = (MusicSong)class333.field3625.peek();
 			if (var1 == null) {
-				class334.field3621.pop();
+				class333.field3625.pop();
 			} else {
-				var1.midiPcmStream = this.method8577();
-				class334.musicSongs.add(var1);
-				class334.field3621.pop();
+				var1.midiPcmStream = this.method8695();
+				class333.musicSongs.add(var1);
+				class333.field3625.pop();
 			}
 		}
 
 		return true;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lms;",
-		garbageValue = "-1178517341"
+		descriptor = "(I)Lmn;",
+		garbageValue = "2099352601"
 	)
-	MidiPcmStream method8577() {
+	MidiPcmStream method8695() {
 		MidiPcmStream var1 = null;
-		Iterator var2 = class334.field3616.iterator();
+		Iterator var2 = class333.field3626.iterator();
 
 		while (true) {
 			MidiPcmStream var3;
@@ -57,10 +49,10 @@ public class AddRequestTask extends SongTask {
 				do {
 					if (!var2.hasNext()) {
 						if (var1 != null) {
-							++var1.field3637;
-							if (var1.method6506() == 0 && var1.isReady()) {
+							++var1.field3647;
+							if (var1.method6602() == 0 && var1.isReady()) {
 								var1.clear();
-								var1.method6510();
+								var1.method6606();
 								var1.setPcmStreamVolume(0);
 							}
 						}
@@ -70,7 +62,7 @@ public class AddRequestTask extends SongTask {
 
 					var3 = (MidiPcmStream)var2.next();
 				} while(var3 == null);
-			} while(var1 != null && var1.field3637 <= var3.field3637 && (var3.method6506() != 0 || !var3.isReady()));
+			} while(var1 != null && var1.field3647 <= var3.field3647 && (var3.method6602() != 0 || !var3.isReady()));
 
 			var1 = var3;
 		}

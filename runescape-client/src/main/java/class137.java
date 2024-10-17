@@ -1,219 +1,202 @@
-import java.awt.FontMetrics;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fr")
+@ObfuscatedName("fv")
 public class class137 {
-	@ObfuscatedName("bx")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
-	@ObfuscatedName("ac")
-	boolean field1618;
-	@ObfuscatedName("ae")
-	boolean field1604;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ap")
+	boolean field1599;
+	@ObfuscatedName("aw")
+	boolean field1593;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lfk;"
+		descriptor = "Lfp;"
 	)
 	class135 field1605;
-	@ObfuscatedName("am")
-	@ObfuscatedSignature(
-		descriptor = "Lfk;"
-	)
-	class135 field1606;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "[Lfe;"
-	)
-	class132[] field1607;
-	@ObfuscatedName("aq")
-	boolean field1603;
-	@ObfuscatedName("af")
-	float field1609;
-	@ObfuscatedName("at")
-	float field1610;
-	@ObfuscatedName("au")
-	float field1623;
-	@ObfuscatedName("ar")
-	float field1612;
-	@ObfuscatedName("al")
-	float field1613;
-	@ObfuscatedName("ad")
-	float field1614;
-	@ObfuscatedName("ah")
-	float field1615;
-	@ObfuscatedName("ap")
-	float field1616;
-	@ObfuscatedName("ab")
-	float field1608;
-	@ObfuscatedName("az")
-	float field1624;
-	@ObfuscatedName("aa")
-	boolean field1619;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = -381938415
-	)
-	int field1620;
-	@ObfuscatedName("ao")
-	float[] field1621;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = -2016018927
-	)
-	int field1622;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = 1477631925
-	)
-	int field1625;
 	@ObfuscatedName("aj")
-	float field1617;
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	class135 field1595;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "[Lfa;"
+	)
+	class132[] field1596;
+	@ObfuscatedName("ay")
+	boolean field1597;
+	@ObfuscatedName("as")
+	float field1598;
+	@ObfuscatedName("ae")
+	float field1611;
+	@ObfuscatedName("am")
+	float field1600;
+	@ObfuscatedName("at")
+	float field1601;
+	@ObfuscatedName("au")
+	float field1592;
+	@ObfuscatedName("an")
+	float field1603;
+	@ObfuscatedName("ao")
+	float field1604;
+	@ObfuscatedName("af")
+	float field1607;
+	@ObfuscatedName("ar")
+	float field1606;
+	@ObfuscatedName("ab")
+	float field1594;
+	@ObfuscatedName("az")
+	boolean field1608;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -181312503
+	)
+	int field1609;
+	@ObfuscatedName("ad")
+	float[] field1610;
+	@ObfuscatedName("ac")
+	@ObfuscatedGetter(
+		intValue = -1792485691
+	)
+	int field1602;
 	@ObfuscatedName("av")
-	float field1626;
+	@ObfuscatedGetter(
+		intValue = -2046795869
+	)
+	int field1612;
+	@ObfuscatedName("ax")
+	float field1613;
+	@ObfuscatedName("aq")
+	float field1614;
 
 	class137() {
-		this.field1619 = true;
-		this.field1620 = 0;
+		this.field1608 = true;
+		this.field1609 = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;II)I",
-		garbageValue = "-1566665919"
+		descriptor = "(Lvl;II)I",
+		garbageValue = "1283905719"
 	)
-	int method3320(Buffer var1, int var2) {
+	int method3458(Buffer var1, int var2) {
 		int var3 = var1.readUnsignedShort();
 		int var4 = var1.readUnsignedByte();
-		class146[] var5 = new class146[]{class146.field1690, class146.field1681, class146.field1682, class146.field1692, class146.field1684, class146.field1685, class146.field1683, class146.field1687, class146.field1688};
-		class146 var6 = (class146)ArchiveDiskAction.findEnumerated(var5, var4);
+		class146[] var5 = new class146[]{class146.field1675, class146.field1682, class146.field1674, class146.field1673, class146.field1678, class146.field1677, class146.field1672, class146.field1679, class146.field1680};
+		class146 var6 = (class146)class177.findEnumerated(var5, var4);
 		if (var6 == null) {
-			var6 = class146.field1688;
+			var6 = class146.field1680;
 		}
 
-		int var12 = var1.readUnsignedByte();
-		class135 var7 = (class135)ArchiveDiskAction.findEnumerated(class268.method5565(), var12);
-		if (var7 == null) {
-			var7 = class135.field1590;
-		}
+		this.field1605 = FadeOutTask.method8713(var1.readUnsignedByte());
+		this.field1595 = FadeOutTask.method8713(var1.readUnsignedByte());
+		this.field1599 = var1.readUnsignedByte() != 0;
+		this.field1596 = new class132[var3];
+		class132 var9 = null;
 
-		this.field1605 = var7;
-		int var8 = var1.readUnsignedByte();
-		class135 var9 = (class135)ArchiveDiskAction.findEnumerated(class268.method5565(), var8);
-		if (var9 == null) {
-			var9 = class135.field1590;
-		}
-
-		this.field1606 = var9;
-		this.field1618 = var1.readUnsignedByte() != 0;
-		this.field1607 = new class132[var3];
-		class132 var13 = null;
-
-		for (int var10 = 0; var10 < var3; ++var10) {
-			class132 var11 = new class132();
-			var11.method3249(var1, var2);
-			this.field1607[var10] = var11;
-			if (var13 != null) {
-				var13.field1560 = var11;
+		for (int var8 = 0; var8 < var3; ++var8) {
+			class132 var7 = new class132();
+			var7.method3358(var1, var2);
+			this.field1596[var8] = var7;
+			if (var9 != null) {
+				var9.field1539 = var7;
 			}
 
-			var13 = var11;
+			var9 = var7;
 		}
 
 		return var3;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-432810519"
+		garbageValue = "2060306768"
 	)
-	void method3330() {
-		this.field1622 = this.field1607[0].field1554;
-		this.field1625 = this.field1607[this.method3328() - 1].field1554;
-		this.field1621 = new float[this.method3325() + 1];
+	void method3444() {
+		this.field1602 = this.field1596[0].field1538;
+		this.field1612 = this.field1596[this.method3452() - 1].field1538;
+		this.field1610 = new float[this.method3448() + 1];
 
-		for (int var1 = this.method3342(); var1 <= this.method3353(); ++var1) {
-			this.field1621[var1 - this.method3342()] = DynamicObject.method2401(this, (float)var1);
+		for (int var1 = this.method3446(); var1 <= this.method3447(); ++var1) {
+			this.field1610[var1 - this.method3446()] = Occluder.method5268(this, (float)var1);
 		}
 
-		this.field1607 = null;
-		this.field1617 = DynamicObject.method2401(this, (float)(this.method3342() - 1));
-		this.field1626 = DynamicObject.method2401(this, (float)(this.method3353() + 1));
+		this.field1596 = null;
+		this.field1613 = Occluder.method5268(this, (float)(this.method3446() - 1));
+		this.field1614 = Occluder.method5268(this, (float)(this.method3447() + 1));
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(II)F",
-		garbageValue = "-1617719116"
+		garbageValue = "-2075944089"
 	)
-	public float method3323(int var1) {
-		if (var1 < this.method3342()) {
-			return this.field1617;
+	public float method3445(int var1) {
+		if (var1 < this.method3446()) {
+			return this.field1613;
 		} else {
-			return var1 > this.method3353() ? this.field1626 : this.field1621[var1 - this.method3342()];
+			return var1 > this.method3447() ? this.field1614 : this.field1610[var1 - this.method3446()];
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-926328084"
+		descriptor = "(B)I",
+		garbageValue = "0"
 	)
-	int method3342() {
-		return this.field1622;
+	int method3446() {
+		return this.field1602;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-607611015"
+		garbageValue = "-1743720230"
 	)
-	int method3353() {
-		return this.field1625;
+	int method3447() {
+		return this.field1612;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-768090856"
+		descriptor = "(S)I",
+		garbageValue = "-23598"
 	)
-	int method3325() {
-		return this.method3353() - this.method3342();
+	int method3448() {
+		return this.method3447() - this.method3446();
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(FI)I",
-		garbageValue = "2075280937"
+		garbageValue = "1759605146"
 	)
-	int method3326(float var1) {
-		if (this.field1620 < 0 || (float)this.field1607[this.field1620].field1554 > var1 || this.field1607[this.field1620].field1560 != null && (float)this.field1607[this.field1620].field1560.field1554 <= var1) {
-			if (var1 >= (float)this.method3342() && var1 <= (float)this.method3353()) {
-				int var2 = this.method3328();
-				int var3 = this.field1620;
+	int method3449(float var1) {
+		if (this.field1609 < 0 || (float)this.field1596[this.field1609].field1538 > var1 || this.field1596[this.field1609].field1539 != null && (float)this.field1596[this.field1609].field1539.field1538 <= var1) {
+			if (var1 >= (float)this.method3446() && var1 <= (float)this.method3447()) {
+				int var2 = this.method3452();
+				int var3 = this.field1609;
 				if (var2 > 0) {
 					int var4 = 0;
 					int var5 = var2 - 1;
 
 					do {
 						int var6 = var4 + var5 >> 1;
-						if (var1 < (float)this.field1607[var6].field1554) {
-							if (var1 > (float)this.field1607[var6 - 1].field1554) {
+						if (var1 < (float)this.field1596[var6].field1538) {
+							if (var1 > (float)this.field1596[var6 - 1].field1538) {
 								var3 = var6 - 1;
 								break;
 							}
 
 							var5 = var6 - 1;
 						} else {
-							if (var1 <= (float)this.field1607[var6].field1554) {
+							if (var1 <= (float)this.field1596[var6].field1538) {
 								var3 = var6;
 								break;
 							}
 
-							if (var1 < (float)this.field1607[var6 + 1].field1554) {
+							if (var1 < (float)this.field1596[var6 + 1].field1538) {
 								var3 = var6;
 								break;
 							}
@@ -223,80 +206,36 @@ public class class137 {
 					} while(var4 <= var5);
 				}
 
-				if (var3 != this.field1620) {
-					this.field1620 = var3;
-					this.field1619 = true;
+				if (var3 != this.field1609) {
+					this.field1609 = var3;
+					this.field1608 = true;
 				}
 
-				return this.field1620;
+				return this.field1609;
 			} else {
 				return -1;
 			}
 		} else {
-			return this.field1620;
+			return this.field1609;
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(FI)Lfe;",
-		garbageValue = "1777514058"
+		descriptor = "(FI)Lfa;",
+		garbageValue = "1136385562"
 	)
-	class132 method3327(float var1) {
-		int var2 = this.method3326(var1);
-		return var2 >= 0 && var2 < this.field1607.length ? this.field1607[var2] : null;
+	class132 method3463(float var1) {
+		int var2 = this.method3449(var1);
+		return var2 >= 0 && var2 < this.field1596.length ? this.field1596[var2] : null;
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "108"
+		descriptor = "(I)I",
+		garbageValue = "2000079342"
 	)
-	int method3328() {
-		return this.field1607 == null ? 0 : this.field1607.length;
-	}
-
-	@ObfuscatedName("ov")
-	@ObfuscatedSignature(
-		descriptor = "(Lny;S)Z",
-		garbageValue = "174"
-	)
-	static final boolean method3343(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 205) {
-			Client.logoutTimer = 250;
-			return true;
-		} else {
-			int var2;
-			int var3;
-			if (var1 >= 300 && var1 <= 313) {
-				var2 = (var1 - 300) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.changeAppearance(var2, var3 == 1);
-			}
-
-			if (var1 >= 314 && var1 <= 323) {
-				var2 = (var1 - 314) / 2;
-				var3 = var1 & 1;
-				Client.playerAppearance.method6929(var2, var3 == 1);
-			}
-
-			if (var1 == 324) {
-				Client.playerAppearance.method6916(0);
-			}
-
-			if (var1 == 325) {
-				Client.playerAppearance.method6916(1);
-			}
-
-			if (var1 == 326) {
-				PacketBufferNode var4 = class141.getPacketBufferNode(class548.field5407 >= 224 ? ClientPacket.field3394 : ClientPacket.field3341, Client.packetWriter.isaacCipher);
-				Client.playerAppearance.write(var4.packetBuffer);
-				Client.packetWriter.addNode(var4);
-				return true;
-			} else {
-				return false;
-			}
-		}
+	int method3452() {
+		return this.field1596 == null ? 0 : this.field1596.length;
 	}
 }

@@ -4,56 +4,46 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pe")
+@ObfuscatedName("pw")
 @Implements("GrandExchangeOfferTotalQuantityComparator")
 final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lpv;Lpv;I)I",
-		garbageValue = "-837520499"
+		descriptor = "Lpe;"
+	)
+	@Export("KitDefinition_modelsArchive")
+	public static AbstractArchive KitDefinition_modelsArchive;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
+	public static AbstractArchive field4643;
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(Lpv;Lpv;B)I",
+		garbageValue = "-48"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
 		return var1.grandExchangeOffer.totalQuantity < var2.grandExchangeOffer.totalQuantity ? -1 : (var2.grandExchangeOffer.totalQuantity == var1.grandExchangeOffer.totalQuantity ? 0 : 1);
 	}
 
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
 	public int compare(Object var1, Object var2) {
 		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("na")
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	@ObfuscatedName("kl")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2037656322"
+		descriptor = "(Ldn;IIB)V",
+		garbageValue = "-114"
 	)
-	static void method7663() {
-		for (InterfaceParent var0 = (InterfaceParent)Client.interfaceParents.first(); var0 != null; var0 = (InterfaceParent)Client.interfaceParents.next()) {
-			int var1 = var0.group;
-			if (TaskHandler.widgetDefinition.loadInterface(var1)) {
-				boolean var2 = true;
-				Widget[] var3 = TaskHandler.widgetDefinition.Widget_interfaceComponents[var1];
-
-				int var4;
-				for (var4 = 0; var4 < var3.length; ++var4) {
-					if (var3[var4] != null) {
-						var2 = var3[var4].isIf3;
-						break;
-					}
-				}
-
-				if (!var2) {
-					var4 = (int)var0.key;
-					Widget var5 = TaskHandler.widgetDefinition.method6841(var4);
-					if (var5 != null) {
-						SecureRandomCallable.invalidateWidget(var5);
-					}
-				}
-			}
-		}
-
+	@Export("updateItemPile3")
+	static final void updateItemPile3(WorldView var0, int var1, int var2) {
+		class224.updateItemPile2(var0, var0.plane, var1, var2);
 	}
 }

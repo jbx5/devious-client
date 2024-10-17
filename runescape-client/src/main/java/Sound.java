@@ -1,41 +1,78 @@
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ie")
+@ObfuscatedName("gl")
 @Implements("Sound")
-public class Sound {
-	@ObfuscatedName("aa")
-	static String[] field2165;
-	@ObfuscatedName("ac")
+public class Sound extends class150 {
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 1503385865
+		intValue = -965595385
 	)
-	public int field2168;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = -1707820073
+	static int field1747;
+	@ObfuscatedName("az")
+	static String[] field1740;
+	@ObfuscatedName("fc")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
 	)
-	public int field2164;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 341204635
+	static Archive field1746;
+	@ObfuscatedName("ap")
+	boolean field1745;
+	@ObfuscatedName("aw")
+	byte field1741;
+	@ObfuscatedName("ak")
+	byte field1744;
+	@ObfuscatedName("aj")
+	byte field1742;
+	@ObfuscatedName("ai")
+	byte field1743;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfz;"
 	)
-	public int field2166;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -2041095673
-	)
-	public int field2167;
+	final class153 this$0;
 
-	Sound(int var1, int var2, int var3, int var4) {
-		this.field2168 = 0;
-		this.field2164 = 0;
-		this.field2166 = 0;
-		this.field2167 = 0;
-		this.field2168 = var1;
-		this.field2164 = var2;
-		this.field2166 = var3;
-		this.field2167 = var4;
+	@ObfuscatedSignature(
+		descriptor = "(Lfz;)V"
+	)
+	Sound(class153 var1) {
+		this.this$0 = var1;
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(Lvl;I)V",
+		garbageValue = "-1813719027"
+	)
+	void vmethod3822(Buffer var1) {
+		this.field1745 = var1.readUnsignedByte() == 1;
+		this.field1741 = var1.readByte();
+		this.field1744 = var1.readByte();
+		this.field1742 = var1.readByte();
+		this.field1743 = var1.readByte();
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(Lgy;I)V",
+		garbageValue = "-2079483058"
+	)
+	void vmethod3821(ClanSettings var1) {
+		var1.allowGuests = this.field1745;
+		var1.field1772 = this.field1741;
+		var1.field1776 = this.field1744;
+		var1.field1790 = this.field1742;
+		var1.field1775 = this.field1743;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-35"
+	)
+	public static void method3629() {
+		FloorUnderlayDefinition.FloorUnderlayDefinition_cached.clear();
 	}
 }

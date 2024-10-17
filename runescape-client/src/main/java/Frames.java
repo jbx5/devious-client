@@ -3,21 +3,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jk")
+@ObfuscatedName("ja")
 @Implements("Frames")
 public class Frames extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "[Ljt;"
+		descriptor = "[Ljg;"
 	)
 	@Export("frames")
 	Animation[] frames;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;Lpo;IZ)V",
-		garbageValue = "0"
+		descriptor = "(Lpe;Lpe;IZ)V"
 	)
-	public Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
+	Frames(AbstractArchive var1, AbstractArchive var2, int var3, boolean var4) {
 		NodeDeque var5 = new NodeDeque();
 		int var6 = var1.getGroupFileCount(var3);
 		this.frames = new Animation[var6];
@@ -36,7 +35,13 @@ public class Frames extends DualNode {
 			}
 
 			if (var10 == null) {
-				byte[] var13 = var2.getFile(var11, 0);
+				byte[] var13;
+				if (var4) {
+					var13 = var2.getFile(0, var11);
+				} else {
+					var13 = var2.getFile(var11, 0);
+				}
+
 				var10 = new Skeleton(var11, var13);
 				var5.addFirst(var10);
 			}
@@ -46,69 +51,27 @@ public class Frames extends DualNode {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "466876774"
+		garbageValue = "-366797285"
 	)
 	@Export("hasAlphaTransform")
 	public boolean hasAlphaTransform(int var1) {
 		return this.frames[var1].hasAlphaTransform;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(FI)F",
-		garbageValue = "-2037103799"
+		descriptor = "(II)Z",
+		garbageValue = "-1967620124"
 	)
-	public static final float method5156(float var0) {
-		float var1 = 75.0F;
-		float var2 = 10000.0F;
-		float var3 = 750000.0F / (10000.0F - 9925.0F * var0);
-		return (var3 - 75.0F) / 9925.0F;
-	}
-
-	@ObfuscatedName("oc")
-	@ObfuscatedSignature(
-		descriptor = "(Lny;I)V",
-		garbageValue = "-1208087962"
-	)
-	static final void method5160(Widget var0) {
-		int var1 = var0.contentType;
-		if (var1 == 324) {
-			if (Client.field799 == -1) {
-				Client.field799 = var0.spriteId2;
-				Client.field800 = var0.spriteId;
-			}
-
-			if (Client.playerAppearance.gender == 1) {
-				var0.spriteId2 = Client.field799;
-			} else {
-				var0.spriteId2 = Client.field800;
-			}
-
-		} else if (var1 == 325) {
-			if (Client.field799 == -1) {
-				Client.field799 = var0.spriteId2;
-				Client.field800 = var0.spriteId;
-			}
-
-			if (Client.playerAppearance.gender == 1) {
-				var0.spriteId2 = Client.field800;
-			} else {
-				var0.spriteId2 = Client.field799;
-			}
-
-		} else if (var1 == 327) {
-			var0.modelAngleX = 150;
-			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
-			var0.modelType = 5;
-			var0.modelId = 0;
-		} else if (var1 == 328) {
-			var0.modelAngleX = 150;
-			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
-			var0.modelType = 5;
-			var0.modelId = 1;
+	public static boolean method5267(int var0) {
+		if (class333.field3628.isEmpty()) {
+			return false;
+		} else {
+			MusicSong var1 = (MusicSong)class333.field3628.get(0);
+			return var1 != null && var0 == var1.musicTrackGroupId;
 		}
 	}
 }

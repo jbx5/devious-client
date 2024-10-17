@@ -4,22 +4,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dv")
+@ObfuscatedName("dc")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("gp")
-	@ObfuscatedGetter(
-		intValue = 1805236159
-	)
-	static int field1019;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@Export("future")
 	Future future;
 
@@ -28,10 +22,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1928656312"
+		descriptor = "(B)V",
+		garbageValue = "124"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -39,107 +33,125 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1034908456"
+		garbageValue = "-1341038202"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/security/SecureRandom;",
-		garbageValue = "844691753"
+		garbageValue = "-505225048"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
-		} catch (Exception var4) {
-			SecureRandom var3 = new SecureRandom();
-			var3.nextInt();
-			return var3;
+		} catch (Exception var2) {
+			return class326.method6528();
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IZIZI)V",
-		garbageValue = "1677590448"
+		descriptor = "([Ljava/lang/String;[IIII)V",
+		garbageValue = "-1234362545"
 	)
-	@Export("sortWorldList")
-	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-		if (SoundSystem.World_worlds != null) {
-			class332.doWorldSorting(0, SoundSystem.World_worlds.length - 1, var0, var1, var2, var3);
-		}
+	@Export("quicksortStringsWithCorrespondingIntegers")
+	public static void quicksortStringsWithCorrespondingIntegers(String[] var0, int[] var1, int var2, int var3) {
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			int var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
 
-	}
-
-	@ObfuscatedName("jz")
-	@ObfuscatedSignature(
-		descriptor = "(Ldd;I)V",
-		garbageValue = "253417057"
-	)
-	static void method2379(WorldView var0) {
-		int var1 = 0;
-
-		for (int var2 = 0; var2 < var0.worldEntityCount; ++var2) {
-			WorldEntity var3 = var0.worldEntities[var0.worldEntityIndices[var2]];
-			if (var3 != null) {
-				boolean var4 = var3.worldView.id == HealthBarUpdate.field1304;
-				if (!var4) {
-					boolean var5 = var1 < Client.field811;
-					if (!var5) {
-						continue;
-					}
-
-					++var1;
-				}
-
-				var3.tileHeight = VarcInt.getTileHeight(var0, var3.x, var3.y, var0.plane);
-				var3.worldView.scene.cycle = Client.cycle;
-				var3.initScenePlane();
-				var0.scene.drawEntity(var0.plane, var3.x, var3.y, var3.tileHeight, 60, var3.worldView.scene, var3.currentRotationAngle, 0L, false);
-				IgnoreList.method8786(var3.worldView);
-				WorldView var10 = var3.worldView;
-				if (Client.combatTargetPlayerIndex >= 0 && var10.players[Client.combatTargetPlayerIndex] != null) {
-					Decimator.addPlayerToScene(var10, Client.combatTargetPlayerIndex, false);
-				}
-
-				class132.addNpcsToScene(var3.worldView, true);
-				WorldView var6 = var3.worldView;
-				int var7 = Client.playerUpdateManager.playerCount;
-				int[] var8 = Client.playerUpdateManager.playerIndices;
-
-				for (int var9 = 0; var9 < var7; ++var9) {
-					if (var8[var9] != Client.combatTargetPlayerIndex && var8[var9] != Client.localPlayerIndex) {
-						Decimator.addPlayerToScene(var6, var8[var9], true);
-					}
-				}
-
-				class132.addNpcsToScene(var3.worldView, false);
-				class7.method55(var3.worldView);
-				WorldView var11 = var3.worldView;
-
-				for (GraphicsObject var12 = (GraphicsObject)var11.graphicsObjects.last(); var12 != null; var12 = (GraphicsObject)var11.graphicsObjects.previous()) {
-					if (var12.plane == var11.plane && !var12.isFinished) {
-						if (Client.cycle >= var12.cycleStart) {
-							var12.advance(Client.graphicsCycle);
-							if (var12.isFinished) {
-								var12.remove();
-							} else {
-								var11.scene.drawEntity(var12.plane, var12.x, var12.y, var12.z, 60, var12, 0, -1L, false);
-							}
-						}
-					} else {
-						var12.remove();
-					}
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					int var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
 				}
 			}
+
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			quicksortStringsWithCorrespondingIntegers(var0, var1, var2, var5 - 1);
+			quicksortStringsWithCorrespondingIntegers(var0, var1, var5 + 1, var3);
 		}
 
+	}
+
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lhv;",
+		garbageValue = "1"
+	)
+	public static FloorUnderlayDefinition method2433(int var0) {
+		FloorUnderlayDefinition var1 = (FloorUnderlayDefinition)FloorUnderlayDefinition.FloorUnderlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = FloorUnderlayDefinition.FloorUnderlayDefinition_archive.takeFile(1, var0);
+			var1 = new FloorUnderlayDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2), var0);
+			}
+
+			var1.postDecode();
+			FloorUnderlayDefinition.FloorUnderlayDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(Lpe;Lpe;III)Lqi;",
+		garbageValue = "194974548"
+	)
+	public static Font method2435(AbstractArchive var0, AbstractArchive var1, int var2, int var3) {
+		if (!class53.method1110(var0, var2, var3)) {
+			return null;
+		} else {
+			byte[] var5 = var1.takeFile(var2, var3);
+			Font var4;
+			if (var5 == null) {
+				var4 = null;
+			} else {
+				Font var6 = new Font(var5, SpriteBufferProperties.SpriteBuffer_xOffsets, class497.SpriteBuffer_yOffsets, class7.SpriteBuffer_spriteWidths, SpriteBufferProperties.SpriteBuffer_spriteHeights, SpriteBufferProperties.SpriteBuffer_spritePalette, class280.SpriteBuffer_pixels);
+				SpriteBufferProperties.SpriteBuffer_xOffsets = null;
+				class497.SpriteBuffer_yOffsets = null;
+				class7.SpriteBuffer_spriteWidths = null;
+				SpriteBufferProperties.SpriteBuffer_spriteHeights = null;
+				SpriteBufferProperties.SpriteBuffer_spritePalette = null;
+				class280.SpriteBuffer_pixels = null;
+				var4 = var6;
+			}
+
+			return var4;
+		}
+	}
+
+	@ObfuscatedName("od")
+	@ObfuscatedSignature(
+		descriptor = "(Lng;I)Z",
+		garbageValue = "-1292187209"
+	)
+	@Export("isComponentHidden")
+	static boolean isComponentHidden(Widget var0) {
+		return var0.isHidden;
 	}
 }

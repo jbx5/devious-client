@@ -1,144 +1,136 @@
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("da")
+@ObfuscatedName("dj")
 public class class95 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Ldj;"
+	)
+	static final class95 field1164;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1165;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1166;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1167;
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1168;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1180;
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
 	)
 	static final class95 field1177;
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Ldj;"
 	)
-	static final class95 field1174;
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1175;
+	static final class95 field1171;
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1184;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1183;
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1178;
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1179;
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1190;
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1176;
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1182;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1186;
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1180;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1185;
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1181;
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1187;
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1188;
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
-	)
-	static final class95 field1189;
-	@ObfuscatedName("ai")
-	@ObfuscatedSignature(
-		descriptor = "Lda;"
+		descriptor = "Ldj;"
 	)
 	static final class95 field1173;
-	@ObfuscatedName("iy")
-	@ObfuscatedGetter(
-		intValue = 1630795209
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
 	)
-	static int field1191;
+	static final class95 field1174;
+	@ObfuscatedName("au")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1172;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1175;
+	@ObfuscatedName("ao")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1176;
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1183;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1169;
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1179;
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1170;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Ldj;"
+	)
+	static final class95 field1181;
 
 	static {
-		field1177 = new class95();
-		field1174 = new class95();
-		field1175 = new class95();
-		field1184 = new class95();
-		field1183 = new class95();
-		field1178 = new class95();
-		field1179 = new class95();
-		field1190 = new class95();
-		field1176 = new class95();
-		field1182 = new class95();
-		field1186 = new class95();
+		field1164 = new class95();
+		field1165 = new class95();
+		field1166 = new class95();
+		field1167 = new class95();
+		field1168 = new class95();
 		field1180 = new class95();
-		field1185 = new class95();
-		field1181 = new class95();
-		field1187 = new class95();
-		field1188 = new class95();
-		field1189 = new class95();
+		field1177 = new class95();
+		field1171 = new class95();
 		field1173 = new class95();
+		field1174 = new class95();
+		field1172 = new class95();
+		field1175 = new class95();
+		field1176 = new class95();
+		field1183 = new class95();
+		field1169 = new class95();
+		field1179 = new class95();
+		field1170 = new class95();
+		field1181 = new class95();
 	}
 
 	class95() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("bw")
 	@ObfuscatedSignature(
-		descriptor = "(Lub;I)I",
-		garbageValue = "-420474398"
+		descriptor = "(ILda;ZI)I",
+		garbageValue = "-952795451"
 	)
-	public static final int method2611(LoginType var0) {
-		if (var0 == null) {
-			return 12;
+	static int method2662(int var0, Script var1, boolean var2) {
+		if (var0 == 6809) {
+			int var3 = Interpreter.Interpreter_intStack[--class96.Interpreter_intStackSize];
+			ObjectComposition var4 = UrlRequest.getObjectDefinition(var3);
+			Interpreter.Interpreter_stringStack[++class208.Interpreter_stringStackSize - 1] = var4 != null ? var4.name : "";
+			return 1;
 		} else {
-			switch(var0.field5295) {
-			case 2:
-				return 20;
-			default:
-				return 12;
-			}
+			return 2;
 		}
 	}
 }

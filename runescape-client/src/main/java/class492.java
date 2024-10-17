@@ -1,85 +1,55 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sz")
-public abstract class class492 implements class309 {
-	@ObfuscatedName("db")
-	static boolean field5083;
-	@ObfuscatedName("ac")
+@ObfuscatedName("sx")
+public enum class492 implements Enum {
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lux;"
+		descriptor = "Lsx;"
 	)
-	class537 field5081;
+	field5091(0, 0),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lsx;"
+	)
+	field5089(1, 1),
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lsx;"
+	)
+	field5094(2, 2);
 
-	class492(int var1) {
+	@ObfuscatedName("dm")
+	@ObfuscatedSignature(
+		descriptor = "Lvc;"
+	)
+	@Export("worldSelectRightSprite")
+	static IndexedSprite worldSelectRightSprite;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -1553482921
+	)
+	final int field5092;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 1474716795
+	)
+	final int field5093;
+
+	class492(int var3, int var4) {
+		this.field5092 = var3;
+		this.field5093 = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;IB)V",
-		garbageValue = "0"
+		descriptor = "(I)I",
+		garbageValue = "1837624059"
 	)
-	abstract void vmethod9169(Buffer var1, int var2);
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)V",
-		garbageValue = "-609977713"
-	)
-	public void method9166(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
-			}
-
-			class488 var3 = (class488)ArchiveDiskAction.findEnumerated(Ignored.method8979(), var2);
-			if (var3 != null) {
-				switch(var3.field5075) {
-				case 0:
-					int var4 = var1.readUnsignedByte();
-					this.field5081 = LoginScreenAnimation.method2733(var4);
-					if (this.field5081 != null) {
-						break;
-					}
-
-					throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var4);
-				case 1:
-					ArchiveDiskAction.findEnumerated(class177.method3791(), var1.readUnsignedByte());
-					break;
-				case 2:
-					var1.readStringCp1252NullCircumfixed();
-					break;
-				default:
-					throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var3);
-				}
-			} else {
-				this.vmethod9169(var1, var2);
-			}
-		}
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "708987122"
-	)
-	boolean method9174() {
-		return this.field5081 != null;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/Object;",
-		garbageValue = "224182011"
-	)
-	Object method9168() {
-		if (this.field5081 == class537.field5332) {
-			return 0;
-		} else if (this.field5081 == class537.field5333) {
-			return -1L;
-		} else {
-			return this.field5081 == class537.field5331 ? "" : null;
-		}
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field5093;
 	}
 }

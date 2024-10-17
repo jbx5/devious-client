@@ -6,27 +6,27 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eo")
+@ObfuscatedName("el")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lui;"
+		descriptor = "Lum;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lpq;"
+		descriptor = "Lpf;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 108754031
+		intValue = -314072883
 	)
 	@Export("Messages_count")
 	static int Messages_count;
@@ -38,65 +38,53 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-76126880"
+		descriptor = "(IZB)Ljava/lang/String;",
+		garbageValue = "86"
 	)
-	public static void method3083() {
-		FileSystem.FileSystem_cacheFiles.clear();
+	@Export("intToString")
+	public static String intToString(int var0, boolean var1) {
+		return var1 && var0 >= 0 ? FontName.method9733(var0, 10, var1) : Integer.toString(var0);
 	}
 
-	@ObfuscatedName("lc")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Ldd;IIII)V",
-		garbageValue = "1535475848"
+		descriptor = "(Ljava/lang/String;B)V",
+		garbageValue = "0"
 	)
-	@Export("updateItemPile2")
-	static final void updateItemPile2(WorldView var0, int var1, int var2, int var3) {
-		NodeDeque var4 = var0.groundItems[var1][var2][var3];
-		if (var4 == null) {
-			var0.scene.removeGroundItemPile(var1, var2, var3);
-		} else {
-			long var5 = -99999999L;
-			TileItem var7 = null;
+	static final void method3171(String var0) {
+		StringBuilder var10000 = (new StringBuilder()).append(var0);
+		Object var10001 = null;
+		String var1 = var10000.append(" is already on your friend list").toString();
+		class430.addGameMessage(30, "", var1);
+	}
 
-			TileItem var8;
-			for (var8 = (TileItem)var4.last(); var8 != null; var8 = (TileItem)var4.previous()) {
-				ItemComposition var9 = MouseRecorder.ItemDefinition_get(var8.id);
-				long var13 = (long)var9.price;
-				if (var9.isStackable == 1) {
-					var13 *= var8.quantity < Integer.MAX_VALUE ? (long)(var8.quantity + 1) : (long)var8.quantity;
-				}
-
-				if (var13 > var5) {
-					var5 = var13;
-					var7 = var8;
-				}
-			}
-
-			if (var7 == null) {
-				var0.scene.removeGroundItemPile(var1, var2, var3);
-			} else {
-				var4.addLast(var7);
-				TileItem var15 = null;
-				TileItem var10 = null;
-
-				for (var8 = (TileItem)var4.last(); var8 != null; var8 = (TileItem)var4.previous()) {
-					if (var7.id != var8.id) {
-						if (var15 == null) {
-							var15 = var8;
-						}
-
-						if (var15.id != var8.id && var10 == null) {
-							var10 = var8;
-						}
-					}
-				}
-
-				long var11 = class273.calculateTag(var2, var3, 3, false, 0, var0.id);
-				var0.scene.newGroundItemPile(var1, var2, var3, VarcInt.getTileHeight(var0, Coord.method6797(var2), Coord.method6797(var3), var1), var7, var11, var15, var10);
-			}
+	@ObfuscatedName("ov")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;ZI)Ljava/lang/String;",
+		garbageValue = "-2144662822"
+	)
+	static String method3176(String var0, boolean var1) {
+		String var2 = var1 ? "https://" : "http://";
+		if (Client.gameBuild == 1) {
+			var0 = var0 + "-wtrc";
+		} else if (Client.gameBuild == 2) {
+			var0 = var0 + "-wtqa";
+		} else if (Client.gameBuild == 3) {
+			var0 = var0 + "-wtwip";
+		} else if (Client.gameBuild == 5) {
+			var0 = var0 + "-wti";
+		} else if (Client.gameBuild == 4) {
+			var0 = "local";
 		}
+
+		String var3 = "";
+		if (class145.field1668 != null) {
+			var3 = "/p=" + class145.field1668;
+		}
+
+		String var4 = "runescape.com";
+		return var2 + var0 + "." + var4 + "/l=" + WorldMapCacheName.clientLanguage + "/a=" + BZip2State.field5507 + var3 + "/";
 	}
 }

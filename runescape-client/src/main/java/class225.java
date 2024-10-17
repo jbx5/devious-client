@@ -5,175 +5,175 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.json.JSONObject;
 
-@ObfuscatedName("ib")
+@ObfuscatedName("it")
 public class class225 {
-	@ObfuscatedName("aa")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lib;"
+		descriptor = "Lit;"
 	)
-	static final class225 field2424;
-	@ObfuscatedName("ac")
-	String field2426;
-	@ObfuscatedName("ae")
+	static final class225 field2425;
+	@ObfuscatedName("ap")
+	String field2421;
+	@ObfuscatedName("aw")
+	String field2413;
+	@ObfuscatedName("ak")
+	String field2412;
+	@ObfuscatedName("aj")
 	String field2415;
-	@ObfuscatedName("ag")
-	String field2416;
-	@ObfuscatedName("am")
-	String field2417;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		longValue = 1789175676779998945L
+		longValue = -2107600156133558187L
 	)
-	long field2418;
-	@ObfuscatedName("aq")
+	long field2416;
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "Lab;"
+		descriptor = "Lar;"
 	)
 	AsyncRestClient field2419;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Lao;"
+		descriptor = "Lad;"
 	)
-	AsyncHttpResponse field2422;
-	@ObfuscatedName("at")
-	final int field2421;
-	@ObfuscatedName("au")
+	AsyncHttpResponse field2418;
+	@ObfuscatedName("ae")
+	final int field2424;
+	@ObfuscatedName("am")
 	final int field2420;
+	@ObfuscatedName("at")
+	@ObfuscatedGetter(
+		intValue = 251311377
+	)
+	int field2414;
 	@ObfuscatedName("ar")
 	@ObfuscatedGetter(
-		intValue = -476456891
+		intValue = -1989593079
 	)
 	int field2423;
 	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = -1519499759
-	)
-	int field2414;
-	@ObfuscatedName("az")
-	String field2425;
-	@ObfuscatedName("ai")
-	boolean field2427;
+	String field2422;
+	@ObfuscatedName("ag")
+	boolean field2426;
 
 	static {
-		field2424 = new class225();
+		field2425 = new class225();
 	}
 
 	class225() {
-		this.field2426 = "";
+		this.field2421 = "";
+		this.field2413 = "";
+		this.field2412 = "";
 		this.field2415 = "";
-		this.field2416 = "";
-		this.field2417 = "";
-		this.field2418 = -1L;
-		this.field2421 = 1;
+		this.field2416 = -1L;
+		this.field2424 = 1;
 		this.field2420 = 2;
-		this.field2423 = 1;
-		this.field2414 = 0;
+		this.field2414 = 1;
+		this.field2423 = 0;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(ILjava/lang/String;B)V",
-		garbageValue = "113"
+		garbageValue = "-92"
 	)
-	public void method4517(int var1, String var2) {
-		this.field2414 = var1;
-		this.field2425 = var2;
+	public void method4561(int var1, String var2) {
+		this.field2423 = var1;
+		this.field2422 = var2;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "-49"
+		descriptor = "(ZI)V",
+		garbageValue = "192519777"
 	)
-	public void method4518(boolean var1) {
-		this.field2427 = var1;
+	public void method4589(boolean var1) {
+		this.field2426 = var1;
 		this.field2419 = new AsyncRestClient("crmsession", 1, 1);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
-		garbageValue = "2066128673"
+		garbageValue = "1058759662"
 	)
-	void method4519(String var1, String var2, String var3) {
-		if (this.field2423 != 2) {
-			this.field2426 = var1;
-			this.field2415 = var2;
-			this.field2416 = var3;
-			if (!this.field2426.endsWith("/")) {
-				this.field2426 = this.field2426 + "/";
+	void method4563(String var1, String var2, String var3) {
+		if (this.field2414 != 2) {
+			this.field2421 = var1;
+			this.field2413 = var2;
+			this.field2412 = var3;
+			if (!this.field2421.endsWith("/")) {
+				this.field2421 = this.field2421 + "/";
 			}
 
-			if (!this.field2415.equals("")) {
-				String var4 = this.field2426;
-				var4 = var4 + "session/open/" + this.field2415;
-				if (this.field2416.equals("")) {
+			if (!this.field2413.equals("")) {
+				String var4 = this.field2421;
+				var4 = var4 + "session/open/" + this.field2413;
+				if (this.field2412.equals("")) {
 				}
 
-				var4 = var4 + "?userHash=" + this.field2416;
+				var4 = var4 + "?userHash=" + this.field2412;
 
 				try {
-					this.field2422 = this.method4525(var4);
-					this.field2418 = WorldMapElement.method3843();
+					this.field2418 = this.method4569(var4);
+					this.field2416 = class77.method2338();
 				} catch (IOException var6) {
-					this.field2422 = null;
-					this.field2415 = "";
-					this.field2416 = "";
+					this.field2418 = null;
+					this.field2413 = "";
+					this.field2412 = "";
 				}
 
 			}
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-20"
+		descriptor = "(I)V",
+		garbageValue = "-1758962976"
 	)
-	public void method4520() {
-		if (this.field2422 == null) {
-			if (!this.field2417.isEmpty() && this.field2423 == 1) {
-				long var1 = WorldMapElement.method3843();
-				long var3 = var1 - this.field2418;
-				String var5 = this.field2426;
-				var5 = var5 + "session/close/" + this.field2415 + "/" + this.field2417;
-				if (this.field2416.isEmpty()) {
+	public void method4572() {
+		if (this.field2418 == null) {
+			if (!this.field2415.isEmpty() && this.field2414 == 1) {
+				long var1 = class77.method2338();
+				long var3 = var1 - this.field2416;
+				String var5 = this.field2421;
+				var5 = var5 + "session/close/" + this.field2413 + "/" + this.field2415;
+				if (this.field2412.isEmpty()) {
 					var5 = var5 + "?sessionDuration=" + var3;
 				} else {
-					var5 = var5 + "?userHash=" + this.field2416 + "&sessionDuration=" + var3;
+					var5 = var5 + "?userHash=" + this.field2412 + "&sessionDuration=" + var3;
 				}
 
 				try {
-					this.field2422 = this.method4525(var5);
+					this.field2418 = this.method4569(var5);
 				} catch (IOException var7) {
-					this.field2423 = 1;
+					this.field2414 = 1;
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "83"
+		descriptor = "(I)V",
+		garbageValue = "-1201595641"
 	)
-	public void method4535() {
+	public void method4565() {
 		if (this.field2419 != null) {
 			this.field2419.shutdown();
 		}
 
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "755244946"
+		garbageValue = "1931360034"
 	)
-	void method4522() {
-		if (!this.field2417.isEmpty()) {
+	void method4582() {
+		if (!this.field2415.isEmpty()) {
 			String var1 = "";
-			switch(this.field2414) {
+			switch(this.field2423) {
 			case 1:
 				var1 = "events/click";
 				break;
@@ -184,63 +184,63 @@ public class class225 {
 				var1 = "events/impression";
 			}
 
-			if (!this.field2425.isEmpty()) {
-				String var2 = this.field2426;
-				var2 = var2 + var1 + "/" + this.field2415 + "/" + this.field2417 + "/" + this.field2425 + "?userHash=" + this.field2416;
+			if (!this.field2422.isEmpty()) {
+				String var2 = this.field2421;
+				var2 = var2 + var1 + "/" + this.field2413 + "/" + this.field2415 + "/" + this.field2422 + "?userHash=" + this.field2412;
 
 				try {
-					this.field2422 = this.method4525(var2);
+					this.field2418 = this.method4569(var2);
 				} catch (IOException var4) {
-					this.field2423 = 1;
+					this.field2414 = 1;
 				}
 
-				this.field2423 = 1;
-				this.field2414 = 0;
+				this.field2414 = 1;
+				this.field2423 = 0;
 			}
 		}
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "81"
+		garbageValue = "2"
 	)
-	public void method4547() {
-		if (this.field2422 != null && this.field2422.hasFinished()) {
-			if (this.field2422.hasFinished() && this.field2422.await().getResponseCode() == 200 && this.field2417.isEmpty()) {
-				String var1 = this.field2422.await().getResponseBody();
+	public void method4567() {
+		if (this.field2418 != null && this.field2418.hasFinished()) {
+			if (this.field2418.hasFinished() && this.field2418.await().getResponseCode() == 200 && this.field2415.isEmpty()) {
+				String var1 = this.field2418.await().getResponseBody();
 				if (var1.isEmpty()) {
 					return;
 				}
 
-				this.field2417 = var1;
+				this.field2415 = var1;
 			}
 
-			if (this.field2414 != 0) {
-				this.method4522();
+			if (this.field2423 != 0) {
+				this.method4582();
 			}
 
 		}
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)Z",
-		garbageValue = "-13"
+		descriptor = "(Ljava/lang/String;I)Z",
+		garbageValue = "158971362"
 	)
-	public boolean method4524(String var1) {
-		this.method4517(2, var1);
+	public boolean method4568(String var1) {
+		this.method4561(2, var1);
 		return true;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Lao;",
-		garbageValue = "-6369778"
+		descriptor = "(Ljava/lang/String;I)Lad;",
+		garbageValue = "-100585374"
 	)
-	AsyncHttpResponse method4525(String var1) throws IOException {
+	AsyncHttpResponse method4569(String var1) throws IOException {
 		URL var2 = new URL(var1);
-		HttpRequest var3 = new HttpRequest(var2, HttpMethod.POST, this.field2427);
+		HttpRequest var3 = new HttpRequest(var2, HttpMethod.POST, this.field2426);
 
 		try {
 			JSONObject var4 = new JSONObject();
@@ -249,16 +249,5 @@ public class class225 {
 		}
 
 		return this.field2419.submitRequest(var3);
-	}
-
-	@ObfuscatedName("ag")
-	public static boolean method4527(long var0) {
-		boolean var2 = 0L != var0;
-		if (var2) {
-			boolean var3 = (int)(var0 >>> 16 & 1L) == 1;
-			var2 = !var3;
-		}
-
-		return var2;
 	}
 }

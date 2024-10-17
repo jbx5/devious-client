@@ -3,51 +3,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kp")
+@ObfuscatedName("ki")
 public class class268 extends Node {
-	@ObfuscatedName("aa")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "Ldn;"
+		descriptor = "Lvc;"
 	)
-	@Export("loginScreenRunesAnimation")
-	static LoginScreenAnimation loginScreenRunesAnimation;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -531861761
-	)
-	public int field2974;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -984220335
-	)
-	public int field2966;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -1852145887
-	)
-	public int field2970;
+	static IndexedSprite field2981;
 	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
+	@ObfuscatedGetter(
+		intValue = -121992435
 	)
-	public Widget field2969;
+	@Export("canvasHeight")
+	public static int canvasHeight;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = 1238518655
+	)
+	public int field2977;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = 1022403081
+	)
+	public int field2978;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 386345073
+	)
+	public int field2979;
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lng;"
+	)
+	public Widget field2980;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIILny;)V"
+		descriptor = "(IIILng;)V"
 	)
 	public class268(int var1, int var2, int var3, Widget var4) {
-		this.field2970 = var1;
-		this.field2974 = var2;
-		this.field2966 = var3;
-		this.field2969 = var4;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lfk;",
-		garbageValue = "1313495960"
-	)
-	static class135[] method5565() {
-		return new class135[]{class135.field1590, class135.field1587, class135.field1588, class135.field1594, class135.field1591};
+		this.field2979 = var1;
+		this.field2977 = var2;
+		this.field2978 = var3;
+		this.field2980 = var4;
 	}
 }

@@ -4,10 +4,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("se")
+@ObfuscatedName("si")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@Export("nextComparator")
 	Comparator nextComparator;
 
@@ -17,7 +17,7 @@ public abstract class AbstractUserComparator implements Comparator {
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/util/Comparator;I)V",
-		garbageValue = "2007183439"
+		garbageValue = "1121308511"
 	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
@@ -29,10 +29,10 @@ public abstract class AbstractUserComparator implements Comparator {
 
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(Lss;Lss;B)I",
-		garbageValue = "-12"
+		descriptor = "(Lse;Lse;I)I",
+		garbageValue = "1255277363"
 	)
 	@Export("compareUser")
 	protected final int compareUser(User var1, User var2) {
@@ -43,33 +43,38 @@ public abstract class AbstractUserComparator implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("jw")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;III)Lvv;",
-		garbageValue = "-605515595"
+		descriptor = "(B)V",
+		garbageValue = "107"
 	)
-	@Export("SpriteBuffer_getSprite")
-	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
-		if (!HttpJsonRequestBody.method9207(var0, var1, var2)) {
-			return null;
-		} else {
-			SpritePixels var4 = new SpritePixels();
-			var4.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
-			var4.height = SpriteBufferProperties.SpriteBuffer_spriteHeight;
-			var4.xOffset = HttpAuthenticationHeader.SpriteBuffer_xOffsets[0];
-			var4.yOffset = Login.SpriteBuffer_yOffsets[0];
-			var4.subWidth = GrandExchangeEvents.SpriteBuffer_spriteWidths[0];
-			var4.subHeight = ModelData0.SpriteBuffer_spriteHeights[0];
-			int var5 = var4.subWidth * var4.subHeight;
-			byte[] var6 = MusicPatchPcmStream.SpriteBuffer_pixels[0];
-			var4.pixels = new int[var5];
+	static final void method9037() {
+		Client.field627 = 0;
+		int var0 = (SpriteMask.localPlayer.x >> 7) + class198.topLevelWorldView.baseX;
+		int var1 = (SpriteMask.localPlayer.y >> 7) + class198.topLevelWorldView.baseY;
+		if (var0 >= 3053 && var0 <= 3156 && var1 >= 3056 && var1 <= 3136) {
+			Client.field627 = 1;
+		}
 
-			for (int var7 = 0; var7 < var5; ++var7) {
-				var4.pixels[var7] = SpriteBufferProperties.SpriteBuffer_spritePalette[var6[var7] & 255];
-			}
+		if (var0 >= 3072 && var0 <= 3118 && var1 >= 9492 && var1 <= 9535) {
+			Client.field627 = 1;
+		}
 
-			class151.method3492();
-			return var4;
+		if (Client.field627 == 1 && var0 >= 3139 && var0 <= 3199 && var1 >= 3008 && var1 <= 3062) {
+			Client.field627 = 0;
+		}
+
+	}
+
+	@ObfuscatedName("my")
+	@ObfuscatedSignature(
+		descriptor = "(IIS)V",
+		garbageValue = "6155"
+	)
+	@Export("runIntfCloseListeners")
+	static final void runIntfCloseListeners(int var0, int var1) {
+		if (class416.widgetDefinition.loadInterface(var0)) {
+			Actor.runComponentCloseListeners(class416.widgetDefinition.Widget_interfaceComponents[var0], var1);
 		}
 	}
 }

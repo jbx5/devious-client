@@ -1,49 +1,45 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gj")
+@ObfuscatedName("gg")
 public class class167 {
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1847636365
+		longValue = 8615969481253740043L
 	)
-	@Export("ItemDefinition_fileCount")
-	public static int ItemDefinition_fileCount;
-	@ObfuscatedName("ac")
+	long field1819;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		longValue = -8778605944052578383L
+		longValue = -214725750893289289L
 	)
-	long field1818;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		longValue = 3924644622254876697L
-	)
-	public long field1814;
-	@ObfuscatedName("ag")
+	public long field1818;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lpr;"
+		descriptor = "Lps;"
 	)
-	IterableNodeDeque field1815;
+	IterableNodeDeque field1820;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;)V"
+		descriptor = "(Lvl;)V"
 	)
 	public class167(Buffer var1) {
-		this.field1814 = -1L;
-		this.field1815 = new IterableNodeDeque();
-		this.method3694(var1);
+		this.field1818 = -1L;
+		this.field1820 = new IterableNodeDeque();
+		this.method3765(var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)V",
-		garbageValue = "556675772"
+		descriptor = "(Lvl;B)V",
+		garbageValue = "-86"
 	)
-	void method3694(Buffer var1) {
+	void method3765(Buffer var1) {
+		this.field1819 = var1.readLong();
 		this.field1818 = var1.readLong();
-		this.field1814 = var1.readLong();
 
 		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
 			Object var3;
@@ -63,114 +59,89 @@ public class class167 {
 				var3 = new class163(this);
 			}
 
-			((class166)var3).vmethod3761(var1);
-			this.field1815.addFirst((Node)var3);
+			((class166)var3).vmethod3816(var1);
+			this.field1820.addFirst((Node)var3);
 		}
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lgm;I)V",
-		garbageValue = "146526489"
+		descriptor = "(Lgw;S)V",
+		garbageValue = "-5497"
 	)
-	public void method3696(ClanChannel var1) {
-		if (var1.key == this.field1818 && this.field1814 == var1.field1837) {
-			for (class166 var2 = (class166)this.field1815.last(); var2 != null; var2 = (class166)this.field1815.previous()) {
-				var2.vmethod3762(var1);
+	public void method3768(ClanChannel var1) {
+		if (this.field1819 == var1.key && this.field1818 == var1.field1836) {
+			for (class166 var2 = (class166)this.field1820.last(); var2 != null; var2 = (class166)this.field1820.previous()) {
+				var2.vmethod3817(var1);
 			}
 
-			++var1.field1837;
+			++var1.field1836;
 		} else {
 			throw new RuntimeException("");
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(CLpx;B)C",
-		garbageValue = "111"
+		descriptor = "(III)V",
+		garbageValue = "132385369"
 	)
-	@Export("standardizeChar")
-	static char standardizeChar(char var0, Language var1) {
-		if (var0 >= 192 && var0 <= 255) {
-			if (var0 >= 192 && var0 <= 198) {
-				return 'A';
+	public static void method3766(int var0, int var1) {
+		class333.musicPlayerStatus = var0;
+		class333.field3631 = var1;
+		class333.field3632 = 0;
+		class333.field3633 = 0;
+		class333.field3628.clear();
+		class333.field3623.clear();
+		if (class333.musicSongs.isEmpty() || var0 == 0 && var1 == 0) {
+			Actor.method2730();
+		} else {
+			class333.field3623.add(new DelayFadeTask((SongTask)null, class333.musicPlayerStatus));
+			class333.field3623.add(new FadeOutTask((SongTask)null, 0, false, class333.field3631));
+			ArrayList var3 = new ArrayList();
+			Iterator var4 = class333.musicSongs.iterator();
+
+			while (var4.hasNext()) {
+				MusicSong var5 = (MusicSong)var4.next();
+				var3.add(var5);
 			}
 
-			if (var0 == 199) {
-				return 'C';
-			}
-
-			if (var0 >= 200 && var0 <= 203) {
-				return 'E';
-			}
-
-			if (var0 >= 204 && var0 <= 207) {
-				return 'I';
-			}
-
-			if (var0 == 209 && var1 != Language.Language_ES) {
-				return 'N';
-			}
-
-			if (var0 >= 210 && var0 <= 214) {
-				return 'O';
-			}
-
-			if (var0 >= 217 && var0 <= 220) {
-				return 'U';
-			}
-
-			if (var0 == 221) {
-				return 'Y';
-			}
-
-			if (var0 == 223) {
-				return 's';
-			}
-
-			if (var0 >= 224 && var0 <= 230) {
-				return 'a';
-			}
-
-			if (var0 == 231) {
-				return 'c';
-			}
-
-			if (var0 >= 232 && var0 <= 235) {
-				return 'e';
-			}
-
-			if (var0 >= 236 && var0 <= 239) {
-				return 'i';
-			}
-
-			if (var0 == 241 && var1 != Language.Language_ES) {
-				return 'n';
-			}
-
-			if (var0 >= 242 && var0 <= 246) {
-				return 'o';
-			}
-
-			if (var0 >= 249 && var0 <= 252) {
-				return 'u';
-			}
-
-			if (var0 == 253 || var0 == 255) {
-				return 'y';
-			}
+			class333.field3623.add(new class443((SongTask)null, var3));
 		}
 
-		if (var0 == 338) {
-			return 'O';
-		} else if (var0 == 339) {
-			return 'o';
-		} else if (var0 == 376) {
-			return 'Y';
-		} else {
-			return var0;
+	}
+
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "(Lvl;IB)Ljava/lang/String;",
+		garbageValue = "-53"
+	)
+	static String method3769(Buffer var0, int var1) {
+		try {
+			int var2 = var0.readUShortSmart();
+			if (var2 > var1) {
+				var2 = var1;
+			}
+
+			byte[] var3 = new byte[var2];
+			var0.offset += class364.huffman.decompress(var0.array, var0.offset, var3, 0, var2);
+			String var4 = class298.decodeStringCp1252(var3, 0, var2);
+			return var4;
+		} catch (Exception var6) {
+			return "Cabbage";
+		}
+	}
+
+	@ObfuscatedName("mv")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIS)V",
+		garbageValue = "5956"
+	)
+	@Export("updateRootInterface")
+	static final void updateRootInterface(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (class416.widgetDefinition.loadInterface(var0)) {
+			WorldMapElement.updateInterface(class416.widgetDefinition.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6);
 		}
 	}
 }

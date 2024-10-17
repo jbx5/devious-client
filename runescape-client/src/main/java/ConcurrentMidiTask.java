@@ -1,59 +1,58 @@
 import java.util.ArrayList;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ru")
+@ObfuscatedName("rd")
 @Implements("ConcurrentMidiTask")
 public class ConcurrentMidiTask extends SongTask {
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "Lbr;"
+	@ObfuscatedName("am")
+	@ObfuscatedGetter(
+		intValue = 1834009785
 	)
-	@Export("soundSystem")
-	public static SoundSystem soundSystem;
-	@ObfuscatedName("ac")
-	ArrayList field4846;
+	public static int field4886;
+	@ObfuscatedName("ap")
+	ArrayList field4887;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Ljava/util/ArrayList;)V"
+		descriptor = "(Lra;Ljava/util/ArrayList;)V"
 	)
 	public ConcurrentMidiTask(SongTask var1, ArrayList var2) {
 		super(var1);
-		this.field4846 = var2;
-		super.field4843 = "ConcurrentMidiTask";
+		this.field4887 = var2;
+		super.field4881 = "ConcurrentMidiTask";
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-1411718299"
+		garbageValue = "343486624"
 	)
-	public boolean vmethod8618() {
-		for (int var1 = 0; var1 < this.field4846.size(); ++var1) {
-			SongTask var2 = (SongTask)this.field4846.get(var1);
+	public boolean vmethod8740() {
+		for (int var1 = 0; var1 < this.field4887.size(); ++var1) {
+			SongTask var2 = (SongTask)this.field4887.get(var1);
 			if (var2 == null) {
-				this.field4846.remove(var1);
+				this.field4887.remove(var1);
 				--var1;
-			} else if (var2.vmethod8618()) {
-				if (var2.method8599()) {
-					this.method8609(var2.method8601());
-					this.field4846.clear();
+			} else if (var2.vmethod8740()) {
+				if (var2.method8721()) {
+					this.method8725(var2.method8723());
+					this.field4887.clear();
 					return true;
 				}
 
-				if (var2.method8597() != null) {
-					this.field4846.add(var2.method8597());
+				if (var2.method8724() != null) {
+					this.field4887.add(var2.method8724());
 				}
 
-				super.field4841 = var2.field4841;
-				this.field4846.remove(var1);
+				super.field4885 = var2.field4885;
+				this.field4887.remove(var1);
 				--var1;
 			}
 		}
 
-		if (this.field4846.isEmpty()) {
+		if (this.field4887.isEmpty()) {
 			return true;
 		} else {
 			return false;

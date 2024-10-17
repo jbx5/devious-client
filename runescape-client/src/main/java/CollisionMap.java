@@ -4,40 +4,34 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
+@ObfuscatedName("ko")
 @Implements("CollisionMap")
 public class CollisionMap {
-	@ObfuscatedName("vw")
-	@ObfuscatedSignature(
-		descriptor = "Ltq;"
-	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
-	@ObfuscatedName("ba")
+	@ObfuscatedName("bz")
 	@ObfuscatedGetter(
-		intValue = 2006280683
+		intValue = 321668887
 	)
 	@Export("xInset")
 	int xInset;
-	@ObfuscatedName("bj")
+	@ObfuscatedName("bc")
 	@ObfuscatedGetter(
-		intValue = 1444846889
+		intValue = -346318203
 	)
 	@Export("yInset")
 	int yInset;
-	@ObfuscatedName("bp")
+	@ObfuscatedName("by")
 	@ObfuscatedGetter(
-		intValue = 285692531
+		intValue = -243983003
 	)
 	@Export("xSize")
 	public int xSize;
-	@ObfuscatedName("by")
+	@ObfuscatedName("br")
 	@ObfuscatedGetter(
-		intValue = 1488772615
+		intValue = -870096139
 	)
 	@Export("ySize")
 	public int ySize;
-	@ObfuscatedName("bb")
+	@ObfuscatedName("bn")
 	@Export("flags")
 	public int[][] flags;
 
@@ -50,10 +44,10 @@ public class CollisionMap {
 		this.clear();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "736463425"
+		garbageValue = "-1906568538"
 	)
 	@Export("clear")
 	public void clear() {
@@ -69,12 +63,12 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIZB)V",
-		garbageValue = "-28"
+		garbageValue = "-39"
 	)
-	public void method5605(int var1, int var2, int var3, int var4, boolean var5) {
+	public void method5686(int var1, int var2, int var3, int var4, boolean var5) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		if (var3 == 0) {
@@ -221,10 +215,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIZS)V",
-		garbageValue = "-12231"
+		descriptor = "(IIIIZB)V",
+		garbageValue = "1"
 	)
 	@Export("addGameObject")
 	public void addGameObject(int var1, int var2, int var3, int var4, boolean var5) {
@@ -248,10 +242,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1760415221"
+		descriptor = "(IIB)V",
+		garbageValue = "93"
 	)
 	@Export("setBlockedByFloor")
 	public void setBlockedByFloor(int var1, int var2) {
@@ -261,10 +255,10 @@ public class CollisionMap {
 		var10000[var2] |= 2097152;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "235689306"
+		garbageValue = "-1109978527"
 	)
 	@Export("setBlockedByFloorDec")
 	public void setBlockedByFloorDec(int var1, int var2) {
@@ -274,10 +268,10 @@ public class CollisionMap {
 		var10000[var2] |= 262144;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)V",
-		garbageValue = "1628193881"
+		garbageValue = "108175169"
 	)
 	@Export("setFlag")
 	void setFlag(int var1, int var2, int var3) {
@@ -285,12 +279,12 @@ public class CollisionMap {
 		var10000[var2] |= var3;
 	}
 
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIZI)V",
-		garbageValue = "95002496"
+		garbageValue = "-485763623"
 	)
-	public void method5610(int var1, int var2, int var3, int var4, boolean var5) {
+	public void method5716(int var1, int var2, int var3, int var4, boolean var5) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		if (var3 == 0) {
@@ -437,10 +431,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
 		descriptor = "(IIIIIZI)V",
-		garbageValue = "539233092"
+		garbageValue = "-2018947608"
 	)
 	@Export("setFlagOffNonSquare")
 	public void setFlagOffNonSquare(int var1, int var2, int var3, int var4, int var5, boolean var6) {
@@ -470,10 +464,10 @@ public class CollisionMap {
 
 	}
 
-	@ObfuscatedName("au")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
 		descriptor = "(IIIB)V",
-		garbageValue = "102"
+		garbageValue = "8"
 	)
 	@Export("setFlagOff")
 	void setFlagOff(int var1, int var2, int var3) {
@@ -481,117 +475,59 @@ public class CollisionMap {
 		var10000[var2] &= ~var3;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("at")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "-777076945"
+		garbageValue = "343654611"
 	)
-	public void method5613(int var1, int var2) {
+	public void method5718(int var1, int var2) {
 		var1 -= this.xInset;
 		var2 -= this.yInset;
 		int[] var10000 = this.flags[var1];
 		var10000[var2] &= -262145;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("nn")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-292322430"
+		descriptor = "(Lng;B)Z",
+		garbageValue = "-68"
 	)
-	public static int method5635(int var0, int var1, int var2) {
-		var2 &= 3;
-		if (var2 == 0) {
-			return var1;
-		} else if (var2 == 1) {
-			return 7 - var0;
+	static final boolean method5694(Widget var0) {
+		int var1 = var0.contentType;
+		if (var1 == 205) {
+			Client.logoutTimer = 250;
+			return true;
 		} else {
-			return var2 == 2 ? 7 - var1 : var0;
-		}
-	}
-
-	@ObfuscatedName("lw")
-	@ObfuscatedSignature(
-		descriptor = "(Ldd;ZLva;I)V",
-		garbageValue = "-1492187932"
-	)
-	static final void method5614(WorldView var0, boolean var1, PacketBuffer var2) {
-		while (true) {
-			byte var3 = 16;
-			int var4 = 1 << var3;
-			if (var2.bitsRemaining(Client.packetWriter.serverPacketLength) >= var3 + 12) {
-				int var5 = var2.readBits(var3);
-				if (var5 != var4 - 1) {
-					int var6 = DevicePcmPlayerProvider.field88;
-					boolean var7 = false;
-					if (var0.npcs[var5] == null) {
-						var0.npcs[var5] = new NPC();
-						var7 = true;
-					}
-
-					NPC var8 = var0.npcs[var5];
-					var8.field1380 = var6;
-					var0.npcIndices[++var0.npcCount - 1] = var5;
-					var8.npcCycle = Client.cycle;
-					int var12 = var2.readBits(1);
-					if (var12 == 1) {
-						Client.npcIndices[++Client.npcCount - 1] = var5;
-					}
-
-					int var9 = var2.readBits(1);
-					int var11;
-					if (var1) {
-						var11 = var2.readBits(8);
-						if (var11 > 127) {
-							var11 -= 256;
-						}
-					} else {
-						var11 = var2.readBits(5);
-						if (var11 > 15) {
-							var11 -= 32;
-						}
-					}
-
-					boolean var13 = var2.readBits(1) == 1;
-					if (var13) {
-						var2.readBits(32);
-					}
-
-					var8.definition = class168.getNpcDefinition(var2.readBits(14));
-					int var14 = Client.defaultRotations[var2.readBits(3)];
-					if (var7) {
-						var8.orientation = var8.rotation = var14;
-					}
-
-					int var10;
-					if (var1) {
-						var10 = var2.readBits(8);
-						if (var10 > 127) {
-							var10 -= 256;
-						}
-					} else {
-						var10 = var2.readBits(5);
-						if (var10 > 15) {
-							var10 -= 32;
-						}
-					}
-
-					DesktopPlatformInfoProvider.method9271(var8);
-					if (var8.field1292 == 0) {
-						var8.rotation = 0;
-					}
-
-					if (class548.field5407 >= 222) {
-						var8.method2872(var10 + WorldView.field1360, var11 + Client.field818, var9 == 1);
-						continue;
-					}
-
-					var8.method2872(AddRequestTask.localPlayer.pathX[0] + var10, AddRequestTask.localPlayer.pathY[0] + var11, var9 == 1);
-					continue;
-				}
+			int var2;
+			int var3;
+			if (var1 >= 300 && var1 <= 313) {
+				var2 = (var1 - 300) / 2;
+				var3 = var1 & 1;
+				Client.playerAppearance.changeAppearance(var2, var3 == 1);
 			}
 
-			var2.exportIndex();
-			return;
+			if (var1 >= 314 && var1 <= 323) {
+				var2 = (var1 - 314) / 2;
+				var3 = var1 & 1;
+				Client.playerAppearance.method6989(var2, var3 == 1);
+			}
+
+			if (var1 == 324) {
+				Client.playerAppearance.method6932(0);
+			}
+
+			if (var1 == 325) {
+				Client.playerAppearance.method6932(1);
+			}
+
+			if (var1 == 326) {
+				PacketBufferNode var4 = class113.getPacketBufferNode(class555.field5457 >= 224 ? ClientPacket.field3383 : ClientPacket.field3379, Client.packetWriter.isaacCipher);
+				Client.playerAppearance.write(var4.packetBuffer);
+				Client.packetWriter.addNode(var4);
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 }

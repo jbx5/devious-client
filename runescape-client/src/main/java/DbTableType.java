@@ -3,24 +3,33 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("un")
+@ObfuscatedName("vn")
 @Implements("DbTableType")
 public class DbTableType extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lpo;"
+		descriptor = "Lpe;"
 	)
-	public static AbstractArchive field5348;
-	@ObfuscatedName("ae")
+	static AbstractArchive field5394;
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lml;"
+		descriptor = "Lmi;"
 	)
 	@Export("DBTableType_cache")
 	public static EvictingDualNodeHashTable DBTableType_cache;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "[Lvc;"
+	)
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
 	@ObfuscatedName("ag")
+	@Export("ByteArrayPool_alternativeSizes")
+	public static int[] ByteArrayPool_alternativeSizes;
+	@ObfuscatedName("ak")
 	@Export("types")
 	public int[][] types;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@Export("defaultValues")
 	public Object[][] defaultValues;
 
@@ -31,28 +40,28 @@ public class DbTableType extends DualNode {
 	DbTableType() {
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;B)V",
-		garbageValue = "-39"
+		descriptor = "(Lvl;B)V",
+		garbageValue = "-29"
 	)
-	void method9794(Buffer var1) {
+	void method9973(Buffer var1) {
 		while (true) {
 			int var2 = var1.readUnsignedByte();
 			if (var2 == 0) {
 				return;
 			}
 
-			this.method9795(var1, var2);
+			this.method9976(var1, var2);
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;II)V",
-		garbageValue = "852231286"
+		descriptor = "(Lvl;II)V",
+		garbageValue = "1158183631"
 	)
-	void method9795(Buffer var1, int var2) {
+	void method9976(Buffer var1, int var2) {
 		if (var2 == 1) {
 			int var3 = var1.readUnsignedByte();
 			if (this.types == null) {
@@ -74,18 +83,18 @@ public class DbTableType extends DualNode {
 						this.defaultValues = new Object[this.types.length][];
 					}
 
-					this.defaultValues[var5] = class330.method6427(var1, var7);
+					this.defaultValues[var5] = class30.method460(var1, var7);
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1056183933"
+		descriptor = "(B)V",
+		garbageValue = "-15"
 	)
-	void method9796() {
+	void method9969() {
 	}
 }

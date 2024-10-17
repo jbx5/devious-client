@@ -1,39 +1,38 @@
-import java.util.Date;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hq")
+@ObfuscatedName("hm")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements Enum {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lhq;"
+		descriptor = "Lhm;"
 	)
-	field2060(1, 0),
-	@ObfuscatedName("ae")
+	field2058(0, 0),
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lhq;"
+		descriptor = "Lhm;"
 	)
 	@Export("VerticalAlignment_centered")
-	VerticalAlignment_centered(0, 1),
-	@ObfuscatedName("ag")
+	VerticalAlignment_centered(1, 1),
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lhq;"
+		descriptor = "Lhm;"
 	)
-	field2055(2, 2);
+	field2060(2, 2);
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -569774967
+		intValue = -375458665
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1192039845
+		intValue = -774760143
 	)
 	@Export("id")
 	final int id;
@@ -43,30 +42,13 @@ public enum VerticalAlignment implements Enum {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-350930589"
+		garbageValue = "1837624059"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
-	}
-
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Date;B)Z",
-		garbageValue = "-50"
-	)
-	static boolean method4020(Date var0) {
-		java.util.Calendar var1 = java.util.Calendar.getInstance();
-		var1.set(1, var1.get(1) - 13);
-		var1.set(5, var1.get(5) + 1);
-		var1.set(11, 0);
-		var1.set(12, 0);
-		var1.set(13, 0);
-		var1.set(14, 0);
-		Date var2 = var1.getTime();
-		return var0.before(var2);
 	}
 }

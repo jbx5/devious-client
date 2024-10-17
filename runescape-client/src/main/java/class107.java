@@ -1,86 +1,70 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
+@ObfuscatedName("ez")
 public class class107 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -287260217
+		intValue = 759539857
 	)
-	int field1403;
-	@ObfuscatedName("ae")
+	int field1391;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 2138731981
+		intValue = 1763821273
 	)
-	int field1400;
-	@ObfuscatedName("ag")
+	int field1387;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1615535537
+		intValue = 1541847413
 	)
-	int field1399;
-	@ObfuscatedName("am")
+	int field1389;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1634017759
+		intValue = 1745460957
 	)
-	int field1402;
+	int field1390;
 
 	class107(int var1, int var2, int var3, int var4) {
-		this.field1403 = var1;
-		this.field1400 = var2;
-		this.field1399 = var3;
-		this.field1402 = var4;
+		this.field1391 = var1;
+		this.field1387 = var2;
+		this.field1389 = var3;
+		this.field1390 = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-41"
+		garbageValue = "-23"
 	)
-	int method2964() {
-		return this.field1403;
+	int method3042() {
+		return this.field1391;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-60"
+		descriptor = "(I)I",
+		garbageValue = "-244150782"
 	)
-	int method2960() {
-		return this.field1400;
+	int method3034() {
+		return this.field1387;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "92"
+		descriptor = "(I)I",
+		garbageValue = "-2100938890"
 	)
-	int method2961() {
-		return this.field1399;
+	int method3035() {
+		return this.field1389;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-50"
+		descriptor = "(I)I",
+		garbageValue = "969929626"
 	)
-	int method2959() {
-		return this.field1402;
-	}
-
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
-	)
-	@Export("focusPasswordWhenUsernameFilled")
-	static void focusPasswordWhenUsernameFilled() {
-		if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-			Login.currentLoginField = 1;
-		} else {
-			Login.currentLoginField = 0;
-		}
-
+	int method3036() {
+		return this.field1390;
 	}
 }

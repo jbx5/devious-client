@@ -1877,7 +1877,7 @@ public abstract class RSClientMixin implements RSClient
 		menu.setMenuY(var6);
 		menu.setMenuWidth(tempWidth);
 		menu.setMenuHeight(realCount * 15 + 22);
-		client.getTopLevelWorldView().getScene().menuOpen(client.getPlane(), x - client.getViewportXOffset(), y - client.getViewportYOffset(), false);
+		client.getTopLevelWorldView().getScene().menuOpen(false);
 		client.setMenuOpen(true);
 
 		client.setMenuScroll(0);
@@ -1917,7 +1917,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@MethodHook("updateNpcs")
-	public static void updateNpcs(RSWorldView wv, boolean var0, RSPacketBuffer var1)
+	public static void updateNpcs(RSWorldView wv, boolean var0, RSPacketBuffer var1, int var2)
 	{
 		client.getCallbacks().updateNpcs();
 		syncMusicVolume();

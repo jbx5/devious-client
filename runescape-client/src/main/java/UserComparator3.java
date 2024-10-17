@@ -3,16 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
+@ObfuscatedName("es")
 @Implements("UserComparator3")
 public class UserComparator3 extends AbstractUserComparator {
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "[Lvv;"
-	)
-	@Export("headIconPrayerSprites")
-	static SpritePixels[] headIconPrayerSprites;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -20,10 +14,10 @@ public class UserComparator3 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lsq;Lsq;I)I",
-		garbageValue = "-1557770649"
+		descriptor = "(Lsv;Lsv;I)I",
+		garbageValue = "2088667477"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -38,17 +32,30 @@ public class UserComparator3 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("oo")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lny;I)Ljava/lang/String;",
-		garbageValue = "635578435"
+		descriptor = "(I)V",
+		garbageValue = "242662164"
 	)
-	@Export("Widget_getSpellActionName")
-	static String Widget_getSpellActionName(Widget var0) {
-		if (FontName.Widget_unpackTargetMask(class310.getWidgetFlags(var0)) == 0) {
-			return null;
-		} else {
-			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
+	public static void method3311() {
+		class201.field2136.clear();
+	}
+
+	@ObfuscatedName("jr")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "2040296208"
+	)
+	static void method3312(int var0, int var1, int var2, int var3, int var4) {
+		NodeDeque var5 = class344.worldView.groundItems[var0][var1][var2];
+		if (var5 != null) {
+			for (TileItem var6 = (TileItem)var5.last(); var6 != null; var6 = (TileItem)var5.previous()) {
+				if ((var3 & 32767) == var6.id) {
+					var6.setFlag(var4);
+					break;
+				}
+			}
 		}
+
 	}
 }

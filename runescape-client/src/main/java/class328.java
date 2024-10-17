@@ -1,75 +1,75 @@
-import java.util.Arrays;
+import java.awt.datatransfer.Clipboard;
+import java.util.HashMap;
+import java.util.TimeZone;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("me")
-public class class328 {
-	@ObfuscatedName("at")
-	@Export("Tiles_hue")
-	static int[] Tiles_hue;
+@ObfuscatedName("mz")
+public final class class328 {
+	@ObfuscatedName("ak")
+	static final HashMap field3598;
 
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-2098954033"
-	)
-	public static final boolean method6417(char var0) {
-		return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2143935274"
-	)
-	public static void method6418() {
-		Arrays.fill(Varps.Varps_temp, 0);
-		Arrays.fill(Varps.Varps_main, 0);
-	}
-
-	@ObfuscatedName("cn")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "-1782097420"
-	)
-	public static int method6420(String var0) {
-		return var0.length() + 2;
-	}
-
-	@ObfuscatedName("jg")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZB)V",
-		garbageValue = "-74"
-	)
-	@Export("drawLoadingMessage")
-	static final void drawLoadingMessage(String var0, boolean var1) {
-		if (Client.showLoadingMessages) {
-			byte var2 = 4;
-			int var3 = var2 + 6;
-			int var4 = var2 + 6;
-			int var5 = UserComparator9.fontPlain12.lineWidth(var0, 250);
-			int var6 = UserComparator9.fontPlain12.lineCount(var0, 250) * 13;
-			Rasterizer2D.Rasterizer2D_fillRectangle(var3 - var2, var4 - var2, var2 + var2 + var5, var2 + var6 + var2, 0);
-			Rasterizer2D.Rasterizer2D_drawRectangle(var3 - var2, var4 - var2, var5 + var2 + var2, var6 + var2 + var2, 16777215);
-			UserComparator9.fontPlain12.drawLines(var0, var3, var4, var5, var6, 16777215, -1, 1, 1, 0);
-			int var7 = var3 - var2;
-			int var8 = var4 - var2;
-			int var9 = var2 + var2 + var5;
-			int var10 = var2 + var6 + var2;
-
-			for (int var11 = 0; var11 < Client.rootWidgetCount; ++var11) {
-				if (Client.rootWidgetXs[var11] + Client.rootWidgetWidths[var11] > var7 && Client.rootWidgetXs[var11] < var9 + var7 && Client.rootWidgetYs[var11] + Client.rootWidgetHeights[var11] > var8 && Client.rootWidgetYs[var11] < var10 + var8) {
-					Client.validRootWidgets[var11] = true;
-				}
+	static {
+		field3598 = new HashMap();
+		TimeZone var0;
+		synchronized(field3598) {
+			TimeZone var2 = (TimeZone)field3598.get("Europe/London");
+			if (var2 == null) {
+				var2 = TimeZone.getTimeZone("Europe/London");
+				field3598.put("Europe/London", var2);
 			}
 
-			if (var1) {
-				class310.rasterProvider.drawFull(0, 0);
-			} else {
-				class31.method459(var3, var4, var5, var6);
-			}
-
+			var0 = var2;
 		}
+
+		java.util.Calendar.getInstance(var0);
+	}
+
+	@ObfuscatedName("bx")
+	@ObfuscatedSignature(
+		descriptor = "(Lbg;I)V",
+		garbageValue = "954200168"
+	)
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
+		}
+
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
+		}
+
+	}
+
+	@ObfuscatedName("ox")
+	@ObfuscatedSignature(
+		descriptor = "(IIZB)V",
+		garbageValue = "8"
+	)
+	static final void method6532(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3786()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = class113.getPacketBufferNode(ClientPacket.field3398, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + World.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
+		}
+	}
+
+	@ObfuscatedName("pe")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/awt/datatransfer/Clipboard;",
+		garbageValue = "1614134537"
+	)
+	public static Clipboard method6534() {
+		return Projectile.client.method498();
 	}
 }

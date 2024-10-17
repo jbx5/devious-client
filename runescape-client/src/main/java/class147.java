@@ -3,34 +3,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fd")
+@ObfuscatedName("ft")
 public class class147 extends class150 {
-	@ObfuscatedName("le")
-	@ObfuscatedGetter(
-		intValue = 1943108661
+	@ObfuscatedName("hc")
+	static String field1688;
+	@ObfuscatedName("kr")
+	@ObfuscatedSignature(
+		descriptor = "[Lvc;"
 	)
-	@Export("oculusOrbFocalPointZ")
-	static int oculusOrbFocalPointZ;
-	@ObfuscatedName("ac")
+	@Export("scrollBarSprites")
+	static IndexedSprite[] scrollBarSprites;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -996029239
+		intValue = -1730636379
 	)
-	int field1694;
-	@ObfuscatedName("ae")
+	int field1687;
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = 1620946715
+		intValue = -1397888641
 	)
-	int field1696;
-	@ObfuscatedName("ag")
+	int field1689;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -842437995
+		intValue = 564937003
 	)
-	int field1695;
-	@ObfuscatedName("am")
+	int field1686;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1129292933
+		intValue = -1263814509
 	)
-	int field1693;
+	int field1685;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
 		descriptor = "Lfz;"
@@ -42,58 +44,72 @@ public class class147 extends class150 {
 	)
 	class147(class153 var1) {
 		this.this$0 = var1;
-		this.field1694 = -1;
+		this.field1687 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;B)V",
-		garbageValue = "127"
+		descriptor = "(Lvl;I)V",
+		garbageValue = "-1813719027"
 	)
-	void vmethod3778(Buffer var1) {
-		this.field1694 = var1.readUnsignedShort();
-		this.field1696 = var1.readInt();
-		this.field1695 = var1.readUnsignedByte();
-		this.field1693 = var1.readUnsignedByte();
+	void vmethod3822(Buffer var1) {
+		this.field1687 = var1.readUnsignedShort();
+		this.field1689 = var1.readInt();
+		this.field1686 = var1.readUnsignedByte();
+		this.field1685 = var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lgo;B)V",
-		garbageValue = "32"
+		descriptor = "(Lgy;I)V",
+		garbageValue = "-2079483058"
 	)
-	void vmethod3771(ClanSettings var1) {
-		var1.method3622(this.field1694, this.field1696, this.field1695, this.field1693);
+	void vmethod3821(ClanSettings var1) {
+		var1.method3667(this.field1687, this.field1689, this.field1686, this.field1685);
 	}
 
-	@ObfuscatedName("hc")
+	@ObfuscatedName("hd")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ltu;",
-		garbageValue = "122"
+		descriptor = "(B)V",
+		garbageValue = "-41"
 	)
-	@Export("getWorldMap")
-	static WorldMap getWorldMap() {
-		return UserComparator8.worldMap;
+	static final void method3554() {
+		GrandExchangeOfferNameComparator.KitDefinition_archive = null;
+		GrandExchangeOfferTotalQuantityComparator.KitDefinition_modelsArchive = null;
+		KitDefinition.KitDefinition_fileCount = 0;
 	}
 
-	@ObfuscatedName("jl")
+	@ObfuscatedName("mt")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1811137681"
+		descriptor = "(Lng;B)Z",
+		garbageValue = "-121"
 	)
-	static boolean method3438() {
-		return (Client.drawPlayerNames & 1) != 0;
-	}
+	@Export("runCs1")
+	static final boolean runCs1(Widget var0) {
+		if (var0.cs1Comparisons == null) {
+			return false;
+		} else {
+			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
+				int var2 = class153.method3600(var0, var1);
+				int var3 = var0.cs1ComparisonValues[var1];
+				if (var0.cs1Comparisons[var1] == 2) {
+					if (var2 >= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 3) {
+					if (var2 <= var3) {
+						return false;
+					}
+				} else if (var0.cs1Comparisons[var1] == 4) {
+					if (var2 == var3) {
+						return false;
+					}
+				} else if (var3 != var2) {
+					return false;
+				}
+			}
 
-	@ObfuscatedName("nh")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "1708350717"
-	)
-	@Export("runIntfCloseListeners")
-	static final void runIntfCloseListeners(int var0, int var1) {
-		if (TaskHandler.widgetDefinition.loadInterface(var0)) {
-			class324.runComponentCloseListeners(TaskHandler.widgetDefinition.Widget_interfaceComponents[var0], var1);
+			return true;
 		}
 	}
 }

@@ -4,17 +4,15 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("st")
+@ObfuscatedName("sr")
 @Implements("Ignored")
 public class Ignored extends User {
+	@ObfuscatedName("wl")
+	@Export("foundItemIds")
+	static short[] foundItemIds;
 	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1539892605
-	)
-	static int field4993;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 307366565
+		intValue = 1626478363
 	)
 	@Export("id")
 	int id;
@@ -22,20 +20,20 @@ public class Ignored extends User {
 	Ignored() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lst;I)I",
-		garbageValue = "-1030181960"
+		descriptor = "(Lsr;B)I",
+		garbageValue = "62"
 	)
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
 		return this.id - var1.id;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lss;S)I",
-		garbageValue = "151"
+		descriptor = "(Lse;S)I",
+		garbageValue = "7143"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -46,12 +44,26 @@ public class Ignored extends User {
 		return this.compareTo_ignored((Ignored)var1);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lsv;",
-		garbageValue = "-1902375311"
+		descriptor = "(Ldt;I)V",
+		garbageValue = "-602881256"
 	)
-	static class488[] method8979() {
-		return new class488[]{class488.field5074, class488.field5077, class488.field5072, class488.field5071};
+	@Export("runScriptEvent")
+	public static void runScriptEvent(ScriptEvent var0) {
+		GraphicsObject.runScript(var0, 500000, 475000);
+	}
+
+	@ObfuscatedName("of")
+	@ObfuscatedSignature(
+		descriptor = "(Lng;IS)Ljava/lang/String;",
+		garbageValue = "-25797"
+	)
+	static String method9125(Widget var0, int var1) {
+		if (!class496.method9320(class171.getWidgetFlags(var0), var1) && var0.onOp == null) {
+			return null;
+		} else {
+			return var0.actions != null && var0.actions.length > var1 && var0.actions[var1] != null && var0.actions[var1].trim().length() != 0 ? var0.actions[var1] : null;
+		}
 	}
 }

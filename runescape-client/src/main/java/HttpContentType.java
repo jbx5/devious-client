@@ -3,28 +3,28 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("te")
+@ObfuscatedName("tz")
 @Implements("HttpContentType")
 public class HttpContentType {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Ltz;"
 	)
 	@Export("APPLICATION_JSON")
 	public static final HttpContentType APPLICATION_JSON;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Ltz;"
 	)
 	@Export("TEXT_PLAIN")
 	static final HttpContentType TEXT_PLAIN;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Ltz;"
 	)
 	@Export("APPLICATION_X_WWW_FORM_URLENCODED")
 	static final HttpContentType APPLICATION_X_WWW_FORM_URLENCODED;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@Export("contentType")
 	String contentType;
 
@@ -38,10 +38,10 @@ public class HttpContentType {
 		this.contentType = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "1075959671"
+		garbageValue = "-1393979685"
 	)
 	@Export("getValue")
 	public String getValue() {

@@ -2,144 +2,220 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qd")
-public final class class426 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("qt")
+public class class426 {
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "[Lqd;"
+		descriptor = "Lqt;"
 	)
-	static class426[] field4727;
+	public static final class426 field4767;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lqt;"
+	)
+	public static final class426 field4773;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "[Lqt;"
+	)
+	public static class426[] field4768;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -306951475
+	)
+	static int field4769;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 937612641
+	)
+	public static int field4770;
+	@ObfuscatedName("ay")
+	public float field4771;
+	@ObfuscatedName("as")
+	float field4772;
 	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 1930938489
-	)
-	static int field4729;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = -1298270997
-	)
-	static int field4725;
-	@ObfuscatedName("am")
-	float field4728;
-	@ObfuscatedName("ax")
-	float field4732;
-	@ObfuscatedName("aq")
-	float field4730;
-	@ObfuscatedName("af")
-	float field4731;
+	public float field4766;
 
 	static {
-		field4727 = new class426[0];
-		field4729 = 100;
-		field4727 = new class426[100];
-		field4725 = 0;
-		new class426();
-	}
-
-	class426() {
-		this.method8100();
+		new class426(0.0F, 0.0F, 0.0F);
+		new class426(1.0F, 1.0F, 1.0F);
+		new class426(1.0F, 0.0F, 0.0F);
+		field4767 = new class426(0.0F, 1.0F, 0.0F);
+		new class426(0.0F, 0.0F, 1.0F);
+		new class426(1.0F, 0.0F, 0.0F);
+		new class426(-1.0F, 0.0F, 0.0F);
+		new class426(0.0F, 0.0F, 1.0F);
+		field4773 = new class426(0.0F, 0.0F, -1.0F);
+		new class426(0.0F, 1.0F, 0.0F);
+		new class426(0.0F, -1.0F, 0.0F);
+		field4768 = new class426[0];
+		field4769 = 100;
+		field4768 = new class426[100];
+		field4770 = 0;
 	}
 
 	public class426(float var1, float var2, float var3) {
-		this.method8118(var1, var2, var3);
+		this.field4771 = var1;
+		this.field4772 = var2;
+		this.field4766 = var3;
 	}
 
-	@ObfuscatedName("ae")
+	public class426() {
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;)V"
+	)
+	public class426(class426 var1) {
+		this.field4771 = var1.field4771;
+		this.field4772 = var1.field4772;
+		this.field4766 = var1.field4766;
+	}
+
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1056974395"
+		garbageValue = "16711680"
 	)
-	public void method8098() {
-		synchronized(field4727) {
-			if (field4725 < field4729 - 1) {
-				field4727[++field4725 - 1] = this;
+	public void method8168() {
+		synchronized(field4768) {
+			if (field4770 < field4769 - 1) {
+				field4768[++field4770 - 1] = this;
 			}
 
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFI)V",
-		garbageValue = "332808820"
+		descriptor = "(FFFI)V",
+		garbageValue = "-1603121434"
 	)
-	void method8099(float var1, float var2, float var3, float var4) {
-		this.field4728 = var1;
-		this.field4732 = var2;
-		this.field4730 = var3;
-		this.field4731 = var4;
+	public void method8200(float var1, float var2, float var3) {
+		this.field4771 = var1;
+		this.field4772 = var2;
+		this.field4766 = var3;
+	}
+
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;I)V",
+		garbageValue = "-980308502"
+	)
+	public void method8169(class426 var1) {
+		this.method8200(var1.field4771, var1.field4772, var1.field4766);
+	}
+
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1421845236"
+	)
+	final void method8202() {
+		this.field4766 = 0.0F;
+		this.field4772 = 0.0F;
+		this.field4771 = 0.0F;
+	}
+
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;B)Z",
+		garbageValue = "-66"
+	)
+	boolean method8171(class426 var1) {
+		return this.field4771 == var1.field4771 && var1.field4772 == this.field4772 && this.field4766 == var1.field4766;
+	}
+
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1066170556"
+	)
+	public final void method8172() {
+		float var1 = 1.0F / this.method8186();
+		this.field4771 *= var1;
+		this.field4772 *= var1;
+		this.field4766 *= var1;
 	}
 
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFI)V",
-		garbageValue = "544928109"
+		descriptor = "(Lqt;I)V",
+		garbageValue = "-1203805015"
 	)
-	public void method8107(float var1, float var2, float var3, float var4) {
-		float var5 = (float)Math.sin((double)(var4 * 0.5F));
-		float var6 = (float)Math.cos((double)(var4 * 0.5F));
-		this.field4728 = var5 * var1;
-		this.field4732 = var2 * var5;
-		this.field4730 = var5 * var3;
-		this.field4731 = var6;
+	final void method8173(class426 var1) {
+		this.field4771 += var1.field4771;
+		this.field4772 += var1.field4772;
+		this.field4766 += var1.field4766;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(FFFB)V",
-		garbageValue = "2"
+		descriptor = "(Lqt;B)V",
+		garbageValue = "1"
 	)
-	public void method8118(float var1, float var2, float var3) {
-		this.method8107(0.0F, 1.0F, 0.0F, var1);
-		class426 var4 = class157.method3544();
-		var4.method8107(1.0F, 0.0F, 0.0F, var2);
-		this.method8103(var4);
-		var4.method8107(0.0F, 0.0F, 1.0F, var3);
-		this.method8103(var4);
-		var4.method8098();
+	public final void method8196(class426 var1) {
+		this.field4771 -= var1.field4771;
+		this.field4772 -= var1.field4772;
+		this.field4766 -= var1.field4766;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "783933342"
+		descriptor = "(Lqt;I)F",
+		garbageValue = "-1837312681"
 	)
-	final void method8100() {
-		this.field4730 = 0.0F;
-		this.field4732 = 0.0F;
-		this.field4728 = 0.0F;
-		this.field4731 = 1.0F;
+	public final float method8176(class426 var1) {
+		return var1.field4766 * this.field4766 + this.field4771 * var1.field4771 + var1.field4772 * this.field4772;
 	}
 
 	@ObfuscatedName("af")
 	@ObfuscatedSignature(
-		descriptor = "(Lqd;B)V",
-		garbageValue = "34"
+		descriptor = "(Lqt;B)V",
+		garbageValue = "61"
 	)
-	public final void method8103(class426 var1) {
-		this.method8099(this.field4731 * var1.field4728 + this.field4728 * var1.field4731 + this.field4730 * var1.field4732 - var1.field4730 * this.field4732, this.field4728 * var1.field4730 + this.field4732 * var1.field4731 - var1.field4728 * this.field4730 + var1.field4732 * this.field4731, this.field4731 * var1.field4730 + (this.field4732 * var1.field4728 + this.field4730 * var1.field4731 - this.field4728 * var1.field4732), this.field4731 * var1.field4731 - this.field4728 * var1.field4728 - this.field4732 * var1.field4732 - var1.field4730 * this.field4730);
+	public final void method8175(class426 var1) {
+		this.method8200(var1.field4766 * this.field4772 - var1.field4772 * this.field4766, var1.field4771 * this.field4766 - var1.field4766 * this.field4771, this.field4771 * var1.field4772 - var1.field4771 * this.field4772);
 	}
 
-	public int hashCode() {
-		boolean var1 = true;
-		float var2 = 1.0F;
-		var2 = 31.0F * var2 + this.field4728;
-		var2 = this.field4732 + 31.0F * var2;
-		var2 = this.field4730 + 31.0F * var2;
-		var2 = this.field4731 + var2 * 31.0F;
-		return (int)var2;
+	@ObfuscatedName("ar")
+	@ObfuscatedSignature(
+		descriptor = "(S)F",
+		garbageValue = "-10964"
+	)
+	final float method8186() {
+		return (float)Math.sqrt((double)(this.field4766 * this.field4766 + this.field4772 * this.field4772 + this.field4771 * this.field4771));
+	}
+
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(FI)V",
+		garbageValue = "-1096645015"
+	)
+	final void method8177(float var1) {
+		this.field4771 *= var1;
+		this.field4772 *= var1;
+		this.field4766 *= var1;
 	}
 
 	public String toString() {
-		return this.field4728 + "," + this.field4732 + "," + this.field4730 + "," + this.field4731;
+		return this.field4771 + ", " + this.field4772 + ", " + this.field4766;
 	}
 
-	public boolean equals(Object var1) {
-		if (!(var1 instanceof class426)) {
-			return false;
-		} else {
-			class426 var2 = (class426)var1;
-			return this.field4728 == var2.field4728 && var2.field4732 == this.field4732 && this.field4730 == var2.field4730 && this.field4731 == var2.field4731;
+	@ObfuscatedName("jt")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)I",
+		garbageValue = "22"
+	)
+	static int method8219(int var0, int var1) {
+		int var2 = var1 - 334;
+		if (var2 < 0) {
+			var2 = 0;
+		} else if (var2 > 100) {
+			var2 = 100;
 		}
+
+		int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
+		return var0 * var3 / 256;
 	}
 }

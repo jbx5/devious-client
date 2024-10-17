@@ -11,27 +11,26 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("en")
+@ObfuscatedName("ex")
 @Implements("UrlRequester")
 public abstract class UrlRequester implements Runnable {
-	@ObfuscatedName("av")
-	@ObfuscatedGetter(
-		intValue = 608173899
+	@ObfuscatedName("fg")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
 	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
-	@ObfuscatedName("ac")
+	static Archive field1491;
+	@ObfuscatedName("ap")
 	@Export("requestThread")
 	final Thread requestThread;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@Export("isClosed")
 	volatile boolean isClosed;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@Export("requests")
 	Queue requests;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 570697283
+		intValue = -1512141121
 	)
 	@Export("clientRevision")
 	int clientRevision;
@@ -44,21 +43,21 @@ public abstract class UrlRequester implements Runnable {
 		this.clientRevision = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lek;I)V",
-		garbageValue = "2145007281"
+		descriptor = "(Lei;I)V",
+		garbageValue = "1770877701"
 	)
 	@Export("openConnection")
 	abstract void openConnection(UrlRequest var1) throws IOException;
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/net/URLConnection;I)I",
-		garbageValue = "-1837690890"
+		garbageValue = "-18096714"
 	)
-	int method3132(URLConnection var1) {
-		int var2 = UrlRequest.field1503;
+	int method3225(URLConnection var1) {
+		int var2 = UrlRequest.field1497;
 		if (var1 != null) {
 			try {
 				if (var1 instanceof HttpURLConnection) {
@@ -71,10 +70,10 @@ public abstract class UrlRequester implements Runnable {
 		return var2;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;I)V",
-		garbageValue = "1861818621"
+		descriptor = "(Ljava/net/URLConnection;B)V",
+		garbageValue = "65"
 	)
 	@Export("setDefaultRequestProperties")
 	void setDefaultRequestProperties(URLConnection var1) {
@@ -85,12 +84,12 @@ public abstract class UrlRequester implements Runnable {
 		var1.setRequestProperty("User-Agent", "OldSchoolRuneScape/" + this.clientRevision);
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URLConnection;Lek;I)V",
-		garbageValue = "-108104768"
+		descriptor = "(Ljava/net/URLConnection;Lei;B)V",
+		garbageValue = "-98"
 	)
-	void method3134(URLConnection var1, UrlRequest var2) {
+	void method3210(URLConnection var1, UrlRequest var2) {
 		DataInputStream var3 = null;
 
 		try {
@@ -102,38 +101,39 @@ public abstract class UrlRequester implements Runnable {
 				var3.readFully(var4);
 			} else {
 				var4 = new byte[0];
-				byte[] var6 = GrandExchangeOfferWorldComparator.method7690(5000);
+				byte[] var6 = FadeOutTask.ByteArrayPool_getArrayBool(5000, false);
+				byte[] var7 = var6;
 
-				for (int var7 = var3.read(var6); var7 > -1; var7 = var3.read(var6)) {
-					byte[] var8 = new byte[var4.length + var7];
-					System.arraycopy(var4, 0, var8, 0, var4.length);
-					System.arraycopy(var6, 0, var8, var4.length, var7);
-					var4 = var8;
+				for (int var8 = var3.read(var6); var8 > -1; var8 = var3.read(var7)) {
+					byte[] var9 = new byte[var4.length + var8];
+					System.arraycopy(var4, 0, var9, 0, var4.length);
+					System.arraycopy(var7, 0, var9, var4.length, var8);
+					var4 = var9;
 				}
 
-				class93.ByteArrayPool_release(var6);
+				ArchiveDiskAction.ByteArrayPool_release(var7);
 			}
 
 			var2.response0 = var4;
-		} catch (IOException var14) {
+		} catch (IOException var15) {
 			var2.response0 = null;
 		} finally {
-			var2.field1504 = this.method3132(var1);
+			var2.field1496 = this.method3225(var1);
 		}
 
 		if (var3 != null) {
 			try {
 				var3.close();
-			} catch (IOException var13) {
+			} catch (IOException var14) {
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;I)Lek;",
-		garbageValue = "-1377908475"
+		descriptor = "(Ljava/net/URL;S)Lei;",
+		garbageValue = "326"
 	)
 	@Export("request")
 	public UrlRequest request(URL var1) {
@@ -145,10 +145,10 @@ public abstract class UrlRequester implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "31"
+		garbageValue = "1"
 	)
 	@Export("close")
 	public void close() {
@@ -182,26 +182,102 @@ public abstract class UrlRequester implements Runnable {
 
 				this.openConnection(var1);
 			} catch (Exception var7) {
-				class171.RunException_sendStackTrace((String)null, var7);
+				HttpHeaders.RunException_sendStackTrace((String)null, var7);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("kp")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1110995275"
+		descriptor = "(Lpe;III)[Lvv;",
+		garbageValue = "806885260"
 	)
-	static int method3141(int var0, int var1) {
-		int var2 = var1 - 334;
-		if (var2 < 0) {
-			var2 = 0;
-		} else if (var2 > 100) {
-			var2 = 100;
-		}
+	public static SpritePixels[] method3231(AbstractArchive var0, int var1, int var2) {
+		if (!class53.method1110(var0, var1, var2)) {
+			return null;
+		} else {
+			SpritePixels[] var4 = new SpritePixels[SpriteBufferProperties.SpriteBuffer_spriteCount];
 
-		int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight;
-		return var0 * var3 / 256;
+			for (int var5 = 0; var5 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var5) {
+				SpritePixels var6 = var4[var5] = new SpritePixels();
+				var6.width = SpriteBufferProperties.SpriteBuffer_spriteWidth;
+				var6.height = SpriteBufferProperties.SpriteBuffer_spriteHeight;
+				var6.xOffset = SpriteBufferProperties.SpriteBuffer_xOffsets[var5];
+				var6.yOffset = class497.SpriteBuffer_yOffsets[var5];
+				var6.subWidth = class7.SpriteBuffer_spriteWidths[var5];
+				var6.subHeight = SpriteBufferProperties.SpriteBuffer_spriteHeights[var5];
+				int var7 = var6.subHeight * var6.subWidth;
+				byte[] var8 = class280.SpriteBuffer_pixels[var5];
+				var6.pixels = new int[var7];
+
+				for (int var9 = 0; var9 < var7; ++var9) {
+					var6.pixels[var9] = SpriteBufferProperties.SpriteBuffer_spritePalette[var8[var9] & 255];
+				}
+			}
+
+			SpriteBufferProperties.SpriteBuffer_xOffsets = null;
+			class497.SpriteBuffer_yOffsets = null;
+			class7.SpriteBuffer_spriteWidths = null;
+			SpriteBufferProperties.SpriteBuffer_spriteHeights = null;
+			SpriteBufferProperties.SpriteBuffer_spritePalette = null;
+			class280.SpriteBuffer_pixels = null;
+			return var4;
+		}
+	}
+
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(B)[Las;",
+		garbageValue = "1"
+	)
+	public static class6[] method3230() {
+		return new class6[]{class6.field11};
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1839611801"
+	)
+	public static int method3229(int var0) {
+		return var0 >> 17 & 7;
+	}
+
+	@ObfuscatedName("af")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIB)V",
+		garbageValue = "-55"
+	)
+	static final void method3224(int var0, int var1, int var2, int var3) {
+		if (!ViewportMouse.ViewportMouse_false0) {
+			byte var8 = 50;
+			int var9 = AbstractRasterizer.method4952();
+			int var10 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var8 / Rasterizer3D.get3dZoom();
+			int var11 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var8 / Rasterizer3D.get3dZoom();
+			int var12 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.getClipMidX()) * var9 / Rasterizer3D.get3dZoom();
+			int var13 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.getClipMidY()) * var9 / Rasterizer3D.get3dZoom();
+			int var14 = class166.method3759(var11, var8, var1, var0);
+			int var15 = var1 * var8 - var0 * var11 >> 16;
+			var11 = var14;
+			var14 = class166.method3759(var13, var9, var1, var0);
+			int var16 = var1 * var9 - var13 * var0 >> 16;
+			int var17 = var3 * var10 - var2 * var15 >> 16;
+			int var18 = var10 * var2 + var3 * var15 >> 16;
+			int var19 = var12 * var3 - var16 * var2 >> 16;
+			int var20 = var16 * var3 + var12 * var2 >> 16;
+			ViewportMouse.field2892 = (var19 + var17) / 2;
+			ViewportMouse.field2898 = (var14 + var11) / 2;
+			ViewportMouse.field2890 = (var20 + var18) / 2;
+			ViewportMouse.field2894 = (var19 - var17) / 2;
+			FaceNormal.field2750 = (var14 - var11) / 2;
+			class425.field4765 = (var20 - var18) / 2;
+			ViewportMouse.field2896 = Math.abs(ViewportMouse.field2894);
+			class177.field1883 = Math.abs(FaceNormal.field2750);
+			FontName.field5315 = Math.abs(class425.field4765);
+			ViewportMouse.field2897.method8200((float)(var19 - var17), (float)(var14 - var11), (float)(var20 - var18));
+			ViewportMouse.field2897.method8172();
+			ViewportMouse.ViewportMouse_false0 = true;
+		}
 	}
 }

@@ -3,35 +3,43 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("im")
+@ObfuscatedName("ie")
 @Implements("Clock")
 public abstract class Clock {
+	@ObfuscatedName("fb")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
+	)
+	static Archive field2468;
+	@ObfuscatedName("sy")
+	@Export("ClanChat_inClanChat")
+	static boolean ClanChat_inClanChat;
+
 	Clock() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "10"
+		descriptor = "(I)V",
+		garbageValue = "555753729"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "497587420"
+		descriptor = "(IIB)I",
+		garbageValue = "-120"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);
 
-	@ObfuscatedName("py")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;II)V",
-		garbageValue = "-371161429"
+		descriptor = "(IIII)J",
+		garbageValue = "1486427565"
 	)
-	static void method4630(Buffer var0, int var1) {
-		FloorOverlayDefinition.method4308(var0.array, var1);
-		HitSplatDefinition.method4155(var0, var1);
+	static long method4667(int var0, int var1, int var2) {
+		return (long)(var2 << 16 | var0 << 8 | var1);
 	}
 }

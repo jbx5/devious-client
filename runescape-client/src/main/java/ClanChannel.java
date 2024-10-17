@@ -7,49 +7,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gm")
+@ObfuscatedName("gw")
 @Implements("ClanChannel")
 public class ClanChannel extends Node {
-	@ObfuscatedName("ac")
-	boolean field1838;
-	@ObfuscatedName("ae")
-	boolean field1834;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ta")
+	@ObfuscatedGetter(
+		intValue = -527966187
+	)
+	static int field1843;
+	@ObfuscatedName("we")
+	@ObfuscatedGetter(
+		intValue = 1780036719
+	)
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("ap")
+	boolean field1842;
+	@ObfuscatedName("aw")
+	boolean field1837;
+	@ObfuscatedName("ak")
 	@Export("members")
 	public List members;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@Export("sortedMembers")
 	int[] sortedMembers;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		longValue = 713846940201558631L
+		longValue = 3569207918441670223L
 	)
-	public long field1837;
-	@ObfuscatedName("aq")
+	public long field1836;
+	@ObfuscatedName("ay")
 	@Export("name")
 	public String name;
-	@ObfuscatedName("af")
-	public byte field1839;
-	@ObfuscatedName("at")
-	public byte field1833;
+	@ObfuscatedName("as")
+	public byte field1841;
+	@ObfuscatedName("ae")
+	public byte field1845;
 
 	static {
 		new BitSet(65536);
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;)V"
+		descriptor = "(Lvl;)V"
 	)
 	public ClanChannel(Buffer var1) {
-		this.field1834 = true;
+		this.field1837 = true;
 		this.name = null;
-		this.method3736(var1);
+		this.method3792(var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)[I",
-		garbageValue = "1750247817"
+		garbageValue = "1590781633"
 	)
 	@Export("getSortedMembers")
 	public int[] getSortedMembers() {
@@ -58,19 +69,20 @@ public class ClanChannel extends Node {
 			this.sortedMembers = new int[this.members.size()];
 
 			for (int var2 = 0; var2 < this.members.size(); this.sortedMembers[var2] = var2++) {
-				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method10592();
+				var1[var2] = ((ClanChannelMember)this.members.get(var2)).username.method10819();
 			}
 
-			class143.method3389(var1, this.sortedMembers);
+			int[] var3 = this.sortedMembers;
+			SecureRandomFuture.quicksortStringsWithCorrespondingIntegers(var1, var3, 0, var1.length - 1);
 		}
 
 		return this.sortedMembers;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Lfy;B)V",
-		garbageValue = "9"
+		descriptor = "(Lfs;I)V",
+		garbageValue = "-1388202730"
 	)
 	@Export("addMember")
 	void addMember(ClanChannelMember var1) {
@@ -78,10 +90,10 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-1598387098"
+		garbageValue = "1087310747"
 	)
 	@Export("removeMember")
 	void removeMember(int var1) {
@@ -89,22 +101,22 @@ public class ClanChannel extends Node {
 		this.sortedMembers = null;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-366055431"
+		garbageValue = "2029751959"
 	)
-	public int method3726() {
+	public int method3786() {
 		return this.members.size();
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(Ljava/lang/String;I)I",
-		garbageValue = "2008595423"
+		garbageValue = "1248235175"
 	)
-	public int method3727(String var1) {
-		if (!this.field1834) {
+	public int method3791(String var1) {
+		if (!this.field1837) {
 			throw new RuntimeException("Displaynames not available");
 		} else {
 			for (int var2 = 0; var2 < this.members.size(); ++var2) {
@@ -117,19 +129,19 @@ public class ClanChannel extends Node {
 		}
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;I)V",
-		garbageValue = "-571778818"
+		descriptor = "(Lvl;B)V",
+		garbageValue = "-6"
 	)
-	void method3736(Buffer var1) {
+	void method3792(Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		if ((var2 & 1) != 0) {
-			this.field1838 = true;
+			this.field1842 = true;
 		}
 
 		if ((var2 & 2) != 0) {
-			this.field1834 = true;
+			this.field1837 = true;
 		}
 
 		int var3 = 2;
@@ -138,22 +150,22 @@ public class ClanChannel extends Node {
 		}
 
 		super.key = var1.readLong();
-		this.field1837 = var1.readLong();
+		this.field1836 = var1.readLong();
 		this.name = var1.readStringCp1252NullTerminated();
 		var1.readBoolean();
-		this.field1833 = var1.readByte();
-		this.field1839 = var1.readByte();
+		this.field1845 = var1.readByte();
+		this.field1841 = var1.readByte();
 		int var4 = var1.readUnsignedShort();
 		if (var4 > 0) {
 			this.members = new ArrayList(var4);
 
 			for (int var5 = 0; var5 < var4; ++var5) {
 				ClanChannelMember var6 = new ClanChannelMember();
-				if (this.field1838) {
+				if (this.field1842) {
 					var1.readLong();
 				}
 
-				if (this.field1834) {
+				if (this.field1837) {
 					var6.username = new Username(var1.readStringCp1252NullTerminated());
 				}
 
@@ -169,68 +181,111 @@ public class ClanChannel extends Node {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IZI)[B",
-		garbageValue = "-2029916541"
+		descriptor = "([BI)V",
+		garbageValue = "1724035439"
 	)
-	@Export("ByteArrayPool_getArrayBool")
-	public static byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
-		synchronized(ByteArrayPool.field4860) {
-			byte[] var3;
-			if ((var0 == 100 || var0 < 100 && var1) && ByteArrayPool.ByteArrayPool_smallCount > 0) {
-				var3 = ByteArrayPool.ByteArrayPool_small[--ByteArrayPool.ByteArrayPool_smallCount];
-				ByteArrayPool.ByteArrayPool_small[ByteArrayPool.ByteArrayPool_smallCount] = null;
-				return var3;
-			}
+	@Export("SpriteBuffer_decode")
+	static void SpriteBuffer_decode(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		var1.offset = var0.length - 2;
+		SpriteBufferProperties.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_xOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class497.SpriteBuffer_yOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class7.SpriteBuffer_spriteWidths = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		SpriteBufferProperties.SpriteBuffer_spriteHeights = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class280.SpriteBuffer_pixels = new byte[SpriteBufferProperties.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8;
+		SpriteBufferProperties.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
+		int var2 = (var1.readUnsignedByte() & 255) + 1;
 
-			if ((var0 == 5000 || var0 < 5000 && var1) && ByteArrayPool.ByteArrayPool_mediumCount > 0) {
-				var3 = ByteArrayPool.ByteArrayPool_medium[--ByteArrayPool.ByteArrayPool_mediumCount];
-				ByteArrayPool.ByteArrayPool_medium[ByteArrayPool.ByteArrayPool_mediumCount] = null;
-				return var3;
-			}
+		int var3;
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+		}
 
-			if ((var0 == 10000 || var0 < 10000 && var1) && ByteArrayPool.ByteArrayPool_largeCount > 0) {
-				var3 = ByteArrayPool.ByteArrayPool_large[--ByteArrayPool.ByteArrayPool_largeCount];
-				ByteArrayPool.ByteArrayPool_large[ByteArrayPool.ByteArrayPool_largeCount] = null;
-				return var3;
-			}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			class497.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		}
 
-			if ((var0 == 30000 || var0 < 30000 && var1) && ByteArrayPool.field4863 > 0) {
-				var3 = ByteArrayPool.field4872[--ByteArrayPool.field4863];
-				ByteArrayPool.field4872[ByteArrayPool.field4863] = null;
-				return var3;
-			}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			class7.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		}
 
-			int var6;
-			if (class416.ByteArrayPool_arrays != null) {
-				for (var6 = 0; var6 < MusicSong.ByteArrayPool_alternativeSizes.length; ++var6) {
-					if ((MusicSong.ByteArrayPool_alternativeSizes[var6] == var0 || var0 < MusicSong.ByteArrayPool_alternativeSizes[var6] && var1) && class159.ByteArrayPool_altSizeArrayCounts[var6] > 0) {
-						byte[] var4 = class416.ByteArrayPool_arrays[var6][--class159.ByteArrayPool_altSizeArrayCounts[var6]];
-						class416.ByteArrayPool_arrays[var6][class159.ByteArrayPool_altSizeArrayCounts[var6]] = null;
-						return var4;
-					}
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+		}
+
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		SpriteBufferProperties.SpriteBuffer_spritePalette = new int[var2];
+
+		for (var3 = 1; var3 < var2; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (SpriteBufferProperties.SpriteBuffer_spritePalette[var3] == 0) {
+				SpriteBufferProperties.SpriteBuffer_spritePalette[var3] = 1;
+			}
+		}
+
+		var1.offset = 0;
+
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = class7.SpriteBuffer_spriteWidths[var3];
+			int var5 = SpriteBufferProperties.SpriteBuffer_spriteHeights[var3];
+			int var6 = var4 * var5;
+			byte[] var7 = new byte[var6];
+			class280.SpriteBuffer_pixels[var3] = var7;
+			int var8 = var1.readUnsignedByte();
+			int var9;
+			if (var8 == 0) {
+				for (var9 = 0; var9 < var6; ++var9) {
+					var7[var9] = var1.readByte();
 				}
-			}
-
-			if (var1 && MusicSong.ByteArrayPool_alternativeSizes != null) {
-				for (var6 = 0; var6 < MusicSong.ByteArrayPool_alternativeSizes.length; ++var6) {
-					if (var0 <= MusicSong.ByteArrayPool_alternativeSizes[var6] && class159.ByteArrayPool_altSizeArrayCounts[var6] < class416.ByteArrayPool_arrays[var6].length) {
-						return new byte[MusicSong.ByteArrayPool_alternativeSizes[var6]];
+			} else if (var8 == 1) {
+				for (var9 = 0; var9 < var4; ++var9) {
+					for (int var10 = 0; var10 < var5; ++var10) {
+						var7[var9 + var4 * var10] = var1.readByte();
 					}
 				}
 			}
 		}
 
-		return new byte[var0];
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("bp")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)I",
-		garbageValue = "1304036151"
+		descriptor = "(B)V",
+		garbageValue = "1"
 	)
-	static final int method3741(int var0, int var1, int var2, int var3) {
-		return var3 * var0 + var2 * var1 >> 16;
+	protected static final void method3806() {
+		GameEngine.clock.mark();
+
+		int var0;
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.graphicsTickTimes[var0] = 0L;
+		}
+
+		for (var0 = 0; var0 < 32; ++var0) {
+			GameEngine.clientTickTimes[var0] = 0L;
+		}
+
+		AABB.gameCyclesToDo = 0;
+	}
+
+	@ObfuscatedName("oz")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lvd;",
+		garbageValue = "1454080704"
+	)
+	@Export("getDbTable")
+	static DbTable getDbTable(int var0) {
+		DbTable var1 = (DbTable)Client.DBTableIndex_cache.get((long)var0);
+		if (var1 == null) {
+			var1 = new DbTable(class160.field1759, Fonts.method9730(var0), ObjectSound.method2083(var0));
+			Client.DBTableIndex_cache.put(var1, (long)var0);
+		}
+
+		return var1;
 	}
 }

@@ -6,134 +6,150 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pc")
+@ObfuscatedName("pa")
 @Implements("ModeWhere")
 public enum ModeWhere implements Enum {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4661("", 0, new class402[]{class402.field4638, class402.field4634}),
+	field4721("", 0, new class403[]{class403.field4686, class403.field4689}),
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
+	field4705("", 1, new class403[]{class403.field4688, class403.field4686, class403.field4689}),
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
+	field4714("", 2, new class403[]{class403.field4688, class403.field4687, class403.field4686}),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
+	field4707("", 3, new class403[]{class403.field4688}),
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
+	field4710("", 4),
+	@ObfuscatedName("ay")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
+	field4709("", 5, new class403[]{class403.field4688, class403.field4686}),
+	@ObfuscatedName("as")
+	@ObfuscatedSignature(
+		descriptor = "Lpa;"
+	)
+	field4708("", 6, new class403[]{class403.field4686}),
 	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4660("", 1, new class402[]{class402.field4636, class402.field4638, class402.field4634}),
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "Lpc;"
-	)
-	field4665("", 2, new class402[]{class402.field4636, class402.field4635, class402.field4638}),
+	field4711("", 8, new class403[]{class403.field4688, class403.field4686}),
 	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4658("", 3, new class402[]{class402.field4636}),
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lpc;"
-	)
-	field4662("", 4),
-	@ObfuscatedName("aq")
-	@ObfuscatedSignature(
-		descriptor = "Lpc;"
-	)
-	field4663("", 5, new class402[]{class402.field4636, class402.field4638}),
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "Lpc;"
-	)
-	field4664("", 6, new class402[]{class402.field4638}),
+	field4712("", 9, new class403[]{class403.field4688, class403.field4687}),
 	@ObfuscatedName("at")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4659("", 8, new class402[]{class402.field4636, class402.field4638}),
+	field4713("", 10, new class403[]{class403.field4688}),
 	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4666("", 9, new class402[]{class402.field4636, class402.field4635}),
-	@ObfuscatedName("ar")
+	field4704("", 11, new class403[]{class403.field4688}),
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4667("", 10, new class402[]{class402.field4636}),
-	@ObfuscatedName("al")
+	field4715("", 12, new class403[]{class403.field4688, class403.field4686}),
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "Lpc;"
+		descriptor = "Lpa;"
 	)
-	field4668("", 11, new class402[]{class402.field4636}),
-	@ObfuscatedName("ad")
-	@ObfuscatedSignature(
-		descriptor = "Lpc;"
-	)
-	field4669("", 12, new class402[]{class402.field4636, class402.field4638}),
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lpc;"
-	)
-	field4670("", 13, new class402[]{class402.field4636});
+	field4716("", 13, new class403[]{class403.field4688});
 
-	@ObfuscatedName("kd")
+	@ObfuscatedName("fp")
 	@ObfuscatedSignature(
-		descriptor = "[Lvt;"
+		descriptor = "Lor;"
 	)
-	static IndexedSprite[] field4673;
-	@ObfuscatedName("ap")
+	static Archive field4720;
+	@ObfuscatedName("af")
 	@ObfuscatedGetter(
-		intValue = 409335443
+		intValue = -1841475769
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("ab")
-	final Set field4672;
+	@ObfuscatedName("ar")
+	final Set field4706;
+
+	static {
+		method7863();
+	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I[Lpg;)V"
+		descriptor = "(Ljava/lang/String;I[Lpx;)V"
 	)
-	ModeWhere(String var3, int var4, class402[] var5) {
-		this.field4672 = new HashSet();
+	ModeWhere(String var3, int var4, class403[] var5) {
+		this.field4706 = new HashSet();
 		this.id = var4;
-		class402[] var6 = var5;
+		class403[] var6 = var5;
 
 		for (int var7 = 0; var7 < var6.length; ++var7) {
-			class402 var8 = var6[var7];
-			this.field4672.add(var8);
+			class403 var8 = var6[var7];
+			this.field4706.add(var8);
 		}
 
 	}
 
 	ModeWhere(String var3, int var4) {
-		this.field4672 = new HashSet();
+		this.field4706 = new HashSet();
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-350930589"
+		garbageValue = "1837624059"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-26"
+		descriptor = "(I)[Lpa;",
+		garbageValue = "-1051850"
 	)
-	public static int method7778(int var0) {
-		return class499.field5097[var0 & 16383];
+	static ModeWhere[] method7863() {
+		return new ModeWhere[]{field4709, field4710, field4713, field4711, field4716, field4715, field4708, field4705, field4721, field4704, field4714, field4707, field4712};
 	}
 
-	@ObfuscatedName("lb")
+	@ObfuscatedName("lk")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIB)Z",
-		garbageValue = "122"
+		descriptor = "(I)V",
+		garbageValue = "-707051104"
 	)
-	static boolean method7774(int var0, int var1, int var2, int var3, int var4, int var5) {
-		return GraphicsObject.method2285(class162.worldView.plane, var0, var1, var2, var3, var4, var5);
+	static void method7865() {
+		if (Client.isSpellSelected) {
+			Widget var0 = class416.widgetDefinition.getWidgetChild(class483.selectedSpellWidget, Client.selectedSpellChildIndex);
+			if (var0 != null && var0.onTargetLeave != null) {
+				ScriptEvent var1 = new ScriptEvent();
+				var1.widget = var0;
+				var1.args = var0.onTargetLeave;
+				Ignored.runScriptEvent(var1);
+			}
+
+			Client.selectedSpellItemId = -1;
+			Client.isSpellSelected = false;
+			class110.invalidateWidget(var0);
+		}
 	}
 }

@@ -190,7 +190,7 @@ public abstract class RSSceneMixin implements RSScene
 
 		if (!menuOpen && !checkClick)
 		{
-			this.menuOpen(getScenePlane(), client.getMouseX() - client.getViewportXOffset(), client.getMouseY() - client.getViewportYOffset(), false);
+			this.menuOpen(false);
 		}
 
 		int cameraX = this.getCameraX2();
@@ -437,7 +437,8 @@ public abstract class RSSceneMixin implements RSScene
 							{
 								client.setEntitiesAtMouseCount(0);
 							}
-							this.setCheckClick(false);
+							//this.setCheckClick(false);
+							this.processWalkClick();
 							client.getCallbacks().drawScene();
 
 							if (client.getDrawCallbacks() != null)
@@ -522,7 +523,8 @@ public abstract class RSSceneMixin implements RSScene
 		{
 			client.setEntitiesAtMouseCount(0);
 		}
-		this.setCheckClick(false);
+		//this.setCheckClick(false);
+		this.processWalkClick();
 		client.getCallbacks().drawScene();
 		if (client.getDrawCallbacks() != null)
 		{
@@ -1498,5 +1500,12 @@ public abstract class RSSceneMixin implements RSScene
 			drawCallbacks.loadScene(scene);
 			drawCallbacks.loadScene(worldView, scene);
 		}
+	}
+
+	@Inject
+	@Override
+	public int[] getMapRegions()
+	{
+		return client.getMapRegions();
 	}
 }

@@ -1,64 +1,44 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ex")
-final class class111 implements class352 {
-	@ObfuscatedName("jp")
-	static int[] field1427;
+@ObfuscatedName("er")
+final class class111 implements class351 {
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lng;"
 	)
-	final Widget val$cc;
+	final Widget val$item;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lny;)V"
+		descriptor = "(Lng;)V"
 	)
 	class111(Widget var1) {
-		this.val$cc = var1;
+		this.val$item = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "89"
+		descriptor = "(S)V",
+		garbageValue = "-3346"
 	)
-	public void vmethod6836() {
-		if (this.val$cc != null && this.val$cc.method7271().field3786 != null) {
+	public void vmethod6889() {
+		if (this.val$item.method7287().field3808 != null) {
 			ScriptEvent var1 = new ScriptEvent();
-			var1.method2511(this.val$cc);
-			var1.setArgs(this.val$cc.method7271().field3786);
-			class195.method4014().addFirst(var1);
+			var1.method2565(this.val$item);
+			var1.setArgs(this.val$item.method7287().field3808);
+			Archive.method7599().addFirst(var1);
 		}
 
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1274550337"
+		garbageValue = "-97637417"
 	)
-	static void method2994() {
-		class442.Tiles_underlays = null;
-		AbstractByteArrayCopier.Tiles_overlays = null;
-		UserComparator2.Tiles_shapes = null;
-		Tiles.field1065 = null;
-		SoundSystem.field294 = null;
-		TriBool.Tiles_underlays2 = null;
-		class512.field5171 = null;
-		class328.Tiles_hue = null;
-		HealthBarConfig.Tiles_saturation = null;
-		Tiles.Tiles_lightness = null;
-		class77.Tiles_hueMultiplier = null;
-		Tiles.field1056 = null;
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lfo;",
-		garbageValue = "-1270007656"
-	)
-	static class145 method2990(int var0) {
-		return UserComparator6.method3243(var0) != 0 ? null : GameEngine.method658(var0);
+	public static void method3078() {
+		HitSplatDefinition.HitSplatDefinition_cached.clear();
+		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear();
+		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear();
 	}
 }
