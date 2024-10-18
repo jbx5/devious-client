@@ -1,27 +1,34 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("js")
+@ObfuscatedName("jf")
 @Implements("FaceNormal")
 public class FaceNormal {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("am")
 	@ObfuscatedGetter(
-		intValue = 918683499
+		intValue = 517384369
+	)
+	static int field2750;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = -1273186789
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedGetter(
-		intValue = -385696985
+		intValue = -1226372845
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 184381595
+		intValue = 618262055
 	)
 	@Export("z")
 	int z;
@@ -29,25 +36,72 @@ public class FaceNormal {
 	FaceNormal() {
 	}
 
-	@ObfuscatedName("bw")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(ILny;IIIII[FI)Lny;",
-		garbageValue = "-387724970"
+		descriptor = "(Lpe;II)V",
+		garbageValue = "2129505229"
 	)
-	static Widget method5155(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
-		Widget var8 = new Widget();
-		var8.type = var0;
-		var8.parentId = var1.id;
-		var8.childIndex = var2;
-		var8.isIf3 = true;
-		var8.xAlignment = var3;
-		var8.yAlignment = var4;
-		var8.widthAlignment = var5;
-		var8.heightAlignment = var6;
-		var8.rawX = (int)((float)var1.width * var7[0]);
-		var8.rawY = (int)((float)var1.height * var7[1]);
-		var8.rawWidth = (int)(var7[2] * (float)var1.width);
-		var8.rawHeight = (int)(var7[3] * (float)var1.height);
-		return var8;
+	public static void method5261(AbstractArchive var0, int var1) {
+		if (!class333.field3628.isEmpty()) {
+			ArrayList var2 = new ArrayList();
+			Iterator var3 = class333.field3628.iterator();
+
+			while (var3.hasNext()) {
+				MusicSong var4 = (MusicSong)var3.next();
+				var4.field3750 = false;
+				var4.field3757 = false;
+				var4.field3751 = false;
+				var4.field3752 = false;
+				var4.musicTrackArchive = var0;
+				var4.musicTrackVolume = var1;
+				var4.field3749 = 0.0F;
+				var2.add(var4);
+			}
+
+			ParamComposition.method4154(var2, class333.musicPlayerStatus, class333.field3631, class333.field3632, class333.field3633, false);
+		}
+	}
+
+	@ObfuscatedName("at")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;Lqt;I)Lqt;",
+		garbageValue = "608532264"
+	)
+	public static final class426 method5263(class426 var0, class426 var1) {
+		class426 var2;
+		synchronized(class426.field4768) {
+			if (class426.field4770 == 0) {
+				var2 = new class426(var0);
+			} else {
+				class426.field4768[--class426.field4770].method8169(var0);
+				var2 = class426.field4768[class426.field4770];
+			}
+		}
+
+		var2.method8173(var1);
+		return var2;
+	}
+
+	@ObfuscatedName("fi")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "42"
+	)
+	static final void method5260() {
+		Scene.Scene_isLowDetail = false;
+		Client.isLowDetail = false;
+	}
+
+	@ObfuscatedName("ia")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1701397167"
+	)
+	static void method5262() {
+		if (LoginState.worldMap != null) {
+			LoginState.worldMap.method9721(class198.topLevelWorldView.plane, (GameEngine.entity.getX() >> 7) + class198.topLevelWorldView.baseX, (GameEngine.entity.getY() >> 7) + class198.topLevelWorldView.baseY, false);
+			LoginState.worldMap.loadCache();
+		}
+
 	}
 }

@@ -108,6 +108,9 @@ public interface RSScene extends Scene
 	@Override
 	void setBaseY(int y);
 
+	@Import("processWalkClick")
+	void processWalkClick();
+
 	@Import("viewportWalking")
 	@Override
 	void setViewportWalking(boolean viewportWalking);
@@ -121,7 +124,7 @@ public interface RSScene extends Scene
 	int[][][] getInstanceTemplateChunks();
 
 	@Import("menuOpen")
-	void menuOpen(int selectedPlane, int screenX, int screenY, boolean viewportWalking);
+	void menuOpen(boolean viewportWalking);
 
 	@Import("drawEntity")
 	boolean drawEntity(int level, int x, int y, int z, int radius, Renderable renderable, int orientation, long var8, boolean drawFrontTilesFirst);

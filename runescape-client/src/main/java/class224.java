@@ -1,70 +1,100 @@
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ik")
+@ObfuscatedName("iy")
 public class class224 extends class230 {
-	@ObfuscatedName("ub")
-	@ObfuscatedGetter(
-		intValue = -1098610841
+	@ObfuscatedName("id")
+	@ObfuscatedSignature(
+		descriptor = "Lqi;"
 	)
-	static int field2411;
-	@ObfuscatedName("ac")
-	String field2413;
+	@Export("fontPlain11")
+	static Font fontPlain11;
+	@ObfuscatedName("ap")
+	String field2410;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Liy;"
+		descriptor = "Lik;"
 	)
 	final class227 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Liy;Ljava/lang/String;Ljava/lang/String;)V"
+		descriptor = "(Lik;Ljava/lang/String;Ljava/lang/String;)V"
 	)
 	class224(class227 var1, String var2, String var3) {
 		super(var1, var2);
 		this.this$0 = var1;
-		this.field2413 = var3;
+		this.field2410 = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-24"
+		descriptor = "(I)I",
+		garbageValue = "780036752"
 	)
-	public int vmethod4613() {
+	public int vmethod4660() {
 		return 1;
 	}
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "27837050"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "10"
 	)
-	public String vmethod4614() {
-		return this.field2413;
+	public String vmethod4649() {
+		return this.field2410;
 	}
 
-	@ObfuscatedName("ld")
+	@ObfuscatedName("kj")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIIIZI)V",
-		garbageValue = "-1601450121"
+		descriptor = "(Ldn;IIII)V",
+		garbageValue = "80789922"
 	)
-	@Export("addTileItemToGroundItems")
-	static void addTileItemToGroundItems(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9) {
-		TileItem var10 = new TileItem();
-		var10.id = var3;
-		var10.quantity = var4;
-		var10.setFlag(var5);
-		var10.visibleTime = Client.serverCycle + var6;
-		var10.despawnTime = var7 + Client.serverCycle;
-		var10.ownership = var8;
-		var10.isPrivate = var9;
-		if (class162.worldView.groundItems[var0][var1][var2] == null) {
-			class162.worldView.groundItems[var0][var1][var2] = new NodeDeque();
-		}
+	@Export("updateItemPile2")
+	static final void updateItemPile2(WorldView var0, int var1, int var2, int var3) {
+		NodeDeque var4 = var0.groundItems[var1][var2][var3];
+		if (var4 == null) {
+			var0.scene.removeGroundItemPile(var1, var2, var3);
+		} else {
+			long var5 = -99999999L;
+			TileItem var7 = null;
 
-		class162.worldView.groundItems[var0][var1][var2].addFirst(var10);
-		class537.updateItemPile(var0, var1, var2);
+			TileItem var8;
+			for (var8 = (TileItem)var4.last(); var8 != null; var8 = (TileItem)var4.previous()) {
+				ItemComposition var9 = Bounds.ItemDefinition_get(var8.id);
+				long var13 = (long)var9.price;
+				if (var9.isStackable == 1) {
+					var13 *= var8.quantity < Integer.MAX_VALUE ? (long)(var8.quantity + 1) : (long)var8.quantity;
+				}
+
+				if (var13 > var5) {
+					var5 = var13;
+					var7 = var8;
+				}
+			}
+
+			if (var7 == null) {
+				var0.scene.removeGroundItemPile(var1, var2, var3);
+			} else {
+				var4.addLast(var7);
+				TileItem var15 = null;
+				TileItem var10 = null;
+
+				for (var8 = (TileItem)var4.last(); var8 != null; var8 = (TileItem)var4.previous()) {
+					if (var8.id != var7.id) {
+						if (var15 == null) {
+							var15 = var8;
+						}
+
+						if (var15.id != var8.id && var10 == null) {
+							var10 = var8;
+						}
+					}
+				}
+
+				long var11 = class140.calculateTag(var2, var3, 3, false, 0, var0.id);
+				var0.scene.newGroundItemPile(var1, var2, var3, ScriptFrame.getTileHeight(var0, Coord.method6854(var2), Coord.method6854(var3), var1), var7, var11, var15, var10);
+			}
+		}
 	}
 }

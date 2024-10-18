@@ -1,93 +1,97 @@
-import java.util.Random;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rq")
-public class class450 {
-	@ObfuscatedName("ac")
-	@Export("writeRandomDat")
-	public static void writeRandomDat(byte[] var0, int var1, byte[] var2, int var3, int var4) {
-		if (var2 == var0) {
-			if (var3 == var1) {
-				return;
-			}
+@ObfuscatedName("rc")
+public class class450 extends SongTask {
+	@ObfuscatedName("fw")
+	@ObfuscatedSignature(
+		descriptor = "Lor;"
+	)
+	@Export("archive8")
+	static Archive archive8;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
+	AbstractArchive field4891;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
+	AbstractArchive field4889;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
+	AbstractArchive field4890;
 
-			if (var3 > var1 && var3 < var4 + var1) {
-				--var4;
-				var1 += var4;
-				var3 += var4;
-				var4 = var1 - var4;
-
-				for (var4 += 7; var1 >= var4; var2[var3--] = var0[var1--]) {
-					var2[var3--] = var0[var1--];
-					var2[var3--] = var0[var1--];
-					var2[var3--] = var0[var1--];
-					var2[var3--] = var0[var1--];
-					var2[var3--] = var0[var1--];
-					var2[var3--] = var0[var1--];
-					var2[var3--] = var0[var1--];
-				}
-
-				for (var4 -= 7; var1 >= var4; var2[var3--] = var0[var1--]) {
-				}
-
-				return;
-			}
-		}
-
-		var4 += var1;
-
-		for (var4 -= 7; var1 < var4; var2[var3++] = var0[var1++]) {
-			var2[var3++] = var0[var1++];
-			var2[var3++] = var0[var1++];
-			var2[var3++] = var0[var1++];
-			var2[var3++] = var0[var1++];
-			var2[var3++] = var0[var1++];
-			var2[var3++] = var0[var1++];
-			var2[var3++] = var0[var1++];
-		}
-
-		for (var4 += 7; var1 < var4; var2[var3++] = var0[var1++]) {
-		}
-
+	@ObfuscatedSignature(
+		descriptor = "(Lra;Lpe;Lpe;Lpe;)V"
+	)
+	public class450(SongTask var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4) {
+		super(var1);
+		this.field4891 = var2;
+		this.field4889 = var3;
+		this.field4890 = var4;
+		super.field4881 = "LoadSongTask";
 	}
 
-	@ObfuscatedName("ar")
-	@Export("clearIntArray")
-	public static void clearIntArray(int[] var0, int var1, int var2) {
-		for (var2 = var2 + var1 - 7; var1 < var2; var0[var1++] = 0) {
-			var0[var1++] = 0;
-			var0[var1++] = 0;
-			var0[var1++] = 0;
-			var0[var1++] = 0;
-			var0[var1++] = 0;
-			var0[var1++] = 0;
-			var0[var1++] = 0;
-		}
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "343486624"
+	)
+	public boolean vmethod8740() {
+		int var1 = 0;
+		Iterator var2 = class333.musicSongs.iterator();
 
-		for (var2 += 7; var1 < var2; var0[var1++] = 0) {
-		}
+		while (true) {
+			while (var2.hasNext()) {
+				MusicSong var3 = (MusicSong)var2.next();
+				if (var3 != null && var3.midiPcmStream.field3647 > 1 && var3.midiPcmStream.method6615()) {
+					this.method8725("Attempted to load patches of already loading midiplayer!");
+					return true;
+				}
 
-	}
+				if (var3 != null && !var3.field3757) {
+					try {
+						if (var3.musicTrackArchive != null && var3.musicTrackGroupId != -1 && var3.musicTrackFileId != -1) {
+							if (var3.field3753 == null) {
+								var3.field3753 = MusicTrack.readTrack(var3.musicTrackArchive, var3.musicTrackGroupId, var3.musicTrackFileId);
+								if (var3.field3753 == null) {
+									continue;
+								}
+							}
 
-	@ObfuscatedName("al")
-	public static void method8628(int[] var0, int var1, int var2, int var3) {
-		if (var2 == 0 && var3 == 0) {
-			var2 = (int)(Math.random() * 2.147483647E9D);
-			var3 = (int)(Math.random() * 2.147483647E9D);
-		}
+							if (var3.field3754 == null) {
+								var3.field3754 = new SoundCache(this.field4890, this.field4889);
+							}
 
-		long var4 = (long)var2 << 32 | (long)var3;
-		Random var6 = new Random(var4);
-
-		for (int var7 = var1 - 1; var7 > 0; --var7) {
-			int var8 = var6.nextInt(var7 + 1);
-			if (var7 != var8) {
-				int var9 = var0[var7];
-				var0[var7] = var0[var8];
-				var0[var8] = var9;
+							if (var3.midiPcmStream.updateExternalPlayer(var3.field3753, this.field4891, var3.field3754)) {
+								++var1;
+								var3.field3757 = true;
+								var3.midiPcmStream.method6604();
+							}
+						} else {
+							++var1;
+						}
+					} catch (Exception var5) {
+						HttpHeaders.RunException_sendStackTrace((String)null, var5);
+						this.method8725(var5.getMessage());
+						return true;
+					}
+				} else {
+					++var1;
+				}
 			}
-		}
 
+			if (var1 == class333.musicSongs.size()) {
+				return true;
+			}
+
+			return false;
+		}
 	}
 }

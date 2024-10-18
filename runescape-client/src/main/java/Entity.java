@@ -6,26 +6,26 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("cz")
 @Implements("Entity")
 public interface Entity {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2084253353"
+		descriptor = "(B)I",
+		garbageValue = "86"
 	)
 	@Export("getX")
 	int getX();
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "18679"
+		descriptor = "(I)I",
+		garbageValue = "-968853557"
 	)
 	@Export("getY")
 	int getY();
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "371855163"
+		descriptor = "(B)I",
+		garbageValue = "-40"
 	)
 	@Export("getPlane")
 	int getPlane();

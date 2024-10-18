@@ -1,56 +1,42 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ue")
-public class class520 {
-	@ObfuscatedName("ac")
-	public final Object field5264;
-	@ObfuscatedName("ae")
-	public final Object field5265;
+@ObfuscatedName("uq")
+public class class520 extends class522 {
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
+	@Export("SequenceDefinition_archive")
+	public static AbstractArchive SequenceDefinition_archive;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 44941857
+	)
+	int field5225;
+	@ObfuscatedName("aw")
+	@ObfuscatedGetter(
+		intValue = -389796029
+	)
+	int field5226;
 
-	public class520(Object var1, Object var2) {
-		this.field5264 = var1;
-		this.field5265 = var2;
+	public class520(int var1, int var2, int var3, int var4) {
+		super(var3, var4);
+		this.field5225 = 0;
+		this.field5226 = 0;
+		this.field5225 = var1;
+		this.field5226 = var2;
 	}
 
-	public boolean equals(Object var1) {
-		if (var1 != null && var1 instanceof class520) {
-			class520 var2 = (class520)var1;
-			if (this.field5264 == null) {
-				if (var2.field5264 != null) {
-					return false;
-				}
-			} else if (!this.field5264.equals(var2.field5264)) {
-				return false;
-			}
-
-			if (this.field5265 == null) {
-				if (var2.field5265 != null) {
-					return false;
-				}
-			} else if (!this.field5265.equals(var2.field5265)) {
-				return false;
-			}
-
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public String toString() {
-		return this.field5264 + ", " + this.field5265;
-	}
-
-	public int hashCode() {
-		int var1 = 0;
-		if (this.field5264 != null) {
-			var1 += this.field5264.hashCode();
-		}
-
-		if (this.field5265 != null) {
-			var1 += 31 * this.field5265.hashCode();
-		}
-
-		return var1;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-34"
+	)
+	public int method9491() {
+		double var1 = this.method9504();
+		return (int)Math.round((double)(this.field5226 - this.field5225) * var1 + (double)this.field5225);
 	}
 }

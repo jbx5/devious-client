@@ -3,23 +3,23 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nk")
+@ObfuscatedName("nv")
 @Implements("MusicTrack")
 public class MusicTrack extends Node {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Luu;"
+		descriptor = "Lud;"
 	)
-	NodeHashTable field3700;
-	@ObfuscatedName("ae")
+	NodeHashTable field3719;
+	@ObfuscatedName("aw")
 	@Export("midi")
 	byte[] midi;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lvf;)V"
+		descriptor = "(Lvl;)V"
 	)
 	MusicTrack(Buffer var1) {
-		this.field3700 = new NodeHashTable(16);
+		this.field3719 = new NodeHashTable(16);
 		var1.offset = var1.array.length - 3;
 		int var2 = var1.readUnsignedByte();
 		int var3 = var1.readUnsignedShort();
@@ -200,7 +200,7 @@ public class MusicTrack extends Node {
 		var61[9] = 128;
 		var60[9] = 128;
 
-		label255:
+		label256:
 		for (int var63 = 0; var63 < var2; ++var63) {
 			var51.writeInt(1297379947);
 			var51.offset += 4;
@@ -224,7 +224,7 @@ public class MusicTrack extends Node {
 						var51.writeByte(47);
 						var51.writeByte(0);
 						var51.writeLengthInt(var51.offset - var64);
-						continue label255;
+						continue label256;
 					}
 
 					if (var68 == 23) {
@@ -254,13 +254,13 @@ public class MusicTrack extends Node {
 							var51.writeByte(var71);
 							if (var71 > 0) {
 								int var72 = var61[var52];
-								class347 var73 = (class347)this.field3700.get((long)var72);
+								class346 var73 = (class346)this.field3719.get((long)var72);
 								if (var73 == null) {
-									var73 = new class347(var65);
-									this.field3700.put(var73, (long)var72);
+									var73 = new class346(var65);
+									this.field3719.put(var73, (long)var72);
 								}
 
-								var73.field3741.set(var74);
+								var73.field3761.set(var74);
 							}
 						} else if (var66 == 1) {
 							if (var69) {
@@ -367,9 +367,9 @@ public class MusicTrack extends Node {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;II)Lnk;"
+		descriptor = "(Lpe;II)Lnv;"
 	)
 	@Export("readTrack")
 	public static MusicTrack readTrack(AbstractArchive var0, int var1, int var2) {

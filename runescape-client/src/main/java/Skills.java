@@ -1,14 +1,15 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oa")
+@ObfuscatedName("oi")
 @Implements("Skills")
 public class Skills {
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@Export("Skills_enabled")
 	public static final boolean[] Skills_enabled;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@Export("Skills_experienceTable")
 	public static int[] Skills_experienceTable;
 
@@ -24,5 +25,29 @@ public class Skills {
 			Skills_experienceTable[var1] = var0 / 4;
 		}
 
+	}
+
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "(CI)Z",
+		garbageValue = "757618401"
+	)
+	public static boolean method7515(char var0) {
+		if (var0 >= ' ' && var0 < 127 || var0 > 127 && var0 < 160 || var0 > 160 && var0 <= 255) {
+			return true;
+		} else {
+			if (var0 != 0) {
+				char[] var1 = class417.cp1252AsciiExtension;
+
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					char var3 = var1[var2];
+					if (var0 == var3) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
 	}
 }

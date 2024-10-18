@@ -10,87 +10,94 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("al")
+@ObfuscatedName("au")
 @Implements("HttpRequest")
 public class HttpRequest {
+	@ObfuscatedName("pz")
+	@ObfuscatedSignature(
+		descriptor = "[Lng;"
+	)
+	static Widget[] field40;
 	@ObfuscatedName("ap")
-	public static short[][] field48;
-	@ObfuscatedName("jh")
-	static byte[][] field47;
-	@ObfuscatedName("ac")
 	@Export("connection")
 	final HttpsURLConnection connection;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lrf;"
+		descriptor = "Lrl;"
 	)
 	@Export("httpHeaders")
 	final HttpHeaders httpHeaders;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lar;"
+		descriptor = "Lat;"
 	)
-	final HttpMethod field41;
-	@ObfuscatedName("am")
+	final HttpMethod field39;
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Ltz;"
+		descriptor = "Ltg;"
 	)
 	@Export("httpPayload")
 	HttpPayload httpPayload;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@Export("requestInitialized")
 	boolean requestInitialized;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@Export("followRedirects")
 	boolean followRedirects;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@ObfuscatedGetter(
-		intValue = 1517185483
+		intValue = 398957973
 	)
 	@Export("connectionTimeout")
 	int connectionTimeout;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;Lar;Lrf;Z)V"
+		descriptor = "(Ljava/net/URL;Lat;Lrl;Z)V"
 	)
 	public HttpRequest(URL var1, HttpMethod var2, HttpHeaders var3, boolean var4) throws IOException {
 		this.requestInitialized = false;
 		this.followRedirects = false;
 		this.connectionTimeout = 300000;
-		if (!var2.method71()) {
+		if (!var2.method70()) {
 			throw new UnsupportedEncodingException("Unsupported request method used " + var2.getName());
 		} else {
 			this.connection = (HttpsURLConnection)var1.openConnection();
 			if (!var4) {
-				this.connection.setSSLSocketFactory(SecureRandomSSLSocketFactory.method188());
+				HttpsURLConnection var5 = this.connection;
+				if (SecureRandomSSLSocketFactory.INSTANCE == null) {
+					SecureRandomSSLSocketFactory.INSTANCE = new SecureRandomSSLSocketFactory();
+				}
+
+				SecureRandomSSLSocketFactory var6 = SecureRandomSSLSocketFactory.INSTANCE;
+				var5.setSSLSocketFactory(var6);
 			}
 
-			this.field41 = var2;
+			this.field39 = var2;
 			this.httpHeaders = var3 != null ? var3 : new HttpHeaders();
 		}
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/URL;Lar;Z)V"
+		descriptor = "(Ljava/net/URL;Lat;Z)V"
 	)
 	public HttpRequest(URL var1, HttpMethod var2, boolean var3) throws IOException {
 		this(var1, var2, new HttpHeaders(), var3);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lrf;",
-		garbageValue = "1096792900"
+		descriptor = "(I)Lrl;",
+		garbageValue = "447299414"
 	)
 	@Export("getHeaders")
 	public HttpHeaders getHeaders() {
 		return this.httpHeaders;
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(Ltz;I)V",
-		garbageValue = "-120766620"
+		descriptor = "(Ltg;B)V",
+		garbageValue = "-38"
 	)
 	@Export("setPayload")
 	public void setPayload(HttpPayload var1) {
@@ -110,17 +117,17 @@ public class HttpRequest {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1640640586"
+		garbageValue = "769257561"
 	)
 	@Export("initializeRequest")
 	void initializeRequest() throws ProtocolException {
 		if (!this.requestInitialized) {
-			this.connection.setRequestMethod(this.field41.getName());
+			this.connection.setRequestMethod(this.field39.getName());
 			this.httpHeaders.setRequestProperties(this.connection);
-			if (this.field41.method75() && this.httpPayload != null) {
+			if (this.field39.method77() && this.httpPayload != null) {
 				this.connection.setDoOutput(true);
 				ByteArrayOutputStream var1 = new ByteArrayOutputStream();
 
@@ -145,10 +152,10 @@ public class HttpRequest {
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-844240803"
+		garbageValue = "2007396320"
 	)
 	@Export("connect")
 	boolean connect() throws IOException {
@@ -160,10 +167,10 @@ public class HttpRequest {
 		return this.connection.getResponseCode() == -1;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lay;",
-		garbageValue = "-127"
+		descriptor = "(B)Lav;",
+		garbageValue = "35"
 	)
 	@Export("getResponse")
 	HttpResponse getResponse() {
@@ -187,35 +194,5 @@ public class HttpRequest {
 		}
 
 		return var3;
-	}
-
-	@ObfuscatedName("jo")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "17"
-	)
-	@Export("setWindowedMode")
-	static void setWindowedMode(int var0) {
-		Client.field738 = 0L;
-		if (var0 >= 2) {
-			Client.isResizable = true;
-		} else {
-			Client.isResizable = false;
-		}
-
-		if (Script.getWindowedMode() == 1) {
-			class1.client.setMaxCanvasSize(765, 503);
-		} else {
-			class1.client.setMaxCanvasSize(7680, 2160);
-		}
-
-		if (Client.gameState >= 25 && Client.packetWriter != null && Client.packetWriter.isaacCipher != null) {
-			PacketBufferNode var1 = class141.getPacketBufferNode(ClientPacket.EVENT_WINDOW_SETTING, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(Script.getWindowedMode());
-			var1.packetBuffer.writeShort(class154.canvasWidth);
-			var1.packetBuffer.writeShort(UrlRequester.canvasHeight);
-			Client.packetWriter.addNode(var1);
-		}
-
 	}
 }

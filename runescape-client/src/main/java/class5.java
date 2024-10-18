@@ -4,41 +4,41 @@ import java.security.NoSuchAlgorithmException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aq")
+@ObfuscatedName("ay")
 public class class5 implements class2 {
-	@ObfuscatedName("ac")
-	final MessageDigest field6;
+	@ObfuscatedName("ap")
+	final MessageDigest field9;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lau;)V"
+		descriptor = "(Lam;)V"
 	)
 	class5(class8 var1) {
-		this.field6 = this.method20();
+		this.field9 = this.method22();
 	}
 
-	@ObfuscatedName("ac")
-	boolean method16(int var1, String var2, long var3) {
+	@ObfuscatedName("ap")
+	boolean method18(int var1, String var2, long var3) {
 		byte[] var5 = this.method23(var2, var3);
-		return method17(var5) >= var1;
+		return method20(var5) >= var1;
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	byte[] method23(String var1, long var2) {
 		StringBuilder var4 = new StringBuilder();
 		var4.append(var1).append(Long.toHexString(var2));
-		this.field6.reset();
+		this.field9.reset();
 
 		try {
-			this.field6.update(var4.toString().getBytes("UTF-8"));
+			this.field9.update(var4.toString().getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException var6) {
 			var6.printStackTrace();
 		}
 
-		return this.field6.digest();
+		return this.field9.digest();
 	}
 
-	@ObfuscatedName("ax")
-	MessageDigest method20() {
+	@ObfuscatedName("ai")
+	MessageDigest method22() {
 		try {
 			return MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException var2) {
@@ -47,14 +47,14 @@ public class class5 implements class2 {
 		}
 	}
 
-	@ObfuscatedName("ae")
-	static int method17(byte[] var0) {
+	@ObfuscatedName("aw")
+	static int method20(byte[] var0) {
 		int var1 = 0;
 		byte[] var2 = var0;
 
 		for (int var3 = 0; var3 < var2.length; ++var3) {
 			byte var4 = var2[var3];
-			int var5 = method18(var4);
+			int var5 = method25(var4);
 			var1 += var5;
 			if (var5 != 8) {
 				break;
@@ -64,8 +64,8 @@ public class class5 implements class2 {
 		return var1;
 	}
 
-	@ObfuscatedName("ag")
-	static int method18(byte var0) {
+	@ObfuscatedName("ak")
+	static int method25(byte var0) {
 		int var1 = 0;
 		if (var0 == 0) {
 			var1 = 8;

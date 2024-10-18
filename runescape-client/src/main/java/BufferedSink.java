@@ -6,45 +6,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("sm")
+@ObfuscatedName("sn")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
-	@ObfuscatedName("is")
-	@ObfuscatedSignature(
-		descriptor = "Lig;"
-	)
-	static Task field5044;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@Export("outputStream")
 	OutputStream outputStream;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1051947205
+		intValue = -755573005
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -541388431
+		intValue = -1422109407
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 88502385
+		intValue = 1953641395
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("af")
+	@ObfuscatedName("as")
 	@Export("exception")
 	IOException exception;
-	@ObfuscatedName("at")
+	@ObfuscatedName("ae")
 	@Export("closed")
 	boolean closed;
 
@@ -59,10 +54,10 @@ public class BufferedSink implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "10"
+		garbageValue = "121"
 	)
 	@Export("isClosed")
 	boolean isClosed() {
@@ -84,10 +79,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "829733649"
+		garbageValue = "-768318470"
 	)
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
@@ -124,10 +119,10 @@ public class BufferedSink implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-815794567"
+		garbageValue = "-82129405"
 	)
 	@Export("close")
 	void close() {
@@ -201,14 +196,5 @@ public class BufferedSink implements Runnable {
 			}
 		} while(!this.isClosed());
 
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "1548135909"
-	)
-	public static String method9121(String var0) {
-		return var0 != null && !var0.isEmpty() && var0.charAt(0) != '#' ? var0 : "";
 	}
 }

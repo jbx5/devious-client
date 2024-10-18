@@ -223,4 +223,11 @@ public interface Scene extends Renderable
 	 * @see InstanceTemplates
 	 */
 	int[][][] getInstanceTemplateChunks();
+
+	/**
+	 * Gets an array of map region IDs that are currently loaded.
+	 *
+	 * @return the map regions
+	 */
+	int[] getMapRegions();
 }

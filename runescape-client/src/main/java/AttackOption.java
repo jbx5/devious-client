@@ -1,47 +1,44 @@
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ef")
+@ObfuscatedName("ey")
 @Implements("AttackOption")
 public enum AttackOption implements Enum {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lef;"
+		descriptor = "Ley;"
 	)
 	@Export("AttackOption_dependsOnCombatLevels")
 	AttackOption_dependsOnCombatLevels(0),
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "Lef;"
+		descriptor = "Ley;"
 	)
 	@Export("AttackOption_alwaysRightClick")
 	AttackOption_alwaysRightClick(1),
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lef;"
+		descriptor = "Ley;"
 	)
-	field1413(2),
-	@ObfuscatedName("am")
+	field1396(2),
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lef;"
+		descriptor = "Ley;"
 	)
 	@Export("AttackOption_hidden")
 	AttackOption_hidden(3),
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lef;"
+		descriptor = "Ley;"
 	)
-	field1408(4);
+	field1395(4);
 
-	@ObfuscatedName("aq")
+	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 2061046629
+		intValue = -517768429
 	)
 	@Export("id")
 	final int id;
@@ -50,67 +47,36 @@ public enum AttackOption implements Enum {
 		this.id = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-350930589"
+		garbageValue = "1837624059"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "(Lpo;Lpo;IZI)Lfo;",
-		garbageValue = "-1892237793"
+		descriptor = "(Lpe;Ljava/lang/String;Ljava/lang/String;I)Lvc;",
+		garbageValue = "-1770095722"
 	)
-	public static class145 method2968(AbstractArchive var0, AbstractArchive var1, int var2, boolean var3) {
-		boolean var4 = true;
-		byte[] var5 = var0.getFile(var2 >> 16 & 65535, var2 & 65535);
-		if (var5 == null) {
-			var4 = false;
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		if (!var0.isValidFileName(var1, var2)) {
 			return null;
 		} else {
-			int var6 = (var5[1] & 255) << 8 | var5[2] & 255;
-			byte[] var7;
-			if (var3) {
-				var7 = var1.getFile(0, var6);
+			int var3 = var0.getGroupId(var1);
+			int var4 = var0.getFileId(var3, var2);
+			IndexedSprite var5;
+			if (!class53.method1110(var0, var3, var4)) {
+				var5 = null;
 			} else {
-				var7 = var1.getFile(var6, 0);
+				var5 = Client.method1956();
 			}
 
-			if (var7 == null) {
-				var4 = false;
-			}
-
-			if (!var4) {
-				return null;
-			} else {
-				if (Fonts.field5251 == null) {
-					GrandExchangeOfferOwnWorldComparator.field482 = Runtime.getRuntime().availableProcessors();
-					Fonts.field5251 = new ThreadPoolExecutor(0, GrandExchangeOfferOwnWorldComparator.field482, 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue(GrandExchangeOfferOwnWorldComparator.field482 * 100 + 100), new class142());
-				}
-
-				try {
-					return new class145(var0, var1, var2, var3);
-				} catch (Exception var9) {
-					return null;
-				}
-			}
-		}
-	}
-
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "-565314116"
-	)
-	public static int method2972(int var0, int var1, int var2) {
-		if (var1 < var0) {
-			throw new IllegalArgumentException("max: " + var1 + " can not be lower than min: " + var0);
-		} else {
-			return Math.max(var0, Math.min(var2, var1));
+			return var5;
 		}
 	}
 }

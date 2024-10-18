@@ -1,45 +1,42 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("eg")
 @Implements("HealthBarConfig")
 public class HealthBarConfig extends Node {
-	@ObfuscatedName("au")
-	@Export("Tiles_saturation")
-	static int[] Tiles_saturation;
-	@ObfuscatedName("ts")
-	@ObfuscatedSignature(
-		descriptor = "Lbz;"
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = -259692903
 	)
-	@Export("pcmPlayer1")
-	static PcmPlayer pcmPlayer1;
-	@ObfuscatedName("ag")
+	public static int field1367;
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lhk;"
+		descriptor = "Lha;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("am")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lpr;"
+		descriptor = "Lps;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhk;)V"
+		descriptor = "(Lha;)V"
 	)
 	HealthBarConfig(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "-793429886"
+		garbageValue = "-635912159"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -72,10 +69,10 @@ public class HealthBarConfig extends Node {
 		}
 	}
 
-	@ObfuscatedName("ae")
+	@ObfuscatedName("aw")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lds;",
-		garbageValue = "3"
+		descriptor = "(IB)Lde;",
+		garbageValue = "-44"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -86,7 +83,7 @@ public class HealthBarConfig extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
+			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -97,13 +94,74 @@ public class HealthBarConfig extends Node {
 		}
 	}
 
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-108"
+		garbageValue = "-54"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7843();
+		return this.updates.method7939();
+	}
+
+	@ObfuscatedName("ku")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIII)Z",
+		garbageValue = "49866601"
+	)
+	static boolean method2961(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		Scene var7 = class344.worldView.scene;
+		int var9;
+		if (var5 == class384.field4501.field4502) {
+			BoundaryObject var8 = var7.getBoundaryObject(var0, var1, var2);
+			if (var8 != null) {
+				var9 = class309.Entity_unpackID(var8.tag);
+				if (var3 == WorldMapDecorationType.field4064.id) {
+					var8.renderable1 = new DynamicObject(class344.worldView, var9, 2, var4 + 4, var0, var1, var2, var6, false, var8.renderable1);
+					var8.renderable2 = new DynamicObject(class344.worldView, var9, 2, var4 + 1 & 3, var0, var1, var2, var6, false, var8.renderable2);
+				} else {
+					var8.renderable1 = new DynamicObject(class344.worldView, var9, var3, var4, var0, var1, var2, var6, false, var8.renderable1);
+				}
+
+				return true;
+			}
+		} else if (var5 == class384.field4499.field4502) {
+			WallDecoration var10 = var7.getWallDecoration(var0, var1, var2);
+			if (var10 != null) {
+				var9 = class309.Entity_unpackID(var10.tag);
+				if (var3 != WorldMapDecorationType.field4067.id && var3 != WorldMapDecorationType.field4068.id) {
+					if (var3 == WorldMapDecorationType.field4069.id) {
+						var10.renderable1 = new DynamicObject(class344.worldView, var9, 4, var4 + 4, var0, var1, var2, var6, false, var10.renderable1);
+					} else if (var3 == WorldMapDecorationType.field4070.id) {
+						var10.renderable1 = new DynamicObject(class344.worldView, var9, 4, (var4 + 2 & 3) + 4, var0, var1, var2, var6, false, var10.renderable1);
+					} else if (var3 == WorldMapDecorationType.field4084.id) {
+						var10.renderable1 = new DynamicObject(class344.worldView, var9, 4, var4 + 4, var0, var1, var2, var6, false, var10.renderable1);
+						var10.renderable2 = new DynamicObject(class344.worldView, var9, 4, (var4 + 2 & 3) + 4, var0, var1, var2, var6, false, var10.renderable2);
+					}
+				} else {
+					var10.renderable1 = new DynamicObject(class344.worldView, var9, 4, var4, var0, var1, var2, var6, false, var10.renderable1);
+				}
+
+				return true;
+			}
+		} else if (var5 == class384.field4500.field4502) {
+			GameObject var11 = var7.getGameObject(var0, var1, var2);
+			if (var3 == WorldMapDecorationType.field4083.id) {
+				var3 = WorldMapDecorationType.field4062.id;
+			}
+
+			if (var11 != null) {
+				var11.renderable = new DynamicObject(class344.worldView, class309.Entity_unpackID(var11.tag), var3, var4, var0, var1, var2, var6, false, var11.renderable);
+				return true;
+			}
+		} else if (var5 == class384.field4503.field4502) {
+			FloorDecoration var12 = var7.getFloorDecoration(var0, var1, var2);
+			if (var12 != null) {
+				var12.renderable = new DynamicObject(class344.worldView, class309.Entity_unpackID(var12.tag), 22, var4, var0, var1, var2, var6, false, var12.renderable);
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
